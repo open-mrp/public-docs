@@ -1,0 +1,116 @@
+---
+title: 'Tour of the Augno API'
+description: 'Understand how Augno API objects fit together and learn best practices.'
+breadcrumbs:
+    - label: 'Home'
+      pathKey: 'home'
+    - label: 'Get started'
+      pathKey: 'getStarted.root'
+    - label: 'API Tour'
+header:
+    title: 'Tour of the Augno API'
+    subtitle: 'See how Augno API objects fit together and learn best practices for combining them effectively.'
+nav:
+    title: 'API tour'
+    section: 'Start Building'
+    subsection: 'About the APIs'
+    order: 1
+---
+
+This page gives you a practical mental model for the Augno API: how to think about API objects, how multi-step operations typically progress, and which patterns make integrations reliable in production.
+
+If you want something hands-on first, start with <InternalLink pathKey="getStarted.apiRequest" text="Send your first API request" />. If you're looking for exact fields and endpoints, jump to the <InternalLink pathKey="api" text="API reference" />.
+
+## The mental model
+
+### Everything is an object (resource)
+
+In Augno, the things you interact with - customers, orders, configuration, and operational records - are represented as API objects (sometimes called *resources*). Whether you create them via the API or in the Dashboard, you can generally retrieve and inspect the same underlying object.
+
+Practically, this means your integration should:
+
+- **Store object IDs**: persist Augno IDs in your system so you can fetch, update, and reconcile later.
+- **Treat the API as the source of truth**: read back the latest state after writes, especially when downstream processes modify data.
+
+### Objects relate to other objects
+
+Most integrations aren't “one endpoint and done.” A single workflow usually touches multiple objects that reference each other by ID (for example: a customer and its addresses, or an order and its line items).
+
+In the API reference, pay special attention to:
+
+- **Relationship fields**: where objects point to other objects (IDs, arrays of IDs, embedded sub-objects).
+- **Expandable / included data**: ways to fetch related objects efficiently.
+
+### Many workflows are state machines
+
+Some objects are “instant” - you create them and they're ready. Others represent a process and move through states over time (often via a `status`-like field).
+
+Treat these objects as a state machine:
+
+- **Your integration reads state** (e.g., `pending`, `processing`, `requires_user_input`, `succeeded`, `failed`).
+- **Your integration decides the next action** (retry, supply missing data, wait, or alert a human).
+
+## The lifecycle of a successful operation
+
+Most successful integrations follow the same loop, whether the operation is synchronous or asynchronous:
+
+<DocNumberedSection number={1} title="Start the operation with a request" className="mt-6">
+
+You create or update an object by calling the API (for example, creating a customer from CRM data). The response will include the created/updated object and its ID.
+
+> #### **Note**
+> Every request sent to our API is logged and receives a unique request ID in the header **Request-ID**. This ID can be used to trace issues in the logs. Requests with an error will include a link to the error in the logs.
+
+</DocNumberedSection>
+
+<DocNumberedSection number={2} title="Validate and handle correctable errors">
+
+When requests fail, treat errors as part of the happy path:
+
+- **Client errors (4xx)** usually mean the input is missing/invalid or the request isn't allowed.
+- **Rate limits / transient server errors (429/5xx)** usually mean “retry later.”
+
+Design your integration to surface clear, actionable messages for correctable errors (e.g., missing customer email) and to automatically retry transient failures with backoff.
+
+</DocNumberedSection>
+
+<DocNumberedSection number={3} title="Wait for completion (polling or events)">
+
+If an operation completes asynchronously, you'll typically observe progress by:
+
+- **Listening for events** (recommended): receive a webhook when the status changes or when an outcome occurs.
+- **Polling**: fetch the object until its status is terminal (success/failure).
+
+Augno records request activity and account events in the Dashboard - use these for debugging:
+
+- <InternalLink pathKey="frontend.logs" text="Logs" />
+- <InternalLink pathKey="frontend.events" text="Events" />
+
+</DocNumberedSection>
+
+<DocNumberedSection number={4} title="Reconcile and make processing idempotent">
+
+Production integrations must tolerate retries and duplicates. Make sure your system can safely handle:
+
+- **Duplicate webhooks / duplicate deliveries**
+- **Request retries** (your own or from upstream systems)
+- **Out-of-order events** (late delivery)
+
+The reliable pattern is to process by object ID (and event ID, when available) and ensure “apply this update” can run multiple times without creating inconsistent state.
+
+</DocNumberedSection>
+
+<DocNumberedSection isOptional title="Best practices that pay off quickly">
+
+- **Build in a sandbox first**: use test keys and test data until you're confident. Then follow the <InternalLink pathKey="getStarted.goLive" text="go live checklist" />.
+- **Prefer events for async workflows**: polling works, but webhooks scale better and reduce latency. (When using webhooks, always handle duplicates.)
+- **Use systematic retries**: retry 429/5xx with exponential backoff; don't blindly retry 4xx without changing the request.
+- **Model “needs attention” states**: when the API indicates missing or invalid data, capture it as a state in *your* system so you can prompt a user or queue remediation.
+
+</DocNumberedSection>
+
+## Where to go next
+
+- <InternalLink pathKey="getStarted.apiRequest" text="Send your first API request" />
+- <InternalLink pathKey="getStarted.testIntegration" text="Build & test your integration" />
+- <InternalLink pathKey="api" text="API reference" />

@@ -1,0 +1,174 @@
+import { AccountName } from '@/components/markdown/AccountName';
+import { ApiKeySnippet } from '@/components/markdown/ApiKeySnippet';
+import { IfAuthenticated, IfUnauthenticated } from '@/components/markdown/AuthConditional';
+import BetaTag from '@/components/markdown/BetaTag';
+import { DocsCodeEditor } from '@/components/markdown/DocsCodeEditor';
+import { CustomerCRMIntegration } from '@/components/markdown/flowcharts/CustomerCRMIntegration';
+import InlineCode from '@/components/markdown/InlineCode';
+import DocLink from '@/components/markdown/link/DocLink';
+import InternalLink from '@/components/markdown/link/InternalLink';
+import LinkCard from '@/components/markdown/link/LinkCard';
+import { cleanMdx } from '@/lib/mdx/cleanMdx';
+import {
+    DocCardGroup,
+    DocChecklist,
+    DocChecklistItem,
+    DocHeading,
+    DocHeroSection,
+    DocNumberedSection,
+    DocTab,
+    DocTabs,
+} from '@augno/ui';
+import fs from 'fs';
+import type { MDXComponents } from 'mdx/types';
+import { compileMDX } from 'next-mdx-remote/rsc';
+import Link from 'next/link';
+import path from 'path';
+import { JSXElementConstructor, ReactElement } from 'react';
+import rehypeHighlight from 'rehype-highlight';
+import remarkGfm from 'remark-gfm';
+import { z } from 'zod';
+
+const rootDirectory = path.join(process.cwd(), 'src', 'docs');
+
+// Navigation frontmatter schema
+const NavSchema = z
+    .object({
+        title: z.string().optional(),
+        order: z.number().optional(),
+        sectionOrder: z.number().optional(),
+        section: z.string().optional(),
+        subsection: z.string().optional(),
+        hidden: z.boolean().optional(),
+    })
+    .optional();
+
+// Define the Zod schema for the frontmatter
+const FrontmatterSchema = z.object({
+    title: z.string(),
+    description: z.string(),
+    breadcrumbs: z.array(
+        z.object({
+            label: z.string(),
+            pathKey: z.string().optional(),
+        }),
+    ),
+    header: z.object({
+        title: z.string(),
+        subtitle: z.string(),
+    }),
+    nav: NavSchema,
+});
+
+const mdxComponents: MDXComponents = {
+    // Custom components
+    AccountName,
+    ApiKeySnippet,
+    IfAuthenticated,
+    IfUnauthenticated,
+    DocLink,
+    InternalLink,
+    DocCardGroup,
+    DocChecklist,
+    DocChecklistItem,
+    LinkCard,
+    BetaTag,
+    DocHeroSection,
+    DocNumberedSection,
+    DocTabs,
+    DocTab,
+    CustomerCRMIntegration,
+    code: ({ children, className }) => {
+        // Only wrap standalone code tags (not inside pre) with InlineCode
+        const isStandalone = !className?.includes('language-');
+        return isStandalone ? (
+            <InlineCode className={className}>{children}</InlineCode>
+        ) : (
+            <code className={className}>{children}</code>
+        );
+    },
+    pre: ({ children }) => <DocsCodeEditor>{children}</DocsCodeEditor>,
+    p: ({ children }) => <p style={{ paddingTop: '12px' }}>{children}</p>,
+    table: ({ children }) => <table style={{ marginTop: '12px' }}>{children}</table>,
+    h1: ({ children }) => (
+        <DocHeading level={1} className="pt-8">
+            {children}
+        </DocHeading>
+    ),
+    h2: ({ children }) => (
+        <DocHeading level={2} className="pt-8">
+            {children}
+        </DocHeading>
+    ),
+    h3: ({ children }) => (
+        <DocHeading level={3} className="pt-6">
+            {children}
+        </DocHeading>
+    ),
+    h4: ({ children }) => (
+        <DocHeading level={4} className="pt-6">
+            {children}
+        </DocHeading>
+    ),
+    h5: ({ children }) => (
+        <DocHeading level={5} className="pt-6">
+            {children}
+        </DocHeading>
+    ),
+    h6: ({ children }) => (
+        <DocHeading level={6} className="pt-6">
+            {children}
+        </DocHeading>
+    ),
+    a: ({ children, href }) => (
+        <Link href={href} className="text-secondary-500 hover:text-secondary-700">
+            {children}
+        </Link>
+    ),
+    hr: () => <hr className="my-8 border-t-1 border-[var(--border-color)]" />,
+};
+
+// Define the type based on the schema
+export type Frontmatter = z.infer<typeof FrontmatterSchema>;
+
+export async function fetchPageBySlug(slug: string[]): Promise<{
+    meta: Frontmatter & { slug: string }; // Use the inferred type and add slug
+    content: ReactElement<unknown, string | JSXElementConstructor<unknown>>;
+    cleanMarkdown: string;
+}> {
+    // Join the slug array into a path and remove .mdx if present
+    const realSlug = slug.join('/').replace(/\.mdx$/, '');
+    // Handle nested paths by joining the slug with the root directory
+    const filePath = path.join(rootDirectory, `${realSlug}.mdx`);
+
+    // Check if the file exists
+    if (!fs.existsSync(filePath)) {
+        throw new Error(`File not found: ${filePath}`);
+    }
+
+    const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
+
+    const { frontmatter, content } = await compileMDX({
+        source: fileContent,
+        options: {
+            parseFrontmatter: true,
+            mdxOptions: {
+                rehypePlugins: [rehypeHighlight],
+                remarkPlugins: [remarkGfm],
+            },
+        },
+        components: mdxComponents,
+    });
+
+    // Validate the frontmatter using the Zod schema
+    const validatedFrontmatter = FrontmatterSchema.parse(frontmatter);
+
+    return {
+        meta: {
+            ...validatedFrontmatter, // Use the validated data
+            slug: realSlug,
+        },
+        content,
+        cleanMarkdown: cleanMdx(fileContent),
+    };
+}

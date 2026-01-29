@@ -1,0 +1,42 @@
+---
+title: 'Augno Product Release Phases'
+description: 'Learn how Augno describes product release phases for its API, Dashboard, and other features.'
+breadcrumbs:
+    - label: 'Home'
+      pathKey: 'home'
+    - label: 'Get started'
+      pathKey: 'getStarted.root'
+    - label: 'Release Phases'
+header:
+    title: 'Product Release Phases'
+    subtitle: 'Learn how Augno describes product release phases and what to expect from each.'
+nav:
+    title: 'Release phases'
+    section: 'Start Building'
+    subsection: 'About the APIs'
+    order: 2
+---
+
+Augno uses semantic versioning to describe the availability of features in the Augno API, Augno Dashboard, and other product areas. These phases enable us to incrementally release new features and improve them based on your feedback.
+
+## Semantic Versioning
+
+Augno follows semantic versioning for API versions, using the format `MAJOR.MINOR.PATCH`:
+
+- **MAJOR version** (e.g., `v1.0.0` → `v2.0.0`): Includes breaking changes that may require updates to your integration
+- **MINOR version** (e.g., `v1.0.0` → `v1.1.0`): Adds new functionality in a backwards-compatible manner
+- **PATCH version** (e.g., `v1.0.0` → `v1.0.1`): Includes backwards-compatible bug fixes
+
+Breaking changes are only introduced in new major versions, allowing you to continue using previous major versions while planning your migration to newer versions.
+
+## Release Phases
+
+Use the table below to learn more about each phase and what to expect.
+
+| Product Release Phase | Changes | Documentation | Feature Completeness |
+| :-------------------- | :------ | :------------ | :------------------- |
+| **Private Preview** | Breaking changes may be expected over time as we update and develop functionality. | Provided directly by the Augno product team and potentially supplemented by early-access sections in the main Augno documentation site. | Expect incompleteness and some limited functionality as we continue development and build the product in partnership with early users. |
+| **Public Preview** | Some breaking changes may be expected as we develop and update functionality based on broader feedback. | Available from the official Augno documentation site and support pages. Features in public preview are marked with the <BetaTag /> tag in our documentation. | Not feature-complete and might include major new functionality or changes before full release. |
+| **General Availability (GA)** | No breaking changes expected for the current API version; any future breaking changes are typically handled through API version upgrades or new feature versions. | Comprehensive documentation available from the official Augno documentation site and support pages. | Feature-complete. |
+
+Products or features that you have access to in a preview phase are subject to terms and conditions applicable to Private Preview, Public Preview, or General Availability (GA) phases.

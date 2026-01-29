@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "packages": {
+    "@augno/ui": {
+      "signature": "67947e50d5ac31bf8172ef1f61033057",
+      "file": true,
+      "replaced": "^0.14.6"
+    },
+    "@augno/internal-sdk": {
+      "signature": "ffb171a8d5fd7c0c8bdd8af1c9460a33",
+      "file": true
+    }
+  }
+}

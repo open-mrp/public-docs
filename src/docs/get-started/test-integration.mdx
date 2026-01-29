@@ -1,0 +1,125 @@
+---
+title: 'Build and test your integration'
+description: 'Build and test your integration'
+breadcrumbs:
+    - label: 'Home'
+      pathKey: 'home'
+    - label: 'Get started'
+      pathKey: 'getStarted.root'
+    - label: 'Build and test your integration'
+header:
+    title: 'Build and test your integration'
+    subtitle: 'Build and test your integration using the Augno developer tools.'
+nav:
+    title: 'Build & test your integration'
+    section: 'Start Building'
+    subsection: 'Start developing'
+    order: 2
+---
+
+Use the Augno developer tools to integrate new features without impacting production. This guide lays out a general framework for how you might
+approach building and testing your integration. We will cover Sandboxes and event listening via webhooks.
+
+For this example, we will build an integration for a fictional company called "Acme Inc.". Acme Inc. sells products to customers and has a
+simple CRM system to manage their customers. They want to integrate with Augno to automatically create customers in Augno when their sales representatives
+add a new customer to their CRM.
+
+<DocNumberedSection number={1} title="Collect requirements" className="mt-6">
+
+The first step to building an integration will be to collect requirements from your stakeholders. The biggest challenge with building an
+integration is to understand how your application fits into overall workflow of your system.
+
+It's crucial to consider the downstream consequences of your integration and anticipate all necessary follow-up actions. It likely will be helpful
+to check in with your stakeholders to make sure you understand all follow-up actions. Here are a few questions you might ask yourself to help you
+gather requirements:
+
+- Should we save the Augno customer ID in our CRM?
+- What information do we want to collect from the CRM and push to Augno?
+- What information do we want to collect from Augno and push to our CRM?
+- How will we handle updates to customer information in Augno?
+
+</DocNumberedSection>
+
+<DocNumberedSection number={2} title="Plan your integration">
+
+Once you have a clear understanding of the requirements, you can start planning your integration. It might be helpful to create a high-level workflow
+diagram to help you understand the integration. Pay particular attention to how information flows between your application and Augno.
+
+<CustomerCRMIntegration />
+
+</DocNumberedSection>
+
+<DocNumberedSection number={3} title="Setup your sandbox">
+
+Now, you'll need to setup your sandbox environment. This will allow you to test your integration without impacting your production environment.
+
+- Create a new sandbox organization account in the <InternalLink pathKey="frontend.signup" text="Augno Dashboard" />.
+- Create a new API key in the <InternalLink pathKey="frontend.apiKeys" text="Augno Dashboard" />.
+- Update your integration to use the sandbox API key.
+
+</DocNumberedSection>
+
+<DocNumberedSection number={4} title="Build and manage your integration">
+
+You can debug and manage your Augno integration from your browser using the developer tools directly in the <InternalLink pathKey="frontend.dashboard" text="Augno Dashboard" />.
+
+For Acme Inc.'s integration, which automatically creates customers in Augno when they are added to the CRM, you can use the following views to manage the feature:
+
+- **Overview**:
+    - Make sure the new customer creation process uses the latest and most secure API version.
+    - Monitor API requests for customer creation to confirm they function as expected.
+    - Identify integration errors related to customer creation.
+
+- **Errors**:
+    - Identify and categorize errors in customer data mapping or API request failures.
+    - Track error frequency to understand impact and urgency.
+
+- **Inspector**:
+    - Analyze API object configurations (e.g., customer objects) and troubleshoot issues in real-time.
+
+- **Logs**:
+    - Filter API requests to ensure interactions (e.g., CRM sending data to Augno) align with expectations.
+
+- **Events**:
+    - Filter events (e.g., `customer.created`) to verify that the integration triggers correctly.
+    - Review event payloads to confirm correct back-end processing (e.g., customer ID is stored back in Acme's CRM).
+
+- **Webhooks**:
+    - Set up webhook endpoints to receive real-time updates on customer creation status.
+
+- **API Explorer**:
+    - Simulate API requests for customer creation and manage them using a command-line interface or directly in the dashboard.
+
+</DocNumberedSection>
+
+<DocNumberedSection number={5} title="Listen to real-time updates with event destinations">
+
+For Acme Inc., use event destinations to make sure all customer creation features function as intended without affecting your live systems. Use event destinations to track real-time activities in your Augno account and to respond to critical events, such as successful customer creation or failures. You can:
+
+- Send events to an HTTPS endpoint through webhooks.
+- Access real-time data using event notifications.
+
+### Testing
+
+To simulate real-world conditions and evaluate the customer creation integration's performance before it goes live:
+
+- Test the customer creation feature in a sandbox by simulating Augno-generated events (e.g., manually triggering a customer creation through the sandbox API).
+- Set up test webhooks to observe event processing (e.g., confirming your CRM endpoint receives the `customer.created` event and processes it correctly) without impacting live customer data.
+
+### React to real-time updates
+
+To track key events and maintain oversight of the customer creation feature's ongoing functionality:
+
+- Configure event destinations (webhooks) to aggregate and alert you on events such as `customer.created` or `customer.creation_failed`.
+- View customer event history to troubleshoot integration processes and track event deliveries. Use logs for debugging, especially when your focus is on event logs rather than API request logs.
+
+### Debugging
+
+To identify and resolve issues through real-time event analysis and ensure uninterrupted service for Acme Inc.'s CRM:
+
+- Quickly identify issues with customer synchronization (e.g., a customer created in the CRM fails to appear in Augno) by monitoring specific event notifications.
+- Use event payloads for real-time analysis of customer data processing.
+
+With event destinations, Acme Inc. can test, monitor, and debug its new customer integration while minimizing disruptions.
+
+</DocNumberedSection>

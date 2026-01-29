@@ -1,0 +1,107 @@
+---
+title: 'Send your first Augno API request'
+description: 'Get started with the Augno API'
+breadcrumbs:
+    - label: 'Home'
+      pathKey: 'home'
+    - label: 'Get started'
+      pathKey: 'getStarted.root'
+    - label: 'Send your first API request'
+header:
+    title: 'Send your first Augno API request'
+    subtitle: 'Get started with the Augno API.'
+nav:
+    title: 'Send your first API request'
+    section: 'Start Building'
+    sectionOrder: 2
+    subsection: 'Start developing'
+    order: 1
+---
+
+To interact with the Augno API, you'll need a secret API key. Once you sign up for an Augno account, we provide you with keys for both testing and live environments. Before diving into production, ensure your account is <InternalLink pathKey="getStarted.account.activate" text="activated" />.
+
+<DocNumberedSection number={1} title="Preparation" className="mt-6">
+
+This guide will walk you through creating a customer using the Augno API. For a comprehensive understanding of how Augno API components work together, consider taking an <InternalLink pathKey="getStarted.api.tour" text="API tour" /> or visiting the <InternalLink pathKey="api" text="API reference" />.
+
+</DocNumberedSection>
+
+<DocNumberedSection number={2} title="Making your first API request">
+
+Begin your interaction with the Augno API by sending HTTP requests to the designated endpoints.
+
+<DocTabs className="my-4">
+<DocTab label="Curl">
+
+```bash
+curl -X POST https://api.augno.com/v2/customers \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "John Doe", "email": "john.doe@example.com"}'
+```
+
+</DocTab>
+<DocTab label="JavaScript">
+
+```js
+const response = await fetch('https://api.augno.com/v2/customers', {
+    method: 'POST',
+    headers: {
+        Authorization: `Bearer ${process.env.AUGNO_API_KEY}`,
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name: 'John Doe', email: 'john.doe@example.com' }),
+});
+```
+
+</DocTab>
+</DocTabs>
+
+Upon success, expect a response like this:
+
+```json
+{
+    "id": "1234567890",
+    "name": "John Doe",
+    "email": "john.doe@example.com"
+}
+```
+
+</DocNumberedSection>
+
+<DocNumberedSection number={3} title="Monitoring your requests">
+
+Every API request you make is logged and generates an event for your <InternalLink pathKey="getStarted.account.root" text="organization account" />. The API key you use determines whether the data is stored in a sandbox or production environment. For example, using a test API key creates data in the test environment.
+
+To review your API request logs, visit the <InternalLink pathKey="frontend.logs" text="logs" /> page. For event details, check the <InternalLink pathKey="frontend.events" text="events" /> page.
+
+</DocNumberedSection>
+
+<DocNumberedSection number={4} title="Managing your API keys" className="border-b">
+
+Each account is equipped with two API keys: one for sandbox testing and another for live production.
+
+- **Sandbox Secret Key**: Ideal for testing in a sandbox environment, this key allows unrestricted API requests. Use it for development to prevent accidental changes to live data.
+- **Production Secret Key**: This key is for live mode requests and also allows unrestricted API requests.
+
+Access your secret and publishable keys in the Dashboard under the <InternalLink pathKey="frontend.apiKeys" text="API keys" /> tab. If you can't see your keys, request the necessary permissions from your organization account owner.
+
+When logged into Augno, our documentation will automatically populate code examples with your sandbox API key. These values are visible only to you. If you're not logged in, the examples will use placeholder API keys. Replace these with your own keys or log in to see your personalized keys.
+
+<IfAuthenticated>
+    Here's your test API key for <AccountName />:
+</IfAuthenticated>
+<IfUnauthenticated>The following uses placeholder API keys.</IfUnauthenticated>
+
+| Type   | Value             | Usage   |
+| :----- | :---------------- | :------ |
+| Secret | <ApiKeySnippet /> | Sandbox |
+
+```js
+// Example client setup for YOUR_ACCOUNT_NAME
+const augno = new AugnoClient({
+    apiKey: 'YOUR_API_KEY',
+});
+```
+
+</DocNumberedSection>
