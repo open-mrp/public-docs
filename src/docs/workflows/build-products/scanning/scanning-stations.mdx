@@ -1,0 +1,59 @@
+---
+title: Scanning Stations
+subtitle: Configured points in your production workflow where batch operations happen - each linked to a specific operation type and production step.
+route: /build-products/scanning/scanning-stations
+nav:
+    title: Scanning Stations
+    section: Build products
+    subsection: Scanning
+    order: 1
+---
+
+A **scanning station** is a configured point in your production workflow where <InternalLink pathKey="buildProducts.production.batchOperations" text="batch operations" /> happen: each station is set up for a specific operation type and linked to a <InternalLink pathKey="buildProducts.bom.productionSteps" text="production step" />.
+
+### Station types
+
+Each scanning station is configured for one type of operation:
+
+- **`init_batch`**: creates a new <InternalLink pathKey="buildProducts.production.batches" text="batch" /> at the start of production
+- **`move_batch`**: advances a batch to the next production step
+- **`split_batch`**: divides a batch into firsts, seconds, and waste and into multiple child batches
+- **`merge_batch`**: combines multiple batches into one
+
+The station type determines what happens when an operator scans a batch label at that station.
+
+### Configuration
+
+Each station defines:
+
+- **Name**: a descriptive label (e.g., "Knitting Init", "QC Split Station")
+- **Department**: organizational grouping for the station
+- **Type**: the operation type (`init_batch`, `move_batch`, `split_batch`, `merge_batch`)
+- **Linked production steps**: which <InternalLink pathKey="buildProducts.bom.productionSteps" text="production steps" /> this station handles
+- **Material check required**: a flag that controls whether operators must approve the materials list before proceeding
+
+### Material check
+
+When **Material Check Required** is true, operators must review and confirm the materials list before the batch operation executes. This verification step ensures the correct inputs are being used: critical for quality control at steps where material substitution could cause defects.
+
+### Label configuration
+
+Each scanning station defines the <InternalLink pathKey="buildProducts.scanning.labels" text="label" /> format for batch labels printed at that station:
+
+- **Label type**: tag (small identifier) or traveler (detailed batch document)
+- **Label size**: 1x4, 1x1, 1x3, or 2x4 inches
+
+This means different stations can produce different label formats based on the needs of that production stage.
+
+### Department association
+
+Stations belong to departments for organizational grouping. This flows into <InternalLink pathKey="buildProducts.bom.costing" text="cost reporting" />: costs can be broken down by department to see which areas of the facility consume the most resources.
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.production.batchOperations" text="Batch operations" />**: the actions triggered at each station
+- **<InternalLink pathKey="buildProducts.scanning.labels" text="Labels" />**: the label format configured per station
+- **<InternalLink pathKey="buildProducts.bom.productionSteps" text="Production steps" />**: stations link to specific steps in the flow
+- **<InternalLink pathKey="buildProducts.bom.productionFlows" text="Production flows" />**: stations map to steps within the broader flow
+
+Next: <InternalLink pathKey="buildProducts.scanning.labels" text="Labels" includeArrow />

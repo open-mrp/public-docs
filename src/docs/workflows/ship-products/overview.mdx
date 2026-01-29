@@ -1,0 +1,32 @@
+---
+title: Ship Products
+subtitle: Learn about shipping products in Augno.
+route: /ship-products/overview
+toc: false
+nav:
+    title: Overview
+    section: Ship products
+    order: 1
+---
+
+Fulfillment in Augno follows a three-stage process that moves a <InternalLink pathKey="generateSales.salesOrder.overview" text="sales order" /> from the warehouse shelf to the customer's door. When you <InternalLink pathKey="generateSales.salesOrder.issue" text="issue a sales order" />, Augno creates the warehouse work automatically and guides it through picking, packing, and shipping.
+
+### Picking
+
+A **pick** is the warehouse instruction sheet that tells your team which <InternalLink pathKey="buildProducts.items.products" text="products" /> to pull from <InternalLink pathKey="buildProducts.inventory.inventory" text="inventory" /> and in what quantities. Augno creates a pick automatically when a sales order is issued. Over-picks and under-picks are both allowed, giving the warehouse flexibility to match real-world conditions.
+
+<InternalLink pathKey="shipProducts.picking.overview" text="Learn about picking" />
+
+### Packing
+
+**Packing** converts picked items into shipments. You can pack everything at once or pack partially across multiple shipments: each partial pack creates a separate shipment with its own shipping cases.
+
+<InternalLink pathKey="shipProducts.packing.overview" text="Learn about packing" />
+
+### Shipping
+
+**Shipping** is the final step: generate labels through the Shippo integration, assign tracking numbers, and mark shipments as shipped. Augno supports UPS, FedEx, USPS, and other carriers available through Shippo.
+
+<InternalLink pathKey="shipProducts.shipping.overview" text="Learn about shipping" />
+
+Next: <InternalLink pathKey="shipProducts.picking.overview" text="Picking" includeArrow />

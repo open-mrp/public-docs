@@ -1,0 +1,323 @@
+@import 'tailwindcss';
+
+/* CSS Variables - define before UI library import so @theme can reference them */
+:root {
+    --home-title: #1e1d31;
+    --background: #ffffff;
+    --foreground: #1e1d31;
+    --navbar-background: #efeff1;
+    --text-secondary: #3c4257;
+    --code-background: #242933;
+    --inline-code-gradient: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--primary) 22%, transparent) 0%,
+        color-mix(in srgb, var(--primary) 6%, transparent) 45%,
+        color-mix(in srgb, var(--primary) 14%, transparent) 100%
+    );
+    --border-color: #e5e7eb;
+    --primary: #0eb981;
+    --secondary: #0eb981;
+    /* Light sidenav theme */
+    --sidenav-background: #f3f4f6;
+    --sidenav-border: #e5e7eb;
+    --sidenav-title-color: #374151;
+    --sidenav-item-color: #6b7280;
+    --sidenav-item-hover-color: #111827;
+    --sidenav-item-hover-bg: #e5e7eb;
+    --sidenav-item-active-color: var(--primary);
+    --sidenav-item-active-bg: #e5e7eb;
+    --sidenav-toggle-color: #6b7280;
+    --sidenav-toggle-hover-color: #111827;
+    --sidenav-toggle-hover-bg: #e5e7eb;
+    --sidenav-active-indicator: var(--primary);
+}
+
+.dark {
+    --home-title: #ffffff;
+    --background: #0f1014;
+    --foreground: #a9b3c1;
+    --navbar-background: #181a20;
+    --text-secondary: #9ba4b0;
+    --code-background: #161b27;
+    --inline-code-gradient: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--primary) 28%, transparent) 0%,
+        color-mix(in srgb, var(--primary) 14%, transparent) 45%,
+        color-mix(in srgb, var(--primary) 22%, transparent) 100%
+    );
+    --border-color: #1f2937;
+    --primary: #00d07a;
+    --secondary: #00d5ff;
+    /* Dark sidenav theme */
+    --sidenav-background: #0f1014;
+    --sidenav-border: #1f2937;
+    --sidenav-title-color: #f3f4f6;
+    --sidenav-item-color: #9ca3af;
+    --sidenav-item-hover-color: #d1d5db;
+    --sidenav-item-hover-bg: #1f2937;
+    --sidenav-item-active-color: var(--primary);
+    --sidenav-item-active-bg: #1f2937;
+    --sidenav-toggle-color: #9ca3af;
+    --sidenav-toggle-hover-color: #f3f4f6;
+    --sidenav-toggle-hover-bg: #1f2937;
+    --sidenav-active-indicator: var(--primary);
+}
+
+/* Main scroll area scrollbar styling */
+.main-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(156, 163, 175, 0.4) transparent;
+}
+
+.main-scroll::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.main-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.main-scroll::-webkit-scrollbar-thumb {
+    background: rgba(156, 163, 175, 0.4);
+    border-radius: 3px;
+}
+
+.main-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(156, 163, 175, 0.6);
+}
+
+.dark .main-scroll::-webkit-scrollbar-thumb {
+    background: rgba(100, 116, 139, 0.4);
+}
+
+.dark .main-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 116, 139, 0.6);
+}
+
+/* TOC scroll area - thin scrollbar, hidden when inactive */
+.toc-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+.toc-scroll:hover {
+    scrollbar-color: rgba(156, 163, 175, 0.4) transparent;
+}
+
+.toc-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.toc-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.toc-scroll::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 2px;
+    transition: background 0.2s;
+}
+
+.toc-scroll:hover::-webkit-scrollbar-thumb {
+    background: rgba(156, 163, 175, 0.4);
+}
+
+.toc-scroll:hover::-webkit-scrollbar-thumb:hover {
+    background: rgba(156, 163, 175, 0.6);
+}
+
+.dark .toc-scroll:hover::-webkit-scrollbar-thumb {
+    background: rgba(100, 116, 139, 0.4);
+}
+
+.dark .toc-scroll:hover::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 116, 139, 0.6);
+}
+
+@import '@augno/ui/styles.css';
+
+@theme {
+    --breakpoint-sm: 425px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1440px;
+    --breakpoint-2xl: 2560px;
+    --font-primary: var(--font-ibm-plex-sans);
+    --font-sans: var(--font-ibm-plex-sans);
+    --font-mono: var(--font-ibm-plex-mono);
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Global element styles */
+body {
+    font-family: var(--font-ibm-plex-sans), sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+}
+
+/* Custom text selection/highlight styling */
+::selection {
+    background: var(--primary);
+    color: black;
+}
+
+::-moz-selection {
+    background: var(--primary);
+    color: black;
+}
+
+code,
+pre {
+    font-family: var(--font-ibm-plex-mono), monospace;
+}
+
+li {
+    @apply my-1;
+}
+
+ul {
+    @apply pl-5 mt-4;
+    list-style-type: disc;
+    color: var(--text-secondary);
+}
+
+ul li {
+    padding-left: 10px;
+}
+
+ul li::marker {
+    color: rgba(156, 163, 175, 0.8);
+}
+
+ol {
+    @apply list-decimal pl-5 mb-4;
+    color: var(--text-secondary);
+}
+
+ol li::marker {
+    color: rgba(156, 163, 175, 0.8);
+}
+
+.table-wrapper {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    background: var(--background);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+table {
+    @apply w-full border-collapse;
+}
+
+thead {
+    background: var(--navbar-background);
+    border-bottom: 2px solid var(--border-color);
+}
+
+thead tr:first-child th:first-child {
+    border-top-left-radius: 8px;
+}
+
+thead tr:first-child th:last-child {
+    border-top-right-radius: 8px;
+}
+
+tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 8px;
+}
+
+tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 8px;
+}
+
+tbody tr {
+    border-bottom: 1px solid var(--border-color);
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.dark tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+th {
+    @apply text-sm font-semibold;
+    padding: 0.875rem 1rem;
+    text-align: left;
+    color: var(--foreground);
+    letter-spacing: 0.01em;
+    vertical-align: top;
+}
+
+td {
+    @apply text-sm;
+    padding: 1rem;
+    color: var(--text-secondary);
+    vertical-align: top;
+    line-height: 1.6;
+}
+
+th:first-child,
+td:first-child {
+    padding-left: 1.25rem;
+}
+
+th:last-child,
+td:last-child {
+    padding-right: 1.25rem;
+}
+
+/* Lists inside table cells */
+td ul,
+td ol {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+td ul:first-child,
+td ol:first-child {
+    margin-top: 0;
+}
+
+td ul:last-child,
+td ol:last-child {
+    margin-bottom: 0;
+}
+
+a {
+    @apply text-primary-500 hover:text-primary-700;
+}
+
+blockquote {
+    @apply border-l-4 pl-4 mt-6 mb-4;
+    padding-bottom: 8px;
+    border-color: var(--border-color);
+}
+
+blockquote p {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+blockquote h4 {
+    padding-top: 8px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* Algolia Search Highlighting */
+.ais-Highlight-highlighted,
+.ais-Snippet-highlighted {
+    @apply bg-primary/20 text-primary-700 dark:text-primary-300 rounded-sm px-0.5 not-italic font-semibold;
+}

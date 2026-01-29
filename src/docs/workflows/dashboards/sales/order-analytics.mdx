@@ -1,0 +1,89 @@
+---
+title: Order analytics
+subtitle: A comprehensive view of sales performance with profit metrics, cumulative revenue, best sellers, and distribution breakdowns.
+route: /dashboards/sales/order-analytics
+nav:
+    title: Order analytics
+    section: Dashboards
+    subsection: Sales
+    order: 1
+---
+
+The **order analytics** dashboard is the primary sales performance view. It combines profit metrics, trend charts, best-seller rankings, and distribution breakdowns into a single page so you can evaluate revenue performance across customers, products, and reps.
+
+### Why order analytics matters
+
+- **Measure profitability**: see sales, cost, profit, and gross margin at a glance with period-over-period comparison
+- **Spot trends**: cumulative sales charts show whether revenue is tracking ahead or behind the comparison period
+- **Identify top performers**: best-selling products and customer sales tables surface where your revenue is concentrated
+- **Segment revenue**: distribution charts break down sales by product line, customer type, sales rep, and discount to reveal how revenue is distributed
+
+### What you'll see
+
+#### Profit overview
+
+A set of summary cards displayed across the top of the page:
+
+| Card             | What it shows                                                              |
+| ---------------- | -------------------------------------------------------------------------- |
+| **Sales**        | Total invoiced revenue for the period, with comparison to the prior period |
+| **Cost**         | Total cost of goods sold                                                   |
+| **Profit**       | Revenue minus cost                                                         |
+| **Gross margin** | Profit as a percentage of revenue                                          |
+
+#### Cumulative sales revenue
+
+An area chart plotting cumulative revenue over time for both the current and comparison periods. This makes it easy to see whether you are tracking ahead or behind.
+
+#### Best selling products
+
+A scrollable, ranked list of products sorted by total invoiced value. Each entry shows quantity sold, unit price, and percent change from the comparison period.
+
+#### Customer revenue by segment
+
+An area chart breaking revenue into new-customer and established-customer cohorts over time. A "new customer" is an account created within one week of its first order.
+
+#### Customer sales table
+
+A table listing every customer with their current-period and comparison-period sales totals and percent change. A totals row at the bottom sums all values.
+
+#### Invoices overview
+
+A table of individual invoices showing invoice number, customer name, customer number, ship-to location, item count, and total sold.
+
+#### Distribution charts
+
+Four donut charts with accompanying sortable tables:
+
+- **Sales by product line**
+- **Sales by customer type**
+- **Sales by sales rep**
+- **Sales by discount**
+
+Each chart includes comparison-period data so you can see shifts in distribution.
+
+### Filters
+
+| Field                     | What it does                                                                    |
+| ------------------------- | ------------------------------------------------------------------------------- |
+| **Date range**            | Sets the current analysis period                                                |
+| **Comparison date range** | Sets the period to compare against (defaults to the same period one year prior) |
+| **Customers**             | Limits data to selected customers                                               |
+| **Customer groups**       | Limits data to selected customer groups                                         |
+| **Product lines**         | Limits data to selected product lines                                           |
+| **Sales reps**            | Limits data to selected sales reps                                              |
+
+### Export
+
+An **Export** button downloads the sales analytics data as an Excel file.
+
+### Role-based visibility
+
+Sales reps see a simplified view:
+
+- The **Cost**, **Profit**, and **Gross margin** cards are replaced with **Sales target** and **Progress** cards showing progress toward the rep's target
+- The **Sales by sales rep** and **Customer revenue by segment** charts are hidden
+- The **Sales reps** filter is not available
+- Exported data is scoped to the rep's own sales
+
+Next: <InternalLink pathKey="dashboards.sales.orderData" text="Order data" includeArrow />

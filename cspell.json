@@ -1,0 +1,29 @@
+{
+    "version": "0.2",
+    "language": "en",
+    "words": [
+        "algolia",
+        "algoliasearch",
+        "augno",
+        "Augno",
+        "bunx",
+        "clsx",
+        "codenames",
+        "eaches",
+        "instantsearch",
+        "llms",
+        "lucide",
+        "nextjs",
+        "overprivileged",
+        "pathkeys",
+        "rollups",
+        "Shippo",
+        "tailwindcss",
+        "Unissue",
+        "Unissuing",
+        "yalc",
+        "zod",
+        "zustand"
+    ],
+    "ignorePaths": ["node_modules", ".next", "dist", "bun.lock", "yalc.lock"]
+}

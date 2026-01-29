@@ -1,0 +1,71 @@
+---
+title: Plans and billing
+subtitle: View your subscription, switch plans, and manage billing through Stripe.
+route: /manage-account/plans-and-billing
+nav:
+    title: Plans & billing
+    section: Manage your account
+    order: 3
+---
+
+**Plans and billing** lets admins view their current subscription, compare available plans, and manage payment methods. Access billing from the **Plan & Billing** tab in <InternalLink pathKey="frontend.billing" text="account settings" />. This tab is hidden for sandbox accounts.
+
+### Why billing matters
+
+- **Plan limits**: your plan determines seat count, sandbox limits, invoice limits, and batch limits
+- **Subscription health**: billing alerts surface issues like past-due payments or expiring trials before they disrupt access
+- **Self-service**: upgrade, downgrade, or manage payment methods without contacting support
+
+### Your current plan
+
+The billing page shows your active plan and its limits:
+
+| Limit         | What it controls                              |
+| ------------- | --------------------------------------------- |
+| **Seats**     | Maximum number of active team members         |
+| **Invoices**  | Maximum invoices per billing period           |
+| **Sandboxes** | Maximum active sandbox environments           |
+| **Batches**   | Maximum production batches per billing period |
+
+### Available plans
+
+Augno offers several plan tiers:
+
+- **Free**: limited seats and features for getting started
+- **Paid tiers**: increased limits and access to advanced features like integrations and custom roles
+- **Enterprise**: custom limits, dedicated support, and tailored onboarding — contact sales to learn more
+
+### Switching plans
+
+To upgrade or downgrade your plan:
+
+1. Navigate to the **Plan & Billing** tab
+2. Browse the available plans
+3. Select a new plan
+4. Review the **proration preview** showing any credit or charge adjustment
+5. Confirm the switch
+
+Plan changes take effect immediately. If you're upgrading, new limits apply right away. If you're downgrading, the change takes effect at the end of your current billing period.
+
+### Billing portal
+
+Click **Manage billing** to open the Stripe billing portal where you can:
+
+- **Update payment methods**: add, remove, or change credit cards
+- **View invoices**: download past invoices and receipts
+- **Manage subscription**: view upcoming charges and billing history
+
+### Subscription status alerts
+
+Augno displays alerts when your subscription needs attention:
+
+| Status       | What it means                                                                   |
+| ------------ | ------------------------------------------------------------------------------- |
+| **Trial**    | You're on a free trial that will expire on a specific date                      |
+| **Past due** | A payment has failed — update your payment method to avoid service interruption |
+| **Canceled** | Your subscription has been canceled and access will end at period close         |
+| **Ending**   | Your subscription is set to end and will not auto-renew                         |
+
+### Enterprise upgrades
+
+If your business has outgrown the standard plans, request an enterprise upgrade directly from the billing page. The Augno team will work with you on custom limits and pricing.

@@ -1,0 +1,60 @@
+---
+title: Demand forecast
+subtitle: Forecast demand, order revenue, and sales revenue with confidence intervals based on historical data.
+route: /dashboards/forecasting/demand-forecast
+nav:
+    title: Demand forecast
+    section: Dashboards
+    subsection: Forecasting & targets
+    order: 1
+---
+
+The **demand forecast** dashboard uses historical data to project future demand in units, order revenue, and sales revenue. Each forecast includes a confidence interval so you can see the range of likely outcomes alongside the point estimate.
+
+### Why demand forecast matters
+
+- **Data-driven planning**: base production and purchasing decisions on statistical projections rather than gut feel
+- **Confidence intervals**: see the range of likely outcomes, not just a single number, so you can plan for best and worst cases
+- **Current month tracking**: a progress card shows how the current month is pacing against the forecast in real time
+- **Flexible horizon**: adjust how many months of history are used and how far ahead the forecast extends
+
+### What you'll see
+
+#### Current month progress
+
+When data is available, a progress card at the top of the page shows how the current month is tracking:
+
+| Metric     | What it shows                                                                  |
+| ---------- | ------------------------------------------------------------------------------ |
+| **Demand** | Current month pace in units, actual to-date, forecast, and variance percentage |
+| **Orders** | Current month revenue pace, actual to-date, forecast, and variance percentage  |
+| **Sales**  | Current month revenue pace, actual to-date, forecast, and variance percentage  |
+
+Each metric includes a trending indicator (up or down) with color coding: green when pacing ahead of forecast, red when behind.
+
+#### Aggregated monthly demand chart
+
+A line chart showing historical demand in units (solid line) and forecast demand (dashed line). A shaded band around the forecast line represents the 68% confidence interval (one standard deviation).
+
+#### Aggregated monthly orders chart
+
+A line chart showing historical order revenue and forecast order revenue with confidence intervals, formatted in currency.
+
+#### Aggregated monthly sales chart
+
+A line chart showing historical sales revenue (by invoice/shipment date) and forecast sales revenue with confidence intervals, formatted in currency.
+
+### Filters
+
+| Field                         | What it does                                                                         |
+| ----------------------------- | ------------------------------------------------------------------------------------ |
+| **History (months)**          | Number of historical months used to build the forecast (default 24, range 24 to 520) |
+| **Products**                  | Limits data to selected products (searchable by SKU and description)                 |
+| **Product lines**             | Limits data to selected product lines                                                |
+| **Forecast horizon (months)** | How many months ahead to forecast (default 6, range 6 to 52)                         |
+
+### How the forecast works
+
+The forecast uses a **Seasonal Exponential Moving Average (EMA)** model. The confidence interval represents one standard deviation from the forecast, meaning roughly 68% of actual outcomes are expected to fall within the shaded band. When multiple products or product lines are selected, values are aggregated (summed) across the selection.
+
+Next: <InternalLink pathKey="dashboards.forecasting.salesTargets" text="Sales targets" includeArrow />

@@ -1,0 +1,52 @@
+---
+title: Sandboxes
+subtitle: Create isolated testing environments to develop and experiment without affecting production data.
+route: /manage-account/sandboxes
+nav:
+    title: Sandboxes
+    section: Manage your account
+    order: 4
+---
+
+**Sandboxes** are isolated copies of your Augno environment for testing and development. Each sandbox has its own data, settings, and API keys, completely separate from your production account. Manage sandboxes from the <InternalLink pathKey="frontend.sandboxes" text="Sandboxes" /> page.
+
+### Why sandboxes matter
+
+- **Safe testing**: experiment with API integrations, workflows, and configurations without risking production data
+- **Development**: build and test custom integrations against a realistic environment
+- **Training**: let new team members explore the system without consequences
+
+### Creating a sandbox
+
+To create a new sandbox:
+
+1. Navigate to the **Sandboxes** page
+2. Click **Create**
+3. Choose a sandbox type:
+    - **Blank**: starts with an empty account — ideal for testing specific workflows from scratch
+    - **Seeded**: pre-populated with realistic fake data (items, customers, orders) — ideal for exploring features or running demos
+4. Name your sandbox and submit
+
+### Sandbox limits
+
+Your plan determines how many sandboxes you can have active at once. The current limit is shown on the sandboxes page. If you've reached your limit, delete an existing sandbox or <InternalLink pathKey="manageAccount.plansAndBilling" text="upgrade your plan" /> to create more.
+
+### Switching between accounts
+
+Switch between your production account and sandboxes from the account switcher in the dashboard sidebar. Each environment maintains its own independent state — changes in a sandbox never affect production.
+
+### Sandbox restrictions
+
+Sandboxes are designed for testing, so some features are restricted:
+
+- **No billing tab**: sandboxes don't have plan or billing management since they aren't billed separately
+- **No sandboxes page**: you cannot create sandboxes from within a sandbox — manage all sandboxes from your production account
+- **Independent data**: data created in a sandbox stays in that sandbox
+
+### Deleting a sandbox
+
+Delete a sandbox when you no longer need it. This permanently removes the sandbox and all its data. Deleting a sandbox frees up a slot toward your sandbox limit.
+
+For more on using sandboxes with the API, see <InternalLink pathKey="api.overview" text="API overview" />.
+
+Next: <InternalLink pathKey="manageAccount.security" text="Security" includeArrow />

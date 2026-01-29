@@ -1,0 +1,111 @@
+---
+title: Send your first Augno API request
+subtitle: Get started with the Augno API.
+route: /api-request
+nav:
+    title: Send your first API request
+    section: Start Building
+    subsection: Start developing
+    order: 1
+---
+
+To interact with the Augno API, you'll need a secret API key. Once you sign up for an Augno account, we provide you with keys for both testing and live environments. Before diving into production, ensure your account is <InternalLink pathKey="account.activate" text="activated" />.
+
+<DocNumberedSection number={1} title="Preparation" className="mt-6">
+
+This guide will walk you through listing units of measurement using the <InternalLink pathKey="apiReference.unitsManagement" text="List Units" /> endpoint. For a comprehensive understanding of how Augno API components work together, consider taking an <InternalLink pathKey="apiTour" text="API tour" /> or visiting the <InternalLink pathKey="apiReference.root" text="API reference" />.
+
+</DocNumberedSection>
+
+<DocNumberedSection number={2} title="Making your first API request">
+
+Begin your interaction with the Augno API by sending HTTP requests to the designated endpoints.
+
+<DocTabs className="my-4">
+<DocTab label="Curl">
+
+```bash
+curl API_HOST/v1/core/units \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account-ID: YOUR_SANDBOX_ACCOUNT_ID"
+```
+
+</DocTab>
+<DocTab label="JavaScript">
+
+```js
+const response = await fetch('API_HOST/v1/core/units', {
+    headers: {
+        Authorization: `Bearer YOUR_API_KEY`,
+        'Augno-Version': 'CURRENT_API_VERSION',
+        'Augno-Account-ID': 'YOUR_SANDBOX_ACCOUNT_ID',
+    },
+});
+```
+
+</DocTab>
+</DocTabs>
+
+Upon success, expect a response like this:
+
+```json
+{
+    "object": "list",
+    "page_info": {
+        "next_cursor": "unit_01jm4r6700f8nwq3v5hx2d9ktp",
+        "prev_cursor": null,
+        "has_next_page": true,
+        "has_prev_page": false
+    },
+    "data": [
+        {
+            "id": "unit_01jm4r6700f8nwq3v5hx2d9ktp",
+            "object": "unit",
+            "name": "Kilogram",
+            "abbreviation": "kg",
+            "type": "mass",
+            "ratio_numerator": "1000.000000000000000000000000000000",
+            "ratio_denominator": "1.000000000000000000000000000000",
+            "offset_numerator": "0.000000000000000000000000000000",
+            "offset_denominator": "1.000000000000000000000000000000",
+            "is_base_unit": false,
+            "is_internal": false,
+            "created_at": "2026-05-10T00:00:00Z",
+            "updated_at": "2026-05-10T00:23:00Z"
+        }
+    ]
+}
+```
+
+</DocNumberedSection>
+
+<DocNumberedSection number={3} title="Monitoring your requests">
+
+Every API request you make is logged and generates an event for your <InternalLink pathKey="account.root" text="organization account" />. The API key you use determines whether the data is stored in a sandbox or production environment. For example, using a test API key creates data in the test environment.
+
+To review your API request logs, visit the <InternalLink pathKey="frontend.requestLogs" text="logs" /> page. For event details, check the <InternalLink pathKey="frontend.events" text="events" /> page.
+
+</DocNumberedSection>
+
+<DocNumberedSection number={4} title="Managing your API keys" className="border-b">
+
+Each account is equipped with two API keys: one for sandbox testing and another for live production.
+
+- **Sandbox Secret Key**: Ideal for testing in a sandbox environment, this key allows unrestricted API requests. Use it for development to prevent accidental changes to live data.
+- **Production Secret Key**: This key is for live mode requests and also allows unrestricted API requests.
+
+Access your secret and publishable keys in the Dashboard under the <InternalLink pathKey="frontend.apiKeys" text="API keys" /> tab. If you can't see your keys, request the necessary permissions from your organization account owner.
+
+When logged into Augno, our documentation will automatically populate code examples with your sandbox API key. These values are visible only to you. If you're not logged in, the examples will use placeholder API keys. Replace these with your own keys or log in to see your personalized keys.
+
+<IfAuthenticated>
+    Here's your test API key for <SandboxAccountName />:
+</IfAuthenticated>
+<IfUnauthenticated>The following uses placeholder API keys.</IfUnauthenticated>
+
+| Type   | Value             | Usage   |
+| :----- | :---------------- | :------ |
+| Secret | <ApiKeySnippet /> | Sandbox |
+
+</DocNumberedSection>

@@ -1,0 +1,100 @@
+---
+title: Batches
+subtitle: Physical units of product tracked through production - recording quantities, quality grades, and location as they move through manufacturing.
+route: /build-products/production/batches
+nav:
+    title: Batches
+    section: Build products
+    subsection: Production
+    order: 2
+---
+
+A **batch** is a physical unit of product being tracked through production: the runtime manifestation of a <InternalLink pathKey="buildProducts.bom.productionSteps" text="production step" />, recording quantities, quality grades, and location as it moves through manufacturing.
+
+### What a batch is
+
+Each batch record includes:
+
+- **Item**: the part or product being produced
+- **Production step**: the step this batch is currently at in the <InternalLink pathKey="buildProducts.bom.productionFlows" text="production flow" />
+- **<InternalLink pathKey="buildProducts.production.productionRuns" text="Production run" />**: the parent run this batch belongs to
+
+### Quantity tracking
+
+Batches track three quantity categories:
+
+- **Firsts**: good parts that meet quality standards
+- **Seconds**: parts of secondary quality (usable but not first-grade)
+- **Waste**: scrap that cannot be used
+
+These quantities are updated as <InternalLink pathKey="buildProducts.production.batchOperations" text="batch operations" /> are performed: particularly during split operations where output is graded.
+
+### Batch flow
+
+Batches have **in** and **out** relationships that track the transformation chain:
+
+- **ins**: which batches were consumed to create this one
+- **outs**: which batches were created from this one
+
+These relationships form a directed graph that traces every transformation from raw materials through to finished goods.
+
+The **batch flow diagram** renders this graph as an interactive, left-to-right visualization. You can view the flow for a single batch — by scanning its QR code — or for an entire <InternalLink pathKey="buildProducts.production.productionRuns" text="production run" />.
+
+Each node in the diagram displays:
+
+- The item being produced
+- Quantities broken down by firsts, seconds, and waste
+- Machines used at that step
+- Lot numbers
+- Timestamps
+
+Edges between nodes show the transformation relationships connecting one batch to the next. The entire flow can be exported to Excel for offline analysis and reporting.
+
+### Location tracking
+
+At any point, a batch knows:
+
+- **Scanning station**: the <InternalLink pathKey="buildProducts.scanning.scanningStations" text="station" /> where it was last processed
+- **Storage location**: the <InternalLink pathKey="buildProducts.inventory.storageAndLots" text="physical location" /> where it's stored (after production)
+
+### Machine tracking
+
+Batches record which machines processed them at each step, providing equipment utilization data.
+
+### Timing
+
+- **Created At**: when the batch was initialized
+- **Scanned At**: when the batch was last physically scanned at a station
+- **Closed At**: when the batch was closed (production complete)
+
+### Batch statuses
+
+A batch moves through three states during its lifecycle:
+
+1. **Created**: the batch exists but hasn't been physically scanned at a station yet
+2. **Scanned**: the batch has been processed at a <InternalLink pathKey="buildProducts.scanning.scanningStations" text="scanning station" /> and is currently active on the production floor
+3. **Closed**: production is complete for this batch
+
+Each transition is recorded with a timestamp (Created At, Scanned At, Closed At), giving a full timeline of the batch's journey through production.
+
+### Open batches overview
+
+The open batches page provides an analytics view of all active batches across the production floor. It groups batches by scanning station and department, showing item names and counts at each station. You can filter by product line and finished goods item to focus on specific areas. This view is useful for production managers monitoring floor activity and identifying bottlenecks.
+
+### Inventory integration
+
+Batches connect to the <InternalLink pathKey="buildProducts.inventory.inventory" text="inventory system" />:
+
+- When a batch completes production and is stocked, it creates **inventory receipts**
+- When materials are consumed during batch operations, it creates **inventory issues**
+
+This means inventory levels automatically reflect production activity and lot numbers of material consumptions can be noted.
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.production.batchOperations" text="Batch operations" />**: the actions that advance batches through production
+- **<InternalLink pathKey="buildProducts.production.productionRuns" text="Production runs" />**: the parent container for batches
+- **<InternalLink pathKey="buildProducts.scanning.scanningStations" text="Scanning stations" />**: where batches are physically processed
+- **<InternalLink pathKey="buildProducts.inventory.inventory" text="Inventory" />**: batches create receipts and issues
+
+Next: <InternalLink pathKey="buildProducts.production.batchOperations" text="Batch operations" includeArrow />

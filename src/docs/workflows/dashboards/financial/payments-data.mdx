@@ -1,0 +1,53 @@
+---
+title: Payments data
+subtitle: View payment allocations across invoices with support for invoice and balance view modes.
+route: /dashboards/financial/payments-data
+nav:
+    title: Payments data
+    section: Dashboards
+    subsection: Financial
+    order: 2
+---
+
+The **payments data** dashboard shows how payments, credits, and adjustments have been allocated to invoices. A view-mode toggle lets you switch between seeing amounts as positive invoice allocations or as signed balance movements.
+
+### Why payments data matters
+
+- **Allocation detail**: see exactly which invoices each payment, credit, or adjustment was applied to
+- **Two perspectives**: switch between invoice view (all amounts positive) and balance view (credits and adjustments shown as negative) depending on your analysis needs
+- **Filterable by type and date**: narrow results to specific transaction types or date ranges to isolate what you need
+- **Export for reconciliation**: download the full data set as Excel for offline reconciliation
+
+### What you'll see
+
+A **total allocated** summary is displayed at the top of the page showing the sum of all allocation amounts in the current view.
+
+Below the summary, a full-width data grid lists every allocation entry. The grid includes a toolbar with built-in search, column visibility, and density controls.
+
+| Column                 | What it shows                                               |
+| ---------------------- | ----------------------------------------------------------- |
+| **Customer name**      | The customer the allocation applies to                      |
+| **Customer number**    | The customer's account number                               |
+| **Invoice number**     | The invoice the allocation was applied to                   |
+| **Transaction type**   | The type of transaction (payment, credit, adjustment, etc.) |
+| **Transaction method** | How the transaction was made                                |
+| **Adjustment type**    | The adjustment category, if applicable                      |
+| **Amount**             | The allocated amount (sign depends on view mode)            |
+| **Date**               | When the allocation was recorded                            |
+| **Notes**              | Any notes attached to the allocation                        |
+
+### Filters
+
+| Field                | What it does                                                                                                    |
+| -------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Transaction type** | Limits data to a specific transaction type (payment, credit, adjustment, etc.)                                  |
+| **Date range**       | Sets the period of allocations to display (defaults to the current month)                                       |
+| **View mode**        | Switches between **Invoice** (all amounts positive) and **Balance** (credits and adjustments shown as negative) |
+
+### Export
+
+An **Export** button downloads the allocation data as an Excel file named with the selected date range.
+
+For related workflow documentation, see <InternalLink pathKey="collectPayments.collecting.settlements" text="Settlements" /> in the Collect Payments section.
+
+Next: <InternalLink pathKey="dashboards.forecasting.demandForecast" text="Demand forecast" includeArrow />

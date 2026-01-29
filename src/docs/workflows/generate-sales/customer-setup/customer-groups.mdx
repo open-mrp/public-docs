@@ -1,0 +1,62 @@
+---
+title: Customer groups
+subtitle: Classify customers by segment and control which pricing and discounts they receive.
+route: /generate-sales/customer-setup/customer-groups
+nav:
+    title: Customer groups
+    section: Generate sales
+    subsection: Customer setup
+    order: 1
+---
+
+A **customer group** is a reusable label that classifies <InternalLink pathKey="generateSales.customer.overview" text="customers" /> by segment or controls which pricing and discounts they receive. Groups come in two distinct types: **type groups** for classification and **pricing groups** for pricing behavior.
+
+### Why customer groups matter
+
+- **Segment customers**: Filter, report, and organize by business segment (Enterprise, Retail, Wholesale)
+- **Drive pricing behavior**: Determine which <InternalLink pathKey="generateSales.customerPricing.customerPrices" text="price lists" /> and <InternalLink pathKey="generateSales.customerPricing.volumeDiscounts" text="volume discounts" /> apply
+- **Set exemptions**: Configure <InternalLink pathKey="generateSales.customerSetup.exemptions" text="commission and freight exemptions" /> that cascade to all members
+- **Control product access**: Restrict which product lines a customer can order from
+
+### Customer type groups
+
+A type group describes **who** the customer is.
+
+- **One per customer**: every customer must be assigned to exactly one type group
+- **Classification label**: examples: Enterprise, Retail, Wholesale, Distributor
+- **Used for reporting and filtering**: view sales, activity, and order history by segment
+- **Drives segment-level defaults**: commission and freight exemption settings cascade to all members
+
+Type groups answer the question: _what kind of customer is this?_
+
+### Customer pricing groups
+
+A pricing group describes **how** the customer is priced.
+
+- **Zero or many per customer**: a customer can belong to multiple pricing groups simultaneously
+- **Controls pricing eligibility**: determines which <InternalLink pathKey="generateSales.customerPricing.customerPrices" text="customer prices" /> and <InternalLink pathKey="generateSales.customerPricing.volumeDiscounts" text="volume discounts" /> apply
+- **Product line access**: can restrict which product lines the customer is allowed to order from
+- **Commission and freight flags**: same exemption settings as type groups, with the same cascading behavior
+
+Pricing groups answer the question: _what prices and discounts does this customer get?_
+
+### Exemption flags
+
+Each group: whether type or pricing: carries two independent exemption flags:
+
+- **Commission status**: `commission_applied` (normal) or `commission_exempt` (no commission)
+- **Freight status**: `billed_freight` (normal) or `free_freight` (no freight charges)
+
+These flags cascade to all customers in the group using **OR logic**: if _any_ group a customer belongs to is exempt, the customer is treated as exempt. See <InternalLink pathKey="generateSales.customerSetup.exemptions" text="Commission & freight exemption" /> for details.
+
+### Type group vs pricing group
+
+|                      | Type group                     | Pricing group                                 |
+| -------------------- | ------------------------------ | --------------------------------------------- |
+| **Purpose**          | Classify / segment customers   | Control pricing and discount eligibility      |
+| **Per customer**     | Exactly one (required)         | Zero or many                                  |
+| **Drives**           | Reporting, filtering, defaults | Price lists, volume discounts, product access |
+| **Exemption flags**  | Commission and freight         | Commission and freight                        |
+| **Typical examples** | Enterprise, Retail, Wholesale  | Gold Tier, Volume Buyer, Preferred Pricing    |
+
+Next: <InternalLink pathKey="generateSales.customerSetup.shippingTerms" text="Shipping terms" includeArrow />

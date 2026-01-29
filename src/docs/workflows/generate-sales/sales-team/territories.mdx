@@ -1,0 +1,46 @@
+---
+title: Territories
+subtitle: Map geographic regions to sales representatives, optionally scoped by product line.
+route: /generate-sales/sales-team/territories
+nav:
+    title: Territories
+    section: Generate sales
+    subsection: Sales team
+    order: 1
+---
+
+**Territories** map geographic regions to sales representatives, defining which rep covers which area. Territories can optionally be scoped by product line, allowing different reps to cover different product lines within the same region.
+
+### Why territories matter
+
+- **Clear ownership**: define which rep is responsible for each geographic area
+- **Product line specialization**: assign different reps to different product lines in the same region
+- **Coverage visibility**: see which areas and product lines are covered and identify gaps
+
+### Core concepts
+
+#### Definition
+
+A territory is defined by:
+
+- **State**: the U.S. state the territory covers
+- **Zip code range**: optional start and end zip codes to narrow the territory within the state
+- **Sales rep**: the team member assigned to the territory
+- **Product line** (optional): scope the territory to a specific product line
+
+#### Product line scoping
+
+When a product line is specified, the territory assignment applies only to that product line. This means the same geographic area can have different reps for different product lines:
+
+- Rep A covers Texas for the "Footwear" product line
+- Rep B covers Texas for the "Accessories" product line
+- Rep C covers Texas for all other product lines (no product line specified)
+
+If no product line is specified, the territory applies to all product lines in that region.
+
+### Where territories are used
+
+- **<InternalLink pathKey="generateSales.customerSetup.defaultSalesReps" text="Sales rep assignment" />**: territories help determine which rep should be assigned to a customer based on their location
+- **Reporting**: view sales performance and coverage by geographic region
+
+Next: <InternalLink pathKey="generateSales.salesTeam.salesTargets" text="Sales targets" includeArrow />

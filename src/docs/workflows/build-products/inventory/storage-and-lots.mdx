@@ -1,0 +1,60 @@
+---
+title: Storage Locations & Lots
+subtitle: Where inventory is physically stored and how batch-level traceability is maintained.
+route: /build-products/inventory/storage-and-lots
+nav:
+    title: Storage Locations & Lots
+    section: Build products
+    subsection: Inventory
+    order: 2
+---
+
+**Storage locations** define where inventory is physically stored, and **lots** provide batch-level traceability for materials and products.
+
+### Storage locations
+
+Storage locations use a **hierarchical structure**:
+
+- **Warehouse**: the top-level facility
+- **Shelf**: a section within a warehouse
+- **Bin**: a specific position within a shelf
+
+Each location has:
+
+- **Name**: a descriptive label
+- **Type**: warehouse, shelf, or bin
+- **Address**: the physical address (for warehouses)
+- **Parent / children**: the hierarchical relationship (a bin belongs to a shelf, a shelf belongs to a warehouse)
+
+This hierarchy lets you track inventory at any level of granularity: from "it's somewhere in Warehouse A" to "it's in Bin 3 on Shelf 12 in Warehouse A."
+
+### Lots
+
+A **lot** provides batch-level traceability for materials and products. Each lot has:
+
+- **Lot number**: a unique identifier within the account and item
+- **Item**: the material, part, or product this lot tracks
+- **Manufactured at**: when the lot was produced
+- **Expires at**: when the lot expires (for shelf-life tracking)
+
+Lots are unique per combination of account, item, and lot number: you can't have two lots with the same number for the same item.
+
+### Lot tracking
+
+Lots are assigned at two key points:
+
+- **During stocking**: when materials arrive from a <InternalLink pathKey="buildProducts.purchasing.deliveriesAndReceiving" text="delivery" />, lot numbers are assigned as part of the stocking data
+- **During inventory corrections**: lots can be specified when performing <InternalLink pathKey="buildProducts.inventory.reconciliation" text="reconciliation" /> adjustments
+
+### Expiration tracking
+
+Lots with expiration dates enable shelf-life management. You can see which lots are approaching expiration and prioritize them for consumption (first-expiry, first-out).
+
+> Note: this process is under active development
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.inventory.inventory" text="Inventory overview" />**: receipts and issues reference storage locations and lots
+- **<InternalLink pathKey="buildProducts.purchasing.deliveriesAndReceiving" text="Deliveries & receiving" />**: stocking data includes lot and location assignments
+
+Next: <InternalLink pathKey="buildProducts.inventory.changeLogs" text="Change logs" includeArrow />

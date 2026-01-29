@@ -1,0 +1,57 @@
+---
+title: Payment terms
+subtitle: Define when and how a customer is expected to pay for an order.
+route: /generate-sales/customer-setup/payment-terms
+nav:
+    title: Payment terms
+    section: Generate sales
+    subsection: Customer setup
+    order: 3
+---
+
+**Payment terms** define when and how a <InternalLink pathKey="generateSales.customer.overview" text="customer" /> is expected to pay for an order. They are set as a default on the customer and inherited by every <InternalLink pathKey="generateSales.salesOrder.overview" text="sales order" /> for that customer.
+
+### Why payment terms matter
+
+- **Set payment expectations**: communicate due dates and payment methods to customers
+- **Drive billing behavior**: terms influence invoice timing and payment collection workflows
+- **Trigger prepaid warnings**: prepaid terms prompt the team to collect payment before issuing an order
+
+### Default payment terms
+
+Augno includes eight built-in payment terms:
+
+| Term        | Meaning                                      |
+| ----------- | -------------------------------------------- |
+| **COD**     | Cash on Delivery: payment due at delivery    |
+| **CIA**     | Cash in Advance: payment due before shipment |
+| **CCD**     | Credit Card Due: charge card on file         |
+| **Net 30**  | Payment due 30 days after invoice            |
+| **Net 45**  | Payment due 45 days after invoice            |
+| **Net 60**  | Payment due 60 days after invoice            |
+| **Net 90**  | Payment due 90 days after invoice            |
+| **Prepaid** | Payment collected before order is issued     |
+
+These defaults cannot be modified or deleted. You can create additional custom payment terms to fit your business.
+
+### Core concepts
+
+#### Customer default and order inheritance
+
+Payment terms are set on the customer record as a default. When a new sales order is created for that customer, the terms are automatically populated. The terms can be overridden per order if needed.
+
+#### Active and inactive terms
+
+Payment terms have an active/inactive flag. Inactive terms are hidden from selection but remain on existing orders and customers where they were previously applied.
+
+#### Prepaid behavior
+
+When a customer's payment terms are **Prepaid**, Augno warns the team to collect payment before <InternalLink pathKey="generateSales.salesOrder.issue" text="issuing the order" />. This prevents orders from entering fulfillment without payment.
+
+### Where payment terms are used
+
+- **<InternalLink pathKey="generateSales.customer.overview" text="Customer" />**: set as the customer's default payment terms
+- **<InternalLink pathKey="generateSales.salesOrder.overview" text="Sales order" />**: inherited from the customer, overridable per order
+- **<InternalLink pathKey="collectPayments.invoicing.overview" text="Invoices" />**: payment terms determine due dates and payment expectations on invoices
+
+Next: <InternalLink pathKey="generateSales.customerSetup.priorities" text="Priorities" includeArrow />

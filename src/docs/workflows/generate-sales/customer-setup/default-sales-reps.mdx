@@ -1,0 +1,44 @@
+---
+title: Default sales reps
+subtitle: The team member automatically assigned to new orders for a customer.
+route: /generate-sales/customer-setup/default-sales-reps
+nav:
+    title: Default sales reps
+    section: Generate sales
+    subsection: Customer setup
+    order: 7
+---
+
+A **default sales rep** is the team member automatically assigned to new <InternalLink pathKey="generateSales.salesOrder.overview" text="sales orders" /> for a <InternalLink pathKey="generateSales.customer.overview" text="customer" />. Setting a default rep ensures consistent ownership and accurate commission tracking across orders.
+
+### Why default sales reps matter
+
+- **Consistent assignment**: every order for a customer automatically gets the right rep
+- **Commission tracking**: the assigned rep drives commission calculations on the order
+- **Reporting and filtering**: view sales performance, pipeline, and activity by rep
+
+### Core concepts
+
+#### Customer default and order inheritance
+
+The default sales rep is set on the customer record. When a new sales order is created for that customer, the rep is automatically populated on the order. The rep can be overridden per order if needed.
+
+#### Commission interaction
+
+The default sales rep is tied to <InternalLink pathKey="generateSales.customerSetup.exemptions" text="commission exemption" /> behavior:
+
+- When a customer is marked **commission exempt**, the default sales rep is cleared (since commission won't be calculated)
+- If the exemption is later removed, the sales rep must be reassigned manually
+
+#### Territories
+
+Sales reps can also be mapped to geographic regions through <InternalLink pathKey="generateSales.salesTeam.territories" text="territories" />, which define rep coverage by state and zip code range.
+
+### Where default sales reps are used
+
+- **<InternalLink pathKey="generateSales.customer.overview" text="Customer" />**: set as the customer's default sales rep
+- **<InternalLink pathKey="generateSales.salesOrder.overview" text="Sales order" />**: inherited from the customer, overridable per order
+- **Commission calculations**: the order's sales rep determines who earns commission
+- **Reporting**: sales and activity reports can be filtered and grouped by rep
+
+Next: <InternalLink pathKey="generateSales.customerSetup.defaultCarriers" text="Default carriers" includeArrow />

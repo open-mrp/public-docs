@@ -1,0 +1,62 @@
+---
+title: Production Flows
+subtitle: The connected sequence of production steps that transforms raw materials into finished products.
+route: /build-products/bom/production-flows
+nav:
+    title: Production Flows
+    section: Build products
+    subsection: BOMs
+    order: 3
+---
+
+A **production flow** is the connected sequence of <InternalLink pathKey="buildProducts.bom.productionSteps" text="production steps" /> that transforms raw materials into finished parts and products.
+
+### What a flow is
+
+A production flow is a **directed graph** of production steps. Each connection links a source step to a target step, where the output of the source automatically feeds into a consumption of the target. Multiple steps can feed into a single downstream step, but each production step only has one output.
+
+For example, a three-step flow:
+
+```text
+[Knitting] → [Dyeing] → [Finishing]
+```
+
+- Knitting produces a knitted tube
+- The knitted tube is consumed by Dyeing
+- Dyeing produces a dyed tube
+- The dyed tube is consumed by Finishing
+- Finishing produces the final product
+
+### How flows are built
+
+Flows are created by connecting production steps:
+
+1. **Define individual steps**: each with their consumptions and production (see <InternalLink pathKey="buildProducts.bom.productionSteps" text="production steps" />)
+2. **The system wires the data**: the output item of the source step is automatically linked to any other production step that has a matching consumption
+
+You can view the flow for any item to see the complete chain of steps required to produce it, from raw materials through to the finished product.
+
+### Flow diagrams
+
+Production flows render as visual diagrams showing step connections. This gives production managers and engineers a clear picture of:
+
+- **Step sequence**: the order of operations
+- **Material entry points**: where raw materials enter the flow
+- **Intermediate products**: where parts are created and consumed
+- **Final output**: the finished product at the end of the chain
+
+### Why flows matter
+
+- **Define the manufacturing recipe**: the flow is the complete, visual specification for how a product is made
+- **Drive batch movement**: when a <InternalLink pathKey="buildProducts.production.batches" text="batch" /> moves through production, it follows the flow from step to step
+- **Map to scanning stations**: each step in the flow corresponds to a <InternalLink pathKey="buildProducts.scanning.scanningStations" text="scanning station" /> on the production floor
+- **Enable cost rollup**: the <InternalLink pathKey="buildProducts.bom.costing" text="COGS calculation" /> traces through the flow to aggregate material, labor, and overhead costs
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.bom.productionSteps" text="Production steps" />**: the individual nodes in a flow
+- **<InternalLink pathKey="buildProducts.production.batches" text="Batches" />**: follow flows as they move through production
+- **<InternalLink pathKey="buildProducts.scanning.scanningStations" text="Scanning stations" />**: steps in a flow map to physical stations
+- **<InternalLink pathKey="buildProducts.bom.costing" text="Costing (COGS)" />**: costs accumulate through the flow
+
+Next: <InternalLink pathKey="buildProducts.bom.costing" text="Costing" includeArrow />

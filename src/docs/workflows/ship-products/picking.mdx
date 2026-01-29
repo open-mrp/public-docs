@@ -1,0 +1,61 @@
+---
+title: Picking
+subtitle: Select and pull the right products from inventory to fulfill a sales order.
+route: /ship-products/picking/overview
+nav:
+    title: Picking
+    section: Ship products
+    order: 2
+---
+
+A **pick** is the warehouse instruction sheet created when a <InternalLink pathKey="generateSales.salesOrder.overview" text="sales order" /> is <InternalLink pathKey="generateSales.salesOrder.issue" text="issued" />. It tells your team exactly which <InternalLink pathKey="buildProducts.items.products" text="products" /> to pull from <InternalLink pathKey="buildProducts.inventory.inventory" text="inventory" /> and in what quantities, driving the first stage of the fulfillment process.
+
+### How a pick is created
+
+When you issue a sales order, Augno automatically creates a pick. The pick contains one line for every sale-type product on the order, carrying over the ordered quantities. The pick number matches the sales order number, so warehouse staff can easily cross-reference the two.
+
+### On the factory floor
+
+The typical picking workflow looks like this:
+
+1. A warehouse worker receives the pick sheet (printed or on a mobile device)
+2. They walk the warehouse, locating each product and pulling the required quantity
+3. As items are pulled, the worker records the quantity picked against each line
+4. Once all lines are addressed, the picked items move to the packing station
+
+### Pick lines and quantities
+
+Each pick line tracks two key values:
+
+- **Quantity ordered**: the amount requested by the sales order
+- **Quantity picked**: the amount actually pulled from the shelf
+
+The relationship between these two values drives the pick's progress and determines whether any reconciliation is needed at packing.
+
+### Over-picks and under-picks
+
+Augno allows both over-picks and under-picks: the system does not block either scenario:
+
+- **Over-pick**: the worker pulled more than the order requested. This can happen when an extra unit is found in the bin or a partial case must be pulled whole. The surplus is reconciled during packing.
+- **Under-pick**: the worker pulled less than ordered. This typically occurs when stock is short or items are damaged. The shortfall is handled during packing, where partial packing lets you ship what's available now and fulfill the rest later.
+
+This flexibility keeps the warehouse moving without forcing workers to stop and resolve discrepancies before they can proceed.
+
+### Pick completion
+
+Pick progress is tracked as the ratio of Quantity Picked to Quantity Ordered across all lines. Once every line has a recorded pick quantity, the pick is ready to move to <InternalLink pathKey="shipProducts.packing.overview" text="packing" />.
+
+### Voiding a pick
+
+A pick can be voided as long as no items from the pick have been shipped. Voiding a pick:
+
+- Voids all pick lines
+- Reopens the pick for re-picking if needed
+
+This is useful when an order changes after picking has started but before anything has left the building.
+
+### Next steps
+
+Once picking is complete, move to <InternalLink pathKey="shipProducts.packing.overview" text="packing" /> to pack the picked items into shipping cases and create shipments.
+
+Next: <InternalLink pathKey="shipProducts.packing.overview" text="Packing" includeArrow />

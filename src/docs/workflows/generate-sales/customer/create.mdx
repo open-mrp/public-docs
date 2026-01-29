@@ -1,0 +1,64 @@
+---
+title: Create a customer
+subtitle: Learn how to create a customer in Augno.
+route: /generate-sales/customer/create
+nav:
+    title: Create a customer
+    section: Generate sales
+    subsection: Customer
+    order: 2
+---
+
+To create a <InternalLink pathKey="generateSales.customer.overview" text="customer" /> in Augno, you need to have <InternalLink pathKey="generateSales.customerSetup.customerGroups" text="created a customer group" />.
+
+### What is a customer?
+
+A customer is the company or contact you sell to. When you create a customer, you're defining:
+
+- **Identity** – name, number, and contact info
+- **Segment** – one <InternalLink pathKey="generateSales.customerSetup.customerGroups" text="customer type group" /> (e.g. Enterprise, Retail)
+- **Pricing** – optional <InternalLink pathKey="generateSales.customerSetup.customerGroups" text="price groups" /> for tiered pricing or discounts
+- **Defaults** – payment terms, shipping terms, carrier, addresses, status, and priority
+
+These are used on sales orders, invoices, and shipments.
+
+## Required information
+
+You must complete these to create a customer.
+
+| Field                   | What it defines                                           | What it does                                                                   | Why it's needed                                                                                                       |
+| ----------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| **Name**                | Company or customer display name                          | Shown on the customer record, in lists, and on orders, invoices, and shipments | Identifies the customer everywhere in the app.                                                                        |
+| **Number**              | Unique customer number (e.g. C23045)                      | Used as the customer’s reference/code in lists, orders, and reports            | Uniquely identifies the customer; automatically filled from your next-available number.                               |
+| **Customer type group** | The customer’s segment (e.g. Enterprise, Retail)          | Assigns the customer to one type group                                         | Used for reporting and filtering by segment; required when creating a customer in the app.                            |
+| **Status**              | Current state: Normal, Hold shipment, Hold all, Preferred | Controls whether orders can be placed or shipped for this customer             | Ensures you can put customers on hold or mark them preferred; defaults to Normal.                                     |
+| **Priority**            | Order handling priority: Low, Normal, or High             | Used for prioritization in fulfillment and operations                          | Default priority for their orders; defaults to Normal.                                                                |
+| **Payment terms**       | Default payment terms (e.g. Net 30, Prepaid)              | Applied to new sales orders and invoices                                       | Determines when and how they pay; required so every order has terms.                                                  |
+| **Shipping terms**      | Default shipping terms                                    | Applied to new orders and shipments                                            | Defines who pays for freight and how it’s handled.                                                                    |
+| **Carrier**             | Default shipping carrier (e.g. UPS)                       | Pre-filled when creating shipments for this customer                           | Ensures a default carrier for shipping.                                                                               |
+| **Carrier option**      | Default service level (e.g. Ground)                       | Pre-filled when creating shipments                                             | Ensures a default service level for shipping.                                                                         |
+| **Bill-to address**     | Billing address                                           | Used on invoices and as the legal/billing location                             | At least **address name** and **country** are required so the customer has a valid bill-to.                           |
+| **Ship-to address**     | Default shipping/delivery address                         | Pre-filled on new sales orders and used for shipments                          | Same as bill-to by default; you can change it to a different address. At least **name** and **country** are required. |
+
+## Optional information
+
+You can leave these blank or set them later. They improve reporting, pricing, and operations.
+
+| Field                     | What it is                                       | What it does                                                              | Why you might set it                                                                         |
+| ------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| **Customer price groups** | One or more pricing tiers/discount groups        | Determine which prices and discounts apply to this customer               | Use when you have tiered pricing or customer-specific discounts.                             |
+| **Default sales rep**     | The user who normally handles this customer      | Pre-filled when creating orders; used for reporting and filtering by rep  | Use when you assign customers to specific reps.                                              |
+| **Commission exempt**     | Checkbox: no commission on this customer’s sales | Prevents commission from being applied for this customer                  | Use for internal or non-commissionable accounts. When checked, default sales rep is cleared. |
+| **EDI customer**          | Checkbox: this customer uses EDI                 | Marks the customer as EDI-enabled for EDI order flows                     | Use when you exchange orders via EDI.                                                        |
+| **Email**                 | Primary contact email                            | Shown on the customer record; can be used for invoicing and notifications | Contact and communication; must be a valid email if entered.                                 |
+| **Phone**                 | Primary contact phone                            | Shown on the customer record                                              | Contact; must be a valid format if entered.                                                  |
+| **Website**               | Company website URL                              | Shown on the customer record                                              | Reference only; must be a valid URL if entered.                                              |
+| **Note**                  | Internal note about the customer                 | Stored on the customer; not sent to the customer                          | Internal instructions or reminders. Credit card numbers are not allowed in this field.       |
+
+## Addresses (Bill-to and Ship-to)
+
+- **Bill-to:** Billing and legal address. Name, country, street, city, state, postal code are required; phone, and email are optional but recommended for complete invoices and shipping.
+- **Ship-to:** Default delivery address. You can “Match bill-to” so it starts the same as bill-to, then edit if needed. Same requirements as bill-to.
+- Addresses are used on **orders**, **invoices**, and **shipments** so labels and documents are correct.
+
+Next: <InternalLink pathKey="generateSales.customer.contacts" text="Contacts" includeArrow />

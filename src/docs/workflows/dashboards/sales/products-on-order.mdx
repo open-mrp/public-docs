@@ -1,0 +1,59 @@
+---
+title: Products on order
+subtitle: View open orders, back-order quantities, and top ordered products at a glance.
+route: /dashboards/sales/products-on-order
+nav:
+    title: Products on order
+    section: Dashboards
+    subsection: Sales
+    order: 4
+---
+
+The **products on order** dashboard shows the current state of all open orders. It surfaces which products are most ordered, which are back-ordered, and lets you drill into individual orders to see line-level detail.
+
+### Why products on order matters
+
+- **Back-order visibility**: quickly see which products have unfulfilled quantities so you can prioritize production or purchasing
+- **Order status at a glance**: summary cards show total ordered, back-ordered, and fulfilled counts across all open orders
+- **Drill-down detail**: expand any order row to see the exact SKUs, quantities, and fulfillment status per line item
+
+### What you'll see
+
+#### Summary cards
+
+Three metric cards displayed at the top of the page:
+
+| Card             | What it shows                                 |
+| ---------------- | --------------------------------------------- |
+| **Ordered**      | Total quantity ordered across all open orders |
+| **Back ordered** | Total quantity still unfulfilled              |
+| **Fulfilled**    | Total quantity already shipped                |
+
+#### Top products
+
+A scrollable list of products sorted by quantity back-ordered. Each entry shows the SKU, description, quantity back-ordered, and fulfilled vs ordered counts with the unit of measure.
+
+#### Open orders table
+
+An expandable table listing every open order. Each row shows the order number, status (Issued or In Progress), customer name, customer number, ship-to location, item count, and total ordered.
+
+Click the expand icon on any row to reveal the **order details** table with per-line-item columns: SKU, description, unit price, quantity back-ordered, quantity shipped, and total ordered.
+
+### Filters
+
+| Field               | What it does                            |
+| ------------------- | --------------------------------------- |
+| **Customers**       | Limits data to selected customers       |
+| **Customer groups** | Limits data to selected customer groups |
+| **Product lines**   | Limits data to selected product lines   |
+| **Sales reps**      | Limits data to selected sales reps      |
+
+### Export
+
+An **Export** button downloads the open orders data as an Excel file.
+
+### Role-based visibility
+
+Sales reps cannot filter by sales rep. The filter is hidden for users with a sales rep role. The exported data format also differs for sales reps.
+
+Next: <InternalLink pathKey="dashboards.sales.weeksOfSales" text="Weeks of sales" includeArrow />

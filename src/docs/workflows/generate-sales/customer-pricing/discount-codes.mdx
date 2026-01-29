@@ -1,0 +1,52 @@
+---
+title: Discount codes
+subtitle: Promotional codes applied at the order level to reduce the total by a percentage or fixed amount.
+route: /generate-sales/customer-pricing/discount-codes
+nav:
+    title: Discount codes
+    section: Generate sales
+    subsection: Customer pricing
+    order: 3
+---
+
+**Discount codes** are promotional codes applied at the order level to reduce the total of a <InternalLink pathKey="generateSales.salesOrder.overview" text="sales order" /> by a percentage or fixed amount. They provide a simple mechanism for running promotions, offering one-time deals, or applying negotiated order-level reductions.
+
+### Why discount codes matter
+
+- **Run promotions**: create time-limited or customer-specific promotional offers
+- **Flexible discount types**: reduce by percentage or fixed dollar amount
+- **Order-level simplicity**: one code per order, applied to the total
+
+### Core concepts
+
+#### Two types
+
+| Type           | How it works                             | Example                                |
+| -------------- | ---------------------------------------- | -------------------------------------- |
+| **Percentage** | Multiplies percentage by the order total | 10% off a $1,000 order = $100 discount |
+| **Amount**     | Subtracts a fixed dollar amount          | $50 off any order                      |
+
+#### One per order
+
+Each sales order can have at most one discount code applied. The discount code is set via the Order Discount ID on the order.
+
+#### Validation
+
+- **Unique per account**: each discount code string must be unique within your account
+- **Customer validation**: the code is validated against the customer at the time it is applied to the order
+- **Discount cap**: the discount amount cannot exceed the order total; if a $50 fixed discount is applied to a $30 order, the discount is capped at $30
+
+### Pricing precedence
+
+Discount codes are the last pricing adjustment applied:
+
+1. Base product price (or <InternalLink pathKey="generateSales.customerPricing.customerPrices" text="customer price" /> if one exists)
+2. <InternalLink pathKey="generateSales.customerPricing.volumeDiscounts" text="Volume discounts" />-
+   percentage reduction based on quantity tiers
+3. **Discount code**: percentage or fixed reduction applied to the order total
+
+### Where discount codes are used
+
+- **<InternalLink pathKey="generateSales.salesOrder.overview" text="Sales order" />**: applied at the order level during order creation or editing
+
+Next: <InternalLink pathKey="generateSales.salesOrder.overview" text="Sales orders" includeArrow />

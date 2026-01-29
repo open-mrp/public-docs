@@ -1,0 +1,57 @@
+---
+title: Production Steps
+subtitle: The core building block of manufacturing in Augno - defining inputs, outputs, and costs for each stage of production.
+route: /build-products/bom/production-steps
+nav:
+    title: Production Steps
+    section: Build products
+    subsection: BOMs
+    order: 1
+---
+
+A **production step** defines a single stage of manufacturing: what materials go in, what product or part comes out, and the labor and overhead costs involved. Production steps are the core building block of manufacturing in Augno, replacing traditional bills of materials (BOMs) with a more flexible, step-based model.
+
+### What a production step is
+
+Each production step defines:
+
+- **Name**: a descriptive label for this stage (e.g., "Knitting", "Dyeing", "Final Assembly")
+- **<InternalLink pathKey="buildProducts.bom.consumptionsAndProductions" text="Consumptions" />**: the inputs: materials, parts, or products consumed at this step, each with a quantity, waste quantity, and optional instructions
+- **<InternalLink pathKey="buildProducts.bom.consumptionsAndProductions" text="Production" />**: the output: the part or product this step creates, with its quantity
+- **Labor**: labor rate (cost per hour) and labor time (hours per unit) for this step
+- **Overhead rate**: additional cost per unit for overhead (facilities, utilities, etc.)
+- **Leveling factor**: a decimal adjustment applied to step costs for yield or efficiency calibration
+- **Allowances**: additional decimal adjustments for waste, downtime, or other factors
+- **Machines**: the equipment used at this step
+- **Department**: organizational grouping for reporting
+- **<InternalLink pathKey="buildProducts.scanning.scanningStations" text="Scanning station" />**: the physical station where this step is performed
+
+### How steps connect
+
+Production steps don't exist in isolation. The output of one step feeds into the consumptions of the next, forming a directed chain. These connections are called <InternalLink pathKey="buildProducts.bom.productionFlows" text="production flows" />: the complete sequence that transforms raw materials into finished goods.
+
+For example, a sock manufacturer might have:
+
+1. **Knitting**: consumes yarn (material), produces a knitted tube (part)
+2. **Dyeing**: consumes the knitted tube (part) + dye (material), produces a dyed tube (part)
+3. **Finishing**: consumes the dyed tube (part) + elastic (material), produces a finished sock (product)
+
+Each step has its own cost profile (labor, overhead, materials), and the costs accumulate through the flow to give you the total <InternalLink pathKey="buildProducts.bom.costing" text="cost of goods sold" />.
+
+### Why steps instead of traditional BOMs
+
+Traditional BOMs are flat lists of materials and quantities. Augno's production steps capture the **process**, not just the recipe:
+
+- **Labor and overhead per step**: you know the cost at each stage, not just the total
+- **Department and machine tracking**: operational context for scheduling and reporting
+- **Scanning station integration**: steps map to physical stations on the production floor
+- **Flow visualization**: see the entire manufacturing process as a connected diagram
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.bom.consumptionsAndProductions" text="Consumptions & productions" />**: detailed coverage of step inputs and outputs
+- **<InternalLink pathKey="buildProducts.bom.productionFlows" text="Production flows" />**: how steps connect into end-to-end processes
+- **<InternalLink pathKey="buildProducts.bom.costing" text="Costing (COGS)" />**: how step-level costs aggregate into product costs
+- **<InternalLink pathKey="buildProducts.scanning.scanningStations" text="Scanning stations" />**: the physical locations where steps are performed
+
+Next: <InternalLink pathKey="buildProducts.bom.consumptionsAndProductions" text="Consumptions and productions" includeArrow />

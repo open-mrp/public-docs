@@ -1,0 +1,37 @@
+---
+title: Weeks of sales
+subtitle: See how many weeks of inventory you have on hand based on recent sales velocity.
+route: /dashboards/sales/weeks-of-sales
+nav:
+    title: Weeks of sales
+    section: Dashboards
+    subsection: Sales
+    order: 5
+---
+
+The **weeks of sales** dashboard calculates how many weeks of inventory remain for each product line based on recent average weekly sales. It helps you balance stock levels against demand to avoid both stockouts and excess inventory.
+
+### Why weeks of sales matters
+
+- **Inventory planning**: know which product lines are running low relative to their sales velocity
+- **Adjustable lookback**: change the number of weeks used to calculate average sales so the metric reflects recent trends or longer-term patterns
+- **Quick comparison**: a single table makes it easy to scan across all product lines and spot outliers
+
+### What you'll see
+
+A full-width data grid with one row per product line. The grid includes a toolbar with built-in search, column visibility, and export controls.
+
+| Column               | What it shows                                          |
+| -------------------- | ------------------------------------------------------ |
+| **Product line**     | The product line name                                  |
+| **On hand**          | Current inventory quantity                             |
+| **Avg weekly sales** | Average units sold per week over the configured period |
+| **Weeks of sales**   | On-hand inventory divided by average weekly sales      |
+
+### Filters
+
+| Field              | What it does                                                                |
+| ------------------ | --------------------------------------------------------------------------- |
+| **Period (weeks)** | Number of weeks used to calculate average weekly sales (1 to 52, default 4) |
+
+Next: <InternalLink pathKey="dashboards.operations.deliveryAnalytics" text="Delivery analytics" includeArrow />

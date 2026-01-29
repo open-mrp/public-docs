@@ -1,0 +1,110 @@
+---
+title: Products
+subtitle: Finished goods you price, stock, and sell to customers.
+route: /build-products/items/products
+nav:
+    title: Products
+    section: Build products
+    subsection: Items
+    order: 4
+---
+
+Products are the finished goods you price, stock, and sell to <InternalLink pathKey="generateSales.customer.overview" text="customers" />. They power <InternalLink pathKey="generateSales.salesOrder.overview" text="sales orders" />, inventory, and reporting.
+
+### What a product is
+
+A product includes the standard <InternalLink pathKey="buildProducts.items.overview" text="item fields" /> (SKU, description, category, units, cost) plus:
+
+| Field        | Purpose                                                                                          |
+| ------------ | ------------------------------------------------------------------------------------------------ |
+| Product type | Controls workflow behavior: **sale**, **service**, **shipping**, **credit**, **return**, **tax** |
+| Product line | Optional grouping for reporting, pricing, and commission/freight rules                           |
+| Margin       | Profit margin                                                                                    |
+| Unit value   | The default sell price                                                                           |
+
+### Product types
+
+Every product has a type that determines how it behaves across workflows:
+
+- **Sale**: standard physical goods (the default type). Appears in orders, inventory, shipping, and invoicing.
+- **Service**: non-physical items like consulting or labor hours. No inventory impact, no shipping.
+- **Shipping**: represents shipping charges on an order. Tied to freight calculation.
+- **Credit**: represents credits or adjustments. Reduces the order total.
+- **Return**: represents returned goods. Triggers reverse inventory flow.
+- **Tax**: represents tax line items on an order.
+
+### Product lines
+
+Product lines are a grouping for products. Each product line has:
+
+- **Name** (e.g., "Dress Socks", "Athletic Socks")
+- **Unit group**: determines which units are available for products in this line
+- **Commission-exempt flag**: products in this line are excluded from sales commission calculations
+- **Freight-exempt flag**: products in this line are excluded from freight cost calculations
+
+Product lines drive reporting rollups and pricing rules across your catalog.
+
+### Product categories
+
+Products use **product categories** (shared with <InternalLink pathKey="buildProducts.items.parts" text="parts" />, separate from material categories). A category defines the unit group, properties, and attributes: the same system used by <InternalLink pathKey="buildProducts.items.materials" text="materials" /> with their own category type.
+
+Categories drive reporting, pricing rules, and filtering across the products list.
+
+### How products are used
+
+- **<InternalLink pathKey="generateSales.salesOrder.overview" text="Sales orders" />**: products are line items with quantities and pricing
+- **<InternalLink pathKey="generateSales.customerPricing.customerPrices" text="Customer pricing" />**: customer-specific prices, <InternalLink pathKey="generateSales.customerPricing.volumeDiscounts" text="volume discounts" />, and <InternalLink pathKey="generateSales.customerPricing.discountCodes" text="discount codes" /> reference products
+- **<InternalLink pathKey="buildProducts.inventory.inventory" text="Inventory" />**: full tracking: receipts, issues, allocations, and available-to-promise
+- **<InternalLink pathKey="buildProducts.purchasing.purchaseOrders" text="Purchasing" />**: products can appear on purchase orders if you buy finished goods
+- **Shipping & invoicing**: what gets fulfilled and billed to customers
+- **Analytics**: revenue, volume, margins, and product-line performance
+
+### Creating a product
+
+1. Navigate to **Products → Create Product**
+2. Enter **SKU** (required)
+3. Select **category** (required)
+4. Optionally set: description, product line, unit value (sell price), unit cost
+5. Product type defaults to **sale**: change if needed
+6. Set attribute values for category properties
+7. Click **Create**
+
+**Bulk create**: upload an Excel file to create multiple products at once. The system creates new products, updates existing ones (matched by SKU), and reports skipped rows with reasons.
+
+### Managing products
+
+- **Card-based grid** like materials and parts
+- **Product line** selector on each card (unique to products)
+- **Unit value** (sell price) field: editable inline
+- **Search** by SKU or description
+- **Filter** by category, product line, customer, date range, and attributes (customer and product line filters are unique to products)
+- **Export** to Excel
+- **QR code** generation per product
+- **Discontinue** (soft delete): the product remains in historical records but is no longer active
+
+### Typical lifecycle
+
+1. **Create**: define SKU, category, product line, and pricing
+2. **Configure pricing**: set <InternalLink pathKey="generateSales.customerPricing.customerPrices" text="customer-specific prices" /> and <InternalLink pathKey="generateSales.customerPricing.volumeDiscounts" text="volume discounts" />
+3. **Use in orders**: add to <InternalLink pathKey="generateSales.salesOrder.overview" text="sales orders" /> and quotes
+4. **Track**: monitor inventory, fulfillment, and margins
+5. **Maintain**: update pricing, metadata, and discontinue when needed
+
+### Related
+
+- <InternalLink pathKey="generateSales.salesOrder.overview" text="Sales orders" />: where products
+  are sold
+- <InternalLink pathKey="generateSales.customerPricing.customerPrices" text="Customer pricing" /> -
+  customer-specific product prices
+- <InternalLink pathKey="generateSales.customerPricing.volumeDiscounts" text="Volume discounts" /> -
+  quantity-based pricing for products
+- <InternalLink pathKey="buildProducts.inventory.inventory" text="Inventory" />: tracking product
+  stock levels
+- <InternalLink pathKey="buildProducts.items.overview" text="Items overview" />: shared item
+  concepts, units, and categories
+- <InternalLink pathKey="buildProducts.items.materials" text="Materials" />: raw inputs used to make
+  products
+- <InternalLink pathKey="buildProducts.items.parts" text="Parts" />: intermediate items that become
+  products
+
+Next: <InternalLink pathKey="buildProducts.purchasing.suppliers" text="Suppliers" includeArrow />

@@ -1,0 +1,42 @@
+---
+title: Augno API URIs
+subtitle: Learn the general format of Augno API URIs.
+route: /api/uris
+nav:
+    title: API URIs
+    section: API
+    subsection: Make Requests
+    order: 5
+---
+
+Augno API URIs follow a consistent format:
+
+[https](#protocol)://[api.augno.com](#host)/[v1](#version)/[core](#application-domain)/[customers](#resource)/[ac_0z28u55ruj0q](#resource-identifier)
+
+### Protocol
+
+The protocol defines the communication method and security level. All Augno API endpoints use `https`, which encrypts data using TLS/SSL. This ensures that all API requests and responses are protected from interception and tampering. Any request without TLS will be rejected outright.
+
+### Host
+
+The host identifies the server that will process your request. Currently, all public endpoints are available from `api.augno.com`. If you inspect the network of the Dashboard, you will notice that some requests target a different base URL `api-legacy.augno.com`. We are currently migrating many endpoints that were in private preview to the new base URL. These endpoints should be considered deprecated and are not stable for public use. Should you require a particular endpoint that you find in the legacy API, please contact us and we will be happy to assist you.
+
+### Version
+
+The version specified in the URI is separate from the semantic versioning of the API. In general, you can consider this version stable at `v1`. We set a very high bar for introducing new major versions of the API and expect `v1` to be stable for many years to come. The version appears immediately after the host in the URI path, such as `/v1/`.
+
+### Application Domain
+
+The application domain is the domain that the endpoint is targeting, e.g. `core`, `auth`, or `billing`. These application domains may be handled distinctly by the API. For example, you can expect the `auth` domain to have more strict rate limits than the `core` domain. The application domain appears after the version in the URI path and helps organize endpoints by functional area.
+
+### Resource
+
+The resource is the main entity that the API is interacting with. Resources are typically plural nouns that represent collections of similar items, such as `customers`, `users`, `invoices`, or `sales-orders`.
+
+### Resource identifier
+
+The resource identifier uniquely identifies a specific resource within a collection. It's usually a type ID. For example, `.../customers/ac_0z28u55ruj0q` identifies customer ac_0z28u55ruj0q. The resource identifier appears after the resource name in the URI path.
+
+### Actions
+
+Generally, we utilize the standard HTTP methods to interact with resources. However, on occasion there are actions that cannot be represented easily with a standard HTTP method. In these cases, we provide a sub-resource to represent actions. For example (this isn't a real endpoint), `.../customers/ac_0z28u55ruj0q/actions/send-welcome-email` represents the action of sending a welcome email to customer ac*0z28u55ruj0q. In this case, the `actions` is the \_resource* and `send-welcome-email` is the _sub-resource_.

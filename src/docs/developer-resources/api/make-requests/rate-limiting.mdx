@@ -1,0 +1,65 @@
+---
+title: Rate Limiting
+subtitle: Understand rate limits and implement retry strategies.
+route: /api/rate-limiting
+nav:
+    title: Rate limiting
+    section: API
+    subsection: Make Requests
+    order: 7
+---
+
+Augno's API uses rate limiting with exponential backoff to ensure fair access and maintain platform stability. Understanding how rate limits work helps you design resilient integrations.
+
+## Rate limits
+
+The API enforces the following limits:
+
+| Limit type          | Value          |
+| ------------------- | -------------- |
+| Requests per second | 20             |
+| Scope               | Per IP address |
+| Window type         | Sliding window |
+
+Rate limits are applied per IP address using a sliding window algorithm. This means the limit is evaluated continuously rather than resetting at fixed intervals.
+
+## Rate limit headers
+
+Every API response includes headers that report your current rate limit status:
+
+| Header                | Description                                             |
+| --------------------- | ------------------------------------------------------- |
+| `RateLimit-Limit`     | Maximum requests allowed per second                     |
+| `RateLimit-Remaining` | Requests remaining in the current window                |
+| `RateLimit-Reset`     | Seconds until the window resets                         |
+| `Retry-After`         | Seconds to wait before retrying (only on 429 responses) |
+
+Example response headers:
+
+```http
+RateLimit-Limit: 20
+RateLimit-Remaining: 15
+RateLimit-Reset: 67
+```
+
+## Handling rate limit errors
+
+When you exceed the rate limit, the API returns a `429 Too Many Requests` response:
+
+```json
+{
+    "error": {
+        "code": "rate_limit_exceeded",
+        "type": "invalid_request_error",
+        "message": "Too many requests. Please try again later.",
+        "is_transient": true
+    }
+}
+```
+
+The `Retry-After` header indicates how many seconds to wait before making another request. We reserve the right to rate limit requests on specific IP addresses or accounts at our discretion.
+
+## Related documentation
+
+- <InternalLink text="Error handling" pathKey="api.errors" /> — Learn about error response formats
+  and handling strategies

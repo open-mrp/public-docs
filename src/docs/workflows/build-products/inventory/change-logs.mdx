@@ -1,0 +1,66 @@
+---
+title: Inventory Change Logs
+subtitle: A complete audit trail of every inventory movement - who changed what, when, by how much, and why.
+route: /build-products/inventory/change-logs
+nav:
+    title: Inventory Change Logs
+    section: Build products
+    subsection: Inventory
+    order: 3
+---
+
+**Inventory change logs** provide a complete audit trail of every inventory movement: who changed what, when, by how much, and why.
+
+### What's logged
+
+Every inventory change creates a log entry with:
+
+- **Item**: which material, part, or product was affected
+- **Quantity change**: how much inventory was added or removed
+- **Action type**: what caused the change
+- **Responsible party**: who or what triggered the change
+- **Timestamp**: when the change occurred
+
+### Action types
+
+Each log entry is categorized by the type of action that caused it:
+
+- **`scan`**: a <InternalLink pathKey="buildProducts.scanning.scanningStations" text="scanning station" /> operation (batch initialize, move, split, or merge)
+- **`user_correction`**: a manual inventory adjustment made by a user
+- **`user_action`**: a user-initiated action (e.g., manual stock-in)
+- **`system_action`**: an automated system operation
+- **`create_record`**: a new inventory record was created
+- **`update_record`**: an existing inventory record was modified
+- **`delete_record`**: an inventory record was removed
+
+### Responsible party
+
+Each log entry tracks who or what caused the change:
+
+- **User**: for manual corrections and user-initiated actions, the log records the user who performed the action
+- **Scanning station**: for automated operations at scanning stations, the log records which station processed the batch
+- **API key**: for programmatic corrections, the log records the api key that performed the action
+
+### Inventory snapshots
+
+Each inventory log entry captures the **current inventory level** at that point in time. These snapshots provide a historical record of inventory levels, so you can reconstruct the state of inventory at any past moment. The inventory change logs capture the **change in inventory level**.
+
+### Export
+
+Change logs are exportable to Excel with formatted columns:
+
+- SKU
+- Quantity
+- Unit
+- Action type
+- User
+- Station
+- Timestamp
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.inventory.inventory" text="Inventory overview" />**: the receipts, issues, and allocations that generate log entries
+- **<InternalLink pathKey="buildProducts.inventory.reconciliation" text="Reconciliation & bulk updates" />**: corrections create user_correction log entries
+- **<InternalLink pathKey="buildProducts.scanning.scanningStations" text="Scanning stations" />**: automated operations create scan log entries
+
+Next: <InternalLink pathKey="buildProducts.inventory.reconciliation" text="Reconciliation" includeArrow />

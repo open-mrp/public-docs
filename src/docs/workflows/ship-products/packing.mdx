@@ -1,0 +1,58 @@
+---
+title: Packing
+subtitle: Pack picked items into shipping cases and create shipments ready for the carrier.
+route: /ship-products/packing/overview
+nav:
+    title: Packing
+    section: Ship products
+    order: 3
+---
+
+**Packing** converts <InternalLink pathKey="shipProducts.picking.overview" text="picked" /> items into shipments. You can pack everything at once or pack partially across multiple shipments: each pack operation creates a shipment with its own shipping cases, giving you full control over how and when items leave the building.
+
+### On the factory floor
+
+The typical packing workflow looks like this:
+
+1. A worker brings picked items to the packing station
+2. They select which pick lines to pack (all of them, or just the ones that are ready)
+3. They specify the number of shipping cases (boxes) needed
+4. Items are packed into the cases, and Augno creates a shipment for the packed items
+
+### How packing works
+
+To pack items, select the picked lines that haven't been packed yet and specify the number of shipping cases. Augno then:
+
+- Marks the selected lines as packed
+- Creates a shipment containing the associated shipping cases
+- Links the shipment back to the original <InternalLink pathKey="generateSales.salesOrder.overview" text="sales order" />
+
+### Partial packing
+
+You don't have to pack everything at once. Pack what's ready now: unpacked lines stay on the pick for later. This is especially useful when:
+
+- Some items are available but others are still being picked or are on backorder
+- An order is large enough to require multiple shipments
+- Different items need to ship via different carriers or service levels
+
+Each partial pack creates a separate shipment. Shipment naming follows a predictable pattern:
+
+- **First shipment**: uses the order number (e.g., `SO-12345`)
+- **Subsequent shipments**: appends a numbered suffix (e.g., `SO-12345-2`, `SO-12345-3`)
+
+### When is a pick finished?
+
+After each packing operation, Augno checks whether all pick lines have been packed:
+
+- **All lines packed**: the pick is closed and a Finished At timestamp is recorded
+- **Lines remaining**: the pick stays open for additional packing cycles
+
+### Remaining quantities
+
+After a partial pack, Augno automatically creates new pick lines for the unpacked quantities. This ensures the next pick cycle has accurate remaining amounts and warehouse workers always see exactly what still needs to be fulfilled.
+
+### Next steps
+
+Once items are packed into shipments, move to <InternalLink pathKey="shipProducts.shipping.overview" text="shipping" /> to generate labels, assign tracking numbers, and get packages out the door.
+
+Next: <InternalLink pathKey="shipProducts.shipping.overview" text="Shipping" includeArrow />

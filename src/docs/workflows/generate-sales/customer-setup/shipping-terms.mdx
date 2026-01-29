@@ -1,0 +1,65 @@
+---
+title: Shipping terms
+subtitle: Define who pays for freight, how charges are calculated, and when freight is waived.
+route: /generate-sales/customer-setup/shipping-terms
+nav:
+    title: Shipping terms
+    section: Generate sales
+    subsection: Customer setup
+    order: 2
+---
+
+**Shipping terms** define who pays for freight, how freight charges are calculated, and under what conditions freight is waived. They are set as a default on a <InternalLink pathKey="generateSales.customer.overview" text="customer" /> and inherited by every <InternalLink pathKey="generateSales.salesOrder.overview" text="sales order" /> for that customer.
+
+### Why shipping terms matter
+
+- **Control freight responsibility**: determine whether the seller or buyer bears the shipping cost
+- **Automate freight pricing**: use carrier-calculated rates, flat rates, provide free shipping after a certain order total, or exempt the order entirely
+- **Reduce manual entry**: customer defaults flow into orders automatically; override only when needed
+
+### Core concepts
+
+Every shipping term combines three settings that are evaluated in order:
+
+#### Freight exemption
+
+When Is Freight Exempt is true, no freight charges are applied to the order. This takes priority over all other settings.
+
+#### Free freight threshold
+
+A dollar amount that, when met by the order total, waives freight charges entirely. For example, setting a free freight threshold of $500 means any order of $500 or more ships for free. Orders below the threshold fall through to the flat rate or carrier rate.
+
+#### Flat rate
+
+A fixed shipping cost applied when the order meets a Minimum Order Value threshold. If the order total is below the threshold, the flat rate does not apply and the system falls through to the carrier rate.
+
+#### Carrier rate
+
+When Is Carrier Rate is true, shipping cost is calculated from the carrier's rate (integrated via Shippo for FedEx, UPS, and USPS). This is the default fallback when no exemption or qualifying flat rate applies.
+
+### Resolution order
+
+When calculating freight for an order, Augno evaluates shipping terms in this order:
+
+1. **Check exemption**: if freight exempt, charge is zero
+2. **Check free freight threshold**: if a threshold is defined and the order total meets it, charge is zero
+3. **Check flat rate eligibility**: if a flat rate is defined and the order meets the minimum, use the flat rate
+4. **Use carrier rate**: calculate the rate from the carrier's API
+
+### Default shipping terms
+
+Augno includes three built-in shipping terms:
+
+- **Prepaid**: free shipping (freight exempt)
+- **Prepaid and Billed**: freight charged at the carrier's calculated rate
+- **Freight Collect**: the customer uses their own carrier account to pay the carrier directly
+
+These defaults cannot be modified or deleted. You can create additional custom shipping terms to fit your business.
+
+### Where shipping terms are used
+
+- **<InternalLink pathKey="generateSales.customer.overview" text="Customer" />**: set as the customer's default shipping terms
+- **<InternalLink pathKey="generateSales.salesOrder.overview" text="Sales order" />**: inherited from the customer, overridable per order
+- **<InternalLink pathKey="shipProducts.shipping.overview" text="Shipments" />**: freight calculation uses the order's shipping terms at fulfillment time
+
+Next: <InternalLink pathKey="generateSales.customerSetup.paymentTerms" text="Payment terms" includeArrow />

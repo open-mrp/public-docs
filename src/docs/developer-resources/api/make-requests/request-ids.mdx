@@ -1,0 +1,37 @@
+---
+title: Request IDs
+subtitle: Use request IDs to debug issues and get support.
+route: /api/request-ids
+nav:
+    title: Request IDs
+    section: API
+    subsection: Make Requests
+    order: 9
+---
+
+Every API response includes a unique request ID that can be used for debugging and support purposes.
+
+## Response header
+
+All API responses include the `Request-ID` header:
+
+```http
+Request-ID: rq_a1b2c3d4e5f6g7h8i9j
+```
+
+## Usage
+
+When contacting support or reporting issues, include the request ID from the failed request. This allows us to quickly locate the relevant logs and diagnose problems.
+
+If you're logging API responses in your application, consider storing the request ID alongside other response data to simplify debugging.
+
+## Finding request logs by request ID
+
+You can use a request ID to look up the full <InternalLink pathKey="api.requestLogs" text="request log" /> for any API call. In the Dashboard, use the search field to find a log by its request ID. Via the API, pass the request ID as the `q` parameter:
+
+```bash
+curl "https://api.augno.io/v1/core/request-logs?q=rq_a1b2c3d4e5f6g7h8i9j" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+The request log contains the full details of the call — status code, latency, request and response bodies, actor information, and any error details.

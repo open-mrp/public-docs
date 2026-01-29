@@ -1,0 +1,53 @@
+---
+title: Accounts receivable dashboard
+subtitle: An aging report showing what customers owe across current, 30, 60, 90, and 120-day buckets.
+route: /dashboards/financial/accounts-receivable
+nav:
+    title: Accounts receivable
+    section: Dashboards
+    subsection: Financial
+    order: 1
+---
+
+The **accounts receivable** dashboard displays an aging report of all unpaid invoices. Balances are bucketed by how long they have been outstanding so you can quickly identify overdue accounts and prioritize collection efforts.
+
+### Why the accounts receivable dashboard matters
+
+- **Aging visibility**: see outstanding balances broken into current, 30, 60, 90, and 120-day buckets at a glance
+- **Prioritize collections**: the table is sorted by total balance (highest first) so the largest exposures surface immediately
+- **Point-in-time view**: set an effective date to see what receivables looked like on any given day
+- **Export for offline work**: download the aging report or raw invoice data for sharing with your finance team
+
+### What you'll see
+
+A full-width table with a sticky header and a totals row at the bottom. Each row represents a customer with unpaid invoices.
+
+| Column              | What it shows                             |
+| ------------------- | ----------------------------------------- |
+| **Customer number** | The customer's account number             |
+| **Customer name**   | The customer's name                       |
+| **Current**         | Balances not yet overdue                  |
+| **Over 30 days**    | Balances 31 to 60 days past due           |
+| **Over 60 days**    | Balances 61 to 90 days past due           |
+| **Over 90 days**    | Balances 91 to 120 days past due          |
+| **Over 120 days**   | Balances more than 120 days past due      |
+| **Total**           | Sum of all aging buckets for the customer |
+
+A sticky footer row shows the grand total for each aging bucket across all customers. Click the detail icon on any row to drill into that customer's individual invoices.
+
+### Filters
+
+| Field              | What it does                                               |
+| ------------------ | ---------------------------------------------------------- |
+| **Effective date** | View receivables as of a specific date (defaults to today) |
+
+### Export
+
+Two export options are available:
+
+- **Invoice data**: downloads a CSV of all unpaid invoices with invoice number, date, customer, PO number, remaining balance, and paid-in-full status
+- **Aging report**: downloads an Excel file with per-invoice aging detail including current, 30, 60, 90, and 120-day amounts
+
+For related workflow documentation, see <InternalLink pathKey="collectPayments.accountsReceivable.overview" text="Accounts receivable" /> in the Collect Payments section.
+
+Next: <InternalLink pathKey="dashboards.financial.paymentsData" text="Payments data" includeArrow />

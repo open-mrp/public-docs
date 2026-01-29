@@ -1,0 +1,61 @@
+---
+title: Pagination
+subtitle: Iterating through paginated list results.
+route: /api/pagination
+nav:
+    title: Pagination
+    section: API
+    subsection: Make Requests
+    order: 8
+---
+
+This API uses cursor-based pagination for list endpoints. Cursors are **opaque strings** and are signed to prevent tampering. Use the cursor values returned in `page_info` exactly as-is.
+
+## Query parameters
+
+| Parameter | Type    | Default | Description                                                                         |
+| --------- | ------- | ------- | ----------------------------------------------------------------------------------- |
+| `limit`   | integer | 100     | Number of items to return per page. Must be a positive integer                      |
+| `cursor`  | string  | null    | Opaque cursor for fetching the next or previous page (from `page_info` in response) |
+| `q`       | string  | null    | Search query for filtering results                                                  |
+
+## Response structure
+
+List endpoints return a response with the following structure:
+
+```json
+{
+    "object": "list",
+    "data": [
+        { "id": "res_abc123", ... },
+        { "id": "res_def456", ... }
+    ],
+    "page_info": {
+        "has_next_page": true,
+        "has_prev_page": false,
+        "next_cursor": "eyJjIjoiMjAyNS0wNi0xNVQxMDozMDowMFoiLCJpIjo0ODMyLCJkIjoiZiJ9.fxWjUceb9ojKxUdhu8xUyGiQghir3ka4FXmZVmbojTc",
+        "prev_cursor": null
+    }
+}
+```
+
+| Field                     | Type           | Description                                                        |
+| ------------------------- | -------------- | ------------------------------------------------------------------ |
+| `object`                  | string         | Always `"list"` for paginated responses                            |
+| `data`                    | array          | Array of resources for the current page                            |
+| `page_info`               | object         | Pagination metadata                                                |
+| `page_info.has_next_page` | boolean        | Whether there are more results after this page                     |
+| `page_info.has_prev_page` | boolean        | Whether there are results before this page                         |
+| `page_info.next_cursor`   | string \| null | Opaque cursor for fetching the next page, `null` on the last page  |
+| `page_info.prev_cursor`   | string \| null | Opaque cursor for fetching the previous page, `null` on first page |
+
+## Iterating through pages
+
+To page forward through all results:
+
+1. Make an initial request without `cursor`
+2. Check if `page_info.has_next_page` is `true`
+3. If true, make another request with `cursor` set to `page_info.next_cursor`
+4. Repeat until `has_next_page` is `false`
+
+To page backward, use `page_info.prev_cursor` in the same way.

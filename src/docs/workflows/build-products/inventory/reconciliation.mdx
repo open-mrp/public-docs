@@ -1,0 +1,50 @@
+---
+title: Reconciliation & Bulk Updates
+subtitle: Correct inventory counts when the system and physical reality diverge, with full audit trail logging.
+route: /build-products/inventory/reconciliation
+nav:
+    title: Reconciliation & Bulk Updates
+    section: Build products
+    subsection: Inventory
+    order: 4
+---
+
+**Reconciliation and bulk updates** let you correct inventory counts when the system and physical reality diverge, with full audit trail logging through <InternalLink pathKey="buildProducts.inventory.changeLogs" text="change logs" />.
+
+### Two reconciliation modes
+
+When correcting inventory, you choose one of two modes:
+
+- **Addition/Subtraction**: increase/decrease the current quantity by a specified amount. Use this when you found extra stock that wasn't recorded or realized you need to pull some off the shelf.
+- **Reconcile**: set the quantity to an exact value, regardless of the current count. Use this when you've done a physical count and need the system to match reality.
+
+### Single item update
+
+To correct a single item's inventory:
+
+- Specify the item and the quantity adjustment (addition or force)
+- Optionally specify a lot number (a new lot is created if it doesn't exist)
+- The system creates a <InternalLink pathKey="buildProducts.inventory.changeLogs" text="change log" /> entry with the `user_correction` action type
+
+### Bulk reconcile
+
+For larger corrections: such as after a full physical inventory count: bulk reconciliation processes multiple items at once:
+
+- Provide a list of items with their corrections
+- Choose the mode (addition or force) for the batch
+- All corrections are applied and logged individually
+
+### Automatic allocation on correction
+
+When inventory is added through reconciliation, the system automatically checks for **open inventory issues** (unfulfilled demand). If any exist for that item, the new inventory is allocated to satisfy them: the same behavior as stocking from a <InternalLink pathKey="buildProducts.purchasing.deliveriesAndReceiving" text="delivery" />.
+
+### Export
+
+You can export current inventory levels for all items, including on-hand quantities. This export is useful for preparing physical count sheets or sharing inventory data with external systems.
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.inventory.inventory" text="Inventory overview" />**: the underlying receipt/issue model that reconciliation adjusts
+- **<InternalLink pathKey="buildProducts.inventory.changeLogs" text="Change logs" />**: every correction is logged with full audit trail
+
+Next: <InternalLink pathKey="generateSales.overview" text="Generate Sales" includeArrow />

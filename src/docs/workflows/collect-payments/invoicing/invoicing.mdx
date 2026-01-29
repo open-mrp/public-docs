@@ -1,0 +1,58 @@
+---
+title: Invoicing
+subtitle: Invoices are the billing records Augno generates for each shipment, capturing what was shipped, to whom, and for how much.
+route: /collect-payments/invoicing/overview
+nav:
+    title: Invoicing
+    section: Collect payments
+    order: 2
+---
+
+**Invoices** are generated automatically when a shipment is shipped. They serve as the billing record sent to customers and are the starting point for collecting payment in Augno.
+
+### How invoices are created
+
+Invoices are created at ship time: when a shipment's status changes to shipped, Augno generates an invoice for that shipment. Each shipment produces exactly one invoice. If an order ships in multiple shipments, each shipment gets its own invoice, so a single <InternalLink pathKey="generateSales.salesOrder.overview" text="sales order" /> can have multiple invoices.
+
+### What an invoice contains
+
+| Field                  | Description                                                      |
+| ---------------------- | ---------------------------------------------------------------- |
+| **Invoice number**     | Unique identifier for the invoice                                |
+| **Bill-to address**    | The billing address pulled from the customer record              |
+| **Line items**         | Each line includes the product, quantity shipped, and unit price |
+| **Order reference**    | The sales order this invoice originated from                     |
+| **Shipment reference** | The specific shipment this invoice was generated from            |
+| **Note**               | Optional note attached to the invoice                            |
+
+### Invoice lifecycle
+
+An invoice moves through three stages:
+
+1. **Created**: the invoice is generated when the shipment is shipped
+2. **Sent**: the invoice is delivered to the customer by email (with a PDF attachment) or by EDI for EDI-enabled customers
+3. **Paid**: payments and other transactions have been allocated to the invoice, bringing the balance to zero
+
+Augno tracks where each invoice stands with three flags: whether the invoice has been sent, whether it is paid in full, and whether it has been overpaid.
+
+### Invoice statuses
+
+| Status       | Condition                    | Meaning                                                       |
+| ------------ | ---------------------------- | ------------------------------------------------------------- |
+| **Unpaid**   | Balance is greater than zero | The invoice still has an outstanding amount owed              |
+| **Paid**     | Balance equals zero          | All amounts have been fully covered by allocated transactions |
+| **Overpaid** | Balance is less than zero    | More has been allocated to this invoice than the total due    |
+
+### Sending invoices
+
+Invoices can be sent to the customer and/or the assigned sales rep by email. The email includes a PDF attachment of the invoice. For customers configured for EDI, invoices are also transmitted electronically through the EDI channel.
+
+### Multiple invoices per order
+
+When an order ships in parts: for example, half the items ship today and the rest ship next week: each shipment generates its own invoice. This means the customer receives separate invoices for each shipment, each reflecting only the items and quantities in that specific shipment.
+
+### Invoice balance
+
+An invoice's **balance** is the total invoiced amount minus all allocations applied to it through <InternalLink pathKey="collectPayments.collecting.overview" text="settlements" />. As payments, credits, adjustments, and rebates are allocated, the balance decreases. When the balance reaches zero the invoice is considered paid in full.
+
+Next: <InternalLink pathKey="collectPayments.accountsReceivable.overview" text="Accounts receivable" includeArrow />

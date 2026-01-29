@@ -1,0 +1,93 @@
+---
+title: API Versioning
+subtitle: Understand how Augno versions its API and manage version upgrades.
+route: /api/versioning
+nav:
+    title: API versioning
+    section: API
+    subsection: Make Requests
+    order: 8
+---
+
+Augno uses a versioning system designed to protect existing integrations while allowing the API to evolve. By specifying a version with each request, you control exactly which API behavior your integration targets. The current version is <ApiVersion />.
+
+## The Augno-Version header
+
+All API requests **require** the `Augno-Version` header. Requests without a valid version header are rejected with an error.
+
+```bash
+curl https://api.augno.com/v1/core/customers \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION"
+```
+
+## Version format
+
+Versions follow the format:
+
+`<minor>.<patch>.<codename>`
+
+- **Minor** — Incremented for non-breaking feature additions
+- **Patch** — Incremented for bug fixes and small improvements
+- **Codename** — The major version identifier (e.g., `forge`, `crucible`)
+
+For example, `1.0.forge` would be a stable release of the `forge` major version with minor version 1 and patch version 0.
+
+## Preview releases
+
+Preview releases allow you to test upcoming changes before they're promoted to stable. Preview versions use the format:
+
+`<minor>.<patch>.<codename>-preview.<n>`
+
+For example, `1.3.forge-preview.1` is the first preview of what will become `1.3.forge`.
+
+Preview releases:
+
+- Are ordered numerically (e.g., `preview.1`, `preview.2`, `preview.3`)
+- May contain breaking changes between preview versions
+- Are promoted to stable once finalized (e.g., `1.3.forge-preview.2` becomes `1.3.forge`)
+- Should not be used in production environments
+- Will not be supported after the next version is stable
+
+## Breaking vs non-breaking changes
+
+**Breaking changes** require a new codename:
+
+- Removed fields or endpoints
+- Changed field types or formats
+- Changed authentication requirements
+- Modified error response structures
+- Renamed fields or endpoints
+
+**Non-breaking changes** are released under new minor or patch versions:
+
+- New optional fields in responses (minor)
+- New endpoints (minor)
+- New optional request parameters (minor)
+- Bug fixes (patch)
+- Performance improvements (patch)
+
+## Upgrading versions
+
+When upgrading to a new version:
+
+1. **Test in sandbox first.** Use the new version header in your sandbox environment to verify compatibility.
+2. **Review the changelog.** Check for any changes that affect your integration.
+
+### Preparing for codename migrations
+
+When a new codename is released:
+
+1. Review the migration guide for breaking changes
+2. Update your integration to handle the new API behavior
+3. Test thoroughly in sandbox
+4. Update the `Augno-Version` header in production
+
+We provide advance notice before deprecating old codenames and maintain overlap periods where both versions are supported.
+
+## Related documentation
+
+- <InternalLink text="Release phases" pathKey="releasePhases" /> — Understand stability guarantees
+  for preview vs GA features
+- <InternalLink text="API URIs" pathKey="api.uris" /> — Learn about URI structure (the `/v1/` in the
+  path is separate from API versioning)

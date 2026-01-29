@@ -1,0 +1,46 @@
+---
+title: Labels
+subtitle: Batch identification labels printed at scanning stations - two formats and four sizes for production floor tracking.
+route: /build-products/scanning/labels
+nav:
+    title: Labels
+    section: Build products
+    subsection: Scanning
+    order: 2
+---
+
+**Labels** identify <InternalLink pathKey="buildProducts.production.batches" text="batches" /> as they move through production. Augno supports two label formats and four sizes, configured per <InternalLink pathKey="buildProducts.scanning.scanningStations" text="scanning station" />.
+
+### Label types
+
+- **Tag**: a small identifier label with essential batch information (batch number, item, quantity). Used for compact labeling where space is limited.
+- **Traveler**: a detailed batch document that includes the full batch context: item details, production step, consumptions, quantities, and routing information. Travels with the batch through the production floor.
+
+### Label sizes
+
+Labels are available in four sizes (in inches):
+
+- **1x4**: narrow horizontal strip
+- **1x1**: small square
+- **1x3**: narrow horizontal strip
+- **2x4**: larger format for more detail
+
+### Per-station configuration
+
+Each <InternalLink pathKey="buildProducts.scanning.scanningStations" text="scanning station" /> defines its own label type and size. This means:
+
+- An init station might print a 2x4 traveler with full routing details
+- A move station might print a 1x4 tag for quick identification
+- A split station might print tags for each output batch (firsts, seconds, waste)
+
+The label configuration is set once on the station and applies to all batches processed there.
+
+### Purpose
+
+Labels serve as the physical tracking mechanism on the production floor. Operators scan batch labels at each station to trigger <InternalLink pathKey="buildProducts.production.batchOperations" text="batch operations" />. The label is the bridge between the digital batch record and the physical product.
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.scanning.scanningStations" text="Scanning stations" />**: where label type and size are configured
+
+Next: <InternalLink pathKey="buildProducts.inventory.inventory" text="Inventory" includeArrow />

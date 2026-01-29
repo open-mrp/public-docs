@@ -1,0 +1,71 @@
+---
+title: Consumptions & Productions
+subtitle: The inputs and outputs of each production step - what materials are used up and what parts or products are created.
+route: /build-products/bom/consumptions-and-productions
+nav:
+    title: Consumptions & Productions
+    section: Build products
+    subsection: BOMs
+    order: 2
+---
+
+**Consumptions and productions** define the inputs and outputs of each <InternalLink pathKey="buildProducts.bom.productionSteps" text="production step" />: what materials are used up and what parts or products are created.
+
+### Consumptions (inputs)
+
+A **consumption** is an item used up at a production step. Each consumption specifies:
+
+- **Item**: the material or part being consumed
+- **Quantity**: how many units are consumed per step execution
+- **Waste quantity**: expected scrap or loss on top of the consumption quantity
+- **Instructions**: optional text for the operator (e.g., "pre-soak for 10 minutes")
+
+**Consumption types:**
+
+- **Material**: raw materials purchased from <InternalLink pathKey="buildProducts.purchasing.suppliers" text="suppliers" />
+- **Part**: intermediate items produced by an earlier production step
+- **Product**: finished products consumed in a further assembly step
+
+### Productions (outputs)
+
+A **production** is the item created by a production step. Each production specifies:
+
+- **Item**: the part or product being produced
+- **Quantity**: how many units are produced per step execution
+
+**Production types:**
+
+- **Part**: intermediate items that feed into later production steps
+- **Product**: finished goods that go into <InternalLink pathKey="buildProducts.inventory.inventory" text="inventory" /> for sale
+
+### Waste tracking
+
+The **Waste Quantity** field on consumptions accounts for expected scrap and loss during production. When the system calculates material needs for a <InternalLink pathKey="buildProducts.production.batches" text="batch" />, it uses the sum of Quantity + Waste Quantity to determine how much material to pull from inventory.
+
+This means your cost calculations and inventory demands automatically account for real-world manufacturing losses.
+
+### Execution multiplier
+
+When a <InternalLink pathKey="buildProducts.production.batches" text="batch" /> is created, the system calculates an **execution multiplier**:
+
+```text
+Execution Multiplier = Batch Quantity / Step Production Quantity
+```
+
+All consumption quantities are scaled by this multiplier. For example, if a step produces 1 unit and consumes 2 kg of material, a batch of 50 units will consume 100 kg.
+
+This scaling is the bridge between step definitions (which describe a single unit of production) and batch operations (which describe real-world quantities).
+
+You need not normalize production steps to match each other. For example, you may want to evaluate one step of production by the resources it takes to produce 100 units while another may be easier to evaluate by the resources it takes to produce 1 unit. The system will automatically normalize these steps to determine how much inventory should be consumed.
+
+### Multi-part steps
+
+A single production step can have **multiple consumptions** (many inputs combined into one output). The consumptions are all consumed together when the step executes: there's no partial consumption of individual inputs.
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.bom.productionSteps" text="Production steps" />**: the parent container for consumptions and productions
+- **<InternalLink pathKey="buildProducts.bom.costing" text="Costing (COGS)" />**: material cost is calculated from consumption quantities × item unit cost
+- **<InternalLink pathKey="buildProducts.production.batchOperations" text="Batch operations" />**: the execution multiplier scales consumptions at runtime
+
+Next: <InternalLink pathKey="buildProducts.bom.productionFlows" text="Production flows" includeArrow />

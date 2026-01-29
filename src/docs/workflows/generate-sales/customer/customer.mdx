@@ -1,0 +1,87 @@
+---
+title: Customers
+subtitle: The central record connecting sales orders, invoices, shipments, and payments.
+route: /generate-sales/customer/overview
+nav:
+    title: Overview
+    section: Generate sales
+    subsection: Customer
+    order: 1
+---
+
+A **customer** in Augno is the company or contact you sell to, serving as the central record that connects <InternalLink pathKey="generateSales.salesOrder.overview" text="sales orders" />, invoices, shipments, and payments. Every customer carries identity, segmentation, default terms, and addresses that flow into downstream workflows automatically.
+
+### What a customer is
+
+A customer record defines:
+
+- **Identity**: name, external number, alias, and contact info (email, phone, website)
+- **Segmentation**: one <InternalLink pathKey="generateSales.customerSetup.customerGroups" text="customer type group" /> (who they are) plus zero or more <InternalLink pathKey="generateSales.customerSetup.customerGroups" text="pricing groups" /> (how they're priced)
+- **Default terms**: <InternalLink pathKey="generateSales.customerSetup.paymentTerms" text="payment terms" />, <InternalLink pathKey="generateSales.customerSetup.shippingTerms" text="shipping terms" />, <InternalLink pathKey="generateSales.customerSetup.defaultCarriers" text="carrier and carrier option" />, <InternalLink pathKey="generateSales.customerSetup.priorities" text="priority" />, and <InternalLink pathKey="generateSales.customerSetup.defaultSalesReps" text="default sales rep" />
+- **Addresses**: <InternalLink pathKey="generateSales.customerSetup.addresses" text="default billing and shipping addresses" /> plus additional locations
+- **Status**: <InternalLink pathKey="generateSales.customerSetup.accountStatuses" text="account status" /> controlling whether orders can be placed and shipped
+
+### Why customers matter
+
+Customers drive nearly every sales workflow:
+
+- **Sales orders**: customer defaults auto-fill terms, addresses, carrier, priority, and sales rep
+- **Pricing**: group membership determines which <InternalLink pathKey="generateSales.customerPricing.customerPrices" text="customer prices" />, <InternalLink pathKey="generateSales.customerPricing.volumeDiscounts" text="volume discounts" />, and <InternalLink pathKey="generateSales.customerPricing.discountCodes" text="discount codes" /> apply
+- **Shipping**: default carrier, addresses, and freight exemption flow into shipments
+- **Invoicing and payments**: billing address, payment terms, and Stripe integration drive collection
+- **Reporting**: sales, customers, and activity reports segment by customer, type group, pricing groups, and sales rep
+
+### Defaults that cascade to orders
+
+When you <InternalLink pathKey="generateSales.customer.create" text="create a customer" />, you set defaults that automatically populate on every new sales order:
+
+| Default              | What it controls                         |
+| -------------------- | ---------------------------------------- |
+| **Payment terms**    | When and how the customer pays           |
+| **Shipping terms**   | Who pays freight and how it's calculated |
+| **Carrier / option** | Shipping provider and service level      |
+| **Priority**         | Order processing precedence              |
+| **Sales rep**        | Team member assigned to the order        |
+| **Bill-to address**  | Billing destination on invoices          |
+| **Ship-to address**  | Delivery destination on shipments        |
+
+All defaults can be overridden per order.
+
+### Exemptions
+
+Customers carry two independent <InternalLink pathKey="generateSales.customerSetup.exemptions" text="exemption flags" />:
+
+- **Commission exemption**: excludes the customer from commission calculations
+- **Freight exemption**: waives freight charges on orders
+
+Exemptions use **OR logic** across the customer and all their groups: if either the customer or any group is exempt, the customer is treated as exempt.
+
+### Parent-child hierarchy
+
+Customers can be organized in a parent-child hierarchy:
+
+- **Parent**: the main account, typically the bill-to entity
+- **Children**: additional locations or divisions under the parent (typically ship-to locations)
+
+Each child has its own configuration (addresses, terms, status) but belongs to the parent. Orders can be created for either the parent or a child. Child customers without <InternalLink pathKey="generateSales.customerPricing.customerPrices" text="customer-specific prices" /> inherit pricing from the parent.
+
+### Contacts
+
+Customers have <InternalLink pathKey="generateSales.customer.contacts" text="contacts" />: the people at the customer's organization who receive notifications. Each contact carries notification preferences that control whether they receive **order confirmation** emails, **invoice** emails, or both. When you create a <InternalLink pathKey="generateSales.salesOrder.overview" text="sales order" />, contacts are automatically added to the order based on these preferences.
+
+### Product line access
+
+Customers can be restricted to specific product lines through their <InternalLink pathKey="generateSales.customerSetup.customerGroups" text="pricing groups" />. When product line restrictions are set, the customer can only order products from those lines.
+
+### Getting started
+
+Before creating a customer, you need:
+
+- At least one <InternalLink pathKey="generateSales.customerSetup.customerGroups" text="customer type group" /> for classification
+- <InternalLink pathKey="generateSales.customerSetup.paymentTerms" text="Payment terms" />,
+  <InternalLink pathKey="generateSales.customerSetup.shippingTerms" text="shipping terms" />, and a
+  <InternalLink pathKey="generateSales.customerSetup.defaultCarriers" text="carrier" /> configured
+
+Then <InternalLink pathKey="generateSales.customer.create" text="create a customer" /> to begin selling.
+
+Next: <InternalLink pathKey="generateSales.customer.create" text="Create a customer" includeArrow />

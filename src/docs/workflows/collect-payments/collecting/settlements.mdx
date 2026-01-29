@@ -1,0 +1,65 @@
+---
+title: Settlements
+subtitle: Formally record which transactions pay which invoices by creating settlements with allocations.
+route: /collect-payments/collecting/settlements
+nav:
+    title: Settlements
+    section: Collect payments
+    subsection: Collecting
+    order: 2
+---
+
+A **settlement** is the formal record that links transactions to <InternalLink pathKey="collectPayments.invoicing.overview" text="invoices" />, creating an auditable allocation trail. Every time you apply a payment, credit, adjustment, or rebate to an invoice, you do it through a settlement.
+
+### What a settlement contains
+
+Each settlement includes:
+
+- **Settlement number**: a unique identifier for the settlement
+- **Responsible user**: the person who created or owns the settlement
+- **Note**: an optional description or reference
+- **Allocations**: one or more allocation lines, each linking a specific transaction to a specific invoice for a specific dollar amount
+
+### Creating a settlement
+
+To create a settlement:
+
+1. Choose the responsible user
+2. Select the transactions you want to allocate
+3. Select the invoices you want to apply them to
+4. Specify the allocation amount for each transaction-invoice pair
+5. Add an optional note
+6. Save the settlement
+
+The system validates that allocation amounts do not exceed the unallocated balance of each transaction.
+
+### Allocation rules
+
+Allocations are flexible and follow a few key rules:
+
+- One transaction can be allocated across multiple invoices
+- One invoice can receive allocations from multiple transactions
+- Allocation amounts cannot exceed the unallocated balance of the transaction
+- Each allocation specifies exactly one transaction, one invoice, and one amount
+
+This model supports a wide range of scenarios: from a single payment covering a single invoice to a bulk payment run covering dozens of invoices at once.
+
+### Partial payments
+
+You can allocate only part of a transaction to an invoice. The remaining unallocated amount stays on the transaction as an **open credit**, available for future settlements. This is common when a customer sends a single check that only partially covers an invoice, or when you want to apply a payment to several invoices over time.
+
+### Parent/child allocations
+
+When settling a parent account's payment, you can allocate to invoices belonging to any child account under that parent. The settlement interface shows invoices across the entire parent-child hierarchy, making it straightforward to distribute a parent's payment to the correct child invoices.
+
+<InternalLink pathKey="generateSales.customer.overview" text="Learn about customer accounts" />
+
+### Editing and deleting settlements
+
+Settlements can be updated after creation: you can change the note or the responsible user. If a settlement needs to be removed entirely, deleting it reverses all of its allocations and recalculates the payment status of every affected invoice. Any transaction amounts that were allocated through the deleted settlement return to their unallocated (open credit) state.
+
+### Viewing settlements
+
+You can view all settlements in a list with filters by transaction, invoice, or date range. Selecting an individual settlement shows the full details including every allocation line: which transaction, which invoice, and the allocated amount.
+
+<InternalLink pathKey="collectPayments.collecting.overview" text="Back to collecting overview" />

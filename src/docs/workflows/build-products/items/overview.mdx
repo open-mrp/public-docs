@@ -1,0 +1,105 @@
+---
+title: Items overview
+subtitle: Materials, parts, and products - the core objects you buy, make, and sell in Augno.
+route: /build-products/items/overview
+nav:
+    title: Overview
+    section: Build products
+    subsection: Items
+    order: 1
+---
+
+**Items** are the objects you buy (materials), make (parts), or sell (products) to a <InternalLink pathKey="generateSales.customer.overview" text="customer" />. They are critical to most aspects of Augno.
+
+### What are items?
+
+An item record defines:
+
+- **Identity**: SKU (or part number), description
+- **Commercial value**: default sell price, cost basis
+- **Operational behavior**: product line/category, inventory
+- **Usage rules**: whether it is sold, shipped, or treated as service/credit/shipping
+
+### Why do they matter?
+
+Items are used across almost every workflow:
+
+- **Sales orders**: line items, pricing
+- **Purchasing**: line items, costing
+- **Inventory**: receipts, allocations, on-hand/available tracking
+- **Manufacturing**: production steps and consumption
+- **Shipping & invoicing**: what gets fulfilled and billed
+- **Analytics**: revenue, volume, margins, and product-line performance
+
+### Core concepts
+
+- **SKU is the operational key**: Teams search, quote, pick, and report by SKU constantly.
+- **Category and product line drive behavior**: They influence organization, filtering, unit behavior, pricing, and reporting rollups.
+- **Units are not just display**: Unit configuration affects ordering, conversions, pricing-per-unit, and inventory math.
+- **Price and cost serve different jobs**: Sell price drives revenue; cost supports margin and planning decisions.
+- **Product type changes workflow impact**: Products have six types: **sale**, **service**, **shipping**, **credit**, **return**, and **tax**; each behaves differently in orders and financial flows.
+
+### Getting started
+
+Before creating items, you need to define **units**, **unit groups**, and **item categories**.
+
+### Units
+
+Default units are available out of the box. Units are classified by **type** (e.g. grams are `mass`, weeks are `time`). Each type has a **base unit** that all other units in that type convert to. For example, the `time` base unit is hours. To convert any unit to its type's base unit, use:
+
+```python
+# Calculation for converting any arbitrary unit to the unit-type's base unit
+base_unit_measure = unit_measure * ratio_numerator / ratio_denominator + offset_numerator / offset_denominator
+```
+
+For minutes to hours this becomes:
+
+```python
+# Values
+min_measure = 60
+ratio_numerator = 1
+ratio_denominator = 60
+offset_numerator = 0
+offset_denominator = 1
+
+# Calculate how many hours are in 60 minutes
+hr_measure = 60 * 1 / 60 + 0 / 1 # = 1
+```
+
+To add custom units, <InternalLink pathKey="frontend.createUnit" text="create a new unit" /> and set its ratio and offset so it converts to the type's base unit. You can review default and custom units <InternalLink pathKey="frontend.units" text="in the Dashboard" />.
+
+### Unit groups
+
+Unit groups are **collections of related units** that convert to each other. They don't define the conversion math (that comes from units) but how units are used in practice: e.g. which ones show in reports or at checkout for a given category or product line.
+
+**Each unit group has:**
+
+- **Name** (e.g. "Socks Units", "Time Units")
+- **Type**: `quantity`, `time`, `mass`, `volume`, `length`, `temperature`, `area`, or `currency`
+- **Base unit**: the reference unit reports and rollups use
+
+All units in a group must share the same type; the type cannot be changed after creation.
+
+**Unit groups are used for:**
+
+1. **Unit conversion**: Converting between related units (lbs ↔ oz, days ↔ hours, pairs ↔ dozens) for unified reports
+2. **Category-based measurement**: Every category has a unit group, so all items in that category share the same measurement system
+3. **Pricing**: Product-line unit groups can define unit-related pricing and discounts
+4. **Simplified options**: Only a subset of units may be relevant at checkout or for inventory; unit groups limit the choices
+
+**Example: Reporting in pairs**: If you want inventory for the _Sock_ category in pairs instead of eaches, <InternalLink pathKey="frontend.createUnitGroup" text="create a unit group" /> (e.g. _Hosiery Units_) with base unit _pairs_ and assign it to the Hosiery item category. Reports will then use pairs.
+
+**Example: Checkout options**: To sell sports socks as single pairs, 10-packs, or 20-packs: define units for each with correct conversions, create a _Sports Socks_ unit group with those units (base unit: pairs), and attach the group to the Sports Sock product line. Checkout and order entry will only show those unit options.
+
+### Item categories
+
+With units and unit groups in place, define **item categories**. There are two separate category types:
+
+- **Material categories** (`material_category`): used exclusively by materials
+- **Product categories** (`product_category`): shared by parts and products
+
+Both types work the same way: a category defines **properties** and **attributes** for items in that category. For example, a _Yarn_ material category might have a "Fiber Content" property with attributes like Cotton, Polyester, Wool. A _Sock_ product category might have properties: size, length, style: where the size property has attributes: small, medium, large, extra large.
+
+Categories drive production and sales reports, pricing rules, and checkout experiences.
+
+Next: dive into the three item subtypes: <InternalLink pathKey="buildProducts.items.materials" text="materials" /> (items you purchase), <InternalLink pathKey="buildProducts.items.parts" text="parts" /> (intermediate items you manufacture), and <InternalLink pathKey="buildProducts.items.products" text="products" /> (finished goods you sell).

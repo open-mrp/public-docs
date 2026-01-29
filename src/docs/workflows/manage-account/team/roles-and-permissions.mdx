@@ -1,0 +1,65 @@
+---
+title: Roles and permissions
+subtitle: Control what team members and API keys can access with granular, role-based permissions.
+route: /manage-account/team/roles-and-permissions
+nav:
+    title: Roles and permissions
+    section: Manage your account
+    subsection: Team
+    order: 2
+---
+
+**Roles** define what a user or API key can see and do in Augno. Each role is a named set of permissions that controls create, read, update, and delete access across every area of the system. Only admins can manage roles from the **Roles** tab in <InternalLink pathKey="frontend.roles" text="account settings" />.
+
+### Why roles matter
+
+- **Security**: restrict access to sensitive areas like billing, API keys, and team management
+- **Simplicity**: assign one role per user instead of configuring individual permissions
+- **Consistency**: the same role system applies to both <InternalLink pathKey="manageAccount.team.teamMembers" text="team members" /> and <InternalLink pathKey="manageAccount.apiKeys" text="API keys" />
+
+### Default roles
+
+Augno includes built-in roles that cannot be edited or deleted:
+
+- **Admin**: full access to all features, settings, and management capabilities
+- **Viewer**: read-only access across the system
+
+These defaults cover common use cases. For more specific needs, create custom roles.
+
+### Custom roles
+
+Create a custom role when the default roles don't match your needs:
+
+1. Navigate to the **Roles** tab in account settings
+2. Click **Create**
+3. Enter a **role name** (e.g., "Sales Manager", "Warehouse Staff")
+4. Configure **CRUD permissions** for each domain
+
+### Permission domains
+
+Permissions are organized by domain. Each domain supports up to four operations: **create**, **read**, **update**, and **delete**. Some domains may only support a subset of these operations.
+
+| Domain category  | Example domains                                                  |
+| ---------------- | ---------------------------------------------------------------- |
+| **Core records** | Accounts, users, teams, customers, contacts                      |
+| **Products**     | Items, categories, units, unit groups, BOMs, production steps    |
+| **Sales**        | Sales orders, customer pricing, discount codes, volume discounts |
+| **Production**   | Production runs, batches, batch operations, scanning stations    |
+| **Inventory**    | Inventory, storage locations, lots, change logs                  |
+| **Purchasing**   | Suppliers, purchase orders, deliveries                           |
+| **Shipping**     | Shipments, packages, picking, packing                            |
+| **Financial**    | Invoices, payments, settlements, accounts receivable             |
+| **Settings**     | Roles, integrations, API keys, account settings                  |
+
+### Route access preview
+
+When editing a role, Augno shows a live preview of which dashboard pages the role grants access to. This helps you verify that a role provides the right level of access before assigning it.
+
+### Where roles are used
+
+Roles apply in two places:
+
+- **Team members**: assigned when <InternalLink pathKey="manageAccount.team.teamMembers" text="inviting or editing a user" />
+- **API keys**: assigned when <InternalLink pathKey="manageAccount.apiKeys" text="creating an API key" />, controlling which API endpoints the key can call
+
+Next: <InternalLink pathKey="manageAccount.integrations" text="Integrations" includeArrow />

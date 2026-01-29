@@ -1,0 +1,72 @@
+---
+title: Volume discounts
+subtitle: Automatically reduce pricing based on order quantity with tiered percentage discounts.
+route: /generate-sales/customer-pricing/volume-discounts
+nav:
+    title: Volume discounts
+    section: Generate sales
+    subsection: Customer pricing
+    order: 2
+---
+
+**Volume discounts** automatically reduce pricing based on order quantity, applying tiered percentage discounts above defined thresholds. They reward larger orders and incentivize bulk purchasing.
+
+### Why volume discounts matter
+
+- **Incentivize bulk orders**: automatically reduce prices as quantity increases
+- **Tiered flexibility**: define multiple threshold levels with increasing discounts
+- **Targeted application**: scope discounts by customer group, product line, category, and attributes
+
+### Core concepts
+
+#### Structure
+
+A volume discount consists of:
+
+- **Tiers**: one or more quantity thresholds, each with a discount percentage. For example: 100+ units = 5% off, 500+ units = 10% off, 1000+ units = 15% off
+- **Filters**: optional scoping that controls which products and customers qualify:
+    - **Customer groups**: linked to <InternalLink pathKey="generateSales.customerSetup.customerGroups" text="pricing groups" /> via group membership
+    - **Product lines**: which product lines the discount applies to
+    - **Categories**: which item categories qualify
+    - **Attributes**: which product attributes must match
+    - **Acceptable units**: which units of measure qualify for the quantity threshold
+
+#### AND logic
+
+All specified filters must match for the discount to apply. If a volume discount specifies a product line, categories, and attributes, the product must match **all three** to qualify.
+
+#### Applied through groups
+
+Volume discounts are linked to <InternalLink pathKey="generateSales.customerSetup.customerGroups" text="customer pricing groups" />. A <InternalLink pathKey="generateSales.customer.overview" text="customer" /> qualifies for a volume discount through their pricing group membership: not directly.
+
+#### Tier behavior
+
+When a customer qualifies, **all qualifying tiers are applied multiplicatively**. Each tier whose threshold is met contributes its discount, and the discounts compound. For example, if the 100+ tier (5%) and 500+ tier (10%) both qualify, the total multiplier is `(1 - 0.05) × (1 - 0.10) = 0.855`, resulting in a 14.5% total discount.
+
+### Example
+
+A volume discount named "Bulk Sock Pricing" might have:
+
+| Tier       | Threshold  | Discount |
+| ---------- | ---------- | -------- |
+| Standard   | 100 units  | 5%       |
+| Large      | 500 units  | 10%      |
+| Enterprise | 1000 units | 15%      |
+
+If a customer in the linked pricing group orders 750 units of a qualifying product, both the 100+ and 500+ tiers qualify. The total discount is calculated multiplicatively: `(1 - 0.05) × (1 - 0.10) = 0.855`, giving a **14.5% total discount**.
+
+### Pricing precedence
+
+Volume discounts apply **on top of** the resolved unit price:
+
+1. Base product price
+2. **Volume discount**: percentage reduction based on the qualifying tier
+3. <InternalLink pathKey="generateSales.customerPricing.discountCodes" text="Discount codes" /> -
+   additional order-level reduction
+
+### Where volume discounts are used
+
+- **<InternalLink pathKey="generateSales.customerSetup.customerGroups" text="Customer pricing groups" />**: discounts are linked to groups; customers qualify via group membership
+- **<InternalLink pathKey="generateSales.salesOrder.overview" text="Sales order" />**: applied automatically when order line quantities meet tier thresholds
+
+Next: <InternalLink pathKey="generateSales.customerPricing.discountCodes" text="Discount codes" includeArrow />

@@ -1,0 +1,107 @@
+---
+title: Materials
+subtitle: Raw materials and supplies you purchase from vendors for use in production.
+route: /build-products/items/materials
+nav:
+    title: Materials
+    section: Build products
+    subsection: Items
+    order: 2
+---
+
+Materials are items you purchase from vendors and consume in production. They carry fields beyond the standard <InternalLink pathKey="buildProducts.items.overview" text="item properties" />, plus supplier relationships that connect them to your purchasing workflow.
+
+### What a material is
+
+In addition to the base item fields (SKU, description, category, units, cost), materials have:
+
+| Field       | Purpose                                                                                                        |
+| ----------- | -------------------------------------------------------------------------------------------------------------- |
+| Order point | Minimum inventory threshold; signals when to reorder                                                           |
+| Lead time   | Typical delivery time after ordering (informational today; in the future, derived from purchase order history) |
+
+A material represents a _specification_, not a supplier's SKU. If three suppliers sell equivalent boxes, create one material and link it to multiple suppliers. This simplifies purchasing, quoting, and reporting.
+
+### Material categories
+
+Materials use their own category type: **material categories**: separate from the product categories used by parts and products.
+
+- A category defines the **unit group** (measurement system) for all materials in that category
+- Categories carry **properties** (e.g., "Fiber Content" on a Yarn category) with selectable **attributes** (e.g., "Cotton", "Polyester", "Wool")
+- Assigning a material to a category gives it access to that category's properties; you then set attribute values per material
+- Categories drive filtering, reporting, and organization across the materials list
+
+### Suppliers
+
+Materials are linked to vendors through **supplier-material** records. Only materials have supplier links: parts and products do not.
+
+- Each link stores the supplier's part number, description, and active status
+- One material can have multiple suppliers; one supplier can provide multiple materials
+- Supplier links power <InternalLink pathKey="buildProducts.purchasing.purchaseOrders" text="purchase order" /> line items and vendor comparison
+
+For more on managing vendors, see <InternalLink pathKey="buildProducts.purchasing.suppliers" text="suppliers" />.
+
+### How materials are used
+
+Materials flow through several workflows:
+
+- **<InternalLink pathKey="buildProducts.purchasing.purchaseOrders" text="Purchasing" />**: materials appear as line items on purchase orders
+- **<InternalLink pathKey="buildProducts.purchasing.deliveriesAndReceiving" text="Receiving" />**: received into inventory with quantity, unit cost, storage location, and lot number
+- **<InternalLink pathKey="buildProducts.bom.productionSteps" text="Production" />**: consumed as inputs in production steps; cost rolls up into part and product COGS
+- **<InternalLink pathKey="buildProducts.inventory.inventory" text="Inventory" />**: full tracking: receipts, issues, allocations, and available-to-promise
+- **<InternalLink pathKey="buildProducts.bom.costing" text="Costing" />**: unit cost feeds production cost calculations (material cost is one of three COGS components alongside labor and overhead)
+
+### Creating a material
+
+1. Navigate to **Materials → Create Material**
+2. Enter **SKU** (required)
+3. Select **category** (required): determines the unit group and available properties
+4. Optionally set: description, lead time, order point, unit cost
+5. Set attribute values for category properties
+6. Click **Create**
+
+**Bulk create**: upload an Excel file with columns for SKU, category, description, quantity, unit cost, lead time, and order point. The system creates new materials, updates existing ones (matched by SKU), and reports skipped rows with reasons.
+
+### Managing materials
+
+- **Card-based grid view** showing SKU, description, category, inventory level, burn rate, lead time, order point, and unit cost
+- **Inline editing** with auto-save
+- **Search** by SKU or description
+- **Filter** by category, date range, and attributes
+- **Export** to Excel
+- **QR code** generation per material
+- **Discontinue** (soft delete): the material remains in historical records but is no longer active
+
+### Tips
+
+- **Model the specification, not the supplier SKU.** If you buy the same 10"x12"x8" cardboard box from three suppliers, create one material (e.g., BOX-001) and link it to all three suppliers.
+- **Set order points based on lead time and burn rate** to avoid stockouts. If a material takes two weeks to arrive, your order point should cover at least two weeks of consumption.
+- **Use categories and properties consistently** for clean reporting and filtering across your materials list.
+
+### Related
+
+- <InternalLink pathKey="buildProducts.purchasing.suppliers" text="Suppliers" />: vendor management
+  and supplier-material links
+- <InternalLink pathKey="buildProducts.purchasing.purchaseOrders" text="Purchase orders" /> -
+  ordering materials from suppliers
+- <InternalLink pathKey="buildProducts.inventory.inventory" text="Inventory" />: tracking material
+  stock levels
+- <InternalLink pathKey="buildProducts.inventory.storageAndLots" text="Storage & lots" />: where
+  materials are stored and lot-level tracking
+- <InternalLink pathKey="buildProducts.inventory.reconciliation" text="Reconciliation" /> -
+  adjusting inventory counts
+- <InternalLink pathKey="buildProducts.bom.productionSteps" text="Production steps" />: where
+  materials are consumed
+- <InternalLink
+      pathKey="buildProducts.bom.consumptionsAndProductions"
+      text="Consumptions & productions"
+  />
+  : input/output definitions that reference materials
+- <InternalLink pathKey="buildProducts.items.overview" text="Items overview" />: shared item
+  concepts, units, and categories
+- <InternalLink pathKey="buildProducts.items.parts" text="Parts" />: intermediate items made from
+  materials
+- <InternalLink pathKey="buildProducts.items.products" text="Products" />: finished goods made from
+  materials and parts
+
+Next: <InternalLink pathKey="buildProducts.items.parts" text="Parts" includeArrow />

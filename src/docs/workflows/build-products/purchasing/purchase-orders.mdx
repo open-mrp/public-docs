@@ -1,0 +1,61 @@
+---
+title: Purchase Orders
+subtitle: Transaction records for buying materials from suppliers, tracking orders through delivery and fulfillment.
+route: /build-products/purchasing/purchase-orders
+nav:
+    title: Purchase Orders
+    section: Build products
+    subsection: Purchasing
+    order: 2
+---
+
+A **purchase order** (PO) is an order for buying <InternalLink pathKey="buildProducts.items.materials" text="materials" /> from a <InternalLink pathKey="buildProducts.purchasing.suppliers" text="supplier" />. It tracks what you ordered, what has been delivered, and what remains outstanding.
+
+### What a purchase order includes
+
+Each purchase order has:
+
+- **Supplier**: the vendor you're purchasing from
+- **Line items**: each line specifies a material, quantity ordered, and unit price
+- **Addresses**: bill-to and ship-to, defaulting from the supplier record
+- **Terms**: payment and delivery terms for this order
+- **Status**: where the PO is in its lifecycle
+
+### Purchase order lifecycle
+
+A PO moves through a defined set of statuses:
+
+1. **Quoted**: the PO is being drafted. Line items, quantities, and pricing can be edited freely.
+2. **Ordered**: the PO has been sent to the supplier. Issuing triggers an acknowledgment email to the vendor.
+3. **Fulfilled**: all line items have been fully received.
+
+**Status actions:**
+
+- **Issue**: moves from Quoted to Ordered and sends the supplier an acknowledgment email
+- **Unissue**: reverts an issued PO back to Quoted (before any deliveries)
+- **Close**: manually closes the PO at any point
+- **Open**: reopens a closed PO
+
+### Line item tracking
+
+Each line item tracks quantities separately:
+
+- **Quantity Ordered**: what you requested from the supplier
+- **Quantity Received**: what has been physically received so far
+- **Completion Rate**: percentage of the ordered quantity that's been received
+
+Cost calculations on each line:
+
+- **Total Ordered**: quantityOrdered x unitPrice
+- **Total Received**: quantityReceived x unitPrice
+- **Total Yet to be Received**: the remaining cost of undelivered items
+
+These totals roll up to the PO level for an at-a-glance view of spend and outstanding commitments.
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.purchasing.suppliers" text="Suppliers" />**: every PO is linked to a supplier
+- **<InternalLink pathKey="buildProducts.purchasing.deliveriesAndReceiving" text="Deliveries & receiving" />**: deliveries are created against PO line items to record what arrived
+- **<InternalLink pathKey="buildProducts.inventory.inventory" text="Inventory" />**: stocking a delivery creates inventory receipts that update on-hand quantities
+
+Next: <InternalLink pathKey="buildProducts.purchasing.deliveriesAndReceiving" text="Deliveries and receiving" includeArrow />

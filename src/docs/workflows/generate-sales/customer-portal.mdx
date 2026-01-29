@@ -1,0 +1,159 @@
+---
+title: Customer portal
+subtitle: A branded, self-service portal where your customers register, place orders, submit payments, and track inventory.
+route: /generate-sales/customer-portal
+nav:
+    title: Customer portal
+    section: Generate sales
+    order: 7
+---
+
+The **customer portal** is a branded, self-service storefront that gives your customers direct access to your business. Each portal lives at a unique URL based on your **account slug**, carries your company logo and branding, and lets customers register, place orders, pay, and monitor their account without involving your internal team.
+
+### Why the customer portal matters
+
+- **Self-service ordering**: customers browse products, build orders with the correct pricing already applied, and submit them on their own schedule
+- **Branded experience**: the portal carries your logo and account identity, so customers interact with your brand rather than a generic interface
+- **Payment collection**: customers pay directly through the portal via Stripe, reducing manual invoicing and accelerating cash flow
+- **Operational visibility**: customers can review order history, download pro-forma documents, and see inventory you are holding for them
+
+### Account slug and branding
+
+Every portal URL is built from your **account slug**, a short, unique identifier for your Augno account. The slug determines the base URL for all customer-facing pages:
+
+- **Login**: `/<account-slug>/auth/login`
+- **Register**: `/<account-slug>/auth/register`
+- **Dashboard**: `/<account-slug>/dashboard`
+
+The portal displays your company logo throughout the experience. If no logo is configured, the default Augno branding is used. This means every customer touchpoint (login, registration, ordering, account management) feels like an extension of your own website.
+
+### Registration
+
+Customers access the portal by registering through one of two paths, both available from the same registration page.
+
+#### Existing customers
+
+If a customer already has a record in your system, they can link their portal account to it:
+
+1. Create a user account (email and password)
+2. Enter their **customer number** (found on invoices or order confirmations)
+3. Submit the form to link their user to the existing customer record
+
+This connects the portal user to all existing pricing, terms, and order history already configured for that customer.
+
+#### New customers
+
+New customers go through a three-step registration:
+
+1. **Customer details**: company name, <InternalLink pathKey="generateSales.customerSetup.customerGroups" text="customer group" />, <InternalLink pathKey="generateSales.customerSetup.shippingTerms" text="shipping terms" />, and <InternalLink pathKey="generateSales.customerSetup.paymentTerms" text="payment terms" />
+2. **Billing address**: full address with search-assisted entry
+3. **Contact information**: phone number
+
+When only one option exists for a field (e.g., a single customer group), it is selected automatically so the customer does not need to make unnecessary choices.
+
+#### Registration flows
+
+You configure what customers see during registration through **customer registration flows** in your dashboard. Registration flows control which customer groups, shipping terms, and payment terms are available to new customers signing up through the portal. This lets you tailor the registration experience: for example, offering only prepaid payment terms to portal customers while reserving net terms for customers you set up internally.
+
+#### Discount codes at registration
+
+A **discount code** can be passed to the portal as a URL parameter. When present, the code follows the customer through registration and is automatically applied to their first order, making it easy to run promotions or onboard new customers with an introductory offer.
+
+### Placing orders
+
+Once registered, customers create <InternalLink pathKey="generateSales.salesOrder.overview" text="sales orders" /> through a guided, multi-step flow.
+
+#### Order creation steps
+
+1. **Customer details**: enter a PO number, confirm the carrier and service level. Payment terms and shipping terms are pre-filled from the customer's defaults and displayed as read-only.
+2. **Billing address**: confirm or update the billing address.
+3. **Shipping address**: select a previously used address, enter a new one, or match it to the billing address.
+4. **Products**: search for products by SKU, quick-add from a **frequently ordered products** list grouped by product line, or bulk upload via Excel or CSV.
+5. **Review order**: verify line items, quantities, addresses, shipping cost, and order total. Apply or remove a <InternalLink pathKey="generateSales.customerPricing.discountCodes" text="discount code" /> before submitting.
+
+#### Pricing
+
+Products in the portal are priced using the same pricing stack as internal orders:
+
+1. **Base product price**: the product's default sell price
+2. **<InternalLink pathKey="generateSales.customerPricing.customerPrices" text="Customer prices" />**: product-line-specific pricing that overrides the base price when a matching customer price exists
+3. **<InternalLink pathKey="generateSales.customerPricing.volumeDiscounts" text="Volume discounts" />**: tiered percentage discounts based on order quantity
+4. **<InternalLink pathKey="generateSales.customerPricing.discountCodes" text="Discount codes" />**: order-level percentage or fixed-amount reductions
+
+Customers always see the correct resolved price for their account. There is no need for manual price entry or negotiation through the portal.
+
+#### Bulk product upload
+
+For customers ordering many SKUs at once, the portal supports uploading an Excel or CSV file with columns for SKU, quantity, and unit. A downloadable template is available to ensure the correct format.
+
+### Payments
+
+When your account has Stripe connected, customers are routed to a checkout page immediately after placing an order. The checkout experience includes:
+
+- **Payment method selection**: card entry via Stripe's secure payment form
+- **Save payment method**: option to store a card for future orders
+- **Order summary**: order number, total amount, and quantity displayed alongside the payment form
+
+If Stripe is not connected, orders are submitted without an immediate payment step and follow your standard invoicing workflow.
+
+### Order history
+
+The **Sales Orders** page gives customers a complete view of their orders with:
+
+- **Status tabs**: filter by All, Pending, Processing, or Fulfilled
+- **Search**: find orders by keyword
+- **Pagination**: navigate through large order sets
+- **Order detail**: click into any order to see full line items, addresses, terms, and status
+
+| Status         | What it means                             |
+| -------------- | ----------------------------------------- |
+| **Pending**    | Order is an estimate, not yet issued      |
+| **Processing** | Order has been issued and is being worked |
+| **Fulfilled**  | Order has been completed                  |
+
+### Pro-forma documents
+
+Customers can print or download a pro-forma document from any order's detail or checkout page. The portal uses a print-friendly layout that outputs a formatted order confirmation suitable for internal approvals, records, or advance payment processing.
+
+### Inventory
+
+The **Inventory** page shows any inventory you are holding on behalf of the customer. The table displays:
+
+| Column                 | What it shows                          |
+| ---------------------- | -------------------------------------- |
+| **SKU**                | Product identifier                     |
+| **Lot Number**         | Batch or lot reference                 |
+| **Owner Account**      | Who owns the inventory                 |
+| **Holder Account**     | Where the inventory is physically held |
+| **Remaining Quantity** | How much is left, with unit of measure |
+
+Customers can search, filter, and export this data for their own planning.
+
+### Account management
+
+The **Account** page lets customers manage their profile:
+
+- **General**: update name and email address
+- **Security**: change password with validation requirements (minimum 8 characters, mixed case, digit, and special character)
+
+### Portal navigation
+
+The customer dashboard is organized into three sections:
+
+| Section       | Pages        |
+| ------------- | ------------ |
+| **Sales**     | Sales Orders |
+| **Inventory** | Inventory    |
+| **General**   | Account      |
+
+The dashboard home page provides quick-access cards for viewing order history, creating a new order, and managing account settings.
+
+### Where the customer portal connects
+
+- **<InternalLink pathKey="generateSales.customer.overview" text="Customers" />**: portal users are linked to customer records, inheriting all defaults and pricing
+- **<InternalLink pathKey="generateSales.customerPricing.customerPrices" text="Customer prices" />** and **<InternalLink pathKey="generateSales.customerPricing.volumeDiscounts" text="volume discounts" />**: applied automatically when customers add products to orders
+- **<InternalLink pathKey="generateSales.customerPricing.discountCodes" text="Discount codes" />**: redeemable during order review
+- **<InternalLink pathKey="generateSales.salesOrder.overview" text="Sales orders" />**: portal orders follow the same lifecycle as internally created orders
+- **<InternalLink pathKey="generateSales.customerSetup.paymentTerms" text="Payment terms" />** and **<InternalLink pathKey="generateSales.customerSetup.shippingTerms" text="shipping terms" />**: defaults from the customer record are applied to portal orders
+
+Next: <InternalLink pathKey="shipProducts.overview" text="Ship Products" includeArrow />

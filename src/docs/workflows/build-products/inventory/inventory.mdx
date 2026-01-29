@@ -1,0 +1,70 @@
+---
+title: Inventory Overview
+subtitle: Real-time visibility into every unit of material, part, and product - what you have, where it is, and what it costs.
+route: /build-products/inventory/inventory
+nav:
+    title: Inventory Overview
+    section: Build products
+    subsection: Inventory
+    order: 1
+---
+
+**Inventory** in Augno tracks every unit of material, part, and product through receipts, issues, and allocations: providing real-time visibility into what you have, where it is, and what it costs.
+
+### Core model
+
+Inventory is built on three interlocking records:
+
+**Inventory receipts (stock in)**
+
+Created when materials are stocked from <InternalLink pathKey="buildProducts.purchasing.deliveriesAndReceiving" text="receiving" /> or when <InternalLink pathKey="buildProducts.production.batches" text="batches" /> complete production. Each receipt records:
+
+- **Item**: the material, part, or product
+- **Quantity**: how many units were received
+- **Unit cost**: the cost per unit at the time of receipt
+- **Storage location**: where the inventory is physically stored
+- **Lot**: the lot number for traceability
+- **Received At**: when the receipt was created
+- **Status**: `available` (ready for use) or `allocated` (reserved for demand)
+
+**Inventory issues (stock out)**
+
+Created when inventory is consumed: production consumption, order fulfillment, or manual adjustments. Each issue records:
+
+- **Item**: what's being consumed
+- **Quantity**: how many units are needed
+- **Status**: `open` (demand exists but not yet fulfilled), `reserved` (allocated to a receipt), or `closed` (fulfilled)
+
+**Inventory allocations (the bridge)**
+
+An allocation links a specific receipt to a specific issue with:
+
+- **Quantity**: how many units from this receipt satisfy this issue
+- **Unit cost**: the cost per unit for this allocation
+- **Total cost**: quantity x unit cost
+
+Allocations are the bridge between supply and demand: they connect the physical inventory (receipts) with the operational needs (issues).
+
+### Available-to-promise
+
+The system calculates **available-to-promise (ATP)** for each item:
+
+```text
+ATP = receipts(available) - issues(open + reserved)
+```
+
+This tells you how much inventory is genuinely available for new demand, accounting for everything already committed.
+
+### Burn rate
+
+Each item stores a **burn rate**: the rate at which the item is consumed over time. This metric helps with reorder planning and capacity forecasting.
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.inventory.storageAndLots" text="Storage locations & lots" />**: where inventory is physically stored and how it's traced
+- **<InternalLink pathKey="buildProducts.inventory.changeLogs" text="Change logs" />**: audit trail of every inventory movement
+- **<InternalLink pathKey="buildProducts.inventory.reconciliation" text="Reconciliation & bulk updates" />**: correcting counts when physical and system diverge
+- **<InternalLink pathKey="buildProducts.purchasing.deliveriesAndReceiving" text="Deliveries & receiving" />**: receipts from purchasing
+- **<InternalLink pathKey="buildProducts.production.batches" text="Batches" />**: receipts and issues from production
+
+Next: <InternalLink pathKey="buildProducts.inventory.storageAndLots" text="Storage and lots" includeArrow />

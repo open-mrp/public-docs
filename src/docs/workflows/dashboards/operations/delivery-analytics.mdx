@@ -1,0 +1,72 @@
+---
+title: Delivery analytics
+subtitle: Track on-time delivery rates, average delivery time, and time to first shipment with period-over-period comparison.
+route: /dashboards/operations/delivery-analytics
+nav:
+    title: Delivery analytics
+    section: Dashboards
+    subsection: Operations
+    order: 1
+---
+
+The **delivery analytics** dashboard measures how well your fulfillment operation meets delivery commitments. It tracks on-time delivery percentages, average delivery time, and time to first shipment, with optional period-over-period comparison to surface trends.
+
+### Why delivery analytics matters
+
+- **On-time performance**: measure the percentage of orders completed within the promised delivery date against a 90% target
+- **Delivery speed**: track average delivery time and spot whether it is improving or deteriorating
+- **First shipment responsiveness**: see how quickly the first shipment leaves after an order is placed
+- **Period comparison**: compare current performance against a prior period to identify trends
+
+### What you'll see
+
+#### Performance overview
+
+Four summary metrics displayed at the top of the page, each with a comparison indicator showing the change from the prior period:
+
+| Metric                         | What it shows                                              |
+| ------------------------------ | ---------------------------------------------------------- |
+| **On-time delivery %**         | Percentage of orders delivered within the promised date    |
+| **Avg delivery time**          | Average number of days from order to delivery              |
+| **On-time first shipment %**   | Percentage of orders where the first shipment left on time |
+| **Avg time to first shipment** | Average number of days from order to first shipment        |
+
+#### Delivery statistics
+
+A detail card showing:
+
+- Total orders in the period
+- Orders with a promise date (count and percentage)
+- Orders partially fulfilled within the promise date (count and percentage)
+- Orders completed within the promise date (count and percentage)
+
+#### On-time delivery percentage chart
+
+A dual-axis line chart comparing on-time delivery rates between the current and comparison periods. A horizontal reference line marks the 90% target.
+
+#### Average delivery time chart
+
+A line chart showing average delivery time over the selected period, formatted in days, hours, and minutes.
+
+#### Average time to first shipment chart
+
+A line chart tracking how quickly the first shipment leaves after an order is placed.
+
+### Filters
+
+| Field                     | What it does                                                                                     |
+| ------------------------- | ------------------------------------------------------------------------------------------------ |
+| **Date range**            | Sets the current analysis period                                                                 |
+| **Enable comparison**     | Toggles the comparison period on or off                                                          |
+| **Comparison date range** | Sets the period to compare against (defaults to the prior year)                                  |
+| **Customers**             | Limits data to selected customers                                                                |
+| **Customer groups**       | Limits data to selected customer groups                                                          |
+| **Product lines**         | Limits data to selected product lines                                                            |
+| **Sales reps**            | Limits data to selected sales reps                                                               |
+| **Target delivery time**  | Sets a target delivery window in days (0 to 365) and optionally overrides missing promised dates |
+
+### Role-based visibility
+
+Sales reps see all delivery metrics but the **Sales reps** filter is hidden. Non-sales-rep users can filter delivery data by specific sales reps.
+
+Next: <InternalLink pathKey="dashboards.operations.manufacturingAnalytics" text="Manufacturing analytics" includeArrow />

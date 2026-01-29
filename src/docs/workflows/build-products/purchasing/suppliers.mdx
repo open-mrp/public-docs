@@ -1,0 +1,46 @@
+---
+title: Suppliers
+subtitle: Vendors you purchase materials from, defining the source for your raw material procurement.
+route: /build-products/purchasing/suppliers
+nav:
+    title: Suppliers
+    section: Build products
+    subsection: Purchasing
+    order: 1
+---
+
+A **supplier** is a vendor you purchase <InternalLink pathKey="buildProducts.items.materials" text="materials" /> from. Supplier records store the identity and contact information you need to place and track <InternalLink pathKey="buildProducts.purchasing.purchaseOrders" text="purchase orders" />.
+
+### What a supplier includes
+
+Each supplier record has:
+
+- **Name**: the vendor's business name
+- **Number**: a unique identifier for internal reference
+- **Note**: free-text field for any relevant details about the vendor
+- **Addresses**: bill-to and ship-to addresses used on purchase orders
+- **Material count**: the number of materials this supplier provides
+
+### Supplier materials
+
+A supplier doesn't just exist on its own: it's linked to the specific materials it can provide. The **supplier material** relationship is a junction that connects a supplier to one or more materials they sell.
+
+This link is used when:
+
+- **Creating purchase orders**: you select a supplier, and only their linked materials appear as line-item options
+- **Comparing vendors**: you can see which suppliers carry a given material and compare pricing
+- **Reporting**: filter purchasing history by supplier to understand spend distribution
+
+### Where suppliers are used
+
+- **<InternalLink pathKey="buildProducts.purchasing.purchaseOrders" text="Purchase orders" />**: every PO is issued to a specific supplier
+- **<InternalLink pathKey="buildProducts.items.materials" text="Material records" />**: each material can list the suppliers that provide it
+- **<InternalLink pathKey="buildProducts.purchasing.deliveriesAndReceiving" text="Receiving" />**: deliveries reference the supplier through the parent purchase order
+
+### Tips for managing suppliers
+
+- **Keep supplier numbers consistent**: use a standard numbering scheme so your team can reference suppliers quickly. We auto-create supplier numbers for you, but you can change them to match any scheme you like.
+- **Maintain accurate addresses**: bill-to and ship-to addresses flow onto purchase orders and receiving documents.
+- **Link all relevant materials**: if a supplier carries a material you haven't linked yet, add it so purchase orders reflect the full catalog.
+
+Next: <InternalLink pathKey="buildProducts.purchasing.purchaseOrders" text="Purchase orders" includeArrow />

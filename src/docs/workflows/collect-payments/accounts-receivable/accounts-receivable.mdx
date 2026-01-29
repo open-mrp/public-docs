@@ -1,0 +1,76 @@
+---
+title: Accounts receivable
+subtitle: Track what customers owe, how long balances have been outstanding, and take action to collect.
+route: /collect-payments/accounts-receivable/overview
+nav:
+    title: Accounts receivable
+    section: Collect payments
+    order: 3
+---
+
+**Accounts receivable** gives you visibility into what customers owe, how long balances have been outstanding, and the tools to collect. It ties together <InternalLink pathKey="collectPayments.invoicing.overview" text="invoicing" /> and <InternalLink pathKey="collectPayments.collecting.overview" text="collecting" /> into a single view of your open balances.
+
+### AR dashboard
+
+The main accounts receivable page shows all customers with outstanding balances. Each customer row displays the total amount owed broken down by aging buckets, giving you a quick picture of where collections stand across your entire customer base.
+
+### Aging buckets
+
+Outstanding invoices are grouped into aging buckets based on how many days have passed since the invoice date:
+
+| Bucket       | Days outstanding |
+| ------------ | ---------------- |
+| **Current**  | 0 – 30 days      |
+| **Over 30**  | 31 – 60 days     |
+| **Over 60**  | 61 – 90 days     |
+| **Over 90**  | 91 – 120 days    |
+| **Over 120** | 121+ days        |
+
+Aging is calculated from the invoice date, not the due date.
+
+### Customer-specific AR
+
+Drill into a single customer to see their individual unpaid invoices with an aging breakdown. The customer view also shows open credits (unallocated transaction amounts) and totals, giving you a complete picture of that customer's receivable position.
+
+### Effective date
+
+The AR dashboard supports an **effective date** picker that lets you view aging as of a specific historical date. This is useful for month-end reporting or investigating what balances looked like at a particular point in time.
+
+### Emailing statements
+
+Send a **Statement of Account** email to customers containing an Excel attachment with all unpaid invoices and their aging breakdown. You can specify multiple recipient email addresses when sending a statement, making it easy to notify both the customer's AP team and your internal contacts.
+
+### Exporting data
+
+Accounts receivable data can be exported in two formats:
+
+- **Aging report (Excel)**: a summary by customer showing balances in each aging bucket
+- **Invoice data (CSV)**: raw invoice-level data for further analysis or import into other systems
+
+### Credit hold
+
+When a customer's balance becomes a concern, you can place them on **credit hold** to prevent further orders or shipments until the situation is resolved. There are two hold types:
+
+- **Hold All**: blocks both order issuance and shipment
+- **Hold Shipment**: blocks shipment only, allowing orders to still be entered
+
+Credit hold is set manually on the customer record and takes effect immediately on all in-progress orders.
+
+<InternalLink
+    pathKey="generateSales.customerSetup.accountStatuses"
+    text="Learn about account statuses"
+/>
+
+### Collection tools summary
+
+Augno provides several tools to help manage and collect outstanding balances:
+
+- Email statements to customers with aging breakdowns
+- Email individual invoices as PDF attachments
+- Mark invoices as paid through settlements
+- Settle payments, credits, adjustments, and rebates to invoices
+- Put customers on credit hold to block orders or shipments
+- Export aging data for reporting and analysis
+- Track open credits for future allocation
+
+Next: <InternalLink pathKey="collectPayments.collecting.overview" text="Collecting" includeArrow />

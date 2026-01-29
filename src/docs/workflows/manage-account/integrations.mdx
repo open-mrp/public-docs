@@ -1,0 +1,75 @@
+---
+title: Integrations
+subtitle: Connect third-party services like Stripe and Shippo to your Augno account.
+route: /manage-account/integrations
+nav:
+    title: Integrations
+    section: Manage your account
+    order: 6
+---
+
+**Integrations** connect your Augno account to third-party services that extend your workflow. Configure integrations from the **Integrations** tab in <InternalLink pathKey="frontend.integrations" text="account settings" />. Only admins can manage integrations.
+
+### Why integrations matter
+
+- **Payments**: connect Stripe to accept payments, sync invoices, and manage subscriptions
+- **Shipping**: connect Shippo to generate shipping labels and get live carrier rates
+- **Automation**: once connected, integrations work automatically within your existing workflows
+
+### Stripe integration
+
+Stripe handles payment processing for invoices and subscriptions. To connect Stripe:
+
+1. Navigate to the **Integrations** tab
+2. Select **Stripe**
+3. Enter your credentials:
+    - **Publishable key**: your Stripe publishable API key
+    - **Secret key**: your Stripe secret API key
+    - **Webhook secret**: your Stripe webhook signing secret for verifying incoming events
+4. Save and enable the integration
+
+#### Stripe webhook setup
+
+Augno uses a Stripe webhook to receive real-time payment updates. In your [Stripe Dashboard webhook settings](https://dashboard.stripe.com/webhooks), create a webhook endpoint pointing to:
+
+```http
+https://api-legacy.augno.com/webhooks/stripe/YOUR_ACCOUNT_ID
+```
+
+Subscribe the webhook to the following events:
+
+- `payment_intent.succeeded`
+- `payment_intent.payment_failed`
+- `payment_intent.canceled`
+
+After creating the webhook in Stripe, copy the **webhook signing secret** (starts with `whsec_`) and enter it in the Augno integration settings. Augno uses this secret to verify that incoming events are genuinely from Stripe.
+
+### Shippo integration
+
+Shippo provides shipping label generation and carrier rate comparison. To connect Shippo:
+
+1. Navigate to the **Integrations** tab
+2. Select **Shippo**
+3. Enter your **Shippo API key**
+4. Save and enable the integration
+
+Once connected, you can generate shipping labels and retrieve live rates during the <InternalLink pathKey="shipProducts.overview" text="shipping workflow" />.
+
+### Managing integrations
+
+Each integration supports these management actions:
+
+- **Naming**: give the integration a descriptive label to identify it
+- **Editing credentials**: update API keys or secrets when you rotate them on the provider side
+- **Toggling active/inactive**: temporarily disable an integration without removing its credentials
+- **Deleting**: permanently remove an integration and its stored credentials
+
+### Integration status
+
+| Status             | Meaning                                            |
+| ------------------ | -------------------------------------------------- |
+| **Active**         | Integration is connected and processing            |
+| **Inactive**       | Integration is configured but temporarily disabled |
+| **Not configured** | No credentials have been entered                   |
+
+Next: <InternalLink pathKey="manageAccount.apiKeys" text="API keys" includeArrow />

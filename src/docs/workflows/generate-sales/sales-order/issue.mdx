@@ -1,0 +1,63 @@
+---
+title: Issue a sales order
+subtitle: Learn how to issue a sales order in Augno.
+route: /generate-sales/sales-order/issue
+nav:
+    title: Issue a sales order
+    section: Generate sales
+    subsection: Sales order
+    order: 4
+---
+
+To issue a sales order in Augno, you need to have <InternalLink pathKey="generateSales.salesOrder.create" text="created a sales order estimate" />.
+
+### What is issuing a sales order?
+
+In Augno, **issuing a sales order** means moving it from a draft/estimate state into an active fulfillment state.
+When you issue, Augno allocates inventory for the order. If Augno does not currently show enough inventory, the order can still be issued.
+This avoids blocking operations when real-world inventory and Augno inventory are temporarily out of sync, and it supports partial shipments immediately.
+
+### What happens when you click **Issue**?
+
+- changes order status to **Issued** and sets the **Issued At** timestamp for traceability.
+- creates a **Pick** for warehouse work
+- creates and reserves **inventory issues** for the order quantities
+- optionally sends an **order acknowledgement email** (if you set acknowledgement email in the <InternalLink pathKey="generateSales.salesOrder.create" text="sales order" /> or the <InternalLink pathKey="generateSales.customer.overview" text="customer" />)
+
+So practically, **”Issue”** means to _commit this order to operations_ (start picking & inventory allocation).
+
+### What issuing does _not_ do
+
+Issuing a sales order does **not** automatically create a <InternalLink pathKey="generateSales.salesOrder.generateProductionRun" text="Production Run" />.
+Production run generation must be done while the order is still in Estimate.
+Production Run generation is a separate action in Augno.
+
+### Before you issue (recommended checks)
+
+- confirm the correct customer and shipping destination
+- review line quantities and pricing
+- confirm payment and shipping terms
+- verify acknowledgement/invoice contacts if you plan to send email
+- if terms are prepaid, collect payment before issuing
+
+### Related behavior
+
+- If customer payment terms are **Prepaid**, the UI warns you to collect payment before issuing.
+- If a customer is on credit hold, issuing is blocked until hold is removed.
+
+### Unissuing a sales order
+
+**Unissue** reverses issue behavior:
+
+- the order status returns to **Estimate** and the **Issued At** timestamp is cleared
+- the associated pick is removed
+- the reserved inventory is released
+
+### Next steps
+
+- <InternalLink
+      pathKey="generateSales.salesOrder.generateProductionRun"
+      text="Learn when to generate a production run from a sales order"
+  />
+
+Next: <InternalLink pathKey="generateSales.salesTeam.territories" text="Territories" includeArrow />

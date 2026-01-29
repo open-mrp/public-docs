@@ -1,0 +1,90 @@
+---
+title: Request Logs
+subtitle: Monitor and debug your API activity with request logs.
+route: /api/request-logs
+nav:
+    title: Request logs
+    section: API
+    subsection: Monitoring
+    order: 1
+---
+
+Every API request made to Augno is automatically logged and available for inspection. Request logs are useful for debugging failed requests, monitoring API usage patterns, and auditing access across your organization.
+
+## What gets logged
+
+Each request log captures:
+
+- **HTTP method, host, and path** — The full details of the request endpoint.
+- **Status code** — The HTTP response status (e.g., `200`, `400`, `404`, `500`).
+- **Latency** — How long the request took to process, in microseconds.
+- **Request and response bodies** — The JSON payloads sent and received, up to 256 KB each. Bodies larger than 256 KB are truncated. Security-sensitive endpoints (such as API key creation) skip body capture entirely.
+- **Query parameters** — Any query string parameters included in the request.
+- **Actor information** — Who made the request: a user (with name and email) or an API key (with redacted key value), along with their assigned role.
+- **Account** — The account targeted by the request.
+- **Client IP and user agent** — Network and client details for the caller.
+- **Idempotency key** — The idempotency key value, if one was provided. See <InternalLink pathKey="api.idempotency" text="Idempotency" /> for details.
+- **Error details** — The error code and message, if the request resulted in an error.
+
+## Viewing request logs in the Dashboard
+
+You can browse request logs directly in the <DocLink pathKey="frontend.requestLogs">Augno Dashboard</DocLink>.
+
+### List view
+
+Request logs are displayed in a table grouped by date — **Today**, **Yesterday**, or a specific date. Each row shows:
+
+- The **status code**, color-coded by category (green for 2xx, yellow for 3xx, red for 4xx/5xx)
+- The **HTTP method** (GET, POST, PUT, DELETE, etc.)
+- The **request path**
+- The **timestamp** of when the request occurred
+
+Results are paginated with 50 logs per page using cursor-based pagination.
+
+### Filtering
+
+Use the filter controls to narrow down the log list:
+
+- **HTTP method** — Filter by a specific method (GET, POST, PUT, DELETE, PATCH).
+- **Status code range** — Filter by response category: 2xx, 3xx, 4xx, or 5xx.
+- **Actor type** — Show requests made by a specific actor type: User or API Key.
+- **Date range** — Specify a start and end date to scope results.
+- **Actor name search** — Search for requests made by a specific user or API key name.
+
+### Detail view
+
+Click any row to open the full request log detail. This view displays:
+
+- **Status code**, **request ID**, and **timestamp**
+- **Host**, **path**, and **normalized route**
+- **Latency** in milliseconds
+- **Client IP**, **API version**, and **user agent**
+- **Actor** details (name, email, or redacted API key value) and **account**
+- **Idempotency key**, if provided
+- **Error code** and **error message**, if applicable
+
+Below the property list, the detail view shows formatted JSON for:
+
+- **Request body** — The JSON payload sent in the request
+- **Query parameters** — Query string parameters as JSON
+- **Response body** — The JSON payload returned in the response
+
+## Retrieving request logs via the API
+
+You can also fetch request logs programmatically using the API. Here's an example that lists recent request logs:
+
+```bash
+curl https://api.augno.io/v1/core/request-logs \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+For filtering options and response details, see the <InternalLink pathKey="apiReference.requestLogManagement" text="Request Log Management API reference" />.
+
+## Debugging with request logs
+
+Request logs are a powerful debugging tool. Here are some practical tips:
+
+- **Find errors quickly** — Filter by 4xx or 5xx status codes to surface failed requests and inspect their error codes and messages.
+- **Cross-reference request IDs** — Every API response includes a `Request-ID` header. Use this ID to locate the corresponding request log. See <InternalLink pathKey="api.requestIds" text="Request IDs" /> for more.
+- **Verify API key usage** — Filter by actor type "API Key" to see which API keys are being used and what endpoints they're calling. See <InternalLink pathKey="api.managingApiKeys" text="Managing API keys" /> for best practices on key management.
+- **Inspect request and response payloads** — Open the detail view to see the exact JSON bodies sent and received, which is helpful for diagnosing malformed requests or unexpected responses.

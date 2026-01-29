@@ -1,0 +1,65 @@
+---
+title: Commission & freight exemption
+subtitle: Exclude customers or customer groups from commission calculations and freight charges.
+route: /generate-sales/customer-setup/exemptions
+nav:
+    title: Commission & freight exemption
+    section: Generate sales
+    subsection: Customer setup
+    order: 6
+---
+
+**Commission and freight exemptions** let you exclude <InternalLink pathKey="generateSales.customer.overview" text="customers" /> or <InternalLink pathKey="generateSales.customerSetup.customerGroups" text="customer groups" /> from commission calculations and freight charges. The two exemptions are independent: a customer can be exempt from one, both, or neither.
+
+### Why exemptions matter
+
+- **Control commission payouts**: exclude internal accounts or special arrangements from commission
+- **Offer free shipping**: waive freight charges for specific customers or entire segments
+- **Manage at scale**: set exemptions at the group level and let them cascade to all members
+
+### Two independent flags
+
+| Flag                     | Normal value       | Exempt value      | Effect when exempt                 |
+| ------------------------ | ------------------ | ----------------- | ---------------------------------- |
+| **Commission exemption** | Commission applied | Commission exempt | No commission calculated on orders |
+| **Freight exemption**    | Billed freight     | Free freight      | No freight charges on orders       |
+
+### Three levels
+
+Exemptions can be set at three levels:
+
+- **<InternalLink pathKey="generateSales.customerSetup.customerGroups" text="Customer group" />**: applies to all customers in the group (both type groups and pricing groups carry these flags)
+- **Individual <InternalLink pathKey="generateSales.customer.overview" text="customer" />**: applies to that specific customer
+- **Product line**: applies per line item depending on what is ordered — for example, a product line can be marked commission exempt or freight exempt so that any item in that line carries the exemption regardless of customer settings
+
+### Cascading OR logic
+
+When determining whether a customer is exempt, Augno checks the customer **and** all of their groups. If **either** the customer **or any** of their groups is exempt, the customer is treated as exempt.
+
+For example:
+
+- Customer is `commission_applied`, but belongs to a group that is `commission_exempt` → **exempt**
+- Customer is `commission_exempt`, but all groups are `commission_applied` → **exempt**
+- Customer is `commission_applied` and all groups are `commission_applied` → **not exempt**
+
+The same OR logic applies to freight exemption independently.
+
+Product line exemptions work at the line-item level rather than the order level. Even if a customer is not exempt, individual line items can be exempt based on their product line. This means a single order can contain a mix of exempt and non-exempt lines depending on the products ordered.
+
+### Commission and sales rep interaction
+
+Marking a customer as commission exempt clears their <InternalLink pathKey="generateSales.customerSetup.defaultSalesReps" text="default sales rep" />, since commission is no longer calculated. If the exemption is later removed, the sales rep must be reassigned manually.
+
+### Practical examples
+
+- **Wholesale group with free freight**: Set `free_freight` on a pricing group. All customers in that group automatically receive free shipping.
+- **Internal customer exempt from commission**: Set `commission_exempt` directly on the customer record. No commission is calculated regardless of group membership.
+- **Preferred tier with both exemptions**: Set both flags on a pricing group. Members get free freight and no commission impact.
+
+### Where exemptions are used
+
+- **<InternalLink pathKey="generateSales.customerSetup.customerGroups" text="Customer groups" />**: set at the group level, cascades to members
+- **<InternalLink pathKey="generateSales.customer.overview" text="Customer" />**: set directly on the customer record
+- **<InternalLink pathKey="generateSales.salesOrder.overview" text="Sales orders" />**: exemption status affects freight and commission calculations at order time
+
+Next: <InternalLink pathKey="generateSales.customerSetup.defaultSalesReps" text="Default sales reps" includeArrow />

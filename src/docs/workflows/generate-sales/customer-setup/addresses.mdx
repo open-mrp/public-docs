@@ -1,0 +1,64 @@
+---
+title: Addresses
+subtitle: Billing and shipping locations for customers, used on orders, invoices, and shipments.
+route: /generate-sales/customer-setup/addresses
+nav:
+    title: Addresses
+    section: Generate sales
+    subsection: Customer setup
+    order: 9
+---
+
+**Addresses** define the billing and shipping locations for a <InternalLink pathKey="generateSales.customer.overview" text="customer" />, providing the physical destinations used on <InternalLink pathKey="generateSales.salesOrder.overview" text="orders" />, invoices, and shipments.
+
+### Why addresses matter
+
+- **Accurate fulfillment**: ship-to addresses ensure packages reach the right destination
+- **Correct invoicing**: bill-to addresses appear on invoices and financial documents
+- **Drop-ship support**: third-party delivery destinations can be flagged and managed separately
+
+### Address structure
+
+Every address includes:
+
+- **Name**: a label for the address (e.g., "Headquarters", "Warehouse B")
+- **Phone** and **email**: optional contact information for the location
+- **Drop-ship flag**: marks the address as a third-party delivery destination
+- **Geolocation**: the physical address components:
+    - Street line 1 and line 2
+    - City, state, postal code, country
+
+### Customer addresses
+
+Each customer has three categories of addresses:
+
+#### Default billing address (bill-to)
+
+The primary address used on invoices and financial documents. Every customer must have a bill-to address with at least a name and country.
+
+#### Default shipping address (ship-to)
+
+The primary delivery destination. This is the address pre-filled on new sales orders. It can match the bill-to address or be a separate location.
+
+#### Additional addresses
+
+Customers can have multiple addresses beyond the defaults: for example, additional warehouses, branch offices, or drop-ship locations. These are available for selection when creating orders.
+
+### Order behavior
+
+When a new sales order is created, the customer's default bill-to and ship-to addresses are automatically populated. These addresses can be overridden per order without changing the customer's defaults.
+
+Changes made to addresses on an order affect only that order: they do not update the customer's stored addresses.
+
+### Drop-ship addresses
+
+The `is_drop_ship` flag marks an address as a third-party delivery destination. Drop-ship addresses are used when the order ships directly to someone other than the customer: for example, to the customer's end client or to a job site.
+
+### Where addresses are used
+
+- **<InternalLink pathKey="generateSales.customer.overview" text="Customer" />**: stored as default billing and shipping addresses
+- **<InternalLink pathKey="generateSales.salesOrder.overview" text="Sales order" />**: inherited from the customer, overridable per order
+- **<InternalLink pathKey="shipProducts.shipping.overview" text="Shipments" />**: ship-to address determines the delivery destination and affects rate calculations
+- **<InternalLink pathKey="collectPayments.invoicing.overview" text="Invoices" />**: bill-to address appears on invoices and financial documents
+
+Next: <InternalLink pathKey="generateSales.customer.overview" text="Customers" includeArrow />

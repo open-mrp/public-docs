@@ -1,0 +1,71 @@
+---
+title: Generate Sales
+subtitle: Customers, pricing, orders, and the sales team - everything that drives revenue in Augno.
+route: /generate-sales/overview
+toc: false
+nav:
+    title: Overview
+    section: Generate sales
+    order: 1
+---
+
+**Generate Sales** covers everything from setting up customers and pricing to creating orders and managing your sales team. This section walks through the domain concepts you need to understand before selling in Augno.
+
+### Customer setup
+
+Before creating customers, configure the building blocks that control how customers behave:
+
+- **<InternalLink pathKey="generateSales.customerSetup.customerGroups" text="Customer groups" />**: classify customers by segment (type groups) and control pricing eligibility (pricing groups)
+- **<InternalLink pathKey="generateSales.customerSetup.shippingTerms" text="Shipping terms" />**: define who pays freight and how charges are calculated
+- **<InternalLink pathKey="generateSales.customerSetup.paymentTerms" text="Payment terms" />**: define when and how customers pay
+- **<InternalLink pathKey="generateSales.customerSetup.priorities" text="Priorities" />**: control order-processing precedence in fulfillment
+- **<InternalLink pathKey="generateSales.customerSetup.accountStatuses" text="Account statuses" />**: control whether a customer can place orders and receive shipments
+- **<InternalLink pathKey="generateSales.customerSetup.exemptions" text="Commission & freight exemption" />**: exclude customers or groups from commission and freight charges
+- **<InternalLink pathKey="generateSales.customerSetup.defaultSalesReps" text="Default sales reps" />**: assign the team member automatically added to new orders
+- **<InternalLink pathKey="generateSales.customerSetup.defaultCarriers" text="Default carriers & options" />**: set the shipping carrier and service level for a customer's orders
+- **<InternalLink pathKey="generateSales.customerSetup.addresses" text="Addresses" />**: define billing and shipping locations
+
+### Customers
+
+With setup complete, <InternalLink pathKey="generateSales.customer.overview" text="customers" /> are the central records you sell to. Each customer carries identity, segmentation, default terms, and addresses that automatically flow into orders, invoices, and shipments.
+
+- <InternalLink pathKey="generateSales.customer.overview" text="Customers overview" />
+- <InternalLink pathKey="generateSales.customer.create" text="Create a customer" />
+- <InternalLink pathKey="generateSales.customer.contacts" text="Contacts" />
+
+### Customer pricing
+
+Control what each customer pays through layered pricing:
+
+- **<InternalLink pathKey="generateSales.customerPricing.customerPrices" text="Customer prices" />**: product-line-specific pricing that overrides the base product price
+- **<InternalLink pathKey="generateSales.customerPricing.volumeDiscounts" text="Volume discounts" />**: tiered percentage discounts based on order quantity
+- **<InternalLink pathKey="generateSales.customerPricing.discountCodes" text="Discount codes" />**: promotional codes that reduce the order total
+
+### Sales orders
+
+<InternalLink pathKey="generateSales.salesOrder.overview" text="Sales orders" /> are the central
+transaction records that drive fulfillment. They bring together customer context, commercial terms,
+addresses, and line items into a single operational document.
+
+- <InternalLink pathKey="generateSales.salesOrder.overview" text="Sales orders overview" />
+- <InternalLink pathKey="generateSales.salesOrder.create" text="Create a sales order" />
+- <InternalLink pathKey="generateSales.salesOrder.issue" text="Issue a sales order" />
+- <InternalLink
+      pathKey="generateSales.salesOrder.generateProductionRun"
+      text="Generate a production run"
+  />
+
+### Customer portal
+
+Give your customers a branded, self-service experience:
+
+- **<InternalLink pathKey="generateSales.customerPortal" text="Customer portal" />**: a branded storefront where customers register, place orders with the correct pricing, submit payments, view order history, and monitor inventory held on their behalf
+
+### Sales team
+
+Manage your sales organization:
+
+- **<InternalLink pathKey="generateSales.salesTeam.territories" text="Territories" />**: map geographic regions to sales reps, optionally by product line
+- **<InternalLink pathKey="generateSales.salesTeam.salesTargets" text="Sales targets" />**: define revenue goals for reps over a date range
+
+Next: <InternalLink pathKey="generateSales.customerSetup.customerGroups" text="Customer groups" includeArrow />

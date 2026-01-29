@@ -1,0 +1,91 @@
+---
+title: Parts
+subtitle: Intermediate items you manufacture or assemble from materials during production.
+route: /build-products/items/parts
+nav:
+    title: Parts
+    section: Build products
+    subsection: Items
+    order: 3
+---
+
+A **part** is an intermediate item you manufacture from <InternalLink pathKey="buildProducts.items.materials" text="materials" /> and/or other parts during production. Parts are not sold to customers: they feed into the next stage of manufacturing, eventually becoming finished <InternalLink pathKey="buildProducts.items.products" text="products" />.
+
+### What a part is
+
+Parts use the same base item fields as materials and products (SKU, description, category, units, cost), but they have **no additional fields** beyond those. Parts are the simplest item type: their role is defined by their position in the production workflow, not by extra data.
+
+### How parts differ from materials and products
+
+| Aspect         | Material               | Part                           | Product                    |
+| -------------- | ---------------------- | ------------------------------ | -------------------------- |
+| Source         | Purchased from vendors | Manufactured in production     | Manufactured or purchased  |
+| Destination    | Consumed in production | Consumed in further production | Sold to customers          |
+| Category type  | Material categories    | Product categories             | Product categories         |
+| Unit cost      | Manually set           | Calculated from production     | Calculated from production |
+| Supplier links | Yes                    | No                             | No                         |
+| Sell price     | N/A                    | N/A                            | Yes (unit value)           |
+
+### Cost buildup
+
+Unlike materials (which have a flat unit cost), parts accumulate cost through the production process:
+
+- **Material cost**: from the <InternalLink pathKey="buildProducts.bom.consumptionsAndProductions" text="consumptions" /> at the production step that creates the part
+- **Labor cost**: from the labor rate and time defined on the production step
+- **Overhead cost**: from the overhead rate on the production step
+
+Unit cost is **computed, not manually entered**. When production steps change, costs recalculate automatically. The COGS banner on a part's card shows the labor, overhead, and materials breakdown.
+
+As parts move through multiple <InternalLink pathKey="buildProducts.bom.productionSteps" text="production steps" />, costs accumulate. This gives you a real-time view of the <InternalLink pathKey="buildProducts.bom.costing" text="cost of goods sold" /> at every stage of manufacturing.
+
+### How parts are used
+
+- **<InternalLink pathKey="buildProducts.bom.productionSteps" text="Production steps" />**: parts are both consumed (as inputs) and produced (as outputs). A step might consume materials to produce a part, and a later step consumes that part to produce a product.
+- **<InternalLink pathKey="buildProducts.production.batches" text="Batches" />**: parts are tracked through production with quantity, quality grade, and location at each stage.
+- **<InternalLink pathKey="buildProducts.inventory.inventory" text="Inventory" />**: full tracking just like materials and products: receipts, issues, allocations, and available-to-promise.
+- **<InternalLink pathKey="buildProducts.bom.productionFlows" text="Production flows" />**: parts appear in bill-of-materials as intermediate outputs between materials and finished products.
+
+### Creating a part
+
+1. Navigate to **Parts → Create Part**
+2. Enter **SKU** (required)
+3. Select **category** (required): uses product categories (shared with products, separate from material categories)
+4. Optionally set: description
+5. Click **Create**
+
+Unit cost is not set during creation: it's calculated from the production steps that produce the part.
+
+**Bulk create**: upload an Excel file to create multiple parts at once. The system creates new parts, updates existing ones (matched by SKU), and reports skipped rows with reasons.
+
+### Managing parts
+
+- **Card-based grid** like materials and products
+- **COGS breakdown banner** showing labor, overhead, and materials cost (instead of manual cost entry)
+- **Inline editing** for SKU, description, category, and attributes
+- **Search** by SKU or description
+- **Filter** by category, date range, and attributes
+- **Export** to Excel
+- **QR code** generation per part
+- **Discontinue** (soft delete): the part remains in historical records but is no longer active
+
+### Related
+
+- <InternalLink pathKey="buildProducts.bom.productionSteps" text="Production steps" />: where parts
+  are consumed and produced
+- <InternalLink
+      pathKey="buildProducts.bom.consumptionsAndProductions"
+      text="Consumptions & productions"
+  />
+  : the input/output definitions that reference parts
+- <InternalLink pathKey="buildProducts.bom.productionFlows" text="Production flows" /> -
+  bill-of-materials showing how parts fit into the production chain
+- <InternalLink pathKey="buildProducts.bom.costing" text="Costing" />: how part costs are calculated
+  and roll up
+- <InternalLink pathKey="buildProducts.inventory.inventory" text="Inventory" />: tracking part stock
+  levels
+- <InternalLink pathKey="buildProducts.items.materials" text="Materials" />: the raw inputs that
+  parts are made from
+- <InternalLink pathKey="buildProducts.items.products" text="Products" />: the finished goods that
+  parts eventually become
+
+Next: <InternalLink pathKey="buildProducts.items.products" text="Products" includeArrow />

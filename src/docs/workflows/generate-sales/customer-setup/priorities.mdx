@@ -1,0 +1,46 @@
+---
+title: Priorities
+subtitle: Control order-processing precedence to determine which work gets attention first.
+route: /generate-sales/customer-setup/priorities
+nav:
+    title: Priorities
+    section: Generate sales
+    subsection: Customer setup
+    order: 4
+---
+
+**Priorities** control order-processing precedence, determining which work gets attention first in fulfillment. A priority is set as a default on a <InternalLink pathKey="generateSales.customer.overview" text="customer" /> and inherited by every <InternalLink pathKey="generateSales.salesOrder.overview" text="sales order" /> for that customer.
+
+### Why priorities matter
+
+- **Focus fulfillment effort**: high-priority orders surface first in picking and packing queues
+- **Serve key accounts faster**: assign higher default priority to important customers
+- **Override per order**: adjust priority on individual orders when urgency changes
+
+### Default priorities
+
+Augno includes three built-in priorities:
+
+| Priority   | Meaning                                       |
+| ---------- | --------------------------------------------- |
+| **Low**    | Processed after normal and high-priority work |
+| **Normal** | Standard processing order (default)           |
+| **High**   | Processed before normal and low-priority work |
+
+### Core concepts
+
+#### Customer default and order inheritance
+
+A priority is set on the customer record as a default. When a new sales order is created, the customer's default priority is automatically applied. The priority can be overridden per order.
+
+#### Fulfillment queue ordering
+
+Priorities affect the order in which picks and shipments are processed. Higher-priority orders appear first in operational views, helping warehouse teams focus on the most urgent work.
+
+### Where priorities are used
+
+- **<InternalLink pathKey="generateSales.customer.overview" text="Customer" />**: set as the customer's default priority
+- **<InternalLink pathKey="generateSales.salesOrder.overview" text="Sales order" />**: inherited from the customer, overridable per order
+- **<InternalLink pathKey="shipProducts.picking.overview" text="Picking and fulfillment" />**: determines processing order in warehouse queues
+
+Next: <InternalLink pathKey="generateSales.customerSetup.accountStatuses" text="Account statuses" includeArrow />

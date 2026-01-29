@@ -1,0 +1,60 @@
+---
+title: API keys
+subtitle: Create, rotate, and revoke API keys for programmatic access to Augno.
+route: /manage-account/api-keys
+nav:
+    title: API keys
+    section: Manage your account
+    order: 5
+---
+
+**API keys** provide programmatic access to the Augno API. Each key is tied to a <InternalLink pathKey="manageAccount.team.rolesAndPermissions" text="role" /> that controls which endpoints it can call. Manage API keys from the **API Keys** tab in <InternalLink pathKey="frontend.apiKeys" text="account settings" />. Only admins can create and manage API keys.
+
+### Why API keys matter
+
+- **Programmatic access**: build custom integrations, automate workflows, and connect external systems
+- **Scoped permissions**: each key inherits permissions from its assigned role, so you can limit what an integration can do
+- **Auditability**: every API request is logged with the key that made it, creating a clear audit trail
+
+### Creating an API key
+
+To create a new API key:
+
+1. Navigate to the **API Keys** tab in account settings
+2. Click **Create**
+3. Enter a **name** for the key (e.g., "ERP Sync", "Shopify Integration")
+4. Select a **role** to control the key's permissions
+5. Submit to generate the key
+
+The secret key is displayed **once** after creation. Copy it immediately — you won't be able to view it again. Store it securely in your application's environment variables or secrets manager.
+
+For more details on using API keys in requests, see <InternalLink pathKey="api.apiKeys" text="API authentication" />.
+
+### Key statuses
+
+| Status      | Meaning                                                      |
+| ----------- | ------------------------------------------------------------ |
+| **Active**  | Key is valid and can make API requests                       |
+| **Revoked** | Key has been manually revoked and can no longer authenticate |
+| **Expired** | Key has passed its expiration date and is no longer valid    |
+
+Use the status filter on the API keys list to view keys by their current state.
+
+### Rotating a key
+
+Rotating a key generates a new secret while invalidating the old one. Use rotation when:
+
+- A key may have been compromised
+- You're following a regular key rotation policy
+- A team member with access to the key has left
+
+After rotating, update the secret in all systems that use the key. The old secret stops working immediately.
+
+### Revoking and deleting keys
+
+- **Revoke**: permanently invalidates a key. The key record remains visible for audit purposes but can no longer authenticate requests.
+- **Delete**: removes the key record entirely.
+
+Revoke a key when you need to cut off access but want to keep the record. Delete when the key is no longer needed at all.
+
+Next: <InternalLink pathKey="manageAccount.sandboxes" text="Sandboxes" includeArrow />

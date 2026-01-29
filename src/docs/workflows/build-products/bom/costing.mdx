@@ -1,0 +1,78 @@
+---
+title: Costing (COGS)
+subtitle: Real-time cost of goods sold calculation from production step definitions - material, labor, and overhead costs.
+route: /build-products/bom/costing
+nav:
+    title: Costing (COGS)
+    section: Build products
+    subsection: BOMs
+    order: 4
+---
+
+Augno calculates the **cost of goods sold (COGS)** for parts and products in real time from <InternalLink pathKey="buildProducts.bom.productionSteps" text="production step" /> definitions, giving you visibility into material, labor, and overhead costs as you manufacture.
+
+### Cost components
+
+Each production step contributes three types of cost:
+
+**Material cost**
+
+The sum of all <InternalLink pathKey="buildProducts.bom.consumptionsAndProductions" text="consumption" /> costs at a step:
+
+```text
+Material Cost = Σ (consumption.quantity + consumption.wasteQuantity) x item.unitCost
+```
+
+This includes waste: if a step consumes 10 units with 1 unit of waste, the cost is based on 11 units.
+
+**Labor cost**
+
+```text
+Labor Cost = Labor Rate x Labor Time
+```
+
+Where Labor Rate is the hourly cost and Labor Time is the hours required per step execution.
+
+**Overhead cost**
+
+```text
+Overhead Cost = Overhead Rate
+```
+
+A flat cost per step execution covering facilities, utilities, and other indirect costs.
+
+### Adjustments
+
+Two decimal adjustments modify step costs:
+
+- **Leveling factor**: a multiplier applied to account for yield or efficiency calibration across the step
+- **Allowances**: additional adjustments for waste, downtime, or other operational factors
+
+### Cost aggregation
+
+Costs aggregate across the entire <InternalLink pathKey="buildProducts.bom.productionFlows" text="production flow" /> to produce **aggregated production costs**. These break down by:
+
+- **Department**: costs grouped by which department performed the work
+- **Category**: costs split into:
+    - **Total costs**: everything combined
+    - **Productive costs** (firsts): costs attributable to good output
+    - **Waste costs**: costs attributable to scrap and loss
+    - **Seconds costs**: costs attributable to secondary-quality output
+
+### Real-time recalculation
+
+COGS recalculates automatically when you change:
+
+- Step definitions (labor rate, labor time, overhead rate)
+- Consumption quantities or waste quantities
+- Material unit costs
+- Leveling factors or allowances
+
+This means you always see current cost data: there's no manual recalculation step.
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.bom.productionSteps" text="Production steps" />**: where cost components are defined
+- **<InternalLink pathKey="buildProducts.bom.consumptionsAndProductions" text="Consumptions & productions" />**: material costs derive from consumption definitions
+
+Next: <InternalLink pathKey="buildProducts.production.productionRuns" text="Production runs" includeArrow />

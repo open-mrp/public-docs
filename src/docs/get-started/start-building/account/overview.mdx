@@ -1,0 +1,39 @@
+---
+title: Create an Augno account
+subtitle: Learn how to activate and manage your Augno account, from initial setup to advanced configurations.
+route: /account
+nav:
+    title: Overview
+    section: Start Building
+    subsection: Create an account
+    order: 1
+---
+
+When you create your Augno account, we spin up a testing environment for you with seeded data. We call these testing environments, _**sandboxes**_. In a sandbox, you can simulate using all of Augno's features without impacting production data or pestering your customers. After you activate your account, you can integrate services, invite team members, and configure your organization's settings.
+
+<IfAuthenticated>
+    Augno generates a unique ID for your account. This ID is distinct from your account's display
+    name and is used to uniquely identify your account in API calls and support interactions. Your
+    account ID is <AccountId />.
+</IfAuthenticated>
+<IfUnauthenticated>
+    Augno generates a unique ID for your account. This ID is distinct from your account's display
+    name and is used to uniquely identify your account in API calls and support interactions. You
+    can find your account ID in your Account settings within the{' '}
+    <InternalLink pathKey="frontend.team" text="Dashboard" />.
+</IfUnauthenticated>
+
+## Get started with an Augno account
+
+<DocCardGroup>
+    <LinkCard
+        pathKey="account.activate"
+        title="Activate your account"
+        description="Activate your Augno account and unlock all features."
+    />
+    <LinkCard
+        pathKey="account.checklist"
+        title="Checklist for getting started"
+        description="A checklist for getting started with your Augno account."
+    />
+</DocCardGroup>

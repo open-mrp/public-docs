@@ -1,0 +1,530 @@
+---
+title: API Errors
+subtitle: Standard error envelope format for consistent error handling.
+route: /api/errors
+nav:
+    title: API errors
+    section: API
+    subsection: Handling Errors
+    order: 10
+---
+
+Every error returned by the Augno API uses a consistent envelope and includes a machine-readable code so clients can handle errors programmatically without parsing human-readable messages.
+
+## Error Envelope
+
+All error responses are wrapped in an `error` object:
+
+```json
+{
+    "error": {
+        "code": "validation_failed",
+        "type": "invalid_request_error",
+        "message": "The email address is not valid.",
+        "param": "email",
+        "doc_url": "https://docs.augno.com/errors#validation_failed",
+        "is_transient": false,
+        "quota": null,
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+    }
+}
+```
+
+### Fields
+
+| Field             | Type           | Description                                                                                                                         |
+| ----------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `code`            | string         | Machine-readable error code (see tables below).                                                                                     |
+| `type`            | string         | Broad error category: `invalid_request_error`, `api_error`, or `idempotency_error`.                                                 |
+| `message`         | string         | Human-readable explanation. Safe to display to end users.                                                                           |
+| `param`           | string \| null | The request parameter that caused the error, when applicable. Always present in the response (value is `null` when not applicable). |
+| `doc_url`         | string         | Link to documentation about this error. Follows the pattern `https://docs.augno.com/errors#{code}`.                                 |
+| `is_transient`    | boolean        | Whether the error is temporary and the request can be retried.                                                                      |
+| `quota`           | object \| null | Plan limit details. Value is `null` for all error codes except `limit_exceeded`.                                                    |
+| `request_log_url` | string \| null | A link to the dashboard page for this request's log entry. `null` when no request log is available.                                 |
+
+#### `quota` Object
+
+Present (non-null) only when `code` is `limit_exceeded`.
+
+| Field      | Type           | Description                                                                       |
+| ---------- | -------------- | --------------------------------------------------------------------------------- |
+| `limit`    | integer        | Maximum number of resources allowed by the current plan.                          |
+| `used`     | integer        | Number of resources currently consumed.                                           |
+| `reset_at` | string \| null | ISO 8601 timestamp when the quota resets. `null` for static (non-metered) limits. |
+
+## Error Types
+
+| Type                    | Description                                                                                     |
+| ----------------------- | ----------------------------------------------------------------------------------------------- |
+| `invalid_request_error` | Client-side mistake — bad input, missing auth, not found, etc. Fix the request before retrying. |
+| `api_error`             | Server-side failure (5xx-class). Generally transient and safe to retry.                         |
+| `idempotency_error`     | Idempotency key conflict — concurrent duplicate request or key reuse with different parameters. |
+
+## Error Codes
+
+**Authentication & Authorization** — See <DocLink pathKey="api.apiKeys">API Keys</DocLink>
+
+### `expired_token`
+
+| HTTP Status      | Type                    | Transient |
+| ---------------- | ----------------------- | --------- |
+| 401 Unauthorized | `invalid_request_error` | No        |
+
+JWT access or refresh token has expired. The client should obtain a new token pair using their refresh token or re-authenticate.
+
+### `api_key_expired`
+
+| HTTP Status      | Type                    | Transient |
+| ---------------- | ----------------------- | --------- |
+| 401 Unauthorized | `invalid_request_error` | No        |
+
+API key has passed its expiration date. Generate a new API key to continue making requests.
+
+### `api_key_revoked`
+
+| HTTP Status      | Type                    | Transient |
+| ---------------- | ----------------------- | --------- |
+| 401 Unauthorized | `invalid_request_error` | No        |
+
+API key was explicitly revoked by the owner or Augno. Generate a new API key to continue making requests.
+
+### `invalid_credentials`
+
+| HTTP Status      | Type                    | Transient |
+| ---------------- | ----------------------- | --------- |
+| 401 Unauthorized | `invalid_request_error` | No        |
+
+The provided credentials are incorrect. Verify the email/password or API key and try again.
+
+### `insufficient_permissions`
+
+| HTTP Status   | Type                    | Transient |
+| ------------- | ----------------------- | --------- |
+| 403 Forbidden | `invalid_request_error` | No        |
+
+The caller is authenticated but lacks the required role or permission for this operation.
+
+### `payment_required`
+
+| HTTP Status          | Type                    | Transient |
+| -------------------- | ----------------------- | --------- |
+| 402 Payment Required | `invalid_request_error` | No        |
+
+The account's subscription is in a non-active state (past due, canceled, or unpaid). Resolve the billing issue before continuing.
+
+---
+
+**Limits**
+
+### `limit_exceeded`
+
+| HTTP Status   | Type                    | Transient |
+| ------------- | ----------------------- | --------- |
+| 403 Forbidden | `invalid_request_error` | No        |
+
+A plan-imposed resource limit has been reached (e.g. maximum sandbox accounts). The response includes a `quota` object with the current limit, usage, and optional reset time. Upgrade the plan to increase the limit.
+
+### `registration_closed`
+
+| HTTP Status   | Type                    | Transient |
+| ------------- | ----------------------- | --------- |
+| 403 Forbidden | `invalid_request_error` | No        |
+
+Public registration capacity has been reached for the requested plan code. Distinct from `limit_exceeded`, which applies to per-account resource quotas.
+
+---
+
+**Validation**
+
+### `validation_failed`
+
+| HTTP Status     | Type                    | Transient |
+| --------------- | ----------------------- | --------- |
+| 400 Bad Request | `invalid_request_error` | No        |
+
+General input validation failure. Check the `message` and `param` fields for details on what needs to be corrected.
+
+### `missing_field`
+
+| HTTP Status     | Type                    | Transient |
+| --------------- | ----------------------- | --------- |
+| 400 Bad Request | `invalid_request_error` | No        |
+
+A required field was not provided in the request body. The `param` field indicates which field is missing.
+
+### `invalid_format`
+
+| HTTP Status     | Type                    | Transient |
+| --------------- | ----------------------- | --------- |
+| 400 Bad Request | `invalid_request_error` | No        |
+
+A field value does not match the expected format (e.g. invalid email address). The `param` field indicates which field is invalid.
+
+### `method_not_allowed`
+
+| HTTP Status            | Type                    | Transient |
+| ---------------------- | ----------------------- | --------- |
+| 405 Method Not Allowed | `invalid_request_error` | No        |
+
+The HTTP method is not supported for this endpoint. Check the API reference for allowed methods.
+
+---
+
+**Parameters**
+
+### `parameter_missing`
+
+| HTTP Status     | Type                    | Transient |
+| --------------- | ----------------------- | --------- |
+| 400 Bad Request | `invalid_request_error` | No        |
+
+A required query or path parameter was not provided. The `param` field indicates which parameter is missing.
+
+### `parameter_invalid`
+
+| HTTP Status     | Type                    | Transient |
+| --------------- | ----------------------- | --------- |
+| 400 Bad Request | `invalid_request_error` | No        |
+
+A parameter value is not valid (e.g. negative limit, out-of-range value). The `param` field indicates which parameter is invalid.
+
+### `parameter_unknown`
+
+| HTTP Status     | Type                    | Transient |
+| --------------- | ----------------------- | --------- |
+| 400 Bad Request | `invalid_request_error` | No        |
+
+An unrecognized parameter was sent in the request. The `param` field indicates which parameter is unknown.
+
+### `parameters_exclusive`
+
+| HTTP Status     | Type                    | Transient |
+| --------------- | ----------------------- | --------- |
+| 400 Bad Request | `invalid_request_error` | No        |
+
+Two mutually exclusive parameters were both provided. The `param` field indicates the conflicting parameter.
+
+---
+
+**Resources**
+
+### `resource_not_found`
+
+| HTTP Status   | Type                    | Transient |
+| ------------- | ----------------------- | --------- |
+| 404 Not Found | `invalid_request_error` | No        |
+
+The requested resource does not exist. Verify the resource ID and try again.
+
+### `resource_exists`
+
+| HTTP Status  | Type                    | Transient |
+| ------------ | ----------------------- | --------- |
+| 409 Conflict | `invalid_request_error` | No        |
+
+A resource with the same unique constraint already exists (e.g. duplicate email address).
+
+### `resource_conflict`
+
+| HTTP Status  | Type                    | Transient |
+| ------------ | ----------------------- | --------- |
+| 409 Conflict | `invalid_request_error` | No        |
+
+A state conflict prevents the operation (e.g. optimistic locking failure, concurrent update). The client must resolve the conflict before retrying.
+
+### `resource_gone`
+
+| HTTP Status | Type        | Transient |
+| ----------- | ----------- | --------- |
+| 410 Gone    | `api_error` | No        |
+
+The resource existed but has been permanently deleted. This is not a temporary condition.
+
+---
+
+**Idempotency** — See <DocLink pathKey="api.idempotency">Idempotency</DocLink>
+
+### `idempotency_in_progress`
+
+| HTTP Status  | Type                | Transient |
+| ------------ | ------------------- | --------- |
+| 409 Conflict | `idempotency_error` | Yes       |
+
+A request with the same idempotency key is currently being processed. Retry after a short delay.
+
+Note: Reusing an idempotency key with different request parameters returns `validation_failed` with type `idempotency_error`.
+
+---
+
+**Rate Limiting** — See <DocLink pathKey="api.rateLimiting">Rate Limiting</DocLink>
+
+### `rate_limit_exceeded`
+
+| HTTP Status           | Type                    | Transient |
+| --------------------- | ----------------------- | --------- |
+| 429 Too Many Requests | `invalid_request_error` | Yes       |
+
+The caller has exceeded the allowed request rate. Back off and retry after the duration indicated by the `Retry-After` header.
+
+---
+
+**API Version** — See <DocLink pathKey="api.versioning">API Versioning</DocLink>
+
+### `api_version_required`
+
+| HTTP Status     | Type                    | Transient |
+| --------------- | ----------------------- | --------- |
+| 400 Bad Request | `invalid_request_error` | No        |
+
+The `Augno-Version` header is missing from the request. Include a valid API version in the header.
+
+### `api_version_invalid`
+
+| HTTP Status     | Type                    | Transient |
+| --------------- | ----------------------- | --------- |
+| 400 Bad Request | `invalid_request_error` | No        |
+
+The requested API version string is not recognized. Check the `message` field for the list of supported versions.
+
+### `api_version_too_old`
+
+| HTTP Status     | Type                    | Transient |
+| --------------- | ----------------------- | --------- |
+| 400 Bad Request | `invalid_request_error` | No        |
+
+The requested API version is below the minimum supported by the endpoint. Upgrade to a newer API version.
+
+---
+
+**Server Errors**
+
+### `internal_error`
+
+| HTTP Status               | Type        | Transient |
+| ------------------------- | ----------- | --------- |
+| 500 Internal Server Error | `api_error` | Yes       |
+
+An unexpected server-side failure occurred. This is generally transient and safe to retry.
+
+### `service_unavailable`
+
+| HTTP Status             | Type        | Transient |
+| ----------------------- | ----------- | --------- |
+| 503 Service Unavailable | `api_error` | Yes       |
+
+A downstream service is temporarily unreachable. Retry after a short delay.
+
+### `external_service_error`
+
+| HTTP Status     | Type        | Transient |
+| --------------- | ----------- | --------- |
+| 502 Bad Gateway | `api_error` | Yes       |
+
+A third-party dependency returned an error. This is generally transient and safe to retry.
+
+### `timeout`
+
+| HTTP Status         | Type        | Transient |
+| ------------------- | ----------- | --------- |
+| 504 Gateway Timeout | `api_error` | Yes       |
+
+The operation exceeded its deadline. Retry with exponential backoff.
+
+### `connection_error`
+
+| HTTP Status     | Type        | Transient |
+| --------------- | ----------- | --------- |
+| 502 Bad Gateway | `api_error` | Yes       |
+
+A network-level failure occurred when connecting to a downstream service. Retry after a short delay.
+
+### `request_timeout`
+
+| HTTP Status         | Type        | Transient |
+| ------------------- | ----------- | --------- |
+| 408 Request Timeout | `api_error` | Yes       |
+
+The overall request exceeded its deadline. Retry with exponential backoff.
+
+### `client_closed_request`
+
+| HTTP Status | Type        | Transient |
+| ----------- | ----------- | --------- |
+| 499         | `api_error` | No        |
+
+The client disconnected before the server finished processing. The server cannot meaningfully retry on behalf of a disconnected client.
+
+## Transient Errors
+
+Errors with `"is_transient": true` represent temporary conditions that may resolve on retry. The combination of `code` and `type` determines transience:
+
+| Type                    | Transient Codes                                                                                                     |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `api_error`             | `internal_error`, `service_unavailable`, `external_service_error`, `timeout`, `connection_error`, `request_timeout` |
+| `idempotency_error`     | `idempotency_in_progress`                                                                                           |
+| `invalid_request_error` | `rate_limit_exceeded`                                                                                               |
+
+Notably **not** transient:
+
+- `client_closed_request` — the server cannot meaningfully retry on behalf of a disconnected client.
+- `resource_conflict` — represents a state conflict (e.g. duplicate username) that requires client-side resolution.
+
+## Examples
+
+### Validation Error (400)
+
+```json
+{
+    "error": {
+        "code": "validation_failed",
+        "type": "invalid_request_error",
+        "message": "The email address is not valid.",
+        "param": "email",
+        "doc_url": "https://docs.augno.com/errors#validation_failed",
+        "is_transient": false,
+        "quota": null,
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+    }
+}
+```
+
+### Authentication Error (401)
+
+```json
+{
+    "error": {
+        "code": "invalid_credentials",
+        "type": "invalid_request_error",
+        "message": "The provided credentials are incorrect.",
+        "param": null,
+        "doc_url": "https://docs.augno.com/errors#invalid_credentials",
+        "is_transient": false,
+        "quota": null,
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+    }
+}
+```
+
+### Payment Required (402)
+
+```json
+{
+    "error": {
+        "code": "payment_required",
+        "type": "invalid_request_error",
+        "message": "Your subscription is past due. Please update your payment method to continue.",
+        "param": null,
+        "doc_url": "https://docs.augno.com/errors#payment_required",
+        "is_transient": false,
+        "quota": null,
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+    }
+}
+```
+
+### Limit Exceeded (403)
+
+```json
+{
+    "error": {
+        "code": "limit_exceeded",
+        "type": "invalid_request_error",
+        "message": "You have reached the maximum number of sandbox accounts for your plan.",
+        "param": null,
+        "doc_url": "https://docs.augno.com/errors#limit_exceeded",
+        "is_transient": false,
+        "quota": {
+            "limit": 5,
+            "used": 5,
+            "reset_at": null
+        },
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+    }
+}
+```
+
+### Resource Not Found (404)
+
+```json
+{
+    "error": {
+        "code": "resource_not_found",
+        "type": "invalid_request_error",
+        "message": "No account found with that ID.",
+        "param": null,
+        "doc_url": "https://docs.augno.com/errors#resource_not_found",
+        "is_transient": false,
+        "quota": null,
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+    }
+}
+```
+
+### Idempotency In Progress (409)
+
+```json
+{
+    "error": {
+        "code": "idempotency_in_progress",
+        "type": "idempotency_error",
+        "message": "Request for the idempotency key 'req_abc123' is already being processed.",
+        "param": null,
+        "doc_url": "https://docs.augno.com/errors#idempotency_in_progress",
+        "is_transient": true,
+        "quota": null,
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+    }
+}
+```
+
+### Idempotency Key Reuse (400)
+
+```json
+{
+    "error": {
+        "code": "validation_failed",
+        "type": "idempotency_error",
+        "message": "Idempotency key 'req_abc123' was used with different request parameters; use a new key.",
+        "param": null,
+        "doc_url": "https://docs.augno.com/errors#validation_failed",
+        "is_transient": false,
+        "quota": null,
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+    }
+}
+```
+
+### Rate Limited (429)
+
+```json
+{
+    "error": {
+        "code": "rate_limit_exceeded",
+        "type": "invalid_request_error",
+        "message": "Too many requests. Please wait before trying again.",
+        "param": null,
+        "doc_url": "https://docs.augno.com/errors#rate_limit_exceeded",
+        "is_transient": true,
+        "quota": null,
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+    }
+}
+```
+
+### Server Error (500)
+
+```json
+{
+    "error": {
+        "code": "internal_error",
+        "type": "api_error",
+        "message": "Something went wrong.",
+        "param": null,
+        "doc_url": "https://docs.augno.com/errors#internal_error",
+        "is_transient": true,
+        "quota": null,
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+    }
+}
+```

@@ -1,0 +1,111 @@
+---
+title: Collecting
+subtitle: Record the money received from customers and apply it to open invoices through transactions and settlements.
+route: /collect-payments/collecting/overview
+nav:
+    title: Overview
+    section: Collect payments
+    subsection: Collecting
+    order: 1
+---
+
+**Collecting** payments means recording the money received from customers and applying it to open <InternalLink pathKey="collectPayments.invoicing.overview" text="invoices" />. Every payment, credit, adjustment, and rebate is captured as a transaction, then formally linked to invoices through settlements.
+
+### Transaction types
+
+Augno supports four transaction types, each serving a different purpose:
+
+| Type            | Purpose                                                                                | Example          |
+| --------------- | -------------------------------------------------------------------------------------- | ---------------- |
+| **Payment**     | Record funds received from a customer                                                  | Check for $5,000 |
+| **Credit memo** | Issue a credit to the customer                                                         | Return credit    |
+| **Adjustment**  | Record discounts, write-offs, fees, refunds, short payments, or shipping discrepancies | $200 write-off   |
+| **Rebate**      | Apply a rebate against invoice balance                                                 | Volume rebate    |
+
+### Recording a transaction
+
+To record a transaction:
+
+1. Select the customer
+2. Enter the amount
+3. Choose the transaction type (payment, credit memo, adjustment, or rebate)
+4. For payments: select the payment method
+5. For adjustments: select the adjustment type
+6. Set the effective date
+7. Add an optional note
+
+### Payment methods
+
+Payment methods are a configurable list that defines how funds were received. Common methods include:
+
+- **Check**: paper check
+- **ACH**: electronic bank transfer
+- **Credit card**: card payment
+- **Wire transfer**: wire payment
+- **Cash**: cash payment
+
+Your team can add or modify payment methods to match your business.
+
+### Adjustment types
+
+Adjustments cover a range of scenarios. Each adjustment transaction is assigned a type:
+
+| Adjustment type          | Purpose                                                   |
+| ------------------------ | --------------------------------------------------------- |
+| **Discount**             | Apply a negotiated or early-payment discount              |
+| **Shipping discrepancy** | Resolve a difference in shipping charges                  |
+| **Short payment**        | Record when a customer pays less than the invoiced amount |
+| **Write-off**            | Forgive an uncollectable balance                          |
+| **Fee**                  | Record a fee charged to the customer                      |
+| **Refund**               | Record a refund issued to the customer                    |
+
+### Settling transactions to invoices
+
+A **settlement** is the formal record that links transactions to invoices. Each settlement contains one or more **allocations**: each allocation pairs a specific transaction with a specific invoice for a specific dollar amount.
+
+The settlement flow works like this:
+
+1. Select one or more transactions to allocate
+2. Select one or more invoices to apply them to
+3. Specify the allocation amount for each transaction-invoice pair
+4. Create the settlement
+
+One transaction can be split across multiple invoices, and one invoice can receive allocations from multiple transactions. This flexibility handles partial payments, overpayments, and bulk payment runs.
+
+### Parent/child account payments
+
+When a parent account makes a payment, that payment can be allocated to invoices belonging to both the parent and any of its child accounts. During settlement, the system shows invoices across the entire parent-child hierarchy so you can distribute the payment where it belongs.
+
+<InternalLink pathKey="generateSales.customer.overview" text="Learn about customer accounts" />
+
+### Handling discounts and rebates
+
+**Discounts** are recorded as adjustment transactions with the "discount" adjustment type. **Rebates** are their own transaction type. Both are allocated to invoices through settlements just like payments: each allocation reduces the invoice balance by the allocated amount.
+
+<InternalLink
+    pathKey="generateSales.customerPricing.discountCodes"
+    text="Learn about discount codes"
+/>
+
+### Write-offs
+
+**Write-offs** are recorded as adjustment transactions with the "write-off" adjustment type. They are allocated to invoices through settlements to forgive remaining balances. Once allocated, a write-off reduces the invoice balance toward zero, effectively closing out uncollectable amounts.
+
+### Open credits
+
+When a transaction is only partially allocated: or not allocated at all: the unallocated portion remains as an **open credit**. The system tracks these leftover amounts so you can apply remaining funds to future invoices in a later settlement.
+
+### How allocations affect invoice status
+
+After each settlement, the system recalculates every affected invoice's balance and status:
+
+- **Balance equals zero**: the invoice is marked as paid in full
+- **Balance is less than zero**: the invoice is marked as overpaid
+- **Balance is greater than zero**: the invoice remains unpaid with the updated outstanding amount
+
+<InternalLink
+    pathKey="collectPayments.accountsReceivable.overview"
+    text="Learn about accounts receivable"
+/>
+
+Next: <InternalLink pathKey="collectPayments.collecting.settlements" text="Settlements" includeArrow />

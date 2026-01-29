@@ -1,0 +1,41 @@
+name: CI
+
+on:
+    pull_request:
+        branches: [main]
+    push:
+        branches: [main]
+
+jobs:
+    build:
+        name: Build & Validate
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup Bun
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
+
+            - name: Setup Go
+              uses: actions/setup-go@v5
+              with:
+                  go-version: '1.22'
+
+            - name: Install dependencies
+              run: bun install
+
+            - name: Generate docs
+              run: bun run build:docs
+
+            - name: Validate pathKeys
+              run: bun run validate:pathkeys
+
+            - name: Lint
+              run: bun run lint
+
+            - name: Build
+              run: bun run build

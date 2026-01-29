@@ -1,0 +1,74 @@
+---
+title: Batch Operations
+subtitle: Initialize, move, split, and merge - the core actions that advance batches through the production flow.
+route: /build-products/production/batch-operations
+nav:
+    title: Batch Operations
+    section: Build products
+    subsection: Production
+    order: 3
+---
+
+**Batch operations**: initialize, move, split, and merge: are the core actions that advance <InternalLink pathKey="buildProducts.production.batches" text="batches" /> through the <InternalLink pathKey="buildProducts.bom.productionFlows" text="production flow" />, each triggered at a <InternalLink pathKey="buildProducts.scanning.scanningStations" text="scanning station" />.
+
+### Initialize
+
+**Initialize** creates a new batch at an initial <InternalLink pathKey="buildProducts.bom.productionSteps" text="production step" />.
+
+- The batches created in a production run have not executed any inventory movements. Initialize will bring these batches into inventory and execute the production step.
+- Links consumption demands for the materials required at this step
+- Calculates the **execution multiplier** (batch quantity / step production quantity)
+- Scales all consumption quantities by the execution multiplier
+
+This is the entry point: the first operation in any production run.
+
+### Move
+
+**Move** advances a batch from its current production step to the next step in the flow.
+
+- Calculates output quantity (may transform units if the next step uses different units)
+- Multiplies the new step's consumptions by the execution multiplier
+- Checks inventory availability for each consumption before proceeding
+
+If inventory is insufficient for any consumption, the move operation will flag the shortage.
+
+### Split
+
+**Split** divides one batch into multiple batches, typically to separate quality grades after a particular production step:
+
+- **Firsts**: good output that continues through production
+- **Seconds**: secondary quality output tracked separately
+- **Waste**: scrap recorded for cost accounting
+
+Each split batch gets its own tracking record with independent quantities. The original batch can be closed after splitting.
+
+### Merge
+
+**Merge** combines multiple batches into one consolidated batch:
+
+- Sums quantities across all source batches
+- Creates a single output batch with the combined total
+- Supports both **single-part merge** (batches of the same item) and **multi-part merge** (batches from different steps converging)
+
+Merge is used when separate production paths converge: for example, combining separately manufactured components into an assembly.
+
+### The execution multiplier
+
+The execution multiplier is the key scaling concept across all batch operations:
+
+```text
+executionMultiplier = batchQuantity / stepProductionQuantity
+```
+
+If a production step defines consumptions for producing 1 unit, and you initialize a batch of 100 units, the execution multiplier is 100. Every consumption quantity is multiplied by 100 to reflect actual material needs.
+
+This scaling carries through move operations as well, ensuring material demands stay proportional to batch size.
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.production.batches" text="Batches" />**: the objects these operations act on
+- **<InternalLink pathKey="buildProducts.scanning.scanningStations" text="Scanning stations" />**: each station type corresponds to an operation type
+- **<InternalLink pathKey="buildProducts.bom.productionSteps" text="Production steps" />**: define the consumptions and productions that operations execute
+- **<InternalLink pathKey="buildProducts.inventory.inventory" text="Inventory" />**: operations create inventory issues and receipts
+
+Next: <InternalLink pathKey="buildProducts.scanning.scanningStations" text="Scanning stations" includeArrow />

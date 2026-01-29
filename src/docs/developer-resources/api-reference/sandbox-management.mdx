@@ -1,0 +1,195 @@
+---
+title: "Sandbox Management"
+subtitle: "Handles listing and managing sandbox environments."
+route: "/api-reference/sandbox-management"
+nav:
+    title: "Sandbox Management"
+    section: "API"
+    subsection: "API Reference"
+    order: 4
+---
+
+## The Sandbox resource
+
+Sandbox represents an isolated testing environment for an account.
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `id` | string | Yes | The unique identifier for the sandbox. |
+| `object` | string | Yes | The object type. Always `sandbox`. |
+| `name` | string | Yes | The display name of the sandbox. |
+| `account_id` | string | Yes | The ID of the account this sandbox belongs to. |
+| `created_at` | datetime | Yes | When this sandbox was created. |
+| `updated_at` | datetime | Yes | When this sandbox was last updated. |
+
+### Example<span className="hidden toc-hidden"> of Sandbox</span>
+
+```json
+{
+  "id": "sbac_01jm4r6700f8nwq3v5hx2d9ktp",
+  "object": "sandbox",
+  "name": "Integration Testing",
+  "account_id": "ac_01jm4r6700g2bz7y4c6e8f1jrm",
+  "created_at": "2026-05-10T00:00:00Z",
+  "updated_at": "2026-05-10T00:23:00Z"
+}
+```
+
+## Endpoints
+
+### List Sandboxes <span className="toc-hidden"><BetaTag /></span>
+
+This endpoint returns a paginated list of sandbox accounts for the target account.
+Supports cursor-based pagination.
+
+```http
+GET /v1/core/sandboxes
+```
+
+#### Query Parameters<span className="hidden toc-hidden"> for List Sandboxes</span>
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `cursor` | string | No | Cursor for fetching the next page, from a previous response's next_cursor field. |
+| `limit` | integer | No | Maximum number of results to return per page (default: 100, max: 1000). |
+| `q` | string | No | Optional search query to filter results. |
+
+#### Response<span className="hidden toc-hidden"> for List Sandboxes</span>
+
+**`200`** Successful response for List Sandboxes
+
+Returns a paginated list of [`Sandbox`](#the-sandbox-resource) objects. See [Pagination](/api/pagination) for envelope details.
+
+**Example:**
+
+```json
+{
+  "object": "list",
+  "page_info": {
+    "next_cursor": "sbac_01jm4r6700f8nwq3v5hx2d9ktp",
+    "prev_cursor": null,
+    "has_next_page": true,
+    "has_prev_page": false
+  },
+  "data": [
+    {
+      "id": "sbac_01jm4r6700f8nwq3v5hx2d9ktp",
+      "object": "sandbox",
+      "name": "Integration Testing",
+      "account_id": "ac_01jm4r6700g2bz7y4c6e8f1jrm",
+      "created_at": "2026-05-10T00:00:00Z",
+      "updated_at": "2026-05-10T00:23:00Z"
+    }
+  ]
+}
+```
+
+---
+
+### Create Sandbox <span className="toc-hidden"><BetaTag /></span>
+
+This endpoint creates a new sandbox account for the target account.
+Enforces a per-account sandbox limit. Requires admin permissions.
+
+```http
+POST /v1/core/sandboxes
+```
+
+#### Request Body<span className="hidden toc-hidden"> for Create Sandbox</span>
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `name` | string | Yes | The display name for the sandbox. |
+| `mode` | string | Yes | Controls whether the sandbox is blank or seeded with tutorial data. Values: `blank`, `seeded` |
+
+**Example:**
+
+```json
+{
+  "name": "Integration Testing",
+  "mode": "blank"
+}
+```
+
+#### Response<span className="hidden toc-hidden"> for Create Sandbox</span>
+
+**`201`** Successful response for Create Sandbox
+
+Returns a [`Sandbox`](#the-sandbox-resource) object.
+
+**Example:**
+
+```json
+{
+  "id": "sbac_01jm4r6700f8nwq3v5hx2d9ktp",
+  "object": "sandbox",
+  "name": "Integration Testing",
+  "account_id": "ac_01jm4r6700g2bz7y4c6e8f1jrm",
+  "created_at": "2026-05-10T00:00:00Z",
+  "updated_at": "2026-05-10T00:23:00Z"
+}
+```
+
+---
+
+### Get Sandbox <span className="toc-hidden"><BetaTag /></span>
+
+This endpoint returns a single sandbox account by its ID.
+
+```http
+GET /v1/core/sandboxes/{id}
+```
+
+#### Path Parameters<span className="hidden toc-hidden"> for Get Sandbox</span>
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `id` | string | Yes | The ID of the sandbox to retrieve. |
+
+#### Response<span className="hidden toc-hidden"> for Get Sandbox</span>
+
+**`200`** Successful response for Get Sandbox
+
+Returns a [`Sandbox`](#the-sandbox-resource) object.
+
+**Example:**
+
+```json
+{
+  "id": "sbac_01jm4r6700f8nwq3v5hx2d9ktp",
+  "object": "sandbox",
+  "name": "Integration Testing",
+  "account_id": "ac_01jm4r6700g2bz7y4c6e8f1jrm",
+  "created_at": "2026-05-10T00:00:00Z",
+  "updated_at": "2026-05-10T00:23:00Z"
+}
+```
+
+---
+
+### Delete Sandbox <span className="toc-hidden"><BetaTag /></span>
+
+This endpoint deletes a sandbox account. At least one sandbox must remain
+per production account. The sandbox and its account record are removed synchronously, and all
+account-scoped data is purged asynchronously.
+
+```http
+DELETE /v1/core/sandboxes/{id}
+```
+
+#### Path Parameters<span className="hidden toc-hidden"> for Delete Sandbox</span>
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `id` | string | Yes | The ID of the sandbox to delete. |
+
+#### Response<span className="hidden toc-hidden"> for Delete Sandbox</span>
+
+**`202`** Successful response for Delete Sandbox
+
+**Example:**
+
+```json
+{}
+```
+

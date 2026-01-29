@@ -1,0 +1,52 @@
+---
+title: Material analytics
+subtitle: View material inventory levels, demand, and reorder needs by supplier.
+route: /dashboards/operations/material-analytics
+nav:
+    title: Material analytics
+    section: Dashboards
+    subsection: Operations
+    order: 3
+---
+
+The **material analytics** dashboard is a table-based view that shows current inventory, demand, and reorder quantities for every material. When you select suppliers, the table adds columns for supplier names and part numbers so you can quickly identify sourcing options for materials that need reordering.
+
+### Why material analytics matters
+
+- **Reorder at a glance**: the "in Need" column highlights materials where demand exceeds inventory, making it easy to spot what needs ordering
+- **Supplier context**: selecting suppliers reveals which suppliers carry each material and their part numbers
+- **Sortable and exportable**: sort by any column or export the full table for procurement planning
+
+### What you'll see
+
+A full-width data grid with one row per material. The grid includes a toolbar with built-in search, column visibility, density controls, and export.
+
+| Column           | What it shows                                                          |
+| ---------------- | ---------------------------------------------------------------------- |
+| **SKU**          | Material SKU identifier                                                |
+| **Description**  | Material description                                                   |
+| **Order point**  | The configured reorder threshold for the material                      |
+| **In inventory** | Current inventory quantity on hand                                     |
+| **In demand**    | Total quantity currently demanded by open orders or production         |
+| **In need**      | Quantity to order (highlighted in red and bold when greater than zero) |
+
+When one or more suppliers are selected, two additional columns appear:
+
+| Column           | What it shows                                   |
+| ---------------- | ----------------------------------------------- |
+| **Suppliers**    | Names of suppliers that carry the material      |
+| **Part numbers** | Supplier-specific part numbers for the material |
+
+The table defaults to sorting by the "in need" column in descending order so the most urgent materials appear first.
+
+### Filters
+
+| Field         | What it does                                                                                                                     |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| **Suppliers** | Select one or more suppliers to reveal supplier-specific columns and filter materials to those carried by the selected suppliers |
+
+### Export
+
+The grid toolbar includes built-in export controls. You can export the visible data to CSV or print it directly from the toolbar.
+
+Next: <InternalLink pathKey="dashboards.financial.accountsReceivable" text="Accounts receivable" includeArrow />

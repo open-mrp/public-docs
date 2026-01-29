@@ -1,0 +1,59 @@
+---
+title: Deliveries & Receiving
+subtitle: Track the physical arrival of materials from suppliers and convert purchase order quantities into usable inventory.
+route: /build-products/purchasing/deliveries-and-receiving
+nav:
+    title: Deliveries & Receiving
+    section: Build products
+    subsection: Purchasing
+    order: 3
+---
+
+**Deliveries and receiving** track the physical arrival of materials from a <InternalLink pathKey="buildProducts.purchasing.suppliers" text="supplier" />, turning <InternalLink pathKey="buildProducts.purchasing.purchaseOrders" text="purchase order" /> quantities into usable <InternalLink pathKey="buildProducts.inventory.inventory" text="inventory" />.
+
+### Receiving orders
+
+A **receiving order** is created from a purchase order to record what physically arrived. Each receiving order contains line items that correspond to the PO lines.
+
+**Receiving order lines** track:
+
+- **Quantity Received**: how many units arrived for this line
+- **Stocked At**: timestamp of when the material was stocked into inventory
+- **Is Fully Received**: whether the received quantity meets or exceeds the ordered quantity
+- **Is Over Received**: whether more was received than originally ordered
+
+### Deliveries
+
+A **delivery** is the physical shipment record. Each delivery has an acceptance status:
+
+- **Accepted**: the delivery passed inspection and the materials are cleared for stocking
+- **Rejected**: the delivery was refused (damaged goods, wrong items, etc.)
+
+Multiple deliveries can be created against a single receiving order if the supplier ships in partial batches.
+
+### The stocking flow
+
+Stocking is the process that converts received materials into inventory. Here's how it works:
+
+1. **Receive**: record what arrived on the receiving order lines
+2. **Stock**: trigger the stock operation, which:
+    - Creates **inventory receipts** for the received quantities
+    - Allocates any **open inventory issues** (outstanding demand) against the new receipts
+    - Marks the PO as **fulfilled** if all lines are complete
+
+### Stocking data
+
+When stocking, you provide **stocking data** for each line item:
+
+- **Lot numbers**: assign lot numbers for traceability (see <InternalLink pathKey="buildProducts.inventory.storageAndLots" text="storage locations & lots" />)
+- **Storage location allocations**: specify where the material will be physically stored (warehouse, shelf, bin)
+
+This data flows into the inventory receipts, so you can trace every unit back to the delivery it came from and the location where it's stored.
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.purchasing.purchaseOrders" text="Purchase orders" />**: receiving orders are created from POs
+- **<InternalLink pathKey="buildProducts.inventory.inventory" text="Inventory" />**: stocking creates inventory receipts
+- **<InternalLink pathKey="buildProducts.inventory.storageAndLots" text="Storage locations & lots" />**: stocking data specifies where materials go and their lot assignments
+
+Next: <InternalLink pathKey="buildProducts.bom.productionSteps" text="Production steps" includeArrow />

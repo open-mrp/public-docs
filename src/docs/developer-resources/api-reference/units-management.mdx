@@ -1,0 +1,106 @@
+---
+title: "Units Management"
+subtitle: "Handles listing and managing units."
+route: "/api-reference/units-management"
+nav:
+    title: "Units Management"
+    section: "API"
+    subsection: "API Reference"
+    order: 5
+---
+
+## The Unit resource
+
+Unit represents a unit of measurement used for conversions and product quantities.
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `id` | string | Yes | The unique identifier for the unit. |
+| `object` | string | Yes | The object type. Always `unit`. |
+| `name` | string | Yes | The display name of the unit (e.g. "Gram", "Kilogram"). |
+| `abbreviation` | string | Yes | The short abbreviation for the unit (e.g. "g", "kg"). |
+| `type` | string | Yes | The unit dimension (e.g. "quantity", "mass", "time", "currency"). Values: `currency`, `quantity`, `time`, `mass`, `volume`, `length`, `temperature`, `area` |
+| `ratio_numerator` | decimal | Yes | The conversion ratio numerator relative to the base unit in the same dimension. |
+| `ratio_denominator` | decimal | Yes | The conversion ratio denominator relative to the base unit in the same dimension. |
+| `offset_numerator` | decimal | Yes | The conversion offset numerator, used for temperature-like conversions. Zero for most unit types. |
+| `offset_denominator` | decimal | Yes | The conversion offset denominator. Typically 1. |
+| `is_base_unit` | boolean | Yes | Whether this unit is the base unit for its dimension. Conversion ratios are relative to this unit. |
+| `is_internal` | boolean | Yes | Whether this unit belongs to the requesting account. False for system/global units. |
+| `created_at` | datetime | Yes | When this unit was created. |
+| `updated_at` | datetime | Yes | When this unit was last updated. |
+
+### Example<span className="hidden toc-hidden"> of Unit</span>
+
+```json
+{
+  "id": "unit_01jm4r6700f8nwq3v5hx2d9ktp",
+  "object": "unit",
+  "name": "Kilogram",
+  "abbreviation": "kg",
+  "type": "mass",
+  "ratio_numerator": "1000.000000000000000000000000000000",
+  "ratio_denominator": "1.000000000000000000000000000000",
+  "offset_numerator": "0.000000000000000000000000000000",
+  "offset_denominator": "1.000000000000000000000000000000",
+  "is_base_unit": false,
+  "is_internal": false,
+  "created_at": "2026-05-10T00:00:00Z",
+  "updated_at": "2026-05-10T00:23:00Z"
+}
+```
+
+## Endpoints
+
+### List Units <span className="toc-hidden"><BetaTag /></span>
+
+This endpoint returns a paginated list of units for the target account, including both account-specific and global system units.
+Supports cursor-based pagination, filtering by dimension type and unit group membership, and search by name or abbreviation.
+
+```http
+GET /v1/core/units
+```
+
+#### Query Parameters<span className="hidden toc-hidden"> for List Units</span>
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `type` | string | No | Filter by unit dimension code (e.g. "mass", "quantity"). |
+| `unit_group_ids` | array | No | Filter by unit group membership. |
+
+#### Response<span className="hidden toc-hidden"> for List Units</span>
+
+**`200`** Successful response for List Units
+
+Returns a paginated list of [`Unit`](#the-unit-resource) objects. See [Pagination](/api/pagination) for envelope details.
+
+**Example:**
+
+```json
+{
+  "object": "list",
+  "page_info": {
+    "next_cursor": "unit_01jm4r6700f8nwq3v5hx2d9ktp",
+    "prev_cursor": null,
+    "has_next_page": true,
+    "has_prev_page": false
+  },
+  "data": [
+    {
+      "id": "unit_01jm4r6700f8nwq3v5hx2d9ktp",
+      "object": "unit",
+      "name": "Kilogram",
+      "abbreviation": "kg",
+      "type": "mass",
+      "ratio_numerator": "1000.000000000000000000000000000000",
+      "ratio_denominator": "1.000000000000000000000000000000",
+      "offset_numerator": "0.000000000000000000000000000000",
+      "offset_denominator": "1.000000000000000000000000000000",
+      "is_base_unit": false,
+      "is_internal": false,
+      "created_at": "2026-05-10T00:00:00Z",
+      "updated_at": "2026-05-10T00:23:00Z"
+    }
+  ]
+}
+```
+

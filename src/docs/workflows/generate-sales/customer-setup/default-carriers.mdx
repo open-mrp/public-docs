@@ -1,0 +1,68 @@
+---
+title: Default carriers & options
+subtitle: Define the shipping carrier and service level automatically applied to a customer's orders.
+route: /generate-sales/customer-setup/default-carriers
+nav:
+    title: Default carriers & options
+    section: Generate sales
+    subsection: Customer setup
+    order: 8
+---
+
+**Default carriers and carrier options** define the shipping carrier and service level automatically applied to a <InternalLink pathKey="generateSales.customer.overview" text="customer's" /> <InternalLink pathKey="generateSales.salesOrder.overview" text="orders" />. Setting these defaults reduces manual entry and ensures consistent shipping configuration.
+
+### Why default carriers matter
+
+- **Reduce order entry effort**: carrier and service level auto-populate from the customer
+- **Consistent shipping**: every order starts with the correct carrier configuration
+- **Rate accuracy**: integrated carriers provide real-time rate lookups for cost estimation
+
+### Core concepts
+
+#### Carriers
+
+A **carrier** is the shipping provider that delivers the order. Carriers fall into two categories:
+
+- **Shippo-integrated**: FedEx, UPS, and USPS are managed through the Shippo API, enabling rate lookup, label generation, and tracking
+- **Custom**: any other carrier (e.g., regional freight, will call, delivery) defined manually without API integration
+
+#### Carrier options
+
+A **carrier option** is the service level within a carrier: for example, Ground, Next Day Air, Express Saver, or Freight Collect. Each carrier has one or more options. For Shippo-integrated carriers, options are synchronized from the carrier's available service levels.
+
+#### Customer defaults
+
+Two fields on the customer record control shipping defaults:
+
+- **Default carrier**: the shipping provider (e.g., UPS)
+- **Default carrier option**: the service level (e.g., Ground)
+
+Both are inherited by new sales orders and can be overridden per order.
+
+#### Carrier billing
+
+Carrier billing controls who pays the carrier directly:
+
+- **Carrier billing type**: how the shipment is billed to the carrier (e.g., sender, recipient, third-party)
+- **Carrier billing account**: the account number used for billing when the customer or a third party pays the carrier
+
+These settings are also set on the customer and inherited by orders.
+
+### Shippo integration
+
+For FedEx, UPS, and USPS, Augno integrates with Shippo to provide:
+
+- **Rate lookup**: real-time shipping rate calculation based on package dimensions and destination
+- **Label generation**: print shipping labels directly from the shipment
+- **Tracking**: carrier-specific tracking URLs for shipment visibility
+- **OAuth connection**: FedEx accounts connect via OAuth for secure carrier account linking
+
+When a Shippo-integrated carrier is created, Augno automatically registers the carrier account with Shippo and synchronizes available service levels as carrier options.
+
+### Where default carriers are used
+
+- **<InternalLink pathKey="generateSales.customer.overview" text="Customer" />**: set as the customer's default carrier and carrier option
+- **<InternalLink pathKey="generateSales.salesOrder.overview" text="Sales order" />**: inherited from the customer, overridable per order
+- **<InternalLink pathKey="shipProducts.shipping.overview" text="Shipments" />**: carrier and option determine how the shipment is fulfilled and billed
+
+Next: <InternalLink pathKey="generateSales.customerSetup.addresses" text="Addresses" includeArrow />

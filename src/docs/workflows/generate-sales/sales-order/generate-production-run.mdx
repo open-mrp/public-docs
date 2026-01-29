@@ -1,0 +1,34 @@
+---
+title: Generate a production run
+subtitle: Generate a production run from a sales order in Augno.
+route: /generate-sales/sales-order/generate-production-run
+nav:
+    title: Generate a production run
+    section: Generate sales
+    subsection: Sales order
+    order: 3
+---
+
+### What is generating a production run from a <InternalLink pathKey="generateSales.salesOrder.overview" text="sales order" />?
+
+If an order includes items that need to be manufactured, you can generate a **Production Run** from the sales order.
+
+- A Production Run turns order demand into manufacturing work (batches/tasks).
+- This action is separate from <InternalLink pathKey="generateSales.salesOrder.issue" text="Issue" />. Issuing does not automatically create a Production Run.
+- In current Augno flow, users typically generate the run while the order is still in <InternalLink pathKey="generateSales.salesOrder.create" text="Estimate" />.
+- If needed, generate the run first, then issue the order to move it into picking and shipping.
+
+Generate a production run from a sales order when current inventory is not enough to fulfill the order.
+
+### Next steps
+
+- <InternalLink
+      pathKey="generateSales.salesOrder.issue"
+      text="Issue the sales order after the run is set up"
+  />
+- <InternalLink
+      pathKey="generateSales.salesOrder.overview"
+      text="Review the sales order lifecycle overview"
+  />
+
+Next: <InternalLink pathKey="generateSales.salesOrder.issue" text="Issue a sales order" includeArrow />

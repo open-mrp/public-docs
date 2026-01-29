@@ -1,0 +1,95 @@
+---
+title: Sales orders
+subtitle: The central order for selling products to a customer, driving fulfillment from creation through payment.
+route: /generate-sales/sales-order/overview
+nav:
+    title: Overview
+    section: Generate sales
+    subsection: Sales order
+    order: 1
+---
+
+A **sales order** is the central order for selling products to a <InternalLink pathKey="generateSales.customer.overview" text="customer" />, driving the fulfillment process from creation through payment. It brings together customer context, commercial terms, fulfillment setup, and line items into a single operational document.
+
+### What a sales order includes
+
+Every sales order combines five areas:
+
+- **Customer context**: customer identity, customer PO number, type group, and contacts
+- **Commercial terms**: <InternalLink pathKey="generateSales.customerSetup.paymentTerms" text="payment terms" />, <InternalLink pathKey="generateSales.customerSetup.shippingTerms" text="shipping terms" />, pricing, and <InternalLink pathKey="generateSales.customerPricing.discountCodes" text="discount codes" />
+- **Fulfillment setup**: <InternalLink pathKey="generateSales.customerSetup.addresses" text="ship-to and bill-to addresses" />, <InternalLink pathKey="generateSales.customerSetup.defaultCarriers" text="carrier and service option" />, <InternalLink pathKey="generateSales.customerSetup.priorities" text="priority" />
+- **Line items**: products, quantities, unit prices, and extended totals
+- **Operational status**: where the order sits in the lifecycle
+
+### Why sales orders matter
+
+Sales orders are the source of truth for downstream work:
+
+- **Picking**: order lines and quantities drive warehouse work
+- **Shipping**: addresses, carrier, and service level determine how products are delivered
+- **Invoicing**: customer, terms, bill-to, and line values generate invoices
+- **Payments**: reconcile against invoiced order value
+- **Reporting**: sales, fulfillment, and customer analytics all flow from order data
+
+### Customer defaults auto-fill
+
+When you select a customer, the order is automatically populated with their defaults:
+
+| Default                    | Source                                                                                                    |
+| -------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Payment terms              | <InternalLink pathKey="generateSales.customerSetup.paymentTerms" text="Customer payment terms" />         |
+| Shipping terms             | <InternalLink pathKey="generateSales.customerSetup.shippingTerms" text="Customer shipping terms" />       |
+| Carrier and carrier option | <InternalLink pathKey="generateSales.customerSetup.defaultCarriers" text="Customer default carrier" />    |
+| Priority                   | <InternalLink pathKey="generateSales.customerSetup.priorities" text="Customer priority" />                |
+| Sales rep                  | <InternalLink pathKey="generateSales.customerSetup.defaultSalesReps" text="Customer default sales rep" /> |
+| Bill-to address            | <InternalLink pathKey="generateSales.customerSetup.addresses" text="Customer billing address" />          |
+| Ship-to address            | <InternalLink pathKey="generateSales.customerSetup.addresses" text="Customer shipping address" />         |
+
+All defaults can be overridden per order.
+
+### Pricing on lines
+
+Each order line's unit price is resolved through a pricing stack:
+
+1. **Base product price**: the product's default sell price
+2. **<InternalLink pathKey="generateSales.customerPricing.customerPrices" text="Customer price" />**: overrides the base price if a matching customer price exists
+3. **<InternalLink pathKey="generateSales.customerPricing.volumeDiscounts" text="Volume discount" />**: percentage reduction based on order quantity and tier thresholds
+4. **<InternalLink pathKey="generateSales.customerPricing.discountCodes" text="Discount code" />**: order-level percentage or fixed-amount reduction
+
+Line prices can also be manually overridden by unlocking the price on individual lines.
+
+### Lifecycle
+
+A sales order moves through a defined lifecycle:
+
+1. **<InternalLink pathKey="generateSales.salesOrder.create" text="Create" />**: select customer, confirm terms and addresses, add line items. Order starts as an **Estimate**.
+2. **Review**: confirm pricing, discounts, promised date, notes, and contacts
+3. **<InternalLink pathKey="generateSales.salesOrder.generateProductionRun" text="Generate production run" />** (optional): create production work for manufactured items while the order is still in Estimate
+4. **<InternalLink pathKey="generateSales.salesOrder.issue" text="Issue" />**: commit the order to operations; creates a pick, allocates inventory, and optionally sends an acknowledgement email
+5. **Pick, pack, ship**: warehouse fulfills the order
+6. **Invoice**: invoices are generated from shipped/processed order value
+7. **Pay and close**: payments are applied; order reaches completed state
+
+A fulfilled order can be re-opened (returned to issued status) to make corrections before closing.
+
+### Editing rules
+
+A sales order can be edited as long as:
+
+- It has not been fully fulfilled
+- No shipments have been sent
+- It is not in a completed state
+
+<InternalLink pathKey="generateSales.customerSetup.accountStatuses" text="Customer hold states" />
+also affect the order: **hold all** blocks issuance, and **hold shipment** blocks shipping activity.
+
+### Getting started
+
+- <InternalLink pathKey="generateSales.salesOrder.create" text="Create a sales order" />
+- <InternalLink pathKey="generateSales.salesOrder.issue" text="Issue a sales order" />
+- <InternalLink
+      pathKey="generateSales.salesOrder.generateProductionRun"
+      text="Generate a production run from a sales order"
+  />
+
+Next: <InternalLink pathKey="generateSales.salesOrder.create" text="Create a sales order" includeArrow />

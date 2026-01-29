@@ -1,0 +1,59 @@
+---
+title: Customer prices
+subtitle: Define product-line-specific pricing for individual customers, overriding base product prices.
+route: /generate-sales/customer-pricing/customer-prices
+nav:
+    title: Customer prices
+    section: Generate sales
+    subsection: Customer pricing
+    order: 1
+---
+
+**Customer prices** let you define product-line-specific pricing for individual <InternalLink pathKey="generateSales.customer.overview" text="customers" />, overriding the base product price. They give you fine-grained control over what each customer pays for specific products.
+
+### Why customer prices matter
+
+- **Per-customer pricing**: set unique prices for key accounts, negotiated contracts, or strategic relationships
+- **Product-level control**: scope prices by product line, category, and product attributes
+- **Override base pricing**: customer prices take precedence over the product's default sell price
+
+### Core concepts
+
+#### Scoping
+
+Every customer price is scoped by:
+
+- **Product line** (required): which product line the price applies to
+- **Categories** (optional): narrow the price to specific categories within the product line
+- **Attributes** (optional): narrow further by product attributes (e.g., size, color, material)
+
+All specified filters must match for the price to apply. If only a product line is set, the price applies to all products in that line.
+
+#### Matching logic
+
+When pricing a product on a <InternalLink pathKey="generateSales.salesOrder.overview" text="sales order" />, Augno finds applicable customer prices by checking:
+
+1. **Product line**: the product must belong to the specified product line
+2. **Customer**: the price must be assigned to the order's customer (or their parent)
+3. **Attributes**: all attributes specified on the price must be present on the product
+
+#### Parent inheritance
+
+Child customers without their own customer prices automatically inherit prices from their parent customer. This means you can set pricing once on the parent account, and all child locations (ship-tos) receive the same pricing without duplicating records.
+
+### Pricing precedence
+
+Customer prices sit in the middle of the pricing stack:
+
+1. **Customer prices** override the base product sell price
+2. **<InternalLink pathKey="generateSales.customerPricing.volumeDiscounts" text="Volume discounts" />** are overrided by customer prices
+3. **<InternalLink pathKey="generateSales.customerPricing.discountCodes" text="Discount codes" />** apply at the order level as an additional reduction
+
+Manual price overrides on individual order lines take final precedence.
+
+### Where customer prices are used
+
+- **<InternalLink pathKey="generateSales.customer.overview" text="Customer" />**: prices are defined per customer (or parent customer)
+- **<InternalLink pathKey="generateSales.salesOrder.overview" text="Sales order" />**: applied automatically when adding line items; the system finds matching customer prices and uses them in place of the base product price
+
+Next: <InternalLink pathKey="generateSales.customerPricing.volumeDiscounts" text="Volume discounts" includeArrow />

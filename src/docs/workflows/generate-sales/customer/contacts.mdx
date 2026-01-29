@@ -1,0 +1,83 @@
+---
+title: Contacts
+subtitle: Manage the people associated with a customer and control who receives order confirmations and invoices.
+route: /generate-sales/customer/contacts
+nav:
+    title: Contacts
+    section: Generate sales
+    subsection: Customer
+    order: 3
+---
+
+**Contacts** are the people associated with a <InternalLink pathKey="generateSales.customer.overview" text="customer" /> who can receive notifications about orders and invoices. Each contact has a name, email address, and notification preferences that control which communications they receive.
+
+### Why contacts matter
+
+- **Targeted notifications**: route order confirmations and invoice emails to the right people at your customer's organization
+- **Auto-population on orders**: when you create a <InternalLink pathKey="generateSales.salesOrder.overview" text="sales order" />, contacts are automatically added based on their notification preferences
+- **Per-order flexibility**: contacts pre-fill from the customer but can be adjusted on any individual order
+
+### What a contact includes
+
+Every contact has:
+
+- **First name** and **last name**: identifies the person
+- **Email address**: where notifications are sent
+
+These are the only fields required to create a contact. Notification preferences can be set at creation time or toggled later.
+
+### Notification preferences
+
+Each contact has two independent notification preferences:
+
+| Preference             | What it controls                                          |
+| ---------------------- | --------------------------------------------------------- |
+| **Order Confirmation** | Whether the contact receives order acknowledgement emails |
+| **Invoice**            | Whether the contact receives invoice notification emails  |
+
+Both preferences default to off. You can enable one, both, or neither for each contact. Preferences are toggled directly from the contact row on the customer detail page without needing to open an edit dialog.
+
+### How contacts flow to orders
+
+When you select a customer on a new <InternalLink pathKey="generateSales.salesOrder.create" text="sales order" />, Augno automatically populates two contact lists:
+
+1. **Acknowledgement contacts**: all customer contacts with **Order Confirmation** enabled
+2. **Invoice contacts**: all customer contacts with **Invoice** enabled
+
+These are pre-filled as a starting point. You can add or remove contacts on any individual order using the multi-select fields, so a specific order can notify different people than the customer's defaults.
+
+Once the order is created, the contact selections are saved as a snapshot on that order. Changes to the customer's contact preferences after the order is created do not affect orders that have already been placed.
+
+### Managing contacts
+
+Contacts are managed from the **Contacts** card on the customer detail page.
+
+#### Adding a contact
+
+Click **Add** to open the contact creation dialog. Enter the contact's first name, last name, and email address, then set their notification preferences using the **Order Confirmation** and **Invoice** toggle buttons. The contact is immediately available on new orders for this customer.
+
+#### Editing a contact
+
+Click the edit icon on a contact row to update their first and last name. Notification preferences are edited separately using the toggle buttons directly on the contact row, so you can quickly enable or disable notifications without opening a dialog.
+
+#### Removing a contact
+
+Click the delete icon on a contact row. A confirmation prompt ensures you do not accidentally remove a contact. Removing a contact does not affect orders where they have already been added.
+
+### Contacts on orders
+
+On the order detail page, contacts appear in two fields:
+
+- **Ack. Contacts**: contacts who will receive the order acknowledgement email when the order is <InternalLink pathKey="generateSales.salesOrder.issue" text="issued" />
+- **Invoice Contacts**: contacts who will receive invoice emails when invoices are generated
+
+Both fields are multi-select autocompletes that search across the customer's contacts. You can add contacts who were not auto-populated or remove ones that were.
+
+### Where contacts are used
+
+- **<InternalLink pathKey="generateSales.customer.overview" text="Customers" />**: contacts are created and managed on the customer record
+- **<InternalLink pathKey="generateSales.salesOrder.create" text="Sales order creation" />**: contacts auto-populate based on notification preferences
+- **<InternalLink pathKey="generateSales.salesOrder.issue" text="Order issuance" />**: acknowledgement emails are sent to the order's acknowledgement contacts
+- **Invoicing**: invoice emails are sent to the order's invoice contacts
+
+Next: <InternalLink pathKey="generateSales.customerPricing.customerPrices" text="Customer prices" includeArrow />

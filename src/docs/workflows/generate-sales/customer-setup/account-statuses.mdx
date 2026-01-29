@@ -1,0 +1,49 @@
+---
+title: Account statuses
+subtitle: Control whether a customer can place orders and receive shipments.
+route: /generate-sales/customer-setup/account-statuses
+nav:
+    title: Account statuses
+    section: Generate sales
+    subsection: Customer setup
+    order: 5
+---
+
+**Account statuses** control whether a <InternalLink pathKey="generateSales.customer.overview" text="customer" /> can place orders and receive shipments. A status is set on the customer record and affects all in-progress orders immediately.
+
+### Why account statuses matter
+
+- **Manage credit risk**: put customers on hold when payment is overdue
+- **Control order flow**: block issuance or shipment without deleting the customer
+- **Flag key accounts**: mark preferred customers for special attention
+
+### Status types and effects
+
+| Status            | Orders  | Shipments | Effect                                                                                              |
+| ----------------- | ------- | --------- | --------------------------------------------------------------------------------------------------- |
+| **Normal**        | Allowed | Allowed   | No restrictions: standard processing                                                                |
+| **Hold shipment** | Allowed | Blocked   | Orders can be created but nothing ships                                                             |
+| **Hold all**      | Blocked | Blocked   | Blocks <InternalLink pathKey="generateSales.salesOrder.issue" text="order issuance" /> and shipment |
+| **Preferred**     | Allowed | Allowed   | Positive flag: no restrictions, signals priority                                                    |
+
+### Core concepts
+
+#### Customer-level only
+
+Account statuses are set on the customer, not on individual orders. Changing a customer's status affects **all** of their in-progress orders immediately. There is no per-order status override for holds.
+
+#### Immediate effect
+
+When a customer is placed on hold, the restriction takes effect right away. Orders already in progress are blocked from advancing (shipping or issuance, depending on the hold type) until the hold is removed.
+
+#### Preferred status
+
+Preferred is not a restriction: it's a positive signal. It can be used for filtering, reporting, or internal prioritization to identify your most valued customers.
+
+### Where account statuses are used
+
+- **<InternalLink pathKey="generateSales.customer.overview" text="Customer" />**: set on the customer record
+- **<InternalLink pathKey="generateSales.salesOrder.overview" text="Sales order" />**: hold statuses block issuance or fulfillment
+- **<InternalLink pathKey="shipProducts.shipping.overview" text="Shipments" />**: hold-shipment and hold-all block shipping activity
+
+Next: <InternalLink pathKey="generateSales.customerSetup.exemptions" text="Exemptions" includeArrow />
