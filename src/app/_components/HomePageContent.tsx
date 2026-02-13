@@ -68,7 +68,7 @@ export function HomePageContent() {
                     </BlendText>
                     <LinkButton
                         className="mt-8 relative z-10"
-                        href={paths.getStarted.root}
+                        href="/get-started"
                         variant="text"
                         blur
                         size="lg"

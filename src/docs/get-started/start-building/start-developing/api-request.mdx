@@ -1,11 +1,12 @@
 ---
 title: 'Send your first Augno API request'
 description: 'Get started with the Augno API'
+route: '/api-request'
 breadcrumbs:
     - label: 'Home'
       pathKey: 'home'
     - label: 'Get started'
-      pathKey: 'getStarted.root'
+      pathKey: 'getStarted'
     - label: 'Send your first API request'
 header:
     title: 'Send your first Augno API request'
@@ -13,16 +14,15 @@ header:
 nav:
     title: 'Send your first API request'
     section: 'Start Building'
-    sectionOrder: 2
     subsection: 'Start developing'
     order: 1
 ---
 
-To interact with the Augno API, you'll need a secret API key. Once you sign up for an Augno account, we provide you with keys for both testing and live environments. Before diving into production, ensure your account is <InternalLink pathKey="getStarted.account.activate" text="activated" />.
+To interact with the Augno API, you'll need a secret API key. Once you sign up for an Augno account, we provide you with keys for both testing and live environments. Before diving into production, ensure your account is <InternalLink pathKey="account.activate" text="activated" />.
 
 <DocNumberedSection number={1} title="Preparation" className="mt-6">
 
-This guide will walk you through creating a customer using the Augno API. For a comprehensive understanding of how Augno API components work together, consider taking an <InternalLink pathKey="getStarted.api.tour" text="API tour" /> or visiting the <InternalLink pathKey="api" text="API reference" />.
+This guide will walk you through creating a customer using the Augno API. For a comprehensive understanding of how Augno API components work together, consider taking an <InternalLink pathKey="apiTour" text="API tour" /> or visiting the <InternalLink pathKey="api-reference" text="API reference" />.
 
 </DocNumberedSection>
 
@@ -71,7 +71,7 @@ Upon success, expect a response like this:
 
 <DocNumberedSection number={3} title="Monitoring your requests">
 
-Every API request you make is logged and generates an event for your <InternalLink pathKey="getStarted.account.root" text="organization account" />. The API key you use determines whether the data is stored in a sandbox or production environment. For example, using a test API key creates data in the test environment.
+Every API request you make is logged and generates an event for your <InternalLink pathKey="account.root" text="organization account" />. The API key you use determines whether the data is stored in a sandbox or production environment. For example, using a test API key creates data in the test environment.
 
 To review your API request logs, visit the <InternalLink pathKey="frontend.logs" text="logs" /> page. For event details, check the <InternalLink pathKey="frontend.events" text="events" /> page.
 

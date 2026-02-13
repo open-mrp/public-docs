@@ -1,10 +1,12 @@
 'use client';
 
 import { useIsAuthenticated } from '@/lib/auth-store';
+import { cn } from '@/utils/cn';
 import { ReactNode } from 'react';
 
 interface AuthConditionalProps {
     children: ReactNode;
+    className?: string;
 }
 
 /**
@@ -17,14 +19,14 @@ interface AuthConditionalProps {
  * </IfAuthenticated>
  * ```
  */
-export function IfAuthenticated({ children }: AuthConditionalProps) {
+export function IfAuthenticated({ children, className }: AuthConditionalProps) {
     const isAuthenticated = useIsAuthenticated();
 
     if (!isAuthenticated) {
         return null;
     }
 
-    return <>{children}</>;
+    return <div className={cn('pt-2', className)}>{children}</div>;
 }
 
 /**
@@ -37,13 +39,12 @@ export function IfAuthenticated({ children }: AuthConditionalProps) {
  * </IfUnauthenticated>
  * ```
  */
-export function IfUnauthenticated({ children }: AuthConditionalProps) {
+export function IfUnauthenticated({ children, className }: AuthConditionalProps) {
     const isAuthenticated = useIsAuthenticated();
 
     if (isAuthenticated) {
         return null;
     }
 
-    return <>{children}</>;
+    return <div className={cn('pt-2', className)}>{children}</div>;
 }
-

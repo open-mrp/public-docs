@@ -1,0 +1,128 @@
+---
+title: 'Pagination'
+description: 'Learn how to paginate through list results using cursor-based pagination.'
+route: '/api/pagination'
+breadcrumbs:
+    - label: 'Home'
+      pathKey: 'home'
+    - label: 'Developer resources'
+      pathKey: 'development'
+    - label: 'API'
+      pathKey: 'api.overview'
+    - label: 'Pagination'
+header:
+    title: 'Pagination'
+    subtitle: 'Iterating through paginated list results.'
+nav:
+    title: 'Pagination'
+    section: 'API'
+    subsection: 'Make Requests'
+    order: 8
+---
+
+This API uses cursor-based (keyset) pagination for list endpoints. Cursor-based pagination provides stable results when data changes between requests and performs well on large datasets.
+
+## Query parameters
+
+| Parameter | Type    | Default | Description                                                                  |
+| --------- | ------- | ------- | ---------------------------------------------------------------------------- |
+| `limit`   | integer | 10      | Number of items to return per page. Must be a positive integer               |
+| `cursor`  | string  | null    | Cursor for fetching the next page (use `next_cursor` from previous response) |
+| `q`       | string  | null    | Search query for filtering results                                           |
+
+## Response structure
+
+List endpoints return a response with the following structure:
+
+```json
+{
+  "object": "list",
+  "data": [
+    { "id": "res_abc123", ... },
+    { "id": "res_def456", ... }
+  ],
+  "has_more": true,
+  "next_cursor": "res_def456"
+}
+```
+
+| Field         | Type         | Description                                                |
+| ------------- | ------------ | ---------------------------------------------------------- |
+| `object`      | string       | Always `"list"` for paginated responses                    |
+| `data`        | array        | Array of resources for the current page                    |
+| `has_more`    | boolean      | Whether there are more results available after this page   |
+| `next_cursor` | string\|null | Cursor for fetching the next page, `null` on the last page |
+
+## Iterating through pages
+
+To iterate through all pages of results:
+
+1. Make an initial request without `cursor`
+2. Check if `has_more` is `true` in the response
+3. If true, make another request with `cursor` set to the `next_cursor` value
+4. Repeat until `has_more` is `false`
+
+### Example (JavaScript)
+
+```javascript
+async function fetchAllResources(baseUrl) {
+    const results = [];
+    let cursor = null;
+
+    do {
+        const url = new URL(`${baseUrl}/v1/resources`);
+        url.searchParams.set('limit', '100');
+        if (cursor) {
+            url.searchParams.set('cursor', cursor);
+        }
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        results.push(...data.data);
+        cursor = data.next_cursor;
+    } while (cursor);
+
+    return results;
+}
+```
+
+### Example (Python)
+
+```python
+import requests
+
+def fetch_all_resources(base_url):
+    results = []
+    cursor = None
+
+    while True:
+        params = {"limit": 100}
+        if cursor:
+            params["cursor"] = cursor
+
+        response = requests.get(f"{base_url}/v1/resources", params=params)
+        data = response.json()
+
+        results.extend(data["data"])
+
+        if not data.get("has_more"):
+            break
+        cursor = data.get("next_cursor")
+
+    return results
+```
+
+## Filtering with search
+
+Use the `q` parameter to filter results. The search behavior depends on the specific endpoint.
+
+```
+GET /v1/resources?q=example&limit=20
+```
+
+Search can be combined with pagination:
+
+```
+GET /v1/resources?q=example&limit=20&cursor=res_abc123
+```

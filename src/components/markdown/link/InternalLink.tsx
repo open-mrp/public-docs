@@ -22,11 +22,19 @@ export default function InternalLink({
     const path = getPath(pathKey);
 
     if (!path) {
-        return null;
+        // Show visible error in development, hide in production
+        if (process.env.NODE_ENV === 'development') {
+            return (
+                <span className="bg-red-100 text-red-800 px-1 rounded" title={`Invalid pathKey: ${pathKey}`}>
+                    {text} [BROKEN: {pathKey}]
+                </span>
+            );
+        }
+        return <span>{text}</span>;
     }
 
     const isExternal = path.startsWith('http');
-    const isApiLink = path.startsWith('/api');
+    const isApiLink = path.startsWith('/api-reference');
 
     const linkContent = (
         <Link

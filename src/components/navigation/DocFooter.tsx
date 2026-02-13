@@ -2,6 +2,7 @@ import { paths } from '@/static/paths';
 import { cn } from '@/utils/cn';
 import { AugnoLogo, Footer, HelpIcon, QuestionMarkIcon, useDarkMode } from '@augno/ui';
 import Link from 'next/link';
+import AIIcon from '../icons/AIIcon';
 
 interface DocFooterProps {
     className?: string;
@@ -33,6 +34,14 @@ export default function DocFooter({ className }: DocFooterProps) {
                         link: {
                             text: 'Contact Sales',
                             href: 'mailto:sales@augno.com',
+                        },
+                    },
+                    {
+                        icon: <AIIcon className="mr-2" />,
+                        text: 'LLM?',
+                        link: {
+                            text: 'Read llms.txt',
+                            href: '/llms.txt',
                         },
                     },
                 ]}

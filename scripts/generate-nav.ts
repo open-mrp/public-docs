@@ -2,6 +2,8 @@ import fs from 'fs';
 import { glob } from 'glob';
 import matter from 'gray-matter';
 import path from 'path';
+import { tabs } from '../src/static/tabs';
+import { getSectionOrder, getSubsectionOrder } from '../src/static/navOrder';
 
 const DOCS_DIR = path.join(process.cwd(), 'src/docs');
 const NAV_DATA_OUTPUT = path.join(process.cwd(), 'src/static/navData.generated.ts');
@@ -27,16 +29,19 @@ interface NavSection {
 // Frontmatter nav fields
 interface NavFrontmatter {
     title?: string;
-    order?: number;
-    sectionOrder?: number; // Order of the section itself (used by first page in section)
+    order?: number; // Order of the page within its subsection
     section?: string;
     subsection?: string;
     hidden?: boolean;
 }
 
+// Sentinel value for pages without a subsection (avoids undefined key sorting issues)
+const NO_SUBSECTION = '__NO_SUBSECTION__';
+
 interface PageFrontmatter {
     title: string;
     description?: string;
+    route?: string;
     header?: {
         title: string;
         subtitle: string;
@@ -54,11 +59,26 @@ interface ParsedPage {
 
 function filePathToSlug(filePath: string): string {
     // Remove the .mdx extension and convert to URL path
-    return filePath.replace(/\.mdx$/, '');
+    // Handle index.mdx files: get-started/index.mdx -> get-started
+    return filePath.replace(/\.mdx$/, '').replace(/\/index$/, '');
 }
 
 function filePathToHref(filePath: string): string {
     return '/' + filePathToSlug(filePath);
+}
+
+/**
+ * Get the tab ID from a file path (first directory segment)
+ */
+function getTabIdFromFilePath(filePath: string): string | undefined {
+    const parts = filePath.split('/');
+    if (parts.length > 0) {
+        const firstSegment = parts[0];
+        // Check if this segment matches a known tab
+        const tab = tabs.find((t) => t.id === firstSegment);
+        return tab?.id;
+    }
+    return undefined;
 }
 
 async function parseAllMdxFiles(): Promise<ParsedPage[]> {
@@ -81,12 +101,11 @@ async function parseAllMdxFiles(): Promise<ParsedPage[]> {
         pages.push({
             filePath: file,
             slug: filePathToSlug(file),
-            href: filePathToHref(file),
+            href: frontmatter.route || filePathToHref(file),
             frontmatter,
             nav: {
                 title: nav.title || frontmatter.title,
                 order: nav.order ?? 999,
-                sectionOrder: nav.sectionOrder,
                 section: nav.section,
                 subsection: nav.subsection,
                 hidden: nav.hidden,
@@ -97,49 +116,42 @@ async function parseAllMdxFiles(): Promise<ParsedPage[]> {
     return pages;
 }
 
-function buildNavStructure(pages: ParsedPage[]): NavSection[] {
-    // Group pages by section
-    const sectionMap = new Map<string, ParsedPage[]>();
-    const sectionOrder = new Map<string, number>();
+interface TabbedNavData {
+    [tabId: string]: NavSection[];
+}
+
+function buildNavStructure(pages: ParsedPage[], tabId: string): NavSection[] {
+    // Group pages by section (case-insensitive)
+    const sectionMap = new Map<string, ParsedPage[]>(); // key is lowercase
+    const sectionTitle = new Map<string, string>(); // lowercase -> display title
 
     for (const page of pages) {
         const section = page.nav.section || 'Documentation';
+        const sectionKey = section.toLowerCase();
 
-        if (!sectionMap.has(section)) {
-            sectionMap.set(section, []);
+        if (!sectionMap.has(sectionKey)) {
+            sectionMap.set(sectionKey, []);
+            sectionTitle.set(sectionKey, section); // use first encountered title
         }
-        sectionMap.get(section)!.push(page);
-
-        // Track section order using sectionOrder field (if provided)
-        // Only pages with explicit sectionOrder set the section's order
-        if (page.nav.sectionOrder !== undefined) {
-            const currentOrder = sectionOrder.get(section) ?? Infinity;
-            if (page.nav.sectionOrder < currentOrder) {
-                sectionOrder.set(section, page.nav.sectionOrder);
-            }
-        }
+        sectionMap.get(sectionKey)!.push(page);
     }
 
-    // For sections without explicit sectionOrder, use a high default
-    for (const section of sectionMap.keys()) {
-        if (!sectionOrder.has(section)) {
-            sectionOrder.set(section, 999);
-        }
-    }
-
-    // Sort sections by their order
+    // Sort sections using the navOrder config
     const sortedSections = Array.from(sectionMap.keys()).sort((a, b) => {
-        return (sectionOrder.get(a) ?? 999) - (sectionOrder.get(b) ?? 999);
+        const orderA = getSectionOrder(tabId, a);
+        const orderB = getSectionOrder(tabId, b);
+        return orderA - orderB;
     });
 
     const navSections: NavSection[] = [];
 
-    for (const sectionTitle of sortedSections) {
-        const sectionPages = sectionMap.get(sectionTitle)!;
-        const links = buildSectionLinks(sectionPages);
+    for (const sectionKey of sortedSections) {
+        const sectionPages = sectionMap.get(sectionKey)!;
+        const sectionName = sectionTitle.get(sectionKey)!;
+        const links = buildSectionLinks(sectionPages, tabId, sectionName);
 
         navSections.push({
-            title: sectionTitle,
+            title: sectionName,
             links,
         });
     }
@@ -147,42 +159,88 @@ function buildNavStructure(pages: ParsedPage[]): NavSection[] {
     return navSections;
 }
 
-function buildSectionLinks(pages: ParsedPage[]): (NavLink | NavSubSectionData)[] {
-    // Group by subsection
-    const subsectionMap = new Map<string | undefined, ParsedPage[]>();
-    const subsectionOrder = new Map<string | undefined, number>();
+function buildTabbedNavStructure(pages: ParsedPage[]): TabbedNavData {
+    // Group pages by tab first
+    const pagesByTab = new Map<string, ParsedPage[]>();
+
+    // Initialize with all known tabs
+    for (const tab of tabs) {
+        pagesByTab.set(tab.id, []);
+    }
 
     for (const page of pages) {
-        const subsection = page.nav.subsection;
-
-        if (!subsectionMap.has(subsection)) {
-            subsectionMap.set(subsection, []);
-        }
-        subsectionMap.get(subsection)!.push(page);
-
-        // Track subsection order
-        const currentOrder = subsectionOrder.get(subsection) ?? Infinity;
-        if ((page.nav.order ?? 999) < currentOrder) {
-            subsectionOrder.set(subsection, page.nav.order ?? 999);
+        const tabId = getTabIdFromFilePath(page.filePath);
+        if (tabId && pagesByTab.has(tabId)) {
+            pagesByTab.get(tabId)!.push(page);
         }
     }
 
-    // Sort subsections (undefined/no subsection comes first)
+    // Build nav structure for each tab
+    const tabbedNav: TabbedNavData = {};
+
+    for (const [tabId, tabPages] of pagesByTab) {
+        tabbedNav[tabId] = buildNavStructure(tabPages, tabId);
+    }
+
+    return tabbedNav;
+}
+
+function buildSectionLinks(
+    pages: ParsedPage[],
+    tabId: string,
+    sectionName: string
+): (NavLink | NavSubSectionData)[] {
+    // Group by subsection (case-insensitive, using sentinel for no subsection)
+    const subsectionMap = new Map<string, ParsedPage[]>(); // key is lowercase or NO_SUBSECTION
+    const subsectionTitle = new Map<string, string | undefined>(); // key -> display title
+
+    for (const page of pages) {
+        const subsection = page.nav.subsection;
+        const subsectionKey = subsection?.toLowerCase() ?? NO_SUBSECTION;
+
+        if (!subsectionMap.has(subsectionKey)) {
+            subsectionMap.set(subsectionKey, []);
+            subsectionTitle.set(subsectionKey, subsection); // use first encountered title (undefined for NO_SUBSECTION)
+        }
+        subsectionMap.get(subsectionKey)!.push(page);
+    }
+
+    // Sort subsections using the navOrder config
     const sortedSubsections = Array.from(subsectionMap.keys()).sort((a, b) => {
-        if (a === undefined) return -1;
-        if (b === undefined) return 1;
-        return (subsectionOrder.get(a) ?? 999) - (subsectionOrder.get(b) ?? 999);
+        // For NO_SUBSECTION pages, try to match by nav.title if there's only one page
+        let subsectionA: string | null;
+        let subsectionB: string | null;
+
+        if (a === NO_SUBSECTION) {
+            const pages = subsectionMap.get(a)!;
+            // Use nav.title for ordering when there's a single page without subsection
+            subsectionA = pages.length === 1 ? pages[0].nav.title ?? null : null;
+        } else {
+            subsectionA = subsectionTitle.get(a) ?? null;
+        }
+
+        if (b === NO_SUBSECTION) {
+            const pages = subsectionMap.get(b)!;
+            subsectionB = pages.length === 1 ? pages[0].nav.title ?? null : null;
+        } else {
+            subsectionB = subsectionTitle.get(b) ?? null;
+        }
+
+        const orderA = getSubsectionOrder(tabId, sectionName, subsectionA);
+        const orderB = getSubsectionOrder(tabId, sectionName, subsectionB);
+        return orderA - orderB;
     });
 
     const links: (NavLink | NavSubSectionData)[] = [];
 
-    for (const subsection of sortedSubsections) {
-        const subsectionPages = subsectionMap.get(subsection)!;
+    for (const subsectionKey of sortedSubsections) {
+        const subsectionPages = subsectionMap.get(subsectionKey)!;
+        const displayTitle = subsectionTitle.get(subsectionKey);
 
         // Sort pages within subsection by order
         subsectionPages.sort((a, b) => (a.nav.order ?? 999) - (b.nav.order ?? 999));
 
-        if (subsection === undefined) {
+        if (displayTitle === undefined) {
             // No subsection - add pages directly as NavLinks
             for (const page of subsectionPages) {
                 links.push({
@@ -194,7 +252,7 @@ function buildSectionLinks(pages: ParsedPage[]): (NavLink | NavSubSectionData)[]
             // Has subsection - group into NavSubSectionData
             const items = buildSubsectionItems(subsectionPages);
             links.push({
-                title: subsection,
+                title: displayTitle,
                 items,
             });
         }
@@ -212,17 +270,21 @@ function buildSubsectionItems(pages: ParsedPage[]): (NavLink | NavSubSectionData
     }));
 }
 
-function generateNavDataFile(sections: NavSection[]): string {
+function generateNavDataFile(tabbedNav: TabbedNavData): string {
     const imports = `import { NavSection } from '@augno/ui';`;
 
-    const sectionsJson = JSON.stringify(sections, null, 4);
+    const navJson = JSON.stringify(tabbedNav, null, 4);
 
     return `// THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY.
 // Run 'bun run build:docs' to regenerate.
 
 ${imports}
 
-export const items: NavSection[] = ${sectionsJson};
+export interface TabbedNavData {
+    [tabId: string]: NavSection[];
+}
+
+export const navData: TabbedNavData = ${navJson};
 `;
 }
 
@@ -262,11 +324,14 @@ export function getPagePreview(path: string): PagePreview | undefined {
 }
 
 function generateDocPathsFile(pages: ParsedPage[]): string {
-    // Build a nested path object from the pages
+    // Build a nested path object from the pages based on their routes
     const pathsObj: Record<string, unknown> = {};
 
     for (const page of pages) {
-        const parts = page.slug.split('/');
+        // Use route (href) to build the path structure, not the file path
+        const route = page.href;
+        // Remove leading slash and split by /
+        const parts = route.replace(/^\//, '').split('/');
         let current = pathsObj;
 
         for (let i = 0; i < parts.length; i++) {
@@ -277,19 +342,11 @@ function generateDocPathsFile(pages: ParsedPage[]): string {
             const key = part.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
 
             if (isLast) {
-                // For the last part, check if it's an index-like file (same name as parent folder)
-                if (i > 0 && parts[i - 1] === part) {
-                    // This is like account/account.mdx - use 'root' key
-                    current['root'] = page.href;
-                } else if (part === parts[i - 1]) {
-                    current['root'] = page.href;
+                // Check if we already have a nested object at this key
+                if (typeof current[key] === 'object') {
+                    (current[key] as Record<string, unknown>)['root'] = route;
                 } else {
-                    // Check if we already have a nested object at this key
-                    if (typeof current[key] === 'object') {
-                        (current[key] as Record<string, unknown>)['root'] = page.href;
-                    } else {
-                        current[key] = page.href;
-                    }
+                    current[key] = route;
                 }
             } else {
                 // Not the last part - create nested object if needed
@@ -304,21 +361,23 @@ function generateDocPathsFile(pages: ParsedPage[]): string {
         }
     }
 
-    // Handle special case for root-level files (like api.mdx, get-started.mdx)
-    // They should create nested objects with 'root' if there are child pages
+    // Handle special case for pages that have children with the same prefix
+    // e.g., /api and /api/authentication - /api should become { root: "/api", authentication: "..." }
     for (const page of pages) {
-        const parts = page.slug.split('/');
+        const route = page.href;
+        const parts = route.replace(/^\//, '').split('/');
+
         if (parts.length === 1) {
             const key = parts[0].replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
-            // Check if there are child pages
+            // Check if there are child pages with this route prefix
             const hasChildren = pages.some(
-                (p) => p.slug !== page.slug && p.slug.startsWith(page.slug + '/'),
+                (p) => p.href !== route && p.href.startsWith(route + '/'),
             );
             if (hasChildren) {
                 if (typeof pathsObj[key] === 'object') {
-                    (pathsObj[key] as Record<string, unknown>)['root'] = page.href;
+                    (pathsObj[key] as Record<string, unknown>)['root'] = route;
                 } else {
-                    pathsObj[key] = { root: page.href };
+                    pathsObj[key] = { root: route };
                 }
             }
         }
@@ -336,11 +395,11 @@ async function main() {
     const pages = await parseAllMdxFiles();
     console.log(`Found ${pages.length} pages`);
 
-    console.log('Building navigation structure...');
-    const navSections = buildNavStructure(pages);
+    console.log('Building tabbed navigation structure...');
+    const tabbedNav = buildTabbedNavStructure(pages);
 
     console.log('Generating navData file...');
-    const navDataContent = generateNavDataFile(navSections);
+    const navDataContent = generateNavDataFile(tabbedNav);
     fs.writeFileSync(NAV_DATA_OUTPUT, navDataContent);
     console.log(`Written: ${NAV_DATA_OUTPUT}`);
 

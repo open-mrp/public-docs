@@ -1,6 +1,7 @@
 'use client';
 
-import { useCurrentAccount } from '@/lib/auth-store';
+import { API_VERSION } from '@/static/apiVersion.generated';
+import { useCurrentAccount, useDocApiKeySecret, useOwnerAccount } from '@/lib/auth-store';
 import { createContext, ReactNode, useContext } from 'react';
 
 interface ApiKeyContextValue {
@@ -8,6 +9,10 @@ interface ApiKeyContextValue {
     sandboxApiKey: string;
     /** The current account name */
     accountName: string;
+    /** The current (production) account ID */
+    accountId: string;
+    /** The sandbox account ID */
+    sandboxAccountId: string;
     /** Map of placeholder strings to their replacement values */
     codeReplacements: Record<string, string>;
 }
@@ -19,8 +24,10 @@ const FAKE_API_KEY =
     'aug_sk_test_AM4Bjb7xBLrmM0EZ3ADvlv_hMpF1c5rhvfRkHF7gww5CtZuFzczEImt0WXP5CwilIS6bUWNXD';
 
 // Placeholder values shown in code snippets when user is not logged in
-const PLACEHOLDER_API_KEY = '{{ACCOUNT_API_KEY}}';
+const PLACEHOLDER_API_KEY = '{{YOUR_API_KEY}}';
 const PLACEHOLDER_ACCOUNT_NAME = 'your account';
+const PLACEHOLDER_ACCOUNT_ID = '{{YOUR_ACCOUNT_ID}}';
+const PLACEHOLDER_SANDBOX_ACCOUNT_ID = '{{YOUR_SANDBOX_ACCOUNT_ID}}';
 
 interface ApiKeyProviderProps {
     children: ReactNode;
@@ -33,22 +40,34 @@ interface ApiKeyProviderProps {
  */
 export function ApiKeyProvider({ children }: ApiKeyProviderProps) {
     const currentAccount = useCurrentAccount();
+    const ownerAccount = useOwnerAccount();
+    const docApiKeySecret = useDocApiKeySecret();
 
-    // TODO: In the future, fetch the user's actual sandbox API key from the API
-    // For ApiKeySnippet component, show a realistic-looking fake key when not logged in
-    const sandboxApiKey = FAKE_API_KEY;
+    // Show the user's real sandbox API key when available, otherwise a realistic-looking fake
+    const sandboxApiKey = docApiKeySecret ?? FAKE_API_KEY;
 
     // Use the current account name if logged in, otherwise show placeholder
     const accountName = currentAccount?.name ?? PLACEHOLDER_ACCOUNT_NAME;
 
-    // For code snippets, use templated placeholder when not logged in
+    // Use the owner (production) account ID if available, otherwise show placeholder
+    const accountId = ownerAccount?.id ?? PLACEHOLDER_ACCOUNT_ID;
+
+    // currentAccount is the sandbox account
+    const sandboxAccountId = currentAccount?.id ?? PLACEHOLDER_SANDBOX_ACCOUNT_ID;
+
+    // For code snippets, use the real key when available, otherwise a templated placeholder
     const codeReplacements: Record<string, string> = {
-        YOUR_API_KEY: PLACEHOLDER_API_KEY,
+        YOUR_API_KEY: docApiKeySecret ?? PLACEHOLDER_API_KEY,
         YOUR_ACCOUNT_NAME: accountName,
+        YOUR_ACCOUNT_ID: accountId,
+        YOUR_SANDBOX_ACCOUNT_ID: sandboxAccountId,
+        CURRENT_API_VERSION: API_VERSION.current,
     };
 
     return (
-        <ApiKeyContext.Provider value={{ sandboxApiKey, accountName, codeReplacements }}>
+        <ApiKeyContext.Provider
+            value={{ sandboxApiKey, accountName, accountId, sandboxAccountId, codeReplacements }}
+        >
             {children}
         </ApiKeyContext.Provider>
     );
@@ -79,4 +98,20 @@ export function useCodeReplacements() {
 export function useAccountName() {
     const { accountName } = useApiKey();
     return accountName;
+}
+
+/**
+ * Hook to get the account ID
+ */
+export function useAccountId() {
+    const { accountId } = useApiKey();
+    return accountId;
+}
+
+/**
+ * Hook to get the sandbox account ID
+ */
+export function useSandboxAccountId() {
+    const { sandboxAccountId } = useApiKey();
+    return sandboxAccountId;
 }

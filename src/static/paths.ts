@@ -6,15 +6,13 @@ export const externalPaths = {
     frontend: {
         root: augnoFrontend,
         dashboard: augnoDashboard,
-        logs: augnoDashboard + '/logs',
+        login: augnoFrontend + '/auth/login',
+        logs: augnoDashboard + '/request-logs',
         events: augnoDashboard + '/events',
         signup: augnoFrontend + '/auth/register',
         apiKeys: augnoDashboard + '/api-keys',
     },
 };
-
-// Re-export generated doc paths
-export { docPaths } from './docPaths.generated';
 
 // Combined paths object for backwards compatibility
 // Import docPaths at runtime to allow for code splitting
@@ -29,16 +27,31 @@ export const paths = {
 // Path lookup helper
 type PathValue = string | { [key: string]: PathValue };
 
+// Track invalid pathKeys to avoid duplicate warnings
+const warnedPathKeys = new Set<string>();
+
 export function getPath(pathKey: string): string | undefined {
     const keys = pathKey.split('.');
     let current: PathValue = paths as unknown as PathValue;
 
     for (const key of keys) {
         if (current === undefined || current === null || typeof current !== 'object') {
+            if (!warnedPathKeys.has(pathKey)) {
+                warnedPathKeys.add(pathKey);
+                console.error(`[Invalid pathKey] "${pathKey}" does not resolve to a valid path`);
+            }
             return undefined;
         }
         current = (current as { [key: string]: PathValue })[key];
     }
 
-    return typeof current === 'string' ? current : undefined;
+    if (typeof current !== 'string') {
+        if (!warnedPathKeys.has(pathKey)) {
+            warnedPathKeys.add(pathKey);
+            console.error(`[Invalid pathKey] "${pathKey}" resolves to an object, not a path. Did you mean "${pathKey}.root"?`);
+        }
+        return undefined;
+    }
+
+    return current;
 }

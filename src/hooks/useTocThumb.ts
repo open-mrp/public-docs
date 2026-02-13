@@ -22,7 +22,9 @@ export function useTocThumb(
 
         // Find the main scroll container (main.overflow-y-auto) or fall back to window
         const findScrollContainer = (): HTMLElement | null => {
-            const mainElement = document.querySelector('main.overflow-y-auto') as HTMLElement | null;
+            const mainElement = document.querySelector(
+                'main.overflow-y-auto',
+            ) as HTMLElement | null;
             return mainElement;
         };
 

@@ -14,7 +14,18 @@ interface DocLinkProps {
 
 export default function DocLink({ pathKey, children, className }: DocLinkProps) {
     const path = getPath(pathKey);
-    if (!path) return null;
+
+    if (!path) {
+        // Show visible error in development, hide in production
+        if (process.env.NODE_ENV === 'development') {
+            return (
+                <span className="bg-red-100 text-red-800 px-1 rounded" title={`Invalid pathKey: ${pathKey}`}>
+                    {children} [BROKEN: {pathKey}]
+                </span>
+            );
+        }
+        return <span>{children}</span>;
+    }
 
     const isExternal = path.startsWith('http');
     const linkClass = cn('text-secondary-500 hover:text-secondary-700', className);

@@ -1,5 +1,8 @@
+import { AccountId } from '@/components/markdown/AccountId';
 import { AccountName } from '@/components/markdown/AccountName';
+import { SandboxAccountId } from '@/components/markdown/SandboxAccountId';
 import { ApiKeySnippet } from '@/components/markdown/ApiKeySnippet';
+import { ApiVersion } from '@/components/markdown/ApiVersion';
 import { IfAuthenticated, IfUnauthenticated } from '@/components/markdown/AuthConditional';
 import BetaTag from '@/components/markdown/BetaTag';
 import { DocsCodeEditor } from '@/components/markdown/DocsCodeEditor';
@@ -9,6 +12,7 @@ import DocLink from '@/components/markdown/link/DocLink';
 import InternalLink from '@/components/markdown/link/InternalLink';
 import LinkCard from '@/components/markdown/link/LinkCard';
 import { cleanMdx } from '@/lib/mdx/cleanMdx';
+import { routeToFile } from '@/static/routeMap.generated';
 import {
     DocCardGroup,
     DocChecklist,
@@ -58,12 +62,16 @@ const FrontmatterSchema = z.object({
         subtitle: z.string(),
     }),
     nav: NavSchema,
+    toc: z.boolean().optional().default(true),
 });
 
 const mdxComponents: MDXComponents = {
     // Custom components
+    AccountId,
     AccountName,
+    SandboxAccountId,
     ApiKeySnippet,
+    ApiVersion,
     IfAuthenticated,
     IfUnauthenticated,
     DocLink,
@@ -88,7 +96,7 @@ const mdxComponents: MDXComponents = {
         );
     },
     pre: ({ children }) => <DocsCodeEditor>{children}</DocsCodeEditor>,
-    p: ({ children }) => <p style={{ paddingTop: '12px' }}>{children}</p>,
+    p: ({ children }) => <p className="pt-3">{children}</p>,
     table: ({ children }) => <table style={{ marginTop: '12px' }}>{children}</table>,
     h1: ({ children }) => (
         <DocHeading level={1} className="pt-8">
@@ -136,15 +144,16 @@ export async function fetchPageBySlug(slug: string[]): Promise<{
     content: ReactElement<unknown, string | JSXElementConstructor<unknown>>;
     cleanMarkdown: string;
 }> {
-    // Join the slug array into a path and remove .mdx if present
-    const realSlug = slug.join('/').replace(/\.mdx$/, '');
-    // Handle nested paths by joining the slug with the root directory
-    const filePath = path.join(rootDirectory, `${realSlug}.mdx`);
+    // Build the route from the slug
+    const route = '/' + slug.join('/');
+    const relativeFilePath = routeToFile[route];
 
-    // Check if the file exists
-    if (!fs.existsSync(filePath)) {
-        throw new Error(`File not found: ${filePath}`);
+    if (!relativeFilePath) {
+        throw new Error(`No file found for route: ${route}`);
     }
+
+    const filePath = path.join(rootDirectory, relativeFilePath);
+    const realSlug = slug.join('/');
 
     const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
 

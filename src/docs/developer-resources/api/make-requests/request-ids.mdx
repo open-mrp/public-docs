@@ -1,0 +1,47 @@
+---
+title: 'Request IDs'
+description: 'Learn how to use request IDs for debugging and support purposes.'
+route: '/api/request-ids'
+breadcrumbs:
+    - label: 'Home'
+      pathKey: 'home'
+    - label: 'Developer resources'
+      pathKey: 'development'
+    - label: 'API'
+      pathKey: 'api.overview'
+    - label: 'Request IDs'
+header:
+    title: 'Request IDs'
+    subtitle: 'Use request IDs to debug issues and get support.'
+nav:
+    title: 'Request IDs'
+    section: 'API'
+    subsection: 'Make Requests'
+    order: 9
+---
+
+Every API response includes a unique request ID that can be used for debugging and support purposes.
+
+## Response header
+
+All API responses include the `Request-ID` header:
+
+```http
+Request-ID: rq_a1b2c3d4e5f6g7h8i9j
+```
+
+## Format
+
+Request IDs follow a consistent format:
+
+- **Prefix:** `rq_`
+- **Body:** 19 lowercase alphanumeric characters (0-9, a-z)
+- **Total length:** 22 characters
+
+Example: `rq_a1b2c3d4e5f6g7h8i9j`
+
+## Usage
+
+When contacting support or reporting issues, include the request ID from the failed request. This allows us to quickly locate the relevant logs and diagnose problems.
+
+If you're logging API responses in your application, consider storing the request ID alongside other response data to simplify debugging.

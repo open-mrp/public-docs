@@ -60,7 +60,7 @@ export function MarkdownPage({ meta, content, cleanMarkdown }: MarkdownPageProps
         };
     }, [content]);
 
-    const hasToc = headings.length > 0;
+    const hasToc = meta.toc !== false && headings.length > 0;
 
     return (
         <div
@@ -84,16 +84,23 @@ export function MarkdownPage({ meta, content, cleanMarkdown }: MarkdownPageProps
                         </span>
                     </button>
                 </div>
-                <hr className="my-8 border-t-1 border-[var(--border-color)]" />
+                <hr className="mt-8 mb-0 border-t-1 border-[var(--border-color)]" />
             </div>
 
             <div className="min-w-0 row-start-2 max-w-4xl xl:max-w-6xl 2xl:max-w-6xl w-full lg:col-start-1">
-                <div ref={contentRootRef}>{content}</div>
+                <div
+                    ref={contentRootRef}
+                    className="[&>:first-child]:!mt-0 [&>:first-child]:!pt-0 [&>:first-child>:first-child]:!mt-0 [&>:first-child>:first-child]:!pt-0"
+                >
+                    {content}
+                </div>
             </div>
 
-            <div className="hidden lg:block min-w-0 row-start-2 lg:col-start-2">
-                <TableOfContents headings={headings} />
-            </div>
+            {hasToc && (
+                <div className="hidden lg:block min-w-0 row-start-2 lg:col-start-2">
+                    <TableOfContents headings={headings} />
+                </div>
+            )}
         </div>
     );
 }

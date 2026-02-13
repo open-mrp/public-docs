@@ -7,49 +7,89 @@ export interface PagePreview {
 }
 
 export const pagePreviewData: Record<string, PagePreview> = {
+    "/development": {
+        "title": "Developer resources",
+        "subtitle": "Technical documentation, API references, and guides for developers."
+    },
     "/get-started": {
         "title": "Get started",
         "subtitle": "Create an account and learn how to build on Augno."
     },
-    "/get-started/api-request": {
-        "title": "Send your first Augno API request",
-        "subtitle": "Get started with the Augno API."
+    "/api/overview": {
+        "title": "Augno's APIs",
+        "subtitle": "Learn more about Augno's APIs."
     },
-    "/get-started/go-live": {
-        "title": "Go live checklist",
-        "subtitle": "Use this checklist to ensure a smooth transition putting your integration into production."
+    "/api-tour": {
+        "title": "Tour of the Augno API",
+        "subtitle": "See how Augno API objects fit together and learn best practices for combining them effectively."
     },
-    "/get-started/test-integration": {
-        "title": "Build and test your integration",
-        "subtitle": "Build and test your integration using the Augno developer tools."
-    },
-    "/get-started/account": {
-        "title": "Create an Augno account",
-        "subtitle": "Learn how to activate and manage your Augno account, from initial setup to advanced configurations."
-    },
-    "/get-started/account/activate": {
+    "/account/activate": {
         "title": "Activate your account",
         "subtitle": "Learn how to activate and manage your Augno account."
     },
-    "/get-started/account/checklist": {
+    "/account/checklist": {
         "title": "Account activation checklist",
         "subtitle": "Complete this checklist before putting your Augno account into production."
     },
-    "/get-started/api/release-phases": {
+    "/account": {
+        "title": "Create an Augno account",
+        "subtitle": "Learn how to activate and manage your Augno account, from initial setup to advanced configurations."
+    },
+    "/api-request": {
+        "title": "Send your first Augno API request",
+        "subtitle": "Get started with the Augno API."
+    },
+    "/release-phases": {
         "title": "Product Release Phases",
         "subtitle": "Learn how Augno describes product release phases and what to expect from each."
     },
-    "/get-started/api/idempotency-and-eventual-consistency": {
-        "title": "Idempotency and Eventual Consistency",
-        "subtitle": "Learn how the Augno API ensures eventual consistency."
+    "/go-live": {
+        "title": "Go live checklist",
+        "subtitle": "Use this checklist to ensure a smooth transition putting your integration into production."
     },
-    "/get-started/api/api-uris": {
+    "/test-integration": {
+        "title": "Build and test your integration",
+        "subtitle": "Build and test your integration using the Augno developer tools."
+    },
+    "/api/api-keys": {
+        "title": "API Keys",
+        "subtitle": "Learn how to authenticate requests with API keys."
+    },
+    "/api/managing-api-keys": {
+        "title": "Managing API Keys",
+        "subtitle": "Learn the best practices for managing secret API keys."
+    },
+    "/api/errors": {
+        "title": "API Errors",
+        "subtitle": "Standard error envelope format for consistent error handling."
+    },
+    "/api/idempotency": {
+        "title": "Idempotency",
+        "subtitle": "Safely retry requests without duplicating work."
+    },
+    "/api/request-ids": {
+        "title": "Request IDs",
+        "subtitle": "Use request IDs to debug issues and get support."
+    },
+    "/api/uris": {
         "title": "Augno API URIs",
         "subtitle": "Learn the general format of Augno API URIs."
     },
-    "/get-started/api/api-tour": {
-        "title": "Tour of the Augno API",
-        "subtitle": "See how Augno API objects fit together and learn best practices for combining them effectively."
+    "/api/account-context": {
+        "title": "Account Context",
+        "subtitle": "Specify which account context to use for API requests."
+    },
+    "/api/versioning": {
+        "title": "API Versioning",
+        "subtitle": "Understand how Augno versions its API and manage version upgrades."
+    },
+    "/api/pagination": {
+        "title": "Pagination",
+        "subtitle": "Iterating through paginated list results."
+    },
+    "/api/rate-limiting": {
+        "title": "Rate Limiting",
+        "subtitle": "Understand rate limits and implement retry strategies."
     }
 };
 

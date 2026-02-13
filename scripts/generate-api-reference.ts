@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 const SPEC_PATH = path.join(process.cwd(), 'specs/api_public_spec.json');
-const OUTPUT_PATH = path.join(process.cwd(), 'src/docs/api.mdx');
+const OUTPUT_PATH = path.join(process.cwd(), 'src/docs/api-reference.mdx');
 
 interface OpenAPITag {
     name: string;
@@ -54,7 +54,7 @@ function pathToDocPath(apiPath: string, method: string): string {
         .replace(/^\//, '') // Remove leading slash
         .replace(/\//g, '/'); // Keep slashes
 
-    return `/api/${cleanPath}`;
+    return `/api-reference/${cleanPath}`;
 }
 
 function pathToPathKey(docPath: string): string {

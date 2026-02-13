@@ -1,0 +1,99 @@
+---
+title: 'Account Context'
+description: 'Learn how to use the Augno-Account-ID header to specify account context for API requests.'
+route: '/api/account-context'
+breadcrumbs:
+    - label: 'Home'
+      pathKey: 'home'
+    - label: 'Developer resources'
+      pathKey: 'development'
+    - label: 'API'
+      pathKey: 'api.overview'
+    - label: 'Account Context'
+header:
+    title: 'Account Context'
+    subtitle: 'Specify which account context to use for API requests.'
+nav:
+    title: 'Account context'
+    section: 'API'
+    subsection: 'Make Requests'
+    order: 3
+---
+
+The `Augno-Account-ID` header specifies which account context to use for API requests.
+
+## Overview
+
+- Multi-account support via header
+- Controls which account's resources are accessed
+- Determines actor type (INTERNAL, CUSTOMER, SUPPLIER)
+
+## Usage
+
+### Header Format
+
+```
+Augno-Account-ID: YOUR_ACCOUNT_ID
+```
+
+### Example Request
+
+```bash
+curl -X GET https://api.augno.io/v1/resources \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Account-ID: YOUR_ACCOUNT_ID"
+```
+
+## Behavior
+
+### Without Header
+
+- Identity marked as UNASSIGNED
+- Account mode defaults to PRODUCTION
+- Limited to unauthenticated operations
+
+### With Header
+
+| Relationship | Actor Type | Description              |
+| ------------ | ---------- | ------------------------ |
+| Owner        | INTERNAL   | You own this account     |
+| Customer     | CUSTOMER   | Account is your customer |
+| Supplier     | SUPPLIER   | Account is your supplier |
+| None         | 403 Error  | No access to account     |
+
+## Actor Types
+
+- **INTERNAL**: Full access to own account
+- **CUSTOMER**: Access via customer relationship
+- **SUPPLIER**: Access via supplier relationship
+- **UNASSIGNED**: No account context specified
+
+## Error Responses
+
+### No Access (403)
+
+```json
+{
+    "error": {
+        "type": "authorization_error",
+        "message": "You do not have access to the specified account."
+    }
+}
+```
+
+### Account Not Found (404)
+
+```json
+{
+    "error": {
+        "type": "not_found",
+        "message": "Account not found."
+    }
+}
+```
+
+## Security
+
+- Header is included in idempotency scope hash
+- Prevents cross-account replay attacks
+- Access validated against account relations

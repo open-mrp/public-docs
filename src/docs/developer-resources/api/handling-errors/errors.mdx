@@ -1,0 +1,221 @@
+---
+title: 'API Errors'
+description: 'Learn about the standard error envelope format and error codes returned by the Augno API.'
+route: '/api/errors'
+breadcrumbs:
+    - label: 'Home'
+      pathKey: 'home'
+    - label: 'Developer resources'
+      pathKey: 'development'
+    - label: 'API'
+      pathKey: 'api.overview'
+    - label: 'API Errors'
+header:
+    title: 'API Errors'
+    subtitle: 'Standard error envelope format for consistent error handling.'
+nav:
+    title: 'API errors'
+    section: 'API'
+    subsection: 'Handling Errors'
+    order: 10
+---
+
+All API errors follow a standard envelope format for consistent error handling.
+
+## Error Envelope
+
+```json
+{
+    "error": {
+        "code": "validation_failed",
+        "type": "invalid_request_error",
+        "message": "The request was invalid.",
+        "param": "email",
+        "doc_url": "https://docs.augno.com/errors/validation_failed",
+        "is_transient": false
+    }
+}
+```
+
+## Fields
+
+| Field          | Type    | Required | Description                        |
+| -------------- | ------- | -------- | ---------------------------------- |
+| `code`         | string  | Yes      | Machine-readable error code        |
+| `type`         | string  | Yes      | Error type classifier              |
+| `message`      | string  | Yes      | Human-readable error message       |
+| `param`        | string  | No       | Parameter that caused the error    |
+| `doc_url`      | string  | No       | URL to error documentation         |
+| `is_transient` | boolean | Yes      | Whether the request can be retried |
+
+## Error Types
+
+| Type                    | Description                |
+| ----------------------- | -------------------------- |
+| `api_error`             | Server-side errors         |
+| `invalid_request_error` | Client-side request errors |
+| `idempotency_error`     | Idempotency key conflicts  |
+
+## Error Codes
+
+### Authentication (401 Unauthorized)
+
+| Code                  | Description                        |
+| --------------------- | ---------------------------------- |
+| `expired_token`       | JWT token has expired              |
+| `api_key_expired`     | API key has expired                |
+| `api_key_revoked`     | API key has been revoked           |
+| `invalid_credentials` | Invalid authentication credentials |
+
+### Authorization (403 Forbidden)
+
+| Code                       | Description                           |
+| -------------------------- | ------------------------------------- |
+| `insufficient_permissions` | User lacks required permissions       |
+| `http_disabled`            | HTTP access disabled for this account |
+
+### Validation (400 Bad Request)
+
+| Code                   | Description                            |
+| ---------------------- | -------------------------------------- |
+| `validation_failed`    | General validation error               |
+| `missing_field`        | Required field is missing              |
+| `invalid_format`       | Field format is invalid                |
+| `parameter_missing`    | URL/query parameter missing            |
+| `parameter_invalid`    | URL/query parameter invalid            |
+| `parameter_unknown`    | Unknown parameter provided             |
+| `parameters_exclusive` | Mutually exclusive parameters provided |
+| `api_version_required` | Augno-Version header required          |
+| `api_version_invalid`  | API version format invalid             |
+| `api_version_too_old`  | API version too old for this endpoint  |
+
+### Resource Errors
+
+| Code                 | HTTP Status | Description                  |
+| -------------------- | ----------- | ---------------------------- |
+| `resource_not_found` | 404         | Resource does not exist      |
+| `resource_exists`    | 409         | Resource already exists      |
+| `resource_conflict`  | 409         | Resource conflict            |
+| `resource_gone`      | 410         | Resource permanently deleted |
+
+### Rate Limiting (429 Too Many Requests)
+
+| Code                  | Description         |
+| --------------------- | ------------------- |
+| `rate_limit_exceeded` | Rate limit exceeded |
+
+### Server Errors
+
+| Code                     | HTTP Status | Description                   |
+| ------------------------ | ----------- | ----------------------------- |
+| `internal_error`         | 500         | Unexpected server error       |
+| `service_unavailable`    | 503         | Dependent service unavailable |
+| `external_service_error` | 502         | External service error        |
+| `timeout`                | 504         | Operation timeout             |
+| `connection_error`       | 502         | Connection failed             |
+| `request_timeout`        | 408         | Client request timeout        |
+
+### Other Errors
+
+| Code                      | HTTP Status | Description                        |
+| ------------------------- | ----------- | ---------------------------------- |
+| `method_not_allowed`      | 405         | HTTP method not allowed            |
+| `idempotency_in_progress` | 409         | Idempotency key already processing |
+
+## Transient Errors
+
+Errors with `is_transient: true` can be safely retried:
+
+- `resource_conflict`
+- `idempotency_in_progress`
+- `rate_limit_exceeded`
+- `internal_error`
+- `service_unavailable`
+- `external_service_error`
+- `timeout`
+- `connection_error`
+- `request_timeout`
+
+## Examples
+
+### Validation Error
+
+```http
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
+
+{
+  "error": {
+    "code": "validation_failed",
+    "type": "invalid_request_error",
+    "message": "Invalid JSON in request body: unknown field 'extra_field'.",
+    "param": "extra_field",
+    "is_transient": false
+  }
+}
+```
+
+### Resource Not Found
+
+```http
+HTTP/1.1 404 Not Found
+Content-Type: application/json
+
+{
+  "error": {
+    "code": "resource_not_found",
+    "type": "invalid_request_error",
+    "message": "Invoice not found.",
+    "is_transient": false
+  }
+}
+```
+
+### Authentication Error
+
+```http
+HTTP/1.1 401 Unauthorized
+Content-Type: application/json
+WWW-Authenticate: Bearer
+
+{
+  "error": {
+    "code": "expired_token",
+    "type": "invalid_request_error",
+    "message": "Your authentication token has expired.",
+    "is_transient": false
+  }
+}
+```
+
+### Rate Limit Exceeded
+
+```http
+HTTP/1.1 429 Too Many Requests
+Content-Type: application/json
+
+{
+  "error": {
+    "code": "rate_limit_exceeded",
+    "type": "invalid_request_error",
+    "message": "Rate limit exceeded. Please retry later.",
+    "is_transient": true
+  }
+}
+```
+
+### Internal Error
+
+```http
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/json
+
+{
+  "error": {
+    "code": "internal_error",
+    "type": "api_error",
+    "message": "Something went wrong.",
+    "is_transient": true
+  }
+}
+```

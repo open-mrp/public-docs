@@ -2,21 +2,29 @@
 // Run 'bun run build:docs' to regenerate.
 
 export const docPaths = {
-    "getStarted": {
-        "root": "/get-started",
-        "apiRequest": "/get-started/api-request",
-        "goLive": "/get-started/go-live",
-        "testIntegration": "/get-started/test-integration",
-        "account": {
-            "root": "/get-started/account",
-            "activate": "/get-started/account/activate",
-            "checklist": "/get-started/account/checklist"
-        },
-        "api": {
-            "releasePhases": "/get-started/api/release-phases",
-            "idempotencyAndEventualConsistency": "/get-started/api/idempotency-and-eventual-consistency",
-            "apiUris": "/get-started/api/api-uris",
-            "apiTour": "/get-started/api/api-tour"
-        }
-    }
+    "development": "/development",
+    "getStarted": "/get-started",
+    "api": {
+        "overview": "/api/overview",
+        "apiKeys": "/api/api-keys",
+        "managingApiKeys": "/api/managing-api-keys",
+        "errors": "/api/errors",
+        "idempotency": "/api/idempotency",
+        "requestIds": "/api/request-ids",
+        "uris": "/api/uris",
+        "accountContext": "/api/account-context",
+        "versioning": "/api/versioning",
+        "pagination": "/api/pagination",
+        "rateLimiting": "/api/rate-limiting"
+    },
+    "apiTour": "/api-tour",
+    "account": {
+        "activate": "/account/activate",
+        "checklist": "/account/checklist",
+        "root": "/account"
+    },
+    "apiRequest": "/api-request",
+    "releasePhases": "/release-phases",
+    "goLive": "/go-live",
+    "testIntegration": "/test-integration"
 } as const;

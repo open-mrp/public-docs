@@ -11,7 +11,19 @@
     --border-color: #e5e7eb;
     --primary: #0eb981;
     --secondary: #0eb981;
-    --sidenav-background: #1e2134;
+    /* Light sidenav theme */
+    --sidenav-background: #f3f4f6;
+    --sidenav-border: #e5e7eb;
+    --sidenav-title-color: #374151;
+    --sidenav-item-color: #6b7280;
+    --sidenav-item-hover-color: #111827;
+    --sidenav-item-hover-bg: #e5e7eb;
+    --sidenav-item-active-color: var(--primary);
+    --sidenav-item-active-bg: #e5e7eb;
+    --sidenav-toggle-color: #6b7280;
+    --sidenav-toggle-hover-color: #111827;
+    --sidenav-toggle-hover-bg: #e5e7eb;
+    --sidenav-active-indicator: var(--primary);
 }
 
 .dark {
@@ -24,7 +36,19 @@
     --border-color: #1f2937;
     --primary: #00d07a;
     --secondary: #00d5ff;
+    /* Dark sidenav theme */
     --sidenav-background: #0f1014;
+    --sidenav-border: #1f2937;
+    --sidenav-title-color: #f3f4f6;
+    --sidenav-item-color: #9ca3af;
+    --sidenav-item-hover-color: #d1d5db;
+    --sidenav-item-hover-bg: #1f2937;
+    --sidenav-item-active-color: var(--primary);
+    --sidenav-item-active-bg: #1f2937;
+    --sidenav-toggle-color: #9ca3af;
+    --sidenav-toggle-hover-color: #f3f4f6;
+    --sidenav-toggle-hover-bg: #1f2937;
+    --sidenav-active-indicator: var(--primary);
 }
 
 /* Main scroll area scrollbar styling */
@@ -84,12 +108,12 @@ body {
 /* Custom text selection/highlight styling */
 ::selection {
     background: var(--primary);
-    color: white;
+    color: black;
 }
 
 ::-moz-selection {
     background: var(--primary);
-    color: white;
+    color: black;
 }
 
 code {
@@ -130,11 +154,15 @@ table {
     border-radius: 8px;
     overflow: hidden;
     background: var(--background);
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    box-shadow:
+        0 1px 3px 0 rgba(0, 0, 0, 0.1),
+        0 1px 2px -1px rgba(0, 0, 0, 0.1);
 }
 
 .dark table {
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.2);
+    box-shadow:
+        0 1px 3px 0 rgba(0, 0, 0, 0.3),
+        0 1px 2px -1px rgba(0, 0, 0, 0.2);
 }
 
 thead {

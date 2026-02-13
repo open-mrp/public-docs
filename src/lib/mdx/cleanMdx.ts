@@ -42,6 +42,7 @@ export function cleanMdx(content: string): string {
 
     // 5. Handle components that render dynamic/user-specific content with placeholders
     cleaned = cleaned.replace(/<AccountName\s*\/>/g, '[Account Name]');
+    cleaned = cleaned.replace(/<SandboxAccountId\s*\/>/g, '[Sandbox Account ID]');
     cleaned = cleaned.replace(/<ApiKeySnippet\s*\/>/g, '[API Key]');
 
     // 6. Remove all other JSX/MDX components (starting with uppercase)

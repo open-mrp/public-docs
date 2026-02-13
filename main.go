@@ -173,7 +173,7 @@ func main() {
 	}
 
 	// Clean up old generated files
-	apiRefDir := filepath.Join("src", "docs", "api")
+	apiRefDir := filepath.Join("src", "docs", "api-reference")
 	if err := os.RemoveAll(apiRefDir); err != nil {
 		fmt.Printf("Error cleaning up old files: %v\n", err)
 		os.Exit(1)
@@ -193,7 +193,7 @@ func main() {
 	}
 
 	// Create the API reference directory
-	apiRefDir = filepath.Join("src", "docs", "api")
+	apiRefDir = filepath.Join("src", "docs", "api-reference")
 	if err := os.MkdirAll(apiRefDir, 0755); err != nil {
 		fmt.Printf("Error creating directory: %v\n", err)
 		os.Exit(1)
@@ -291,13 +291,13 @@ header:
 ## Available Endpoints
 
 ### Authentication
-- [Authentication](/api/authentication/v2)
+- [Authentication](/api-reference/authentication/v2)
 
 ### System
-- [Health Check](/api/health/healthz)
+- [Health Check](/api-reference/health/healthz)
 `, spec.Info.Description, spec.Info.Description)
 
-	indexPath := filepath.Join(dir, "api.mdx")
+	indexPath := filepath.Join(dir, "api-reference.mdx")
 	if err := os.WriteFile(indexPath, []byte(indexContent), 0644); err != nil {
 		fmt.Printf("Error writing index file: %v\n", err)
 	}
@@ -403,9 +403,9 @@ func buildSchemaToEndpointMap(spec OpenAPISpec) map[string]string {
 	// Map standalone ID schemas to their appropriate resource pages
 	// These type definitions should link to the page where their resource is documented
 	idSchemaMap := map[string]string{
-		"CustomerID":    "/api/customer/customers#customerid",
-		"AddressID":     "/api/customer/address/customers_addresses#addressid",
-		"GeolocationID": "/api/customer/address/customers_addresses#geolocationid",
+		"CustomerID":    "/api-reference/customer/customers#customerid",
+		"AddressID":     "/api-reference/customer/address/customers_addresses#addressid",
+		"GeolocationID": "/api-reference/customer/address/customers_addresses#geolocationid",
 	}
 
 	for schemaName, url := range idSchemaMap {
@@ -445,10 +445,10 @@ func buildPageURL(apiPath, tagDir string) string {
 		subDir := strings.ToLower(subResource)
 		subDir = singularize(subDir)
 
-		return fmt.Sprintf("/api/%s/%s/%s", parentDir, subDir, groupKey)
+		return fmt.Sprintf("/api-reference/%s/%s/%s", parentDir, subDir, groupKey)
 	} else {
 		// This is a top-level resource - use the tag directory
-		return fmt.Sprintf("/api/%s/%s", tagDir, groupKey)
+		return fmt.Sprintf("/api-reference/%s/%s", tagDir, groupKey)
 	}
 }
 
@@ -588,7 +588,7 @@ breadcrumbs:
   - label: "Documentation"
     pathKey: "docs"
   - label: "API Reference"
-    pathKey: "api"
+    pathKey: "apiReference"
   - label: "%s"
 header:
   title: "%s"

@@ -1,0 +1,119 @@
+---
+title: 'Rate Limiting'
+description: 'Learn how Augno rate limits API requests and how to handle rate limit responses.'
+route: '/api/rate-limiting'
+breadcrumbs:
+    - label: 'Home'
+      pathKey: 'home'
+    - label: 'Developer resources'
+      pathKey: 'development'
+    - label: 'API'
+      pathKey: 'api.overview'
+    - label: 'Rate Limiting'
+header:
+    title: 'Rate Limiting'
+    subtitle: 'Understand rate limits and implement retry strategies.'
+nav:
+    title: 'Rate limiting'
+    section: 'API'
+    subsection: 'Make Requests'
+    order: 7
+---
+
+Augno's API uses rate limiting to ensure fair access and maintain platform stability. Understanding how rate limits work helps you design resilient integrations.
+
+## Rate limits
+
+The API enforces the following limits:
+
+| Limit type          | Value          |
+| ------------------- | -------------- |
+| Requests per second | 20             |
+| Scope               | Per IP address |
+| Window type         | Sliding window |
+
+Rate limits are applied per IP address using a sliding window algorithm. This means the limit is evaluated continuously rather than resetting at fixed intervals.
+
+## Rate limit headers
+
+Every API response includes headers that report your current rate limit status:
+
+| Header                | Description                                             |
+| --------------------- | ------------------------------------------------------- |
+| `RateLimit-Limit`     | Maximum requests allowed per second                     |
+| `RateLimit-Remaining` | Requests remaining in the current window                |
+| `RateLimit-Reset`     | Unix timestamp when the window resets                   |
+| `Retry-After`         | Seconds to wait before retrying (only on 429 responses) |
+
+Example response headers:
+
+```http
+RateLimit-Limit: 20
+RateLimit-Remaining: 15
+RateLimit-Reset: 1704067200
+```
+
+## Handling rate limit errors
+
+When you exceed the rate limit, the API returns a `429 Too Many Requests` response:
+
+```json
+{
+    "error": {
+        "type": "rate_limit_exceeded",
+        "message": "Rate limit exceeded. Please retry after the specified time.",
+        "retry_after": 1
+    }
+}
+```
+
+The `Retry-After` header indicates how many seconds to wait before making another request.
+
+## Exponential backoff
+
+When you receive a 429 response, implement exponential backoff to retry gracefully:
+
+1. Wait for the duration specified in the `Retry-After` header
+2. If the request fails again, double the wait time
+3. Add random jitter to prevent thundering herd issues
+4. Set a maximum retry count to avoid infinite loops
+
+Example implementation:
+
+```typescript
+async function requestWithBackoff(fn: () => Promise<Response>, maxRetries = 5) {
+    let retries = 0;
+
+    while (retries < maxRetries) {
+        const response = await fn();
+
+        if (response.status !== 429) {
+            return response;
+        }
+
+        const retryAfter = parseInt(response.headers.get('Retry-After') || '1', 10);
+        const backoff = retryAfter * Math.pow(2, retries);
+        const jitter = Math.random() * 1000;
+
+        await new Promise((resolve) => setTimeout(resolve, backoff * 1000 + jitter));
+        retries++;
+    }
+
+    throw new Error('Max retries exceeded');
+}
+```
+
+## Best practices
+
+To minimize rate limit errors and build robust integrations:
+
+- **Monitor rate limit headers.** Track `RateLimit-Remaining` to proactively slow down before hitting limits.
+- **Implement backoff from the start.** Don't wait until you hit rate limits to add retry logic.
+- **Batch requests when possible.** Use bulk endpoints to reduce the number of API calls.
+- **Cache responses.** Store frequently accessed data locally to reduce redundant requests.
+- **Distribute requests evenly.** Avoid bursting many requests at once; spread them over time.
+
+## Related documentation
+
+- [Error handling](/get-started/api/errors) — Learn about error response formats and handling strategies
+- [API URIs](/get-started/api/api-uris) — Understand API endpoint structure

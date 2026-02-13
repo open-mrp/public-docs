@@ -31,7 +31,7 @@ type ContentKind = 'page' | 'section' | 'api-endpoint' | 'guide';
  * Determines the kind of content based on the file path
  */
 function getContentKind(slug: string): ContentKind {
-    if (slug.startsWith('api/')) return 'api-endpoint';
+    if (slug.startsWith('api-reference/')) return 'api-endpoint';
     if (slug.startsWith('get-started/')) return 'guide';
     return 'page';
 }

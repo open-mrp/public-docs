@@ -61,7 +61,7 @@ description: 'A test page'
 
         test('extracts text attribute from multi-line InternalLink', () => {
             const input = `<InternalLink
-      pathKey="getStarted.account.multipleAccounts"
+      pathKey="account.multipleAccounts"
       text="Managing Multiple Augno Accounts"
   />`;
             const result = cleanMdx(input);
@@ -76,7 +76,7 @@ description: 'A test page'
 
         test('handles inline InternalLink in paragraph', () => {
             const input =
-                'Before diving into production, ensure your account is <InternalLink pathKey="getStarted.account.activate" text="activated" />.';
+                'Before diving into production, ensure your account is <InternalLink pathKey="account.activate" text="activated" />.';
             const result = cleanMdx(input);
             expect(result).toBe('Before diving into production, ensure your account is activated.');
         });
@@ -105,7 +105,7 @@ This is the setup guide.
     describe('LinkCard extraction', () => {
         test('extracts title and description', () => {
             const input = `<LinkCard
-        pathKey="getStarted.account.activate"
+        pathKey="account.activate"
         title="Activate your account"
         description="Activate your Augno account and unlock all features."
     />`;
@@ -275,7 +275,7 @@ The easiest way to get started with Augno is to use the <DocLink pathKey="fronte
 most business needs and is the fastest way to get started.
 
 </DocHeroSection>
-<InternalLink pathKey="getStarted.account.activate" text="Create account" includeArrow />
+<InternalLink pathKey="account.activate" text="Create account" includeArrow />
 </DocHeroSection>`;
 
             const result = cleanMdx(input);

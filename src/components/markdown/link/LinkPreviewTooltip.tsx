@@ -14,7 +14,7 @@ interface LinkPreviewTooltipProps {
 export function LinkPreviewTooltip({ path, children }: LinkPreviewTooltipProps) {
     const preview = getPagePreview(path);
 
-    const isApiLink = path.startsWith('/api');
+    const isApiLink = path.startsWith('/api-reference');
 
     if (!preview) {
         return <>{children}</>;

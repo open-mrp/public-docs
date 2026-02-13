@@ -16,6 +16,16 @@ export default function LinkCard({ pathKey, title, description, className }: Lin
     const path = getPath(pathKey);
 
     if (!path) {
+        // Show visible error in development, hide in production
+        if (process.env.NODE_ENV === 'development') {
+            return (
+                <div className="bg-red-100 border-red-300 border rounded-lg p-4">
+                    <h5 className="text-md font-bold text-red-800">{title}</h5>
+                    <p className="text-red-600">[BROKEN pathKey: {pathKey}]</p>
+                    <p className="text-red-600 text-sm">{description}</p>
+                </div>
+            );
+        }
         return null;
     }
 
@@ -43,9 +53,5 @@ export default function LinkCard({ pathKey, title, description, className }: Lin
         </Link>
     );
 
-    if (isExternal) {
-        return card;
-    }
-
-    return <LinkPreviewTooltip path={path}>{card}</LinkPreviewTooltip>;
+    return card;
 }

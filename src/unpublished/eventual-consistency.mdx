@@ -1,14 +1,14 @@
 ---
-title: 'Idempotency and Eventual Consistency'
+title: 'Eventual Consistency'
 description: 'Learn how the Augno API ensures eventual consistency.'
 breadcrumbs:
     - label: 'Home'
       pathKey: 'home'
     - label: 'Get started'
-      pathKey: 'getStarted.root'
+      pathKey: 'getStarted'
     - label: 'Eventual Consistency'
 header:
-    title: 'Idempotency and Eventual Consistency'
+    title: 'Eventual Consistency'
     subtitle: 'Learn how the Augno API ensures eventual consistency.'
 nav:
     title: 'Eventual Consistency'
@@ -17,7 +17,7 @@ nav:
     order: 5
 ---
 
-This API is implemented as a set of independent services. Many requests are processed as **distributed workflows** (multiple internal steps across services). As a result:
+Interactions with our APIs often require asynchronous work to be done in the background. As a result:
 
 - Some operations are **asynchronous** (they finish after the HTTP response is returned).
 - Some data is **eventually consistent** (related records may appear/settle shortly after the initial request succeeds).
@@ -28,7 +28,8 @@ This article explains the patterns you will see across the API and how to integr
 ## Key concepts
 
 ### Idempotency
-An API call is *idempotent* if repeating the same request does **not** create duplicate side effects.
+
+An API call is _idempotent_ if repeating the same request does **not** create duplicate side effects.
 
 Idempotency lets you **safely retry** a request without accidentally performing the same operation twice. For example, if a "create customer" request times out or the network drops, you can retry it without creating duplicate customers.
 
@@ -59,16 +60,18 @@ A request is treated as an idempotent replay of a prior request when all of the 
 - **Within the replay window**, up to 30 days apart
 
 ### Eventual consistency
+
 When an operation touches multiple internal services, each service commits its own local database changes. The overall system converges to a consistent final state **over time**.
 
 This means you may briefly observe intermediate states such as:
+
 - A resource exists but some related fields/relations are not yet populated.
 - A follow-up read immediately after a write may not reflect all downstream effects.
 - A status may temporarily be `PENDING` / `IN_PROGRESS` before becoming final.
 
 ### Operations (asynchronous workflow tracking)
-For requests that may take time or involve multiple steps, the API may return an **operation** that you can poll to learn when processing is complete.
 
+For requests that may take time or involve multiple steps, the API may return an **operation** that you can poll to learn when processing is complete.
 
 ## Conventions you can rely on
 
@@ -78,14 +81,16 @@ For endpoints that create or mutate state (especially `POST`), you should includ
 - **Request header:** `Idempotency-Key: <unique value>`
 
 **Client guidance**
+
 - **Generate the key client-side**.
 - **Use a UUID v4** (recommended) and reuse the same key when retrying the same logical operation.
 - **Max length**: 255 characters.
-- Generate a new key for a *new* logical action.
-- Reuse the **same** key when retrying the *same* logical action (including after timeouts).
+- Generate a new key for a _new_ logical action.
+- Reuse the **same** key when retrying the _same_ logical action (including after timeouts).
 - Idempotency is scoped per endpoint and per authenticated principal.
 
 **What you should expect**
+
 - Repeating a request with the same key returns the same outcome.
 - Conflicting payloads with the same key may be rejected.
 - A successful replayed response will include `Idempotent-Replayed: true` in the response headers.
@@ -192,6 +197,7 @@ Treat repeated `202`, `200`, or conflict responses as non-fatal if intent is unc
 ## How to recognize these patterns
 
 Look for:
+
 - `202 Accepted`
 - `operation_id`
 - `Location` headers

@@ -1,20 +1,23 @@
 ---
 title: 'Augno API URIs'
 description: 'Learn the general format of Augno API URIs.'
+route: '/api/uris'
 breadcrumbs:
     - label: 'Home'
       pathKey: 'home'
-    - label: 'Get started'
-      pathKey: 'getStarted.root'
+    - label: 'Developer resources'
+      pathKey: 'development'
+    - label: 'API'
+      pathKey: 'api.overview'
     - label: 'API URIs'
 header:
     title: 'Augno API URIs'
     subtitle: 'Learn the general format of Augno API URIs.'
 nav:
     title: 'API URIs'
-    section: 'Start Building'
-    subsection: 'About the APIs'
-    order: 4
+    section: 'API'
+    subsection: 'Make Requests'
+    order: 5
 ---
 
 Augno API URIs follow a consistent format:
@@ -47,4 +50,6 @@ The resource identifier uniquely identifies a specific resource within a collect
 
 ### Actions
 
-Generally, we utilize the standard HTTP methods to interact with resources. However, on occasion there are actions that cannot be represented easily with a standard HTTP method. In these cases, we provide a sub-resource to represent actions. For example (this isn't a real endpoint), `.../customers/ac_0z28u55ruj0q/actions/send-welcome-email` represents the action of sending a welcome email to customer ac_0z28u55ruj0q. In this case, the `actions` is the *resource* and `send-welcome-email` is the *sub-resource*.
+Generally, we utilize the standard HTTP methods to interact with resources. However, on occasion there are actions that cannot be represented easily with a standard HTTP method. In these cases, we provide a sub-resource to represent actions. For example (this isn't a real endpoint), `.../customers/ac_0z28u55ruj0q/actions/send-welcome-email` represents the action of sending a welcome email to customer ac_0z28u55ruj0q. In this case, the `actions` is the _resource_ and `send-welcome-email` is the _sub-resource_.
+
+{/* TODO: mention that actions are different per endpoint */}

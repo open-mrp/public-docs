@@ -23,73 +23,120 @@ export function generateStaticParams() {
   return [
   {
     "slug": [
+      "development"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
       "get-started"
     ]
   },
   {
     "slug": [
-      "get-started",
-      "api-request"
+      "api",
+      "api-keys"
     ]
   },
   {
     "slug": [
-      "get-started",
-      "go-live"
+      "api",
+      "managing-api-keys"
     ]
   },
   {
     "slug": [
-      "get-started",
-      "test-integration"
+      "api",
+      "idempotency"
     ]
   },
   {
     "slug": [
-      "get-started",
-      "account"
+      "api",
+      "request-ids"
     ]
   },
   {
     "slug": [
-      "get-started",
+      "api",
+      "uris"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "account-context"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "versioning"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "pagination"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "rate-limiting"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "errors"
+    ]
+  },
+  {
+    "slug": [
+      "api-tour"
+    ]
+  },
+  {
+    "slug": [
       "account",
       "activate"
     ]
   },
   {
     "slug": [
-      "get-started",
       "account",
       "checklist"
     ]
   },
   {
     "slug": [
-      "get-started",
-      "api",
+      "account"
+    ]
+  },
+  {
+    "slug": [
+      "api-request"
+    ]
+  },
+  {
+    "slug": [
       "release-phases"
     ]
   },
   {
     "slug": [
-      "get-started",
-      "api",
-      "idempotency-and-eventual-consistency"
+      "go-live"
     ]
   },
   {
     "slug": [
-      "get-started",
-      "api",
-      "api-uris"
-    ]
-  },
-  {
-    "slug": [
-      "get-started",
-      "api",
-      "api-tour"
+      "test-integration"
     ]
   }
 ];

@@ -1,31 +1,32 @@
 ---
 title: 'Tour of the Augno API'
 description: 'Understand how Augno API objects fit together and learn best practices.'
+route: '/api-tour'
 breadcrumbs:
     - label: 'Home'
       pathKey: 'home'
     - label: 'Get started'
-      pathKey: 'getStarted.root'
+      pathKey: 'getStarted'
     - label: 'API Tour'
 header:
     title: 'Tour of the Augno API'
     subtitle: 'See how Augno API objects fit together and learn best practices for combining them effectively.'
 nav:
     title: 'API tour'
-    section: 'Start Building'
+    section: 'Get Started'
     subsection: 'About the APIs'
     order: 1
 ---
 
 This page gives you a practical mental model for the Augno API: how to think about API objects, how multi-step operations typically progress, and which patterns make integrations reliable in production.
 
-If you want something hands-on first, start with <InternalLink pathKey="getStarted.apiRequest" text="Send your first API request" />. If you're looking for exact fields and endpoints, jump to the <InternalLink pathKey="api" text="API reference" />.
+If you want something hands-on first, start with _<InternalLink pathKey="apiRequest" text="Send your first API request" />_. If you're looking for exact fields and endpoints, jump to the <InternalLink pathKey="api-reference" text="API reference" />.
 
 ## The mental model
 
-### Everything is an object (resource)
+### Everything is an object
 
-In Augno, the things you interact with - customers, orders, configuration, and operational records - are represented as API objects (sometimes called *resources*). Whether you create them via the API or in the Dashboard, you can generally retrieve and inspect the same underlying object.
+In Augno, the things you interact with - customers, orders, invoices, and batches - are represented as API objects that we term _resources_. Whether you create them via the API or in the <InternalLink pathKey="frontend.dashboard" text="Dashboard" />, you can generally retrieve and inspect the same underlying object.
 
 Practically, this means your integration should:
 
@@ -59,6 +60,7 @@ Most successful integrations follow the same loop, whether the operation is sync
 You create or update an object by calling the API (for example, creating a customer from CRM data). The response will include the created/updated object and its ID.
 
 > #### **Note**
+>
 > Every request sent to our API is logged and receives a unique request ID in the header **Request-ID**. This ID can be used to trace issues in the logs. Requests with an error will include a link to the error in the logs.
 
 </DocNumberedSection>
@@ -70,7 +72,7 @@ When requests fail, treat errors as part of the happy path:
 - **Client errors (4xx)** usually mean the input is missing/invalid or the request isn't allowed.
 - **Rate limits / transient server errors (429/5xx)** usually mean “retry later.”
 
-Design your integration to surface clear, actionable messages for correctable errors (e.g., missing customer email) and to automatically retry transient failures with backoff.
+Design your integration to surface clear, actionable messages for correctable errors (e.g., missing customer email) and to automatically retry transient failures with backoff. We provide the field `is_transient` in our standard error envelope so you will know whether or not an error is transient and could be retried.
 
 </DocNumberedSection>
 
@@ -83,7 +85,7 @@ If an operation completes asynchronously, you'll typically observe progress by:
 
 Augno records request activity and account events in the Dashboard - use these for debugging:
 
-- <InternalLink pathKey="frontend.logs" text="Logs" />
+- <InternalLink pathKey="frontend.logs" text="Request Logs" />
 - <InternalLink pathKey="frontend.events" text="Events" />
 
 </DocNumberedSection>
@@ -102,15 +104,15 @@ The reliable pattern is to process by object ID (and event ID, when available) a
 
 <DocNumberedSection isOptional title="Best practices that pay off quickly">
 
-- **Build in a sandbox first**: use test keys and test data until you're confident. Then follow the <InternalLink pathKey="getStarted.goLive" text="go live checklist" />.
+- **Build in a sandbox first**: use test keys and test data until you're confident. Then follow the <InternalLink pathKey="goLive" text="go live checklist" />.
 - **Prefer events for async workflows**: polling works, but webhooks scale better and reduce latency. (When using webhooks, always handle duplicates.)
 - **Use systematic retries**: retry 429/5xx with exponential backoff; don't blindly retry 4xx without changing the request.
-- **Model “needs attention” states**: when the API indicates missing or invalid data, capture it as a state in *your* system so you can prompt a user or queue remediation.
+- **Model “needs attention” states**: when the API indicates missing or invalid data, capture it as a state in _your_ system so you can prompt a user or queue remediation.
 
 </DocNumberedSection>
 
 ## Where to go next
 
-- <InternalLink pathKey="getStarted.apiRequest" text="Send your first API request" />
-- <InternalLink pathKey="getStarted.testIntegration" text="Build & test your integration" />
-- <InternalLink pathKey="api" text="API reference" />
+- <InternalLink pathKey="apiRequest" text="Send your first API request" />
+- <InternalLink pathKey="testIntegration" text="Build & test your integration" />
+- <InternalLink pathKey="api-reference" text="API reference" />

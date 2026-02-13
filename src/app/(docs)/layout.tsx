@@ -3,6 +3,7 @@
 import DocFooter from '@/components/navigation/DocFooter';
 import DocSidenav from '@/components/navigation/DocSidenav';
 import NavbarContents from '@/components/navigation/NavbarContents';
+import TabBar from '@/components/navigation/TabBar';
 import { Navbar } from '@augno/ui';
 
 interface RootLayoutProps {
@@ -14,6 +15,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <Navbar className="bg-[var(--navbar-background)] pr-[11px]">
                 <NavbarContents />
             </Navbar>
+            <TabBar />
 
             <div className="flex flex-1 overflow-hidden">
                 <DocSidenav />

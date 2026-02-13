@@ -14,7 +14,7 @@ export default function BetaTag({ className }: BetaTagProps) {
                 <span
                     className={cn(
                         'bg-primary-500 text-black text-sm px-2 py-0.25 rounded-md relative group select-none text-black',
-                        className
+                        className,
                     )}
                 >
                     Beta

@@ -16,4 +16,3 @@ export default function ParagraphIcon({ className }: { className?: string }) {
         </svg>
     );
 }
-

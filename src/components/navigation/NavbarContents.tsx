@@ -20,6 +20,7 @@ import { UserAvatar } from '../user/UserAvatar';
 import { UserDropdownMenu } from '../user/UserDropdownMenu';
 import AlgoliaSearch from './AlgoliaSearch';
 import HomeLogo from './HomeLogo';
+import NavTabs from './NavTabs';
 
 export default function NavbarContents({ hideThemeToggle = false }) {
     const { hasMounted } = useDarkMode();
@@ -30,7 +31,7 @@ export default function NavbarContents({ hideThemeToggle = false }) {
 
     return (
         <>
-            <div className="lg:flex-shrink-0">
+            <div className="lg:flex-shrink-0 flex items-center gap-4">
                 <HomeLogo color={color} />
             </div>
 
@@ -85,6 +86,7 @@ export default function NavbarContents({ hideThemeToggle = false }) {
                         <div className="mt-6 flow-root">
                             <div className="-my-6 divide-y divide-[var(--foreground)]/10">
                                 <div className="py-6">
+                                    <NavTabs color={color} className="flex flex-col gap-1 mb-4" />
                                     <AlgoliaSearch className="w-full" color={color} />
                                 </div>
                                 <div className="flex flex-col gap-4 py-6">

@@ -47,8 +47,14 @@ export interface CurrentAccount {
     slug: string | null;
 }
 
+export interface OwnerAccount {
+    id: string;
+    name: string;
+}
+
 export interface TenancyResponse {
     currentAccount: CurrentAccount;
+    ownerAccount: OwnerAccount | null;
     availableAccounts: AccountMembership[];
 }
 
@@ -119,6 +125,21 @@ async function fetchTenancy(): Promise<TenancyResponse | null> {
     }
 }
 
+async function fetchDocApiKey(accountId: string): Promise<string | null> {
+    try {
+        const { data, error } = await v2Client.POST(
+            '/v1/auth/api-keys/actions/fetch-doc-api-key',
+            {
+                headers: { 'Augno-Account-ID': accountId },
+            },
+        );
+        if (error || !data) return null;
+        return (data as { api_key_secret: string }).api_key_secret;
+    } catch {
+        return null;
+    }
+}
+
 export interface AuthState {
     // User data
     user: User | null;
@@ -128,6 +149,12 @@ export interface AuthState {
 
     // Account memberships (accounts user can switch to)
     accountMemberships: AccountMembership[];
+
+    // Owner (production) account
+    ownerAccount: OwnerAccount | null;
+
+    // Doc API key (not persisted to localStorage)
+    docApiKeySecret: string | null;
 
     // Loading states
     isLoading: boolean;
@@ -139,6 +166,8 @@ export interface AuthState {
     setUser: (user: User | null) => void;
     setCurrentAccount: (account: CurrentAccount | null) => void;
     setAccountMemberships: (memberships: AccountMembership[]) => void;
+    setOwnerAccount: (ownerAccount: OwnerAccount | null) => void;
+    setDocApiKeySecret: (secret: string | null) => void;
     setLoading: (loading: boolean) => void;
     setInitialized: (initialized: boolean) => void;
     setRestoring: (restoring: boolean) => void;
@@ -159,6 +188,8 @@ export const useAuthStore = create<AuthState>()(
             user: null,
             currentAccount: null,
             accountMemberships: [],
+            ownerAccount: null,
+            docApiKeySecret: null,
             isLoading: false,
             isInitialized: false,
             isRestoring: false,
@@ -168,6 +199,8 @@ export const useAuthStore = create<AuthState>()(
             setUser: (user) => set({ user }),
             setCurrentAccount: (currentAccount) => set({ currentAccount }),
             setAccountMemberships: (accountMemberships) => set({ accountMemberships }),
+            setOwnerAccount: (ownerAccount) => set({ ownerAccount }),
+            setDocApiKeySecret: (docApiKeySecret) => set({ docApiKeySecret }),
             setLoading: (isLoading) => set({ isLoading }),
             setInitialized: (isInitialized) => set({ isInitialized }),
             setRestoring: (isRestoring) => set({ isRestoring }),
@@ -203,6 +236,8 @@ export const useAuthStore = create<AuthState>()(
                     user: null,
                     currentAccount: null,
                     accountMemberships: [],
+                    ownerAccount: null,
+                    docApiKeySecret: null,
                     isLoading: false,
                     isInitialized: true,
                     isRestoring: false,
@@ -217,6 +252,8 @@ export const useAuthStore = create<AuthState>()(
                     user: null,
                     currentAccount: null,
                     accountMemberships: [],
+                    ownerAccount: null,
+                    docApiKeySecret: null,
                     isLoading: false,
                     isInitialized: true,
                     isRestoring: false,
@@ -256,16 +293,27 @@ export const useAuthStore = create<AuthState>()(
                 set({ isLoading: true, isRestoring: true });
 
                 try {
-                    const [user, tenancy] = await Promise.all([fetchCurrentUser(), fetchTenancy()]);
+                    const [user, tenancy] = await Promise.all([
+                        fetchCurrentUser(),
+                        fetchTenancy(),
+                    ]);
 
                     // Mark that we've checked auth this page load
                     hasCheckedAuthThisPageLoad = true;
 
                     if (user) {
+                        // Fetch doc API key using the production (owner) account ID
+                        const ownerAccountId = tenancy?.ownerAccount?.id;
+                        const docApiKeySecret = ownerAccountId
+                            ? await fetchDocApiKey(ownerAccountId)
+                            : null;
+
                         set({
                             user,
                             currentAccount: tenancy?.currentAccount ?? null,
                             accountMemberships: tenancy?.availableAccounts ?? [],
+                            ownerAccount: tenancy?.ownerAccount ?? null,
+                            docApiKeySecret,
                             isLoading: false,
                             isInitialized: true,
                             isRestoring: false,
@@ -275,6 +323,8 @@ export const useAuthStore = create<AuthState>()(
                             user: null,
                             currentAccount: null,
                             accountMemberships: [],
+                            ownerAccount: null,
+                            docApiKeySecret: null,
                             isLoading: false,
                             isInitialized: true,
                             isRestoring: false,
@@ -286,6 +336,8 @@ export const useAuthStore = create<AuthState>()(
                         user: null,
                         currentAccount: null,
                         accountMemberships: [],
+                        ownerAccount: null,
+                        docApiKeySecret: null,
                         isLoading: false,
                         isInitialized: true,
                         isRestoring: false,
@@ -329,6 +381,7 @@ export const useAuthStore = create<AuthState>()(
                 user: state.user,
                 currentAccount: state.currentAccount,
                 accountMemberships: state.accountMemberships,
+                ownerAccount: state.ownerAccount,
             }),
             // Called when hydration from localStorage completes
             onRehydrateStorage: () => (state) => {
@@ -348,6 +401,8 @@ export const useAuthLoading = () => useAuthStore((state) => state.isLoading);
 export const useAuthInitialized = () => useAuthStore((state) => state.isInitialized);
 export const useAuthRestoring = () => useAuthStore((state) => state.isRestoring);
 export const useAuthHydrated = () => useAuthStore((state) => state.hasHydrated);
+export const useOwnerAccount = () => useAuthStore((state) => state.ownerAccount);
+export const useDocApiKeySecret = () => useAuthStore((state) => state.docApiKeySecret);
 export const useIsAuthenticated = () =>
     useAuthStore((state) => state.isInitialized && state.user !== null);
 

@@ -1,0 +1,123 @@
+---
+title: 'Idempotency'
+description: 'Learn how to make your integrations resilient to transient errors.'
+route: '/api/idempotency'
+breadcrumbs:
+    - label: 'Home'
+      pathKey: 'home'
+    - label: 'Developer resources'
+      pathKey: 'development'
+    - label: 'API'
+      pathKey: 'api.overview'
+    - label: 'Idempotency'
+header:
+    title: 'Idempotency'
+    subtitle: 'Safely retry requests without duplicating work.'
+nav:
+    title: 'Idempotency'
+    section: 'API'
+    subsection: 'Make Requests'
+    order: 6
+---
+
+Our APIs support idempotent requests, allowing you to safely retry requests without unintentionally executing the same operation more than once.
+
+For endpoints that may create or mutate state (`POST` and `PATCH`), provide an idempotency key via the [`Idempotency-Key` header](https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header). If something goes wrong (timeouts, transient errors, load shedding), you can retry with the same key.
+
+## Which requests are idempotent?
+
+- **Always idempotent**: `GET`, `PUT`, and `DELETE`
+- **Idempotent with an idempotency key**: `POST` and `PATCH`
+
+For `POST` and `PATCH`, we support idempotency via the `Idempotency-Key` header. This header has no effect on `GET`, `PUT`, or `DELETE` requests.
+
+## Quickstart
+
+```bash
+curl -X POST https://api.augno.com/v1/core/customers \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -H "Idempotency-Key: 6f1bd0d4-7bdc-4df9-9c77-4b1a61ff2f85" \\
+  -d '{"name": "Acme Corp"}' \\
+  -i
+```
+
+If you retry the exact same operation with the same `Idempotency-Key`, a replayed response will include:
+
+```http
+Idempotent-Replayed: true
+```
+
+## How idempotency works
+
+When the API receives a request with an `Idempotency-Key`:
+
+1. The API checks whether it has already processed a request with the same key (within the replay window).
+2. If the first request **succeeded**, the API returns a **replayed response** and makes no new changes.
+3. If the first request **failed for a deterministic reason** (for example, validation errors), the API replays the prior error response.
+4. If the first request **failed (or partially failed) due to a transient issue**, the API attempts to re-execute the failed operation(s) and returns the new response.
+5. In rare cases where replay/resume is no longer possible, the API returns an error explaining why.
+
+Replayed responses include:
+
+- `Idempotent-Replayed: true`
+
+## Deterministic vs transient failures
+
+Our standard error envelope includes an `is_transient` flag:
+
+- `is_transient: false` -> deterministic error (do not retry; the same error will be replayed)
+- `is_transient: true` -> transient error (retrying with the same idempotency key is safe and may succeed)
+
+## What counts as an idempotent replay?
+
+A request is treated as an idempotent replay of a prior request when all of the following are true:
+
+- The **same idempotency key** is used for the **same API endpoint**
+- The **same target account** is set in the `Augno-Account-ID` header
+- The **same API key** is used
+- The request occurs **within the replay window**, up to 30 days apart
+
+## How long is an idempotency key honored?
+
+We respect an idempotency key for **30 days** after the first request.
+
+Retries with the same key within that window are treated as replays (or resume from the last recovery point if the first attempt did not complete). After 30 days, the key may be discarded — use a new key for new attempts.
+
+## Same key, same request body
+
+The same idempotency key must be used with the **same request body**.
+
+If you reuse a key with a different body, the API will reject the request with a **400** response containing details about the mismatch. Generate a new key for a different logical operation or updated payload.
+
+## Retrying safely
+
+To avoid overwhelming the API when many clients retry after an outage:
+
+- Use **exponential backoff with jitter**
+- Honor `Retry-After` when present
+- Use `is_transient` to decide whether to retry:
+    - `false` -> do not retry
+    - `true` -> retry with the same idempotency key
+
+## Conventions you can rely on
+
+For endpoints that create or mutate state (especially `POST` and `PATCH`), include an idempotency key:
+
+- **Request header:** `Idempotency-Key: <unique value>`
+
+Guidelines:
+
+- Generate the key client-side.
+- Use a UUID v4 (recommended).
+- Max length: 255 characters.
+- Generate a new key for a new logical action.
+- Reuse the same key when retrying the same logical action (including after timeouts).
+- Idempotency is scoped per endpoint and per authenticated principal.
+
+What you should expect:
+
+- Repeating a request with the same key returns the same outcome.
+- Replayed data may be stale if the resource has been modified after the first successful request.
+- Conflicting payloads with the same key are rejected (400).
+- A successful replay includes `Idempotent-Replayed: true`.

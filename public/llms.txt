@@ -1,0 +1,30 @@
+# Augno Documentation
+
+## Developer resources
+- [Overview](https://docs.augno.com/developer-resources/index.md): Technical resources and guides for building with Augno
+
+## API
+- [Overview](https://docs.augno.com/developer-resources/api/overview.md): Learn more about Augno's APIs
+- [API Keys](https://docs.augno.com/developer-resources/api/authentication/api-keys.md): Learn how to authenticate API requests using API keys.
+- [Managing API Keys](https://docs.augno.com/developer-resources/api/authentication/managing-api-keys.md): Learn how to manage your API keys.
+- [Account context](https://docs.augno.com/developer-resources/api/make-requests/account-context.md): Learn how to use the Augno-Account-ID header to specify account context for API requests.
+- [API URIs](https://docs.augno.com/developer-resources/api/make-requests/api-uris.md): Learn the general format of Augno API URIs.
+- [Idempotency](https://docs.augno.com/developer-resources/api/make-requests/idempotency.md): Learn how to make your integrations resilient to transient errors.
+- [Rate limiting](https://docs.augno.com/developer-resources/api/make-requests/rate-limiting.md): Learn how Augno rate limits API requests and how to handle rate limit responses.
+- [API versioning](https://docs.augno.com/developer-resources/api/make-requests/versioning.md): Learn how Augno versions its API and how to specify which version your integration targets.
+- [Pagination](https://docs.augno.com/developer-resources/api/make-requests/pagination.md): Learn how to paginate through list results using cursor-based pagination.
+- [Request IDs](https://docs.augno.com/developer-resources/api/make-requests/request-ids.md): Learn how to use request IDs for debugging and support purposes.
+- [API errors](https://docs.augno.com/developer-resources/api/handling-errors/errors.md): Learn about the standard error envelope format and error codes returned by the Augno API.
+
+## Get Started
+- [Overview](https://docs.augno.com/get-started/get-started/overview.md): Get started with Augno
+- [API tour](https://docs.augno.com/get-started/get-started/about-the-apis/api-tour.md): Understand how Augno API objects fit together and learn best practices.
+
+## Start Building
+- [Overview](https://docs.augno.com/get-started/start-building/account/overview.md): Learn how to activate and manage your Augno account.
+- [Send your first API request](https://docs.augno.com/get-started/start-building/start-developing/api-request.md): Get started with the Augno API
+- [Activate your account](https://docs.augno.com/get-started/start-building/account/activate.md): Learn how to activate and manage your Augno account.
+- [Build & test your integration](https://docs.augno.com/get-started/start-building/start-developing/test-integration.md): Build and test your integration
+- [Checklist](https://docs.augno.com/get-started/start-building/account/checklist.md): Learn how to activate and manage your Augno account.
+- [Go live checklist](https://docs.augno.com/get-started/start-building/start-developing/go-live.md): Go live with your integration
+- [Release phases](https://docs.augno.com/get-started/start-building/start-developing/release-phases.md): Learn how Augno describes product release phases for its API, Dashboard, and other features.
