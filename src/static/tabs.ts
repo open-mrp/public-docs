@@ -37,10 +37,7 @@ export function getTabFromPath(path: string): Tab | undefined {
  * Look up a tab by route using the generated routeToTab mapping.
  * Falls back to path prefix matching if not found.
  */
-export function getTabFromRoute(
-    path: string,
-    routeToTab: Record<string, string>
-): Tab | undefined {
+export function getTabFromRoute(path: string, routeToTab: Record<string, string>): Tab | undefined {
     const normalizedPath = path.startsWith('/') ? path : `/${path}`;
 
     // First, check the generated route-to-tab mapping

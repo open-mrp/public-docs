@@ -69,7 +69,7 @@ async function fetchCurrentUser(): Promise<User | null> {
 
         if (response.status === 401) {
             // Try to refresh using V2 client (cookie sent automatically via credentials: 'include')
-            const { error } = await v2Client.POST('/v1/auth/access-tokens', {
+            const { error } = await v2Client.PUT('/v1/auth/access-tokens', {
                 params: { cookie: { '__Secure-augno.refresh-token': '' } },
             });
             if (error) return null;
@@ -102,7 +102,7 @@ async function fetchTenancy(): Promise<TenancyResponse | null> {
         });
 
         if (response.status === 401) {
-            const { error } = await v2Client.POST('/v1/auth/access-tokens', {
+            const { error } = await v2Client.PUT('/v1/auth/access-tokens', {
                 params: { cookie: { '__Secure-augno.refresh-token': '' } },
             });
             if (error) return null;
@@ -127,12 +127,9 @@ async function fetchTenancy(): Promise<TenancyResponse | null> {
 
 async function fetchDocApiKey(accountId: string): Promise<string | null> {
     try {
-        const { data, error } = await v2Client.POST(
-            '/v1/auth/api-keys/actions/fetch-doc-api-key',
-            {
-                headers: { 'Augno-Account-ID': accountId },
-            },
-        );
+        const { data, error } = await v2Client.POST('/v1/auth/api-keys/actions/fetch-doc-api-key', {
+            headers: { 'Augno-Account-ID': accountId },
+        });
         if (error || !data) return null;
         return (data as { api_key_secret: string }).api_key_secret;
     } catch {
@@ -293,10 +290,7 @@ export const useAuthStore = create<AuthState>()(
                 set({ isLoading: true, isRestoring: true });
 
                 try {
-                    const [user, tenancy] = await Promise.all([
-                        fetchCurrentUser(),
-                        fetchTenancy(),
-                    ]);
+                    const [user, tenancy] = await Promise.all([fetchCurrentUser(), fetchTenancy()]);
 
                     // Mark that we've checked auth this page load
                     hasCheckedAuthThisPageLoad = true;

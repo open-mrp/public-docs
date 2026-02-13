@@ -28,59 +28,110 @@ If you are a developer, or had a developer perform an integration for you, you s
 <DocChecklist storageKey="go-live-checklist">
 
 <DocChecklistItem id="api-versioning">
-    **API Versioning**: All requests use your account API settings, unless you override the API version. Check the Augno API changelog for available versions. Webhook events are structured according to your account API version, unless you set an API version during endpoint creation. To ensure everything is in sync: upgrade to the latest API version in the <InternalLink pathKey="frontend.dashboard" text="Augno Dashboard" />; if using a server-side library for a dynamic language (e.g., Node.js, Python, Ruby), set the API version in the library; if using a server-side library for a strongly typed language (e.g., Go, Java, TypeScript, .NET), upgrade to the latest version of your chosen library, which typically pins the API version.
+    **API Versioning**: All requests use your account API settings, unless you override the API
+    version. Check the Augno API changelog for available versions. Webhook events are structured
+    according to your account API version, unless you set an API version during endpoint creation.
+    To ensure everything is in sync: upgrade to the latest API version in the{' '}
+    <InternalLink pathKey="frontend.dashboard" text="Augno Dashboard" />; if using a server-side
+    library for a dynamic language (e.g., Node.js, Python, Ruby), set the API version in the
+    library; if using a server-side library for a strongly typed language (e.g., Go, Java,
+    TypeScript, .NET), upgrade to the latest version of your chosen library, which typically pins
+    the API version.
 </DocChecklistItem>
 
 <DocChecklistItem id="thorough-testing">
-    **Thorough Testing**: Utilize Augno's test values and scenarios to replicate various states and responses. Test your integration with incomplete data, invalid data, and duplicate data (e.g., retry the same request to see what happens). It's also recommended to have someone else test your integration, especially if that person isn't a developer.
+    **Thorough Testing**: Utilize Augno's test values and scenarios to replicate various states and
+    responses. Test your integration with incomplete data, invalid data, and duplicate data (e.g.,
+    retry the same request to see what happens). It's also recommended to have someone else test
+    your integration, especially if that person isn't a developer.
 </DocChecklistItem>
 
 <DocChecklistItem id="error-handling">
-    **Comprehensive Error Handling**: Ensure your code is written to handle every possible error type, including those that seem unlikely. Your code should be defensive, handling not just common errors, but all possibilities. When testing error handling, pay close attention to what information is shown to your users. Distinguish between user-facing errors (e.g., invalid input) and backend errors.
+    **Comprehensive Error Handling**: Ensure your code is written to handle every possible error
+    type, including those that seem unlikely. Your code should be defensive, handling not just
+    common errors, but all possibilities. When testing error handling, pay close attention to what
+    information is shown to your users. Distinguish between user-facing errors (e.g., invalid input)
+    and backend errors.
 </DocChecklistItem>
 
 <DocChecklistItem id="logging">
-    **Logging**: Augno logs requests made with your API keys, viewable in the <InternalLink pathKey="frontend.dashboard" text="Augno Dashboard" /> (usually under a "Logs" or "API" section). It is highly recommended to implement comprehensive logging on your end as well. Your logs can be crucial if your server has issues contacting Augno or if there's a problem with your API keys. Regularly examine your logs to ensure they're storing only necessary information and not sensitive data (e.g., personally identifiable information, raw API keys).
+    **Logging**: Augno logs requests made with your API keys, viewable in the{' '}
+    <InternalLink pathKey="frontend.dashboard" text="Augno Dashboard" /> (usually under a "Logs" or
+    "API" section). It is highly recommended to implement comprehensive logging on your end as well.
+    Your logs can be crucial if your server has issues contacting Augno or if there's a problem with
+    your API keys. Regularly examine your logs to ensure they're storing only necessary information
+    and not sensitive data (e.g., personally identifiable information, raw API keys).
 </DocChecklistItem>
 
 <DocChecklistItem id="environment-parity">
-    **Environment Parity for Configuration Objects**: Augno objects created in a sandbox environment (e.g., product definitions, specific configurations) are not directly usable in live mode. This prevents test data from being inadvertently used in production. When recreating necessary objects in live mode, ensure you use the same identifying values (e.g., the same product ID) where applicable to guarantee your code continues to work without issue.
+    **Environment Parity for Configuration Objects**: Augno objects created in a sandbox environment
+    (e.g., product definitions, specific configurations) are not directly usable in live mode. This
+    prevents test data from being inadvertently used in production. When recreating necessary
+    objects in live mode, ensure you use the same identifying values (e.g., the same product ID)
+    where applicable to guarantee your code continues to work without issue.
 </DocChecklistItem>
 
 <DocChecklistItem id="webhook-endpoints">
-    **Webhook Endpoints**: Your Augno account can have both test and live webhook endpoints. If you're using webhooks, make sure you've defined live endpoints in your Augno account settings. Confirm that the live endpoint functions exactly the same as your test endpoint. Verify your production webhook endpoint gracefully handles delayed webhook notifications, gracefully handles duplicate webhook notifications, and does not require event notifications to occur in a specific order.
+    **Webhook Endpoints**: Your Augno account can have both test and live webhook endpoints. If
+    you're using webhooks, make sure you've defined live endpoints in your Augno account settings.
+    Confirm that the live endpoint functions exactly the same as your test endpoint. Verify your
+    production webhook endpoint gracefully handles delayed webhook notifications, gracefully handles
+    duplicate webhook notifications, and does not require event notifications to occur in a specific
+    order.
 </DocChecklistItem>
 
 <DocChecklistItem id="stay-updated">
-    **Stay Updated**: Subscribe to Augno's API updates mailing list or blog to keep up with new features and changes.
+    **Stay Updated**: Subscribe to Augno's API updates mailing list or blog to keep up with new
+    features and changes.
 </DocChecklistItem>
 
 <DocChecklistItem id="api-key-security">
-    **API Key Security**: As a security measure, rotate your API keys on a regular basis. Consider rotating them immediately before going live, in case they've been inadvertently saved or exposed during development. Ensure your workflow doesn't result in your API keys being stored in multiple places or committed to your version control system. Use environment variables or a secure secret management system for API keys. Review <InternalLink pathKey="securityBestPractices" text="Augno's security best practices" /> for more information.
+    **API Key Security**: As a security measure, rotate your API keys on a regular basis. Consider
+    rotating them immediately before going live, in case they've been inadvertently saved or exposed
+    during development. Ensure your workflow doesn't result in your API keys being stored in
+    multiple places or committed to your version control system. Use environment variables or a
+    secure secret management system for API keys. Review{' '}
+    <InternalLink pathKey="securityBestPractices" text="Augno's security best practices" /> for more
+    information.
 </DocChecklistItem>
 
 <DocChecklistItem id="final-review">
-    **Final Review and Sign-off**: Conduct a final review of the integration with all stakeholders. Confirm that all requirements collected in the initial phase have been met. Obtain formal sign-off before deploying to production.
+    **Final Review and Sign-off**: Conduct a final review of the integration with all stakeholders.
+    Confirm that all requirements collected in the initial phase have been met. Obtain formal
+    sign-off before deploying to production.
 </DocChecklistItem>
 
 <DocChecklistItem id="production-api-keys">
-    **Production API Key Configuration**: In the <InternalLink pathKey="frontend.apiKeys" text="Augno Dashboard" />, switch from your sandbox organization to your production organization. Create a new production API key specifically for this integration. Securely update your integration's configuration to use the new production API key. Ensure that sandbox keys are no longer in use for the production version of your integration.
+    **Production API Key Configuration**: In the{' '}
+    <InternalLink pathKey="frontend.apiKeys" text="Augno Dashboard" />, switch from your sandbox
+    organization to your production organization. Create a new production API key specifically for
+    this integration. Securely update your integration's configuration to use the new production API
+    key. Ensure that sandbox keys are no longer in use for the production version of your
+    integration.
 </DocChecklistItem>
 
 <DocChecklistItem id="data-migration">
-    **Data Migration (If Applicable)**: If there's any existing data in Augno that needs to be linked to your system, or vice-versa, plan and execute a data migration strategy. This might involve backfilling records with IDs or performing an initial sync.
+    **Data Migration (If Applicable)**: If there's any existing data in Augno that needs to be
+    linked to your system, or vice-versa, plan and execute a data migration strategy. This might
+    involve backfilling records with IDs or performing an initial sync.
 </DocChecklistItem>
 
 <DocChecklistItem id="deploy-integration">
-    **Deploy the Integration**: Deploy the updated integration code, now pointing to Augno's production environment, to your production servers.
+    **Deploy the Integration**: Deploy the updated integration code, now pointing to Augno's
+    production environment, to your production servers.
 </DocChecklistItem>
 
 <DocChecklistItem id="post-launch-monitoring">
-    **Post-Launch Monitoring**: Closely monitor the integration in the production environment immediately after launch. Use the Augno Dashboard's **Logs** and **Events** views to track operations and identify any errors or unexpected behavior. Have a rollback plan in place in case of critical issues.
+    **Post-Launch Monitoring**: Closely monitor the integration in the production environment
+    immediately after launch. Use the Augno Dashboard's **Logs** and **Events** views to track
+    operations and identify any errors or unexpected behavior. Have a rollback plan in place in case
+    of critical issues.
 </DocChecklistItem>
 
 <DocChecklistItem id="update-stakeholders">
-    **Update Stakeholders**: Inform all relevant stakeholders that the integration is live. Provide them with any necessary training or documentation on how the new integration affects their workflow.
+    **Update Stakeholders**: Inform all relevant stakeholders that the integration is live. Provide
+    them with any necessary training or documentation on how the new integration affects their
+    workflow.
 </DocChecklistItem>
 
 </DocChecklist>

@@ -24,17 +24,11 @@ export const navOrder: TabNavOrder[] = [
         sections: [
             {
                 section: 'Get Started',
-                subsections: [
-                    'Overview',
-                    'About the APIs',
-                ],
+                subsections: ['Overview', 'About the APIs'],
             },
             {
                 section: 'Start Building',
-                subsections: [
-                    'Create an account',
-                    'Start developing',
-                ],
+                subsections: ['Create an account', 'Start developing'],
             },
         ],
     },
@@ -52,14 +46,12 @@ export const navOrder: TabNavOrder[] = [
                     'Authentication',
                     'Make Requests',
                     'Handling Errors',
-                    'Testing'
+                    'Testing',
                 ],
             },
             {
                 section: 'Start Building',
-                subsections: [
-                    'About the APIs',
-                ],
+                subsections: ['About the APIs'],
             },
         ],
     },
@@ -73,9 +65,7 @@ export function getSectionOrder(tabId: string, section: string): number {
     const tab = navOrder.find((t) => t.tabId === tabId);
     if (!tab) return 999;
 
-    const index = tab.sections.findIndex(
-        (s) => s.section.toLowerCase() === section.toLowerCase()
-    );
+    const index = tab.sections.findIndex((s) => s.section.toLowerCase() === section.toLowerCase());
     return index === -1 ? 999 : index;
 }
 
@@ -87,20 +77,20 @@ export function getSectionOrder(tabId: string, section: string): number {
 export function getSubsectionOrder(
     tabId: string,
     section: string,
-    subsection: string | null
+    subsection: string | null,
 ): number {
     const tab = navOrder.find((t) => t.tabId === tabId);
     if (!tab) return 999;
 
     const sectionConfig = tab.sections.find(
-        (s) => s.section.toLowerCase() === section.toLowerCase()
+        (s) => s.section.toLowerCase() === section.toLowerCase(),
     );
     if (!sectionConfig) return 999;
 
     const index = sectionConfig.subsections.findIndex((sub) =>
         sub === null
             ? subsection === null
-            : subsection !== null && sub.toLowerCase() === subsection.toLowerCase()
+            : subsection !== null && sub.toLowerCase() === subsection.toLowerCase(),
     );
     return index === -1 ? 999 : index;
 }

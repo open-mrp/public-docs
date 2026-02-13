@@ -48,7 +48,9 @@ export function getPath(pathKey: string): string | undefined {
     if (typeof current !== 'string') {
         if (!warnedPathKeys.has(pathKey)) {
             warnedPathKeys.add(pathKey);
-            console.error(`[Invalid pathKey] "${pathKey}" resolves to an object, not a path. Did you mean "${pathKey}.root"?`);
+            console.error(
+                `[Invalid pathKey] "${pathKey}" resolves to an object, not a path. Did you mean "${pathKey}.root"?`,
+            );
         }
         return undefined;
     }

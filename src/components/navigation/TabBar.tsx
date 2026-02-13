@@ -11,7 +11,7 @@ export default function TabBar() {
     const activeTab = getTabFromRoute(pathname, routeToTab);
     const tabRefs = useRef<Map<string, HTMLAnchorElement>>(new Map());
     const [indicatorStyle, setIndicatorStyle] = useState<{ left: number; width: number } | null>(
-        null
+        null,
     );
 
     useEffect(() => {
@@ -45,9 +45,7 @@ export default function TabBar() {
                                 href={tab.defaultPage}
                                 className="relative h-full flex items-center text-[15px] font-medium transition-colors duration-200"
                                 style={{
-                                    color: isActive
-                                        ? 'var(--foreground)'
-                                        : 'var(--text-secondary)',
+                                    color: isActive ? 'var(--foreground)' : 'var(--text-secondary)',
                                 }}
                             >
                                 {tab.label}

@@ -35,8 +35,7 @@ async function getAllRoutes(): Promise<RouteEntry[]> {
         const { data } = matter(content);
 
         // Use explicit route from frontmatter or fall back to path-derived
-        const pathDerivedRoute =
-            '/' + file.replace(/\.mdx$/, '').replace(/\/index$/, '');
+        const pathDerivedRoute = '/' + file.replace(/\.mdx$/, '').replace(/\/index$/, '');
         const route = data.route || pathDerivedRoute;
 
         // Determine tab from file path (directory structure)

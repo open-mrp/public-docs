@@ -44,12 +44,12 @@ bun run build
 To test local changes to `@augno/ui` (or `@augno/internal-sdk`) without publishing:
 
 1. **In the UI repo** (e.g. `../ui`):
-   - One-off: `bun run yalc:publish` (builds and pushes to yalc)
-   - With live updates: `bun run yalc:watch` (rebuilds and pushes on file changes)
+    - One-off: `bun run yalc:publish` (builds and pushes to yalc)
+    - With live updates: `bun run yalc:watch` (rebuilds and pushes on file changes)
 
 2. **In this repo** (external-docs):
-   - Link UI: `bun run ui:link` (adds local `@augno/ui` from yalc and clears Next.js cache)
-   - Start the app: `bun run dev`
+    - Link UI: `bun run ui:link` (adds local `@augno/ui` from yalc and clears Next.js cache)
+    - Start the app: `bun run dev`
 
 To switch back to the published UI: `bun run ui:unlink`.
 

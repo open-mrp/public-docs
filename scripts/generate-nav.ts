@@ -188,7 +188,7 @@ function buildTabbedNavStructure(pages: ParsedPage[]): TabbedNavData {
 function buildSectionLinks(
     pages: ParsedPage[],
     tabId: string,
-    sectionName: string
+    sectionName: string,
 ): (NavLink | NavSubSectionData)[] {
     // Group by subsection (case-insensitive, using sentinel for no subsection)
     const subsectionMap = new Map<string, ParsedPage[]>(); // key is lowercase or NO_SUBSECTION
@@ -214,14 +214,14 @@ function buildSectionLinks(
         if (a === NO_SUBSECTION) {
             const pages = subsectionMap.get(a)!;
             // Use nav.title for ordering when there's a single page without subsection
-            subsectionA = pages.length === 1 ? pages[0].nav.title ?? null : null;
+            subsectionA = pages.length === 1 ? (pages[0].nav.title ?? null) : null;
         } else {
             subsectionA = subsectionTitle.get(a) ?? null;
         }
 
         if (b === NO_SUBSECTION) {
             const pages = subsectionMap.get(b)!;
-            subsectionB = pages.length === 1 ? pages[0].nav.title ?? null : null;
+            subsectionB = pages.length === 1 ? (pages[0].nav.title ?? null) : null;
         } else {
             subsectionB = subsectionTitle.get(b) ?? null;
         }

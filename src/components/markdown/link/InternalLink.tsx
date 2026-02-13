@@ -25,7 +25,10 @@ export default function InternalLink({
         // Show visible error in development, hide in production
         if (process.env.NODE_ENV === 'development') {
             return (
-                <span className="bg-red-100 text-red-800 px-1 rounded" title={`Invalid pathKey: ${pathKey}`}>
+                <span
+                    className="bg-red-100 text-red-800 px-1 rounded"
+                    title={`Invalid pathKey: ${pathKey}`}
+                >
                     {text} [BROKEN: {pathKey}]
                 </span>
             );
