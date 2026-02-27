@@ -20,7 +20,7 @@
     },
     "dependencies": {
         "@augno/internal-sdk": "^3.0.0",
-        "@augno/ui": "^1.1.6",
+        "@augno/ui": "^1.1.7",
         "@mdx-js/loader": "^3.1.1",
         "@mdx-js/react": "^3.1.1",
         "@next/mdx": "16.1.6",
