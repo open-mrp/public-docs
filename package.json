@@ -19,7 +19,7 @@
         "format:check": "prettier --check ."
     },
     "dependencies": {
-        "@augno/internal-sdk": "^3.0.0",
+        "@augno/internal-sdk": "^3.1.0",
         "@augno/ui": "^1.1.7",
         "@mdx-js/loader": "^3.1.1",
         "@mdx-js/react": "^3.1.1",

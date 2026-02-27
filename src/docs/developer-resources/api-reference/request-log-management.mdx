@@ -22,12 +22,12 @@ RequestLog represents a single API request log entry.
 | `method` | string | Yes | The HTTP method. |
 | `host` | string | Yes | The request host. |
 | `path` | string | Yes | The request path. |
-| `normalized_route` | string | Yes | The normalized route pattern with path parameters replaced by placeholders (e.g., `/v1/core/sandboxes/{id}`). |
+| `normalized_route` | string | Yes | The normalized route pattern. |
 | `query_json` | string, nullable | Yes | The query parameters as JSON. |
 | `status_code` | integer | Yes | The HTTP status code. |
-| `latency_us` | integer | Yes | The request latency in microseconds. Divide by 1,000 for milliseconds. |
+| `latency_us` | integer | Yes | The request latency in microseconds. |
 | `api_version` | string, nullable | Yes | The API version used. |
-| `identity_type` | string, nullable | Yes | The identity type of the caller. Possible values: `user`, `api_key`. |
+| `identity_type` | string, nullable | Yes | The identity type of the caller. |
 | `client_ip` | string, nullable | Yes | The client IP address. |
 | `user_agent` | string, nullable | Yes | The user agent string. |
 | `referrer` | string, nullable | Yes | The referrer header. |
@@ -38,8 +38,8 @@ RequestLog represents a single API request log entry.
 | `account` | [`LightAccount`](#the-lightaccount-object), nullable | Yes | The account targeted by the request. |
 | `actor` | [`RequestLogActor`](#the-requestlogactor-object), nullable | Yes | Actor details (user or API key). |
 | `idempotency_key` | string, nullable | Yes | The user-provided idempotency key value. |
-| `request_body_json` | string, nullable | Yes | The JSON request body. Truncated at 256 KB. Null for security-sensitive endpoints (e.g., API key creation). |
-| `response_body_json` | string, nullable | Yes | The JSON response body. Truncated at 256 KB. Null for security-sensitive endpoints (e.g., API key creation). |
+| `request_body_json` | string, nullable | Yes | The JSON request body. |
+| `response_body_json` | string, nullable | Yes | The JSON response body. |
 
 ### Example<span className="hidden toc-hidden"> of RequestLog</span>
 
@@ -47,33 +47,33 @@ RequestLog represents a single API request log entry.
 {
   "id": "rl_01jm4r6700f8nwq3v5hx2d9ktp",
   "object": "request_log",
-  "method": "POST",
-  "host": "api.augno.io",
-  "path": "/v1/core/sandboxes/sb_01ja3q2800kmpwz7r4gx9c8yvn/reset",
-  "normalized_route": "/v1/core/sandboxes/{id}/reset",
-  "query_json": null,
+  "method": "GET",
+  "host": "https://api.augno.com",
+  "path": "/v1/core/sandboxes",
+  "normalized_route": "/v1/core/sandboxes",
+  "query_json": "{\"limit\":10}",
   "status_code": 200,
-  "latency_us": 48210,
+  "latency_us": 12345,
   "api_version": "2026-01-01",
-  "identity_type": "api_key",
-  "client_ip": "203.0.113.42",
-  "user_agent": "MyApp/1.0",
+  "identity_type": "user",
+  "client_ip": "198.51.100.7",
+  "user_agent": "Mozilla/5.0",
   "referrer": null,
   "error_code": null,
   "error_message": null,
-  "occurred_at": "2026-02-25T21:08:34.496664-05:00",
-  "created_at": "2026-02-25T21:08:34.496664-05:00",
+  "occurred_at": "2026-05-10T00:00:00Z",
+  "created_at": "2026-05-10T00:00:00Z",
   "account": {
     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
     "object_type": "account",
     "name": "Acme Inc."
   },
   "actor": {
-    "id": "ak_01jk8m3400typeid_prod_key",
+    "id": "us_01gf7a8200e9pvbd6bgyq395ae",
     "object_type": "user",
-    "name": "Production API Key",
-    "email": null,
-    "redacted_value": "ak_prod_****abcd",
+    "name": "John Doe",
+    "email": "jdoe@augno.com",
+    "redacted_value": null,
     "role": {
       "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
       "object_type": "role",
@@ -81,9 +81,83 @@ RequestLog represents a single API request log entry.
       "role_type_code": "admin"
     }
   },
-  "idempotency_key": "reset-sb-20260225-001",
-  "request_body_json": "{\"preserve_data\":false}",
-  "response_body_json": "{\"id\":\"sb_01ja3q2800kmpwz7r4gx9c8yvn\",\"object\":\"sandbox\",\"status\":\"active\"}"
+  "idempotency_key": null,
+  "request_body_json": null,
+  "response_body_json": "{\"object\":\"list\",\"data\":[...]}"
+}
+```
+
+### The RequestLogListItem object<span className="hidden toc-hidden"> (requestloglistitem)</span>
+
+RequestLogListItem is the list representation of a request log entry.
+It omits the request and response body JSON fields which are only
+available when retrieving a single request log by ID.
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `id` | string | Yes | The unique identifier for the request log. |
+| `object` | string | Yes | The object type. Always `request_log`. |
+| `method` | string | Yes | The HTTP method. |
+| `host` | string | Yes | The request host. |
+| `path` | string | Yes | The request path. |
+| `normalized_route` | string | Yes | The normalized route pattern. |
+| `query_json` | string, nullable | Yes | The query parameters as JSON. |
+| `status_code` | integer | Yes | The HTTP status code. |
+| `latency_us` | integer | Yes | The request latency in microseconds. |
+| `api_version` | string, nullable | Yes | The API version used. |
+| `identity_type` | string, nullable | Yes | The identity type of the caller. |
+| `client_ip` | string, nullable | Yes | The client IP address. |
+| `user_agent` | string, nullable | Yes | The user agent string. |
+| `referrer` | string, nullable | Yes | The referrer header. |
+| `error_code` | string, nullable | Yes | The API error code, if any. |
+| `error_message` | string, nullable | Yes | The error message, if any. |
+| `occurred_at` | datetime | Yes | When the request occurred. |
+| `created_at` | datetime | Yes | When the log entry was created. |
+| `account` | [`LightAccount`](#the-lightaccount-object), nullable | Yes | The account targeted by the request. |
+| `actor` | [`RequestLogActor`](#the-requestlogactor-object), nullable | Yes | Actor details (user or API key). |
+| `idempotency_key` | string, nullable | Yes | The user-provided idempotency key value. |
+
+#### Example<span className="hidden toc-hidden"> of RequestLogListItem</span>
+
+```json
+{
+  "id": "rl_01jm4r6700f8nwq3v5hx2d9ktp",
+  "object": "request_log",
+  "method": "GET",
+  "host": "https://api.augno.com",
+  "path": "/v1/core/sandboxes",
+  "normalized_route": "/v1/core/sandboxes",
+  "query_json": "{\"limit\":10}",
+  "status_code": 200,
+  "latency_us": 12345,
+  "api_version": "2026-01-01",
+  "identity_type": "user",
+  "client_ip": "198.51.100.7",
+  "user_agent": "Mozilla/5.0",
+  "referrer": null,
+  "error_code": null,
+  "error_message": null,
+  "occurred_at": "2026-05-10T00:00:00Z",
+  "created_at": "2026-05-10T00:00:00Z",
+  "account": {
+    "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+    "object_type": "account",
+    "name": "Acme Inc."
+  },
+  "actor": {
+    "id": "us_01gf7a8200e9pvbd6bgyq395ae",
+    "object_type": "user",
+    "name": "John Doe",
+    "email": "jdoe@augno.com",
+    "redacted_value": null,
+    "role": {
+      "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
+      "object_type": "role",
+      "name": "Admin",
+      "role_type_code": "admin"
+    }
+  },
+  "idempotency_key": null
 }
 ```
 
@@ -119,24 +193,6 @@ RequestLogActor contains the resolved actor details for a request log.
 | `email` | string, nullable | Yes | The actor's email (users only). |
 | `redacted_value` | string, nullable | Yes | The redacted API key value (API keys only). |
 | `role` | [`LightRole`](#the-lightrole-object), nullable | Yes | The role assigned to the actor. |
-
-#### Example<span className="hidden toc-hidden"> of RequestLogActor</span>
-
-```json
-{
-  "id": "usr_01hk5p9200abc123def456gh",
-  "object_type": "user",
-  "name": "Jane Smith",
-  "email": "jane@example.com",
-  "redacted_value": null,
-  "role": {
-    "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
-    "object_type": "role",
-    "name": "Admin",
-    "role_type_code": "admin"
-  }
-}
-```
 
 ### The LightRole object<span className="hidden toc-hidden"> (lightrole)</span>
 
@@ -193,7 +249,7 @@ GET /v1/core/request-logs
 
 **`200`** Successful response for List Request Logs
 
-Returns a paginated list of [`RequestLog`](#the-requestlog-resource) objects. See [Pagination](/api/pagination) for envelope details.
+Returns a paginated list of [`RequestLogListItem`](#the-requestloglistitem-object) objects. See [Pagination](/api/pagination) for envelope details.
 
 **Example:**
 
@@ -201,7 +257,7 @@ Returns a paginated list of [`RequestLog`](#the-requestlog-resource) objects. Se
 {
   "object": "list",
   "page_info": {
-    "next_cursor": "rl_01jm4r5500a2bcdef3gh4ij5kl",
+    "next_cursor": "rl_01jm4r6700f8nwq3v5hx2d9ktp",
     "prev_cursor": null,
     "has_next_page": true,
     "has_prev_page": false
@@ -210,33 +266,33 @@ Returns a paginated list of [`RequestLog`](#the-requestlog-resource) objects. Se
     {
       "id": "rl_01jm4r6700f8nwq3v5hx2d9ktp",
       "object": "request_log",
-      "method": "POST",
-      "host": "api.augno.io",
-      "path": "/v1/core/sandboxes/sb_01ja3q2800kmpwz7r4gx9c8yvn/reset",
-      "normalized_route": "/v1/core/sandboxes/{id}/reset",
-      "query_json": null,
+      "method": "GET",
+      "host": "https://api.augno.com",
+      "path": "/v1/core/sandboxes",
+      "normalized_route": "/v1/core/sandboxes",
+      "query_json": "{\"limit\":10}",
       "status_code": 200,
-      "latency_us": 48210,
+      "latency_us": 12345,
       "api_version": "2026-01-01",
-      "identity_type": "api_key",
-      "client_ip": "203.0.113.42",
-      "user_agent": "MyApp/1.0",
+      "identity_type": "user",
+      "client_ip": "198.51.100.7",
+      "user_agent": "Mozilla/5.0",
       "referrer": null,
       "error_code": null,
       "error_message": null,
-      "occurred_at": "2026-02-25T21:08:34.496664-05:00",
-      "created_at": "2026-02-25T21:08:34.496664-05:00",
+      "occurred_at": "2026-05-10T00:00:00Z",
+      "created_at": "2026-05-10T00:00:00Z",
       "account": {
         "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
         "object_type": "account",
         "name": "Acme Inc."
       },
       "actor": {
-        "id": "ak_01jk8m3400typeid_prod_key",
+        "id": "us_01gf7a8200e9pvbd6bgyq395ae",
         "object_type": "user",
-        "name": "Production API Key",
-        "email": null,
-        "redacted_value": "ak_prod_****abcd",
+        "name": "John Doe",
+        "email": "jdoe@augno.com",
+        "redacted_value": null,
         "role": {
           "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
           "object_type": "role",
@@ -244,9 +300,7 @@ Returns a paginated list of [`RequestLog`](#the-requestlog-resource) objects. Se
           "role_type_code": "admin"
         }
       },
-      "idempotency_key": "reset-sb-20260225-001",
-      "request_body_json": "{\"preserve_data\":false}",
-      "response_body_json": "{\"id\":\"sb_01ja3q2800kmpwz7r4gx9c8yvn\",\"object\":\"sandbox\",\"status\":\"active\"}"
+      "idempotency_key": null
     }
   ]
 }
@@ -281,7 +335,7 @@ Returns a [`RequestLog`](#the-requestlog-resource) object.
   "id": "rl_01jm4r6700f8nwq3v5hx2d9ktp",
   "object": "request_log",
   "method": "GET",
-  "host": "api.augno.io",
+  "host": "https://api.augno.com",
   "path": "/v1/core/sandboxes",
   "normalized_route": "/v1/core/sandboxes",
   "query_json": "{\"limit\":10}",
@@ -294,18 +348,18 @@ Returns a [`RequestLog`](#the-requestlog-resource) object.
   "referrer": null,
   "error_code": null,
   "error_message": null,
-  "occurred_at": "2026-02-25T21:08:34.496664-05:00",
-  "created_at": "2026-02-25T21:08:34.496664-05:00",
+  "occurred_at": "2026-05-10T00:00:00Z",
+  "created_at": "2026-05-10T00:00:00Z",
   "account": {
     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
     "object_type": "account",
     "name": "Acme Inc."
   },
   "actor": {
-    "id": "usr_01hk5p9200abc123def456gh",
+    "id": "us_01gf7a8200e9pvbd6bgyq395ae",
     "object_type": "user",
-    "name": "Jane Smith",
-    "email": "jane@example.com",
+    "name": "John Doe",
+    "email": "jdoe@augno.com",
     "redacted_value": null,
     "role": {
       "id": "rl_01gf7a8200er3ar3pkfrb6kk29",

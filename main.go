@@ -412,6 +412,39 @@ func inferMainResource(paths map[string]PathItem, spec OpenAPISpec) (string, Sch
 	return "", Schema{}, false
 }
 
+// inferDetailResource finds the detail resource schema by looking for GET responses
+// on parameterized paths (e.g. /v1/resource/{id}) that return a non-List_ schema.
+func inferDetailResource(paths map[string]PathItem, spec OpenAPISpec) (string, Schema, bool) {
+	for apiPath, item := range paths {
+		if !strings.Contains(apiPath, "{") {
+			continue
+		}
+		if item.Get == nil {
+			continue
+		}
+		for code, resp := range item.Get.Responses {
+			if !strings.HasPrefix(code, "2") {
+				continue
+			}
+			if resp.Content == nil {
+				continue
+			}
+			mediaType, ok := resp.Content["application/json"]
+			if !ok || mediaType.Schema.Ref == "" {
+				continue
+			}
+			refName := strings.TrimPrefix(mediaType.Schema.Ref, "#/components/schemas/")
+			if strings.HasPrefix(refName, "List_") {
+				continue
+			}
+			if schema, ok := spec.Components.Schemas[refName]; ok {
+				return refName, schema, true
+			}
+		}
+	}
+	return "", Schema{}, false
+}
+
 func resolveSchema(ref string, spec OpenAPISpec) (Schema, string, bool) {
 	name := strings.TrimPrefix(ref, "#/components/schemas/")
 	schema, ok := spec.Components.Schemas[name]
@@ -543,14 +576,62 @@ nav:
 		}
 
 		// Infer and show main resource schema
-		resourceName, resourceSchema, hasResource := inferMainResource(paths, spec)
+		listResourceName, listResourceSchema, hasListResource := inferMainResource(paths, spec)
+		detailResourceName, detailResourceSchema, hasDetailResource := inferDetailResource(paths, spec)
+
+		var resourceName string
+		var resourceSchema Schema
+		var hasResource bool
+		var listItemName string
+		var listItemSchema Schema
+
+		if hasDetailResource && hasListResource && detailResourceName != listResourceName {
+			// Divergent schemas: detail is primary, list item is secondary
+			resourceName = detailResourceName
+			resourceSchema = detailResourceSchema
+			hasResource = true
+			listItemName = listResourceName
+			listItemSchema = listResourceSchema
+		} else if hasListResource {
+			resourceName = listResourceName
+			resourceSchema = listResourceSchema
+			hasResource = true
+		} else if hasDetailResource {
+			resourceName = detailResourceName
+			resourceSchema = detailResourceSchema
+			hasResource = true
+		}
+
 		if hasResource {
 			// Collect referenced sub-schemas up-front so the field table can link to them
 			exclude := map[string]bool{resourceName: true}
 			subRefs := collectSubSchemaRefs(resourceSchema, spec, exclude)
+
+			// Also collect sub-schema refs from the list-item schema (if divergent)
+			if listItemName != "" {
+				exclude[listItemName] = true
+				listItemSubRefs := collectSubSchemaRefs(listItemSchema, spec, exclude)
+				for _, ref := range listItemSubRefs {
+					// Add any refs not already collected from the primary schema
+					found := false
+					for _, existing := range subRefs {
+						if existing == ref {
+							found = true
+							break
+						}
+					}
+					if !found {
+						subRefs = append(subRefs, ref)
+					}
+				}
+			}
+
 			linkable := make(map[string]bool, len(subRefs))
 			for _, name := range subRefs {
 				linkable[name] = true
+			}
+			if listItemName != "" {
+				linkable[listItemName] = true
 			}
 
 			content += fmt.Sprintf("## The %s resource\n\n", resourceName)
@@ -581,6 +662,40 @@ nav:
 				content += "```json\n"
 				content += indentJSON(resourceSchema.Example) + "\n"
 				content += "```\n\n"
+			}
+
+			// Document list-item variant when it diverges from the detail resource
+			if listItemName != "" {
+				listItemAnchor := strings.ToLower(strings.ReplaceAll(listItemName, "_", "-"))
+				content += fmt.Sprintf("### The %s object%s\n\n", listItemName, tocHidden("("+listItemAnchor+")"))
+				if listItemSchema.Description != "" {
+					content += fmt.Sprintf("%s\n\n", listItemSchema.Description)
+				}
+
+				listItemProps := getOrderedProperties(listItemSchema)
+				if len(listItemProps) > 0 {
+					content += "| Field | Type | Required | Description |\n"
+					content += "|-------|------|----------|-------------|\n"
+					for _, lp := range listItemProps {
+						required := "No"
+						for _, req := range listItemSchema.Required {
+							if req == lp.Name {
+								required = "Yes"
+								break
+							}
+						}
+						content += fmt.Sprintf("| `%s` | %s | %s | %s |\n",
+							lp.Name, getTypeDisplayLinked(lp.Property, linkable), required, getDescriptionWithEnum(lp.Property))
+					}
+					content += "\n"
+				}
+
+				if len(listItemSchema.Example) > 0 {
+					content += fmt.Sprintf("#### Example%s\n\n", tocHidden("of "+listItemName))
+					content += "```json\n"
+					content += indentJSON(listItemSchema.Example) + "\n"
+					content += "```\n\n"
+				}
 			}
 
 			// Document referenced sub-schemas (e.g. LightAccount, RequestLogActor)
@@ -796,6 +911,9 @@ nav:
 										if innerName == resourceName && hasResource {
 											anchor := strings.ToLower(strings.ReplaceAll(resourceName, "_", "-"))
 											content += fmt.Sprintf("Returns a paginated list of [`%s`](#the-%s-resource) objects. See [Pagination](/api/pagination) for envelope details.\n\n", innerName, anchor)
+										} else if listItemName != "" && innerName == listItemName {
+											anchor := strings.ToLower(strings.ReplaceAll(listItemName, "_", "-"))
+											content += fmt.Sprintf("Returns a paginated list of [`%s`](#the-%s-object) objects. See [Pagination](/api/pagination) for envelope details.\n\n", innerName, anchor)
 										} else {
 											content += fmt.Sprintf("Returns a paginated list of `%s` objects. See [Pagination](/api/pagination) for envelope details.\n\n", innerName)
 										}
