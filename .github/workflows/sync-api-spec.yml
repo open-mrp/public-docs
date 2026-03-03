@@ -1,0 +1,71 @@
+name: Sync API Spec
+
+on:
+    repository_dispatch:
+        types: [api-release]
+    workflow_dispatch:
+
+permissions:
+    contents: write
+    id-token: write
+
+jobs:
+    sync:
+        name: Sync and Rebuild Docs
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Configure AWS Credentials
+              uses: aws-actions/configure-aws-credentials@v3
+              with:
+                  role-to-assume: arn:aws:iam::013292575751:role/github-action-role
+                  aws-region: us-east-2
+
+            - name: Download public spec from S3
+              run: |
+                  mkdir -p specs
+                  aws s3 cp s3://augno-public-openapi-specs/openapi.json specs/public_openapi_spec.json
+
+            - name: Check for changes
+              id: diff
+              run: |
+                  if git diff --quiet specs/public_openapi_spec.json; then
+                    echo "changed=false" >> "$GITHUB_OUTPUT"
+                    echo "Spec has not changed — skipping."
+                  else
+                    echo "changed=true" >> "$GITHUB_OUTPUT"
+                  fi
+
+            - name: Setup Bun
+              if: steps.diff.outputs.changed == 'true'
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
+
+            - name: Setup Go
+              if: steps.diff.outputs.changed == 'true'
+              uses: actions/setup-go@v5
+              with:
+                  go-version: '1.22'
+
+            - name: Install dependencies
+              if: steps.diff.outputs.changed == 'true'
+              run: bun install
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Build docs
+              if: steps.diff.outputs.changed == 'true'
+              run: bun run build:docs
+
+            - name: Commit and push
+              if: steps.diff.outputs.changed == 'true'
+              run: |
+                  git config user.name "github-actions[bot]"
+                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  git add -A
+                  API_VERSION="${{ github.event.client_payload.api_version || 'manual' }}"
+                  git commit -m "chore: rebuild docs from API ${API_VERSION}"
+                  git push

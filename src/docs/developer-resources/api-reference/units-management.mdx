@@ -104,3 +104,192 @@ Returns a paginated list of [`Unit`](#the-unit-resource) objects. See [Paginatio
 }
 ```
 
+---
+
+### Create Unit <span className="toc-hidden"><BetaTag /></span>
+
+This endpoint creates a new account-owned unit.
+
+```http
+POST /v1/core/units
+```
+
+#### Request Body<span className="hidden toc-hidden"> for Create Unit</span>
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `name` | string | Yes | The display name of the unit (e.g. "Gram"). |
+| `abbreviation` | string | Yes | The short abbreviation for the unit (e.g. "g"). |
+| `type` | string | Yes | The unit dimension code (e.g. "mass", "quantity"). Values: `currency`, `quantity`, `time`, `mass`, `volume`, `length`, `temperature`, `area` |
+| `ratio_numerator` | string | Yes | The conversion ratio numerator relative to the base unit, as a decimal string. |
+| `ratio_denominator` | string | Yes | The conversion ratio denominator relative to the base unit, as a decimal string. |
+| `offset_numerator` | string | Yes | The conversion offset numerator, as a decimal string. |
+| `offset_denominator` | string | Yes | The conversion offset denominator, as a decimal string. |
+| `is_base_unit` | boolean | Yes | Whether this unit is the base unit for its dimension. |
+
+**Example:**
+
+```json
+{
+  "name": "Gram",
+  "abbreviation": "g",
+  "type": "mass",
+  "ratio_numerator": "1.000000000000000000000000000000",
+  "ratio_denominator": "1.000000000000000000000000000000",
+  "offset_numerator": "0.000000000000000000000000000000",
+  "offset_denominator": "1.000000000000000000000000000000",
+  "is_base_unit": true
+}
+```
+
+#### Response<span className="hidden toc-hidden"> for Create Unit</span>
+
+**`201`** Successful response for Create Unit
+
+Returns a [`Unit`](#the-unit-resource) object.
+
+**Example:**
+
+```json
+{
+  "id": "unit_01jm4r6700f8nwq3v5hx2d9ktp",
+  "object": "unit",
+  "name": "Kilogram",
+  "abbreviation": "kg",
+  "type": "mass",
+  "ratio_numerator": "1000.000000000000000000000000000000",
+  "ratio_denominator": "1.000000000000000000000000000000",
+  "offset_numerator": "0.000000000000000000000000000000",
+  "offset_denominator": "1.000000000000000000000000000000",
+  "is_base_unit": false,
+  "is_internal": false,
+  "created_at": "2026-05-10T00:00:00Z",
+  "updated_at": "2026-05-10T00:23:00Z"
+}
+```
+
+---
+
+### Get Unit <span className="toc-hidden"><BetaTag /></span>
+
+This endpoint returns a single unit by its ID.
+The unit must belong to the requesting account or be a system (global) unit.
+
+```http
+GET /v1/core/units/{id}
+```
+
+#### Path Parameters<span className="hidden toc-hidden"> for Get Unit</span>
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `id` | string | Yes | The ID of the unit to retrieve. |
+
+#### Response<span className="hidden toc-hidden"> for Get Unit</span>
+
+**`200`** Successful response for Get Unit
+
+Returns a [`Unit`](#the-unit-resource) object.
+
+**Example:**
+
+```json
+{
+  "id": "unit_01jm4r6700f8nwq3v5hx2d9ktp",
+  "object": "unit",
+  "name": "Kilogram",
+  "abbreviation": "kg",
+  "type": "mass",
+  "ratio_numerator": "1000.000000000000000000000000000000",
+  "ratio_denominator": "1.000000000000000000000000000000",
+  "offset_numerator": "0.000000000000000000000000000000",
+  "offset_denominator": "1.000000000000000000000000000000",
+  "is_base_unit": false,
+  "is_internal": false,
+  "created_at": "2026-05-10T00:00:00Z",
+  "updated_at": "2026-05-10T00:23:00Z"
+}
+```
+
+---
+
+### Update Unit <span className="toc-hidden"><BetaTag /></span>
+
+This endpoint partially updates an account-owned unit.
+Only provided fields are updated; absent fields retain their current values.
+System units cannot be updated.
+
+```http
+PATCH /v1/core/units/{id}
+```
+
+#### Path Parameters<span className="hidden toc-hidden"> for Update Unit</span>
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `id` | string | Yes | The ID of the unit to update. |
+
+#### Request Body<span className="hidden toc-hidden"> for Update Unit</span>
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `name` | string, nullable | No | The display name of the unit. |
+| `abbreviation` | string, nullable | No | The short abbreviation for the unit. |
+| `ratio_numerator` | string, nullable | No | The conversion ratio numerator, as a decimal string. |
+| `ratio_denominator` | string, nullable | No | The conversion ratio denominator, as a decimal string. |
+| `offset_numerator` | string, nullable | No | The conversion offset numerator, as a decimal string. |
+| `offset_denominator` | string, nullable | No | The conversion offset denominator, as a decimal string. |
+
+#### Response<span className="hidden toc-hidden"> for Update Unit</span>
+
+**`200`** Successful response for Update Unit
+
+Returns a [`Unit`](#the-unit-resource) object.
+
+**Example:**
+
+```json
+{
+  "id": "unit_01jm4r6700f8nwq3v5hx2d9ktp",
+  "object": "unit",
+  "name": "Kilogram",
+  "abbreviation": "kg",
+  "type": "mass",
+  "ratio_numerator": "1000.000000000000000000000000000000",
+  "ratio_denominator": "1.000000000000000000000000000000",
+  "offset_numerator": "0.000000000000000000000000000000",
+  "offset_denominator": "1.000000000000000000000000000000",
+  "is_base_unit": false,
+  "is_internal": false,
+  "created_at": "2026-05-10T00:00:00Z",
+  "updated_at": "2026-05-10T00:23:00Z"
+}
+```
+
+---
+
+### Delete Unit <span className="toc-hidden"><BetaTag /></span>
+
+This endpoint deletes an account-owned unit.
+Associated unit group memberships are also removed. System units cannot be deleted.
+
+```http
+DELETE /v1/core/units/{id}
+```
+
+#### Path Parameters<span className="hidden toc-hidden"> for Delete Unit</span>
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `id` | string | Yes | The ID of the unit to delete. |
+
+#### Response<span className="hidden toc-hidden"> for Delete Unit</span>
+
+**`204`** Successful response for Delete Unit
+
+**Example:**
+
+```json
+{}
+```
+

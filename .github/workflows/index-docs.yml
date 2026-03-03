@@ -1,30 +1,36 @@
-# name: Index Documentation
+name: Index Documentation
 
-# on:
-#     push:
-#         branches:
-#             - main
-#     workflow_dispatch:
+on:
+    push:
+        branches:
+            - main
+        paths:
+            - 'src/docs/**'
+            - 'src/static/**'
+            - 'scripts/index-docs.ts'
+    workflow_dispatch:
 
-# jobs:
-#     index:
-#         name: Index to Algolia
-#         runs-on: ubuntu-latest
-#         steps:
-#             - name: Checkout code
-#               uses: actions/checkout@v4
+jobs:
+    index:
+        name: Index to Algolia
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
 
-#             - name: Setup Bun
-#               uses: oven-sh/setup-bun@v2
-#               with:
-#                   bun-version: latest
+            - name: Setup Bun
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
 
-#             - name: Install dependencies
-#               run: bun install
+            - name: Install dependencies
+              run: bun install
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-#             - name: Index docs
-#               run: bun run index:docs
-#               env:
-#                   NEXT_PUBLIC_ALGOLIA_APP_ID: ${{ secrets.NEXT_PUBLIC_ALGOLIA_APP_ID }}
-#                   ALGOLIA_SEARCH_ADMIN_KEY: ${{ secrets.ALGOLIA_SEARCH_ADMIN_KEY }}
-#                   NEXT_PUBLIC_ALGOLIA_INDEX_NAME: ${{ secrets.NEXT_PUBLIC_ALGOLIA_INDEX_NAME }}
+            - name: Index docs
+              run: bun run index:docs
+              env:
+                  NEXT_PUBLIC_ALGOLIA_APP_ID: ${{ secrets.NEXT_PUBLIC_ALGOLIA_APP_ID }}
+                  ALGOLIA_SEARCH_ADMIN_KEY: ${{ secrets.ALGOLIA_SEARCH_ADMIN_KEY }}
+                  NEXT_PUBLIC_ALGOLIA_INDEX_NAME: ${{ secrets.NEXT_PUBLIC_ALGOLIA_INDEX_NAME }}
