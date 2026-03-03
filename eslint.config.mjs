@@ -12,6 +12,13 @@ const eslintConfig = [
     {
         ignores: ['node_modules/**', '.next/**', 'out/**', 'build/**', 'next-env.d.ts'],
     },
+    {
+        settings: {
+            react: {
+                version: '19',
+            },
+        },
+    },
 ];
 
 export default eslintConfig;
