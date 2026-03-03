@@ -3,7 +3,6 @@
 import { getPath } from '@/static/paths';
 import { cn } from '@/utils/cn';
 import Link from 'next/link';
-import { LinkPreviewTooltip } from './LinkPreviewTooltip';
 
 export interface LinkCardProps {
     pathKey: string;

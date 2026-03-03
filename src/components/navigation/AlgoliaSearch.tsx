@@ -13,6 +13,17 @@ const APP_ID = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || '';
 const API_KEY = process.env.NEXT_PUBLIC_ALGOLIA_API_KEY || '';
 const INDEX_NAME = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME || '';
 
+// Algolia hit shape (search result record)
+interface AlgoliaHit {
+    objectID: string;
+    url: string;
+    kind?: string;
+    crumbs?: string[];
+    pageTitle?: string;
+    name?: string;
+    _snippetResult?: { content?: { matchLevel?: string }; description?: { matchLevel?: string } };
+}
+
 // Kind icons/badges
 const kindConfig: Record<string, { label: string; color: string }> = {
     page: {
@@ -38,7 +49,9 @@ function SearchTrigger({ color, onClick }: { color?: string; onClick: () => void
     const [isMac, setIsMac] = useState(false);
 
     useEffect(() => {
-        setIsMac(navigator.platform.toUpperCase().indexOf('MAC') >= 0);
+        queueMicrotask(() =>
+            setIsMac(navigator.platform.toUpperCase().indexOf('MAC') >= 0),
+        );
     }, []);
 
     return (
@@ -140,9 +153,17 @@ function DialogSearchInput({
     );
 }
 
-function Hit({ hit, active, onClick }: { hit: any; active?: boolean; onClick: () => void }) {
+function Hit({
+    hit,
+    active,
+    onClick,
+}: {
+    hit: AlgoliaHit;
+    active?: boolean;
+    onClick: () => void;
+}) {
     const ref = useRef<HTMLAnchorElement>(null);
-    const kind = kindConfig[hit.kind] || kindConfig.page;
+    const kind = kindConfig[hit.kind ?? 'page'] ?? kindConfig.page;
 
     useEffect(() => {
         if (active && ref.current) {
@@ -205,21 +226,36 @@ function Hit({ hit, active, onClick }: { hit: any; active?: boolean; onClick: ()
                     >
                         {hit.pageTitle && hit.name && hit.pageTitle !== hit.name ? (
                             <>
-                                <Highlight attribute="pageTitle" hit={hit} />
+                                <Highlight
+                                    attribute="pageTitle"
+                                    hit={hit as unknown as Parameters<typeof Highlight>[0]['hit']}
+                                />
                                 {' - '}
-                                <Highlight attribute="name" hit={hit} />
+                                <Highlight
+                                    attribute="name"
+                                    hit={hit as unknown as Parameters<typeof Highlight>[0]['hit']}
+                                />
                             </>
                         ) : (
-                            <Highlight attribute={hit.pageTitle ? 'pageTitle' : 'name'} hit={hit} />
+                            <Highlight
+                                attribute={hit.pageTitle ? 'pageTitle' : 'name'}
+                                hit={hit as unknown as Parameters<typeof Highlight>[0]['hit']}
+                            />
                         )}
                     </h3>
 
                     {/* Show content snippet if match is in content, otherwise description */}
                     <div className="text-xs text-zinc-500 dark:text-zinc-400 line-clamp-3">
                         {contentHasMatch ? (
-                            <Snippet attribute="content" hit={hit} />
+                            <Snippet
+                                attribute="content"
+                                hit={hit as unknown as Parameters<typeof Snippet>[0]['hit']}
+                            />
                         ) : (
-                            <Snippet attribute="description" hit={hit} />
+                            <Snippet
+                                attribute="description"
+                                hit={hit as unknown as Parameters<typeof Snippet>[0]['hit']}
+                            />
                         )}
                     </div>
                 </div>
@@ -235,8 +271,8 @@ function SearchResults({
     query,
 }: {
     activeIndex: number;
-    onHitClick: (hit: any) => void;
-    hits: any[];
+    onHitClick: (hit: AlgoliaHit) => void;
+    hits: AlgoliaHit[];
     query: string;
 }) {
     if (!query) {
@@ -282,7 +318,7 @@ function SearchResults({
                 <div className="p-10 text-center text-zinc-500 text-sm">
                     No results for{' '}
                     <span className="font-semibold text-zinc-900 dark:text-zinc-100">
-                        "{query}"
+                        &quot;{query}&quot;
                     </span>
                 </div>
             )}
@@ -332,11 +368,11 @@ function SearchDialog({
 
     // SSR safety - only render portal on client
     useEffect(() => {
-        setMounted(true);
+        queueMicrotask(() => setMounted(true));
     }, []);
 
     useEffect(() => {
-        setActiveIndex(-1);
+        queueMicrotask(() => setActiveIndex(-1));
     }, [query]);
 
     // Focus input when dialog opens
@@ -375,7 +411,7 @@ function SearchDialog({
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [isOpen, hits, activeIndex, router, onClose]);
 
-    const handleHitClick = (hit: any) => {
+    const handleHitClick = (hit: AlgoliaHit) => {
         router.push(hit.url);
         onClose();
     };
@@ -415,7 +451,7 @@ function SearchDialog({
                 <SearchResults
                     activeIndex={activeIndex}
                     onHitClick={handleHitClick}
-                    hits={hits}
+                    hits={hits as unknown as AlgoliaHit[]}
                     query={query}
                 />
             </div>
@@ -509,6 +545,7 @@ export default function AlgoliaSearch({
     const [isOpen, setIsOpen] = useState(false);
 
     const searchClient = useMemo(() => algoliasearch(APP_ID, API_KEY), []);
+    const future = useMemo(() => ({ preserveSharedStateOnUnmount: true }), []);
 
     if (!APP_ID || !API_KEY || !INDEX_NAME) {
         return (
@@ -517,8 +554,6 @@ export default function AlgoliaSearch({
             </div>
         );
     }
-
-    const future = useMemo(() => ({ preserveSharedStateOnUnmount: true }), []);
 
     return (
         <div className={cn('relative z-50', className)}>

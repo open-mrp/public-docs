@@ -94,8 +94,7 @@ async function fetchCurrentUser(): Promise<User | null> {
 
         if (!response.ok) return null;
         return response.json();
-    } catch (error) {
-        // Removed console.error
+    } catch {
         return null;
     }
 }
@@ -128,8 +127,7 @@ async function fetchTenancy(): Promise<TenancyResponse | null> {
 
         if (!response.ok) return null;
         return response.json();
-    } catch (error) {
-        // Removed console.error
+    } catch {
         return null;
     }
 }
@@ -275,8 +273,8 @@ export const useAuthStore = create<AuthState>()(
                     await v2Client.DELETE('/v1/auth/refresh-tokens', {
                         params: { cookie: { '__Secure-augno.refresh-token': '' } },
                     });
-                } catch (error) {
-                    // Removed console.error
+                } catch {
+                    // ignore
                 }
                 // Reset the in-memory flag so navigating back triggers fresh check
                 hasCheckedAuthThisPageLoad = false;
@@ -395,7 +393,7 @@ export const useAuthStore = create<AuthState>()(
                             isRestoring: false,
                         });
                     }
-                } catch (error) {
+                } catch {
                     set({
                         user: null,
                         currentAccount: null,

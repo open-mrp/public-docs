@@ -75,6 +75,7 @@ export function UserAvatar({ src, name, size = 'md', className }: UserAvatarProp
             )}
         >
             {src && !imgError ? (
+                // eslint-disable-next-line @next/next/no-img-element -- avatar URLs are dynamic user content
                 <img
                     src={src}
                     alt={name || 'User avatar'}

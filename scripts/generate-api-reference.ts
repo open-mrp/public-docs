@@ -158,11 +158,6 @@ function generateApiReference(spec: OpenAPISpec): string {
         });
     }
 
-    // Clean description - remove "Please see ... for more details" suffix
-    const cleanDescription = (info.description || `The ${info.title} REST API.`)
-        .replace(/\.\s*Please see.*for more details\.?/i, '.')
-        .trim();
-
     // Generate MDX content
     let mdx = `---
 title: 'API Reference'

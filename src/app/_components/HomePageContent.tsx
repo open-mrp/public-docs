@@ -6,7 +6,7 @@ import DocFooter from '@/components/navigation/DocFooter';
 import HomeNavBar from '@/components/navigation/HomeNavBar';
 import { useIsAuthenticated } from '@/lib/auth-store';
 import { BlendText, ChevronRightIcon, RGBColor, useDarkMode, WaveShader } from '@augno/ui';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ApiKeysCard } from './ApiKeysCard';
 import { RecentlyVisitedCard } from './RecentlyVisitedCard';
 

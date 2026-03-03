@@ -82,7 +82,7 @@ function groupBySection(pages: ParsedPage[]): Map<string, ParsedPage[]> {
     }
 
     // Sort pages within each section
-    for (const [section, sectionPages] of sectionMap) {
+    for (const [, sectionPages] of sectionMap) {
         sectionPages.sort((a, b) => a.order - b.order);
     }
 

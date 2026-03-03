@@ -46,8 +46,10 @@ export function useRecentlyVisitedPages() {
 
     // Load pages from localStorage on mount
     useEffect(() => {
-        setPages(getStoredPages());
-        setHasMounted(true);
+        queueMicrotask(() => {
+            setPages(getStoredPages());
+            setHasMounted(true);
+        });
     }, []);
 
     const addPage = useCallback((path: string, title: string) => {

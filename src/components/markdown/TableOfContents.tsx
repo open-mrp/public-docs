@@ -60,8 +60,8 @@ function ScrollProvider({
         const onResize = () => updateFades();
         window.addEventListener('resize', onResize, { passive: true });
 
-        // initial paint
-        updateFades();
+        // initial paint (defer to avoid setState-in-effect)
+        queueMicrotask(() => updateFades());
 
         return () => {
             container?.removeEventListener('scroll', onContainerScroll);
@@ -184,7 +184,6 @@ function TOCItem({
 
         // Find the scrollable main element (not window)
         const mainElement = document.querySelector('main.overflow-y-auto') as HTMLElement | null;
-        const scrollContainer = mainElement || document.documentElement;
 
         // Smooth scroll to the target element
         const targetElement = document.getElementById(item.id);

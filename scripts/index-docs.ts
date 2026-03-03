@@ -172,10 +172,15 @@ function extractCrumbs(route: string, currentName: string): string[] {
     return crumbs;
 }
 
+interface IndexedDoc {
+    objectID: string;
+    [key: string]: unknown;
+}
+
 async function indexDocs() {
     console.log('Searching for MDX files in:', DOCS_DIR);
     const files = await glob('**/*.mdx', { cwd: DOCS_DIR });
-    const objects: any[] = [];
+    const objects: IndexedDoc[] = [];
 
     for (const file of files) {
         const fullPath = path.join(DOCS_DIR, file);

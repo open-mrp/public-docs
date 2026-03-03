@@ -30,7 +30,7 @@ export default function NavbarContents({ hideThemeToggle = false }) {
     const pathname = usePathname();
 
     useEffect(() => {
-        setIsMenuOpen(false);
+        queueMicrotask(() => setIsMenuOpen(false));
     }, [pathname]);
 
     const color = hasMounted ? 'var(--foreground)' : undefined;
