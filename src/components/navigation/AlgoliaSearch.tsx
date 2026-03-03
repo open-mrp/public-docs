@@ -544,10 +544,7 @@ export default function AlgoliaSearch({
 }) {
     const [isOpen, setIsOpen] = useState(false);
 
-    const searchClient = useMemo(
-        () => (APP_ID && API_KEY ? algoliasearch(APP_ID, API_KEY) : null),
-        [],
-    );
+    const searchClient = useMemo(() => algoliasearch(APP_ID, API_KEY), []);
     const future = useMemo(() => ({ preserveSharedStateOnUnmount: true }), []);
 
     if (!APP_ID || !API_KEY || !INDEX_NAME) {
