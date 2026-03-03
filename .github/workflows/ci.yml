@@ -10,6 +10,9 @@ jobs:
     build:
         name: Build & Validate
         runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            packages: read
 
         steps:
             - name: Checkout
@@ -27,6 +30,8 @@ jobs:
 
             - name: Install dependencies
               run: bun install
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Generate docs
               run: bun run build:docs
