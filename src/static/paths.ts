@@ -3,6 +3,9 @@ const augnoFrontend = process.env.NEXT_PUBLIC_FRONTEND_URL;
 const augnoDashboard = augnoFrontend + '/dashboard';
 
 export const externalPaths = {
+    github: {
+        openapiSpec: 'https://github.com/Augno/openapi-spec',
+    },
     frontend: {
         root: augnoFrontend,
         login: augnoFrontend + '/auth/login',
