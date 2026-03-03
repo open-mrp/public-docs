@@ -1,5 +1,5 @@
 // External paths (manually maintained for non-doc URLs)
-const augnoFrontend = process.env.NEXT_PUBLIC_FRONTEND_URL || '';
+const augnoFrontend = process.env.NEXT_PUBLIC_FRONTEND_URL || 'https://augno.com';
 const augnoDashboard = augnoFrontend + '/dashboard';
 
 export const externalPaths = {

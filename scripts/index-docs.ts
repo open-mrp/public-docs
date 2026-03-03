@@ -244,10 +244,15 @@ async function indexDocs() {
         await client.clearObjects({ indexName: INDEX_NAME });
 
         console.log(`Sending records to Algolia index: ${INDEX_NAME}...`);
-        await client.saveObjects({
-            indexName: INDEX_NAME,
-            objects,
-        });
+        const BATCH_SIZE = 100;
+        for (let i = 0; i < objects.length; i += BATCH_SIZE) {
+            const batch = objects.slice(i, i + BATCH_SIZE);
+            await client.saveObjects({
+                indexName: INDEX_NAME,
+                objects: batch,
+            });
+            console.log(`  Indexed ${Math.min(i + BATCH_SIZE, objects.length)}/${objects.length} records`);
+        }
 
         // Configure index settings optimized for this structure
         await client.setSettings({

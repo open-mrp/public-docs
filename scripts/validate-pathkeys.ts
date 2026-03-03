@@ -64,7 +64,7 @@ async function validatePathKeys(): Promise<InvalidPathKey[]> {
                     }
 
                     const resolvedPath = getPath(pathKey);
-                    if (!resolvedPath) {
+                    if (resolvedPath === undefined) {
                         invalidPathKeys.push({
                             file,
                             pathKey,
