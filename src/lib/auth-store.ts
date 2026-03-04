@@ -75,9 +75,10 @@ async function fetchCurrentUser(): Promise<User | null> {
         });
 
         if (response.status === 401) {
-            // Try to refresh using V2 client (cookie sent automatically via credentials: 'include')
-            // @ts-expect-error - OpenAPI client requires cookie param; cookie is sent via credentials: 'include'
-            const { error } = await v2Client.PUT('/v1/auth/access-tokens', {});
+            // Refresh using V2 client (middleware handles cookie automatically via credentials: 'include')
+            const { error } = await v2Client.PUT('/v1/auth/access-tokens', {
+                params: { cookie: { '__Secure-augno.refresh-token': '' } },
+            });
             if (error) return null;
 
             // Retry
@@ -134,27 +135,12 @@ async function fetchTenancy(): Promise<TenancyResponse | null> {
 
 async function fetchDocApiKey(productionAccountId: string): Promise<string | null> {
     try {
-        // Removed console.log
+        // The SDK client's middleware automatically handles 401 refresh + retry
         const { data, error } = await v2Client.POST('/v1/auth/api-keys/actions/fetch-doc-api-key', {
             headers: { 'Augno-Account-ID': productionAccountId },
         });
-        // Removed console.log
 
-        if (error || !data) {
-            // Try refreshing the access token and retrying
-            const { error: refreshError } = await v2Client.PUT('/v1/auth/access-tokens', {
-                params: { cookie: { '__Secure-augno.refresh-token': '' } },
-            });
-            if (refreshError) return null;
-
-            const { data: retryData, error: retryError } = await v2Client.POST(
-                '/v1/auth/api-keys/actions/fetch-doc-api-key',
-                { headers: { 'Augno-Account-ID': productionAccountId } },
-            );
-            if (retryError || !retryData) return null;
-            return (retryData as { api_key_secret: string }).api_key_secret;
-        }
-
+        if (error || !data) return null;
         return (data as { api_key_secret: string }).api_key_secret;
     } catch {
         return null;
