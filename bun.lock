@@ -5,7 +5,7 @@
     "": {
       "name": "@augno/docs",
       "dependencies": {
-        "@augno/internal-sdk": "^3.2.0",
+        "@augno/internal-sdk": "^3.2.2",
         "@augno/ui": "^1.1.8",
         "@mdx-js/loader": "^3.1.1",
         "@mdx-js/react": "^3.1.1",

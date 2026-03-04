@@ -19,10 +19,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Workflows",
         "subtitle": "End-to-end guides for common business processes in Augno."
     },
-    "/api/overview": {
-        "title": "Augno's APIs",
-        "subtitle": "Learn more about Augno's APIs."
-    },
     "/api-reference/api-key-management": {
         "title": "API Key Management",
         "subtitle": "Handles creating and managing API keys for programmatic access."
@@ -39,13 +35,13 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Request Log Management",
         "subtitle": "Handles listing and retrieving request logs."
     },
+    "/api/overview": {
+        "title": "Augno's APIs",
+        "subtitle": "Learn more about Augno's APIs."
+    },
     "/dashboards/overview": {
         "title": "Dashboards",
         "subtitle": "Analytics and reporting dashboards that give you real-time visibility into sales, operations, finances, and forecasting."
-    },
-    "/collect-payments/overview": {
-        "title": "Collect Payments",
-        "subtitle": "Learn about collecting payments in Augno."
     },
     "/manage-account/plans-and-billing": {
         "title": "Plans and billing",
@@ -99,6 +95,26 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Shipping",
         "subtitle": "Generate shipping labels, assign tracking numbers, and ship packed orders through your carrier."
     },
+    "/collect-payments/overview": {
+        "title": "Collect Payments",
+        "subtitle": "Learn about collecting payments in Augno."
+    },
+    "/get-started": {
+        "title": "Get started",
+        "subtitle": "Create an account and learn how to build on Augno."
+    },
+    "/api/request-logs": {
+        "title": "Request Logs",
+        "subtitle": "Monitor and debug your API activity with request logs."
+    },
+    "/api/managing-api-keys": {
+        "title": "Managing API Keys",
+        "subtitle": "Learn the best practices for managing secret API keys."
+    },
+    "/api/api-keys": {
+        "title": "API Keys",
+        "subtitle": "Learn how to authenticate requests with API keys."
+    },
     "/api/include": {
         "title": "Include Parameter",
         "subtitle": "Expand sub-objects in API responses to get the data you need."
@@ -127,25 +143,9 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Rate Limiting",
         "subtitle": "Understand rate limits and implement retry strategies."
     },
-    "/api/managing-api-keys": {
-        "title": "Managing API Keys",
-        "subtitle": "Learn the best practices for managing secret API keys."
-    },
-    "/api/api-keys": {
-        "title": "API Keys",
-        "subtitle": "Learn how to authenticate requests with API keys."
-    },
-    "/api/request-logs": {
-        "title": "Request Logs",
-        "subtitle": "Monitor and debug your API activity with request logs."
-    },
     "/api/errors": {
         "title": "API Errors",
         "subtitle": "Standard error envelope format for consistent error handling."
-    },
-    "/get-started": {
-        "title": "Get started",
-        "subtitle": "Create an account and learn how to build on Augno."
     },
     "/dashboards/forecasting/sales-targets": {
         "title": "Sales targets dashboard",
@@ -194,6 +194,142 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/dashboards/financial/payments-data": {
         "title": "Payments data",
         "subtitle": "View payment allocations across invoices with support for invoice and balance view modes."
+    },
+    "/manage-account/team/team-members": {
+        "title": "Team members",
+        "subtitle": "Invite, manage, and remove the people who use your Augno account."
+    },
+    "/manage-account/team/roles-and-permissions": {
+        "title": "Roles and permissions",
+        "subtitle": "Control what team members and API keys can access with granular, role-based permissions."
+    },
+    "/manage-account/account-settings/business-information": {
+        "title": "Business information",
+        "subtitle": "Configure your account name, logo, contact details, and portal slug."
+    },
+    "/manage-account/account-settings/profile": {
+        "title": "Your profile",
+        "subtitle": "Update your display name, email address, and profile photo."
+    },
+    "/build-products/bom/consumptions-and-productions": {
+        "title": "Consumptions & Productions",
+        "subtitle": "The inputs and outputs of each production step - what materials are used up and what parts or products are created."
+    },
+    "/build-products/bom/production-flows": {
+        "title": "Production Flows",
+        "subtitle": "The connected sequence of production steps that transforms raw materials into finished products."
+    },
+    "/build-products/bom/costing": {
+        "title": "Costing (COGS)",
+        "subtitle": "Real-time cost of goods sold calculation from production step definitions - material, labor, and overhead costs."
+    },
+    "/build-products/bom/production-steps": {
+        "title": "Production Steps",
+        "subtitle": "The core building block of manufacturing in Augno - defining inputs, outputs, and costs for each stage of production."
+    },
+    "/api-tour": {
+        "title": "Tour of the Augno API",
+        "subtitle": "See how Augno API objects fit together and learn best practices for combining them effectively."
+    },
+    "/release-phases": {
+        "title": "Product Release Phases",
+        "subtitle": "Learn how Augno describes product release phases and what to expect from each."
+    },
+    "/go-live": {
+        "title": "Go live checklist",
+        "subtitle": "Use this checklist to ensure a smooth transition putting your integration into production."
+    },
+    "/api-request": {
+        "title": "Send your first Augno API request",
+        "subtitle": "Get started with the Augno API."
+    },
+    "/account": {
+        "title": "Create an Augno account",
+        "subtitle": "Learn how to activate and manage your Augno account, from initial setup to advanced configurations."
+    },
+    "/account/activate": {
+        "title": "Activate your account",
+        "subtitle": "Learn how to activate and manage your Augno account."
+    },
+    "/account/checklist": {
+        "title": "Account activation checklist",
+        "subtitle": "Complete this checklist before putting your Augno account into production."
+    },
+    "/collect-payments/invoicing/overview": {
+        "title": "Invoicing",
+        "subtitle": "Invoices are the billing records Augno generates for each shipment, capturing what was shipped, to whom, and for how much."
+    },
+    "/collect-payments/accounts-receivable/overview": {
+        "title": "Accounts receivable",
+        "subtitle": "Track what customers owe, how long balances have been outstanding, and take action to collect."
+    },
+    "/collect-payments/collecting/settlements": {
+        "title": "Settlements",
+        "subtitle": "Formally record which transactions pay which invoices by creating settlements with allocations."
+    },
+    "/collect-payments/collecting/overview": {
+        "title": "Collecting",
+        "subtitle": "Record the money received from customers and apply it to open invoices through transactions and settlements."
+    },
+    "/generate-sales/customer/overview": {
+        "title": "Customers",
+        "subtitle": "The central record connecting sales orders, invoices, shipments, and payments."
+    },
+    "/generate-sales/customer/contacts": {
+        "title": "Contacts",
+        "subtitle": "Manage the people associated with a customer and control who receives order confirmations and invoices."
+    },
+    "/generate-sales/customer/create": {
+        "title": "Create a customer",
+        "subtitle": "Learn how to create a customer in Augno."
+    },
+    "/generate-sales/customer-pricing/customer-prices": {
+        "title": "Customer prices",
+        "subtitle": "Define product-line-specific pricing for individual customers, overriding base product prices."
+    },
+    "/generate-sales/customer-pricing/discount-codes": {
+        "title": "Discount codes",
+        "subtitle": "Promotional codes applied at the order level to reduce the total by a percentage or fixed amount."
+    },
+    "/generate-sales/customer-pricing/volume-discounts": {
+        "title": "Volume discounts",
+        "subtitle": "Automatically reduce pricing based on order quantity with tiered percentage discounts."
+    },
+    "/generate-sales/customer-setup/priorities": {
+        "title": "Priorities",
+        "subtitle": "Control order-processing precedence to determine which work gets attention first."
+    },
+    "/generate-sales/customer-setup/addresses": {
+        "title": "Addresses",
+        "subtitle": "Billing and shipping locations for customers, used on orders, invoices, and shipments."
+    },
+    "/generate-sales/customer-setup/default-carriers": {
+        "title": "Default carriers & options",
+        "subtitle": "Define the shipping carrier and service level automatically applied to a customer's orders."
+    },
+    "/generate-sales/customer-setup/exemptions": {
+        "title": "Commission & freight exemption",
+        "subtitle": "Exclude customers or customer groups from commission calculations and freight charges."
+    },
+    "/generate-sales/customer-setup/payment-terms": {
+        "title": "Payment terms",
+        "subtitle": "Define when and how a customer is expected to pay for an order."
+    },
+    "/generate-sales/customer-setup/account-statuses": {
+        "title": "Account statuses",
+        "subtitle": "Control whether a customer can place orders and receive shipments."
+    },
+    "/generate-sales/customer-setup/default-sales-reps": {
+        "title": "Default sales reps",
+        "subtitle": "The team member automatically assigned to new orders for a customer."
+    },
+    "/generate-sales/customer-setup/customer-groups": {
+        "title": "Customer groups",
+        "subtitle": "Classify customers by segment and control which pricing and discounts they receive."
+    },
+    "/generate-sales/customer-setup/shipping-terms": {
+        "title": "Shipping terms",
+        "subtitle": "Define who pays for freight, how charges are calculated, and when freight is waived."
     },
     "/generate-sales/sales-team/territories": {
         "title": "Territories",
@@ -282,142 +418,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/build-products/items/materials": {
         "title": "Materials",
         "subtitle": "Raw materials and supplies you purchase from vendors for use in production."
-    },
-    "/build-products/bom/consumptions-and-productions": {
-        "title": "Consumptions & Productions",
-        "subtitle": "The inputs and outputs of each production step - what materials are used up and what parts or products are created."
-    },
-    "/build-products/bom/production-flows": {
-        "title": "Production Flows",
-        "subtitle": "The connected sequence of production steps that transforms raw materials into finished products."
-    },
-    "/build-products/bom/costing": {
-        "title": "Costing (COGS)",
-        "subtitle": "Real-time cost of goods sold calculation from production step definitions - material, labor, and overhead costs."
-    },
-    "/build-products/bom/production-steps": {
-        "title": "Production Steps",
-        "subtitle": "The core building block of manufacturing in Augno - defining inputs, outputs, and costs for each stage of production."
-    },
-    "/manage-account/account-settings/business-information": {
-        "title": "Business information",
-        "subtitle": "Configure your account name, logo, contact details, and portal slug."
-    },
-    "/manage-account/account-settings/profile": {
-        "title": "Your profile",
-        "subtitle": "Update your display name, email address, and profile photo."
-    },
-    "/manage-account/team/team-members": {
-        "title": "Team members",
-        "subtitle": "Invite, manage, and remove the people who use your Augno account."
-    },
-    "/manage-account/team/roles-and-permissions": {
-        "title": "Roles and permissions",
-        "subtitle": "Control what team members and API keys can access with granular, role-based permissions."
-    },
-    "/collect-payments/invoicing/overview": {
-        "title": "Invoicing",
-        "subtitle": "Invoices are the billing records Augno generates for each shipment, capturing what was shipped, to whom, and for how much."
-    },
-    "/collect-payments/accounts-receivable/overview": {
-        "title": "Accounts receivable",
-        "subtitle": "Track what customers owe, how long balances have been outstanding, and take action to collect."
-    },
-    "/collect-payments/collecting/settlements": {
-        "title": "Settlements",
-        "subtitle": "Formally record which transactions pay which invoices by creating settlements with allocations."
-    },
-    "/collect-payments/collecting/overview": {
-        "title": "Collecting",
-        "subtitle": "Record the money received from customers and apply it to open invoices through transactions and settlements."
-    },
-    "/generate-sales/customer-setup/priorities": {
-        "title": "Priorities",
-        "subtitle": "Control order-processing precedence to determine which work gets attention first."
-    },
-    "/generate-sales/customer-setup/addresses": {
-        "title": "Addresses",
-        "subtitle": "Billing and shipping locations for customers, used on orders, invoices, and shipments."
-    },
-    "/generate-sales/customer-setup/default-carriers": {
-        "title": "Default carriers & options",
-        "subtitle": "Define the shipping carrier and service level automatically applied to a customer's orders."
-    },
-    "/generate-sales/customer-setup/exemptions": {
-        "title": "Commission & freight exemption",
-        "subtitle": "Exclude customers or customer groups from commission calculations and freight charges."
-    },
-    "/generate-sales/customer-setup/payment-terms": {
-        "title": "Payment terms",
-        "subtitle": "Define when and how a customer is expected to pay for an order."
-    },
-    "/generate-sales/customer-setup/account-statuses": {
-        "title": "Account statuses",
-        "subtitle": "Control whether a customer can place orders and receive shipments."
-    },
-    "/generate-sales/customer-setup/default-sales-reps": {
-        "title": "Default sales reps",
-        "subtitle": "The team member automatically assigned to new orders for a customer."
-    },
-    "/generate-sales/customer-setup/customer-groups": {
-        "title": "Customer groups",
-        "subtitle": "Classify customers by segment and control which pricing and discounts they receive."
-    },
-    "/generate-sales/customer-setup/shipping-terms": {
-        "title": "Shipping terms",
-        "subtitle": "Define who pays for freight, how charges are calculated, and when freight is waived."
-    },
-    "/generate-sales/customer/overview": {
-        "title": "Customers",
-        "subtitle": "The central record connecting sales orders, invoices, shipments, and payments."
-    },
-    "/generate-sales/customer/contacts": {
-        "title": "Contacts",
-        "subtitle": "Manage the people associated with a customer and control who receives order confirmations and invoices."
-    },
-    "/generate-sales/customer/create": {
-        "title": "Create a customer",
-        "subtitle": "Learn how to create a customer in Augno."
-    },
-    "/generate-sales/customer-pricing/customer-prices": {
-        "title": "Customer prices",
-        "subtitle": "Define product-line-specific pricing for individual customers, overriding base product prices."
-    },
-    "/generate-sales/customer-pricing/discount-codes": {
-        "title": "Discount codes",
-        "subtitle": "Promotional codes applied at the order level to reduce the total by a percentage or fixed amount."
-    },
-    "/generate-sales/customer-pricing/volume-discounts": {
-        "title": "Volume discounts",
-        "subtitle": "Automatically reduce pricing based on order quantity with tiered percentage discounts."
-    },
-    "/account": {
-        "title": "Create an Augno account",
-        "subtitle": "Learn how to activate and manage your Augno account, from initial setup to advanced configurations."
-    },
-    "/account/activate": {
-        "title": "Activate your account",
-        "subtitle": "Learn how to activate and manage your Augno account."
-    },
-    "/account/checklist": {
-        "title": "Account activation checklist",
-        "subtitle": "Complete this checklist before putting your Augno account into production."
-    },
-    "/release-phases": {
-        "title": "Product Release Phases",
-        "subtitle": "Learn how Augno describes product release phases and what to expect from each."
-    },
-    "/go-live": {
-        "title": "Go live checklist",
-        "subtitle": "Use this checklist to ensure a smooth transition putting your integration into production."
-    },
-    "/api-request": {
-        "title": "Send your first Augno API request",
-        "subtitle": "Get started with the Augno API."
-    },
-    "/api-tour": {
-        "title": "Tour of the Augno API",
-        "subtitle": "See how Augno API objects fit together and learn best practices for combining them effectively."
     }
 };
 

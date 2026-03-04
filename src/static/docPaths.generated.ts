@@ -13,6 +13,9 @@ export const docPaths = {
     "workflows": "/workflows",
     "api": {
         "overview": "/api/overview",
+        "requestLogs": "/api/request-logs",
+        "managingApiKeys": "/api/managing-api-keys",
+        "apiKeys": "/api/api-keys",
         "include": "/api/include",
         "uris": "/api/uris",
         "pagination": "/api/pagination",
@@ -20,9 +23,6 @@ export const docPaths = {
         "versioning": "/api/versioning",
         "idempotency": "/api/idempotency",
         "rateLimiting": "/api/rate-limiting",
-        "managingApiKeys": "/api/managing-api-keys",
-        "apiKeys": "/api/api-keys",
-        "requestLogs": "/api/request-logs",
         "errors": "/api/errors"
     },
     "dashboards": {
@@ -48,19 +48,6 @@ export const docPaths = {
             "paymentsData": "/dashboards/financial/payments-data"
         }
     },
-    "collectPayments": {
-        "overview": "/collect-payments/overview",
-        "invoicing": {
-            "overview": "/collect-payments/invoicing/overview"
-        },
-        "accountsReceivable": {
-            "overview": "/collect-payments/accounts-receivable/overview"
-        },
-        "collecting": {
-            "settlements": "/collect-payments/collecting/settlements",
-            "overview": "/collect-payments/collecting/overview"
-        }
-    },
     "manageAccount": {
         "plansAndBilling": "/manage-account/plans-and-billing",
         "sandboxes": "/manage-account/sandboxes",
@@ -68,17 +55,23 @@ export const docPaths = {
         "overview": "/manage-account/overview",
         "apiKeys": "/manage-account/api-keys",
         "security": "/manage-account/security",
-        "accountSettings": {
-            "businessInformation": "/manage-account/account-settings/business-information",
-            "profile": "/manage-account/account-settings/profile"
-        },
         "team": {
             "teamMembers": "/manage-account/team/team-members",
             "rolesAndPermissions": "/manage-account/team/roles-and-permissions"
+        },
+        "accountSettings": {
+            "businessInformation": "/manage-account/account-settings/business-information",
+            "profile": "/manage-account/account-settings/profile"
         }
     },
     "buildProducts": {
         "overview": "/build-products/overview",
+        "bom": {
+            "consumptionsAndProductions": "/build-products/bom/consumptions-and-productions",
+            "productionFlows": "/build-products/bom/production-flows",
+            "costing": "/build-products/bom/costing",
+            "productionSteps": "/build-products/bom/production-steps"
+        },
         "scanning": {
             "labels": "/build-products/scanning/labels",
             "scanningStations": "/build-products/scanning/scanning-stations"
@@ -104,26 +97,20 @@ export const docPaths = {
             "overview": "/build-products/items/overview",
             "products": "/build-products/items/products",
             "materials": "/build-products/items/materials"
-        },
-        "bom": {
-            "consumptionsAndProductions": "/build-products/bom/consumptions-and-productions",
-            "productionFlows": "/build-products/bom/production-flows",
-            "costing": "/build-products/bom/costing",
-            "productionSteps": "/build-products/bom/production-steps"
         }
     },
     "generateSales": {
         "overview": "/generate-sales/overview",
         "customerPortal": "/generate-sales/customer-portal",
-        "salesTeam": {
-            "territories": "/generate-sales/sales-team/territories",
-            "salesTargets": "/generate-sales/sales-team/sales-targets"
+        "customer": {
+            "overview": "/generate-sales/customer/overview",
+            "contacts": "/generate-sales/customer/contacts",
+            "create": "/generate-sales/customer/create"
         },
-        "salesOrder": {
-            "generateProductionRun": "/generate-sales/sales-order/generate-production-run",
-            "overview": "/generate-sales/sales-order/overview",
-            "issue": "/generate-sales/sales-order/issue",
-            "create": "/generate-sales/sales-order/create"
+        "customerPricing": {
+            "customerPrices": "/generate-sales/customer-pricing/customer-prices",
+            "discountCodes": "/generate-sales/customer-pricing/discount-codes",
+            "volumeDiscounts": "/generate-sales/customer-pricing/volume-discounts"
         },
         "customerSetup": {
             "priorities": "/generate-sales/customer-setup/priorities",
@@ -136,15 +123,15 @@ export const docPaths = {
             "customerGroups": "/generate-sales/customer-setup/customer-groups",
             "shippingTerms": "/generate-sales/customer-setup/shipping-terms"
         },
-        "customer": {
-            "overview": "/generate-sales/customer/overview",
-            "contacts": "/generate-sales/customer/contacts",
-            "create": "/generate-sales/customer/create"
+        "salesTeam": {
+            "territories": "/generate-sales/sales-team/territories",
+            "salesTargets": "/generate-sales/sales-team/sales-targets"
         },
-        "customerPricing": {
-            "customerPrices": "/generate-sales/customer-pricing/customer-prices",
-            "discountCodes": "/generate-sales/customer-pricing/discount-codes",
-            "volumeDiscounts": "/generate-sales/customer-pricing/volume-discounts"
+        "salesOrder": {
+            "generateProductionRun": "/generate-sales/sales-order/generate-production-run",
+            "overview": "/generate-sales/sales-order/overview",
+            "issue": "/generate-sales/sales-order/issue",
+            "create": "/generate-sales/sales-order/create"
         }
     },
     "shipProducts": {
@@ -159,14 +146,27 @@ export const docPaths = {
             "overview": "/ship-products/shipping/overview"
         }
     },
+    "collectPayments": {
+        "overview": "/collect-payments/overview",
+        "invoicing": {
+            "overview": "/collect-payments/invoicing/overview"
+        },
+        "accountsReceivable": {
+            "overview": "/collect-payments/accounts-receivable/overview"
+        },
+        "collecting": {
+            "settlements": "/collect-payments/collecting/settlements",
+            "overview": "/collect-payments/collecting/overview"
+        }
+    },
     "getStarted": "/get-started",
+    "apiTour": "/api-tour",
+    "releasePhases": "/release-phases",
+    "goLive": "/go-live",
+    "apiRequest": "/api-request",
     "account": {
         "root": "/account",
         "activate": "/account/activate",
         "checklist": "/account/checklist"
-    },
-    "releasePhases": "/release-phases",
-    "goLive": "/go-live",
-    "apiRequest": "/api-request",
-    "apiTour": "/api-tour"
+    }
 } as const;
