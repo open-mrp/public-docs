@@ -13,18 +13,18 @@ nav:
 
 APIKey represents an API key for authenticating API requests.
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `id` | string | Yes | The unique identifier for the API key. |
-| `object` | string | Yes | The object type. Always `api_key`. |
-| `name` | string | Yes | The human-readable name for the API key. |
-| `redacted_value` | string | Yes | The redacted value of the API key for display purposes. |
-| `role` | [`LightRole`](#the-lightrole-object) | Yes | The role associated with this API key. |
-| `created_at` | datetime | Yes | The timestamp when the API key was created. |
-| `updated_at` | datetime | Yes | The timestamp when the API key was last updated. |
-| `last_used_at` | datetime, nullable | Yes | The timestamp when the API key was last used. |
-| `expires_at` | datetime, nullable | Yes | The timestamp when the API key expires. |
-| `revoked_at` | datetime, nullable | Yes | The timestamp when the API key was revoked. |
+| Field | Type | Nullable | Required | Description |
+|-------|------|----------|----------|-------------|
+| `id` | string | No | Yes | The unique identifier for the API key. |
+| `object` | string | No | Yes | The resource type identifier. Always `api_key`. |
+| `name` | string | No | Yes | The human-readable name for the API key. |
+| `redacted_value` | string | No | Yes | The redacted value of the API key for display purposes. |
+| `role` | [`LightRole`](#the-lightrole-object-lightrole) | Yes | Yes | The role associated with this API key. Expandable. |
+| `created_at` | datetime | No | Yes | The timestamp when the API key was created. |
+| `updated_at` | datetime | No | Yes | The timestamp when the API key was last updated. |
+| `last_used_at` | datetime | Yes | Yes | The timestamp when the API key was last used. |
+| `expires_at` | datetime | Yes | Yes | The timestamp when the API key expires. |
+| `revoked_at` | datetime | Yes | Yes | The timestamp when the API key was revoked. |
 
 ### Example<span className="hidden toc-hidden"> of APIKey</span>
 
@@ -36,9 +36,9 @@ APIKey represents an API key for authenticating API requests.
   "redacted_value": "aug_sk_prod_...hjt4",
   "role": {
     "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
-    "object_type": "",
+    "object": "role",
     "name": "Admin",
-    "role_type_code": null
+    "role_type_code": "admin"
   },
   "created_at": "2026-05-10T00:00:00Z",
   "updated_at": "2026-05-10T00:23:00Z",
@@ -52,19 +52,19 @@ APIKey represents an API key for authenticating API requests.
 
 LightRole represents a minimal role reference.
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `id` | string | Yes | The unique identifier for the role. |
-| `object_type` | string | Yes | The resource type identifier. Always `role`. |
-| `name` | string | Yes | The display name of the role. |
-| `role_type_code` | string, nullable | Yes | The role type code. Values: `admin`, `user`, `scanner`, `sales_rep`, `<nil>` |
+| Field | Type | Nullable | Required | Description |
+|-------|------|----------|----------|-------------|
+| `id` | string | No | Yes | The unique identifier for the role. |
+| `object` | string | No | Yes | The resource type identifier. Always `role`. |
+| `name` | string | No | Yes | The display name of the role. |
+| `role_type_code` | string | No | Yes | The role type code. Values: `admin`, `user`, `scanner`, `sales_rep` |
 
 #### Example<span className="hidden toc-hidden"> of LightRole</span>
 
 ```json
 {
   "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
-  "object_type": "role",
+  "object": "role",
   "name": "Admin",
   "role_type_code": "admin"
 }
@@ -86,6 +86,7 @@ GET /v1/auth/api-keys
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `status` | array | No | Filter API keys by status. Values: `active`, `expired`, `revoked` |
+| `include[]` | array | No | Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`. Values: `role` |
 
 #### Response<span className="hidden toc-hidden"> for List API Keys</span>
 
@@ -112,9 +113,9 @@ Returns a paginated list of [`APIKey`](#the-apikey-resource) objects. See [Pagin
       "redacted_value": "aug_sk_prod_...hjt4",
       "role": {
         "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
-        "object_type": "",
+        "object": "role",
         "name": "Admin",
-        "role_type_code": null
+        "role_type_code": "admin"
       },
       "created_at": "2026-05-10T00:00:00Z",
       "updated_at": "2026-05-10T00:23:00Z",
@@ -137,13 +138,19 @@ returned, and the API key secret is returned. The secret is only returned once a
 POST /v1/auth/api-keys
 ```
 
+#### Query Parameters<span className="hidden toc-hidden"> for Create API Key</span>
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `include[]` | array | No | Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`. Values: `role` |
+
 #### Request Body<span className="hidden toc-hidden"> for Create API Key</span>
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `role_id` | string | Yes | The role ID for the API key. |
-| `name` | string | Yes | The name for the API key. |
-| `expires_at` | datetime, nullable | No | Optional expiration time for the API key. |
+| Field | Type | Nullable | Required | Description |
+|-------|------|----------|----------|-------------|
+| `role_id` | string | No | Yes | The role ID for the API key. |
+| `name` | string | No | Yes | The name for the API key. |
+| `expires_at` | datetime | Yes | No | Optional expiration time for the API key. |
 
 **Example:**
 
@@ -172,9 +179,9 @@ Returns a `CreatedAPIKey` object.
     "redacted_value": "aug_sk_prod_...hjt4",
     "role": {
       "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
-      "object_type": "",
+      "object": "role",
       "name": "Admin",
-      "role_type_code": null
+      "role_type_code": "admin"
     },
     "created_at": "2026-05-10T00:00:00Z",
     "updated_at": "2026-05-10T00:23:00Z",
@@ -201,6 +208,12 @@ GET /v1/auth/api-keys/{id}
 |-----------|------|----------|-------------|
 | `id` | string | Yes | The ID of the API key to retrieve. |
 
+#### Query Parameters<span className="hidden toc-hidden"> for Get API Key</span>
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `include[]` | array | No | Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`. Values: `role` |
+
 #### Response<span className="hidden toc-hidden"> for Get API Key</span>
 
 **`200`** Successful response for Get API Key
@@ -217,9 +230,9 @@ Returns a [`APIKey`](#the-apikey-resource) object.
   "redacted_value": "aug_sk_prod_...hjt4",
   "role": {
     "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
-    "object_type": "",
+    "object": "role",
     "name": "Admin",
-    "role_type_code": null
+    "role_type_code": "admin"
   },
   "created_at": "2026-05-10T00:00:00Z",
   "updated_at": "2026-05-10T00:23:00Z",
@@ -274,11 +287,17 @@ POST /v1/auth/api-keys/{id}/actions/rotate
 |-----------|------|----------|-------------|
 | `id` | string | Yes | The unique identifier for the API key to rotate. |
 
+#### Query Parameters<span className="hidden toc-hidden"> for Rotate API Key</span>
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `include[]` | array | No | Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`. Values: `role` |
+
 #### Request Body<span className="hidden toc-hidden"> for Rotate API Key</span>
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `expires_at` | datetime, nullable | No | Optional expiration time override for the new API key. |
+| Field | Type | Nullable | Required | Description |
+|-------|------|----------|----------|-------------|
+| `expires_at` | datetime | Yes | No | Optional expiration time override for the new API key. |
 
 **Example:**
 
@@ -306,9 +325,9 @@ Returns a `CreatedAPIKey` object.
     "redacted_value": "aug_sk_prod_...hjt4",
     "role": {
       "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
-      "object_type": "",
+      "object": "role",
       "name": "Admin",
-      "role_type_code": null
+      "role_type_code": "admin"
     },
     "created_at": "2026-05-10T00:00:00Z",
     "updated_at": "2026-05-10T00:23:00Z",

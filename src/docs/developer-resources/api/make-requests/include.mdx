@@ -1,0 +1,188 @@
+---
+title: Include Parameter
+subtitle: Expand sub-objects in API responses to get the data you need.
+route: /api/include
+nav:
+    title: Include Parameter
+    section: API
+    subsection: Make Requests
+    order: 10
+---
+
+API responses that contain sub-objects (such as `role` on an API key, or `account` on a request log) return **`null`** by default. To get full sub-object data, use the `include` query parameter.
+
+## Default behavior
+
+Without `include`, sub-objects are `null`:
+
+```json
+{
+    "id": "apke_xxx",
+    "object": "api_key",
+    "name": "Production API Key",
+    "role": null
+}
+```
+
+## Expanding sub-objects
+
+Pass `include` as a query parameter to expand specific sub-objects. Two formats are supported:
+
+**Array-style (recommended):**
+
+```bash
+curl "https://api.augno.com/v1/auth/api-keys/apke_xxx?include[]=role" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+**Comma-separated:**
+
+```bash
+curl "https://api.augno.com/v1/auth/api-keys/apke_xxx?include=role" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+Multiple values can be combined:
+
+```bash
+curl "https://api.augno.com/v1/core/request-logs/rl_xxx?include[]=account&include[]=actor.role" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+With `include[]=role`, the sub-object is fully populated:
+
+```json
+{
+    "id": "apke_xxx",
+    "object": "api_key",
+    "name": "Production API Key",
+    "role": {
+        "id": "rl_xxx",
+        "object": "role",
+        "name": "Admin",
+        "role_type_code": "admin"
+    }
+}
+```
+
+## Dot-notation for nested sub-objects
+
+Some include values use dot-notation to target a sub-object nested inside another object. For example, `actor.role` expands the `role` field within the `actor` object on a request log:
+
+```json
+{
+    "id": "rl_xxx",
+    "object": "request_log",
+    "actor": {
+        "id": "usr_xxx",
+        "object": "user",
+        "name": "Jane Doe",
+        "role": {
+            "id": "rl_yyy",
+            "object": "role",
+            "name": "Admin",
+            "role_type_code": "admin"
+        }
+    }
+}
+```
+
+Without `include[]=actor.role`, the `role` inside `actor` would be `null`.
+
+## List responses
+
+The `include` parameter applies to every item in a list response:
+
+```bash
+curl "https://api.augno.com/v1/auth/api-keys?include[]=role" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "id": "apke_1",
+            "object": "api_key",
+            "name": "Key One",
+            "role": {
+                "id": "rl_1",
+                "object": "role",
+                "name": "Admin",
+                "role_type_code": "admin"
+            }
+        },
+        {
+            "id": "apke_2",
+            "object": "api_key",
+            "name": "Key Two",
+            "role": {
+                "id": "rl_2",
+                "object": "role",
+                "name": "Viewer",
+                "role_type_code": "viewer"
+            }
+        }
+    ],
+    "page_info": { "..." : "..." }
+}
+```
+
+Without `include[]=role`, each `role` in the list would be `null`.
+
+## Create and rotate responses
+
+For create and rotate endpoints, the response wraps the resource in `api_key_info` alongside the secret. The `include` parameter expands sub-objects within `api_key_info`:
+
+```bash
+curl -X POST "https://api.augno.com/v1/auth/api-keys?include[]=role" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Production Key", "role_id": "rl_xxx"}'
+```
+
+```json
+{
+    "api_key_secret": "aug_sk_prod_...",
+    "api_key_info": {
+        "id": "apke_xxx",
+        "object": "api_key",
+        "name": "Production Key",
+        "role": {
+            "id": "rl_xxx",
+            "object": "role",
+            "name": "Admin",
+            "role_type_code": "admin"
+        }
+    }
+}
+```
+
+## Error handling
+
+### Invalid include value
+
+```json
+{
+    "error": {
+        "code": "parameter_invalid",
+        "message": "Invalid include value 'invalid'. Allowed values: role",
+        "param": "include[]"
+    }
+}
+```
+
+### Include on an unsupported endpoint
+
+Endpoints that have no expandable sub-objects reject the parameter entirely:
+
+```json
+{
+    "error": {
+        "code": "parameter_invalid",
+        "message": "This endpoint does not support the include parameter.",
+        "param": "include[]"
+    }
+}
+```

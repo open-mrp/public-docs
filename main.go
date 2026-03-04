@@ -6,9 +6,21 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strings"
 )
+
+var nonAlphanumericRe = regexp.MustCompile(`[^a-z0-9]+`)
+
+// createSlug mirrors the DocHeading.createSlug() function in the UI library
+// so that generated anchor links match the heading IDs at render time.
+func createSlug(text string) string {
+	text = strings.ToLower(text)
+	text = nonAlphanumericRe.ReplaceAllString(text, "-")
+	text = strings.Trim(text, "-")
+	return text
+}
 
 // --- Types ---
 
@@ -259,9 +271,6 @@ func getTypeDisplay(prop Property) string {
 	default:
 		base = prop.Type
 	}
-	if prop.Nullable {
-		base += ", nullable"
-	}
 	return base
 }
 
@@ -273,8 +282,8 @@ func getTypeDisplayLinked(prop Property, linkable map[string]bool) string {
 	case prop.Ref != "":
 		name := strings.TrimPrefix(prop.Ref, "#/components/schemas/")
 		if linkable[name] {
-			anchor := strings.ToLower(strings.ReplaceAll(name, "_", "-"))
-			base = fmt.Sprintf("[`%s`](#the-%s-object)", name, anchor)
+			anchor := subObjectSlug(name)
+			base = fmt.Sprintf("[`%s`](#%s)", name, anchor)
 		} else {
 			base = fmt.Sprintf("`%s`", name)
 		}
@@ -284,8 +293,8 @@ func getTypeDisplayLinked(prop Property, linkable map[string]bool) string {
 			if sub.Ref != "" {
 				name := strings.TrimPrefix(sub.Ref, "#/components/schemas/")
 				if linkable[name] {
-					anchor := strings.ToLower(strings.ReplaceAll(name, "_", "-"))
-					base = fmt.Sprintf("[`%s`](#the-%s-object)", name, anchor)
+					anchor := subObjectSlug(name)
+					base = fmt.Sprintf("[`%s`](#%s)", name, anchor)
 				} else {
 					base = fmt.Sprintf("`%s`", name)
 				}
@@ -295,8 +304,8 @@ func getTypeDisplayLinked(prop Property, linkable map[string]bool) string {
 	case prop.Items != nil && prop.Items.Ref != "":
 		name := strings.TrimPrefix(prop.Items.Ref, "#/components/schemas/")
 		if linkable[name] {
-			anchor := strings.ToLower(strings.ReplaceAll(name, "_", "-"))
-			base = fmt.Sprintf("array of [`%s`](#the-%s-object)", name, anchor)
+			anchor := subObjectSlug(name)
+			base = fmt.Sprintf("array of [`%s`](#%s)", name, anchor)
 		} else {
 			base = fmt.Sprintf("array of `%s`", name)
 		}
@@ -311,10 +320,22 @@ func getTypeDisplayLinked(prop Property, linkable map[string]bool) string {
 	default:
 		base = prop.Type
 	}
-	if prop.Nullable {
-		base += ", nullable"
-	}
 	return base
+}
+
+func getNullableDisplay(prop Property) string {
+	if prop.Nullable {
+		return "Yes"
+	}
+	return "No"
+}
+
+// subObjectSlug computes the heading slug for a sub-object section.
+// The heading format is: ### The {Name} object<tocHidden> ({lower})</tocHidden>
+// DocHeading extracts all text (including toc-hidden) for slug generation.
+func subObjectSlug(name string) string {
+	lower := strings.ToLower(strings.ReplaceAll(name, "_", "-"))
+	return createSlug(fmt.Sprintf("The %s object (%s)", name, lower))
 }
 
 func getDescriptionWithEnum(prop Property) string {
@@ -641,8 +662,8 @@ nav:
 
 			orderedProps := getOrderedProperties(resourceSchema)
 			if len(orderedProps) > 0 {
-				content += "| Field | Type | Required | Description |\n"
-				content += "|-------|------|----------|-------------|\n"
+				content += "| Field | Type | Nullable | Required | Description |\n"
+				content += "|-------|------|----------|----------|-------------|\n"
 				for _, op := range orderedProps {
 					required := "No"
 					for _, req := range resourceSchema.Required {
@@ -651,8 +672,8 @@ nav:
 							break
 						}
 					}
-					content += fmt.Sprintf("| `%s` | %s | %s | %s |\n",
-						op.Name, getTypeDisplayLinked(op.Property, linkable), required, getDescriptionWithEnum(op.Property))
+					content += fmt.Sprintf("| `%s` | %s | %s | %s | %s |\n",
+						op.Name, getTypeDisplayLinked(op.Property, linkable), getNullableDisplay(op.Property), required, getDescriptionWithEnum(op.Property))
 				}
 				content += "\n"
 			}
@@ -674,8 +695,8 @@ nav:
 
 				listItemProps := getOrderedProperties(listItemSchema)
 				if len(listItemProps) > 0 {
-					content += "| Field | Type | Required | Description |\n"
-					content += "|-------|------|----------|-------------|\n"
+					content += "| Field | Type | Nullable | Required | Description |\n"
+					content += "|-------|------|----------|----------|-------------|\n"
 					for _, lp := range listItemProps {
 						required := "No"
 						for _, req := range listItemSchema.Required {
@@ -684,8 +705,8 @@ nav:
 								break
 							}
 						}
-						content += fmt.Sprintf("| `%s` | %s | %s | %s |\n",
-							lp.Name, getTypeDisplayLinked(lp.Property, linkable), required, getDescriptionWithEnum(lp.Property))
+						content += fmt.Sprintf("| `%s` | %s | %s | %s | %s |\n",
+							lp.Name, getTypeDisplayLinked(lp.Property, linkable), getNullableDisplay(lp.Property), required, getDescriptionWithEnum(lp.Property))
 					}
 					content += "\n"
 				}
@@ -709,8 +730,8 @@ nav:
 
 				subProps := getOrderedProperties(subSchema)
 				if len(subProps) > 0 {
-					content += "| Field | Type | Required | Description |\n"
-					content += "|-------|------|----------|-------------|\n"
+					content += "| Field | Type | Nullable | Required | Description |\n"
+					content += "|-------|------|----------|----------|-------------|\n"
 					for _, sp := range subProps {
 						required := "No"
 						for _, req := range subSchema.Required {
@@ -719,8 +740,8 @@ nav:
 								break
 							}
 						}
-						content += fmt.Sprintf("| `%s` | %s | %s | %s |\n",
-							sp.Name, getTypeDisplayLinked(sp.Property, linkable), required, getDescriptionWithEnum(sp.Property))
+						content += fmt.Sprintf("| `%s` | %s | %s | %s | %s |\n",
+							sp.Name, getTypeDisplayLinked(sp.Property, linkable), getNullableDisplay(sp.Property), required, getDescriptionWithEnum(sp.Property))
 					}
 					content += "\n"
 				}
@@ -849,8 +870,8 @@ nav:
 
 						orderedProps := getOrderedProperties(schema)
 						if len(orderedProps) > 0 {
-							content += "| Field | Type | Required | Description |\n"
-							content += "|-------|------|----------|-------------|\n"
+							content += "| Field | Type | Nullable | Required | Description |\n"
+							content += "|-------|------|----------|----------|-------------|\n"
 							for _, op := range orderedProps {
 								required := "No"
 								for _, req := range schema.Required {
@@ -859,8 +880,8 @@ nav:
 										break
 									}
 								}
-								content += fmt.Sprintf("| `%s` | %s | %s | %s |\n",
-									op.Name, getTypeDisplay(op.Property), required, getDescriptionWithEnum(op.Property))
+								content += fmt.Sprintf("| `%s` | %s | %s | %s | %s |\n",
+									op.Name, getTypeDisplay(op.Property), getNullableDisplay(op.Property), required, getDescriptionWithEnum(op.Property))
 							}
 							content += "\n"
 						}
@@ -912,8 +933,8 @@ nav:
 											anchor := strings.ToLower(strings.ReplaceAll(resourceName, "_", "-"))
 											content += fmt.Sprintf("Returns a paginated list of [`%s`](#the-%s-resource) objects. See [Pagination](/api/pagination) for envelope details.\n\n", innerName, anchor)
 										} else if listItemName != "" && innerName == listItemName {
-											anchor := strings.ToLower(strings.ReplaceAll(listItemName, "_", "-"))
-											content += fmt.Sprintf("Returns a paginated list of [`%s`](#the-%s-object) objects. See [Pagination](/api/pagination) for envelope details.\n\n", innerName, anchor)
+											anchor := subObjectSlug(listItemName)
+											content += fmt.Sprintf("Returns a paginated list of [`%s`](#%s) objects. See [Pagination](/api/pagination) for envelope details.\n\n", innerName, anchor)
 										} else {
 											content += fmt.Sprintf("Returns a paginated list of `%s` objects. See [Pagination](/api/pagination) for envelope details.\n\n", innerName)
 										}

@@ -23,52 +23,17 @@ export function generateStaticParams() {
   return [
   {
     "slug": [
+      "workflows"
+    ]
+  },
+  {
+    "slug": [
       "api-reference"
     ]
   },
   {
     "slug": [
       "development"
-    ]
-  },
-  {
-    "slug": [
-      "workflows"
-    ]
-  },
-  {
-    "slug": [
-      "api",
-      "overview"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "request-log-management"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "api-key-management"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "units-management"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "sandbox-management"
-    ]
-  },
-  {
-    "slug": [
-      "get-started"
     ]
   },
   {
@@ -166,99 +131,37 @@ export function generateStaticParams() {
   },
   {
     "slug": [
-      "api",
-      "api-keys"
+      "api-reference",
+      "request-log-management"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "api-key-management"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "units-management"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "sandbox-management"
     ]
   },
   {
     "slug": [
       "api",
-      "managing-api-keys"
+      "overview"
     ]
   },
   {
     "slug": [
-      "api",
-      "request-logs"
-    ]
-  },
-  {
-    "slug": [
-      "api",
-      "errors"
-    ]
-  },
-  {
-    "slug": [
-      "api",
-      "idempotency"
-    ]
-  },
-  {
-    "slug": [
-      "api",
-      "request-ids"
-    ]
-  },
-  {
-    "slug": [
-      "api",
-      "uris"
-    ]
-  },
-  {
-    "slug": [
-      "api",
-      "versioning"
-    ]
-  },
-  {
-    "slug": [
-      "api",
-      "pagination"
-    ]
-  },
-  {
-    "slug": [
-      "api",
-      "rate-limiting"
-    ]
-  },
-  {
-    "slug": [
-      "api-tour"
-    ]
-  },
-  {
-    "slug": [
-      "account",
-      "activate"
-    ]
-  },
-  {
-    "slug": [
-      "account",
-      "checklist"
-    ]
-  },
-  {
-    "slug": [
-      "account"
-    ]
-  },
-  {
-    "slug": [
-      "api-request"
-    ]
-  },
-  {
-    "slug": [
-      "release-phases"
-    ]
-  },
-  {
-    "slug": [
-      "go-live"
+      "get-started"
     ]
   },
   {
@@ -273,34 +176,6 @@ export function generateStaticParams() {
       "manage-account",
       "team",
       "team-members"
-    ]
-  },
-  {
-    "slug": [
-      "manage-account",
-      "account-settings",
-      "business-information"
-    ]
-  },
-  {
-    "slug": [
-      "manage-account",
-      "account-settings",
-      "profile"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "forecasting",
-      "demand-forecast"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "forecasting",
-      "sales-targets"
     ]
   },
   {
@@ -327,6 +202,20 @@ export function generateStaticParams() {
   {
     "slug": [
       "dashboards",
+      "forecasting",
+      "demand-forecast"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "forecasting",
+      "sales-targets"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
       "financial",
       "accounts-receivable"
     ]
@@ -336,6 +225,41 @@ export function generateStaticParams() {
       "dashboards",
       "financial",
       "payments-data"
+    ]
+  },
+  {
+    "slug": [
+      "collect-payments",
+      "collecting",
+      "settlements"
+    ]
+  },
+  {
+    "slug": [
+      "collect-payments",
+      "collecting",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "collect-payments",
+      "invoicing",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "manage-account",
+      "account-settings",
+      "business-information"
+    ]
+  },
+  {
+    "slug": [
+      "manage-account",
+      "account-settings",
+      "profile"
     ]
   },
   {
@@ -376,27 +300,6 @@ export function generateStaticParams() {
   {
     "slug": [
       "collect-payments",
-      "collecting",
-      "settlements"
-    ]
-  },
-  {
-    "slug": [
-      "collect-payments",
-      "collecting",
-      "overview"
-    ]
-  },
-  {
-    "slug": [
-      "collect-payments",
-      "invoicing",
-      "overview"
-    ]
-  },
-  {
-    "slug": [
-      "collect-payments",
       "accounts-receivable",
       "overview"
     ]
@@ -427,6 +330,20 @@ export function generateStaticParams() {
       "build-products",
       "items",
       "overview"
+    ]
+  },
+  {
+    "slug": [
+      "build-products",
+      "scanning",
+      "scanning-stations"
+    ]
+  },
+  {
+    "slug": [
+      "build-products",
+      "scanning",
+      "labels"
     ]
   },
   {
@@ -481,15 +398,22 @@ export function generateStaticParams() {
   {
     "slug": [
       "build-products",
-      "scanning",
-      "scanning-stations"
+      "purchasing",
+      "purchase-orders"
     ]
   },
   {
     "slug": [
       "build-products",
-      "scanning",
-      "labels"
+      "purchasing",
+      "suppliers"
+    ]
+  },
+  {
+    "slug": [
+      "build-products",
+      "purchasing",
+      "deliveries-and-receiving"
     ]
   },
   {
@@ -522,23 +446,23 @@ export function generateStaticParams() {
   },
   {
     "slug": [
-      "build-products",
-      "purchasing",
-      "purchase-orders"
+      "generate-sales",
+      "customer",
+      "overview"
     ]
   },
   {
     "slug": [
-      "build-products",
-      "purchasing",
-      "suppliers"
+      "generate-sales",
+      "customer",
+      "contacts"
     ]
   },
   {
     "slug": [
-      "build-products",
-      "purchasing",
-      "deliveries-and-receiving"
+      "generate-sales",
+      "customer",
+      "create"
     ]
   },
   {
@@ -566,27 +490,6 @@ export function generateStaticParams() {
     "slug": [
       "generate-sales",
       "sales-order",
-      "create"
-    ]
-  },
-  {
-    "slug": [
-      "generate-sales",
-      "customer",
-      "overview"
-    ]
-  },
-  {
-    "slug": [
-      "generate-sales",
-      "customer",
-      "contacts"
-    ]
-  },
-  {
-    "slug": [
-      "generate-sales",
-      "customer",
       "create"
     ]
   },
@@ -686,6 +589,109 @@ export function generateStaticParams() {
       "generate-sales",
       "customer-setup",
       "default-sales-reps"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "api-keys"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "managing-api-keys"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "request-logs"
+    ]
+  },
+  {
+    "slug": [
+      "api-request"
+    ]
+  },
+  {
+    "slug": [
+      "release-phases"
+    ]
+  },
+  {
+    "slug": [
+      "go-live"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "errors"
+    ]
+  },
+  {
+    "slug": [
+      "api-tour"
+    ]
+  },
+  {
+    "slug": [
+      "account",
+      "activate"
+    ]
+  },
+  {
+    "slug": [
+      "account",
+      "checklist"
+    ]
+  },
+  {
+    "slug": [
+      "account"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "idempotency"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "request-ids"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "uris"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "versioning"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "include"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "pagination"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "rate-limiting"
     ]
   }
 ];

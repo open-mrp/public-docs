@@ -13,21 +13,21 @@ nav:
 
 Unit represents a unit of measurement used for conversions and product quantities.
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `id` | string | Yes | The unique identifier for the unit. |
-| `object` | string | Yes | The object type. Always `unit`. |
-| `name` | string | Yes | The display name of the unit (e.g. "Gram", "Kilogram"). |
-| `abbreviation` | string | Yes | The short abbreviation for the unit (e.g. "g", "kg"). |
-| `type` | string | Yes | The unit dimension (e.g. "quantity", "mass", "time", "currency"). Values: `currency`, `quantity`, `time`, `mass`, `volume`, `length`, `temperature`, `area` |
-| `ratio_numerator` | decimal | Yes | The conversion ratio numerator relative to the base unit in the same dimension. |
-| `ratio_denominator` | decimal | Yes | The conversion ratio denominator relative to the base unit in the same dimension. |
-| `offset_numerator` | decimal | Yes | The conversion offset numerator, used for temperature-like conversions. Zero for most unit types. |
-| `offset_denominator` | decimal | Yes | The conversion offset denominator. Typically 1. |
-| `is_base_unit` | boolean | Yes | Whether this unit is the base unit for its dimension. Conversion ratios are relative to this unit. |
-| `is_internal` | boolean | Yes | Whether this unit belongs to the requesting account. False for system/global units. |
-| `created_at` | datetime | Yes | When this unit was created. |
-| `updated_at` | datetime | Yes | When this unit was last updated. |
+| Field | Type | Nullable | Required | Description |
+|-------|------|----------|----------|-------------|
+| `id` | string | No | Yes | The unique identifier for the unit. |
+| `object` | string | No | Yes | The resource type identifier. Always `unit`. |
+| `name` | string | No | Yes | The display name of the unit (e.g. "Gram", "Kilogram"). |
+| `abbreviation` | string | No | Yes | The short abbreviation for the unit (e.g. "g", "kg"). |
+| `type` | string | No | Yes | The unit dimension (e.g. "quantity", "mass", "time", "currency"). Values: `currency`, `quantity`, `time`, `mass`, `volume`, `length`, `temperature`, `area` |
+| `ratio_numerator` | decimal | No | Yes | The conversion ratio numerator relative to the base unit in the same dimension. |
+| `ratio_denominator` | decimal | No | Yes | The conversion ratio denominator relative to the base unit in the same dimension. |
+| `offset_numerator` | decimal | No | Yes | The conversion offset numerator, used for temperature-like conversions. Zero for most unit types. |
+| `offset_denominator` | decimal | No | Yes | The conversion offset denominator. Typically 1. |
+| `is_base_unit` | boolean | No | Yes | Whether this unit is the base unit for its dimension. Conversion ratios are relative to this unit. |
+| `is_internal` | boolean | No | Yes | Whether this unit belongs to the requesting account. False for system/global units. |
+| `created_at` | datetime | No | Yes | When this unit was created. |
+| `updated_at` | datetime | No | Yes | When this unit was last updated. |
 
 ### Example<span className="hidden toc-hidden"> of Unit</span>
 
@@ -116,16 +116,16 @@ POST /v1/core/units
 
 #### Request Body<span className="hidden toc-hidden"> for Create Unit</span>
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `name` | string | Yes | The display name of the unit (e.g. "Gram"). |
-| `abbreviation` | string | Yes | The short abbreviation for the unit (e.g. "g"). |
-| `type` | string | Yes | The unit dimension code (e.g. "mass", "quantity"). Values: `currency`, `quantity`, `time`, `mass`, `volume`, `length`, `temperature`, `area` |
-| `ratio_numerator` | string | Yes | The conversion ratio numerator relative to the base unit, as a decimal string. |
-| `ratio_denominator` | string | Yes | The conversion ratio denominator relative to the base unit, as a decimal string. |
-| `offset_numerator` | string | Yes | The conversion offset numerator, as a decimal string. |
-| `offset_denominator` | string | Yes | The conversion offset denominator, as a decimal string. |
-| `is_base_unit` | boolean | Yes | Whether this unit is the base unit for its dimension. |
+| Field | Type | Nullable | Required | Description |
+|-------|------|----------|----------|-------------|
+| `name` | string | No | Yes | The display name of the unit (e.g. "Gram"). |
+| `abbreviation` | string | No | Yes | The short abbreviation for the unit (e.g. "g"). |
+| `type` | string | No | Yes | The unit dimension code (e.g. "mass", "quantity"). Values: `currency`, `quantity`, `time`, `mass`, `volume`, `length`, `temperature`, `area` |
+| `ratio_numerator` | string | No | Yes | The conversion ratio numerator relative to the base unit, as a decimal string. |
+| `ratio_denominator` | string | No | Yes | The conversion ratio denominator relative to the base unit, as a decimal string. |
+| `offset_numerator` | string | No | Yes | The conversion offset numerator, as a decimal string. |
+| `offset_denominator` | string | No | Yes | The conversion offset denominator, as a decimal string. |
+| `is_base_unit` | boolean | No | Yes | Whether this unit is the base unit for its dimension. |
 
 **Example:**
 
@@ -231,14 +231,14 @@ PATCH /v1/core/units/{id}
 
 #### Request Body<span className="hidden toc-hidden"> for Update Unit</span>
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `name` | string, nullable | No | The display name of the unit. |
-| `abbreviation` | string, nullable | No | The short abbreviation for the unit. |
-| `ratio_numerator` | string, nullable | No | The conversion ratio numerator, as a decimal string. |
-| `ratio_denominator` | string, nullable | No | The conversion ratio denominator, as a decimal string. |
-| `offset_numerator` | string, nullable | No | The conversion offset numerator, as a decimal string. |
-| `offset_denominator` | string, nullable | No | The conversion offset denominator, as a decimal string. |
+| Field | Type | Nullable | Required | Description |
+|-------|------|----------|----------|-------------|
+| `name` | string | Yes | No | The display name of the unit. |
+| `abbreviation` | string | Yes | No | The short abbreviation for the unit. |
+| `ratio_numerator` | string | Yes | No | The conversion ratio numerator, as a decimal string. |
+| `ratio_denominator` | string | Yes | No | The conversion ratio denominator, as a decimal string. |
+| `offset_numerator` | string | Yes | No | The conversion offset numerator, as a decimal string. |
+| `offset_denominator` | string | Yes | No | The conversion offset denominator, as a decimal string. |
 
 #### Response<span className="hidden toc-hidden"> for Update Unit</span>
 

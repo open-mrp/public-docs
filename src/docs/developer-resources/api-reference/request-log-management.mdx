@@ -15,31 +15,31 @@ For a conceptual overview, Dashboard usage, and debugging tips, see the <Interna
 
 RequestLog represents a single API request log entry.
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `id` | string | Yes | The unique identifier for the request log. |
-| `object` | string | Yes | The object type. Always `request_log`. |
-| `method` | string | Yes | The HTTP method. |
-| `host` | string | Yes | The request host. |
-| `path` | string | Yes | The request path. |
-| `normalized_route` | string | Yes | The normalized route pattern. |
-| `query_json` | string, nullable | Yes | The query parameters as JSON. |
-| `status_code` | integer | Yes | The HTTP status code. |
-| `latency_us` | integer | Yes | The request latency in microseconds. |
-| `api_version` | string, nullable | Yes | The API version used. |
-| `identity_type` | string, nullable | Yes | The identity type of the caller. |
-| `client_ip` | string, nullable | Yes | The client IP address. |
-| `user_agent` | string, nullable | Yes | The user agent string. |
-| `referrer` | string, nullable | Yes | The referrer header. |
-| `error_code` | string, nullable | Yes | The API error code, if any. |
-| `error_message` | string, nullable | Yes | The error message, if any. |
-| `occurred_at` | datetime | Yes | When the request occurred. |
-| `created_at` | datetime | Yes | When the log entry was created. |
-| `account` | [`LightAccount`](#the-lightaccount-object), nullable | Yes | The account targeted by the request. |
-| `actor` | [`RequestLogActor`](#the-requestlogactor-object), nullable | Yes | Actor details (user or API key). |
-| `idempotency_key` | string, nullable | Yes | The user-provided idempotency key value. |
-| `request_body_json` | string, nullable | Yes | The JSON request body. |
-| `response_body_json` | string, nullable | Yes | The JSON response body. |
+| Field | Type | Nullable | Required | Description |
+|-------|------|----------|----------|-------------|
+| `id` | string | No | Yes | The unique identifier for the request log. |
+| `object` | string | No | Yes | The resource type identifier. Always `request_log`. |
+| `method` | string | No | Yes | The HTTP method. |
+| `host` | string | No | Yes | The request host. |
+| `path` | string | No | Yes | The request path. |
+| `normalized_route` | string | No | Yes | The normalized route pattern. |
+| `query_json` | string | Yes | Yes | The query parameters as JSON. |
+| `status_code` | integer | No | Yes | The HTTP status code. |
+| `latency_us` | integer | No | Yes | The request latency in microseconds. |
+| `api_version` | string | Yes | Yes | The API version used. |
+| `identity_type` | string | Yes | Yes | The identity type of the caller. |
+| `client_ip` | string | Yes | Yes | The client IP address. |
+| `user_agent` | string | Yes | Yes | The user agent string. |
+| `referrer` | string | Yes | Yes | The referrer header. |
+| `error_code` | string | Yes | Yes | The API error code, if any. |
+| `error_message` | string | Yes | Yes | The error message, if any. |
+| `occurred_at` | datetime | No | Yes | When the request occurred. |
+| `created_at` | datetime | No | Yes | When the log entry was created. |
+| `account` | [`LightAccount`](#the-lightaccount-object-lightaccount) | Yes | Yes | The account targeted by the request. Expandable. |
+| `actor` | [`RequestLogActor`](#the-requestlogactor-object-requestlogactor) | Yes | Yes | Actor details (user or API key). Expandable. |
+| `idempotency_key` | string | Yes | Yes | The user-provided idempotency key value. |
+| `request_body_json` | string | Yes | Yes | The JSON request body. |
+| `response_body_json` | string | Yes | Yes | The JSON response body. |
 
 ### Example<span className="hidden toc-hidden"> of RequestLog</span>
 
@@ -65,18 +65,18 @@ RequestLog represents a single API request log entry.
   "created_at": "2026-05-10T00:00:00Z",
   "account": {
     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-    "object_type": "account",
+    "object": "account",
     "name": "Acme Inc."
   },
   "actor": {
     "id": "us_01gf7a8200e9pvbd6bgyq395ae",
-    "object_type": "user",
+    "object": "user",
     "name": "John Doe",
     "email": "jdoe@augno.com",
     "redacted_value": null,
     "role": {
       "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
-      "object_type": "role",
+      "object": "role",
       "name": "Admin",
       "role_type_code": "admin"
     }
@@ -93,29 +93,29 @@ RequestLogListItem is the list representation of a request log entry.
 It omits the request and response body JSON fields which are only
 available when retrieving a single request log by ID.
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `id` | string | Yes | The unique identifier for the request log. |
-| `object` | string | Yes | The object type. Always `request_log`. |
-| `method` | string | Yes | The HTTP method. |
-| `host` | string | Yes | The request host. |
-| `path` | string | Yes | The request path. |
-| `normalized_route` | string | Yes | The normalized route pattern. |
-| `query_json` | string, nullable | Yes | The query parameters as JSON. |
-| `status_code` | integer | Yes | The HTTP status code. |
-| `latency_us` | integer | Yes | The request latency in microseconds. |
-| `api_version` | string, nullable | Yes | The API version used. |
-| `identity_type` | string, nullable | Yes | The identity type of the caller. |
-| `client_ip` | string, nullable | Yes | The client IP address. |
-| `user_agent` | string, nullable | Yes | The user agent string. |
-| `referrer` | string, nullable | Yes | The referrer header. |
-| `error_code` | string, nullable | Yes | The API error code, if any. |
-| `error_message` | string, nullable | Yes | The error message, if any. |
-| `occurred_at` | datetime | Yes | When the request occurred. |
-| `created_at` | datetime | Yes | When the log entry was created. |
-| `account` | [`LightAccount`](#the-lightaccount-object), nullable | Yes | The account targeted by the request. |
-| `actor` | [`RequestLogActor`](#the-requestlogactor-object), nullable | Yes | Actor details (user or API key). |
-| `idempotency_key` | string, nullable | Yes | The user-provided idempotency key value. |
+| Field | Type | Nullable | Required | Description |
+|-------|------|----------|----------|-------------|
+| `id` | string | No | Yes | The unique identifier for the request log. |
+| `object` | string | No | Yes | The resource type identifier. Always `request_log`. |
+| `method` | string | No | Yes | The HTTP method. |
+| `host` | string | No | Yes | The request host. |
+| `path` | string | No | Yes | The request path. |
+| `normalized_route` | string | No | Yes | The normalized route pattern. |
+| `query_json` | string | Yes | Yes | The query parameters as JSON. |
+| `status_code` | integer | No | Yes | The HTTP status code. |
+| `latency_us` | integer | No | Yes | The request latency in microseconds. |
+| `api_version` | string | Yes | Yes | The API version used. |
+| `identity_type` | string | Yes | Yes | The identity type of the caller. |
+| `client_ip` | string | Yes | Yes | The client IP address. |
+| `user_agent` | string | Yes | Yes | The user agent string. |
+| `referrer` | string | Yes | Yes | The referrer header. |
+| `error_code` | string | Yes | Yes | The API error code, if any. |
+| `error_message` | string | Yes | Yes | The error message, if any. |
+| `occurred_at` | datetime | No | Yes | When the request occurred. |
+| `created_at` | datetime | No | Yes | When the log entry was created. |
+| `account` | [`LightAccount`](#the-lightaccount-object-lightaccount) | Yes | Yes | The account targeted by the request. Expandable. |
+| `actor` | [`RequestLogActor`](#the-requestlogactor-object-requestlogactor) | Yes | Yes | Actor details (user or API key). Expandable. |
+| `idempotency_key` | string | Yes | Yes | The user-provided idempotency key value. |
 
 #### Example<span className="hidden toc-hidden"> of RequestLogListItem</span>
 
@@ -141,18 +141,18 @@ available when retrieving a single request log by ID.
   "created_at": "2026-05-10T00:00:00Z",
   "account": {
     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-    "object_type": "account",
+    "object": "account",
     "name": "Acme Inc."
   },
   "actor": {
     "id": "us_01gf7a8200e9pvbd6bgyq395ae",
-    "object_type": "user",
+    "object": "user",
     "name": "John Doe",
     "email": "jdoe@augno.com",
     "redacted_value": null,
     "role": {
       "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
-      "object_type": "role",
+      "object": "role",
       "name": "Admin",
       "role_type_code": "admin"
     }
@@ -165,18 +165,18 @@ available when retrieving a single request log by ID.
 
 LightAccount represents a minimal account reference.
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `id` | string | Yes | The unique identifier for the account. |
-| `object_type` | string | Yes | The resource type identifier. Always `account`. |
-| `name` | string | Yes | The display name of the account. |
+| Field | Type | Nullable | Required | Description |
+|-------|------|----------|----------|-------------|
+| `id` | string | No | Yes | The unique identifier for the account. |
+| `object` | string | No | Yes | The resource type identifier. Always `account`. |
+| `name` | string | No | Yes | The display name of the account. |
 
 #### Example<span className="hidden toc-hidden"> of LightAccount</span>
 
 ```json
 {
   "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-  "object_type": "account",
+  "object": "account",
   "name": "Acme Inc."
 }
 ```
@@ -185,32 +185,32 @@ LightAccount represents a minimal account reference.
 
 RequestLogActor contains the resolved actor details for a request log.
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `id` | string | Yes | The actor's ID (user ID or API key type_id). |
-| `object_type` | string | Yes | The resource type identifier. Always `user`. |
-| `name` | string, nullable | Yes | The actor's display name. |
-| `email` | string, nullable | Yes | The actor's email (users only). |
-| `redacted_value` | string, nullable | Yes | The redacted API key value (API keys only). |
-| `role` | [`LightRole`](#the-lightrole-object), nullable | Yes | The role assigned to the actor. |
+| Field | Type | Nullable | Required | Description |
+|-------|------|----------|----------|-------------|
+| `id` | string | No | Yes | The actor's ID (user ID or API key type_id). |
+| `object` | string | No | Yes | The resource type identifier. Always `user`. |
+| `name` | string | Yes | Yes | The actor's display name. |
+| `email` | string | Yes | Yes | The actor's email (users only). |
+| `redacted_value` | string | Yes | Yes | The redacted API key value (API keys only). |
+| `role` | [`LightRole`](#the-lightrole-object-lightrole) | Yes | Yes | The role assigned to the actor. Expandable. |
 
 ### The LightRole object<span className="hidden toc-hidden"> (lightrole)</span>
 
 LightRole represents a minimal role reference.
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `id` | string | Yes | The unique identifier for the role. |
-| `object_type` | string | Yes | The resource type identifier. Always `role`. |
-| `name` | string | Yes | The display name of the role. |
-| `role_type_code` | string, nullable | Yes | The role type code. Values: `admin`, `user`, `scanner`, `sales_rep`, `<nil>` |
+| Field | Type | Nullable | Required | Description |
+|-------|------|----------|----------|-------------|
+| `id` | string | No | Yes | The unique identifier for the role. |
+| `object` | string | No | Yes | The resource type identifier. Always `role`. |
+| `name` | string | No | Yes | The display name of the role. |
+| `role_type_code` | string | No | Yes | The role type code. Values: `admin`, `user`, `scanner`, `sales_rep` |
 
 #### Example<span className="hidden toc-hidden"> of LightRole</span>
 
 ```json
 {
   "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
-  "object_type": "role",
+  "object": "role",
   "name": "Admin",
   "role_type_code": "admin"
 }
@@ -244,12 +244,13 @@ GET /v1/core/request-logs
 | `actor_type` | string | No | Filter: actor type ("user" or "api_key"). |
 | `actor_name` | string | No | Filter: actor name (partial or exact match). |
 | `exact_match` | boolean | No | When true, string filters use exact match instead of partial (LIKE). |
+| `include[]` | array | No | Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`. Values: `account`, `actor`, `actor.role` |
 
 #### Response<span className="hidden toc-hidden"> for List Request Logs</span>
 
 **`200`** Successful response for List Request Logs
 
-Returns a paginated list of [`RequestLogListItem`](#the-requestloglistitem-object) objects. See [Pagination](/api/pagination) for envelope details.
+Returns a paginated list of [`RequestLogListItem`](#the-requestloglistitem-object-requestloglistitem) objects. See [Pagination](/api/pagination) for envelope details.
 
 **Example:**
 
@@ -284,18 +285,18 @@ Returns a paginated list of [`RequestLogListItem`](#the-requestloglistitem-objec
       "created_at": "2026-05-10T00:00:00Z",
       "account": {
         "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-        "object_type": "account",
+        "object": "account",
         "name": "Acme Inc."
       },
       "actor": {
         "id": "us_01gf7a8200e9pvbd6bgyq395ae",
-        "object_type": "user",
+        "object": "user",
         "name": "John Doe",
         "email": "jdoe@augno.com",
         "redacted_value": null,
         "role": {
           "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
-          "object_type": "role",
+          "object": "role",
           "name": "Admin",
           "role_type_code": "admin"
         }
@@ -321,6 +322,12 @@ GET /v1/core/request-logs/{id}
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `id` | string | Yes | The ID of the request log to retrieve. |
+
+#### Query Parameters<span className="hidden toc-hidden"> for Get Request Log</span>
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `include[]` | array | No | Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`. Values: `account`, `actor`, `actor.role` |
 
 #### Response<span className="hidden toc-hidden"> for Get Request Log</span>
 
@@ -352,18 +359,18 @@ Returns a [`RequestLog`](#the-requestlog-resource) object.
   "created_at": "2026-05-10T00:00:00Z",
   "account": {
     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-    "object_type": "account",
+    "object": "account",
     "name": "Acme Inc."
   },
   "actor": {
     "id": "us_01gf7a8200e9pvbd6bgyq395ae",
-    "object_type": "user",
+    "object": "user",
     "name": "John Doe",
     "email": "jdoe@augno.com",
     "redacted_value": null,
     "role": {
       "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
-      "object_type": "role",
+      "object": "role",
       "name": "Admin",
       "role_type_code": "admin"
     }
