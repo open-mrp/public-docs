@@ -558,6 +558,10 @@ export const navData: TabbedNavData = {
                         {
                             "href": "/api/request-ids",
                             "children": "Request IDs"
+                        },
+                        {
+                            "href": "/api/include",
+                            "children": "Include Parameter"
                         }
                     ]
                 },

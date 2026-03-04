@@ -13,14 +13,15 @@ nav:
 
 Sandbox represents an isolated testing environment for an account.
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `id` | string | Yes | The unique identifier for the sandbox. |
-| `object` | string | Yes | The object type. Always `sandbox`. |
-| `name` | string | Yes | The display name of the sandbox. |
-| `account_id` | string | Yes | The ID of the account this sandbox belongs to. |
-| `created_at` | datetime | Yes | When this sandbox was created. |
-| `updated_at` | datetime | Yes | When this sandbox was last updated. |
+| Field | Type | Nullable | Required | Description |
+|-------|------|----------|----------|-------------|
+| `id` | string | No | Yes | The unique identifier for the sandbox. |
+| `object` | string | No | Yes | The resource type identifier. Always `sandbox`. |
+| `name` | string | No | Yes | The display name of the sandbox. |
+| `account_id` | string | No | Yes | The ID of the account this sandbox belongs to. |
+| `owner_account` | [`LightAccount`](#the-lightaccount-object-lightaccount) | Yes | Yes | The owner account of this sandbox. Expandable. |
+| `created_at` | datetime | No | Yes | When this sandbox was created. |
+| `updated_at` | datetime | No | Yes | When this sandbox was last updated. |
 
 ### Example<span className="hidden toc-hidden"> of Sandbox</span>
 
@@ -30,8 +31,33 @@ Sandbox represents an isolated testing environment for an account.
   "object": "sandbox",
   "name": "Integration Testing",
   "account_id": "ac_01jm4r6700g2bz7y4c6e8f1jrm",
+  "owner_account": {
+    "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+    "object": "account",
+    "name": "Acme Inc."
+  },
   "created_at": "2026-05-10T00:00:00Z",
   "updated_at": "2026-05-10T00:23:00Z"
+}
+```
+
+### The LightAccount object<span className="hidden toc-hidden"> (lightaccount)</span>
+
+LightAccount represents a minimal account reference.
+
+| Field | Type | Nullable | Required | Description |
+|-------|------|----------|----------|-------------|
+| `id` | string | No | Yes | The unique identifier for the account. |
+| `object` | string | No | Yes | The resource type identifier. Always `account`. |
+| `name` | string | No | Yes | The display name of the account. |
+
+#### Example<span className="hidden toc-hidden"> of LightAccount</span>
+
+```json
+{
+  "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+  "object": "account",
+  "name": "Acme Inc."
 }
 ```
 
@@ -53,6 +79,7 @@ GET /v1/core/sandboxes
 | `cursor` | string | No | Cursor for fetching the next page, from a previous response's next_cursor field. |
 | `limit` | integer | No | Maximum number of results to return per page (default: 100, max: 1000). |
 | `q` | string | No | Optional search query to filter results. |
+| `include[]` | array | No | Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`. Values: `owner_account` |
 
 #### Response<span className="hidden toc-hidden"> for List Sandboxes</span>
 
@@ -77,6 +104,11 @@ Returns a paginated list of [`Sandbox`](#the-sandbox-resource) objects. See [Pag
       "object": "sandbox",
       "name": "Integration Testing",
       "account_id": "ac_01jm4r6700g2bz7y4c6e8f1jrm",
+      "owner_account": {
+        "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+        "object": "account",
+        "name": "Acme Inc."
+      },
       "created_at": "2026-05-10T00:00:00Z",
       "updated_at": "2026-05-10T00:23:00Z"
     }
@@ -95,12 +127,18 @@ Enforces a per-account sandbox limit. Requires admin permissions.
 POST /v1/core/sandboxes
 ```
 
+#### Query Parameters<span className="hidden toc-hidden"> for Create Sandbox</span>
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `include[]` | array | No | Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`. Values: `owner_account` |
+
 #### Request Body<span className="hidden toc-hidden"> for Create Sandbox</span>
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `name` | string | Yes | The display name for the sandbox. |
-| `mode` | string | Yes | Controls whether the sandbox is blank or seeded with tutorial data. Values: `blank`, `seeded` |
+| Field | Type | Nullable | Required | Description |
+|-------|------|----------|----------|-------------|
+| `name` | string | No | Yes | The display name for the sandbox. |
+| `mode` | string | No | Yes | Controls whether the sandbox is blank or seeded with tutorial data. Values: `blank`, `seeded` |
 
 **Example:**
 
@@ -125,6 +163,11 @@ Returns a [`Sandbox`](#the-sandbox-resource) object.
   "object": "sandbox",
   "name": "Integration Testing",
   "account_id": "ac_01jm4r6700g2bz7y4c6e8f1jrm",
+  "owner_account": {
+    "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+    "object": "account",
+    "name": "Acme Inc."
+  },
   "created_at": "2026-05-10T00:00:00Z",
   "updated_at": "2026-05-10T00:23:00Z"
 }
@@ -146,6 +189,12 @@ GET /v1/core/sandboxes/{id}
 |-----------|------|----------|-------------|
 | `id` | string | Yes | The ID of the sandbox to retrieve. |
 
+#### Query Parameters<span className="hidden toc-hidden"> for Get Sandbox</span>
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `include[]` | array | No | Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`. Values: `owner_account` |
+
 #### Response<span className="hidden toc-hidden"> for Get Sandbox</span>
 
 **`200`** Successful response for Get Sandbox
@@ -160,6 +209,11 @@ Returns a [`Sandbox`](#the-sandbox-resource) object.
   "object": "sandbox",
   "name": "Integration Testing",
   "account_id": "ac_01jm4r6700g2bz7y4c6e8f1jrm",
+  "owner_account": {
+    "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+    "object": "account",
+    "name": "Acme Inc."
+  },
   "created_at": "2026-05-10T00:00:00Z",
   "updated_at": "2026-05-10T00:23:00Z"
 }
