@@ -28,6 +28,7 @@ import fs from 'fs';
 import type { MDXComponents } from 'mdx/types';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import path from 'path';
 import { JSXElementConstructor, ReactElement } from 'react';
 import rehypeHighlight from 'rehype-highlight';
@@ -146,13 +147,21 @@ export async function fetchPageBySlug(slug: string[]): Promise<{
     const relativeFilePath = routeToFile[route];
 
     if (!relativeFilePath) {
-        throw new Error(`No file found for route: ${route}`);
+        notFound();
     }
 
     const filePath = path.join(rootDirectory, relativeFilePath);
     const realSlug = slug.join('/');
 
-    const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
+    let fileContent: string;
+    try {
+        fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
+    } catch (err) {
+        if (err && typeof err === 'object' && 'code' in err && err.code === 'ENOENT') {
+            notFound();
+        }
+        throw err;
+    }
 
     const { frontmatter, content } = await compileMDX({
         source: fileContent,
