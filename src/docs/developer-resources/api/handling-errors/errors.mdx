@@ -22,7 +22,7 @@ All error responses are wrapped in an `error` object:
         "type": "invalid_request_error",
         "message": "The email address is not valid.",
         "param": "email",
-        "doc_url": "https://docs.augno.com/errors#validation_failed",
+        "doc_url": "https://docs.augno.com/api/errors#validation_failed",
         "is_transient": false,
         "quota": null,
         "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
@@ -38,7 +38,7 @@ All error responses are wrapped in an `error` object:
 | `type`            | string         | Broad error category: `invalid_request_error`, `api_error`, or `idempotency_error`.                                                 |
 | `message`         | string         | Human-readable explanation. Safe to display to end users.                                                                           |
 | `param`           | string \| null | The request parameter that caused the error, when applicable. Always present in the response (value is `null` when not applicable). |
-| `doc_url`         | string         | Link to documentation about this error. Follows the pattern `https://docs.augno.com/errors#{code}`.                                 |
+| `doc_url`         | string         | Link to documentation about this error. Follows the pattern `https://docs.augno.com/api/errors#{code}`.                             |
 | `is_transient`    | boolean        | Whether the error is temporary and the request can be retried.                                                                      |
 | `quota`           | object \| null | Plan limit details. Value is `null` for all error codes except `limit_exceeded`.                                                    |
 | `request_log_url` | string \| null | A link to the dashboard page for this request's log entry. `null` when no request log is available.                                 |
@@ -73,7 +73,9 @@ Present (non-null) only when `code` is `limit_exceeded`.
 
 JWT access or refresh token has expired. The client should obtain a new token pair using their refresh token or re-authenticate.
 
-### `api_key_expired`
+<DocHeading level={3} id="api_key_expired" className="pt-6">
+    `api_key_expired`
+</DocHeading>
 
 | HTTP Status      | Type                    | Transient |
 | ---------------- | ----------------------- | --------- |
@@ -81,7 +83,9 @@ JWT access or refresh token has expired. The client should obtain a new token pa
 
 API key has passed its expiration date. Generate a new API key to continue making requests.
 
-### `api_key_revoked`
+<DocHeading level={3} id="api_key_revoked" className="pt-6">
+    `api_key_revoked`
+</DocHeading>
 
 | HTTP Status      | Type                    | Transient |
 | ---------------- | ----------------------- | --------- |
@@ -89,7 +93,9 @@ API key has passed its expiration date. Generate a new API key to continue makin
 
 API key was explicitly revoked by the owner or Augno. Generate a new API key to continue making requests.
 
-### `invalid_credentials`
+<DocHeading level={3} id="invalid_credentials" className="pt-6">
+    `invalid_credentials`
+</DocHeading>
 
 | HTTP Status      | Type                    | Transient |
 | ---------------- | ----------------------- | --------- |
@@ -97,7 +103,9 @@ API key was explicitly revoked by the owner or Augno. Generate a new API key to 
 
 The provided credentials are incorrect. Verify the email/password or API key and try again.
 
-### `insufficient_permissions`
+<DocHeading level={3} id="insufficient_permissions" className="pt-6">
+    `insufficient_permissions`
+</DocHeading>
 
 | HTTP Status   | Type                    | Transient |
 | ------------- | ----------------------- | --------- |
@@ -105,7 +113,9 @@ The provided credentials are incorrect. Verify the email/password or API key and
 
 The caller is authenticated but lacks the required role or permission for this operation.
 
-### `payment_required`
+<DocHeading level={3} id="payment_required" className="pt-6">
+    `payment_required`
+</DocHeading>
 
 | HTTP Status          | Type                    | Transient |
 | -------------------- | ----------------------- | --------- |
@@ -117,7 +127,9 @@ The account's subscription is in a non-active state (past due, canceled, or unpa
 
 **Limits**
 
-### `limit_exceeded`
+<DocHeading level={3} id="limit_exceeded" className="pt-6">
+    `limit_exceeded`
+</DocHeading>
 
 | HTTP Status   | Type                    | Transient |
 | ------------- | ----------------------- | --------- |
@@ -125,7 +137,9 @@ The account's subscription is in a non-active state (past due, canceled, or unpa
 
 A plan-imposed resource limit has been reached (e.g. maximum sandbox accounts). The response includes a `quota` object with the current limit, usage, and optional reset time. Upgrade the plan to increase the limit.
 
-### `registration_closed`
+<DocHeading level={3} id="registration_closed" className="pt-6">
+    `registration_closed`
+</DocHeading>
 
 | HTTP Status   | Type                    | Transient |
 | ------------- | ----------------------- | --------- |
@@ -137,7 +151,9 @@ Public registration capacity has been reached for the requested plan code. Disti
 
 **Validation**
 
-### `validation_failed`
+<DocHeading level={3} id="validation_failed" className="pt-6">
+    `validation_failed`
+</DocHeading>
 
 | HTTP Status     | Type                    | Transient |
 | --------------- | ----------------------- | --------- |
@@ -145,7 +161,9 @@ Public registration capacity has been reached for the requested plan code. Disti
 
 General input validation failure. Check the `message` and `param` fields for details on what needs to be corrected.
 
-### `missing_field`
+<DocHeading level={3} id="missing_field" className="pt-6">
+    `missing_field`
+</DocHeading>
 
 | HTTP Status     | Type                    | Transient |
 | --------------- | ----------------------- | --------- |
@@ -153,7 +171,9 @@ General input validation failure. Check the `message` and `param` fields for det
 
 A required field was not provided in the request body. The `param` field indicates which field is missing.
 
-### `invalid_format`
+<DocHeading level={3} id="invalid_format" className="pt-6">
+    `invalid_format`
+</DocHeading>
 
 | HTTP Status     | Type                    | Transient |
 | --------------- | ----------------------- | --------- |
@@ -161,7 +181,9 @@ A required field was not provided in the request body. The `param` field indicat
 
 A field value does not match the expected format (e.g. invalid email address). The `param` field indicates which field is invalid.
 
-### `method_not_allowed`
+<DocHeading level={3} id="method_not_allowed" className="pt-6">
+    `method_not_allowed`
+</DocHeading>
 
 | HTTP Status            | Type                    | Transient |
 | ---------------------- | ----------------------- | --------- |
@@ -173,7 +195,9 @@ The HTTP method is not supported for this endpoint. Check the API reference for 
 
 **Parameters**
 
-### `parameter_missing`
+<DocHeading level={3} id="parameter_missing" className="pt-6">
+    `parameter_missing`
+</DocHeading>
 
 | HTTP Status     | Type                    | Transient |
 | --------------- | ----------------------- | --------- |
@@ -181,7 +205,9 @@ The HTTP method is not supported for this endpoint. Check the API reference for 
 
 A required query or path parameter was not provided. The `param` field indicates which parameter is missing.
 
-### `parameter_invalid`
+<DocHeading level={3} id="parameter_invalid" className="pt-6">
+    `parameter_invalid`
+</DocHeading>
 
 | HTTP Status     | Type                    | Transient |
 | --------------- | ----------------------- | --------- |
@@ -189,7 +215,9 @@ A required query or path parameter was not provided. The `param` field indicates
 
 A parameter value is not valid (e.g. negative limit, out-of-range value). The `param` field indicates which parameter is invalid.
 
-### `parameter_unknown`
+<DocHeading level={3} id="parameter_unknown" className="pt-6">
+    `parameter_unknown`
+</DocHeading>
 
 | HTTP Status     | Type                    | Transient |
 | --------------- | ----------------------- | --------- |
@@ -197,7 +225,9 @@ A parameter value is not valid (e.g. negative limit, out-of-range value). The `p
 
 An unrecognized parameter was sent in the request. The `param` field indicates which parameter is unknown.
 
-### `parameters_exclusive`
+<DocHeading level={3} id="parameters_exclusive" className="pt-6">
+    `parameters_exclusive`
+</DocHeading>
 
 | HTTP Status     | Type                    | Transient |
 | --------------- | ----------------------- | --------- |
@@ -209,7 +239,9 @@ Two mutually exclusive parameters were both provided. The `param` field indicate
 
 **Resources**
 
-### `resource_not_found`
+<DocHeading level={3} id="resource_not_found" className="pt-6">
+    `resource_not_found`
+</DocHeading>
 
 | HTTP Status   | Type                    | Transient |
 | ------------- | ----------------------- | --------- |
@@ -225,7 +257,9 @@ The requested resource does not exist. Verify the resource ID and try again.
 
 A resource with the same unique constraint already exists (e.g. duplicate email address).
 
-### `resource_conflict`
+<DocHeading level={3} id="resource_conflict" className="pt-6">
+    `resource_conflict`
+</DocHeading>
 
 | HTTP Status  | Type                    | Transient |
 | ------------ | ----------------------- | --------- |
@@ -233,7 +267,9 @@ A resource with the same unique constraint already exists (e.g. duplicate email 
 
 A state conflict prevents the operation (e.g. optimistic locking failure, concurrent update). The client must resolve the conflict before retrying.
 
-### `resource_gone`
+<DocHeading level={3} id="resource_gone" className="pt-6">
+    `resource_gone`
+</DocHeading>
 
 | HTTP Status | Type        | Transient |
 | ----------- | ----------- | --------- |
@@ -245,7 +281,9 @@ The resource existed but has been permanently deleted. This is not a temporary c
 
 **Idempotency** — See <DocLink pathKey="api.idempotency">Idempotency</DocLink>
 
-### `idempotency_in_progress`
+<DocHeading level={3} id="idempotency_in_progress" className="pt-6">
+    `idempotency_in_progress`
+</DocHeading>
 
 | HTTP Status  | Type                | Transient |
 | ------------ | ------------------- | --------- |
@@ -259,7 +297,9 @@ Note: Reusing an idempotency key with different request parameters returns `vali
 
 **Rate Limiting** — See <DocLink pathKey="api.rateLimiting">Rate Limiting</DocLink>
 
-### `rate_limit_exceeded`
+<DocHeading level={3} id="rate_limit_exceeded" className="pt-6">
+    `rate_limit_exceeded`
+</DocHeading>
 
 | HTTP Status           | Type                    | Transient |
 | --------------------- | ----------------------- | --------- |
@@ -271,7 +311,9 @@ The caller has exceeded the allowed request rate. Back off and retry after the d
 
 **API Version** — See <DocLink pathKey="api.versioning">API Versioning</DocLink>
 
-### `api_version_required`
+<DocHeading level={3} id="api_version_required" className="pt-6">
+    `api_version_required`
+</DocHeading>
 
 | HTTP Status     | Type                    | Transient |
 | --------------- | ----------------------- | --------- |
@@ -279,7 +321,9 @@ The caller has exceeded the allowed request rate. Back off and retry after the d
 
 The `Augno-Version` header is missing from the request. Include a valid API version in the header.
 
-### `api_version_invalid`
+<DocHeading level={3} id="api_version_invalid" className="pt-6">
+    `api_version_invalid`
+</DocHeading>
 
 | HTTP Status     | Type                    | Transient |
 | --------------- | ----------------------- | --------- |
@@ -287,7 +331,9 @@ The `Augno-Version` header is missing from the request. Include a valid API vers
 
 The requested API version string is not recognized. Check the `message` field for the list of supported versions.
 
-### `api_version_too_old`
+<DocHeading level={3} id="api_version_too_old" className="pt-6">
+    `api_version_too_old`
+</DocHeading>
 
 | HTTP Status     | Type                    | Transient |
 | --------------- | ----------------------- | --------- |
@@ -299,7 +345,9 @@ The requested API version is below the minimum supported by the endpoint. Upgrad
 
 **Server Errors**
 
-### `internal_error`
+<DocHeading level={3} id="internal_error" className="pt-6">
+    `internal_error`
+</DocHeading>
 
 | HTTP Status               | Type        | Transient |
 | ------------------------- | ----------- | --------- |
@@ -339,7 +387,9 @@ The operation exceeded its deadline. Retry with exponential backoff.
 
 A network-level failure occurred when connecting to a downstream service. Retry after a short delay.
 
-### `request_timeout`
+<DocHeading level={3} id="request_timeout" className="pt-6">
+    `request_timeout`
+</DocHeading>
 
 | HTTP Status         | Type        | Transient |
 | ------------------- | ----------- | --------- |
@@ -347,7 +397,9 @@ A network-level failure occurred when connecting to a downstream service. Retry 
 
 The overall request exceeded its deadline. Retry with exponential backoff.
 
-### `client_closed_request`
+<DocHeading level={3} id="client_closed_request" className="pt-6">
+    `client_closed_request`
+</DocHeading>
 
 | HTTP Status | Type        | Transient |
 | ----------- | ----------- | --------- |
@@ -381,7 +433,7 @@ Notably **not** transient:
         "type": "invalid_request_error",
         "message": "The email address is not valid.",
         "param": "email",
-        "doc_url": "https://docs.augno.com/errors#validation_failed",
+        "doc_url": "https://docs.augno.com/api/errors#validation_failed",
         "is_transient": false,
         "quota": null,
         "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
@@ -398,7 +450,7 @@ Notably **not** transient:
         "type": "invalid_request_error",
         "message": "The provided credentials are incorrect.",
         "param": null,
-        "doc_url": "https://docs.augno.com/errors#invalid_credentials",
+        "doc_url": "https://docs.augno.com/api/errors#invalid_credentials",
         "is_transient": false,
         "quota": null,
         "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
@@ -415,7 +467,7 @@ Notably **not** transient:
         "type": "invalid_request_error",
         "message": "Your subscription is past due. Please update your payment method to continue.",
         "param": null,
-        "doc_url": "https://docs.augno.com/errors#payment_required",
+        "doc_url": "https://docs.augno.com/api/errors#payment_required",
         "is_transient": false,
         "quota": null,
         "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
@@ -432,7 +484,7 @@ Notably **not** transient:
         "type": "invalid_request_error",
         "message": "You have reached the maximum number of sandbox accounts for your plan.",
         "param": null,
-        "doc_url": "https://docs.augno.com/errors#limit_exceeded",
+        "doc_url": "https://docs.augno.com/api/errors#limit_exceeded",
         "is_transient": false,
         "quota": {
             "limit": 5,
@@ -453,7 +505,7 @@ Notably **not** transient:
         "type": "invalid_request_error",
         "message": "No account found with that ID.",
         "param": null,
-        "doc_url": "https://docs.augno.com/errors#resource_not_found",
+        "doc_url": "https://docs.augno.com/api/errors#resource_not_found",
         "is_transient": false,
         "quota": null,
         "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
@@ -470,7 +522,7 @@ Notably **not** transient:
         "type": "idempotency_error",
         "message": "Request for the idempotency key 'req_abc123' is already being processed.",
         "param": null,
-        "doc_url": "https://docs.augno.com/errors#idempotency_in_progress",
+        "doc_url": "https://docs.augno.com/api/errors#idempotency_in_progress",
         "is_transient": true,
         "quota": null,
         "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
@@ -487,7 +539,7 @@ Notably **not** transient:
         "type": "idempotency_error",
         "message": "Idempotency key 'req_abc123' was used with different request parameters; use a new key.",
         "param": null,
-        "doc_url": "https://docs.augno.com/errors#validation_failed",
+        "doc_url": "https://docs.augno.com/api/errors#validation_failed",
         "is_transient": false,
         "quota": null,
         "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
@@ -504,7 +556,7 @@ Notably **not** transient:
         "type": "invalid_request_error",
         "message": "Too many requests. Please wait before trying again.",
         "param": null,
-        "doc_url": "https://docs.augno.com/errors#rate_limit_exceeded",
+        "doc_url": "https://docs.augno.com/api/errors#rate_limit_exceeded",
         "is_transient": true,
         "quota": null,
         "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
@@ -521,7 +573,7 @@ Notably **not** transient:
         "type": "api_error",
         "message": "Something went wrong.",
         "param": null,
-        "doc_url": "https://docs.augno.com/errors#internal_error",
+        "doc_url": "https://docs.augno.com/api/errors#internal_error",
         "is_transient": true,
         "quota": null,
         "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"

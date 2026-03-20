@@ -79,6 +79,7 @@ const mdxComponents: MDXComponents = {
     DocNumberedSection,
     DocTabs,
     DocTab,
+    DocHeading,
     CustomerCRMIntegration,
     code: ({ children, className }) => {
         // Only wrap standalone code tags (not inside pre) with InlineCode
