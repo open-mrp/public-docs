@@ -50,9 +50,7 @@ async function getAllRoutes(): Promise<RouteEntry[]> {
 async function getAllSlugs(): Promise<{ slug: string[] }[]> {
     const routes = await getAllRoutes();
 
-    // Convert routes to slug arrays
     const slugs = routes.map(({ route }) => {
-        // Remove leading slash and split by /
         const slug = route.replace(/^\//, '').split('/');
         return { slug };
     });
@@ -81,11 +79,15 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
     const { slug } = await params;
     const { content, meta, cleanMarkdown } = await getPageContent(slug);
 
+    if (meta.layout === 'api-reference') {
+        return <>{content}</>;
+    }
+
     return <MarkdownPage meta={meta} content={content} cleanMarkdown={cleanMarkdown} />;
 }
 
 export function generateStaticParams() {
-  return ${JSON.stringify(slugs, null, 2)};
+  return ${JSON.stringify(slugs, null, 2)} as { slug: string[] }[];
 }
 
 export const dynamicParams = false;

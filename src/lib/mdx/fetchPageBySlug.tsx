@@ -7,6 +7,8 @@ import { ApiVersion } from '@/components/markdown/ApiVersion';
 import { IfAuthenticated, IfUnauthenticated } from '@/components/markdown/AuthConditional';
 import BetaTag from '@/components/markdown/BetaTag';
 import { DocsCodeEditor } from '@/components/markdown/DocsCodeEditor';
+import { ApiEndpoint } from '@/components/api-reference/ApiEndpoint';
+import { ApiReferenceOverview } from '@/components/api-reference/ApiReferenceOverview';
 import { CustomerCRMIntegration } from '@/components/markdown/flowcharts/CustomerCRMIntegration';
 import InlineCode from '@/components/markdown/InlineCode';
 import DocLink from '@/components/markdown/link/DocLink';
@@ -53,6 +55,7 @@ const FrontmatterSchema = z.object({
     title: z.string(),
     subtitle: z.string(),
     route: z.string().optional(),
+    layout: z.string().optional(),
     nav: NavSchema,
     toc: z.boolean().optional().default(true),
 });
@@ -74,6 +77,8 @@ const mdxComponents: MDXComponents = {
     DocChecklistItem,
     LinkCard,
     BetaTag,
+    ApiEndpoint,
+    ApiReferenceOverview,
     DocHeroSection,
     DocNumberedSection,
     DocTabs,

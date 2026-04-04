@@ -548,12 +548,12 @@ export const navData: TabbedNavData = {
                             "children": "Rate limiting"
                         },
                         {
-                            "href": "/api/pagination",
-                            "children": "Pagination"
-                        },
-                        {
                             "href": "/api/versioning",
                             "children": "API versioning"
+                        },
+                        {
+                            "href": "/api/pagination",
+                            "children": "Pagination"
                         },
                         {
                             "href": "/api/request-ids",
@@ -582,33 +582,9 @@ export const navData: TabbedNavData = {
                             "children": "Request logs"
                         }
                     ]
-                },
-                {
-                    "title": "API Reference",
-                    "items": [
-                        {
-                            "href": "/api-reference",
-                            "children": "Overview"
-                        },
-                        {
-                            "href": "/api-reference/api-key-management",
-                            "children": "API Key Management"
-                        },
-                        {
-                            "href": "/api-reference/request-log-management",
-                            "children": "Request Log Management"
-                        },
-                        {
-                            "href": "/api-reference/sandbox-management",
-                            "children": "Sandbox Management"
-                        },
-                        {
-                            "href": "/api-reference/units-management",
-                            "children": "Units Management"
-                        }
-                    ]
                 }
             ]
         }
-    ]
+    ],
+    "api-reference": []
 };

@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import path from 'path';
 
 const DOCS_DIR = path.join(process.cwd(), 'src/docs');
+const GENERATED_FILE = path.join(process.cwd(), 'src/static/apiEndpoints.generated.ts');
 const OUTPUT_FILE = path.join(process.cwd(), 'public/llms.txt');
 const BASE_URL = process.env.DOCS_BASE_URL || 'https://docs.augno.com';
 
@@ -99,7 +100,31 @@ function groupBySection(pages: ParsedPage[]): Map<string, ParsedPage[]> {
     return sortedMap;
 }
 
-function generateLlmsTxt(pages: ParsedPage[]): string {
+interface ApiNavEndpoint {
+    name: string;
+    slug: string;
+    method: string;
+    href: string;
+}
+
+interface ApiNavResource {
+    name: string;
+    slug: string;
+    endpoints: ApiNavEndpoint[];
+}
+
+interface ApiNavDomain {
+    name: string;
+    slug: string;
+    resources: ApiNavResource[];
+}
+
+async function loadApiNavDomains(): Promise<ApiNavDomain[]> {
+    const mod = await import(GENERATED_FILE);
+    return mod.apiNavDomains ?? [];
+}
+
+function generateLlmsTxt(pages: ParsedPage[], apiDomains: ApiNavDomain[]): string {
     const lines: string[] = ['# Augno Documentation', ''];
 
     const sectionMap = groupBySection(pages);
@@ -119,6 +144,22 @@ function generateLlmsTxt(pages: ParsedPage[]): string {
         lines.push('');
     }
 
+    if (apiDomains.length > 0) {
+        lines.push('## API Reference', '');
+        for (const domain of apiDomains) {
+            lines.push(`### ${domain.name}`);
+            for (const resource of domain.resources) {
+                for (const ep of resource.endpoints) {
+                    const url = `${BASE_URL}${ep.href}.md`;
+                    lines.push(
+                        `- [${ep.method.toUpperCase()} ${resource.name} — ${ep.name}](${url})`,
+                    );
+                }
+            }
+            lines.push('');
+        }
+    }
+
     return lines.join('\n').trim() + '\n';
 }
 
@@ -127,8 +168,16 @@ async function main() {
     const pages = await parseAllMdxFiles();
     console.log(`Found ${pages.length} pages`);
 
+    console.log('Loading API reference endpoints...');
+    const apiDomains = await loadApiNavDomains();
+    const endpointCount = apiDomains.reduce(
+        (sum, d) => sum + d.resources.reduce((s, r) => s + r.endpoints.length, 0),
+        0,
+    );
+    console.log(`Found ${endpointCount} API endpoints`);
+
     console.log('Generating llms.txt...');
-    const content = generateLlmsTxt(pages);
+    const content = generateLlmsTxt(pages, apiDomains);
 
     // Ensure public directory exists
     const publicDir = path.dirname(OUTPUT_FILE);

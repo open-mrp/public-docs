@@ -1,5 +1,6 @@
 'use client';
 
+import { Chip } from '@/components/api-reference/Chip';
 import { cn } from '@/utils/cn';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@augno/ui';
 
@@ -11,14 +12,12 @@ export default function BetaTag({ className }: BetaTagProps) {
     return (
         <Tooltip delayDuration={300}>
             <TooltipTrigger asChild>
-                <span
-                    className={cn(
-                        'bg-primary-500 text-black text-sm px-2 py-0.25 rounded-md relative group select-none text-black',
-                        className,
-                    )}
+                <Chip
+                    variant="primary"
+                    className={cn('text-sm px-2 select-none', className)}
                 >
                     Beta
-                </span>
+                </Chip>
             </TooltipTrigger>
             <TooltipContent
                 sideOffset={8}
@@ -33,12 +32,9 @@ export default function BetaTag({ className }: BetaTagProps) {
                 )}
             >
                 <div className="p-3 space-y-1.5">
-                    {/* Title */}
                     <h4 className="text-sm font-medium text-gray-900 dark:text-white">
                         Beta Feature
                     </h4>
-
-                    {/* Description */}
                     <p className="text-xs text-gray-600 dark:text-gray-300">
                         This feature is in beta. You should expect some breaking changes as we
                         continue to develop and update functionality.

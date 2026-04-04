@@ -24,6 +24,12 @@ export const tabs: Tab[] = [
         rootPath: '/developer-resources',
         defaultPage: '/development',
     },
+    {
+        id: 'api-reference',
+        label: 'API Reference',
+        rootPath: '/api-reference',
+        defaultPage: '/api-reference',
+    },
 ];
 
 /**
@@ -40,20 +46,21 @@ export function getTabFromPath(path: string): Tab | undefined {
 }
 
 /**
- * Look up a tab by route using the generated routeToTab mapping.
- * Falls back to path prefix matching if not found.
+ * Look up a tab by route using path prefix matching first,
+ * then falling back to the generated routeToTab mapping.
  */
 export function getTabFromRoute(path: string, routeToTab: Record<string, string>): Tab | undefined {
     const normalizedPath = path.startsWith('/') ? path : `/${path}`;
 
-    // First, check the generated route-to-tab mapping
+    const pathTab = getTabFromPath(normalizedPath);
+    if (pathTab) return pathTab;
+
     const tabId = routeToTab[normalizedPath];
     if (tabId) {
         return tabs.find((tab) => tab.id === tabId);
     }
 
-    // Fall back to path prefix matching
-    return getTabFromPath(normalizedPath);
+    return undefined;
 }
 
 /**

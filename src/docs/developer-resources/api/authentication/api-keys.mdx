@@ -9,7 +9,7 @@ nav:
     order: 1
 ---
 
-The Augno API uses <InternalLink pathKey="apiReference.apiKeyManagement" text="API keys" /> to authenticate requests. You can view and manage your API keys in the <InternalLink pathKey="frontend.apiKeys" text="Dashboard" />. If a request to the API does not include a valid API key, we will return an invalid request error. If the provided API key is expired, revoked, or deleted we will return an authentication error.
+The Augno API uses <InternalLink pathKey="apiReference.apiKeyManagement.listApiKeys" text="API keys" /> to authenticate requests. You can view and manage your API keys in the <InternalLink pathKey="frontend.apiKeys" text="Dashboard" />. If a request to the API does not include a valid API key, we will return an invalid request error. If the provided API key is expired, revoked, or deleted we will return an authentication error.
 
 ## Key Types
 
@@ -69,7 +69,7 @@ Authorization: Basic <base64(YOUR_API_KEY:)>
 By default, API requests operate on the account that owns the API key. To target a different account (such as a connected customer or supplier account), include the target account ID header:
 
 ```http
-Augno-Account-ID: YOUR_ACCOUNT_ID
+Augno-Account: YOUR_ACCOUNT_ID
 ```
 
 The API key must have permission to access the target account through an established relationship.
