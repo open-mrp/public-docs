@@ -30,6 +30,7 @@ interface OpenAPISchema {
     nullable?: boolean;
     default?: unknown;
     'x-expandable'?: boolean;
+    'x-nullable-clear'?: boolean;
     // Some specs encode `nullable: true` by including `null` inside the enum array.
     // We sanitize these at generation time so the output stays strictly `string[]`.
     enum?: Array<string | null>;
