@@ -5584,7 +5584,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The display name of the unit.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -5592,7 +5592,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The short abbreviation for the unit.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -5600,7 +5600,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The conversion ratio numerator, as a decimal string.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -5608,7 +5608,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The conversion ratio denominator, as a decimal string.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -5616,7 +5616,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The conversion offset numerator, as a decimal string.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -5624,7 +5624,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The conversion offset denominator, as a decimal string.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         }
                     ],
@@ -7379,7 +7379,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The display name of the unit group.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -7395,7 +7395,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The base unit ID.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -7403,7 +7403,7 @@ export const apiTags: TagData[] = [
                             "type": "array",
                             "description": "If provided, upserts associated units. Existing associated units not in the list are preserved.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false,
                             "itemType": "object",
                             "properties": [
@@ -8945,7 +8945,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The unit ID.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -8953,7 +8953,7 @@ export const apiTags: TagData[] = [
                             "type": "number",
                             "description": "The discount percentage.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -8961,7 +8961,7 @@ export const apiTags: TagData[] = [
                             "type": "number",
                             "description": "The fixed discount amount.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -9985,7 +9985,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "An optional description of the account group.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -10841,7 +10841,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The display name of the payment term.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         }
                     ],
@@ -12804,7 +12804,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The display name of the shipping term.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -15063,7 +15063,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The display name of the address.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -15071,7 +15071,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The phone number associated with this address.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -15079,7 +15079,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The email address associated with this address.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -15087,7 +15087,7 @@ export const apiTags: TagData[] = [
                             "type": "boolean",
                             "description": "Whether this is a drop ship address.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -15095,7 +15095,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The first line of the street address.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -15103,7 +15103,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The second line of the street address.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -15111,7 +15111,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The city or locality.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -15119,7 +15119,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The state or administrative area.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -15127,7 +15127,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The postal or zip code.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -15135,7 +15135,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The two-letter country code.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         }
                     ],
@@ -16714,7 +16714,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The new name of the property.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         }
                     ],
@@ -17585,7 +17585,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The new value of the attribute.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -17593,7 +17593,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The new color code of the attribute.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false,
                             "enum": [
                                 "blue",
@@ -17613,7 +17613,7 @@ export const apiTags: TagData[] = [
                             "type": "integer",
                             "description": "The new display order of the attribute.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         }
                     ],
@@ -19388,7 +19388,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The display name of the item category.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -19396,7 +19396,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Optional notes about the item category.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         }
                     ],
@@ -25431,7 +25431,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The customer name.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -25439,15 +25439,15 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The customer number.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
                             "name": "note",
                             "type": "string",
-                            "description": "A note about the customer.",
+                            "description": "A note about the customer. Send `null` to clear.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -25455,7 +25455,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The status code.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false,
                             "enum": [
                                 "normal",
@@ -25493,7 +25493,7 @@ export const apiTags: TagData[] = [
                             "type": "boolean",
                             "description": "Whether the customer is EDI enabled.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -25557,7 +25557,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The default priority code.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false,
                             "enum": [
                                 "low",
@@ -25593,8 +25593,8 @@ export const apiTags: TagData[] = [
                             "name": "customer_price_group_ids",
                             "type": "array",
                             "description": "The customer price group IDs. When provided, replaces all existing price groups.",
-                            "required": true,
-                            "nullable": false,
+                            "required": false,
+                            "nullable": true,
                             "expandable": false,
                             "itemType": "string"
                         },
@@ -25611,7 +25611,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The carrier billing type.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false,
                             "enum": [
                                 "sender",
@@ -25621,9 +25621,9 @@ export const apiTags: TagData[] = [
                         {
                             "name": "carrier_billing_account",
                             "type": "string",
-                            "description": "The carrier billing account number.",
+                            "description": "The carrier billing account number. Send `null` to clear.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         }
                     ],
@@ -32164,7 +32164,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The display name of the product line.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -32194,9 +32194,9 @@ export const apiTags: TagData[] = [
                         {
                             "name": "unit_group_id",
                             "type": "string",
-                            "description": "The ID of the unit group to associate with this product line.",
+                            "description": "The ID of the unit group to associate with this product line. Send `null` to clear.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         }
                     ],
@@ -33577,7 +33577,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The display name of the location.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -33599,9 +33599,9 @@ export const apiTags: TagData[] = [
                         {
                             "name": "parent_id",
                             "type": "string",
-                            "description": "The ID of the parent location.",
+                            "description": "The ID of the parent location. Send null to clear.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -33617,7 +33617,7 @@ export const apiTags: TagData[] = [
                             "type": "array",
                             "description": "The IDs of child locations. When provided, replaces all current children.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false,
                             "itemType": "string"
                         }
@@ -35931,7 +35931,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The display name of the scanning station.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -35939,7 +35939,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Optional notes about the scanning station.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -35973,7 +35973,7 @@ export const apiTags: TagData[] = [
                             "type": "boolean",
                             "description": "Whether material check is required at this station.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         }
                     ],
@@ -37596,7 +37596,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The new display name for the role.",
                             "required": true,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -37604,7 +37604,7 @@ export const apiTags: TagData[] = [
                             "type": "array",
                             "description": "The full set of permissions to replace existing ones with in \"domain:action\" format. If omitted, permissions are not changed.",
                             "required": true,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false,
                             "itemType": "string"
                         }
