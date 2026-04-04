@@ -544,10 +544,10 @@ export default function AlgoliaSearch({
 }) {
     const [isOpen, setIsOpen] = useState(false);
 
-    const searchClient = useMemo(() => algoliasearch(APP_ID, API_KEY), []);
+    const searchClient = useMemo(() => (APP_ID && API_KEY ? algoliasearch(APP_ID, API_KEY) : null), []);
     const future = useMemo(() => ({ preserveSharedStateOnUnmount: true }), []);
 
-    if (!APP_ID || !API_KEY || !INDEX_NAME) {
+    if (!APP_ID || !API_KEY || !INDEX_NAME || !searchClient) {
         return (
             <div className={cn('text-xs text-red-500 italic', className)}>
                 Algolia configuration missing

@@ -6,6 +6,7 @@ import matter from 'gray-matter';
 import path from 'path';
 import { routeToFile, routeToTab } from '../src/static/routeMap.generated';
 import { segmentLabels, tabLabels } from '../src/static/breadcrumbConfig';
+import { apiTags, type EndpointData, type SchemaField } from '../src/static/apiEndpoints.generated';
 
 // Load environment variables from .env.local
 dotenv.config({ path: '.env.local' });
@@ -30,6 +31,56 @@ const DOCS_DIR = path.join(process.cwd(), 'src/docs');
 const fileToRoute: Record<string, string> = {};
 for (const [route, file] of Object.entries(routeToFile)) {
     fileToRoute[file] = route;
+}
+
+// Build lookup from tagSlug/endpointSlug → EndpointData
+const endpointLookup: Record<string, EndpointData> = {};
+for (const tag of apiTags) {
+    for (const endpoint of tag.endpoints) {
+        endpointLookup[`${endpoint.tagSlug}/${endpoint.endpointSlug}`] = endpoint;
+    }
+}
+
+/**
+ * Builds searchable plain text from API endpoint data
+ */
+function endpointToPlainText(endpoint: EndpointData): string {
+    const parts: string[] = [];
+
+    parts.push(`${endpoint.method} ${endpoint.path}`);
+    if (endpoint.description) parts.push(endpoint.description);
+
+    // Parameter descriptions
+    for (const param of endpoint.parameters) {
+        if (param.description) {
+            parts.push(`${param.name}: ${param.description}`);
+        }
+    }
+
+    // Request body field descriptions
+    if (endpoint.requestBody) {
+        collectFieldDescriptions(endpoint.requestBody.fields, parts);
+    }
+
+    // Response field descriptions
+    for (const response of endpoint.responses) {
+        if (response.fields) {
+            collectFieldDescriptions(response.fields, parts);
+        }
+    }
+
+    return parts.join(' ');
+}
+
+function collectFieldDescriptions(fields: SchemaField[], parts: string[]) {
+    for (const field of fields) {
+        if (field.description) {
+            parts.push(`${field.name}: ${field.description}`);
+        }
+        if (field.properties) {
+            collectFieldDescriptions(field.properties, parts);
+        }
+    }
 }
 
 // Content kind types for filtering/display
@@ -195,6 +246,36 @@ async function indexDocs() {
         const slug = route.replace(/^\//, '');
         const url = route;
         const baseKind = getContentKind(slug);
+
+        // For API reference endpoint pages, index from generated endpoint data
+        if (baseKind === 'api-endpoint' && file !== 'api-reference/index.mdx') {
+            // Extract tagSlug/endpointSlug from file path: api-reference/{tagSlug}/{endpointSlug}.mdx
+            const parts = file.replace('api-reference/', '').replace('.mdx', '').split('/');
+            if (parts.length === 2) {
+                const endpointKey = `${parts[0]}/${parts[1]}`;
+                const endpoint = endpointLookup[endpointKey];
+                if (endpoint) {
+                    const endpointContent = endpointToPlainText(endpoint);
+                    const crumbs = extractCrumbs(url, endpoint.summary);
+
+                    objects.push({
+                        objectID: slug,
+                        kind: 'api-endpoint' as ContentKind,
+                        name: endpoint.summary,
+                        crumbs,
+                        url,
+                        description: endpoint.description || `${endpoint.method} ${endpoint.path}`,
+                        content: endpointContent.substring(0, 5000),
+                        priority: 10,
+                        pageTitle: frontmatter.title,
+                        slug,
+                        method: endpoint.method,
+                        path: endpoint.path,
+                    });
+                    continue;
+                }
+            }
+        }
 
         // Extract sections from the content
         const sections = extractSections(content);
