@@ -13,7 +13,7 @@ To interact with the Augno API, you'll need a secret API key. Once you sign up f
 
 <DocNumberedSection number={1} title="Preparation" className="mt-6">
 
-This guide will walk you through listing units of measurement using the <InternalLink pathKey="apiReference.unitsManagement" text="List Units" /> endpoint. For a comprehensive understanding of how Augno API components work together, consider taking an <InternalLink pathKey="apiTour" text="API tour" /> or visiting the <InternalLink pathKey="apiReference.root" text="API reference" />.
+This guide will walk you through listing units of measurement using the <InternalLink pathKey="apiReference.unitsManagement.listUnits" text="List Units" /> endpoint. For a comprehensive understanding of how Augno API components work together, consider taking an <InternalLink pathKey="apiTour" text="API tour" /> or visiting the <InternalLink pathKey="apiReference.root" text="API reference" />.
 
 </DocNumberedSection>
 
@@ -28,7 +28,7 @@ Begin your interaction with the Augno API by sending HTTP requests to the design
 curl API_HOST/v1/core/units \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account-ID: YOUR_SANDBOX_ACCOUNT_ID"
+  -H "Augno-Account: YOUR_SANDBOX_ACCOUNT_ID"
 ```
 
 </DocTab>
@@ -39,7 +39,7 @@ const response = await fetch('API_HOST/v1/core/units', {
     headers: {
         Authorization: `Bearer YOUR_API_KEY`,
         'Augno-Version': 'CURRENT_API_VERSION',
-        'Augno-Account-ID': 'YOUR_SANDBOX_ACCOUNT_ID',
+        'Augno-Account': 'YOUR_SANDBOX_ACCOUNT_ID',
     },
 });
 ```

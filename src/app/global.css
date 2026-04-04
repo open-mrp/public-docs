@@ -6,7 +6,7 @@
     --background: #ffffff;
     --foreground: #1e1d31;
     --navbar-background: #efeff1;
-    --text-secondary: #3c4257;
+    --text-secondary: #79819f;
     --code-background: #242933;
     --inline-code-gradient: linear-gradient(
         135deg,
@@ -37,7 +37,7 @@
     --background: #0f1014;
     --foreground: #a9b3c1;
     --navbar-background: #181a20;
-    --text-secondary: #9ba4b0;
+    --text-secondary: #7e848b;
     --code-background: #161b27;
     --inline-code-gradient: linear-gradient(
         135deg,
@@ -61,6 +61,12 @@
     --sidenav-toggle-hover-color: #f3f4f6;
     --sidenav-toggle-hover-bg: #1f2937;
     --sidenav-active-indicator: var(--primary);
+}
+
+/* Scope sidenav active indicator dot to API reference pages */
+.api-reference-sidenav {
+    --sidenav-item-active-color: var(--foreground);
+    --sidenav-active-indicator: var(--foreground);
 }
 
 /* Main scroll area scrollbar styling */
@@ -314,6 +320,49 @@ blockquote h4 {
     padding-top: 8px;
     font-size: 0.75rem;
     font-weight: 500;
+}
+
+/* API reference markdown descriptions */
+.api-description > p {
+    margin: 0;
+}
+
+.api-description > p + p {
+    margin-top: 0.75rem;
+}
+
+.api-md-inline > p {
+    margin: 0;
+}
+
+.api-md-inline > p + p {
+    margin-top: 0.75rem;
+}
+
+.api-md-inline ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.api-description code,
+.api-md-inline code {
+    font-size: 0.8125em;
+    padding: 0.125rem 0.375rem;
+    border-radius: 4px;
+    background: color-mix(in srgb, var(--foreground) 8%, transparent);
+    color: var(--foreground);
+}
+
+.api-description a,
+.api-md-inline a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.api-description ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 /* Algolia Search Highlighting */

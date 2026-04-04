@@ -86,11 +86,6 @@ async function parseAllMdxFiles(): Promise<ParsedPage[]> {
         const frontmatter = data as PageFrontmatter;
         const nav = frontmatter.nav || {};
 
-        // Skip hidden pages
-        if (nav.hidden) {
-            continue;
-        }
-
         pages.push({
             filePath: file,
             slug: filePathToSlug(file),
@@ -162,6 +157,10 @@ function buildTabbedNavStructure(pages: ParsedPage[]): TabbedNavData {
     }
 
     for (const page of pages) {
+        // Hidden pages are still valid routes (e.g. API reference pages),
+        // but should not appear in the visible tab/sidebar navigation.
+        if (page.nav.hidden) continue;
+
         const tabId = getTabIdFromFilePath(page.filePath);
         if (tabId && pagesByTab.has(tabId)) {
             pagesByTab.get(tabId)!.push(page);

@@ -1,8 +1,8 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance when working with code in this repository.
 
-⚠️ **NOTE:** Do **not** run `bun run dev` via Claude. The dev server should only be started manually by a human, not through Claude's automation or commands.
+⚠️ **NOTE:** Do **not** run `bun run dev`. The dev server should only be started manually by a human, not through automation or commands.
 
 ## Project Overview
 
@@ -15,7 +15,6 @@ This is a Next.js 16 documentation site for the Augno API platform. It combines 
 ```bash
 # Development
 bun install              # Install dependencies
-bun run dev              # Start dev server at localhost:3000  <-- Don't run this via Claude!
 
 # Build
 bun run build            # Production build

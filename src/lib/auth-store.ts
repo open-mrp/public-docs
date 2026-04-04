@@ -137,7 +137,7 @@ async function fetchDocApiKey(productionAccountId: string): Promise<string | nul
     try {
         // The SDK client's middleware automatically handles 401 refresh + retry
         const { data, error } = await v2Client.POST('/v1/auth/api-keys/actions/fetch-doc-api-key', {
-            headers: { 'Augno-Account-ID': productionAccountId },
+            headers: { 'Augno-Account': productionAccountId },
         });
 
         if (error || !data) return null;

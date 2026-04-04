@@ -19,11 +19,18 @@
         "rollups",
         "Shippo",
         "tailwindcss",
+        "titleize",
         "Unissue",
         "Unissuing",
         "yalc",
         "zod",
         "zustand"
     ],
-    "ignorePaths": ["node_modules", ".next", "dist", "bun.lock", "yalc.lock"]
+    "ignorePaths": [
+        "node_modules",
+        ".next",
+        "dist",
+        "bun.lock",
+        "yalc.lock"
+    ]
 }

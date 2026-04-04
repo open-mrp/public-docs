@@ -184,6 +184,11 @@ func indentJSON(raw json.RawMessage) string {
 	return buf.String()
 }
 
+// indentJSONString indents a JSON string for display in code blocks.
+func indentJSONString(s string) string {
+	return indentJSON(json.RawMessage([]byte(s)))
+}
+
 // tocHidden returns an inline JSX span that is visually hidden but included in
 // DocHeading's ID generation, making otherwise-duplicate headings unique.
 // extractHeadingsFromDom strips .toc-hidden elements so the TOC shows clean text.
@@ -249,7 +254,7 @@ func getTypeDisplay(prop Property) string {
 		name := strings.TrimPrefix(prop.Ref, "#/components/schemas/")
 		base = fmt.Sprintf("`%s`", name)
 	case len(prop.AllOf) > 0:
-		base = "object"
+		base = "`object`"
 		for _, sub := range prop.AllOf {
 			if sub.Ref != "" {
 				name := strings.TrimPrefix(sub.Ref, "#/components/schemas/")
@@ -259,87 +264,125 @@ func getTypeDisplay(prop Property) string {
 		}
 	case prop.Items != nil && prop.Items.Ref != "":
 		name := strings.TrimPrefix(prop.Items.Ref, "#/components/schemas/")
-		base = fmt.Sprintf("array of `%s`", name)
+		base = fmt.Sprintf("`%s[]`", name)
 	case prop.Items != nil && prop.Items.Type != "":
-		base = fmt.Sprintf("array of %s", prop.Items.Type)
+		base = fmt.Sprintf("`%s[]`", prop.Items.Type)
 	case prop.Type == "":
-		base = "object"
+		base = "`object`"
 	case prop.Format == "date-time":
-		base = "datetime"
+		base = "`datetime`"
 	case prop.Format == "decimal":
-		base = "decimal"
+		base = "`decimal`"
 	default:
-		base = prop.Type
+		base = fmt.Sprintf("`%s`", prop.Type)
 	}
 	return base
 }
 
 // getTypeDisplayLinked is like getTypeDisplay but wraps $ref type names in
 // markdown anchor links when the referenced schema is in the linkable set.
-func getTypeDisplayLinked(prop Property, linkable map[string]bool) string {
+// If baseURL is non-empty, links point to baseURL#anchor (e.g. /api-reference/resources);
+// otherwise they are same-page #anchor.
+func getTypeDisplayLinked(prop Property, linkable map[string]bool, baseURL string) string {
 	var base string
+	linkTo := func(name string, anchor string) string {
+		if !linkable[name] {
+			return fmt.Sprintf("`%s`", name)
+		}
+		if baseURL != "" {
+			return fmt.Sprintf("[`%s`](%s#%s)", name, baseURL, anchor)
+		}
+		return fmt.Sprintf("[`%s`](#%s)", name, anchor)
+	}
 	switch {
 	case prop.Ref != "":
 		name := strings.TrimPrefix(prop.Ref, "#/components/schemas/")
-		if linkable[name] {
-			anchor := subObjectSlug(name)
-			base = fmt.Sprintf("[`%s`](#%s)", name, anchor)
-		} else {
-			base = fmt.Sprintf("`%s`", name)
-		}
+		base = linkTo(name, subObjectSlug(name))
 	case len(prop.AllOf) > 0:
-		base = "object"
+		base = "`object`"
 		for _, sub := range prop.AllOf {
 			if sub.Ref != "" {
 				name := strings.TrimPrefix(sub.Ref, "#/components/schemas/")
-				if linkable[name] {
-					anchor := subObjectSlug(name)
-					base = fmt.Sprintf("[`%s`](#%s)", name, anchor)
-				} else {
-					base = fmt.Sprintf("`%s`", name)
-				}
+				base = linkTo(name, subObjectSlug(name))
 				break
 			}
 		}
 	case prop.Items != nil && prop.Items.Ref != "":
 		name := strings.TrimPrefix(prop.Items.Ref, "#/components/schemas/")
+		anchor := subObjectSlug(name)
 		if linkable[name] {
-			anchor := subObjectSlug(name)
-			base = fmt.Sprintf("array of [`%s`](#%s)", name, anchor)
+			if baseURL != "" {
+				base = fmt.Sprintf("[`%s[]`](%s#%s)", name, baseURL, anchor)
+			} else {
+				base = fmt.Sprintf("[`%s[]`](#%s)", name, anchor)
+			}
 		} else {
-			base = fmt.Sprintf("array of `%s`", name)
+			base = fmt.Sprintf("`%s[]`", name)
 		}
 	case prop.Items != nil && prop.Items.Type != "":
-		base = fmt.Sprintf("array of %s", prop.Items.Type)
+		base = fmt.Sprintf("`%s[]`", prop.Items.Type)
 	case prop.Type == "":
-		base = "object"
+		base = "`object`"
 	case prop.Format == "date-time":
-		base = "datetime"
+		base = "`datetime`"
 	case prop.Format == "decimal":
-		base = "decimal"
+		base = "`decimal`"
 	default:
-		base = prop.Type
+		base = fmt.Sprintf("`%s`", prop.Type)
 	}
 	return base
 }
 
 func getNullableDisplay(prop Property) string {
 	if prop.Nullable {
-		return "Yes"
+		return "<center>✓</center>"
 	}
-	return "No"
+	return ""
 }
 
-// subObjectSlug computes the heading slug for a sub-object section.
-// The heading format is: ### The {Name} object<tocHidden> ({lower})</tocHidden>
+// subObjectSlug computes the heading slug for a sub-resource section.
+// The heading format is: ### The {Name} resource<tocHidden> ({lower})</tocHidden>
 // DocHeading extracts all text (including toc-hidden) for slug generation.
 func subObjectSlug(name string) string {
 	lower := strings.ToLower(strings.ReplaceAll(name, "_", "-"))
-	return createSlug(fmt.Sprintf("The %s object (%s)", name, lower))
+	return createSlug(fmt.Sprintf("The %s resource (%s)", name, lower))
 }
 
-func getDescriptionWithEnum(prop Property) string {
-	desc := prop.Description
+// escapeDescriptionForMDX wraps JSON-like {...} substrings in backticks so MDX
+// does not interpret them as JS expressions (which causes "Could not parse expression with acorn").
+func escapeDescriptionForMDX(desc string) string {
+	var out strings.Builder
+	i := 0
+	for i < len(desc) {
+		if desc[i] == '{' {
+			depth := 1
+			j := i + 1
+			for j < len(desc) && depth > 0 {
+				switch desc[j] {
+				case '{':
+					depth++
+				case '}':
+					depth--
+				}
+				j++
+			}
+			if depth == 0 {
+				out.WriteByte('`')
+				out.WriteString(desc[i:j])
+				out.WriteByte('`')
+				i = j
+				continue
+			}
+		}
+		out.WriteByte(desc[i])
+		i++
+	}
+	return out.String()
+}
+
+// descWithEnum appends enum info and collapses newlines into spaces for table cells.
+func descWithEnum(prop Property) string {
+	desc := strings.ReplaceAll(prop.Description, "\n", " ")
 	if len(prop.Enum) == 1 {
 		desc += fmt.Sprintf(" Always `%v`.", prop.Enum[0])
 	} else if len(prop.Enum) > 1 {
@@ -350,6 +393,46 @@ func getDescriptionWithEnum(prop Property) string {
 		desc += fmt.Sprintf(" Values: %s", strings.Join(vals, ", "))
 	}
 	return desc
+}
+
+func getDescriptionWithEnum(prop Property) string {
+	return escapeDescriptionForMDX(descWithEnum(prop))
+}
+
+// splitDescriptionExample extracts "For example: {...}" from a property description
+// so the table cell can show only the main text and the JSON can be rendered as a
+// code block below the table. Returns (mainDescForCell, exampleJSON, true) when
+// found, or (fullDesc, "", false).
+func splitDescriptionExample(prop Property) (cellDesc string, exampleJSON string, hasExample bool) {
+	desc := descWithEnum(prop)
+	idx := strings.Index(desc, "For example: ")
+	if idx < 0 {
+		return escapeDescriptionForMDX(desc), "", false
+	}
+	mainDesc := strings.TrimSpace(desc[:idx])
+	start := idx + len("For example: ")
+	for start < len(desc) && desc[start] == ' ' {
+		start++
+	}
+	if start >= len(desc) || desc[start] != '{' {
+		return escapeDescriptionForMDX(desc), "", false
+	}
+	depth := 1
+	end := start + 1
+	for end < len(desc) && depth > 0 {
+		switch desc[end] {
+		case '{':
+			depth++
+		case '}':
+			depth--
+		}
+		end++
+	}
+	if depth != 0 {
+		return escapeDescriptionForMDX(desc), "", false
+	}
+	exampleJSON = desc[start:end]
+	return escapeDescriptionForMDX(mainDesc), exampleJSON, true
 }
 
 // getTagDescription finds the description for a tag from the spec's top-level tags
@@ -554,6 +637,117 @@ func main() {
 	}
 	sort.Strings(tagNames)
 
+	// Collect union of all sub-schemas and list-item schemas across tags for the shared resources page.
+	// This allows us to document them once on resources.mdx and link from tag pages instead of inlining.
+	allObjectPageSchemas := make(map[string]bool)
+	for _, tagName := range tagNames {
+		paths := tagPaths[tagName]
+		listResourceName, listResourceSchema, hasListResource := inferMainResource(paths, spec)
+		detailResourceName, detailResourceSchema, hasDetailResource := inferDetailResource(paths, spec)
+		var resourceName string
+		var resourceSchema Schema
+		var listItemName string
+		var listItemSchema Schema
+		if hasDetailResource && hasListResource && detailResourceName != listResourceName {
+			resourceName = detailResourceName
+			resourceSchema = detailResourceSchema
+			listItemName = listResourceName
+			listItemSchema = listResourceSchema
+		} else if hasListResource {
+			resourceName = listResourceName
+			resourceSchema = listResourceSchema
+		} else if hasDetailResource {
+			resourceName = detailResourceName
+			resourceSchema = detailResourceSchema
+		}
+		if resourceName == "" {
+			continue
+		}
+		exclude := map[string]bool{resourceName: true}
+		subRefs := collectSubSchemaRefs(resourceSchema, spec, exclude)
+		for _, ref := range subRefs {
+			allObjectPageSchemas[ref] = true
+		}
+		if listItemName != "" {
+			allObjectPageSchemas[listItemName] = true
+			exclude[listItemName] = true
+			listItemSubRefs := collectSubSchemaRefs(listItemSchema, spec, exclude)
+			for _, ref := range listItemSubRefs {
+				allObjectPageSchemas[ref] = true
+			}
+		}
+	}
+
+	// Generate shared resources page so tag pages can link here instead of inlining sub-objects.
+	resourcesPagePath := filepath.Join(apiRefDir, "resources.mdx")
+	if len(allObjectPageSchemas) > 0 {
+		var objectNames []string
+		for name := range allObjectPageSchemas {
+			objectNames = append(objectNames, name)
+		}
+		sort.Strings(objectNames)
+		resourcesContent := `---
+title: "Resources"
+subtitle: "Shared resource types used across API responses"
+route: "/api-reference/resources"
+nav:
+    title: "Resources"
+    section: "API"
+    subsection: "API Reference"
+    order: 2
+---
+
+Reference for shared resource types.
+
+`
+		for _, subName := range objectNames {
+			subSchema := spec.Components.Schemas[subName]
+			anchor := strings.ToLower(strings.ReplaceAll(subName, "_", "-"))
+			resourcesContent += fmt.Sprintf("### The %s resource%s\n\n", subName, tocHidden("("+anchor+")"))
+			if subSchema.Description != "" {
+				resourcesContent += fmt.Sprintf("%s\n\n", subSchema.Description)
+			}
+			subProps := getOrderedProperties(subSchema)
+			if len(subProps) > 0 {
+				resourcesContent += "| Field | Type | Nullable | Required | Description |\n"
+				resourcesContent += "|-------|------|----------|----------|-------------|\n"
+				var exampleShapes []struct{ name, json string }
+				for _, sp := range subProps {
+					required := ""
+					for _, req := range subSchema.Required {
+						if req == sp.Name {
+							required = "<center>✓</center>"
+							break
+						}
+					}
+					cellDesc, exampleJSON, hasExample := splitDescriptionExample(sp.Property)
+					if hasExample {
+						exampleShapes = append(exampleShapes, struct{ name, json string }{sp.Name, exampleJSON})
+					}
+					resourcesContent += fmt.Sprintf("| `%s` | %s | %s | %s | %s |\n",
+						sp.Name, getTypeDisplayLinked(sp.Property, allObjectPageSchemas, ""), getNullableDisplay(sp.Property), required, cellDesc)
+				}
+				resourcesContent += "\n"
+				for _, ex := range exampleShapes {
+					resourcesContent += fmt.Sprintf("**Example shape for `%s`:**\n\n```json\n%s\n```\n\n", ex.name, indentJSONString(ex.json))
+				}
+			}
+			if len(subSchema.Example) > 0 {
+				resourcesContent += fmt.Sprintf("<p className=\"text-base font-semibold mt-6 mb-2\">Example of %s</p>\n\n", subName)
+				resourcesContent += "```json\n"
+				resourcesContent += indentJSON(subSchema.Example) + "\n"
+				resourcesContent += "```\n\n"
+			}
+		}
+		if err := os.WriteFile(resourcesPagePath, []byte(resourcesContent), 0644); err != nil {
+			fmt.Printf("Error writing resources page %s: %v\n", resourcesPagePath, err)
+		} else {
+			fmt.Printf("Generated: %s\n", resourcesPagePath)
+		}
+	}
+
+	resourcesBaseURL := "/api-reference/resources"
+
 	// Cross-links from API reference pages to their corresponding guide pages.
 	// Maps tag slug to {pathKey, label} for generating InternalLink at the top.
 	type guideLink struct {
@@ -586,7 +780,7 @@ nav:
     order: %d
 ---
 
-`, escapedTitle, escapedDesc, slug, escapedTitle, i+2)
+`, escapedTitle, escapedDesc, slug, escapedTitle, i+3)
 
 		// Add cross-link to guide page if one exists
 		if guide, ok := tagGuideLinks[slug]; ok {
@@ -604,15 +798,13 @@ nav:
 		var resourceSchema Schema
 		var hasResource bool
 		var listItemName string
-		var listItemSchema Schema
 
 		if hasDetailResource && hasListResource && detailResourceName != listResourceName {
-			// Divergent schemas: detail is primary, list item is secondary
+			// Divergent schemas: detail is primary, list item is secondary (linked from objects page)
 			resourceName = detailResourceName
 			resourceSchema = detailResourceSchema
 			hasResource = true
 			listItemName = listResourceName
-			listItemSchema = listResourceSchema
 		} else if hasListResource {
 			resourceName = listResourceName
 			resourceSchema = listResourceSchema
@@ -624,37 +816,6 @@ nav:
 		}
 
 		if hasResource {
-			// Collect referenced sub-schemas up-front so the field table can link to them
-			exclude := map[string]bool{resourceName: true}
-			subRefs := collectSubSchemaRefs(resourceSchema, spec, exclude)
-
-			// Also collect sub-schema refs from the list-item schema (if divergent)
-			if listItemName != "" {
-				exclude[listItemName] = true
-				listItemSubRefs := collectSubSchemaRefs(listItemSchema, spec, exclude)
-				for _, ref := range listItemSubRefs {
-					// Add any refs not already collected from the primary schema
-					found := false
-					for _, existing := range subRefs {
-						if existing == ref {
-							found = true
-							break
-						}
-					}
-					if !found {
-						subRefs = append(subRefs, ref)
-					}
-				}
-			}
-
-			linkable := make(map[string]bool, len(subRefs))
-			for _, name := range subRefs {
-				linkable[name] = true
-			}
-			if listItemName != "" {
-				linkable[listItemName] = true
-			}
-
 			content += fmt.Sprintf("## The %s resource\n\n", resourceName)
 			if resourceSchema.Description != "" {
 				content += fmt.Sprintf("%s\n\n", resourceSchema.Description)
@@ -664,94 +825,33 @@ nav:
 			if len(orderedProps) > 0 {
 				content += "| Field | Type | Nullable | Required | Description |\n"
 				content += "|-------|------|----------|----------|-------------|\n"
+				var exampleShapes []struct{ name, json string }
 				for _, op := range orderedProps {
-					required := "No"
+					required := ""
 					for _, req := range resourceSchema.Required {
 						if req == op.Name {
-							required = "Yes"
+							required = "<center>✓</center>"
 							break
 						}
 					}
+					cellDesc, exampleJSON, hasExample := splitDescriptionExample(op.Property)
+					if hasExample {
+						exampleShapes = append(exampleShapes, struct{ name, json string }{op.Name, exampleJSON})
+					}
 					content += fmt.Sprintf("| `%s` | %s | %s | %s | %s |\n",
-						op.Name, getTypeDisplayLinked(op.Property, linkable), getNullableDisplay(op.Property), required, getDescriptionWithEnum(op.Property))
+						op.Name, getTypeDisplayLinked(op.Property, allObjectPageSchemas, resourcesBaseURL), getNullableDisplay(op.Property), required, cellDesc)
 				}
 				content += "\n"
+				for _, ex := range exampleShapes {
+					content += fmt.Sprintf("**Example shape for `%s`:**\n\n```json\n%s\n```\n\n", ex.name, indentJSONString(ex.json))
+				}
 			}
 
 			if len(resourceSchema.Example) > 0 {
-				content += fmt.Sprintf("### Example%s\n\n", tocHidden("of "+resourceName))
+				content += fmt.Sprintf("<p className=\"text-lg font-semibold mt-6 mb-2\">Example of %s</p>\n\n", resourceName)
 				content += "```json\n"
 				content += indentJSON(resourceSchema.Example) + "\n"
 				content += "```\n\n"
-			}
-
-			// Document list-item variant when it diverges from the detail resource
-			if listItemName != "" {
-				listItemAnchor := strings.ToLower(strings.ReplaceAll(listItemName, "_", "-"))
-				content += fmt.Sprintf("### The %s object%s\n\n", listItemName, tocHidden("("+listItemAnchor+")"))
-				if listItemSchema.Description != "" {
-					content += fmt.Sprintf("%s\n\n", listItemSchema.Description)
-				}
-
-				listItemProps := getOrderedProperties(listItemSchema)
-				if len(listItemProps) > 0 {
-					content += "| Field | Type | Nullable | Required | Description |\n"
-					content += "|-------|------|----------|----------|-------------|\n"
-					for _, lp := range listItemProps {
-						required := "No"
-						for _, req := range listItemSchema.Required {
-							if req == lp.Name {
-								required = "Yes"
-								break
-							}
-						}
-						content += fmt.Sprintf("| `%s` | %s | %s | %s | %s |\n",
-							lp.Name, getTypeDisplayLinked(lp.Property, linkable), getNullableDisplay(lp.Property), required, getDescriptionWithEnum(lp.Property))
-					}
-					content += "\n"
-				}
-
-				if len(listItemSchema.Example) > 0 {
-					content += fmt.Sprintf("#### Example%s\n\n", tocHidden("of "+listItemName))
-					content += "```json\n"
-					content += indentJSON(listItemSchema.Example) + "\n"
-					content += "```\n\n"
-				}
-			}
-
-			// Document referenced sub-schemas (e.g. LightAccount, RequestLogActor)
-			for _, subName := range subRefs {
-				subSchema := spec.Components.Schemas[subName]
-				anchor := strings.ToLower(strings.ReplaceAll(subName, "_", "-"))
-				content += fmt.Sprintf("### The %s object%s\n\n", subName, tocHidden("("+anchor+")"))
-				if subSchema.Description != "" {
-					content += fmt.Sprintf("%s\n\n", subSchema.Description)
-				}
-
-				subProps := getOrderedProperties(subSchema)
-				if len(subProps) > 0 {
-					content += "| Field | Type | Nullable | Required | Description |\n"
-					content += "|-------|------|----------|----------|-------------|\n"
-					for _, sp := range subProps {
-						required := "No"
-						for _, req := range subSchema.Required {
-							if req == sp.Name {
-								required = "Yes"
-								break
-							}
-						}
-						content += fmt.Sprintf("| `%s` | %s | %s | %s | %s |\n",
-							sp.Name, getTypeDisplayLinked(sp.Property, linkable), getNullableDisplay(sp.Property), required, getDescriptionWithEnum(sp.Property))
-					}
-					content += "\n"
-				}
-
-				if len(subSchema.Example) > 0 {
-					content += fmt.Sprintf("#### Example%s\n\n", tocHidden("of "+subName))
-					content += "```json\n"
-					content += indentJSON(subSchema.Example) + "\n"
-					content += "```\n\n"
-				}
 			}
 		}
 
@@ -814,16 +914,16 @@ nav:
 						content += "| Parameter | Type | Required | Description |\n"
 						content += "|-----------|------|----------|-------------|\n"
 						for _, p := range pathParams {
-							required := "No"
+							required := ""
 							if p.Required {
-								required = "Yes"
+								required = "<center>✓</center>"
 							}
 							paramType := p.Schema.Type
 							if paramType == "" {
 								paramType = "string"
 							}
-							content += fmt.Sprintf("| `%s` | %s | %s | %s |\n",
-								p.Name, paramType, required, p.Description)
+							content += fmt.Sprintf("| `%s` | `%s` | %s | %s |\n",
+								p.Name, paramType, required, escapeDescriptionForMDX(strings.ReplaceAll(p.Description, "\n", " ")))
 						}
 						content += "\n"
 					}
@@ -833,15 +933,15 @@ nav:
 						content += "| Parameter | Type | Required | Description |\n"
 						content += "|-----------|------|----------|-------------|\n"
 						for _, p := range queryParams {
-							required := "No"
+							required := ""
 							if p.Required {
-								required = "Yes"
+								required = "<center>✓</center>"
 							}
 							paramType := p.Schema.Type
 							if paramType == "" {
 								paramType = "string"
 							}
-							desc := p.Description
+							desc := strings.ReplaceAll(p.Description, "\n", " ")
 							if paramType == "array" && p.Schema.Items != nil && len(p.Schema.Items.Enum) > 0 {
 								var enumVals []string
 								for _, v := range p.Schema.Items.Enum {
@@ -849,8 +949,8 @@ nav:
 								}
 								desc += fmt.Sprintf(" Values: %s", strings.Join(enumVals, ", "))
 							}
-							content += fmt.Sprintf("| `%s` | %s | %s | %s |\n",
-								p.Name, paramType, required, desc)
+							content += fmt.Sprintf("| `%s` | `%s` | %s | %s |\n",
+								p.Name, paramType, required, escapeDescriptionForMDX(desc))
 						}
 						content += "\n"
 					}
@@ -872,18 +972,26 @@ nav:
 						if len(orderedProps) > 0 {
 							content += "| Field | Type | Nullable | Required | Description |\n"
 							content += "|-------|------|----------|----------|-------------|\n"
+							var exampleShapes []struct{ name, json string }
 							for _, op := range orderedProps {
-								required := "No"
+								required := ""
 								for _, req := range schema.Required {
 									if req == op.Name {
-										required = "Yes"
+										required = "<center>✓</center>"
 										break
 									}
 								}
+								cellDesc, exampleJSON, hasExample := splitDescriptionExample(op.Property)
+								if hasExample {
+									exampleShapes = append(exampleShapes, struct{ name, json string }{op.Name, exampleJSON})
+								}
 								content += fmt.Sprintf("| `%s` | %s | %s | %s | %s |\n",
-									op.Name, getTypeDisplay(op.Property), getNullableDisplay(op.Property), required, getDescriptionWithEnum(op.Property))
+									op.Name, getTypeDisplayLinked(op.Property, allObjectPageSchemas, resourcesBaseURL), getNullableDisplay(op.Property), required, cellDesc)
 							}
 							content += "\n"
+							for _, ex := range exampleShapes {
+								content += fmt.Sprintf("**Example shape for `%s`:**\n\n```json\n%s\n```\n\n", ex.name, indentJSONString(ex.json))
+							}
 						}
 
 						if len(schema.Example) > 0 {
@@ -916,7 +1024,7 @@ nav:
 						continue
 					}
 
-					content += fmt.Sprintf("**`%s`** %s\n\n", code, resp.Description)
+					content += fmt.Sprintf("**`%s`** %s\n\n", code, escapeDescriptionForMDX(resp.Description))
 
 					if resp.Content != nil {
 						if mediaType, ok := resp.Content["application/json"]; ok {
@@ -934,7 +1042,7 @@ nav:
 											content += fmt.Sprintf("Returns a paginated list of [`%s`](#the-%s-resource) objects. See [Pagination](/api/pagination) for envelope details.\n\n", innerName, anchor)
 										} else if listItemName != "" && innerName == listItemName {
 											anchor := subObjectSlug(listItemName)
-											content += fmt.Sprintf("Returns a paginated list of [`%s`](#%s) objects. See [Pagination](/api/pagination) for envelope details.\n\n", innerName, anchor)
+											content += fmt.Sprintf("Returns a paginated list of [`%s`](%s#%s) objects. See [Pagination](/api/pagination) for envelope details.\n\n", innerName, resourcesBaseURL, anchor)
 										} else {
 											content += fmt.Sprintf("Returns a paginated list of `%s` objects. See [Pagination](/api/pagination) for envelope details.\n\n", innerName)
 										}
