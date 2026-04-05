@@ -3,6 +3,7 @@
 
 export const docPaths = {
     "development": "/development",
+    "workflows": "/workflows",
     "apiReference": {
         "root": "/api-reference",
         "auditEventManagement": {
@@ -16,19 +17,19 @@ export const docPaths = {
             "getRole": "/api-reference/roles/get-role",
             "listRoles": "/api-reference/roles/list-roles"
         },
-        "accountGroups": {
-            "listAccountGroups": "/api-reference/account-groups/list-account-groups",
-            "createAccountGroup": "/api-reference/account-groups/create-account-group",
-            "updateAccountGroup": "/api-reference/account-groups/update-account-group",
-            "retrieveAccountGroup": "/api-reference/account-groups/retrieve-account-group",
-            "deleteAccountGroup": "/api-reference/account-groups/delete-account-group"
-        },
         "productLinesManagement": {
             "getProductLine": "/api-reference/product-lines-management/get-product-line",
             "deleteProductLine": "/api-reference/product-lines-management/delete-product-line",
             "listProductLines": "/api-reference/product-lines-management/list-product-lines",
             "updateProductLine": "/api-reference/product-lines-management/update-product-line",
             "createProductLine": "/api-reference/product-lines-management/create-product-line"
+        },
+        "accountGroups": {
+            "listAccountGroups": "/api-reference/account-groups/list-account-groups",
+            "createAccountGroup": "/api-reference/account-groups/create-account-group",
+            "updateAccountGroup": "/api-reference/account-groups/update-account-group",
+            "retrieveAccountGroup": "/api-reference/account-groups/retrieve-account-group",
+            "deleteAccountGroup": "/api-reference/account-groups/delete-account-group"
         },
         "unitsManagement": {
             "listUnits": "/api-reference/units-management/list-units",
@@ -53,6 +54,45 @@ export const docPaths = {
         "addressValidation": {
             "validateAddress": "/api-reference/address-validation/validate-address",
             "autocompleteAddress": "/api-reference/address-validation/autocomplete-address"
+        },
+        "apiKeyManagement": {
+            "createApiKey": "/api-reference/api-key-management/create-api-key",
+            "rotateApiKey": "/api-reference/api-key-management/rotate-api-key",
+            "listApiKeys": "/api-reference/api-key-management/list-api-keys",
+            "revokeApiKey": "/api-reference/api-key-management/revoke-api-key",
+            "getApiKey": "/api-reference/api-key-management/get-api-key"
+        },
+        "priorities": {
+            "getPriority": "/api-reference/priorities/get-priority",
+            "listPriorities": "/api-reference/priorities/list-priorities"
+        },
+        "emailLogs": {
+            "listEmailLogs": "/api-reference/email-logs/list-email-logs",
+            "getEmailLog": "/api-reference/email-logs/get-email-log"
+        },
+        "propertiesManagement": {
+            "listAttributes": "/api-reference/properties-management/list-attributes",
+            "getAttribute": "/api-reference/properties-management/get-attribute",
+            "createAttribute": "/api-reference/properties-management/create-attribute",
+            "createProperty": "/api-reference/properties-management/create-property",
+            "deleteAttribute": "/api-reference/properties-management/delete-attribute",
+            "listProperties": "/api-reference/properties-management/list-properties",
+            "getProperty": "/api-reference/properties-management/get-property",
+            "updateAttribute": "/api-reference/properties-management/update-attribute",
+            "deleteProperty": "/api-reference/properties-management/delete-property",
+            "updateProperty": "/api-reference/properties-management/update-property"
+        },
+        "unitGroupsManagement": {
+            "listUnitGroups": "/api-reference/unit-groups-management/list-unit-groups",
+            "getUnitGroupUnit": "/api-reference/unit-groups-management/get-unit-group-unit",
+            "updateUnitGroup": "/api-reference/unit-groups-management/update-unit-group",
+            "getUnitGroup": "/api-reference/unit-groups-management/get-unit-group",
+            "createUnitGroup": "/api-reference/unit-groups-management/create-unit-group",
+            "listUnitGroupUnits": "/api-reference/unit-groups-management/list-unit-group-units",
+            "deleteUnitGroup": "/api-reference/unit-groups-management/delete-unit-group",
+            "updateUnitGroupAssociatedUnit": "/api-reference/unit-groups-management/update-unit-group-associated-unit",
+            "createUnitGroupAssociatedUnit": "/api-reference/unit-groups-management/create-unit-group-associated-unit",
+            "deleteUnitGroupAssociatedUnit": "/api-reference/unit-groups-management/delete-unit-group-associated-unit"
         },
         "itemCategoriesManagement": {
             "changeItemCategoryUnitGroup": "/api-reference/item-categories-management/change-item-category-unit-group",
@@ -94,17 +134,9 @@ export const docPaths = {
             "createShippingTerm": "/api-reference/shipping-terms-management/create-shipping-term",
             "deleteShippingTerm": "/api-reference/shipping-terms-management/delete-shipping-term"
         },
-        "propertiesManagement": {
-            "listAttributes": "/api-reference/properties-management/list-attributes",
-            "getAttribute": "/api-reference/properties-management/get-attribute",
-            "createAttribute": "/api-reference/properties-management/create-attribute",
-            "createProperty": "/api-reference/properties-management/create-property",
-            "deleteAttribute": "/api-reference/properties-management/delete-attribute",
-            "listProperties": "/api-reference/properties-management/list-properties",
-            "getProperty": "/api-reference/properties-management/get-property",
-            "updateAttribute": "/api-reference/properties-management/update-attribute",
-            "deleteProperty": "/api-reference/properties-management/delete-property",
-            "updateProperty": "/api-reference/properties-management/update-property"
+        "requestLogManagement": {
+            "listRequestLogs": "/api-reference/request-log-management/list-request-logs",
+            "getRequestLog": "/api-reference/request-log-management/get-request-log"
         },
         "addressManagement": {
             "listAddresses": "/api-reference/address-management/list-addresses",
@@ -112,42 +144,12 @@ export const docPaths = {
             "getAddress": "/api-reference/address-management/get-address",
             "deleteAddress": "/api-reference/address-management/delete-address",
             "updateAddress": "/api-reference/address-management/update-address"
-        },
-        "emailLogs": {
-            "listEmailLogs": "/api-reference/email-logs/list-email-logs",
-            "getEmailLog": "/api-reference/email-logs/get-email-log"
-        },
-        "priorities": {
-            "getPriority": "/api-reference/priorities/get-priority",
-            "listPriorities": "/api-reference/priorities/list-priorities"
-        },
-        "apiKeyManagement": {
-            "createApiKey": "/api-reference/api-key-management/create-api-key",
-            "rotateApiKey": "/api-reference/api-key-management/rotate-api-key",
-            "listApiKeys": "/api-reference/api-key-management/list-api-keys",
-            "revokeApiKey": "/api-reference/api-key-management/revoke-api-key",
-            "getApiKey": "/api-reference/api-key-management/get-api-key"
-        },
-        "unitGroupsManagement": {
-            "listUnitGroups": "/api-reference/unit-groups-management/list-unit-groups",
-            "getUnitGroupUnit": "/api-reference/unit-groups-management/get-unit-group-unit",
-            "updateUnitGroup": "/api-reference/unit-groups-management/update-unit-group",
-            "getUnitGroup": "/api-reference/unit-groups-management/get-unit-group",
-            "createUnitGroup": "/api-reference/unit-groups-management/create-unit-group",
-            "listUnitGroupUnits": "/api-reference/unit-groups-management/list-unit-group-units",
-            "deleteUnitGroup": "/api-reference/unit-groups-management/delete-unit-group",
-            "updateUnitGroupAssociatedUnit": "/api-reference/unit-groups-management/update-unit-group-associated-unit",
-            "createUnitGroupAssociatedUnit": "/api-reference/unit-groups-management/create-unit-group-associated-unit",
-            "deleteUnitGroupAssociatedUnit": "/api-reference/unit-groups-management/delete-unit-group-associated-unit"
-        },
-        "requestLogManagement": {
-            "listRequestLogs": "/api-reference/request-log-management/list-request-logs",
-            "getRequestLog": "/api-reference/request-log-management/get-request-log"
         }
     },
-    "workflows": "/workflows",
     "api": {
         "overview": "/api/overview",
+        "managingApiKeys": "/api/managing-api-keys",
+        "apiKeys": "/api/api-keys",
         "errors": "/api/errors",
         "rateLimiting": "/api/rate-limiting",
         "idempotency": "/api/idempotency",
@@ -156,13 +158,16 @@ export const docPaths = {
         "pagination": "/api/pagination",
         "versioning": "/api/versioning",
         "uris": "/api/uris",
-        "requestLogs": "/api/request-logs",
-        "managingApiKeys": "/api/managing-api-keys",
-        "apiKeys": "/api/api-keys"
+        "requestLogs": "/api/request-logs"
     },
-    "getStarted": "/get-started",
     "buildProducts": {
         "overview": "/build-products/overview",
+        "inventory": {
+            "storageAndLots": "/build-products/inventory/storage-and-lots",
+            "changeLogs": "/build-products/inventory/change-logs",
+            "reconciliation": "/build-products/inventory/reconciliation",
+            "inventory": "/build-products/inventory/inventory"
+        },
         "production": {
             "productionRuns": "/build-products/production/production-runs",
             "batchOperations": "/build-products/production/batch-operations",
@@ -188,12 +193,6 @@ export const docPaths = {
             "productionFlows": "/build-products/bom/production-flows",
             "costing": "/build-products/bom/costing",
             "productionSteps": "/build-products/bom/production-steps"
-        },
-        "inventory": {
-            "storageAndLots": "/build-products/inventory/storage-and-lots",
-            "changeLogs": "/build-products/inventory/change-logs",
-            "reconciliation": "/build-products/inventory/reconciliation",
-            "inventory": "/build-products/inventory/inventory"
         }
     },
     "dashboards": {
@@ -224,12 +223,25 @@ export const docPaths = {
         "invoicing": {
             "overview": "/collect-payments/invoicing/overview"
         },
-        "accountsReceivable": {
-            "overview": "/collect-payments/accounts-receivable/overview"
-        },
         "collecting": {
             "settlements": "/collect-payments/collecting/settlements",
             "overview": "/collect-payments/collecting/overview"
+        },
+        "accountsReceivable": {
+            "overview": "/collect-payments/accounts-receivable/overview"
+        }
+    },
+    "getStarted": "/get-started",
+    "shipProducts": {
+        "packing": {
+            "overview": "/ship-products/packing/overview"
+        },
+        "overview": "/ship-products/overview",
+        "picking": {
+            "overview": "/ship-products/picking/overview"
+        },
+        "shipping": {
+            "overview": "/ship-products/shipping/overview"
         }
     },
     "manageAccount": {
@@ -239,13 +251,13 @@ export const docPaths = {
         "apiKeys": "/manage-account/api-keys",
         "sandboxes": "/manage-account/sandboxes",
         "integrations": "/manage-account/integrations",
-        "accountSettings": {
-            "businessInformation": "/manage-account/account-settings/business-information",
-            "profile": "/manage-account/account-settings/profile"
-        },
         "team": {
             "teamMembers": "/manage-account/team/team-members",
             "rolesAndPermissions": "/manage-account/team/roles-and-permissions"
+        },
+        "accountSettings": {
+            "businessInformation": "/manage-account/account-settings/business-information",
+            "profile": "/manage-account/account-settings/profile"
         }
     },
     "generateSales": {
@@ -283,25 +295,13 @@ export const docPaths = {
             "contacts": "/generate-sales/customer/contacts"
         }
     },
-    "shipProducts": {
-        "packing": {
-            "overview": "/ship-products/packing/overview"
-        },
-        "overview": "/ship-products/overview",
-        "picking": {
-            "overview": "/ship-products/picking/overview"
-        },
-        "shipping": {
-            "overview": "/ship-products/shipping/overview"
-        }
-    },
     "apiTour": "/api-tour",
+    "releasePhases": "/release-phases",
+    "apiRequest": "/api-request",
+    "goLive": "/go-live",
     "account": {
         "root": "/account",
         "checklist": "/account/checklist",
         "activate": "/account/activate"
-    },
-    "releasePhases": "/release-phases",
-    "apiRequest": "/api-request",
-    "goLive": "/go-live"
+    }
 } as const;
