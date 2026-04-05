@@ -10,13 +10,6 @@ export const docPaths = {
             "listAuditEvents": "/api-reference/audit-event-management/list-audit-events",
             "getAuditEvent": "/api-reference/audit-event-management/get-audit-event"
         },
-        "roles": {
-            "deleteRole": "/api-reference/roles/delete-role",
-            "createRole": "/api-reference/roles/create-role",
-            "updateRole": "/api-reference/roles/update-role",
-            "getRole": "/api-reference/roles/get-role",
-            "listRoles": "/api-reference/roles/list-roles"
-        },
         "requestLogManagement": {
             "listRequestLogs": "/api-reference/request-log-management/list-request-logs",
             "getRequestLog": "/api-reference/request-log-management/get-request-log"
@@ -144,6 +137,13 @@ export const docPaths = {
             "listProductLines": "/api-reference/product-lines-management/list-product-lines",
             "updateProductLine": "/api-reference/product-lines-management/update-product-line",
             "createProductLine": "/api-reference/product-lines-management/create-product-line"
+        },
+        "roles": {
+            "deleteRole": "/api-reference/roles/delete-role",
+            "createRole": "/api-reference/roles/create-role",
+            "updateRole": "/api-reference/roles/update-role",
+            "getRole": "/api-reference/roles/get-role",
+            "listRoles": "/api-reference/roles/list-roles"
         }
     },
     "api": {
@@ -197,73 +197,37 @@ export const docPaths = {
     },
     "dashboards": {
         "overview": "/dashboards/overview",
-        "sales": {
-            "orderAnalytics": "/dashboards/sales/order-analytics",
-            "productsOnOrder": "/dashboards/sales/products-on-order",
-            "weeksOfSales": "/dashboards/sales/weeks-of-sales",
-            "orderData": "/dashboards/sales/order-data",
-            "quarterlyOrders": "/dashboards/sales/quarterly-orders"
+        "financial": {
+            "accountsReceivable": "/dashboards/financial/accounts-receivable",
+            "paymentsData": "/dashboards/financial/payments-data"
+        },
+        "forecasting": {
+            "salesTargets": "/dashboards/forecasting/sales-targets",
+            "demandForecast": "/dashboards/forecasting/demand-forecast"
         },
         "operations": {
             "materialAnalytics": "/dashboards/operations/material-analytics",
             "deliveryAnalytics": "/dashboards/operations/delivery-analytics",
             "manufacturingAnalytics": "/dashboards/operations/manufacturing-analytics"
         },
-        "forecasting": {
-            "salesTargets": "/dashboards/forecasting/sales-targets",
-            "demandForecast": "/dashboards/forecasting/demand-forecast"
-        },
-        "financial": {
-            "accountsReceivable": "/dashboards/financial/accounts-receivable",
-            "paymentsData": "/dashboards/financial/payments-data"
+        "sales": {
+            "orderAnalytics": "/dashboards/sales/order-analytics",
+            "productsOnOrder": "/dashboards/sales/products-on-order",
+            "weeksOfSales": "/dashboards/sales/weeks-of-sales",
+            "orderData": "/dashboards/sales/order-data",
+            "quarterlyOrders": "/dashboards/sales/quarterly-orders"
         }
     },
-    "collectPayments": {
-        "overview": "/collect-payments/overview",
-        "accountsReceivable": {
-            "overview": "/collect-payments/accounts-receivable/overview"
+    "shipProducts": {
+        "packing": {
+            "overview": "/ship-products/packing/overview"
         },
-        "collecting": {
-            "settlements": "/collect-payments/collecting/settlements",
-            "overview": "/collect-payments/collecting/overview"
+        "overview": "/ship-products/overview",
+        "picking": {
+            "overview": "/ship-products/picking/overview"
         },
-        "invoicing": {
-            "overview": "/collect-payments/invoicing/overview"
-        }
-    },
-    "generateSales": {
-        "overview": "/generate-sales/overview",
-        "customerPortal": "/generate-sales/customer-portal",
-        "customer": {
-            "overview": "/generate-sales/customer/overview",
-            "create": "/generate-sales/customer/create",
-            "contacts": "/generate-sales/customer/contacts"
-        },
-        "salesOrder": {
-            "generateProductionRun": "/generate-sales/sales-order/generate-production-run",
-            "issue": "/generate-sales/sales-order/issue",
-            "overview": "/generate-sales/sales-order/overview",
-            "create": "/generate-sales/sales-order/create"
-        },
-        "salesTeam": {
-            "salesTargets": "/generate-sales/sales-team/sales-targets",
-            "territories": "/generate-sales/sales-team/territories"
-        },
-        "customerPricing": {
-            "discountCodes": "/generate-sales/customer-pricing/discount-codes",
-            "customerPrices": "/generate-sales/customer-pricing/customer-prices",
-            "volumeDiscounts": "/generate-sales/customer-pricing/volume-discounts"
-        },
-        "customerSetup": {
-            "addresses": "/generate-sales/customer-setup/addresses",
-            "accountStatuses": "/generate-sales/customer-setup/account-statuses",
-            "shippingTerms": "/generate-sales/customer-setup/shipping-terms",
-            "paymentTerms": "/generate-sales/customer-setup/payment-terms",
-            "defaultCarriers": "/generate-sales/customer-setup/default-carriers",
-            "priorities": "/generate-sales/customer-setup/priorities",
-            "defaultSalesReps": "/generate-sales/customer-setup/default-sales-reps",
-            "exemptions": "/generate-sales/customer-setup/exemptions",
-            "customerGroups": "/generate-sales/customer-setup/customer-groups"
+        "shipping": {
+            "overview": "/ship-products/shipping/overview"
         }
     },
     "manageAccount": {
@@ -282,19 +246,56 @@ export const docPaths = {
             "rolesAndPermissions": "/manage-account/team/roles-and-permissions"
         }
     },
-    "shipProducts": {
-        "packing": {
-            "overview": "/ship-products/packing/overview"
+    "generateSales": {
+        "overview": "/generate-sales/overview",
+        "customerPortal": "/generate-sales/customer-portal",
+        "customer": {
+            "overview": "/generate-sales/customer/overview",
+            "create": "/generate-sales/customer/create",
+            "contacts": "/generate-sales/customer/contacts"
         },
-        "overview": "/ship-products/overview",
-        "picking": {
-            "overview": "/ship-products/picking/overview"
+        "customerSetup": {
+            "addresses": "/generate-sales/customer-setup/addresses",
+            "accountStatuses": "/generate-sales/customer-setup/account-statuses",
+            "shippingTerms": "/generate-sales/customer-setup/shipping-terms",
+            "paymentTerms": "/generate-sales/customer-setup/payment-terms",
+            "defaultCarriers": "/generate-sales/customer-setup/default-carriers",
+            "priorities": "/generate-sales/customer-setup/priorities",
+            "defaultSalesReps": "/generate-sales/customer-setup/default-sales-reps",
+            "exemptions": "/generate-sales/customer-setup/exemptions",
+            "customerGroups": "/generate-sales/customer-setup/customer-groups"
         },
-        "shipping": {
-            "overview": "/ship-products/shipping/overview"
+        "customerPricing": {
+            "discountCodes": "/generate-sales/customer-pricing/discount-codes",
+            "customerPrices": "/generate-sales/customer-pricing/customer-prices",
+            "volumeDiscounts": "/generate-sales/customer-pricing/volume-discounts"
+        },
+        "salesTeam": {
+            "salesTargets": "/generate-sales/sales-team/sales-targets",
+            "territories": "/generate-sales/sales-team/territories"
+        },
+        "salesOrder": {
+            "generateProductionRun": "/generate-sales/sales-order/generate-production-run",
+            "issue": "/generate-sales/sales-order/issue",
+            "overview": "/generate-sales/sales-order/overview",
+            "create": "/generate-sales/sales-order/create"
+        }
+    },
+    "collectPayments": {
+        "overview": "/collect-payments/overview",
+        "collecting": {
+            "settlements": "/collect-payments/collecting/settlements",
+            "overview": "/collect-payments/collecting/overview"
+        },
+        "invoicing": {
+            "overview": "/collect-payments/invoicing/overview"
+        },
+        "accountsReceivable": {
+            "overview": "/collect-payments/accounts-receivable/overview"
         }
     },
     "getStarted": "/get-started",
+    "apiTour": "/api-tour",
     "releasePhases": "/release-phases",
     "apiRequest": "/api-request",
     "goLive": "/go-live",
@@ -302,6 +303,5 @@ export const docPaths = {
         "root": "/account",
         "checklist": "/account/checklist",
         "activate": "/account/activate"
-    },
-    "apiTour": "/api-tour"
+    }
 } as const;
