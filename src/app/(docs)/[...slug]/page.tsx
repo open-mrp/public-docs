@@ -32,18 +32,116 @@ export function generateStaticParams() {
   },
   {
     "slug": [
-      "api-reference"
+      "workflows"
     ]
   },
   {
     "slug": [
-      "workflows"
+      "api-reference"
     ]
   },
   {
     "slug": [
       "api",
       "overview"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "build-products",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "collect-payments",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "ship-products",
+      "packing",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "ship-products",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "ship-products",
+      "picking",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "ship-products",
+      "shipping",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "manage-account",
+      "security"
+    ]
+  },
+  {
+    "slug": [
+      "manage-account",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "manage-account",
+      "plans-and-billing"
+    ]
+  },
+  {
+    "slug": [
+      "manage-account",
+      "api-keys"
+    ]
+  },
+  {
+    "slug": [
+      "manage-account",
+      "sandboxes"
+    ]
+  },
+  {
+    "slug": [
+      "manage-account",
+      "integrations"
+    ]
+  },
+  {
+    "slug": [
+      "generate-sales",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "generate-sales",
+      "customer-portal"
+    ]
+  },
+  {
+    "slug": [
+      "get-started"
     ]
   },
   {
@@ -62,378 +160,68 @@ export function generateStaticParams() {
   },
   {
     "slug": [
-      "api-reference",
-      "roles",
-      "delete-role"
+      "api",
+      "errors"
     ]
   },
   {
     "slug": [
-      "api-reference",
-      "roles",
-      "create-role"
+      "api",
+      "rate-limiting"
     ]
   },
   {
     "slug": [
-      "api-reference",
-      "roles",
-      "update-role"
+      "api",
+      "idempotency"
     ]
   },
   {
     "slug": [
-      "api-reference",
-      "roles",
-      "get-role"
+      "api",
+      "request-ids"
     ]
   },
   {
     "slug": [
-      "api-reference",
-      "roles",
-      "list-roles"
+      "api",
+      "include"
     ]
   },
   {
     "slug": [
-      "api-reference",
-      "product-lines-management",
-      "get-product-line"
+      "api",
+      "pagination"
     ]
   },
   {
     "slug": [
-      "api-reference",
-      "product-lines-management",
-      "delete-product-line"
+      "api",
+      "versioning"
     ]
   },
   {
     "slug": [
-      "api-reference",
-      "product-lines-management",
-      "list-product-lines"
+      "api",
+      "uris"
     ]
   },
   {
     "slug": [
-      "api-reference",
-      "product-lines-management",
-      "update-product-line"
+      "api",
+      "request-logs"
     ]
   },
   {
     "slug": [
-      "api-reference",
-      "product-lines-management",
-      "create-product-line"
+      "api",
+      "managing-api-keys"
     ]
   },
   {
     "slug": [
-      "api-reference",
-      "account-groups",
-      "list-account-groups"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "account-groups",
-      "create-account-group"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "account-groups",
-      "update-account-group"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "account-groups",
-      "retrieve-account-group"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "account-groups",
-      "delete-account-group"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "units-management",
-      "list-units"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "units-management",
-      "delete-unit"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "units-management",
-      "update-unit"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "units-management",
-      "get-unit"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "units-management",
-      "create-unit"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "sandbox-management",
-      "list-sandboxes"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "sandbox-management",
-      "delete-sandbox"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "sandbox-management",
-      "get-sandbox"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "sandbox-management",
-      "create-sandbox"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "address-validation",
-      "validate-address"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "address-validation",
-      "autocomplete-address"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "api-key-management",
-      "create-api-key"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "api-key-management",
-      "rotate-api-key"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "api-key-management",
-      "list-api-keys"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "api-key-management",
-      "revoke-api-key"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "api-key-management",
-      "get-api-key"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "payment-terms-management",
-      "get-payment-term"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "payment-terms-management",
-      "list-payment-terms"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "payment-terms-management",
-      "update-payment-term"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "payment-terms-management",
-      "create-payment-term"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "payment-terms-management",
-      "delete-payment-term"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "email-logs",
-      "list-email-logs"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "email-logs",
-      "get-email-log"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "address-management",
-      "list-addresses"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "address-management",
-      "create-address"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "address-management",
-      "get-address"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "address-management",
-      "delete-address"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "address-management",
-      "update-address"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "properties-management",
-      "list-attributes"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "properties-management",
-      "get-attribute"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "properties-management",
-      "create-attribute"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "properties-management",
-      "create-property"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "properties-management",
-      "delete-attribute"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "properties-management",
-      "list-properties"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "properties-management",
-      "get-property"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "properties-management",
-      "update-attribute"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "properties-management",
-      "delete-property"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "properties-management",
-      "update-property"
-    ]
-  },
-  {
-    "slug": [
-      "get-started"
+      "api",
+      "api-keys"
     ]
   },
   {
@@ -732,14 +520,121 @@ export function generateStaticParams() {
   },
   {
     "slug": [
-      "build-products",
-      "overview"
+      "api-reference",
+      "properties-management",
+      "list-attributes"
     ]
   },
   {
     "slug": [
-      "dashboards",
-      "overview"
+      "api-reference",
+      "properties-management",
+      "get-attribute"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "properties-management",
+      "create-attribute"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "properties-management",
+      "create-property"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "properties-management",
+      "delete-attribute"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "properties-management",
+      "list-properties"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "properties-management",
+      "get-property"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "properties-management",
+      "update-attribute"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "properties-management",
+      "delete-property"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "properties-management",
+      "update-property"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "address-management",
+      "list-addresses"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "address-management",
+      "create-address"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "address-management",
+      "get-address"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "address-management",
+      "delete-address"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "address-management",
+      "update-address"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "email-logs",
+      "list-email-logs"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "email-logs",
+      "get-email-log"
     ]
   },
   {
@@ -758,235 +653,331 @@ export function generateStaticParams() {
   },
   {
     "slug": [
-      "collect-payments",
-      "overview"
+      "api-reference",
+      "api-key-management",
+      "create-api-key"
     ]
   },
   {
     "slug": [
-      "generate-sales",
-      "overview"
+      "api-reference",
+      "api-key-management",
+      "rotate-api-key"
     ]
   },
   {
     "slug": [
-      "generate-sales",
-      "customer-portal"
+      "api-reference",
+      "api-key-management",
+      "list-api-keys"
     ]
   },
   {
     "slug": [
-      "manage-account",
-      "security"
+      "api-reference",
+      "api-key-management",
+      "revoke-api-key"
     ]
   },
   {
     "slug": [
-      "manage-account",
-      "overview"
+      "api-reference",
+      "api-key-management",
+      "get-api-key"
     ]
   },
   {
     "slug": [
-      "manage-account",
-      "plans-and-billing"
+      "api-reference",
+      "address-validation",
+      "validate-address"
     ]
   },
   {
     "slug": [
-      "manage-account",
-      "api-keys"
+      "api-reference",
+      "address-validation",
+      "autocomplete-address"
     ]
   },
   {
     "slug": [
-      "manage-account",
-      "sandboxes"
+      "api-reference",
+      "payment-terms-management",
+      "get-payment-term"
     ]
   },
   {
     "slug": [
-      "manage-account",
-      "integrations"
+      "api-reference",
+      "payment-terms-management",
+      "list-payment-terms"
     ]
   },
   {
     "slug": [
-      "ship-products",
-      "packing",
-      "overview"
+      "api-reference",
+      "payment-terms-management",
+      "update-payment-term"
     ]
   },
   {
     "slug": [
-      "ship-products",
-      "overview"
+      "api-reference",
+      "payment-terms-management",
+      "create-payment-term"
     ]
   },
   {
     "slug": [
-      "ship-products",
-      "picking",
-      "overview"
+      "api-reference",
+      "payment-terms-management",
+      "delete-payment-term"
     ]
   },
   {
     "slug": [
-      "ship-products",
-      "shipping",
-      "overview"
+      "api-reference",
+      "sandbox-management",
+      "list-sandboxes"
     ]
   },
   {
     "slug": [
-      "api",
-      "managing-api-keys"
+      "api-reference",
+      "sandbox-management",
+      "delete-sandbox"
     ]
   },
   {
     "slug": [
-      "api",
-      "api-keys"
+      "api-reference",
+      "sandbox-management",
+      "get-sandbox"
     ]
   },
   {
     "slug": [
-      "api",
-      "request-logs"
+      "api-reference",
+      "sandbox-management",
+      "create-sandbox"
     ]
   },
   {
     "slug": [
-      "api",
-      "rate-limiting"
+      "api-reference",
+      "units-management",
+      "list-units"
     ]
   },
   {
     "slug": [
-      "api",
-      "idempotency"
+      "api-reference",
+      "units-management",
+      "delete-unit"
     ]
   },
   {
     "slug": [
-      "api",
-      "request-ids"
+      "api-reference",
+      "units-management",
+      "update-unit"
     ]
   },
   {
     "slug": [
-      "api",
-      "include"
+      "api-reference",
+      "units-management",
+      "get-unit"
     ]
   },
   {
     "slug": [
-      "api",
-      "pagination"
+      "api-reference",
+      "units-management",
+      "create-unit"
     ]
   },
   {
     "slug": [
-      "api",
-      "versioning"
+      "api-reference",
+      "account-groups",
+      "list-account-groups"
     ]
   },
   {
     "slug": [
-      "api",
-      "uris"
+      "api-reference",
+      "account-groups",
+      "create-account-group"
     ]
   },
   {
     "slug": [
-      "api",
-      "errors"
+      "api-reference",
+      "account-groups",
+      "update-account-group"
     ]
   },
   {
     "slug": [
-      "account"
+      "api-reference",
+      "account-groups",
+      "retrieve-account-group"
     ]
   },
   {
     "slug": [
-      "account",
-      "checklist"
+      "api-reference",
+      "account-groups",
+      "delete-account-group"
     ]
   },
   {
     "slug": [
-      "account",
-      "activate"
+      "api-reference",
+      "product-lines-management",
+      "get-product-line"
     ]
   },
   {
     "slug": [
-      "release-phases"
+      "api-reference",
+      "product-lines-management",
+      "delete-product-line"
     ]
   },
   {
     "slug": [
-      "api-request"
+      "api-reference",
+      "product-lines-management",
+      "list-product-lines"
     ]
   },
   {
     "slug": [
-      "go-live"
+      "api-reference",
+      "product-lines-management",
+      "update-product-line"
     ]
   },
   {
     "slug": [
-      "api-tour"
+      "api-reference",
+      "product-lines-management",
+      "create-product-line"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "roles",
+      "delete-role"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "roles",
+      "create-role"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "roles",
+      "update-role"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "roles",
+      "get-role"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "roles",
+      "list-roles"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "financial",
+      "accounts-receivable"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "financial",
+      "payments-data"
     ]
   },
   {
     "slug": [
       "build-products",
-      "inventory",
-      "storage-and-lots"
+      "bom",
+      "consumptions-and-productions"
     ]
   },
   {
     "slug": [
       "build-products",
-      "inventory",
-      "change-logs"
+      "bom",
+      "production-flows"
     ]
   },
   {
     "slug": [
       "build-products",
-      "inventory",
-      "reconciliation"
+      "bom",
+      "costing"
     ]
   },
   {
     "slug": [
       "build-products",
-      "inventory",
-      "inventory"
+      "bom",
+      "production-steps"
     ]
   },
   {
     "slug": [
       "build-products",
-      "production",
-      "production-runs"
+      "purchasing",
+      "purchase-orders"
     ]
   },
   {
     "slug": [
       "build-products",
-      "production",
-      "batch-operations"
+      "purchasing",
+      "deliveries-and-receiving"
     ]
   },
   {
     "slug": [
       "build-products",
-      "production",
-      "batches"
+      "purchasing",
+      "suppliers"
+    ]
+  },
+  {
+    "slug": [
+      "build-products",
+      "scanning",
+      "labels"
+    ]
+  },
+  {
+    "slug": [
+      "build-products",
+      "scanning",
+      "scanning-stations"
     ]
   },
   {
@@ -1020,113 +1011,50 @@ export function generateStaticParams() {
   {
     "slug": [
       "build-products",
-      "scanning",
-      "labels"
+      "production",
+      "production-runs"
     ]
   },
   {
     "slug": [
       "build-products",
-      "scanning",
-      "scanning-stations"
+      "production",
+      "batch-operations"
     ]
   },
   {
     "slug": [
       "build-products",
-      "purchasing",
-      "purchase-orders"
+      "production",
+      "batches"
     ]
   },
   {
     "slug": [
       "build-products",
-      "purchasing",
-      "deliveries-and-receiving"
+      "inventory",
+      "storage-and-lots"
     ]
   },
   {
     "slug": [
       "build-products",
-      "purchasing",
-      "suppliers"
+      "inventory",
+      "change-logs"
     ]
   },
   {
     "slug": [
       "build-products",
-      "bom",
-      "consumptions-and-productions"
+      "inventory",
+      "reconciliation"
     ]
   },
   {
     "slug": [
       "build-products",
-      "bom",
-      "production-flows"
-    ]
-  },
-  {
-    "slug": [
-      "build-products",
-      "bom",
-      "costing"
-    ]
-  },
-  {
-    "slug": [
-      "build-products",
-      "bom",
-      "production-steps"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "financial",
-      "accounts-receivable"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "financial",
-      "payments-data"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "forecasting",
-      "sales-targets"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "forecasting",
-      "demand-forecast"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "operations",
-      "material-analytics"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "operations",
-      "delivery-analytics"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "operations",
-      "manufacturing-analytics"
+      "inventory",
+      "inventory"
     ]
   },
   {
@@ -1166,8 +1094,50 @@ export function generateStaticParams() {
   },
   {
     "slug": [
+      "dashboards",
+      "operations",
+      "material-analytics"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "operations",
+      "delivery-analytics"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "operations",
+      "manufacturing-analytics"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "forecasting",
+      "sales-targets"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "forecasting",
+      "demand-forecast"
+    ]
+  },
+  {
+    "slug": [
       "collect-payments",
       "invoicing",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "collect-payments",
+      "accounts-receivable",
       "overview"
     ]
   },
@@ -1187,9 +1157,16 @@ export function generateStaticParams() {
   },
   {
     "slug": [
-      "collect-payments",
-      "accounts-receivable",
-      "overview"
+      "manage-account",
+      "account-settings",
+      "business-information"
+    ]
+  },
+  {
+    "slug": [
+      "manage-account",
+      "account-settings",
+      "profile"
     ]
   },
   {
@@ -1299,6 +1276,20 @@ export function generateStaticParams() {
   },
   {
     "slug": [
+      "manage-account",
+      "team",
+      "team-members"
+    ]
+  },
+  {
+    "slug": [
+      "manage-account",
+      "team",
+      "roles-and-permissions"
+    ]
+  },
+  {
+    "slug": [
       "generate-sales",
       "sales-team",
       "sales-targets"
@@ -1341,30 +1332,39 @@ export function generateStaticParams() {
   },
   {
     "slug": [
-      "manage-account",
-      "team",
-      "team-members"
+      "api-tour"
     ]
   },
   {
     "slug": [
-      "manage-account",
-      "team",
-      "roles-and-permissions"
+      "account"
     ]
   },
   {
     "slug": [
-      "manage-account",
-      "account-settings",
-      "business-information"
+      "account",
+      "checklist"
     ]
   },
   {
     "slug": [
-      "manage-account",
-      "account-settings",
-      "profile"
+      "account",
+      "activate"
+    ]
+  },
+  {
+    "slug": [
+      "release-phases"
+    ]
+  },
+  {
+    "slug": [
+      "api-request"
+    ]
+  },
+  {
+    "slug": [
+      "go-live"
     ]
   }
 ] as { slug: string[] }[];
