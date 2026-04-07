@@ -3,19 +3,11 @@
 
 export const docPaths = {
     "development": "/development",
-    "workflows": "/workflows",
     "apiReference": {
         "root": "/api-reference",
         "auditEventManagement": {
             "listAuditEvents": "/api-reference/audit-event-management/list-audit-events",
             "getAuditEvent": "/api-reference/audit-event-management/get-audit-event"
-        },
-        "productLinesManagement": {
-            "getProductLine": "/api-reference/product-lines-management/get-product-line",
-            "deleteProductLine": "/api-reference/product-lines-management/delete-product-line",
-            "listProductLines": "/api-reference/product-lines-management/list-product-lines",
-            "updateProductLine": "/api-reference/product-lines-management/update-product-line",
-            "createProductLine": "/api-reference/product-lines-management/create-product-line"
         },
         "roles": {
             "deleteRole": "/api-reference/roles/delete-role",
@@ -23,6 +15,13 @@ export const docPaths = {
             "updateRole": "/api-reference/roles/update-role",
             "getRole": "/api-reference/roles/get-role",
             "listRoles": "/api-reference/roles/list-roles"
+        },
+        "productLinesManagement": {
+            "getProductLine": "/api-reference/product-lines-management/get-product-line",
+            "deleteProductLine": "/api-reference/product-lines-management/delete-product-line",
+            "listProductLines": "/api-reference/product-lines-management/list-product-lines",
+            "updateProductLine": "/api-reference/product-lines-management/update-product-line",
+            "createProductLine": "/api-reference/product-lines-management/create-product-line"
         },
         "accountGroups": {
             "listAccountGroups": "/api-reference/account-groups/list-account-groups",
@@ -54,6 +53,13 @@ export const docPaths = {
         "addressValidation": {
             "validateAddress": "/api-reference/address-validation/validate-address",
             "autocompleteAddress": "/api-reference/address-validation/autocomplete-address"
+        },
+        "apiKeyManagement": {
+            "createApiKey": "/api-reference/api-key-management/create-api-key",
+            "rotateApiKey": "/api-reference/api-key-management/rotate-api-key",
+            "listApiKeys": "/api-reference/api-key-management/list-api-keys",
+            "revokeApiKey": "/api-reference/api-key-management/revoke-api-key",
+            "getApiKey": "/api-reference/api-key-management/get-api-key"
         },
         "requestLogManagement": {
             "listRequestLogs": "/api-reference/request-log-management/list-request-logs",
@@ -137,15 +143,9 @@ export const docPaths = {
         "priorities": {
             "getPriority": "/api-reference/priorities/get-priority",
             "listPriorities": "/api-reference/priorities/list-priorities"
-        },
-        "apiKeyManagement": {
-            "createApiKey": "/api-reference/api-key-management/create-api-key",
-            "rotateApiKey": "/api-reference/api-key-management/rotate-api-key",
-            "listApiKeys": "/api-reference/api-key-management/list-api-keys",
-            "revokeApiKey": "/api-reference/api-key-management/revoke-api-key",
-            "getApiKey": "/api-reference/api-key-management/get-api-key"
         }
     },
+    "workflows": "/workflows",
     "api": {
         "overview": "/api/overview",
         "errors": "/api/errors",
@@ -159,29 +159,6 @@ export const docPaths = {
         "requestLogs": "/api/request-logs",
         "managingApiKeys": "/api/managing-api-keys",
         "apiKeys": "/api/api-keys"
-    },
-    "dashboards": {
-        "overview": "/dashboards/overview",
-        "financial": {
-            "accountsReceivable": "/dashboards/financial/accounts-receivable",
-            "paymentsData": "/dashboards/financial/payments-data"
-        },
-        "sales": {
-            "orderAnalytics": "/dashboards/sales/order-analytics",
-            "productsOnOrder": "/dashboards/sales/products-on-order",
-            "weeksOfSales": "/dashboards/sales/weeks-of-sales",
-            "orderData": "/dashboards/sales/order-data",
-            "quarterlyOrders": "/dashboards/sales/quarterly-orders"
-        },
-        "operations": {
-            "materialAnalytics": "/dashboards/operations/material-analytics",
-            "deliveryAnalytics": "/dashboards/operations/delivery-analytics",
-            "manufacturingAnalytics": "/dashboards/operations/manufacturing-analytics"
-        },
-        "forecasting": {
-            "salesTargets": "/dashboards/forecasting/sales-targets",
-            "demandForecast": "/dashboards/forecasting/demand-forecast"
-        }
     },
     "getStarted": "/get-started",
     "shipProducts": {
@@ -249,29 +226,56 @@ export const docPaths = {
     },
     "collectPayments": {
         "overview": "/collect-payments/overview",
-        "collecting": {
-            "settlements": "/collect-payments/collecting/settlements",
-            "overview": "/collect-payments/collecting/overview"
+        "invoicing": {
+            "overview": "/collect-payments/invoicing/overview"
         },
         "accountsReceivable": {
             "overview": "/collect-payments/accounts-receivable/overview"
         },
-        "invoicing": {
-            "overview": "/collect-payments/invoicing/overview"
+        "collecting": {
+            "settlements": "/collect-payments/collecting/settlements",
+            "overview": "/collect-payments/collecting/overview"
+        }
+    },
+    "dashboards": {
+        "overview": "/dashboards/overview",
+        "sales": {
+            "orderAnalytics": "/dashboards/sales/order-analytics",
+            "productsOnOrder": "/dashboards/sales/products-on-order",
+            "weeksOfSales": "/dashboards/sales/weeks-of-sales",
+            "orderData": "/dashboards/sales/order-data",
+            "quarterlyOrders": "/dashboards/sales/quarterly-orders"
+        },
+        "operations": {
+            "materialAnalytics": "/dashboards/operations/material-analytics",
+            "deliveryAnalytics": "/dashboards/operations/delivery-analytics",
+            "manufacturingAnalytics": "/dashboards/operations/manufacturing-analytics"
+        },
+        "forecasting": {
+            "salesTargets": "/dashboards/forecasting/sales-targets",
+            "demandForecast": "/dashboards/forecasting/demand-forecast"
+        },
+        "financial": {
+            "accountsReceivable": "/dashboards/financial/accounts-receivable",
+            "paymentsData": "/dashboards/financial/payments-data"
         }
     },
     "buildProducts": {
         "overview": "/build-products/overview",
-        "inventory": {
-            "storageAndLots": "/build-products/inventory/storage-and-lots",
-            "changeLogs": "/build-products/inventory/change-logs",
-            "reconciliation": "/build-products/inventory/reconciliation",
-            "inventory": "/build-products/inventory/inventory"
+        "bom": {
+            "consumptionsAndProductions": "/build-products/bom/consumptions-and-productions",
+            "productionFlows": "/build-products/bom/production-flows",
+            "costing": "/build-products/bom/costing",
+            "productionSteps": "/build-products/bom/production-steps"
         },
-        "production": {
-            "productionRuns": "/build-products/production/production-runs",
-            "batchOperations": "/build-products/production/batch-operations",
-            "batches": "/build-products/production/batches"
+        "purchasing": {
+            "purchaseOrders": "/build-products/purchasing/purchase-orders",
+            "deliveriesAndReceiving": "/build-products/purchasing/deliveries-and-receiving",
+            "suppliers": "/build-products/purchasing/suppliers"
+        },
+        "scanning": {
+            "labels": "/build-products/scanning/labels",
+            "scanningStations": "/build-products/scanning/scanning-stations"
         },
         "items": {
             "overview": "/build-products/items/overview",
@@ -279,29 +283,25 @@ export const docPaths = {
             "parts": "/build-products/items/parts",
             "products": "/build-products/items/products"
         },
-        "scanning": {
-            "labels": "/build-products/scanning/labels",
-            "scanningStations": "/build-products/scanning/scanning-stations"
+        "production": {
+            "productionRuns": "/build-products/production/production-runs",
+            "batchOperations": "/build-products/production/batch-operations",
+            "batches": "/build-products/production/batches"
         },
-        "purchasing": {
-            "purchaseOrders": "/build-products/purchasing/purchase-orders",
-            "deliveriesAndReceiving": "/build-products/purchasing/deliveries-and-receiving",
-            "suppliers": "/build-products/purchasing/suppliers"
-        },
-        "bom": {
-            "consumptionsAndProductions": "/build-products/bom/consumptions-and-productions",
-            "productionFlows": "/build-products/bom/production-flows",
-            "costing": "/build-products/bom/costing",
-            "productionSteps": "/build-products/bom/production-steps"
+        "inventory": {
+            "storageAndLots": "/build-products/inventory/storage-and-lots",
+            "changeLogs": "/build-products/inventory/change-logs",
+            "reconciliation": "/build-products/inventory/reconciliation",
+            "inventory": "/build-products/inventory/inventory"
         }
     },
     "apiTour": "/api-tour",
+    "releasePhases": "/release-phases",
+    "apiRequest": "/api-request",
+    "goLive": "/go-live",
     "account": {
         "root": "/account",
         "checklist": "/account/checklist",
         "activate": "/account/activate"
-    },
-    "releasePhases": "/release-phases",
-    "apiRequest": "/api-request",
-    "goLive": "/go-live"
+    }
 } as const;
