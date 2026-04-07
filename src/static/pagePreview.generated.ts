@@ -23,13 +23,13 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Augno's APIs",
         "subtitle": "Learn more about Augno's APIs."
     },
-    "/build-products/overview": {
-        "title": "Build Products",
-        "subtitle": "Purchasing, manufacturing, production tracking, and inventory management."
-    },
     "/dashboards/overview": {
         "title": "Dashboards",
         "subtitle": "Analytics and reporting dashboards that give you real-time visibility into sales, operations, finances, and forecasting."
+    },
+    "/build-products/overview": {
+        "title": "Build Products",
+        "subtitle": "Purchasing, manufacturing, production tracking, and inventory management."
     },
     "/collect-payments/overview": {
         "title": "Collect Payments",
@@ -42,6 +42,26 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/generate-sales/customer-portal": {
         "title": "Customer portal",
         "subtitle": "A branded, self-service portal where your customers register, place orders, submit payments, and track inventory."
+    },
+    "/get-started": {
+        "title": "Get started",
+        "subtitle": "Create an account and learn how to build on Augno."
+    },
+    "/ship-products/packing/overview": {
+        "title": "Packing",
+        "subtitle": "Pack picked items into shipping cases and create shipments ready for the carrier."
+    },
+    "/ship-products/overview": {
+        "title": "Ship Products",
+        "subtitle": "Learn about shipping products in Augno."
+    },
+    "/ship-products/picking/overview": {
+        "title": "Picking",
+        "subtitle": "Select and pull the right products from inventory to fulfill a sales order."
+    },
+    "/ship-products/shipping/overview": {
+        "title": "Shipping",
+        "subtitle": "Generate shipping labels, assign tracking numbers, and ship packed orders through your carrier."
     },
     "/manage-account/security": {
         "title": "Security",
@@ -67,26 +87,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Integrations",
         "subtitle": "Connect third-party services like Stripe and Shippo to your Augno account."
     },
-    "/ship-products/packing/overview": {
-        "title": "Packing",
-        "subtitle": "Pack picked items into shipping cases and create shipments ready for the carrier."
-    },
-    "/ship-products/overview": {
-        "title": "Ship Products",
-        "subtitle": "Learn about shipping products in Augno."
-    },
-    "/ship-products/picking/overview": {
-        "title": "Picking",
-        "subtitle": "Select and pull the right products from inventory to fulfill a sales order."
-    },
-    "/ship-products/shipping/overview": {
-        "title": "Shipping",
-        "subtitle": "Generate shipping labels, assign tracking numbers, and ship packed orders through your carrier."
-    },
-    "/get-started": {
-        "title": "Get started",
-        "subtitle": "Create an account and learn how to build on Augno."
-    },
     "/api-reference/audit-event-management/list-audit-events": {
         "title": "List Audit Events",
         "subtitle": "GET /v1/core/audit-events"
@@ -94,110 +94,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/audit-event-management/get-audit-event": {
         "title": "Get Audit Event",
         "subtitle": "GET /v1/core/audit-events/{id}"
-    },
-    "/api-reference/address-validation/validate-address": {
-        "title": "Validate Address",
-        "subtitle": "POST /v1/core/addresses/validate"
-    },
-    "/api-reference/address-validation/autocomplete-address": {
-        "title": "Autocomplete Address",
-        "subtitle": "GET /v1/core/addresses/autocomplete"
-    },
-    "/api-reference/payment-terms-management/get-payment-term": {
-        "title": "Get Payment Term",
-        "subtitle": "GET /v1/finance/payment-terms/{id}"
-    },
-    "/api-reference/payment-terms-management/list-payment-terms": {
-        "title": "List Payment Terms",
-        "subtitle": "GET /v1/finance/payment-terms"
-    },
-    "/api-reference/payment-terms-management/update-payment-term": {
-        "title": "Update Payment Term",
-        "subtitle": "PATCH /v1/finance/payment-terms/{id}"
-    },
-    "/api-reference/payment-terms-management/create-payment-term": {
-        "title": "Create Payment Term",
-        "subtitle": "POST /v1/finance/payment-terms"
-    },
-    "/api-reference/payment-terms-management/delete-payment-term": {
-        "title": "Delete Payment Term",
-        "subtitle": "DELETE /v1/finance/payment-terms/{id}"
-    },
-    "/api-reference/sandbox-management/list-sandboxes": {
-        "title": "List Sandboxes",
-        "subtitle": "GET /v1/core/sandboxes"
-    },
-    "/api-reference/sandbox-management/delete-sandbox": {
-        "title": "Delete Sandbox",
-        "subtitle": "DELETE /v1/core/sandboxes/{id}"
-    },
-    "/api-reference/sandbox-management/get-sandbox": {
-        "title": "Get Sandbox",
-        "subtitle": "GET /v1/core/sandboxes/{id}"
-    },
-    "/api-reference/sandbox-management/create-sandbox": {
-        "title": "Create Sandbox",
-        "subtitle": "POST /v1/core/sandboxes"
-    },
-    "/api-reference/units-management/list-units": {
-        "title": "List Units",
-        "subtitle": "GET /v1/catalog/units"
-    },
-    "/api-reference/units-management/delete-unit": {
-        "title": "Delete Unit",
-        "subtitle": "DELETE /v1/catalog/units/{id}"
-    },
-    "/api-reference/units-management/update-unit": {
-        "title": "Update Unit",
-        "subtitle": "PATCH /v1/catalog/units/{id}"
-    },
-    "/api-reference/units-management/get-unit": {
-        "title": "Get Unit",
-        "subtitle": "GET /v1/catalog/units/{id}"
-    },
-    "/api-reference/units-management/create-unit": {
-        "title": "Create Unit",
-        "subtitle": "POST /v1/catalog/units"
-    },
-    "/api-reference/account-groups/list-account-groups": {
-        "title": "List Account Groups",
-        "subtitle": "GET /v1/sales/account-groups"
-    },
-    "/api-reference/account-groups/create-account-group": {
-        "title": "Create Account Group",
-        "subtitle": "POST /v1/sales/account-groups"
-    },
-    "/api-reference/account-groups/update-account-group": {
-        "title": "Update Account Group",
-        "subtitle": "PATCH /v1/sales/account-groups/{id}"
-    },
-    "/api-reference/account-groups/retrieve-account-group": {
-        "title": "Retrieve Account Group",
-        "subtitle": "GET /v1/sales/account-groups/{id}"
-    },
-    "/api-reference/account-groups/delete-account-group": {
-        "title": "Delete Account Group",
-        "subtitle": "DELETE /v1/sales/account-groups/{id}"
-    },
-    "/api-reference/product-lines-management/get-product-line": {
-        "title": "Get Product Line",
-        "subtitle": "GET /v1/catalog/product-lines/{id}"
-    },
-    "/api-reference/product-lines-management/delete-product-line": {
-        "title": "Delete Product Line",
-        "subtitle": "DELETE /v1/catalog/product-lines/{id}"
-    },
-    "/api-reference/product-lines-management/list-product-lines": {
-        "title": "List Product Lines",
-        "subtitle": "GET /v1/catalog/product-lines"
-    },
-    "/api-reference/product-lines-management/update-product-line": {
-        "title": "Update Product Line",
-        "subtitle": "PATCH /v1/catalog/product-lines/{id}"
-    },
-    "/api-reference/product-lines-management/create-product-line": {
-        "title": "Create Product Line",
-        "subtitle": "POST /v1/catalog/product-lines"
     },
     "/api-reference/roles/delete-role": {
         "title": "Delete Role",
@@ -219,6 +115,110 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "List Roles",
         "subtitle": "GET /v1/identity/roles"
     },
+    "/api-reference/product-lines-management/get-product-line": {
+        "title": "Get Product Line",
+        "subtitle": "GET /v1/catalog/product-lines/{id}"
+    },
+    "/api-reference/product-lines-management/delete-product-line": {
+        "title": "Delete Product Line",
+        "subtitle": "DELETE /v1/catalog/product-lines/{id}"
+    },
+    "/api-reference/product-lines-management/list-product-lines": {
+        "title": "List Product Lines",
+        "subtitle": "GET /v1/catalog/product-lines"
+    },
+    "/api-reference/product-lines-management/update-product-line": {
+        "title": "Update Product Line",
+        "subtitle": "PATCH /v1/catalog/product-lines/{id}"
+    },
+    "/api-reference/product-lines-management/create-product-line": {
+        "title": "Create Product Line",
+        "subtitle": "POST /v1/catalog/product-lines"
+    },
+    "/api-reference/account-groups/list-account-groups": {
+        "title": "List Account Groups",
+        "subtitle": "GET /v1/sales/account-groups"
+    },
+    "/api-reference/account-groups/create-account-group": {
+        "title": "Create Account Group",
+        "subtitle": "POST /v1/sales/account-groups"
+    },
+    "/api-reference/account-groups/update-account-group": {
+        "title": "Update Account Group",
+        "subtitle": "PATCH /v1/sales/account-groups/{id}"
+    },
+    "/api-reference/account-groups/retrieve-account-group": {
+        "title": "Retrieve Account Group",
+        "subtitle": "GET /v1/sales/account-groups/{id}"
+    },
+    "/api-reference/account-groups/delete-account-group": {
+        "title": "Delete Account Group",
+        "subtitle": "DELETE /v1/sales/account-groups/{id}"
+    },
+    "/api-reference/sandbox-management/list-sandboxes": {
+        "title": "List Sandboxes",
+        "subtitle": "GET /v1/core/sandboxes"
+    },
+    "/api-reference/sandbox-management/delete-sandbox": {
+        "title": "Delete Sandbox",
+        "subtitle": "DELETE /v1/core/sandboxes/{id}"
+    },
+    "/api-reference/sandbox-management/get-sandbox": {
+        "title": "Get Sandbox",
+        "subtitle": "GET /v1/core/sandboxes/{id}"
+    },
+    "/api-reference/sandbox-management/create-sandbox": {
+        "title": "Create Sandbox",
+        "subtitle": "POST /v1/core/sandboxes"
+    },
+    "/api-reference/payment-terms-management/get-payment-term": {
+        "title": "Get Payment Term",
+        "subtitle": "GET /v1/finance/payment-terms/{id}"
+    },
+    "/api-reference/payment-terms-management/list-payment-terms": {
+        "title": "List Payment Terms",
+        "subtitle": "GET /v1/finance/payment-terms"
+    },
+    "/api-reference/payment-terms-management/update-payment-term": {
+        "title": "Update Payment Term",
+        "subtitle": "PATCH /v1/finance/payment-terms/{id}"
+    },
+    "/api-reference/payment-terms-management/create-payment-term": {
+        "title": "Create Payment Term",
+        "subtitle": "POST /v1/finance/payment-terms"
+    },
+    "/api-reference/payment-terms-management/delete-payment-term": {
+        "title": "Delete Payment Term",
+        "subtitle": "DELETE /v1/finance/payment-terms/{id}"
+    },
+    "/api-reference/units-management/list-units": {
+        "title": "List Units",
+        "subtitle": "GET /v1/catalog/units"
+    },
+    "/api-reference/units-management/delete-unit": {
+        "title": "Delete Unit",
+        "subtitle": "DELETE /v1/catalog/units/{id}"
+    },
+    "/api-reference/units-management/update-unit": {
+        "title": "Update Unit",
+        "subtitle": "PATCH /v1/catalog/units/{id}"
+    },
+    "/api-reference/units-management/get-unit": {
+        "title": "Get Unit",
+        "subtitle": "GET /v1/catalog/units/{id}"
+    },
+    "/api-reference/units-management/create-unit": {
+        "title": "Create Unit",
+        "subtitle": "POST /v1/catalog/units"
+    },
+    "/api-reference/address-validation/validate-address": {
+        "title": "Validate Address",
+        "subtitle": "POST /v1/core/addresses/validate"
+    },
+    "/api-reference/address-validation/autocomplete-address": {
+        "title": "Autocomplete Address",
+        "subtitle": "GET /v1/core/addresses/autocomplete"
+    },
     "/api-reference/api-key-management/create-api-key": {
         "title": "Create API Key",
         "subtitle": "POST /v1/auth/api-keys"
@@ -238,6 +238,102 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/api-key-management/get-api-key": {
         "title": "Get API Key",
         "subtitle": "GET /v1/auth/api-keys/{id}"
+    },
+    "/api-reference/priorities/get-priority": {
+        "title": "Get Priority",
+        "subtitle": "GET /v1/sales/priorities/{id}"
+    },
+    "/api-reference/priorities/list-priorities": {
+        "title": "List Priorities",
+        "subtitle": "GET /v1/sales/priorities"
+    },
+    "/api-reference/email-logs/list-email-logs": {
+        "title": "List Email Logs",
+        "subtitle": "GET /v1/core/email-logs"
+    },
+    "/api-reference/email-logs/get-email-log": {
+        "title": "Get Email Log",
+        "subtitle": "GET /v1/core/email-logs/{id}"
+    },
+    "/api-reference/address-management/list-addresses": {
+        "title": "List Addresses",
+        "subtitle": "GET /v1/sales/addresses"
+    },
+    "/api-reference/address-management/create-address": {
+        "title": "Create Address",
+        "subtitle": "POST /v1/sales/addresses"
+    },
+    "/api-reference/address-management/get-address": {
+        "title": "Get Address",
+        "subtitle": "GET /v1/sales/addresses/{id}"
+    },
+    "/api-reference/address-management/delete-address": {
+        "title": "Delete Address",
+        "subtitle": "DELETE /v1/sales/addresses/{id}"
+    },
+    "/api-reference/address-management/update-address": {
+        "title": "Update Address",
+        "subtitle": "PATCH /v1/sales/addresses/{id}"
+    },
+    "/api-reference/properties-management/list-attributes": {
+        "title": "List Attributes",
+        "subtitle": "GET /v1/catalog/properties/{property_id}/attributes"
+    },
+    "/api-reference/properties-management/get-attribute": {
+        "title": "Get Attribute",
+        "subtitle": "GET /v1/catalog/properties/{property_id}/attributes/{id}"
+    },
+    "/api-reference/properties-management/create-attribute": {
+        "title": "Create Attribute",
+        "subtitle": "POST /v1/catalog/properties/{property_id}/attributes"
+    },
+    "/api-reference/properties-management/create-property": {
+        "title": "Create Property",
+        "subtitle": "POST /v1/catalog/properties"
+    },
+    "/api-reference/properties-management/delete-attribute": {
+        "title": "Delete Attribute",
+        "subtitle": "DELETE /v1/catalog/properties/{property_id}/attributes/{id}"
+    },
+    "/api-reference/properties-management/list-properties": {
+        "title": "List Properties",
+        "subtitle": "GET /v1/catalog/properties"
+    },
+    "/api-reference/properties-management/get-property": {
+        "title": "Get Property",
+        "subtitle": "GET /v1/catalog/properties/{id}"
+    },
+    "/api-reference/properties-management/update-attribute": {
+        "title": "Update Attribute",
+        "subtitle": "PATCH /v1/catalog/properties/{property_id}/attributes/{id}"
+    },
+    "/api-reference/properties-management/delete-property": {
+        "title": "Delete Property",
+        "subtitle": "DELETE /v1/catalog/properties/{id}"
+    },
+    "/api-reference/properties-management/update-property": {
+        "title": "Update Property",
+        "subtitle": "PATCH /v1/catalog/properties/{id}"
+    },
+    "/manage-account/account-settings/business-information": {
+        "title": "Business information",
+        "subtitle": "Configure your account name, logo, contact details, and portal slug."
+    },
+    "/manage-account/account-settings/profile": {
+        "title": "Your profile",
+        "subtitle": "Update your display name, email address, and profile photo."
+    },
+    "/manage-account/team/team-members": {
+        "title": "Team members",
+        "subtitle": "Invite, manage, and remove the people who use your Augno account."
+    },
+    "/manage-account/team/roles-and-permissions": {
+        "title": "Roles and permissions",
+        "subtitle": "Control what team members and API keys can access with granular, role-based permissions."
+    },
+    "/api-tour": {
+        "title": "Tour of the Augno API",
+        "subtitle": "See how Augno API objects fit together and learn best practices for combining them effectively."
     },
     "/release-phases": {
         "title": "Product Release Phases",
@@ -262,26 +358,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/account/activate": {
         "title": "Activate your account",
         "subtitle": "Learn how to activate and manage your Augno account."
-    },
-    "/api-tour": {
-        "title": "Tour of the Augno API",
-        "subtitle": "See how Augno API objects fit together and learn best practices for combining them effectively."
-    },
-    "/manage-account/account-settings/business-information": {
-        "title": "Business information",
-        "subtitle": "Configure your account name, logo, contact details, and portal slug."
-    },
-    "/manage-account/account-settings/profile": {
-        "title": "Your profile",
-        "subtitle": "Update your display name, email address, and profile photo."
-    },
-    "/manage-account/team/team-members": {
-        "title": "Team members",
-        "subtitle": "Invite, manage, and remove the people who use your Augno account."
-    },
-    "/manage-account/team/roles-and-permissions": {
-        "title": "Roles and permissions",
-        "subtitle": "Control what team members and API keys can access with granular, role-based permissions."
     },
     "/generate-sales/sales-order/generate-production-run": {
         "title": "Generate a production run",
@@ -383,54 +459,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Invoicing",
         "subtitle": "Invoices are the billing records Augno generates for each shipment, capturing what was shipped, to whom, and for how much."
     },
-    "/dashboards/sales/order-analytics": {
-        "title": "Order analytics",
-        "subtitle": "A comprehensive view of sales performance with profit metrics, cumulative revenue, best sellers, and distribution breakdowns."
-    },
-    "/dashboards/sales/products-on-order": {
-        "title": "Products on order",
-        "subtitle": "View open orders, back-order quantities, and top ordered products at a glance."
-    },
-    "/dashboards/sales/weeks-of-sales": {
-        "title": "Weeks of sales",
-        "subtitle": "See how many weeks of inventory you have on hand based on recent sales velocity."
-    },
-    "/dashboards/sales/order-data": {
-        "title": "Order data",
-        "subtitle": "A raw, line-level data grid of all sales transactions with Excel export."
-    },
-    "/dashboards/sales/quarterly-orders": {
-        "title": "Quarterly orders",
-        "subtitle": "Visualize order quantity trends by quarter across multiple years."
-    },
-    "/dashboards/operations/material-analytics": {
-        "title": "Material analytics",
-        "subtitle": "View material inventory levels, demand, and reorder needs by supplier."
-    },
-    "/dashboards/operations/delivery-analytics": {
-        "title": "Delivery analytics",
-        "subtitle": "Track on-time delivery rates, average delivery time, and time to first shipment with period-over-period comparison."
-    },
-    "/dashboards/operations/manufacturing-analytics": {
-        "title": "Manufacturing analytics",
-        "subtitle": "Monitor production output, cost efficiency, margin, quality, and labor efficiency with month-over-month comparison."
-    },
-    "/dashboards/forecasting/sales-targets": {
-        "title": "Sales targets dashboard",
-        "subtitle": "View and create revenue targets for sales reps by month."
-    },
-    "/dashboards/forecasting/demand-forecast": {
-        "title": "Demand forecast",
-        "subtitle": "Forecast demand, order revenue, and sales revenue with confidence intervals based on historical data."
-    },
-    "/dashboards/financial/accounts-receivable": {
-        "title": "Accounts receivable dashboard",
-        "subtitle": "An aging report showing what customers owe across current, 30, 60, 90, and 120-day buckets."
-    },
-    "/dashboards/financial/payments-data": {
-        "title": "Payments data",
-        "subtitle": "View payment allocations across invoices with support for invoice and balance view modes."
-    },
     "/build-products/bom/consumptions-and-productions": {
         "title": "Consumptions & Productions",
         "subtitle": "The inputs and outputs of each production step - what materials are used up and what parts or products are created."
@@ -510,6 +538,54 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/build-products/inventory/inventory": {
         "title": "Inventory Overview",
         "subtitle": "Real-time visibility into every unit of material, part, and product - what you have, where it is, and what it costs."
+    },
+    "/dashboards/sales/order-analytics": {
+        "title": "Order analytics",
+        "subtitle": "A comprehensive view of sales performance with profit metrics, cumulative revenue, best sellers, and distribution breakdowns."
+    },
+    "/dashboards/sales/products-on-order": {
+        "title": "Products on order",
+        "subtitle": "View open orders, back-order quantities, and top ordered products at a glance."
+    },
+    "/dashboards/sales/weeks-of-sales": {
+        "title": "Weeks of sales",
+        "subtitle": "See how many weeks of inventory you have on hand based on recent sales velocity."
+    },
+    "/dashboards/sales/order-data": {
+        "title": "Order data",
+        "subtitle": "A raw, line-level data grid of all sales transactions with Excel export."
+    },
+    "/dashboards/sales/quarterly-orders": {
+        "title": "Quarterly orders",
+        "subtitle": "Visualize order quantity trends by quarter across multiple years."
+    },
+    "/dashboards/operations/material-analytics": {
+        "title": "Material analytics",
+        "subtitle": "View material inventory levels, demand, and reorder needs by supplier."
+    },
+    "/dashboards/operations/delivery-analytics": {
+        "title": "Delivery analytics",
+        "subtitle": "Track on-time delivery rates, average delivery time, and time to first shipment with period-over-period comparison."
+    },
+    "/dashboards/operations/manufacturing-analytics": {
+        "title": "Manufacturing analytics",
+        "subtitle": "Monitor production output, cost efficiency, margin, quality, and labor efficiency with month-over-month comparison."
+    },
+    "/dashboards/forecasting/sales-targets": {
+        "title": "Sales targets dashboard",
+        "subtitle": "View and create revenue targets for sales reps by month."
+    },
+    "/dashboards/forecasting/demand-forecast": {
+        "title": "Demand forecast",
+        "subtitle": "Forecast demand, order revenue, and sales revenue with confidence intervals based on historical data."
+    },
+    "/dashboards/financial/accounts-receivable": {
+        "title": "Accounts receivable dashboard",
+        "subtitle": "An aging report showing what customers owe across current, 30, 60, 90, and 120-day buckets."
+    },
+    "/dashboards/financial/payments-data": {
+        "title": "Payments data",
+        "subtitle": "View payment allocations across invoices with support for invoice and balance view modes."
     },
     "/api/errors": {
         "title": "API Errors",
@@ -722,82 +798,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/shipping-terms-management/delete-shipping-term": {
         "title": "Delete Shipping Term",
         "subtitle": "DELETE /v1/operations/shipping-terms/{id}"
-    },
-    "/api-reference/properties-management/list-attributes": {
-        "title": "List Attributes",
-        "subtitle": "GET /v1/catalog/properties/{property_id}/attributes"
-    },
-    "/api-reference/properties-management/get-attribute": {
-        "title": "Get Attribute",
-        "subtitle": "GET /v1/catalog/properties/{property_id}/attributes/{id}"
-    },
-    "/api-reference/properties-management/create-attribute": {
-        "title": "Create Attribute",
-        "subtitle": "POST /v1/catalog/properties/{property_id}/attributes"
-    },
-    "/api-reference/properties-management/create-property": {
-        "title": "Create Property",
-        "subtitle": "POST /v1/catalog/properties"
-    },
-    "/api-reference/properties-management/delete-attribute": {
-        "title": "Delete Attribute",
-        "subtitle": "DELETE /v1/catalog/properties/{property_id}/attributes/{id}"
-    },
-    "/api-reference/properties-management/list-properties": {
-        "title": "List Properties",
-        "subtitle": "GET /v1/catalog/properties"
-    },
-    "/api-reference/properties-management/get-property": {
-        "title": "Get Property",
-        "subtitle": "GET /v1/catalog/properties/{id}"
-    },
-    "/api-reference/properties-management/update-attribute": {
-        "title": "Update Attribute",
-        "subtitle": "PATCH /v1/catalog/properties/{property_id}/attributes/{id}"
-    },
-    "/api-reference/properties-management/delete-property": {
-        "title": "Delete Property",
-        "subtitle": "DELETE /v1/catalog/properties/{id}"
-    },
-    "/api-reference/properties-management/update-property": {
-        "title": "Update Property",
-        "subtitle": "PATCH /v1/catalog/properties/{id}"
-    },
-    "/api-reference/address-management/list-addresses": {
-        "title": "List Addresses",
-        "subtitle": "GET /v1/sales/addresses"
-    },
-    "/api-reference/address-management/create-address": {
-        "title": "Create Address",
-        "subtitle": "POST /v1/sales/addresses"
-    },
-    "/api-reference/address-management/get-address": {
-        "title": "Get Address",
-        "subtitle": "GET /v1/sales/addresses/{id}"
-    },
-    "/api-reference/address-management/delete-address": {
-        "title": "Delete Address",
-        "subtitle": "DELETE /v1/sales/addresses/{id}"
-    },
-    "/api-reference/address-management/update-address": {
-        "title": "Update Address",
-        "subtitle": "PATCH /v1/sales/addresses/{id}"
-    },
-    "/api-reference/email-logs/list-email-logs": {
-        "title": "List Email Logs",
-        "subtitle": "GET /v1/core/email-logs"
-    },
-    "/api-reference/email-logs/get-email-log": {
-        "title": "Get Email Log",
-        "subtitle": "GET /v1/core/email-logs/{id}"
-    },
-    "/api-reference/priorities/get-priority": {
-        "title": "Get Priority",
-        "subtitle": "GET /v1/sales/priorities/{id}"
-    },
-    "/api-reference/priorities/list-priorities": {
-        "title": "List Priorities",
-        "subtitle": "GET /v1/sales/priorities"
     }
 };
 
