@@ -428,7 +428,8 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
                     <div className="sticky top-6 h-[calc(100vh-172px)] overflow-hidden pr-1 flex flex-col min-h-0 gap-4">
                         <CodeExamplePanel
                             title={endpoint.summary}
-                            className="flex-none"
+                            className="flex-none max-h-[50%]"
+                            scrollable
                             tabs={[
                                 {
                                     id: 'curl',

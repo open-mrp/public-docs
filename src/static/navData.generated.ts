@@ -548,12 +548,12 @@ export const navData: TabbedNavData = {
                             "children": "Rate limiting"
                         },
                         {
-                            "href": "/api/pagination",
-                            "children": "Pagination"
-                        },
-                        {
                             "href": "/api/versioning",
                             "children": "API versioning"
+                        },
+                        {
+                            "href": "/api/pagination",
+                            "children": "Pagination"
                         },
                         {
                             "href": "/api/request-ids",
