@@ -23306,7 +23306,7 @@ export const apiTags: TagData[] = [
                             "name": "status_code",
                             "type": "string",
                             "description": "The account status code.",
-                            "required": false,
+                            "required": true,
                             "nullable": true,
                             "expandable": false,
                             "enum": [
@@ -23352,7 +23352,7 @@ export const apiTags: TagData[] = [
                             "name": "default_carrier_id",
                             "type": "string",
                             "description": "The default carrier ID.",
-                            "required": false,
+                            "required": true,
                             "nullable": true,
                             "expandable": false
                         },
@@ -23368,7 +23368,7 @@ export const apiTags: TagData[] = [
                             "name": "default_payment_term_id",
                             "type": "string",
                             "description": "The default payment term ID.",
-                            "required": false,
+                            "required": true,
                             "nullable": true,
                             "expandable": false
                         },
@@ -23376,7 +23376,7 @@ export const apiTags: TagData[] = [
                             "name": "default_shipping_term_id",
                             "type": "string",
                             "description": "The default shipping term ID.",
-                            "required": false,
+                            "required": true,
                             "nullable": true,
                             "expandable": false
                         },
@@ -23402,22 +23402,6 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         },
                         {
-                            "name": "bill_to_address_id",
-                            "type": "string",
-                            "description": "The bill-to address ID.",
-                            "required": false,
-                            "nullable": true,
-                            "expandable": false
-                        },
-                        {
-                            "name": "ship_to_address_id",
-                            "type": "string",
-                            "description": "The ship-to address ID.",
-                            "required": false,
-                            "nullable": true,
-                            "expandable": false
-                        },
-                        {
                             "name": "customer_price_group_ids",
                             "type": "array",
                             "description": "The customer price group IDs.",
@@ -23430,7 +23414,7 @@ export const apiTags: TagData[] = [
                             "name": "customer_type_group_id",
                             "type": "string",
                             "description": "The customer type group ID.",
-                            "required": false,
+                            "required": true,
                             "nullable": true,
                             "expandable": false
                         },
@@ -23453,13 +23437,220 @@ export const apiTags: TagData[] = [
                             "required": false,
                             "nullable": true,
                             "expandable": false
+                        },
+                        {
+                            "name": "bill_to_address",
+                            "type": "object",
+                            "description": "The bill-to address for this customer.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": false,
+                            "properties": [
+                                {
+                                    "name": "name",
+                                    "type": "string",
+                                    "description": "The display name of the address.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "phone",
+                                    "type": "string",
+                                    "description": "The phone number associated with this address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "email",
+                                    "type": "string",
+                                    "description": "The email address associated with this address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "is_drop_ship",
+                                    "type": "boolean",
+                                    "description": "Whether this is a drop ship address.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "street_line_1",
+                                    "type": "string",
+                                    "description": "The first line of the street address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "street_line_2",
+                                    "type": "string",
+                                    "description": "The second line of the street address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "locality",
+                                    "type": "string",
+                                    "description": "The city or locality.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "state",
+                                    "type": "string",
+                                    "description": "The state or region.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "postal_code",
+                                    "type": "string",
+                                    "description": "The postal or ZIP code.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "country",
+                                    "type": "string",
+                                    "description": "The ISO country code.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "ship_to_address",
+                            "type": "object",
+                            "description": "The ship-to address for this customer.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": false,
+                            "properties": [
+                                {
+                                    "name": "name",
+                                    "type": "string",
+                                    "description": "The display name of the address.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "phone",
+                                    "type": "string",
+                                    "description": "The phone number associated with this address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "email",
+                                    "type": "string",
+                                    "description": "The email address associated with this address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "is_drop_ship",
+                                    "type": "boolean",
+                                    "description": "Whether this is a drop ship address.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "street_line_1",
+                                    "type": "string",
+                                    "description": "The first line of the street address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "street_line_2",
+                                    "type": "string",
+                                    "description": "The second line of the street address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "locality",
+                                    "type": "string",
+                                    "description": "The city or locality.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "state",
+                                    "type": "string",
+                                    "description": "The state or region.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "postal_code",
+                                    "type": "string",
+                                    "description": "The postal or ZIP code.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "country",
+                                    "type": "string",
+                                    "description": "The ISO country code.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                }
+                            ]
                         }
                     ],
                     "example": {
                         "name": "Acme Inc.",
                         "note": "Key enterprise account",
+                        "status_code": "normal",
                         "default_carrier_id": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
-                        "default_payment_term_id": "pytm_01jm4r6700f8nwq3v5hx2d9ktp"
+                        "default_payment_term_id": "pytm_01jm4r6700f8nwq3v5hx2d9ktp",
+                        "default_shipping_term_id": "shtm_01jm4r6700f8nwq3v5hx2d9ktp",
+                        "customer_type_group_id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
+                        "bill_to_address": {
+                            "name": "Acme Inc.",
+                            "phone": null,
+                            "email": null,
+                            "is_drop_ship": false,
+                            "street_line_1": "123 Main St",
+                            "street_line_2": null,
+                            "locality": "New York",
+                            "state": "NY",
+                            "postal_code": "10001",
+                            "country": "US"
+                        },
+                        "ship_to_address": {
+                            "name": "Acme Inc.",
+                            "phone": null,
+                            "email": null,
+                            "is_drop_ship": false,
+                            "street_line_1": "123 Main St",
+                            "street_line_2": null,
+                            "locality": "New York",
+                            "state": "NY",
+                            "postal_code": "10001",
+                            "country": "US"
+                        }
                     }
                 },
                 "responses": [
