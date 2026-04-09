@@ -21389,6 +21389,61 @@ export const apiTags: TagData[] = [
                     "expandable": false
                 },
                 {
+                    "name": "credit_limit",
+                    "type": "object",
+                    "description": "The customer's credit limit.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": true,
+                    "properties": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "description": "The unique identifier for the quantity.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "object",
+                            "type": "string",
+                            "description": "The resource type identifier.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "quantity"
+                            ]
+                        },
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "description": "The decimal value of the quantity.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "format": "decimal"
+                        },
+                        {
+                            "name": "display_value",
+                            "type": "string",
+                            "description": "A human-readable formatted value including the unit (e.g. \"$1,234.56\" or \"100 kg\").",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "unit",
+                            "type": "object",
+                            "description": "The unit associated with this quantity.",
+                            "required": true,
+                            "nullable": true,
+                            "alwaysNull": true,
+                            "expandable": true
+                        }
+                    ]
+                },
+                {
                     "name": "contact_info",
                     "type": "object",
                     "description": "The customer's contact information.",
@@ -22616,6 +22671,15 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         },
                         {
+                            "name": "credit_limit",
+                            "type": "object",
+                            "description": "The customer's credit limit.",
+                            "required": true,
+                            "nullable": true,
+                            "alwaysNull": true,
+                            "expandable": true
+                        },
+                        {
                             "name": "contact_info",
                             "type": "object",
                             "description": "The customer's contact information.",
@@ -22881,6 +22945,15 @@ export const apiTags: TagData[] = [
                                     "expandable": false
                                 },
                                 {
+                                    "name": "credit_limit",
+                                    "type": "object",
+                                    "description": "The customer's credit limit.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
                                     "name": "contact_info",
                                     "type": "object",
                                     "description": "The customer's contact information.",
@@ -23021,6 +23094,27 @@ export const apiTags: TagData[] = [
                 "is_parent_account": false,
                 "commission_policy": "commission_applied",
                 "note": "Preferred customer since 2020.",
+                "credit_limit": {
+                    "id": "qty_01jm4r6700f8nwq3v5hx2d9ktp",
+                    "object": "quantity",
+                    "value": "1234.56",
+                    "display_value": "$1,234.56",
+                    "unit": {
+                        "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
+                        "object": "unit",
+                        "name": "US Dollar",
+                        "abbreviation": "$",
+                        "type": "currency",
+                        "ratio_numerator": "",
+                        "ratio_denominator": "",
+                        "offset_numerator": "",
+                        "offset_denominator": "",
+                        "is_base_unit": false,
+                        "owner": null,
+                        "created_at": "0001-01-01T00:00:00Z",
+                        "updated_at": "0001-01-01T00:00:00Z"
+                    }
+                },
                 "contact_info": {
                     "object": "customer_contact_info",
                     "email": "orders@acme.com",
@@ -23247,7 +23341,8 @@ export const apiTags: TagData[] = [
                             "defaults",
                             "notification_preferences",
                             "price_groups",
-                            "child_accounts"
+                            "child_accounts",
+                            "credit_limit"
                         ]
                     }
                 ],
@@ -23437,6 +23532,33 @@ export const apiTags: TagData[] = [
                             "required": false,
                             "nullable": true,
                             "expandable": false
+                        },
+                        {
+                            "name": "credit_limit",
+                            "type": "object",
+                            "description": "The credit limit for this customer.",
+                            "required": false,
+                            "nullable": true,
+                            "expandable": false,
+                            "properties": [
+                                {
+                                    "name": "value",
+                                    "type": "string",
+                                    "description": "The decimal value.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "decimal"
+                                },
+                                {
+                                    "name": "unit_id",
+                                    "type": "string",
+                                    "description": "The unit ID for the value.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                }
+                            ]
                         },
                         {
                             "name": "bill_to_address",
@@ -23744,6 +23866,61 @@ export const apiTags: TagData[] = [
                                 "expandable": false
                             },
                             {
+                                "name": "credit_limit",
+                                "type": "object",
+                                "description": "The customer's credit limit.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "The unique identifier for the quantity.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "The resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "quantity"
+                                        ]
+                                    },
+                                    {
+                                        "name": "value",
+                                        "type": "string",
+                                        "description": "The decimal value of the quantity.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "decimal"
+                                    },
+                                    {
+                                        "name": "display_value",
+                                        "type": "string",
+                                        "description": "A human-readable formatted value including the unit (e.g. \"$1,234.56\" or \"100 kg\").",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "unit",
+                                        "type": "object",
+                                        "description": "The unit associated with this quantity.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    }
+                                ]
+                            },
+                            {
                                 "name": "contact_info",
                                 "type": "object",
                                 "description": "The customer's contact information.",
@@ -24971,6 +25148,15 @@ export const apiTags: TagData[] = [
                                         "expandable": false
                                     },
                                     {
+                                        "name": "credit_limit",
+                                        "type": "object",
+                                        "description": "The customer's credit limit.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
                                         "name": "contact_info",
                                         "type": "object",
                                         "description": "The customer's contact information.",
@@ -25236,6 +25422,15 @@ export const apiTags: TagData[] = [
                                                 "expandable": false
                                             },
                                             {
+                                                "name": "credit_limit",
+                                                "type": "object",
+                                                "description": "The customer's credit limit.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
                                                 "name": "contact_info",
                                                 "type": "object",
                                                 "description": "The customer's contact information.",
@@ -25376,6 +25571,27 @@ export const apiTags: TagData[] = [
                             "is_parent_account": false,
                             "commission_policy": "commission_applied",
                             "note": "Preferred customer since 2020.",
+                            "credit_limit": {
+                                "id": "qty_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "object": "quantity",
+                                "value": "1234.56",
+                                "display_value": "$1,234.56",
+                                "unit": {
+                                    "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
+                                    "object": "unit",
+                                    "name": "US Dollar",
+                                    "abbreviation": "$",
+                                    "type": "currency",
+                                    "ratio_numerator": "",
+                                    "ratio_denominator": "",
+                                    "offset_numerator": "",
+                                    "offset_denominator": "",
+                                    "is_base_unit": false,
+                                    "owner": null,
+                                    "created_at": "0001-01-01T00:00:00Z",
+                                    "updated_at": "0001-01-01T00:00:00Z"
+                                }
+                            },
                             "contact_info": {
                                 "object": "customer_contact_info",
                                 "email": "orders@acme.com",
@@ -25610,7 +25826,8 @@ export const apiTags: TagData[] = [
                             "defaults",
                             "notification_preferences",
                             "price_groups",
-                            "child_accounts"
+                            "child_accounts",
+                            "credit_limit"
                         ]
                     }
                 ],
@@ -25816,13 +26033,41 @@ export const apiTags: TagData[] = [
                             "required": false,
                             "nullable": true,
                             "expandable": false
+                        },
+                        {
+                            "name": "credit_limit",
+                            "type": "object",
+                            "description": "The credit limit for this customer. Send null to clear.",
+                            "required": false,
+                            "nullable": true,
+                            "expandable": false,
+                            "properties": [
+                                {
+                                    "name": "value",
+                                    "type": "string",
+                                    "description": "The decimal value.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "decimal"
+                                },
+                                {
+                                    "name": "unit_id",
+                                    "type": "string",
+                                    "description": "The unit ID for the value.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                }
+                            ]
                         }
                     ],
                     "example": {
                         "name": "Acme Corp Updated",
                         "note": "Updated account notes",
                         "freight_policy": "billed_freight",
-                        "default_carrier_id": "cr_01jm4r6700f8nwq3v5hx2d9ktp"
+                        "default_carrier_id": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
+                        "credit_limit": {}
                     }
                 },
                 "responses": [
@@ -25914,6 +26159,61 @@ export const apiTags: TagData[] = [
                                 "required": true,
                                 "nullable": true,
                                 "expandable": false
+                            },
+                            {
+                                "name": "credit_limit",
+                                "type": "object",
+                                "description": "The customer's credit limit.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "The unique identifier for the quantity.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "The resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "quantity"
+                                        ]
+                                    },
+                                    {
+                                        "name": "value",
+                                        "type": "string",
+                                        "description": "The decimal value of the quantity.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "decimal"
+                                    },
+                                    {
+                                        "name": "display_value",
+                                        "type": "string",
+                                        "description": "A human-readable formatted value including the unit (e.g. \"$1,234.56\" or \"100 kg\").",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "unit",
+                                        "type": "object",
+                                        "description": "The unit associated with this quantity.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    }
+                                ]
                             },
                             {
                                 "name": "contact_info",
@@ -27143,6 +27443,15 @@ export const apiTags: TagData[] = [
                                         "expandable": false
                                     },
                                     {
+                                        "name": "credit_limit",
+                                        "type": "object",
+                                        "description": "The customer's credit limit.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
                                         "name": "contact_info",
                                         "type": "object",
                                         "description": "The customer's contact information.",
@@ -27408,6 +27717,15 @@ export const apiTags: TagData[] = [
                                                 "expandable": false
                                             },
                                             {
+                                                "name": "credit_limit",
+                                                "type": "object",
+                                                "description": "The customer's credit limit.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
                                                 "name": "contact_info",
                                                 "type": "object",
                                                 "description": "The customer's contact information.",
@@ -27548,6 +27866,27 @@ export const apiTags: TagData[] = [
                             "is_parent_account": false,
                             "commission_policy": "commission_applied",
                             "note": "Preferred customer since 2020.",
+                            "credit_limit": {
+                                "id": "qty_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "object": "quantity",
+                                "value": "1234.56",
+                                "display_value": "$1,234.56",
+                                "unit": {
+                                    "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
+                                    "object": "unit",
+                                    "name": "US Dollar",
+                                    "abbreviation": "$",
+                                    "type": "currency",
+                                    "ratio_numerator": "",
+                                    "ratio_denominator": "",
+                                    "offset_numerator": "",
+                                    "offset_denominator": "",
+                                    "is_base_unit": false,
+                                    "owner": null,
+                                    "created_at": "0001-01-01T00:00:00Z",
+                                    "updated_at": "0001-01-01T00:00:00Z"
+                                }
+                            },
                             "contact_info": {
                                 "object": "customer_contact_info",
                                 "email": "orders@acme.com",
@@ -27782,7 +28121,8 @@ export const apiTags: TagData[] = [
                             "defaults",
                             "notification_preferences",
                             "price_groups",
-                            "child_accounts"
+                            "child_accounts",
+                            "credit_limit"
                         ]
                     }
                 ],
@@ -27875,6 +28215,61 @@ export const apiTags: TagData[] = [
                                 "required": true,
                                 "nullable": true,
                                 "expandable": false
+                            },
+                            {
+                                "name": "credit_limit",
+                                "type": "object",
+                                "description": "The customer's credit limit.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "The unique identifier for the quantity.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "The resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "quantity"
+                                        ]
+                                    },
+                                    {
+                                        "name": "value",
+                                        "type": "string",
+                                        "description": "The decimal value of the quantity.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "decimal"
+                                    },
+                                    {
+                                        "name": "display_value",
+                                        "type": "string",
+                                        "description": "A human-readable formatted value including the unit (e.g. \"$1,234.56\" or \"100 kg\").",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "unit",
+                                        "type": "object",
+                                        "description": "The unit associated with this quantity.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    }
+                                ]
                             },
                             {
                                 "name": "contact_info",
@@ -29104,6 +29499,15 @@ export const apiTags: TagData[] = [
                                         "expandable": false
                                     },
                                     {
+                                        "name": "credit_limit",
+                                        "type": "object",
+                                        "description": "The customer's credit limit.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
                                         "name": "contact_info",
                                         "type": "object",
                                         "description": "The customer's contact information.",
@@ -29369,6 +29773,15 @@ export const apiTags: TagData[] = [
                                                 "expandable": false
                                             },
                                             {
+                                                "name": "credit_limit",
+                                                "type": "object",
+                                                "description": "The customer's credit limit.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
                                                 "name": "contact_info",
                                                 "type": "object",
                                                 "description": "The customer's contact information.",
@@ -29509,6 +29922,27 @@ export const apiTags: TagData[] = [
                             "is_parent_account": false,
                             "commission_policy": "commission_applied",
                             "note": "Preferred customer since 2020.",
+                            "credit_limit": {
+                                "id": "qty_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "object": "quantity",
+                                "value": "1234.56",
+                                "display_value": "$1,234.56",
+                                "unit": {
+                                    "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
+                                    "object": "unit",
+                                    "name": "US Dollar",
+                                    "abbreviation": "$",
+                                    "type": "currency",
+                                    "ratio_numerator": "",
+                                    "ratio_denominator": "",
+                                    "offset_numerator": "",
+                                    "offset_denominator": "",
+                                    "is_base_unit": false,
+                                    "owner": null,
+                                    "created_at": "0001-01-01T00:00:00Z",
+                                    "updated_at": "0001-01-01T00:00:00Z"
+                                }
+                            },
                             "contact_info": {
                                 "object": "customer_contact_info",
                                 "email": "orders@acme.com",
@@ -29773,7 +30207,8 @@ export const apiTags: TagData[] = [
                             "defaults",
                             "notification_preferences",
                             "price_groups",
-                            "child_accounts"
+                            "child_accounts",
+                            "credit_limit"
                         ]
                     }
                 ],
@@ -29885,6 +30320,61 @@ export const apiTags: TagData[] = [
                                 "required": true,
                                 "nullable": true,
                                 "expandable": false
+                            },
+                            {
+                                "name": "credit_limit",
+                                "type": "object",
+                                "description": "The customer's credit limit.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "The unique identifier for the quantity.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "The resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "quantity"
+                                        ]
+                                    },
+                                    {
+                                        "name": "value",
+                                        "type": "string",
+                                        "description": "The decimal value of the quantity.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "decimal"
+                                    },
+                                    {
+                                        "name": "display_value",
+                                        "type": "string",
+                                        "description": "A human-readable formatted value including the unit (e.g. \"$1,234.56\" or \"100 kg\").",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "unit",
+                                        "type": "object",
+                                        "description": "The unit associated with this quantity.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    }
+                                ]
                             },
                             {
                                 "name": "contact_info",
@@ -31114,6 +31604,15 @@ export const apiTags: TagData[] = [
                                         "expandable": false
                                     },
                                     {
+                                        "name": "credit_limit",
+                                        "type": "object",
+                                        "description": "The customer's credit limit.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
                                         "name": "contact_info",
                                         "type": "object",
                                         "description": "The customer's contact information.",
@@ -31379,6 +31878,15 @@ export const apiTags: TagData[] = [
                                                 "expandable": false
                                             },
                                             {
+                                                "name": "credit_limit",
+                                                "type": "object",
+                                                "description": "The customer's credit limit.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
                                                 "name": "contact_info",
                                                 "type": "object",
                                                 "description": "The customer's contact information.",
@@ -31519,6 +32027,27 @@ export const apiTags: TagData[] = [
                             "is_parent_account": false,
                             "commission_policy": "commission_applied",
                             "note": "Preferred customer since 2020.",
+                            "credit_limit": {
+                                "id": "qty_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "object": "quantity",
+                                "value": "1234.56",
+                                "display_value": "$1,234.56",
+                                "unit": {
+                                    "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
+                                    "object": "unit",
+                                    "name": "US Dollar",
+                                    "abbreviation": "$",
+                                    "type": "currency",
+                                    "ratio_numerator": "",
+                                    "ratio_denominator": "",
+                                    "offset_numerator": "",
+                                    "offset_denominator": "",
+                                    "is_base_unit": false,
+                                    "owner": null,
+                                    "created_at": "0001-01-01T00:00:00Z",
+                                    "updated_at": "0001-01-01T00:00:00Z"
+                                }
+                            },
                             "contact_info": {
                                 "object": "customer_contact_info",
                                 "email": "orders@acme.com",
