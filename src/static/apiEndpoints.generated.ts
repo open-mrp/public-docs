@@ -25802,7 +25802,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The carrier billing type.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "enum": [
                                 "sender",

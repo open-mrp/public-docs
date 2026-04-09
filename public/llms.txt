@@ -12,55 +12,12 @@
 - [Packing](https://docs.augno.com/workflows/ship-products/packing.md): Pack picked items into shipping cases and create shipments ready for the carrier.
 - [Shipping](https://docs.augno.com/workflows/ship-products/shipping.md): Generate shipping labels, assign tracking numbers, and ship packed orders through your carrier.
 
-## Dashboards
-- [Overview](https://docs.augno.com/workflows/dashboards/overview.md): Analytics and reporting dashboards that give you real-time visibility into sales, operations, finances, and forecasting.
-- [Delivery analytics](https://docs.augno.com/workflows/dashboards/operations/delivery-analytics.md): Track on-time delivery rates, average delivery time, and time to first shipment with period-over-period comparison.
-- [Accounts receivable](https://docs.augno.com/workflows/dashboards/financial/accounts-receivable.md): An aging report showing what customers owe across current, 30, 60, 90, and 120-day buckets.
-- [Order analytics](https://docs.augno.com/workflows/dashboards/sales/order-analytics.md): A comprehensive view of sales performance with profit metrics, cumulative revenue, best sellers, and distribution breakdowns.
-- [Demand forecast](https://docs.augno.com/workflows/dashboards/forecasting/demand-forecast.md): Forecast demand, order revenue, and sales revenue with confidence intervals based on historical data.
-- [Manufacturing analytics](https://docs.augno.com/workflows/dashboards/operations/manufacturing-analytics.md): Monitor production output, cost efficiency, margin, quality, and labor efficiency with month-over-month comparison.
-- [Payments data](https://docs.augno.com/workflows/dashboards/financial/payments-data.md): View payment allocations across invoices with support for invoice and balance view modes.
-- [Order data](https://docs.augno.com/workflows/dashboards/sales/order-data.md): A raw, line-level data grid of all sales transactions with Excel export.
-- [Sales targets](https://docs.augno.com/workflows/dashboards/forecasting/sales-targets.md): View and create revenue targets for sales reps by month.
-- [Material analytics](https://docs.augno.com/workflows/dashboards/operations/material-analytics.md): View material inventory levels, demand, and reorder needs by supplier.
-- [Quarterly orders](https://docs.augno.com/workflows/dashboards/sales/quarterly-orders.md): Visualize order quantity trends by quarter across multiple years.
-- [Products on order](https://docs.augno.com/workflows/dashboards/sales/products-on-order.md): View open orders, back-order quantities, and top ordered products at a glance.
-- [Weeks of sales](https://docs.augno.com/workflows/dashboards/sales/weeks-of-sales.md): See how many weeks of inventory you have on hand based on recent sales velocity.
-
-## Build products
-- [Overview](https://docs.augno.com/workflows/build-products/overview.md): Purchasing, manufacturing, production tracking, and inventory management.
-- [Suppliers](https://docs.augno.com/workflows/build-products/purchasing/suppliers.md): Vendors you purchase materials from, defining the source for your raw material procurement.
-- [Production Runs](https://docs.augno.com/workflows/build-products/production/production-runs.md): Coordinated manufacturing executions that group related batches and track progress from start to completion.
-- [Scanning Stations](https://docs.augno.com/workflows/build-products/scanning/scanning-stations.md): Configured points in your production workflow where batch operations happen - each linked to a specific operation type and production step.
-- [Production Steps](https://docs.augno.com/workflows/build-products/bom/production-steps.md): The core building block of manufacturing in Augno - defining inputs, outputs, and costs for each stage of production.
-- [Inventory Overview](https://docs.augno.com/workflows/build-products/inventory/inventory.md): Real-time visibility into every unit of material, part, and product - what you have, where it is, and what it costs.
-- [Overview](https://docs.augno.com/workflows/build-products/items/overview.md): Materials, parts, and products - the core objects you buy, make, and sell in Augno.
-- [Purchase Orders](https://docs.augno.com/workflows/build-products/purchasing/purchase-orders.md): Transaction records for buying materials from suppliers, tracking orders through delivery and fulfillment.
-- [Batches](https://docs.augno.com/workflows/build-products/production/batches.md): Physical units of product tracked through production - recording quantities, quality grades, and location as they move through manufacturing.
-- [Labels](https://docs.augno.com/workflows/build-products/scanning/labels.md): Batch identification labels printed at scanning stations - two formats and four sizes for production floor tracking.
-- [Consumptions & Productions](https://docs.augno.com/workflows/build-products/bom/consumptions-and-productions.md): The inputs and outputs of each production step - what materials are used up and what parts or products are created.
-- [Storage Locations & Lots](https://docs.augno.com/workflows/build-products/inventory/storage-and-lots.md): Where inventory is physically stored and how batch-level traceability is maintained.
-- [Materials](https://docs.augno.com/workflows/build-products/items/materials.md): Raw materials and supplies you purchase from vendors for use in production.
-- [Deliveries & Receiving](https://docs.augno.com/workflows/build-products/purchasing/deliveries-and-receiving.md): Track the physical arrival of materials from suppliers and convert purchase order quantities into usable inventory.
-- [Batch Operations](https://docs.augno.com/workflows/build-products/production/batch-operations.md): Initialize, move, split, and merge - the core actions that advance batches through the production flow.
-- [Production Flows](https://docs.augno.com/workflows/build-products/bom/production-flows.md): The connected sequence of production steps that transforms raw materials into finished products.
-- [Inventory Change Logs](https://docs.augno.com/workflows/build-products/inventory/change-logs.md): A complete audit trail of every inventory movement - who changed what, when, by how much, and why.
-- [Parts](https://docs.augno.com/workflows/build-products/items/parts.md): Intermediate items you manufacture or assemble from materials during production.
-- [Costing (COGS)](https://docs.augno.com/workflows/build-products/bom/costing.md): Real-time cost of goods sold calculation from production step definitions - material, labor, and overhead costs.
-- [Reconciliation & Bulk Updates](https://docs.augno.com/workflows/build-products/inventory/reconciliation.md): Correct inventory counts when the system and physical reality diverge, with full audit trail logging.
-- [Products](https://docs.augno.com/workflows/build-products/items/products.md): Finished goods you price, stock, and sell to customers.
-
-## Manage your account
-- [Overview](https://docs.augno.com/workflows/manage-account/overview.md): Configure your account settings, team, integrations, security, and billing.
-- [Your profile](https://docs.augno.com/workflows/manage-account/account-settings/profile.md): Update your display name, email address, and profile photo.
-- [Team members](https://docs.augno.com/workflows/manage-account/team/team-members.md): Invite, manage, and remove the people who use your Augno account.
-- [Security](https://docs.augno.com/workflows/manage-account/security.md): Manage your password and keep your account secure.
-- [Business information](https://docs.augno.com/workflows/manage-account/account-settings/business-information.md): Configure your account name, logo, contact details, and portal slug.
-- [Roles and permissions](https://docs.augno.com/workflows/manage-account/team/roles-and-permissions.md): Control what team members and API keys can access with granular, role-based permissions.
-- [Plans & billing](https://docs.augno.com/workflows/manage-account/plans-and-billing.md): View your subscription, switch plans, and manage billing through Stripe.
-- [Sandboxes](https://docs.augno.com/workflows/manage-account/sandboxes.md): Create isolated testing environments to develop and experiment without affecting production data.
-- [API keys](https://docs.augno.com/workflows/manage-account/api-keys.md): Create, rotate, and revoke API keys for programmatic access to Augno.
-- [Integrations](https://docs.augno.com/workflows/manage-account/integrations.md): Connect third-party services like Stripe and Shippo to your Augno account.
+## Collect payments
+- [Overview](https://docs.augno.com/workflows/collect-payments/overview.md): Learn about collecting payments in Augno.
+- [Overview](https://docs.augno.com/workflows/collect-payments/collecting/collecting.md): Record the money received from customers and apply it to open invoices through transactions and settlements.
+- [Invoicing](https://docs.augno.com/workflows/collect-payments/invoicing/invoicing.md): Invoices are the billing records Augno generates for each shipment, capturing what was shipped, to whom, and for how much.
+- [Settlements](https://docs.augno.com/workflows/collect-payments/collecting/settlements.md): Formally record which transactions pay which invoices by creating settlements with allocations.
+- [Accounts receivable](https://docs.augno.com/workflows/collect-payments/accounts-receivable/accounts-receivable.md): Track what customers owe, how long balances have been outstanding, and take action to collect.
 
 ## Generate sales
 - [Overview](https://docs.augno.com/workflows/generate-sales/overview.md): Customers, pricing, orders, and the sales team - everything that drives revenue in Augno.
@@ -87,21 +44,60 @@
 - [Default carriers & options](https://docs.augno.com/workflows/generate-sales/customer-setup/default-carriers.md): Define the shipping carrier and service level automatically applied to a customer's orders.
 - [Addresses](https://docs.augno.com/workflows/generate-sales/customer-setup/addresses.md): Billing and shipping locations for customers, used on orders, invoices, and shipments.
 
-## Collect payments
-- [Overview](https://docs.augno.com/workflows/collect-payments/overview.md): Learn about collecting payments in Augno.
-- [Overview](https://docs.augno.com/workflows/collect-payments/collecting/collecting.md): Record the money received from customers and apply it to open invoices through transactions and settlements.
-- [Invoicing](https://docs.augno.com/workflows/collect-payments/invoicing/invoicing.md): Invoices are the billing records Augno generates for each shipment, capturing what was shipped, to whom, and for how much.
-- [Settlements](https://docs.augno.com/workflows/collect-payments/collecting/settlements.md): Formally record which transactions pay which invoices by creating settlements with allocations.
-- [Accounts receivable](https://docs.augno.com/workflows/collect-payments/accounts-receivable/accounts-receivable.md): Track what customers owe, how long balances have been outstanding, and take action to collect.
+## Manage your account
+- [Overview](https://docs.augno.com/workflows/manage-account/overview.md): Configure your account settings, team, integrations, security, and billing.
+- [Your profile](https://docs.augno.com/workflows/manage-account/account-settings/profile.md): Update your display name, email address, and profile photo.
+- [Team members](https://docs.augno.com/workflows/manage-account/team/team-members.md): Invite, manage, and remove the people who use your Augno account.
+- [Security](https://docs.augno.com/workflows/manage-account/security.md): Manage your password and keep your account secure.
+- [Business information](https://docs.augno.com/workflows/manage-account/account-settings/business-information.md): Configure your account name, logo, contact details, and portal slug.
+- [Roles and permissions](https://docs.augno.com/workflows/manage-account/team/roles-and-permissions.md): Control what team members and API keys can access with granular, role-based permissions.
+- [Plans & billing](https://docs.augno.com/workflows/manage-account/plans-and-billing.md): View your subscription, switch plans, and manage billing through Stripe.
+- [Sandboxes](https://docs.augno.com/workflows/manage-account/sandboxes.md): Create isolated testing environments to develop and experiment without affecting production data.
+- [API keys](https://docs.augno.com/workflows/manage-account/api-keys.md): Create, rotate, and revoke API keys for programmatic access to Augno.
+- [Integrations](https://docs.augno.com/workflows/manage-account/integrations.md): Connect third-party services like Stripe and Shippo to your Augno account.
 
-## Get Started
-- [Overview](https://docs.augno.com/get-started/get-started/overview.md): Create an account and learn how to build on Augno.
-- [API tour](https://docs.augno.com/get-started/get-started/about-the-apis/api-tour.md): See how Augno API objects fit together and learn best practices for combining them effectively.
+## Dashboards
+- [Overview](https://docs.augno.com/workflows/dashboards/overview.md): Analytics and reporting dashboards that give you real-time visibility into sales, operations, finances, and forecasting.
+- [Delivery analytics](https://docs.augno.com/workflows/dashboards/operations/delivery-analytics.md): Track on-time delivery rates, average delivery time, and time to first shipment with period-over-period comparison.
+- [Accounts receivable](https://docs.augno.com/workflows/dashboards/financial/accounts-receivable.md): An aging report showing what customers owe across current, 30, 60, 90, and 120-day buckets.
+- [Order analytics](https://docs.augno.com/workflows/dashboards/sales/order-analytics.md): A comprehensive view of sales performance with profit metrics, cumulative revenue, best sellers, and distribution breakdowns.
+- [Demand forecast](https://docs.augno.com/workflows/dashboards/forecasting/demand-forecast.md): Forecast demand, order revenue, and sales revenue with confidence intervals based on historical data.
+- [Manufacturing analytics](https://docs.augno.com/workflows/dashboards/operations/manufacturing-analytics.md): Monitor production output, cost efficiency, margin, quality, and labor efficiency with month-over-month comparison.
+- [Payments data](https://docs.augno.com/workflows/dashboards/financial/payments-data.md): View payment allocations across invoices with support for invoice and balance view modes.
+- [Order data](https://docs.augno.com/workflows/dashboards/sales/order-data.md): A raw, line-level data grid of all sales transactions with Excel export.
+- [Sales targets](https://docs.augno.com/workflows/dashboards/forecasting/sales-targets.md): View and create revenue targets for sales reps by month.
+- [Material analytics](https://docs.augno.com/workflows/dashboards/operations/material-analytics.md): View material inventory levels, demand, and reorder needs by supplier.
+- [Quarterly orders](https://docs.augno.com/workflows/dashboards/sales/quarterly-orders.md): Visualize order quantity trends by quarter across multiple years.
+- [Products on order](https://docs.augno.com/workflows/dashboards/sales/products-on-order.md): View open orders, back-order quantities, and top ordered products at a glance.
+- [Weeks of sales](https://docs.augno.com/workflows/dashboards/sales/weeks-of-sales.md): See how many weeks of inventory you have on hand based on recent sales velocity.
+
+## Build products
+- [Overview](https://docs.augno.com/workflows/build-products/overview.md): Purchasing, manufacturing, production tracking, and inventory management.
+- [Inventory Overview](https://docs.augno.com/workflows/build-products/inventory/inventory.md): Real-time visibility into every unit of material, part, and product - what you have, where it is, and what it costs.
+- [Overview](https://docs.augno.com/workflows/build-products/items/overview.md): Materials, parts, and products - the core objects you buy, make, and sell in Augno.
+- [Production Steps](https://docs.augno.com/workflows/build-products/bom/production-steps.md): The core building block of manufacturing in Augno - defining inputs, outputs, and costs for each stage of production.
+- [Suppliers](https://docs.augno.com/workflows/build-products/purchasing/suppliers.md): Vendors you purchase materials from, defining the source for your raw material procurement.
+- [Production Runs](https://docs.augno.com/workflows/build-products/production/production-runs.md): Coordinated manufacturing executions that group related batches and track progress from start to completion.
+- [Scanning Stations](https://docs.augno.com/workflows/build-products/scanning/scanning-stations.md): Configured points in your production workflow where batch operations happen - each linked to a specific operation type and production step.
+- [Storage Locations & Lots](https://docs.augno.com/workflows/build-products/inventory/storage-and-lots.md): Where inventory is physically stored and how batch-level traceability is maintained.
+- [Materials](https://docs.augno.com/workflows/build-products/items/materials.md): Raw materials and supplies you purchase from vendors for use in production.
+- [Consumptions & Productions](https://docs.augno.com/workflows/build-products/bom/consumptions-and-productions.md): The inputs and outputs of each production step - what materials are used up and what parts or products are created.
+- [Purchase Orders](https://docs.augno.com/workflows/build-products/purchasing/purchase-orders.md): Transaction records for buying materials from suppliers, tracking orders through delivery and fulfillment.
+- [Batches](https://docs.augno.com/workflows/build-products/production/batches.md): Physical units of product tracked through production - recording quantities, quality grades, and location as they move through manufacturing.
+- [Labels](https://docs.augno.com/workflows/build-products/scanning/labels.md): Batch identification labels printed at scanning stations - two formats and four sizes for production floor tracking.
+- [Inventory Change Logs](https://docs.augno.com/workflows/build-products/inventory/change-logs.md): A complete audit trail of every inventory movement - who changed what, when, by how much, and why.
+- [Parts](https://docs.augno.com/workflows/build-products/items/parts.md): Intermediate items you manufacture or assemble from materials during production.
+- [Production Flows](https://docs.augno.com/workflows/build-products/bom/production-flows.md): The connected sequence of production steps that transforms raw materials into finished products.
+- [Deliveries & Receiving](https://docs.augno.com/workflows/build-products/purchasing/deliveries-and-receiving.md): Track the physical arrival of materials from suppliers and convert purchase order quantities into usable inventory.
+- [Batch Operations](https://docs.augno.com/workflows/build-products/production/batch-operations.md): Initialize, move, split, and merge - the core actions that advance batches through the production flow.
+- [Reconciliation & Bulk Updates](https://docs.augno.com/workflows/build-products/inventory/reconciliation.md): Correct inventory counts when the system and physical reality diverge, with full audit trail logging.
+- [Products](https://docs.augno.com/workflows/build-products/items/products.md): Finished goods you price, stock, and sell to customers.
+- [Costing (COGS)](https://docs.augno.com/workflows/build-products/bom/costing.md): Real-time cost of goods sold calculation from production step definitions - material, labor, and overhead costs.
 
 ## API
 - [Overview](https://docs.augno.com/developer-resources/api/overview.md): Learn more about Augno's APIs.
-- [API Keys](https://docs.augno.com/developer-resources/api/authentication/api-keys.md): Learn how to authenticate requests with API keys.
 - [Request logs](https://docs.augno.com/developer-resources/api/monitoring/request-logs.md): Monitor and debug your API activity with request logs.
+- [API Keys](https://docs.augno.com/developer-resources/api/authentication/api-keys.md): Learn how to authenticate requests with API keys.
 - [Managing API Keys](https://docs.augno.com/developer-resources/api/authentication/managing-api-keys.md): Learn the best practices for managing secret API keys.
 - [API URIs](https://docs.augno.com/developer-resources/api/make-requests/api-uris.md): Learn the general format of Augno API URIs.
 - [Idempotency](https://docs.augno.com/developer-resources/api/make-requests/idempotency.md): Safely retry requests without duplicating work.
@@ -109,15 +105,19 @@
 - [Pagination](https://docs.augno.com/developer-resources/api/make-requests/pagination.md): Iterating through paginated list results.
 - [API versioning](https://docs.augno.com/developer-resources/api/make-requests/versioning.md): Understand how Augno versions its API and manage version upgrades.
 - [Request IDs](https://docs.augno.com/developer-resources/api/make-requests/request-ids.md): Use request IDs to debug issues and get support.
-- [API errors](https://docs.augno.com/developer-resources/api/handling-errors/errors.md): Standard error envelope format for consistent error handling.
 - [Include Parameter](https://docs.augno.com/developer-resources/api/make-requests/include.md): Expand sub-objects in API responses to get the data you need.
+- [API errors](https://docs.augno.com/developer-resources/api/handling-errors/errors.md): Standard error envelope format for consistent error handling.
+
+## Get Started
+- [Overview](https://docs.augno.com/get-started/get-started/overview.md): Create an account and learn how to build on Augno.
+- [API tour](https://docs.augno.com/get-started/get-started/about-the-apis/api-tour.md): See how Augno API objects fit together and learn best practices for combining them effectively.
 
 ## Start Building
-- [Overview](https://docs.augno.com/get-started/start-building/account/overview.md): Learn how to activate and manage your Augno account, from initial setup to advanced configurations.
 - [Send your first API request](https://docs.augno.com/get-started/start-building/start-developing/api-request.md): Get started with the Augno API.
+- [Overview](https://docs.augno.com/get-started/start-building/account/overview.md): Learn how to activate and manage your Augno account, from initial setup to advanced configurations.
 - [Activate your account](https://docs.augno.com/get-started/start-building/account/activate.md): Learn how to activate and manage your Augno account.
-- [Checklist](https://docs.augno.com/get-started/start-building/account/checklist.md): Complete this checklist before putting your Augno account into production.
 - [Go live checklist](https://docs.augno.com/get-started/start-building/start-developing/go-live.md): Use this checklist to ensure a smooth transition putting your integration into production.
+- [Checklist](https://docs.augno.com/get-started/start-building/account/checklist.md): Complete this checklist before putting your Augno account into production.
 - [Release phases](https://docs.augno.com/get-started/start-building/start-developing/release-phases.md): Learn how Augno describes product release phases and what to expect from each.
 
 ## API Reference
