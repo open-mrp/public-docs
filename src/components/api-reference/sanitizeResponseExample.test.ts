@@ -57,6 +57,42 @@ describe('sanitizeResponseExample', () => {
         expect(out.role).toEqual({ id: 'role_1' });
     });
 
+    test('keeps nested expandable field when include enum lists parent path', () => {
+        const fields: SchemaField[] = [
+            {
+                name: 'role',
+                type: 'object',
+                description: '',
+                required: false,
+                nullable: true,
+                expandable: true,
+                properties: [
+                    {
+                        name: 'permissions',
+                        type: 'array',
+                        description: '',
+                        required: false,
+                        nullable: true,
+                        expandable: true,
+                        itemType: 'string',
+                    },
+                ],
+            },
+        ];
+        const example = {
+            role: {
+                permissions: ['inventory:read'],
+            },
+        };
+
+        const out = sanitizeResponseExample(example, fields, undefined, ['role']) as Record<
+            string,
+            unknown
+        >;
+        const role = out.role as Record<string, unknown>;
+        expect(role.permissions).toEqual(['inventory:read']);
+    });
+
     test('nulls alwaysNull nested field while preserving parent object', () => {
         const fields: SchemaField[] = [
             {

@@ -17,8 +17,8 @@
 - [API versioning](https://docs.augno.com/developer-resources/api/make-requests/versioning.md): Understand how Augno versions its API and manage version upgrades.
 - [Pagination](https://docs.augno.com/developer-resources/api/make-requests/pagination.md): Iterating through paginated list results.
 - [Request IDs](https://docs.augno.com/developer-resources/api/make-requests/request-ids.md): Use request IDs to debug issues and get support.
-- [API errors](https://docs.augno.com/developer-resources/api/handling-errors/errors.md): Standard error envelope format for consistent error handling.
 - [Include Parameter](https://docs.augno.com/developer-resources/api/make-requests/include.md): Expand sub-objects in API responses to get the data you need.
+- [API errors](https://docs.augno.com/developer-resources/api/handling-errors/errors.md): Standard error envelope format for consistent error handling.
 
 ## Get Started
 - [Overview](https://docs.augno.com/get-started/get-started/overview.md): Create an account and learn how to build on Augno.
@@ -26,11 +26,11 @@
 
 ## Manage your account
 - [Overview](https://docs.augno.com/workflows/manage-account/overview.md): Configure your account settings, team, integrations, security, and billing.
-- [Your profile](https://docs.augno.com/workflows/manage-account/account-settings/profile.md): Update your display name, email address, and profile photo.
 - [Team members](https://docs.augno.com/workflows/manage-account/team/team-members.md): Invite, manage, and remove the people who use your Augno account.
+- [Your profile](https://docs.augno.com/workflows/manage-account/account-settings/profile.md): Update your display name, email address, and profile photo.
 - [Security](https://docs.augno.com/workflows/manage-account/security.md): Manage your password and keep your account secure.
-- [Business information](https://docs.augno.com/workflows/manage-account/account-settings/business-information.md): Configure your account name, logo, contact details, and portal slug.
 - [Roles and permissions](https://docs.augno.com/workflows/manage-account/team/roles-and-permissions.md): Control what team members and API keys can access with granular, role-based permissions.
+- [Business information](https://docs.augno.com/workflows/manage-account/account-settings/business-information.md): Configure your account name, logo, contact details, and portal slug.
 - [Plans & billing](https://docs.augno.com/workflows/manage-account/plans-and-billing.md): View your subscription, switch plans, and manage billing through Stripe.
 - [Sandboxes](https://docs.augno.com/workflows/manage-account/sandboxes.md): Create isolated testing environments to develop and experiment without affecting production data.
 - [API keys](https://docs.augno.com/workflows/manage-account/api-keys.md): Create, rotate, and revoke API keys for programmatic access to Augno.
@@ -38,13 +38,13 @@
 
 ## Dashboards
 - [Overview](https://docs.augno.com/workflows/dashboards/overview.md): Analytics and reporting dashboards that give you real-time visibility into sales, operations, finances, and forecasting.
-- [Demand forecast](https://docs.augno.com/workflows/dashboards/forecasting/demand-forecast.md): Forecast demand, order revenue, and sales revenue with confidence intervals based on historical data.
 - [Delivery analytics](https://docs.augno.com/workflows/dashboards/operations/delivery-analytics.md): Track on-time delivery rates, average delivery time, and time to first shipment with period-over-period comparison.
 - [Accounts receivable](https://docs.augno.com/workflows/dashboards/financial/accounts-receivable.md): An aging report showing what customers owe across current, 30, 60, 90, and 120-day buckets.
+- [Demand forecast](https://docs.augno.com/workflows/dashboards/forecasting/demand-forecast.md): Forecast demand, order revenue, and sales revenue with confidence intervals based on historical data.
 - [Order analytics](https://docs.augno.com/workflows/dashboards/sales/order-analytics.md): A comprehensive view of sales performance with profit metrics, cumulative revenue, best sellers, and distribution breakdowns.
-- [Sales targets](https://docs.augno.com/workflows/dashboards/forecasting/sales-targets.md): View and create revenue targets for sales reps by month.
 - [Manufacturing analytics](https://docs.augno.com/workflows/dashboards/operations/manufacturing-analytics.md): Monitor production output, cost efficiency, margin, quality, and labor efficiency with month-over-month comparison.
 - [Payments data](https://docs.augno.com/workflows/dashboards/financial/payments-data.md): View payment allocations across invoices with support for invoice and balance view modes.
+- [Sales targets](https://docs.augno.com/workflows/dashboards/forecasting/sales-targets.md): View and create revenue targets for sales reps by month.
 - [Order data](https://docs.augno.com/workflows/dashboards/sales/order-data.md): A raw, line-level data grid of all sales transactions with Excel export.
 - [Material analytics](https://docs.augno.com/workflows/dashboards/operations/material-analytics.md): View material inventory levels, demand, and reorder needs by supplier.
 - [Quarterly orders](https://docs.augno.com/workflows/dashboards/sales/quarterly-orders.md): Visualize order quantity trends by quarter across multiple years.
@@ -54,34 +54,9 @@
 ## Collect payments
 - [Overview](https://docs.augno.com/workflows/collect-payments/overview.md): Learn about collecting payments in Augno.
 - [Overview](https://docs.augno.com/workflows/collect-payments/collecting/collecting.md): Record the money received from customers and apply it to open invoices through transactions and settlements.
-- [Settlements](https://docs.augno.com/workflows/collect-payments/collecting/settlements.md): Formally record which transactions pay which invoices by creating settlements with allocations.
 - [Invoicing](https://docs.augno.com/workflows/collect-payments/invoicing/invoicing.md): Invoices are the billing records Augno generates for each shipment, capturing what was shipped, to whom, and for how much.
+- [Settlements](https://docs.augno.com/workflows/collect-payments/collecting/settlements.md): Formally record which transactions pay which invoices by creating settlements with allocations.
 - [Accounts receivable](https://docs.augno.com/workflows/collect-payments/accounts-receivable/accounts-receivable.md): Track what customers owe, how long balances have been outstanding, and take action to collect.
-
-## Generate sales
-- [Overview](https://docs.augno.com/workflows/generate-sales/overview.md): Customers, pricing, orders, and the sales team - everything that drives revenue in Augno.
-- [Overview](https://docs.augno.com/workflows/generate-sales/customer/customer.md): The central record connecting sales orders, invoices, shipments, and payments.
-- [Customer prices](https://docs.augno.com/workflows/generate-sales/customer-pricing/customer-prices.md): Define product-line-specific pricing for individual customers, overriding base product prices.
-- [Overview](https://docs.augno.com/workflows/generate-sales/sales-order/sales-order.md): The central order for selling products to a customer, driving fulfillment from creation through payment.
-- [Territories](https://docs.augno.com/workflows/generate-sales/sales-team/territories.md): Map geographic regions to sales representatives, optionally scoped by product line.
-- [Customer groups](https://docs.augno.com/workflows/generate-sales/customer-setup/customer-groups.md): Classify customers by segment and control which pricing and discounts they receive.
-- [Create a customer](https://docs.augno.com/workflows/generate-sales/customer/create.md): Learn how to create a customer in Augno.
-- [Volume discounts](https://docs.augno.com/workflows/generate-sales/customer-pricing/volume-discounts.md): Automatically reduce pricing based on order quantity with tiered percentage discounts.
-- [Create a sales order](https://docs.augno.com/workflows/generate-sales/sales-order/create.md): Learn how to create a sales order in Augno.
-- [Sales targets](https://docs.augno.com/workflows/generate-sales/sales-team/sales-targets.md): Define revenue goals for sales reps over a date range, optionally by product line.
-- [Shipping terms](https://docs.augno.com/workflows/generate-sales/customer-setup/shipping-terms.md): Define who pays for freight, how charges are calculated, and when freight is waived.
-- [Contacts](https://docs.augno.com/workflows/generate-sales/customer/contacts.md): Manage the people associated with a customer and control who receives order confirmations and invoices.
-- [Discount codes](https://docs.augno.com/workflows/generate-sales/customer-pricing/discount-codes.md): Promotional codes applied at the order level to reduce the total by a percentage or fixed amount.
-- [Generate a production run](https://docs.augno.com/workflows/generate-sales/sales-order/generate-production-run.md): Generate a production run from a sales order in Augno.
-- [Payment terms](https://docs.augno.com/workflows/generate-sales/customer-setup/payment-terms.md): Define when and how a customer is expected to pay for an order.
-- [Issue a sales order](https://docs.augno.com/workflows/generate-sales/sales-order/issue.md): Learn how to issue a sales order in Augno.
-- [Priorities](https://docs.augno.com/workflows/generate-sales/customer-setup/priorities.md): Control order-processing precedence to determine which work gets attention first.
-- [Account statuses](https://docs.augno.com/workflows/generate-sales/customer-setup/account-statuses.md): Control whether a customer can place orders and receive shipments.
-- [Commission & freight exemption](https://docs.augno.com/workflows/generate-sales/customer-setup/exemptions.md): Exclude customers or customer groups from commission calculations and freight charges.
-- [Customer portal](https://docs.augno.com/workflows/generate-sales/customer-portal.md): A branded, self-service portal where your customers register, place orders, submit payments, and track inventory.
-- [Default sales reps](https://docs.augno.com/workflows/generate-sales/customer-setup/default-sales-reps.md): The team member automatically assigned to new orders for a customer.
-- [Default carriers & options](https://docs.augno.com/workflows/generate-sales/customer-setup/default-carriers.md): Define the shipping carrier and service level automatically applied to a customer's orders.
-- [Addresses](https://docs.augno.com/workflows/generate-sales/customer-setup/addresses.md): Billing and shipping locations for customers, used on orders, invoices, and shipments.
 
 ## Ship products
 - [Overview](https://docs.augno.com/workflows/ship-products/overview.md): Learn about shipping products in Augno.
@@ -92,25 +67,50 @@
 ## Build products
 - [Overview](https://docs.augno.com/workflows/build-products/overview.md): Purchasing, manufacturing, production tracking, and inventory management.
 - [Overview](https://docs.augno.com/workflows/build-products/items/overview.md): Materials, parts, and products - the core objects you buy, make, and sell in Augno.
+- [Suppliers](https://docs.augno.com/workflows/build-products/purchasing/suppliers.md): Vendors you purchase materials from, defining the source for your raw material procurement.
+- [Scanning Stations](https://docs.augno.com/workflows/build-products/scanning/scanning-stations.md): Configured points in your production workflow where batch operations happen - each linked to a specific operation type and production step.
 - [Production Runs](https://docs.augno.com/workflows/build-products/production/production-runs.md): Coordinated manufacturing executions that group related batches and track progress from start to completion.
 - [Inventory Overview](https://docs.augno.com/workflows/build-products/inventory/inventory.md): Real-time visibility into every unit of material, part, and product - what you have, where it is, and what it costs.
-- [Scanning Stations](https://docs.augno.com/workflows/build-products/scanning/scanning-stations.md): Configured points in your production workflow where batch operations happen - each linked to a specific operation type and production step.
-- [Suppliers](https://docs.augno.com/workflows/build-products/purchasing/suppliers.md): Vendors you purchase materials from, defining the source for your raw material procurement.
 - [Production Steps](https://docs.augno.com/workflows/build-products/bom/production-steps.md): The core building block of manufacturing in Augno - defining inputs, outputs, and costs for each stage of production.
 - [Materials](https://docs.augno.com/workflows/build-products/items/materials.md): Raw materials and supplies you purchase from vendors for use in production.
+- [Purchase Orders](https://docs.augno.com/workflows/build-products/purchasing/purchase-orders.md): Transaction records for buying materials from suppliers, tracking orders through delivery and fulfillment.
+- [Labels](https://docs.augno.com/workflows/build-products/scanning/labels.md): Batch identification labels printed at scanning stations - two formats and four sizes for production floor tracking.
 - [Batches](https://docs.augno.com/workflows/build-products/production/batches.md): Physical units of product tracked through production - recording quantities, quality grades, and location as they move through manufacturing.
 - [Storage Locations & Lots](https://docs.augno.com/workflows/build-products/inventory/storage-and-lots.md): Where inventory is physically stored and how batch-level traceability is maintained.
-- [Labels](https://docs.augno.com/workflows/build-products/scanning/labels.md): Batch identification labels printed at scanning stations - two formats and four sizes for production floor tracking.
-- [Purchase Orders](https://docs.augno.com/workflows/build-products/purchasing/purchase-orders.md): Transaction records for buying materials from suppliers, tracking orders through delivery and fulfillment.
 - [Consumptions & Productions](https://docs.augno.com/workflows/build-products/bom/consumptions-and-productions.md): The inputs and outputs of each production step - what materials are used up and what parts or products are created.
 - [Parts](https://docs.augno.com/workflows/build-products/items/parts.md): Intermediate items you manufacture or assemble from materials during production.
+- [Deliveries & Receiving](https://docs.augno.com/workflows/build-products/purchasing/deliveries-and-receiving.md): Track the physical arrival of materials from suppliers and convert purchase order quantities into usable inventory.
 - [Batch Operations](https://docs.augno.com/workflows/build-products/production/batch-operations.md): Initialize, move, split, and merge - the core actions that advance batches through the production flow.
 - [Inventory Change Logs](https://docs.augno.com/workflows/build-products/inventory/change-logs.md): A complete audit trail of every inventory movement - who changed what, when, by how much, and why.
-- [Deliveries & Receiving](https://docs.augno.com/workflows/build-products/purchasing/deliveries-and-receiving.md): Track the physical arrival of materials from suppliers and convert purchase order quantities into usable inventory.
 - [Production Flows](https://docs.augno.com/workflows/build-products/bom/production-flows.md): The connected sequence of production steps that transforms raw materials into finished products.
 - [Products](https://docs.augno.com/workflows/build-products/items/products.md): Finished goods you price, stock, and sell to customers.
 - [Reconciliation & Bulk Updates](https://docs.augno.com/workflows/build-products/inventory/reconciliation.md): Correct inventory counts when the system and physical reality diverge, with full audit trail logging.
 - [Costing (COGS)](https://docs.augno.com/workflows/build-products/bom/costing.md): Real-time cost of goods sold calculation from production step definitions - material, labor, and overhead costs.
+
+## Generate sales
+- [Overview](https://docs.augno.com/workflows/generate-sales/overview.md): Customers, pricing, orders, and the sales team - everything that drives revenue in Augno.
+- [Overview](https://docs.augno.com/workflows/generate-sales/customer/customer.md): The central record connecting sales orders, invoices, shipments, and payments.
+- [Overview](https://docs.augno.com/workflows/generate-sales/sales-order/sales-order.md): The central order for selling products to a customer, driving fulfillment from creation through payment.
+- [Customer prices](https://docs.augno.com/workflows/generate-sales/customer-pricing/customer-prices.md): Define product-line-specific pricing for individual customers, overriding base product prices.
+- [Territories](https://docs.augno.com/workflows/generate-sales/sales-team/territories.md): Map geographic regions to sales representatives, optionally scoped by product line.
+- [Customer groups](https://docs.augno.com/workflows/generate-sales/customer-setup/customer-groups.md): Classify customers by segment and control which pricing and discounts they receive.
+- [Create a customer](https://docs.augno.com/workflows/generate-sales/customer/create.md): Learn how to create a customer in Augno.
+- [Create a sales order](https://docs.augno.com/workflows/generate-sales/sales-order/create.md): Learn how to create a sales order in Augno.
+- [Volume discounts](https://docs.augno.com/workflows/generate-sales/customer-pricing/volume-discounts.md): Automatically reduce pricing based on order quantity with tiered percentage discounts.
+- [Sales targets](https://docs.augno.com/workflows/generate-sales/sales-team/sales-targets.md): Define revenue goals for sales reps over a date range, optionally by product line.
+- [Shipping terms](https://docs.augno.com/workflows/generate-sales/customer-setup/shipping-terms.md): Define who pays for freight, how charges are calculated, and when freight is waived.
+- [Contacts](https://docs.augno.com/workflows/generate-sales/customer/contacts.md): Manage the people associated with a customer and control who receives order confirmations and invoices.
+- [Generate a production run](https://docs.augno.com/workflows/generate-sales/sales-order/generate-production-run.md): Generate a production run from a sales order in Augno.
+- [Discount codes](https://docs.augno.com/workflows/generate-sales/customer-pricing/discount-codes.md): Promotional codes applied at the order level to reduce the total by a percentage or fixed amount.
+- [Payment terms](https://docs.augno.com/workflows/generate-sales/customer-setup/payment-terms.md): Define when and how a customer is expected to pay for an order.
+- [Issue a sales order](https://docs.augno.com/workflows/generate-sales/sales-order/issue.md): Learn how to issue a sales order in Augno.
+- [Priorities](https://docs.augno.com/workflows/generate-sales/customer-setup/priorities.md): Control order-processing precedence to determine which work gets attention first.
+- [Account statuses](https://docs.augno.com/workflows/generate-sales/customer-setup/account-statuses.md): Control whether a customer can place orders and receive shipments.
+- [Commission & freight exemption](https://docs.augno.com/workflows/generate-sales/customer-setup/exemptions.md): Exclude customers or customer groups from commission calculations and freight charges.
+- [Customer portal](https://docs.augno.com/workflows/generate-sales/customer-portal.md): A branded, self-service portal where your customers register, place orders, submit payments, and track inventory.
+- [Default sales reps](https://docs.augno.com/workflows/generate-sales/customer-setup/default-sales-reps.md): The team member automatically assigned to new orders for a customer.
+- [Default carriers & options](https://docs.augno.com/workflows/generate-sales/customer-setup/default-carriers.md): Define the shipping carrier and service level automatically applied to a customer's orders.
+- [Addresses](https://docs.augno.com/workflows/generate-sales/customer-setup/addresses.md): Billing and shipping locations for customers, used on orders, invoices, and shipments.
 
 ## Start Building
 - [Overview](https://docs.augno.com/get-started/start-building/account/overview.md): Learn how to activate and manage your Augno account, from initial setup to advanced configurations.

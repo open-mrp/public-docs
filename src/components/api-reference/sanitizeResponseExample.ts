@@ -42,7 +42,9 @@ function relativePathFromFull(fullPath: string, expansionRoot: string | undefine
 function isIncludableForEndpoint(relativePath: string, includeValues: string[]): boolean {
     if (!relativePath) return false;
     if (includeValues.includes(relativePath)) return true;
-    return includeValues.some((v) => v.startsWith(`${relativePath}.`));
+    return includeValues.some(
+        (v) => v.startsWith(`${relativePath}.`) || relativePath.startsWith(`${v}.`),
+    );
 }
 
 /**

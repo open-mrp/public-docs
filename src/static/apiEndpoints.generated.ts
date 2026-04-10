@@ -282,10 +282,22 @@ export const apiTags: TagData[] = [
                     "object": "role",
                     "name": "Admin",
                     "type": "admin",
-                    "owner": null,
-                    "permissions": null,
-                    "created_at": "0001-01-01T00:00:00Z",
-                    "updated_at": "0001-01-01T00:00:00Z"
+                    "owner": {
+                        "object": "owner",
+                        "type": "account",
+                        "account": {
+                            "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                            "object": "account"
+                        }
+                    },
+                    "permissions": [
+                        "customers:create",
+                        "customers:read",
+                        "customers:update",
+                        "customers:delete"
+                    ],
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
                 },
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z",
@@ -558,10 +570,22 @@ export const apiTags: TagData[] = [
                                     "object": "role",
                                     "name": "Admin",
                                     "type": "admin",
-                                    "owner": null,
-                                    "permissions": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "account",
+                                        "account": {
+                                            "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                            "object": "account"
+                                        }
+                                    },
+                                    "permissions": [
+                                        "customers:create",
+                                        "customers:read",
+                                        "customers:update",
+                                        "customers:delete"
+                                    ],
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
                                 },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z",
@@ -888,10 +912,22 @@ export const apiTags: TagData[] = [
                                         "object": "role",
                                         "name": "Admin",
                                         "type": "admin",
-                                        "owner": null,
-                                        "permissions": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "account",
+                                            "account": {
+                                                "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                                "object": "account"
+                                            }
+                                        },
+                                        "permissions": [
+                                            "customers:create",
+                                            "customers:read",
+                                            "customers:update",
+                                            "customers:delete"
+                                        ],
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
                                     },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z",
@@ -1120,10 +1156,22 @@ export const apiTags: TagData[] = [
                                 "object": "role",
                                 "name": "Admin",
                                 "type": "admin",
-                                "owner": null,
-                                "permissions": null,
-                                "created_at": "0001-01-01T00:00:00Z",
-                                "updated_at": "0001-01-01T00:00:00Z"
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "account",
+                                    "account": {
+                                        "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                        "object": "account"
+                                    }
+                                },
+                                "permissions": [
+                                    "customers:create",
+                                    "customers:read",
+                                    "customers:update",
+                                    "customers:delete"
+                                ],
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
                             },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z",
@@ -1417,10 +1465,22 @@ export const apiTags: TagData[] = [
                                     "object": "role",
                                     "name": "Admin",
                                     "type": "admin",
-                                    "owner": null,
-                                    "permissions": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "account",
+                                        "account": {
+                                            "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                            "object": "account"
+                                        }
+                                    },
+                                    "permissions": [
+                                        "customers:create",
+                                        "customers:read",
+                                        "customers:update",
+                                        "customers:delete"
+                                    ],
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
                                 },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z",

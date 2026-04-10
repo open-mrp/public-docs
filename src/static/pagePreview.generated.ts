@@ -7,33 +7,21 @@ export interface PagePreview {
 }
 
 export const pagePreviewData: Record<string, PagePreview> = {
-    "/development": {
-        "title": "Developer resources",
-        "subtitle": "Technical documentation, API references, and guides for developers."
-    },
     "/workflows": {
         "title": "Workflows",
         "subtitle": "End-to-end guides for common business processes in Augno."
+    },
+    "/development": {
+        "title": "Developer resources",
+        "subtitle": "Technical documentation, API references, and guides for developers."
     },
     "/api-reference": {
         "title": "API Reference",
         "subtitle": "Complete API documentation for all endpoints"
     },
-    "/api/overview": {
-        "title": "Augno's APIs",
-        "subtitle": "Learn more about Augno's APIs."
-    },
     "/get-started": {
         "title": "Get started",
         "subtitle": "Create an account and learn how to build on Augno."
-    },
-    "/dashboards/overview": {
-        "title": "Dashboards",
-        "subtitle": "Analytics and reporting dashboards that give you real-time visibility into sales, operations, finances, and forecasting."
-    },
-    "/collect-payments/overview": {
-        "title": "Collect Payments",
-        "subtitle": "Learn about collecting payments in Augno."
     },
     "/manage-account/plans-and-billing": {
         "title": "Plans and billing",
@@ -59,6 +47,14 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Manage Your Account",
         "subtitle": "Configure your account settings, team, integrations, security, and billing."
     },
+    "/dashboards/overview": {
+        "title": "Dashboards",
+        "subtitle": "Analytics and reporting dashboards that give you real-time visibility into sales, operations, finances, and forecasting."
+    },
+    "/collect-payments/overview": {
+        "title": "Collect Payments",
+        "subtitle": "Learn about collecting payments in Augno."
+    },
     "/ship-products/picking/overview": {
         "title": "Picking",
         "subtitle": "Select and pull the right products from inventory to fulfill a sales order."
@@ -75,6 +71,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Packing",
         "subtitle": "Pack picked items into shipping cases and create shipments ready for the carrier."
     },
+    "/build-products/overview": {
+        "title": "Build Products",
+        "subtitle": "Purchasing, manufacturing, production tracking, and inventory management."
+    },
     "/generate-sales/customer-portal": {
         "title": "Customer portal",
         "subtitle": "A branded, self-service portal where your customers register, place orders, submit payments, and track inventory."
@@ -83,9 +83,9 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Generate Sales",
         "subtitle": "Customers, pricing, orders, and the sales team - everything that drives revenue in Augno."
     },
-    "/build-products/overview": {
-        "title": "Build Products",
-        "subtitle": "Purchasing, manufacturing, production tracking, and inventory management."
+    "/api/overview": {
+        "title": "Augno's APIs",
+        "subtitle": "Learn more about Augno's APIs."
     },
     "/api-reference/audit-event-management/get-audit-event": {
         "title": "Get Audit Event",
@@ -151,25 +151,37 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Get Priority",
         "subtitle": "GET /v1/sales/priorities/{id}"
     },
-    "/api-reference/address-management/update-address": {
-        "title": "Update Address",
-        "subtitle": "PATCH /v1/sales/addresses/{id}"
+    "/api-reference/item-categories-management/create-item-category": {
+        "title": "Create Item Category",
+        "subtitle": "POST /v1/catalog/item-categories"
     },
-    "/api-reference/address-management/delete-address": {
-        "title": "Delete Address",
-        "subtitle": "DELETE /v1/sales/addresses/{id}"
+    "/api-reference/item-categories-management/list-item-categories": {
+        "title": "List Item Categories",
+        "subtitle": "GET /v1/catalog/item-categories"
     },
-    "/api-reference/address-management/create-address": {
-        "title": "Create Address",
-        "subtitle": "POST /v1/sales/addresses"
+    "/api-reference/item-categories-management/remove-item-category-property": {
+        "title": "Remove Item Category Property",
+        "subtitle": "DELETE /v1/catalog/item-categories/{id}/properties/{property_id}"
     },
-    "/api-reference/address-management/get-address": {
-        "title": "Get Address",
-        "subtitle": "GET /v1/sales/addresses/{id}"
+    "/api-reference/item-categories-management/change-item-category-unit-group": {
+        "title": "Change Item Category Unit Group",
+        "subtitle": "PUT /v1/catalog/item-categories/{id}/unit-groups/{unit_group_id}"
     },
-    "/api-reference/address-management/list-addresses": {
-        "title": "List Addresses",
-        "subtitle": "GET /v1/sales/addresses"
+    "/api-reference/item-categories-management/delete-item-category": {
+        "title": "Delete Item Category",
+        "subtitle": "DELETE /v1/catalog/item-categories/{id}"
+    },
+    "/api-reference/item-categories-management/add-item-category-property": {
+        "title": "Add Item Category Property",
+        "subtitle": "PUT /v1/catalog/item-categories/{id}/properties/{property_id}"
+    },
+    "/api-reference/item-categories-management/update-item-category": {
+        "title": "Update Item Category",
+        "subtitle": "PATCH /v1/catalog/item-categories/{id}"
+    },
+    "/api-reference/item-categories-management/get-item-category": {
+        "title": "Get Item Category",
+        "subtitle": "GET /v1/catalog/item-categories/{id}"
     },
     "/api-reference/properties-management/delete-attribute": {
         "title": "Delete Attribute",
@@ -211,77 +223,25 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Update Property",
         "subtitle": "PATCH /v1/catalog/properties/{id}"
     },
-    "/api-reference/item-categories-management/create-item-category": {
-        "title": "Create Item Category",
-        "subtitle": "POST /v1/catalog/item-categories"
+    "/api-reference/address-management/update-address": {
+        "title": "Update Address",
+        "subtitle": "PATCH /v1/sales/addresses/{id}"
     },
-    "/api-reference/item-categories-management/list-item-categories": {
-        "title": "List Item Categories",
-        "subtitle": "GET /v1/catalog/item-categories"
+    "/api-reference/address-management/delete-address": {
+        "title": "Delete Address",
+        "subtitle": "DELETE /v1/sales/addresses/{id}"
     },
-    "/api-reference/item-categories-management/remove-item-category-property": {
-        "title": "Remove Item Category Property",
-        "subtitle": "DELETE /v1/catalog/item-categories/{id}/properties/{property_id}"
+    "/api-reference/address-management/create-address": {
+        "title": "Create Address",
+        "subtitle": "POST /v1/sales/addresses"
     },
-    "/api-reference/item-categories-management/change-item-category-unit-group": {
-        "title": "Change Item Category Unit Group",
-        "subtitle": "PUT /v1/catalog/item-categories/{id}/unit-groups/{unit_group_id}"
+    "/api-reference/address-management/get-address": {
+        "title": "Get Address",
+        "subtitle": "GET /v1/sales/addresses/{id}"
     },
-    "/api-reference/item-categories-management/delete-item-category": {
-        "title": "Delete Item Category",
-        "subtitle": "DELETE /v1/catalog/item-categories/{id}"
-    },
-    "/api-reference/item-categories-management/add-item-category-property": {
-        "title": "Add Item Category Property",
-        "subtitle": "PUT /v1/catalog/item-categories/{id}/properties/{property_id}"
-    },
-    "/api-reference/item-categories-management/update-item-category": {
-        "title": "Update Item Category",
-        "subtitle": "PATCH /v1/catalog/item-categories/{id}"
-    },
-    "/api-reference/item-categories-management/get-item-category": {
-        "title": "Get Item Category",
-        "subtitle": "GET /v1/catalog/item-categories/{id}"
-    },
-    "/api-reference/shipping-terms-management/get-shipping-term": {
-        "title": "Get Shipping Term",
-        "subtitle": "GET /v1/operations/shipping-terms/{id}"
-    },
-    "/api-reference/shipping-terms-management/update-shipping-term": {
-        "title": "Update Shipping Term",
-        "subtitle": "PATCH /v1/operations/shipping-terms/{id}"
-    },
-    "/api-reference/shipping-terms-management/delete-shipping-term": {
-        "title": "Delete Shipping Term",
-        "subtitle": "DELETE /v1/operations/shipping-terms/{id}"
-    },
-    "/api-reference/shipping-terms-management/create-shipping-term": {
-        "title": "Create Shipping Term",
-        "subtitle": "POST /v1/operations/shipping-terms"
-    },
-    "/api-reference/shipping-terms-management/list-shipping-terms": {
-        "title": "List Shipping Terms",
-        "subtitle": "GET /v1/operations/shipping-terms"
-    },
-    "/api-reference/scanning-stations-management/create-scanning-station": {
-        "title": "Create Scanning Station",
-        "subtitle": "POST /v1/operations/scanning-stations"
-    },
-    "/api-reference/scanning-stations-management/update-scanning-station": {
-        "title": "Update Scanning Station",
-        "subtitle": "PATCH /v1/operations/scanning-stations/{id}"
-    },
-    "/api-reference/scanning-stations-management/get-scanning-station": {
-        "title": "Get Scanning Station",
-        "subtitle": "GET /v1/operations/scanning-stations/{id}"
-    },
-    "/api-reference/scanning-stations-management/delete-scanning-station": {
-        "title": "Delete Scanning Station",
-        "subtitle": "DELETE /v1/operations/scanning-stations/{id}"
-    },
-    "/api-reference/scanning-stations-management/list-scanning-stations": {
-        "title": "List Scanning Stations",
-        "subtitle": "GET /v1/operations/scanning-stations"
+    "/api-reference/address-management/list-addresses": {
+        "title": "List Addresses",
+        "subtitle": "GET /v1/sales/addresses"
     },
     "/api-reference/location-management/get-location": {
         "title": "Get Location",
@@ -311,33 +271,45 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Create Location",
         "subtitle": "POST /v1/operations/locations"
     },
-    "/api-reference/units-management/create-unit": {
-        "title": "Create Unit",
-        "subtitle": "POST /v1/catalog/units"
+    "/api-reference/shipping-terms-management/get-shipping-term": {
+        "title": "Get Shipping Term",
+        "subtitle": "GET /v1/operations/shipping-terms/{id}"
     },
-    "/api-reference/units-management/delete-unit": {
-        "title": "Delete Unit",
-        "subtitle": "DELETE /v1/catalog/units/{id}"
+    "/api-reference/shipping-terms-management/update-shipping-term": {
+        "title": "Update Shipping Term",
+        "subtitle": "PATCH /v1/operations/shipping-terms/{id}"
     },
-    "/api-reference/units-management/get-unit": {
-        "title": "Get Unit",
-        "subtitle": "GET /v1/catalog/units/{id}"
+    "/api-reference/shipping-terms-management/delete-shipping-term": {
+        "title": "Delete Shipping Term",
+        "subtitle": "DELETE /v1/operations/shipping-terms/{id}"
     },
-    "/api-reference/units-management/update-unit": {
-        "title": "Update Unit",
-        "subtitle": "PATCH /v1/catalog/units/{id}"
+    "/api-reference/shipping-terms-management/create-shipping-term": {
+        "title": "Create Shipping Term",
+        "subtitle": "POST /v1/operations/shipping-terms"
     },
-    "/api-reference/units-management/list-units": {
-        "title": "List Units",
-        "subtitle": "GET /v1/catalog/units"
+    "/api-reference/shipping-terms-management/list-shipping-terms": {
+        "title": "List Shipping Terms",
+        "subtitle": "GET /v1/operations/shipping-terms"
     },
-    "/api-reference/request-log-management/get-request-log": {
-        "title": "Get Request Log",
-        "subtitle": "GET /v1/core/request-logs/{id}"
+    "/api-reference/roles/create-role": {
+        "title": "Create Role",
+        "subtitle": "POST /v1/identity/roles"
     },
-    "/api-reference/request-log-management/list-request-logs": {
-        "title": "List Request Logs",
-        "subtitle": "GET /v1/core/request-logs"
+    "/api-reference/roles/delete-role": {
+        "title": "Delete Role",
+        "subtitle": "DELETE /v1/identity/roles/{id}"
+    },
+    "/api-reference/roles/list-roles": {
+        "title": "List Roles",
+        "subtitle": "GET /v1/identity/roles"
+    },
+    "/api-reference/roles/get-role": {
+        "title": "Get Role",
+        "subtitle": "GET /v1/identity/roles/{id}"
+    },
+    "/api-reference/roles/update-role": {
+        "title": "Update Role",
+        "subtitle": "PATCH /v1/identity/roles/{id}"
     },
     "/api-reference/api-key-management/get-api-key": {
         "title": "Get API Key",
@@ -359,25 +331,25 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Revoke API Key",
         "subtitle": "DELETE /v1/auth/api-keys/{id}"
     },
-    "/api-reference/roles/create-role": {
-        "title": "Create Role",
-        "subtitle": "POST /v1/identity/roles"
+    "/api-reference/scanning-stations-management/create-scanning-station": {
+        "title": "Create Scanning Station",
+        "subtitle": "POST /v1/operations/scanning-stations"
     },
-    "/api-reference/roles/delete-role": {
-        "title": "Delete Role",
-        "subtitle": "DELETE /v1/identity/roles/{id}"
+    "/api-reference/scanning-stations-management/update-scanning-station": {
+        "title": "Update Scanning Station",
+        "subtitle": "PATCH /v1/operations/scanning-stations/{id}"
     },
-    "/api-reference/roles/list-roles": {
-        "title": "List Roles",
-        "subtitle": "GET /v1/identity/roles"
+    "/api-reference/scanning-stations-management/get-scanning-station": {
+        "title": "Get Scanning Station",
+        "subtitle": "GET /v1/operations/scanning-stations/{id}"
     },
-    "/api-reference/roles/get-role": {
-        "title": "Get Role",
-        "subtitle": "GET /v1/identity/roles/{id}"
+    "/api-reference/scanning-stations-management/delete-scanning-station": {
+        "title": "Delete Scanning Station",
+        "subtitle": "DELETE /v1/operations/scanning-stations/{id}"
     },
-    "/api-reference/roles/update-role": {
-        "title": "Update Role",
-        "subtitle": "PATCH /v1/identity/roles/{id}"
+    "/api-reference/scanning-stations-management/list-scanning-stations": {
+        "title": "List Scanning Stations",
+        "subtitle": "GET /v1/operations/scanning-stations"
     },
     "/api-reference/unit-groups-management/update-unit-group": {
         "title": "Update Unit Group",
@@ -439,14 +411,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Update Product Line",
         "subtitle": "PATCH /v1/catalog/product-lines/{id}"
     },
-    "/api-reference/address-validation/validate-address": {
-        "title": "Validate Address",
-        "subtitle": "PUT /v1/core/addresses/actions/validate"
-    },
-    "/api-reference/address-validation/get-address-suggestions": {
-        "title": "Get Address Suggestions",
-        "subtitle": "GET /v1/core/addresses/suggestions"
-    },
     "/api-reference/sandbox-management/get-sandbox": {
         "title": "Get Sandbox",
         "subtitle": "GET /v1/core/sandboxes/{id}"
@@ -462,6 +426,14 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/sandbox-management/list-sandboxes": {
         "title": "List Sandboxes",
         "subtitle": "GET /v1/core/sandboxes"
+    },
+    "/api-reference/address-validation/validate-address": {
+        "title": "Validate Address",
+        "subtitle": "PUT /v1/core/addresses/actions/validate"
+    },
+    "/api-reference/address-validation/get-address-suggestions": {
+        "title": "Get Address Suggestions",
+        "subtitle": "GET /v1/core/addresses/suggestions"
     },
     "/api-reference/customers/get-customer": {
         "title": "Get Customer",
@@ -483,53 +455,33 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Merge Customers",
         "subtitle": "POST /v1/sales/customers/{id}/actions/merge"
     },
-    "/api/api-keys": {
-        "title": "API Keys",
-        "subtitle": "Learn how to authenticate requests with API keys."
+    "/api-reference/units-management/create-unit": {
+        "title": "Create Unit",
+        "subtitle": "POST /v1/catalog/units"
     },
-    "/api/managing-api-keys": {
-        "title": "Managing API Keys",
-        "subtitle": "Learn the best practices for managing secret API keys."
+    "/api-reference/units-management/delete-unit": {
+        "title": "Delete Unit",
+        "subtitle": "DELETE /v1/catalog/units/{id}"
     },
-    "/api/request-logs": {
-        "title": "Request Logs",
-        "subtitle": "Monitor and debug your API activity with request logs."
+    "/api-reference/units-management/get-unit": {
+        "title": "Get Unit",
+        "subtitle": "GET /v1/catalog/units/{id}"
     },
-    "/api/errors": {
-        "title": "API Errors",
-        "subtitle": "Standard error envelope format for consistent error handling."
+    "/api-reference/units-management/update-unit": {
+        "title": "Update Unit",
+        "subtitle": "PATCH /v1/catalog/units/{id}"
     },
-    "/api/idempotency": {
-        "title": "Idempotency",
-        "subtitle": "Safely retry requests without duplicating work."
+    "/api-reference/units-management/list-units": {
+        "title": "List Units",
+        "subtitle": "GET /v1/catalog/units"
     },
-    "/api/request-ids": {
-        "title": "Request IDs",
-        "subtitle": "Use request IDs to debug issues and get support."
+    "/api-reference/request-log-management/get-request-log": {
+        "title": "Get Request Log",
+        "subtitle": "GET /v1/core/request-logs/{id}"
     },
-    "/api/uris": {
-        "title": "Augno API URIs",
-        "subtitle": "Learn the general format of Augno API URIs."
-    },
-    "/api/versioning": {
-        "title": "API Versioning",
-        "subtitle": "Understand how Augno versions its API and manage version upgrades."
-    },
-    "/api/include": {
-        "title": "Include Parameter",
-        "subtitle": "Expand sub-objects in API responses to get the data you need."
-    },
-    "/api/pagination": {
-        "title": "Pagination",
-        "subtitle": "Iterating through paginated list results."
-    },
-    "/api/rate-limiting": {
-        "title": "Rate Limiting",
-        "subtitle": "Understand rate limits and implement retry strategies."
-    },
-    "/api-tour": {
-        "title": "Tour of the Augno API",
-        "subtitle": "See how Augno API objects fit together and learn best practices for combining them effectively."
+    "/api-reference/request-log-management/list-request-logs": {
+        "title": "List Request Logs",
+        "subtitle": "GET /v1/core/request-logs"
     },
     "/account/activate": {
         "title": "Activate your account",
@@ -554,6 +506,38 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/go-live": {
         "title": "Go live checklist",
         "subtitle": "Use this checklist to ensure a smooth transition putting your integration into production."
+    },
+    "/api-tour": {
+        "title": "Tour of the Augno API",
+        "subtitle": "See how Augno API objects fit together and learn best practices for combining them effectively."
+    },
+    "/manage-account/team/roles-and-permissions": {
+        "title": "Roles and permissions",
+        "subtitle": "Control what team members and API keys can access with granular, role-based permissions."
+    },
+    "/manage-account/team/team-members": {
+        "title": "Team members",
+        "subtitle": "Invite, manage, and remove the people who use your Augno account."
+    },
+    "/manage-account/account-settings/business-information": {
+        "title": "Business information",
+        "subtitle": "Configure your account name, logo, contact details, and portal slug."
+    },
+    "/manage-account/account-settings/profile": {
+        "title": "Your profile",
+        "subtitle": "Update your display name, email address, and profile photo."
+    },
+    "/dashboards/operations/material-analytics": {
+        "title": "Material analytics",
+        "subtitle": "View material inventory levels, demand, and reorder needs by supplier."
+    },
+    "/dashboards/operations/delivery-analytics": {
+        "title": "Delivery analytics",
+        "subtitle": "Track on-time delivery rates, average delivery time, and time to first shipment with period-over-period comparison."
+    },
+    "/dashboards/operations/manufacturing-analytics": {
+        "title": "Manufacturing analytics",
+        "subtitle": "Monitor production output, cost efficiency, margin, quality, and labor efficiency with month-over-month comparison."
     },
     "/dashboards/forecasting/demand-forecast": {
         "title": "Demand forecast",
@@ -591,18 +575,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Weeks of sales",
         "subtitle": "See how many weeks of inventory you have on hand based on recent sales velocity."
     },
-    "/dashboards/operations/material-analytics": {
-        "title": "Material analytics",
-        "subtitle": "View material inventory levels, demand, and reorder needs by supplier."
-    },
-    "/dashboards/operations/delivery-analytics": {
-        "title": "Delivery analytics",
-        "subtitle": "Track on-time delivery rates, average delivery time, and time to first shipment with period-over-period comparison."
-    },
-    "/dashboards/operations/manufacturing-analytics": {
-        "title": "Manufacturing analytics",
-        "subtitle": "Monitor production output, cost efficiency, margin, quality, and labor efficiency with month-over-month comparison."
-    },
     "/collect-payments/collecting/settlements": {
         "title": "Settlements",
         "subtitle": "Formally record which transactions pay which invoices by creating settlements with allocations."
@@ -619,21 +591,93 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Accounts receivable",
         "subtitle": "Track what customers owe, how long balances have been outstanding, and take action to collect."
     },
-    "/manage-account/team/roles-and-permissions": {
-        "title": "Roles and permissions",
-        "subtitle": "Control what team members and API keys can access with granular, role-based permissions."
+    "/build-products/scanning/scanning-stations": {
+        "title": "Scanning Stations",
+        "subtitle": "Configured points in your production workflow where batch operations happen - each linked to a specific operation type and production step."
     },
-    "/manage-account/team/team-members": {
-        "title": "Team members",
-        "subtitle": "Invite, manage, and remove the people who use your Augno account."
+    "/build-products/scanning/labels": {
+        "title": "Labels",
+        "subtitle": "Batch identification labels printed at scanning stations - two formats and four sizes for production floor tracking."
     },
-    "/manage-account/account-settings/business-information": {
-        "title": "Business information",
-        "subtitle": "Configure your account name, logo, contact details, and portal slug."
+    "/build-products/production/production-runs": {
+        "title": "Production Runs",
+        "subtitle": "Coordinated manufacturing executions that group related batches and track progress from start to completion."
     },
-    "/manage-account/account-settings/profile": {
-        "title": "Your profile",
-        "subtitle": "Update your display name, email address, and profile photo."
+    "/build-products/production/batch-operations": {
+        "title": "Batch Operations",
+        "subtitle": "Initialize, move, split, and merge - the core actions that advance batches through the production flow."
+    },
+    "/build-products/production/batches": {
+        "title": "Batches",
+        "subtitle": "Physical units of product tracked through production - recording quantities, quality grades, and location as they move through manufacturing."
+    },
+    "/build-products/purchasing/purchase-orders": {
+        "title": "Purchase Orders",
+        "subtitle": "Transaction records for buying materials from suppliers, tracking orders through delivery and fulfillment."
+    },
+    "/build-products/purchasing/suppliers": {
+        "title": "Suppliers",
+        "subtitle": "Vendors you purchase materials from, defining the source for your raw material procurement."
+    },
+    "/build-products/purchasing/deliveries-and-receiving": {
+        "title": "Deliveries & Receiving",
+        "subtitle": "Track the physical arrival of materials from suppliers and convert purchase order quantities into usable inventory."
+    },
+    "/build-products/items/parts": {
+        "title": "Parts",
+        "subtitle": "Intermediate items you manufacture or assemble from materials during production."
+    },
+    "/build-products/items/materials": {
+        "title": "Materials",
+        "subtitle": "Raw materials and supplies you purchase from vendors for use in production."
+    },
+    "/build-products/items/products": {
+        "title": "Products",
+        "subtitle": "Finished goods you price, stock, and sell to customers."
+    },
+    "/build-products/items/overview": {
+        "title": "Items overview",
+        "subtitle": "Materials, parts, and products - the core objects you buy, make, and sell in Augno."
+    },
+    "/build-products/inventory/change-logs": {
+        "title": "Inventory Change Logs",
+        "subtitle": "A complete audit trail of every inventory movement - who changed what, when, by how much, and why."
+    },
+    "/build-products/inventory/storage-and-lots": {
+        "title": "Storage Locations & Lots",
+        "subtitle": "Where inventory is physically stored and how batch-level traceability is maintained."
+    },
+    "/build-products/inventory/inventory": {
+        "title": "Inventory Overview",
+        "subtitle": "Real-time visibility into every unit of material, part, and product - what you have, where it is, and what it costs."
+    },
+    "/build-products/inventory/reconciliation": {
+        "title": "Reconciliation & Bulk Updates",
+        "subtitle": "Correct inventory counts when the system and physical reality diverge, with full audit trail logging."
+    },
+    "/build-products/bom/costing": {
+        "title": "Costing (COGS)",
+        "subtitle": "Real-time cost of goods sold calculation from production step definitions - material, labor, and overhead costs."
+    },
+    "/build-products/bom/production-flows": {
+        "title": "Production Flows",
+        "subtitle": "The connected sequence of production steps that transforms raw materials into finished products."
+    },
+    "/build-products/bom/consumptions-and-productions": {
+        "title": "Consumptions & Productions",
+        "subtitle": "The inputs and outputs of each production step - what materials are used up and what parts or products are created."
+    },
+    "/build-products/bom/production-steps": {
+        "title": "Production Steps",
+        "subtitle": "The core building block of manufacturing in Augno - defining inputs, outputs, and costs for each stage of production."
+    },
+    "/generate-sales/sales-team/territories": {
+        "title": "Territories",
+        "subtitle": "Map geographic regions to sales representatives, optionally scoped by product line."
+    },
+    "/generate-sales/sales-team/sales-targets": {
+        "title": "Sales targets",
+        "subtitle": "Define revenue goals for sales reps over a date range, optionally by product line."
     },
     "/generate-sales/customer/overview": {
         "title": "Customers",
@@ -646,30 +690,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/generate-sales/customer/create": {
         "title": "Create a customer",
         "subtitle": "Learn how to create a customer in Augno."
-    },
-    "/generate-sales/sales-order/generate-production-run": {
-        "title": "Generate a production run",
-        "subtitle": "Generate a production run from a sales order in Augno."
-    },
-    "/generate-sales/sales-order/overview": {
-        "title": "Sales orders",
-        "subtitle": "The central order for selling products to a customer, driving fulfillment from creation through payment."
-    },
-    "/generate-sales/sales-order/issue": {
-        "title": "Issue a sales order",
-        "subtitle": "Learn how to issue a sales order in Augno."
-    },
-    "/generate-sales/sales-order/create": {
-        "title": "Create a sales order",
-        "subtitle": "Learn how to create a sales order in Augno."
-    },
-    "/generate-sales/sales-team/territories": {
-        "title": "Territories",
-        "subtitle": "Map geographic regions to sales representatives, optionally scoped by product line."
-    },
-    "/generate-sales/sales-team/sales-targets": {
-        "title": "Sales targets",
-        "subtitle": "Define revenue goals for sales reps over a date range, optionally by product line."
     },
     "/generate-sales/customer-pricing/discount-codes": {
         "title": "Discount codes",
@@ -719,85 +739,65 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Default sales reps",
         "subtitle": "The team member automatically assigned to new orders for a customer."
     },
-    "/build-products/inventory/change-logs": {
-        "title": "Inventory Change Logs",
-        "subtitle": "A complete audit trail of every inventory movement - who changed what, when, by how much, and why."
+    "/api/api-keys": {
+        "title": "API Keys",
+        "subtitle": "Learn how to authenticate requests with API keys."
     },
-    "/build-products/inventory/storage-and-lots": {
-        "title": "Storage Locations & Lots",
-        "subtitle": "Where inventory is physically stored and how batch-level traceability is maintained."
+    "/api/managing-api-keys": {
+        "title": "Managing API Keys",
+        "subtitle": "Learn the best practices for managing secret API keys."
     },
-    "/build-products/inventory/inventory": {
-        "title": "Inventory Overview",
-        "subtitle": "Real-time visibility into every unit of material, part, and product - what you have, where it is, and what it costs."
+    "/generate-sales/sales-order/generate-production-run": {
+        "title": "Generate a production run",
+        "subtitle": "Generate a production run from a sales order in Augno."
     },
-    "/build-products/inventory/reconciliation": {
-        "title": "Reconciliation & Bulk Updates",
-        "subtitle": "Correct inventory counts when the system and physical reality diverge, with full audit trail logging."
+    "/generate-sales/sales-order/overview": {
+        "title": "Sales orders",
+        "subtitle": "The central order for selling products to a customer, driving fulfillment from creation through payment."
     },
-    "/build-products/items/parts": {
-        "title": "Parts",
-        "subtitle": "Intermediate items you manufacture or assemble from materials during production."
+    "/generate-sales/sales-order/issue": {
+        "title": "Issue a sales order",
+        "subtitle": "Learn how to issue a sales order in Augno."
     },
-    "/build-products/items/materials": {
-        "title": "Materials",
-        "subtitle": "Raw materials and supplies you purchase from vendors for use in production."
+    "/generate-sales/sales-order/create": {
+        "title": "Create a sales order",
+        "subtitle": "Learn how to create a sales order in Augno."
     },
-    "/build-products/items/products": {
-        "title": "Products",
-        "subtitle": "Finished goods you price, stock, and sell to customers."
+    "/api/errors": {
+        "title": "API Errors",
+        "subtitle": "Standard error envelope format for consistent error handling."
     },
-    "/build-products/items/overview": {
-        "title": "Items overview",
-        "subtitle": "Materials, parts, and products - the core objects you buy, make, and sell in Augno."
+    "/api/idempotency": {
+        "title": "Idempotency",
+        "subtitle": "Safely retry requests without duplicating work."
     },
-    "/build-products/scanning/scanning-stations": {
-        "title": "Scanning Stations",
-        "subtitle": "Configured points in your production workflow where batch operations happen - each linked to a specific operation type and production step."
+    "/api/request-ids": {
+        "title": "Request IDs",
+        "subtitle": "Use request IDs to debug issues and get support."
     },
-    "/build-products/scanning/labels": {
-        "title": "Labels",
-        "subtitle": "Batch identification labels printed at scanning stations - two formats and four sizes for production floor tracking."
+    "/api/uris": {
+        "title": "Augno API URIs",
+        "subtitle": "Learn the general format of Augno API URIs."
     },
-    "/build-products/bom/costing": {
-        "title": "Costing (COGS)",
-        "subtitle": "Real-time cost of goods sold calculation from production step definitions - material, labor, and overhead costs."
+    "/api/versioning": {
+        "title": "API Versioning",
+        "subtitle": "Understand how Augno versions its API and manage version upgrades."
     },
-    "/build-products/bom/production-flows": {
-        "title": "Production Flows",
-        "subtitle": "The connected sequence of production steps that transforms raw materials into finished products."
+    "/api/include": {
+        "title": "Include Parameter",
+        "subtitle": "Expand sub-objects in API responses to get the data you need."
     },
-    "/build-products/bom/consumptions-and-productions": {
-        "title": "Consumptions & Productions",
-        "subtitle": "The inputs and outputs of each production step - what materials are used up and what parts or products are created."
+    "/api/pagination": {
+        "title": "Pagination",
+        "subtitle": "Iterating through paginated list results."
     },
-    "/build-products/bom/production-steps": {
-        "title": "Production Steps",
-        "subtitle": "The core building block of manufacturing in Augno - defining inputs, outputs, and costs for each stage of production."
+    "/api/rate-limiting": {
+        "title": "Rate Limiting",
+        "subtitle": "Understand rate limits and implement retry strategies."
     },
-    "/build-products/purchasing/purchase-orders": {
-        "title": "Purchase Orders",
-        "subtitle": "Transaction records for buying materials from suppliers, tracking orders through delivery and fulfillment."
-    },
-    "/build-products/purchasing/suppliers": {
-        "title": "Suppliers",
-        "subtitle": "Vendors you purchase materials from, defining the source for your raw material procurement."
-    },
-    "/build-products/purchasing/deliveries-and-receiving": {
-        "title": "Deliveries & Receiving",
-        "subtitle": "Track the physical arrival of materials from suppliers and convert purchase order quantities into usable inventory."
-    },
-    "/build-products/production/production-runs": {
-        "title": "Production Runs",
-        "subtitle": "Coordinated manufacturing executions that group related batches and track progress from start to completion."
-    },
-    "/build-products/production/batch-operations": {
-        "title": "Batch Operations",
-        "subtitle": "Initialize, move, split, and merge - the core actions that advance batches through the production flow."
-    },
-    "/build-products/production/batches": {
-        "title": "Batches",
-        "subtitle": "Physical units of product tracked through production - recording quantities, quality grades, and location as they move through manufacturing."
+    "/api/request-logs": {
+        "title": "Request Logs",
+        "subtitle": "Monitor and debug your API activity with request logs."
     }
 };
 
