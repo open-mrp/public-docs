@@ -101,6 +101,31 @@ function getDomainLabel(domain: string): string {
     return domainLabels[domain] || domain.charAt(0).toUpperCase() + domain.slice(1);
 }
 
+function findExpansionRoot(
+    fields: SchemaField[] | undefined,
+    includeValues: string[],
+): string | undefined {
+    if (!fields || includeValues.length === 0) return undefined;
+
+    // Preserve existing list convention: list responses always use `data`.
+    if (fields.some((f) => f.name === 'data')) return 'data';
+
+    // Top-level include names (e.g. ["role", "role.permissions"] → {"role"}).
+    const topLevelIncludes = new Set(includeValues.map((v) => v.split('.')[0]));
+
+    // Find a wrapper field whose direct children contain a field name that
+    // matches the include enum (e.g. CreatedAPIKey.api_key_info → role).
+    for (const field of fields) {
+        const children = field.properties;
+        if (!children || children.length === 0) continue;
+        if (children.some((c) => topLevelIncludes.has(c.name))) {
+            return field.name;
+        }
+    }
+
+    return undefined;
+}
+
 function fieldsToMarkdown(fields: SchemaField[], indent = 0): string {
     const prefix = '  '.repeat(indent);
     return fields
@@ -193,7 +218,10 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
     const responseWithExample = endpoint.responses.find((r) => r.example != null);
     const responseFields = endpoint.responses.find((r) => r.fields && r.fields.length > 0)?.fields;
 
-    const expansionRoot = responseFields?.some((f) => f.name === 'data') ? 'data' : undefined;
+    const expansionRoot = useMemo(
+        () => findExpansionRoot(responseFields, expandableIncludeValues),
+        [responseFields, expandableIncludeValues],
+    );
 
     const cleanMarkdown = useMemo(() => endpointToMarkdown(endpoint), [endpoint]);
     const [copied, setCopied] = useState(false);

@@ -200,7 +200,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "permissions",
                             "type": "array",
-                            "description": "The permissions for this role in \"{domain}:{action}\" format.",
+                            "description": "The permissions for this role in `{domain}:{action}` format.",
                             "required": true,
                             "nullable": true,
                             "expandable": true,
@@ -344,7 +344,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Optional expiration time for the API key.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "format": "date-time"
                         }
@@ -416,7 +416,87 @@ export const apiTags: TagData[] = [
                                         "description": "The role associated with this API key.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the role.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "role"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the role.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "type_code",
+                                                "type": "string",
+                                                "description": "The role type code.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "admin",
+                                                    "user",
+                                                    "scanner",
+                                                    "sales_rep",
+                                                    "agent"
+                                                ]
+                                            },
+                                            {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "The owner of this resource.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "permissions",
+                                                "type": "array",
+                                                "description": "The permissions for this role in `{domain}:{action}` format.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "itemType": "string"
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the role was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the role was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "created_at",
@@ -659,7 +739,87 @@ export const apiTags: TagData[] = [
                                         "description": "The role associated with this API key.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the role.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "role"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the role.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "type_code",
+                                                "type": "string",
+                                                "description": "The role type code.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "admin",
+                                                    "user",
+                                                    "scanner",
+                                                    "sales_rep",
+                                                    "agent"
+                                                ]
+                                            },
+                                            {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "The owner of this resource.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "permissions",
+                                                "type": "array",
+                                                "description": "The permissions for this role in `{domain}:{action}` format.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "itemType": "string"
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the role was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the role was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "created_at",
@@ -878,7 +1038,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "permissions",
                                         "type": "array",
-                                        "description": "The permissions for this role in \"{domain}:{action}\" format.",
+                                        "description": "The permissions for this role in `{domain}:{action}` format.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": true,
@@ -1044,7 +1204,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Optional expiration time override for the new API key.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "format": "date-time"
                         }
@@ -1115,7 +1275,87 @@ export const apiTags: TagData[] = [
                                         "description": "The role associated with this API key.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the role.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "role"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the role.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "type_code",
+                                                "type": "string",
+                                                "description": "The role type code.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "admin",
+                                                    "user",
+                                                    "scanner",
+                                                    "sales_rep",
+                                                    "agent"
+                                                ]
+                                            },
+                                            {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "The owner of this resource.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "permissions",
+                                                "type": "array",
+                                                "description": "The permissions for this role in `{domain}:{action}` format.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "itemType": "string"
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the role was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the role was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "created_at",
@@ -1722,7 +1962,90 @@ export const apiTags: TagData[] = [
                                         "description": "The owner account of this sandbox.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "created_at",
@@ -2358,7 +2681,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "permissions",
                                     "type": "array",
-                                    "description": "The permissions for this role in \"{domain}:{action}\" format.",
+                                    "description": "The permissions for this role in `{domain}:{action}` format.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": true,
@@ -2816,7 +3139,90 @@ export const apiTags: TagData[] = [
                                         "description": "The account targeted by the request.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "actor",
@@ -2824,7 +3230,132 @@ export const apiTags: TagData[] = [
                                         "description": "Actor details (user or API key).",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the actor.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "user|api_key|agent"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the actor.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "handle",
+                                                "type": "string",
+                                                "description": "Human-readable handle (email for users, redacted value for API keys, slug for agents).",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "role",
+                                                "type": "object",
+                                                "description": "The role assigned to the actor.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "The unique identifier for the role.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "The resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "role"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "The display name of the role.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "type_code",
+                                                        "type": "string",
+                                                        "description": "The role type code.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "admin",
+                                                            "user",
+                                                            "scanner",
+                                                            "sales_rep",
+                                                            "agent"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "owner",
+                                                        "type": "object",
+                                                        "description": "The owner of this resource.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "permissions",
+                                                        "type": "array",
+                                                        "description": "The permissions for this role in `{domain}:{action}` format.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": true,
+                                                        "itemType": "string"
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the role was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the role was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "idempotency_key",
@@ -3316,7 +3847,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "permissions",
                                                 "type": "array",
-                                                "description": "The permissions for this role in \"{domain}:{action}\" format.",
+                                                "description": "The permissions for this role in `{domain}:{action}` format.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": true,
@@ -4470,7 +5001,53 @@ export const apiTags: TagData[] = [
                                         "description": "The actor who performed the mutation.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the actor.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "user|api_key|agent"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the actor.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "handle",
+                                                "type": "string",
+                                                "description": "Human-readable handle (email for users, redacted value for API keys, slug for agents).",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "role",
+                                                "type": "object",
+                                                "description": "The role assigned to the actor.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "changes",
@@ -4479,7 +5056,35 @@ export const apiTags: TagData[] = [
                                         "required": true,
                                         "nullable": false,
                                         "expandable": true,
-                                        "itemType": "object"
+                                        "itemType": "object",
+                                        "properties": [
+                                            {
+                                                "name": "field",
+                                                "type": "string",
+                                                "description": "The name of the field that changed.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "old_value",
+                                                "type": "object",
+                                                "description": "The previous value of the field as a JSON fragment, or null for creation events.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "new_value",
+                                                "type": "object",
+                                                "description": "The new value of the field as a JSON fragment, or null for deletion events.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "metadata",
@@ -5584,7 +6189,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The display name of the unit.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -5592,7 +6197,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The short abbreviation for the unit.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -5600,7 +6205,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The conversion ratio numerator, as a decimal string.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -5608,7 +6213,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The conversion ratio denominator, as a decimal string.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -5616,7 +6221,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The conversion offset numerator, as a decimal string.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -5624,7 +6229,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The conversion offset denominator, as a decimal string.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         }
                     ],
@@ -6057,7 +6662,41 @@ export const apiTags: TagData[] = [
                                         "description": "The owner of this resource.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "owner"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "system",
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "account",
+                                                "type": "object",
+                                                "description": "The account that owns this resource. Present when type is \"account\".",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "created_at",
@@ -6430,133 +7069,7 @@ export const apiTags: TagData[] = [
                     "description": "The base unit for this group.",
                     "required": true,
                     "nullable": true,
-                    "expandable": true,
-                    "properties": [
-                        {
-                            "name": "id",
-                            "type": "string",
-                            "description": "The unique identifier for the unit.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "object",
-                            "type": "string",
-                            "description": "The resource type identifier.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "enum": [
-                                "unit"
-                            ]
-                        },
-                        {
-                            "name": "name",
-                            "type": "string",
-                            "description": "The display name of the unit (e.g. \"Gram\", \"Kilogram\").",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "abbreviation",
-                            "type": "string",
-                            "description": "The short abbreviation for the unit (e.g. \"g\", \"kg\").",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "type",
-                            "type": "string",
-                            "description": "The unit dimension.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "enum": [
-                                "currency",
-                                "quantity",
-                                "time",
-                                "mass",
-                                "volume",
-                                "length",
-                                "temperature",
-                                "area"
-                            ]
-                        },
-                        {
-                            "name": "ratio_numerator",
-                            "type": "string",
-                            "description": "The conversion ratio numerator relative to the base unit in the same dimension.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "format": "decimal"
-                        },
-                        {
-                            "name": "ratio_denominator",
-                            "type": "string",
-                            "description": "The conversion ratio denominator relative to the base unit in the same dimension.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "format": "decimal"
-                        },
-                        {
-                            "name": "offset_numerator",
-                            "type": "string",
-                            "description": "The conversion offset numerator, used for temperature-like conversions. Zero for most unit types.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "format": "decimal"
-                        },
-                        {
-                            "name": "offset_denominator",
-                            "type": "string",
-                            "description": "The conversion offset denominator. Typically 1.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "format": "decimal"
-                        },
-                        {
-                            "name": "is_base_unit",
-                            "type": "boolean",
-                            "description": "Whether this unit is the base unit for its dimension. Conversion ratios are relative to this unit.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "owner",
-                            "type": "object",
-                            "description": "The owner of this resource.",
-                            "required": true,
-                            "nullable": true,
-                            "alwaysNull": true,
-                            "expandable": true
-                        },
-                        {
-                            "name": "created_at",
-                            "type": "string",
-                            "description": "When this unit was created.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "format": "date-time"
-                        },
-                        {
-                            "name": "updated_at",
-                            "type": "string",
-                            "description": "When this unit was last updated.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "format": "date-time"
-                        }
-                    ]
+                    "expandable": true
                 },
                 {
                     "name": "associated_units",
@@ -6982,133 +7495,7 @@ export const apiTags: TagData[] = [
                                 "description": "The base unit for this group.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": true,
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "The unique identifier for the unit.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "The resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "unit"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The display name of the unit (e.g. \"Gram\", \"Kilogram\").",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "abbreviation",
-                                        "type": "string",
-                                        "description": "The short abbreviation for the unit (e.g. \"g\", \"kg\").",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "The unit dimension.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "currency",
-                                            "quantity",
-                                            "time",
-                                            "mass",
-                                            "volume",
-                                            "length",
-                                            "temperature",
-                                            "area"
-                                        ]
-                                    },
-                                    {
-                                        "name": "ratio_numerator",
-                                        "type": "string",
-                                        "description": "The conversion ratio numerator relative to the base unit in the same dimension.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "decimal"
-                                    },
-                                    {
-                                        "name": "ratio_denominator",
-                                        "type": "string",
-                                        "description": "The conversion ratio denominator relative to the base unit in the same dimension.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "decimal"
-                                    },
-                                    {
-                                        "name": "offset_numerator",
-                                        "type": "string",
-                                        "description": "The conversion offset numerator, used for temperature-like conversions. Zero for most unit types.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "decimal"
-                                    },
-                                    {
-                                        "name": "offset_denominator",
-                                        "type": "string",
-                                        "description": "The conversion offset denominator. Typically 1.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "decimal"
-                                    },
-                                    {
-                                        "name": "is_base_unit",
-                                        "type": "boolean",
-                                        "description": "Whether this unit is the base unit for its dimension. Conversion ratios are relative to this unit.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "owner",
-                                        "type": "object",
-                                        "description": "The owner of this resource.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "When this unit was created.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "When this unit was last updated.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
+                                "expandable": true
                             },
                             {
                                 "name": "associated_units",
@@ -7379,7 +7766,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The display name of the unit group.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -7395,7 +7782,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The base unit ID.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -7403,7 +7790,7 @@ export const apiTags: TagData[] = [
                             "type": "array",
                             "description": "If provided, upserts associated units. Existing associated units not in the list are preserved.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "itemType": "object",
                             "properties": [
@@ -7515,133 +7902,7 @@ export const apiTags: TagData[] = [
                                 "description": "The base unit for this group.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": true,
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "The unique identifier for the unit.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "The resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "unit"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The display name of the unit (e.g. \"Gram\", \"Kilogram\").",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "abbreviation",
-                                        "type": "string",
-                                        "description": "The short abbreviation for the unit (e.g. \"g\", \"kg\").",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "The unit dimension.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "currency",
-                                            "quantity",
-                                            "time",
-                                            "mass",
-                                            "volume",
-                                            "length",
-                                            "temperature",
-                                            "area"
-                                        ]
-                                    },
-                                    {
-                                        "name": "ratio_numerator",
-                                        "type": "string",
-                                        "description": "The conversion ratio numerator relative to the base unit in the same dimension.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "decimal"
-                                    },
-                                    {
-                                        "name": "ratio_denominator",
-                                        "type": "string",
-                                        "description": "The conversion ratio denominator relative to the base unit in the same dimension.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "decimal"
-                                    },
-                                    {
-                                        "name": "offset_numerator",
-                                        "type": "string",
-                                        "description": "The conversion offset numerator, used for temperature-like conversions. Zero for most unit types.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "decimal"
-                                    },
-                                    {
-                                        "name": "offset_denominator",
-                                        "type": "string",
-                                        "description": "The conversion offset denominator. Typically 1.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "decimal"
-                                    },
-                                    {
-                                        "name": "is_base_unit",
-                                        "type": "boolean",
-                                        "description": "Whether this unit is the base unit for its dimension. Conversion ratios are relative to this unit.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "owner",
-                                        "type": "object",
-                                        "description": "The owner of this resource.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "When this unit was created.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "When this unit was last updated.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
+                                "expandable": true
                             },
                             {
                                 "name": "associated_units",
@@ -8061,7 +8322,133 @@ export const apiTags: TagData[] = [
                                         "description": "The base unit for this group.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the unit.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "unit"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the unit (e.g. \"Gram\", \"Kilogram\").",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "abbreviation",
+                                                "type": "string",
+                                                "description": "The short abbreviation for the unit (e.g. \"g\", \"kg\").",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The unit dimension.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "currency",
+                                                    "quantity",
+                                                    "time",
+                                                    "mass",
+                                                    "volume",
+                                                    "length",
+                                                    "temperature",
+                                                    "area"
+                                                ]
+                                            },
+                                            {
+                                                "name": "ratio_numerator",
+                                                "type": "string",
+                                                "description": "The conversion ratio numerator relative to the base unit in the same dimension.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "decimal"
+                                            },
+                                            {
+                                                "name": "ratio_denominator",
+                                                "type": "string",
+                                                "description": "The conversion ratio denominator relative to the base unit in the same dimension.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "decimal"
+                                            },
+                                            {
+                                                "name": "offset_numerator",
+                                                "type": "string",
+                                                "description": "The conversion offset numerator, used for temperature-like conversions. Zero for most unit types.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "decimal"
+                                            },
+                                            {
+                                                "name": "offset_denominator",
+                                                "type": "string",
+                                                "description": "The conversion offset denominator. Typically 1.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "decimal"
+                                            },
+                                            {
+                                                "name": "is_base_unit",
+                                                "type": "boolean",
+                                                "description": "Whether this unit is the base unit for its dimension. Conversion ratios are relative to this unit.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "The owner of this resource.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "When this unit was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "When this unit was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "associated_units",
@@ -8069,7 +8456,147 @@ export const apiTags: TagData[] = [
                                         "description": "The associated units in this group.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Object type for UnitGroupUnit list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "list"
+                                                ]
+                                            },
+                                            {
+                                                "name": "page_info",
+                                                "type": "object",
+                                                "description": "Pagination metadata for UnitGroupUnit list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "properties": [
+                                                    {
+                                                        "name": "next_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the next page of results, null if no more pages.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "prev_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the previous page of results, null if on the first page.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_next_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether there are more results after this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_prev_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether there are results before this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "array",
+                                                "description": "Array of UnitGroupUnit resources in this page",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "itemType": "object",
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "The unique identifier for the unit group unit.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "The resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "unit_group_unit"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "unit",
+                                                        "type": "object",
+                                                        "description": "The unit. Expandable.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "discount_percentage",
+                                                        "type": "number",
+                                                        "description": "The discount percentage for this associated unit.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "discount_fixed",
+                                                        "type": "number",
+                                                        "description": "The fixed discount amount for this associated unit.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "customer_portal_visibility",
+                                                        "type": "string",
+                                                        "description": "Whether this associated unit is visible in the customer portal.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "visible",
+                                                            "hidden"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "When this associated unit was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "When this associated unit was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "owner",
@@ -8077,7 +8604,41 @@ export const apiTags: TagData[] = [
                                         "description": "The owner of this resource.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "owner"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "system",
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "account",
+                                                "type": "object",
+                                                "description": "The account that owns this resource. Present when type is \"account\".",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "created_at",
@@ -8227,133 +8788,7 @@ export const apiTags: TagData[] = [
                                 "description": "The base unit for this group.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": true,
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "The unique identifier for the unit.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "The resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "unit"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The display name of the unit (e.g. \"Gram\", \"Kilogram\").",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "abbreviation",
-                                        "type": "string",
-                                        "description": "The short abbreviation for the unit (e.g. \"g\", \"kg\").",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "The unit dimension.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "currency",
-                                            "quantity",
-                                            "time",
-                                            "mass",
-                                            "volume",
-                                            "length",
-                                            "temperature",
-                                            "area"
-                                        ]
-                                    },
-                                    {
-                                        "name": "ratio_numerator",
-                                        "type": "string",
-                                        "description": "The conversion ratio numerator relative to the base unit in the same dimension.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "decimal"
-                                    },
-                                    {
-                                        "name": "ratio_denominator",
-                                        "type": "string",
-                                        "description": "The conversion ratio denominator relative to the base unit in the same dimension.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "decimal"
-                                    },
-                                    {
-                                        "name": "offset_numerator",
-                                        "type": "string",
-                                        "description": "The conversion offset numerator, used for temperature-like conversions. Zero for most unit types.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "decimal"
-                                    },
-                                    {
-                                        "name": "offset_denominator",
-                                        "type": "string",
-                                        "description": "The conversion offset denominator. Typically 1.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "decimal"
-                                    },
-                                    {
-                                        "name": "is_base_unit",
-                                        "type": "boolean",
-                                        "description": "Whether this unit is the base unit for its dimension. Conversion ratios are relative to this unit.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "owner",
-                                        "type": "object",
-                                        "description": "The owner of this resource.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "When this unit was created.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "When this unit was last updated.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
+                                "expandable": true
                             },
                             {
                                 "name": "associated_units",
@@ -8945,7 +9380,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The unit ID.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -8953,7 +9388,7 @@ export const apiTags: TagData[] = [
                             "type": "number",
                             "description": "The discount percentage.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -8961,7 +9396,7 @@ export const apiTags: TagData[] = [
                             "type": "number",
                             "description": "The fixed discount amount.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -9313,7 +9748,133 @@ export const apiTags: TagData[] = [
                                         "description": "The unit. Expandable.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the unit.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "unit"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the unit (e.g. \"Gram\", \"Kilogram\").",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "abbreviation",
+                                                "type": "string",
+                                                "description": "The short abbreviation for the unit (e.g. \"g\", \"kg\").",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The unit dimension.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "currency",
+                                                    "quantity",
+                                                    "time",
+                                                    "mass",
+                                                    "volume",
+                                                    "length",
+                                                    "temperature",
+                                                    "area"
+                                                ]
+                                            },
+                                            {
+                                                "name": "ratio_numerator",
+                                                "type": "string",
+                                                "description": "The conversion ratio numerator relative to the base unit in the same dimension.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "decimal"
+                                            },
+                                            {
+                                                "name": "ratio_denominator",
+                                                "type": "string",
+                                                "description": "The conversion ratio denominator relative to the base unit in the same dimension.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "decimal"
+                                            },
+                                            {
+                                                "name": "offset_numerator",
+                                                "type": "string",
+                                                "description": "The conversion offset numerator, used for temperature-like conversions. Zero for most unit types.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "decimal"
+                                            },
+                                            {
+                                                "name": "offset_denominator",
+                                                "type": "string",
+                                                "description": "The conversion offset denominator. Typically 1.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "decimal"
+                                            },
+                                            {
+                                                "name": "is_base_unit",
+                                                "type": "boolean",
+                                                "description": "Whether this unit is the base unit for its dimension. Conversion ratios are relative to this unit.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "The owner of this resource.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "When this unit was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "When this unit was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "discount_percentage",
@@ -9983,7 +10544,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "description",
                             "type": "string",
-                            "description": "An optional description of the account group.",
+                            "description": "An optional description of the account group. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
                             "expandable": false
@@ -10841,7 +11402,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The display name of the payment term.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         }
                     ],
@@ -11125,7 +11686,41 @@ export const apiTags: TagData[] = [
                                         "description": "The owner of this resource.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "owner"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "system",
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "account",
+                                                "type": "object",
+                                                "description": "The account that owns this resource. Present when type is \"account\".",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "created_at",
@@ -12804,7 +13399,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The display name of the shipping term.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -12876,14 +13471,17 @@ export const apiTags: TagData[] = [
                             "name": "free_shipping_service_level_ids",
                             "type": "array",
                             "description": "The service level IDs that qualify for free shipping. Send null to clear.",
-                            "required": true,
-                            "nullable": false,
+                            "required": false,
+                            "nullable": true,
                             "expandable": false,
                             "itemType": "string"
                         }
                     ],
                     "example": {
-                        "name": "Collect"
+                        "name": "Collect",
+                        "flat_rate": {},
+                        "minimum_order_value": {},
+                        "free_shipping_service_level_ids": {}
                     }
                 },
                 "responses": [
@@ -13688,7 +14286,41 @@ export const apiTags: TagData[] = [
                                         "description": "The owner of this resource.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "owner"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "system",
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "account",
+                                                "type": "object",
+                                                "description": "The account that owns this resource. Present when type is \"account\".",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "flat_rate",
@@ -13740,7 +14372,133 @@ export const apiTags: TagData[] = [
                                                 "description": "The unit associated with this quantity.",
                                                 "required": true,
                                                 "nullable": true,
-                                                "expandable": true
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "The unique identifier for the unit.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "The resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "unit"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "The display name of the unit (e.g. \"Gram\", \"Kilogram\").",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "abbreviation",
+                                                        "type": "string",
+                                                        "description": "The short abbreviation for the unit (e.g. \"g\", \"kg\").",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "type",
+                                                        "type": "string",
+                                                        "description": "The unit dimension.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "currency",
+                                                            "quantity",
+                                                            "time",
+                                                            "mass",
+                                                            "volume",
+                                                            "length",
+                                                            "temperature",
+                                                            "area"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "ratio_numerator",
+                                                        "type": "string",
+                                                        "description": "The conversion ratio numerator relative to the base unit in the same dimension.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "decimal"
+                                                    },
+                                                    {
+                                                        "name": "ratio_denominator",
+                                                        "type": "string",
+                                                        "description": "The conversion ratio denominator relative to the base unit in the same dimension.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "decimal"
+                                                    },
+                                                    {
+                                                        "name": "offset_numerator",
+                                                        "type": "string",
+                                                        "description": "The conversion offset numerator, used for temperature-like conversions. Zero for most unit types.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "decimal"
+                                                    },
+                                                    {
+                                                        "name": "offset_denominator",
+                                                        "type": "string",
+                                                        "description": "The conversion offset denominator. Typically 1.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "decimal"
+                                                    },
+                                                    {
+                                                        "name": "is_base_unit",
+                                                        "type": "boolean",
+                                                        "description": "Whether this unit is the base unit for its dimension. Conversion ratios are relative to this unit.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "owner",
+                                                        "type": "object",
+                                                        "description": "The owner of this resource.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "When this unit was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "When this unit was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
                                             }
                                         ]
                                     },
@@ -13794,7 +14552,133 @@ export const apiTags: TagData[] = [
                                                 "description": "The unit associated with this quantity.",
                                                 "required": true,
                                                 "nullable": true,
-                                                "expandable": true
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "The unique identifier for the unit.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "The resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "unit"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "The display name of the unit (e.g. \"Gram\", \"Kilogram\").",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "abbreviation",
+                                                        "type": "string",
+                                                        "description": "The short abbreviation for the unit (e.g. \"g\", \"kg\").",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "type",
+                                                        "type": "string",
+                                                        "description": "The unit dimension.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "currency",
+                                                            "quantity",
+                                                            "time",
+                                                            "mass",
+                                                            "volume",
+                                                            "length",
+                                                            "temperature",
+                                                            "area"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "ratio_numerator",
+                                                        "type": "string",
+                                                        "description": "The conversion ratio numerator relative to the base unit in the same dimension.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "decimal"
+                                                    },
+                                                    {
+                                                        "name": "ratio_denominator",
+                                                        "type": "string",
+                                                        "description": "The conversion ratio denominator relative to the base unit in the same dimension.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "decimal"
+                                                    },
+                                                    {
+                                                        "name": "offset_numerator",
+                                                        "type": "string",
+                                                        "description": "The conversion offset numerator, used for temperature-like conversions. Zero for most unit types.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "decimal"
+                                                    },
+                                                    {
+                                                        "name": "offset_denominator",
+                                                        "type": "string",
+                                                        "description": "The conversion offset denominator. Typically 1.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "decimal"
+                                                    },
+                                                    {
+                                                        "name": "is_base_unit",
+                                                        "type": "boolean",
+                                                        "description": "Whether this unit is the base unit for its dimension. Conversion ratios are relative to this unit.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "owner",
+                                                        "type": "object",
+                                                        "description": "The owner of this resource.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "When this unit was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "When this unit was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
                                             }
                                         ]
                                     },
@@ -13804,7 +14688,146 @@ export const apiTags: TagData[] = [
                                         "description": "The service levels that qualify for free shipping under this term.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Object type for ServiceLevel list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "list"
+                                                ]
+                                            },
+                                            {
+                                                "name": "page_info",
+                                                "type": "object",
+                                                "description": "Pagination metadata for ServiceLevel list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "properties": [
+                                                    {
+                                                        "name": "next_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the next page of results, null if no more pages.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "prev_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the previous page of results, null if on the first page.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_next_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether there are more results after this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_prev_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether there are results before this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "array",
+                                                "description": "Array of ServiceLevel resources in this page",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "itemType": "object",
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "The unique identifier for the service level.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "The resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "service_level"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "The display name of the service level.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "service_level_token",
+                                                        "type": "string",
+                                                        "description": "The service level token identifying this shipping service level.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "customer_portal_visibility",
+                                                        "type": "string",
+                                                        "description": "Whether this service level is visible in the customer portal.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "visible",
+                                                            "hidden"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "is_default",
+                                                        "type": "boolean",
+                                                        "description": "Whether this is the default service level for the carrier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "When the service level was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "When the service level was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "created_at",
@@ -15063,13 +16086,13 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The display name of the address.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
                             "name": "phone",
                             "type": "string",
-                            "description": "The phone number associated with this address.",
+                            "description": "The phone number associated with this address. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
                             "expandable": false
@@ -15077,7 +16100,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "email",
                             "type": "string",
-                            "description": "The email address associated with this address.",
+                            "description": "The email address associated with this address. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
                             "expandable": false
@@ -15087,7 +16110,7 @@ export const apiTags: TagData[] = [
                             "type": "boolean",
                             "description": "Whether this is a drop ship address.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -15095,13 +16118,13 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The first line of the street address.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
                             "name": "street_line_2",
                             "type": "string",
-                            "description": "The second line of the street address.",
+                            "description": "The second line of the street address. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
                             "expandable": false
@@ -15111,7 +16134,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The city or locality.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -15119,7 +16142,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The state or administrative area.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -15127,7 +16150,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The postal or zip code.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -15135,7 +16158,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The two-letter country code.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         }
                     ],
@@ -15839,16 +16862,178 @@ export const apiTags: TagData[] = [
         "domainLabel": "Core",
         "endpoints": [
             {
+                "operationId": "get-address-suggestions",
+                "summary": "Get Address Suggestions",
+                "description": "Returns address suggestions based on the input text.",
+                "method": "GET",
+                "path": "/v1/core/addresses/suggestions",
+                "domain": "core",
+                "tag": "Address Validation",
+                "tagSlug": "address-validation",
+                "endpointSlug": "get-address-suggestions",
+                "actionType": "list",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "input",
+                        "in": "query",
+                        "type": "string",
+                        "required": true,
+                        "description": "The text input for autocomplete."
+                    },
+                    {
+                        "name": "session_token,omitempty",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "An optional session token for grouping autocomplete requests."
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for Get Address Suggestions",
+                        "fields": [
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Object type for AddressSuggestion list",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "list"
+                                ]
+                            },
+                            {
+                                "name": "page_info",
+                                "type": "object",
+                                "description": "Pagination metadata for AddressSuggestion list",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "properties": [
+                                    {
+                                        "name": "next_cursor",
+                                        "type": "string",
+                                        "description": "Cursor to fetch the next page of results, null if no more pages.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "prev_cursor",
+                                        "type": "string",
+                                        "description": "Cursor to fetch the previous page of results, null if on the first page.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_next_page",
+                                        "type": "boolean",
+                                        "description": "Whether there are more results after this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_prev_page",
+                                        "type": "boolean",
+                                        "description": "Whether there are results before this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "data",
+                                "type": "array",
+                                "description": "Array of AddressSuggestion resources in this page",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "itemType": "object",
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "The Google Places ID for the suggestion.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "The resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "address_suggestion"
+                                        ]
+                                    },
+                                    {
+                                        "name": "description",
+                                        "type": "string",
+                                        "description": "The full text description of the suggestion.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "main_text",
+                                        "type": "string",
+                                        "description": "The main text of the suggestion (typically the street address).",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "secondary_text",
+                                        "type": "string",
+                                        "description": "The secondary text of the suggestion (typically city, state, country).",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_cursor": "ChIJd8BlQ2BZwokRAFUEcm_qrcA",
+                                "prev_cursor": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "ChIJd8BlQ2BZwokRAFUEcm_qrcA",
+                                    "object": "address_suggestion",
+                                    "description": "123 Main St, Springfield, IL 62701, USA",
+                                    "main_text": "123 Main St",
+                                    "secondary_text": "Springfield, IL 62701, USA"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
                 "operationId": "validate-address",
                 "summary": "Validate Address",
                 "description": "Validates an address and returns whether it is valid, a formatted version, and any validation messages.",
-                "method": "POST",
-                "path": "/v1/core/addresses/validate",
+                "method": "PUT",
+                "path": "/v1/core/addresses/actions/validate",
                 "domain": "core",
                 "tag": "Address Validation",
                 "tagSlug": "address-validation",
                 "endpointSlug": "validate-address",
-                "actionType": "create",
+                "actionType": "action",
                 "isPreview": true,
                 "parameters": [],
                 "requestBody": {
@@ -15867,7 +17052,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The second line of the street address.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -16045,168 +17230,6 @@ export const apiTags: TagData[] = [
                                 "country_code": "US"
                             },
                             "validation_messages": []
-                        }
-                    }
-                ]
-            },
-            {
-                "operationId": "autocomplete-address",
-                "summary": "Autocomplete Address",
-                "description": "Returns address autocomplete suggestions based on the input text.",
-                "method": "GET",
-                "path": "/v1/core/addresses/autocomplete",
-                "domain": "core",
-                "tag": "Address Validation",
-                "tagSlug": "address-validation",
-                "endpointSlug": "autocomplete-address",
-                "actionType": "list",
-                "isPreview": true,
-                "parameters": [
-                    {
-                        "name": "input",
-                        "in": "query",
-                        "type": "string",
-                        "required": true,
-                        "description": "The text input for autocomplete."
-                    },
-                    {
-                        "name": "session_token,omitempty",
-                        "in": "query",
-                        "type": "string",
-                        "required": false,
-                        "description": "An optional session token for grouping autocomplete requests."
-                    }
-                ],
-                "responses": [
-                    {
-                        "statusCode": "200",
-                        "description": "Successful response for Autocomplete Address",
-                        "fields": [
-                            {
-                                "name": "object",
-                                "type": "string",
-                                "description": "Object type for AddressSuggestion list",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "list"
-                                ]
-                            },
-                            {
-                                "name": "page_info",
-                                "type": "object",
-                                "description": "Pagination metadata for AddressSuggestion list",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "properties": [
-                                    {
-                                        "name": "next_cursor",
-                                        "type": "string",
-                                        "description": "Cursor to fetch the next page of results, null if no more pages.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "prev_cursor",
-                                        "type": "string",
-                                        "description": "Cursor to fetch the previous page of results, null if on the first page.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "has_next_page",
-                                        "type": "boolean",
-                                        "description": "Whether there are more results after this page.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "has_prev_page",
-                                        "type": "boolean",
-                                        "description": "Whether there are results before this page.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "data",
-                                "type": "array",
-                                "description": "Array of AddressSuggestion resources in this page",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "itemType": "object",
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "The Google Places ID for the suggestion.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "The resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "address_suggestion"
-                                        ]
-                                    },
-                                    {
-                                        "name": "description",
-                                        "type": "string",
-                                        "description": "The full text description of the suggestion.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "main_text",
-                                        "type": "string",
-                                        "description": "The main text of the suggestion (typically the street address).",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "secondary_text",
-                                        "type": "string",
-                                        "description": "The secondary text of the suggestion (typically city, state, country).",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    }
-                                ]
-                            }
-                        ],
-                        "example": {
-                            "object": "list",
-                            "page_info": {
-                                "next_cursor": "ChIJd8BlQ2BZwokRAFUEcm_qrcA",
-                                "prev_cursor": null,
-                                "has_next_page": true,
-                                "has_prev_page": false
-                            },
-                            "data": [
-                                {
-                                    "id": "ChIJd8BlQ2BZwokRAFUEcm_qrcA",
-                                    "object": "address_suggestion",
-                                    "description": "123 Main St, Springfield, IL 62701, USA",
-                                    "main_text": "123 Main St",
-                                    "secondary_text": "Springfield, IL 62701, USA"
-                                }
-                            ]
                         }
                     }
                 ]
@@ -16714,7 +17737,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The new name of the property.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         }
                     ],
@@ -17076,7 +18099,146 @@ export const apiTags: TagData[] = [
                                         "description": "The attributes belonging to this property.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Object type for Attribute list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "list"
+                                                ]
+                                            },
+                                            {
+                                                "name": "page_info",
+                                                "type": "object",
+                                                "description": "Pagination metadata for Attribute list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "properties": [
+                                                    {
+                                                        "name": "next_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the next page of results, null if no more pages.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "prev_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the previous page of results, null if on the first page.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_next_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether there are more results after this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_prev_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether there are results before this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "array",
+                                                "description": "Array of Attribute resources in this page",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "itemType": "object",
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "The unique identifier for the attribute.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "The resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "attribute"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "value",
+                                                        "type": "string",
+                                                        "description": "The value of the attribute.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "color_code",
+                                                        "type": "string",
+                                                        "description": "The color code of the attribute.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "blue",
+                                                            "brown",
+                                                            "default",
+                                                            "gray",
+                                                            "green",
+                                                            "orange",
+                                                            "pink",
+                                                            "purple",
+                                                            "red",
+                                                            "yellow"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "sort_order",
+                                                        "type": "integer",
+                                                        "description": "The display order of the attribute.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the attribute was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the attribute was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "created_at",
@@ -17585,7 +18747,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The new value of the attribute.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -17593,7 +18755,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The new color code of the attribute.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "enum": [
                                 "blue",
@@ -17613,7 +18775,7 @@ export const apiTags: TagData[] = [
                             "type": "integer",
                             "description": "The new display order of the attribute.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         }
                     ],
@@ -18342,7 +19504,41 @@ export const apiTags: TagData[] = [
                                         "description": "The owner of this resource.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "owner"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "system",
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "account",
+                                                "type": "object",
+                                                "description": "The account that owns this resource. Present when type is \"account\".",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "created_at",
@@ -18780,107 +19976,7 @@ export const apiTags: TagData[] = [
                     "description": "The unit group associated with this item category.",
                     "required": true,
                     "nullable": true,
-                    "expandable": true,
-                    "properties": [
-                        {
-                            "name": "id",
-                            "type": "string",
-                            "description": "The unique identifier for the unit group.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "object",
-                            "type": "string",
-                            "description": "The resource type identifier.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "enum": [
-                                "unit_group"
-                            ]
-                        },
-                        {
-                            "name": "name",
-                            "type": "string",
-                            "description": "The display name of the unit group.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "notes",
-                            "type": "string",
-                            "description": "Notes about the unit group.",
-                            "required": true,
-                            "nullable": true,
-                            "expandable": false
-                        },
-                        {
-                            "name": "type",
-                            "type": "string",
-                            "description": "The unit type.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "enum": [
-                                "currency",
-                                "quantity",
-                                "time",
-                                "mass",
-                                "volume",
-                                "length",
-                                "temperature",
-                                "area"
-                            ]
-                        },
-                        {
-                            "name": "base_unit",
-                            "type": "object",
-                            "description": "The base unit for this group.",
-                            "required": true,
-                            "nullable": true,
-                            "alwaysNull": true,
-                            "expandable": true
-                        },
-                        {
-                            "name": "associated_units",
-                            "type": "object",
-                            "description": "The associated units in this group.",
-                            "required": true,
-                            "nullable": true,
-                            "alwaysNull": true,
-                            "expandable": true
-                        },
-                        {
-                            "name": "owner",
-                            "type": "object",
-                            "description": "The owner of this resource.",
-                            "required": true,
-                            "nullable": true,
-                            "alwaysNull": true,
-                            "expandable": true
-                        },
-                        {
-                            "name": "created_at",
-                            "type": "string",
-                            "description": "When this unit group was created.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "format": "date-time"
-                        },
-                        {
-                            "name": "updated_at",
-                            "type": "string",
-                            "description": "When this unit group was last updated.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "format": "date-time"
-                        }
-                    ]
+                    "expandable": true
                 },
                 {
                     "name": "created_at",
@@ -19207,107 +20303,7 @@ export const apiTags: TagData[] = [
                                 "description": "The unit group associated with this item category.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": true,
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "The unique identifier for the unit group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "The resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "unit_group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The display name of the unit group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "notes",
-                                        "type": "string",
-                                        "description": "Notes about the unit group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "The unit type.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "currency",
-                                            "quantity",
-                                            "time",
-                                            "mass",
-                                            "volume",
-                                            "length",
-                                            "temperature",
-                                            "area"
-                                        ]
-                                    },
-                                    {
-                                        "name": "base_unit",
-                                        "type": "object",
-                                        "description": "The base unit for this group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "associated_units",
-                                        "type": "object",
-                                        "description": "The associated units in this group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "owner",
-                                        "type": "object",
-                                        "description": "The owner of this resource.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "When this unit group was created.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "When this unit group was last updated.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
+                                "expandable": true
                             },
                             {
                                 "name": "created_at",
@@ -19388,7 +20384,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The display name of the item category.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -19396,7 +20392,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Optional notes about the item category.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         }
                     ],
@@ -19632,107 +20628,7 @@ export const apiTags: TagData[] = [
                                 "description": "The unit group associated with this item category.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": true,
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "The unique identifier for the unit group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "The resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "unit_group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The display name of the unit group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "notes",
-                                        "type": "string",
-                                        "description": "Notes about the unit group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "The unit type.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "currency",
-                                            "quantity",
-                                            "time",
-                                            "mass",
-                                            "volume",
-                                            "length",
-                                            "temperature",
-                                            "area"
-                                        ]
-                                    },
-                                    {
-                                        "name": "base_unit",
-                                        "type": "object",
-                                        "description": "The base unit for this group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "associated_units",
-                                        "type": "object",
-                                        "description": "The associated units in this group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "owner",
-                                        "type": "object",
-                                        "description": "The owner of this resource.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "When this unit group was created.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "When this unit group was last updated.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
+                                "expandable": true
                             },
                             {
                                 "name": "created_at",
@@ -19946,7 +20842,41 @@ export const apiTags: TagData[] = [
                                         "description": "The owner of this resource.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "owner"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "system",
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "account",
+                                                "type": "object",
+                                                "description": "The account that owns this resource. Present when type is \"account\".",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "properties",
@@ -19954,7 +20884,127 @@ export const apiTags: TagData[] = [
                                         "description": "The properties associated with this item category.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Object type for Property list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "list"
+                                                ]
+                                            },
+                                            {
+                                                "name": "page_info",
+                                                "type": "object",
+                                                "description": "Pagination metadata for Property list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "properties": [
+                                                    {
+                                                        "name": "next_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the next page of results, null if no more pages.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "prev_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the previous page of results, null if on the first page.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_next_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether there are more results after this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_prev_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether there are results before this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "array",
+                                                "description": "Array of Property resources in this page",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "itemType": "object",
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "The unique identifier for the property.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "The resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "property"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "The name of the property.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "attributes",
+                                                        "type": "object",
+                                                        "description": "The attributes belonging to this property.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the property was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the property was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "unit_group",
@@ -19962,7 +21012,107 @@ export const apiTags: TagData[] = [
                                         "description": "The unit group associated with this item category.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the unit group.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "unit_group"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the unit group.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "notes",
+                                                "type": "string",
+                                                "description": "Notes about the unit group.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The unit type.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "currency",
+                                                    "quantity",
+                                                    "time",
+                                                    "mass",
+                                                    "volume",
+                                                    "length",
+                                                    "temperature",
+                                                    "area"
+                                                ]
+                                            },
+                                            {
+                                                "name": "base_unit",
+                                                "type": "object",
+                                                "description": "The base unit for this group.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "associated_units",
+                                                "type": "object",
+                                                "description": "The associated units in this group.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "The owner of this resource.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "When this unit group was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "When this unit group was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "created_at",
@@ -20276,107 +21426,7 @@ export const apiTags: TagData[] = [
                                 "description": "The unit group associated with this item category.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": true,
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "The unique identifier for the unit group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "The resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "unit_group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The display name of the unit group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "notes",
-                                        "type": "string",
-                                        "description": "Notes about the unit group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "The unit type.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "currency",
-                                            "quantity",
-                                            "time",
-                                            "mass",
-                                            "volume",
-                                            "length",
-                                            "temperature",
-                                            "area"
-                                        ]
-                                    },
-                                    {
-                                        "name": "base_unit",
-                                        "type": "object",
-                                        "description": "The base unit for this group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "associated_units",
-                                        "type": "object",
-                                        "description": "The associated units in this group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "owner",
-                                        "type": "object",
-                                        "description": "The owner of this resource.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "When this unit group was created.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "When this unit group was last updated.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
+                                "expandable": true
                             },
                             {
                                 "name": "created_at",
@@ -22321,98 +23371,7 @@ export const apiTags: TagData[] = [
                     "description": "The customer type group.",
                     "required": true,
                     "nullable": true,
-                    "expandable": true,
-                    "properties": [
-                        {
-                            "name": "id",
-                            "type": "string",
-                            "description": "The unique identifier for the account group.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "object",
-                            "type": "string",
-                            "description": "The resource type identifier.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "enum": [
-                                "account_group"
-                            ]
-                        },
-                        {
-                            "name": "name",
-                            "type": "string",
-                            "description": "The display name of the account group.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "description",
-                            "type": "string",
-                            "description": "A description of the account group.",
-                            "required": true,
-                            "nullable": true,
-                            "expandable": false
-                        },
-                        {
-                            "name": "commission_policy",
-                            "type": "string",
-                            "description": "The commission policy of the account group.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "enum": [
-                                "commission_applied",
-                                "commission_exempt"
-                            ]
-                        },
-                        {
-                            "name": "freight_policy",
-                            "type": "string",
-                            "description": "The freight policy of the account group.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "enum": [
-                                "free_freight",
-                                "billed_freight"
-                            ]
-                        },
-                        {
-                            "name": "type",
-                            "type": "string",
-                            "description": "The account group type.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "enum": [
-                                "pricing_group",
-                                "type_group"
-                            ]
-                        },
-                        {
-                            "name": "created_at",
-                            "type": "string",
-                            "description": "When this account group was created.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "format": "date-time"
-                        },
-                        {
-                            "name": "updated_at",
-                            "type": "string",
-                            "description": "When this account group was last updated.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "format": "date-time"
-                        }
-                    ]
+                    "expandable": true
                 },
                 {
                     "name": "price_groups",
@@ -24798,98 +25757,7 @@ export const apiTags: TagData[] = [
                                 "description": "The customer type group.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": true,
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "The unique identifier for the account group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "The resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "account_group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The display name of the account group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "description",
-                                        "type": "string",
-                                        "description": "A description of the account group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "commission_policy",
-                                        "type": "string",
-                                        "description": "The commission policy of the account group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "commission_applied",
-                                            "commission_exempt"
-                                        ]
-                                    },
-                                    {
-                                        "name": "freight_policy",
-                                        "type": "string",
-                                        "description": "The freight policy of the account group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "free_freight",
-                                            "billed_freight"
-                                        ]
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "The account group type.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "pricing_group",
-                                            "type_group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "When this account group was created.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "When this account group was last updated.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
+                                "expandable": true
                             },
                             {
                                 "name": "price_groups",
@@ -25839,7 +26707,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The customer name.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -25847,7 +26715,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The customer number.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -25863,7 +26731,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The status code.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "enum": [
                                 "normal",
@@ -25901,7 +26769,7 @@ export const apiTags: TagData[] = [
                             "type": "boolean",
                             "description": "Whether the customer is EDI enabled.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -25931,9 +26799,9 @@ export const apiTags: TagData[] = [
                         {
                             "name": "default_carrier_id",
                             "type": "string",
-                            "description": "The default carrier ID. Send `null` to clear.",
+                            "description": "The default carrier ID.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -25947,17 +26815,17 @@ export const apiTags: TagData[] = [
                         {
                             "name": "default_payment_term_id",
                             "type": "string",
-                            "description": "The default payment term ID. Send `null` to clear.",
+                            "description": "The default payment term ID.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
                             "name": "default_shipping_term_id",
                             "type": "string",
-                            "description": "The default shipping term ID. Send `null` to clear.",
+                            "description": "The default shipping term ID.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -25965,7 +26833,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The default priority code.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "enum": [
                                 "low",
@@ -26002,16 +26870,16 @@ export const apiTags: TagData[] = [
                             "type": "array",
                             "description": "The customer price group IDs. When provided, replaces all existing price groups.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "itemType": "string"
                         },
                         {
                             "name": "customer_type_group_id",
                             "type": "string",
-                            "description": "The customer type group ID. Send `null` to clear.",
+                            "description": "The customer type group ID.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -27093,98 +27961,7 @@ export const apiTags: TagData[] = [
                                 "description": "The customer type group.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": true,
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "The unique identifier for the account group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "The resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "account_group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The display name of the account group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "description",
-                                        "type": "string",
-                                        "description": "A description of the account group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "commission_policy",
-                                        "type": "string",
-                                        "description": "The commission policy of the account group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "commission_applied",
-                                            "commission_exempt"
-                                        ]
-                                    },
-                                    {
-                                        "name": "freight_policy",
-                                        "type": "string",
-                                        "description": "The freight policy of the account group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "free_freight",
-                                            "billed_freight"
-                                        ]
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "The account group type.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "pricing_group",
-                                            "type_group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "When this account group was created.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "When this account group was last updated.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
+                                "expandable": true
                             },
                             {
                                 "name": "price_groups",
@@ -29149,98 +29926,7 @@ export const apiTags: TagData[] = [
                                 "description": "The customer type group.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": true,
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "The unique identifier for the account group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "The resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "account_group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The display name of the account group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "description",
-                                        "type": "string",
-                                        "description": "A description of the account group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "commission_policy",
-                                        "type": "string",
-                                        "description": "The commission policy of the account group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "commission_applied",
-                                            "commission_exempt"
-                                        ]
-                                    },
-                                    {
-                                        "name": "freight_policy",
-                                        "type": "string",
-                                        "description": "The freight policy of the account group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "free_freight",
-                                            "billed_freight"
-                                        ]
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "The account group type.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "pricing_group",
-                                            "type_group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "When this account group was created.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "When this account group was last updated.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
+                                "expandable": true
                             },
                             {
                                 "name": "price_groups",
@@ -31254,98 +31940,7 @@ export const apiTags: TagData[] = [
                                 "description": "The customer type group.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": true,
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "The unique identifier for the account group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "The resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "account_group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The display name of the account group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "description",
-                                        "type": "string",
-                                        "description": "A description of the account group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "commission_policy",
-                                        "type": "string",
-                                        "description": "The commission policy of the account group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "commission_applied",
-                                            "commission_exempt"
-                                        ]
-                                    },
-                                    {
-                                        "name": "freight_policy",
-                                        "type": "string",
-                                        "description": "The freight policy of the account group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "free_freight",
-                                            "billed_freight"
-                                        ]
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "The account group type.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "pricing_group",
-                                            "type_group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "When this account group was created.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "When this account group was last updated.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
+                                "expandable": true
                             },
                             {
                                 "name": "price_groups",
@@ -32367,107 +32962,7 @@ export const apiTags: TagData[] = [
                     "description": "The unit group associated with this product line.",
                     "required": true,
                     "nullable": true,
-                    "expandable": true,
-                    "properties": [
-                        {
-                            "name": "id",
-                            "type": "string",
-                            "description": "The unique identifier for the unit group.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "object",
-                            "type": "string",
-                            "description": "The resource type identifier.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "enum": [
-                                "unit_group"
-                            ]
-                        },
-                        {
-                            "name": "name",
-                            "type": "string",
-                            "description": "The display name of the unit group.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "notes",
-                            "type": "string",
-                            "description": "Notes about the unit group.",
-                            "required": true,
-                            "nullable": true,
-                            "expandable": false
-                        },
-                        {
-                            "name": "type",
-                            "type": "string",
-                            "description": "The unit type.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "enum": [
-                                "currency",
-                                "quantity",
-                                "time",
-                                "mass",
-                                "volume",
-                                "length",
-                                "temperature",
-                                "area"
-                            ]
-                        },
-                        {
-                            "name": "base_unit",
-                            "type": "object",
-                            "description": "The base unit for this group.",
-                            "required": true,
-                            "nullable": true,
-                            "alwaysNull": true,
-                            "expandable": true
-                        },
-                        {
-                            "name": "associated_units",
-                            "type": "object",
-                            "description": "The associated units in this group.",
-                            "required": true,
-                            "nullable": true,
-                            "alwaysNull": true,
-                            "expandable": true
-                        },
-                        {
-                            "name": "owner",
-                            "type": "object",
-                            "description": "The owner of this resource.",
-                            "required": true,
-                            "nullable": true,
-                            "alwaysNull": true,
-                            "expandable": true
-                        },
-                        {
-                            "name": "created_at",
-                            "type": "string",
-                            "description": "When this unit group was created.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "format": "date-time"
-                        },
-                        {
-                            "name": "updated_at",
-                            "type": "string",
-                            "description": "When this unit group was last updated.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "format": "date-time"
-                        }
-                    ]
+                    "expandable": true
                 },
                 {
                     "name": "created_at",
@@ -32703,107 +33198,7 @@ export const apiTags: TagData[] = [
                                 "description": "The unit group associated with this product line.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": true,
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "The unique identifier for the unit group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "The resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "unit_group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The display name of the unit group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "notes",
-                                        "type": "string",
-                                        "description": "Notes about the unit group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "The unit type.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "currency",
-                                            "quantity",
-                                            "time",
-                                            "mass",
-                                            "volume",
-                                            "length",
-                                            "temperature",
-                                            "area"
-                                        ]
-                                    },
-                                    {
-                                        "name": "base_unit",
-                                        "type": "object",
-                                        "description": "The base unit for this group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "associated_units",
-                                        "type": "object",
-                                        "description": "The associated units in this group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "owner",
-                                        "type": "object",
-                                        "description": "The owner of this resource.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "When this unit group was created.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "When this unit group was last updated.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
+                                "expandable": true
                             },
                             {
                                 "name": "created_at",
@@ -32884,7 +33279,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The display name of the product line.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -32914,9 +33309,9 @@ export const apiTags: TagData[] = [
                         {
                             "name": "unit_group_id",
                             "type": "string",
-                            "description": "The ID of the unit group to associate with this product line. Send `null` to clear.",
+                            "description": "The ID of the unit group to associate with this product line.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         }
                     ],
@@ -33044,107 +33439,7 @@ export const apiTags: TagData[] = [
                                 "description": "The unit group associated with this product line.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": true,
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "The unique identifier for the unit group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "The resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "unit_group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The display name of the unit group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "notes",
-                                        "type": "string",
-                                        "description": "Notes about the unit group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "The unit type.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "currency",
-                                            "quantity",
-                                            "time",
-                                            "mass",
-                                            "volume",
-                                            "length",
-                                            "temperature",
-                                            "area"
-                                        ]
-                                    },
-                                    {
-                                        "name": "base_unit",
-                                        "type": "object",
-                                        "description": "The base unit for this group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "associated_units",
-                                        "type": "object",
-                                        "description": "The associated units in this group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "owner",
-                                        "type": "object",
-                                        "description": "The owner of this resource.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "When this unit group was created.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "When this unit group was last updated.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
+                                "expandable": true
                             },
                             {
                                 "name": "created_at",
@@ -33371,7 +33666,41 @@ export const apiTags: TagData[] = [
                                         "description": "The owner of this resource.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "owner"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "system",
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "account",
+                                                "type": "object",
+                                                "description": "The account that owns this resource. Present when type is \"account\".",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "unit_group",
@@ -33379,7 +33708,107 @@ export const apiTags: TagData[] = [
                                         "description": "The unit group associated with this product line.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the unit group.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "unit_group"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the unit group.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "notes",
+                                                "type": "string",
+                                                "description": "Notes about the unit group.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The unit type.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "currency",
+                                                    "quantity",
+                                                    "time",
+                                                    "mass",
+                                                    "volume",
+                                                    "length",
+                                                    "temperature",
+                                                    "area"
+                                                ]
+                                            },
+                                            {
+                                                "name": "base_unit",
+                                                "type": "object",
+                                                "description": "The base unit for this group.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "associated_units",
+                                                "type": "object",
+                                                "description": "The associated units in this group.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "The owner of this resource.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "When this unit group was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "When this unit group was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "created_at",
@@ -33585,107 +34014,7 @@ export const apiTags: TagData[] = [
                                 "description": "The unit group associated with this product line.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": true,
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "The unique identifier for the unit group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "The resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "unit_group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The display name of the unit group.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "notes",
-                                        "type": "string",
-                                        "description": "Notes about the unit group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "The unit type.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "currency",
-                                            "quantity",
-                                            "time",
-                                            "mass",
-                                            "volume",
-                                            "length",
-                                            "temperature",
-                                            "area"
-                                        ]
-                                    },
-                                    {
-                                        "name": "base_unit",
-                                        "type": "object",
-                                        "description": "The base unit for this group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "associated_units",
-                                        "type": "object",
-                                        "description": "The associated units in this group.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "owner",
-                                        "type": "object",
-                                        "description": "The owner of this resource.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "When this unit group was created.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "When this unit group was last updated.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
+                                "expandable": true
                             },
                             {
                                 "name": "created_at",
@@ -33969,88 +34298,7 @@ export const apiTags: TagData[] = [
                                 "description": "The parent location. Null if this is a top-level location. Expandable.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": true,
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "The unique identifier for the location.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "The resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "location"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The display name of the location.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "type_code",
-                                        "type": "string",
-                                        "description": "The code of the location type.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "building",
-                                            "section",
-                                            "aisle",
-                                            "rack",
-                                            "shelf",
-                                            "bin"
-                                        ]
-                                    },
-                                    {
-                                        "name": "parent",
-                                        "type": "object",
-                                        "description": "The parent location. Null if this is a top-level location. Expandable.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "children",
-                                        "type": "object",
-                                        "description": "The child locations. Expandable.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "The timestamp when the location was created.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "The timestamp when the location was last updated.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
+                                "expandable": true
                             },
                             {
                                 "name": "children",
@@ -34260,7 +34508,7 @@ export const apiTags: TagData[] = [
             {
                 "operationId": "update-location",
                 "summary": "Update Location",
-                "description": "Partially updates a location. Set clear_parent to true to remove the parent.",
+                "description": "Partially updates a location.",
                 "method": "PATCH",
                 "path": "/v1/operations/locations/{id}",
                 "domain": "operations",
@@ -34297,7 +34545,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The display name of the location.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -34325,26 +34573,17 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         },
                         {
-                            "name": "clear_parent",
-                            "type": "boolean",
-                            "description": "Set to true to remove the parent (make top-level).",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
                             "name": "child_ids",
                             "type": "array",
                             "description": "The IDs of child locations. When provided, replaces all current children.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "itemType": "string"
                         }
                     ],
                     "example": {
-                        "name": "Warehouse B",
-                        "clear_parent": false
+                        "name": "Warehouse B"
                     }
                 },
                 "responses": [
@@ -34401,88 +34640,7 @@ export const apiTags: TagData[] = [
                                 "description": "The parent location. Null if this is a top-level location. Expandable.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": true,
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "The unique identifier for the location.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "The resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "location"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The display name of the location.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "type_code",
-                                        "type": "string",
-                                        "description": "The code of the location type.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "building",
-                                            "section",
-                                            "aisle",
-                                            "rack",
-                                            "shelf",
-                                            "bin"
-                                        ]
-                                    },
-                                    {
-                                        "name": "parent",
-                                        "type": "object",
-                                        "description": "The parent location. Null if this is a top-level location. Expandable.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "children",
-                                        "type": "object",
-                                        "description": "The child locations. Expandable.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "The timestamp when the location was created.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "The timestamp when the location was last updated.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
+                                "expandable": true
                             },
                             {
                                 "name": "children",
@@ -35039,7 +35197,88 @@ export const apiTags: TagData[] = [
                                         "description": "The parent location. Null if this is a top-level location. Expandable.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the location.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "location"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the location.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "type_code",
+                                                "type": "string",
+                                                "description": "The code of the location type.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "building",
+                                                    "section",
+                                                    "aisle",
+                                                    "rack",
+                                                    "shelf",
+                                                    "bin"
+                                                ]
+                                            },
+                                            {
+                                                "name": "parent",
+                                                "type": "object",
+                                                "description": "The parent location. Null if this is a top-level location. Expandable.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "children",
+                                                "type": "object",
+                                                "description": "The child locations. Expandable.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the location was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the location was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "children",
@@ -35047,7 +35286,152 @@ export const apiTags: TagData[] = [
                                         "description": "The child locations. Expandable.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Object type for Location list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "list"
+                                                ]
+                                            },
+                                            {
+                                                "name": "page_info",
+                                                "type": "object",
+                                                "description": "Pagination metadata for Location list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "properties": [
+                                                    {
+                                                        "name": "next_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the next page of results, null if no more pages.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "prev_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the previous page of results, null if on the first page.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_next_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether there are more results after this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_prev_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether there are results before this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "array",
+                                                "description": "Array of Location resources in this page",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "itemType": "object",
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "The unique identifier for the location.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "The resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "location"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "The display name of the location.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "type_code",
+                                                        "type": "string",
+                                                        "description": "The code of the location type.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "building",
+                                                            "section",
+                                                            "aisle",
+                                                            "rack",
+                                                            "shelf",
+                                                            "bin"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "parent",
+                                                        "type": "object",
+                                                        "description": "The parent location. Null if this is a top-level location. Expandable.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "children",
+                                                        "type": "object",
+                                                        "description": "The child locations. Expandable.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the location was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the location was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "created_at",
@@ -35299,88 +35683,7 @@ export const apiTags: TagData[] = [
                                 "description": "The parent location. Null if this is a top-level location. Expandable.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": true,
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "The unique identifier for the location.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "The resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "location"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The display name of the location.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "type_code",
-                                        "type": "string",
-                                        "description": "The code of the location type.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "building",
-                                            "section",
-                                            "aisle",
-                                            "rack",
-                                            "shelf",
-                                            "bin"
-                                        ]
-                                    },
-                                    {
-                                        "name": "parent",
-                                        "type": "object",
-                                        "description": "The parent location. Null if this is a top-level location. Expandable.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "children",
-                                        "type": "object",
-                                        "description": "The child locations. Expandable.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "The timestamp when the location was created.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "The timestamp when the location was last updated.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
+                                "expandable": true
                             },
                             {
                                 "name": "children",
@@ -36651,13 +36954,13 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The display name of the scanning station.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
                             "name": "notes",
                             "type": "string",
-                            "description": "Optional notes about the scanning station.",
+                            "description": "Optional notes about the scanning station. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
                             "expandable": false
@@ -36693,7 +36996,7 @@ export const apiTags: TagData[] = [
                             "type": "boolean",
                             "description": "Whether material check is required at this station.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         }
                     ],
@@ -37356,7 +37659,89 @@ export const apiTags: TagData[] = [
                                         "description": "The department this scanning station belongs to.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the department.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "department"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the department.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "notes",
+                                                "type": "string",
+                                                "description": "Optional notes about the department.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "location",
+                                                "type": "object",
+                                                "description": "The location associated with this department.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "scanning_stations",
+                                                "type": "object",
+                                                "description": "The scanning stations belonging to this department.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "machines",
+                                                "type": "object",
+                                                "description": "The machines belonging to this department.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the department was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the department was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "production_steps",
@@ -37364,7 +37749,238 @@ export const apiTags: TagData[] = [
                                         "description": "The production steps connected to this scanning station.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Object type for ProductionStep list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "list"
+                                                ]
+                                            },
+                                            {
+                                                "name": "page_info",
+                                                "type": "object",
+                                                "description": "Pagination metadata for ProductionStep list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "properties": [
+                                                    {
+                                                        "name": "next_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the next page of results, null if no more pages.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "prev_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the previous page of results, null if on the first page.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_next_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether there are more results after this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_prev_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether there are results before this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "array",
+                                                "description": "Array of ProductionStep resources in this page",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "itemType": "object",
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "The unique identifier for the production step.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "The resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "production_step"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "The display name of the production step.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "notes",
+                                                        "type": "string",
+                                                        "description": "Optional notes about the production step.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "leveling_factor",
+                                                        "type": "string",
+                                                        "description": "The leveling factor as a decimal string.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "decimal"
+                                                    },
+                                                    {
+                                                        "name": "allowances",
+                                                        "type": "string",
+                                                        "description": "The allowances as a decimal string.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "decimal"
+                                                    },
+                                                    {
+                                                        "name": "labor_rate",
+                                                        "type": "object",
+                                                        "description": "The labor rate for this step.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "labor_time",
+                                                        "type": "object",
+                                                        "description": "The labor time for this step.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "overhead_rate",
+                                                        "type": "object",
+                                                        "description": "The overhead rate for this step.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "production",
+                                                        "type": "object",
+                                                        "description": "The production output for this step.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "consumptions",
+                                                        "type": "array",
+                                                        "description": "The consumptions for this step.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "alwaysNull": true,
+                                                        "expandable": false,
+                                                        "itemType": "object"
+                                                    },
+                                                    {
+                                                        "name": "machines",
+                                                        "type": "array",
+                                                        "description": "The machines assigned to this step.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "alwaysNull": true,
+                                                        "expandable": false,
+                                                        "itemType": "object"
+                                                    },
+                                                    {
+                                                        "name": "scanning_station",
+                                                        "type": "object",
+                                                        "description": "The scanning station for this step.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "in_steps",
+                                                        "type": "array",
+                                                        "description": "The input steps that feed into this step.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "alwaysNull": true,
+                                                        "expandable": false,
+                                                        "itemType": "object"
+                                                    },
+                                                    {
+                                                        "name": "out_steps",
+                                                        "type": "array",
+                                                        "description": "The output steps that this step feeds into.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "alwaysNull": true,
+                                                        "expandable": false,
+                                                        "itemType": "object"
+                                                    },
+                                                    {
+                                                        "name": "department",
+                                                        "type": "object",
+                                                        "description": "The department this step belongs to.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the production step was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the production step was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "created_at",
@@ -38029,7 +38645,7 @@ export const apiTags: TagData[] = [
                 {
                     "name": "permissions",
                     "type": "array",
-                    "description": "The permissions for this role in \"{domain}:{action}\" format.",
+                    "description": "The permissions for this role in `{domain}:{action}` format.",
                     "required": true,
                     "nullable": true,
                     "expandable": true,
@@ -38226,7 +38842,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "permissions",
                                 "type": "array",
-                                "description": "The permissions for this role in \"{domain}:{action}\" format.",
+                                "description": "The permissions for this role in `{domain}:{action}` format.",
                                 "required": true,
                                 "nullable": true,
                                 "expandable": true,
@@ -38316,7 +38932,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The new display name for the role.",
                             "required": true,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -38324,7 +38940,7 @@ export const apiTags: TagData[] = [
                             "type": "array",
                             "description": "The full set of permissions to replace existing ones with in \"domain:action\" format. If omitted, permissions are not changed.",
                             "required": true,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "itemType": "string"
                         }
@@ -38429,7 +39045,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "permissions",
                                 "type": "array",
-                                "description": "The permissions for this role in \"{domain}:{action}\" format.",
+                                "description": "The permissions for this role in `{domain}:{action}` format.",
                                 "required": true,
                                 "nullable": true,
                                 "expandable": true,
@@ -38647,12 +39263,46 @@ export const apiTags: TagData[] = [
                                         "description": "The owner of this resource.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "owner"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "system",
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "account",
+                                                "type": "object",
+                                                "description": "The account that owns this resource. Present when type is \"account\".",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "permissions",
                                         "type": "array",
-                                        "description": "The permissions for this role in \"{domain}:{action}\" format.",
+                                        "description": "The permissions for this role in `{domain}:{action}` format.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": true,
@@ -38839,7 +39489,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "permissions",
                                 "type": "array",
-                                "description": "The permissions for this role in \"{domain}:{action}\" format.",
+                                "description": "The permissions for this role in `{domain}:{action}` format.",
                                 "required": true,
                                 "nullable": true,
                                 "expandable": true,
@@ -39054,18 +39704,18 @@ export const apiNavDomains: ApiNavDomain[] = [
                 "slug": "address-validation",
                 "endpoints": [
                     {
-                        "name": "Validate",
-                        "slug": "validate-address",
-                        "method": "POST",
-                        "actionType": "create",
-                        "href": "/api-reference/address-validation/validate-address"
-                    },
-                    {
-                        "name": "Autocomplete",
-                        "slug": "autocomplete-address",
+                        "name": "Get Suggestions",
+                        "slug": "get-address-suggestions",
                         "method": "GET",
                         "actionType": "list",
-                        "href": "/api-reference/address-validation/autocomplete-address"
+                        "href": "/api-reference/address-validation/get-address-suggestions"
+                    },
+                    {
+                        "name": "Validate",
+                        "slug": "validate-address",
+                        "method": "PUT",
+                        "actionType": "action",
+                        "href": "/api-reference/address-validation/validate-address"
                     }
                 ]
             },

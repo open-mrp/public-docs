@@ -186,6 +186,15 @@ interface SchemaExpansionOptions {
     includePaths?: Set<string>;
     pathPrefix?: string;
     insideIncludedExpandable?: boolean;
+    /**
+     * Top-level response field name that wraps the resource schema (e.g.
+     * `data` for list responses, `api_key_info` for the rotate/create API
+     * key responses). When set, this prefix is stripped from a field's path
+     * before matching it against `includePaths`, since `include[]` enum
+     * values are resource-relative (e.g. `role`, `role.permissions`) rather
+     * than rooted at the response.
+     */
+    resourceRoot?: string;
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────
@@ -345,6 +354,36 @@ function schemaToFields(
     const currentSchemaIsList =
         resolved.properties?.object?.enum?.some((value) => value === 'list') || false;
 
+    // At the response root, detect a wrapper field that contains the
+    // resource schema so that resource-relative include paths (e.g. `role`,
+    // `role.permissions`) match the actual nested field paths.
+    let resourceRoot = options.resourceRoot;
+    if (
+        depth === 0 &&
+        includePaths &&
+        includePaths.size > 0 &&
+        resourceRoot === undefined &&
+        resolved.properties
+    ) {
+        const topLevelIncludeNames = new Set(
+            [...includePaths].map((path) => path.split('.')[0]),
+        );
+        for (const [name, prop] of Object.entries(resolved.properties)) {
+            const resolvedProp = resolveSchema(prop, spec);
+            const childContainer =
+                resolvedProp.type === 'array' && resolvedProp.items
+                    ? resolveSchema(resolvedProp.items, spec)
+                    : resolvedProp;
+            if (
+                childContainer.properties &&
+                Object.keys(childContainer.properties).some((c) => topLevelIncludeNames.has(c))
+            ) {
+                resourceRoot = name;
+                break;
+            }
+        }
+    }
+
     if (resolved.properties) {
         const required = requiredFields || resolved.required || [];
         for (const [name, prop] of Object.entries(resolved.properties)) {
@@ -361,9 +400,20 @@ function schemaToFields(
                 ? appendNullClearHint(descriptionWithDefault)
                 : descriptionWithDefault;
             const fieldPath = pathPrefix ? `${pathPrefix}.${name}` : name;
-            const hasExplicitInclude = includePaths?.has(fieldPath) || false;
+            // Path used for `includePaths` lookups. When the response wraps
+            // the resource (e.g. inside `data` or `api_key_info`), strip that
+            // prefix so the resource-relative include enum values match.
+            const matchPath =
+                resourceRoot && fieldPath.startsWith(`${resourceRoot}.`)
+                    ? fieldPath.slice(resourceRoot.length + 1)
+                    : resourceRoot && fieldPath === resourceRoot
+                        ? ''
+                        : fieldPath;
+            const hasExplicitInclude =
+                matchPath.length > 0 && (includePaths?.has(matchPath) || false);
             const hasExplicitDescendantInclude =
-                [...(includePaths || [])].some((candidate) => candidate.startsWith(`${fieldPath}.`));
+                matchPath.length > 0 &&
+                [...(includePaths || [])].some((candidate) => candidate.startsWith(`${matchPath}.`));
             const isObjectLikeField =
                 resolvedProp.type === 'object' ||
                 (resolvedProp.type === 'array' && (resolvedItems?.type || 'object') === 'object');
@@ -413,6 +463,7 @@ function schemaToFields(
                     field.properties = schemaToFields(resolvedItems, spec, undefined, depth + 1, {
                         includePaths,
                         pathPrefix: fieldPath,
+                        resourceRoot,
                         insideIncludedExpandable:
                             insideIncludedExpandable || (field.expandable === true && hasExplicitInclude),
                     });
@@ -421,6 +472,7 @@ function schemaToFields(
                 field.properties = schemaToFields(resolvedProp, spec, undefined, depth + 1, {
                     includePaths,
                     pathPrefix: fieldPath,
+                    resourceRoot,
                     insideIncludedExpandable:
                         insideIncludedExpandable || (field.expandable === true && hasExplicitInclude),
                 });
