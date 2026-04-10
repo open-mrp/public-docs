@@ -174,7 +174,7 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         },
                         {
-                            "name": "type_code",
+                            "name": "type",
                             "type": "string",
                             "description": "The role type code.",
                             "required": true,
@@ -281,7 +281,7 @@ export const apiTags: TagData[] = [
                     "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
                     "object": "role",
                     "name": "Admin",
-                    "type_code": "admin",
+                    "type": "admin",
                     "owner": null,
                     "permissions": null,
                     "created_at": "0001-01-01T00:00:00Z",
@@ -446,7 +446,7 @@ export const apiTags: TagData[] = [
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "type_code",
+                                                "name": "type",
                                                 "type": "string",
                                                 "description": "The role type code.",
                                                 "required": true,
@@ -557,7 +557,7 @@ export const apiTags: TagData[] = [
                                     "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
                                     "object": "role",
                                     "name": "Admin",
-                                    "type_code": "admin",
+                                    "type": "admin",
                                     "owner": null,
                                     "permissions": null,
                                     "created_at": "0001-01-01T00:00:00Z",
@@ -769,7 +769,7 @@ export const apiTags: TagData[] = [
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "type_code",
+                                                "name": "type",
                                                 "type": "string",
                                                 "description": "The role type code.",
                                                 "required": true,
@@ -887,7 +887,7 @@ export const apiTags: TagData[] = [
                                         "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
                                         "object": "role",
                                         "name": "Admin",
-                                        "type_code": "admin",
+                                        "type": "admin",
                                         "owner": null,
                                         "permissions": null,
                                         "created_at": "0001-01-01T00:00:00Z",
@@ -1012,7 +1012,7 @@ export const apiTags: TagData[] = [
                                         "expandable": false
                                     },
                                     {
-                                        "name": "type_code",
+                                        "name": "type",
                                         "type": "string",
                                         "description": "The role type code.",
                                         "required": true,
@@ -1119,7 +1119,7 @@ export const apiTags: TagData[] = [
                                 "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
                                 "object": "role",
                                 "name": "Admin",
-                                "type_code": "admin",
+                                "type": "admin",
                                 "owner": null,
                                 "permissions": null,
                                 "created_at": "0001-01-01T00:00:00Z",
@@ -1305,7 +1305,7 @@ export const apiTags: TagData[] = [
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "type_code",
+                                                "name": "type",
                                                 "type": "string",
                                                 "description": "The role type code.",
                                                 "required": true,
@@ -1416,7 +1416,7 @@ export const apiTags: TagData[] = [
                                     "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
                                     "object": "role",
                                     "name": "Admin",
-                                    "type_code": "admin",
+                                    "type": "admin",
                                     "owner": null,
                                     "permissions": null,
                                     "created_at": "0001-01-01T00:00:00Z",
@@ -2600,7 +2600,20 @@ export const apiTags: TagData[] = [
                             "nullable": false,
                             "expandable": false,
                             "enum": [
-                                "user|api_key|agent"
+                                "actor"
+                            ]
+                        },
+                        {
+                            "name": "type",
+                            "type": "string",
+                            "description": "The type of actor.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "user",
+                                "api_key",
+                                "agent"
                             ]
                         },
                         {
@@ -2655,7 +2668,7 @@ export const apiTags: TagData[] = [
                                     "expandable": false
                                 },
                                 {
-                                    "name": "type_code",
+                                    "name": "type",
                                     "type": "string",
                                     "description": "The role type code.",
                                     "required": true,
@@ -2766,14 +2779,15 @@ export const apiTags: TagData[] = [
                 },
                 "actor": {
                     "id": "us_01gf7a8200e9pvbd6bgyq395ae",
-                    "object": "user",
+                    "object": "actor",
+                    "type": "user",
                     "name": "John Doe",
                     "handle": "jdoe@augno.com",
                     "role": {
                         "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
                         "object": "role",
                         "name": "Admin",
-                        "type_code": "admin",
+                        "type": "admin",
                         "owner": {
                             "object": "owner",
                             "type": "account",
@@ -3248,7 +3262,20 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "enum": [
-                                                    "user|api_key|agent"
+                                                    "actor"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The type of actor.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "user",
+                                                    "api_key",
+                                                    "agent"
                                                 ]
                                             },
                                             {
@@ -3303,7 +3330,7 @@ export const apiTags: TagData[] = [
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "type_code",
+                                                        "name": "type",
                                                         "type": "string",
                                                         "description": "The role type code.",
                                                         "required": true,
@@ -3425,14 +3452,15 @@ export const apiTags: TagData[] = [
                                     },
                                     "actor": {
                                         "id": "us_01gf7a8200e9pvbd6bgyq395ae",
-                                        "object": "user",
+                                        "object": "actor",
+                                        "type": "user",
                                         "name": "John Doe",
                                         "handle": "jdoe@augno.com",
                                         "role": {
                                             "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
                                             "object": "role",
                                             "name": "Admin",
-                                            "type_code": "admin",
+                                            "type": "admin",
                                             "owner": {
                                                 "object": "owner",
                                                 "type": "account",
@@ -3766,7 +3794,20 @@ export const apiTags: TagData[] = [
                                         "nullable": false,
                                         "expandable": false,
                                         "enum": [
-                                            "user|api_key|agent"
+                                            "actor"
+                                        ]
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "string",
+                                        "description": "The type of actor.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "user",
+                                            "api_key",
+                                            "agent"
                                         ]
                                     },
                                     {
@@ -3821,7 +3862,7 @@ export const apiTags: TagData[] = [
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "type_code",
+                                                "name": "type",
                                                 "type": "string",
                                                 "description": "The role type code.",
                                                 "required": true,
@@ -3932,14 +3973,15 @@ export const apiTags: TagData[] = [
                             },
                             "actor": {
                                 "id": "us_01gf7a8200e9pvbd6bgyq395ae",
-                                "object": "user",
+                                "object": "actor",
+                                "type": "user",
                                 "name": "John Doe",
                                 "handle": "jdoe@augno.com",
                                 "role": {
                                     "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
                                     "object": "role",
                                     "name": "Admin",
-                                    "type_code": "admin",
+                                    "type": "admin",
                                     "owner": {
                                         "object": "owner",
                                         "type": "account",
@@ -4020,6 +4062,8 @@ export const apiTags: TagData[] = [
                     "expandable": false,
                     "enum": [
                         "account",
+                        "actor",
+                        "entity",
                         "user",
                         "address",
                         "api_key",
@@ -4235,7 +4279,20 @@ export const apiTags: TagData[] = [
                             "nullable": false,
                             "expandable": false,
                             "enum": [
-                                "user|api_key|agent"
+                                "actor"
+                            ]
+                        },
+                        {
+                            "name": "type",
+                            "type": "string",
+                            "description": "The type of actor.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "user",
+                                "api_key",
+                                "agent"
                             ]
                         },
                         {
@@ -4361,14 +4418,15 @@ export const apiTags: TagData[] = [
                 "resource_id": "us_01gf7a8200e9pvbd6bgyq395ae",
                 "actor": {
                     "id": "us_01gf7a8200e9pvbd6bgyq395ae",
-                    "object": "user",
+                    "object": "actor",
+                    "type": "user",
                     "name": "John Doe",
                     "handle": "jdoe@augno.com",
                     "role": {
                         "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
                         "object": "role",
                         "name": "Admin",
-                        "type_code": "admin",
+                        "type": "admin",
                         "owner": {
                             "object": "owner",
                             "type": "account",
@@ -4463,6 +4521,8 @@ export const apiTags: TagData[] = [
                         "description": "Resource type, matching the object type of the audited entity.",
                         "enum": [
                             "account",
+                            "actor",
+                            "entity",
                             "user",
                             "address",
                             "api_key",
@@ -4804,6 +4864,8 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "enum": [
                                             "account",
+                                            "actor",
+                                            "entity",
                                             "user",
                                             "address",
                                             "api_key",
@@ -5019,7 +5081,20 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "enum": [
-                                                    "user|api_key|agent"
+                                                    "actor"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The type of actor.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "user",
+                                                    "api_key",
+                                                    "agent"
                                                 ]
                                             },
                                             {
@@ -5156,14 +5231,15 @@ export const apiTags: TagData[] = [
                                     "resource_id": "us_01gf7a8200e9pvbd6bgyq395ae",
                                     "actor": {
                                         "id": "us_01gf7a8200e9pvbd6bgyq395ae",
-                                        "object": "user",
+                                        "object": "actor",
+                                        "type": "user",
                                         "name": "John Doe",
                                         "handle": "jdoe@augno.com",
                                         "role": {
                                             "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
                                             "object": "role",
                                             "name": "Admin",
-                                            "type_code": "admin",
+                                            "type": "admin",
                                             "owner": {
                                                 "object": "owner",
                                                 "type": "account",
@@ -5284,6 +5360,8 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "enum": [
                                     "account",
+                                    "actor",
+                                    "entity",
                                     "user",
                                     "address",
                                     "api_key",
@@ -5499,7 +5577,20 @@ export const apiTags: TagData[] = [
                                         "nullable": false,
                                         "expandable": false,
                                         "enum": [
-                                            "user|api_key|agent"
+                                            "actor"
+                                        ]
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "string",
+                                        "description": "The type of actor.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "user",
+                                            "api_key",
+                                            "agent"
                                         ]
                                     },
                                     {
@@ -5625,14 +5716,15 @@ export const apiTags: TagData[] = [
                             "resource_id": "us_01gf7a8200e9pvbd6bgyq395ae",
                             "actor": {
                                 "id": "us_01gf7a8200e9pvbd6bgyq395ae",
-                                "object": "user",
+                                "object": "actor",
+                                "type": "user",
                                 "name": "John Doe",
                                 "handle": "jdoe@augno.com",
                                 "role": {
                                     "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
                                     "object": "role",
                                     "name": "Admin",
-                                    "type_code": "admin",
+                                    "type": "admin",
                                     "owner": {
                                         "object": "owner",
                                         "type": "account",
@@ -17371,7 +17463,7 @@ export const apiTags: TagData[] = [
                                     "expandable": false
                                 },
                                 {
-                                    "name": "color_code",
+                                    "name": "color",
                                     "type": "string",
                                     "description": "The color code of the attribute.",
                                     "required": true,
@@ -17619,7 +17711,7 @@ export const apiTags: TagData[] = [
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "color_code",
+                                                "name": "color",
                                                 "type": "string",
                                                 "description": "The color code of the attribute.",
                                                 "required": true,
@@ -17875,7 +17967,7 @@ export const apiTags: TagData[] = [
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "color_code",
+                                                "name": "color",
                                                 "type": "string",
                                                 "description": "The color code of the attribute.",
                                                 "required": true,
@@ -18191,7 +18283,7 @@ export const apiTags: TagData[] = [
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "color_code",
+                                                        "name": "color",
                                                         "type": "string",
                                                         "description": "The color code of the attribute.",
                                                         "required": true,
@@ -18444,7 +18536,7 @@ export const apiTags: TagData[] = [
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "color_code",
+                                                "name": "color",
                                                 "type": "string",
                                                 "description": "The color code of the attribute.",
                                                 "required": true,
@@ -18586,7 +18678,7 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         },
                         {
-                            "name": "color_code",
+                            "name": "color",
                             "type": "string",
                             "description": "The color code of the attribute. Randomly assigned if not provided.",
                             "required": false,
@@ -18616,7 +18708,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "value": "Red",
-                        "color_code": "red",
+                        "color": "red",
                         "sort_order": 1
                     }
                 },
@@ -18653,7 +18745,7 @@ export const apiTags: TagData[] = [
                                 "expandable": false
                             },
                             {
-                                "name": "color_code",
+                                "name": "color",
                                 "type": "string",
                                 "description": "The color code of the attribute.",
                                 "required": true,
@@ -18703,7 +18795,7 @@ export const apiTags: TagData[] = [
                             "id": "at_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "attribute",
                             "value": "Premium",
-                            "color_code": "red",
+                            "color": "red",
                             "sort_order": 1,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -18751,7 +18843,7 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         },
                         {
-                            "name": "color_code",
+                            "name": "color",
                             "type": "string",
                             "description": "The new color code of the attribute.",
                             "required": false,
@@ -18816,7 +18908,7 @@ export const apiTags: TagData[] = [
                                 "expandable": false
                             },
                             {
-                                "name": "color_code",
+                                "name": "color",
                                 "type": "string",
                                 "description": "The color code of the attribute.",
                                 "required": true,
@@ -18866,7 +18958,7 @@ export const apiTags: TagData[] = [
                             "id": "at_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "attribute",
                             "value": "Premium",
-                            "color_code": "red",
+                            "color": "red",
                             "sort_order": 1,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -19011,7 +19103,7 @@ export const apiTags: TagData[] = [
                                         "expandable": false
                                     },
                                     {
-                                        "name": "color_code",
+                                        "name": "color",
                                         "type": "string",
                                         "description": "The color code of the attribute.",
                                         "required": true,
@@ -19123,7 +19215,7 @@ export const apiTags: TagData[] = [
                                 "expandable": false
                             },
                             {
-                                "name": "color_code",
+                                "name": "color",
                                 "type": "string",
                                 "description": "The color code of the attribute.",
                                 "required": true,
@@ -19173,7 +19265,7 @@ export const apiTags: TagData[] = [
                             "id": "at_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "attribute",
                             "value": "Premium",
-                            "color_code": "red",
+                            "color": "red",
                             "sort_order": 1,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -21682,15 +21774,15 @@ export const apiTags: TagData[] = [
                 {
                     "name": "sent_by",
                     "type": "object",
-                    "description": "The user who sent the email. Null if not associated with a user.",
+                    "description": "The actor who sent the email. Null when the email was sent by the\nsystem, or when the caller did not request `include=sent_by`.",
                     "required": true,
                     "nullable": true,
-                    "expandable": false,
+                    "expandable": true,
                     "properties": [
                         {
                             "name": "id",
                             "type": "string",
-                            "description": "The unique identifier for this user.",
+                            "description": "The unique identifier for the actor.",
                             "required": true,
                             "nullable": false,
                             "expandable": false
@@ -21703,67 +21795,46 @@ export const apiTags: TagData[] = [
                             "nullable": false,
                             "expandable": false,
                             "enum": [
-                                "user"
+                                "actor"
                             ]
                         },
                         {
-                            "name": "email",
+                            "name": "type",
                             "type": "string",
-                            "description": "The user's email address.",
+                            "description": "The type of actor.",
                             "required": true,
-                            "nullable": true,
-                            "expandable": false
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "user",
+                                "api_key",
+                                "agent"
+                            ]
                         },
                         {
                             "name": "name",
                             "type": "string",
-                            "description": "The user's display name.",
+                            "description": "The display name of the actor.",
                             "required": true,
                             "nullable": true,
                             "expandable": false
                         },
                         {
-                            "name": "username",
+                            "name": "handle",
                             "type": "string",
-                            "description": "The user's unique username.",
+                            "description": "Human-readable handle (email for users, redacted value for API keys, slug for agents).",
                             "required": true,
                             "nullable": true,
                             "expandable": false
                         },
                         {
-                            "name": "email_verified_at",
-                            "type": "string",
-                            "description": "When the user's email was verified, null if unverified.",
+                            "name": "role",
+                            "type": "object",
+                            "description": "The role assigned to the actor.",
                             "required": true,
                             "nullable": true,
-                            "expandable": false,
-                            "format": "date-time"
-                        },
-                        {
-                            "name": "image_url",
-                            "type": "string",
-                            "description": "URL to the user's profile image.",
-                            "required": true,
-                            "nullable": true,
-                            "expandable": false
-                        },
-                        {
-                            "name": "created_at",
-                            "type": "string",
-                            "description": "When this user was created.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "format": "date-time"
-                        },
-                        {
-                            "name": "updated_at",
-                            "type": "string",
-                            "description": "When this user was last updated.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "format": "date-time"
+                            "alwaysNull": true,
+                            "expandable": true
                         }
                     ]
                 },
@@ -21798,14 +21869,32 @@ export const apiTags: TagData[] = [
                 "ses_message_id": null,
                 "sent_by": {
                     "id": "us_01gf7a8200e9pvbd6bgyq395ae",
-                    "object": "user",
-                    "email": "jdoe@augno.com",
+                    "object": "actor",
+                    "type": "user",
                     "name": "John Doe",
-                    "username": "jdoe",
-                    "email_verified_at": "2026-06-10T00:00:00Z",
-                    "image_url": "https://cdn.augno.com/avatars/us_01gf7a8200e9pvbd6bgyq395ae.jpg",
-                    "created_at": "2026-05-10T00:00:00Z",
-                    "updated_at": "2026-05-10T00:23:00Z"
+                    "handle": "jdoe@augno.com",
+                    "role": {
+                        "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
+                        "object": "role",
+                        "name": "Admin",
+                        "type": "admin",
+                        "owner": {
+                            "object": "owner",
+                            "type": "account",
+                            "account": {
+                                "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                "object": "account"
+                            }
+                        },
+                        "permissions": [
+                            "customers:create",
+                            "customers:read",
+                            "customers:update",
+                            "customers:delete"
+                        ],
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    }
                 },
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
@@ -21845,6 +21934,16 @@ export const apiTags: TagData[] = [
                         "type": "string",
                         "required": false,
                         "description": "Query parameter: q for List Email Logs"
+                    },
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
+                        "enum": [
+                            "sent_by"
+                        ]
                     }
                 ],
                 "responses": [
@@ -21977,15 +22076,15 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "sent_by",
                                         "type": "object",
-                                        "description": "The user who sent the email. Null if not associated with a user.",
+                                        "description": "The actor who sent the email. Null when the email was sent by the\nsystem, or when the caller did not request `include=sent_by`.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": false,
+                                        "expandable": true,
                                         "properties": [
                                             {
                                                 "name": "id",
                                                 "type": "string",
-                                                "description": "The unique identifier for this user.",
+                                                "description": "The unique identifier for the actor.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false
@@ -21998,67 +22097,46 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "enum": [
-                                                    "user"
+                                                    "actor"
                                                 ]
                                             },
                                             {
-                                                "name": "email",
+                                                "name": "type",
                                                 "type": "string",
-                                                "description": "The user's email address.",
+                                                "description": "The type of actor.",
                                                 "required": true,
-                                                "nullable": true,
-                                                "expandable": false
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "user",
+                                                    "api_key",
+                                                    "agent"
+                                                ]
                                             },
                                             {
                                                 "name": "name",
                                                 "type": "string",
-                                                "description": "The user's display name.",
+                                                "description": "The display name of the actor.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "username",
+                                                "name": "handle",
                                                 "type": "string",
-                                                "description": "The user's unique username.",
+                                                "description": "Human-readable handle (email for users, redacted value for API keys, slug for agents).",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "email_verified_at",
-                                                "type": "string",
-                                                "description": "When the user's email was verified, null if unverified.",
+                                                "name": "role",
+                                                "type": "object",
+                                                "description": "The role assigned to the actor.",
                                                 "required": true,
                                                 "nullable": true,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            },
-                                            {
-                                                "name": "image_url",
-                                                "type": "string",
-                                                "description": "URL to the user's profile image.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "created_at",
-                                                "type": "string",
-                                                "description": "When this user was created.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            },
-                                            {
-                                                "name": "updated_at",
-                                                "type": "string",
-                                                "description": "When this user was last updated.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "format": "date-time"
+                                                "alwaysNull": true,
+                                                "expandable": true
                                             }
                                         ]
                                     },
@@ -22104,14 +22182,32 @@ export const apiTags: TagData[] = [
                                     "ses_message_id": null,
                                     "sent_by": {
                                         "id": "us_01gf7a8200e9pvbd6bgyq395ae",
-                                        "object": "user",
-                                        "email": "jdoe@augno.com",
+                                        "object": "actor",
+                                        "type": "user",
                                         "name": "John Doe",
-                                        "username": "jdoe",
-                                        "email_verified_at": "2026-06-10T00:00:00Z",
-                                        "image_url": "https://cdn.augno.com/avatars/us_01gf7a8200e9pvbd6bgyq395ae.jpg",
-                                        "created_at": "2026-05-10T00:00:00Z",
-                                        "updated_at": "2026-05-10T00:23:00Z"
+                                        "handle": "jdoe@augno.com",
+                                        "role": {
+                                            "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
+                                            "object": "role",
+                                            "name": "Admin",
+                                            "type": "admin",
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "account",
+                                                "account": {
+                                                    "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                                    "object": "account"
+                                                }
+                                            },
+                                            "permissions": [
+                                                "customers:create",
+                                                "customers:read",
+                                                "customers:update",
+                                                "customers:delete"
+                                            ],
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
                                     },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -22140,6 +22236,16 @@ export const apiTags: TagData[] = [
                         "type": "string",
                         "required": true,
                         "description": "The ID of the email log to retrieve."
+                    },
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
+                        "enum": [
+                            "sent_by"
+                        ]
                     }
                 ],
                 "responses": [
@@ -22210,15 +22316,15 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "sent_by",
                                 "type": "object",
-                                "description": "The user who sent the email. Null if not associated with a user.",
+                                "description": "The actor who sent the email. Null when the email was sent by the\nsystem, or when the caller did not request `include=sent_by`.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": false,
+                                "expandable": true,
                                 "properties": [
                                     {
                                         "name": "id",
                                         "type": "string",
-                                        "description": "The unique identifier for this user.",
+                                        "description": "The unique identifier for the actor.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false
@@ -22231,67 +22337,46 @@ export const apiTags: TagData[] = [
                                         "nullable": false,
                                         "expandable": false,
                                         "enum": [
-                                            "user"
+                                            "actor"
                                         ]
                                     },
                                     {
-                                        "name": "email",
+                                        "name": "type",
                                         "type": "string",
-                                        "description": "The user's email address.",
+                                        "description": "The type of actor.",
                                         "required": true,
-                                        "nullable": true,
-                                        "expandable": false
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "user",
+                                            "api_key",
+                                            "agent"
+                                        ]
                                     },
                                     {
                                         "name": "name",
                                         "type": "string",
-                                        "description": "The user's display name.",
+                                        "description": "The display name of the actor.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "username",
+                                        "name": "handle",
                                         "type": "string",
-                                        "description": "The user's unique username.",
+                                        "description": "Human-readable handle (email for users, redacted value for API keys, slug for agents).",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "email_verified_at",
-                                        "type": "string",
-                                        "description": "When the user's email was verified, null if unverified.",
+                                        "name": "role",
+                                        "type": "object",
+                                        "description": "The role assigned to the actor.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "image_url",
-                                        "type": "string",
-                                        "description": "URL to the user's profile image.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "When this user was created.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "When this user was last updated.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
+                                        "alwaysNull": true,
+                                        "expandable": true
                                     }
                                 ]
                             },
@@ -22326,14 +22411,32 @@ export const apiTags: TagData[] = [
                             "ses_message_id": null,
                             "sent_by": {
                                 "id": "us_01gf7a8200e9pvbd6bgyq395ae",
-                                "object": "user",
-                                "email": "jdoe@augno.com",
+                                "object": "actor",
+                                "type": "user",
                                 "name": "John Doe",
-                                "username": "jdoe",
-                                "email_verified_at": "2026-06-10T00:00:00Z",
-                                "image_url": "https://cdn.augno.com/avatars/us_01gf7a8200e9pvbd6bgyq395ae.jpg",
-                                "created_at": "2026-05-10T00:00:00Z",
-                                "updated_at": "2026-05-10T00:23:00Z"
+                                "handle": "jdoe@augno.com",
+                                "role": {
+                                    "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
+                                    "object": "role",
+                                    "name": "Admin",
+                                    "type": "admin",
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "account",
+                                        "account": {
+                                            "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                            "object": "account"
+                                        }
+                                    },
+                                    "permissions": [
+                                        "customers:create",
+                                        "customers:read",
+                                        "customers:update",
+                                        "customers:delete"
+                                    ],
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
                             },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -24357,7 +24460,7 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         },
                         {
-                            "name": "status_code",
+                            "name": "status",
                             "type": "string",
                             "description": "The account status code.",
                             "required": true,
@@ -24435,7 +24538,7 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         },
                         {
-                            "name": "default_priority_code",
+                            "name": "default_priority",
                             "type": "string",
                             "description": "The default priority code.",
                             "required": false,
@@ -24703,7 +24806,7 @@ export const apiTags: TagData[] = [
                     "example": {
                         "name": "Acme Inc.",
                         "note": "Key enterprise account",
-                        "status_code": "normal",
+                        "status": "normal",
                         "default_carrier_id": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
                         "default_payment_term_id": "pytm_01jm4r6700f8nwq3v5hx2d9ktp",
                         "default_shipping_term_id": "shtm_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -26727,7 +26830,7 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         },
                         {
-                            "name": "status_code",
+                            "name": "status",
                             "type": "string",
                             "description": "The status code.",
                             "required": false,
@@ -26829,7 +26932,7 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         },
                         {
-                            "name": "default_priority_code",
+                            "name": "default_priority",
                             "type": "string",
                             "description": "The default priority code.",
                             "required": false,
@@ -34206,7 +34309,7 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         },
                         {
-                            "name": "type_code",
+                            "name": "type",
                             "type": "string",
                             "description": "The code of the location type.",
                             "required": true,
@@ -34241,7 +34344,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Warehouse A",
-                        "type_code": "building"
+                        "type": "building"
                     }
                 },
                 "responses": [
@@ -34277,7 +34380,7 @@ export const apiTags: TagData[] = [
                                 "expandable": false
                             },
                             {
-                                "name": "type_code",
+                                "name": "type",
                                 "type": "string",
                                 "description": "The code of the location type.",
                                 "required": true,
@@ -34398,7 +34501,7 @@ export const apiTags: TagData[] = [
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "type_code",
+                                                "name": "type",
                                                 "type": "string",
                                                 "description": "The code of the location type.",
                                                 "required": true,
@@ -34476,7 +34579,7 @@ export const apiTags: TagData[] = [
                             "id": "lc_01gf7a8200er3ar3pkfrb6kk30",
                             "object": "location",
                             "name": "Warehouse A",
-                            "type_code": "building",
+                            "type": "building",
                             "parent": null,
                             "children": {
                                 "object": "list",
@@ -34491,7 +34594,7 @@ export const apiTags: TagData[] = [
                                         "id": "lc_01gf7a8200er3ar3pkfrb6kk32",
                                         "object": "location",
                                         "name": "Shelf A1",
-                                        "type_code": "building",
+                                        "type": "building",
                                         "parent": null,
                                         "children": null,
                                         "created_at": "0001-01-01T00:00:00Z",
@@ -34549,7 +34652,7 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         },
                         {
-                            "name": "type_code",
+                            "name": "type",
                             "type": "string",
                             "description": "The code of the location type.",
                             "required": false,
@@ -34619,7 +34722,7 @@ export const apiTags: TagData[] = [
                                 "expandable": false
                             },
                             {
-                                "name": "type_code",
+                                "name": "type",
                                 "type": "string",
                                 "description": "The code of the location type.",
                                 "required": true,
@@ -34740,7 +34843,7 @@ export const apiTags: TagData[] = [
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "type_code",
+                                                "name": "type",
                                                 "type": "string",
                                                 "description": "The code of the location type.",
                                                 "required": true,
@@ -34818,7 +34921,7 @@ export const apiTags: TagData[] = [
                             "id": "lc_01gf7a8200er3ar3pkfrb6kk30",
                             "object": "location",
                             "name": "Warehouse A",
-                            "type_code": "building",
+                            "type": "building",
                             "parent": null,
                             "children": {
                                 "object": "list",
@@ -34833,7 +34936,7 @@ export const apiTags: TagData[] = [
                                         "id": "lc_01gf7a8200er3ar3pkfrb6kk32",
                                         "object": "location",
                                         "name": "Shelf A1",
-                                        "type_code": "building",
+                                        "type": "building",
                                         "parent": null,
                                         "children": null,
                                         "created_at": "0001-01-01T00:00:00Z",
@@ -35176,7 +35279,7 @@ export const apiTags: TagData[] = [
                                         "expandable": false
                                     },
                                     {
-                                        "name": "type_code",
+                                        "name": "type",
                                         "type": "string",
                                         "description": "The code of the location type.",
                                         "required": true,
@@ -35227,7 +35330,7 @@ export const apiTags: TagData[] = [
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "type_code",
+                                                "name": "type",
                                                 "type": "string",
                                                 "description": "The code of the location type.",
                                                 "required": true,
@@ -35378,7 +35481,7 @@ export const apiTags: TagData[] = [
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "type_code",
+                                                        "name": "type",
                                                         "type": "string",
                                                         "description": "The code of the location type.",
                                                         "required": true,
@@ -35467,7 +35570,7 @@ export const apiTags: TagData[] = [
                                     "id": "lc_01gf7a8200er3ar3pkfrb6kk30",
                                     "object": "location",
                                     "name": "Warehouse A",
-                                    "type_code": "building",
+                                    "type": "building",
                                     "parent": null,
                                     "children": {
                                         "object": "list",
@@ -35482,7 +35585,7 @@ export const apiTags: TagData[] = [
                                                 "id": "lc_01gf7a8200er3ar3pkfrb6kk32",
                                                 "object": "location",
                                                 "name": "Shelf A1",
-                                                "type_code": "building",
+                                                "type": "building",
                                                 "parent": null,
                                                 "children": null,
                                                 "created_at": "0001-01-01T00:00:00Z",
@@ -35662,7 +35765,7 @@ export const apiTags: TagData[] = [
                                 "expandable": false
                             },
                             {
-                                "name": "type_code",
+                                "name": "type",
                                 "type": "string",
                                 "description": "The code of the location type.",
                                 "required": true,
@@ -35783,7 +35886,7 @@ export const apiTags: TagData[] = [
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "type_code",
+                                                "name": "type",
                                                 "type": "string",
                                                 "description": "The code of the location type.",
                                                 "required": true,
@@ -35861,7 +35964,7 @@ export const apiTags: TagData[] = [
                             "id": "lc_01gf7a8200er3ar3pkfrb6kk30",
                             "object": "location",
                             "name": "Warehouse A",
-                            "type_code": "building",
+                            "type": "building",
                             "parent": null,
                             "children": {
                                 "object": "list",
@@ -35876,7 +35979,7 @@ export const apiTags: TagData[] = [
                                         "id": "lc_01gf7a8200er3ar3pkfrb6kk32",
                                         "object": "location",
                                         "name": "Shelf A1",
-                                        "type_code": "building",
+                                        "type": "building",
                                         "parent": null,
                                         "children": null,
                                         "created_at": "0001-01-01T00:00:00Z",
@@ -35982,7 +36085,7 @@ export const apiTags: TagData[] = [
                     ]
                 },
                 {
-                    "name": "label_size_code",
+                    "name": "label_size",
                     "type": "string",
                     "description": "The label size code for the scanning station.",
                     "required": true,
@@ -35996,7 +36099,7 @@ export const apiTags: TagData[] = [
                     ]
                 },
                 {
-                    "name": "label_type_code",
+                    "name": "label_type",
                     "type": "string",
                     "description": "The label type code for the scanning station.",
                     "required": true,
@@ -36369,8 +36472,8 @@ export const apiTags: TagData[] = [
                 "name": "Packaging Line 1",
                 "notes": null,
                 "type": "init_batch",
-                "label_size_code": null,
-                "label_type_code": null,
+                "label_size": null,
+                "label_type": null,
                 "material_check_required": false,
                 "department": null,
                 "production_steps": null,
@@ -36516,7 +36619,7 @@ export const apiTags: TagData[] = [
                                 ]
                             },
                             {
-                                "name": "label_size_code",
+                                "name": "label_size",
                                 "type": "string",
                                 "description": "The label size code for the scanning station.",
                                 "required": true,
@@ -36530,7 +36633,7 @@ export const apiTags: TagData[] = [
                                 ]
                             },
                             {
-                                "name": "label_type_code",
+                                "name": "label_type",
                                 "type": "string",
                                 "description": "The label type code for the scanning station.",
                                 "required": true,
@@ -36903,8 +37006,8 @@ export const apiTags: TagData[] = [
                             "name": "Packaging Line 1",
                             "notes": null,
                             "type": "init_batch",
-                            "label_size_code": null,
-                            "label_type_code": null,
+                            "label_size": null,
+                            "label_type": null,
                             "material_check_required": false,
                             "department": null,
                             "production_steps": null,
@@ -36966,7 +37069,7 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         },
                         {
-                            "name": "label_size_code",
+                            "name": "label_size",
                             "type": "string",
                             "description": "The label size code for the scanning station.",
                             "required": false,
@@ -36980,7 +37083,7 @@ export const apiTags: TagData[] = [
                             ]
                         },
                         {
-                            "name": "label_type_code",
+                            "name": "label_type",
                             "type": "string",
                             "description": "The label type code for the scanning station.",
                             "required": false,
@@ -37059,7 +37162,7 @@ export const apiTags: TagData[] = [
                                 ]
                             },
                             {
-                                "name": "label_size_code",
+                                "name": "label_size",
                                 "type": "string",
                                 "description": "The label size code for the scanning station.",
                                 "required": true,
@@ -37073,7 +37176,7 @@ export const apiTags: TagData[] = [
                                 ]
                             },
                             {
-                                "name": "label_type_code",
+                                "name": "label_type",
                                 "type": "string",
                                 "description": "The label type code for the scanning station.",
                                 "required": true,
@@ -37446,8 +37549,8 @@ export const apiTags: TagData[] = [
                             "name": "Packaging Line 1",
                             "notes": null,
                             "type": "init_batch",
-                            "label_size_code": null,
-                            "label_type_code": null,
+                            "label_size": null,
+                            "label_type": null,
                             "material_check_required": false,
                             "department": null,
                             "production_steps": null,
@@ -37620,7 +37723,7 @@ export const apiTags: TagData[] = [
                                         ]
                                     },
                                     {
-                                        "name": "label_size_code",
+                                        "name": "label_size",
                                         "type": "string",
                                         "description": "The label size code for the scanning station.",
                                         "required": true,
@@ -37634,7 +37737,7 @@ export const apiTags: TagData[] = [
                                         ]
                                     },
                                     {
-                                        "name": "label_type_code",
+                                        "name": "label_type",
                                         "type": "string",
                                         "description": "The label type code for the scanning station.",
                                         "required": true,
@@ -38018,8 +38121,8 @@ export const apiTags: TagData[] = [
                                     "name": "Packaging Line 1",
                                     "notes": null,
                                     "type": "init_batch",
-                                    "label_size_code": null,
-                                    "label_type_code": null,
+                                    "label_size": null,
+                                    "label_type": null,
                                     "material_check_required": false,
                                     "department": null,
                                     "production_steps": null,
@@ -38118,7 +38221,7 @@ export const apiTags: TagData[] = [
                                 ]
                             },
                             {
-                                "name": "label_size_code",
+                                "name": "label_size",
                                 "type": "string",
                                 "description": "The label size code for the scanning station.",
                                 "required": true,
@@ -38132,7 +38235,7 @@ export const apiTags: TagData[] = [
                                 ]
                             },
                             {
-                                "name": "label_type_code",
+                                "name": "label_type",
                                 "type": "string",
                                 "description": "The label type code for the scanning station.",
                                 "required": true,
@@ -38505,8 +38608,8 @@ export const apiTags: TagData[] = [
                             "name": "Packaging Line 1",
                             "notes": null,
                             "type": "init_batch",
-                            "label_size_code": null,
-                            "label_type_code": null,
+                            "label_size": null,
+                            "label_type": null,
                             "material_check_required": false,
                             "department": null,
                             "production_steps": null,
@@ -38586,7 +38689,7 @@ export const apiTags: TagData[] = [
                     "expandable": false
                 },
                 {
-                    "name": "type_code",
+                    "name": "type",
                     "type": "string",
                     "description": "The role type code.",
                     "required": true,
@@ -38674,7 +38777,7 @@ export const apiTags: TagData[] = [
                 "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
                 "object": "role",
                 "name": "Admin",
-                "type_code": "admin",
+                "type": "admin",
                 "owner": {
                     "object": "owner",
                     "type": "account",
@@ -38783,7 +38886,7 @@ export const apiTags: TagData[] = [
                                 "expandable": false
                             },
                             {
-                                "name": "type_code",
+                                "name": "type",
                                 "type": "string",
                                 "description": "The role type code.",
                                 "required": true,
@@ -38871,7 +38974,7 @@ export const apiTags: TagData[] = [
                             "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
                             "object": "role",
                             "name": "Admin",
-                            "type_code": "admin",
+                            "type": "admin",
                             "owner": {
                                 "object": "owner",
                                 "type": "account",
@@ -38986,7 +39089,7 @@ export const apiTags: TagData[] = [
                                 "expandable": false
                             },
                             {
-                                "name": "type_code",
+                                "name": "type",
                                 "type": "string",
                                 "description": "The role type code.",
                                 "required": true,
@@ -39074,7 +39177,7 @@ export const apiTags: TagData[] = [
                             "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
                             "object": "role",
                             "name": "Admin",
-                            "type_code": "admin",
+                            "type": "admin",
                             "owner": {
                                 "object": "owner",
                                 "type": "account",
@@ -39243,7 +39346,7 @@ export const apiTags: TagData[] = [
                                         "expandable": false
                                     },
                                     {
-                                        "name": "type_code",
+                                        "name": "type",
                                         "type": "string",
                                         "description": "The role type code.",
                                         "required": true,
@@ -39342,7 +39445,7 @@ export const apiTags: TagData[] = [
                                     "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
                                     "object": "role",
                                     "name": "Admin",
-                                    "type_code": "admin",
+                                    "type": "admin",
                                     "owner": {
                                         "object": "owner",
                                         "type": "account",
@@ -39430,7 +39533,7 @@ export const apiTags: TagData[] = [
                                 "expandable": false
                             },
                             {
-                                "name": "type_code",
+                                "name": "type",
                                 "type": "string",
                                 "description": "The role type code.",
                                 "required": true,
@@ -39518,7 +39621,7 @@ export const apiTags: TagData[] = [
                             "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
                             "object": "role",
                             "name": "Admin",
-                            "type_code": "admin",
+                            "type": "admin",
                             "owner": {
                                 "object": "owner",
                                 "type": "account",

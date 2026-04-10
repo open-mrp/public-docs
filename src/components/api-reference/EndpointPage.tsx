@@ -11,6 +11,10 @@ import { buildCurlExample } from './buildCurlExample';
 import { CodeExamplePanel } from './CodeExamplePanel';
 import { MarkdownBlock } from './MarkdownText';
 import { ParameterTable, SchemaFieldTable } from './ParameterTable';
+import {
+    findExpansionRoot,
+    sanitizeResponseExampleForEndpoint,
+} from './sanitizeResponseExample';
 
 function stringifyJson(value: unknown) {
     return JSON.stringify(value ?? {}, null, 2);
@@ -101,31 +105,6 @@ function getDomainLabel(domain: string): string {
     return domainLabels[domain] || domain.charAt(0).toUpperCase() + domain.slice(1);
 }
 
-function findExpansionRoot(
-    fields: SchemaField[] | undefined,
-    includeValues: string[],
-): string | undefined {
-    if (!fields || includeValues.length === 0) return undefined;
-
-    // Preserve existing list convention: list responses always use `data`.
-    if (fields.some((f) => f.name === 'data')) return 'data';
-
-    // Top-level include names (e.g. ["role", "role.permissions"] → {"role"}).
-    const topLevelIncludes = new Set(includeValues.map((v) => v.split('.')[0]));
-
-    // Find a wrapper field whose direct children contain a field name that
-    // matches the include enum (e.g. CreatedAPIKey.api_key_info → role).
-    for (const field of fields) {
-        const children = field.properties;
-        if (!children || children.length === 0) continue;
-        if (children.some((c) => topLevelIncludes.has(c.name))) {
-            return field.name;
-        }
-    }
-
-    return undefined;
-}
-
 function fieldsToMarkdown(fields: SchemaField[], indent = 0): string {
     const prefix = '  '.repeat(indent);
     return fields
@@ -188,11 +167,16 @@ function endpointToMarkdown(ep: EndpointData): string {
 
     const responseWithExample = ep.responses.find((r) => r.example != null);
     if (responseWithExample) {
+        const exampleForDisplay = sanitizeResponseExampleForEndpoint(
+            responseWithExample.example,
+            ep,
+            responseFields,
+        );
         lines.push(
             '',
             `### ${responseWithExample.statusCode} Example`,
             '```json',
-            stringifyJson(responseWithExample.example),
+            stringifyJson(exampleForDisplay),
             '```',
         );
     }
@@ -222,6 +206,15 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
         () => findExpansionRoot(responseFields, expandableIncludeValues),
         [responseFields, expandableIncludeValues],
     );
+
+    const responseExampleForDisplay = useMemo(() => {
+        if (!responseWithExample) return null;
+        return sanitizeResponseExampleForEndpoint(
+            responseWithExample.example,
+            endpoint,
+            responseFields,
+        );
+    }, [responseWithExample, endpoint, responseFields]);
 
     const cleanMarkdown = useMemo(() => endpointToMarkdown(endpoint), [endpoint]);
     const [copied, setCopied] = useState(false);
@@ -488,7 +481,7 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
                                         id: 'json',
                                         label: 'JSON',
                                         language: 'json',
-                                        code: stringifyJson(responseWithExample.example),
+                                        code: stringifyJson(responseExampleForDisplay),
                                     },
                                 ]}
                             />
