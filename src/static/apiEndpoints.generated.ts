@@ -4384,38 +4384,101 @@ export const apiTags: TagData[] = [
                 },
                 {
                     "name": "changes",
-                    "type": "array",
+                    "type": "object",
                     "description": "The field-level changes recorded for this event.",
                     "required": true,
-                    "nullable": false,
+                    "nullable": true,
                     "expandable": true,
-                    "itemType": "object",
                     "properties": [
                         {
-                            "name": "field",
+                            "name": "object",
                             "type": "string",
-                            "description": "The name of the field that changed.",
+                            "description": "Object type for AuditFieldChange list",
                             "required": true,
                             "nullable": false,
-                            "expandable": false
+                            "expandable": false,
+                            "enum": [
+                                "list"
+                            ]
                         },
                         {
-                            "name": "old_value",
+                            "name": "page_info",
                             "type": "object",
-                            "description": "The previous value of the field as a JSON fragment, or null for creation events.",
+                            "description": "Pagination metadata for AuditFieldChange list",
                             "required": true,
                             "nullable": false,
-                            "alwaysNull": true,
-                            "expandable": false
+                            "expandable": false,
+                            "properties": [
+                                {
+                                    "name": "next_cursor",
+                                    "type": "string",
+                                    "description": "Cursor to fetch the next page of results, null if no more pages.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "prev_cursor",
+                                    "type": "string",
+                                    "description": "Cursor to fetch the previous page of results, null if on the first page.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "has_next_page",
+                                    "type": "boolean",
+                                    "description": "Whether there are more results after this page.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "has_prev_page",
+                                    "type": "boolean",
+                                    "description": "Whether there are results before this page.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                }
+                            ]
                         },
                         {
-                            "name": "new_value",
-                            "type": "object",
-                            "description": "The new value of the field as a JSON fragment, or null for deletion events.",
+                            "name": "data",
+                            "type": "array",
+                            "description": "Array of AuditFieldChange resources in this page",
                             "required": true,
                             "nullable": false,
-                            "alwaysNull": true,
-                            "expandable": false
+                            "expandable": false,
+                            "itemType": "object",
+                            "properties": [
+                                {
+                                    "name": "field",
+                                    "type": "string",
+                                    "description": "The name of the field that changed.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "old_value",
+                                    "type": "object",
+                                    "description": "The previous value of the field as a JSON fragment, or null for creation events.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "alwaysNull": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "new_value",
+                                    "type": "object",
+                                    "description": "The new value of the field as a JSON fragment, or null for deletion events.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "alwaysNull": true,
+                                    "expandable": false
+                                }
+                            ]
                         }
                     ]
                 },
@@ -4505,13 +4568,22 @@ export const apiTags: TagData[] = [
                         "updated_at": "2026-05-10T00:23:00Z"
                     }
                 },
-                "changes": [
-                    {
-                        "field": "email",
-                        "old_value": "old@example.com",
-                        "new_value": "new@example.com"
-                    }
-                ],
+                "changes": {
+                    "object": "list",
+                    "page_info": {
+                        "next_cursor": null,
+                        "prev_cursor": null,
+                        "has_next_page": false,
+                        "has_prev_page": false
+                    },
+                    "data": [
+                        {
+                            "field": "email",
+                            "old_value": "old@example.com",
+                            "new_value": "new@example.com"
+                        }
+                    ]
+                },
                 "metadata": {
                     "reason": "operator override"
                 },
@@ -5186,38 +5258,101 @@ export const apiTags: TagData[] = [
                                     },
                                     {
                                         "name": "changes",
-                                        "type": "array",
+                                        "type": "object",
                                         "description": "The field-level changes recorded for this event.",
                                         "required": true,
-                                        "nullable": false,
+                                        "nullable": true,
                                         "expandable": true,
-                                        "itemType": "object",
                                         "properties": [
                                             {
-                                                "name": "field",
+                                                "name": "object",
                                                 "type": "string",
-                                                "description": "The name of the field that changed.",
+                                                "description": "Object type for AuditFieldChange list",
                                                 "required": true,
                                                 "nullable": false,
-                                                "expandable": false
+                                                "expandable": false,
+                                                "enum": [
+                                                    "list"
+                                                ]
                                             },
                                             {
-                                                "name": "old_value",
+                                                "name": "page_info",
                                                 "type": "object",
-                                                "description": "The previous value of the field as a JSON fragment, or null for creation events.",
+                                                "description": "Pagination metadata for AuditFieldChange list",
                                                 "required": true,
                                                 "nullable": false,
-                                                "alwaysNull": true,
-                                                "expandable": false
+                                                "expandable": false,
+                                                "properties": [
+                                                    {
+                                                        "name": "next_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the next page of results, null if no more pages.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "prev_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the previous page of results, null if on the first page.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_next_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether there are more results after this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_prev_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether there are results before this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
                                             },
                                             {
-                                                "name": "new_value",
-                                                "type": "object",
-                                                "description": "The new value of the field as a JSON fragment, or null for deletion events.",
+                                                "name": "data",
+                                                "type": "array",
+                                                "description": "Array of AuditFieldChange resources in this page",
                                                 "required": true,
                                                 "nullable": false,
-                                                "alwaysNull": true,
-                                                "expandable": false
+                                                "expandable": false,
+                                                "itemType": "object",
+                                                "properties": [
+                                                    {
+                                                        "name": "field",
+                                                        "type": "string",
+                                                        "description": "The name of the field that changed.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "old_value",
+                                                        "type": "object",
+                                                        "description": "The previous value of the field as a JSON fragment, or null for creation events.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "alwaysNull": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "new_value",
+                                                        "type": "object",
+                                                        "description": "The new value of the field as a JSON fragment, or null for deletion events.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "alwaysNull": true,
+                                                        "expandable": false
+                                                    }
+                                                ]
                                             }
                                         ]
                                     },
@@ -5318,13 +5453,22 @@ export const apiTags: TagData[] = [
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
-                                    "changes": [
-                                        {
-                                            "field": "email",
-                                            "old_value": "old@example.com",
-                                            "new_value": "new@example.com"
-                                        }
-                                    ],
+                                    "changes": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_cursor": null,
+                                            "prev_cursor": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "field": "email",
+                                                "old_value": "old@example.com",
+                                                "new_value": "new@example.com"
+                                            }
+                                        ]
+                                    },
                                     "metadata": {
                                         "reason": "operator override"
                                     },
@@ -5682,38 +5826,101 @@ export const apiTags: TagData[] = [
                             },
                             {
                                 "name": "changes",
-                                "type": "array",
+                                "type": "object",
                                 "description": "The field-level changes recorded for this event.",
                                 "required": true,
-                                "nullable": false,
+                                "nullable": true,
                                 "expandable": true,
-                                "itemType": "object",
                                 "properties": [
                                     {
-                                        "name": "field",
+                                        "name": "object",
                                         "type": "string",
-                                        "description": "The name of the field that changed.",
+                                        "description": "Object type for AuditFieldChange list",
                                         "required": true,
                                         "nullable": false,
-                                        "expandable": false
+                                        "expandable": false,
+                                        "enum": [
+                                            "list"
+                                        ]
                                     },
                                     {
-                                        "name": "old_value",
+                                        "name": "page_info",
                                         "type": "object",
-                                        "description": "The previous value of the field as a JSON fragment, or null for creation events.",
+                                        "description": "Pagination metadata for AuditFieldChange list",
                                         "required": true,
                                         "nullable": false,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": false,
+                                        "properties": [
+                                            {
+                                                "name": "next_cursor",
+                                                "type": "string",
+                                                "description": "Cursor to fetch the next page of results, null if no more pages.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "prev_cursor",
+                                                "type": "string",
+                                                "description": "Cursor to fetch the previous page of results, null if on the first page.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "has_next_page",
+                                                "type": "boolean",
+                                                "description": "Whether there are more results after this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "has_prev_page",
+                                                "type": "boolean",
+                                                "description": "Whether there are results before this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            }
+                                        ]
                                     },
                                     {
-                                        "name": "new_value",
-                                        "type": "object",
-                                        "description": "The new value of the field as a JSON fragment, or null for deletion events.",
+                                        "name": "data",
+                                        "type": "array",
+                                        "description": "Array of AuditFieldChange resources in this page",
                                         "required": true,
                                         "nullable": false,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": false,
+                                        "itemType": "object",
+                                        "properties": [
+                                            {
+                                                "name": "field",
+                                                "type": "string",
+                                                "description": "The name of the field that changed.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "old_value",
+                                                "type": "object",
+                                                "description": "The previous value of the field as a JSON fragment, or null for creation events.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "new_value",
+                                                "type": "object",
+                                                "description": "The new value of the field as a JSON fragment, or null for deletion events.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -5803,13 +6010,22 @@ export const apiTags: TagData[] = [
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
                             },
-                            "changes": [
-                                {
-                                    "field": "email",
-                                    "old_value": "old@example.com",
-                                    "new_value": "new@example.com"
-                                }
-                            ],
+                            "changes": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_cursor": null,
+                                    "prev_cursor": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "field": "email",
+                                        "old_value": "old@example.com",
+                                        "new_value": "new@example.com"
+                                    }
+                                ]
+                            },
                             "metadata": {
                                 "reason": "operator override"
                             },
@@ -22816,13 +23032,12 @@ export const apiTags: TagData[] = [
                                 },
                                 {
                                     "name": "service_levels",
-                                    "type": "array",
+                                    "type": "object",
                                     "description": "The service levels (shipping service levels).",
                                     "required": true,
                                     "nullable": true,
                                     "alwaysNull": true,
-                                    "expandable": true,
-                                    "itemType": "object"
+                                    "expandable": true
                                 },
                                 {
                                     "name": "deleted_at",
@@ -25202,13 +25417,12 @@ export const apiTags: TagData[] = [
                                             },
                                             {
                                                 "name": "service_levels",
-                                                "type": "array",
+                                                "type": "object",
                                                 "description": "The service levels (shipping service levels).",
                                                 "required": true,
                                                 "nullable": true,
                                                 "alwaysNull": true,
-                                                "expandable": true,
-                                                "itemType": "object"
+                                                "expandable": true
                                             },
                                             {
                                                 "name": "deleted_at",
@@ -27406,13 +27620,12 @@ export const apiTags: TagData[] = [
                                             },
                                             {
                                                 "name": "service_levels",
-                                                "type": "array",
+                                                "type": "object",
                                                 "description": "The service levels (shipping service levels).",
                                                 "required": true,
                                                 "nullable": true,
                                                 "alwaysNull": true,
-                                                "expandable": true,
-                                                "itemType": "object"
+                                                "expandable": true
                                             },
                                             {
                                                 "name": "deleted_at",
@@ -29371,13 +29584,12 @@ export const apiTags: TagData[] = [
                                             },
                                             {
                                                 "name": "service_levels",
-                                                "type": "array",
+                                                "type": "object",
                                                 "description": "The service levels (shipping service levels).",
                                                 "required": true,
                                                 "nullable": true,
                                                 "alwaysNull": true,
-                                                "expandable": true,
-                                                "itemType": "object"
+                                                "expandable": true
                                             },
                                             {
                                                 "name": "deleted_at",
@@ -31385,13 +31597,12 @@ export const apiTags: TagData[] = [
                                             },
                                             {
                                                 "name": "service_levels",
-                                                "type": "array",
+                                                "type": "object",
                                                 "description": "The service levels (shipping service levels).",
                                                 "required": true,
                                                 "nullable": true,
                                                 "alwaysNull": true,
-                                                "expandable": true,
-                                                "itemType": "object"
+                                                "expandable": true
                                             },
                                             {
                                                 "name": "deleted_at",
