@@ -1734,9 +1734,9 @@ export const apiTags: TagData[] = [
                         {
                             "name": "mode",
                             "type": "string",
-                            "description": "Controls whether the sandbox is blank or seeded with tutorial data.",
-                            "required": true,
-                            "nullable": false,
+                            "description": "Controls whether the sandbox is blank or seeded with tutorial data. Defaults to blank.",
+                            "required": false,
+                            "nullable": true,
                             "expandable": false,
                             "enum": [
                                 "blank",
@@ -6450,7 +6450,8 @@ export const apiTags: TagData[] = [
                             "description": "The conversion ratio numerator relative to the base unit, as a decimal string.",
                             "required": true,
                             "nullable": false,
-                            "expandable": false
+                            "expandable": false,
+                            "format": "decimal"
                         },
                         {
                             "name": "ratio_denominator",
@@ -6458,7 +6459,8 @@ export const apiTags: TagData[] = [
                             "description": "The conversion ratio denominator relative to the base unit, as a decimal string.",
                             "required": true,
                             "nullable": false,
-                            "expandable": false
+                            "expandable": false,
+                            "format": "decimal"
                         },
                         {
                             "name": "offset_numerator",
@@ -6466,7 +6468,8 @@ export const apiTags: TagData[] = [
                             "description": "The conversion offset numerator, as a decimal string.",
                             "required": true,
                             "nullable": false,
-                            "expandable": false
+                            "expandable": false,
+                            "format": "decimal"
                         },
                         {
                             "name": "offset_denominator",
@@ -6474,7 +6477,8 @@ export const apiTags: TagData[] = [
                             "description": "The conversion offset denominator, as a decimal string.",
                             "required": true,
                             "nullable": false,
-                            "expandable": false
+                            "expandable": false,
+                            "format": "decimal"
                         }
                     ],
                     "example": {
@@ -6811,7 +6815,8 @@ export const apiTags: TagData[] = [
                             "description": "The conversion ratio numerator, as a decimal string.",
                             "required": false,
                             "nullable": false,
-                            "expandable": false
+                            "expandable": false,
+                            "format": "decimal"
                         },
                         {
                             "name": "ratio_denominator",
@@ -6819,7 +6824,8 @@ export const apiTags: TagData[] = [
                             "description": "The conversion ratio denominator, as a decimal string.",
                             "required": false,
                             "nullable": false,
-                            "expandable": false
+                            "expandable": false,
+                            "format": "decimal"
                         },
                         {
                             "name": "offset_numerator",
@@ -6827,7 +6833,8 @@ export const apiTags: TagData[] = [
                             "description": "The conversion offset numerator, as a decimal string.",
                             "required": false,
                             "nullable": false,
-                            "expandable": false
+                            "expandable": false,
+                            "format": "decimal"
                         },
                         {
                             "name": "offset_denominator",
@@ -6835,7 +6842,8 @@ export const apiTags: TagData[] = [
                             "description": "The conversion offset denominator, as a decimal string.",
                             "required": false,
                             "nullable": false,
-                            "expandable": false
+                            "expandable": false,
+                            "format": "decimal"
                         }
                     ],
                     "example": {
@@ -14427,7 +14435,8 @@ export const apiTags: TagData[] = [
                                     "description": "The decimal value.",
                                     "required": true,
                                     "nullable": false,
-                                    "expandable": false
+                                    "expandable": false,
+                                    "format": "decimal"
                                 },
                                 {
                                     "name": "unit_id",
@@ -14453,7 +14462,8 @@ export const apiTags: TagData[] = [
                                     "description": "The decimal value.",
                                     "required": true,
                                     "nullable": false,
-                                    "expandable": false
+                                    "expandable": false,
+                                    "format": "decimal"
                                 },
                                 {
                                     "name": "unit_id",
@@ -15276,7 +15286,8 @@ export const apiTags: TagData[] = [
                                     "description": "The decimal value.",
                                     "required": true,
                                     "nullable": false,
-                                    "expandable": false
+                                    "expandable": false,
+                                    "format": "decimal"
                                 },
                                 {
                                     "name": "unit_id",
@@ -15302,7 +15313,8 @@ export const apiTags: TagData[] = [
                                     "description": "The decimal value.",
                                     "required": true,
                                     "nullable": false,
-                                    "expandable": false
+                                    "expandable": false,
+                                    "format": "decimal"
                                 },
                                 {
                                     "name": "unit_id",
@@ -22484,7 +22496,11 @@ export const apiTags: TagData[] = [
                             "description": "The type of item category (material_category or product_category).",
                             "required": true,
                             "nullable": false,
-                            "expandable": false
+                            "expandable": false,
+                            "enum": [
+                                "material_category",
+                                "product_category"
+                            ]
                         },
                         {
                             "name": "unit_group_id",
@@ -23298,7 +23314,11 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Filter by item category type code (material_category or product_category)."
+                        "description": "Filter by item category type code (material_category or product_category).",
+                        "enum": [
+                            "material_category",
+                            "product_category"
+                        ]
                     },
                     {
                         "name": "include[]",
@@ -37459,8 +37479,8 @@ export const apiTags: TagData[] = [
                             "name": "child_ids",
                             "type": "array",
                             "description": "IDs of existing locations to attach as children of this location.",
-                            "required": true,
-                            "nullable": false,
+                            "required": false,
+                            "nullable": true,
                             "expandable": false,
                             "itemType": "string"
                         }
@@ -37801,15 +37821,16 @@ export const apiTags: TagData[] = [
                         {
                             "name": "child_ids",
                             "type": "array",
-                            "description": "The IDs of child locations. When provided, replaces all current children.",
+                            "description": "The IDs of child locations. When provided, replaces all current children. Send null to clear.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false,
                             "itemType": "string"
                         }
                     ],
                     "example": {
-                        "name": "Warehouse B"
+                        "name": "Warehouse B",
+                        "child_ids": {}
                     }
                 },
                 "responses": [
@@ -39678,6 +39699,32 @@ export const apiTags: TagData[] = [
                             "required": true,
                             "nullable": false,
                             "expandable": false
+                        },
+                        {
+                            "name": "label_size",
+                            "type": "string",
+                            "description": "The label size code for the scanning station.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "1x1",
+                                "1x3",
+                                "1x4",
+                                "2x4"
+                            ]
+                        },
+                        {
+                            "name": "label_type",
+                            "type": "string",
+                            "description": "The label type code for the scanning station.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "tag",
+                                "traveler"
+                            ]
                         }
                     ],
                     "example": {
