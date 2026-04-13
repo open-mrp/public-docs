@@ -287,7 +287,14 @@ export const apiTags: TagData[] = [
                         "type": "account",
                         "account": {
                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                            "object": "account"
+                            "object": "account",
+                            "name": "Acme Inc.",
+                            "default_billing_address": null,
+                            "default_shipping_address": null,
+                            "branding": null,
+                            "portal": null,
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
                         }
                     },
                     "permissions": [
@@ -575,7 +582,14 @@ export const apiTags: TagData[] = [
                                         "type": "account",
                                         "account": {
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                            "object": "account"
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
                                     "permissions": [
@@ -917,7 +931,14 @@ export const apiTags: TagData[] = [
                                             "type": "account",
                                             "account": {
                                                 "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                                "object": "account"
+                                                "object": "account",
+                                                "name": "Acme Inc.",
+                                                "default_billing_address": null,
+                                                "default_shipping_address": null,
+                                                "branding": null,
+                                                "portal": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
                                             }
                                         },
                                         "permissions": [
@@ -1161,7 +1182,14 @@ export const apiTags: TagData[] = [
                                     "type": "account",
                                     "account": {
                                         "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                        "object": "account"
+                                        "object": "account",
+                                        "name": "Acme Inc.",
+                                        "default_billing_address": null,
+                                        "default_shipping_address": null,
+                                        "branding": null,
+                                        "portal": null,
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
                                     }
                                 },
                                 "permissions": [
@@ -1470,7 +1498,14 @@ export const apiTags: TagData[] = [
                                         "type": "account",
                                         "account": {
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                            "object": "account"
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
                                     "permissions": [
@@ -1653,8 +1688,8 @@ export const apiTags: TagData[] = [
                     "default_shipping_address": null,
                     "branding": null,
                     "portal": null,
-                    "created_at": "0001-01-01T00:00:00Z",
-                    "updated_at": "0001-01-01T00:00:00Z"
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
                 },
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
@@ -1868,8 +1903,8 @@ export const apiTags: TagData[] = [
                                 "default_shipping_address": null,
                                 "branding": null,
                                 "portal": null,
-                                "created_at": "0001-01-01T00:00:00Z",
-                                "updated_at": "0001-01-01T00:00:00Z"
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
                             },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -2149,8 +2184,8 @@ export const apiTags: TagData[] = [
                                         "default_shipping_address": null,
                                         "branding": null,
                                         "portal": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
                                     },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -2345,8 +2380,8 @@ export const apiTags: TagData[] = [
                                 "default_shipping_address": null,
                                 "branding": null,
                                 "portal": null,
-                                "created_at": "0001-01-01T00:00:00Z",
-                                "updated_at": "0001-01-01T00:00:00Z"
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
                             },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -2853,7 +2888,14 @@ export const apiTags: TagData[] = [
                             "type": "account",
                             "account": {
                                 "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                "object": "account"
+                                "object": "account",
+                                "name": "Acme Inc.",
+                                "default_billing_address": null,
+                                "default_shipping_address": null,
+                                "branding": null,
+                                "portal": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
                             }
                         },
                         "permissions": [
@@ -3526,7 +3568,14 @@ export const apiTags: TagData[] = [
                                                 "type": "account",
                                                 "account": {
                                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                                    "object": "account"
+                                                    "object": "account",
+                                                    "name": "Acme Inc.",
+                                                    "default_billing_address": null,
+                                                    "default_shipping_address": null,
+                                                    "branding": null,
+                                                    "portal": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
                                                 }
                                             },
                                             "permissions": [
@@ -4047,7 +4096,14 @@ export const apiTags: TagData[] = [
                                         "type": "account",
                                         "account": {
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                            "object": "account"
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
                                     "permissions": [
@@ -4553,7 +4609,14 @@ export const apiTags: TagData[] = [
                             "type": "account",
                             "account": {
                                 "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                "object": "account"
+                                "object": "account",
+                                "name": "Acme Inc.",
+                                "default_billing_address": null,
+                                "default_shipping_address": null,
+                                "branding": null,
+                                "portal": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
                             }
                         },
                         "permissions": [
@@ -5436,7 +5499,14 @@ export const apiTags: TagData[] = [
                                                 "type": "account",
                                                 "account": {
                                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                                    "object": "account"
+                                                    "object": "account",
+                                                    "name": "Acme Inc.",
+                                                    "default_billing_address": null,
+                                                    "default_shipping_address": null,
+                                                    "branding": null,
+                                                    "portal": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
                                                 }
                                             },
                                             "permissions": [
@@ -5991,7 +6061,14 @@ export const apiTags: TagData[] = [
                                         "type": "account",
                                         "account": {
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                            "object": "account"
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
                                     "permissions": [
@@ -6175,11 +6252,93 @@ export const apiTags: TagData[] = [
                         {
                             "name": "account",
                             "type": "object",
-                            "description": "The account that owns this resource. Present when type is \"account\".",
+                            "description": "The account that owns this resource. `null` if the object is system-owned.",
                             "required": true,
                             "nullable": true,
-                            "alwaysNull": true,
-                            "expandable": false
+                            "expandable": true,
+                            "properties": [
+                                {
+                                    "name": "id",
+                                    "type": "string",
+                                    "description": "The unique identifier for the account.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "object",
+                                    "type": "string",
+                                    "description": "The resource type identifier.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "enum": [
+                                        "account"
+                                    ]
+                                },
+                                {
+                                    "name": "name",
+                                    "type": "string",
+                                    "description": "The display name of the account.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "default_billing_address",
+                                    "type": "object",
+                                    "description": "The default billing address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "default_shipping_address",
+                                    "type": "object",
+                                    "description": "The default shipping address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "branding",
+                                    "type": "object",
+                                    "description": "The account branding configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "portal",
+                                    "type": "object",
+                                    "description": "The account portal configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "created_at",
+                                    "type": "string",
+                                    "description": "The timestamp when the account was created.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                },
+                                {
+                                    "name": "updated_at",
+                                    "type": "string",
+                                    "description": "The timestamp when the account was last updated.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -6243,7 +6402,8 @@ export const apiTags: TagData[] = [
                         "required": false,
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
-                            "owner"
+                            "owner",
+                            "owner.account"
                         ]
                     }
                 ],
@@ -6463,11 +6623,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -6539,7 +6781,8 @@ export const apiTags: TagData[] = [
                         "required": false,
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
-                            "owner"
+                            "owner",
+                            "owner.account"
                         ]
                     }
                 ],
@@ -6736,11 +6979,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -6850,7 +7175,8 @@ export const apiTags: TagData[] = [
                         "required": false,
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
-                            "owner"
+                            "owner",
+                            "owner.account"
                         ]
                     }
                 ],
@@ -7052,11 +7378,93 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "account",
                                                 "type": "object",
-                                                "description": "The account that owns this resource. Present when type is \"account\".",
+                                                "description": "The account that owns this resource. `null` if the object is system-owned.",
                                                 "required": true,
                                                 "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": false
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "The unique identifier for the account.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "The resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "account"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "The display name of the account.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "default_billing_address",
+                                                        "type": "object",
+                                                        "description": "The default billing address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "default_shipping_address",
+                                                        "type": "object",
+                                                        "description": "The default shipping address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "branding",
+                                                        "type": "object",
+                                                        "description": "The account branding configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "portal",
+                                                        "type": "object",
+                                                        "description": "The account portal configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the account was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the account was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
                                             }
                                         ]
                                     },
@@ -7141,7 +7549,8 @@ export const apiTags: TagData[] = [
                         "required": false,
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
-                            "owner"
+                            "owner",
+                            "owner.account"
                         ]
                     }
                 ],
@@ -7281,11 +7690,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -7615,11 +8106,93 @@ export const apiTags: TagData[] = [
                         {
                             "name": "account",
                             "type": "object",
-                            "description": "The account that owns this resource. Present when type is \"account\".",
+                            "description": "The account that owns this resource. `null` if the object is system-owned.",
                             "required": true,
                             "nullable": true,
-                            "alwaysNull": true,
-                            "expandable": false
+                            "expandable": true,
+                            "properties": [
+                                {
+                                    "name": "id",
+                                    "type": "string",
+                                    "description": "The unique identifier for the account.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "object",
+                                    "type": "string",
+                                    "description": "The resource type identifier.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "enum": [
+                                        "account"
+                                    ]
+                                },
+                                {
+                                    "name": "name",
+                                    "type": "string",
+                                    "description": "The display name of the account.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "default_billing_address",
+                                    "type": "object",
+                                    "description": "The default billing address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "default_shipping_address",
+                                    "type": "object",
+                                    "description": "The default shipping address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "branding",
+                                    "type": "object",
+                                    "description": "The account branding configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "portal",
+                                    "type": "object",
+                                    "description": "The account portal configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "created_at",
+                                    "type": "string",
+                                    "description": "The timestamp when the account was created.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                },
+                                {
+                                    "name": "updated_at",
+                                    "type": "string",
+                                    "description": "The timestamp when the account was last updated.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -7681,6 +8254,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "base_unit",
                             "associated_units"
                         ]
@@ -7702,13 +8276,13 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Optional notes about the unit group. Defaults to `null`.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
                             "name": "type",
                             "type": "string",
-                            "description": "The unit type code (e.g. \"mass\", \"quantity\").",
+                            "description": "The unit type code.",
                             "required": true,
                             "nullable": false,
                             "expandable": false,
@@ -8041,11 +8615,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -8115,6 +8771,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "base_unit",
                             "associated_units"
                         ]
@@ -8448,11 +9105,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -8553,6 +9292,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "base_unit",
                             "associated_units"
                         ]
@@ -8994,11 +9734,93 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "account",
                                                 "type": "object",
-                                                "description": "The account that owns this resource. Present when type is \"account\".",
+                                                "description": "The account that owns this resource. `null` if the object is system-owned.",
                                                 "required": true,
                                                 "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": false
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "The unique identifier for the account.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "The resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "account"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "The display name of the account.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "default_billing_address",
+                                                        "type": "object",
+                                                        "description": "The default billing address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "default_shipping_address",
+                                                        "type": "object",
+                                                        "description": "The default shipping address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "branding",
+                                                        "type": "object",
+                                                        "description": "The account branding configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "portal",
+                                                        "type": "object",
+                                                        "description": "The account portal configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the account was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the account was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
                                             }
                                         ]
                                     },
@@ -9081,6 +9903,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "base_unit",
                             "associated_units"
                         ]
@@ -9334,11 +10157,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -10753,7 +11658,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "An optional description of the account group.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         }
                     ],
@@ -11523,11 +12428,93 @@ export const apiTags: TagData[] = [
                         {
                             "name": "account",
                             "type": "object",
-                            "description": "The account that owns this resource. Present when type is \"account\".",
+                            "description": "The account that owns this resource. `null` if the object is system-owned.",
                             "required": true,
                             "nullable": true,
-                            "alwaysNull": true,
-                            "expandable": false
+                            "expandable": true,
+                            "properties": [
+                                {
+                                    "name": "id",
+                                    "type": "string",
+                                    "description": "The unique identifier for the account.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "object",
+                                    "type": "string",
+                                    "description": "The resource type identifier.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "enum": [
+                                        "account"
+                                    ]
+                                },
+                                {
+                                    "name": "name",
+                                    "type": "string",
+                                    "description": "The display name of the account.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "default_billing_address",
+                                    "type": "object",
+                                    "description": "The default billing address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "default_shipping_address",
+                                    "type": "object",
+                                    "description": "The default shipping address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "branding",
+                                    "type": "object",
+                                    "description": "The account branding configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "portal",
+                                    "type": "object",
+                                    "description": "The account portal configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "created_at",
+                                    "type": "string",
+                                    "description": "The timestamp when the account was created.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                },
+                                {
+                                    "name": "updated_at",
+                                    "type": "string",
+                                    "description": "The timestamp when the account was last updated.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -11585,7 +12572,8 @@ export const apiTags: TagData[] = [
                         "required": false,
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
-                            "owner"
+                            "owner",
+                            "owner.account"
                         ]
                     }
                 ],
@@ -11682,11 +12670,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -11752,7 +12822,8 @@ export const apiTags: TagData[] = [
                         "required": false,
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
-                            "owner"
+                            "owner",
+                            "owner.account"
                         ]
                     }
                 ],
@@ -11849,11 +12920,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -11933,7 +13086,8 @@ export const apiTags: TagData[] = [
                         "required": false,
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
-                            "owner"
+                            "owner",
+                            "owner.account"
                         ]
                     }
                 ],
@@ -12076,11 +13230,93 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "account",
                                                 "type": "object",
-                                                "description": "The account that owns this resource. Present when type is \"account\".",
+                                                "description": "The account that owns this resource. `null` if the object is system-owned.",
                                                 "required": true,
                                                 "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": false
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "The unique identifier for the account.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "The resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "account"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "The display name of the account.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "default_billing_address",
+                                                        "type": "object",
+                                                        "description": "The default billing address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "default_shipping_address",
+                                                        "type": "object",
+                                                        "description": "The default shipping address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "branding",
+                                                        "type": "object",
+                                                        "description": "The account branding configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "portal",
+                                                        "type": "object",
+                                                        "description": "The account portal configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the account was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the account was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
                                             }
                                         ]
                                     },
@@ -12159,7 +13395,8 @@ export const apiTags: TagData[] = [
                         "required": false,
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
-                            "owner"
+                            "owner",
+                            "owner.account"
                         ]
                     }
                 ],
@@ -12240,11 +13477,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -12399,11 +13718,93 @@ export const apiTags: TagData[] = [
                         {
                             "name": "account",
                             "type": "object",
-                            "description": "The account that owns this resource. Present when type is \"account\".",
+                            "description": "The account that owns this resource. `null` if the object is system-owned.",
                             "required": true,
                             "nullable": true,
-                            "alwaysNull": true,
-                            "expandable": false
+                            "expandable": true,
+                            "properties": [
+                                {
+                                    "name": "id",
+                                    "type": "string",
+                                    "description": "The unique identifier for the account.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "object",
+                                    "type": "string",
+                                    "description": "The resource type identifier.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "enum": [
+                                        "account"
+                                    ]
+                                },
+                                {
+                                    "name": "name",
+                                    "type": "string",
+                                    "description": "The display name of the account.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "default_billing_address",
+                                    "type": "object",
+                                    "description": "The default billing address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "default_shipping_address",
+                                    "type": "object",
+                                    "description": "The default shipping address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "branding",
+                                    "type": "object",
+                                    "description": "The account branding configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "portal",
+                                    "type": "object",
+                                    "description": "The account portal configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "created_at",
+                                    "type": "string",
+                                    "description": "The timestamp when the account was created.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                },
+                                {
+                                    "name": "updated_at",
+                                    "type": "string",
+                                    "description": "The timestamp when the account was last updated.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -12981,6 +14382,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "flat_rate.unit",
                             "minimum_order_value.unit",
                             "free_shipping_service_levels"
@@ -13157,11 +14559,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -13747,6 +15231,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "flat_rate.unit",
                             "minimum_order_value.unit",
                             "free_shipping_service_levels"
@@ -13925,11 +15410,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -14529,6 +16096,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "flat_rate.unit",
                             "minimum_order_value.unit",
                             "free_shipping_service_levels"
@@ -14676,11 +16244,93 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "account",
                                                 "type": "object",
-                                                "description": "The account that owns this resource. Present when type is \"account\".",
+                                                "description": "The account that owns this resource. `null` if the object is system-owned.",
                                                 "required": true,
                                                 "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": false
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "The unique identifier for the account.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "The resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "account"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "The display name of the account.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "default_billing_address",
+                                                        "type": "object",
+                                                        "description": "The default billing address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "default_shipping_address",
+                                                        "type": "object",
+                                                        "description": "The default shipping address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "branding",
+                                                        "type": "object",
+                                                        "description": "The account branding configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "portal",
+                                                        "type": "object",
+                                                        "description": "The account portal configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the account was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the account was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
                                             }
                                         ]
                                     },
@@ -15279,6 +16929,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "flat_rate.unit",
                             "minimum_order_value.unit",
                             "free_shipping_service_levels"
@@ -15364,11 +17015,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -19666,11 +21399,93 @@ export const apiTags: TagData[] = [
                         {
                             "name": "account",
                             "type": "object",
-                            "description": "The account that owns this resource. Present when type is \"account\".",
+                            "description": "The account that owns this resource. `null` if the object is system-owned.",
                             "required": true,
                             "nullable": true,
-                            "alwaysNull": true,
-                            "expandable": false
+                            "expandable": true,
+                            "properties": [
+                                {
+                                    "name": "id",
+                                    "type": "string",
+                                    "description": "The unique identifier for the account.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "object",
+                                    "type": "string",
+                                    "description": "The resource type identifier.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "enum": [
+                                        "account"
+                                    ]
+                                },
+                                {
+                                    "name": "name",
+                                    "type": "string",
+                                    "description": "The display name of the account.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "default_billing_address",
+                                    "type": "object",
+                                    "description": "The default billing address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "default_shipping_address",
+                                    "type": "object",
+                                    "description": "The default shipping address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "branding",
+                                    "type": "object",
+                                    "description": "The account branding configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "portal",
+                                    "type": "object",
+                                    "description": "The account portal configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "created_at",
+                                    "type": "string",
+                                    "description": "The timestamp when the account was created.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                },
+                                {
+                                    "name": "updated_at",
+                                    "type": "string",
+                                    "description": "The timestamp when the account was last updated.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -19749,7 +21564,8 @@ export const apiTags: TagData[] = [
                         "required": false,
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
-                            "owner"
+                            "owner",
+                            "owner.account"
                         ]
                     }
                 ],
@@ -19894,11 +21710,93 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "account",
                                                 "type": "object",
-                                                "description": "The account that owns this resource. Present when type is \"account\".",
+                                                "description": "The account that owns this resource. `null` if the object is system-owned.",
                                                 "required": true,
                                                 "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": false
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "The unique identifier for the account.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "The resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "account"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "The display name of the account.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "default_billing_address",
+                                                        "type": "object",
+                                                        "description": "The default billing address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "default_shipping_address",
+                                                        "type": "object",
+                                                        "description": "The default shipping address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "branding",
+                                                        "type": "object",
+                                                        "description": "The account branding configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "portal",
+                                                        "type": "object",
+                                                        "description": "The account portal configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the account was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the account was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
                                             }
                                         ]
                                     },
@@ -19977,7 +21875,8 @@ export const apiTags: TagData[] = [
                         "required": false,
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
-                            "owner"
+                            "owner",
+                            "owner.account"
                         ]
                     }
                 ],
@@ -20060,11 +21959,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -20196,11 +22177,93 @@ export const apiTags: TagData[] = [
                         {
                             "name": "account",
                             "type": "object",
-                            "description": "The account that owns this resource. Present when type is \"account\".",
+                            "description": "The account that owns this resource. `null` if the object is system-owned.",
                             "required": true,
                             "nullable": true,
-                            "alwaysNull": true,
-                            "expandable": false
+                            "expandable": true,
+                            "properties": [
+                                {
+                                    "name": "id",
+                                    "type": "string",
+                                    "description": "The unique identifier for the account.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "object",
+                                    "type": "string",
+                                    "description": "The resource type identifier.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "enum": [
+                                        "account"
+                                    ]
+                                },
+                                {
+                                    "name": "name",
+                                    "type": "string",
+                                    "description": "The display name of the account.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "default_billing_address",
+                                    "type": "object",
+                                    "description": "The default billing address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "default_shipping_address",
+                                    "type": "object",
+                                    "description": "The default shipping address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "branding",
+                                    "type": "object",
+                                    "description": "The account branding configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "portal",
+                                    "type": "object",
+                                    "description": "The account portal configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "created_at",
+                                    "type": "string",
+                                    "description": "The timestamp when the account was created.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                },
+                                {
+                                    "name": "updated_at",
+                                    "type": "string",
+                                    "description": "The timestamp when the account was last updated.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -20398,6 +22461,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "properties",
                             "unit_group"
                         ]
@@ -20523,11 +22587,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -20733,6 +22879,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "properties",
                             "unit_group"
                         ]
@@ -20848,11 +22995,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -21079,6 +23308,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "properties",
                             "unit_group"
                         ]
@@ -21232,11 +23462,93 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "account",
                                                 "type": "object",
-                                                "description": "The account that owns this resource. Present when type is \"account\".",
+                                                "description": "The account that owns this resource. `null` if the object is system-owned.",
                                                 "required": true,
                                                 "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": false
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "The unique identifier for the account.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "The resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "account"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "The display name of the account.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "default_billing_address",
+                                                        "type": "object",
+                                                        "description": "The default billing address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "default_shipping_address",
+                                                        "type": "object",
+                                                        "description": "The default shipping address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "branding",
+                                                        "type": "object",
+                                                        "description": "The account branding configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "portal",
+                                                        "type": "object",
+                                                        "description": "The account portal configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the account was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the account was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
                                             }
                                         ]
                                     },
@@ -21555,6 +23867,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "properties",
                             "unit_group"
                         ]
@@ -21646,11 +23959,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -22153,7 +24548,14 @@ export const apiTags: TagData[] = [
                             "type": "account",
                             "account": {
                                 "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                "object": "account"
+                                "object": "account",
+                                "name": "Acme Inc.",
+                                "default_billing_address": null,
+                                "default_shipping_address": null,
+                                "branding": null,
+                                "portal": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
                             }
                         },
                         "permissions": [
@@ -22466,7 +24868,14 @@ export const apiTags: TagData[] = [
                                                 "type": "account",
                                                 "account": {
                                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                                    "object": "account"
+                                                    "object": "account",
+                                                    "name": "Acme Inc.",
+                                                    "default_billing_address": null,
+                                                    "default_shipping_address": null,
+                                                    "branding": null,
+                                                    "portal": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
                                                 }
                                             },
                                             "permissions": [
@@ -22695,7 +25104,14 @@ export const apiTags: TagData[] = [
                                         "type": "account",
                                         "account": {
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                            "object": "account"
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
                                     "permissions": [
@@ -24467,7 +26883,14 @@ export const apiTags: TagData[] = [
                             "type": "account",
                             "account": {
                                 "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                "object": "account"
+                                "object": "account",
+                                "name": "Acme Inc.",
+                                "default_billing_address": null,
+                                "default_shipping_address": null,
+                                "branding": null,
+                                "portal": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
                             }
                         },
                         "service_levels": null,
@@ -24693,7 +27116,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The customer number (auto-generated if omitted).",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -24701,7 +27124,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "A note about the customer.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -24709,7 +27132,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The customer email address.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -24717,7 +27140,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The customer phone number.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -24725,15 +27148,15 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The customer website URL.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
                             "name": "status",
                             "type": "string",
-                            "description": "The account status code.",
-                            "required": true,
-                            "nullable": true,
+                            "description": "The account status code. Defaults to `normal`.",
+                            "required": false,
+                            "nullable": false,
                             "expandable": false,
                             "enum": [
                                 "normal",
@@ -24745,15 +27168,15 @@ export const apiTags: TagData[] = [
                         {
                             "name": "is_edi_enabled",
                             "type": "boolean",
-                            "description": "Whether the customer is EDI enabled.",
+                            "description": "Whether the customer is EDI enabled. Defaults to `false`.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
                             "name": "commission_policy",
                             "type": "string",
-                            "description": "The commission policy for this customer.",
+                            "description": "The commission policy for this customer. Defaults to `commission_exempt`.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,
@@ -24765,7 +27188,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "freight_policy",
                             "type": "string",
-                            "description": "The freight policy for this customer.",
+                            "description": "The freight policy for this customer. Defaults to `billed_freight`.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,
@@ -24779,7 +27202,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The default carrier ID.",
                             "required": true,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -24787,7 +27210,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The default service level ID.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -24795,7 +27218,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The default payment term ID.",
                             "required": true,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -24803,15 +27226,15 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The default shipping term ID.",
                             "required": true,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
                             "name": "default_priority",
                             "type": "string",
-                            "description": "The default priority code.",
+                            "description": "The default priority code. Defaults to `normal`.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "enum": [
                                 "low",
@@ -24824,7 +27247,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The default sales rep user ID.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -24841,15 +27264,15 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The customer type group ID.",
                             "required": true,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
                             "name": "carrier_billing_type",
                             "type": "string",
-                            "description": "The carrier billing type.",
+                            "description": "The carrier billing type. Defaults to `sender`.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "enum": [
                                 "sender",
@@ -24861,7 +27284,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "The carrier billing account number.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -24869,7 +27292,7 @@ export const apiTags: TagData[] = [
                             "type": "object",
                             "description": "The credit limit for this customer.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "properties": [
                                 {
@@ -24896,7 +27319,7 @@ export const apiTags: TagData[] = [
                             "type": "object",
                             "description": "The bill-to address for this customer.",
                             "required": true,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "properties": [
                                 {
@@ -24911,7 +27334,7 @@ export const apiTags: TagData[] = [
                                     "name": "phone",
                                     "type": "string",
                                     "description": "The phone number associated with this address.",
-                                    "required": true,
+                                    "required": false,
                                     "nullable": true,
                                     "expandable": false
                                 },
@@ -24919,7 +27342,7 @@ export const apiTags: TagData[] = [
                                     "name": "email",
                                     "type": "string",
                                     "description": "The email address associated with this address.",
-                                    "required": true,
+                                    "required": false,
                                     "nullable": true,
                                     "expandable": false
                                 },
@@ -24935,7 +27358,7 @@ export const apiTags: TagData[] = [
                                     "name": "street_line_1",
                                     "type": "string",
                                     "description": "The first line of the street address.",
-                                    "required": true,
+                                    "required": false,
                                     "nullable": true,
                                     "expandable": false
                                 },
@@ -24943,7 +27366,7 @@ export const apiTags: TagData[] = [
                                     "name": "street_line_2",
                                     "type": "string",
                                     "description": "The second line of the street address.",
-                                    "required": true,
+                                    "required": false,
                                     "nullable": true,
                                     "expandable": false
                                 },
@@ -24951,30 +27374,30 @@ export const apiTags: TagData[] = [
                                     "name": "locality",
                                     "type": "string",
                                     "description": "The city or locality.",
-                                    "required": true,
+                                    "required": false,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
                                     "name": "state",
                                     "type": "string",
-                                    "description": "The state or region.",
-                                    "required": true,
+                                    "description": "The state or administrative area.",
+                                    "required": false,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
                                     "name": "postal_code",
                                     "type": "string",
-                                    "description": "The postal or ZIP code.",
-                                    "required": true,
+                                    "description": "The postal or zip code.",
+                                    "required": false,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
                                     "name": "country",
                                     "type": "string",
-                                    "description": "The ISO country code.",
+                                    "description": "The two-letter country code.",
                                     "required": true,
                                     "nullable": false,
                                     "expandable": false
@@ -24986,7 +27409,7 @@ export const apiTags: TagData[] = [
                             "type": "object",
                             "description": "The ship-to address for this customer.",
                             "required": true,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "properties": [
                                 {
@@ -25001,7 +27424,7 @@ export const apiTags: TagData[] = [
                                     "name": "phone",
                                     "type": "string",
                                     "description": "The phone number associated with this address.",
-                                    "required": true,
+                                    "required": false,
                                     "nullable": true,
                                     "expandable": false
                                 },
@@ -25009,7 +27432,7 @@ export const apiTags: TagData[] = [
                                     "name": "email",
                                     "type": "string",
                                     "description": "The email address associated with this address.",
-                                    "required": true,
+                                    "required": false,
                                     "nullable": true,
                                     "expandable": false
                                 },
@@ -25025,7 +27448,7 @@ export const apiTags: TagData[] = [
                                     "name": "street_line_1",
                                     "type": "string",
                                     "description": "The first line of the street address.",
-                                    "required": true,
+                                    "required": false,
                                     "nullable": true,
                                     "expandable": false
                                 },
@@ -25033,7 +27456,7 @@ export const apiTags: TagData[] = [
                                     "name": "street_line_2",
                                     "type": "string",
                                     "description": "The second line of the street address.",
-                                    "required": true,
+                                    "required": false,
                                     "nullable": true,
                                     "expandable": false
                                 },
@@ -25041,30 +27464,30 @@ export const apiTags: TagData[] = [
                                     "name": "locality",
                                     "type": "string",
                                     "description": "The city or locality.",
-                                    "required": true,
+                                    "required": false,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
                                     "name": "state",
                                     "type": "string",
-                                    "description": "The state or region.",
-                                    "required": true,
+                                    "description": "The state or administrative area.",
+                                    "required": false,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
                                     "name": "postal_code",
                                     "type": "string",
-                                    "description": "The postal or ZIP code.",
-                                    "required": true,
+                                    "description": "The postal or zip code.",
+                                    "required": false,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
                                     "name": "country",
                                     "type": "string",
-                                    "description": "The ISO country code.",
+                                    "description": "The two-letter country code.",
                                     "required": true,
                                     "nullable": false,
                                     "expandable": false
@@ -25075,18 +27498,14 @@ export const apiTags: TagData[] = [
                     "example": {
                         "name": "Acme Inc.",
                         "note": "Key enterprise account",
-                        "status": "normal",
                         "default_carrier_id": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
                         "default_payment_term_id": "pytm_01jm4r6700f8nwq3v5hx2d9ktp",
                         "default_shipping_term_id": "shtm_01jm4r6700f8nwq3v5hx2d9ktp",
                         "customer_type_group_id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
                         "bill_to_address": {
                             "name": "Acme Inc.",
-                            "phone": null,
-                            "email": null,
                             "is_drop_ship": false,
                             "street_line_1": "123 Main St",
-                            "street_line_2": null,
                             "locality": "New York",
                             "state": "NY",
                             "postal_code": "10001",
@@ -25094,11 +27513,8 @@ export const apiTags: TagData[] = [
                         },
                         "ship_to_address": {
                             "name": "Acme Inc.",
-                            "phone": null,
-                            "email": null,
                             "is_drop_ship": false,
                             "street_line_1": "123 Main St",
-                            "street_line_2": null,
                             "locality": "New York",
                             "state": "NY",
                             "postal_code": "10001",
@@ -26852,7 +29268,14 @@ export const apiTags: TagData[] = [
                                         "type": "account",
                                         "account": {
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                            "object": "account"
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
                                     "service_levels": null,
@@ -29055,7 +31478,14 @@ export const apiTags: TagData[] = [
                                         "type": "account",
                                         "account": {
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                            "object": "account"
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
                                     "service_levels": null,
@@ -31019,7 +33449,14 @@ export const apiTags: TagData[] = [
                                         "type": "account",
                                         "account": {
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                            "object": "account"
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
                                     "service_levels": null,
@@ -33032,7 +35469,14 @@ export const apiTags: TagData[] = [
                                         "type": "account",
                                         "account": {
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                            "object": "account"
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
                                     "service_levels": null,
@@ -33316,11 +35760,93 @@ export const apiTags: TagData[] = [
                         {
                             "name": "account",
                             "type": "object",
-                            "description": "The account that owns this resource. Present when type is \"account\".",
+                            "description": "The account that owns this resource. `null` if the object is system-owned.",
                             "required": true,
                             "nullable": true,
-                            "alwaysNull": true,
-                            "expandable": false
+                            "expandable": true,
+                            "properties": [
+                                {
+                                    "name": "id",
+                                    "type": "string",
+                                    "description": "The unique identifier for the account.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "object",
+                                    "type": "string",
+                                    "description": "The resource type identifier.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "enum": [
+                                        "account"
+                                    ]
+                                },
+                                {
+                                    "name": "name",
+                                    "type": "string",
+                                    "description": "The display name of the account.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "default_billing_address",
+                                    "type": "object",
+                                    "description": "The default billing address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "default_shipping_address",
+                                    "type": "object",
+                                    "description": "The default shipping address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "branding",
+                                    "type": "object",
+                                    "description": "The account branding configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "portal",
+                                    "type": "object",
+                                    "description": "The account portal configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "created_at",
+                                    "type": "string",
+                                    "description": "The timestamp when the account was created.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                },
+                                {
+                                    "name": "updated_at",
+                                    "type": "string",
+                                    "description": "The timestamp when the account was last updated.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -33391,6 +35917,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "unit_group"
                         ]
                     }
@@ -33552,11 +36079,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -33635,6 +36244,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "unit_group"
                         ]
                     }
@@ -33793,11 +36403,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -33890,6 +36582,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "unit_group"
                         ]
                     }
@@ -34062,11 +36755,93 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "account",
                                                 "type": "object",
-                                                "description": "The account that owns this resource. Present when type is \"account\".",
+                                                "description": "The account that owns this resource. `null` if the object is system-owned.",
                                                 "required": true,
                                                 "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": false
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "The unique identifier for the account.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "The resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "account"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "The display name of the account.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "default_billing_address",
+                                                        "type": "object",
+                                                        "description": "The default billing address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "default_shipping_address",
+                                                        "type": "object",
+                                                        "description": "The default shipping address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "branding",
+                                                        "type": "object",
+                                                        "description": "The account branding configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "portal",
+                                                        "type": "object",
+                                                        "description": "The account portal configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the account was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the account was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
                                             }
                                         ]
                                     },
@@ -34258,6 +37033,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "unit_group"
                         ]
                     }
@@ -34368,11 +37144,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -36788,7 +39646,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Optional notes about the scanning station.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -39002,11 +41860,93 @@ export const apiTags: TagData[] = [
                         {
                             "name": "account",
                             "type": "object",
-                            "description": "The account that owns this resource. Present when type is \"account\".",
+                            "description": "The account that owns this resource. `null` if the object is system-owned.",
                             "required": true,
                             "nullable": true,
-                            "alwaysNull": true,
-                            "expandable": false
+                            "expandable": true,
+                            "properties": [
+                                {
+                                    "name": "id",
+                                    "type": "string",
+                                    "description": "The unique identifier for the account.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "object",
+                                    "type": "string",
+                                    "description": "The resource type identifier.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "enum": [
+                                        "account"
+                                    ]
+                                },
+                                {
+                                    "name": "name",
+                                    "type": "string",
+                                    "description": "The display name of the account.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "default_billing_address",
+                                    "type": "object",
+                                    "description": "The default billing address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "default_shipping_address",
+                                    "type": "object",
+                                    "description": "The default shipping address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "branding",
+                                    "type": "object",
+                                    "description": "The account branding configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "portal",
+                                    "type": "object",
+                                    "description": "The account portal configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "created_at",
+                                    "type": "string",
+                                    "description": "The timestamp when the account was created.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                },
+                                {
+                                    "name": "updated_at",
+                                    "type": "string",
+                                    "description": "The timestamp when the account was last updated.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -39048,7 +41988,14 @@ export const apiTags: TagData[] = [
                     "type": "account",
                     "account": {
                         "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                        "object": "account"
+                        "object": "account",
+                        "name": "Acme Inc.",
+                        "default_billing_address": null,
+                        "default_shipping_address": null,
+                        "branding": null,
+                        "portal": null,
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
                     }
                 },
                 "permissions": [
@@ -39083,6 +42030,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "permissions"
                         ]
                     }
@@ -39101,7 +42049,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "permissions",
                             "type": "array",
-                            "description": "The permissions to attach to this role in \"domain:action\" format.",
+                            "description": "The permissions to attach to this role in `<domain>:<action>` format.",
                             "required": true,
                             "nullable": false,
                             "expandable": false,
@@ -39199,11 +42147,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -39245,7 +42275,14 @@ export const apiTags: TagData[] = [
                                 "type": "account",
                                 "account": {
                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                    "object": "account"
+                                    "object": "account",
+                                    "name": "Acme Inc.",
+                                    "default_billing_address": null,
+                                    "default_shipping_address": null,
+                                    "branding": null,
+                                    "portal": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
                                 }
                             },
                             "permissions": [
@@ -39288,6 +42325,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "permissions"
                         ]
                     }
@@ -39306,7 +42344,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "permissions",
                             "type": "array",
-                            "description": "The full set of permissions to replace existing ones with in \"domain:action\" format. If omitted, permissions are not changed.",
+                            "description": "The full set of permissions to replace existing ones with in `<domain>:<action>` format. If omitted, permissions are not changed.",
                             "required": true,
                             "nullable": false,
                             "expandable": false,
@@ -39402,11 +42440,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -39448,7 +42568,14 @@ export const apiTags: TagData[] = [
                                 "type": "account",
                                 "account": {
                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                    "object": "account"
+                                    "object": "account",
+                                    "name": "Acme Inc.",
+                                    "default_billing_address": null,
+                                    "default_shipping_address": null,
+                                    "branding": null,
+                                    "portal": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
                                 }
                             },
                             "permissions": [
@@ -39512,6 +42639,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "permissions"
                         ]
                     }
@@ -39659,11 +42787,93 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "account",
                                                 "type": "object",
-                                                "description": "The account that owns this resource. Present when type is \"account\".",
+                                                "description": "The account that owns this resource. `null` if the object is system-owned.",
                                                 "required": true,
                                                 "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": false
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "The unique identifier for the account.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "The resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "account"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "The display name of the account.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "default_billing_address",
+                                                        "type": "object",
+                                                        "description": "The default billing address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "default_shipping_address",
+                                                        "type": "object",
+                                                        "description": "The default shipping address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "branding",
+                                                        "type": "object",
+                                                        "description": "The account branding configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "portal",
+                                                        "type": "object",
+                                                        "description": "The account portal configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the account was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "The timestamp when the account was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
                                             }
                                         ]
                                     },
@@ -39716,7 +42926,14 @@ export const apiTags: TagData[] = [
                                         "type": "account",
                                         "account": {
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                            "object": "account"
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
                                     "permissions": [
@@ -39761,6 +42978,7 @@ export const apiTags: TagData[] = [
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
                             "owner",
+                            "owner.account",
                             "permissions"
                         ]
                     }
@@ -39846,11 +43064,93 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "The account that owns this resource. Present when type is \"account\".",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
                                         "required": true,
                                         "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "The unique identifier for the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "The resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The display name of the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "The default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "The default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "The account branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "The timestamp when the account was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -39892,7 +43192,14 @@ export const apiTags: TagData[] = [
                                 "type": "account",
                                 "account": {
                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
-                                    "object": "account"
+                                    "object": "account",
+                                    "name": "Acme Inc.",
+                                    "default_billing_address": null,
+                                    "default_shipping_address": null,
+                                    "branding": null,
+                                    "portal": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
                                 }
                             },
                             "permissions": [
