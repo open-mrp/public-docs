@@ -414,13 +414,13 @@ function schemaToFields(
             const hasExplicitDescendantInclude =
                 matchPath.length > 0 &&
                 [...(includePaths || [])].some((candidate) => candidate.startsWith(`${matchPath}.`));
-            const isObjectLikeField =
-                resolvedProp.type === 'object' ||
-                (resolvedProp.type === 'array' && (resolvedItems?.type || 'object') === 'object');
+            const isStructuredObject =
+                (resolvedProp.type === 'object' && !!resolvedProp.properties) ||
+                (resolvedProp.type === 'array' && (resolvedItems?.type || 'object') === 'object' && !!resolvedItems?.properties);
             const shouldMarkAlwaysNull =
                 insideIncludedExpandable &&
                 !currentSchemaIsList &&
-                isObjectLikeField &&
+                isStructuredObject &&
                 !hasExplicitInclude &&
                 !hasExplicitDescendantInclude;
             const field: SchemaField = {

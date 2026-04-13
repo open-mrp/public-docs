@@ -4466,7 +4466,6 @@ export const apiTags: TagData[] = [
                                     "description": "The previous value of the field as a JSON fragment, or null for creation events.",
                                     "required": true,
                                     "nullable": false,
-                                    "alwaysNull": true,
                                     "expandable": false
                                 },
                                 {
@@ -4475,7 +4474,6 @@ export const apiTags: TagData[] = [
                                     "description": "The new value of the field as a JSON fragment, or null for deletion events.",
                                     "required": true,
                                     "nullable": false,
-                                    "alwaysNull": true,
                                     "expandable": false
                                 }
                             ]
@@ -4499,9 +4497,9 @@ export const apiTags: TagData[] = [
                     "expandable": false
                 },
                 {
-                    "name": "idempotency_key_id",
+                    "name": "idempotency_key",
                     "type": "string",
-                    "description": "The idempotency key ID associated with the originating request, when applicable.",
+                    "description": "The idempotency key associated with the originating request, when applicable.",
                     "required": true,
                     "nullable": true,
                     "expandable": false
@@ -4588,7 +4586,7 @@ export const apiTags: TagData[] = [
                     "reason": "operator override"
                 },
                 "request_id": "req_01gq7s3f2m0y9h2t7z1w7q3v9k",
-                "idempotency_key_id": null,
+                "idempotency_key": null,
                 "source_ip": "198.51.100.8",
                 "occurred_at": "2026-05-10T00:00:00Z",
                 "created_at": "2026-05-10T00:00:00Z"
@@ -5340,7 +5338,6 @@ export const apiTags: TagData[] = [
                                                         "description": "The previous value of the field as a JSON fragment, or null for creation events.",
                                                         "required": true,
                                                         "nullable": false,
-                                                        "alwaysNull": true,
                                                         "expandable": false
                                                     },
                                                     {
@@ -5349,7 +5346,6 @@ export const apiTags: TagData[] = [
                                                         "description": "The new value of the field as a JSON fragment, or null for deletion events.",
                                                         "required": true,
                                                         "nullable": false,
-                                                        "alwaysNull": true,
                                                         "expandable": false
                                                     }
                                                 ]
@@ -5373,9 +5369,9 @@ export const apiTags: TagData[] = [
                                         "expandable": false
                                     },
                                     {
-                                        "name": "idempotency_key_id",
+                                        "name": "idempotency_key",
                                         "type": "string",
-                                        "description": "The idempotency key ID associated with the originating request, when applicable.",
+                                        "description": "The idempotency key associated with the originating request, when applicable.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -5473,7 +5469,7 @@ export const apiTags: TagData[] = [
                                         "reason": "operator override"
                                     },
                                     "request_id": "req_01gq7s3f2m0y9h2t7z1w7q3v9k",
-                                    "idempotency_key_id": null,
+                                    "idempotency_key": null,
                                     "source_ip": "198.51.100.8",
                                     "occurred_at": "2026-05-10T00:00:00Z",
                                     "created_at": "2026-05-10T00:00:00Z"
@@ -5908,7 +5904,6 @@ export const apiTags: TagData[] = [
                                                 "description": "The previous value of the field as a JSON fragment, or null for creation events.",
                                                 "required": true,
                                                 "nullable": false,
-                                                "alwaysNull": true,
                                                 "expandable": false
                                             },
                                             {
@@ -5917,7 +5912,6 @@ export const apiTags: TagData[] = [
                                                 "description": "The new value of the field as a JSON fragment, or null for deletion events.",
                                                 "required": true,
                                                 "nullable": false,
-                                                "alwaysNull": true,
                                                 "expandable": false
                                             }
                                         ]
@@ -5941,9 +5935,9 @@ export const apiTags: TagData[] = [
                                 "expandable": false
                             },
                             {
-                                "name": "idempotency_key_id",
+                                "name": "idempotency_key",
                                 "type": "string",
-                                "description": "The idempotency key ID associated with the originating request, when applicable.",
+                                "description": "The idempotency key associated with the originating request, when applicable.",
                                 "required": true,
                                 "nullable": true,
                                 "expandable": false
@@ -6030,7 +6024,7 @@ export const apiTags: TagData[] = [
                                 "reason": "operator override"
                             },
                             "request_id": "req_01gq7s3f2m0y9h2t7z1w7q3v9k",
-                            "idempotency_key_id": null,
+                            "idempotency_key": null,
                             "source_ip": "198.51.100.8",
                             "occurred_at": "2026-05-10T00:00:00Z",
                             "created_at": "2026-05-10T00:00:00Z"
@@ -17250,7 +17244,7 @@ export const apiTags: TagData[] = [
                         "description": "The text input for autocomplete."
                     },
                     {
-                        "name": "session_token,omitempty",
+                        "name": "session_token",
                         "in": "query",
                         "type": "string",
                         "required": false,
