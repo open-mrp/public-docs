@@ -41,17 +41,28 @@ bun run build
 
 ### Linking local packages (yalc)
 
-To test local changes to `@augno/ui` (or `@augno/internal-sdk`) without publishing:
+To prototype local changes to `@augno/ui` or `@augno/internal-sdk`, **drive linking from the library directory**, not from here:
 
-1. **In the UI repo** (e.g. `../ui`):
-    - One-off: `bun run yalc:publish` (builds and pushes to yalc)
-    - With live updates: `bun run yalc:watch` (rebuilds and pushes on file changes)
+```bash
+# From ../ui — links @augno/ui into dashboard/ AND public-docs/
+cd ../ui && bun run link:all
 
-2. **In this repo** (external-docs):
-    - Link UI: `bun run ui:link` (adds local `@augno/ui` from yalc and clears Next.js cache)
-    - Start the app: `bun run dev`
+# From ../internal-sdk — links into dashboard/ (SDK is not consumed by public-docs yet)
+cd ../internal-sdk && bun run link:all
+```
 
-To switch back to the published UI: `bun run ui:unlink`.
+Then `bun run dev` here to pick up the linked copy. For live updates as you edit the library, run `bun run yalc:watch` in the library directory alongside `dev`.
+
+The `ui:link` / `ui:unlink` / `sdk:link` / `sdk:unlink` scripts in this repo's `package.json` are the single-consumer entry points that the library orchestrators call. You can invoke them directly if you're only linking into public-docs (e.g. quick UI tweak without touching dashboard), but **do not** commit while `.yalc/`, `yalc.lock`, or `file:.yalc/...` refs are present.
+
+**Always tear down from the library before committing:**
+
+```bash
+cd ../ui && bun run unlink:all
+cd ../internal-sdk && bun run unlink:all
+```
+
+Unlinking queries GitHub Packages for the latest version, pins this repo's `package.json` to it, removes `.yalc/` and `yalc.lock` artefacts, clears `.next/`, and runs `bun install`. See the root `CLAUDE.md` for details.
 
 ## Documentation Authoring
 
