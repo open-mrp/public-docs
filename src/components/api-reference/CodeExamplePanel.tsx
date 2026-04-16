@@ -67,11 +67,19 @@ export function CodeExamplePanel({
         if (available > 0) setCodeMaxHeight(available);
     }, []);
 
+    // Reset the cap when content changes (tab switch or code replacements arriving
+    // after mount) so the panel can reflow to the new content before we re-measure.
+    useLayoutEffect(() => {
+        if (!scrollable) return;
+        setCodeMaxHeight(undefined);
+    }, [scrollable, active.id, replacementKey]);
+
     // Measure synchronously before first paint to avoid a flash of unconstrained content.
     useLayoutEffect(() => {
         if (!scrollable) return;
+        if (codeMaxHeight !== undefined) return;
         computeMaxHeight();
-    }, [scrollable, computeMaxHeight]);
+    }, [scrollable, computeMaxHeight, codeMaxHeight]);
 
     // Re-measure when the parent container resizes (e.g. viewport change).
     useEffect(() => {
