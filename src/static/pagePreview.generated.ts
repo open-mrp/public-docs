@@ -19,33 +19,13 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Developer resources",
         "subtitle": "Technical documentation, API references, and guides for developers."
     },
-    "/ship-products/packing/overview": {
-        "title": "Packing",
-        "subtitle": "Pack picked items into shipping cases and create shipments ready for the carrier."
+    "/dashboards/overview": {
+        "title": "Dashboards",
+        "subtitle": "Analytics and reporting dashboards that give you real-time visibility into sales, operations, finances, and forecasting."
     },
-    "/ship-products/shipping/overview": {
-        "title": "Shipping",
-        "subtitle": "Generate shipping labels, assign tracking numbers, and ship packed orders through your carrier."
-    },
-    "/ship-products/overview": {
-        "title": "Ship Products",
-        "subtitle": "Learn about shipping products in Augno."
-    },
-    "/ship-products/picking/overview": {
-        "title": "Picking",
-        "subtitle": "Select and pull the right products from inventory to fulfill a sales order."
-    },
-    "/collect-payments/overview": {
-        "title": "Collect Payments",
-        "subtitle": "Learn about collecting payments in Augno."
-    },
-    "/generate-sales/customer-portal": {
-        "title": "Customer portal",
-        "subtitle": "A branded, self-service portal where your customers register, place orders, submit payments, and track inventory."
-    },
-    "/generate-sales/overview": {
-        "title": "Generate Sales",
-        "subtitle": "Customers, pricing, orders, and the sales team - everything that drives revenue in Augno."
+    "/build-products/overview": {
+        "title": "Build Products",
+        "subtitle": "Purchasing, manufacturing, production tracking, and inventory management."
     },
     "/manage-account/sandboxes": {
         "title": "Sandboxes",
@@ -71,13 +51,33 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Manage Your Account",
         "subtitle": "Configure your account settings, team, integrations, security, and billing."
     },
-    "/dashboards/overview": {
-        "title": "Dashboards",
-        "subtitle": "Analytics and reporting dashboards that give you real-time visibility into sales, operations, finances, and forecasting."
+    "/generate-sales/customer-portal": {
+        "title": "Customer portal",
+        "subtitle": "A branded, self-service portal where your customers register, place orders, submit payments, and track inventory."
     },
-    "/build-products/overview": {
-        "title": "Build Products",
-        "subtitle": "Purchasing, manufacturing, production tracking, and inventory management."
+    "/generate-sales/overview": {
+        "title": "Generate Sales",
+        "subtitle": "Customers, pricing, orders, and the sales team - everything that drives revenue in Augno."
+    },
+    "/collect-payments/overview": {
+        "title": "Collect Payments",
+        "subtitle": "Learn about collecting payments in Augno."
+    },
+    "/ship-products/packing/overview": {
+        "title": "Packing",
+        "subtitle": "Pack picked items into shipping cases and create shipments ready for the carrier."
+    },
+    "/ship-products/shipping/overview": {
+        "title": "Shipping",
+        "subtitle": "Generate shipping labels, assign tracking numbers, and ship packed orders through your carrier."
+    },
+    "/ship-products/overview": {
+        "title": "Ship Products",
+        "subtitle": "Learn about shipping products in Augno."
+    },
+    "/ship-products/picking/overview": {
+        "title": "Picking",
+        "subtitle": "Select and pull the right products from inventory to fulfill a sales order."
     },
     "/api-reference/audit-event-management/list-audit-events": {
         "title": "List Audit Events",
@@ -90,6 +90,42 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/audit-event-management/get-audit-event": {
         "title": "Get Audit Event",
         "subtitle": "GET /v1/core/audit-events/{id}"
+    },
+    "/dashboards/financial/payments-data": {
+        "title": "Payments data",
+        "subtitle": "View payment allocations across invoices with support for invoice and balance view modes."
+    },
+    "/dashboards/financial/accounts-receivable": {
+        "title": "Accounts receivable dashboard",
+        "subtitle": "An aging report showing what customers owe across current, 30, 60, 90, and 120-day buckets."
+    },
+    "/dashboards/sales/weeks-of-sales": {
+        "title": "Weeks of sales",
+        "subtitle": "See how many weeks of inventory you have on hand based on recent sales velocity."
+    },
+    "/dashboards/sales/products-on-order": {
+        "title": "Products on order",
+        "subtitle": "View open orders, back-order quantities, and top ordered products at a glance."
+    },
+    "/dashboards/sales/quarterly-orders": {
+        "title": "Quarterly orders",
+        "subtitle": "Visualize order quantity trends by quarter across multiple years."
+    },
+    "/dashboards/sales/order-data": {
+        "title": "Order data",
+        "subtitle": "A raw, line-level data grid of all sales transactions with Excel export."
+    },
+    "/dashboards/sales/order-analytics": {
+        "title": "Order analytics",
+        "subtitle": "A comprehensive view of sales performance with profit metrics, cumulative revenue, best sellers, and distribution breakdowns."
+    },
+    "/dashboards/forecasting/sales-targets": {
+        "title": "Sales targets dashboard",
+        "subtitle": "View and create revenue targets for sales reps by month."
+    },
+    "/dashboards/forecasting/demand-forecast": {
+        "title": "Demand forecast",
+        "subtitle": "Forecast demand, order revenue, and sales revenue with confidence intervals based on historical data."
     },
     "/api/overview": {
         "title": "Augno's APIs",
@@ -519,53 +555,85 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Get Request Log",
         "subtitle": "GET /v1/core/request-logs/{id}"
     },
-    "/collect-payments/accounts-receivable/overview": {
-        "title": "Accounts receivable",
-        "subtitle": "Track what customers owe, how long balances have been outstanding, and take action to collect."
+    "/dashboards/operations/manufacturing-analytics": {
+        "title": "Manufacturing analytics",
+        "subtitle": "Monitor production output, cost efficiency, margin, quality, and labor efficiency with month-over-month comparison."
     },
-    "/collect-payments/invoicing/overview": {
-        "title": "Invoicing",
-        "subtitle": "Invoices are the billing records Augno generates for each shipment, capturing what was shipped, to whom, and for how much."
+    "/dashboards/operations/delivery-analytics": {
+        "title": "Delivery analytics",
+        "subtitle": "Track on-time delivery rates, average delivery time, and time to first shipment with period-over-period comparison."
     },
-    "/collect-payments/collecting/settlements": {
-        "title": "Settlements",
-        "subtitle": "Formally record which transactions pay which invoices by creating settlements with allocations."
+    "/dashboards/operations/material-analytics": {
+        "title": "Material analytics",
+        "subtitle": "View material inventory levels, demand, and reorder needs by supplier."
     },
-    "/collect-payments/collecting/overview": {
-        "title": "Collecting",
-        "subtitle": "Record the money received from customers and apply it to open invoices through transactions and settlements."
+    "/build-products/items/parts": {
+        "title": "Parts",
+        "subtitle": "Intermediate items you manufacture or assemble from materials during production."
     },
-    "/generate-sales/sales-team/sales-targets": {
-        "title": "Sales targets",
-        "subtitle": "Define revenue goals for sales reps over a date range, optionally by product line."
+    "/build-products/items/products": {
+        "title": "Products",
+        "subtitle": "Finished goods you price, stock, and sell to customers."
     },
-    "/generate-sales/sales-team/territories": {
-        "title": "Territories",
-        "subtitle": "Map geographic regions to sales representatives, optionally scoped by product line."
+    "/build-products/items/materials": {
+        "title": "Materials",
+        "subtitle": "Raw materials and supplies you purchase from vendors for use in production."
     },
-    "/generate-sales/customer-pricing/discount-codes": {
-        "title": "Discount codes",
-        "subtitle": "Promotional codes applied at the order level to reduce the total by a percentage or fixed amount."
+    "/build-products/items/overview": {
+        "title": "Items overview",
+        "subtitle": "Materials, parts, and products - the core objects you buy, make, and sell in Augno."
     },
-    "/generate-sales/customer-pricing/customer-prices": {
-        "title": "Customer prices",
-        "subtitle": "Define product-line-specific pricing for individual customers, overriding base product prices."
+    "/build-products/inventory/reconciliation": {
+        "title": "Reconciliation & Bulk Updates",
+        "subtitle": "Correct inventory counts when the system and physical reality diverge, with full audit trail logging."
     },
-    "/generate-sales/customer-pricing/volume-discounts": {
-        "title": "Volume discounts",
-        "subtitle": "Automatically reduce pricing based on order quantity with tiered percentage discounts."
+    "/build-products/inventory/change-logs": {
+        "title": "Inventory Change Logs",
+        "subtitle": "A complete audit trail of every inventory movement - who changed what, when, by how much, and why."
     },
-    "/generate-sales/customer/contacts": {
-        "title": "Contacts",
-        "subtitle": "Manage the people associated with a customer and control who receives order confirmations and invoices."
+    "/build-products/inventory/storage-and-lots": {
+        "title": "Storage Locations & Lots",
+        "subtitle": "Where inventory is physically stored and how batch-level traceability is maintained."
     },
-    "/generate-sales/customer/create": {
-        "title": "Create a customer",
-        "subtitle": "Learn how to create a customer in Augno."
+    "/build-products/inventory/inventory": {
+        "title": "Inventory Overview",
+        "subtitle": "Real-time visibility into every unit of material, part, and product - what you have, where it is, and what it costs."
     },
-    "/generate-sales/customer/overview": {
-        "title": "Customers",
-        "subtitle": "The central record connecting sales orders, invoices, shipments, and payments."
+    "/build-products/bom/consumptions-and-productions": {
+        "title": "Consumptions & Productions",
+        "subtitle": "The inputs and outputs of each production step - what materials are used up and what parts or products are created."
+    },
+    "/build-products/bom/production-steps": {
+        "title": "Production Steps",
+        "subtitle": "The core building block of manufacturing in Augno - defining inputs, outputs, and costs for each stage of production."
+    },
+    "/build-products/bom/costing": {
+        "title": "Costing (COGS)",
+        "subtitle": "Real-time cost of goods sold calculation from production step definitions - material, labor, and overhead costs."
+    },
+    "/build-products/bom/production-flows": {
+        "title": "Production Flows",
+        "subtitle": "The connected sequence of production steps that transforms raw materials into finished products."
+    },
+    "/build-products/scanning/scanning-stations": {
+        "title": "Scanning Stations",
+        "subtitle": "Configured points in your production workflow where batch operations happen - each linked to a specific operation type and production step."
+    },
+    "/build-products/scanning/labels": {
+        "title": "Labels",
+        "subtitle": "Batch identification labels printed at scanning stations - two formats and four sizes for production floor tracking."
+    },
+    "/build-products/production/batches": {
+        "title": "Batches",
+        "subtitle": "Physical units of product tracked through production - recording quantities, quality grades, and location as they move through manufacturing."
+    },
+    "/build-products/production/batch-operations": {
+        "title": "Batch Operations",
+        "subtitle": "Initialize, move, split, and merge - the core actions that advance batches through the production flow."
+    },
+    "/build-products/production/production-runs": {
+        "title": "Production Runs",
+        "subtitle": "Coordinated manufacturing executions that group related batches and track progress from start to completion."
     },
     "/api-tour": {
         "title": "Tour of the Augno API",
@@ -639,149 +707,21 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "API Versioning",
         "subtitle": "Understand how Augno versions its API and manage version upgrades."
     },
-    "/build-products/purchasing/purchase-orders": {
-        "title": "Purchase Orders",
-        "subtitle": "Transaction records for buying materials from suppliers, tracking orders through delivery and fulfillment."
+    "/collect-payments/invoicing/overview": {
+        "title": "Invoicing",
+        "subtitle": "Invoices are the billing records Augno generates for each shipment, capturing what was shipped, to whom, and for how much."
     },
-    "/build-products/purchasing/deliveries-and-receiving": {
-        "title": "Deliveries & Receiving",
-        "subtitle": "Track the physical arrival of materials from suppliers and convert purchase order quantities into usable inventory."
+    "/collect-payments/collecting/settlements": {
+        "title": "Settlements",
+        "subtitle": "Formally record which transactions pay which invoices by creating settlements with allocations."
     },
-    "/build-products/purchasing/suppliers": {
-        "title": "Suppliers",
-        "subtitle": "Vendors you purchase materials from, defining the source for your raw material procurement."
+    "/collect-payments/collecting/overview": {
+        "title": "Collecting",
+        "subtitle": "Record the money received from customers and apply it to open invoices through transactions and settlements."
     },
-    "/build-products/production/batches": {
-        "title": "Batches",
-        "subtitle": "Physical units of product tracked through production - recording quantities, quality grades, and location as they move through manufacturing."
-    },
-    "/build-products/production/batch-operations": {
-        "title": "Batch Operations",
-        "subtitle": "Initialize, move, split, and merge - the core actions that advance batches through the production flow."
-    },
-    "/build-products/production/production-runs": {
-        "title": "Production Runs",
-        "subtitle": "Coordinated manufacturing executions that group related batches and track progress from start to completion."
-    },
-    "/build-products/scanning/scanning-stations": {
-        "title": "Scanning Stations",
-        "subtitle": "Configured points in your production workflow where batch operations happen - each linked to a specific operation type and production step."
-    },
-    "/build-products/scanning/labels": {
-        "title": "Labels",
-        "subtitle": "Batch identification labels printed at scanning stations - two formats and four sizes for production floor tracking."
-    },
-    "/build-products/bom/consumptions-and-productions": {
-        "title": "Consumptions & Productions",
-        "subtitle": "The inputs and outputs of each production step - what materials are used up and what parts or products are created."
-    },
-    "/build-products/bom/production-steps": {
-        "title": "Production Steps",
-        "subtitle": "The core building block of manufacturing in Augno - defining inputs, outputs, and costs for each stage of production."
-    },
-    "/build-products/bom/costing": {
-        "title": "Costing (COGS)",
-        "subtitle": "Real-time cost of goods sold calculation from production step definitions - material, labor, and overhead costs."
-    },
-    "/build-products/bom/production-flows": {
-        "title": "Production Flows",
-        "subtitle": "The connected sequence of production steps that transforms raw materials into finished products."
-    },
-    "/build-products/inventory/reconciliation": {
-        "title": "Reconciliation & Bulk Updates",
-        "subtitle": "Correct inventory counts when the system and physical reality diverge, with full audit trail logging."
-    },
-    "/build-products/inventory/change-logs": {
-        "title": "Inventory Change Logs",
-        "subtitle": "A complete audit trail of every inventory movement - who changed what, when, by how much, and why."
-    },
-    "/build-products/inventory/storage-and-lots": {
-        "title": "Storage Locations & Lots",
-        "subtitle": "Where inventory is physically stored and how batch-level traceability is maintained."
-    },
-    "/build-products/inventory/inventory": {
-        "title": "Inventory Overview",
-        "subtitle": "Real-time visibility into every unit of material, part, and product - what you have, where it is, and what it costs."
-    },
-    "/build-products/items/parts": {
-        "title": "Parts",
-        "subtitle": "Intermediate items you manufacture or assemble from materials during production."
-    },
-    "/build-products/items/products": {
-        "title": "Products",
-        "subtitle": "Finished goods you price, stock, and sell to customers."
-    },
-    "/build-products/items/materials": {
-        "title": "Materials",
-        "subtitle": "Raw materials and supplies you purchase from vendors for use in production."
-    },
-    "/build-products/items/overview": {
-        "title": "Items overview",
-        "subtitle": "Materials, parts, and products - the core objects you buy, make, and sell in Augno."
-    },
-    "/dashboards/operations/manufacturing-analytics": {
-        "title": "Manufacturing analytics",
-        "subtitle": "Monitor production output, cost efficiency, margin, quality, and labor efficiency with month-over-month comparison."
-    },
-    "/dashboards/operations/delivery-analytics": {
-        "title": "Delivery analytics",
-        "subtitle": "Track on-time delivery rates, average delivery time, and time to first shipment with period-over-period comparison."
-    },
-    "/dashboards/operations/material-analytics": {
-        "title": "Material analytics",
-        "subtitle": "View material inventory levels, demand, and reorder needs by supplier."
-    },
-    "/dashboards/financial/payments-data": {
-        "title": "Payments data",
-        "subtitle": "View payment allocations across invoices with support for invoice and balance view modes."
-    },
-    "/dashboards/financial/accounts-receivable": {
-        "title": "Accounts receivable dashboard",
-        "subtitle": "An aging report showing what customers owe across current, 30, 60, 90, and 120-day buckets."
-    },
-    "/dashboards/sales/weeks-of-sales": {
-        "title": "Weeks of sales",
-        "subtitle": "See how many weeks of inventory you have on hand based on recent sales velocity."
-    },
-    "/dashboards/sales/products-on-order": {
-        "title": "Products on order",
-        "subtitle": "View open orders, back-order quantities, and top ordered products at a glance."
-    },
-    "/dashboards/sales/quarterly-orders": {
-        "title": "Quarterly orders",
-        "subtitle": "Visualize order quantity trends by quarter across multiple years."
-    },
-    "/dashboards/sales/order-data": {
-        "title": "Order data",
-        "subtitle": "A raw, line-level data grid of all sales transactions with Excel export."
-    },
-    "/dashboards/sales/order-analytics": {
-        "title": "Order analytics",
-        "subtitle": "A comprehensive view of sales performance with profit metrics, cumulative revenue, best sellers, and distribution breakdowns."
-    },
-    "/dashboards/forecasting/sales-targets": {
-        "title": "Sales targets dashboard",
-        "subtitle": "View and create revenue targets for sales reps by month."
-    },
-    "/dashboards/forecasting/demand-forecast": {
-        "title": "Demand forecast",
-        "subtitle": "Forecast demand, order revenue, and sales revenue with confidence intervals based on historical data."
-    },
-    "/manage-account/account-settings/business-information": {
-        "title": "Business information",
-        "subtitle": "Configure your account name, logo, contact details, and portal slug."
-    },
-    "/manage-account/account-settings/profile": {
-        "title": "Your profile",
-        "subtitle": "Update your display name, email address, and profile photo."
-    },
-    "/manage-account/team/roles-and-permissions": {
-        "title": "Roles and permissions",
-        "subtitle": "Control what team members and API keys can access with granular, role-based permissions."
-    },
-    "/manage-account/team/team-members": {
-        "title": "Team members",
-        "subtitle": "Invite, manage, and remove the people who use your Augno account."
+    "/collect-payments/accounts-receivable/overview": {
+        "title": "Accounts receivable",
+        "subtitle": "Track what customers owe, how long balances have been outstanding, and take action to collect."
     },
     "/generate-sales/sales-order/issue": {
         "title": "Issue a sales order",
@@ -834,6 +774,66 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/generate-sales/customer-setup/default-carriers": {
         "title": "Default carriers & options",
         "subtitle": "Define the shipping carrier and service level automatically applied to a customer's orders."
+    },
+    "/generate-sales/customer/contacts": {
+        "title": "Contacts",
+        "subtitle": "Manage the people associated with a customer and control who receives order confirmations and invoices."
+    },
+    "/generate-sales/customer/create": {
+        "title": "Create a customer",
+        "subtitle": "Learn how to create a customer in Augno."
+    },
+    "/generate-sales/customer/overview": {
+        "title": "Customers",
+        "subtitle": "The central record connecting sales orders, invoices, shipments, and payments."
+    },
+    "/generate-sales/customer-pricing/discount-codes": {
+        "title": "Discount codes",
+        "subtitle": "Promotional codes applied at the order level to reduce the total by a percentage or fixed amount."
+    },
+    "/generate-sales/customer-pricing/customer-prices": {
+        "title": "Customer prices",
+        "subtitle": "Define product-line-specific pricing for individual customers, overriding base product prices."
+    },
+    "/generate-sales/customer-pricing/volume-discounts": {
+        "title": "Volume discounts",
+        "subtitle": "Automatically reduce pricing based on order quantity with tiered percentage discounts."
+    },
+    "/generate-sales/sales-team/sales-targets": {
+        "title": "Sales targets",
+        "subtitle": "Define revenue goals for sales reps over a date range, optionally by product line."
+    },
+    "/generate-sales/sales-team/territories": {
+        "title": "Territories",
+        "subtitle": "Map geographic regions to sales representatives, optionally scoped by product line."
+    },
+    "/manage-account/account-settings/business-information": {
+        "title": "Business information",
+        "subtitle": "Configure your account name, logo, contact details, and portal slug."
+    },
+    "/manage-account/account-settings/profile": {
+        "title": "Your profile",
+        "subtitle": "Update your display name, email address, and profile photo."
+    },
+    "/manage-account/team/roles-and-permissions": {
+        "title": "Roles and permissions",
+        "subtitle": "Control what team members and API keys can access with granular, role-based permissions."
+    },
+    "/manage-account/team/team-members": {
+        "title": "Team members",
+        "subtitle": "Invite, manage, and remove the people who use your Augno account."
+    },
+    "/build-products/purchasing/purchase-orders": {
+        "title": "Purchase Orders",
+        "subtitle": "Transaction records for buying materials from suppliers, tracking orders through delivery and fulfillment."
+    },
+    "/build-products/purchasing/deliveries-and-receiving": {
+        "title": "Deliveries & Receiving",
+        "subtitle": "Track the physical arrival of materials from suppliers and convert purchase order quantities into usable inventory."
+    },
+    "/build-products/purchasing/suppliers": {
+        "title": "Suppliers",
+        "subtitle": "Vendors you purchase materials from, defining the source for your raw material procurement."
     }
 };
 

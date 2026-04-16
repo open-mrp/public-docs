@@ -159,64 +159,62 @@ export const docPaths = {
         }
     },
     "development": "/development",
-    "shipProducts": {
-        "packing": {
-            "overview": "/ship-products/packing/overview"
+    "dashboards": {
+        "overview": "/dashboards/overview",
+        "financial": {
+            "paymentsData": "/dashboards/financial/payments-data",
+            "accountsReceivable": "/dashboards/financial/accounts-receivable"
         },
-        "shipping": {
-            "overview": "/ship-products/shipping/overview"
+        "sales": {
+            "weeksOfSales": "/dashboards/sales/weeks-of-sales",
+            "productsOnOrder": "/dashboards/sales/products-on-order",
+            "quarterlyOrders": "/dashboards/sales/quarterly-orders",
+            "orderData": "/dashboards/sales/order-data",
+            "orderAnalytics": "/dashboards/sales/order-analytics"
         },
-        "overview": "/ship-products/overview",
-        "picking": {
-            "overview": "/ship-products/picking/overview"
+        "forecasting": {
+            "salesTargets": "/dashboards/forecasting/sales-targets",
+            "demandForecast": "/dashboards/forecasting/demand-forecast"
+        },
+        "operations": {
+            "manufacturingAnalytics": "/dashboards/operations/manufacturing-analytics",
+            "deliveryAnalytics": "/dashboards/operations/delivery-analytics",
+            "materialAnalytics": "/dashboards/operations/material-analytics"
         }
     },
-    "collectPayments": {
-        "overview": "/collect-payments/overview",
-        "accountsReceivable": {
-            "overview": "/collect-payments/accounts-receivable/overview"
+    "buildProducts": {
+        "overview": "/build-products/overview",
+        "items": {
+            "parts": "/build-products/items/parts",
+            "products": "/build-products/items/products",
+            "materials": "/build-products/items/materials",
+            "overview": "/build-products/items/overview"
         },
-        "invoicing": {
-            "overview": "/collect-payments/invoicing/overview"
+        "inventory": {
+            "reconciliation": "/build-products/inventory/reconciliation",
+            "changeLogs": "/build-products/inventory/change-logs",
+            "storageAndLots": "/build-products/inventory/storage-and-lots",
+            "inventory": "/build-products/inventory/inventory"
         },
-        "collecting": {
-            "settlements": "/collect-payments/collecting/settlements",
-            "overview": "/collect-payments/collecting/overview"
-        }
-    },
-    "generateSales": {
-        "customerPortal": "/generate-sales/customer-portal",
-        "overview": "/generate-sales/overview",
-        "salesTeam": {
-            "salesTargets": "/generate-sales/sales-team/sales-targets",
-            "territories": "/generate-sales/sales-team/territories"
+        "bom": {
+            "consumptionsAndProductions": "/build-products/bom/consumptions-and-productions",
+            "productionSteps": "/build-products/bom/production-steps",
+            "costing": "/build-products/bom/costing",
+            "productionFlows": "/build-products/bom/production-flows"
         },
-        "customerPricing": {
-            "discountCodes": "/generate-sales/customer-pricing/discount-codes",
-            "customerPrices": "/generate-sales/customer-pricing/customer-prices",
-            "volumeDiscounts": "/generate-sales/customer-pricing/volume-discounts"
+        "scanning": {
+            "scanningStations": "/build-products/scanning/scanning-stations",
+            "labels": "/build-products/scanning/labels"
         },
-        "customer": {
-            "contacts": "/generate-sales/customer/contacts",
-            "create": "/generate-sales/customer/create",
-            "overview": "/generate-sales/customer/overview"
+        "production": {
+            "batches": "/build-products/production/batches",
+            "batchOperations": "/build-products/production/batch-operations",
+            "productionRuns": "/build-products/production/production-runs"
         },
-        "salesOrder": {
-            "issue": "/generate-sales/sales-order/issue",
-            "create": "/generate-sales/sales-order/create",
-            "generateProductionRun": "/generate-sales/sales-order/generate-production-run",
-            "overview": "/generate-sales/sales-order/overview"
-        },
-        "customerSetup": {
-            "customerGroups": "/generate-sales/customer-setup/customer-groups",
-            "shippingTerms": "/generate-sales/customer-setup/shipping-terms",
-            "addresses": "/generate-sales/customer-setup/addresses",
-            "paymentTerms": "/generate-sales/customer-setup/payment-terms",
-            "defaultSalesReps": "/generate-sales/customer-setup/default-sales-reps",
-            "priorities": "/generate-sales/customer-setup/priorities",
-            "accountStatuses": "/generate-sales/customer-setup/account-statuses",
-            "exemptions": "/generate-sales/customer-setup/exemptions",
-            "defaultCarriers": "/generate-sales/customer-setup/default-carriers"
+        "purchasing": {
+            "purchaseOrders": "/build-products/purchasing/purchase-orders",
+            "deliveriesAndReceiving": "/build-products/purchasing/deliveries-and-receiving",
+            "suppliers": "/build-products/purchasing/suppliers"
         }
     },
     "manageAccount": {
@@ -235,62 +233,64 @@ export const docPaths = {
             "teamMembers": "/manage-account/team/team-members"
         }
     },
-    "dashboards": {
-        "overview": "/dashboards/overview",
-        "operations": {
-            "manufacturingAnalytics": "/dashboards/operations/manufacturing-analytics",
-            "deliveryAnalytics": "/dashboards/operations/delivery-analytics",
-            "materialAnalytics": "/dashboards/operations/material-analytics"
+    "generateSales": {
+        "customerPortal": "/generate-sales/customer-portal",
+        "overview": "/generate-sales/overview",
+        "salesOrder": {
+            "issue": "/generate-sales/sales-order/issue",
+            "create": "/generate-sales/sales-order/create",
+            "generateProductionRun": "/generate-sales/sales-order/generate-production-run",
+            "overview": "/generate-sales/sales-order/overview"
         },
-        "financial": {
-            "paymentsData": "/dashboards/financial/payments-data",
-            "accountsReceivable": "/dashboards/financial/accounts-receivable"
+        "customerSetup": {
+            "customerGroups": "/generate-sales/customer-setup/customer-groups",
+            "shippingTerms": "/generate-sales/customer-setup/shipping-terms",
+            "addresses": "/generate-sales/customer-setup/addresses",
+            "paymentTerms": "/generate-sales/customer-setup/payment-terms",
+            "defaultSalesReps": "/generate-sales/customer-setup/default-sales-reps",
+            "priorities": "/generate-sales/customer-setup/priorities",
+            "accountStatuses": "/generate-sales/customer-setup/account-statuses",
+            "exemptions": "/generate-sales/customer-setup/exemptions",
+            "defaultCarriers": "/generate-sales/customer-setup/default-carriers"
         },
-        "sales": {
-            "weeksOfSales": "/dashboards/sales/weeks-of-sales",
-            "productsOnOrder": "/dashboards/sales/products-on-order",
-            "quarterlyOrders": "/dashboards/sales/quarterly-orders",
-            "orderData": "/dashboards/sales/order-data",
-            "orderAnalytics": "/dashboards/sales/order-analytics"
+        "customer": {
+            "contacts": "/generate-sales/customer/contacts",
+            "create": "/generate-sales/customer/create",
+            "overview": "/generate-sales/customer/overview"
         },
-        "forecasting": {
-            "salesTargets": "/dashboards/forecasting/sales-targets",
-            "demandForecast": "/dashboards/forecasting/demand-forecast"
+        "customerPricing": {
+            "discountCodes": "/generate-sales/customer-pricing/discount-codes",
+            "customerPrices": "/generate-sales/customer-pricing/customer-prices",
+            "volumeDiscounts": "/generate-sales/customer-pricing/volume-discounts"
+        },
+        "salesTeam": {
+            "salesTargets": "/generate-sales/sales-team/sales-targets",
+            "territories": "/generate-sales/sales-team/territories"
         }
     },
-    "buildProducts": {
-        "overview": "/build-products/overview",
-        "purchasing": {
-            "purchaseOrders": "/build-products/purchasing/purchase-orders",
-            "deliveriesAndReceiving": "/build-products/purchasing/deliveries-and-receiving",
-            "suppliers": "/build-products/purchasing/suppliers"
+    "collectPayments": {
+        "overview": "/collect-payments/overview",
+        "invoicing": {
+            "overview": "/collect-payments/invoicing/overview"
         },
-        "production": {
-            "batches": "/build-products/production/batches",
-            "batchOperations": "/build-products/production/batch-operations",
-            "productionRuns": "/build-products/production/production-runs"
+        "collecting": {
+            "settlements": "/collect-payments/collecting/settlements",
+            "overview": "/collect-payments/collecting/overview"
         },
-        "scanning": {
-            "scanningStations": "/build-products/scanning/scanning-stations",
-            "labels": "/build-products/scanning/labels"
+        "accountsReceivable": {
+            "overview": "/collect-payments/accounts-receivable/overview"
+        }
+    },
+    "shipProducts": {
+        "packing": {
+            "overview": "/ship-products/packing/overview"
         },
-        "bom": {
-            "consumptionsAndProductions": "/build-products/bom/consumptions-and-productions",
-            "productionSteps": "/build-products/bom/production-steps",
-            "costing": "/build-products/bom/costing",
-            "productionFlows": "/build-products/bom/production-flows"
+        "shipping": {
+            "overview": "/ship-products/shipping/overview"
         },
-        "inventory": {
-            "reconciliation": "/build-products/inventory/reconciliation",
-            "changeLogs": "/build-products/inventory/change-logs",
-            "storageAndLots": "/build-products/inventory/storage-and-lots",
-            "inventory": "/build-products/inventory/inventory"
-        },
-        "items": {
-            "parts": "/build-products/items/parts",
-            "products": "/build-products/items/products",
-            "materials": "/build-products/items/materials",
-            "overview": "/build-products/items/overview"
+        "overview": "/ship-products/overview",
+        "picking": {
+            "overview": "/ship-products/picking/overview"
         }
     },
     "api": {

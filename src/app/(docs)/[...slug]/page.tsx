@@ -37,51 +37,13 @@ export function generateStaticParams() {
   },
   {
     "slug": [
-      "development"
-    ]
-  },
-  {
-    "slug": [
-      "ship-products",
-      "packing",
+      "dashboards",
       "overview"
     ]
   },
   {
     "slug": [
-      "ship-products",
-      "shipping",
-      "overview"
-    ]
-  },
-  {
-    "slug": [
-      "ship-products",
-      "overview"
-    ]
-  },
-  {
-    "slug": [
-      "ship-products",
-      "picking",
-      "overview"
-    ]
-  },
-  {
-    "slug": [
-      "collect-payments",
-      "overview"
-    ]
-  },
-  {
-    "slug": [
-      "generate-sales",
-      "customer-portal"
-    ]
-  },
-  {
-    "slug": [
-      "generate-sales",
+      "build-products",
       "overview"
     ]
   },
@@ -123,14 +85,52 @@ export function generateStaticParams() {
   },
   {
     "slug": [
-      "build-products",
+      "generate-sales",
+      "customer-portal"
+    ]
+  },
+  {
+    "slug": [
+      "generate-sales",
       "overview"
     ]
   },
   {
     "slug": [
-      "dashboards",
+      "collect-payments",
       "overview"
+    ]
+  },
+  {
+    "slug": [
+      "ship-products",
+      "packing",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "ship-products",
+      "shipping",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "ship-products",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "ship-products",
+      "picking",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "development"
     ]
   },
   {
@@ -152,41 +152,6 @@ export function generateStaticParams() {
       "api-reference",
       "audit-event-management",
       "get-audit-event"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "units-management",
-      "get-unit"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "units-management",
-      "update-unit"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "units-management",
-      "list-units"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "units-management",
-      "delete-unit"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "units-management",
-      "create-unit"
     ]
   },
   {
@@ -752,6 +717,41 @@ export function generateStaticParams() {
   {
     "slug": [
       "api-reference",
+      "units-management",
+      "get-unit"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "units-management",
+      "update-unit"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "units-management",
+      "list-units"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "units-management",
+      "delete-unit"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "units-management",
+      "create-unit"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
       "scanning-stations-management",
       "list-scanning-stations"
     ]
@@ -782,6 +782,125 @@ export function generateStaticParams() {
       "api-reference",
       "scanning-stations-management",
       "create-scanning-station"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "account-groups",
+      "delete-account-group"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "account-groups",
+      "list-account-groups"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "account-groups",
+      "get-account-group"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "account-groups",
+      "update-account-group"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "account-groups",
+      "create-account-group"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "operations",
+      "manufacturing-analytics"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "operations",
+      "delivery-analytics"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "operations",
+      "material-analytics"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "financial",
+      "payments-data"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "financial",
+      "accounts-receivable"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "sales",
+      "weeks-of-sales"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "sales",
+      "products-on-order"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "sales",
+      "quarterly-orders"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "sales",
+      "order-data"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "sales",
+      "order-analytics"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "forecasting",
+      "sales-targets"
+    ]
+  },
+  {
+    "slug": [
+      "dashboards",
+      "forecasting",
+      "demand-forecast"
     ]
   },
   {
@@ -861,42 +980,119 @@ export function generateStaticParams() {
   },
   {
     "slug": [
-      "api-reference",
-      "account-groups",
-      "delete-account-group"
+      "build-products",
+      "items",
+      "parts"
     ]
   },
   {
     "slug": [
-      "api-reference",
-      "account-groups",
-      "list-account-groups"
+      "build-products",
+      "items",
+      "products"
     ]
   },
   {
     "slug": [
-      "api-reference",
-      "account-groups",
-      "get-account-group"
+      "build-products",
+      "items",
+      "materials"
     ]
   },
   {
     "slug": [
-      "api-reference",
-      "account-groups",
-      "update-account-group"
+      "build-products",
+      "items",
+      "overview"
     ]
   },
   {
     "slug": [
-      "api-reference",
-      "account-groups",
-      "create-account-group"
+      "build-products",
+      "inventory",
+      "reconciliation"
+    ]
+  },
+  {
+    "slug": [
+      "build-products",
+      "inventory",
+      "change-logs"
+    ]
+  },
+  {
+    "slug": [
+      "build-products",
+      "inventory",
+      "storage-and-lots"
+    ]
+  },
+  {
+    "slug": [
+      "build-products",
+      "inventory",
+      "inventory"
+    ]
+  },
+  {
+    "slug": [
+      "build-products",
+      "bom",
+      "consumptions-and-productions"
+    ]
+  },
+  {
+    "slug": [
+      "build-products",
+      "bom",
+      "production-steps"
+    ]
+  },
+  {
+    "slug": [
+      "build-products",
+      "bom",
+      "costing"
+    ]
+  },
+  {
+    "slug": [
+      "build-products",
+      "bom",
+      "production-flows"
     ]
   },
   {
     "slug": [
       "api",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "collect-payments",
+      "invoicing",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "collect-payments",
+      "collecting",
+      "settlements"
+    ]
+  },
+  {
+    "slug": [
+      "collect-payments",
+      "collecting",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "collect-payments",
+      "accounts-receivable",
       "overview"
     ]
   },
@@ -1049,34 +1245,6 @@ export function generateStaticParams() {
   },
   {
     "slug": [
-      "collect-payments",
-      "invoicing",
-      "overview"
-    ]
-  },
-  {
-    "slug": [
-      "collect-payments",
-      "collecting",
-      "settlements"
-    ]
-  },
-  {
-    "slug": [
-      "collect-payments",
-      "collecting",
-      "overview"
-    ]
-  },
-  {
-    "slug": [
-      "collect-payments",
-      "accounts-receivable",
-      "overview"
-    ]
-  },
-  {
-    "slug": [
       "manage-account",
       "account-settings",
       "business-information"
@@ -1106,71 +1274,22 @@ export function generateStaticParams() {
   {
     "slug": [
       "build-products",
-      "items",
-      "parts"
+      "purchasing",
+      "purchase-orders"
     ]
   },
   {
     "slug": [
       "build-products",
-      "items",
-      "products"
+      "purchasing",
+      "deliveries-and-receiving"
     ]
   },
   {
     "slug": [
       "build-products",
-      "items",
-      "materials"
-    ]
-  },
-  {
-    "slug": [
-      "build-products",
-      "items",
-      "overview"
-    ]
-  },
-  {
-    "slug": [
-      "build-products",
-      "inventory",
-      "reconciliation"
-    ]
-  },
-  {
-    "slug": [
-      "build-products",
-      "inventory",
-      "change-logs"
-    ]
-  },
-  {
-    "slug": [
-      "build-products",
-      "inventory",
-      "storage-and-lots"
-    ]
-  },
-  {
-    "slug": [
-      "build-products",
-      "inventory",
-      "inventory"
-    ]
-  },
-  {
-    "slug": [
-      "build-products",
-      "scanning",
-      "scanning-stations"
-    ]
-  },
-  {
-    "slug": [
-      "build-products",
-      "scanning",
-      "labels"
+      "purchasing",
+      "suppliers"
     ]
   },
   {
@@ -1197,139 +1316,15 @@ export function generateStaticParams() {
   {
     "slug": [
       "build-products",
-      "purchasing",
-      "purchase-orders"
+      "scanning",
+      "scanning-stations"
     ]
   },
   {
     "slug": [
       "build-products",
-      "purchasing",
-      "deliveries-and-receiving"
-    ]
-  },
-  {
-    "slug": [
-      "build-products",
-      "purchasing",
-      "suppliers"
-    ]
-  },
-  {
-    "slug": [
-      "build-products",
-      "bom",
-      "consumptions-and-productions"
-    ]
-  },
-  {
-    "slug": [
-      "build-products",
-      "bom",
-      "production-steps"
-    ]
-  },
-  {
-    "slug": [
-      "build-products",
-      "bom",
-      "costing"
-    ]
-  },
-  {
-    "slug": [
-      "build-products",
-      "bom",
-      "production-flows"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "forecasting",
-      "sales-targets"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "forecasting",
-      "demand-forecast"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "sales",
-      "weeks-of-sales"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "sales",
-      "products-on-order"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "sales",
-      "quarterly-orders"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "sales",
-      "order-data"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "sales",
-      "order-analytics"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "operations",
-      "manufacturing-analytics"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "operations",
-      "delivery-analytics"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "operations",
-      "material-analytics"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "financial",
-      "payments-data"
-    ]
-  },
-  {
-    "slug": [
-      "dashboards",
-      "financial",
-      "accounts-receivable"
-    ]
-  },
-  {
-    "slug": [
-      "api-tour"
+      "scanning",
+      "labels"
     ]
   },
   {
@@ -1351,23 +1346,8 @@ export function generateStaticParams() {
   },
   {
     "slug": [
-      "api-request"
-    ]
-  },
-  {
-    "slug": [
-      "go-live"
-    ]
-  },
-  {
-    "slug": [
-      "release-phases"
-    ]
-  },
-  {
-    "slug": [
       "api",
-      "request-logs"
+      "errors"
     ]
   },
   {
@@ -1385,7 +1365,7 @@ export function generateStaticParams() {
   {
     "slug": [
       "api",
-      "errors"
+      "request-logs"
     ]
   },
   {
@@ -1428,6 +1408,26 @@ export function generateStaticParams() {
     "slug": [
       "api",
       "versioning"
+    ]
+  },
+  {
+    "slug": [
+      "api-tour"
+    ]
+  },
+  {
+    "slug": [
+      "api-request"
+    ]
+  },
+  {
+    "slug": [
+      "go-live"
+    ]
+  },
+  {
+    "slug": [
+      "release-phases"
     ]
   }
 ] as { slug: string[] }[];
