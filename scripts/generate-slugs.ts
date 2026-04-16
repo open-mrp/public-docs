@@ -27,7 +27,7 @@ function getTabIdFromFilePath(filePath: string): string | undefined {
 }
 
 async function getAllRoutes(): Promise<RouteEntry[]> {
-    const files = await glob('**/*.mdx', { cwd: DOCS_DIR });
+    const files = (await glob('**/*.mdx', { cwd: DOCS_DIR })).sort();
     const routes: RouteEntry[] = [];
 
     for (const file of files) {

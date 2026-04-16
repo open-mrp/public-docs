@@ -32,7 +32,7 @@ interface ParsedPage {
 }
 
 async function parseAllMdxFiles(): Promise<ParsedPage[]> {
-    const files = await glob('**/*.mdx', { cwd: DOCS_DIR });
+    const files = (await glob('**/*.mdx', { cwd: DOCS_DIR })).sort();
     const pages: ParsedPage[] = [];
 
     for (const file of files) {
