@@ -15,13 +15,37 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "API Reference",
         "subtitle": "Complete API documentation for all endpoints"
     },
-    "/dashboards/overview": {
-        "title": "Dashboards",
-        "subtitle": "Analytics and reporting dashboards that give you real-time visibility into sales, operations, finances, and forecasting."
+    "/development": {
+        "title": "Developer resources",
+        "subtitle": "Technical documentation, API references, and guides for developers."
     },
-    "/build-products/overview": {
-        "title": "Build Products",
-        "subtitle": "Purchasing, manufacturing, production tracking, and inventory management."
+    "/ship-products/packing/overview": {
+        "title": "Packing",
+        "subtitle": "Pack picked items into shipping cases and create shipments ready for the carrier."
+    },
+    "/ship-products/shipping/overview": {
+        "title": "Shipping",
+        "subtitle": "Generate shipping labels, assign tracking numbers, and ship packed orders through your carrier."
+    },
+    "/ship-products/overview": {
+        "title": "Ship Products",
+        "subtitle": "Learn about shipping products in Augno."
+    },
+    "/ship-products/picking/overview": {
+        "title": "Picking",
+        "subtitle": "Select and pull the right products from inventory to fulfill a sales order."
+    },
+    "/collect-payments/overview": {
+        "title": "Collect Payments",
+        "subtitle": "Learn about collecting payments in Augno."
+    },
+    "/generate-sales/customer-portal": {
+        "title": "Customer portal",
+        "subtitle": "A branded, self-service portal where your customers register, place orders, submit payments, and track inventory."
+    },
+    "/generate-sales/overview": {
+        "title": "Generate Sales",
+        "subtitle": "Customers, pricing, orders, and the sales team - everything that drives revenue in Augno."
     },
     "/manage-account/sandboxes": {
         "title": "Sandboxes",
@@ -47,37 +71,41 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Manage Your Account",
         "subtitle": "Configure your account settings, team, integrations, security, and billing."
     },
-    "/generate-sales/customer-portal": {
-        "title": "Customer portal",
-        "subtitle": "A branded, self-service portal where your customers register, place orders, submit payments, and track inventory."
+    "/build-products/overview": {
+        "title": "Build Products",
+        "subtitle": "Purchasing, manufacturing, production tracking, and inventory management."
     },
-    "/generate-sales/overview": {
-        "title": "Generate Sales",
-        "subtitle": "Customers, pricing, orders, and the sales team - everything that drives revenue in Augno."
+    "/dashboards/overview": {
+        "title": "Dashboards",
+        "subtitle": "Analytics and reporting dashboards that give you real-time visibility into sales, operations, finances, and forecasting."
     },
-    "/collect-payments/overview": {
-        "title": "Collect Payments",
-        "subtitle": "Learn about collecting payments in Augno."
+    "/api-reference/account-statuses/list-account-statuses": {
+        "title": "List Account Statuses",
+        "subtitle": "GET /v1/sales/account-statuses"
     },
-    "/ship-products/packing/overview": {
-        "title": "Packing",
-        "subtitle": "Pack picked items into shipping cases and create shipments ready for the carrier."
+    "/api-reference/account-statuses/get-account-status": {
+        "title": "Get Account Status",
+        "subtitle": "GET /v1/sales/account-statuses/{id}"
     },
-    "/ship-products/shipping/overview": {
-        "title": "Shipping",
-        "subtitle": "Generate shipping labels, assign tracking numbers, and ship packed orders through your carrier."
+    "/api-reference/request-log-management/list-request-logs": {
+        "title": "List Request Logs",
+        "subtitle": "GET /v1/core/request-logs"
     },
-    "/ship-products/overview": {
-        "title": "Ship Products",
-        "subtitle": "Learn about shipping products in Augno."
+    "/api-reference/request-log-management/get-request-log": {
+        "title": "Get Request Log",
+        "subtitle": "GET /v1/core/request-logs/{id}"
     },
-    "/ship-products/picking/overview": {
-        "title": "Picking",
-        "subtitle": "Select and pull the right products from inventory to fulfill a sales order."
+    "/api-reference/audit-event-management/list-audit-events": {
+        "title": "List Audit Events",
+        "subtitle": "GET /v1/core/audit-events"
     },
-    "/development": {
-        "title": "Developer resources",
-        "subtitle": "Technical documentation, API references, and guides for developers."
+    "/api-reference/audit-event-management/list-audit-event-resource-types": {
+        "title": "List Audit Event Resource Types",
+        "subtitle": "GET /v1/core/audit-events/resource-types"
+    },
+    "/api-reference/audit-event-management/get-audit-event": {
+        "title": "Get Audit Event",
+        "subtitle": "GET /v1/core/audit-events/{id}"
     },
     "/api-reference/priorities/list-priorities": {
         "title": "List Priorities",
@@ -87,21 +115,25 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Get Priority",
         "subtitle": "GET /v1/sales/priorities/{id}"
     },
-    "/api-reference/audit-event-management/list-audit-events": {
-        "title": "List Audit Events",
-        "subtitle": "GET /v1/core/audit-events"
+    "/api-reference/product-lines-management/create-product-line": {
+        "title": "Create Product Line",
+        "subtitle": "POST /v1/catalog/product-lines"
     },
-    "/api-reference/audit-event-management/get-audit-event": {
-        "title": "Get Audit Event",
-        "subtitle": "GET /v1/core/audit-events/{id}"
+    "/api-reference/product-lines-management/update-product-line": {
+        "title": "Update Product Line",
+        "subtitle": "PATCH /v1/catalog/product-lines/{id}"
     },
-    "/api-reference/account-statuses/list-account-statuses": {
-        "title": "List Account Statuses",
-        "subtitle": "GET /v1/sales/account-statuses"
+    "/api-reference/product-lines-management/list-product-lines": {
+        "title": "List Product Lines",
+        "subtitle": "GET /v1/catalog/product-lines"
     },
-    "/api-reference/account-statuses/get-account-status": {
-        "title": "Get Account Status",
-        "subtitle": "GET /v1/sales/account-statuses/{id}"
+    "/api-reference/product-lines-management/delete-product-line": {
+        "title": "Delete Product Line",
+        "subtitle": "DELETE /v1/catalog/product-lines/{id}"
+    },
+    "/api-reference/product-lines-management/get-product-line": {
+        "title": "Get Product Line",
+        "subtitle": "GET /v1/catalog/product-lines/{id}"
     },
     "/api-reference/properties-management/create-property": {
         "title": "Create Property",
@@ -143,34 +175,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Update Property",
         "subtitle": "PATCH /v1/catalog/properties/{id}"
     },
-    "/api-reference/request-log-management/list-request-logs": {
-        "title": "List Request Logs",
-        "subtitle": "GET /v1/core/request-logs"
-    },
-    "/api-reference/request-log-management/get-request-log": {
-        "title": "Get Request Log",
-        "subtitle": "GET /v1/core/request-logs/{id}"
-    },
-    "/api-reference/product-lines-management/create-product-line": {
-        "title": "Create Product Line",
-        "subtitle": "POST /v1/catalog/product-lines"
-    },
-    "/api-reference/product-lines-management/update-product-line": {
-        "title": "Update Product Line",
-        "subtitle": "PATCH /v1/catalog/product-lines/{id}"
-    },
-    "/api-reference/product-lines-management/list-product-lines": {
-        "title": "List Product Lines",
-        "subtitle": "GET /v1/catalog/product-lines"
-    },
-    "/api-reference/product-lines-management/delete-product-line": {
-        "title": "Delete Product Line",
-        "subtitle": "DELETE /v1/catalog/product-lines/{id}"
-    },
-    "/api-reference/product-lines-management/get-product-line": {
-        "title": "Get Product Line",
-        "subtitle": "GET /v1/catalog/product-lines/{id}"
-    },
     "/api-reference/api-key-management/revoke-api-key": {
         "title": "Revoke API Key",
         "subtitle": "DELETE /v1/auth/api-keys/{id}"
@@ -190,26 +194,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/api-key-management/list-api-keys": {
         "title": "List API Keys",
         "subtitle": "GET /v1/auth/api-keys"
-    },
-    "/api-reference/shipping-terms-management/delete-shipping-term": {
-        "title": "Delete Shipping Term",
-        "subtitle": "DELETE /v1/operations/shipping-terms/{id}"
-    },
-    "/api-reference/shipping-terms-management/update-shipping-term": {
-        "title": "Update Shipping Term",
-        "subtitle": "PATCH /v1/operations/shipping-terms/{id}"
-    },
-    "/api-reference/shipping-terms-management/list-shipping-terms": {
-        "title": "List Shipping Terms",
-        "subtitle": "GET /v1/operations/shipping-terms"
-    },
-    "/api-reference/shipping-terms-management/create-shipping-term": {
-        "title": "Create Shipping Term",
-        "subtitle": "POST /v1/operations/shipping-terms"
-    },
-    "/api-reference/shipping-terms-management/get-shipping-term": {
-        "title": "Get Shipping Term",
-        "subtitle": "GET /v1/operations/shipping-terms/{id}"
     },
     "/api-reference/location-management/list-locations": {
         "title": "List Locations",
@@ -239,6 +223,26 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Update Location",
         "subtitle": "PATCH /v1/operations/locations/{id}"
     },
+    "/api-reference/shipping-terms-management/delete-shipping-term": {
+        "title": "Delete Shipping Term",
+        "subtitle": "DELETE /v1/operations/shipping-terms/{id}"
+    },
+    "/api-reference/shipping-terms-management/update-shipping-term": {
+        "title": "Update Shipping Term",
+        "subtitle": "PATCH /v1/operations/shipping-terms/{id}"
+    },
+    "/api-reference/shipping-terms-management/list-shipping-terms": {
+        "title": "List Shipping Terms",
+        "subtitle": "GET /v1/operations/shipping-terms"
+    },
+    "/api-reference/shipping-terms-management/create-shipping-term": {
+        "title": "Create Shipping Term",
+        "subtitle": "POST /v1/operations/shipping-terms"
+    },
+    "/api-reference/shipping-terms-management/get-shipping-term": {
+        "title": "Get Shipping Term",
+        "subtitle": "GET /v1/operations/shipping-terms/{id}"
+    },
     "/api-reference/email-logs/list-email-logs": {
         "title": "List Email Logs",
         "subtitle": "GET /v1/core/email-logs"
@@ -246,22 +250,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/email-logs/get-email-log": {
         "title": "Get Email Log",
         "subtitle": "GET /v1/core/email-logs/{id}"
-    },
-    "/api-reference/sandbox-management/create-sandbox": {
-        "title": "Create Sandbox",
-        "subtitle": "POST /v1/core/sandboxes"
-    },
-    "/api-reference/sandbox-management/list-sandboxes": {
-        "title": "List Sandboxes",
-        "subtitle": "GET /v1/core/sandboxes"
-    },
-    "/api-reference/sandbox-management/delete-sandbox": {
-        "title": "Delete Sandbox",
-        "subtitle": "DELETE /v1/core/sandboxes/{id}"
-    },
-    "/api-reference/sandbox-management/get-sandbox": {
-        "title": "Get Sandbox",
-        "subtitle": "GET /v1/core/sandboxes/{id}"
     },
     "/api-reference/item-categories-management/delete-item-category": {
         "title": "Delete Item Category",
@@ -295,6 +283,22 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Add Item Category Property",
         "subtitle": "PUT /v1/catalog/item-categories/{id}/properties/{property_id}"
     },
+    "/api-reference/sandbox-management/create-sandbox": {
+        "title": "Create Sandbox",
+        "subtitle": "POST /v1/core/sandboxes"
+    },
+    "/api-reference/sandbox-management/list-sandboxes": {
+        "title": "List Sandboxes",
+        "subtitle": "GET /v1/core/sandboxes"
+    },
+    "/api-reference/sandbox-management/delete-sandbox": {
+        "title": "Delete Sandbox",
+        "subtitle": "DELETE /v1/core/sandboxes/{id}"
+    },
+    "/api-reference/sandbox-management/get-sandbox": {
+        "title": "Get Sandbox",
+        "subtitle": "GET /v1/core/sandboxes/{id}"
+    },
     "/api-reference/address-management/create-address": {
         "title": "Create Address",
         "subtitle": "POST /v1/sales/addresses"
@@ -314,6 +318,26 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/address-management/update-address": {
         "title": "Update Address",
         "subtitle": "PATCH /v1/sales/addresses/{id}"
+    },
+    "/api-reference/account-users-management/create-account-user": {
+        "title": "Create Account User",
+        "subtitle": "POST /v1/identity/account-users"
+    },
+    "/api-reference/account-users-management/update-account-user": {
+        "title": "Update Account User",
+        "subtitle": "PATCH /v1/identity/account-users/{id}"
+    },
+    "/api-reference/account-users-management/list-account-users": {
+        "title": "List Account Users",
+        "subtitle": "GET /v1/identity/account-users"
+    },
+    "/api-reference/account-users-management/get-account-user": {
+        "title": "Get Account User",
+        "subtitle": "GET /v1/identity/account-users/{id}"
+    },
+    "/api-reference/account-users-management/update-account-user-status": {
+        "title": "Update Account User Status",
+        "subtitle": "PUT /v1/identity/account-users/{id}/status"
     },
     "/api-reference/payment-terms-management/delete-payment-term": {
         "title": "Delete Payment Term",
@@ -371,6 +395,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Delete Customer",
         "subtitle": "DELETE /v1/sales/customers/{id}"
     },
+    "/api-reference/customers/list-customers": {
+        "title": "List Customers",
+        "subtitle": "GET /v1/sales/customers"
+    },
     "/api-reference/customers/update-customer": {
         "title": "Update Customer",
         "subtitle": "PATCH /v1/sales/customers/{id}"
@@ -382,26 +410,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/customers/create-customer": {
         "title": "Create Customer",
         "subtitle": "POST /v1/sales/customers"
-    },
-    "/api-reference/scanning-stations-management/list-scanning-stations": {
-        "title": "List Scanning Stations",
-        "subtitle": "GET /v1/operations/scanning-stations"
-    },
-    "/api-reference/scanning-stations-management/update-scanning-station": {
-        "title": "Update Scanning Station",
-        "subtitle": "PATCH /v1/operations/scanning-stations/{id}"
-    },
-    "/api-reference/scanning-stations-management/delete-scanning-station": {
-        "title": "Delete Scanning Station",
-        "subtitle": "DELETE /v1/operations/scanning-stations/{id}"
-    },
-    "/api-reference/scanning-stations-management/get-scanning-station": {
-        "title": "Get Scanning Station",
-        "subtitle": "GET /v1/operations/scanning-stations/{id}"
-    },
-    "/api-reference/scanning-stations-management/create-scanning-station": {
-        "title": "Create Scanning Station",
-        "subtitle": "POST /v1/operations/scanning-stations"
     },
     "/api-reference/units-management/get-unit": {
         "title": "Get Unit",
@@ -422,6 +430,26 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/units-management/create-unit": {
         "title": "Create Unit",
         "subtitle": "POST /v1/catalog/units"
+    },
+    "/api-reference/scanning-stations-management/list-scanning-stations": {
+        "title": "List Scanning Stations",
+        "subtitle": "GET /v1/operations/scanning-stations"
+    },
+    "/api-reference/scanning-stations-management/update-scanning-station": {
+        "title": "Update Scanning Station",
+        "subtitle": "PATCH /v1/operations/scanning-stations/{id}"
+    },
+    "/api-reference/scanning-stations-management/delete-scanning-station": {
+        "title": "Delete Scanning Station",
+        "subtitle": "DELETE /v1/operations/scanning-stations/{id}"
+    },
+    "/api-reference/scanning-stations-management/get-scanning-station": {
+        "title": "Get Scanning Station",
+        "subtitle": "GET /v1/operations/scanning-stations/{id}"
+    },
+    "/api-reference/scanning-stations-management/create-scanning-station": {
+        "title": "Create Scanning Station",
+        "subtitle": "POST /v1/operations/scanning-stations"
     },
     "/api-reference/account-groups/delete-account-group": {
         "title": "Delete Account Group",
@@ -487,53 +515,125 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Get started",
         "subtitle": "Create an account and learn how to build on Augno."
     },
-    "/dashboards/forecasting/sales-targets": {
-        "title": "Sales targets dashboard",
-        "subtitle": "View and create revenue targets for sales reps by month."
+    "/api/overview": {
+        "title": "Augno's APIs",
+        "subtitle": "Learn more about Augno's APIs."
     },
-    "/dashboards/forecasting/demand-forecast": {
-        "title": "Demand forecast",
-        "subtitle": "Forecast demand, order revenue, and sales revenue with confidence intervals based on historical data."
+    "/collect-payments/accounts-receivable/overview": {
+        "title": "Accounts receivable",
+        "subtitle": "Track what customers owe, how long balances have been outstanding, and take action to collect."
     },
-    "/dashboards/sales/weeks-of-sales": {
-        "title": "Weeks of sales",
-        "subtitle": "See how many weeks of inventory you have on hand based on recent sales velocity."
+    "/collect-payments/collecting/settlements": {
+        "title": "Settlements",
+        "subtitle": "Formally record which transactions pay which invoices by creating settlements with allocations."
     },
-    "/dashboards/sales/products-on-order": {
-        "title": "Products on order",
-        "subtitle": "View open orders, back-order quantities, and top ordered products at a glance."
+    "/collect-payments/collecting/overview": {
+        "title": "Collecting",
+        "subtitle": "Record the money received from customers and apply it to open invoices through transactions and settlements."
     },
-    "/dashboards/sales/quarterly-orders": {
-        "title": "Quarterly orders",
-        "subtitle": "Visualize order quantity trends by quarter across multiple years."
+    "/collect-payments/invoicing/overview": {
+        "title": "Invoicing",
+        "subtitle": "Invoices are the billing records Augno generates for each shipment, capturing what was shipped, to whom, and for how much."
     },
-    "/dashboards/sales/order-data": {
-        "title": "Order data",
-        "subtitle": "A raw, line-level data grid of all sales transactions with Excel export."
+    "/generate-sales/sales-team/sales-targets": {
+        "title": "Sales targets",
+        "subtitle": "Define revenue goals for sales reps over a date range, optionally by product line."
     },
-    "/dashboards/sales/order-analytics": {
-        "title": "Order analytics",
-        "subtitle": "A comprehensive view of sales performance with profit metrics, cumulative revenue, best sellers, and distribution breakdowns."
+    "/generate-sales/sales-team/territories": {
+        "title": "Territories",
+        "subtitle": "Map geographic regions to sales representatives, optionally scoped by product line."
     },
-    "/dashboards/financial/payments-data": {
-        "title": "Payments data",
-        "subtitle": "View payment allocations across invoices with support for invoice and balance view modes."
+    "/generate-sales/customer-pricing/discount-codes": {
+        "title": "Discount codes",
+        "subtitle": "Promotional codes applied at the order level to reduce the total by a percentage or fixed amount."
     },
-    "/dashboards/financial/accounts-receivable": {
-        "title": "Accounts receivable dashboard",
-        "subtitle": "An aging report showing what customers owe across current, 30, 60, 90, and 120-day buckets."
+    "/generate-sales/customer-pricing/customer-prices": {
+        "title": "Customer prices",
+        "subtitle": "Define product-line-specific pricing for individual customers, overriding base product prices."
     },
-    "/dashboards/operations/manufacturing-analytics": {
-        "title": "Manufacturing analytics",
-        "subtitle": "Monitor production output, cost efficiency, margin, quality, and labor efficiency with month-over-month comparison."
+    "/generate-sales/customer-pricing/volume-discounts": {
+        "title": "Volume discounts",
+        "subtitle": "Automatically reduce pricing based on order quantity with tiered percentage discounts."
     },
-    "/dashboards/operations/delivery-analytics": {
-        "title": "Delivery analytics",
-        "subtitle": "Track on-time delivery rates, average delivery time, and time to first shipment with period-over-period comparison."
+    "/generate-sales/customer/contacts": {
+        "title": "Contacts",
+        "subtitle": "Manage the people associated with a customer and control who receives order confirmations and invoices."
     },
-    "/dashboards/operations/material-analytics": {
-        "title": "Material analytics",
-        "subtitle": "View material inventory levels, demand, and reorder needs by supplier."
+    "/generate-sales/customer/create": {
+        "title": "Create a customer",
+        "subtitle": "Learn how to create a customer in Augno."
+    },
+    "/generate-sales/customer/overview": {
+        "title": "Customers",
+        "subtitle": "The central record connecting sales orders, invoices, shipments, and payments."
+    },
+    "/generate-sales/customer-setup/customer-groups": {
+        "title": "Customer groups",
+        "subtitle": "Classify customers by segment and control which pricing and discounts they receive."
+    },
+    "/generate-sales/customer-setup/shipping-terms": {
+        "title": "Shipping terms",
+        "subtitle": "Define who pays for freight, how charges are calculated, and when freight is waived."
+    },
+    "/generate-sales/customer-setup/addresses": {
+        "title": "Addresses",
+        "subtitle": "Billing and shipping locations for customers, used on orders, invoices, and shipments."
+    },
+    "/generate-sales/customer-setup/payment-terms": {
+        "title": "Payment terms",
+        "subtitle": "Define when and how a customer is expected to pay for an order."
+    },
+    "/generate-sales/customer-setup/default-sales-reps": {
+        "title": "Default sales reps",
+        "subtitle": "The team member automatically assigned to new orders for a customer."
+    },
+    "/generate-sales/customer-setup/priorities": {
+        "title": "Priorities",
+        "subtitle": "Control order-processing precedence to determine which work gets attention first."
+    },
+    "/generate-sales/customer-setup/account-statuses": {
+        "title": "Account statuses",
+        "subtitle": "Control whether a customer can place orders and receive shipments."
+    },
+    "/generate-sales/customer-setup/exemptions": {
+        "title": "Commission & freight exemption",
+        "subtitle": "Exclude customers or customer groups from commission calculations and freight charges."
+    },
+    "/generate-sales/customer-setup/default-carriers": {
+        "title": "Default carriers & options",
+        "subtitle": "Define the shipping carrier and service level automatically applied to a customer's orders."
+    },
+    "/generate-sales/sales-order/issue": {
+        "title": "Issue a sales order",
+        "subtitle": "Learn how to issue a sales order in Augno."
+    },
+    "/generate-sales/sales-order/create": {
+        "title": "Create a sales order",
+        "subtitle": "Learn how to create a sales order in Augno."
+    },
+    "/generate-sales/sales-order/generate-production-run": {
+        "title": "Generate a production run",
+        "subtitle": "Generate a production run from a sales order in Augno."
+    },
+    "/generate-sales/sales-order/overview": {
+        "title": "Sales orders",
+        "subtitle": "The central order for selling products to a customer, driving fulfillment from creation through payment."
+    },
+    "/manage-account/team/roles-and-permissions": {
+        "title": "Roles and permissions",
+        "subtitle": "Control what team members and API keys can access with granular, role-based permissions."
+    },
+    "/manage-account/team/team-members": {
+        "title": "Team members",
+        "subtitle": "Invite, manage, and remove the people who use your Augno account."
+    },
+    "/manage-account/account-settings/business-information": {
+        "title": "Business information",
+        "subtitle": "Configure your account name, logo, contact details, and portal slug."
+    },
+    "/manage-account/account-settings/profile": {
+        "title": "Your profile",
+        "subtitle": "Update your display name, email address, and profile photo."
     },
     "/build-products/items/parts": {
         "title": "Parts",
@@ -615,141 +715,57 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Suppliers",
         "subtitle": "Vendors you purchase materials from, defining the source for your raw material procurement."
     },
-    "/manage-account/account-settings/business-information": {
-        "title": "Business information",
-        "subtitle": "Configure your account name, logo, contact details, and portal slug."
+    "/dashboards/forecasting/sales-targets": {
+        "title": "Sales targets dashboard",
+        "subtitle": "View and create revenue targets for sales reps by month."
     },
-    "/manage-account/account-settings/profile": {
-        "title": "Your profile",
-        "subtitle": "Update your display name, email address, and profile photo."
+    "/dashboards/forecasting/demand-forecast": {
+        "title": "Demand forecast",
+        "subtitle": "Forecast demand, order revenue, and sales revenue with confidence intervals based on historical data."
     },
-    "/manage-account/team/roles-and-permissions": {
-        "title": "Roles and permissions",
-        "subtitle": "Control what team members and API keys can access with granular, role-based permissions."
+    "/dashboards/sales/weeks-of-sales": {
+        "title": "Weeks of sales",
+        "subtitle": "See how many weeks of inventory you have on hand based on recent sales velocity."
     },
-    "/manage-account/team/team-members": {
-        "title": "Team members",
-        "subtitle": "Invite, manage, and remove the people who use your Augno account."
+    "/dashboards/sales/products-on-order": {
+        "title": "Products on order",
+        "subtitle": "View open orders, back-order quantities, and top ordered products at a glance."
     },
-    "/generate-sales/sales-team/sales-targets": {
-        "title": "Sales targets",
-        "subtitle": "Define revenue goals for sales reps over a date range, optionally by product line."
+    "/dashboards/sales/quarterly-orders": {
+        "title": "Quarterly orders",
+        "subtitle": "Visualize order quantity trends by quarter across multiple years."
     },
-    "/generate-sales/sales-team/territories": {
-        "title": "Territories",
-        "subtitle": "Map geographic regions to sales representatives, optionally scoped by product line."
+    "/dashboards/sales/order-data": {
+        "title": "Order data",
+        "subtitle": "A raw, line-level data grid of all sales transactions with Excel export."
     },
-    "/generate-sales/customer-pricing/discount-codes": {
-        "title": "Discount codes",
-        "subtitle": "Promotional codes applied at the order level to reduce the total by a percentage or fixed amount."
+    "/dashboards/sales/order-analytics": {
+        "title": "Order analytics",
+        "subtitle": "A comprehensive view of sales performance with profit metrics, cumulative revenue, best sellers, and distribution breakdowns."
     },
-    "/generate-sales/customer-pricing/customer-prices": {
-        "title": "Customer prices",
-        "subtitle": "Define product-line-specific pricing for individual customers, overriding base product prices."
+    "/dashboards/financial/payments-data": {
+        "title": "Payments data",
+        "subtitle": "View payment allocations across invoices with support for invoice and balance view modes."
     },
-    "/generate-sales/customer-pricing/volume-discounts": {
-        "title": "Volume discounts",
-        "subtitle": "Automatically reduce pricing based on order quantity with tiered percentage discounts."
+    "/dashboards/financial/accounts-receivable": {
+        "title": "Accounts receivable dashboard",
+        "subtitle": "An aging report showing what customers owe across current, 30, 60, 90, and 120-day buckets."
     },
-    "/generate-sales/customer/contacts": {
-        "title": "Contacts",
-        "subtitle": "Manage the people associated with a customer and control who receives order confirmations and invoices."
+    "/dashboards/operations/manufacturing-analytics": {
+        "title": "Manufacturing analytics",
+        "subtitle": "Monitor production output, cost efficiency, margin, quality, and labor efficiency with month-over-month comparison."
     },
-    "/generate-sales/customer/create": {
-        "title": "Create a customer",
-        "subtitle": "Learn how to create a customer in Augno."
+    "/dashboards/operations/delivery-analytics": {
+        "title": "Delivery analytics",
+        "subtitle": "Track on-time delivery rates, average delivery time, and time to first shipment with period-over-period comparison."
     },
-    "/generate-sales/customer/overview": {
-        "title": "Customers",
-        "subtitle": "The central record connecting sales orders, invoices, shipments, and payments."
+    "/dashboards/operations/material-analytics": {
+        "title": "Material analytics",
+        "subtitle": "View material inventory levels, demand, and reorder needs by supplier."
     },
-    "/generate-sales/customer-setup/customer-groups": {
-        "title": "Customer groups",
-        "subtitle": "Classify customers by segment and control which pricing and discounts they receive."
-    },
-    "/generate-sales/customer-setup/shipping-terms": {
-        "title": "Shipping terms",
-        "subtitle": "Define who pays for freight, how charges are calculated, and when freight is waived."
-    },
-    "/generate-sales/customer-setup/addresses": {
-        "title": "Addresses",
-        "subtitle": "Billing and shipping locations for customers, used on orders, invoices, and shipments."
-    },
-    "/generate-sales/customer-setup/payment-terms": {
-        "title": "Payment terms",
-        "subtitle": "Define when and how a customer is expected to pay for an order."
-    },
-    "/generate-sales/customer-setup/default-sales-reps": {
-        "title": "Default sales reps",
-        "subtitle": "The team member automatically assigned to new orders for a customer."
-    },
-    "/generate-sales/customer-setup/priorities": {
-        "title": "Priorities",
-        "subtitle": "Control order-processing precedence to determine which work gets attention first."
-    },
-    "/generate-sales/customer-setup/account-statuses": {
-        "title": "Account statuses",
-        "subtitle": "Control whether a customer can place orders and receive shipments."
-    },
-    "/generate-sales/customer-setup/exemptions": {
-        "title": "Commission & freight exemption",
-        "subtitle": "Exclude customers or customer groups from commission calculations and freight charges."
-    },
-    "/generate-sales/customer-setup/default-carriers": {
-        "title": "Default carriers & options",
-        "subtitle": "Define the shipping carrier and service level automatically applied to a customer's orders."
-    },
-    "/api/overview": {
-        "title": "Augno's APIs",
-        "subtitle": "Learn more about Augno's APIs."
-    },
-    "/collect-payments/invoicing/overview": {
-        "title": "Invoicing",
-        "subtitle": "Invoices are the billing records Augno generates for each shipment, capturing what was shipped, to whom, and for how much."
-    },
-    "/collect-payments/collecting/settlements": {
-        "title": "Settlements",
-        "subtitle": "Formally record which transactions pay which invoices by creating settlements with allocations."
-    },
-    "/collect-payments/collecting/overview": {
-        "title": "Collecting",
-        "subtitle": "Record the money received from customers and apply it to open invoices through transactions and settlements."
-    },
-    "/collect-payments/accounts-receivable/overview": {
-        "title": "Accounts receivable",
-        "subtitle": "Track what customers owe, how long balances have been outstanding, and take action to collect."
-    },
-    "/generate-sales/sales-order/issue": {
-        "title": "Issue a sales order",
-        "subtitle": "Learn how to issue a sales order in Augno."
-    },
-    "/generate-sales/sales-order/create": {
-        "title": "Create a sales order",
-        "subtitle": "Learn how to create a sales order in Augno."
-    },
-    "/generate-sales/sales-order/generate-production-run": {
-        "title": "Generate a production run",
-        "subtitle": "Generate a production run from a sales order in Augno."
-    },
-    "/generate-sales/sales-order/overview": {
-        "title": "Sales orders",
-        "subtitle": "The central order for selling products to a customer, driving fulfillment from creation through payment."
-    },
-    "/api-tour": {
-        "title": "Tour of the Augno API",
-        "subtitle": "See how Augno API objects fit together and learn best practices for combining them effectively."
-    },
-    "/account/activate": {
-        "title": "Activate your account",
-        "subtitle": "Learn how to activate and manage your Augno account."
-    },
-    "/account/checklist": {
-        "title": "Account activation checklist",
-        "subtitle": "Complete this checklist before putting your Augno account into production."
-    },
-    "/account": {
-        "title": "Create an Augno account",
-        "subtitle": "Learn how to activate and manage your Augno account, from initial setup to advanced configurations."
+    "/api/request-logs": {
+        "title": "Request Logs",
+        "subtitle": "Monitor and debug your API activity with request logs."
     },
     "/api/errors": {
         "title": "API Errors",
@@ -763,9 +779,17 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "API Keys",
         "subtitle": "Learn how to authenticate requests with API keys."
     },
-    "/api/request-logs": {
-        "title": "Request Logs",
-        "subtitle": "Monitor and debug your API activity with request logs."
+    "/api-request": {
+        "title": "Send your first Augno API request",
+        "subtitle": "Get started with the Augno API."
+    },
+    "/go-live": {
+        "title": "Go live checklist",
+        "subtitle": "Use this checklist to ensure a smooth transition putting your integration into production."
+    },
+    "/release-phases": {
+        "title": "Product Release Phases",
+        "subtitle": "Learn how Augno describes product release phases and what to expect from each."
     },
     "/api/request-ids": {
         "title": "Request IDs",
@@ -795,17 +819,21 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "API Versioning",
         "subtitle": "Understand how Augno versions its API and manage version upgrades."
     },
-    "/api-request": {
-        "title": "Send your first Augno API request",
-        "subtitle": "Get started with the Augno API."
+    "/account/activate": {
+        "title": "Activate your account",
+        "subtitle": "Learn how to activate and manage your Augno account."
     },
-    "/go-live": {
-        "title": "Go live checklist",
-        "subtitle": "Use this checklist to ensure a smooth transition putting your integration into production."
+    "/account/checklist": {
+        "title": "Account activation checklist",
+        "subtitle": "Complete this checklist before putting your Augno account into production."
     },
-    "/release-phases": {
-        "title": "Product Release Phases",
-        "subtitle": "Learn how Augno describes product release phases and what to expect from each."
+    "/account": {
+        "title": "Create an Augno account",
+        "subtitle": "Learn how to activate and manage your Augno account, from initial setup to advanced configurations."
+    },
+    "/api-tour": {
+        "title": "Tour of the Augno API",
+        "subtitle": "See how Augno API objects fit together and learn best practices for combining them effectively."
     }
 };
 

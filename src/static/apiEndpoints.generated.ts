@@ -1734,7 +1734,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "mode",
                             "type": "string",
-                            "description": "Controls whether the sandbox is blank or seeded with tutorial data. Defaults to blank.",
+                            "description": "Controls whether the sandbox is blank or seeded with sample data. Defaults to `blank`.",
                             "required": false,
                             "nullable": true,
                             "expandable": false,
@@ -2993,11 +2993,11 @@ export const apiTags: TagData[] = [
                         "description": "Filter: actor home account ID."
                     },
                     {
-                        "name": "actor_id",
+                        "name": "actor_id[]",
                         "in": "query",
-                        "type": "string",
+                        "type": "array",
                         "required": false,
-                        "description": "Filter: actor ID."
+                        "description": "Filter: actor IDs (repeatable)."
                     },
                     {
                         "name": "actor_type",
@@ -3012,6 +3012,27 @@ export const apiTags: TagData[] = [
                         "type": "string",
                         "required": false,
                         "description": "Filter: actor name (partial or exact match)."
+                    },
+                    {
+                        "name": "normalized_route[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter: normalized route templates (repeatable, exact match)."
+                    },
+                    {
+                        "name": "host[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter: request hosts (repeatable, exact match)."
+                    },
+                    {
+                        "name": "min_latency_us",
+                        "in": "query",
+                        "type": "integer",
+                        "required": false,
+                        "description": "Filter: minimum latency in microseconds."
                     },
                     {
                         "name": "exact_match",
@@ -4247,7 +4268,6 @@ export const apiTags: TagData[] = [
                         "consumption",
                         "customer_product_line_access",
                         "customer",
-                        "customer_summary",
                         "frequently_ordered_product",
                         "priority",
                         "delivery",
@@ -4360,7 +4380,8 @@ export const apiTags: TagData[] = [
                         "estimate_rate_result",
                         "rate_shop_option",
                         "rate_shop_result",
-                        "owner"
+                        "owner",
+                        "account_plan"
                     ]
                 },
                 {
@@ -4707,11 +4728,11 @@ export const apiTags: TagData[] = [
                         "format": "date-time"
                     },
                     {
-                        "name": "resource_type",
+                        "name": "resource_types[]",
                         "in": "query",
-                        "type": "string",
+                        "type": "array",
                         "required": false,
-                        "description": "Resource type of the audited entity.",
+                        "description": "Resource types of the audited entity. Repeat the query parameter to filter by multiple types.",
                         "enum": [
                             "account",
                             "actor",
@@ -4783,7 +4804,6 @@ export const apiTags: TagData[] = [
                             "consumption",
                             "customer_product_line_access",
                             "customer",
-                            "customer_summary",
                             "frequently_ordered_product",
                             "priority",
                             "delivery",
@@ -4896,7 +4916,8 @@ export const apiTags: TagData[] = [
                             "estimate_rate_result",
                             "rate_shop_option",
                             "rate_shop_result",
-                            "owner"
+                            "owner",
+                            "account_plan"
                         ]
                     },
                     {
@@ -5126,7 +5147,6 @@ export const apiTags: TagData[] = [
                                             "consumption",
                                             "customer_product_line_access",
                                             "customer",
-                                            "customer_summary",
                                             "frequently_ordered_product",
                                             "priority",
                                             "delivery",
@@ -5239,7 +5259,8 @@ export const apiTags: TagData[] = [
                                             "estimate_rate_result",
                                             "rate_shop_option",
                                             "rate_shop_result",
-                                            "owner"
+                                            "owner",
+                                            "account_plan"
                                         ]
                                     },
                                     {
@@ -5550,6 +5571,286 @@ export const apiTags: TagData[] = [
                 ]
             },
             {
+                "operationId": "list-audit-event-resource-types",
+                "summary": "List Audit Event Resource Types",
+                "description": "Returns the full set of resource types that may appear on audit events.",
+                "method": "GET",
+                "path": "/v1/core/audit-events/resource-types",
+                "domain": "core",
+                "tag": "Audit Event Management",
+                "tagSlug": "audit-event-management",
+                "endpointSlug": "list-audit-event-resource-types",
+                "actionType": "list",
+                "isPreview": true,
+                "parameters": [],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for List Audit Event Resource Types",
+                        "fields": [
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Object type for ObjectType list",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "list"
+                                ]
+                            },
+                            {
+                                "name": "page_info",
+                                "type": "object",
+                                "description": "Pagination metadata for ObjectType list",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "properties": [
+                                    {
+                                        "name": "next_cursor",
+                                        "type": "string",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "prev_cursor",
+                                        "type": "string",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_next_page",
+                                        "type": "boolean",
+                                        "description": "Whether more results exist after this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_prev_page",
+                                        "type": "boolean",
+                                        "description": "Whether results exist before this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "data",
+                                "type": "array",
+                                "description": "Array of ObjectType resources in this page",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "account",
+                                    "actor",
+                                    "entity",
+                                    "user",
+                                    "address",
+                                    "api_key",
+                                    "refresh_token",
+                                    "list",
+                                    "sandbox",
+                                    "registration_session",
+                                    "pricing_plan",
+                                    "plan_change",
+                                    "enterprise_inquiry",
+                                    "request_log",
+                                    "audit_event",
+                                    "role",
+                                    "unit",
+                                    "account_affiliation",
+                                    "agent_definition",
+                                    "available_tool",
+                                    "agent_definition_tool",
+                                    "agent_account_status",
+                                    "agent_run",
+                                    "agent_action",
+                                    "agent_run_step",
+                                    "agent_token_usage",
+                                    "agent_memory",
+                                    "agent_alert",
+                                    "tool_group",
+                                    "payment_term",
+                                    "shipping_term",
+                                    "quantity",
+                                    "account_group",
+                                    "account_status",
+                                    "geolocation",
+                                    "account_user",
+                                    "department",
+                                    "account_integration",
+                                    "account_price",
+                                    "product_line",
+                                    "item_category",
+                                    "attribute",
+                                    "rate",
+                                    "account_group_product_line_access",
+                                    "sales_target",
+                                    "adjustment_type",
+                                    "account_branding",
+                                    "account_portal",
+                                    "account_logo_url",
+                                    "public_account",
+                                    "property",
+                                    "carrier",
+                                    "service_level",
+                                    "item",
+                                    "product",
+                                    "batch",
+                                    "batch_flow_node",
+                                    "scanning_consumption",
+                                    "open_batch_summary",
+                                    "scanning_production_step_info",
+                                    "scanning_station",
+                                    "production_step",
+                                    "production_run",
+                                    "machine",
+                                    "child_account",
+                                    "unit_group",
+                                    "unit_group_unit",
+                                    "consumption",
+                                    "customer_product_line_access",
+                                    "customer",
+                                    "frequently_ordered_product",
+                                    "priority",
+                                    "delivery",
+                                    "delivery_line",
+                                    "sales_order",
+                                    "sales_order_line",
+                                    "sales_order_type",
+                                    "location",
+                                    "location_type",
+                                    "lot",
+                                    "email_log",
+                                    "inventory_change_log",
+                                    "invoice",
+                                    "invoice_summary",
+                                    "invoice_line",
+                                    "invoice_allocation",
+                                    "invoice_for_payment",
+                                    "shipment",
+                                    "shipment_summary",
+                                    "shipment_line",
+                                    "shipping_case",
+                                    "shipping_case_label_url",
+                                    "settlement",
+                                    "settlement_summary",
+                                    "role_permission",
+                                    "registration_flow",
+                                    "registration_flow_option",
+                                    "transaction",
+                                    "transaction_summary",
+                                    "transaction_method",
+                                    "transaction_type",
+                                    "transaction_allocation",
+                                    "usage_item",
+                                    "agent_token_detail",
+                                    "account_usage_response",
+                                    "subscription_info",
+                                    "billing_portal_session_response",
+                                    "switch_plan_response",
+                                    "ensure_billing_customer_response",
+                                    "spending_cap_response",
+                                    "agent_spend_info",
+                                    "webhook_response",
+                                    "address_suggestion",
+                                    "address_components",
+                                    "address_details_result",
+                                    "validated_address",
+                                    "plan_limit",
+                                    "plan_change_proration",
+                                    "plan_change_line_item",
+                                    "setup_billing_response",
+                                    "confirm_payment_response",
+                                    "oauth_response",
+                                    "oauth_status_response",
+                                    "stripe_publishable_key",
+                                    "stripe_status",
+                                    "healthcheck",
+                                    "agent_definition_config",
+                                    "trigger_config",
+                                    "customer_contact_info",
+                                    "customer_freight_preferences",
+                                    "customer_defaults",
+                                    "customer_notification_preferences",
+                                    "order_discount",
+                                    "sales_order_status",
+                                    "material",
+                                    "supplier_material",
+                                    "part",
+                                    "permission_group",
+                                    "permission",
+                                    "pick",
+                                    "pick_line",
+                                    "product_type",
+                                    "production",
+                                    "production_flow",
+                                    "map",
+                                    "purchase_order",
+                                    "purchase_order_line",
+                                    "supplier",
+                                    "supplier_summary",
+                                    "receivable_entry",
+                                    "receiving_order",
+                                    "receiving_order_line",
+                                    "email_contact",
+                                    "allocation_entry",
+                                    "open_credit_entry",
+                                    "volume_discount",
+                                    "volume_discount_tier",
+                                    "analyze_deliveries_response",
+                                    "analyze_manufacturing_response",
+                                    "analyze_manufacturing_batch_response",
+                                    "analyze_quarterly_orders_response",
+                                    "analyze_new_customers_response",
+                                    "analyze_oee_response",
+                                    "catalog_product_line",
+                                    "catalog_category",
+                                    "catalog_product",
+                                    "catalog_property",
+                                    "catalog_attribute",
+                                    "dc_location",
+                                    "edi_run",
+                                    "inventory_item",
+                                    "analyze_weeks_of_sales_response",
+                                    "bulk_reconcile_items_response",
+                                    "sys_property",
+                                    "sys_property_type",
+                                    "sys_property_value",
+                                    "territory",
+                                    "tenancy",
+                                    "checkout_session",
+                                    "estimate_rate_result",
+                                    "rate_shop_option",
+                                    "rate_shop_result",
+                                    "owner",
+                                    "account_plan"
+                                ],
+                                "itemType": "string"
+                            }
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_cursor": null,
+                                "prev_cursor": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": []
+                        }
+                    }
+                ]
+            },
+            {
                 "operationId": "get-audit-event",
                 "summary": "Get Audit Event",
                 "description": "Returns an audit event by ID.",
@@ -5699,7 +6000,6 @@ export const apiTags: TagData[] = [
                                     "consumption",
                                     "customer_product_line_access",
                                     "customer",
-                                    "customer_summary",
                                     "frequently_ordered_product",
                                     "priority",
                                     "delivery",
@@ -5812,7 +6112,8 @@ export const apiTags: TagData[] = [
                                     "estimate_rate_result",
                                     "rate_shop_option",
                                     "rate_shop_result",
-                                    "owner"
+                                    "owner",
+                                    "account_plan"
                                 ]
                             },
                             {
@@ -20118,6 +20419,5702 @@ export const apiTags: TagData[] = [
         ]
     },
     {
+        "name": "Account Users Management",
+        "slug": "account-users-management",
+        "description": "List and manage account users.",
+        "domain": "identity",
+        "domainLabel": "Identity",
+        "resource": {
+            "name": "Account Users Management",
+            "description": "Account user with profile, role, and department.",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "Account user ID.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false
+                },
+                {
+                    "name": "object",
+                    "type": "string",
+                    "description": "Resource type identifier.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false,
+                    "enum": [
+                        "account_user"
+                    ]
+                },
+                {
+                    "name": "name",
+                    "type": "string",
+                    "description": "Display name.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": false
+                },
+                {
+                    "name": "email",
+                    "type": "string",
+                    "description": "Email address.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": false
+                },
+                {
+                    "name": "username",
+                    "type": "string",
+                    "description": "Username.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": false
+                },
+                {
+                    "name": "image_url",
+                    "type": "string",
+                    "description": "Profile image URL.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": false
+                },
+                {
+                    "name": "status",
+                    "type": "string",
+                    "description": "Account user status.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false,
+                    "enum": [
+                        "active",
+                        "disabled",
+                        "removed"
+                    ]
+                },
+                {
+                    "name": "role",
+                    "type": "object",
+                    "description": "Assigned role.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": true,
+                    "properties": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "description": "Role ID.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "object",
+                            "type": "string",
+                            "description": "Resource type identifier.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "role"
+                            ]
+                        },
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "description": "Display name.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "type",
+                            "type": "string",
+                            "description": "Role type code.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "admin",
+                                "user",
+                                "scanner",
+                                "sales_rep",
+                                "agent"
+                            ]
+                        },
+                        {
+                            "name": "owner",
+                            "type": "object",
+                            "description": "Owner of this resource.",
+                            "required": true,
+                            "nullable": true,
+                            "alwaysNull": true,
+                            "expandable": true
+                        },
+                        {
+                            "name": "permissions",
+                            "type": "array",
+                            "description": "Permissions in `{domain}:{action}` format.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": true,
+                            "itemType": "string"
+                        },
+                        {
+                            "name": "created_at",
+                            "type": "string",
+                            "description": "Creation timestamp.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "format": "date-time"
+                        },
+                        {
+                            "name": "updated_at",
+                            "type": "string",
+                            "description": "Last updated timestamp.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "format": "date-time"
+                        }
+                    ]
+                },
+                {
+                    "name": "department",
+                    "type": "object",
+                    "description": "Assigned department.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": true,
+                    "properties": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "description": "Department ID.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "object",
+                            "type": "string",
+                            "description": "Resource type identifier.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "department"
+                            ]
+                        },
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "description": "Display name.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "notes",
+                            "type": "string",
+                            "description": "Notes about the department.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": false
+                        },
+                        {
+                            "name": "location",
+                            "type": "object",
+                            "description": "Associated location.",
+                            "required": true,
+                            "nullable": true,
+                            "alwaysNull": true,
+                            "expandable": true
+                        },
+                        {
+                            "name": "scanning_stations",
+                            "type": "object",
+                            "description": "Scanning stations in this department.",
+                            "required": true,
+                            "nullable": true,
+                            "alwaysNull": true,
+                            "expandable": true
+                        },
+                        {
+                            "name": "machines",
+                            "type": "object",
+                            "description": "Machines in this department.",
+                            "required": true,
+                            "nullable": true,
+                            "alwaysNull": true,
+                            "expandable": true
+                        },
+                        {
+                            "name": "created_at",
+                            "type": "string",
+                            "description": "Creation timestamp.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "format": "date-time"
+                        },
+                        {
+                            "name": "updated_at",
+                            "type": "string",
+                            "description": "Last update timestamp.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "format": "date-time"
+                        }
+                    ]
+                },
+                {
+                    "name": "last_used_at",
+                    "type": "string",
+                    "description": "When the user last used this account.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": false,
+                    "format": "date-time"
+                },
+                {
+                    "name": "created_at",
+                    "type": "string",
+                    "description": "When the account user was created.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false,
+                    "format": "date-time"
+                },
+                {
+                    "name": "updated_at",
+                    "type": "string",
+                    "description": "When the account user was last updated.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false,
+                    "format": "date-time"
+                }
+            ],
+            "example": {
+                "id": "acus_01gf7a8200er3ar3pkfrb6kk29",
+                "object": "account_user",
+                "name": "John Doe",
+                "email": "john@augno.com",
+                "username": null,
+                "image_url": null,
+                "status": "active",
+                "role": {
+                    "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
+                    "object": "role",
+                    "name": "Admin",
+                    "type": "admin",
+                    "owner": {
+                        "object": "owner",
+                        "type": "account",
+                        "account": {
+                            "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                            "object": "account",
+                            "name": "Acme Inc.",
+                            "default_billing_address": null,
+                            "default_shipping_address": null,
+                            "branding": null,
+                            "portal": null,
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    },
+                    "permissions": [
+                        "customers:create",
+                        "customers:read",
+                        "customers:update",
+                        "customers:delete"
+                    ],
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
+                },
+                "department": null,
+                "last_used_at": null,
+                "created_at": "2026-05-10T00:00:00Z",
+                "updated_at": "2026-05-10T00:23:00Z"
+            }
+        },
+        "endpoints": [
+            {
+                "operationId": "create-account-user",
+                "summary": "Create Account User",
+                "description": "Creates an account user and invites them to the account.",
+                "method": "POST",
+                "path": "/v1/identity/account-users",
+                "domain": "identity",
+                "tag": "Account Users Management",
+                "tagSlug": "account-users-management",
+                "endpointSlug": "create-account-user",
+                "actionType": "create",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
+                        "enum": [
+                            "role",
+                            "department"
+                        ]
+                    }
+                ],
+                "requestBody": {
+                    "description": "The request body for Create Account User",
+                    "fields": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "description": "Display name.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": false
+                        },
+                        {
+                            "name": "email",
+                            "type": "string",
+                            "description": "Email address.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": false
+                        },
+                        {
+                            "name": "username",
+                            "type": "string",
+                            "description": "Username.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": false
+                        },
+                        {
+                            "name": "password",
+                            "type": "string",
+                            "description": "Password (only valid for scanner-role users backing a scanning station).",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": false
+                        },
+                        {
+                            "name": "role_id",
+                            "type": "string",
+                            "description": "Role ID. Expandable.",
+                            "required": false,
+                            "nullable": true,
+                            "expandable": false
+                        },
+                        {
+                            "name": "department_id",
+                            "type": "string",
+                            "description": "Department ID. Expandable.",
+                            "required": false,
+                            "nullable": true,
+                            "expandable": false
+                        },
+                        {
+                            "name": "preferences",
+                            "type": "array",
+                            "description": "Notification preferences to create for the new user (external targets only).",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "itemType": "object",
+                            "properties": [
+                                {
+                                    "name": "notification_type_code",
+                                    "type": "string",
+                                    "description": "Notification type code. Must match a value of constants.AccountRelationNotificationType.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "enum": [
+                                        "invoice",
+                                        "order_acknowledgement",
+                                        "purchase_order_submission"
+                                    ]
+                                },
+                                {
+                                    "name": "enabled",
+                                    "type": "boolean",
+                                    "description": "Whether this notification type is enabled for the account user.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                }
+                            ]
+                        }
+                    ],
+                    "example": {
+                        "name": "John Doe",
+                        "email": "jdoe@augno.com",
+                        "username": "jdoe",
+                        "password": "QgS7Z8Hhj3&1",
+                        "role_id": "rl_01gf7a8200er3ar3pkfrb6kk29",
+                        "preferences": [
+                            {
+                                "notification_type_code": "order_acknowledgement",
+                                "enabled": true
+                            }
+                        ]
+                    }
+                },
+                "responses": [
+                    {
+                        "statusCode": "201",
+                        "description": "Successful response for Create Account User",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string",
+                                "description": "Account user ID.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "account_user"
+                                ]
+                            },
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "description": "Display name.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "email",
+                                "type": "string",
+                                "description": "Email address.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "username",
+                                "type": "string",
+                                "description": "Username.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "image_url",
+                                "type": "string",
+                                "description": "Profile image URL.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "status",
+                                "type": "string",
+                                "description": "Account user status.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "active",
+                                    "disabled",
+                                    "removed"
+                                ]
+                            },
+                            {
+                                "name": "role",
+                                "type": "object",
+                                "description": "Assigned role.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Role ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "role"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "string",
+                                        "description": "Role type code.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "admin",
+                                            "user",
+                                            "scanner",
+                                            "sales_rep",
+                                            "agent"
+                                        ]
+                                    },
+                                    {
+                                        "name": "owner",
+                                        "type": "object",
+                                        "description": "Owner of this resource.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "permissions",
+                                        "type": "array",
+                                        "description": "Permissions in `{domain}:{action}` format.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "itemType": "string"
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "department",
+                                "type": "object",
+                                "description": "Assigned department.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Department ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "department"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "notes",
+                                        "type": "string",
+                                        "description": "Notes about the department.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "location",
+                                        "type": "object",
+                                        "description": "Associated location.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "scanning_stations",
+                                        "type": "object",
+                                        "description": "Scanning stations in this department.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "machines",
+                                        "type": "object",
+                                        "description": "Machines in this department.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last update timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "last_used_at",
+                                "type": "string",
+                                "description": "When the user last used this account.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "created_at",
+                                "type": "string",
+                                "description": "When the account user was created.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "updated_at",
+                                "type": "string",
+                                "description": "When the account user was last updated.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            }
+                        ],
+                        "example": {
+                            "id": "acus_01gf7a8200er3ar3pkfrb6kk29",
+                            "object": "account_user",
+                            "name": "John Doe",
+                            "email": "john@augno.com",
+                            "username": null,
+                            "image_url": null,
+                            "status": "active",
+                            "role": {
+                                "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
+                                "object": "role",
+                                "name": "Admin",
+                                "type": "admin",
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "account",
+                                    "account": {
+                                        "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                        "object": "account",
+                                        "name": "Acme Inc.",
+                                        "default_billing_address": null,
+                                        "default_shipping_address": null,
+                                        "branding": null,
+                                        "portal": null,
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                },
+                                "permissions": [
+                                    "customers:create",
+                                    "customers:read",
+                                    "customers:update",
+                                    "customers:delete"
+                                ],
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "department": null,
+                            "last_used_at": null,
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "update-account-user",
+                "summary": "Update Account User",
+                "description": "Partially updates an account user.",
+                "method": "PATCH",
+                "path": "/v1/identity/account-users/{id}",
+                "domain": "identity",
+                "tag": "Account Users Management",
+                "tagSlug": "account-users-management",
+                "endpointSlug": "update-account-user",
+                "actionType": "update",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Account user ID."
+                    }
+                ],
+                "requestBody": {
+                    "description": "The request body for Update Account User",
+                    "fields": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "description": "Display name.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "email",
+                            "type": "string",
+                            "description": "Email address.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "username",
+                            "type": "string",
+                            "description": "Username.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "role_id",
+                            "type": "string",
+                            "description": "Role ID. Send `null` to clear.",
+                            "required": false,
+                            "nullable": true,
+                            "expandable": false
+                        },
+                        {
+                            "name": "department_id",
+                            "type": "string",
+                            "description": "Department ID. Send `null` to clear.",
+                            "required": false,
+                            "nullable": true,
+                            "expandable": false
+                        },
+                        {
+                            "name": "preferences",
+                            "type": "array",
+                            "description": "Notification preferences to toggle (external targets only).",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "itemType": "object",
+                            "properties": [
+                                {
+                                    "name": "notification_type_code",
+                                    "type": "string",
+                                    "description": "Notification type code. Must match a value of constants.AccountRelationNotificationType.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "enum": [
+                                        "invoice",
+                                        "order_acknowledgement",
+                                        "purchase_order_submission"
+                                    ]
+                                },
+                                {
+                                    "name": "enabled",
+                                    "type": "boolean",
+                                    "description": "Whether this notification type is enabled for the account user.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                }
+                            ]
+                        }
+                    ],
+                    "example": {
+                        "name": "John Doe",
+                        "role_id": "rl_01gf7a8200er3ar3pkfrb6kk29",
+                        "department_id": "dp_01gf7a8200er3ar3pkfrb6kk30"
+                    }
+                },
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for Update Account User",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string",
+                                "description": "Account user ID.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "account_user"
+                                ]
+                            },
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "description": "Display name.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "email",
+                                "type": "string",
+                                "description": "Email address.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "username",
+                                "type": "string",
+                                "description": "Username.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "image_url",
+                                "type": "string",
+                                "description": "Profile image URL.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "status",
+                                "type": "string",
+                                "description": "Account user status.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "active",
+                                    "disabled",
+                                    "removed"
+                                ]
+                            },
+                            {
+                                "name": "role",
+                                "type": "object",
+                                "description": "Assigned role.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Role ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "role"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "string",
+                                        "description": "Role type code.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "admin",
+                                            "user",
+                                            "scanner",
+                                            "sales_rep",
+                                            "agent"
+                                        ]
+                                    },
+                                    {
+                                        "name": "owner",
+                                        "type": "object",
+                                        "description": "Owner of this resource.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "owner"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "system",
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "account",
+                                                "type": "object",
+                                                "description": "The account that owns this resource. `null` if the object is system-owned.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Account ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "account"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "default_billing_address",
+                                                        "type": "object",
+                                                        "description": "Default billing address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": true,
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "Address ID.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "address"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "name",
+                                                                "type": "string",
+                                                                "description": "Display name of the address.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "phone",
+                                                                "type": "string",
+                                                                "description": "Phone number associated with the address.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "email",
+                                                                "type": "string",
+                                                                "description": "Email address associated with the address.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "is_drop_ship",
+                                                                "type": "boolean",
+                                                                "description": "Whether the address is a drop ship location.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "geolocation",
+                                                                "type": "object",
+                                                                "description": "Geolocation details for the address.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Geolocation ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "geolocation"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "street_line_1",
+                                                                        "type": "string",
+                                                                        "description": "First line of the street address.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "street_line_2",
+                                                                        "type": "string",
+                                                                        "description": "Second line of the street address.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "locality",
+                                                                        "type": "string",
+                                                                        "description": "City or locality.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "state",
+                                                                        "type": "string",
+                                                                        "description": "State or administrative area.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "postal_code",
+                                                                        "type": "string",
+                                                                        "description": "Postal or ZIP code.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "country",
+                                                                        "type": "string",
+                                                                        "description": "Two-letter country code.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "created_at",
+                                                                "type": "string",
+                                                                "description": "Creation timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            },
+                                                            {
+                                                                "name": "updated_at",
+                                                                "type": "string",
+                                                                "description": "Last updated timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "default_shipping_address",
+                                                        "type": "object",
+                                                        "description": "Default shipping address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": true,
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "Address ID.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "address"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "name",
+                                                                "type": "string",
+                                                                "description": "Display name of the address.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "phone",
+                                                                "type": "string",
+                                                                "description": "Phone number associated with the address.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "email",
+                                                                "type": "string",
+                                                                "description": "Email address associated with the address.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "is_drop_ship",
+                                                                "type": "boolean",
+                                                                "description": "Whether the address is a drop ship location.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "geolocation",
+                                                                "type": "object",
+                                                                "description": "Geolocation details for the address.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Geolocation ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "geolocation"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "street_line_1",
+                                                                        "type": "string",
+                                                                        "description": "First line of the street address.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "street_line_2",
+                                                                        "type": "string",
+                                                                        "description": "Second line of the street address.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "locality",
+                                                                        "type": "string",
+                                                                        "description": "City or locality.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "state",
+                                                                        "type": "string",
+                                                                        "description": "State or administrative area.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "postal_code",
+                                                                        "type": "string",
+                                                                        "description": "Postal or ZIP code.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "country",
+                                                                        "type": "string",
+                                                                        "description": "Two-letter country code.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "created_at",
+                                                                "type": "string",
+                                                                "description": "Creation timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            },
+                                                            {
+                                                                "name": "updated_at",
+                                                                "type": "string",
+                                                                "description": "Last updated timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "branding",
+                                                        "type": "object",
+                                                        "description": "Branding configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": true,
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "Branding ID.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "account_branding"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "support_email",
+                                                                "type": "string",
+                                                                "description": "Support email address.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "phone_number",
+                                                                "type": "string",
+                                                                "description": "Support phone number.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "logo_url",
+                                                                "type": "string",
+                                                                "description": "Logo URL (S3 key).",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "facebook_handle",
+                                                                "type": "string",
+                                                                "description": "Facebook handle.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "instagram_handle",
+                                                                "type": "string",
+                                                                "description": "Instagram handle.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "linkedin_handle",
+                                                                "type": "string",
+                                                                "description": "LinkedIn handle.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "twitter_handle",
+                                                                "type": "string",
+                                                                "description": "Twitter handle.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "website_url",
+                                                                "type": "string",
+                                                                "description": "Website URL.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "created_at",
+                                                                "type": "string",
+                                                                "description": "Creation timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            },
+                                                            {
+                                                                "name": "updated_at",
+                                                                "type": "string",
+                                                                "description": "Last updated timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "portal",
+                                                        "type": "object",
+                                                        "description": "Portal configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": true,
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "Portal ID.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "account_portal"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "slug",
+                                                                "type": "string",
+                                                                "description": "Portal slug.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "created_at",
+                                                                "type": "string",
+                                                                "description": "Creation timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            },
+                                                            {
+                                                                "name": "updated_at",
+                                                                "type": "string",
+                                                                "description": "Last updated timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "permissions",
+                                        "type": "array",
+                                        "description": "Permissions in `{domain}:{action}` format.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "itemType": "string"
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "department",
+                                "type": "object",
+                                "description": "Assigned department.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Department ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "department"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "notes",
+                                        "type": "string",
+                                        "description": "Notes about the department.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "location",
+                                        "type": "object",
+                                        "description": "Associated location.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Location ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "location"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "Location type code.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "building",
+                                                    "section",
+                                                    "aisle",
+                                                    "rack",
+                                                    "shelf",
+                                                    "bin"
+                                                ]
+                                            },
+                                            {
+                                                "name": "parent",
+                                                "type": "object",
+                                                "description": "Parent location. Null for top-level locations. Expandable.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Location ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "location"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "type",
+                                                        "type": "string",
+                                                        "description": "Location type code.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "building",
+                                                            "section",
+                                                            "aisle",
+                                                            "rack",
+                                                            "shelf",
+                                                            "bin"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "parent",
+                                                        "type": "object",
+                                                        "description": "Parent location. Null for top-level locations. Expandable.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": true,
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "Location ID.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "location"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "name",
+                                                                "type": "string",
+                                                                "description": "Display name.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "type",
+                                                                "type": "string",
+                                                                "description": "Location type code.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "building",
+                                                                    "section",
+                                                                    "aisle",
+                                                                    "rack",
+                                                                    "shelf",
+                                                                    "bin"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "parent",
+                                                                "type": "object",
+                                                                "description": "Parent location. Null for top-level locations. Expandable.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Location ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "location"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "name",
+                                                                        "type": "string",
+                                                                        "description": "Display name.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "type",
+                                                                        "type": "string",
+                                                                        "description": "Location type code.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "building",
+                                                                            "section",
+                                                                            "aisle",
+                                                                            "rack",
+                                                                            "shelf",
+                                                                            "bin"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "parent",
+                                                                        "type": "object",
+                                                                        "description": "Parent location. Null for top-level locations. Expandable.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "children",
+                                                                        "type": "object",
+                                                                        "description": "Child locations. Expandable.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "created_at",
+                                                                        "type": "string",
+                                                                        "description": "Creation timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    },
+                                                                    {
+                                                                        "name": "updated_at",
+                                                                        "type": "string",
+                                                                        "description": "Last-updated timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "children",
+                                                                "type": "object",
+                                                                "description": "Child locations. Expandable.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Object type for Location list",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "list"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "page_info",
+                                                                        "type": "object",
+                                                                        "description": "Pagination metadata for Location list",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "data",
+                                                                        "type": "array",
+                                                                        "description": "Array of Location resources in this page",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "itemType": "object",
+                                                                        "properties": []
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "created_at",
+                                                                "type": "string",
+                                                                "description": "Creation timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            },
+                                                            {
+                                                                "name": "updated_at",
+                                                                "type": "string",
+                                                                "description": "Last-updated timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "children",
+                                                        "type": "object",
+                                                        "description": "Child locations. Expandable.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": true,
+                                                        "properties": [
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Object type for Location list",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "list"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "page_info",
+                                                                "type": "object",
+                                                                "description": "Pagination metadata for Location list",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "next_cursor",
+                                                                        "type": "string",
+                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "prev_cursor",
+                                                                        "type": "string",
+                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "has_next_page",
+                                                                        "type": "boolean",
+                                                                        "description": "Whether more results exist after this page.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "has_prev_page",
+                                                                        "type": "boolean",
+                                                                        "description": "Whether results exist before this page.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "data",
+                                                                "type": "array",
+                                                                "description": "Array of Location resources in this page",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "itemType": "object",
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Location ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "location"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "name",
+                                                                        "type": "string",
+                                                                        "description": "Display name.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "type",
+                                                                        "type": "string",
+                                                                        "description": "Location type code.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "building",
+                                                                            "section",
+                                                                            "aisle",
+                                                                            "rack",
+                                                                            "shelf",
+                                                                            "bin"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "parent",
+                                                                        "type": "object",
+                                                                        "description": "Parent location. Null for top-level locations. Expandable.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "children",
+                                                                        "type": "object",
+                                                                        "description": "Child locations. Expandable.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "created_at",
+                                                                        "type": "string",
+                                                                        "description": "Creation timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    },
+                                                                    {
+                                                                        "name": "updated_at",
+                                                                        "type": "string",
+                                                                        "description": "Last-updated timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last-updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "children",
+                                                "type": "object",
+                                                "description": "Child locations. Expandable.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Object type for Location list",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "list"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "page_info",
+                                                        "type": "object",
+                                                        "description": "Pagination metadata for Location list",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "properties": [
+                                                            {
+                                                                "name": "next_cursor",
+                                                                "type": "string",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "prev_cursor",
+                                                                "type": "string",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "has_next_page",
+                                                                "type": "boolean",
+                                                                "description": "Whether more results exist after this page.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "has_prev_page",
+                                                                "type": "boolean",
+                                                                "description": "Whether results exist before this page.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "data",
+                                                        "type": "array",
+                                                        "description": "Array of Location resources in this page",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "itemType": "object",
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "Location ID.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "location"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "name",
+                                                                "type": "string",
+                                                                "description": "Display name.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "type",
+                                                                "type": "string",
+                                                                "description": "Location type code.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "building",
+                                                                    "section",
+                                                                    "aisle",
+                                                                    "rack",
+                                                                    "shelf",
+                                                                    "bin"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "parent",
+                                                                "type": "object",
+                                                                "description": "Parent location. Null for top-level locations. Expandable.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Location ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "location"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "name",
+                                                                        "type": "string",
+                                                                        "description": "Display name.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "type",
+                                                                        "type": "string",
+                                                                        "description": "Location type code.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "building",
+                                                                            "section",
+                                                                            "aisle",
+                                                                            "rack",
+                                                                            "shelf",
+                                                                            "bin"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "parent",
+                                                                        "type": "object",
+                                                                        "description": "Parent location. Null for top-level locations. Expandable.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "children",
+                                                                        "type": "object",
+                                                                        "description": "Child locations. Expandable.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "created_at",
+                                                                        "type": "string",
+                                                                        "description": "Creation timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    },
+                                                                    {
+                                                                        "name": "updated_at",
+                                                                        "type": "string",
+                                                                        "description": "Last-updated timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "children",
+                                                                "type": "object",
+                                                                "description": "Child locations. Expandable.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Object type for Location list",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "list"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "page_info",
+                                                                        "type": "object",
+                                                                        "description": "Pagination metadata for Location list",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "data",
+                                                                        "type": "array",
+                                                                        "description": "Array of Location resources in this page",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "itemType": "object",
+                                                                        "properties": []
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "created_at",
+                                                                "type": "string",
+                                                                "description": "Creation timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            },
+                                                            {
+                                                                "name": "updated_at",
+                                                                "type": "string",
+                                                                "description": "Last-updated timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last-updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "scanning_stations",
+                                        "type": "object",
+                                        "description": "Scanning stations in this department.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Object type for ScanningStation list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "list"
+                                                ]
+                                            },
+                                            {
+                                                "name": "page_info",
+                                                "type": "object",
+                                                "description": "Pagination metadata for ScanningStation list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "properties": [
+                                                    {
+                                                        "name": "next_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "prev_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_next_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether more results exist after this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_prev_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether results exist before this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "array",
+                                                "description": "Array of ScanningStation resources in this page",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "itemType": "object",
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Scanning station ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "scanning_station"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "notes",
+                                                        "type": "string",
+                                                        "description": "Notes.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "type",
+                                                        "type": "string",
+                                                        "description": "Scanning station type.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "init_batch",
+                                                            "merge_batch",
+                                                            "move_batch",
+                                                            "split_batch"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "label_size",
+                                                        "type": "string",
+                                                        "description": "Label size code.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "1x1",
+                                                            "1x3",
+                                                            "1x4",
+                                                            "2x4"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "label_type",
+                                                        "type": "string",
+                                                        "description": "Label type code.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "tag",
+                                                            "traveler"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "material_check_required",
+                                                        "type": "boolean",
+                                                        "description": "Whether material check is required.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "department",
+                                                        "type": "object",
+                                                        "description": "Department.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": true,
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "Department ID.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "department"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "name",
+                                                                "type": "string",
+                                                                "description": "Display name.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "notes",
+                                                                "type": "string",
+                                                                "description": "Notes about the department.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "location",
+                                                                "type": "object",
+                                                                "description": "Associated location.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Location ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "location"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "name",
+                                                                        "type": "string",
+                                                                        "description": "Display name.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "type",
+                                                                        "type": "string",
+                                                                        "description": "Location type code.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "building",
+                                                                            "section",
+                                                                            "aisle",
+                                                                            "rack",
+                                                                            "shelf",
+                                                                            "bin"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "parent",
+                                                                        "type": "object",
+                                                                        "description": "Parent location. Null for top-level locations. Expandable.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "children",
+                                                                        "type": "object",
+                                                                        "description": "Child locations. Expandable.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "created_at",
+                                                                        "type": "string",
+                                                                        "description": "Creation timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    },
+                                                                    {
+                                                                        "name": "updated_at",
+                                                                        "type": "string",
+                                                                        "description": "Last-updated timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "scanning_stations",
+                                                                "type": "object",
+                                                                "description": "Scanning stations in this department.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Object type for ScanningStation list",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "list"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "page_info",
+                                                                        "type": "object",
+                                                                        "description": "Pagination metadata for ScanningStation list",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "data",
+                                                                        "type": "array",
+                                                                        "description": "Array of ScanningStation resources in this page",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "itemType": "object",
+                                                                        "properties": []
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "machines",
+                                                                "type": "object",
+                                                                "description": "Machines in this department.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Object type for Machine list",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "list"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "page_info",
+                                                                        "type": "object",
+                                                                        "description": "Pagination metadata for Machine list",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "data",
+                                                                        "type": "array",
+                                                                        "description": "Array of Machine resources in this page",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "itemType": "object",
+                                                                        "properties": []
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "created_at",
+                                                                "type": "string",
+                                                                "description": "Creation timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            },
+                                                            {
+                                                                "name": "updated_at",
+                                                                "type": "string",
+                                                                "description": "Last update timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "production_steps",
+                                                        "type": "object",
+                                                        "description": "Connected production steps.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": true,
+                                                        "properties": [
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Object type for ProductionStep list",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "list"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "page_info",
+                                                                "type": "object",
+                                                                "description": "Pagination metadata for ProductionStep list",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "next_cursor",
+                                                                        "type": "string",
+                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "prev_cursor",
+                                                                        "type": "string",
+                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "has_next_page",
+                                                                        "type": "boolean",
+                                                                        "description": "Whether more results exist after this page.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "has_prev_page",
+                                                                        "type": "boolean",
+                                                                        "description": "Whether results exist before this page.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "data",
+                                                                "type": "array",
+                                                                "description": "Array of ProductionStep resources in this page",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "itemType": "object",
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Production step ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "production_step"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "name",
+                                                                        "type": "string",
+                                                                        "description": "Display name.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "notes",
+                                                                        "type": "string",
+                                                                        "description": "Notes.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "leveling_factor",
+                                                                        "type": "string",
+                                                                        "description": "Leveling factor as a decimal string.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "decimal"
+                                                                    },
+                                                                    {
+                                                                        "name": "allowances",
+                                                                        "type": "string",
+                                                                        "description": "Allowances as a decimal string.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "decimal"
+                                                                    },
+                                                                    {
+                                                                        "name": "labor_rate",
+                                                                        "type": "object",
+                                                                        "description": "Labor rate.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "labor_time",
+                                                                        "type": "object",
+                                                                        "description": "Labor time.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "overhead_rate",
+                                                                        "type": "object",
+                                                                        "description": "Overhead rate.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "production",
+                                                                        "type": "object",
+                                                                        "description": "Production output.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "consumptions",
+                                                                        "type": "array",
+                                                                        "description": "Consumptions.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "itemType": "object",
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "machines",
+                                                                        "type": "array",
+                                                                        "description": "Machines assigned to this step.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "itemType": "object",
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "scanning_station",
+                                                                        "type": "object",
+                                                                        "description": "Scanning station.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "in_steps",
+                                                                        "type": "array",
+                                                                        "description": "Input steps feeding into this step.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "itemType": "object",
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "out_steps",
+                                                                        "type": "array",
+                                                                        "description": "Output steps this step feeds into.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "itemType": "object",
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "department",
+                                                                        "type": "object",
+                                                                        "description": "Department.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "created_at",
+                                                                        "type": "string",
+                                                                        "description": "Creation timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    },
+                                                                    {
+                                                                        "name": "updated_at",
+                                                                        "type": "string",
+                                                                        "description": "Last updated timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "machines",
+                                        "type": "object",
+                                        "description": "Machines in this department.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Object type for Machine list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "list"
+                                                ]
+                                            },
+                                            {
+                                                "name": "page_info",
+                                                "type": "object",
+                                                "description": "Pagination metadata for Machine list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "properties": [
+                                                    {
+                                                        "name": "next_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "prev_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_next_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether more results exist after this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_prev_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether results exist before this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "array",
+                                                "description": "Array of Machine resources in this page",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "itemType": "object",
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Machine ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "machine"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "serial_number",
+                                                        "type": "string",
+                                                        "description": "Serial number.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "notes",
+                                                        "type": "string",
+                                                        "description": "Notes.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "department",
+                                                        "type": "object",
+                                                        "description": "Associated department.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": true,
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "Department ID.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "department"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "name",
+                                                                "type": "string",
+                                                                "description": "Display name.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "notes",
+                                                                "type": "string",
+                                                                "description": "Notes about the department.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "location",
+                                                                "type": "object",
+                                                                "description": "Associated location.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Location ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "location"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "name",
+                                                                        "type": "string",
+                                                                        "description": "Display name.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "type",
+                                                                        "type": "string",
+                                                                        "description": "Location type code.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "building",
+                                                                            "section",
+                                                                            "aisle",
+                                                                            "rack",
+                                                                            "shelf",
+                                                                            "bin"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "parent",
+                                                                        "type": "object",
+                                                                        "description": "Parent location. Null for top-level locations. Expandable.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "children",
+                                                                        "type": "object",
+                                                                        "description": "Child locations. Expandable.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "created_at",
+                                                                        "type": "string",
+                                                                        "description": "Creation timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    },
+                                                                    {
+                                                                        "name": "updated_at",
+                                                                        "type": "string",
+                                                                        "description": "Last-updated timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "scanning_stations",
+                                                                "type": "object",
+                                                                "description": "Scanning stations in this department.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Object type for ScanningStation list",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "list"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "page_info",
+                                                                        "type": "object",
+                                                                        "description": "Pagination metadata for ScanningStation list",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "data",
+                                                                        "type": "array",
+                                                                        "description": "Array of ScanningStation resources in this page",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "itemType": "object",
+                                                                        "properties": []
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "machines",
+                                                                "type": "object",
+                                                                "description": "Machines in this department.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Object type for Machine list",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "list"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "page_info",
+                                                                        "type": "object",
+                                                                        "description": "Pagination metadata for Machine list",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "data",
+                                                                        "type": "array",
+                                                                        "description": "Array of Machine resources in this page",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "itemType": "object",
+                                                                        "properties": []
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "created_at",
+                                                                "type": "string",
+                                                                "description": "Creation timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            },
+                                                            {
+                                                                "name": "updated_at",
+                                                                "type": "string",
+                                                                "description": "Last update timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last update timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "last_used_at",
+                                "type": "string",
+                                "description": "When the user last used this account.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "created_at",
+                                "type": "string",
+                                "description": "When the account user was created.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "updated_at",
+                                "type": "string",
+                                "description": "When the account user was last updated.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            }
+                        ],
+                        "example": {
+                            "id": "acus_01gf7a8200er3ar3pkfrb6kk29",
+                            "object": "account_user",
+                            "name": "John Doe",
+                            "email": "john@augno.com",
+                            "username": null,
+                            "image_url": null,
+                            "status": "active",
+                            "role": {
+                                "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
+                                "object": "role",
+                                "name": "Admin",
+                                "type": "admin",
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "account",
+                                    "account": {
+                                        "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                        "object": "account",
+                                        "name": "Acme Inc.",
+                                        "default_billing_address": null,
+                                        "default_shipping_address": null,
+                                        "branding": null,
+                                        "portal": null,
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                },
+                                "permissions": [
+                                    "customers:create",
+                                    "customers:read",
+                                    "customers:update",
+                                    "customers:delete"
+                                ],
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "department": null,
+                            "last_used_at": null,
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "list-account-users",
+                "summary": "List Account Users",
+                "description": "Returns a paginated list of account users for the current account.",
+                "method": "GET",
+                "path": "/v1/identity/account-users",
+                "domain": "identity",
+                "tag": "Account Users Management",
+                "tagSlug": "account-users-management",
+                "endpointSlug": "list-account-users",
+                "actionType": "list",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Query parameter: cursor for List Account Users"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "type": "integer",
+                        "required": false,
+                        "description": "Query parameter: limit for List Account Users"
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Query parameter: q for List Account Users"
+                    },
+                    {
+                        "name": "role_type",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Filter by role type code.",
+                        "enum": [
+                            "admin",
+                            "user",
+                            "scanner",
+                            "sales_rep",
+                            "agent"
+                        ]
+                    },
+                    {
+                        "name": "include_removed",
+                        "in": "query",
+                        "type": "boolean",
+                        "required": false,
+                        "description": "Whether to include removed account users."
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for List Account Users",
+                        "fields": [
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Object type for AccountUser list",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "list"
+                                ]
+                            },
+                            {
+                                "name": "page_info",
+                                "type": "object",
+                                "description": "Pagination metadata for AccountUser list",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "properties": [
+                                    {
+                                        "name": "next_cursor",
+                                        "type": "string",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "prev_cursor",
+                                        "type": "string",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_next_page",
+                                        "type": "boolean",
+                                        "description": "Whether more results exist after this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_prev_page",
+                                        "type": "boolean",
+                                        "description": "Whether results exist before this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "data",
+                                "type": "array",
+                                "description": "Array of AccountUser resources in this page",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "itemType": "object",
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Account user ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "account_user"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "email",
+                                        "type": "string",
+                                        "description": "Email address.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "username",
+                                        "type": "string",
+                                        "description": "Username.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "image_url",
+                                        "type": "string",
+                                        "description": "Profile image URL.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "status",
+                                        "type": "string",
+                                        "description": "Account user status.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "active",
+                                            "disabled",
+                                            "removed"
+                                        ]
+                                    },
+                                    {
+                                        "name": "role",
+                                        "type": "object",
+                                        "description": "Assigned role.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Role ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "role"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "Role type code.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "admin",
+                                                    "user",
+                                                    "scanner",
+                                                    "sales_rep",
+                                                    "agent"
+                                                ]
+                                            },
+                                            {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "Owner of this resource.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "owner"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "type",
+                                                        "type": "string",
+                                                        "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "system",
+                                                            "account"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "account",
+                                                        "type": "object",
+                                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": true,
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "Account ID.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "account"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "name",
+                                                                "type": "string",
+                                                                "description": "Display name.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "default_billing_address",
+                                                                "type": "object",
+                                                                "description": "Default billing address.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Address ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "address"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "name",
+                                                                        "type": "string",
+                                                                        "description": "Display name of the address.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "phone",
+                                                                        "type": "string",
+                                                                        "description": "Phone number associated with the address.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "email",
+                                                                        "type": "string",
+                                                                        "description": "Email address associated with the address.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "is_drop_ship",
+                                                                        "type": "boolean",
+                                                                        "description": "Whether the address is a drop ship location.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "geolocation",
+                                                                        "type": "object",
+                                                                        "description": "Geolocation details for the address.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "created_at",
+                                                                        "type": "string",
+                                                                        "description": "Creation timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    },
+                                                                    {
+                                                                        "name": "updated_at",
+                                                                        "type": "string",
+                                                                        "description": "Last updated timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "default_shipping_address",
+                                                                "type": "object",
+                                                                "description": "Default shipping address.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Address ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "address"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "name",
+                                                                        "type": "string",
+                                                                        "description": "Display name of the address.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "phone",
+                                                                        "type": "string",
+                                                                        "description": "Phone number associated with the address.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "email",
+                                                                        "type": "string",
+                                                                        "description": "Email address associated with the address.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "is_drop_ship",
+                                                                        "type": "boolean",
+                                                                        "description": "Whether the address is a drop ship location.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "geolocation",
+                                                                        "type": "object",
+                                                                        "description": "Geolocation details for the address.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "created_at",
+                                                                        "type": "string",
+                                                                        "description": "Creation timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    },
+                                                                    {
+                                                                        "name": "updated_at",
+                                                                        "type": "string",
+                                                                        "description": "Last updated timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "branding",
+                                                                "type": "object",
+                                                                "description": "Branding configuration.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Branding ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "account_branding"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "support_email",
+                                                                        "type": "string",
+                                                                        "description": "Support email address.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "phone_number",
+                                                                        "type": "string",
+                                                                        "description": "Support phone number.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "logo_url",
+                                                                        "type": "string",
+                                                                        "description": "Logo URL (S3 key).",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "facebook_handle",
+                                                                        "type": "string",
+                                                                        "description": "Facebook handle.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "instagram_handle",
+                                                                        "type": "string",
+                                                                        "description": "Instagram handle.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "linkedin_handle",
+                                                                        "type": "string",
+                                                                        "description": "LinkedIn handle.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "twitter_handle",
+                                                                        "type": "string",
+                                                                        "description": "Twitter handle.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "website_url",
+                                                                        "type": "string",
+                                                                        "description": "Website URL.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "created_at",
+                                                                        "type": "string",
+                                                                        "description": "Creation timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    },
+                                                                    {
+                                                                        "name": "updated_at",
+                                                                        "type": "string",
+                                                                        "description": "Last updated timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "portal",
+                                                                "type": "object",
+                                                                "description": "Portal configuration.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Portal ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "account_portal"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "slug",
+                                                                        "type": "string",
+                                                                        "description": "Portal slug.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "created_at",
+                                                                        "type": "string",
+                                                                        "description": "Creation timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    },
+                                                                    {
+                                                                        "name": "updated_at",
+                                                                        "type": "string",
+                                                                        "description": "Last updated timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "created_at",
+                                                                "type": "string",
+                                                                "description": "Creation timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            },
+                                                            {
+                                                                "name": "updated_at",
+                                                                "type": "string",
+                                                                "description": "Last updated timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "permissions",
+                                                "type": "array",
+                                                "description": "Permissions in `{domain}:{action}` format.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "itemType": "string"
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "department",
+                                        "type": "object",
+                                        "description": "Assigned department.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Department ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "department"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "notes",
+                                                "type": "string",
+                                                "description": "Notes about the department.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "location",
+                                                "type": "object",
+                                                "description": "Associated location.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Location ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "location"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "type",
+                                                        "type": "string",
+                                                        "description": "Location type code.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "building",
+                                                            "section",
+                                                            "aisle",
+                                                            "rack",
+                                                            "shelf",
+                                                            "bin"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "parent",
+                                                        "type": "object",
+                                                        "description": "Parent location. Null for top-level locations. Expandable.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": true,
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "Location ID.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "location"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "name",
+                                                                "type": "string",
+                                                                "description": "Display name.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "type",
+                                                                "type": "string",
+                                                                "description": "Location type code.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "building",
+                                                                    "section",
+                                                                    "aisle",
+                                                                    "rack",
+                                                                    "shelf",
+                                                                    "bin"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "parent",
+                                                                "type": "object",
+                                                                "description": "Parent location. Null for top-level locations. Expandable.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Location ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "location"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "name",
+                                                                        "type": "string",
+                                                                        "description": "Display name.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "type",
+                                                                        "type": "string",
+                                                                        "description": "Location type code.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "building",
+                                                                            "section",
+                                                                            "aisle",
+                                                                            "rack",
+                                                                            "shelf",
+                                                                            "bin"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "parent",
+                                                                        "type": "object",
+                                                                        "description": "Parent location. Null for top-level locations. Expandable.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "children",
+                                                                        "type": "object",
+                                                                        "description": "Child locations. Expandable.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "created_at",
+                                                                        "type": "string",
+                                                                        "description": "Creation timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    },
+                                                                    {
+                                                                        "name": "updated_at",
+                                                                        "type": "string",
+                                                                        "description": "Last-updated timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "children",
+                                                                "type": "object",
+                                                                "description": "Child locations. Expandable.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Object type for Location list",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "list"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "page_info",
+                                                                        "type": "object",
+                                                                        "description": "Pagination metadata for Location list",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "data",
+                                                                        "type": "array",
+                                                                        "description": "Array of Location resources in this page",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "itemType": "object",
+                                                                        "properties": []
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "created_at",
+                                                                "type": "string",
+                                                                "description": "Creation timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            },
+                                                            {
+                                                                "name": "updated_at",
+                                                                "type": "string",
+                                                                "description": "Last-updated timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "children",
+                                                        "type": "object",
+                                                        "description": "Child locations. Expandable.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": true,
+                                                        "properties": [
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Object type for Location list",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "list"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "page_info",
+                                                                "type": "object",
+                                                                "description": "Pagination metadata for Location list",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "next_cursor",
+                                                                        "type": "string",
+                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "prev_cursor",
+                                                                        "type": "string",
+                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "has_next_page",
+                                                                        "type": "boolean",
+                                                                        "description": "Whether more results exist after this page.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "has_prev_page",
+                                                                        "type": "boolean",
+                                                                        "description": "Whether results exist before this page.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "data",
+                                                                "type": "array",
+                                                                "description": "Array of Location resources in this page",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "itemType": "object",
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Location ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "location"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "name",
+                                                                        "type": "string",
+                                                                        "description": "Display name.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "type",
+                                                                        "type": "string",
+                                                                        "description": "Location type code.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "building",
+                                                                            "section",
+                                                                            "aisle",
+                                                                            "rack",
+                                                                            "shelf",
+                                                                            "bin"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "parent",
+                                                                        "type": "object",
+                                                                        "description": "Parent location. Null for top-level locations. Expandable.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "children",
+                                                                        "type": "object",
+                                                                        "description": "Child locations. Expandable.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "created_at",
+                                                                        "type": "string",
+                                                                        "description": "Creation timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    },
+                                                                    {
+                                                                        "name": "updated_at",
+                                                                        "type": "string",
+                                                                        "description": "Last-updated timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last-updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "scanning_stations",
+                                                "type": "object",
+                                                "description": "Scanning stations in this department.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Object type for ScanningStation list",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "list"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "page_info",
+                                                        "type": "object",
+                                                        "description": "Pagination metadata for ScanningStation list",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "properties": [
+                                                            {
+                                                                "name": "next_cursor",
+                                                                "type": "string",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "prev_cursor",
+                                                                "type": "string",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "has_next_page",
+                                                                "type": "boolean",
+                                                                "description": "Whether more results exist after this page.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "has_prev_page",
+                                                                "type": "boolean",
+                                                                "description": "Whether results exist before this page.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "data",
+                                                        "type": "array",
+                                                        "description": "Array of ScanningStation resources in this page",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "itemType": "object",
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "Scanning station ID.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "scanning_station"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "name",
+                                                                "type": "string",
+                                                                "description": "Display name.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "notes",
+                                                                "type": "string",
+                                                                "description": "Notes.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "type",
+                                                                "type": "string",
+                                                                "description": "Scanning station type.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "init_batch",
+                                                                    "merge_batch",
+                                                                    "move_batch",
+                                                                    "split_batch"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "label_size",
+                                                                "type": "string",
+                                                                "description": "Label size code.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "1x1",
+                                                                    "1x3",
+                                                                    "1x4",
+                                                                    "2x4"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "label_type",
+                                                                "type": "string",
+                                                                "description": "Label type code.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "tag",
+                                                                    "traveler"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "material_check_required",
+                                                                "type": "boolean",
+                                                                "description": "Whether material check is required.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "department",
+                                                                "type": "object",
+                                                                "description": "Department.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Department ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "department"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "name",
+                                                                        "type": "string",
+                                                                        "description": "Display name.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "notes",
+                                                                        "type": "string",
+                                                                        "description": "Notes about the department.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "location",
+                                                                        "type": "object",
+                                                                        "description": "Associated location.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "scanning_stations",
+                                                                        "type": "object",
+                                                                        "description": "Scanning stations in this department.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "machines",
+                                                                        "type": "object",
+                                                                        "description": "Machines in this department.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "created_at",
+                                                                        "type": "string",
+                                                                        "description": "Creation timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    },
+                                                                    {
+                                                                        "name": "updated_at",
+                                                                        "type": "string",
+                                                                        "description": "Last update timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "production_steps",
+                                                                "type": "object",
+                                                                "description": "Connected production steps.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Object type for ProductionStep list",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "list"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "page_info",
+                                                                        "type": "object",
+                                                                        "description": "Pagination metadata for ProductionStep list",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "data",
+                                                                        "type": "array",
+                                                                        "description": "Array of ProductionStep resources in this page",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "itemType": "object",
+                                                                        "properties": []
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "created_at",
+                                                                "type": "string",
+                                                                "description": "Creation timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            },
+                                                            {
+                                                                "name": "updated_at",
+                                                                "type": "string",
+                                                                "description": "Last updated timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "machines",
+                                                "type": "object",
+                                                "description": "Machines in this department.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Object type for Machine list",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "list"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "page_info",
+                                                        "type": "object",
+                                                        "description": "Pagination metadata for Machine list",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "properties": [
+                                                            {
+                                                                "name": "next_cursor",
+                                                                "type": "string",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "prev_cursor",
+                                                                "type": "string",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "has_next_page",
+                                                                "type": "boolean",
+                                                                "description": "Whether more results exist after this page.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "has_prev_page",
+                                                                "type": "boolean",
+                                                                "description": "Whether results exist before this page.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "data",
+                                                        "type": "array",
+                                                        "description": "Array of Machine resources in this page",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "itemType": "object",
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "Machine ID.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "machine"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "name",
+                                                                "type": "string",
+                                                                "description": "Display name.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "serial_number",
+                                                                "type": "string",
+                                                                "description": "Serial number.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "notes",
+                                                                "type": "string",
+                                                                "description": "Notes.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "department",
+                                                                "type": "object",
+                                                                "description": "Associated department.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Department ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "department"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "name",
+                                                                        "type": "string",
+                                                                        "description": "Display name.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "notes",
+                                                                        "type": "string",
+                                                                        "description": "Notes about the department.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "location",
+                                                                        "type": "object",
+                                                                        "description": "Associated location.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "scanning_stations",
+                                                                        "type": "object",
+                                                                        "description": "Scanning stations in this department.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "machines",
+                                                                        "type": "object",
+                                                                        "description": "Machines in this department.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": true,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "created_at",
+                                                                        "type": "string",
+                                                                        "description": "Creation timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    },
+                                                                    {
+                                                                        "name": "updated_at",
+                                                                        "type": "string",
+                                                                        "description": "Last update timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "created_at",
+                                                                "type": "string",
+                                                                "description": "Creation timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            },
+                                                            {
+                                                                "name": "updated_at",
+                                                                "type": "string",
+                                                                "description": "Last updated timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last update timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "last_used_at",
+                                        "type": "string",
+                                        "description": "When the user last used this account.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "When the account user was created.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "When the account user was last updated.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            }
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_cursor": "acus_01gf7a8200er3ar3pkfrb6kk29",
+                                "prev_cursor": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "acus_01gf7a8200er3ar3pkfrb6kk29",
+                                    "object": "account_user",
+                                    "name": "John Doe",
+                                    "email": "john@augno.com",
+                                    "username": null,
+                                    "image_url": null,
+                                    "status": "active",
+                                    "role": {
+                                        "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
+                                        "object": "role",
+                                        "name": "Admin",
+                                        "type": "admin",
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "account",
+                                            "account": {
+                                                "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                                "object": "account",
+                                                "name": "Acme Inc.",
+                                                "default_billing_address": null,
+                                                "default_shipping_address": null,
+                                                "branding": null,
+                                                "portal": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        },
+                                        "permissions": [
+                                            "customers:create",
+                                            "customers:read",
+                                            "customers:update",
+                                            "customers:delete"
+                                        ],
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "department": null,
+                                    "last_used_at": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "get-account-user",
+                "summary": "Get Account User",
+                "description": "Returns an account user by ID.",
+                "method": "GET",
+                "path": "/v1/identity/account-users/{id}",
+                "domain": "identity",
+                "tag": "Account Users Management",
+                "tagSlug": "account-users-management",
+                "endpointSlug": "get-account-user",
+                "actionType": "retrieve",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Account user ID."
+                    },
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
+                        "enum": [
+                            "role",
+                            "department"
+                        ]
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for Get Account User",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string",
+                                "description": "Account user ID.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "account_user"
+                                ]
+                            },
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "description": "Display name.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "email",
+                                "type": "string",
+                                "description": "Email address.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "username",
+                                "type": "string",
+                                "description": "Username.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "image_url",
+                                "type": "string",
+                                "description": "Profile image URL.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "status",
+                                "type": "string",
+                                "description": "Account user status.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "active",
+                                    "disabled",
+                                    "removed"
+                                ]
+                            },
+                            {
+                                "name": "role",
+                                "type": "object",
+                                "description": "Assigned role.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Role ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "role"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "string",
+                                        "description": "Role type code.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "admin",
+                                            "user",
+                                            "scanner",
+                                            "sales_rep",
+                                            "agent"
+                                        ]
+                                    },
+                                    {
+                                        "name": "owner",
+                                        "type": "object",
+                                        "description": "Owner of this resource.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "permissions",
+                                        "type": "array",
+                                        "description": "Permissions in `{domain}:{action}` format.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "itemType": "string"
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "department",
+                                "type": "object",
+                                "description": "Assigned department.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Department ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "department"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "notes",
+                                        "type": "string",
+                                        "description": "Notes about the department.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "location",
+                                        "type": "object",
+                                        "description": "Associated location.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "scanning_stations",
+                                        "type": "object",
+                                        "description": "Scanning stations in this department.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "machines",
+                                        "type": "object",
+                                        "description": "Machines in this department.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last update timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "last_used_at",
+                                "type": "string",
+                                "description": "When the user last used this account.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "created_at",
+                                "type": "string",
+                                "description": "When the account user was created.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "updated_at",
+                                "type": "string",
+                                "description": "When the account user was last updated.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            }
+                        ],
+                        "example": {
+                            "id": "acus_01gf7a8200er3ar3pkfrb6kk29",
+                            "object": "account_user",
+                            "name": "John Doe",
+                            "email": "john@augno.com",
+                            "username": null,
+                            "image_url": null,
+                            "status": "active",
+                            "role": {
+                                "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
+                                "object": "role",
+                                "name": "Admin",
+                                "type": "admin",
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "account",
+                                    "account": {
+                                        "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                        "object": "account",
+                                        "name": "Acme Inc.",
+                                        "default_billing_address": null,
+                                        "default_shipping_address": null,
+                                        "branding": null,
+                                        "portal": null,
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                },
+                                "permissions": [
+                                    "customers:create",
+                                    "customers:read",
+                                    "customers:update",
+                                    "customers:delete"
+                                ],
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "department": null,
+                            "last_used_at": null,
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "update-account-user-status",
+                "summary": "Update Account User Status",
+                "description": "Transitions an account user to a target status.",
+                "method": "PUT",
+                "path": "/v1/identity/account-users/{id}/status",
+                "domain": "identity",
+                "tag": "Account Users Management",
+                "tagSlug": "account-users-management",
+                "endpointSlug": "update-account-user-status",
+                "actionType": "action",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Account user ID."
+                    }
+                ],
+                "requestBody": {
+                    "description": "The request body for Update Account User Status",
+                    "fields": [
+                        {
+                            "name": "status",
+                            "type": "string",
+                            "description": "Target status.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "active",
+                                "disabled",
+                                "removed"
+                            ]
+                        }
+                    ],
+                    "example": {
+                        "status": "disabled"
+                    }
+                },
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for Update Account User Status",
+                        "fields": [],
+                        "example": {}
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "name": "Properties Management",
         "slug": "properties-management",
         "description": "List and manage properties and their attributes.",
@@ -23267,7 +29264,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "type",
                             "type": "string",
-                            "description": "Item category type (material_category or product_category).",
+                            "description": "Item category type. Material categories are used to group materials, while product categories are used to group products and parts.",
                             "required": true,
                             "nullable": false,
                             "expandable": false,
@@ -32451,6 +38448,2285 @@ export const apiTags: TagData[] = [
                 ]
             },
             {
+                "operationId": "list-customers",
+                "summary": "List Customers",
+                "description": "Returns a paginated list of customers for the current account.",
+                "method": "GET",
+                "path": "/v1/sales/customers",
+                "domain": "sales",
+                "tag": "Customers",
+                "tagSlug": "customers",
+                "endpointSlug": "list-customers",
+                "actionType": "list",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Query parameter: cursor for List Customers"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "type": "integer",
+                        "required": false,
+                        "description": "Query parameter: limit for List Customers"
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Query parameter: q for List Customers"
+                    },
+                    {
+                        "name": "customer_group_ids[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter by customer group IDs."
+                    },
+                    {
+                        "name": "pricing_group_ids[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter by pricing group IDs."
+                    },
+                    {
+                        "name": "sales_rep_ids[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter by sales rep IDs."
+                    },
+                    {
+                        "name": "status_codes[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter by status codes.",
+                        "enum": [
+                            "normal",
+                            "preferred",
+                            "hold_shipment",
+                            "hold_all"
+                        ]
+                    },
+                    {
+                        "name": "shipping_term_ids[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter by shipping term IDs."
+                    },
+                    {
+                        "name": "payment_term_ids[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter by payment term IDs."
+                    },
+                    {
+                        "name": "commission_status_codes[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter by commission status codes.",
+                        "enum": [
+                            "commission_applied",
+                            "commission_exempt"
+                        ]
+                    },
+                    {
+                        "name": "freight_status_codes[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter by freight status codes.",
+                        "enum": [
+                            "free_freight",
+                            "billed_freight"
+                        ]
+                    },
+                    {
+                        "name": "carrier_ids[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter by carrier IDs."
+                    },
+                    {
+                        "name": "service_level_ids[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter by service level IDs."
+                    },
+                    {
+                        "name": "is_parent_account",
+                        "in": "query",
+                        "type": "boolean",
+                        "required": false,
+                        "description": "Filter by whether the customer is a parent account."
+                    },
+                    {
+                        "name": "city",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Filter by city."
+                    },
+                    {
+                        "name": "state",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Filter by state."
+                    },
+                    {
+                        "name": "postal_code",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Filter by postal code."
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Filter by start date (created after).",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Filter by end date (created before).",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
+                        "enum": [
+                            "bill_to_address",
+                            "ship_to_address",
+                            "type",
+                            "parent_account",
+                            "freight_preferences.carrier",
+                            "freight_preferences.service_level",
+                            "defaults.payment_term",
+                            "defaults.shipping_term",
+                            "defaults.sales_rep",
+                            "defaults.priority",
+                            "contact_info",
+                            "freight_preferences",
+                            "defaults",
+                            "notification_preferences",
+                            "price_groups",
+                            "child_accounts",
+                            "credit_limit"
+                        ]
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for List Customers",
+                        "fields": [
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Object type for Customer list",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "list"
+                                ]
+                            },
+                            {
+                                "name": "page_info",
+                                "type": "object",
+                                "description": "Pagination metadata for Customer list",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "properties": [
+                                    {
+                                        "name": "next_cursor",
+                                        "type": "string",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "prev_cursor",
+                                        "type": "string",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_next_page",
+                                        "type": "boolean",
+                                        "description": "Whether more results exist after this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_prev_page",
+                                        "type": "boolean",
+                                        "description": "Whether results exist before this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "data",
+                                "type": "array",
+                                "description": "Array of Customer resources in this page",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "itemType": "object",
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Customer ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "customer"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "number",
+                                        "type": "string",
+                                        "description": "Customer number.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "status",
+                                        "type": "string",
+                                        "description": "Account status code.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "normal",
+                                            "preferred",
+                                            "hold_shipment",
+                                            "hold_all"
+                                        ]
+                                    },
+                                    {
+                                        "name": "is_edi_enabled",
+                                        "type": "boolean",
+                                        "description": "Whether EDI is enabled.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "is_parent_account",
+                                        "type": "boolean",
+                                        "description": "Whether this is a parent account.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "commission_policy",
+                                        "type": "string",
+                                        "description": "Commission policy.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "commission_applied",
+                                            "commission_exempt"
+                                        ]
+                                    },
+                                    {
+                                        "name": "note",
+                                        "type": "string",
+                                        "description": "Note.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "credit_limit",
+                                        "type": "object",
+                                        "description": "Credit limit.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Quantity ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "quantity"
+                                                ]
+                                            },
+                                            {
+                                                "name": "value",
+                                                "type": "string",
+                                                "description": "Decimal value.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "decimal"
+                                            },
+                                            {
+                                                "name": "display_value",
+                                                "type": "string",
+                                                "description": "Formatted value with unit abbreviation (e.g. \"$1,234.56\" or \"100 kg\").",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "unit",
+                                                "type": "object",
+                                                "description": "Associated unit.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "contact_info",
+                                        "type": "object",
+                                        "description": "Contact information.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "customer_contact_info"
+                                                ]
+                                            },
+                                            {
+                                                "name": "email",
+                                                "type": "string",
+                                                "description": "Email address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "phone",
+                                                "type": "string",
+                                                "description": "Phone number.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "url",
+                                                "type": "string",
+                                                "description": "Website URL.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "freight_preferences",
+                                        "type": "object",
+                                        "description": "Freight preferences.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "customer_freight_preferences"
+                                                ]
+                                            },
+                                            {
+                                                "name": "status",
+                                                "type": "string",
+                                                "description": "Freight policy.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "free_freight",
+                                                    "billed_freight"
+                                                ]
+                                            },
+                                            {
+                                                "name": "carrier",
+                                                "type": "object",
+                                                "description": "Default carrier.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Carrier ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "carrier"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "code",
+                                                        "type": "string",
+                                                        "description": "Carrier code.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "fedex",
+                                                            "ups",
+                                                            "usps",
+                                                            "will_call",
+                                                            "delivery",
+                                                            "ltl",
+                                                            "ltl1",
+                                                            "freight_collect"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "account_number",
+                                                        "type": "string",
+                                                        "description": "Account number.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "customer_portal_visibility",
+                                                        "type": "string",
+                                                        "description": "Customer portal visibility.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "visible",
+                                                            "hidden"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "owner",
+                                                        "type": "object",
+                                                        "description": "Owner.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "service_levels",
+                                                        "type": "object",
+                                                        "description": "Service levels.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "deleted_at",
+                                                        "type": "string",
+                                                        "description": "Soft-delete timestamp.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "service_level",
+                                                "type": "object",
+                                                "description": "Default service level.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Service level ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "service_level"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "service_level_token",
+                                                        "type": "string",
+                                                        "description": "Service level token.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "customer_portal_visibility",
+                                                        "type": "string",
+                                                        "description": "Customer portal visibility.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "visible",
+                                                            "hidden"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "is_default",
+                                                        "type": "boolean",
+                                                        "description": "Default service level for the carrier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "billing_type",
+                                                "type": "string",
+                                                "description": "Carrier billing type.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "sender",
+                                                    "third_party"
+                                                ]
+                                            },
+                                            {
+                                                "name": "billing_account",
+                                                "type": "string",
+                                                "description": "Carrier billing account number.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "defaults",
+                                        "type": "object",
+                                        "description": "Default settings.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "customer_defaults"
+                                                ]
+                                            },
+                                            {
+                                                "name": "payment_term",
+                                                "type": "object",
+                                                "description": "Default payment term.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Payment term ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "payment_term"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "status",
+                                                        "type": "string",
+                                                        "description": "Payment term status.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "active|inactive"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "owner",
+                                                        "type": "object",
+                                                        "description": "Owner of this resource.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last-updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "shipping_term",
+                                                "type": "object",
+                                                "description": "Default shipping term.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Shipping term ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "shipping_term"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "type",
+                                                        "type": "string",
+                                                        "description": "Shipping term type.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "free_freight",
+                                                            "flat_rate_freight",
+                                                            "carrier_rate_freight"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "owner",
+                                                        "type": "object",
+                                                        "description": "Owner.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "flat_rate",
+                                                        "type": "object",
+                                                        "description": "Flat rate quantity, if any.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "minimum_order_value",
+                                                        "type": "object",
+                                                        "description": "Minimum order value quantity, if any.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "free_shipping_service_levels",
+                                                        "type": "object",
+                                                        "description": "Service levels that qualify for free shipping.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "When this shipping term was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "When this shipping term was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "priority",
+                                                "type": "object",
+                                                "description": "Default priority.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Priority ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "priority"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "code",
+                                                        "type": "string",
+                                                        "description": "Machine-readable code.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "low",
+                                                            "normal",
+                                                            "high"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "owner",
+                                                        "type": "object",
+                                                        "description": "Owner of this resource.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "sales_rep",
+                                                "type": "object",
+                                                "description": "Default sales rep.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "User ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "user"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "email",
+                                                        "type": "string",
+                                                        "description": "Email address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "username",
+                                                        "type": "string",
+                                                        "description": "Username.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "email_verified_at",
+                                                        "type": "string",
+                                                        "description": "Email verified timestamp, null if unverified.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "image_url",
+                                                        "type": "string",
+                                                        "description": "Profile image URL.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "notification_preferences",
+                                        "type": "object",
+                                        "description": "Notification preferences.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "customer_notification_preferences"
+                                                ]
+                                            },
+                                            {
+                                                "name": "accepts_invoice_emails",
+                                                "type": "boolean",
+                                                "description": "Whether invoice emails are accepted.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "bill_to_address",
+                                        "type": "object",
+                                        "description": "Default billing address.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Address ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "address"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name of the address.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "phone",
+                                                "type": "string",
+                                                "description": "Phone number associated with the address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "email",
+                                                "type": "string",
+                                                "description": "Email address associated with the address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "is_drop_ship",
+                                                "type": "boolean",
+                                                "description": "Whether the address is a drop ship location.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "geolocation",
+                                                "type": "object",
+                                                "description": "Geolocation details for the address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "ship_to_address",
+                                        "type": "object",
+                                        "description": "Default shipping address.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Address ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "address"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name of the address.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "phone",
+                                                "type": "string",
+                                                "description": "Phone number associated with the address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "email",
+                                                "type": "string",
+                                                "description": "Email address associated with the address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "is_drop_ship",
+                                                "type": "boolean",
+                                                "description": "Whether the address is a drop ship location.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "geolocation",
+                                                "type": "object",
+                                                "description": "Geolocation details for the address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "object",
+                                        "description": "Customer type group.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Account group ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account_group"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "description",
+                                                "type": "string",
+                                                "description": "Description.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "commission_policy",
+                                                "type": "string",
+                                                "description": "Commission policy.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "commission_applied",
+                                                    "commission_exempt"
+                                                ]
+                                            },
+                                            {
+                                                "name": "freight_policy",
+                                                "type": "string",
+                                                "description": "Freight policy.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "free_freight",
+                                                    "billed_freight"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "Account group type.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "pricing_group",
+                                                    "type_group"
+                                                ]
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "price_groups",
+                                        "type": "object",
+                                        "description": "Pricing groups.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Object type for AccountGroup list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "list"
+                                                ]
+                                            },
+                                            {
+                                                "name": "page_info",
+                                                "type": "object",
+                                                "description": "Pagination metadata for AccountGroup list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "properties": [
+                                                    {
+                                                        "name": "next_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "prev_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_next_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether more results exist after this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_prev_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether results exist before this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "array",
+                                                "description": "Array of AccountGroup resources in this page",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "itemType": "object",
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Account group ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "account_group"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "description",
+                                                        "type": "string",
+                                                        "description": "Description.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "commission_policy",
+                                                        "type": "string",
+                                                        "description": "Commission policy.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "commission_applied",
+                                                            "commission_exempt"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "freight_policy",
+                                                        "type": "string",
+                                                        "description": "Freight policy.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "free_freight",
+                                                            "billed_freight"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "type",
+                                                        "type": "string",
+                                                        "description": "Account group type.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "pricing_group",
+                                                            "type_group"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "parent_account",
+                                        "type": "object",
+                                        "description": "Parent account. Present if this is a child account.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Customer ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "customer"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "number",
+                                                "type": "string",
+                                                "description": "Customer number.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "status",
+                                                "type": "string",
+                                                "description": "Account status code.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "normal",
+                                                    "preferred",
+                                                    "hold_shipment",
+                                                    "hold_all"
+                                                ]
+                                            },
+                                            {
+                                                "name": "is_edi_enabled",
+                                                "type": "boolean",
+                                                "description": "Whether EDI is enabled.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "is_parent_account",
+                                                "type": "boolean",
+                                                "description": "Whether this is a parent account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "commission_policy",
+                                                "type": "string",
+                                                "description": "Commission policy.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "commission_applied",
+                                                    "commission_exempt"
+                                                ]
+                                            },
+                                            {
+                                                "name": "note",
+                                                "type": "string",
+                                                "description": "Note.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "credit_limit",
+                                                "type": "object",
+                                                "description": "Credit limit.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "contact_info",
+                                                "type": "object",
+                                                "description": "Contact information.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "freight_preferences",
+                                                "type": "object",
+                                                "description": "Freight preferences.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "defaults",
+                                                "type": "object",
+                                                "description": "Default settings.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "notification_preferences",
+                                                "type": "object",
+                                                "description": "Notification preferences.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "bill_to_address",
+                                                "type": "object",
+                                                "description": "Default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "ship_to_address",
+                                                "type": "object",
+                                                "description": "Default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "object",
+                                                "description": "Customer type group.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "price_groups",
+                                                "type": "object",
+                                                "description": "Pricing groups.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "parent_account",
+                                                "type": "object",
+                                                "description": "Parent account. Present if this is a child account.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "child_accounts",
+                                                "type": "object",
+                                                "description": "Child accounts. Present if this is a parent account.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "child_accounts",
+                                        "type": "object",
+                                        "description": "Child accounts. Present if this is a parent account.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Object type for Customer list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "list"
+                                                ]
+                                            },
+                                            {
+                                                "name": "page_info",
+                                                "type": "object",
+                                                "description": "Pagination metadata for Customer list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "properties": [
+                                                    {
+                                                        "name": "next_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "prev_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_next_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether more results exist after this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_prev_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether results exist before this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "array",
+                                                "description": "Array of Customer resources in this page",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "itemType": "object",
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Customer ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "customer"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "number",
+                                                        "type": "string",
+                                                        "description": "Customer number.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "status",
+                                                        "type": "string",
+                                                        "description": "Account status code.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "normal",
+                                                            "preferred",
+                                                            "hold_shipment",
+                                                            "hold_all"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "is_edi_enabled",
+                                                        "type": "boolean",
+                                                        "description": "Whether EDI is enabled.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "is_parent_account",
+                                                        "type": "boolean",
+                                                        "description": "Whether this is a parent account.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "commission_policy",
+                                                        "type": "string",
+                                                        "description": "Commission policy.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "commission_applied",
+                                                            "commission_exempt"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "note",
+                                                        "type": "string",
+                                                        "description": "Note.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "credit_limit",
+                                                        "type": "object",
+                                                        "description": "Credit limit.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "contact_info",
+                                                        "type": "object",
+                                                        "description": "Contact information.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "freight_preferences",
+                                                        "type": "object",
+                                                        "description": "Freight preferences.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "defaults",
+                                                        "type": "object",
+                                                        "description": "Default settings.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "notification_preferences",
+                                                        "type": "object",
+                                                        "description": "Notification preferences.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "bill_to_address",
+                                                        "type": "object",
+                                                        "description": "Default billing address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "ship_to_address",
+                                                        "type": "object",
+                                                        "description": "Default shipping address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "type",
+                                                        "type": "object",
+                                                        "description": "Customer type group.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "price_groups",
+                                                        "type": "object",
+                                                        "description": "Pricing groups.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "parent_account",
+                                                        "type": "object",
+                                                        "description": "Parent account. Present if this is a child account.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "child_accounts",
+                                                        "type": "object",
+                                                        "description": "Child accounts. Present if this is a parent account.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            }
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_cursor": "ac_01gf7a8200er3ar3pkfrb6kk29",
+                                "prev_cursor": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "ac_01gf7a8200er3ar3pkfrb6kk29",
+                                    "object": "customer",
+                                    "name": "Acme Inc.",
+                                    "number": "100042",
+                                    "status": "normal",
+                                    "is_edi_enabled": false,
+                                    "is_parent_account": false,
+                                    "commission_policy": "commission_applied",
+                                    "note": "Preferred customer since 2020.",
+                                    "credit_limit": {
+                                        "id": "qty_01jm4r6700f8nwq3v5hx2d9ktp",
+                                        "object": "quantity",
+                                        "value": "1234.56",
+                                        "display_value": "$1,234.56",
+                                        "unit": {
+                                            "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
+                                            "object": "unit",
+                                            "name": "US Dollar",
+                                            "abbreviation": "$",
+                                            "type": "currency",
+                                            "ratio_numerator": "",
+                                            "ratio_denominator": "",
+                                            "offset_numerator": "",
+                                            "offset_denominator": "",
+                                            "is_base_unit": false,
+                                            "owner": null,
+                                            "created_at": "0001-01-01T00:00:00Z",
+                                            "updated_at": "0001-01-01T00:00:00Z"
+                                        }
+                                    },
+                                    "contact_info": {
+                                        "object": "customer_contact_info",
+                                        "email": "orders@acme.com",
+                                        "phone": "555-123-4567",
+                                        "url": "https://acme.com"
+                                    },
+                                    "freight_preferences": {
+                                        "object": "customer_freight_preferences",
+                                        "status": "billed_freight",
+                                        "carrier": {
+                                            "id": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
+                                            "object": "carrier",
+                                            "name": "FedEx",
+                                            "code": "fedex",
+                                            "account_number": null,
+                                            "customer_portal_visibility": "visible",
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "account",
+                                                "account": {
+                                                    "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                                    "object": "account",
+                                                    "name": "Acme Inc.",
+                                                    "default_billing_address": null,
+                                                    "default_shipping_address": null,
+                                                    "branding": null,
+                                                    "portal": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            },
+                                            "service_levels": null,
+                                            "deleted_at": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "service_level": {
+                                            "id": "crop_01jm4r6700f8nwq3v5hx2d9ktp",
+                                            "object": "service_level",
+                                            "name": "FedEx Ground",
+                                            "service_level_token": "fedex_ground",
+                                            "customer_portal_visibility": "visible",
+                                            "is_default": false,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "billing_type": "sender",
+                                        "billing_account": "123456789"
+                                    },
+                                    "defaults": {
+                                        "object": "customer_defaults",
+                                        "payment_term": {
+                                            "id": "pytm_01jm4r6700f8nwq3v5hx2d9ktp",
+                                            "object": "payment_term",
+                                            "name": "Net 30",
+                                            "status": "active",
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "shipping_term": {
+                                            "id": "shtm_01jm4r6700f8nwq3v5hx2d9ktp",
+                                            "object": "shipping_term",
+                                            "name": "Prepaid",
+                                            "type": "carrier_rate_freight",
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "flat_rate": null,
+                                            "minimum_order_value": null,
+                                            "free_shipping_service_levels": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_cursor": null,
+                                                    "prev_cursor": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": []
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "priority": {
+                                            "id": "pi_01jm4r6700f8nwq3v5hx2d9ktp",
+                                            "object": "priority",
+                                            "code": "normal",
+                                            "name": "Normal",
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "sales_rep": {
+                                            "id": "us_01gf7a8200e9pvbd6bgyq395ae",
+                                            "object": "user",
+                                            "email": "jdoe@augno.com",
+                                            "name": "John Doe",
+                                            "username": "jdoe",
+                                            "email_verified_at": "2026-06-10T00:00:00Z",
+                                            "image_url": "https://cdn.augno.com/avatars/us_01gf7a8200e9pvbd6bgyq395ae.jpg",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    },
+                                    "notification_preferences": {
+                                        "object": "customer_notification_preferences",
+                                        "accepts_invoice_emails": true
+                                    },
+                                    "bill_to_address": {
+                                        "id": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
+                                        "object": "address",
+                                        "name": "Headquarters",
+                                        "phone": null,
+                                        "email": null,
+                                        "is_drop_ship": false,
+                                        "geolocation": {
+                                            "id": "gl_01jm4r6700f8nwq3v5hx2d9ktp",
+                                            "object": "geolocation",
+                                            "street_line_1": "4200 Industrial Pkwy",
+                                            "street_line_2": null,
+                                            "locality": "Columbus",
+                                            "state": "OH",
+                                            "postal_code": "43204",
+                                            "country": "US"
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "ship_to_address": {
+                                        "id": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
+                                        "object": "address",
+                                        "name": "Headquarters",
+                                        "phone": null,
+                                        "email": null,
+                                        "is_drop_ship": false,
+                                        "geolocation": {
+                                            "id": "gl_01jm4r6700f8nwq3v5hx2d9ktp",
+                                            "object": "geolocation",
+                                            "street_line_1": "4200 Industrial Pkwy",
+                                            "street_line_2": null,
+                                            "locality": "Columbus",
+                                            "state": "OH",
+                                            "postal_code": "43204",
+                                            "country": "US"
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "type": {
+                                        "id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
+                                        "object": "account_group",
+                                        "name": "Wholesale Customers",
+                                        "description": null,
+                                        "commission_policy": "commission_applied",
+                                        "freight_policy": "billed_freight",
+                                        "type": "type_group",
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "price_groups": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_cursor": null,
+                                            "prev_cursor": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
+                                                "object": "account_group",
+                                                "name": "Wholesale Customers",
+                                                "description": null,
+                                                "commission_policy": "commission_applied",
+                                                "freight_policy": "billed_freight",
+                                                "type": "type_group",
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "parent_account": null,
+                                    "child_accounts": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
                 "operationId": "get-customer",
                 "summary": "Get Customer",
                 "description": "Returns a customer by ID.",
@@ -39474,48 +47750,7 @@ export const apiTags: TagData[] = [
                                     }
                                 ]
                             }
-                        ],
-                        "example": {
-                            "object": "list",
-                            "page_info": {
-                                "next_cursor": "lc_01gf7a8200er3ar3pkfrb6kk30",
-                                "prev_cursor": null,
-                                "has_next_page": true,
-                                "has_prev_page": false
-                            },
-                            "data": [
-                                {
-                                    "id": "lc_01gf7a8200er3ar3pkfrb6kk30",
-                                    "object": "location",
-                                    "name": "Warehouse A",
-                                    "type": "building",
-                                    "parent": null,
-                                    "children": {
-                                        "object": "list",
-                                        "page_info": {
-                                            "next_cursor": null,
-                                            "prev_cursor": null,
-                                            "has_next_page": false,
-                                            "has_prev_page": false
-                                        },
-                                        "data": [
-                                            {
-                                                "id": "lc_01gf7a8200er3ar3pkfrb6kk32",
-                                                "object": "location",
-                                                "name": "Shelf A1",
-                                                "type": "building",
-                                                "parent": null,
-                                                "children": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
-                                            }
-                                        ]
-                                    },
-                                    "created_at": "2026-05-10T00:00:00Z",
-                                    "updated_at": "2026-05-10T00:23:00Z"
-                                }
-                            ]
-                        }
+                        ]
                     }
                 ]
             },
@@ -40461,7 +48696,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "material_check_required",
                             "type": "boolean",
-                            "description": "Whether material check is required.",
+                            "description": "Whether material check is required. If `true`, the operator at this station must manually verify the material before proceeding.",
                             "required": true,
                             "nullable": false,
                             "expandable": false
@@ -41041,7 +49276,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "material_check_required",
                             "type": "boolean",
-                            "description": "Whether material check is required.",
+                            "description": "Whether material check is required. If `true`, the operator at this station must manually verify the material before proceeding.",
                             "required": false,
                             "nullable": false,
                             "expandable": false
@@ -42049,32 +50284,7 @@ export const apiTags: TagData[] = [
                                     }
                                 ]
                             }
-                        ],
-                        "example": {
-                            "object": "list",
-                            "page_info": {
-                                "next_cursor": "scst_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "prev_cursor": null,
-                                "has_next_page": true,
-                                "has_prev_page": false
-                            },
-                            "data": [
-                                {
-                                    "id": "scst_01jm4r6700f8nwq3v5hx2d9ktp",
-                                    "object": "scanning_station",
-                                    "name": "Packaging Line 1",
-                                    "notes": null,
-                                    "type": "init_batch",
-                                    "label_size": null,
-                                    "label_type": null,
-                                    "material_check_required": false,
-                                    "department": null,
-                                    "production_steps": null,
-                                    "created_at": "2026-05-10T00:00:00Z",
-                                    "updated_at": "2026-05-10T00:23:00Z"
-                                }
-                            ]
-                        }
+                        ]
                     }
                 ]
             },
@@ -44187,6 +52397,13 @@ export const apiNavDomains: ApiNavDomain[] = [
                         "href": "/api-reference/audit-event-management/list-audit-events"
                     },
                     {
+                        "name": "List Resource Types",
+                        "slug": "list-audit-event-resource-types",
+                        "method": "GET",
+                        "actionType": "list",
+                        "href": "/api-reference/audit-event-management/list-audit-event-resource-types"
+                    },
+                    {
                         "name": "Get",
                         "slug": "get-audit-event",
                         "method": "GET",
@@ -44684,6 +52901,13 @@ export const apiNavDomains: ApiNavDomain[] = [
                         "href": "/api-reference/customers/update-customer"
                     },
                     {
+                        "name": "List",
+                        "slug": "list-customers",
+                        "method": "GET",
+                        "actionType": "list",
+                        "href": "/api-reference/customers/list-customers"
+                    },
+                    {
                         "name": "Get Customer",
                         "slug": "get-customer",
                         "method": "GET",
@@ -44902,6 +53126,47 @@ export const apiNavDomains: ApiNavDomain[] = [
         "name": "Identity",
         "slug": "identity",
         "resources": [
+            {
+                "name": "Account Users Management",
+                "slug": "account-users-management",
+                "endpoints": [
+                    {
+                        "name": "Create User",
+                        "slug": "create-account-user",
+                        "method": "POST",
+                        "actionType": "create",
+                        "href": "/api-reference/account-users-management/create-account-user"
+                    },
+                    {
+                        "name": "Update User",
+                        "slug": "update-account-user",
+                        "method": "PATCH",
+                        "actionType": "update",
+                        "href": "/api-reference/account-users-management/update-account-user"
+                    },
+                    {
+                        "name": "List",
+                        "slug": "list-account-users",
+                        "method": "GET",
+                        "actionType": "list",
+                        "href": "/api-reference/account-users-management/list-account-users"
+                    },
+                    {
+                        "name": "Get User",
+                        "slug": "get-account-user",
+                        "method": "GET",
+                        "actionType": "retrieve",
+                        "href": "/api-reference/account-users-management/get-account-user"
+                    },
+                    {
+                        "name": "Update User Status",
+                        "slug": "update-account-user-status",
+                        "method": "PUT",
+                        "actionType": "action",
+                        "href": "/api-reference/account-users-management/update-account-user-status"
+                    }
+                ]
+            },
             {
                 "name": "Roles",
                 "slug": "roles",
