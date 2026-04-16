@@ -10,36 +10,98 @@ export const docPaths = {
             "listAuditEventResourceTypes": "/api-reference/audit-event-management/list-audit-event-resource-types",
             "getAuditEvent": "/api-reference/audit-event-management/get-audit-event"
         },
-        "requestLogManagement": {
-            "listRequestLogs": "/api-reference/request-log-management/list-request-logs",
-            "getRequestLog": "/api-reference/request-log-management/get-request-log"
+        "unitGroupsManagement": {
+            "updateUnitGroupAssociatedUnit": "/api-reference/unit-groups-management/update-unit-group-associated-unit",
+            "getUnitGroupUnit": "/api-reference/unit-groups-management/get-unit-group-unit",
+            "listUnitGroups": "/api-reference/unit-groups-management/list-unit-groups",
+            "deleteUnitGroup": "/api-reference/unit-groups-management/delete-unit-group",
+            "getUnitGroup": "/api-reference/unit-groups-management/get-unit-group",
+            "listUnitGroupUnits": "/api-reference/unit-groups-management/list-unit-group-units",
+            "deleteUnitGroupAssociatedUnit": "/api-reference/unit-groups-management/delete-unit-group-associated-unit",
+            "createUnitGroup": "/api-reference/unit-groups-management/create-unit-group",
+            "updateUnitGroup": "/api-reference/unit-groups-management/update-unit-group",
+            "createUnitGroupAssociatedUnit": "/api-reference/unit-groups-management/create-unit-group-associated-unit"
         },
-        "accountStatuses": {
-            "listAccountStatuses": "/api-reference/account-statuses/list-account-statuses",
-            "getAccountStatus": "/api-reference/account-statuses/get-account-status"
+        "accountGroups": {
+            "deleteAccountGroup": "/api-reference/account-groups/delete-account-group",
+            "listAccountGroups": "/api-reference/account-groups/list-account-groups",
+            "getAccountGroup": "/api-reference/account-groups/get-account-group",
+            "updateAccountGroup": "/api-reference/account-groups/update-account-group",
+            "createAccountGroup": "/api-reference/account-groups/create-account-group"
         },
-        "priorities": {
-            "listPriorities": "/api-reference/priorities/list-priorities",
-            "getPriority": "/api-reference/priorities/get-priority"
+        "scanningStationsManagement": {
+            "listScanningStations": "/api-reference/scanning-stations-management/list-scanning-stations",
+            "updateScanningStation": "/api-reference/scanning-stations-management/update-scanning-station",
+            "deleteScanningStation": "/api-reference/scanning-stations-management/delete-scanning-station",
+            "getScanningStation": "/api-reference/scanning-stations-management/get-scanning-station",
+            "createScanningStation": "/api-reference/scanning-stations-management/create-scanning-station"
         },
-        "productLinesManagement": {
-            "createProductLine": "/api-reference/product-lines-management/create-product-line",
-            "updateProductLine": "/api-reference/product-lines-management/update-product-line",
-            "listProductLines": "/api-reference/product-lines-management/list-product-lines",
-            "deleteProductLine": "/api-reference/product-lines-management/delete-product-line",
-            "getProductLine": "/api-reference/product-lines-management/get-product-line"
+        "unitsManagement": {
+            "getUnit": "/api-reference/units-management/get-unit",
+            "updateUnit": "/api-reference/units-management/update-unit",
+            "listUnits": "/api-reference/units-management/list-units",
+            "deleteUnit": "/api-reference/units-management/delete-unit",
+            "createUnit": "/api-reference/units-management/create-unit"
         },
-        "propertiesManagement": {
-            "createProperty": "/api-reference/properties-management/create-property",
-            "getProperty": "/api-reference/properties-management/get-property",
-            "createAttribute": "/api-reference/properties-management/create-attribute",
-            "getAttribute": "/api-reference/properties-management/get-attribute",
-            "deleteProperty": "/api-reference/properties-management/delete-property",
-            "listAttributes": "/api-reference/properties-management/list-attributes",
-            "listProperties": "/api-reference/properties-management/list-properties",
-            "updateAttribute": "/api-reference/properties-management/update-attribute",
-            "deleteAttribute": "/api-reference/properties-management/delete-attribute",
-            "updateProperty": "/api-reference/properties-management/update-property"
+        "customers": {
+            "getCustomer": "/api-reference/customers/get-customer",
+            "deleteCustomer": "/api-reference/customers/delete-customer",
+            "listCustomers": "/api-reference/customers/list-customers",
+            "updateCustomer": "/api-reference/customers/update-customer",
+            "mergeCustomers": "/api-reference/customers/merge-customers",
+            "createCustomer": "/api-reference/customers/create-customer"
+        },
+        "addressValidation": {
+            "listAddressSuggestions": "/api-reference/address-validation/list-address-suggestions",
+            "validateAddress": "/api-reference/address-validation/validate-address"
+        },
+        "roles": {
+            "getRole": "/api-reference/roles/get-role",
+            "updateRole": "/api-reference/roles/update-role",
+            "createRole": "/api-reference/roles/create-role",
+            "deleteRole": "/api-reference/roles/delete-role",
+            "listRoles": "/api-reference/roles/list-roles"
+        },
+        "paymentTermsManagement": {
+            "deletePaymentTerm": "/api-reference/payment-terms-management/delete-payment-term",
+            "createPaymentTerm": "/api-reference/payment-terms-management/create-payment-term",
+            "listPaymentTerms": "/api-reference/payment-terms-management/list-payment-terms",
+            "updatePaymentTerm": "/api-reference/payment-terms-management/update-payment-term",
+            "getPaymentTerm": "/api-reference/payment-terms-management/get-payment-term"
+        },
+        "accountUsersManagement": {
+            "createAccountUser": "/api-reference/account-users-management/create-account-user",
+            "updateAccountUser": "/api-reference/account-users-management/update-account-user",
+            "listAccountUsers": "/api-reference/account-users-management/list-account-users",
+            "getAccountUser": "/api-reference/account-users-management/get-account-user",
+            "updateAccountUserStatus": "/api-reference/account-users-management/update-account-user-status"
+        },
+        "addressManagement": {
+            "createAddress": "/api-reference/address-management/create-address",
+            "getAddress": "/api-reference/address-management/get-address",
+            "listAddresses": "/api-reference/address-management/list-addresses",
+            "deleteAddress": "/api-reference/address-management/delete-address",
+            "updateAddress": "/api-reference/address-management/update-address"
+        },
+        "sandboxManagement": {
+            "createSandbox": "/api-reference/sandbox-management/create-sandbox",
+            "listSandboxes": "/api-reference/sandbox-management/list-sandboxes",
+            "deleteSandbox": "/api-reference/sandbox-management/delete-sandbox",
+            "getSandbox": "/api-reference/sandbox-management/get-sandbox"
+        },
+        "itemCategoriesManagement": {
+            "deleteItemCategory": "/api-reference/item-categories-management/delete-item-category",
+            "getItemCategory": "/api-reference/item-categories-management/get-item-category",
+            "listItemCategories": "/api-reference/item-categories-management/list-item-categories",
+            "updateItemCategory": "/api-reference/item-categories-management/update-item-category",
+            "createItemCategory": "/api-reference/item-categories-management/create-item-category",
+            "removeItemCategoryProperty": "/api-reference/item-categories-management/remove-item-category-property",
+            "changeItemCategoryUnitGroup": "/api-reference/item-categories-management/change-item-category-unit-group",
+            "addItemCategoryProperty": "/api-reference/item-categories-management/add-item-category-property"
+        },
+        "emailLogs": {
+            "listEmailLogs": "/api-reference/email-logs/list-email-logs",
+            "getEmailLog": "/api-reference/email-logs/get-email-log"
         },
         "shippingTermsManagement": {
             "deleteShippingTerm": "/api-reference/shipping-terms-management/delete-shipping-term",
@@ -64,98 +126,36 @@ export const docPaths = {
             "rotateApiKey": "/api-reference/api-key-management/rotate-api-key",
             "listApiKeys": "/api-reference/api-key-management/list-api-keys"
         },
-        "emailLogs": {
-            "listEmailLogs": "/api-reference/email-logs/list-email-logs",
-            "getEmailLog": "/api-reference/email-logs/get-email-log"
+        "propertiesManagement": {
+            "createProperty": "/api-reference/properties-management/create-property",
+            "getProperty": "/api-reference/properties-management/get-property",
+            "createAttribute": "/api-reference/properties-management/create-attribute",
+            "getAttribute": "/api-reference/properties-management/get-attribute",
+            "deleteProperty": "/api-reference/properties-management/delete-property",
+            "listAttributes": "/api-reference/properties-management/list-attributes",
+            "listProperties": "/api-reference/properties-management/list-properties",
+            "updateAttribute": "/api-reference/properties-management/update-attribute",
+            "deleteAttribute": "/api-reference/properties-management/delete-attribute",
+            "updateProperty": "/api-reference/properties-management/update-property"
         },
-        "sandboxManagement": {
-            "createSandbox": "/api-reference/sandbox-management/create-sandbox",
-            "listSandboxes": "/api-reference/sandbox-management/list-sandboxes",
-            "deleteSandbox": "/api-reference/sandbox-management/delete-sandbox",
-            "getSandbox": "/api-reference/sandbox-management/get-sandbox"
+        "productLinesManagement": {
+            "createProductLine": "/api-reference/product-lines-management/create-product-line",
+            "updateProductLine": "/api-reference/product-lines-management/update-product-line",
+            "listProductLines": "/api-reference/product-lines-management/list-product-lines",
+            "deleteProductLine": "/api-reference/product-lines-management/delete-product-line",
+            "getProductLine": "/api-reference/product-lines-management/get-product-line"
         },
-        "itemCategoriesManagement": {
-            "deleteItemCategory": "/api-reference/item-categories-management/delete-item-category",
-            "getItemCategory": "/api-reference/item-categories-management/get-item-category",
-            "listItemCategories": "/api-reference/item-categories-management/list-item-categories",
-            "updateItemCategory": "/api-reference/item-categories-management/update-item-category",
-            "createItemCategory": "/api-reference/item-categories-management/create-item-category",
-            "removeItemCategoryProperty": "/api-reference/item-categories-management/remove-item-category-property",
-            "changeItemCategoryUnitGroup": "/api-reference/item-categories-management/change-item-category-unit-group",
-            "addItemCategoryProperty": "/api-reference/item-categories-management/add-item-category-property"
+        "priorities": {
+            "listPriorities": "/api-reference/priorities/list-priorities",
+            "getPriority": "/api-reference/priorities/get-priority"
         },
-        "addressManagement": {
-            "createAddress": "/api-reference/address-management/create-address",
-            "getAddress": "/api-reference/address-management/get-address",
-            "listAddresses": "/api-reference/address-management/list-addresses",
-            "deleteAddress": "/api-reference/address-management/delete-address",
-            "updateAddress": "/api-reference/address-management/update-address"
+        "accountStatuses": {
+            "listAccountStatuses": "/api-reference/account-statuses/list-account-statuses",
+            "getAccountStatus": "/api-reference/account-statuses/get-account-status"
         },
-        "accountUsersManagement": {
-            "createAccountUser": "/api-reference/account-users-management/create-account-user",
-            "updateAccountUser": "/api-reference/account-users-management/update-account-user",
-            "listAccountUsers": "/api-reference/account-users-management/list-account-users",
-            "getAccountUser": "/api-reference/account-users-management/get-account-user",
-            "updateAccountUserStatus": "/api-reference/account-users-management/update-account-user-status"
-        },
-        "paymentTermsManagement": {
-            "deletePaymentTerm": "/api-reference/payment-terms-management/delete-payment-term",
-            "createPaymentTerm": "/api-reference/payment-terms-management/create-payment-term",
-            "listPaymentTerms": "/api-reference/payment-terms-management/list-payment-terms",
-            "updatePaymentTerm": "/api-reference/payment-terms-management/update-payment-term",
-            "getPaymentTerm": "/api-reference/payment-terms-management/get-payment-term"
-        },
-        "roles": {
-            "getRole": "/api-reference/roles/get-role",
-            "updateRole": "/api-reference/roles/update-role",
-            "createRole": "/api-reference/roles/create-role",
-            "deleteRole": "/api-reference/roles/delete-role",
-            "listRoles": "/api-reference/roles/list-roles"
-        },
-        "addressValidation": {
-            "listAddressSuggestions": "/api-reference/address-validation/list-address-suggestions",
-            "validateAddress": "/api-reference/address-validation/validate-address"
-        },
-        "customers": {
-            "getCustomer": "/api-reference/customers/get-customer",
-            "deleteCustomer": "/api-reference/customers/delete-customer",
-            "listCustomers": "/api-reference/customers/list-customers",
-            "updateCustomer": "/api-reference/customers/update-customer",
-            "mergeCustomers": "/api-reference/customers/merge-customers",
-            "createCustomer": "/api-reference/customers/create-customer"
-        },
-        "unitsManagement": {
-            "getUnit": "/api-reference/units-management/get-unit",
-            "updateUnit": "/api-reference/units-management/update-unit",
-            "listUnits": "/api-reference/units-management/list-units",
-            "deleteUnit": "/api-reference/units-management/delete-unit",
-            "createUnit": "/api-reference/units-management/create-unit"
-        },
-        "scanningStationsManagement": {
-            "listScanningStations": "/api-reference/scanning-stations-management/list-scanning-stations",
-            "updateScanningStation": "/api-reference/scanning-stations-management/update-scanning-station",
-            "deleteScanningStation": "/api-reference/scanning-stations-management/delete-scanning-station",
-            "getScanningStation": "/api-reference/scanning-stations-management/get-scanning-station",
-            "createScanningStation": "/api-reference/scanning-stations-management/create-scanning-station"
-        },
-        "accountGroups": {
-            "deleteAccountGroup": "/api-reference/account-groups/delete-account-group",
-            "listAccountGroups": "/api-reference/account-groups/list-account-groups",
-            "getAccountGroup": "/api-reference/account-groups/get-account-group",
-            "updateAccountGroup": "/api-reference/account-groups/update-account-group",
-            "createAccountGroup": "/api-reference/account-groups/create-account-group"
-        },
-        "unitGroupsManagement": {
-            "updateUnitGroupAssociatedUnit": "/api-reference/unit-groups-management/update-unit-group-associated-unit",
-            "getUnitGroupUnit": "/api-reference/unit-groups-management/get-unit-group-unit",
-            "listUnitGroups": "/api-reference/unit-groups-management/list-unit-groups",
-            "deleteUnitGroup": "/api-reference/unit-groups-management/delete-unit-group",
-            "getUnitGroup": "/api-reference/unit-groups-management/get-unit-group",
-            "listUnitGroupUnits": "/api-reference/unit-groups-management/list-unit-group-units",
-            "deleteUnitGroupAssociatedUnit": "/api-reference/unit-groups-management/delete-unit-group-associated-unit",
-            "createUnitGroup": "/api-reference/unit-groups-management/create-unit-group",
-            "updateUnitGroup": "/api-reference/unit-groups-management/update-unit-group",
-            "createUnitGroupAssociatedUnit": "/api-reference/unit-groups-management/create-unit-group-associated-unit"
+        "requestLogManagement": {
+            "listRequestLogs": "/api-reference/request-log-management/list-request-logs",
+            "getRequestLog": "/api-reference/request-log-management/get-request-log"
         }
     },
     "development": "/development",
@@ -173,15 +173,50 @@ export const docPaths = {
     },
     "collectPayments": {
         "overview": "/collect-payments/overview",
+        "accountsReceivable": {
+            "overview": "/collect-payments/accounts-receivable/overview"
+        },
         "invoicing": {
             "overview": "/collect-payments/invoicing/overview"
         },
         "collecting": {
             "settlements": "/collect-payments/collecting/settlements",
             "overview": "/collect-payments/collecting/overview"
+        }
+    },
+    "generateSales": {
+        "customerPortal": "/generate-sales/customer-portal",
+        "overview": "/generate-sales/overview",
+        "salesTeam": {
+            "salesTargets": "/generate-sales/sales-team/sales-targets",
+            "territories": "/generate-sales/sales-team/territories"
         },
-        "accountsReceivable": {
-            "overview": "/collect-payments/accounts-receivable/overview"
+        "customerPricing": {
+            "discountCodes": "/generate-sales/customer-pricing/discount-codes",
+            "customerPrices": "/generate-sales/customer-pricing/customer-prices",
+            "volumeDiscounts": "/generate-sales/customer-pricing/volume-discounts"
+        },
+        "customer": {
+            "contacts": "/generate-sales/customer/contacts",
+            "create": "/generate-sales/customer/create",
+            "overview": "/generate-sales/customer/overview"
+        },
+        "salesOrder": {
+            "issue": "/generate-sales/sales-order/issue",
+            "create": "/generate-sales/sales-order/create",
+            "generateProductionRun": "/generate-sales/sales-order/generate-production-run",
+            "overview": "/generate-sales/sales-order/overview"
+        },
+        "customerSetup": {
+            "customerGroups": "/generate-sales/customer-setup/customer-groups",
+            "shippingTerms": "/generate-sales/customer-setup/shipping-terms",
+            "addresses": "/generate-sales/customer-setup/addresses",
+            "paymentTerms": "/generate-sales/customer-setup/payment-terms",
+            "defaultSalesReps": "/generate-sales/customer-setup/default-sales-reps",
+            "priorities": "/generate-sales/customer-setup/priorities",
+            "accountStatuses": "/generate-sales/customer-setup/account-statuses",
+            "exemptions": "/generate-sales/customer-setup/exemptions",
+            "defaultCarriers": "/generate-sales/customer-setup/default-carriers"
         }
     },
     "manageAccount": {
@@ -258,56 +293,21 @@ export const docPaths = {
             "overview": "/build-products/items/overview"
         }
     },
-    "generateSales": {
-        "customerPortal": "/generate-sales/customer-portal",
-        "overview": "/generate-sales/overview",
-        "salesOrder": {
-            "issue": "/generate-sales/sales-order/issue",
-            "create": "/generate-sales/sales-order/create",
-            "generateProductionRun": "/generate-sales/sales-order/generate-production-run",
-            "overview": "/generate-sales/sales-order/overview"
-        },
-        "customerSetup": {
-            "customerGroups": "/generate-sales/customer-setup/customer-groups",
-            "shippingTerms": "/generate-sales/customer-setup/shipping-terms",
-            "addresses": "/generate-sales/customer-setup/addresses",
-            "paymentTerms": "/generate-sales/customer-setup/payment-terms",
-            "defaultSalesReps": "/generate-sales/customer-setup/default-sales-reps",
-            "priorities": "/generate-sales/customer-setup/priorities",
-            "accountStatuses": "/generate-sales/customer-setup/account-statuses",
-            "exemptions": "/generate-sales/customer-setup/exemptions",
-            "defaultCarriers": "/generate-sales/customer-setup/default-carriers"
-        },
-        "customer": {
-            "contacts": "/generate-sales/customer/contacts",
-            "create": "/generate-sales/customer/create",
-            "overview": "/generate-sales/customer/overview"
-        },
-        "customerPricing": {
-            "discountCodes": "/generate-sales/customer-pricing/discount-codes",
-            "customerPrices": "/generate-sales/customer-pricing/customer-prices",
-            "volumeDiscounts": "/generate-sales/customer-pricing/volume-discounts"
-        },
-        "salesTeam": {
-            "salesTargets": "/generate-sales/sales-team/sales-targets",
-            "territories": "/generate-sales/sales-team/territories"
-        }
-    },
-    "getStarted": "/get-started",
     "api": {
         "overview": "/api/overview",
+        "errors": "/api/errors",
+        "managingApiKeys": "/api/managing-api-keys",
+        "apiKeys": "/api/api-keys",
+        "requestLogs": "/api/request-logs",
         "requestIds": "/api/request-ids",
         "idempotency": "/api/idempotency",
         "pagination": "/api/pagination",
         "uris": "/api/uris",
         "rateLimiting": "/api/rate-limiting",
         "include": "/api/include",
-        "versioning": "/api/versioning",
-        "requestLogs": "/api/request-logs",
-        "errors": "/api/errors",
-        "managingApiKeys": "/api/managing-api-keys",
-        "apiKeys": "/api/api-keys"
+        "versioning": "/api/versioning"
     },
+    "getStarted": "/get-started",
     "apiTour": "/api-tour",
     "apiRequest": "/api-request",
     "goLive": "/go-live",
