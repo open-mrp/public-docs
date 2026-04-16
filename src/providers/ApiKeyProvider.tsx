@@ -1,6 +1,7 @@
 'use client';
 
 import { API_VERSION } from '@/static/apiVersion.generated';
+import { abbreviateKey } from '@/lib/apiKey';
 import { Env } from '@/lib/env';
 import {
     useDocApiKeySecret,
@@ -8,6 +9,7 @@ import {
     useSelectedSandboxId,
     useSandboxes,
 } from '@/lib/auth-store';
+import type { ReplacementValue } from '@augno/ui';
 import { createContext, ReactNode, useContext } from 'react';
 
 interface ApiKeyContextValue {
@@ -24,7 +26,7 @@ interface ApiKeyContextValue {
     /** The sandbox account name */
     sandboxAccountName: string;
     /** Map of placeholder strings to their replacement values */
-    codeReplacements: Record<string, string>;
+    codeReplacements: Record<string, ReplacementValue>;
 }
 
 const ApiKeyContext = createContext<ApiKeyContextValue | null>(null);
@@ -72,9 +74,14 @@ export function ApiKeyProvider({ children }: ApiKeyProviderProps) {
         selectedSandbox?.id ?? selectedSandboxId ?? PLACEHOLDER_SANDBOX_ACCOUNT_ID;
     const sandboxAccountName = selectedSandbox?.name ?? PLACEHOLDER_SANDBOX_ACCOUNT_NAME;
 
-    // For code snippets, use the real key when available, otherwise a templated placeholder
-    const codeReplacements: Record<string, string> = {
-        YOUR_API_KEY: docApiKeySecret ?? PLACEHOLDER_API_KEY,
+    // Render the abbreviated key (same format as the ApiKeySnippet button on
+    // the landing page) while the copy button hands back the full secret.
+    // When logged out, copy gives the placeholder so users know to substitute.
+    const codeReplacements: Record<string, ReplacementValue> = {
+        YOUR_API_KEY: {
+            display: abbreviateKey(sandboxApiKey),
+            copy: docApiKeySecret ?? PLACEHOLDER_API_KEY,
+        },
         YOUR_ACCOUNT_NAME: accountName,
         YOUR_ACCOUNT_ID: accountId,
         YOUR_SANDBOX_ACCOUNT_ID: sandboxAccountId,

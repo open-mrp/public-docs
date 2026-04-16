@@ -1,30 +1,11 @@
 'use client';
 
 import { Tooltip } from '@/components/Tooltip';
+import { abbreviateKey } from '@/lib/apiKey';
 import { useIsAuthenticated } from '@/lib/auth-store';
 import { useApiKey } from '@/providers/ApiKeyProvider';
 import copy from 'copy-to-clipboard';
 import { useState } from 'react';
-
-/**
- * Abbreviates an API key for display, showing prefix and suffix.
- */
-function abbreviateKey(key: string): string {
-    if (key.length <= 24) return key;
-
-    // Find the prefix pattern (aug_sk_test_ or similar)
-    const prefixMatch = key.match(/^(aug_[a-z]+_[a-z]+_)/);
-    const prefix = prefixMatch ? prefixMatch[1] : '';
-
-    // Get remaining part after prefix
-    const remainder = key.slice(prefix.length);
-
-    // Show first 4 and last 4 characters of the remainder
-    const visibleStart = remainder.slice(0, 4);
-    const visibleEnd = remainder.slice(-4);
-
-    return `${prefix}${visibleStart}...${visibleEnd}`;
-}
 
 interface ApiKeySnippetProps {
     className?: string;

@@ -117,7 +117,7 @@ export default function NavbarContents({ hideThemeToggle = false }) {
                                             {/* User info section */}
                                             <div className="flex items-center gap-3 px-2 py-2">
                                                 <UserAvatar
-                                                    src={user?.imageUrl}
+                                                    src={user?.image_url}
                                                     name={user?.name}
                                                     size="lg"
                                                 />

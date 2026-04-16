@@ -2,7 +2,7 @@
 
 import { useCodeReplacements } from '@/providers/ApiKeyProvider';
 import { CodeEditor } from '@augno/ui';
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 type ExampleTab = {
     id: string;
@@ -16,10 +16,9 @@ interface CodeExamplePanelProps {
     subtitle?: string;
     tabs: ExampleTab[];
     /**
-     * When true, the code area is capped at the remaining height inside the
-     * panel (after the header) and scrolls via CodeEditor's maxHeight prop.
-     * The panel itself should be given a height constraint by its parent
-     * (e.g. via flex-initial min-h-0 in a flex container).
+     * When true, the panel participates in its parent's flex layout with
+     * min-h-0 so the embedded CodeEditor can shrink and scroll inside the
+     * height the parent grants it.
      */
     scrollable?: boolean;
     className?: string;
@@ -40,68 +39,15 @@ export function CodeExamplePanel({
         [tabs, activeId],
     );
 
-    const panelRef = useRef<HTMLDivElement>(null);
-    const headerRef = useRef<HTMLDivElement>(null);
-    const [codeMaxHeight, setCodeMaxHeight] = useState<number | undefined>();
-
-    const computeMaxHeight = useCallback(() => {
-        const panel = panelRef.current;
-        const header = headerRef.current;
-        if (!panel || !header) return;
-        const parent = panel.parentElement;
-        if (!parent) return;
-
-        const gap = parseFloat(getComputedStyle(parent).rowGap || '0') || 0;
-        let siblingsHeight = 0;
-        for (const child of Array.from(parent.children)) {
-            if (child !== panel) siblingsHeight += (child as HTMLElement).offsetHeight;
-        }
-        const gapCount = parent.children.length - 1;
-        const availableForPanel = parent.clientHeight - siblingsHeight - gapCount * gap;
-
-        const panelStyle = getComputedStyle(panel);
-        const panelBorder =
-            parseFloat(panelStyle.borderTopWidth) + parseFloat(panelStyle.borderBottomWidth);
-
-        const available = availableForPanel - header.offsetHeight - panelBorder;
-        if (available > 0) setCodeMaxHeight(available);
-    }, []);
-
-    // Reset the cap when content changes (tab switch or code replacements arriving
-    // after mount) so the panel can reflow to the new content before we re-measure.
-    useLayoutEffect(() => {
-        if (!scrollable) return;
-        setCodeMaxHeight(undefined);
-    }, [scrollable, active.id, replacementKey]);
-
-    // Measure synchronously before first paint to avoid a flash of unconstrained content.
-    useLayoutEffect(() => {
-        if (!scrollable) return;
-        if (codeMaxHeight !== undefined) return;
-        computeMaxHeight();
-    }, [scrollable, computeMaxHeight, codeMaxHeight]);
-
-    // Re-measure when the parent container resizes (e.g. viewport change).
-    useEffect(() => {
-        if (!scrollable) return;
-        const parent = panelRef.current?.parentElement;
-        if (!parent) return;
-
-        const observer = new ResizeObserver(computeMaxHeight);
-        observer.observe(parent);
-        return () => observer.disconnect();
-    }, [scrollable, computeMaxHeight]);
-
     if (!active) return null;
 
     return (
         <div
-            ref={panelRef}
-            className={`rounded-xl border border-[#2a2a2a] bg-[#0f0f0f] overflow-hidden ${
+            className={`rounded-xl border border-[#2a2a2a] bg-[#0f0f0f] overflow-hidden flex flex-col ${
                 scrollable ? 'min-h-0' : ''
             } ${className}`}
         >
-            <div ref={headerRef}>
+            <div className="flex-none">
                 <div className="flex items-center justify-between px-4 py-2.5 border-b border-[#2a2a2a]">
                     <div className="flex items-center gap-3 min-w-0">
                         <span className="text-sm font-medium text-gray-200 truncate">
@@ -133,8 +79,7 @@ export function CodeExamplePanel({
                 )}
             </div>
             <CodeEditor
-                maxHeight={scrollable ? codeMaxHeight : undefined}
-                className="!mt-0 !rounded-none !p-0"
+                className="!mt-0 !rounded-none !p-0 min-h-0"
                 key={`${active.id}-${replacementKey}`}
                 replacements={replacements}
                 showLanguageLabel={false}

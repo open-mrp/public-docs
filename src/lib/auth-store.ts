@@ -1,6 +1,6 @@
 'use client';
 
-import { createV2Client } from '@augno/internal-sdk';
+import { components, createV2Client } from '@augno/internal-sdk';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { Env } from './env';
@@ -15,122 +15,30 @@ const v2Client = createV2Client({
 // This resets on page refresh but persists during SPA navigations
 let hasCheckedAuthThisPageLoad = false;
 
-// Types for V1 API responses (not in internal-sdk)
-export interface User {
-    id: string;
-    name: string | null;
-    email: string | null;
-    username: string | null;
-    imageUrl: string | null;
-    emailVerified: string | null;
-    createdAt: string;
-    updatedAt: string;
+export type User = components['schemas']['User'];
+export type Tenancy = components['schemas']['Tenancy'];
+export type TenancyCurrentAccount = components['schemas']['TenancyCurrentAccount'];
+export type TenancyOwnerAccount = components['schemas']['TenancyOwnerAccount'];
+export type TenancyOtherAccount = components['schemas']['TenancyOtherAccount'];
+export type TenancySandboxAccount = components['schemas']['TenancySandboxAccount'];
+
+// `/v1/identity/me` requires a fully-resolved user identity, which the API derives from
+// the `Augno-Actor-Account` header. Callers must pass the current account ID so the server
+// can validate the caller as an account member. `/v1/identity/me/tenancy` doesn't require
+// this — it resolves the user from the session cookie alone — so we call it first to
+// discover the account ID used for the current-user lookup.
+async function fetchCurrentUser(actorAccountID: string): Promise<User | null> {
+    const { data, error } = await v2Client.GET('/v1/identity/me', {
+        headers: { 'Augno-Actor-Account': actorAccountID },
+    });
+    if (error || !data) return null;
+    return data;
 }
 
-export interface Role {
-    id: string;
-    name: string;
-}
-
-export interface AccountMembership {
-    id: string;
-    name: string;
-}
-
-export interface CurrentAccount {
-    id: string;
-    name: string;
-    role: Role | null;
-    type: string;
-    onboardingStatus: string;
-    plan: string;
-    slug: string | null;
-}
-
-export interface OwnerAccount {
-    id: string;
-    name: string;
-}
-
-export interface SandboxInfo {
-    id: string;
-    name: string;
-}
-
-export interface TenancyResponse {
-    currentAccount: CurrentAccount;
-    ownerAccount: OwnerAccount | null;
-    availableAccounts: AccountMembership[];
-    sandboxes: SandboxInfo[];
-}
-
-// V1 API helpers (these endpoints aren't in the internal-sdk)
-async function fetchCurrentUser(): Promise<User | null> {
-    try {
-        const response = await fetch(`${Env.apiV1BaseUrl}/v1/me`, {
-            method: 'GET',
-            credentials: 'include',
-            cache: 'no-store',
-            headers: { 'Content-Type': 'application/json' },
-        });
-
-        if (response.status === 401) {
-            // Refresh using V2 client (middleware handles cookie automatically via credentials: 'include')
-            const { error } = await v2Client.PUT('/v1/auth/access-tokens', {
-                params: { cookie: { '__Secure-augno.refresh-token': '' } },
-            });
-            if (error) return null;
-
-            // Retry
-            const retryResponse = await fetch(`${Env.apiV1BaseUrl}/v1/me`, {
-                method: 'GET',
-                credentials: 'include',
-                cache: 'no-store',
-                headers: { 'Content-Type': 'application/json' },
-            });
-
-            if (!retryResponse.ok) return null;
-            return retryResponse.json();
-        }
-
-        if (!response.ok) return null;
-        return response.json();
-    } catch {
-        return null;
-    }
-}
-
-async function fetchTenancy(): Promise<TenancyResponse | null> {
-    try {
-        const response = await fetch(`${Env.apiV1BaseUrl}/v1/me/tenancy`, {
-            method: 'GET',
-            credentials: 'include',
-            cache: 'no-store',
-            headers: { 'Content-Type': 'application/json' },
-        });
-
-        if (response.status === 401) {
-            const { error } = await v2Client.PUT('/v1/auth/access-tokens', {
-                params: { cookie: { '__Secure-augno.refresh-token': '' } },
-            });
-            if (error) return null;
-
-            const retryResponse = await fetch(`${Env.apiV1BaseUrl}/v1/me/tenancy`, {
-                method: 'GET',
-                credentials: 'include',
-                cache: 'no-store',
-                headers: { 'Content-Type': 'application/json' },
-            });
-
-            if (!retryResponse.ok) return null;
-            return retryResponse.json();
-        }
-
-        if (!response.ok) return null;
-        return response.json();
-    } catch {
-        return null;
-    }
+async function fetchTenancy(): Promise<Tenancy | null> {
+    const { data, error } = await v2Client.GET('/v1/identity/me/tenancy');
+    if (error || !data) return null;
+    return data;
 }
 
 async function fetchDocApiKey(productionAccountId: string): Promise<string | null> {
@@ -152,16 +60,16 @@ export interface AuthState {
     user: User | null;
 
     // Current account selection
-    currentAccount: CurrentAccount | null;
+    currentAccount: TenancyCurrentAccount | null;
 
-    // Account memberships (accounts user can switch to)
-    accountMemberships: AccountMembership[];
+    // Other accounts the user can switch to (excludes the current account)
+    otherAccounts: TenancyOtherAccount[];
 
     // Owner (production) account
-    ownerAccount: OwnerAccount | null;
+    ownerAccount: TenancyOwnerAccount | null;
 
     // Sandbox accounts from tenancy
-    sandboxes: SandboxInfo[];
+    sandboxes: TenancySandboxAccount[];
 
     // Doc API key (not persisted to localStorage)
     docApiKeySecret: string | null;
@@ -178,10 +86,10 @@ export interface AuthState {
 
     // Actions
     setUser: (user: User | null) => void;
-    setCurrentAccount: (account: CurrentAccount | null) => void;
-    setAccountMemberships: (memberships: AccountMembership[]) => void;
-    setOwnerAccount: (ownerAccount: OwnerAccount | null) => void;
-    setSandboxes: (sandboxes: SandboxInfo[]) => void;
+    setCurrentAccount: (account: TenancyCurrentAccount | null) => void;
+    setOtherAccounts: (accounts: TenancyOtherAccount[]) => void;
+    setOwnerAccount: (ownerAccount: TenancyOwnerAccount | null) => void;
+    setSandboxes: (sandboxes: TenancySandboxAccount[]) => void;
     setDocApiKeySecret: (secret: string | null) => void;
     setLoading: (loading: boolean) => void;
     setInitialized: (initialized: boolean) => void;
@@ -205,7 +113,7 @@ export const useAuthStore = create<AuthState>()(
             // Initial state
             user: null,
             currentAccount: null,
-            accountMemberships: [],
+            otherAccounts: [],
             ownerAccount: null,
             sandboxes: [],
             docApiKeySecret: null,
@@ -219,7 +127,7 @@ export const useAuthStore = create<AuthState>()(
             // Actions
             setUser: (user) => set({ user }),
             setCurrentAccount: (currentAccount) => set({ currentAccount }),
-            setAccountMemberships: (accountMemberships) => set({ accountMemberships }),
+            setOtherAccounts: (otherAccounts) => set({ otherAccounts }),
             setOwnerAccount: (ownerAccount) => set({ ownerAccount }),
             setSandboxes: (sandboxes) => set({ sandboxes }),
             setDocApiKeySecret: (docApiKeySecret) => set({ docApiKeySecret }),
@@ -267,7 +175,7 @@ export const useAuthStore = create<AuthState>()(
                 set({
                     user: null,
                     currentAccount: null,
-                    accountMemberships: [],
+                    otherAccounts: [],
                     ownerAccount: null,
                     sandboxes: [],
                     docApiKeySecret: null,
@@ -286,7 +194,7 @@ export const useAuthStore = create<AuthState>()(
                 set({
                     user: null,
                     currentAccount: null,
-                    accountMemberships: [],
+                    otherAccounts: [],
                     ownerAccount: null,
                     sandboxes: [],
                     docApiKeySecret: null,
@@ -333,17 +241,22 @@ export const useAuthStore = create<AuthState>()(
                 set({ isLoading: true, isRestoring: true });
 
                 try {
-                    // Fetch sequentially to avoid concurrent token refresh race condition.
-                    // If the access token is expired, fetchCurrentUser will refresh it.
-                    // fetchTenancy then runs with the fresh token without needing its own refresh.
-                    const user = await fetchCurrentUser();
+                    // Fetch tenancy first: it works with just the session cookie and
+                    // returns the current_account that /v1/identity/me needs as its
+                    // Augno-Actor-Account header. Tenancy's 401 also triggers the SDK's
+                    // refresh-and-retry, so by the time we call /v1/identity/me the
+                    // access token is fresh.
+                    const tenancy = await fetchTenancy();
 
                     // Mark that we've checked auth this page load
                     hasCheckedAuthThisPageLoad = true;
 
+                    const currentAccount = tenancy?.current_account ?? null;
+                    const user = currentAccount
+                        ? await fetchCurrentUser(currentAccount.id)
+                        : null;
+
                     if (user) {
-                        const tenancy = await fetchTenancy();
-                        // Fetch doc API key using the sandbox account from tenancy
                         const sandboxes = tenancy?.sandboxes ?? [];
                         // Preserve user's sandbox selection if already set
                         const currentSelectedSandboxId = get().selectedSandboxId;
@@ -354,9 +267,9 @@ export const useAuthStore = create<AuthState>()(
 
                         set({
                             user,
-                            currentAccount: tenancy?.currentAccount ?? null,
-                            accountMemberships: tenancy?.availableAccounts ?? [],
-                            ownerAccount: tenancy?.ownerAccount ?? null,
+                            currentAccount,
+                            otherAccounts: tenancy?.other_accounts ?? [],
+                            ownerAccount: tenancy?.owner_account ?? null,
                             sandboxes,
                             docApiKeySecret,
                             selectedSandboxId: sandboxAccountId ?? null,
@@ -368,7 +281,7 @@ export const useAuthStore = create<AuthState>()(
                         set({
                             user: null,
                             currentAccount: null,
-                            accountMemberships: [],
+                            otherAccounts: [],
                             ownerAccount: null,
                             sandboxes: [],
                             docApiKeySecret: null,
@@ -383,7 +296,7 @@ export const useAuthStore = create<AuthState>()(
                     set({
                         user: null,
                         currentAccount: null,
-                        accountMemberships: [],
+                        otherAccounts: [],
                         ownerAccount: null,
                         sandboxes: [],
                         docApiKeySecret: null,
@@ -431,7 +344,7 @@ export const useAuthStore = create<AuthState>()(
             partialize: (state) => ({
                 user: state.user,
                 currentAccount: state.currentAccount,
-                accountMemberships: state.accountMemberships,
+                otherAccounts: state.otherAccounts,
                 ownerAccount: state.ownerAccount,
                 sandboxes: state.sandboxes,
                 selectedSandboxId: state.selectedSandboxId,
@@ -449,7 +362,7 @@ export const useAuthStore = create<AuthState>()(
 // Selector hooks for better performance
 export const useUser = () => useAuthStore((state) => state.user);
 export const useCurrentAccount = () => useAuthStore((state) => state.currentAccount);
-export const useAccountMemberships = () => useAuthStore((state) => state.accountMemberships);
+export const useOtherAccounts = () => useAuthStore((state) => state.otherAccounts);
 export const useAuthLoading = () => useAuthStore((state) => state.isLoading);
 export const useAuthInitialized = () => useAuthStore((state) => state.isInitialized);
 export const useAuthRestoring = () => useAuthStore((state) => state.isRestoring);
@@ -466,7 +379,7 @@ export const useIsAuthenticated = () =>
 export const useAuthActions = () => {
     const setUser = useAuthStore((state) => state.setUser);
     const setCurrentAccount = useAuthStore((state) => state.setCurrentAccount);
-    const setAccountMemberships = useAuthStore((state) => state.setAccountMemberships);
+    const setOtherAccounts = useAuthStore((state) => state.setOtherAccounts);
     const setLoading = useAuthStore((state) => state.setLoading);
     const setInitialized = useAuthStore((state) => state.setInitialized);
     const setRestoring = useAuthStore((state) => state.setRestoring);
@@ -480,7 +393,7 @@ export const useAuthActions = () => {
     return {
         setUser,
         setCurrentAccount,
-        setAccountMemberships,
+        setOtherAccounts,
         setLoading,
         setInitialized,
         setRestoring,
@@ -499,7 +412,7 @@ export const useAuthActions = () => {
 export function useAuth() {
     const user = useAuthStore((state) => state.user);
     const currentAccount = useAuthStore((state) => state.currentAccount);
-    const accountMemberships = useAuthStore((state) => state.accountMemberships);
+    const otherAccounts = useAuthStore((state) => state.otherAccounts);
     const sandboxes = useAuthStore((state) => state.sandboxes);
     const selectedSandboxId = useAuthStore((state) => state.selectedSandboxId);
     const isSwitchingAccount = useAuthStore((state) => state.isSwitchingAccount);
@@ -513,7 +426,7 @@ export function useAuth() {
         // State
         user,
         currentAccount,
-        accountMemberships,
+        otherAccounts,
         sandboxes,
         selectedSandboxId,
         isSwitchingAccount,
@@ -524,7 +437,7 @@ export function useAuth() {
 
         // Computed state
         isAuthenticated: isInitialized && user !== null,
-        hasMultipleAccounts: accountMemberships.length > 1,
+        hasOtherAccounts: otherAccounts.length > 0,
 
         // Actions
         ...actions,
