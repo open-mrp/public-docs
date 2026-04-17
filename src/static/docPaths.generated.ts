@@ -44,6 +44,13 @@ export const docPaths = {
             "listAuditEventResourceTypes": "/api-reference/audit-event-management/list-audit-event-resource-types",
             "listAuditEvents": "/api-reference/audit-event-management/list-audit-events"
         },
+        "carriersManagement": {
+            "createCarrier": "/api-reference/carriers-management/create-carrier",
+            "deleteCarrier": "/api-reference/carriers-management/delete-carrier",
+            "getCarrier": "/api-reference/carriers-management/get-carrier",
+            "listCarriers": "/api-reference/carriers-management/list-carriers",
+            "updateCarrier": "/api-reference/carriers-management/update-carrier"
+        },
         "customers": {
             "createCustomer": "/api-reference/customers/create-customer",
             "deleteCustomer": "/api-reference/customers/delete-customer",
@@ -129,6 +136,13 @@ export const docPaths = {
             "getScanningStation": "/api-reference/scanning-stations-management/get-scanning-station",
             "listScanningStations": "/api-reference/scanning-stations-management/list-scanning-stations",
             "updateScanningStation": "/api-reference/scanning-stations-management/update-scanning-station"
+        },
+        "serviceLevelsManagement": {
+            "createServiceLevel": "/api-reference/service-levels-management/create-service-level",
+            "deleteServiceLevel": "/api-reference/service-levels-management/delete-service-level",
+            "getServiceLevel": "/api-reference/service-levels-management/get-service-level",
+            "listServiceLevels": "/api-reference/service-levels-management/list-service-levels",
+            "updateServiceLevel": "/api-reference/service-levels-management/update-service-level"
         },
         "shippingTermsManagement": {
             "createShippingTerm": "/api-reference/shipping-terms-management/create-shipping-term",

@@ -115,6 +115,26 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "List Audit Events",
         "subtitle": "GET /v1/core/audit-events"
     },
+    "/api-reference/carriers-management/create-carrier": {
+        "title": "Create Carrier",
+        "subtitle": "POST /v1/operations/carriers"
+    },
+    "/api-reference/carriers-management/delete-carrier": {
+        "title": "Delete Carrier",
+        "subtitle": "DELETE /v1/operations/carriers/{id}"
+    },
+    "/api-reference/carriers-management/get-carrier": {
+        "title": "Get Carrier",
+        "subtitle": "GET /v1/operations/carriers/{id}"
+    },
+    "/api-reference/carriers-management/list-carriers": {
+        "title": "List Carriers",
+        "subtitle": "GET /v1/operations/carriers"
+    },
+    "/api-reference/carriers-management/update-carrier": {
+        "title": "Update Carrier",
+        "subtitle": "PATCH /v1/operations/carriers/{id}"
+    },
     "/api-reference/customers/create-customer": {
         "title": "Create Customer",
         "subtitle": "POST /v1/sales/customers"
@@ -362,6 +382,26 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/scanning-stations-management/update-scanning-station": {
         "title": "Update Scanning Station",
         "subtitle": "PATCH /v1/operations/scanning-stations/{id}"
+    },
+    "/api-reference/service-levels-management/create-service-level": {
+        "title": "Create Service Level",
+        "subtitle": "POST /v1/operations/carriers/{carrier_id}/service-levels"
+    },
+    "/api-reference/service-levels-management/delete-service-level": {
+        "title": "Delete Service Level",
+        "subtitle": "DELETE /v1/operations/carriers/{carrier_id}/service-levels/{id}"
+    },
+    "/api-reference/service-levels-management/get-service-level": {
+        "title": "Get Service Level",
+        "subtitle": "GET /v1/operations/carriers/{carrier_id}/service-levels/{id}"
+    },
+    "/api-reference/service-levels-management/list-service-levels": {
+        "title": "List Service Levels",
+        "subtitle": "GET /v1/operations/carriers/{carrier_id}/service-levels"
+    },
+    "/api-reference/service-levels-management/update-service-level": {
+        "title": "Update Service Level",
+        "subtitle": "PATCH /v1/operations/carriers/{carrier_id}/service-levels/{id}"
     },
     "/api-reference/shipping-terms-management/create-shipping-term": {
         "title": "Create Shipping Term",

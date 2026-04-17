@@ -217,6 +217,41 @@ export function generateStaticParams() {
   {
     "slug": [
       "api-reference",
+      "carriers-management",
+      "create-carrier"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "carriers-management",
+      "delete-carrier"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "carriers-management",
+      "get-carrier"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "carriers-management",
+      "list-carriers"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "carriers-management",
+      "update-carrier"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
       "customers",
       "create-customer"
     ]
@@ -644,6 +679,41 @@ export function generateStaticParams() {
       "api-reference",
       "scanning-stations-management",
       "update-scanning-station"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "service-levels-management",
+      "create-service-level"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "service-levels-management",
+      "delete-service-level"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "service-levels-management",
+      "get-service-level"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "service-levels-management",
+      "list-service-levels"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "service-levels-management",
+      "update-service-level"
     ]
   },
   {

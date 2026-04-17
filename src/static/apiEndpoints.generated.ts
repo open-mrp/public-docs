@@ -14603,6 +14603,15 @@ export const apiTags: TagData[] = [
                                     "expandable": false
                                 },
                                 {
+                                    "name": "owner",
+                                    "type": "object",
+                                    "description": "Owner.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
                                     "name": "created_at",
                                     "type": "string",
                                     "description": "Creation timestamp.",
@@ -15444,6 +15453,15 @@ export const apiTags: TagData[] = [
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false
+                                            },
+                                            {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "Owner.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
                                             },
                                             {
                                                 "name": "created_at",
@@ -16299,6 +16317,15 @@ export const apiTags: TagData[] = [
                                                 "expandable": false
                                             },
                                             {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "Owner.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
                                                 "name": "created_at",
                                                 "type": "string",
                                                 "description": "Creation timestamp.",
@@ -17133,6 +17160,15 @@ export const apiTags: TagData[] = [
                                                         "expandable": false
                                                     },
                                                     {
+                                                        "name": "owner",
+                                                        "type": "object",
+                                                        "description": "Owner.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
                                                         "name": "created_at",
                                                         "type": "string",
                                                         "description": "Creation timestamp.",
@@ -17902,6 +17938,15 @@ export const apiTags: TagData[] = [
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false
+                                            },
+                                            {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "Owner.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
                                             },
                                             {
                                                 "name": "created_at",
@@ -28870,6 +28915,3870 @@ export const apiTags: TagData[] = [
         ]
     },
     {
+        "name": "Carriers Management",
+        "slug": "carriers-management",
+        "description": "List and manage carriers and their Shippo integrations.",
+        "domain": "operations",
+        "domainLabel": "Operations",
+        "resource": {
+            "name": "Carriers Management",
+            "description": "Carrier resource.",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "Carrier ID.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false
+                },
+                {
+                    "name": "object",
+                    "type": "string",
+                    "description": "Resource type identifier.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false,
+                    "enum": [
+                        "carrier"
+                    ]
+                },
+                {
+                    "name": "name",
+                    "type": "string",
+                    "description": "Display name.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false
+                },
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "Carrier code.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": false,
+                    "enum": [
+                        "fedex",
+                        "ups",
+                        "usps",
+                        "will_call",
+                        "delivery",
+                        "ltl",
+                        "ltl1",
+                        "freight_collect"
+                    ]
+                },
+                {
+                    "name": "account_number",
+                    "type": "string",
+                    "description": "Account number.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": false
+                },
+                {
+                    "name": "customer_portal_visibility",
+                    "type": "string",
+                    "description": "Customer portal visibility.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false,
+                    "enum": [
+                        "visible",
+                        "hidden"
+                    ]
+                },
+                {
+                    "name": "owner",
+                    "type": "object",
+                    "description": "Owner.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": true,
+                    "properties": [
+                        {
+                            "name": "object",
+                            "type": "string",
+                            "description": "Resource type identifier.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "owner"
+                            ]
+                        },
+                        {
+                            "name": "type",
+                            "type": "string",
+                            "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "system",
+                                "account"
+                            ]
+                        },
+                        {
+                            "name": "account",
+                            "type": "object",
+                            "description": "The account that owns this resource. `null` if the object is system-owned.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": true,
+                            "properties": [
+                                {
+                                    "name": "id",
+                                    "type": "string",
+                                    "description": "Account ID.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "object",
+                                    "type": "string",
+                                    "description": "Resource type identifier.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "enum": [
+                                        "account"
+                                    ]
+                                },
+                                {
+                                    "name": "name",
+                                    "type": "string",
+                                    "description": "Display name.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "default_billing_address",
+                                    "type": "object",
+                                    "description": "Default billing address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "default_shipping_address",
+                                    "type": "object",
+                                    "description": "Default shipping address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "branding",
+                                    "type": "object",
+                                    "description": "Branding configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "portal",
+                                    "type": "object",
+                                    "description": "Portal configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "created_at",
+                                    "type": "string",
+                                    "description": "Creation timestamp.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                },
+                                {
+                                    "name": "updated_at",
+                                    "type": "string",
+                                    "description": "Last updated timestamp.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "service_levels",
+                    "type": "object",
+                    "description": "Service levels.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": true,
+                    "properties": [
+                        {
+                            "name": "object",
+                            "type": "string",
+                            "description": "Object type for ServiceLevel list",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "list"
+                            ]
+                        },
+                        {
+                            "name": "page_info",
+                            "type": "object",
+                            "description": "Pagination metadata for ServiceLevel list",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "properties": [
+                                {
+                                    "name": "next_cursor",
+                                    "type": "string",
+                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "prev_cursor",
+                                    "type": "string",
+                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "has_next_page",
+                                    "type": "boolean",
+                                    "description": "Whether more results exist after this page.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "has_prev_page",
+                                    "type": "boolean",
+                                    "description": "Whether results exist before this page.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "data",
+                            "type": "array",
+                            "description": "Array of ServiceLevel resources in this page",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "itemType": "object",
+                            "properties": [
+                                {
+                                    "name": "id",
+                                    "type": "string",
+                                    "description": "Service level ID.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "object",
+                                    "type": "string",
+                                    "description": "Resource type identifier.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "enum": [
+                                        "service_level"
+                                    ]
+                                },
+                                {
+                                    "name": "name",
+                                    "type": "string",
+                                    "description": "Display name.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "service_level_token",
+                                    "type": "string",
+                                    "description": "Service level token.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "customer_portal_visibility",
+                                    "type": "string",
+                                    "description": "Customer portal visibility.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "enum": [
+                                        "visible",
+                                        "hidden"
+                                    ]
+                                },
+                                {
+                                    "name": "is_default",
+                                    "type": "boolean",
+                                    "description": "Default service level for the carrier.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "owner",
+                                    "type": "object",
+                                    "description": "Owner.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "created_at",
+                                    "type": "string",
+                                    "description": "Creation timestamp.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                },
+                                {
+                                    "name": "updated_at",
+                                    "type": "string",
+                                    "description": "Last updated timestamp.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "deleted_at",
+                    "type": "string",
+                    "description": "Soft-delete timestamp.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": false,
+                    "format": "date-time"
+                },
+                {
+                    "name": "created_at",
+                    "type": "string",
+                    "description": "Creation timestamp.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false,
+                    "format": "date-time"
+                },
+                {
+                    "name": "updated_at",
+                    "type": "string",
+                    "description": "Last updated timestamp.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false,
+                    "format": "date-time"
+                }
+            ],
+            "example": {
+                "id": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
+                "object": "carrier",
+                "name": "FedEx",
+                "code": "fedex",
+                "account_number": null,
+                "customer_portal_visibility": "visible",
+                "owner": {
+                    "object": "owner",
+                    "type": "account",
+                    "account": {
+                        "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                        "object": "account",
+                        "name": "Acme Inc.",
+                        "default_billing_address": null,
+                        "default_shipping_address": null,
+                        "branding": null,
+                        "portal": null,
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    }
+                },
+                "service_levels": null,
+                "deleted_at": null,
+                "created_at": "2026-05-10T00:00:00Z",
+                "updated_at": "2026-05-10T00:23:00Z"
+            }
+        },
+        "endpoints": [
+            {
+                "operationId": "create-carrier",
+                "summary": "Create Carrier",
+                "description": "Creates a carrier. If a Shippo-supported carrier code is provided, the carrier will be registered with Shippo and service levels will be auto-synced as options.",
+                "method": "POST",
+                "path": "/v1/operations/carriers",
+                "domain": "operations",
+                "tag": "Carriers Management",
+                "tagSlug": "carriers-management",
+                "endpointSlug": "create-carrier",
+                "actionType": "create",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
+                        "enum": [
+                            "owner",
+                            "owner.account",
+                            "service_levels"
+                        ]
+                    }
+                ],
+                "requestBody": {
+                    "description": "The request body for Create Carrier",
+                    "fields": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "description": "Display name.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "code",
+                            "type": "string",
+                            "description": "Carrier code.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": false,
+                            "enum": [
+                                "fedex",
+                                "ups",
+                                "usps",
+                                "will_call",
+                                "delivery",
+                                "ltl",
+                                "ltl1",
+                                "freight_collect"
+                            ]
+                        },
+                        {
+                            "name": "account_number",
+                            "type": "string",
+                            "description": "Carrier account number. Required for UPS and USPS carriers.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": false
+                        },
+                        {
+                            "name": "customer_portal_visibility",
+                            "type": "string",
+                            "description": "Customer portal visibility. Defaults to `visible`.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "visible",
+                                "hidden"
+                            ]
+                        }
+                    ],
+                    "example": {
+                        "name": "FedEx",
+                        "code": "fedex",
+                        "account_number": null
+                    }
+                },
+                "responses": [
+                    {
+                        "statusCode": "201",
+                        "description": "Successful response for Create Carrier",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string",
+                                "description": "Carrier ID.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "carrier"
+                                ]
+                            },
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "description": "Display name.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "code",
+                                "type": "string",
+                                "description": "Carrier code.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "enum": [
+                                    "fedex",
+                                    "ups",
+                                    "usps",
+                                    "will_call",
+                                    "delivery",
+                                    "ltl",
+                                    "ltl1",
+                                    "freight_collect"
+                                ]
+                            },
+                            {
+                                "name": "account_number",
+                                "type": "string",
+                                "description": "Account number.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "customer_portal_visibility",
+                                "type": "string",
+                                "description": "Customer portal visibility.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "visible",
+                                    "hidden"
+                                ]
+                            },
+                            {
+                                "name": "owner",
+                                "type": "object",
+                                "description": "Owner.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "owner"
+                                        ]
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "string",
+                                        "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "system",
+                                            "account"
+                                        ]
+                                    },
+                                    {
+                                        "name": "account",
+                                        "type": "object",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Account ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "Default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "Default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "Branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "Portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "service_levels",
+                                "type": "object",
+                                "description": "Service levels.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Object type for ServiceLevel list",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "name": "page_info",
+                                        "type": "object",
+                                        "description": "Pagination metadata for ServiceLevel list",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "properties": [
+                                            {
+                                                "name": "next_cursor",
+                                                "type": "string",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "prev_cursor",
+                                                "type": "string",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "has_next_page",
+                                                "type": "boolean",
+                                                "description": "Whether more results exist after this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "has_prev_page",
+                                                "type": "boolean",
+                                                "description": "Whether results exist before this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "data",
+                                        "type": "array",
+                                        "description": "Array of ServiceLevel resources in this page",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "itemType": "object",
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Service level ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "service_level"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "service_level_token",
+                                                "type": "string",
+                                                "description": "Service level token.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "customer_portal_visibility",
+                                                "type": "string",
+                                                "description": "Customer portal visibility.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "visible",
+                                                    "hidden"
+                                                ]
+                                            },
+                                            {
+                                                "name": "is_default",
+                                                "type": "boolean",
+                                                "description": "Default service level for the carrier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "Owner.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "deleted_at",
+                                "type": "string",
+                                "description": "Soft-delete timestamp.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "created_at",
+                                "type": "string",
+                                "description": "Creation timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "updated_at",
+                                "type": "string",
+                                "description": "Last updated timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            }
+                        ],
+                        "example": {
+                            "id": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
+                            "object": "carrier",
+                            "name": "FedEx",
+                            "code": "fedex",
+                            "account_number": null,
+                            "customer_portal_visibility": "visible",
+                            "owner": {
+                                "object": "owner",
+                                "type": "account",
+                                "account": {
+                                    "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                    "object": "account",
+                                    "name": "Acme Inc.",
+                                    "default_billing_address": null,
+                                    "default_shipping_address": null,
+                                    "branding": null,
+                                    "portal": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            },
+                            "service_levels": null,
+                            "deleted_at": null,
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "update-carrier",
+                "summary": "Update Carrier",
+                "description": "Partially updates a carrier's name and portal visibility.",
+                "method": "PATCH",
+                "path": "/v1/operations/carriers/{id}",
+                "domain": "operations",
+                "tag": "Carriers Management",
+                "tagSlug": "carriers-management",
+                "endpointSlug": "update-carrier",
+                "actionType": "update",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Carrier ID."
+                    },
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
+                        "enum": [
+                            "owner",
+                            "owner.account",
+                            "service_levels"
+                        ]
+                    }
+                ],
+                "requestBody": {
+                    "description": "The request body for Update Carrier",
+                    "fields": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "description": "Display name.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "customer_portal_visibility",
+                            "type": "string",
+                            "description": "Customer portal visibility.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "visible",
+                                "hidden"
+                            ]
+                        }
+                    ],
+                    "example": {
+                        "name": "FedEx Express"
+                    }
+                },
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for Update Carrier",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string",
+                                "description": "Carrier ID.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "carrier"
+                                ]
+                            },
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "description": "Display name.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "code",
+                                "type": "string",
+                                "description": "Carrier code.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "enum": [
+                                    "fedex",
+                                    "ups",
+                                    "usps",
+                                    "will_call",
+                                    "delivery",
+                                    "ltl",
+                                    "ltl1",
+                                    "freight_collect"
+                                ]
+                            },
+                            {
+                                "name": "account_number",
+                                "type": "string",
+                                "description": "Account number.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "customer_portal_visibility",
+                                "type": "string",
+                                "description": "Customer portal visibility.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "visible",
+                                    "hidden"
+                                ]
+                            },
+                            {
+                                "name": "owner",
+                                "type": "object",
+                                "description": "Owner.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "owner"
+                                        ]
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "string",
+                                        "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "system",
+                                            "account"
+                                        ]
+                                    },
+                                    {
+                                        "name": "account",
+                                        "type": "object",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Account ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "Default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "Default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "Branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "Portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "service_levels",
+                                "type": "object",
+                                "description": "Service levels.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Object type for ServiceLevel list",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "name": "page_info",
+                                        "type": "object",
+                                        "description": "Pagination metadata for ServiceLevel list",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "properties": [
+                                            {
+                                                "name": "next_cursor",
+                                                "type": "string",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "prev_cursor",
+                                                "type": "string",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "has_next_page",
+                                                "type": "boolean",
+                                                "description": "Whether more results exist after this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "has_prev_page",
+                                                "type": "boolean",
+                                                "description": "Whether results exist before this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "data",
+                                        "type": "array",
+                                        "description": "Array of ServiceLevel resources in this page",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "itemType": "object",
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Service level ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "service_level"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "service_level_token",
+                                                "type": "string",
+                                                "description": "Service level token.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "customer_portal_visibility",
+                                                "type": "string",
+                                                "description": "Customer portal visibility.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "visible",
+                                                    "hidden"
+                                                ]
+                                            },
+                                            {
+                                                "name": "is_default",
+                                                "type": "boolean",
+                                                "description": "Default service level for the carrier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "Owner.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "deleted_at",
+                                "type": "string",
+                                "description": "Soft-delete timestamp.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "created_at",
+                                "type": "string",
+                                "description": "Creation timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "updated_at",
+                                "type": "string",
+                                "description": "Last updated timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            }
+                        ],
+                        "example": {
+                            "id": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
+                            "object": "carrier",
+                            "name": "FedEx",
+                            "code": "fedex",
+                            "account_number": null,
+                            "customer_portal_visibility": "visible",
+                            "owner": {
+                                "object": "owner",
+                                "type": "account",
+                                "account": {
+                                    "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                    "object": "account",
+                                    "name": "Acme Inc.",
+                                    "default_billing_address": null,
+                                    "default_shipping_address": null,
+                                    "branding": null,
+                                    "portal": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            },
+                            "service_levels": null,
+                            "deleted_at": null,
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "list-carriers",
+                "summary": "List Carriers",
+                "description": "Returns a paginated list of carriers for the current account.",
+                "method": "GET",
+                "path": "/v1/operations/carriers",
+                "domain": "operations",
+                "tag": "Carriers Management",
+                "tagSlug": "carriers-management",
+                "endpointSlug": "list-carriers",
+                "actionType": "list",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "type": "integer",
+                        "required": false,
+                        "description": "Maximum number of results per page (default: 100, max: 1000)."
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Search query used to filter results."
+                    },
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
+                        "enum": [
+                            "owner",
+                            "owner.account",
+                            "service_levels"
+                        ]
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for List Carriers",
+                        "fields": [
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Object type for Carrier list",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "list"
+                                ]
+                            },
+                            {
+                                "name": "page_info",
+                                "type": "object",
+                                "description": "Pagination metadata for Carrier list",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "properties": [
+                                    {
+                                        "name": "next_cursor",
+                                        "type": "string",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "prev_cursor",
+                                        "type": "string",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_next_page",
+                                        "type": "boolean",
+                                        "description": "Whether more results exist after this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_prev_page",
+                                        "type": "boolean",
+                                        "description": "Whether results exist before this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "data",
+                                "type": "array",
+                                "description": "Array of Carrier resources in this page",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "itemType": "object",
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Carrier ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "carrier"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "code",
+                                        "type": "string",
+                                        "description": "Carrier code.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false,
+                                        "enum": [
+                                            "fedex",
+                                            "ups",
+                                            "usps",
+                                            "will_call",
+                                            "delivery",
+                                            "ltl",
+                                            "ltl1",
+                                            "freight_collect"
+                                        ]
+                                    },
+                                    {
+                                        "name": "account_number",
+                                        "type": "string",
+                                        "description": "Account number.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "customer_portal_visibility",
+                                        "type": "string",
+                                        "description": "Customer portal visibility.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "visible",
+                                            "hidden"
+                                        ]
+                                    },
+                                    {
+                                        "name": "owner",
+                                        "type": "object",
+                                        "description": "Owner.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "owner"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "system",
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "account",
+                                                "type": "object",
+                                                "description": "The account that owns this resource. `null` if the object is system-owned.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Account ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "account"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "default_billing_address",
+                                                        "type": "object",
+                                                        "description": "Default billing address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "default_shipping_address",
+                                                        "type": "object",
+                                                        "description": "Default shipping address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "branding",
+                                                        "type": "object",
+                                                        "description": "Branding configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "portal",
+                                                        "type": "object",
+                                                        "description": "Portal configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "service_levels",
+                                        "type": "object",
+                                        "description": "Service levels.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Object type for ServiceLevel list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "list"
+                                                ]
+                                            },
+                                            {
+                                                "name": "page_info",
+                                                "type": "object",
+                                                "description": "Pagination metadata for ServiceLevel list",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "properties": [
+                                                    {
+                                                        "name": "next_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "prev_cursor",
+                                                        "type": "string",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_next_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether more results exist after this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_prev_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether results exist before this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "array",
+                                                "description": "Array of ServiceLevel resources in this page",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "itemType": "object",
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Service level ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "service_level"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "service_level_token",
+                                                        "type": "string",
+                                                        "description": "Service level token.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "customer_portal_visibility",
+                                                        "type": "string",
+                                                        "description": "Customer portal visibility.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "visible",
+                                                            "hidden"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "is_default",
+                                                        "type": "boolean",
+                                                        "description": "Default service level for the carrier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "owner",
+                                                        "type": "object",
+                                                        "description": "Owner.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "deleted_at",
+                                        "type": "string",
+                                        "description": "Soft-delete timestamp.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            }
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_cursor": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "prev_cursor": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
+                                    "object": "carrier",
+                                    "name": "FedEx",
+                                    "code": "fedex",
+                                    "account_number": null,
+                                    "customer_portal_visibility": "visible",
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "account",
+                                        "account": {
+                                            "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    },
+                                    "service_levels": null,
+                                    "deleted_at": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "get-carrier",
+                "summary": "Get Carrier",
+                "description": "Returns a carrier by ID.",
+                "method": "GET",
+                "path": "/v1/operations/carriers/{id}",
+                "domain": "operations",
+                "tag": "Carriers Management",
+                "tagSlug": "carriers-management",
+                "endpointSlug": "get-carrier",
+                "actionType": "retrieve",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Carrier ID."
+                    },
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
+                        "enum": [
+                            "owner",
+                            "owner.account",
+                            "service_levels"
+                        ]
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for Get Carrier",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string",
+                                "description": "Carrier ID.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "carrier"
+                                ]
+                            },
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "description": "Display name.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "code",
+                                "type": "string",
+                                "description": "Carrier code.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "enum": [
+                                    "fedex",
+                                    "ups",
+                                    "usps",
+                                    "will_call",
+                                    "delivery",
+                                    "ltl",
+                                    "ltl1",
+                                    "freight_collect"
+                                ]
+                            },
+                            {
+                                "name": "account_number",
+                                "type": "string",
+                                "description": "Account number.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "customer_portal_visibility",
+                                "type": "string",
+                                "description": "Customer portal visibility.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "visible",
+                                    "hidden"
+                                ]
+                            },
+                            {
+                                "name": "owner",
+                                "type": "object",
+                                "description": "Owner.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "owner"
+                                        ]
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "string",
+                                        "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "system",
+                                            "account"
+                                        ]
+                                    },
+                                    {
+                                        "name": "account",
+                                        "type": "object",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Account ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "Default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "Default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "Branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "Portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "service_levels",
+                                "type": "object",
+                                "description": "Service levels.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Object type for ServiceLevel list",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "name": "page_info",
+                                        "type": "object",
+                                        "description": "Pagination metadata for ServiceLevel list",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "properties": [
+                                            {
+                                                "name": "next_cursor",
+                                                "type": "string",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "prev_cursor",
+                                                "type": "string",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "has_next_page",
+                                                "type": "boolean",
+                                                "description": "Whether more results exist after this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "has_prev_page",
+                                                "type": "boolean",
+                                                "description": "Whether results exist before this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "data",
+                                        "type": "array",
+                                        "description": "Array of ServiceLevel resources in this page",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "itemType": "object",
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Service level ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "service_level"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "service_level_token",
+                                                "type": "string",
+                                                "description": "Service level token.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "customer_portal_visibility",
+                                                "type": "string",
+                                                "description": "Customer portal visibility.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "visible",
+                                                    "hidden"
+                                                ]
+                                            },
+                                            {
+                                                "name": "is_default",
+                                                "type": "boolean",
+                                                "description": "Default service level for the carrier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "Owner.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "deleted_at",
+                                "type": "string",
+                                "description": "Soft-delete timestamp.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "created_at",
+                                "type": "string",
+                                "description": "Creation timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "updated_at",
+                                "type": "string",
+                                "description": "Last updated timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            }
+                        ],
+                        "example": {
+                            "id": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
+                            "object": "carrier",
+                            "name": "FedEx",
+                            "code": "fedex",
+                            "account_number": null,
+                            "customer_portal_visibility": "visible",
+                            "owner": {
+                                "object": "owner",
+                                "type": "account",
+                                "account": {
+                                    "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                    "object": "account",
+                                    "name": "Acme Inc.",
+                                    "default_billing_address": null,
+                                    "default_shipping_address": null,
+                                    "branding": null,
+                                    "portal": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            },
+                            "service_levels": null,
+                            "deleted_at": null,
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "delete-carrier",
+                "summary": "Delete Carrier",
+                "description": "Deletes a carrier and cascades to remove all options. If the carrier is managed by Shippo, the Shippo account is deactivated.",
+                "method": "DELETE",
+                "path": "/v1/operations/carriers/{id}",
+                "domain": "operations",
+                "tag": "Carriers Management",
+                "tagSlug": "carriers-management",
+                "endpointSlug": "delete-carrier",
+                "actionType": "delete",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Carrier ID."
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for Delete Carrier",
+                        "fields": [],
+                        "example": {}
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Service Levels Management",
+        "slug": "service-levels-management",
+        "description": "List and manage service levels (shipping service levels).",
+        "domain": "operations",
+        "domainLabel": "Operations",
+        "resource": {
+            "name": "Service Levels Management",
+            "description": "Shipping service level for a carrier.",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "Service level ID.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false
+                },
+                {
+                    "name": "object",
+                    "type": "string",
+                    "description": "Resource type identifier.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false,
+                    "enum": [
+                        "service_level"
+                    ]
+                },
+                {
+                    "name": "name",
+                    "type": "string",
+                    "description": "Display name.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false
+                },
+                {
+                    "name": "service_level_token",
+                    "type": "string",
+                    "description": "Service level token.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false
+                },
+                {
+                    "name": "customer_portal_visibility",
+                    "type": "string",
+                    "description": "Customer portal visibility.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false,
+                    "enum": [
+                        "visible",
+                        "hidden"
+                    ]
+                },
+                {
+                    "name": "is_default",
+                    "type": "boolean",
+                    "description": "Default service level for the carrier.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false
+                },
+                {
+                    "name": "owner",
+                    "type": "object",
+                    "description": "Owner.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": true,
+                    "properties": [
+                        {
+                            "name": "object",
+                            "type": "string",
+                            "description": "Resource type identifier.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "owner"
+                            ]
+                        },
+                        {
+                            "name": "type",
+                            "type": "string",
+                            "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "system",
+                                "account"
+                            ]
+                        },
+                        {
+                            "name": "account",
+                            "type": "object",
+                            "description": "The account that owns this resource. `null` if the object is system-owned.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": true,
+                            "properties": [
+                                {
+                                    "name": "id",
+                                    "type": "string",
+                                    "description": "Account ID.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "object",
+                                    "type": "string",
+                                    "description": "Resource type identifier.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "enum": [
+                                        "account"
+                                    ]
+                                },
+                                {
+                                    "name": "name",
+                                    "type": "string",
+                                    "description": "Display name.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "default_billing_address",
+                                    "type": "object",
+                                    "description": "Default billing address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "default_shipping_address",
+                                    "type": "object",
+                                    "description": "Default shipping address.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "branding",
+                                    "type": "object",
+                                    "description": "Branding configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "portal",
+                                    "type": "object",
+                                    "description": "Portal configuration.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
+                                    "name": "created_at",
+                                    "type": "string",
+                                    "description": "Creation timestamp.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                },
+                                {
+                                    "name": "updated_at",
+                                    "type": "string",
+                                    "description": "Last updated timestamp.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "format": "date-time"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "created_at",
+                    "type": "string",
+                    "description": "Creation timestamp.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false,
+                    "format": "date-time"
+                },
+                {
+                    "name": "updated_at",
+                    "type": "string",
+                    "description": "Last updated timestamp.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false,
+                    "format": "date-time"
+                }
+            ],
+            "example": {
+                "id": "crop_01jm4r6700f8nwq3v5hx2d9ktp",
+                "object": "service_level",
+                "name": "FedEx Ground",
+                "service_level_token": "fedex_ground",
+                "customer_portal_visibility": "visible",
+                "is_default": false,
+                "owner": {
+                    "object": "owner",
+                    "type": "account",
+                    "account": {
+                        "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                        "object": "account",
+                        "name": "Acme Inc.",
+                        "default_billing_address": null,
+                        "default_shipping_address": null,
+                        "branding": null,
+                        "portal": null,
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    }
+                },
+                "created_at": "2026-05-10T00:00:00Z",
+                "updated_at": "2026-05-10T00:23:00Z"
+            }
+        },
+        "endpoints": [
+            {
+                "operationId": "create-service-level",
+                "summary": "Create Service Level",
+                "description": "Creates a service level for a carrier.",
+                "method": "POST",
+                "path": "/v1/operations/carriers/{carrier_id}/service-levels",
+                "domain": "operations",
+                "tag": "Service Levels Management",
+                "tagSlug": "service-levels-management",
+                "endpointSlug": "create-service-level",
+                "actionType": "create",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "carrier_id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Carrier ID."
+                    },
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
+                        "enum": [
+                            "owner",
+                            "owner.account"
+                        ]
+                    }
+                ],
+                "requestBody": {
+                    "description": "The request body for Create Service Level",
+                    "fields": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "description": "Display name.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "code",
+                            "type": "string",
+                            "description": "Service level code.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "customer_portal_visibility",
+                            "type": "string",
+                            "description": "Customer portal visibility. Defaults to `visible`.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "visible",
+                                "hidden"
+                            ]
+                        },
+                        {
+                            "name": "is_default",
+                            "type": "boolean",
+                            "description": "Default (system-synced) service level.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        }
+                    ],
+                    "example": {
+                        "name": "Ground Shipping",
+                        "code": "ground",
+                        "is_default": false
+                    }
+                },
+                "responses": [
+                    {
+                        "statusCode": "201",
+                        "description": "Successful response for Create Service Level",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string",
+                                "description": "Service level ID.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "service_level"
+                                ]
+                            },
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "description": "Display name.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "service_level_token",
+                                "type": "string",
+                                "description": "Service level token.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "customer_portal_visibility",
+                                "type": "string",
+                                "description": "Customer portal visibility.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "visible",
+                                    "hidden"
+                                ]
+                            },
+                            {
+                                "name": "is_default",
+                                "type": "boolean",
+                                "description": "Default service level for the carrier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "owner",
+                                "type": "object",
+                                "description": "Owner.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "owner"
+                                        ]
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "string",
+                                        "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "system",
+                                            "account"
+                                        ]
+                                    },
+                                    {
+                                        "name": "account",
+                                        "type": "object",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Account ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "Default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "Default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "Branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "Portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "created_at",
+                                "type": "string",
+                                "description": "Creation timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "updated_at",
+                                "type": "string",
+                                "description": "Last updated timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            }
+                        ],
+                        "example": {
+                            "id": "crop_01jm4r6700f8nwq3v5hx2d9ktp",
+                            "object": "service_level",
+                            "name": "FedEx Ground",
+                            "service_level_token": "fedex_ground",
+                            "customer_portal_visibility": "visible",
+                            "is_default": false,
+                            "owner": {
+                                "object": "owner",
+                                "type": "account",
+                                "account": {
+                                    "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                    "object": "account",
+                                    "name": "Acme Inc.",
+                                    "default_billing_address": null,
+                                    "default_shipping_address": null,
+                                    "branding": null,
+                                    "portal": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "update-service-level",
+                "summary": "Update Service Level",
+                "description": "Partially updates a service level's name, code, and portal visibility.",
+                "method": "PATCH",
+                "path": "/v1/operations/carriers/{carrier_id}/service-levels/{id}",
+                "domain": "operations",
+                "tag": "Service Levels Management",
+                "tagSlug": "service-levels-management",
+                "endpointSlug": "update-service-level",
+                "actionType": "update",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "carrier_id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Carrier ID."
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Service level ID."
+                    },
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
+                        "enum": [
+                            "owner",
+                            "owner.account"
+                        ]
+                    }
+                ],
+                "requestBody": {
+                    "description": "The request body for Update Service Level",
+                    "fields": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "description": "Display name.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "code",
+                            "type": "string",
+                            "description": "Service level code.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "customer_portal_visibility",
+                            "type": "string",
+                            "description": "Customer portal visibility.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "visible",
+                                "hidden"
+                            ]
+                        },
+                        {
+                            "name": "is_default",
+                            "type": "boolean",
+                            "description": "Whether this is the tenant's preferred default service level for the carrier.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
+                        }
+                    ],
+                    "example": {
+                        "name": "Express Shipping"
+                    }
+                },
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for Update Service Level",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string",
+                                "description": "Service level ID.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "service_level"
+                                ]
+                            },
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "description": "Display name.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "service_level_token",
+                                "type": "string",
+                                "description": "Service level token.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "customer_portal_visibility",
+                                "type": "string",
+                                "description": "Customer portal visibility.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "visible",
+                                    "hidden"
+                                ]
+                            },
+                            {
+                                "name": "is_default",
+                                "type": "boolean",
+                                "description": "Default service level for the carrier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "owner",
+                                "type": "object",
+                                "description": "Owner.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "owner"
+                                        ]
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "string",
+                                        "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "system",
+                                            "account"
+                                        ]
+                                    },
+                                    {
+                                        "name": "account",
+                                        "type": "object",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Account ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "Default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "Default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "Branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "Portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "created_at",
+                                "type": "string",
+                                "description": "Creation timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "updated_at",
+                                "type": "string",
+                                "description": "Last updated timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            }
+                        ],
+                        "example": {
+                            "id": "crop_01jm4r6700f8nwq3v5hx2d9ktp",
+                            "object": "service_level",
+                            "name": "FedEx Ground",
+                            "service_level_token": "fedex_ground",
+                            "customer_portal_visibility": "visible",
+                            "is_default": false,
+                            "owner": {
+                                "object": "owner",
+                                "type": "account",
+                                "account": {
+                                    "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                    "object": "account",
+                                    "name": "Acme Inc.",
+                                    "default_billing_address": null,
+                                    "default_shipping_address": null,
+                                    "branding": null,
+                                    "portal": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "list-service-levels",
+                "summary": "List Service Levels",
+                "description": "Returns a paginated list of service levels for a carrier.",
+                "method": "GET",
+                "path": "/v1/operations/carriers/{carrier_id}/service-levels",
+                "domain": "operations",
+                "tag": "Service Levels Management",
+                "tagSlug": "service-levels-management",
+                "endpointSlug": "list-service-levels",
+                "actionType": "list",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "type": "integer",
+                        "required": false,
+                        "description": "Maximum number of results per page (default: 100, max: 1000)."
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Search query used to filter results."
+                    },
+                    {
+                        "name": "carrier_id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Carrier ID."
+                    },
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
+                        "enum": [
+                            "owner",
+                            "owner.account"
+                        ]
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for List Service Levels",
+                        "fields": [
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Object type for ServiceLevel list",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "list"
+                                ]
+                            },
+                            {
+                                "name": "page_info",
+                                "type": "object",
+                                "description": "Pagination metadata for ServiceLevel list",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "properties": [
+                                    {
+                                        "name": "next_cursor",
+                                        "type": "string",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "prev_cursor",
+                                        "type": "string",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_next_page",
+                                        "type": "boolean",
+                                        "description": "Whether more results exist after this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_prev_page",
+                                        "type": "boolean",
+                                        "description": "Whether results exist before this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "data",
+                                "type": "array",
+                                "description": "Array of ServiceLevel resources in this page",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "itemType": "object",
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Service level ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "service_level"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "service_level_token",
+                                        "type": "string",
+                                        "description": "Service level token.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "customer_portal_visibility",
+                                        "type": "string",
+                                        "description": "Customer portal visibility.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "visible",
+                                            "hidden"
+                                        ]
+                                    },
+                                    {
+                                        "name": "is_default",
+                                        "type": "boolean",
+                                        "description": "Default service level for the carrier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "owner",
+                                        "type": "object",
+                                        "description": "Owner.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "owner"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "system",
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "account",
+                                                "type": "object",
+                                                "description": "The account that owns this resource. `null` if the object is system-owned.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Account ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "account"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "default_billing_address",
+                                                        "type": "object",
+                                                        "description": "Default billing address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "default_shipping_address",
+                                                        "type": "object",
+                                                        "description": "Default shipping address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "branding",
+                                                        "type": "object",
+                                                        "description": "Branding configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "portal",
+                                                        "type": "object",
+                                                        "description": "Portal configuration.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "operationId": "get-service-level",
+                "summary": "Get Service Level",
+                "description": "Returns a service level by ID.",
+                "method": "GET",
+                "path": "/v1/operations/carriers/{carrier_id}/service-levels/{id}",
+                "domain": "operations",
+                "tag": "Service Levels Management",
+                "tagSlug": "service-levels-management",
+                "endpointSlug": "get-service-level",
+                "actionType": "retrieve",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "carrier_id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Carrier ID."
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Service level ID."
+                    },
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
+                        "enum": [
+                            "owner",
+                            "owner.account"
+                        ]
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for Get Service Level",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string",
+                                "description": "Service level ID.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "service_level"
+                                ]
+                            },
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "description": "Display name.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "service_level_token",
+                                "type": "string",
+                                "description": "Service level token.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "customer_portal_visibility",
+                                "type": "string",
+                                "description": "Customer portal visibility.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "visible",
+                                    "hidden"
+                                ]
+                            },
+                            {
+                                "name": "is_default",
+                                "type": "boolean",
+                                "description": "Default service level for the carrier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "owner",
+                                "type": "object",
+                                "description": "Owner.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "owner"
+                                        ]
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "string",
+                                        "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "system",
+                                            "account"
+                                        ]
+                                    },
+                                    {
+                                        "name": "account",
+                                        "type": "object",
+                                        "description": "The account that owns this resource. `null` if the object is system-owned.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Account ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "Default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "Default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "Branding configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "Portal configuration.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "created_at",
+                                "type": "string",
+                                "description": "Creation timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "updated_at",
+                                "type": "string",
+                                "description": "Last updated timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            }
+                        ],
+                        "example": {
+                            "id": "crop_01jm4r6700f8nwq3v5hx2d9ktp",
+                            "object": "service_level",
+                            "name": "FedEx Ground",
+                            "service_level_token": "fedex_ground",
+                            "customer_portal_visibility": "visible",
+                            "is_default": false,
+                            "owner": {
+                                "object": "owner",
+                                "type": "account",
+                                "account": {
+                                    "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                    "object": "account",
+                                    "name": "Acme Inc.",
+                                    "default_billing_address": null,
+                                    "default_shipping_address": null,
+                                    "branding": null,
+                                    "portal": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "delete-service-level",
+                "summary": "Delete Service Level",
+                "description": "Permanently deletes a service level. Fails if the service level is a default (system-synced) level.",
+                "method": "DELETE",
+                "path": "/v1/operations/carriers/{carrier_id}/service-levels/{id}",
+                "domain": "operations",
+                "tag": "Service Levels Management",
+                "tagSlug": "service-levels-management",
+                "endpointSlug": "delete-service-level",
+                "actionType": "delete",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "carrier_id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Carrier ID."
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Service level ID."
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for Delete Service Level",
+                        "fields": [],
+                        "example": {}
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "name": "Item Categories Management",
         "slug": "item-categories-management",
         "description": "List and manage item categories.",
@@ -32333,6 +36242,15 @@ export const apiTags: TagData[] = [
                                     "expandable": false
                                 },
                                 {
+                                    "name": "owner",
+                                    "type": "object",
+                                    "description": "Owner.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "alwaysNull": true,
+                                    "expandable": true
+                                },
+                                {
                                     "name": "created_at",
                                     "type": "string",
                                     "description": "Creation timestamp.",
@@ -33696,6 +37614,21 @@ export const apiTags: TagData[] = [
                         "service_level_token": "fedex_ground",
                         "customer_portal_visibility": "visible",
                         "is_default": false,
+                        "owner": {
+                            "object": "owner",
+                            "type": "account",
+                            "account": {
+                                "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                "object": "account",
+                                "name": "Acme Inc.",
+                                "default_billing_address": null,
+                                "default_shipping_address": null,
+                                "branding": null,
+                                "portal": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            }
+                        },
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
                     },
@@ -34718,6 +38651,15 @@ export const apiTags: TagData[] = [
                                                 "expandable": false
                                             },
                                             {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "Owner.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
                                                 "name": "created_at",
                                                 "type": "string",
                                                 "description": "Creation timestamp.",
@@ -36081,6 +40023,21 @@ export const apiTags: TagData[] = [
                                     "service_level_token": "fedex_ground",
                                     "customer_portal_visibility": "visible",
                                     "is_default": false,
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "account",
+                                        "account": {
+                                            "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -36928,6 +40885,15 @@ export const apiTags: TagData[] = [
                                                 "expandable": false
                                             },
                                             {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "Owner.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
                                                 "name": "created_at",
                                                 "type": "string",
                                                 "description": "Creation timestamp.",
@@ -38291,6 +42257,21 @@ export const apiTags: TagData[] = [
                                     "service_level_token": "fedex_ground",
                                     "customer_portal_visibility": "visible",
                                     "is_default": false,
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "account",
+                                        "account": {
+                                            "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -39101,6 +43082,15 @@ export const apiTags: TagData[] = [
                                                         "required": true,
                                                         "nullable": false,
                                                         "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "owner",
+                                                        "type": "object",
+                                                        "description": "Owner.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
                                                     },
                                                     {
                                                         "name": "created_at",
@@ -40568,6 +44558,21 @@ export const apiTags: TagData[] = [
                                             "service_level_token": "fedex_ground",
                                             "customer_portal_visibility": "visible",
                                             "is_default": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "account",
+                                                "account": {
+                                                    "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                                    "object": "account",
+                                                    "name": "Acme Inc.",
+                                                    "default_billing_address": null,
+                                                    "default_shipping_address": null,
+                                                    "branding": null,
+                                                    "portal": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         },
@@ -41176,6 +45181,15 @@ export const apiTags: TagData[] = [
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false
+                                            },
+                                            {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "Owner.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
                                             },
                                             {
                                                 "name": "created_at",
@@ -42541,6 +46555,21 @@ export const apiTags: TagData[] = [
                                     "service_level_token": "fedex_ground",
                                     "customer_portal_visibility": "visible",
                                     "is_default": false,
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "account",
+                                        "account": {
+                                            "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -43198,6 +47227,15 @@ export const apiTags: TagData[] = [
                                                 "expandable": false
                                             },
                                             {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "Owner.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
                                                 "name": "created_at",
                                                 "type": "string",
                                                 "description": "Creation timestamp.",
@@ -44561,6 +48599,21 @@ export const apiTags: TagData[] = [
                                     "service_level_token": "fedex_ground",
                                     "customer_portal_visibility": "visible",
                                     "is_default": false,
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "account",
+                                        "account": {
+                                            "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -53021,6 +57074,88 @@ export const apiNavDomains: ApiNavDomain[] = [
                         "method": "DELETE",
                         "actionType": "delete",
                         "href": "/api-reference/shipping-terms-management/delete-shipping-term"
+                    }
+                ]
+            },
+            {
+                "name": "Carriers Management",
+                "slug": "carriers-management",
+                "endpoints": [
+                    {
+                        "name": "Create Carrier",
+                        "slug": "create-carrier",
+                        "method": "POST",
+                        "actionType": "create",
+                        "href": "/api-reference/carriers-management/create-carrier"
+                    },
+                    {
+                        "name": "Update Carrier",
+                        "slug": "update-carrier",
+                        "method": "PATCH",
+                        "actionType": "update",
+                        "href": "/api-reference/carriers-management/update-carrier"
+                    },
+                    {
+                        "name": "List",
+                        "slug": "list-carriers",
+                        "method": "GET",
+                        "actionType": "list",
+                        "href": "/api-reference/carriers-management/list-carriers"
+                    },
+                    {
+                        "name": "Get Carrier",
+                        "slug": "get-carrier",
+                        "method": "GET",
+                        "actionType": "retrieve",
+                        "href": "/api-reference/carriers-management/get-carrier"
+                    },
+                    {
+                        "name": "Delete Carrier",
+                        "slug": "delete-carrier",
+                        "method": "DELETE",
+                        "actionType": "delete",
+                        "href": "/api-reference/carriers-management/delete-carrier"
+                    }
+                ]
+            },
+            {
+                "name": "Service Levels Management",
+                "slug": "service-levels-management",
+                "endpoints": [
+                    {
+                        "name": "Create Level",
+                        "slug": "create-service-level",
+                        "method": "POST",
+                        "actionType": "create",
+                        "href": "/api-reference/service-levels-management/create-service-level"
+                    },
+                    {
+                        "name": "Update Level",
+                        "slug": "update-service-level",
+                        "method": "PATCH",
+                        "actionType": "update",
+                        "href": "/api-reference/service-levels-management/update-service-level"
+                    },
+                    {
+                        "name": "List",
+                        "slug": "list-service-levels",
+                        "method": "GET",
+                        "actionType": "list",
+                        "href": "/api-reference/service-levels-management/list-service-levels"
+                    },
+                    {
+                        "name": "Get Level",
+                        "slug": "get-service-level",
+                        "method": "GET",
+                        "actionType": "retrieve",
+                        "href": "/api-reference/service-levels-management/get-service-level"
+                    },
+                    {
+                        "name": "Delete Level",
+                        "slug": "delete-service-level",
+                        "method": "DELETE",
+                        "actionType": "delete",
+                        "href": "/api-reference/service-levels-management/delete-service-level"
                     }
                 ]
             },
