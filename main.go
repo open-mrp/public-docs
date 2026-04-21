@@ -335,7 +335,7 @@ func getTypeDisplayLinked(prop Property, linkable map[string]bool, baseURL strin
 
 func getNullableDisplay(prop Property) string {
 	if prop.Nullable {
-		return "<center>✓</center>"
+		return "<center>Yes</center>"
 	}
 	return ""
 }
@@ -716,7 +716,7 @@ Reference for shared resource types.
 					required := ""
 					for _, req := range subSchema.Required {
 						if req == sp.Name {
-							required = "<center>✓</center>"
+							required = "<center>Yes</center>"
 							break
 						}
 					}
@@ -830,7 +830,7 @@ nav:
 					required := ""
 					for _, req := range resourceSchema.Required {
 						if req == op.Name {
-							required = "<center>✓</center>"
+							required = "<center>Yes</center>"
 							break
 						}
 					}
@@ -916,7 +916,7 @@ nav:
 						for _, p := range pathParams {
 							required := ""
 							if p.Required {
-								required = "<center>✓</center>"
+								required = "<center>Yes</center>"
 							}
 							paramType := p.Schema.Type
 							if paramType == "" {
@@ -935,7 +935,7 @@ nav:
 						for _, p := range queryParams {
 							required := ""
 							if p.Required {
-								required = "<center>✓</center>"
+								required = "<center>Yes</center>"
 							}
 							paramType := p.Schema.Type
 							if paramType == "" {
@@ -977,7 +977,7 @@ nav:
 								required := ""
 								for _, req := range schema.Required {
 									if req == op.Name {
-										required = "<center>✓</center>"
+										required = "<center>Yes</center>"
 										break
 									}
 								}

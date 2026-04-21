@@ -19,8 +19,8 @@
         "format:check": "prettier --check ."
     },
     "dependencies": {
-        "@augno/internal-sdk": "^3.4.2",
-        "@augno/ui": "^1.6.4",
+        "@augno/internal-sdk": "file:.yalc/@augno/internal-sdk",
+        "@augno/ui": "file:.yalc/@augno/ui",
         "@mdx-js/loader": "^3.1.1",
         "@mdx-js/react": "^3.1.1",
         "@next/mdx": "16.1.6",

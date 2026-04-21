@@ -2,14 +2,14 @@
   "version": "v1",
   "packages": {
     "@augno/ui": {
-      "signature": "7878337441db6b141647bf6622bf6409",
+      "signature": "e6a87d5af7d395d7182d7d832eb5672d",
       "file": true,
-      "replaced": "^1.6.1"
+      "replaced": "^1.6.4"
     },
     "@augno/internal-sdk": {
-      "signature": "140bf3a971a48ae2ada3337c5319e964",
+      "signature": "087f05e0185b288e2e00508abd234ff8",
       "file": true,
-      "replaced": "^2.2.0"
+      "replaced": "^3.4.2"
     }
   }
 }

@@ -86,11 +86,11 @@ async function main() {
     const invalidPathKeys = await validatePathKeys();
 
     if (invalidPathKeys.length === 0) {
-        console.log('✓ All pathKeys are valid\n');
+        console.log('All pathKeys are valid.\n');
         return;
     }
 
-    console.error(`✗ Found ${invalidPathKeys.length} invalid pathKey(s):\n`);
+    console.error(`Found ${invalidPathKeys.length} invalid pathKey(s):\n`);
 
     for (const invalid of invalidPathKeys) {
         console.error(`  ${invalid.file}:${invalid.line}`);

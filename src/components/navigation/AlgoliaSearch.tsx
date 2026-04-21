@@ -81,7 +81,7 @@ function SearchTrigger({ color, onClick }: { color?: string; onClick: () => void
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                 <kbd className="hidden sm:inline-flex items-center gap-1 px-1.5 py-0.5 rounded border border-current/20 bg-current/5 text-[10px] font-medium text-current/50">
-                    <span className="text-xs">{isMac ? '⌘' : 'Ctrl'}</span>K
+                    <span className="text-xs">{isMac ? 'Cmd' : 'Ctrl'}</span>+K
                 </kbd>
             </div>
         </div>

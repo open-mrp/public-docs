@@ -2,7 +2,7 @@
 
 This file provides guidance when working with code in this repository.
 
-⚠️ **NOTE:** Do **not** run `bun run dev`. The dev server should only be started manually by a human, not through automation or commands.
+**IMPORTANT:** Do **not** run `bun run dev`. The dev server should only be started manually by a human, not through automation or commands.
 
 ## Project Overview
 
