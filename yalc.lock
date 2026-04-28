@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "@augno/ui": {
-      "signature": "e6a87d5af7d395d7182d7d832eb5672d",
+      "signature": "9a3634a248f47dfc002407ffa5851217",
       "file": true,
       "replaced": "^1.6.4"
     },
