@@ -2992,7 +2992,41 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "array",
                         "required": false,
-                        "description": "API error codes."
+                        "description": "API error codes.",
+                        "enum": [
+                            "expired_token",
+                            "api_key_expired",
+                            "api_key_revoked",
+                            "invalid_credentials",
+                            "insufficient_permissions",
+                            "payment_required",
+                            "validation_failed",
+                            "missing_field",
+                            "invalid_format",
+                            "method_not_allowed",
+                            "resource_not_found",
+                            "resource_exists",
+                            "resource_conflict",
+                            "resource_gone",
+                            "idempotency_in_progress",
+                            "limit_exceeded",
+                            "registration_closed",
+                            "rate_limit_exceeded",
+                            "parameter_missing",
+                            "parameter_invalid",
+                            "parameter_unknown",
+                            "parameters_exclusive",
+                            "internal_error",
+                            "service_unavailable",
+                            "external_service_error",
+                            "timeout",
+                            "connection_error",
+                            "request_timeout",
+                            "client_closed_request",
+                            "api_version_required",
+                            "api_version_invalid",
+                            "api_version_too_old"
+                        ]
                     },
                     {
                         "name": "account_ids[]",
@@ -3006,7 +3040,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "array",
                         "required": false,
-                        "description": "Actor identifier. `user.id` when `identity_type`=`user`, or an `api_key.id` when `identity_type`=`api_key`."
+                        "description": "Actor identifier. `account_user.id` when `identity_type`=`user`, or an `api_key.id` when `identity_type`=`api_key`."
                     },
                     {
                         "name": "actor_types[]",
@@ -4932,7 +4966,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "array",
                         "required": false,
-                        "description": "Actor identifier. `user.id` when `identity_type`=`user`, or an `api_key.id` when `identity_type`=`api_key`."
+                        "description": "Actor identifier. `account_user.id` when `identity_type`=`user`, or an `api_key.id` when `identity_type`=`api_key`."
                     },
                     {
                         "name": "actions[]",
