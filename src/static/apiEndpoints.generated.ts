@@ -2953,7 +2953,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Filter: start of date range for occurred_at.",
+                        "description": "Start of date range for occurred_at.",
                         "format": "date-time"
                     },
                     {
@@ -2961,85 +2961,85 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Filter: end of date range for occurred_at.",
+                        "description": "End of date range for occurred_at.",
                         "format": "date-time"
                     },
                     {
-                        "name": "method",
-                        "in": "query",
-                        "type": "string",
-                        "required": false,
-                        "description": "Filter: HTTP method."
-                    },
-                    {
-                        "name": "status_code",
-                        "in": "query",
-                        "type": "integer",
-                        "required": false,
-                        "description": "Filter: HTTP status code."
-                    },
-                    {
-                        "name": "error_code",
-                        "in": "query",
-                        "type": "string",
-                        "required": false,
-                        "description": "Filter: API error code."
-                    },
-                    {
-                        "name": "account_id",
-                        "in": "query",
-                        "type": "string",
-                        "required": false,
-                        "description": "Filter: actor home account ID."
-                    },
-                    {
-                        "name": "actor_id[]",
+                        "name": "methods[]",
                         "in": "query",
                         "type": "array",
                         "required": false,
-                        "description": "Filter: actor IDs (repeatable)."
+                        "description": "HTTP methods.",
+                        "enum": [
+                            "GET",
+                            "POST",
+                            "PUT",
+                            "PATCH",
+                            "DELETE",
+                            "HEAD",
+                            "OPTIONS"
+                        ]
                     },
                     {
-                        "name": "actor_type",
-                        "in": "query",
-                        "type": "string",
-                        "required": false,
-                        "description": "Filter: actor type (\"user\" or \"api_key\")."
-                    },
-                    {
-                        "name": "actor_name",
-                        "in": "query",
-                        "type": "string",
-                        "required": false,
-                        "description": "Filter: actor name (partial or exact match)."
-                    },
-                    {
-                        "name": "normalized_route[]",
+                        "name": "status_codes[]",
                         "in": "query",
                         "type": "array",
                         "required": false,
-                        "description": "Filter: normalized route templates (repeatable, exact match)."
+                        "description": "HTTP status codes."
                     },
                     {
-                        "name": "host[]",
+                        "name": "error_codes[]",
                         "in": "query",
                         "type": "array",
                         "required": false,
-                        "description": "Filter: request hosts (repeatable, exact match)."
+                        "description": "API error codes."
+                    },
+                    {
+                        "name": "account_ids[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Actor home account IDs."
+                    },
+                    {
+                        "name": "actor_ids[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Actor identifier. `user.id` when `identity_type`=`user`, or an `api_key.id` when `identity_type`=`api_key`."
+                    },
+                    {
+                        "name": "actor_types[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Actor types.",
+                        "enum": [
+                            "user",
+                            "api_key",
+                            "agent"
+                        ]
+                    },
+                    {
+                        "name": "normalized_routes[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Normalized route templates."
+                    },
+                    {
+                        "name": "hosts[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Request hosts."
                     },
                     {
                         "name": "min_latency_us",
                         "in": "query",
                         "type": "integer",
                         "required": false,
-                        "description": "Filter: minimum latency in microseconds."
-                    },
-                    {
-                        "name": "exact_match",
-                        "in": "query",
-                        "type": "boolean",
-                        "required": false,
-                        "description": "When true, string filters use exact match instead of partial (LIKE)."
+                        "description": "Minimum latency in microseconds."
                     },
                     {
                         "name": "include[]",
@@ -4732,7 +4732,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "array",
                         "required": false,
-                        "description": "Resource types of the audited entity. Repeat the query parameter to filter by multiple types.",
+                        "description": "Resource types of the audited entity.",
                         "enum": [
                             "account",
                             "actor",
@@ -4921,25 +4921,25 @@ export const apiTags: TagData[] = [
                         ]
                     },
                     {
-                        "name": "resource_id",
+                        "name": "resource_ids[]",
                         "in": "query",
-                        "type": "string",
+                        "type": "array",
                         "required": false,
-                        "description": "Audited resource ID."
+                        "description": "Audited resource IDs."
                     },
                     {
-                        "name": "actor_id",
+                        "name": "actor_ids[]",
                         "in": "query",
-                        "type": "string",
+                        "type": "array",
                         "required": false,
-                        "description": "Actor ID."
+                        "description": "Actor identifier. `user.id` when `identity_type`=`user`, or an `api_key.id` when `identity_type`=`api_key`."
                     },
                     {
-                        "name": "action",
+                        "name": "actions[]",
                         "in": "query",
-                        "type": "string",
+                        "type": "array",
                         "required": false,
-                        "description": "Audit action.",
+                        "description": "Audit actions.",
                         "enum": [
                             "create",
                             "update",
@@ -4947,13 +4947,6 @@ export const apiTags: TagData[] = [
                             "restore",
                             "archive"
                         ]
-                    },
-                    {
-                        "name": "account_id",
-                        "in": "query",
-                        "type": "string",
-                        "required": false,
-                        "description": "Actor home account ID."
                     },
                     {
                         "name": "include[]",
@@ -18827,6 +18820,13 @@ export const apiTags: TagData[] = [
                         "type": "string",
                         "required": false,
                         "description": "Search query used to filter results."
+                    },
+                    {
+                        "name": "drop_ship",
+                        "in": "query",
+                        "type": "boolean",
+                        "required": false,
+                        "description": "Query parameter: drop_ship for List Addresses"
                     }
                 ],
                 "responses": [
@@ -55213,7 +55213,7 @@ export const apiTags: TagData[] = [
                         "description": "Search query used to filter results."
                     },
                     {
-                        "name": "role_type[]",
+                        "name": "role_types[]",
                         "in": "query",
                         "type": "array",
                         "required": false,
