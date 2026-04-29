@@ -37507,7 +37507,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "default_sales_rep_user_id",
                             "type": "string",
-                            "description": "Default sales rep user ID.",
+                            "description": "The ID of the account user to assign as the default sales rep.",
                             "required": false,
                             "nullable": false,
                             "expandable": false
@@ -39924,7 +39924,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "default_sales_rep_user_id",
                             "type": "string",
-                            "description": "Default sales rep user ID. Send `null` to clear.",
+                            "description": "The ID of the account user to assign as the default sales rep. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
                             "expandable": false
