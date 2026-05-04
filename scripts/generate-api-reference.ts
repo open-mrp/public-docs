@@ -368,18 +368,32 @@ function schemaToFields(
         const topLevelIncludeNames = new Set(
             [...includePaths].map((path) => path.split('.')[0]),
         );
-        for (const [name, prop] of Object.entries(resolved.properties)) {
-            const resolvedProp = resolveSchema(prop, spec);
-            const childContainer =
-                resolvedProp.type === 'array' && resolvedProp.items
-                    ? resolveSchema(resolvedProp.items, spec)
-                    : resolvedProp;
-            if (
-                childContainer.properties &&
-                Object.keys(childContainer.properties).some((c) => topLevelIncludeNames.has(c))
-            ) {
-                resourceRoot = name;
-                break;
+        // Only look for a resource root wrapper if none of the include path
+        // prefixes are already direct properties of the response schema. When
+        // include names like `base_unit` or `owner` are direct properties, the
+        // paths already apply at the top level and no wrapper exists. Without
+        // this guard an expandable field whose sub-schema happens to contain a
+        // property named after another include (e.g. Unit.owner when `owner` is
+        // also an include path) would be misidentified as the resource root,
+        // causing its own nested fields to be dropped.
+        const directPropNames = new Set(Object.keys(resolved.properties));
+        const anyIncludeMatchesDirect = [...topLevelIncludeNames].some((n) =>
+            directPropNames.has(n),
+        );
+        if (!anyIncludeMatchesDirect) {
+            for (const [name, prop] of Object.entries(resolved.properties)) {
+                const resolvedProp = resolveSchema(prop, spec);
+                const childContainer =
+                    resolvedProp.type === 'array' && resolvedProp.items
+                        ? resolveSchema(resolvedProp.items, spec)
+                        : resolvedProp;
+                if (
+                    childContainer.properties &&
+                    Object.keys(childContainer.properties).some((c) => topLevelIncludeNames.has(c))
+                ) {
+                    resourceRoot = name;
+                    break;
+                }
             }
         }
     }
