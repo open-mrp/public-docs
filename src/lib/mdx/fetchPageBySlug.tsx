@@ -7,6 +7,7 @@ import { ApiVersion } from '@/components/markdown/ApiVersion';
 import { IfAuthenticated, IfUnauthenticated } from '@/components/markdown/AuthConditional';
 import BetaTag from '@/components/markdown/BetaTag';
 import { DocsCodeEditor } from '@/components/markdown/DocsCodeEditor';
+import { ErrorDetails } from '@/components/markdown/ErrorDetails';
 import { ApiEndpoint } from '@/components/api-reference/ApiEndpoint';
 import { ApiReferenceOverview } from '@/components/api-reference/ApiReferenceOverview';
 import { CustomerCRMIntegration } from '@/components/markdown/flowcharts/CustomerCRMIntegration';
@@ -78,6 +79,7 @@ const mdxComponents: MDXComponents = {
     DocChecklistItem,
     LinkCard,
     BetaTag,
+    ErrorDetails,
     ApiEndpoint,
     ApiReferenceOverview,
     DocHeroSection,
