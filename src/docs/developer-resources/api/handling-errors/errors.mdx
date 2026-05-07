@@ -9,13 +9,9 @@ nav:
     order: 10
 ---
 
-Every Augno API error uses the same response envelope. The most important fields are
-`code`, `type`, and `is_transient`: use those fields for programmatic handling instead of
-parsing the human-readable `message`.
+Every Augno API error uses the same response envelope. The most important fields are `code`, `type`, and `is_transient`: use those fields for programmatic handling instead of parsing the human-readable `message`.
 
-This page is organized as a quick reference first, then a troubleshooting guide by
-category. Each error code has a stable anchor, so links like
-`https://docs.augno.com/api/errors#validation_failed` open the matching card.
+This page is organized as a quick reference first, then a troubleshooting guide by category. Each error code has a stable anchor, so links like `https://docs.augno.com/api/errors#validation_failed` open the matching card.
 
 ## Error Envelope
 
@@ -55,8 +51,7 @@ All error responses are wrapped in an `error` object:
 | `api_error`             | Augno or a dependency failed while handling a valid request.                                    | Retry only when `is_transient` is `true`; use exponential backoff and jitter. |
 | `idempotency_error`     | A mutation key is already in use, or the same key was reused with different request parameters. | Retry the same operation only for `idempotency_in_progress`.                  |
 
-For mutating requests, include an idempotency key. If a retry is needed, reuse the same
-key for the same operation so Augno can avoid duplicate side effects.
+For mutating requests, include an idempotency key. If a retry is needed, reuse the same key for the same operation so Augno can avoid duplicate side effects.
 
 ## Quick Reference
 
@@ -74,19 +69,15 @@ key for the same operation so Augno can avoid duplicate side effects.
 
 ## Troubleshooting Guide
 
-The cards below include a representative request, expected error response, and the
-recommended fix. Example IDs, API keys, account IDs, and request log URLs are placeholders.
+The cards below include a representative request, expected error response, and the recommended fix. Example IDs, API keys, account IDs, and request log URLs are placeholders.
 
 ### Authentication & Authorization
 
-These errors mean Augno could not authenticate the caller, or the authenticated caller is
-not allowed to perform the operation. See <DocLink pathKey="api.apiKeys">API Keys</DocLink>
-for more about API key setup and rotation.
+These errors mean Augno could not authenticate the caller, or the authenticated caller is not allowed to perform the operation. See <DocLink pathKey="api.apiKeys">API Keys</DocLink> for more about API key setup and rotation.
 
 <ErrorDetails code="expired_token" meta="401 Unauthorized, not transient">
 
-The access or refresh token used for the request has expired. Retrying with the same token
-will keep failing.
+The access or refresh token used for the request has expired. Retrying with the same token will keep failing.
 
 ```bash
 curl API_HOST/v1/catalog/items \
@@ -110,8 +101,7 @@ curl API_HOST/v1/catalog/items \
 }
 ```
 
-Refresh the token if your client has a refresh flow, or ask the user to sign in again.
-Server-to-server integrations should rotate to a valid API key.
+Refresh the token if your client has a refresh flow, or ask the user to sign in again. Server-to-server integrations should rotate to a valid API key.
 
 </ErrorDetails>
 
@@ -141,15 +131,13 @@ curl API_HOST/v1/catalog/items \
 }
 ```
 
-Create a new API key, deploy it to the integration, and remove the expired key from
-secret stores or environment variables.
+Create a new API key, deploy it to the integration, and remove the expired key from secret stores or environment variables.
 
 </ErrorDetails>
 
 <ErrorDetails code="api_key_revoked" meta="401 Unauthorized, not transient">
 
-The API key was explicitly revoked by an administrator or by Augno. Revocation is immediate
-and permanent.
+The API key was explicitly revoked by an administrator or by Augno. Revocation is immediate and permanent.
 
 ```bash
 curl API_HOST/v1/catalog/items \
@@ -173,8 +161,7 @@ curl API_HOST/v1/catalog/items \
 }
 ```
 
-Generate a replacement key with the required permissions and audit any services that may
-still be using the revoked key.
+Generate a replacement key with the required permissions and audit any services that may still be using the revoked key.
 
 </ErrorDetails>
 
@@ -204,8 +191,7 @@ curl API_HOST/v1/catalog/items \
 }
 ```
 
-Check that `Authorization` uses `Bearer`, contains the exact API key or token, and matches
-the account and environment you are targeting.
+Check that `Authorization` uses `Bearer`, contains the exact API key or token, and matches the account and environment you are targeting.
 
 </ErrorDetails>
 
@@ -237,15 +223,13 @@ curl -X PATCH API_HOST/v1/identity/account-users/acu_01jmk8h9s4e5m8q7n2v6r3t1pa 
 }
 ```
 
-Use an actor or API key with the required role, grant the missing permission, or verify
-that `Augno-Account` points at an account the caller can access.
+Use an actor or API key with the required role, grant the missing permission, or verify that `Augno-Account` points at an account the caller can access.
 
 </ErrorDetails>
 
 <ErrorDetails code="payment_required" meta="402 Payment Required, not transient">
 
-The target account's subscription is not active enough to continue using the requested
-operation.
+The target account's subscription is not active enough to continue using the requested operation.
 
 ```bash
 curl API_HOST/v1/catalog/items \
@@ -279,8 +263,7 @@ Limits are plan or registration capacity problems. They are not the same as rate
 
 <ErrorDetails code="limit_exceeded" meta="403 Forbidden, not transient">
 
-The account reached a plan-imposed resource limit. The `quota` object provides the current
-limit, usage, and optional reset time.
+The account reached a plan-imposed resource limit. The `quota` object provides the current limit, usage, and optional reset time.
 
 ```bash
 curl -X POST API_HOST/v1/core/sandboxes \
@@ -340,8 +323,7 @@ curl -X POST API_HOST/v1/auth/users \
 }
 ```
 
-Use another available registration flow, wait for capacity to reopen, or contact Augno
-support if this plan should accept new registrations.
+Use another available registration flow, wait for capacity to reopen, or contact Augno support if this plan should accept new registrations.
 
 </ErrorDetails>
 
@@ -375,8 +357,7 @@ curl -X POST API_HOST/v1/auth/users \
 }
 ```
 
-Fix the value named by `param`, validate request bodies before sending, and retry with
-corrected input.
+Fix the value named by `param`, validate request bodies before sending, and retry with corrected input.
 
 </ErrorDetails>
 
@@ -436,8 +417,7 @@ curl -X POST API_HOST/v1/auth/users \
 }
 ```
 
-Normalize the field into the format shown in the endpoint reference. Use public type IDs
-exactly as returned by the API.
+Normalize the field into the format shown in the endpoint reference. Use public type IDs exactly as returned by the API.
 
 </ErrorDetails>
 
@@ -473,8 +453,7 @@ Check the endpoint reference and use an allowed method for that route.
 
 ### Parameters
 
-Parameter errors are about query string or path parameters. Body field errors use the
-validation codes above.
+Parameter errors are about query string or path parameters. Body field errors use the validation codes above.
 
 <ErrorDetails code="parameter_missing" meta="400 Bad Request, not transient">
 
@@ -502,8 +481,7 @@ curl API_HOST/v1/core/addresses/details/ \
 }
 ```
 
-Include the required path or query parameter and make sure URL construction does not create
-empty path segments.
+Include the required path or query parameter and make sure URL construction does not create empty path segments.
 
 </ErrorDetails>
 
@@ -533,8 +511,7 @@ curl "API_HOST/v1/catalog/items?limit=-25" \
 }
 ```
 
-Use the ranges and enum values from the API reference. For pagination, pass back cursors
-exactly as Augno returned them.
+Use the ranges and enum values from the API reference. For pagination, pass back cursors exactly as Augno returned them.
 
 </ErrorDetails>
 
@@ -564,8 +541,7 @@ curl "API_HOST/v1/catalog/items?skip=50" \
 }
 ```
 
-Remove the unknown parameter or rename it to the supported parameter. Cursor-based list
-endpoints should use `cursor`, `limit`, `search`, and documented filters.
+Remove the unknown parameter or rename it to the supported parameter. Cursor-based list endpoints should use `cursor`, `limit`, `search`, and documented filters.
 
 </ErrorDetails>
 
@@ -608,7 +584,7 @@ Resource errors mean the target object is missing, duplicated, in the wrong stat
 The requested resource does not exist in the target account, or the caller cannot access it.
 
 ```bash
-curl API_HOST/v1/operations/shipping-terms/st_01doesnotexist000000000000 \
+curl API_HOST/v1/operations/shipping-terms/st_fbv1ygmybo3eauykr74 \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
   -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw"
@@ -629,8 +605,7 @@ curl API_HOST/v1/operations/shipping-terms/st_01doesnotexist000000000000 \
 }
 ```
 
-Verify the public ID, the `Augno-Account` header, and whether the resource was deleted.
-Never send internal database IDs to the API.
+Verify the public ID, the `Augno-Account` header, and whether the resource was deleted. Never send internal database IDs to the API.
 
 </ErrorDetails>
 
@@ -660,8 +635,7 @@ curl -X POST API_HOST/v1/auth/users \
 }
 ```
 
-Find and reuse the existing resource, choose a different unique value, or show a sign-in
-or recovery path. The current backend links this response to `#resource_conflict`.
+Find and reuse the existing resource, choose a different unique value, or show a sign-in or recovery path. The current backend links this response to `#resource_conflict`.
 
 </ErrorDetails>
 
@@ -699,11 +673,10 @@ Refresh the resource, inspect its current state, and submit a valid next action.
 
 <ErrorDetails code="resource_gone" meta="410 Gone, not transient">
 
-The resource existed previously, but has been permanently deleted or can no longer be
-modified.
+The resource existed previously, but has been permanently deleted or can no longer be modified.
 
 ```bash
-curl -X PATCH API_HOST/v1/catalog/products/prod_01deleted0000000000000000 \
+curl -X PATCH API_HOST/v1/catalog/products/prod_fbv1ygmybo3eauykr74 \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
   -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw" \
@@ -732,9 +705,7 @@ Remove the deleted resource from local caches and create a replacement resource 
 
 ### Idempotency
 
-Idempotency errors only apply to mutating requests that use an idempotency key. See
-
-<DocLink pathKey="api.idempotency">Idempotency</DocLink> for the full retry model.
+Idempotency errors only apply to mutating requests that use an idempotency key. See <DocLink pathKey="api.idempotency">Idempotency</DocLink> for the full retry model.
 
 <ErrorDetails code="idempotency_in_progress" meta="409 Conflict, transient">
 
@@ -765,8 +736,7 @@ curl -X PATCH API_HOST/v1/operations/shipping-terms/st_01jmk8q7n2v6r3t1pah9s4e5m
 }
 ```
 
-Retry the same request with the same key after a short delay. Do not generate a new key
-unless you intend to start a separate operation.
+Retry the same request with the same key after a short delay. Do not generate a new key unless you intend to start a separate operation.
 
 If the same key is reused with different parameters, Augno returns `validation_failed`
 with `type: "idempotency_error"`:
@@ -786,20 +756,17 @@ with `type: "idempotency_error"`:
 }
 ```
 
-For the non-transient mismatch case, resend the original request exactly or use a new key
-for the new operation.
+For the non-transient mismatch case, resend the original request exactly or use a new key for the new operation.
 
 </ErrorDetails>
 
 ### Rate Limiting
 
-Rate limiting is temporary throttling. See <DocLink pathKey="api.rateLimiting">Rate Limiting</DocLink>
-for guidance on request pacing.
+Rate limiting is temporary throttling. See <DocLink pathKey="api.rateLimiting">Rate Limiting</DocLink> for guidance on request pacing.
 
 <ErrorDetails code="rate_limit_exceeded" meta="429 Too Many Requests, transient">
 
-The caller sent requests faster than Augno allows for the current key, actor, account, or
-endpoint.
+The caller sent requests faster than Augno allows for the current key, actor, account, or endpoint.
 
 ```bash
 curl API_HOST/v1/catalog/items \
@@ -823,17 +790,13 @@ curl API_HOST/v1/catalog/items \
 }
 ```
 
-Back off before retrying, honor `Retry-After` when present, and add client-side queueing
-or rate limiting if your integration bursts above the limit.
+Back off before retrying, honor `Retry-After` when present, and add client-side queueing or rate limiting if your integration bursts above the limit.
 
 </ErrorDetails>
 
 ### API Version
 
-API version errors are fixed by sending a supported `Augno-Version` header. See
-
-<DocLink pathKey="api.versioning">API Versioning</DocLink> for supported versions and upgrade
-guidance.
+API version errors are fixed by sending a supported `Augno-Version` header. See <DocLink pathKey="api.versioning">API Versioning</DocLink> for supported versions and upgrade guidance.
 
 <ErrorDetails code="api_version_required" meta="400 Bad Request, not transient">
 
@@ -926,13 +889,11 @@ Upgrade the version for this integration after testing compatibility.
 
 ### Server Errors
 
-Server errors mean Augno or a dependency failed while handling the request. Most are
-transient. For mutating requests, retry with the same idempotency key.
+Server errors mean Augno or a dependency failed while handling the request. Most are transient. For mutating requests, retry with the same idempotency key.
 
 <ErrorDetails code="internal_error" meta="500 Internal Server Error, transient">
 
-Augno encountered an unexpected server-side failure. The public message is intentionally
-generic; internal diagnostics are captured in Augno logs.
+Augno encountered an unexpected server-side failure. The public message is intentionally generic; internal diagnostics are captured in Augno logs.
 
 ```bash
 curl API_HOST/v1/catalog/items \
@@ -956,8 +917,7 @@ curl API_HOST/v1/catalog/items \
 }
 ```
 
-Retry with exponential backoff if the operation is safe to retry. If it persists, include
-`request_log_url` when contacting Augno support.
+Retry with exponential backoff if the operation is safe to retry. If it persists, include `request_log_url` when contacting Augno support.
 
 </ErrorDetails>
 
@@ -987,8 +947,7 @@ curl API_HOST/v1/catalog/items \
 }
 ```
 
-Retry after a short delay. If the condition persists, check Augno status information or
-contact support with request log details.
+Retry after a short delay. If the condition persists, check Augno status information or contact support with request log details.
 
 </ErrorDetails>
 
@@ -1018,8 +977,7 @@ curl "API_HOST/v1/core/addresses/suggestions?search=500%20Market%20Street" \
 }
 ```
 
-Retry with backoff. If one provider-specific workflow keeps failing, include the request
-log URL when reporting it.
+Retry with backoff. If one provider-specific workflow keeps failing, include the request log URL when reporting it.
 
 </ErrorDetails>
 
@@ -1056,8 +1014,7 @@ Retry with exponential backoff. For mutations, reuse the same idempotency key.
 
 <ErrorDetails code="connection_error" meta="502 Bad Gateway, transient">
 
-Augno could not establish or maintain a network connection to a service needed for the
-request.
+Augno could not establish or maintain a network connection to a service needed for the request.
 
 ```bash
 curl API_HOST/v1/operations/shipping-terms \
@@ -1114,15 +1071,13 @@ curl -X POST API_HOST/v1/catalog/items/actions/bulk-create \
 }
 ```
 
-Retry with backoff. For long-running or bulk operations, keep payloads reasonable and use
-idempotency keys.
+Retry with backoff. For long-running or bulk operations, keep payloads reasonable and use idempotency keys.
 
 </ErrorDetails>
 
 <ErrorDetails code="client_closed_request" meta="499, not transient">
 
-The client disconnected before Augno finished processing the request. Status `499` is a
-non-standard HTTP status commonly used by proxies for client-closed requests.
+The client disconnected before Augno finished processing the request. Status `499` is a non-standard HTTP status commonly used by proxies for client-closed requests.
 
 ```bash
 curl -X POST API_HOST/v1/catalog/items/actions/bulk-reconcile \
@@ -1149,9 +1104,7 @@ curl -X POST API_HOST/v1/catalog/items/actions/bulk-reconcile \
 }
 ```
 
-Investigate client-side cancellation, browser navigation, network interruption, proxy
-timeout settings, or request timeout settings. For mutations, use idempotency keys before
-retrying from the client.
+Investigate client-side cancellation, browser navigation, network interruption, proxy timeout settings, or request timeout settings. For mutations, use idempotency keys before retrying from the client.
 
 </ErrorDetails>
 
