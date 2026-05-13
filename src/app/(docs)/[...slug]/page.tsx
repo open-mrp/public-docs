@@ -43,14 +43,14 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "account-groups",
-      "get-account-group"
+      "list-account-groups"
     ]
   },
   {
     "slug": [
       "api-reference",
       "account-groups",
-      "list-account-groups"
+      "retrieve-account-group"
     ]
   },
   {
@@ -64,14 +64,21 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "account-statuses",
-      "get-account-status"
+      "list-account-statuses"
     ]
   },
   {
     "slug": [
       "api-reference",
       "account-statuses",
-      "list-account-statuses"
+      "retrieve-account-status"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "account-users-management",
+      "activate-account-user"
     ]
   },
   {
@@ -85,7 +92,7 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "account-users-management",
-      "get-account-user"
+      "disable-account-user"
     ]
   },
   {
@@ -99,7 +106,14 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "account-users-management",
-      "update-account-user-status"
+      "remove-account-user"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "account-users-management",
+      "retrieve-account-user"
     ]
   },
   {
@@ -127,14 +141,14 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "address-management",
-      "get-address"
+      "list-addresses"
     ]
   },
   {
     "slug": [
       "api-reference",
       "address-management",
-      "list-addresses"
+      "retrieve-address"
     ]
   },
   {
@@ -169,14 +183,14 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "api-key-management",
-      "get-api-key"
+      "list-api-keys"
     ]
   },
   {
     "slug": [
       "api-reference",
       "api-key-management",
-      "list-api-keys"
+      "retrieve-api-key"
     ]
   },
   {
@@ -197,13 +211,6 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "audit-event-management",
-      "get-audit-event"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "audit-event-management",
       "list-audit-event-resource-types"
     ]
   },
@@ -212,6 +219,13 @@ export function generateStaticParams() {
       "api-reference",
       "audit-event-management",
       "list-audit-events"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "audit-event-management",
+      "retrieve-audit-event"
     ]
   },
   {
@@ -232,14 +246,14 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "carriers-management",
-      "get-carrier"
+      "list-carriers"
     ]
   },
   {
     "slug": [
       "api-reference",
       "carriers-management",
-      "list-carriers"
+      "retrieve-carrier"
     ]
   },
   {
@@ -267,13 +281,6 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "customers",
-      "get-customer"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "customers",
       "list-customers"
     ]
   },
@@ -288,6 +295,13 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "customers",
+      "retrieve-customer"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "customers",
       "update-customer"
     ]
   },
@@ -295,14 +309,14 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "email-logs",
-      "get-email-log"
+      "list-email-logs"
     ]
   },
   {
     "slug": [
       "api-reference",
       "email-logs",
-      "list-email-logs"
+      "retrieve-email-log"
     ]
   },
   {
@@ -342,13 +356,6 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "item-categories-management",
-      "get-item-category"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "item-categories-management",
       "list-item-categories"
     ]
   },
@@ -363,7 +370,56 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "item-categories-management",
+      "retrieve-item-category"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "item-categories-management",
       "update-item-category"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "items-management",
+      "add-item-attribute"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "items-management",
+      "change-item-category"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "items-management",
+      "list-items"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "items-management",
+      "remove-item-attribute"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "items-management",
+      "retrieve-item-inventory"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "items-management",
+      "retrieve-item"
     ]
   },
   {
@@ -384,20 +440,6 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "location-management",
-      "get-location-type"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "location-management",
-      "get-location"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "location-management",
       "list-location-types"
     ]
   },
@@ -412,7 +454,91 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "location-management",
+      "retrieve-location-type"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "location-management",
+      "retrieve-location"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "location-management",
       "update-location"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "materials-management",
+      "create-material"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "materials-management",
+      "delete-material"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "materials-management",
+      "list-materials"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "materials-management",
+      "retrieve-material"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "materials-management",
+      "update-material"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "parts-management",
+      "create-part"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "parts-management",
+      "delete-part"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "parts-management",
+      "list-parts"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "parts-management",
+      "retrieve-part"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "parts-management",
+      "update-part"
     ]
   },
   {
@@ -433,14 +559,14 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "payment-terms-management",
-      "get-payment-term"
+      "list-payment-terms"
     ]
   },
   {
     "slug": [
       "api-reference",
       "payment-terms-management",
-      "list-payment-terms"
+      "retrieve-payment-term"
     ]
   },
   {
@@ -454,14 +580,14 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "priorities",
-      "get-priority"
+      "list-priorities"
     ]
   },
   {
     "slug": [
       "api-reference",
       "priorities",
-      "list-priorities"
+      "retrieve-priority"
     ]
   },
   {
@@ -482,13 +608,6 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "product-lines-management",
-      "get-product-line"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "product-lines-management",
       "list-product-lines"
     ]
   },
@@ -496,7 +615,56 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "product-lines-management",
+      "retrieve-product-line"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "product-lines-management",
       "update-product-line"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "products-management",
+      "change-product-product-line"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "products-management",
+      "create-product"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "products-management",
+      "delete-product"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "products-management",
+      "list-products"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "products-management",
+      "retrieve-product"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "products-management",
+      "update-product"
     ]
   },
   {
@@ -531,20 +699,6 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "properties-management",
-      "get-attribute"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "properties-management",
-      "get-property"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "properties-management",
       "list-attributes"
     ]
   },
@@ -553,6 +707,20 @@ export function generateStaticParams() {
       "api-reference",
       "properties-management",
       "list-properties"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "properties-management",
+      "retrieve-attribute"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "properties-management",
+      "retrieve-property"
     ]
   },
   {
@@ -573,14 +741,14 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "request-log-management",
-      "get-request-log"
+      "list-request-logs"
     ]
   },
   {
     "slug": [
       "api-reference",
       "request-log-management",
-      "list-request-logs"
+      "retrieve-request-log"
     ]
   },
   {
@@ -601,14 +769,14 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "roles",
-      "get-role"
+      "list-roles"
     ]
   },
   {
     "slug": [
       "api-reference",
       "roles",
-      "list-roles"
+      "retrieve-role"
     ]
   },
   {
@@ -636,14 +804,14 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "sandbox-management",
-      "get-sandbox"
+      "list-sandboxes"
     ]
   },
   {
     "slug": [
       "api-reference",
       "sandbox-management",
-      "list-sandboxes"
+      "retrieve-sandbox"
     ]
   },
   {
@@ -664,14 +832,14 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "scanning-stations-management",
-      "get-scanning-station"
+      "list-scanning-stations"
     ]
   },
   {
     "slug": [
       "api-reference",
       "scanning-stations-management",
-      "list-scanning-stations"
+      "retrieve-scanning-station"
     ]
   },
   {
@@ -699,14 +867,14 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "service-levels-management",
-      "get-service-level"
+      "list-service-levels"
     ]
   },
   {
     "slug": [
       "api-reference",
       "service-levels-management",
-      "list-service-levels"
+      "retrieve-service-level"
     ]
   },
   {
@@ -734,14 +902,14 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "shipping-terms-management",
-      "get-shipping-term"
+      "list-shipping-terms"
     ]
   },
   {
     "slug": [
       "api-reference",
       "shipping-terms-management",
-      "list-shipping-terms"
+      "retrieve-shipping-term"
     ]
   },
   {
@@ -783,20 +951,6 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "unit-groups-management",
-      "get-unit-group-unit"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "unit-groups-management",
-      "get-unit-group"
-    ]
-  },
-  {
-    "slug": [
-      "api-reference",
-      "unit-groups-management",
       "list-unit-group-units"
     ]
   },
@@ -805,6 +959,20 @@ export function generateStaticParams() {
       "api-reference",
       "unit-groups-management",
       "list-unit-groups"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "unit-groups-management",
+      "retrieve-unit-group-unit"
+    ]
+  },
+  {
+    "slug": [
+      "api-reference",
+      "unit-groups-management",
+      "retrieve-unit-group"
     ]
   },
   {
@@ -839,14 +1007,14 @@ export function generateStaticParams() {
     "slug": [
       "api-reference",
       "units-management",
-      "get-unit"
+      "list-units"
     ]
   },
   {
     "slug": [
       "api-reference",
       "units-management",
-      "list-units"
+      "retrieve-unit"
     ]
   },
   {
