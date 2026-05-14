@@ -82534,8 +82534,133 @@ export const apiTags: TagData[] = [
                                     "description": "Base unit.",
                                     "required": true,
                                     "nullable": true,
-                                    "alwaysNull": true,
-                                    "expandable": true
+                                    "expandable": true,
+                                    "properties": [
+                                        {
+                                            "name": "id",
+                                            "type": "string",
+                                            "description": "Unit ID.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false
+                                        },
+                                        {
+                                            "name": "object",
+                                            "type": "string",
+                                            "description": "Resource type identifier.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false,
+                                            "enum": [
+                                                "unit"
+                                            ]
+                                        },
+                                        {
+                                            "name": "name",
+                                            "type": "string",
+                                            "description": "Display name of the unit (e.g. \"Gram\", \"Kilogram\").",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false
+                                        },
+                                        {
+                                            "name": "abbreviation",
+                                            "type": "string",
+                                            "description": "Short abbreviation for the unit (e.g. \"g\", \"kg\").",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false
+                                        },
+                                        {
+                                            "name": "type",
+                                            "type": "string",
+                                            "description": "Unit dimension.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false,
+                                            "enum": [
+                                                "currency",
+                                                "quantity",
+                                                "time",
+                                                "mass",
+                                                "volume",
+                                                "length",
+                                                "temperature",
+                                                "area"
+                                            ]
+                                        },
+                                        {
+                                            "name": "ratio_numerator",
+                                            "type": "string",
+                                            "description": "Conversion ratio numerator relative to the base unit in the same dimension.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false,
+                                            "format": "decimal"
+                                        },
+                                        {
+                                            "name": "ratio_denominator",
+                                            "type": "string",
+                                            "description": "Conversion ratio denominator relative to the base unit in the same dimension. Cannot be zero.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false,
+                                            "format": "decimal"
+                                        },
+                                        {
+                                            "name": "offset_numerator",
+                                            "type": "string",
+                                            "description": "Conversion offset numerator, used for temperature-like conversions. Zero for most unit types.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false,
+                                            "format": "decimal"
+                                        },
+                                        {
+                                            "name": "offset_denominator",
+                                            "type": "string",
+                                            "description": "Conversion offset denominator. Typically 1. Cannot be zero.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false,
+                                            "format": "decimal"
+                                        },
+                                        {
+                                            "name": "is_base_unit",
+                                            "type": "boolean",
+                                            "description": "Whether this is the base unit for its dimension. Conversion ratios are relative to this unit.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false
+                                        },
+                                        {
+                                            "name": "owner",
+                                            "type": "object",
+                                            "description": "Owner of this resource.",
+                                            "required": true,
+                                            "nullable": true,
+                                            "alwaysNull": true,
+                                            "expandable": true
+                                        },
+                                        {
+                                            "name": "created_at",
+                                            "type": "string",
+                                            "description": "When this unit was created.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false,
+                                            "format": "date-time"
+                                        },
+                                        {
+                                            "name": "updated_at",
+                                            "type": "string",
+                                            "description": "When this unit was last updated.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false,
+                                            "format": "date-time"
+                                        }
+                                    ]
                                 },
                                 {
                                     "name": "associated_units",
@@ -82543,8 +82668,147 @@ export const apiTags: TagData[] = [
                                     "description": "Associated units.",
                                     "required": true,
                                     "nullable": true,
-                                    "alwaysNull": true,
-                                    "expandable": true
+                                    "expandable": true,
+                                    "properties": [
+                                        {
+                                            "name": "object",
+                                            "type": "string",
+                                            "description": "Resource type identifier.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false,
+                                            "enum": [
+                                                "list"
+                                            ]
+                                        },
+                                        {
+                                            "name": "page_info",
+                                            "type": "object",
+                                            "description": "Pagination metadata.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false,
+                                            "properties": [
+                                                {
+                                                    "name": "next_cursor",
+                                                    "type": "string",
+                                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                    "required": true,
+                                                    "nullable": true,
+                                                    "expandable": false
+                                                },
+                                                {
+                                                    "name": "prev_cursor",
+                                                    "type": "string",
+                                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                    "required": true,
+                                                    "nullable": true,
+                                                    "expandable": false
+                                                },
+                                                {
+                                                    "name": "has_next_page",
+                                                    "type": "boolean",
+                                                    "description": "Whether more results exist after this page.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false
+                                                },
+                                                {
+                                                    "name": "has_prev_page",
+                                                    "type": "boolean",
+                                                    "description": "Whether results exist before this page.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "data",
+                                            "type": "array",
+                                            "description": "Resources in this page.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false,
+                                            "itemType": "object",
+                                            "properties": [
+                                                {
+                                                    "name": "id",
+                                                    "type": "string",
+                                                    "description": "Unit group unit ID.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false
+                                                },
+                                                {
+                                                    "name": "object",
+                                                    "type": "string",
+                                                    "description": "Resource type identifier.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false,
+                                                    "enum": [
+                                                        "unit_group_unit"
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "unit",
+                                                    "type": "object",
+                                                    "description": "Unit.",
+                                                    "required": true,
+                                                    "nullable": true,
+                                                    "alwaysNull": true,
+                                                    "expandable": true
+                                                },
+                                                {
+                                                    "name": "discount_percentage",
+                                                    "type": "number",
+                                                    "description": "Discount percentage.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false
+                                                },
+                                                {
+                                                    "name": "discount_fixed",
+                                                    "type": "number",
+                                                    "description": "Fixed discount amount.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false
+                                                },
+                                                {
+                                                    "name": "customer_portal_visibility",
+                                                    "type": "string",
+                                                    "description": "Customer portal visibility.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false,
+                                                    "enum": [
+                                                        "visible",
+                                                        "hidden"
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "created_at",
+                                                    "type": "string",
+                                                    "description": "Creation timestamp.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false,
+                                                    "format": "date-time"
+                                                },
+                                                {
+                                                    "name": "updated_at",
+                                                    "type": "string",
+                                                    "description": "Last updated timestamp.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false,
+                                                    "format": "date-time"
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 },
                                 {
                                     "name": "owner",
@@ -82918,8 +83182,133 @@ export const apiTags: TagData[] = [
                                             "description": "Base unit.",
                                             "required": true,
                                             "nullable": true,
-                                            "alwaysNull": true,
-                                            "expandable": true
+                                            "expandable": true,
+                                            "properties": [
+                                                {
+                                                    "name": "id",
+                                                    "type": "string",
+                                                    "description": "Unit ID.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false
+                                                },
+                                                {
+                                                    "name": "object",
+                                                    "type": "string",
+                                                    "description": "Resource type identifier.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false,
+                                                    "enum": [
+                                                        "unit"
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "name",
+                                                    "type": "string",
+                                                    "description": "Display name of the unit (e.g. \"Gram\", \"Kilogram\").",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false
+                                                },
+                                                {
+                                                    "name": "abbreviation",
+                                                    "type": "string",
+                                                    "description": "Short abbreviation for the unit (e.g. \"g\", \"kg\").",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false
+                                                },
+                                                {
+                                                    "name": "type",
+                                                    "type": "string",
+                                                    "description": "Unit dimension.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false,
+                                                    "enum": [
+                                                        "currency",
+                                                        "quantity",
+                                                        "time",
+                                                        "mass",
+                                                        "volume",
+                                                        "length",
+                                                        "temperature",
+                                                        "area"
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "ratio_numerator",
+                                                    "type": "string",
+                                                    "description": "Conversion ratio numerator relative to the base unit in the same dimension.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false,
+                                                    "format": "decimal"
+                                                },
+                                                {
+                                                    "name": "ratio_denominator",
+                                                    "type": "string",
+                                                    "description": "Conversion ratio denominator relative to the base unit in the same dimension. Cannot be zero.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false,
+                                                    "format": "decimal"
+                                                },
+                                                {
+                                                    "name": "offset_numerator",
+                                                    "type": "string",
+                                                    "description": "Conversion offset numerator, used for temperature-like conversions. Zero for most unit types.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false,
+                                                    "format": "decimal"
+                                                },
+                                                {
+                                                    "name": "offset_denominator",
+                                                    "type": "string",
+                                                    "description": "Conversion offset denominator. Typically 1. Cannot be zero.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false,
+                                                    "format": "decimal"
+                                                },
+                                                {
+                                                    "name": "is_base_unit",
+                                                    "type": "boolean",
+                                                    "description": "Whether this is the base unit for its dimension. Conversion ratios are relative to this unit.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false
+                                                },
+                                                {
+                                                    "name": "owner",
+                                                    "type": "object",
+                                                    "description": "Owner of this resource.",
+                                                    "required": true,
+                                                    "nullable": true,
+                                                    "alwaysNull": true,
+                                                    "expandable": true
+                                                },
+                                                {
+                                                    "name": "created_at",
+                                                    "type": "string",
+                                                    "description": "When this unit was created.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false,
+                                                    "format": "date-time"
+                                                },
+                                                {
+                                                    "name": "updated_at",
+                                                    "type": "string",
+                                                    "description": "When this unit was last updated.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false,
+                                                    "format": "date-time"
+                                                }
+                                            ]
                                         },
                                         {
                                             "name": "associated_units",
@@ -82927,8 +83316,147 @@ export const apiTags: TagData[] = [
                                             "description": "Associated units.",
                                             "required": true,
                                             "nullable": true,
-                                            "alwaysNull": true,
-                                            "expandable": true
+                                            "expandable": true,
+                                            "properties": [
+                                                {
+                                                    "name": "object",
+                                                    "type": "string",
+                                                    "description": "Resource type identifier.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false,
+                                                    "enum": [
+                                                        "list"
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "page_info",
+                                                    "type": "object",
+                                                    "description": "Pagination metadata.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false,
+                                                    "properties": [
+                                                        {
+                                                            "name": "next_cursor",
+                                                            "type": "string",
+                                                            "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                            "required": true,
+                                                            "nullable": true,
+                                                            "expandable": false
+                                                        },
+                                                        {
+                                                            "name": "prev_cursor",
+                                                            "type": "string",
+                                                            "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                            "required": true,
+                                                            "nullable": true,
+                                                            "expandable": false
+                                                        },
+                                                        {
+                                                            "name": "has_next_page",
+                                                            "type": "boolean",
+                                                            "description": "Whether more results exist after this page.",
+                                                            "required": true,
+                                                            "nullable": false,
+                                                            "expandable": false
+                                                        },
+                                                        {
+                                                            "name": "has_prev_page",
+                                                            "type": "boolean",
+                                                            "description": "Whether results exist before this page.",
+                                                            "required": true,
+                                                            "nullable": false,
+                                                            "expandable": false
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "data",
+                                                    "type": "array",
+                                                    "description": "Resources in this page.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "expandable": false,
+                                                    "itemType": "object",
+                                                    "properties": [
+                                                        {
+                                                            "name": "id",
+                                                            "type": "string",
+                                                            "description": "Unit group unit ID.",
+                                                            "required": true,
+                                                            "nullable": false,
+                                                            "expandable": false
+                                                        },
+                                                        {
+                                                            "name": "object",
+                                                            "type": "string",
+                                                            "description": "Resource type identifier.",
+                                                            "required": true,
+                                                            "nullable": false,
+                                                            "expandable": false,
+                                                            "enum": [
+                                                                "unit_group_unit"
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "unit",
+                                                            "type": "object",
+                                                            "description": "Unit.",
+                                                            "required": true,
+                                                            "nullable": true,
+                                                            "alwaysNull": true,
+                                                            "expandable": true
+                                                        },
+                                                        {
+                                                            "name": "discount_percentage",
+                                                            "type": "number",
+                                                            "description": "Discount percentage.",
+                                                            "required": true,
+                                                            "nullable": false,
+                                                            "expandable": false
+                                                        },
+                                                        {
+                                                            "name": "discount_fixed",
+                                                            "type": "number",
+                                                            "description": "Fixed discount amount.",
+                                                            "required": true,
+                                                            "nullable": false,
+                                                            "expandable": false
+                                                        },
+                                                        {
+                                                            "name": "customer_portal_visibility",
+                                                            "type": "string",
+                                                            "description": "Customer portal visibility.",
+                                                            "required": true,
+                                                            "nullable": false,
+                                                            "expandable": false,
+                                                            "enum": [
+                                                                "visible",
+                                                                "hidden"
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "created_at",
+                                                            "type": "string",
+                                                            "description": "Creation timestamp.",
+                                                            "required": true,
+                                                            "nullable": false,
+                                                            "expandable": false,
+                                                            "format": "date-time"
+                                                        },
+                                                        {
+                                                            "name": "updated_at",
+                                                            "type": "string",
+                                                            "description": "Last updated timestamp.",
+                                                            "required": true,
+                                                            "nullable": false,
+                                                            "expandable": false,
+                                                            "format": "date-time"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
                                         },
                                         {
                                             "name": "owner",
@@ -89017,10 +89545,16 @@ export const apiTags: TagData[] = [
                         "enum": [
                             "product_line",
                             "product_line.unit_group",
+                            "product_line.unit_group.base_unit",
+                            "product_line.unit_group.associated_units",
+                            "product_line.unit_group.associated_units.unit",
                             "item",
                             "item.category",
                             "item.category.properties",
                             "item.category.unit_group",
+                            "item.category.unit_group.base_unit",
+                            "item.category.unit_group.associated_units",
+                            "item.category.unit_group.associated_units.unit",
                             "item.unit_value",
                             "item.unit_cost",
                             "item.burn_rate",
@@ -89310,8 +89844,133 @@ export const apiTags: TagData[] = [
                                                 "description": "Base unit.",
                                                 "required": true,
                                                 "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Unit ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "unit"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name of the unit (e.g. \"Gram\", \"Kilogram\").",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "abbreviation",
+                                                        "type": "string",
+                                                        "description": "Short abbreviation for the unit (e.g. \"g\", \"kg\").",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "type",
+                                                        "type": "string",
+                                                        "description": "Unit dimension.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "currency",
+                                                            "quantity",
+                                                            "time",
+                                                            "mass",
+                                                            "volume",
+                                                            "length",
+                                                            "temperature",
+                                                            "area"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "ratio_numerator",
+                                                        "type": "string",
+                                                        "description": "Conversion ratio numerator relative to the base unit in the same dimension.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "decimal"
+                                                    },
+                                                    {
+                                                        "name": "ratio_denominator",
+                                                        "type": "string",
+                                                        "description": "Conversion ratio denominator relative to the base unit in the same dimension. Cannot be zero.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "decimal"
+                                                    },
+                                                    {
+                                                        "name": "offset_numerator",
+                                                        "type": "string",
+                                                        "description": "Conversion offset numerator, used for temperature-like conversions. Zero for most unit types.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "decimal"
+                                                    },
+                                                    {
+                                                        "name": "offset_denominator",
+                                                        "type": "string",
+                                                        "description": "Conversion offset denominator. Typically 1. Cannot be zero.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "decimal"
+                                                    },
+                                                    {
+                                                        "name": "is_base_unit",
+                                                        "type": "boolean",
+                                                        "description": "Whether this is the base unit for its dimension. Conversion ratios are relative to this unit.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "owner",
+                                                        "type": "object",
+                                                        "description": "Owner of this resource.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "When this unit was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "When this unit was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
                                             },
                                             {
                                                 "name": "associated_units",
@@ -89319,8 +89978,147 @@ export const apiTags: TagData[] = [
                                                 "description": "Associated units.",
                                                 "required": true,
                                                 "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "list"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "page_info",
+                                                        "type": "object",
+                                                        "description": "Pagination metadata.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "properties": [
+                                                            {
+                                                                "name": "next_cursor",
+                                                                "type": "string",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "prev_cursor",
+                                                                "type": "string",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "has_next_page",
+                                                                "type": "boolean",
+                                                                "description": "Whether more results exist after this page.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "has_prev_page",
+                                                                "type": "boolean",
+                                                                "description": "Whether results exist before this page.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "data",
+                                                        "type": "array",
+                                                        "description": "Resources in this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "itemType": "object",
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "Unit group unit ID.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "unit_group_unit"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "unit",
+                                                                "type": "object",
+                                                                "description": "Unit.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "alwaysNull": true,
+                                                                "expandable": true
+                                                            },
+                                                            {
+                                                                "name": "discount_percentage",
+                                                                "type": "number",
+                                                                "description": "Discount percentage.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "discount_fixed",
+                                                                "type": "number",
+                                                                "description": "Fixed discount amount.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "customer_portal_visibility",
+                                                                "type": "string",
+                                                                "description": "Customer portal visibility.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "visible",
+                                                                    "hidden"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "created_at",
+                                                                "type": "string",
+                                                                "description": "Creation timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            },
+                                                            {
+                                                                "name": "updated_at",
+                                                                "type": "string",
+                                                                "description": "Last updated timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
                                             },
                                             {
                                                 "name": "owner",
@@ -89694,8 +90492,133 @@ export const apiTags: TagData[] = [
                                                         "description": "Base unit.",
                                                         "required": true,
                                                         "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": true
+                                                        "expandable": true,
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "Unit ID.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "unit"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "name",
+                                                                "type": "string",
+                                                                "description": "Display name of the unit (e.g. \"Gram\", \"Kilogram\").",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "abbreviation",
+                                                                "type": "string",
+                                                                "description": "Short abbreviation for the unit (e.g. \"g\", \"kg\").",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "type",
+                                                                "type": "string",
+                                                                "description": "Unit dimension.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "currency",
+                                                                    "quantity",
+                                                                    "time",
+                                                                    "mass",
+                                                                    "volume",
+                                                                    "length",
+                                                                    "temperature",
+                                                                    "area"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "ratio_numerator",
+                                                                "type": "string",
+                                                                "description": "Conversion ratio numerator relative to the base unit in the same dimension.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "decimal"
+                                                            },
+                                                            {
+                                                                "name": "ratio_denominator",
+                                                                "type": "string",
+                                                                "description": "Conversion ratio denominator relative to the base unit in the same dimension. Cannot be zero.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "decimal"
+                                                            },
+                                                            {
+                                                                "name": "offset_numerator",
+                                                                "type": "string",
+                                                                "description": "Conversion offset numerator, used for temperature-like conversions. Zero for most unit types.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "decimal"
+                                                            },
+                                                            {
+                                                                "name": "offset_denominator",
+                                                                "type": "string",
+                                                                "description": "Conversion offset denominator. Typically 1. Cannot be zero.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "decimal"
+                                                            },
+                                                            {
+                                                                "name": "is_base_unit",
+                                                                "type": "boolean",
+                                                                "description": "Whether this is the base unit for its dimension. Conversion ratios are relative to this unit.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "owner",
+                                                                "type": "object",
+                                                                "description": "Owner of this resource.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "alwaysNull": true,
+                                                                "expandable": true
+                                                            },
+                                                            {
+                                                                "name": "created_at",
+                                                                "type": "string",
+                                                                "description": "When this unit was created.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            },
+                                                            {
+                                                                "name": "updated_at",
+                                                                "type": "string",
+                                                                "description": "When this unit was last updated.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            }
+                                                        ]
                                                     },
                                                     {
                                                         "name": "associated_units",
@@ -89703,8 +90626,147 @@ export const apiTags: TagData[] = [
                                                         "description": "Associated units.",
                                                         "required": true,
                                                         "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": true
+                                                        "expandable": true,
+                                                        "properties": [
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "list"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "page_info",
+                                                                "type": "object",
+                                                                "description": "Pagination metadata.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "next_cursor",
+                                                                        "type": "string",
+                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "prev_cursor",
+                                                                        "type": "string",
+                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "has_next_page",
+                                                                        "type": "boolean",
+                                                                        "description": "Whether more results exist after this page.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "has_prev_page",
+                                                                        "type": "boolean",
+                                                                        "description": "Whether results exist before this page.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "data",
+                                                                "type": "array",
+                                                                "description": "Resources in this page.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "itemType": "object",
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Unit group unit ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "unit_group_unit"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "unit",
+                                                                        "type": "object",
+                                                                        "description": "Unit.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "alwaysNull": true,
+                                                                        "expandable": true
+                                                                    },
+                                                                    {
+                                                                        "name": "discount_percentage",
+                                                                        "type": "number",
+                                                                        "description": "Discount percentage.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "discount_fixed",
+                                                                        "type": "number",
+                                                                        "description": "Fixed discount amount.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "customer_portal_visibility",
+                                                                        "type": "string",
+                                                                        "description": "Customer portal visibility.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "visible",
+                                                                            "hidden"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "created_at",
+                                                                        "type": "string",
+                                                                        "description": "Creation timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    },
+                                                                    {
+                                                                        "name": "updated_at",
+                                                                        "type": "string",
+                                                                        "description": "Last updated timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
                                                     },
                                                     {
                                                         "name": "owner",
@@ -90482,10 +91544,16 @@ export const apiTags: TagData[] = [
                         "enum": [
                             "product_line",
                             "product_line.unit_group",
+                            "product_line.unit_group.base_unit",
+                            "product_line.unit_group.associated_units",
+                            "product_line.unit_group.associated_units.unit",
                             "item",
                             "item.category",
                             "item.category.properties",
                             "item.category.unit_group",
+                            "item.category.unit_group.base_unit",
+                            "item.category.unit_group.associated_units",
+                            "item.category.unit_group.associated_units.unit",
                             "item.unit_value",
                             "item.unit_cost",
                             "item.burn_rate",
@@ -90758,8 +91826,133 @@ export const apiTags: TagData[] = [
                                                         "description": "Base unit.",
                                                         "required": true,
                                                         "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": true
+                                                        "expandable": true,
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "Unit ID.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "unit"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "name",
+                                                                "type": "string",
+                                                                "description": "Display name of the unit (e.g. \"Gram\", \"Kilogram\").",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "abbreviation",
+                                                                "type": "string",
+                                                                "description": "Short abbreviation for the unit (e.g. \"g\", \"kg\").",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "type",
+                                                                "type": "string",
+                                                                "description": "Unit dimension.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "currency",
+                                                                    "quantity",
+                                                                    "time",
+                                                                    "mass",
+                                                                    "volume",
+                                                                    "length",
+                                                                    "temperature",
+                                                                    "area"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "ratio_numerator",
+                                                                "type": "string",
+                                                                "description": "Conversion ratio numerator relative to the base unit in the same dimension.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "decimal"
+                                                            },
+                                                            {
+                                                                "name": "ratio_denominator",
+                                                                "type": "string",
+                                                                "description": "Conversion ratio denominator relative to the base unit in the same dimension. Cannot be zero.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "decimal"
+                                                            },
+                                                            {
+                                                                "name": "offset_numerator",
+                                                                "type": "string",
+                                                                "description": "Conversion offset numerator, used for temperature-like conversions. Zero for most unit types.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "decimal"
+                                                            },
+                                                            {
+                                                                "name": "offset_denominator",
+                                                                "type": "string",
+                                                                "description": "Conversion offset denominator. Typically 1. Cannot be zero.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "decimal"
+                                                            },
+                                                            {
+                                                                "name": "is_base_unit",
+                                                                "type": "boolean",
+                                                                "description": "Whether this is the base unit for its dimension. Conversion ratios are relative to this unit.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "owner",
+                                                                "type": "object",
+                                                                "description": "Owner of this resource.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "alwaysNull": true,
+                                                                "expandable": true
+                                                            },
+                                                            {
+                                                                "name": "created_at",
+                                                                "type": "string",
+                                                                "description": "When this unit was created.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            },
+                                                            {
+                                                                "name": "updated_at",
+                                                                "type": "string",
+                                                                "description": "When this unit was last updated.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            }
+                                                        ]
                                                     },
                                                     {
                                                         "name": "associated_units",
@@ -90767,8 +91960,147 @@ export const apiTags: TagData[] = [
                                                         "description": "Associated units.",
                                                         "required": true,
                                                         "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": true
+                                                        "expandable": true,
+                                                        "properties": [
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "list"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "page_info",
+                                                                "type": "object",
+                                                                "description": "Pagination metadata.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "next_cursor",
+                                                                        "type": "string",
+                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "prev_cursor",
+                                                                        "type": "string",
+                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "has_next_page",
+                                                                        "type": "boolean",
+                                                                        "description": "Whether more results exist after this page.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "has_prev_page",
+                                                                        "type": "boolean",
+                                                                        "description": "Whether results exist before this page.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "data",
+                                                                "type": "array",
+                                                                "description": "Resources in this page.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "itemType": "object",
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Unit group unit ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "unit_group_unit"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "unit",
+                                                                        "type": "object",
+                                                                        "description": "Unit.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "alwaysNull": true,
+                                                                        "expandable": true
+                                                                    },
+                                                                    {
+                                                                        "name": "discount_percentage",
+                                                                        "type": "number",
+                                                                        "description": "Discount percentage.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "discount_fixed",
+                                                                        "type": "number",
+                                                                        "description": "Fixed discount amount.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "customer_portal_visibility",
+                                                                        "type": "string",
+                                                                        "description": "Customer portal visibility.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "visible",
+                                                                            "hidden"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "created_at",
+                                                                        "type": "string",
+                                                                        "description": "Creation timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    },
+                                                                    {
+                                                                        "name": "updated_at",
+                                                                        "type": "string",
+                                                                        "description": "Last updated timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
                                                     },
                                                     {
                                                         "name": "owner",
@@ -91142,8 +92474,133 @@ export const apiTags: TagData[] = [
                                                                 "description": "Base unit.",
                                                                 "required": true,
                                                                 "nullable": true,
-                                                                "alwaysNull": true,
-                                                                "expandable": true
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Unit ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "unit"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "name",
+                                                                        "type": "string",
+                                                                        "description": "Display name of the unit (e.g. \"Gram\", \"Kilogram\").",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "abbreviation",
+                                                                        "type": "string",
+                                                                        "description": "Short abbreviation for the unit (e.g. \"g\", \"kg\").",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "type",
+                                                                        "type": "string",
+                                                                        "description": "Unit dimension.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "currency",
+                                                                            "quantity",
+                                                                            "time",
+                                                                            "mass",
+                                                                            "volume",
+                                                                            "length",
+                                                                            "temperature",
+                                                                            "area"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "ratio_numerator",
+                                                                        "type": "string",
+                                                                        "description": "Conversion ratio numerator relative to the base unit in the same dimension.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "decimal"
+                                                                    },
+                                                                    {
+                                                                        "name": "ratio_denominator",
+                                                                        "type": "string",
+                                                                        "description": "Conversion ratio denominator relative to the base unit in the same dimension. Cannot be zero.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "decimal"
+                                                                    },
+                                                                    {
+                                                                        "name": "offset_numerator",
+                                                                        "type": "string",
+                                                                        "description": "Conversion offset numerator, used for temperature-like conversions. Zero for most unit types.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "decimal"
+                                                                    },
+                                                                    {
+                                                                        "name": "offset_denominator",
+                                                                        "type": "string",
+                                                                        "description": "Conversion offset denominator. Typically 1. Cannot be zero.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "decimal"
+                                                                    },
+                                                                    {
+                                                                        "name": "is_base_unit",
+                                                                        "type": "boolean",
+                                                                        "description": "Whether this is the base unit for its dimension. Conversion ratios are relative to this unit.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "owner",
+                                                                        "type": "object",
+                                                                        "description": "Owner of this resource.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "alwaysNull": true,
+                                                                        "expandable": true
+                                                                    },
+                                                                    {
+                                                                        "name": "created_at",
+                                                                        "type": "string",
+                                                                        "description": "When this unit was created.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    },
+                                                                    {
+                                                                        "name": "updated_at",
+                                                                        "type": "string",
+                                                                        "description": "When this unit was last updated.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    }
+                                                                ]
                                                             },
                                                             {
                                                                 "name": "associated_units",
@@ -91151,8 +92608,39 @@ export const apiTags: TagData[] = [
                                                                 "description": "Associated units.",
                                                                 "required": true,
                                                                 "nullable": true,
-                                                                "alwaysNull": true,
-                                                                "expandable": true
+                                                                "expandable": true,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "list"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "page_info",
+                                                                        "type": "object",
+                                                                        "description": "Pagination metadata.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "properties": []
+                                                                    },
+                                                                    {
+                                                                        "name": "data",
+                                                                        "type": "array",
+                                                                        "description": "Resources in this page.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "itemType": "object",
+                                                                        "properties": []
+                                                                    }
+                                                                ]
                                                             },
                                                             {
                                                                 "name": "owner",
@@ -91874,10 +93362,16 @@ export const apiTags: TagData[] = [
                         "enum": [
                             "product_line",
                             "product_line.unit_group",
+                            "product_line.unit_group.base_unit",
+                            "product_line.unit_group.associated_units",
+                            "product_line.unit_group.associated_units.unit",
                             "item",
                             "item.category",
                             "item.category.properties",
                             "item.category.unit_group",
+                            "item.category.unit_group.base_unit",
+                            "item.category.unit_group.associated_units",
+                            "item.category.unit_group.associated_units.unit",
                             "item.unit_value",
                             "item.unit_cost",
                             "item.burn_rate",
@@ -92088,8 +93582,133 @@ export const apiTags: TagData[] = [
                                                 "description": "Base unit.",
                                                 "required": true,
                                                 "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Unit ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "unit"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name of the unit (e.g. \"Gram\", \"Kilogram\").",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "abbreviation",
+                                                        "type": "string",
+                                                        "description": "Short abbreviation for the unit (e.g. \"g\", \"kg\").",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "type",
+                                                        "type": "string",
+                                                        "description": "Unit dimension.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "currency",
+                                                            "quantity",
+                                                            "time",
+                                                            "mass",
+                                                            "volume",
+                                                            "length",
+                                                            "temperature",
+                                                            "area"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "ratio_numerator",
+                                                        "type": "string",
+                                                        "description": "Conversion ratio numerator relative to the base unit in the same dimension.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "decimal"
+                                                    },
+                                                    {
+                                                        "name": "ratio_denominator",
+                                                        "type": "string",
+                                                        "description": "Conversion ratio denominator relative to the base unit in the same dimension. Cannot be zero.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "decimal"
+                                                    },
+                                                    {
+                                                        "name": "offset_numerator",
+                                                        "type": "string",
+                                                        "description": "Conversion offset numerator, used for temperature-like conversions. Zero for most unit types.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "decimal"
+                                                    },
+                                                    {
+                                                        "name": "offset_denominator",
+                                                        "type": "string",
+                                                        "description": "Conversion offset denominator. Typically 1. Cannot be zero.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "decimal"
+                                                    },
+                                                    {
+                                                        "name": "is_base_unit",
+                                                        "type": "boolean",
+                                                        "description": "Whether this is the base unit for its dimension. Conversion ratios are relative to this unit.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "owner",
+                                                        "type": "object",
+                                                        "description": "Owner of this resource.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "When this unit was created.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "When this unit was last updated.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
                                             },
                                             {
                                                 "name": "associated_units",
@@ -92097,8 +93716,147 @@ export const apiTags: TagData[] = [
                                                 "description": "Associated units.",
                                                 "required": true,
                                                 "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "list"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "page_info",
+                                                        "type": "object",
+                                                        "description": "Pagination metadata.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "properties": [
+                                                            {
+                                                                "name": "next_cursor",
+                                                                "type": "string",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "prev_cursor",
+                                                                "type": "string",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "has_next_page",
+                                                                "type": "boolean",
+                                                                "description": "Whether more results exist after this page.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "has_prev_page",
+                                                                "type": "boolean",
+                                                                "description": "Whether results exist before this page.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "data",
+                                                        "type": "array",
+                                                        "description": "Resources in this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "itemType": "object",
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "Unit group unit ID.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "unit_group_unit"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "unit",
+                                                                "type": "object",
+                                                                "description": "Unit.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "alwaysNull": true,
+                                                                "expandable": true
+                                                            },
+                                                            {
+                                                                "name": "discount_percentage",
+                                                                "type": "number",
+                                                                "description": "Discount percentage.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "discount_fixed",
+                                                                "type": "number",
+                                                                "description": "Fixed discount amount.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "customer_portal_visibility",
+                                                                "type": "string",
+                                                                "description": "Customer portal visibility.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "visible",
+                                                                    "hidden"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "created_at",
+                                                                "type": "string",
+                                                                "description": "Creation timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            },
+                                                            {
+                                                                "name": "updated_at",
+                                                                "type": "string",
+                                                                "description": "Last updated timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
                                             },
                                             {
                                                 "name": "owner",
@@ -92472,8 +94230,133 @@ export const apiTags: TagData[] = [
                                                         "description": "Base unit.",
                                                         "required": true,
                                                         "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": true
+                                                        "expandable": true,
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "Unit ID.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "unit"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "name",
+                                                                "type": "string",
+                                                                "description": "Display name of the unit (e.g. \"Gram\", \"Kilogram\").",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "abbreviation",
+                                                                "type": "string",
+                                                                "description": "Short abbreviation for the unit (e.g. \"g\", \"kg\").",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "type",
+                                                                "type": "string",
+                                                                "description": "Unit dimension.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "currency",
+                                                                    "quantity",
+                                                                    "time",
+                                                                    "mass",
+                                                                    "volume",
+                                                                    "length",
+                                                                    "temperature",
+                                                                    "area"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "ratio_numerator",
+                                                                "type": "string",
+                                                                "description": "Conversion ratio numerator relative to the base unit in the same dimension.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "decimal"
+                                                            },
+                                                            {
+                                                                "name": "ratio_denominator",
+                                                                "type": "string",
+                                                                "description": "Conversion ratio denominator relative to the base unit in the same dimension. Cannot be zero.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "decimal"
+                                                            },
+                                                            {
+                                                                "name": "offset_numerator",
+                                                                "type": "string",
+                                                                "description": "Conversion offset numerator, used for temperature-like conversions. Zero for most unit types.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "decimal"
+                                                            },
+                                                            {
+                                                                "name": "offset_denominator",
+                                                                "type": "string",
+                                                                "description": "Conversion offset denominator. Typically 1. Cannot be zero.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "decimal"
+                                                            },
+                                                            {
+                                                                "name": "is_base_unit",
+                                                                "type": "boolean",
+                                                                "description": "Whether this is the base unit for its dimension. Conversion ratios are relative to this unit.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "owner",
+                                                                "type": "object",
+                                                                "description": "Owner of this resource.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "alwaysNull": true,
+                                                                "expandable": true
+                                                            },
+                                                            {
+                                                                "name": "created_at",
+                                                                "type": "string",
+                                                                "description": "When this unit was created.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            },
+                                                            {
+                                                                "name": "updated_at",
+                                                                "type": "string",
+                                                                "description": "When this unit was last updated.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            }
+                                                        ]
                                                     },
                                                     {
                                                         "name": "associated_units",
@@ -92481,8 +94364,147 @@ export const apiTags: TagData[] = [
                                                         "description": "Associated units.",
                                                         "required": true,
                                                         "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": true
+                                                        "expandable": true,
+                                                        "properties": [
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "list"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "page_info",
+                                                                "type": "object",
+                                                                "description": "Pagination metadata.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "next_cursor",
+                                                                        "type": "string",
+                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "prev_cursor",
+                                                                        "type": "string",
+                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "has_next_page",
+                                                                        "type": "boolean",
+                                                                        "description": "Whether more results exist after this page.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "has_prev_page",
+                                                                        "type": "boolean",
+                                                                        "description": "Whether results exist before this page.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "data",
+                                                                "type": "array",
+                                                                "description": "Resources in this page.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "itemType": "object",
+                                                                "properties": [
+                                                                    {
+                                                                        "name": "id",
+                                                                        "type": "string",
+                                                                        "description": "Unit group unit ID.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "object",
+                                                                        "type": "string",
+                                                                        "description": "Resource type identifier.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "unit_group_unit"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "unit",
+                                                                        "type": "object",
+                                                                        "description": "Unit.",
+                                                                        "required": true,
+                                                                        "nullable": true,
+                                                                        "alwaysNull": true,
+                                                                        "expandable": true
+                                                                    },
+                                                                    {
+                                                                        "name": "discount_percentage",
+                                                                        "type": "number",
+                                                                        "description": "Discount percentage.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "discount_fixed",
+                                                                        "type": "number",
+                                                                        "description": "Fixed discount amount.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false
+                                                                    },
+                                                                    {
+                                                                        "name": "customer_portal_visibility",
+                                                                        "type": "string",
+                                                                        "description": "Customer portal visibility.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "enum": [
+                                                                            "visible",
+                                                                            "hidden"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "name": "created_at",
+                                                                        "type": "string",
+                                                                        "description": "Creation timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    },
+                                                                    {
+                                                                        "name": "updated_at",
+                                                                        "type": "string",
+                                                                        "description": "Last updated timestamp.",
+                                                                        "required": true,
+                                                                        "nullable": false,
+                                                                        "expandable": false,
+                                                                        "format": "date-time"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
                                                     },
                                                     {
                                                         "name": "owner",
