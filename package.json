@@ -19,8 +19,8 @@
         "format:check": "prettier --check ."
     },
     "dependencies": {
-        "@augno/internal-sdk": "^3.4.7",
-        "@augno/ui": "^1.9.1",
+        "@augno/internal-sdk": "file:.yalc/@augno/internal-sdk",
+        "@augno/ui": "^1.9.2",
         "@mdx-js/loader": "^3.1.1",
         "@mdx-js/react": "^3.1.1",
         "@next/mdx": "16.1.6",
@@ -41,23 +41,23 @@
         "raw-loader": "^4.0.2",
         "react": "19.2.4",
         "react-dom": "19.2.4",
-        "react-instantsearch": "^7.32.2",
-        "react-instantsearch-nextjs": "^1.2.2",
+        "react-instantsearch": "^7.32.3",
+        "react-instantsearch-nextjs": "^1.2.3",
         "rehype-highlight": "^7.0.2",
         "remark-gfm": "^4.0.1",
-        "tailwind-merge": "^3.5.0",
+        "tailwind-merge": "^3.6.0",
         "zod": "^4.4.3",
         "zustand": "^5.0.13"
     },
     "devDependencies": {
-        "@tailwindcss/postcss": "^4.2.4",
-        "@types/node": "^25.6.0",
+        "@tailwindcss/postcss": "^4.3.0",
+        "@types/node": "^25.8.0",
         "@types/react": "19.2.14",
         "@types/react-dom": "19.2.3",
-        "eslint": "^10.3.0",
+        "eslint": "^10.4.0",
         "eslint-config-next": "16.1.6",
         "prettier": "^3.8.3",
-        "tailwindcss": "^4.2.4",
+        "tailwindcss": "^4.3.0",
         "typescript": "^5.9.3"
     },
     "overrides": {
