@@ -257,7 +257,7 @@ export const useAuthStore = create<AuthState>()(
                         : null;
 
                     if (user) {
-                        const sandboxes = tenancy?.sandboxes ?? [];
+                        const sandboxes = tenancy?.sandboxes?.data ?? [];
                         // Preserve user's sandbox selection if already set
                         const currentSelectedSandboxId = get().selectedSandboxId;
                         const sandboxAccountId = currentSelectedSandboxId ?? sandboxes[0]?.id;
@@ -268,7 +268,7 @@ export const useAuthStore = create<AuthState>()(
                         set({
                             user,
                             currentAccount,
-                            otherAccounts: tenancy?.other_accounts ?? [],
+                            otherAccounts: tenancy?.other_accounts?.data ?? [],
                             ownerAccount: tenancy?.owner_account ?? null,
                             sandboxes,
                             docApiKeySecret,
@@ -349,6 +349,18 @@ export const useAuthStore = create<AuthState>()(
                 sandboxes: state.sandboxes,
                 selectedSandboxId: state.selectedSandboxId,
             }),
+            // Ensure array fields are always arrays after rehydration.
+            // Corrupted or stale localStorage data can produce nulls/objects
+            // here, which would cause .find()/.filter() to throw at runtime.
+            merge: (persistedState, currentState) => {
+                const stored = persistedState as Partial<AuthState>;
+                return {
+                    ...currentState,
+                    ...stored,
+                    sandboxes: Array.isArray(stored.sandboxes) ? stored.sandboxes : [],
+                    otherAccounts: Array.isArray(stored.otherAccounts) ? stored.otherAccounts : [],
+                };
+            },
             // Called when hydration from localStorage completes
             onRehydrateStorage: () => (state) => {
                 if (state) {
