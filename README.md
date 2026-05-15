@@ -172,8 +172,3 @@ Here's your API key for <AccountName />:
 1. Create a new branch for your changes
 2. Update or add documentation pages
 3. Submit a pull request
-
-// We use `200 OK` with empty JSON objects instead of `204 No Content`.
-//
-// Unlike 204, this allows us to add response fields later without breaking
-// backwards compatibility, since 204s cannot include a body per HTTP spec.
