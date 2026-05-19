@@ -3,36 +3,25 @@
 import BetaTag from '@/components/markdown/BetaTag';
 import { useRecentlyVisitedPages } from '@/hooks/useRecentlyVisitedPages';
 import type { EndpointData, Parameter, SchemaField } from '@/static/apiEndpoints.generated';
-import type { SdkLanguage } from '@/static/apiSnippets.generated';
 import { getEndpointSnippet } from '@/static/apiSnippets.generated';
 import { CheckIcon, ClipboardIcon } from '@augno/ui';
 import copy from 'copy-to-clipboard';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
-import { SdkSelectorDropdown, useSdkLanguage } from './SdkSelector';
+import {
+    RequestExampleHeader,
+    type RequestExampleMode,
+    useSdkLanguage,
+} from './SdkSelector';
 import { buildCurlExample } from './buildCurlExample';
 import { CodeExamplePanel } from './CodeExamplePanel';
 import { MarkdownBlock } from './MarkdownText';
 import { ParameterTable, SchemaFieldTable } from './ParameterTable';
+import { sanitizeRequestExample } from './sanitizeRequestExample';
 import { findExpansionRoot, sanitizeResponseExampleForEndpoint } from './sanitizeResponseExample';
 
 function stringifyJson(value: unknown) {
     return JSON.stringify(value ?? {}, null, 2);
-}
-
-const PUBLIC_OPENAPI_SPEC_URL = 'https://github.com/Augno/openapi-spec';
-
-function sdkUnavailableSnippet(language: SdkLanguage): string {
-    switch (language) {
-        case 'typescript':
-            return `// SDK example not available for this endpoint.\n// Use our public OpenAPI specification to generate a client:\n// ${PUBLIC_OPENAPI_SPEC_URL}`;
-        case 'python':
-            return `# SDK example not available for this endpoint.\n# Use our public OpenAPI specification to generate a client:\n# ${PUBLIC_OPENAPI_SPEC_URL}`;
-        case 'go':
-            return `// SDK example not available for this endpoint.\n// Use our public OpenAPI specification to generate a client:\n// ${PUBLIC_OPENAPI_SPEC_URL}`;
-        default:
-            return `# ${PUBLIC_OPENAPI_SPEC_URL}`;
-    }
 }
 
 type ActionKind = 'list' | 'create' | 'delete' | 'retrieve' | 'update' | 'other';
@@ -171,7 +160,11 @@ function endpointToMarkdown(ep: EndpointData): string {
     if (ep.requestBody && ep.requestBody.fields.length > 0) {
         lines.push('', '## Request Body', fieldsToMarkdown(ep.requestBody.fields));
         if (ep.requestBody.example != null) {
-            lines.push('', '### Example', '```json', stringifyJson(ep.requestBody.example), '```');
+            const requestExample = sanitizeRequestExample(
+                ep.requestBody.example,
+                ep.requestBody.fields,
+            );
+            lines.push('', '### Example', '```json', stringifyJson(requestExample), '```');
         }
     }
 
@@ -201,6 +194,17 @@ function endpointToMarkdown(ep: EndpointData): string {
 
 export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
     const { language } = useSdkLanguage();
+    const hasRequestBody = Boolean(
+        endpoint.requestBody &&
+            (endpoint.requestBody.example != null || endpoint.requestBody.fields.length > 0),
+    );
+    const [requestExampleMode, setRequestExampleMode] = useState<RequestExampleMode>('example');
+
+    useEffect(() => {
+        if (requestExampleMode === 'body' && !hasRequestBody) {
+            setRequestExampleMode('example');
+        }
+    }, [requestExampleMode, hasRequestBody]);
     const pathParams = endpoint.parameters.filter((p) => p.in === 'path');
     const queryParams = endpoint.parameters.filter((p) => p.in === 'query');
     const headerParams = endpoint.parameters.filter((p) => p.in === 'header');
@@ -232,6 +236,14 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
         );
     }, [responseWithExample, endpoint, responseFields]);
 
+    const requestBodyExampleForDisplay = useMemo(() => {
+        if (endpoint.requestBody?.example == null) return undefined;
+        return sanitizeRequestExample(
+            endpoint.requestBody.example,
+            endpoint.requestBody.fields,
+        );
+    }, [endpoint.requestBody]);
+
     const cleanMarkdown = useMemo(() => endpointToMarkdown(endpoint), [endpoint]);
     const [copied, setCopied] = useState(false);
     const handleCopy = () => {
@@ -247,43 +259,30 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
     }, [endpoint.tagSlug, endpoint.endpointSlug, endpoint.summary, addPage]);
 
     const requestExampleTabs = useMemo(() => {
-        const snippet = getEndpointSnippet(endpoint.operationId, language);
-
-        let code: string;
-        let highlightLanguage: string;
-
-        if (snippet) {
-            code = snippet.code;
-            highlightLanguage = snippet.highlightLanguage;
-        } else if (language === 'curl') {
-            code = buildCurlExample(endpoint);
-            highlightLanguage = 'bash';
-        } else {
-            code = sdkUnavailableSnippet(language);
-            highlightLanguage =
-                language === 'python' ? 'python' : language === 'go' ? 'go' : 'typescript';
+        if (requestExampleMode === 'body' && hasRequestBody) {
+            return [
+                {
+                    id: 'body',
+                    label: 'Body',
+                    language: 'json',
+                    code: stringifyJson(requestBodyExampleForDisplay),
+                },
+            ];
         }
 
-        const tabs: { id: string; label: string; language: string; code: string }[] = [
+        const snippet = getEndpointSnippet(endpoint.operationId, language);
+        const code = snippet?.code ?? buildCurlExample(endpoint);
+        const highlightLanguage = snippet?.highlightLanguage ?? 'bash';
+
+        return [
             {
-                id: 'request',
-                label: language === 'curl' ? 'Request' : 'Example',
+                id: 'example-curl',
+                label: 'Request',
                 language: highlightLanguage,
                 code,
             },
         ];
-
-        if (language === 'curl' && endpoint.requestBody?.example != null) {
-            tabs.push({
-                id: 'body',
-                label: 'Body',
-                language: 'json',
-                code: stringifyJson(endpoint.requestBody.example),
-            });
-        }
-
-        return tabs;
-    }, [endpoint, language]);
+    }, [endpoint, language, requestExampleMode, hasRequestBody, requestBodyExampleForDisplay]);
 
     return (
         <div>
@@ -507,7 +506,13 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
                             title={endpoint.summary}
                             className="flex-none max-h-[50%]"
                             scrollable
-                            headerActions={<SdkSelectorDropdown />}
+                            headerActions={
+                                <RequestExampleHeader
+                                    mode={requestExampleMode}
+                                    onModeChange={setRequestExampleMode}
+                                    showBody={hasRequestBody}
+                                />
+                            }
                             tabs={requestExampleTabs}
                         />
 

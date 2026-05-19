@@ -3,7 +3,7 @@
 import { useCodeReplacements } from '@/providers/ApiKeyProvider';
 import { CodeEditor } from '@augno/ui';
 import type { ReactNode } from 'react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 type ExampleTab = {
     id: string;
@@ -39,6 +39,14 @@ export function CodeExamplePanel({
     const replacementKey = useMemo(() => JSON.stringify(replacements), [replacements]);
     const [activeId, setActiveId] = useState(tabs[0]?.id ?? '');
     const active = useMemo(() => tabs.find((t) => t.id === activeId) ?? tabs[0], [tabs, activeId]);
+    const tabIds = useMemo(() => tabs.map((t) => t.id).join('\0'), [tabs]);
+
+    useEffect(() => {
+        setActiveId((current) => {
+            if (tabs.some((t) => t.id === current)) return current;
+            return tabs[0]?.id ?? '';
+        });
+    }, [tabIds, tabs]);
 
     if (!active) return null;
 
@@ -50,10 +58,12 @@ export function CodeExamplePanel({
         >
             <div className="flex-none">
                 <div className="flex items-center justify-between gap-3 px-4 py-2.5 border-b border-[#2a2a2a]">
-                    <div className="flex items-center gap-3 min-w-0 flex-1">
-                        <span className="text-sm font-medium text-gray-200 truncate">{title}</span>
+                    <span className="text-sm font-medium text-gray-200 truncate min-w-0 flex-1">
+                        {title}
+                    </span>
+                    <div className="flex items-center gap-2 shrink-0">
                         {tabs.length > 1 && (
-                            <div className="flex items-center gap-1 shrink-0">
+                            <div className="flex items-center gap-1">
                                 {tabs.map((tab) => (
                                     <button
                                         key={tab.id}
@@ -70,10 +80,8 @@ export function CodeExamplePanel({
                                 ))}
                             </div>
                         )}
+                        {headerActions}
                     </div>
-                    {headerActions ? (
-                        <div className="flex-none flex items-center">{headerActions}</div>
-                    ) : null}
                 </div>
                 {subtitle && (
                     <div className="px-4 py-1.5 border-b border-[#2a2a2a]">
@@ -83,7 +91,7 @@ export function CodeExamplePanel({
             </div>
             <CodeEditor
                 className="!mt-0 !rounded-none !p-0 min-h-0"
-                key={`${active.id}-${replacementKey}`}
+                key={`${active.id}-${active.language}-${replacementKey}`}
                 replacements={replacements}
                 showLanguageLabel={false}
             >

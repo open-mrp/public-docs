@@ -96,6 +96,7 @@ interface SchemaField {
     description: string;
     required: boolean;
     nullable: boolean;
+    nullableClear?: boolean;
     alwaysNull?: boolean;
     expandable?: boolean;
     enum?: string[];
@@ -442,6 +443,7 @@ function schemaToFields(
                 description: descriptionWithNullClear,
                 required: required.includes(name),
                 nullable: resolvedProp.nullable || false,
+                nullableClear: resolvedProp['x-nullable-clear'] === true || undefined,
                 alwaysNull: shouldMarkAlwaysNull || undefined,
                 expandable: resolvedProp['x-expandable'] === true,
             };
@@ -793,6 +795,7 @@ export interface SchemaField {
     description: string;
     required: boolean;
     nullable: boolean;
+    nullableClear?: boolean;
     alwaysNull?: boolean;
     expandable?: boolean;
     enum?: string[];

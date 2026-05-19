@@ -176,7 +176,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "type",
                             "type": "string",
-                            "description": "Role type code.",
+                            "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
                             "required": true,
                             "nullable": false,
                             "expandable": false,
@@ -317,7 +317,7 @@ export const apiTags: TagData[] = [
             {
                 "operationId": "create-api-key",
                 "summary": "Create API Key",
-                "description": "Creates an API key. The secret key is returned once and cannot be retrieved later.",
+                "description": "Creates an [API key](https://docs.augno.com/api/api-keys) to authenticate API requests.\n\nThe secret key is returned once and cannot be retrieved later, so you should store it securely. We provide some [recommendations](https://docs.augno.com/api/managing-api-keys) on how you can manage your API keys.",
                 "method": "POST",
                 "path": "/v1/auth/api-keys",
                 "domain": "auth",
@@ -370,7 +370,8 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "role_id": "rl_01gf7a8200er3ar3pkfrb6kk29",
-                        "name": "Production API Key"
+                        "name": "Production API Key",
+                        "expires_at": null
                     }
                 },
                 "responses": [
@@ -392,7 +393,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "api_key_secret",
                                 "type": "string",
-                                "description": "Full secret value. Returned once and cannot be retrieved later.",
+                                "description": "Full secret value. Returned once and cannot be retrieved later. Learn more about [managing your API keys](https://docs.augno.com/api/managing-api-keys).",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false
@@ -478,7 +479,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "type",
                                                 "type": "string",
-                                                "description": "Role type code.",
+                                                "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -626,7 +627,7 @@ export const apiTags: TagData[] = [
             {
                 "operationId": "list-api-keys",
                 "summary": "List API Keys",
-                "description": "Returns a paginated list of API keys.",
+                "description": "Returns a paginated list of [API keys](https://docs.augno.com/api/api-keys).",
                 "method": "GET",
                 "path": "/v1/auth/api-keys",
                 "domain": "auth",
@@ -641,7 +642,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -706,17 +707,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -821,7 +822,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "type",
                                                 "type": "string",
-                                                "description": "Role type code.",
+                                                "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -922,8 +923,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "apke_01jm4r6700e3kxb9w2nqh7g5fp",
-                                "prev_cursor": null,
+                                "next_page_url": "apke_01jm4r6700e3kxb9w2nqh7g5fp",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -976,7 +977,7 @@ export const apiTags: TagData[] = [
             {
                 "operationId": "retrieve-api-key",
                 "summary": "Retrieve API Key",
-                "description": "Returns API key metadata by ID.",
+                "description": "Returns [API key](https://docs.augno.com/api/api-keys) metadata by ID.",
                 "method": "GET",
                 "path": "/v1/auth/api-keys/{id}",
                 "domain": "auth",
@@ -1083,7 +1084,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "type",
                                         "type": "string",
-                                        "description": "Role type code.",
+                                        "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -1225,7 +1226,7 @@ export const apiTags: TagData[] = [
             {
                 "operationId": "revoke-api-key",
                 "summary": "Revoke API Key",
-                "description": "Revokes an API key, preventing it from being used to authenticate requests.",
+                "description": "Revokes an [API key](https://docs.augno.com/api/api-keys).\n\nRevoked API keys will be unable to be used to authenticate requests.",
                 "method": "DELETE",
                 "path": "/v1/auth/api-keys/{id}",
                 "domain": "auth",
@@ -1255,7 +1256,7 @@ export const apiTags: TagData[] = [
             {
                 "operationId": "rotate-api-key",
                 "summary": "Rotate API Key",
-                "description": "Rotates an API key by revoking the existing key and issuing a replacement with the same name, role, and expiration. The new secret is returned once.",
+                "description": "Rotates an [API key](https://docs.augno.com/api/api-keys) by revoking the existing key and issuing a replacement with the same name, role, and expiration (unless overridden).\n\nThe secret key is returned once and cannot be retrieved later, so you should store it securely. We provide some [recommendations](https://docs.augno.com/api/managing-api-keys) on how you can manage your API keys.",
                 "method": "POST",
                 "path": "/v1/auth/api-keys/{id}/actions/rotate",
                 "domain": "auth",
@@ -1320,7 +1321,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "api_key_secret",
                                 "type": "string",
-                                "description": "Full secret value. Returned once and cannot be retrieved later.",
+                                "description": "Full secret value. Returned once and cannot be retrieved later. Learn more about [managing your API keys](https://docs.augno.com/api/managing-api-keys).",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false
@@ -1406,7 +1407,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "type",
                                                 "type": "string",
-                                                "description": "Role type code.",
+                                                "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -1769,8 +1770,7 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Integration Testing",
-                        "mode": "blank"
+                        "name": "Integration Testing"
                     }
                 },
                 "responses": [
@@ -1954,7 +1954,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -2006,17 +2006,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -2190,8 +2190,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "sbac_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "prev_cursor": null,
+                                "next_page_url": "sbac_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -2781,7 +2781,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "type",
                                     "type": "string",
-                                    "description": "Role type code.",
+                                    "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
                                     "required": true,
                                     "nullable": false,
                                     "expandable": false,
@@ -2865,9 +2865,20 @@ export const apiTags: TagData[] = [
                 "host": "https://api.augno.com",
                 "path": "/v1/core/sandboxes",
                 "normalized_route": "/v1/core/sandboxes",
-                "query_params": {
-                    "limit": 10
-                },
+                "query_params": [
+                    123,
+                    34,
+                    108,
+                    105,
+                    109,
+                    105,
+                    116,
+                    34,
+                    58,
+                    49,
+                    48,
+                    125
+                ],
                 "status_code": 200,
                 "latency_us": 12345,
                 "api_version": "2026-01-01",
@@ -2926,17 +2937,139 @@ export const apiTags: TagData[] = [
                     }
                 },
                 "idempotency_key": null,
-                "request_body": null,
-                "response_body": {
-                    "data": [],
-                    "object": "list",
-                    "page_info": {
-                        "has_next_page": false,
-                        "has_prev_page": false,
-                        "next_cursor": null,
-                        "prev_cursor": null
-                    }
-                }
+                "response_body": [
+                    123,
+                    34,
+                    111,
+                    98,
+                    106,
+                    101,
+                    99,
+                    116,
+                    34,
+                    58,
+                    34,
+                    108,
+                    105,
+                    115,
+                    116,
+                    34,
+                    44,
+                    34,
+                    112,
+                    97,
+                    103,
+                    101,
+                    95,
+                    105,
+                    110,
+                    102,
+                    111,
+                    34,
+                    58,
+                    123,
+                    34,
+                    110,
+                    101,
+                    120,
+                    116,
+                    95,
+                    112,
+                    97,
+                    103,
+                    101,
+                    95,
+                    117,
+                    114,
+                    108,
+                    34,
+                    58,
+                    110,
+                    117,
+                    108,
+                    108,
+                    44,
+                    34,
+                    112,
+                    114,
+                    101,
+                    118,
+                    105,
+                    111,
+                    117,
+                    115,
+                    95,
+                    112,
+                    97,
+                    103,
+                    101,
+                    95,
+                    117,
+                    114,
+                    108,
+                    34,
+                    58,
+                    110,
+                    117,
+                    108,
+                    108,
+                    44,
+                    34,
+                    104,
+                    97,
+                    115,
+                    95,
+                    110,
+                    101,
+                    120,
+                    116,
+                    95,
+                    112,
+                    97,
+                    103,
+                    101,
+                    34,
+                    58,
+                    102,
+                    97,
+                    108,
+                    115,
+                    101,
+                    44,
+                    34,
+                    104,
+                    97,
+                    115,
+                    95,
+                    112,
+                    114,
+                    101,
+                    118,
+                    95,
+                    112,
+                    97,
+                    103,
+                    101,
+                    34,
+                    58,
+                    102,
+                    97,
+                    108,
+                    115,
+                    101,
+                    125,
+                    44,
+                    34,
+                    100,
+                    97,
+                    116,
+                    97,
+                    34,
+                    58,
+                    91,
+                    93,
+                    125
+                ]
             }
         },
         "endpoints": [
@@ -2958,7 +3091,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -3146,17 +3279,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -3514,7 +3647,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "type",
                                                         "type": "string",
-                                                        "description": "Role type code.",
+                                                        "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
                                                         "required": true,
                                                         "nullable": false,
                                                         "expandable": false,
@@ -3596,8 +3729,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "rq_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "prev_cursor": null,
+                                "next_page_url": "rq_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -3609,9 +3742,20 @@ export const apiTags: TagData[] = [
                                     "host": "https://api.augno.com",
                                     "path": "/v1/core/sandboxes",
                                     "normalized_route": "/v1/core/sandboxes",
-                                    "query_params": {
-                                        "limit": 10
-                                    },
+                                    "query_params": [
+                                        123,
+                                        34,
+                                        108,
+                                        105,
+                                        109,
+                                        105,
+                                        116,
+                                        34,
+                                        58,
+                                        49,
+                                        48,
+                                        125
+                                    ],
                                     "status_code": 200,
                                     "latency_us": 12345,
                                     "api_version": "2026-01-01",
@@ -3670,17 +3814,139 @@ export const apiTags: TagData[] = [
                                         }
                                     },
                                     "idempotency_key": null,
-                                    "request_body": null,
-                                    "response_body": {
-                                        "data": [],
-                                        "object": "list",
-                                        "page_info": {
-                                            "has_next_page": false,
-                                            "has_prev_page": false,
-                                            "next_cursor": null,
-                                            "prev_cursor": null
-                                        }
-                                    }
+                                    "response_body": [
+                                        123,
+                                        34,
+                                        111,
+                                        98,
+                                        106,
+                                        101,
+                                        99,
+                                        116,
+                                        34,
+                                        58,
+                                        34,
+                                        108,
+                                        105,
+                                        115,
+                                        116,
+                                        34,
+                                        44,
+                                        34,
+                                        112,
+                                        97,
+                                        103,
+                                        101,
+                                        95,
+                                        105,
+                                        110,
+                                        102,
+                                        111,
+                                        34,
+                                        58,
+                                        123,
+                                        34,
+                                        110,
+                                        101,
+                                        120,
+                                        116,
+                                        95,
+                                        112,
+                                        97,
+                                        103,
+                                        101,
+                                        95,
+                                        117,
+                                        114,
+                                        108,
+                                        34,
+                                        58,
+                                        110,
+                                        117,
+                                        108,
+                                        108,
+                                        44,
+                                        34,
+                                        112,
+                                        114,
+                                        101,
+                                        118,
+                                        105,
+                                        111,
+                                        117,
+                                        115,
+                                        95,
+                                        112,
+                                        97,
+                                        103,
+                                        101,
+                                        95,
+                                        117,
+                                        114,
+                                        108,
+                                        34,
+                                        58,
+                                        110,
+                                        117,
+                                        108,
+                                        108,
+                                        44,
+                                        34,
+                                        104,
+                                        97,
+                                        115,
+                                        95,
+                                        110,
+                                        101,
+                                        120,
+                                        116,
+                                        95,
+                                        112,
+                                        97,
+                                        103,
+                                        101,
+                                        34,
+                                        58,
+                                        102,
+                                        97,
+                                        108,
+                                        115,
+                                        101,
+                                        44,
+                                        34,
+                                        104,
+                                        97,
+                                        115,
+                                        95,
+                                        112,
+                                        114,
+                                        101,
+                                        118,
+                                        95,
+                                        112,
+                                        97,
+                                        103,
+                                        101,
+                                        34,
+                                        58,
+                                        102,
+                                        97,
+                                        108,
+                                        115,
+                                        101,
+                                        125,
+                                        44,
+                                        34,
+                                        100,
+                                        97,
+                                        116,
+                                        97,
+                                        34,
+                                        58,
+                                        91,
+                                        93,
+                                        125
+                                    ]
                                 }
                             ]
                         }
@@ -4055,7 +4321,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "type",
                                                 "type": "string",
-                                                "description": "Role type code.",
+                                                "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -4139,9 +4405,20 @@ export const apiTags: TagData[] = [
                             "host": "https://api.augno.com",
                             "path": "/v1/core/sandboxes",
                             "normalized_route": "/v1/core/sandboxes",
-                            "query_params": {
-                                "limit": 10
-                            },
+                            "query_params": [
+                                123,
+                                34,
+                                108,
+                                105,
+                                109,
+                                105,
+                                116,
+                                34,
+                                58,
+                                49,
+                                48,
+                                125
+                            ],
                             "status_code": 200,
                             "latency_us": 12345,
                             "api_version": "2026-01-01",
@@ -4200,17 +4477,139 @@ export const apiTags: TagData[] = [
                                 }
                             },
                             "idempotency_key": null,
-                            "request_body": null,
-                            "response_body": {
-                                "data": [],
-                                "object": "list",
-                                "page_info": {
-                                    "has_next_page": false,
-                                    "has_prev_page": false,
-                                    "next_cursor": null,
-                                    "prev_cursor": null
-                                }
-                            }
+                            "response_body": [
+                                123,
+                                34,
+                                111,
+                                98,
+                                106,
+                                101,
+                                99,
+                                116,
+                                34,
+                                58,
+                                34,
+                                108,
+                                105,
+                                115,
+                                116,
+                                34,
+                                44,
+                                34,
+                                112,
+                                97,
+                                103,
+                                101,
+                                95,
+                                105,
+                                110,
+                                102,
+                                111,
+                                34,
+                                58,
+                                123,
+                                34,
+                                110,
+                                101,
+                                120,
+                                116,
+                                95,
+                                112,
+                                97,
+                                103,
+                                101,
+                                95,
+                                117,
+                                114,
+                                108,
+                                34,
+                                58,
+                                110,
+                                117,
+                                108,
+                                108,
+                                44,
+                                34,
+                                112,
+                                114,
+                                101,
+                                118,
+                                105,
+                                111,
+                                117,
+                                115,
+                                95,
+                                112,
+                                97,
+                                103,
+                                101,
+                                95,
+                                117,
+                                114,
+                                108,
+                                34,
+                                58,
+                                110,
+                                117,
+                                108,
+                                108,
+                                44,
+                                34,
+                                104,
+                                97,
+                                115,
+                                95,
+                                110,
+                                101,
+                                120,
+                                116,
+                                95,
+                                112,
+                                97,
+                                103,
+                                101,
+                                34,
+                                58,
+                                102,
+                                97,
+                                108,
+                                115,
+                                101,
+                                44,
+                                34,
+                                104,
+                                97,
+                                115,
+                                95,
+                                112,
+                                114,
+                                101,
+                                118,
+                                95,
+                                112,
+                                97,
+                                103,
+                                101,
+                                34,
+                                58,
+                                102,
+                                97,
+                                108,
+                                115,
+                                101,
+                                125,
+                                44,
+                                34,
+                                100,
+                                97,
+                                116,
+                                97,
+                                34,
+                                58,
+                                91,
+                                93,
+                                125
+                            ]
                         }
                     }
                 ]
@@ -4561,17 +4960,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_cursor",
+                                    "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                    "description": "URL to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "prev_cursor",
+                                    "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                    "description": "URL to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -4640,12 +5039,197 @@ export const apiTags: TagData[] = [
                     "expandable": false
                 },
                 {
-                    "name": "request_id",
-                    "type": "string",
-                    "description": "Originating HTTP request ID.",
+                    "name": "request",
+                    "type": "object",
+                    "description": "Originating HTTP request. Expandable.",
                     "required": true,
                     "nullable": true,
-                    "expandable": false
+                    "expandable": true,
+                    "properties": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "description": "Request log ID.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "object",
+                            "type": "string",
+                            "description": "Resource type identifier.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "request_log"
+                            ]
+                        },
+                        {
+                            "name": "method",
+                            "type": "string",
+                            "description": "HTTP method.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "host",
+                            "type": "string",
+                            "description": "Request host. Usually `api.augno.com`.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "path",
+                            "type": "string",
+                            "description": "Non-normalized request path.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "normalized_route",
+                            "type": "string",
+                            "description": "_Normalized_ route template. For example `PATCH /v1/sales/customers/{id}` is the normalized route for a request route `PUT /v1/sales/customers/ac_...`.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "query_params",
+                            "type": "object",
+                            "description": "Query parameters. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": true
+                        },
+                        {
+                            "name": "status_code",
+                            "type": "integer",
+                            "description": "HTTP status code.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "latency_us",
+                            "type": "integer",
+                            "description": "Request latency in microseconds.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "api_version",
+                            "type": "string",
+                            "description": "API version used.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": false
+                        },
+                        {
+                            "name": "client_ip",
+                            "type": "string",
+                            "description": "Client IP address.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": false
+                        },
+                        {
+                            "name": "user_agent",
+                            "type": "string",
+                            "description": "User agent.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": false
+                        },
+                        {
+                            "name": "referrer",
+                            "type": "string",
+                            "description": "Referrer header.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": false
+                        },
+                        {
+                            "name": "error_code",
+                            "type": "string",
+                            "description": "API error code.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": false
+                        },
+                        {
+                            "name": "error_message",
+                            "type": "string",
+                            "description": "Error message.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": false
+                        },
+                        {
+                            "name": "occurred_at",
+                            "type": "string",
+                            "description": "When the request occurred.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "format": "date-time"
+                        },
+                        {
+                            "name": "created_at",
+                            "type": "string",
+                            "description": "When the log entry was created.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "format": "date-time"
+                        },
+                        {
+                            "name": "account",
+                            "type": "object",
+                            "description": "Account _targeted_ by the request.",
+                            "required": true,
+                            "nullable": true,
+                            "alwaysNull": true,
+                            "expandable": true
+                        },
+                        {
+                            "name": "actor",
+                            "type": "object",
+                            "description": "Actor who made the request.",
+                            "required": true,
+                            "nullable": true,
+                            "alwaysNull": true,
+                            "expandable": true
+                        },
+                        {
+                            "name": "idempotency_key",
+                            "type": "string",
+                            "description": "User-provided idempotency key.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": false
+                        },
+                        {
+                            "name": "request_body",
+                            "type": "object",
+                            "description": "Request body. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": true
+                        },
+                        {
+                            "name": "response_body",
+                            "type": "object",
+                            "description": "Response body. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": true
+                        }
+                    ]
                 },
                 {
                     "name": "idempotency_key",
@@ -4727,23 +5311,102 @@ export const apiTags: TagData[] = [
                 "changes": {
                     "object": "list",
                     "page_info": {
-                        "next_cursor": null,
-                        "prev_cursor": null,
+                        "next_page_url": null,
+                        "previous_page_url": null,
                         "has_next_page": false,
                         "has_prev_page": false
                     },
                     "data": [
                         {
                             "field": "email",
-                            "old_value": "old@example.com",
-                            "new_value": "new@example.com"
+                            "old_value": [
+                                34,
+                                111,
+                                108,
+                                100,
+                                64,
+                                101,
+                                120,
+                                97,
+                                109,
+                                112,
+                                108,
+                                101,
+                                46,
+                                99,
+                                111,
+                                109,
+                                34
+                            ],
+                            "new_value": [
+                                34,
+                                110,
+                                101,
+                                119,
+                                64,
+                                101,
+                                120,
+                                97,
+                                109,
+                                112,
+                                108,
+                                101,
+                                46,
+                                99,
+                                111,
+                                109,
+                                34
+                            ]
                         }
                     ]
                 },
-                "metadata": {
-                    "reason": "operator override"
+                "metadata": [
+                    123,
+                    34,
+                    114,
+                    101,
+                    97,
+                    115,
+                    111,
+                    110,
+                    34,
+                    58,
+                    34,
+                    111,
+                    112,
+                    101,
+                    114,
+                    97,
+                    116,
+                    111,
+                    114,
+                    32,
+                    111,
+                    118,
+                    101,
+                    114,
+                    114,
+                    105,
+                    100,
+                    101,
+                    34,
+                    125
+                ],
+                "request": {
+                    "id": "rq_01jm4r6700f8nwq3v5hx2d9ktp",
+                    "object": "request_log",
+                    "status_code": 0,
+                    "latency_us": 0,
+                    "api_version": null,
+                    "client_ip": null,
+                    "user_agent": null,
+                    "referrer": null,
+                    "error_code": null,
+                    "error_message": null,
+                    "account": null,
+                    "actor": null,
+                    "idempotency_key": null
                 },
-                "request_id": "req_01gq7s3f2m0y9h2t7z1w7q3v9k",
                 "idempotency_key": null,
                 "source_ip": "198.51.100.8",
                 "occurred_at": "2026-05-10T00:00:00Z",
@@ -4769,7 +5432,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -5009,7 +5672,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "array",
                         "required": false,
-                        "description": "Filter by the actor identifier. `account_user.id` when `identity_type`=`user`, or an `api_key.id` when `identity_type`=`api_key`."
+                        "description": "Filter by the actor identifier.\n\nWill be `account_user.id` when `identity_type`=`user` or an `api_key.id` when `identity_type`=`api_key`."
                     },
                     {
                         "name": "actions[]",
@@ -5034,7 +5697,8 @@ export const apiTags: TagData[] = [
                         "enum": [
                             "actor",
                             "changes",
-                            "metadata"
+                            "metadata",
+                            "request"
                         ]
                     }
                 ],
@@ -5063,17 +5727,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -5439,17 +6103,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -5518,12 +6182,197 @@ export const apiTags: TagData[] = [
                                         "expandable": false
                                     },
                                     {
-                                        "name": "request_id",
-                                        "type": "string",
-                                        "description": "Originating HTTP request ID.",
+                                        "name": "request",
+                                        "type": "object",
+                                        "description": "Originating HTTP request. Expandable.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": false
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Request log ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "request_log"
+                                                ]
+                                            },
+                                            {
+                                                "name": "method",
+                                                "type": "string",
+                                                "description": "HTTP method.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "host",
+                                                "type": "string",
+                                                "description": "Request host. Usually `api.augno.com`.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "path",
+                                                "type": "string",
+                                                "description": "Non-normalized request path.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "normalized_route",
+                                                "type": "string",
+                                                "description": "_Normalized_ route template. For example `PATCH /v1/sales/customers/{id}` is the normalized route for a request route `PUT /v1/sales/customers/ac_...`.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "query_params",
+                                                "type": "object",
+                                                "description": "Query parameters. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "status_code",
+                                                "type": "integer",
+                                                "description": "HTTP status code.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "latency_us",
+                                                "type": "integer",
+                                                "description": "Request latency in microseconds.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "api_version",
+                                                "type": "string",
+                                                "description": "API version used.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "client_ip",
+                                                "type": "string",
+                                                "description": "Client IP address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "user_agent",
+                                                "type": "string",
+                                                "description": "User agent.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "referrer",
+                                                "type": "string",
+                                                "description": "Referrer header.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "error_code",
+                                                "type": "string",
+                                                "description": "API error code.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "error_message",
+                                                "type": "string",
+                                                "description": "Error message.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "occurred_at",
+                                                "type": "string",
+                                                "description": "When the request occurred.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "When the log entry was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "account",
+                                                "type": "object",
+                                                "description": "Account _targeted_ by the request.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "actor",
+                                                "type": "object",
+                                                "description": "Actor who made the request.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "idempotency_key",
+                                                "type": "string",
+                                                "description": "User-provided idempotency key.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "request_body",
+                                                "type": "object",
+                                                "description": "Request body. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "response_body",
+                                                "type": "object",
+                                                "description": "Response body. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "idempotency_key",
@@ -5565,8 +6414,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "ae_01gq7s3f2m0y9h2t7z1w7q3v9k",
-                                "prev_cursor": null,
+                                "next_page_url": "ae_01gq7s3f2m0y9h2t7z1w7q3v9k",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -5616,23 +6465,102 @@ export const apiTags: TagData[] = [
                                     "changes": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_cursor": null,
-                                            "prev_cursor": null,
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
                                         "data": [
                                             {
                                                 "field": "email",
-                                                "old_value": "old@example.com",
-                                                "new_value": "new@example.com"
+                                                "old_value": [
+                                                    34,
+                                                    111,
+                                                    108,
+                                                    100,
+                                                    64,
+                                                    101,
+                                                    120,
+                                                    97,
+                                                    109,
+                                                    112,
+                                                    108,
+                                                    101,
+                                                    46,
+                                                    99,
+                                                    111,
+                                                    109,
+                                                    34
+                                                ],
+                                                "new_value": [
+                                                    34,
+                                                    110,
+                                                    101,
+                                                    119,
+                                                    64,
+                                                    101,
+                                                    120,
+                                                    97,
+                                                    109,
+                                                    112,
+                                                    108,
+                                                    101,
+                                                    46,
+                                                    99,
+                                                    111,
+                                                    109,
+                                                    34
+                                                ]
                                             }
                                         ]
                                     },
-                                    "metadata": {
-                                        "reason": "operator override"
+                                    "metadata": [
+                                        123,
+                                        34,
+                                        114,
+                                        101,
+                                        97,
+                                        115,
+                                        111,
+                                        110,
+                                        34,
+                                        58,
+                                        34,
+                                        111,
+                                        112,
+                                        101,
+                                        114,
+                                        97,
+                                        116,
+                                        111,
+                                        114,
+                                        32,
+                                        111,
+                                        118,
+                                        101,
+                                        114,
+                                        114,
+                                        105,
+                                        100,
+                                        101,
+                                        34,
+                                        125
+                                    ],
+                                    "request": {
+                                        "id": "rq_01jm4r6700f8nwq3v5hx2d9ktp",
+                                        "object": "request_log",
+                                        "status_code": 0,
+                                        "latency_us": 0,
+                                        "api_version": null,
+                                        "client_ip": null,
+                                        "user_agent": null,
+                                        "referrer": null,
+                                        "error_code": null,
+                                        "error_message": null,
+                                        "account": null,
+                                        "actor": null,
+                                        "idempotency_key": null
                                     },
-                                    "request_id": "req_01gq7s3f2m0y9h2t7z1w7q3v9k",
                                     "idempotency_key": null,
                                     "source_ip": "198.51.100.8",
                                     "occurred_at": "2026-05-10T00:00:00Z",
@@ -5681,17 +6609,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -5916,8 +6844,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": null,
-                                "prev_cursor": null,
+                                "next_page_url": null,
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -5955,7 +6883,8 @@ export const apiTags: TagData[] = [
                         "enum": [
                             "actor",
                             "changes",
-                            "metadata"
+                            "metadata",
+                            "request"
                         ]
                     }
                 ],
@@ -6298,17 +7227,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -6377,12 +7306,197 @@ export const apiTags: TagData[] = [
                                 "expandable": false
                             },
                             {
-                                "name": "request_id",
-                                "type": "string",
-                                "description": "Originating HTTP request ID.",
+                                "name": "request",
+                                "type": "object",
+                                "description": "Originating HTTP request. Expandable.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": false
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Request log ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "request_log"
+                                        ]
+                                    },
+                                    {
+                                        "name": "method",
+                                        "type": "string",
+                                        "description": "HTTP method.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "host",
+                                        "type": "string",
+                                        "description": "Request host. Usually `api.augno.com`.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "path",
+                                        "type": "string",
+                                        "description": "Non-normalized request path.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "normalized_route",
+                                        "type": "string",
+                                        "description": "_Normalized_ route template. For example `PATCH /v1/sales/customers/{id}` is the normalized route for a request route `PUT /v1/sales/customers/ac_...`.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "query_params",
+                                        "type": "object",
+                                        "description": "Query parameters. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "status_code",
+                                        "type": "integer",
+                                        "description": "HTTP status code.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "latency_us",
+                                        "type": "integer",
+                                        "description": "Request latency in microseconds.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "api_version",
+                                        "type": "string",
+                                        "description": "API version used.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "client_ip",
+                                        "type": "string",
+                                        "description": "Client IP address.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "user_agent",
+                                        "type": "string",
+                                        "description": "User agent.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "referrer",
+                                        "type": "string",
+                                        "description": "Referrer header.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "error_code",
+                                        "type": "string",
+                                        "description": "API error code.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "error_message",
+                                        "type": "string",
+                                        "description": "Error message.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "occurred_at",
+                                        "type": "string",
+                                        "description": "When the request occurred.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "When the log entry was created.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "account",
+                                        "type": "object",
+                                        "description": "Account _targeted_ by the request.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "actor",
+                                        "type": "object",
+                                        "description": "Actor who made the request.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "idempotency_key",
+                                        "type": "string",
+                                        "description": "User-provided idempotency key.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "request_body",
+                                        "type": "object",
+                                        "description": "Request body. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "response_body",
+                                        "type": "object",
+                                        "description": "Response body. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true
+                                    }
+                                ]
                             },
                             {
                                 "name": "idempotency_key",
@@ -6464,23 +7578,102 @@ export const apiTags: TagData[] = [
                             "changes": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_cursor": null,
-                                    "prev_cursor": null,
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
                                 "data": [
                                     {
                                         "field": "email",
-                                        "old_value": "old@example.com",
-                                        "new_value": "new@example.com"
+                                        "old_value": [
+                                            34,
+                                            111,
+                                            108,
+                                            100,
+                                            64,
+                                            101,
+                                            120,
+                                            97,
+                                            109,
+                                            112,
+                                            108,
+                                            101,
+                                            46,
+                                            99,
+                                            111,
+                                            109,
+                                            34
+                                        ],
+                                        "new_value": [
+                                            34,
+                                            110,
+                                            101,
+                                            119,
+                                            64,
+                                            101,
+                                            120,
+                                            97,
+                                            109,
+                                            112,
+                                            108,
+                                            101,
+                                            46,
+                                            99,
+                                            111,
+                                            109,
+                                            34
+                                        ]
                                     }
                                 ]
                             },
-                            "metadata": {
-                                "reason": "operator override"
+                            "metadata": [
+                                123,
+                                34,
+                                114,
+                                101,
+                                97,
+                                115,
+                                111,
+                                110,
+                                34,
+                                58,
+                                34,
+                                111,
+                                112,
+                                101,
+                                114,
+                                97,
+                                116,
+                                111,
+                                114,
+                                32,
+                                111,
+                                118,
+                                101,
+                                114,
+                                114,
+                                105,
+                                100,
+                                101,
+                                34,
+                                125
+                            ],
+                            "request": {
+                                "id": "rq_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "object": "request_log",
+                                "status_code": 0,
+                                "latency_us": 0,
+                                "api_version": null,
+                                "client_ip": null,
+                                "user_agent": null,
+                                "referrer": null,
+                                "error_code": null,
+                                "error_message": null,
+                                "account": null,
+                                "actor": null,
+                                "idempotency_key": null
                             },
-                            "request_id": "req_01gq7s3f2m0y9h2t7z1w7q3v9k",
                             "idempotency_key": null,
                             "source_ip": "198.51.100.8",
                             "occurred_at": "2026-05-10T00:00:00Z",
@@ -7228,7 +8421,11 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Kilogram",
-                        "abbreviation": "kg"
+                        "abbreviation": "kg",
+                        "ratio_numerator": null,
+                        "ratio_denominator": null,
+                        "offset_numerator": null,
+                        "offset_denominator": null
                     }
                 },
                 "responses": [
@@ -7516,7 +8713,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -7593,17 +8790,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -7880,8 +9077,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "un_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "prev_cursor": null,
+                                "next_page_url": "un_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -8466,17 +9663,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_cursor",
+                                    "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                    "description": "URL to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "prev_cursor",
+                                    "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                    "description": "URL to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -8841,7 +10038,7 @@ export const apiTags: TagData[] = [
                             "name": "associated_units",
                             "type": "array",
                             "description": "Associated units to create with the group.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "object",
@@ -8887,6 +10084,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Weight Units",
+                        "notes": null,
                         "type": "mass",
                         "base_unit_id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
                         "associated_units": [
@@ -9119,17 +10317,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -9530,7 +10728,9 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Weight Units (Updated)",
-                        "base_unit_id": "un_01jm4r6700f8nwq3v5hx2d9ktp"
+                        "notes": null,
+                        "base_unit_id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
+                        "associated_units": null
                     }
                 },
                 "responses": [
@@ -9753,17 +10953,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -10071,7 +11271,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -10143,17 +11343,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -10400,17 +11600,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -10668,8 +11868,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "ug_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "prev_cursor": null,
+                                "next_page_url": "ug_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -10967,17 +12167,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -11579,7 +12779,35 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "format": "date-time"
                             }
-                        ]
+                        ],
+                        "example": {
+                            "id": "ugu_01jm4r6700f8nwq3v5hx2d9ktp",
+                            "object": "unit_group_unit",
+                            "unit": {
+                                "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "object": "unit",
+                                "name": "Kilogram",
+                                "abbreviation": "kg",
+                                "type": "mass",
+                                "ratio_numerator": "1000",
+                                "ratio_denominator": "1",
+                                "offset_numerator": "0",
+                                "offset_denominator": "1",
+                                "is_base_unit": false,
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "discount_percentage": 1,
+                            "discount_fixed": 0,
+                            "customer_portal_visibility": "visible",
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
                     }
                 ]
             },
@@ -11663,7 +12891,9 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "unit_id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
-                        "discount_percentage": 0.9
+                        "discount_percentage": 0.9,
+                        "discount_fixed": null,
+                        "customer_portal_visibility": null
                     }
                 },
                 "responses": [
@@ -11870,7 +13100,35 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "format": "date-time"
                             }
-                        ]
+                        ],
+                        "example": {
+                            "id": "ugu_01jm4r6700f8nwq3v5hx2d9ktp",
+                            "object": "unit_group_unit",
+                            "unit": {
+                                "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "object": "unit",
+                                "name": "Kilogram",
+                                "abbreviation": "kg",
+                                "type": "mass",
+                                "ratio_numerator": "1000",
+                                "ratio_denominator": "1",
+                                "offset_numerator": "0",
+                                "offset_denominator": "1",
+                                "is_base_unit": false,
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "discount_percentage": 1,
+                            "discount_fixed": 0,
+                            "customer_portal_visibility": "visible",
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
                     }
                 ]
             },
@@ -11930,17 +13188,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -12173,7 +13431,46 @@ export const apiTags: TagData[] = [
                                     }
                                 ]
                             }
-                        ]
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": "ugu_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "ugu_01jm4r6700f8nwq3v5hx2d9ktp",
+                                    "object": "unit_group_unit",
+                                    "unit": {
+                                        "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
+                                        "object": "unit",
+                                        "name": "Kilogram",
+                                        "abbreviation": "kg",
+                                        "type": "mass",
+                                        "ratio_numerator": "1000",
+                                        "ratio_denominator": "1",
+                                        "offset_numerator": "0",
+                                        "offset_denominator": "1",
+                                        "is_base_unit": false,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "discount_percentage": 1,
+                                    "discount_fixed": 0,
+                                    "customer_portal_visibility": "visible",
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
                     }
                 ]
             },
@@ -12419,7 +13716,35 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "format": "date-time"
                             }
-                        ]
+                        ],
+                        "example": {
+                            "id": "ugu_01jm4r6700f8nwq3v5hx2d9ktp",
+                            "object": "unit_group_unit",
+                            "unit": {
+                                "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "object": "unit",
+                                "name": "Kilogram",
+                                "abbreviation": "kg",
+                                "type": "mass",
+                                "ratio_numerator": "1000",
+                                "ratio_denominator": "1",
+                                "offset_numerator": "0",
+                                "offset_denominator": "1",
+                                "is_base_unit": false,
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "discount_percentage": 1,
+                            "discount_fixed": 0,
+                            "customer_portal_visibility": "visible",
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
                     }
                 ]
             },
@@ -12646,7 +13971,10 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Wholesale Customers",
-                        "type": "type_group"
+                        "type": "type_group",
+                        "commission_policy": null,
+                        "freight_policy": null,
+                        "description": null
                     }
                 },
                 "responses": [
@@ -12824,7 +14152,10 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Updated Wholesale Customers"
+                        "name": "Updated Wholesale Customers",
+                        "description": null,
+                        "commission_policy": null,
+                        "freight_policy": null
                     }
                 },
                 "responses": [
@@ -12954,7 +14285,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -13007,17 +14338,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -13144,8 +14475,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "prev_cursor": null,
+                                "next_page_url": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -14048,7 +15379,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -14101,17 +15432,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -14330,8 +15661,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "pytm_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "prev_cursor": null,
+                                "next_page_url": "pytm_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -15183,17 +16514,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_cursor",
+                                    "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                    "description": "URL to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "prev_cursor",
+                                    "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                    "description": "URL to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -15345,8 +16676,8 @@ export const apiTags: TagData[] = [
                 "free_shipping_service_levels": {
                     "object": "list",
                     "page_info": {
-                        "next_cursor": null,
-                        "prev_cursor": null,
+                        "next_page_url": null,
+                        "previous_page_url": null,
                         "has_next_page": false,
                         "has_prev_page": false
                     },
@@ -15467,7 +16798,7 @@ export const apiTags: TagData[] = [
                             "name": "free_shipping_service_level_ids",
                             "type": "array",
                             "description": "Service level IDs that qualify for free shipping.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
@@ -15475,7 +16806,8 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Prepaid",
-                        "type": "carrier_rate_freight"
+                        "type": "carrier_rate_freight",
+                        "free_shipping_service_level_ids": []
                     }
                 },
                 "responses": [
@@ -16035,17 +17367,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -16197,8 +17529,8 @@ export const apiTags: TagData[] = [
                             "free_shipping_service_levels": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_cursor": null,
-                                    "prev_cursor": null,
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -16335,9 +17667,10 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Collect",
-                        "flat_rate": {},
-                        "minimum_order_value": {},
-                        "free_shipping_service_level_ids": {}
+                        "type": null,
+                        "flat_rate": null,
+                        "minimum_order_value": null,
+                        "free_shipping_service_level_ids": null
                     }
                 },
                 "responses": [
@@ -16897,17 +18230,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -17059,8 +18392,8 @@ export const apiTags: TagData[] = [
                             "free_shipping_service_levels": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_cursor": null,
-                                    "prev_cursor": null,
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -17090,7 +18423,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -17146,17 +18479,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -17740,17 +19073,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -17892,8 +19225,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "shtm_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "prev_cursor": null,
+                                "next_page_url": "shtm_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -17913,8 +19246,8 @@ export const apiTags: TagData[] = [
                                     "free_shipping_service_levels": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_cursor": null,
-                                            "prev_cursor": null,
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -18520,17 +19853,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -18682,8 +20015,8 @@ export const apiTags: TagData[] = [
                             "free_shipping_service_levels": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_cursor": null,
-                                    "prev_cursor": null,
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -19013,10 +20346,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Headquarters",
-                        "street_line_1": "123 Main St",
-                        "locality": "Springfield",
-                        "state": "IL",
-                        "postal_code": "62701",
+                        "type": null,
                         "country": "US"
                     }
                 },
@@ -19309,7 +20639,16 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Warehouse"
+                        "name": "Warehouse",
+                        "phone": null,
+                        "email": null,
+                        "type": null,
+                        "street_line_1": null,
+                        "street_line_2": null,
+                        "locality": null,
+                        "state": null,
+                        "postal_code": null,
+                        "country": null
                     }
                 },
                 "responses": [
@@ -19509,7 +20848,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -19562,17 +20901,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -19760,8 +21099,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "prev_cursor": null,
+                                "next_page_url": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -20083,17 +21422,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -20128,7 +21467,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "id",
                                         "type": "string",
-                                        "description": "Google Places ID.",
+                                        "description": "Address suggestion ID.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false
@@ -20147,7 +21486,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "description",
                                         "type": "string",
-                                        "description": "Full description.",
+                                        "description": "Full description of the address.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false
@@ -20174,8 +21513,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "ChIJd8BlQ2BZwokRAFUEcm_qrcA",
-                                "prev_cursor": null,
+                                "next_page_url": "ChIJd8BlQ2BZwokRAFUEcm_qrcA",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -20227,7 +21566,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "city",
                             "type": "string",
-                            "description": "City.",
+                            "description": "City or locality.",
                             "required": true,
                             "nullable": false,
                             "expandable": false
@@ -20259,6 +21598,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "address_line_1": "123 Main St",
+                        "address_line_2": null,
                         "city": "Springfield",
                         "state": "IL",
                         "postal_code": "62701",
@@ -20339,7 +21679,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "city",
                                         "type": "string",
-                                        "description": "City.",
+                                        "description": "City or locality.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false
@@ -20554,7 +21894,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -20606,17 +21946,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -20755,8 +22095,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "acss_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "prev_cursor": null,
+                                "next_page_url": "acss_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -21047,7 +22387,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "type",
                             "type": "string",
-                            "description": "Role type code.",
+                            "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
                             "required": true,
                             "nullable": false,
                             "expandable": false,
@@ -21339,7 +22679,7 @@ export const apiTags: TagData[] = [
                             "name": "preferences",
                             "type": "array",
                             "description": "Notification preferences for the user (external targets only).",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "object",
@@ -21373,7 +22713,6 @@ export const apiTags: TagData[] = [
                         "email": "jdoe@augno.com",
                         "username": "jdoe",
                         "password": "QgS7Z8Hhj3&1",
-                        "role_id": "rl_01gf7a8200er3ar3pkfrb6kk29",
                         "preferences": [
                             {
                                 "notification_type": "order_acknowledgement",
@@ -21489,7 +22828,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "type",
                                         "type": "string",
-                                        "description": "Role type code.",
+                                        "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -21781,7 +23120,7 @@ export const apiTags: TagData[] = [
                             "name": "preferences",
                             "type": "array",
                             "description": "Notification preferences to update (external targets only).",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "object",
@@ -21812,8 +23151,8 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "John Doe",
-                        "role_id": "rl_01gf7a8200er3ar3pkfrb6kk29",
-                        "department_id": "dp_01gf7a8200er3ar3pkfrb6kk30"
+                        "email": null,
+                        "username": null
                     }
                 },
                 "responses": [
@@ -21923,7 +23262,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "type",
                                         "type": "string",
-                                        "description": "Role type code.",
+                                        "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -22154,7 +23493,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -22232,17 +23571,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -22376,7 +23715,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "type",
                                                 "type": "string",
-                                                "description": "Role type code.",
+                                                "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -22549,8 +23888,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "acus_01gf7a8200er3ar3pkfrb6kk29",
-                                "prev_cursor": null,
+                                "next_page_url": "acus_01gf7a8200er3ar3pkfrb6kk29",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -22741,7 +24080,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "type",
                                         "type": "string",
-                                        "description": "Role type code.",
+                                        "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -23111,17 +24450,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_cursor",
+                                    "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                    "description": "URL to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "prev_cursor",
+                                    "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                    "description": "URL to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -23368,17 +24707,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -23633,17 +24972,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -23809,7 +25148,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -23861,17 +25200,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -23958,17 +25297,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -24106,7 +25445,26 @@ export const apiTags: TagData[] = [
                                     }
                                 ]
                             }
-                        ]
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": "pp_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "pp_01jm4r6700f8nwq3v5hx2d9ktp",
+                                    "object": "property",
+                                    "name": "Color",
+                                    "attributes": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
                     }
                 ]
             },
@@ -24201,17 +25559,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -24452,7 +25810,6 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "value": "Red",
-                        "color": "red",
                         "sort_order": 1
                     }
                 },
@@ -24579,17 +25936,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -24914,7 +26271,9 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "value": "Blue"
+                        "value": "Blue",
+                        "color": null,
+                        "sort_order": null
                     }
                 },
                 "responses": [
@@ -25040,17 +26399,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -25324,7 +26683,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -25373,17 +26732,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -25533,17 +26892,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -25756,7 +27115,28 @@ export const apiTags: TagData[] = [
                                     }
                                 ]
                             }
-                        ]
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": "at_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "at_01jm4r6700f8nwq3v5hx2d9ktp",
+                                    "object": "attribute",
+                                    "value": "Premium",
+                                    "color": "red",
+                                    "sort_order": 1,
+                                    "property": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
                     }
                 ]
             },
@@ -25911,17 +27291,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -26360,7 +27740,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -26412,17 +27792,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -26560,8 +27940,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "pi_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "prev_cursor": null,
+                                "next_page_url": "pi_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -26966,17 +28346,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_cursor",
+                                    "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                    "description": "URL to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "prev_cursor",
+                                    "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                    "description": "URL to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -27456,17 +28836,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -27700,7 +29080,8 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "FedEx Express"
+                        "name": "FedEx Express",
+                        "customer_portal_visibility": null
                     }
                 },
                 "responses": [
@@ -27925,17 +29306,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -28129,7 +29510,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -28183,17 +29564,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -28442,17 +29823,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -28603,8 +29984,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "prev_cursor": null,
+                                "next_page_url": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -28896,17 +30277,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -29424,6 +30805,7 @@ export const apiTags: TagData[] = [
                     "example": {
                         "name": "Ground Shipping",
                         "code": "ground",
+                        "customer_portal_visibility": null,
                         "is_default": false
                     }
                 },
@@ -29738,7 +31120,10 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Express Shipping"
+                        "name": "Express Shipping",
+                        "code": null,
+                        "customer_portal_visibility": null,
+                        "is_default": null
                     }
                 },
                 "responses": [
@@ -29990,7 +31375,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -30050,17 +31435,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -30291,7 +31676,43 @@ export const apiTags: TagData[] = [
                                     }
                                 ]
                             }
-                        ]
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": "crop_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "crop_01jm4r6700f8nwq3v5hx2d9ktp",
+                                    "object": "service_level",
+                                    "name": "FedEx Ground",
+                                    "service_level_token": "fedex_ground",
+                                    "customer_portal_visibility": "visible",
+                                    "is_default": false,
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "account",
+                                        "account": {
+                                            "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
                     }
                 ]
             },
@@ -30762,17 +32183,17 @@ export const apiTags: TagData[] = [
                                     "expandable": false,
                                     "properties": [
                                         {
-                                            "name": "next_cursor",
+                                            "name": "next_page_url",
                                             "type": "string",
-                                            "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                            "description": "URL to fetch the next page, `null` if no more pages.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
                                         },
                                         {
-                                            "name": "prev_cursor",
+                                            "name": "previous_page_url",
                                             "type": "string",
-                                            "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                            "description": "URL to fetch the previous page, `null` if on the first page.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -31085,17 +32506,17 @@ export const apiTags: TagData[] = [
                                             "expandable": false,
                                             "properties": [
                                                 {
-                                                    "name": "next_cursor",
+                                                    "name": "next_page_url",
                                                     "type": "string",
-                                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                    "description": "URL to fetch the next page, `null` if no more pages.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
                                                 },
                                                 {
-                                                    "name": "prev_cursor",
+                                                    "name": "previous_page_url",
                                                     "type": "string",
-                                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                    "description": "URL to fetch the previous page, `null` if on the first page.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -31528,17 +32949,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_cursor",
+                                    "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                    "description": "URL to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "prev_cursor",
+                                    "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                    "description": "URL to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -31708,14 +33129,8 @@ export const apiTags: TagData[] = [
                         "name": "US Dollar",
                         "abbreviation": "USD",
                         "type": "currency",
-                        "ratio_numerator": "",
-                        "ratio_denominator": "",
-                        "offset_numerator": "",
-                        "offset_denominator": "",
                         "is_base_unit": false,
-                        "owner": null,
-                        "created_at": "0001-01-01T00:00:00Z",
-                        "updated_at": "0001-01-01T00:00:00Z"
+                        "owner": null
                     },
                     "denominator_unit": {
                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -31723,14 +33138,8 @@ export const apiTags: TagData[] = [
                         "name": "Kilogram",
                         "abbreviation": "kg",
                         "type": "mass",
-                        "ratio_numerator": "",
-                        "ratio_denominator": "",
-                        "offset_numerator": "",
-                        "offset_denominator": "",
                         "is_base_unit": false,
-                        "owner": null,
-                        "created_at": "0001-01-01T00:00:00Z",
-                        "updated_at": "0001-01-01T00:00:00Z"
+                        "owner": null
                     },
                     "display_value": "$25.50 / kg",
                     "created_at": "2026-05-10T00:00:00Z",
@@ -31746,14 +33155,8 @@ export const apiTags: TagData[] = [
                         "name": "US Dollar",
                         "abbreviation": "USD",
                         "type": "currency",
-                        "ratio_numerator": "",
-                        "ratio_denominator": "",
-                        "offset_numerator": "",
-                        "offset_denominator": "",
                         "is_base_unit": false,
-                        "owner": null,
-                        "created_at": "0001-01-01T00:00:00Z",
-                        "updated_at": "0001-01-01T00:00:00Z"
+                        "owner": null
                     },
                     "denominator_unit": {
                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -31761,14 +33164,8 @@ export const apiTags: TagData[] = [
                         "name": "Kilogram",
                         "abbreviation": "kg",
                         "type": "mass",
-                        "ratio_numerator": "",
-                        "ratio_denominator": "",
-                        "offset_numerator": "",
-                        "offset_denominator": "",
                         "is_base_unit": false,
-                        "owner": null,
-                        "created_at": "0001-01-01T00:00:00Z",
-                        "updated_at": "0001-01-01T00:00:00Z"
+                        "owner": null
                     },
                     "display_value": "$25.50 / kg",
                     "created_at": "2026-05-10T00:00:00Z",
@@ -31784,14 +33181,8 @@ export const apiTags: TagData[] = [
                         "name": "US Dollar",
                         "abbreviation": "USD",
                         "type": "currency",
-                        "ratio_numerator": "",
-                        "ratio_denominator": "",
-                        "offset_numerator": "",
-                        "offset_denominator": "",
                         "is_base_unit": false,
-                        "owner": null,
-                        "created_at": "0001-01-01T00:00:00Z",
-                        "updated_at": "0001-01-01T00:00:00Z"
+                        "owner": null
                     },
                     "denominator_unit": {
                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -31799,14 +33190,8 @@ export const apiTags: TagData[] = [
                         "name": "Kilogram",
                         "abbreviation": "kg",
                         "type": "mass",
-                        "ratio_numerator": "",
-                        "ratio_denominator": "",
-                        "offset_numerator": "",
-                        "offset_denominator": "",
                         "is_base_unit": false,
-                        "owner": null,
-                        "created_at": "0001-01-01T00:00:00Z",
-                        "updated_at": "0001-01-01T00:00:00Z"
+                        "owner": null
                     },
                     "display_value": "$25.50 / kg",
                     "created_at": "2026-05-10T00:00:00Z",
@@ -31815,8 +33200,8 @@ export const apiTags: TagData[] = [
                 "attributes": {
                     "object": "list",
                     "page_info": {
-                        "next_cursor": null,
-                        "prev_cursor": null,
+                        "next_page_url": null,
+                        "previous_page_url": null,
                         "has_next_page": false,
                         "has_prev_page": false
                     },
@@ -31856,7 +33241,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -31915,17 +33300,6 @@ export const apiTags: TagData[] = [
                         "required": false,
                         "description": "Filter items created on or before this date.",
                         "format": "date-time"
-                    },
-                    {
-                        "name": "match_mode",
-                        "in": "query",
-                        "type": "string",
-                        "required": false,
-                        "description": "How the search query is matched against items (default: partial).",
-                        "enum": [
-                            "exact",
-                            "partial"
-                        ]
                     },
                     {
                         "name": "subassembly_filter",
@@ -31997,17 +33371,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -32187,17 +33561,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -32510,17 +33884,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_cursor",
+                                                                        "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "prev_cursor",
+                                                                        "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -32953,17 +34327,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -33105,8 +34479,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "it_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "prev_cursor": null,
+                                "next_page_url": "it_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -33144,14 +34518,8 @@ export const apiTags: TagData[] = [
                                             "name": "US Dollar",
                                             "abbreviation": "USD",
                                             "type": "currency",
-                                            "ratio_numerator": "",
-                                            "ratio_denominator": "",
-                                            "offset_numerator": "",
-                                            "offset_denominator": "",
                                             "is_base_unit": false,
-                                            "owner": null,
-                                            "created_at": "0001-01-01T00:00:00Z",
-                                            "updated_at": "0001-01-01T00:00:00Z"
+                                            "owner": null
                                         },
                                         "denominator_unit": {
                                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -33159,14 +34527,8 @@ export const apiTags: TagData[] = [
                                             "name": "Kilogram",
                                             "abbreviation": "kg",
                                             "type": "mass",
-                                            "ratio_numerator": "",
-                                            "ratio_denominator": "",
-                                            "offset_numerator": "",
-                                            "offset_denominator": "",
                                             "is_base_unit": false,
-                                            "owner": null,
-                                            "created_at": "0001-01-01T00:00:00Z",
-                                            "updated_at": "0001-01-01T00:00:00Z"
+                                            "owner": null
                                         },
                                         "display_value": "$25.50 / kg",
                                         "created_at": "2026-05-10T00:00:00Z",
@@ -33182,14 +34544,8 @@ export const apiTags: TagData[] = [
                                             "name": "US Dollar",
                                             "abbreviation": "USD",
                                             "type": "currency",
-                                            "ratio_numerator": "",
-                                            "ratio_denominator": "",
-                                            "offset_numerator": "",
-                                            "offset_denominator": "",
                                             "is_base_unit": false,
-                                            "owner": null,
-                                            "created_at": "0001-01-01T00:00:00Z",
-                                            "updated_at": "0001-01-01T00:00:00Z"
+                                            "owner": null
                                         },
                                         "denominator_unit": {
                                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -33197,14 +34553,8 @@ export const apiTags: TagData[] = [
                                             "name": "Kilogram",
                                             "abbreviation": "kg",
                                             "type": "mass",
-                                            "ratio_numerator": "",
-                                            "ratio_denominator": "",
-                                            "offset_numerator": "",
-                                            "offset_denominator": "",
                                             "is_base_unit": false,
-                                            "owner": null,
-                                            "created_at": "0001-01-01T00:00:00Z",
-                                            "updated_at": "0001-01-01T00:00:00Z"
+                                            "owner": null
                                         },
                                         "display_value": "$25.50 / kg",
                                         "created_at": "2026-05-10T00:00:00Z",
@@ -33220,14 +34570,8 @@ export const apiTags: TagData[] = [
                                             "name": "US Dollar",
                                             "abbreviation": "USD",
                                             "type": "currency",
-                                            "ratio_numerator": "",
-                                            "ratio_denominator": "",
-                                            "offset_numerator": "",
-                                            "offset_denominator": "",
                                             "is_base_unit": false,
-                                            "owner": null,
-                                            "created_at": "0001-01-01T00:00:00Z",
-                                            "updated_at": "0001-01-01T00:00:00Z"
+                                            "owner": null
                                         },
                                         "denominator_unit": {
                                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -33235,14 +34579,8 @@ export const apiTags: TagData[] = [
                                             "name": "Kilogram",
                                             "abbreviation": "kg",
                                             "type": "mass",
-                                            "ratio_numerator": "",
-                                            "ratio_denominator": "",
-                                            "offset_numerator": "",
-                                            "offset_denominator": "",
                                             "is_base_unit": false,
-                                            "owner": null,
-                                            "created_at": "0001-01-01T00:00:00Z",
-                                            "updated_at": "0001-01-01T00:00:00Z"
+                                            "owner": null
                                         },
                                         "display_value": "$25.50 / kg",
                                         "created_at": "2026-05-10T00:00:00Z",
@@ -33251,8 +34589,8 @@ export const apiTags: TagData[] = [
                                     "attributes": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_cursor": null,
-                                            "prev_cursor": null,
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -33470,17 +34808,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -33793,17 +35131,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -34236,17 +35574,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -34416,14 +35754,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -34431,14 +35763,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -34454,14 +35780,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -34469,14 +35789,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -34492,14 +35806,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -34507,14 +35815,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -34523,8 +35825,8 @@ export const apiTags: TagData[] = [
                             "attributes": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_cursor": null,
-                                    "prev_cursor": null,
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -34747,17 +36049,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -35070,17 +36372,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -35513,17 +36815,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -35693,14 +36995,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -35708,14 +37004,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -35731,14 +37021,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -35746,14 +37030,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -35769,14 +37047,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -35784,14 +37056,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -35800,8 +37066,8 @@ export const apiTags: TagData[] = [
                             "attributes": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_cursor": null,
-                                    "prev_cursor": null,
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -36024,17 +37290,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -36347,17 +37613,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -36790,17 +38056,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -36970,14 +38236,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -36985,14 +38245,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -37008,14 +38262,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -37023,14 +38271,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -37046,14 +38288,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -37061,14 +38297,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -37077,8 +38307,8 @@ export const apiTags: TagData[] = [
                             "attributes": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_cursor": null,
-                                    "prev_cursor": null,
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -37385,14 +38615,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "reserved": {
@@ -37406,14 +38630,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "available_to_promise": {
@@ -37427,14 +38645,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "short": {
@@ -37448,14 +38660,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             }
                         }
@@ -37662,17 +38868,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -37985,17 +39191,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -38428,17 +39634,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -38608,14 +39814,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -38623,14 +39823,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -38646,14 +39840,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -38661,14 +39849,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -38684,14 +39866,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -38699,14 +39875,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -38715,8 +39885,8 @@ export const apiTags: TagData[] = [
                             "attributes": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_cursor": null,
-                                    "prev_cursor": null,
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -38950,17 +40120,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_cursor",
+                                    "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                    "description": "URL to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "prev_cursor",
+                                    "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                    "description": "URL to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -39273,17 +40443,17 @@ export const apiTags: TagData[] = [
                                     "expandable": false,
                                     "properties": [
                                         {
-                                            "name": "next_cursor",
+                                            "name": "next_page_url",
                                             "type": "string",
-                                            "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                            "description": "URL to fetch the next page, `null` if no more pages.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
                                         },
                                         {
-                                            "name": "prev_cursor",
+                                            "name": "previous_page_url",
                                             "type": "string",
-                                            "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                            "description": "URL to fetch the previous page, `null` if on the first page.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -39731,17 +40901,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -40054,17 +41224,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -40299,7 +41469,8 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Electronic Components"
+                        "name": "Electronic Components",
+                        "notes": null
                     }
                 },
                 "responses": [
@@ -40506,17 +41677,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -40829,17 +42000,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -41034,7 +42205,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -41103,17 +42274,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -41344,17 +42515,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -41667,17 +42838,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -41840,8 +43011,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "prev_cursor": null,
+                                "next_page_url": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -42108,17 +43279,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -42431,17 +43602,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -42946,17 +44117,17 @@ export const apiTags: TagData[] = [
                                             "expandable": false,
                                             "properties": [
                                                 {
-                                                    "name": "next_cursor",
+                                                    "name": "next_page_url",
                                                     "type": "string",
-                                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                    "description": "URL to fetch the next page, `null` if no more pages.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
                                                 },
                                                 {
-                                                    "name": "prev_cursor",
+                                                    "name": "previous_page_url",
                                                     "type": "string",
-                                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                    "description": "URL to fetch the previous page, `null` if on the first page.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -43448,17 +44619,17 @@ export const apiTags: TagData[] = [
                                     "expandable": false,
                                     "properties": [
                                         {
-                                            "name": "next_cursor",
+                                            "name": "next_page_url",
                                             "type": "string",
-                                            "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                            "description": "URL to fetch the next page, `null` if no more pages.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
                                         },
                                         {
-                                            "name": "prev_cursor",
+                                            "name": "previous_page_url",
                                             "type": "string",
-                                            "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                            "description": "URL to fetch the previous page, `null` if on the first page.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -43759,14 +44930,8 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -43774,14 +44939,8 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -43797,14 +44956,8 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -43812,14 +44965,8 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -43835,14 +44982,8 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -43850,14 +44991,8 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -43866,8 +45001,8 @@ export const apiTags: TagData[] = [
                     "attributes": {
                         "object": "list",
                         "page_info": {
-                            "next_cursor": null,
-                            "prev_cursor": null,
+                            "next_page_url": null,
+                            "previous_page_url": null,
                             "has_next_page": false,
                             "has_prev_page": false
                         },
@@ -43898,14 +45033,8 @@ export const apiTags: TagData[] = [
                         "name": "US Dollar",
                         "abbreviation": "$",
                         "type": "currency",
-                        "ratio_numerator": "",
-                        "ratio_denominator": "",
-                        "offset_numerator": "",
-                        "offset_denominator": "",
                         "is_base_unit": false,
-                        "owner": null,
-                        "created_at": "0001-01-01T00:00:00Z",
-                        "updated_at": "0001-01-01T00:00:00Z"
+                        "owner": null
                     }
                 },
                 "lead_time": {
@@ -43919,14 +45048,8 @@ export const apiTags: TagData[] = [
                         "name": "US Dollar",
                         "abbreviation": "$",
                         "type": "currency",
-                        "ratio_numerator": "",
-                        "ratio_denominator": "",
-                        "offset_numerator": "",
-                        "offset_denominator": "",
                         "is_base_unit": false,
-                        "owner": null,
-                        "created_at": "0001-01-01T00:00:00Z",
-                        "updated_at": "0001-01-01T00:00:00Z"
+                        "owner": null
                     }
                 },
                 "created_at": "2026-05-10T00:00:00Z",
@@ -44161,7 +45284,7 @@ export const apiTags: TagData[] = [
                             "name": "attribute_ids",
                             "type": "array",
                             "description": "Attribute IDs to connect to the material at creation time.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
@@ -44352,17 +45475,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -44854,17 +45977,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -45165,14 +46288,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -45180,14 +46297,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -45203,14 +46314,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -45218,14 +46323,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -45241,14 +46340,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -45256,14 +46349,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -45272,8 +46359,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_cursor": null,
-                                        "prev_cursor": null,
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -45304,14 +46391,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "lead_time": {
@@ -45325,14 +46406,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "created_at": "2026-05-10T00:00:00Z",
@@ -45495,7 +46570,11 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "sku": "MAT-001-UPDATED"
+                        "sku": "MAT-001-UPDATED",
+                        "description": null,
+                        "notes": null,
+                        "order_point": null,
+                        "lead_time": null
                     }
                 },
                 "responses": [
@@ -45678,17 +46757,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -46180,17 +47259,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -46491,14 +47570,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -46506,14 +47579,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -46529,14 +47596,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -46544,14 +47605,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -46567,14 +47622,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -46582,14 +47631,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -46598,8 +47641,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_cursor": null,
-                                        "prev_cursor": null,
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -46630,14 +47673,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "lead_time": {
@@ -46651,14 +47688,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "created_at": "2026-05-10T00:00:00Z",
@@ -46685,7 +47716,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -46774,17 +47805,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -46991,17 +48022,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_cursor",
+                                                                        "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "prev_cursor",
+                                                                        "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -47493,17 +48524,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -47773,8 +48804,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "ml_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "prev_cursor": null,
+                                "next_page_url": "ml_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -47815,14 +48846,8 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -47830,14 +48855,8 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -47853,14 +48872,8 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -47868,14 +48881,8 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -47891,14 +48898,8 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -47906,14 +48907,8 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -47922,8 +48917,8 @@ export const apiTags: TagData[] = [
                                         "attributes": {
                                             "object": "list",
                                             "page_info": {
-                                                "next_cursor": null,
-                                                "prev_cursor": null,
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
                                                 "has_next_page": false,
                                                 "has_prev_page": false
                                             },
@@ -47954,14 +48949,8 @@ export const apiTags: TagData[] = [
                                             "name": "US Dollar",
                                             "abbreviation": "$",
                                             "type": "currency",
-                                            "ratio_numerator": "",
-                                            "ratio_denominator": "",
-                                            "offset_numerator": "",
-                                            "offset_denominator": "",
                                             "is_base_unit": false,
-                                            "owner": null,
-                                            "created_at": "0001-01-01T00:00:00Z",
-                                            "updated_at": "0001-01-01T00:00:00Z"
+                                            "owner": null
                                         }
                                     },
                                     "lead_time": {
@@ -47975,14 +48964,8 @@ export const apiTags: TagData[] = [
                                             "name": "US Dollar",
                                             "abbreviation": "$",
                                             "type": "currency",
-                                            "ratio_numerator": "",
-                                            "ratio_denominator": "",
-                                            "offset_numerator": "",
-                                            "offset_denominator": "",
                                             "is_base_unit": false,
-                                            "owner": null,
-                                            "created_at": "0001-01-01T00:00:00Z",
-                                            "updated_at": "0001-01-01T00:00:00Z"
+                                            "owner": null
                                         }
                                     },
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -48211,17 +49194,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -48713,17 +49696,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -49024,14 +50007,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -49039,14 +50016,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -49062,14 +50033,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -49077,14 +50042,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -49100,14 +50059,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -49115,14 +50068,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -49131,8 +50078,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_cursor": null,
-                                        "prev_cursor": null,
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -49163,14 +50110,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "lead_time": {
@@ -49184,14 +50125,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "created_at": "2026-05-10T00:00:00Z",
@@ -49830,17 +50765,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -50217,17 +51152,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_cursor",
+                                                                        "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "prev_cursor",
+                                                                        "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -52215,17 +53150,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -53722,14 +54657,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -53737,14 +54666,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -53760,14 +54683,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -53775,14 +54692,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -53798,14 +54709,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -53813,14 +54718,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -53829,8 +54728,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_cursor": null,
-                                        "prev_cursor": null,
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -53861,14 +54760,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "lead_time": {
@@ -53882,14 +54775,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "created_at": "2026-05-10T00:00:00Z",
@@ -54085,17 +54972,17 @@ export const apiTags: TagData[] = [
                                             "expandable": false,
                                             "properties": [
                                                 {
-                                                    "name": "next_cursor",
+                                                    "name": "next_page_url",
                                                     "type": "string",
-                                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                    "description": "URL to fetch the next page, `null` if no more pages.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
                                                 },
                                                 {
-                                                    "name": "prev_cursor",
+                                                    "name": "previous_page_url",
                                                     "type": "string",
-                                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                    "description": "URL to fetch the previous page, `null` if on the first page.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -54587,17 +55474,17 @@ export const apiTags: TagData[] = [
                                     "expandable": false,
                                     "properties": [
                                         {
-                                            "name": "next_cursor",
+                                            "name": "next_page_url",
                                             "type": "string",
-                                            "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                            "description": "URL to fetch the next page, `null` if no more pages.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
                                         },
                                         {
-                                            "name": "prev_cursor",
+                                            "name": "previous_page_url",
                                             "type": "string",
-                                            "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                            "description": "URL to fetch the previous page, `null` if on the first page.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -54790,14 +55677,8 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -54805,14 +55686,8 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -54828,14 +55703,8 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -54843,14 +55712,8 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -54866,14 +55729,8 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -54881,14 +55738,8 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -54897,8 +55748,8 @@ export const apiTags: TagData[] = [
                     "attributes": {
                         "object": "list",
                         "page_info": {
-                            "next_cursor": null,
-                            "prev_cursor": null,
+                            "next_page_url": null,
+                            "previous_page_url": null,
                             "has_next_page": false,
                             "has_prev_page": false
                         },
@@ -54967,7 +55818,7 @@ export const apiTags: TagData[] = [
                             "name": "description",
                             "type": "string",
                             "description": "Description.",
-                            "required": true,
+                            "required": false,
                             "nullable": true,
                             "expandable": false
                         },
@@ -55096,7 +55947,7 @@ export const apiTags: TagData[] = [
                             "name": "attribute_ids",
                             "type": "array",
                             "description": "Attribute IDs to connect to the part at creation time.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
@@ -55104,7 +55955,6 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "sku": "BRG-6204-2RS",
-                        "description": "Deep groove ball bearing, 20x47x14mm",
                         "category_id": "ic_01jm4r6700f8nwq3v5hx2d9ktp"
                     }
                 },
@@ -55572,17 +56422,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -55775,14 +56625,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -55790,14 +56634,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -55813,14 +56651,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -55828,14 +56660,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -55851,14 +56677,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -55866,14 +56686,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -55882,8 +56696,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_cursor": null,
-                                        "prev_cursor": null,
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -55960,7 +56774,7 @@ export const apiTags: TagData[] = [
                             "name": "description",
                             "type": "string",
                             "description": "Description. Send `null` to clear.",
-                            "required": true,
+                            "required": false,
                             "nullable": true,
                             "expandable": false
                         },
@@ -55968,14 +56782,13 @@ export const apiTags: TagData[] = [
                             "name": "notes",
                             "type": "string",
                             "description": "Notes. Send `null` to clear.",
-                            "required": true,
+                            "required": false,
                             "nullable": true,
                             "expandable": false
                         }
                     ],
                     "example": {
                         "sku": "BRG-6204-2RS",
-                        "description": "Deep groove ball bearing, 20x47x14mm",
                         "notes": null
                     }
                 },
@@ -56443,17 +57256,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -56646,14 +57459,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -56661,14 +57468,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -56684,14 +57485,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -56699,14 +57494,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -56722,14 +57511,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -56737,14 +57520,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -56753,8 +57530,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_cursor": null,
-                                        "prev_cursor": null,
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -56798,7 +57575,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -56887,17 +57664,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -57104,17 +57881,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_cursor",
+                                                                        "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "prev_cursor",
+                                                                        "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -57606,17 +58383,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -57778,8 +58555,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "pt_02kn5s7811g9qwce7cizr4e0mq",
-                                "prev_cursor": null,
+                                "next_page_url": "pt_02kn5s7811g9qwce7cizr4e0mq",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -57820,14 +58597,8 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -57835,14 +58606,8 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -57858,14 +58623,8 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -57873,14 +58632,8 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -57896,14 +58649,8 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -57911,14 +58658,8 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -57927,8 +58668,8 @@ export const apiTags: TagData[] = [
                                         "attributes": {
                                             "object": "list",
                                             "page_info": {
-                                                "next_cursor": null,
-                                                "prev_cursor": null,
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
                                                 "has_next_page": false,
                                                 "has_prev_page": false
                                             },
@@ -58174,17 +58915,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -58676,17 +59417,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -58879,14 +59620,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -58894,14 +59629,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -58917,14 +59646,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -58932,14 +59655,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -58955,14 +59672,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -58970,14 +59681,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -58986,8 +59691,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_cursor": null,
-                                        "prev_cursor": null,
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -59643,17 +60348,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -60030,17 +60735,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_cursor",
+                                                                        "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "prev_cursor",
+                                                                        "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -62028,17 +62733,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -62317,14 +63022,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -62332,14 +63031,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -62355,14 +63048,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -62370,14 +63057,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -62393,14 +63074,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -62408,14 +63083,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -62424,8 +63093,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_cursor": null,
-                                        "prev_cursor": null,
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -62515,14 +63184,6 @@ export const apiTags: TagData[] = [
                     "name": "filename",
                     "type": "string",
                     "description": "Filename of any attachment.",
-                    "required": true,
-                    "nullable": true,
-                    "expandable": false
-                },
-                {
-                    "name": "ses_message_id",
-                    "type": "string",
-                    "description": "SES message ID returned by AWS.",
                     "required": true,
                     "nullable": true,
                     "expandable": false
@@ -62622,7 +63283,6 @@ export const apiTags: TagData[] = [
                 ],
                 "subject": "Order Confirmation #1001",
                 "filename": "invoice_1001.pdf",
-                "ses_message_id": null,
                 "sent_by": {
                     "id": "us_01gf7a8200e9pvbd6bgyq395ae",
                     "object": "actor",
@@ -62682,7 +63342,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -62734,17 +63394,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -62828,14 +63488,6 @@ export const apiTags: TagData[] = [
                                         "name": "filename",
                                         "type": "string",
                                         "description": "Filename of any attachment.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "ses_message_id",
-                                        "type": "string",
-                                        "description": "SES message ID returned by AWS.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -62931,8 +63583,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "eml_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "prev_cursor": null,
+                                "next_page_url": "eml_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -62946,7 +63598,6 @@ export const apiTags: TagData[] = [
                                     ],
                                     "subject": "Order Confirmation #1001",
                                     "filename": "invoice_1001.pdf",
-                                    "ses_message_id": null,
                                     "sent_by": {
                                         "id": "us_01gf7a8200e9pvbd6bgyq395ae",
                                         "object": "actor",
@@ -63084,14 +63735,6 @@ export const apiTags: TagData[] = [
                                 "expandable": false
                             },
                             {
-                                "name": "ses_message_id",
-                                "type": "string",
-                                "description": "SES message ID returned by AWS.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false
-                            },
-                            {
                                 "name": "sent_by",
                                 "type": "object",
                                 "description": "Actor who sent the email. Null when the email was sent by the system.",
@@ -63186,7 +63829,6 @@ export const apiTags: TagData[] = [
                             ],
                             "subject": "Order Confirmation #1001",
                             "filename": "invoice_1001.pdf",
-                            "ses_message_id": null,
                             "sent_by": {
                                 "id": "us_01gf7a8200e9pvbd6bgyq395ae",
                                 "object": "actor",
@@ -64437,17 +65079,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_cursor",
+                                    "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                    "description": "URL to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "prev_cursor",
+                                    "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                    "description": "URL to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -64821,17 +65463,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_cursor",
+                                    "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                    "description": "URL to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "prev_cursor",
+                                    "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                    "description": "URL to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -65118,14 +65760,8 @@ export const apiTags: TagData[] = [
                         "name": "US Dollar",
                         "abbreviation": "$",
                         "type": "currency",
-                        "ratio_numerator": "",
-                        "ratio_denominator": "",
-                        "offset_numerator": "",
-                        "offset_denominator": "",
                         "is_base_unit": false,
-                        "owner": null,
-                        "created_at": "0001-01-01T00:00:00Z",
-                        "updated_at": "0001-01-01T00:00:00Z"
+                        "owner": null
                     }
                 },
                 "contact_info": {
@@ -65222,8 +65858,8 @@ export const apiTags: TagData[] = [
                         "free_shipping_service_levels": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": null,
-                                "prev_cursor": null,
+                                "next_page_url": null,
+                                "previous_page_url": null,
                                 "has_next_page": false,
                                 "has_prev_page": false
                             },
@@ -65346,8 +65982,8 @@ export const apiTags: TagData[] = [
                 "price_groups": {
                     "object": "list",
                     "page_info": {
-                        "next_cursor": null,
-                        "prev_cursor": null,
+                        "next_page_url": null,
+                        "previous_page_url": null,
                         "has_next_page": false,
                         "has_prev_page": false
                     },
@@ -65570,7 +66206,7 @@ export const apiTags: TagData[] = [
                             "name": "customer_price_group_ids",
                             "type": "array",
                             "description": "Price group IDs.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
@@ -65821,25 +66457,33 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Acme Inc.",
+                        "number": null,
                         "note": "Key enterprise account",
+                        "email": null,
+                        "phone": null,
+                        "url": null,
+                        "status": null,
+                        "edi_status": null,
+                        "commission_policy": null,
+                        "freight_policy": null,
                         "default_carrier_id": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
+                        "default_service_level_id": null,
                         "default_payment_term_id": "pytm_01jm4r6700f8nwq3v5hx2d9ktp",
                         "default_shipping_term_id": "shtm_01jm4r6700f8nwq3v5hx2d9ktp",
+                        "default_priority": null,
+                        "default_sales_rep_id": null,
                         "customer_type_group_id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
+                        "carrier_billing_type": null,
+                        "carrier_billing_account": null,
+                        "credit_limit": null,
                         "bill_to_address": {
                             "name": "Acme Inc.",
-                            "street_line_1": "123 Main St",
-                            "locality": "New York",
-                            "state": "NY",
-                            "postal_code": "10001",
+                            "type": null,
                             "country": "US"
                         },
                         "ship_to_address": {
                             "name": "Acme Inc.",
-                            "street_line_1": "123 Main St",
-                            "locality": "New York",
-                            "state": "NY",
-                            "postal_code": "10001",
+                            "type": null,
                             "country": "US"
                         }
                     }
@@ -67045,17 +67689,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -67429,17 +68073,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -67726,14 +68370,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "contact_info": {
@@ -67830,8 +68468,8 @@ export const apiTags: TagData[] = [
                                     "free_shipping_service_levels": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_cursor": null,
-                                            "prev_cursor": null,
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -67954,8 +68592,8 @@ export const apiTags: TagData[] = [
                             "price_groups": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_cursor": null,
-                                    "prev_cursor": null,
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -68265,10 +68903,27 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Acme Corp Updated",
-                        "note": "Updated account notes",
+                        "number": null,
+                        "status": null,
+                        "email": null,
+                        "phone": null,
+                        "url": null,
+                        "edi_status": null,
+                        "commission_policy": null,
                         "freight_policy": "billed_freight",
                         "default_carrier_id": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
-                        "credit_limit": {}
+                        "default_service_level_id": null,
+                        "default_payment_term_id": null,
+                        "default_shipping_term_id": null,
+                        "default_priority": null,
+                        "default_sales_rep_id": null,
+                        "bill_to_address_id": null,
+                        "ship_to_address_id": null,
+                        "customer_price_group_ids": null,
+                        "customer_type_group_id": null,
+                        "carrier_billing_type": null,
+                        "carrier_billing_account": null,
+                        "credit_limit": null
                     }
                 },
                 "responses": [
@@ -69472,17 +70127,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -69856,17 +70511,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -70153,14 +70808,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "contact_info": {
@@ -70257,8 +70906,8 @@ export const apiTags: TagData[] = [
                                     "free_shipping_service_levels": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_cursor": null,
-                                            "prev_cursor": null,
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -70381,8 +71030,8 @@ export const apiTags: TagData[] = [
                             "price_groups": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_cursor": null,
-                                    "prev_cursor": null,
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -70426,7 +71075,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -70626,17 +71275,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -71864,17 +72513,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -72248,17 +72897,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -72529,8 +73178,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "ac_01gf7a8200er3ar3pkfrb6kk29",
-                                "prev_cursor": null,
+                                "next_page_url": "ac_01gf7a8200er3ar3pkfrb6kk29",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -72556,14 +73205,8 @@ export const apiTags: TagData[] = [
                                             "name": "US Dollar",
                                             "abbreviation": "$",
                                             "type": "currency",
-                                            "ratio_numerator": "",
-                                            "ratio_denominator": "",
-                                            "offset_numerator": "",
-                                            "offset_denominator": "",
                                             "is_base_unit": false,
-                                            "owner": null,
-                                            "created_at": "0001-01-01T00:00:00Z",
-                                            "updated_at": "0001-01-01T00:00:00Z"
+                                            "owner": null
                                         }
                                     },
                                     "contact_info": {
@@ -72660,8 +73303,8 @@ export const apiTags: TagData[] = [
                                             "free_shipping_service_levels": {
                                                 "object": "list",
                                                 "page_info": {
-                                                    "next_cursor": null,
-                                                    "prev_cursor": null,
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
                                                     "has_next_page": false,
                                                     "has_prev_page": false
                                                 },
@@ -72784,8 +73427,8 @@ export const apiTags: TagData[] = [
                                     "price_groups": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_cursor": null,
-                                            "prev_cursor": null,
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -74061,17 +74704,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -74445,17 +75088,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -74742,14 +75385,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "contact_info": {
@@ -74846,8 +75483,8 @@ export const apiTags: TagData[] = [
                                     "free_shipping_service_levels": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_cursor": null,
-                                            "prev_cursor": null,
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -74970,8 +75607,8 @@ export const apiTags: TagData[] = [
                             "price_groups": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_cursor": null,
-                                    "prev_cursor": null,
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -76294,17 +76931,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -76678,17 +77315,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -76975,14 +77612,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "contact_info": {
@@ -77079,8 +77710,8 @@ export const apiTags: TagData[] = [
                                     "free_shipping_service_levels": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_cursor": null,
-                                            "prev_cursor": null,
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -77203,8 +77834,8 @@ export const apiTags: TagData[] = [
                             "price_groups": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_cursor": null,
-                                    "prev_cursor": null,
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -78077,7 +78708,10 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Updated Product Line"
+                        "name": "Updated Product Line",
+                        "commission_policy": null,
+                        "freight_policy": null,
+                        "unit_group_id": null
                     }
                 },
                 "responses": [
@@ -78441,7 +79075,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -78495,17 +79129,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -78860,8 +79494,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "pl_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "prev_cursor": null,
+                                "next_page_url": "pl_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -79660,17 +80294,17 @@ export const apiTags: TagData[] = [
                                             "expandable": false,
                                             "properties": [
                                                 {
-                                                    "name": "next_cursor",
+                                                    "name": "next_page_url",
                                                     "type": "string",
-                                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                    "description": "URL to fetch the next page, `null` if no more pages.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
                                                 },
                                                 {
-                                                    "name": "prev_cursor",
+                                                    "name": "previous_page_url",
                                                     "type": "string",
-                                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                    "description": "URL to fetch the previous page, `null` if on the first page.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -79985,17 +80619,17 @@ export const apiTags: TagData[] = [
                                             "expandable": false,
                                             "properties": [
                                                 {
-                                                    "name": "next_cursor",
+                                                    "name": "next_page_url",
                                                     "type": "string",
-                                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                    "description": "URL to fetch the next page, `null` if no more pages.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
                                                 },
                                                 {
-                                                    "name": "prev_cursor",
+                                                    "name": "previous_page_url",
                                                     "type": "string",
-                                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                    "description": "URL to fetch the previous page, `null` if on the first page.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -80308,17 +80942,17 @@ export const apiTags: TagData[] = [
                                                     "expandable": false,
                                                     "properties": [
                                                         {
-                                                            "name": "next_cursor",
+                                                            "name": "next_page_url",
                                                             "type": "string",
-                                                            "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                            "description": "URL to fetch the next page, `null` if no more pages.",
                                                             "required": true,
                                                             "nullable": true,
                                                             "expandable": false
                                                         },
                                                         {
-                                                            "name": "prev_cursor",
+                                                            "name": "previous_page_url",
                                                             "type": "string",
-                                                            "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                            "description": "URL to fetch the previous page, `null` if on the first page.",
                                                             "required": true,
                                                             "nullable": true,
                                                             "expandable": false
@@ -80751,17 +81385,17 @@ export const apiTags: TagData[] = [
                                     "expandable": false,
                                     "properties": [
                                         {
-                                            "name": "next_cursor",
+                                            "name": "next_page_url",
                                             "type": "string",
-                                            "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                            "description": "URL to fetch the next page, `null` if no more pages.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
                                         },
                                         {
-                                            "name": "prev_cursor",
+                                            "name": "previous_page_url",
                                             "type": "string",
-                                            "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                            "description": "URL to fetch the previous page, `null` if on the first page.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -80973,14 +81607,8 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -80988,14 +81616,8 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -81011,14 +81633,8 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -81026,14 +81642,8 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -81049,14 +81659,8 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -81064,14 +81668,8 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -81080,8 +81678,8 @@ export const apiTags: TagData[] = [
                     "attributes": {
                         "object": "list",
                         "page_info": {
-                            "next_cursor": null,
-                            "prev_cursor": null,
+                            "next_page_url": null,
+                            "previous_page_url": null,
                             "has_next_page": false,
                             "has_prev_page": false
                         },
@@ -81160,7 +81758,7 @@ export const apiTags: TagData[] = [
                             "name": "description",
                             "type": "string",
                             "description": "Description.",
-                            "required": true,
+                            "required": false,
                             "nullable": true,
                             "expandable": false
                         },
@@ -81168,7 +81766,7 @@ export const apiTags: TagData[] = [
                             "name": "notes",
                             "type": "string",
                             "description": "Notes.",
-                            "required": true,
+                            "required": false,
                             "nullable": true,
                             "expandable": false
                         },
@@ -81325,7 +81923,7 @@ export const apiTags: TagData[] = [
                             "name": "attribute_ids",
                             "type": "array",
                             "description": "Attribute IDs to connect to the product at creation time.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
@@ -81333,11 +81931,10 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "sku": "ALM-2024-1001",
-                        "description": null,
-                        "notes": null,
                         "type": "sale",
                         "product_line_id": null,
-                        "category_id": "ic_01jm4r6700f8nwq3v5hx2d9ktp"
+                        "category_id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
+                        "portal_visibility": null
                     }
                 },
                 "responses": [
@@ -81699,17 +82296,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -82024,17 +82621,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -82347,17 +82944,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_cursor",
+                                                                        "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "prev_cursor",
+                                                                        "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -82790,17 +83387,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -83012,14 +83609,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -83027,14 +83618,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -83050,14 +83635,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -83065,14 +83644,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -83088,14 +83661,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -83103,14 +83670,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -83119,8 +83680,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_cursor": null,
-                                        "prev_cursor": null,
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -83268,7 +83829,10 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "sku": "SKU-002"
+                        "sku": "SKU-002",
+                        "description": null,
+                        "notes": null,
+                        "portal_visibility": null
                     }
                 },
                 "responses": [
@@ -83630,17 +84194,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -83955,17 +84519,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -84278,17 +84842,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_cursor",
+                                                                        "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "prev_cursor",
+                                                                        "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -84721,17 +85285,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -84943,14 +85507,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -84958,14 +85516,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -84981,14 +85533,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -84996,14 +85542,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -85019,14 +85559,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -85034,14 +85568,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -85050,8 +85578,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_cursor": null,
-                                        "prev_cursor": null,
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -85095,7 +85623,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -85217,17 +85745,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -85613,17 +86141,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_cursor",
+                                                                        "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "prev_cursor",
+                                                                        "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -85938,17 +86466,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_cursor",
+                                                                        "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "prev_cursor",
+                                                                        "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -86596,17 +87124,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -86768,8 +87296,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "pd_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "prev_cursor": null,
+                                "next_page_url": "pd_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -86829,14 +87357,8 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -86844,14 +87366,8 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -86867,14 +87383,8 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -86882,14 +87392,8 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -86905,14 +87409,8 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -86920,14 +87418,8 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -86936,8 +87428,8 @@ export const apiTags: TagData[] = [
                                         "attributes": {
                                             "object": "list",
                                             "page_info": {
-                                                "next_cursor": null,
-                                                "prev_cursor": null,
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
                                                 "has_next_page": false,
                                                 "has_prev_page": false
                                             },
@@ -87370,17 +87862,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -87695,17 +88187,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -88018,17 +88510,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_cursor",
+                                                                        "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "prev_cursor",
+                                                                        "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -88461,17 +88953,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -88683,14 +89175,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -88698,14 +89184,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -88721,14 +89201,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -88736,14 +89210,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -88759,14 +89227,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -88774,14 +89236,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -88790,8 +89246,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_cursor": null,
-                                        "prev_cursor": null,
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -89222,17 +89678,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -89547,17 +90003,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -89870,17 +90326,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_cursor",
+                                                                        "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "prev_cursor",
+                                                                        "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -90313,17 +90769,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -90535,14 +90991,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -90550,14 +91000,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -90573,14 +91017,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -90588,14 +91026,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -90611,14 +91043,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -90626,14 +91052,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -90642,8 +91062,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_cursor": null,
-                                        "prev_cursor": null,
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -91081,17 +91501,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -91406,17 +91826,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_cursor",
+                                                                "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "prev_cursor",
+                                                                "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -91729,17 +92149,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_cursor",
+                                                                        "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "prev_cursor",
+                                                                        "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -92172,17 +92592,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -92394,14 +92814,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -92409,14 +92823,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -92432,14 +92840,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -92447,14 +92849,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -92470,14 +92866,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -92485,14 +92875,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -92501,8 +92885,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_cursor": null,
-                                        "prev_cursor": null,
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -92852,17 +93236,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -93005,8 +93389,8 @@ export const apiTags: TagData[] = [
                             "children": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_cursor": null,
-                                    "prev_cursor": null,
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -93017,9 +93401,7 @@ export const apiTags: TagData[] = [
                                         "name": "Shelf A1",
                                         "type": "building",
                                         "parent": null,
-                                        "children": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "children": null
                                     }
                                 ]
                             },
@@ -93108,7 +93490,9 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Warehouse B",
-                        "child_ids": {}
+                        "type": null,
+                        "parent_id": null,
+                        "child_ids": null
                     }
                 },
                 "responses": [
@@ -93276,17 +93660,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -93429,8 +93813,8 @@ export const apiTags: TagData[] = [
                             "children": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_cursor": null,
-                                    "prev_cursor": null,
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -93441,9 +93825,7 @@ export const apiTags: TagData[] = [
                                         "name": "Shelf A1",
                                         "type": "building",
                                         "parent": null,
-                                        "children": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "children": null
                                     }
                                 ]
                             },
@@ -93471,7 +93853,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -93513,17 +93895,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -93622,8 +94004,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "lc_01gf7a8200er3ar3pkfrb6kk31",
-                                "prev_cursor": null,
+                                "next_page_url": "lc_01gf7a8200er3ar3pkfrb6kk31",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -93659,7 +94041,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -93712,17 +94094,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -93914,17 +94296,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -94059,7 +94441,46 @@ export const apiTags: TagData[] = [
                                     }
                                 ]
                             }
-                        ]
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": "lc_01gf7a8200er3ar3pkfrb6kk30",
+                                "previous_page_url": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "lc_01gf7a8200er3ar3pkfrb6kk30",
+                                    "object": "location",
+                                    "name": "Warehouse A",
+                                    "type": "building",
+                                    "parent": null,
+                                    "children": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "lc_01gf7a8200er3ar3pkfrb6kk32",
+                                                "object": "location",
+                                                "name": "Shelf A1",
+                                                "type": "building",
+                                                "parent": null,
+                                                "children": null
+                                            }
+                                        ]
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
                     }
                 ]
             },
@@ -94359,17 +94780,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -94512,8 +94933,8 @@ export const apiTags: TagData[] = [
                             "children": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_cursor": null,
-                                    "prev_cursor": null,
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -94524,9 +94945,7 @@ export const apiTags: TagData[] = [
                                         "name": "Shelf A1",
                                         "type": "building",
                                         "parent": null,
-                                        "children": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "children": null
                                     }
                                 ]
                             },
@@ -94783,17 +95202,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_cursor",
+                                    "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                    "description": "URL to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "prev_cursor",
+                                    "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                    "description": "URL to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -95132,6 +95551,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Packaging Line 1",
+                        "notes": null,
                         "type": "init_batch",
                         "operator_requirement": "none",
                         "department_id": "dp_01gf7a8200er3ar3pkfrb6kk30",
@@ -95349,17 +95769,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -95683,7 +96103,11 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Station B"
+                        "name": "Station B",
+                        "notes": null,
+                        "label_size": null,
+                        "label_type": null,
+                        "operator_requirement": null
                     }
                 },
                 "responses": [
@@ -95896,17 +96320,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -96157,7 +96581,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -96210,17 +96634,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -96457,17 +96881,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_cursor",
+                                                        "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "prev_cursor",
+                                                        "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -96684,7 +97108,32 @@ export const apiTags: TagData[] = [
                                     }
                                 ]
                             }
-                        ]
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": "scst_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "scst_01jm4r6700f8nwq3v5hx2d9ktp",
+                                    "object": "scanning_station",
+                                    "name": "Packaging Line 1",
+                                    "notes": null,
+                                    "type": "init_batch",
+                                    "label_size": null,
+                                    "label_type": null,
+                                    "operator_requirement": "none",
+                                    "department": null,
+                                    "production_steps": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
                     }
                 ]
             },
@@ -96930,17 +97379,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_cursor",
+                                                "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                                "description": "URL to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "prev_cursor",
+                                                "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                                "description": "URL to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -97245,7 +97694,7 @@ export const apiTags: TagData[] = [
                 {
                     "name": "type",
                     "type": "string",
-                    "description": "Role type code.",
+                    "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
                     "required": true,
                     "nullable": false,
                     "expandable": false,
@@ -97532,7 +97981,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "type",
                                 "type": "string",
-                                "description": "Role type code.",
+                                "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
@@ -97768,7 +98217,7 @@ export const apiTags: TagData[] = [
                             "name": "name",
                             "type": "string",
                             "description": "Display name.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false
                         },
@@ -97776,7 +98225,7 @@ export const apiTags: TagData[] = [
                             "name": "permissions",
                             "type": "array",
                             "description": "Permissions in `<domain>:<action>` format. Replaces all existing permissions; omit to leave unchanged.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
@@ -97825,7 +98274,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "type",
                                 "type": "string",
-                                "description": "Role type code.",
+                                "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
@@ -98039,7 +98488,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
+                        "description": "Cursor token used to retrieve the next or previous page of results."
                     },
                     {
                         "name": "limit",
@@ -98107,17 +98556,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_cursor",
+                                        "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "prev_cursor",
+                                        "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -98179,7 +98628,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "type",
                                         "type": "string",
-                                        "description": "Role type code.",
+                                        "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -98348,8 +98797,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_cursor": "rl_01gf7a8200er3ar3pkfrb6kk29",
-                                "prev_cursor": null,
+                                "next_page_url": "rl_01gf7a8200er3ar3pkfrb6kk29",
+                                "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -98456,7 +98905,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "type",
                                 "type": "string",
-                                "description": "Role type code.",
+                                "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,

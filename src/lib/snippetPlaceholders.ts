@@ -1,6 +1,7 @@
 /**
- * Synthetic Stainless resource bucket used by [`scripts/generate-sdk-snippets.ts`](../scripts/generate-sdk-snippets.ts).
- * Every operation is grouped here so codegen stays deterministic; snippets strip this namespace below.
+ * Synthetic single-resource layouts are **legacy**. Docs snippets now use `api/stainless/public/stainless.yml`
+ * merged with [`scripts/generate-sdk-snippets.ts`](../scripts/generate-sdk-snippets.ts). These symbols remain
+ * for tests / any code that still flattens old snippet output.
  */
 export const DOCS_SYNTHETIC_STAINLESS_RESOURCE = 'augno_public_api';
 
@@ -51,9 +52,26 @@ export function normalizeSnippetPlaceholders(code: string): string {
     let s = code;
 
     const literalReplacements: Array<[RegExp, string]> = [
+        // Stainless readme stubs often emit bearer tokens; default public auth is AugnoApiKey (+ optional Bearer).
+        [/bearerToken:\s*'My Bearer Token'/g, "augnoAPIKey: 'YOUR_API_KEY'"],
+        [/bearer_token="My Bearer Token"/g, 'augno_api_key="YOUR_API_KEY"'],
+        [/Bearer\s+'My Bearer Token'/gi, "Bearer 'YOUR_API_KEY'"],
         [/https:\/\/api\.augno\.com\b/g, 'API_HOST'],
         [/https:\/\/sandbox\.api\.augno\.com\b/g, 'API_HOST'],
         [/\$\{\s*process\.env\.NEXT_PUBLIC_V2_API_URL[^}]*\}/g, 'API_HOST'],
+        // Match real STLC TS client naming (`opts.augno_api_key` → `augnoAPIKey`)
+        [
+            /augnoAPIKey:\s*readEnv\(\s*['"]AUGNO_API_KEY['"]\s*\)(?:\s*\?\?\s*null)?/g,
+            "augnoAPIKey: 'YOUR_API_KEY'",
+        ],
+        [
+            /augnoAPIKey:\s*process\.env\[\s*['"]AUGNO_API_KEY['"]\s*\](?:\s*\?\?\s*null|\s*\?\?\s*undefined)?/g,
+            "augnoAPIKey: 'YOUR_API_KEY'",
+        ],
+        [
+            /augnoAPIKey:\s*process\.env\.AUGNO_API_KEY\b(?:\s*\?\?\s*null|\s*\?\?\s*undefined)?/g,
+            "augnoAPIKey: 'YOUR_API_KEY'",
+        ],
         // TS / JS — produce a string literal so examples remain valid syntax after substitution
         [/\$\{\s*process\.env\[\s*['"]AUGNO_API_KEY['"]\s*\]\s*\}/g, "'YOUR_API_KEY'"],
         [/process\.env\[\s*['"]AUGNO_API_KEY['"]\s*\]/g, "'YOUR_API_KEY'"],
@@ -64,6 +82,8 @@ export function normalizeSnippetPlaceholders(code: string): string {
         [/api_key=os\.environ\[["']AUGNO_API_KEY["']\]/g, `api_key='YOUR_API_KEY'`],
         [/\bos\.getenv\(\s*["']AUGNO_API_KEY["']\s*\)/g, "'YOUR_API_KEY'"],
         [/\bos\.environ\[["']AUGNO_API_KEY["']\]/g, "'YOUR_API_KEY'"],
+        [/augno_api_key=os\.getenv\(\s*["']AUGNO_API_KEY["']\s*\)/gi, `augno_api_key='YOUR_API_KEY'`],
+        [/augno_api_key=os\.environ\.get\(\s*["']AUGNO_API_KEY["']\s*\)/gi, `augno_api_key='YOUR_API_KEY'`],
         [/\$AUGNO_API_KEY\b/g, 'YOUR_API_KEY'],
     ];
 
