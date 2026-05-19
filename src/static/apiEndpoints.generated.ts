@@ -13450,7 +13450,8 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Updated Wholesale Customers"
+                        "name": "Updated Wholesale Customers",
+                        "description": null
                     }
                 },
                 "responses": [
@@ -16899,7 +16900,7 @@ export const apiTags: TagData[] = [
                             "name": "flat_rate",
                             "type": "object",
                             "description": "Flat rate. Send null to clear.",
-                            "required": true,
+                            "required": false,
                             "nullable": true,
                             "expandable": false,
                             "properties": [
@@ -16926,7 +16927,7 @@ export const apiTags: TagData[] = [
                             "name": "minimum_order_value",
                             "type": "object",
                             "description": "Minimum order value for free shipping. Send null to clear.",
-                            "required": true,
+                            "required": false,
                             "nullable": true,
                             "expandable": false,
                             "properties": [
@@ -16953,17 +16954,14 @@ export const apiTags: TagData[] = [
                             "name": "free_shipping_service_level_ids",
                             "type": "array",
                             "description": "Service level IDs that qualify for free shipping. Send null to clear.",
-                            "required": true,
+                            "required": false,
                             "nullable": true,
                             "expandable": false,
                             "itemType": "string"
                         }
                     ],
                     "example": {
-                        "name": "Collect",
-                        "flat_rate": {},
-                        "minimum_order_value": {},
-                        "free_shipping_service_level_ids": {}
+                        "name": "Collect"
                     }
                 },
                 "responses": [
@@ -55593,7 +55591,7 @@ export const apiTags: TagData[] = [
                             "name": "description",
                             "type": "string",
                             "description": "Description.",
-                            "required": true,
+                            "required": false,
                             "nullable": true,
                             "expandable": false
                         },
@@ -56586,7 +56584,7 @@ export const apiTags: TagData[] = [
                             "name": "description",
                             "type": "string",
                             "description": "Description. Send `null` to clear.",
-                            "required": true,
+                            "required": false,
                             "nullable": true,
                             "expandable": false
                         },
@@ -56594,15 +56592,14 @@ export const apiTags: TagData[] = [
                             "name": "notes",
                             "type": "string",
                             "description": "Notes. Send `null` to clear.",
-                            "required": true,
+                            "required": false,
                             "nullable": true,
                             "expandable": false
                         }
                     ],
                     "example": {
                         "sku": "BRG-6204-2RS",
-                        "description": "Deep groove ball bearing, 20x47x14mm",
-                        "notes": null
+                        "description": "Deep groove ball bearing, 20x47x14mm"
                     }
                 },
                 "responses": [
@@ -68838,7 +68835,7 @@ export const apiTags: TagData[] = [
                             "name": "credit_limit",
                             "type": "object",
                             "description": "Credit limit. Send null to clear.",
-                            "required": true,
+                            "required": false,
                             "nullable": true,
                             "expandable": false,
                             "properties": [
@@ -68866,8 +68863,7 @@ export const apiTags: TagData[] = [
                         "name": "Acme Corp Updated",
                         "note": "Updated account notes",
                         "freight_policy": "billed_freight",
-                        "default_carrier_id": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
-                        "credit_limit": {}
+                        "default_carrier_id": "cr_01jm4r6700f8nwq3v5hx2d9ktp"
                     }
                 },
                 "responses": [
@@ -81759,7 +81755,7 @@ export const apiTags: TagData[] = [
                             "name": "description",
                             "type": "string",
                             "description": "Description.",
-                            "required": true,
+                            "required": false,
                             "nullable": true,
                             "expandable": false
                         },
@@ -81767,7 +81763,7 @@ export const apiTags: TagData[] = [
                             "name": "notes",
                             "type": "string",
                             "description": "Notes.",
-                            "required": true,
+                            "required": false,
                             "nullable": true,
                             "expandable": false
                         },
@@ -81932,8 +81928,6 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "sku": "ALM-2024-1001",
-                        "description": null,
-                        "notes": null,
                         "type": "sale",
                         "product_line_id": null,
                         "category_id": "ic_01jm4r6700f8nwq3v5hx2d9ktp"
@@ -83867,7 +83861,9 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "sku": "SKU-002"
+                        "sku": "SKU-002",
+                        "description": null,
+                        "notes": null
                     }
                 },
                 "responses": [
@@ -93699,15 +93695,14 @@ export const apiTags: TagData[] = [
                             "name": "child_ids",
                             "type": "array",
                             "description": "Child location IDs. Replaces all current children when provided. Send null to clear.",
-                            "required": true,
+                            "required": false,
                             "nullable": true,
                             "expandable": false,
                             "itemType": "string"
                         }
                     ],
                     "example": {
-                        "name": "Warehouse B",
-                        "child_ids": {}
+                        "name": "Warehouse B"
                     }
                 },
                 "responses": [
@@ -98367,7 +98362,7 @@ export const apiTags: TagData[] = [
                             "name": "name",
                             "type": "string",
                             "description": "Display name.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false
                         },
@@ -98375,7 +98370,7 @@ export const apiTags: TagData[] = [
                             "name": "permissions",
                             "type": "array",
                             "description": "Permissions in `<domain>:<action>` format. Replaces all existing permissions; omit to leave unchanged.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
