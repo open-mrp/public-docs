@@ -1,5 +1,6 @@
 import type { EndpointData } from '@/static/apiEndpoints.generated';
 import { API_VERSION } from '@/static/apiVersion.generated';
+import { sanitizeRequestExample } from './sanitizeRequestExample';
 
 function stringifyJson(value: unknown) {
     return JSON.stringify(value ?? {}, null, 2);
@@ -17,9 +18,13 @@ export function buildCurlExample(endpoint: EndpointData) {
     lines.push(`  -H "Augno-Version: ${API_VERSION.current}"`);
 
     if (endpoint.requestBody?.example != null) {
+        const body = sanitizeRequestExample(
+            endpoint.requestBody.example,
+            endpoint.requestBody.fields,
+        );
         lines[lines.length - 1] += ' \\';
         lines.push(`  -H "Content-Type: application/json" \\`);
-        lines.push(`  -d '${stringifyJson(endpoint.requestBody.example)}'`);
+        lines.push(`  -d '${stringifyJson(body)}'`);
     }
 
     return lines.join('\n');

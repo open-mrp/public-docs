@@ -3,18 +3,22 @@
 import BetaTag from '@/components/markdown/BetaTag';
 import { useRecentlyVisitedPages } from '@/hooks/useRecentlyVisitedPages';
 import type { EndpointData, Parameter, SchemaField } from '@/static/apiEndpoints.generated';
+import { getEndpointSnippet } from '@/static/apiSnippets.generated';
 import { CheckIcon, ClipboardIcon } from '@augno/ui';
 import copy from 'copy-to-clipboard';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
+import {
+    RequestExampleHeader,
+    type RequestExampleMode,
+    useSdkLanguage,
+} from './SdkSelector';
 import { buildCurlExample } from './buildCurlExample';
 import { CodeExamplePanel } from './CodeExamplePanel';
 import { MarkdownBlock } from './MarkdownText';
 import { ParameterTable, SchemaFieldTable } from './ParameterTable';
-import {
-    findExpansionRoot,
-    sanitizeResponseExampleForEndpoint,
-} from './sanitizeResponseExample';
+import { sanitizeRequestExample } from './sanitizeRequestExample';
+import { findExpansionRoot, sanitizeResponseExampleForEndpoint } from './sanitizeResponseExample';
 
 function stringifyJson(value: unknown) {
     return JSON.stringify(value ?? {}, null, 2);
@@ -156,7 +160,11 @@ function endpointToMarkdown(ep: EndpointData): string {
     if (ep.requestBody && ep.requestBody.fields.length > 0) {
         lines.push('', '## Request Body', fieldsToMarkdown(ep.requestBody.fields));
         if (ep.requestBody.example != null) {
-            lines.push('', '### Example', '```json', stringifyJson(ep.requestBody.example), '```');
+            const requestExample = sanitizeRequestExample(
+                ep.requestBody.example,
+                ep.requestBody.fields,
+            );
+            lines.push('', '### Example', '```json', stringifyJson(requestExample), '```');
         }
     }
 
@@ -185,6 +193,18 @@ function endpointToMarkdown(ep: EndpointData): string {
 }
 
 export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
+    const { language } = useSdkLanguage();
+    const hasRequestBody = Boolean(
+        endpoint.requestBody &&
+            (endpoint.requestBody.example != null || endpoint.requestBody.fields.length > 0),
+    );
+    const [requestExampleMode, setRequestExampleMode] = useState<RequestExampleMode>('example');
+
+    useEffect(() => {
+        if (requestExampleMode === 'body' && !hasRequestBody) {
+            setRequestExampleMode('example');
+        }
+    }, [requestExampleMode, hasRequestBody]);
     const pathParams = endpoint.parameters.filter((p) => p.in === 'path');
     const queryParams = endpoint.parameters.filter((p) => p.in === 'query');
     const headerParams = endpoint.parameters.filter((p) => p.in === 'header');
@@ -216,6 +236,14 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
         );
     }, [responseWithExample, endpoint, responseFields]);
 
+    const requestBodyExampleForDisplay = useMemo(() => {
+        if (endpoint.requestBody?.example == null) return undefined;
+        return sanitizeRequestExample(
+            endpoint.requestBody.example,
+            endpoint.requestBody.fields,
+        );
+    }, [endpoint.requestBody]);
+
     const cleanMarkdown = useMemo(() => endpointToMarkdown(endpoint), [endpoint]);
     const [copied, setCopied] = useState(false);
     const handleCopy = () => {
@@ -229,6 +257,32 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
         const path = `/api-reference/${endpoint.tagSlug}/${endpoint.endpointSlug}`;
         addPage(path, endpoint.summary);
     }, [endpoint.tagSlug, endpoint.endpointSlug, endpoint.summary, addPage]);
+
+    const requestExampleTabs = useMemo(() => {
+        if (requestExampleMode === 'body' && hasRequestBody) {
+            return [
+                {
+                    id: 'body',
+                    label: 'Body',
+                    language: 'json',
+                    code: stringifyJson(requestBodyExampleForDisplay),
+                },
+            ];
+        }
+
+        const snippet = getEndpointSnippet(endpoint.operationId, language);
+        const code = snippet?.code ?? buildCurlExample(endpoint);
+        const highlightLanguage = snippet?.highlightLanguage ?? 'bash';
+
+        return [
+            {
+                id: 'example-curl',
+                label: 'Request',
+                language: highlightLanguage,
+                code,
+            },
+        ];
+    }, [endpoint, language, requestExampleMode, hasRequestBody, requestBodyExampleForDisplay]);
 
     return (
         <div>
@@ -320,7 +374,8 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
                                     className="text-[12px] px-1 py-0.5 rounded"
                                     style={{
                                         color: 'var(--foreground)',
-                                        background: 'color-mix(in oklab, var(--foreground) 5%, transparent)'
+                                        background:
+                                            'color-mix(in oklab, var(--foreground) 5%, transparent)',
                                     }}
                                 >
                                     Idempotency-Key
@@ -451,24 +506,14 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
                             title={endpoint.summary}
                             className="flex-none max-h-[50%]"
                             scrollable
-                            tabs={[
-                                {
-                                    id: 'curl',
-                                    label: 'cURL',
-                                    language: 'bash',
-                                    code: buildCurlExample(endpoint),
-                                },
-                                ...(endpoint.requestBody?.example != null
-                                    ? [
-                                          {
-                                              id: 'request-body',
-                                              label: 'Body',
-                                              language: 'json',
-                                              code: stringifyJson(endpoint.requestBody.example),
-                                          },
-                                      ]
-                                    : []),
-                            ]}
+                            headerActions={
+                                <RequestExampleHeader
+                                    mode={requestExampleMode}
+                                    onModeChange={setRequestExampleMode}
+                                    showBody={hasRequestBody}
+                                />
+                            }
+                            tabs={requestExampleTabs}
                         />
 
                         {responseWithExample && (

@@ -33,14 +33,6 @@ for (const [route, file] of Object.entries(routeToFile)) {
     fileToRoute[file] = route;
 }
 
-// Build lookup from tagSlug/endpointSlug → EndpointData
-const endpointLookup: Record<string, EndpointData> = {};
-for (const tag of apiTags) {
-    for (const endpoint of tag.endpoints) {
-        endpointLookup[`${endpoint.tagSlug}/${endpoint.endpointSlug}`] = endpoint;
-    }
-}
-
 /**
  * Builds searchable plain text from API endpoint data
  */
@@ -228,6 +220,46 @@ interface IndexedDoc {
     [key: string]: unknown;
 }
 
+function indexApiReferenceAlgoliaRecords(objects: IndexedDoc[]) {
+    const overviewDescription = 'Complete API documentation for all endpoints.';
+    objects.push({
+        objectID: 'api-reference',
+        kind: 'page',
+        name: 'API Reference',
+        crumbs: extractCrumbs('/api-reference', 'API Reference'),
+        url: '/api-reference',
+        description: overviewDescription,
+        content: overviewDescription,
+        priority: 10,
+        pageTitle: 'API Reference',
+        slug: 'api-reference',
+    });
+
+    for (const tag of apiTags) {
+        for (const endpoint of tag.endpoints) {
+            const slug = `${endpoint.tagSlug}/${endpoint.endpointSlug}`;
+            const url = `/api-reference/${slug}`;
+            const endpointContent = endpointToPlainText(endpoint);
+            const crumbs = extractCrumbs(url, endpoint.summary);
+
+            objects.push({
+                objectID: slug,
+                kind: 'api-endpoint' as ContentKind,
+                name: endpoint.summary,
+                crumbs,
+                url,
+                description: endpoint.description || `${endpoint.method} ${endpoint.path}`,
+                content: endpointContent.substring(0, 5000),
+                priority: 10,
+                pageTitle: endpoint.summary,
+                slug,
+                method: endpoint.method,
+                path: endpoint.path,
+            });
+        }
+    }
+}
+
 async function indexDocs() {
     console.log('Searching for MDX files in:', DOCS_DIR);
     const files = await glob('**/*.mdx', { cwd: DOCS_DIR });
@@ -246,36 +278,6 @@ async function indexDocs() {
         const slug = route.replace(/^\//, '');
         const url = route;
         const baseKind = getContentKind(slug);
-
-        // For API reference endpoint pages, index from generated endpoint data
-        if (baseKind === 'api-endpoint' && file !== 'api-reference/index.mdx') {
-            // Extract tagSlug/endpointSlug from file path: api-reference/{tagSlug}/{endpointSlug}.mdx
-            const parts = file.replace('api-reference/', '').replace('.mdx', '').split('/');
-            if (parts.length === 2) {
-                const endpointKey = `${parts[0]}/${parts[1]}`;
-                const endpoint = endpointLookup[endpointKey];
-                if (endpoint) {
-                    const endpointContent = endpointToPlainText(endpoint);
-                    const crumbs = extractCrumbs(url, endpoint.summary);
-
-                    objects.push({
-                        objectID: slug,
-                        kind: 'api-endpoint' as ContentKind,
-                        name: endpoint.summary,
-                        crumbs,
-                        url,
-                        description: endpoint.description || `${endpoint.method} ${endpoint.path}`,
-                        content: endpointContent.substring(0, 5000),
-                        priority: 10,
-                        pageTitle: frontmatter.title,
-                        slug,
-                        method: endpoint.method,
-                        path: endpoint.path,
-                    });
-                    continue;
-                }
-            }
-        }
 
         // Extract sections from the content
         const sections = extractSections(content);
@@ -322,7 +324,11 @@ async function indexDocs() {
         }
     }
 
-    console.log(`Found ${files.length} files. Generated ${objects.length} records.`);
+    indexApiReferenceAlgoliaRecords(objects);
+
+    console.log(
+        `Found ${files.length} MDX files. Generated ${objects.length} records (includes API reference).`,
+    );
 
     try {
         // Clear existing index contents before adding new records

@@ -79,10 +79,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
     const { slug } = await params;
     const { content, meta, cleanMarkdown } = await getPageContent(slug);
 
-    if (meta.layout === 'api-reference') {
-        return <>{content}</>;
-    }
-
     return <MarkdownPage meta={meta} content={content} cleanMarkdown={cleanMarkdown} />;
 }
 
