@@ -4,7 +4,9 @@
 #   ../api/stainless/public/stainless.yml
 #
 # `bun run scripts/generate-sdk-snippets.ts` loads that file automatically and merges a
-# small docs overlay (sdk-json multi-language snippets). To point elsewhere:
+# small docs overlay (sdk-json multi-language snippets). If `resources` there is `{}`, snippet
+# generation imports the endpoint map from `../api/stainless/internal/stainless.yml` (same monorepo).
+# To point elsewhere:
 #   PUBLIC_DOCS_STAINLESS_YML=/path/to/stainless.yml bun run scripts/generate-sdk-snippets.ts
 #
 # Keep this stub so schema-aware editors still have a file to attach to under specs/.

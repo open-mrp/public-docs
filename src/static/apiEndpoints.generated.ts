@@ -7,6 +7,7 @@ export interface SchemaField {
     description: string;
     required: boolean;
     nullable: boolean;
+    nullableClear?: boolean;
     alwaysNull?: boolean;
     expandable?: boolean;
     enum?: string[];
@@ -10668,6 +10669,7 @@ export const apiTags: TagData[] = [
                             "description": "Notes. Set to null to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -14124,6 +14126,7 @@ export const apiTags: TagData[] = [
                             "description": "Description. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -17607,6 +17610,7 @@ export const apiTags: TagData[] = [
                             "description": "Flat rate. Send null to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false,
                             "properties": [
                                 {
@@ -17634,6 +17638,7 @@ export const apiTags: TagData[] = [
                             "description": "Minimum order value for free shipping. Send null to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false,
                             "properties": [
                                 {
@@ -17661,6 +17666,7 @@ export const apiTags: TagData[] = [
                             "description": "Service level IDs that qualify for free shipping. Send null to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false,
                             "itemType": "string"
                         }
@@ -20567,6 +20573,7 @@ export const apiTags: TagData[] = [
                             "description": "Phone number associated with the address. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -20575,6 +20582,7 @@ export const apiTags: TagData[] = [
                             "description": "Email address associated with the address. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -20603,6 +20611,7 @@ export const apiTags: TagData[] = [
                             "description": "Second line of the street address. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -23106,6 +23115,7 @@ export const apiTags: TagData[] = [
                             "description": "Role assigned to the user. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -23114,6 +23124,7 @@ export const apiTags: TagData[] = [
                             "description": "Department assigned to the user. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -56776,6 +56787,7 @@ export const apiTags: TagData[] = [
                             "description": "Description. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -56784,6 +56796,7 @@ export const apiTags: TagData[] = [
                             "description": "Notes. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         }
                     ],
@@ -68691,6 +68704,7 @@ export const apiTags: TagData[] = [
                             "description": "Note. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -68713,6 +68727,7 @@ export const apiTags: TagData[] = [
                             "description": "Email address. Send null to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -68721,6 +68736,7 @@ export const apiTags: TagData[] = [
                             "description": "Phone number. Send null to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -68729,6 +68745,7 @@ export const apiTags: TagData[] = [
                             "description": "Website URL. Send null to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -68781,6 +68798,7 @@ export const apiTags: TagData[] = [
                             "description": "Default service level ID. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -68818,6 +68836,7 @@ export const apiTags: TagData[] = [
                             "description": "The ID of the account user to assign as the default sales rep. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -68826,6 +68845,7 @@ export const apiTags: TagData[] = [
                             "description": "Bill-to address ID. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -68834,6 +68854,7 @@ export const apiTags: TagData[] = [
                             "description": "Ship-to address ID. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -68871,6 +68892,7 @@ export const apiTags: TagData[] = [
                             "description": "Carrier billing account number. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -68879,6 +68901,7 @@ export const apiTags: TagData[] = [
                             "description": "Credit limit. Send null to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false,
                             "properties": [
                                 {
@@ -83770,6 +83793,7 @@ export const apiTags: TagData[] = [
                             "description": "Description. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -83778,6 +83802,7 @@ export const apiTags: TagData[] = [
                             "description": "Notes. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -93476,6 +93501,7 @@ export const apiTags: TagData[] = [
                             "description": "Parent location ID. Send null to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -93484,6 +93510,7 @@ export const apiTags: TagData[] = [
                             "description": "Child location IDs. Replaces all current children when provided. Send null to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false,
                             "itemType": "string"
                         }
@@ -96061,6 +96088,7 @@ export const apiTags: TagData[] = [
                             "description": "Notes. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
+                            "nullableClear": true,
                             "expandable": false
                         },
                         {

@@ -1,33 +1,19 @@
 /**
- * Prerequisite: STLC `packages/stlc` built so `dist/docs.mjs` exists
- * (typically `pnpm turbo build --filter=@pkg/stlc` in stlc-main).
- * Override: `STLC_DOCS_MJS=/abs/path/to/docs.mjs`.
+ * Builds SDK snippets via vendored `@stainless/sdk-json` (`packages/stainless-sdk-json`).
  */
 import fs from 'fs';
 import path from 'path';
-import { pathToFileURL } from 'node:url';
 import { parse, stringify } from 'yaml';
-import type { Method, Resource, Spec } from '../packages/stainless-sdk-json/dist/index.js';
+import type { Method, Resource, Spec } from '../packages/stainless-sdk-json';
+import { generateSpecFromStrings } from '../packages/stainless-sdk-json/dist/index.js';
 import { normalizeSnippetPlaceholders } from '../src/lib/snippetPlaceholders';
 
 const ROOT = process.cwd();
 const OPENAPI_PATH = path.join(ROOT, 'specs/public_openapi_spec.json');
 const CANONICAL_STAINLESS_REL = path.join(ROOT, '..', 'api', 'stainless', 'public', 'stainless.yml');
+/** Fallback resource map — public stainless often keeps `resources: {}` until scoped; codegen needs mappings. */
+const INTERNAL_STAINLESS_REL = path.join(ROOT, '..', 'api', 'stainless', 'internal', 'stainless.yml');
 const OUTPUT_PATH = path.join(ROOT, 'src/static/apiSnippets.generated.ts');
-
-const SNIPPET_BUILD_LANGUAGES = ['typescript', 'python', 'go', 'http'] as const;
-type SdkJsonSnippetLanguage = (typeof SNIPPET_BUILD_LANGUAGES)[number];
-
-/** Per-method language keys merged across targets (narrow superset used by snippets) */
-const MERGE_LANG_KEYS = new Set<string>([
-    'typescript',
-    'python',
-    'go',
-    'http',
-    'node',
-    'kotlin',
-    'java',
-]);
 
 /** Docs-only fields merged onto the canonical SDK stainless config */
 const DOCS_OVERLAY_YAML = `
@@ -122,6 +108,34 @@ function resolveCanonicalStainlessPath(): string | undefined {
     return undefined;
 }
 
+function stainlessResourcesLookEmpty(resources: unknown): boolean {
+    if (resources === undefined || resources === null) return true;
+    if (typeof resources !== 'object' || Array.isArray(resources)) return false;
+    return Object.keys(resources as Record<string, unknown>).length === 0;
+}
+
+/**
+ * Hydrate missing `resources` from internal stainless.yml (monorepo sibling package).
+ * Extra mappings are ignored by codegen for endpoints not present in the public OpenAPI spec.
+ */
+function hydrateResourcesFromInternal(base: Record<string, unknown>): void {
+    if (!stainlessResourcesLookEmpty(base.resources)) return;
+    if (!fs.existsSync(INTERNAL_STAINLESS_REL)) return;
+    try {
+        const internalYaml = fs.readFileSync(INTERNAL_STAINLESS_REL, 'utf8');
+        const internalDoc = parse(internalYaml) as Record<string, unknown>;
+        const rr = internalDoc.resources;
+        if (rr !== null && typeof rr === 'object' && !Array.isArray(rr)) {
+            base.resources = rr as Record<string, unknown>;
+            console.log(
+                `[generate-sdk-snippets] public stainless has empty resources — using resource map from ${path.relative(ROOT, INTERNAL_STAINLESS_REL)}`,
+            );
+        }
+    } catch {
+        console.warn('[generate-sdk-snippets] Could not parse internal stainless for resource hydration.');
+    }
+}
+
 function openapiEndpointKey(httpMethod: string, endpointPath: string): string {
     return `${httpMethod.toLowerCase()} ${endpointPath}`;
 }
@@ -152,67 +166,9 @@ function buildEndpointToOperationIdLookup(spec: OpenAPISpec): Map<string, string
 
 function buildMergedStainlessConfig(canonicalYaml: string): string {
     const base = parse(canonicalYaml) as Record<string, unknown>;
+    hydrateResourcesFromInternal(base);
     const overlay = parse(DOCS_OVERLAY_YAML) as Record<string, unknown>;
     return stringify(deepMerge(base, overlay));
-}
-
-function mergeResources(target: Record<string, Resource>, source: Record<string, Resource>): void {
-    for (const [name, srcResource] of Object.entries(source)) {
-        const tgtResource = target[name];
-
-        if (!tgtResource) {
-            target[name] = srcResource;
-            continue;
-        }
-
-        assignLangKeys(tgtResource, srcResource);
-
-        for (const [methodName, srcMethod] of Object.entries(srcResource.methods)) {
-            const tgtMethod = tgtResource.methods[methodName];
-
-            if (!tgtMethod) {
-                tgtResource.methods[methodName] = srcMethod;
-            } else {
-                assignLangKeys(tgtMethod, srcMethod);
-            }
-        }
-
-        if (srcResource.subresources) {
-            tgtResource.subresources ??= {};
-            mergeResources(tgtResource.subresources, srcResource.subresources);
-        }
-    }
-}
-
-function assignLangKeys<T extends Partial<Record<string, unknown>>>(target: T, source: T): void {
-    for (const lang of MERGE_LANG_KEYS) {
-        const value = source[lang];
-        if (value !== undefined) target[lang] = value;
-    }
-}
-
-function mergeSpecs(specs: Spec[]): Spec {
-    const [base, ...rest] = specs;
-
-    if (!base) {
-        throw new Error('mergeSpecs: expected at least one spec');
-    }
-
-    base.metadata ??= {};
-    base.readme ??= {};
-    base.decls ??= {};
-    base.snippets ??= {};
-    base.resources ??= {};
-
-    for (const spec of rest) {
-        Object.assign(base.metadata, spec.metadata);
-        Object.assign(base.readme, spec.readme);
-        Object.assign(base.decls, spec.decls ?? {});
-        Object.assign(base.snippets, spec.snippets ?? {});
-        mergeResources(base.resources, spec.resources ?? {});
-    }
-
-    return base;
 }
 
 function* walkResourceMethods(resource: Resource): Generator<Method> {
@@ -326,34 +282,28 @@ async function main(): Promise<void> {
         `[generate-sdk-snippets] canonical stainless ${path.relative(ROOT, canonicalPath)} + docs overlay`,
     );
 
-    console.log('[generate-sdk-snippets] Running STLC generateSDKJSON (per language) …');
+    console.log('[generate-sdk-snippets] Running Stainless sdk-json codegen …');
 
-    const collected: Spec[] = [];
+    let sdkJson: Spec;
     try {
-        for (const lang of SNIPPET_BUILD_LANGUAGES) {
-            console.log(`  … ${lang}`);
-            const { spec } = await generateSDKJSON({
-                spec: openapiJson,
-                config: configStr,
-                language: lang,
-            });
-            collected.push(spec);
-        }
+        const result = await generateSpecFromStrings({
+            oasStr: openapiJson,
+            configStr,
+            stainlessProject: 'augno-public-docs',
+            languageOverrides: {
+                mode: 'only',
+                list: ['typescript', 'http', 'python', 'go'],
+            },
+            versionInfo: null,
+        });
+        sdkJson = result.sdkJson;
     } catch (err) {
-        console.error('[generate-sdk-snippets] STLC generateSDKJSON failed:', err);
-        console.warn(
-            '[generate-sdk-snippets] Emitting empty snippets. Ensure `@pkg/stlc` resolves and stlc/dist/docs.mjs exists.',
-        );
+        console.error('[generate-sdk-snippets] Stainless generation failed:', err);
+        console.warn('[generate-sdk-snippets] Emitting empty snippets so the docs build can continue.');
         emitGeneratedTs({});
         process.exitCode = 0;
         return;
     }
-
-    const sdkJson = mergeSpecs(collected);
-    sdkJson.docs = {
-        ...(sdkJson.docs ?? {}),
-        languages: [...SNIPPET_BUILD_LANGUAGES],
-    };
 
     const out: Record<string, Partial<Record<SdkLanguage, string>>> = {};
 

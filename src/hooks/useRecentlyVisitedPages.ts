@@ -37,7 +37,26 @@ function saveStoredPages(pages: RecentlyVisitedPage[]): void {
 }
 
 /**
- * Hook to track and retrieve the last 3 visited doc pages.
+ * Builds an updated recently-visited list: most recent path first,
+ * duplicates removed (revisit bumps to top), capped at MAX_PAGES.
+ * Reads the current persisted list so merged history survives fresh component mounts
+ * (e.g. first paint on a route, switching between Markdown and API-reference trees).
+ */
+function mergeVisitIntoHistory(path: string, title: string): RecentlyVisitedPage[] {
+    const stored = getStoredPages();
+    const filtered = stored.filter((p) => p.path !== path);
+
+    const newPages: RecentlyVisitedPage[] = [
+        { path, title, visitedAt: Date.now() },
+        ...filtered,
+    ].slice(0, MAX_PAGES);
+
+    saveStoredPages(newPages);
+    return newPages;
+}
+
+/**
+ * Hook to track and retrieve the last few visited doc pages.
  * Does not track the home page.
  */
 export function useRecentlyVisitedPages() {
@@ -56,21 +75,7 @@ export function useRecentlyVisitedPages() {
         // Don't track home page
         if (path === '/' || path === '') return;
 
-        setPages((prevPages) => {
-            // Remove existing entry for this path if it exists
-            const filtered = prevPages.filter((p) => p.path !== path);
-
-            // Add new entry at the beginning
-            const newPages: RecentlyVisitedPage[] = [
-                { path, title, visitedAt: Date.now() },
-                ...filtered,
-            ].slice(0, MAX_PAGES);
-
-            // Save to localStorage
-            saveStoredPages(newPages);
-
-            return newPages;
-        });
+        setPages(() => mergeVisitIntoHistory(path, title));
     }, []);
 
     const clearPages = useCallback(() => {
