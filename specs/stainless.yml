@@ -1,0 +1,75 @@
+# yaml-language-server: $schema=https://app.stainless.com/config.schema.json
+# Shared Stainless settings for docs snippet generation (`bun run scripts/generate-sdk-snippets.ts`).
+# Operation methods under `resources` are injected at build time from `public_openapi_spec.json`.
+edition: 2026-01-30
+
+organization:
+    name: augno
+    docs: https://docs.augno.com
+    contact: ''
+
+targets:
+    typescript:
+        edition: typescript.2025-10-10
+        package_name: '@augno/sdk'
+        staging_repo: augno/sdk-typescript-docs-placeholder
+        publish:
+            npm: false
+    python:
+        package_name: augno_sdk
+        production_repo: null
+        publish:
+            pypi: false
+    go:
+        package_name: augno
+        production_repo: null
+
+environments:
+    production: https://api.augno.com
+
+docs:
+    languages:
+        - typescript
+        - http
+        - python
+        - go
+
+openapi:
+    code_samples: stainless
+    code_sample_languages:
+        curl: true
+
+settings:
+    disable_mock_tests: true
+    license: Apache-2.0
+
+client_settings:
+    opts:
+        api_key:
+            type: string
+            nullable: true
+            auth:
+                security_scheme: bearerAuth
+            read_env: AUGNO_API_KEY
+
+security_schemes:
+    bearerAuth:
+        type: http
+        scheme: bearer
+
+security:
+    - bearerAuth: []
+
+readme:
+    example_requests:
+        default:
+            type: request
+            endpoint: get /v1/auth/api-keys
+            params: {}
+        headline:
+            type: request
+            endpoint: get /v1/auth/api-keys
+            params: {}
+
+# Placeholder replaced when running `scripts/generate-sdk-snippets.ts`
+__GENERATED_RESOURCES__

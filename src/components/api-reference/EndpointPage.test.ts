@@ -4,7 +4,7 @@ import { buildCurlExample } from './buildCurlExample';
 
 function makeEndpoint(overrides: Partial<EndpointData> = {}): EndpointData {
     return {
-        id: 'test-endpoint',
+        operationId: 'create-customer',
         domain: 'core',
         tag: 'Customers',
         tagSlug: 'customers',
@@ -14,7 +14,8 @@ function makeEndpoint(overrides: Partial<EndpointData> = {}): EndpointData {
         summary: 'Create customer',
         description: '',
         parameters: [],
-        requestBody: null,
+        actionType: 'create',
+        requestBody: undefined,
         responses: [],
         isPreview: false,
         ...overrides,

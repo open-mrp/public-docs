@@ -4,7 +4,6 @@ import path from 'path';
 const SPEC_PATH = path.join(process.cwd(), 'specs/public_openapi_spec.json');
 const API_VERSION_PATH = path.join(process.cwd(), 'src/static/apiVersion.generated.ts');
 const ENDPOINTS_OUTPUT_PATH = path.join(process.cwd(), 'src/static/apiEndpoints.generated.ts');
-const API_REFERENCE_DOCS_DIR = path.join(process.cwd(), 'src/docs/api-reference');
 const LEGACY_API_REFERENCE_DIR = path.join(process.cwd(), 'src/docs/developer-resources/api-reference');
 const LEGACY_API_REFERENCE_OVERVIEW = path.join(process.cwd(), 'src/docs/developer-resources/api-reference.mdx');
 
@@ -912,65 +911,6 @@ export function getAllEndpointSlugs(): { tagSlug: string; endpointSlug: string }
 `;
 }
 
-// ─── MDX Generation (new static api-reference docs) ──────────────
-
-function safeMkdir(dir: string) {
-    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-}
-
-function resetDir(dir: string) {
-    fs.rmSync(dir, { recursive: true, force: true });
-    fs.mkdirSync(dir, { recursive: true });
-}
-
-function writeMdxFile(filePath: string, contents: string) {
-    safeMkdir(path.dirname(filePath));
-    fs.writeFileSync(filePath, contents);
-}
-
-function escapeSingleQuotes(input: string): string {
-    return input.replaceAll("'", "''");
-}
-
-function generateApiReferenceIndexMdx(spec: OpenAPISpec): string {
-    return `---
-title: 'API Reference'
-subtitle: 'Complete API documentation for all endpoints'
-route: '/api-reference'
-layout: api-reference
-toc: false
-nav:
-    hidden: true
----
-
-{/* THIS FILE IS AUTO-GENERATED FROM specs/public_openapi_spec.json */}
-{/* Run 'bun run build:docs' to regenerate. */}
-
-<ApiReferenceOverview />
-`;
-}
-
-function generateEndpointMdx(endpoint: EndpointData): string {
-    const title = escapeSingleQuotes(endpoint.summary);
-    const subtitle = escapeSingleQuotes(`${endpoint.method.toUpperCase()} ${endpoint.path}`);
-
-    return `---
-title: '${title}'
-subtitle: '${subtitle}'
-route: '/api-reference/${endpoint.tagSlug}/${endpoint.endpointSlug}'
-layout: api-reference
-toc: false
-nav:
-    hidden: true
----
-
-{/* THIS FILE IS AUTO-GENERATED FROM specs/public_openapi_spec.json */}
-{/* Run 'bun run build:docs' to regenerate. */}
-
-<ApiEndpoint tagSlug="${endpoint.tagSlug}" endpointSlug="${endpoint.endpointSlug}" />
-`;
-}
-
 function parseCodename(version: string): string {
     const parts = version.split('.');
     for (const part of parts) {
@@ -1017,28 +957,6 @@ async function main() {
     const endpointsContent = generateEndpointsFile(tags, nav);
     fs.writeFileSync(ENDPOINTS_OUTPUT_PATH, endpointsContent);
     console.log(`Written: ${ENDPOINTS_OUTPUT_PATH}`);
-
-    // Reset and generate MDX docs under src/docs/api-reference
-    console.log('Generating static API reference MDX pages...');
-    resetDir(API_REFERENCE_DOCS_DIR);
-
-    const indexMdx = generateApiReferenceIndexMdx(spec);
-    writeMdxFile(path.join(API_REFERENCE_DOCS_DIR, 'index.mdx'), indexMdx);
-
-    let endpointPageCount = 0;
-    for (const tag of tags) {
-        for (const endpoint of tag.endpoints) {
-            const filePath = path.join(
-                API_REFERENCE_DOCS_DIR,
-                endpoint.tagSlug,
-                `${endpoint.endpointSlug}.mdx`,
-            );
-            writeMdxFile(filePath, generateEndpointMdx(endpoint));
-            endpointPageCount++;
-        }
-    }
-
-    console.log(`Written: ${API_REFERENCE_DOCS_DIR} (index + ${endpointPageCount} endpoint pages)`);
 
     // Remove legacy generated developer-resources api-reference docs
     fs.rmSync(LEGACY_API_REFERENCE_DIR, { recursive: true, force: true });

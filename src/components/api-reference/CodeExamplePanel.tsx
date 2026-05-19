@@ -2,6 +2,7 @@
 
 import { useCodeReplacements } from '@/providers/ApiKeyProvider';
 import { CodeEditor } from '@augno/ui';
+import type { ReactNode } from 'react';
 import { useMemo, useState } from 'react';
 
 type ExampleTab = {
@@ -14,6 +15,8 @@ type ExampleTab = {
 interface CodeExamplePanelProps {
     title: string;
     subtitle?: string;
+    /** Rendered on the right side of the panel header (e.g. SDK language picker). */
+    headerActions?: ReactNode;
     tabs: ExampleTab[];
     /**
      * When true, the panel participates in its parent's flex layout with
@@ -27,6 +30,7 @@ interface CodeExamplePanelProps {
 export function CodeExamplePanel({
     title,
     subtitle,
+    headerActions,
     tabs,
     scrollable,
     className = '',
@@ -34,10 +38,7 @@ export function CodeExamplePanel({
     const replacements = useCodeReplacements();
     const replacementKey = useMemo(() => JSON.stringify(replacements), [replacements]);
     const [activeId, setActiveId] = useState(tabs[0]?.id ?? '');
-    const active = useMemo(
-        () => tabs.find((t) => t.id === activeId) ?? tabs[0],
-        [tabs, activeId],
-    );
+    const active = useMemo(() => tabs.find((t) => t.id === activeId) ?? tabs[0], [tabs, activeId]);
 
     if (!active) return null;
 
@@ -48,16 +49,15 @@ export function CodeExamplePanel({
             } ${className}`}
         >
             <div className="flex-none">
-                <div className="flex items-center justify-between px-4 py-2.5 border-b border-[#2a2a2a]">
-                    <div className="flex items-center gap-3 min-w-0">
-                        <span className="text-sm font-medium text-gray-200 truncate">
-                            {title}
-                        </span>
+                <div className="flex items-center justify-between gap-3 px-4 py-2.5 border-b border-[#2a2a2a]">
+                    <div className="flex items-center gap-3 min-w-0 flex-1">
+                        <span className="text-sm font-medium text-gray-200 truncate">{title}</span>
                         {tabs.length > 1 && (
                             <div className="flex items-center gap-1 shrink-0">
                                 {tabs.map((tab) => (
                                     <button
                                         key={tab.id}
+                                        type="button"
                                         onClick={() => setActiveId(tab.id)}
                                         className={`px-2 py-0.5 text-xs rounded transition-colors cursor-pointer ${
                                             tab.id === activeId
@@ -71,6 +71,9 @@ export function CodeExamplePanel({
                             </div>
                         )}
                     </div>
+                    {headerActions ? (
+                        <div className="flex-none flex items-center">{headerActions}</div>
+                    ) : null}
                 </div>
                 {subtitle && (
                     <div className="px-4 py-1.5 border-b border-[#2a2a2a]">

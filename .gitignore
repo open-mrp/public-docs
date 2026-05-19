@@ -43,5 +43,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# specs
-specs/
+# specs — OpenAPI JSON is synced locally / CI; commit Stainless config used for docs snippets.
+specs/*
+!specs/stainless.yml

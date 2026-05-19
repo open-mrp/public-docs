@@ -50,6 +50,73 @@ interface ParsedPage {
     nav: NavFrontmatter;
 }
 
+async function loadSyntheticApiReferencePages(): Promise<ParsedPage[]> {
+    const modPath = path.join(process.cwd(), 'src/static/apiEndpoints.generated.ts');
+    let apiTags: Array<{
+        endpoints: Array<{
+            tagSlug: string;
+            endpointSlug: string;
+            summary: string;
+            method: string;
+            path: string;
+        }>;
+    }>;
+
+    try {
+        const mod = await import(modPath);
+        apiTags = mod.apiTags ?? [];
+    } catch {
+        console.warn(
+            '[generate-nav] Could not load apiEndpoints.generated.ts; skipping synthetic API reference paths.',
+        );
+        return [];
+    }
+
+    const pages: ParsedPage[] = [];
+
+    pages.push({
+        filePath: 'api-reference/index.mdx',
+        slug: 'api-reference',
+        href: '/api-reference',
+        frontmatter: {
+            title: 'API Reference',
+            subtitle: 'Complete API documentation for all endpoints',
+            route: '/api-reference',
+            nav: { hidden: true },
+        },
+        nav: {
+            title: 'API Reference',
+            order: 999,
+            hidden: true,
+        },
+    });
+
+    for (const tag of apiTags) {
+        for (const endpoint of tag.endpoints) {
+            const relPath = `api-reference/${endpoint.tagSlug}/${endpoint.endpointSlug}.mdx`;
+            const href = `/api-reference/${endpoint.tagSlug}/${endpoint.endpointSlug}`;
+            pages.push({
+                filePath: relPath,
+                slug: `api-reference/${endpoint.tagSlug}/${endpoint.endpointSlug}`,
+                href,
+                frontmatter: {
+                    title: endpoint.summary,
+                    subtitle: `${endpoint.method.toUpperCase()} ${endpoint.path}`,
+                    route: href,
+                    nav: { hidden: true },
+                },
+                nav: {
+                    title: endpoint.summary,
+                    order: 999,
+                    hidden: true,
+                },
+            });
+        }
+    }
+
+    return pages;
+}
+
 function filePathToSlug(filePath: string): string {
     // Remove the .mdx extension and convert to URL path
     // Handle index.mdx files: get-started/index.mdx -> get-started
@@ -389,8 +456,12 @@ export const docPaths = ${JSON.stringify(pathsObj, null, 4)} as const;
 
 async function main() {
     console.log('Parsing MDX files...');
-    const pages = await parseAllMdxFiles();
-    console.log(`Found ${pages.length} pages`);
+    const mdxPages = await parseAllMdxFiles();
+    const apiPages = await loadSyntheticApiReferencePages();
+    const pages = [...mdxPages, ...apiPages];
+    console.log(
+        `Found ${mdxPages.length} MDX pages + ${apiPages.length} synthetic API reference routes`,
+    );
 
     console.log('Building tabbed navigation structure...');
     const tabbedNav = buildTabbedNavStructure(pages);

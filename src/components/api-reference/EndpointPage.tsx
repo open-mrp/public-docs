@@ -3,21 +3,36 @@
 import BetaTag from '@/components/markdown/BetaTag';
 import { useRecentlyVisitedPages } from '@/hooks/useRecentlyVisitedPages';
 import type { EndpointData, Parameter, SchemaField } from '@/static/apiEndpoints.generated';
+import type { SdkLanguage } from '@/static/apiSnippets.generated';
+import { getEndpointSnippet } from '@/static/apiSnippets.generated';
 import { CheckIcon, ClipboardIcon } from '@augno/ui';
 import copy from 'copy-to-clipboard';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
+import { SdkSelectorDropdown, useSdkLanguage } from './SdkSelector';
 import { buildCurlExample } from './buildCurlExample';
 import { CodeExamplePanel } from './CodeExamplePanel';
 import { MarkdownBlock } from './MarkdownText';
 import { ParameterTable, SchemaFieldTable } from './ParameterTable';
-import {
-    findExpansionRoot,
-    sanitizeResponseExampleForEndpoint,
-} from './sanitizeResponseExample';
+import { findExpansionRoot, sanitizeResponseExampleForEndpoint } from './sanitizeResponseExample';
 
 function stringifyJson(value: unknown) {
     return JSON.stringify(value ?? {}, null, 2);
+}
+
+const PUBLIC_OPENAPI_SPEC_URL = 'https://github.com/Augno/openapi-spec';
+
+function sdkUnavailableSnippet(language: SdkLanguage): string {
+    switch (language) {
+        case 'typescript':
+            return `// SDK example not available for this endpoint.\n// Use our public OpenAPI specification to generate a client:\n// ${PUBLIC_OPENAPI_SPEC_URL}`;
+        case 'python':
+            return `# SDK example not available for this endpoint.\n# Use our public OpenAPI specification to generate a client:\n# ${PUBLIC_OPENAPI_SPEC_URL}`;
+        case 'go':
+            return `// SDK example not available for this endpoint.\n// Use our public OpenAPI specification to generate a client:\n// ${PUBLIC_OPENAPI_SPEC_URL}`;
+        default:
+            return `# ${PUBLIC_OPENAPI_SPEC_URL}`;
+    }
 }
 
 type ActionKind = 'list' | 'create' | 'delete' | 'retrieve' | 'update' | 'other';
@@ -185,6 +200,7 @@ function endpointToMarkdown(ep: EndpointData): string {
 }
 
 export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
+    const { language } = useSdkLanguage();
     const pathParams = endpoint.parameters.filter((p) => p.in === 'path');
     const queryParams = endpoint.parameters.filter((p) => p.in === 'query');
     const headerParams = endpoint.parameters.filter((p) => p.in === 'header');
@@ -229,6 +245,45 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
         const path = `/api-reference/${endpoint.tagSlug}/${endpoint.endpointSlug}`;
         addPage(path, endpoint.summary);
     }, [endpoint.tagSlug, endpoint.endpointSlug, endpoint.summary, addPage]);
+
+    const requestExampleTabs = useMemo(() => {
+        const snippet = getEndpointSnippet(endpoint.operationId, language);
+
+        let code: string;
+        let highlightLanguage: string;
+
+        if (snippet) {
+            code = snippet.code;
+            highlightLanguage = snippet.highlightLanguage;
+        } else if (language === 'curl') {
+            code = buildCurlExample(endpoint);
+            highlightLanguage = 'bash';
+        } else {
+            code = sdkUnavailableSnippet(language);
+            highlightLanguage =
+                language === 'python' ? 'python' : language === 'go' ? 'go' : 'typescript';
+        }
+
+        const tabs: { id: string; label: string; language: string; code: string }[] = [
+            {
+                id: 'request',
+                label: language === 'curl' ? 'Request' : 'Example',
+                language: highlightLanguage,
+                code,
+            },
+        ];
+
+        if (language === 'curl' && endpoint.requestBody?.example != null) {
+            tabs.push({
+                id: 'body',
+                label: 'Body',
+                language: 'json',
+                code: stringifyJson(endpoint.requestBody.example),
+            });
+        }
+
+        return tabs;
+    }, [endpoint, language]);
 
     return (
         <div>
@@ -320,7 +375,8 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
                                     className="text-[12px] px-1 py-0.5 rounded"
                                     style={{
                                         color: 'var(--foreground)',
-                                        background: 'color-mix(in oklab, var(--foreground) 5%, transparent)'
+                                        background:
+                                            'color-mix(in oklab, var(--foreground) 5%, transparent)',
                                     }}
                                 >
                                     Idempotency-Key
@@ -451,24 +507,8 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
                             title={endpoint.summary}
                             className="flex-none max-h-[50%]"
                             scrollable
-                            tabs={[
-                                {
-                                    id: 'curl',
-                                    label: 'cURL',
-                                    language: 'bash',
-                                    code: buildCurlExample(endpoint),
-                                },
-                                ...(endpoint.requestBody?.example != null
-                                    ? [
-                                          {
-                                              id: 'request-body',
-                                              label: 'Body',
-                                              language: 'json',
-                                              code: stringifyJson(endpoint.requestBody.example),
-                                          },
-                                      ]
-                                    : []),
-                            ]}
+                            headerActions={<SdkSelectorDropdown />}
+                            tabs={requestExampleTabs}
                         />
 
                         {responseWithExample && (

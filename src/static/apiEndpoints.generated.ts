@@ -176,7 +176,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "type",
                             "type": "string",
-                            "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
+                            "description": "Role type code.",
                             "required": true,
                             "nullable": false,
                             "expandable": false,
@@ -317,7 +317,7 @@ export const apiTags: TagData[] = [
             {
                 "operationId": "create-api-key",
                 "summary": "Create API Key",
-                "description": "Creates an [API key](https://docs.augno.com/api/api-keys) to authenticate API requests.\n\nThe secret key is returned once and cannot be retrieved later, so you should store it securely. We provide some [recommendations](https://docs.augno.com/api/managing-api-keys) on how you can manage your API keys.",
+                "description": "Creates an API key. The secret key is returned once and cannot be retrieved later.",
                 "method": "POST",
                 "path": "/v1/auth/api-keys",
                 "domain": "auth",
@@ -392,7 +392,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "api_key_secret",
                                 "type": "string",
-                                "description": "Full secret value. Returned once and cannot be retrieved later. Learn more about [managing your API keys](https://docs.augno.com/api/managing-api-keys).",
+                                "description": "Full secret value. Returned once and cannot be retrieved later.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false
@@ -478,7 +478,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "type",
                                                 "type": "string",
-                                                "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
+                                                "description": "Role type code.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -626,7 +626,7 @@ export const apiTags: TagData[] = [
             {
                 "operationId": "list-api-keys",
                 "summary": "List API Keys",
-                "description": "Returns a paginated list of [API keys](https://docs.augno.com/api/api-keys).",
+                "description": "Returns a paginated list of API keys.",
                 "method": "GET",
                 "path": "/v1/auth/api-keys",
                 "domain": "auth",
@@ -641,7 +641,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -706,17 +706,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -821,7 +821,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "type",
                                                 "type": "string",
-                                                "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
+                                                "description": "Role type code.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -922,8 +922,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "apke_01jm4r6700e3kxb9w2nqh7g5fp",
-                                "previous_page_url": null,
+                                "next_cursor": "apke_01jm4r6700e3kxb9w2nqh7g5fp",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -976,7 +976,7 @@ export const apiTags: TagData[] = [
             {
                 "operationId": "retrieve-api-key",
                 "summary": "Retrieve API Key",
-                "description": "Returns [API key](https://docs.augno.com/api/api-keys) metadata by ID.",
+                "description": "Returns API key metadata by ID.",
                 "method": "GET",
                 "path": "/v1/auth/api-keys/{id}",
                 "domain": "auth",
@@ -1083,7 +1083,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "type",
                                         "type": "string",
-                                        "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
+                                        "description": "Role type code.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -1225,7 +1225,7 @@ export const apiTags: TagData[] = [
             {
                 "operationId": "revoke-api-key",
                 "summary": "Revoke API Key",
-                "description": "Revokes an [API key](https://docs.augno.com/api/api-keys).\n\nRevoked API keys will be unable to be used to authenticate requests.",
+                "description": "Revokes an API key, preventing it from being used to authenticate requests.",
                 "method": "DELETE",
                 "path": "/v1/auth/api-keys/{id}",
                 "domain": "auth",
@@ -1255,7 +1255,7 @@ export const apiTags: TagData[] = [
             {
                 "operationId": "rotate-api-key",
                 "summary": "Rotate API Key",
-                "description": "Rotates an [API key](https://docs.augno.com/api/api-keys) by revoking the existing key and issuing a replacement with the same name, role, and expiration (unless overridden).\n\nThe secret key is returned once and cannot be retrieved later, so you should store it securely. We provide some [recommendations](https://docs.augno.com/api/managing-api-keys) on how you can manage your API keys.",
+                "description": "Rotates an API key by revoking the existing key and issuing a replacement with the same name, role, and expiration. The new secret is returned once.",
                 "method": "POST",
                 "path": "/v1/auth/api-keys/{id}/actions/rotate",
                 "domain": "auth",
@@ -1320,7 +1320,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "api_key_secret",
                                 "type": "string",
-                                "description": "Full secret value. Returned once and cannot be retrieved later. Learn more about [managing your API keys](https://docs.augno.com/api/managing-api-keys).",
+                                "description": "Full secret value. Returned once and cannot be retrieved later.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false
@@ -1406,7 +1406,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "type",
                                                 "type": "string",
-                                                "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
+                                                "description": "Role type code.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -1954,7 +1954,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -2006,17 +2006,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -2190,8 +2190,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "sbac_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "previous_page_url": null,
+                                "next_cursor": "sbac_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -2781,7 +2781,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "type",
                                     "type": "string",
-                                    "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
+                                    "description": "Role type code.",
                                     "required": true,
                                     "nullable": false,
                                     "expandable": false,
@@ -2933,8 +2933,8 @@ export const apiTags: TagData[] = [
                     "page_info": {
                         "has_next_page": false,
                         "has_prev_page": false,
-                        "next_page_url": null,
-                        "previous_page_url": null
+                        "next_cursor": null,
+                        "prev_cursor": null
                     }
                 }
             }
@@ -2958,7 +2958,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -3146,17 +3146,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -3514,7 +3514,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "type",
                                                         "type": "string",
-                                                        "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
+                                                        "description": "Role type code.",
                                                         "required": true,
                                                         "nullable": false,
                                                         "expandable": false,
@@ -3596,8 +3596,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "rq_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "previous_page_url": null,
+                                "next_cursor": "rq_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -3677,8 +3677,8 @@ export const apiTags: TagData[] = [
                                         "page_info": {
                                             "has_next_page": false,
                                             "has_prev_page": false,
-                                            "next_page_url": null,
-                                            "previous_page_url": null
+                                            "next_cursor": null,
+                                            "prev_cursor": null
                                         }
                                     }
                                 }
@@ -4055,7 +4055,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "type",
                                                 "type": "string",
-                                                "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
+                                                "description": "Role type code.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -4207,8 +4207,8 @@ export const apiTags: TagData[] = [
                                 "page_info": {
                                     "has_next_page": false,
                                     "has_prev_page": false,
-                                    "next_page_url": null,
-                                    "previous_page_url": null
+                                    "next_cursor": null,
+                                    "prev_cursor": null
                                 }
                             }
                         }
@@ -4561,17 +4561,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_page_url",
+                                    "name": "next_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the next page, `null` if no more pages.",
+                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "previous_page_url",
+                                    "name": "prev_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the previous page, `null` if on the first page.",
+                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -4640,197 +4640,12 @@ export const apiTags: TagData[] = [
                     "expandable": false
                 },
                 {
-                    "name": "request",
-                    "type": "object",
-                    "description": "Originating HTTP request. Expandable.",
+                    "name": "request_id",
+                    "type": "string",
+                    "description": "Originating HTTP request ID.",
                     "required": true,
                     "nullable": true,
-                    "expandable": true,
-                    "properties": [
-                        {
-                            "name": "id",
-                            "type": "string",
-                            "description": "Request log ID.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "object",
-                            "type": "string",
-                            "description": "Resource type identifier.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "enum": [
-                                "request_log"
-                            ]
-                        },
-                        {
-                            "name": "method",
-                            "type": "string",
-                            "description": "HTTP method.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "host",
-                            "type": "string",
-                            "description": "Request host. Usually `api.augno.com`.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "path",
-                            "type": "string",
-                            "description": "Non-normalized request path.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "normalized_route",
-                            "type": "string",
-                            "description": "_Normalized_ route template. For example `PATCH /v1/sales/customers/{id}` is the normalized route for a request route `PUT /v1/sales/customers/ac_...`.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "query_params",
-                            "type": "object",
-                            "description": "Query parameters. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
-                            "required": true,
-                            "nullable": true,
-                            "expandable": true
-                        },
-                        {
-                            "name": "status_code",
-                            "type": "integer",
-                            "description": "HTTP status code.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "latency_us",
-                            "type": "integer",
-                            "description": "Request latency in microseconds.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "api_version",
-                            "type": "string",
-                            "description": "API version used.",
-                            "required": true,
-                            "nullable": true,
-                            "expandable": false
-                        },
-                        {
-                            "name": "client_ip",
-                            "type": "string",
-                            "description": "Client IP address.",
-                            "required": true,
-                            "nullable": true,
-                            "expandable": false
-                        },
-                        {
-                            "name": "user_agent",
-                            "type": "string",
-                            "description": "User agent.",
-                            "required": true,
-                            "nullable": true,
-                            "expandable": false
-                        },
-                        {
-                            "name": "referrer",
-                            "type": "string",
-                            "description": "Referrer header.",
-                            "required": true,
-                            "nullable": true,
-                            "expandable": false
-                        },
-                        {
-                            "name": "error_code",
-                            "type": "string",
-                            "description": "API error code.",
-                            "required": true,
-                            "nullable": true,
-                            "expandable": false
-                        },
-                        {
-                            "name": "error_message",
-                            "type": "string",
-                            "description": "Error message.",
-                            "required": true,
-                            "nullable": true,
-                            "expandable": false
-                        },
-                        {
-                            "name": "occurred_at",
-                            "type": "string",
-                            "description": "When the request occurred.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "format": "date-time"
-                        },
-                        {
-                            "name": "created_at",
-                            "type": "string",
-                            "description": "When the log entry was created.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "format": "date-time"
-                        },
-                        {
-                            "name": "account",
-                            "type": "object",
-                            "description": "Account _targeted_ by the request.",
-                            "required": true,
-                            "nullable": true,
-                            "alwaysNull": true,
-                            "expandable": true
-                        },
-                        {
-                            "name": "actor",
-                            "type": "object",
-                            "description": "Actor who made the request.",
-                            "required": true,
-                            "nullable": true,
-                            "alwaysNull": true,
-                            "expandable": true
-                        },
-                        {
-                            "name": "idempotency_key",
-                            "type": "string",
-                            "description": "User-provided idempotency key.",
-                            "required": true,
-                            "nullable": true,
-                            "expandable": false
-                        },
-                        {
-                            "name": "request_body",
-                            "type": "object",
-                            "description": "Request body. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
-                            "required": true,
-                            "nullable": true,
-                            "expandable": true
-                        },
-                        {
-                            "name": "response_body",
-                            "type": "object",
-                            "description": "Response body. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
-                            "required": true,
-                            "nullable": true,
-                            "expandable": true
-                        }
-                    ]
+                    "expandable": false
                 },
                 {
                     "name": "idempotency_key",
@@ -4912,8 +4727,8 @@ export const apiTags: TagData[] = [
                 "changes": {
                     "object": "list",
                     "page_info": {
-                        "next_page_url": null,
-                        "previous_page_url": null,
+                        "next_cursor": null,
+                        "prev_cursor": null,
                         "has_next_page": false,
                         "has_prev_page": false
                     },
@@ -4928,30 +4743,7 @@ export const apiTags: TagData[] = [
                 "metadata": {
                     "reason": "operator override"
                 },
-                "request": {
-                    "id": "rq_01jm4r6700f8nwq3v5hx2d9ktp",
-                    "object": "request_log",
-                    "method": "",
-                    "host": "",
-                    "path": "",
-                    "normalized_route": "",
-                    "query_params": null,
-                    "status_code": 0,
-                    "latency_us": 0,
-                    "api_version": null,
-                    "client_ip": null,
-                    "user_agent": null,
-                    "referrer": null,
-                    "error_code": null,
-                    "error_message": null,
-                    "occurred_at": "0001-01-01T00:00:00Z",
-                    "created_at": "0001-01-01T00:00:00Z",
-                    "account": null,
-                    "actor": null,
-                    "idempotency_key": null,
-                    "request_body": null,
-                    "response_body": null
-                },
+                "request_id": "req_01gq7s3f2m0y9h2t7z1w7q3v9k",
                 "idempotency_key": null,
                 "source_ip": "198.51.100.8",
                 "occurred_at": "2026-05-10T00:00:00Z",
@@ -4977,7 +4769,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -5217,7 +5009,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "array",
                         "required": false,
-                        "description": "Filter by the actor identifier.\n\nWill be `account_user.id` when `identity_type`=`user` or an `api_key.id` when `identity_type`=`api_key`."
+                        "description": "Filter by the actor identifier. `account_user.id` when `identity_type`=`user`, or an `api_key.id` when `identity_type`=`api_key`."
                     },
                     {
                         "name": "actions[]",
@@ -5242,8 +5034,7 @@ export const apiTags: TagData[] = [
                         "enum": [
                             "actor",
                             "changes",
-                            "metadata",
-                            "request"
+                            "metadata"
                         ]
                     }
                 ],
@@ -5272,17 +5063,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -5648,17 +5439,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -5727,197 +5518,12 @@ export const apiTags: TagData[] = [
                                         "expandable": false
                                     },
                                     {
-                                        "name": "request",
-                                        "type": "object",
-                                        "description": "Originating HTTP request. Expandable.",
+                                        "name": "request_id",
+                                        "type": "string",
+                                        "description": "Originating HTTP request ID.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": true,
-                                        "properties": [
-                                            {
-                                                "name": "id",
-                                                "type": "string",
-                                                "description": "Request log ID.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "request_log"
-                                                ]
-                                            },
-                                            {
-                                                "name": "method",
-                                                "type": "string",
-                                                "description": "HTTP method.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "host",
-                                                "type": "string",
-                                                "description": "Request host. Usually `api.augno.com`.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "path",
-                                                "type": "string",
-                                                "description": "Non-normalized request path.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "normalized_route",
-                                                "type": "string",
-                                                "description": "_Normalized_ route template. For example `PATCH /v1/sales/customers/{id}` is the normalized route for a request route `PUT /v1/sales/customers/ac_...`.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "query_params",
-                                                "type": "object",
-                                                "description": "Query parameters. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": true
-                                            },
-                                            {
-                                                "name": "status_code",
-                                                "type": "integer",
-                                                "description": "HTTP status code.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "latency_us",
-                                                "type": "integer",
-                                                "description": "Request latency in microseconds.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "api_version",
-                                                "type": "string",
-                                                "description": "API version used.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "client_ip",
-                                                "type": "string",
-                                                "description": "Client IP address.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "user_agent",
-                                                "type": "string",
-                                                "description": "User agent.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "referrer",
-                                                "type": "string",
-                                                "description": "Referrer header.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "error_code",
-                                                "type": "string",
-                                                "description": "API error code.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "error_message",
-                                                "type": "string",
-                                                "description": "Error message.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "occurred_at",
-                                                "type": "string",
-                                                "description": "When the request occurred.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            },
-                                            {
-                                                "name": "created_at",
-                                                "type": "string",
-                                                "description": "When the log entry was created.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            },
-                                            {
-                                                "name": "account",
-                                                "type": "object",
-                                                "description": "Account _targeted_ by the request.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true
-                                            },
-                                            {
-                                                "name": "actor",
-                                                "type": "object",
-                                                "description": "Actor who made the request.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true
-                                            },
-                                            {
-                                                "name": "idempotency_key",
-                                                "type": "string",
-                                                "description": "User-provided idempotency key.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "request_body",
-                                                "type": "object",
-                                                "description": "Request body. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": true
-                                            },
-                                            {
-                                                "name": "response_body",
-                                                "type": "object",
-                                                "description": "Response body. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": true
-                                            }
-                                        ]
+                                        "expandable": false
                                     },
                                     {
                                         "name": "idempotency_key",
@@ -5959,8 +5565,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "ae_01gq7s3f2m0y9h2t7z1w7q3v9k",
-                                "previous_page_url": null,
+                                "next_cursor": "ae_01gq7s3f2m0y9h2t7z1w7q3v9k",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -6010,8 +5616,8 @@ export const apiTags: TagData[] = [
                                     "changes": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_page_url": null,
-                                            "previous_page_url": null,
+                                            "next_cursor": null,
+                                            "prev_cursor": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -6026,30 +5632,7 @@ export const apiTags: TagData[] = [
                                     "metadata": {
                                         "reason": "operator override"
                                     },
-                                    "request": {
-                                        "id": "rq_01jm4r6700f8nwq3v5hx2d9ktp",
-                                        "object": "request_log",
-                                        "method": "",
-                                        "host": "",
-                                        "path": "",
-                                        "normalized_route": "",
-                                        "query_params": null,
-                                        "status_code": 0,
-                                        "latency_us": 0,
-                                        "api_version": null,
-                                        "client_ip": null,
-                                        "user_agent": null,
-                                        "referrer": null,
-                                        "error_code": null,
-                                        "error_message": null,
-                                        "occurred_at": "0001-01-01T00:00:00Z",
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "account": null,
-                                        "actor": null,
-                                        "idempotency_key": null,
-                                        "request_body": null,
-                                        "response_body": null
-                                    },
+                                    "request_id": "req_01gq7s3f2m0y9h2t7z1w7q3v9k",
                                     "idempotency_key": null,
                                     "source_ip": "198.51.100.8",
                                     "occurred_at": "2026-05-10T00:00:00Z",
@@ -6098,17 +5681,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -6333,8 +5916,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": null,
-                                "previous_page_url": null,
+                                "next_cursor": null,
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -6372,8 +5955,7 @@ export const apiTags: TagData[] = [
                         "enum": [
                             "actor",
                             "changes",
-                            "metadata",
-                            "request"
+                            "metadata"
                         ]
                     }
                 ],
@@ -6716,17 +6298,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -6795,197 +6377,12 @@ export const apiTags: TagData[] = [
                                 "expandable": false
                             },
                             {
-                                "name": "request",
-                                "type": "object",
-                                "description": "Originating HTTP request. Expandable.",
+                                "name": "request_id",
+                                "type": "string",
+                                "description": "Originating HTTP request ID.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": true,
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "Request log ID.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "Resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "request_log"
-                                        ]
-                                    },
-                                    {
-                                        "name": "method",
-                                        "type": "string",
-                                        "description": "HTTP method.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "host",
-                                        "type": "string",
-                                        "description": "Request host. Usually `api.augno.com`.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "path",
-                                        "type": "string",
-                                        "description": "Non-normalized request path.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "normalized_route",
-                                        "type": "string",
-                                        "description": "_Normalized_ route template. For example `PATCH /v1/sales/customers/{id}` is the normalized route for a request route `PUT /v1/sales/customers/ac_...`.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "query_params",
-                                        "type": "object",
-                                        "description": "Query parameters. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "status_code",
-                                        "type": "integer",
-                                        "description": "HTTP status code.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "latency_us",
-                                        "type": "integer",
-                                        "description": "Request latency in microseconds.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "api_version",
-                                        "type": "string",
-                                        "description": "API version used.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "client_ip",
-                                        "type": "string",
-                                        "description": "Client IP address.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "user_agent",
-                                        "type": "string",
-                                        "description": "User agent.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "referrer",
-                                        "type": "string",
-                                        "description": "Referrer header.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "error_code",
-                                        "type": "string",
-                                        "description": "API error code.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "error_message",
-                                        "type": "string",
-                                        "description": "Error message.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "occurred_at",
-                                        "type": "string",
-                                        "description": "When the request occurred.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "When the log entry was created.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "account",
-                                        "type": "object",
-                                        "description": "Account _targeted_ by the request.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "actor",
-                                        "type": "object",
-                                        "description": "Actor who made the request.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "idempotency_key",
-                                        "type": "string",
-                                        "description": "User-provided idempotency key.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "request_body",
-                                        "type": "object",
-                                        "description": "Request body. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true
-                                    },
-                                    {
-                                        "name": "response_body",
-                                        "type": "object",
-                                        "description": "Response body. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true
-                                    }
-                                ]
+                                "expandable": false
                             },
                             {
                                 "name": "idempotency_key",
@@ -7067,8 +6464,8 @@ export const apiTags: TagData[] = [
                             "changes": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
+                                    "next_cursor": null,
+                                    "prev_cursor": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -7083,30 +6480,7 @@ export const apiTags: TagData[] = [
                             "metadata": {
                                 "reason": "operator override"
                             },
-                            "request": {
-                                "id": "rq_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "object": "request_log",
-                                "method": "",
-                                "host": "",
-                                "path": "",
-                                "normalized_route": "",
-                                "query_params": null,
-                                "status_code": 0,
-                                "latency_us": 0,
-                                "api_version": null,
-                                "client_ip": null,
-                                "user_agent": null,
-                                "referrer": null,
-                                "error_code": null,
-                                "error_message": null,
-                                "occurred_at": "0001-01-01T00:00:00Z",
-                                "created_at": "0001-01-01T00:00:00Z",
-                                "account": null,
-                                "actor": null,
-                                "idempotency_key": null,
-                                "request_body": null,
-                                "response_body": null
-                            },
+                            "request_id": "req_01gq7s3f2m0y9h2t7z1w7q3v9k",
                             "idempotency_key": null,
                             "source_ip": "198.51.100.8",
                             "occurred_at": "2026-05-10T00:00:00Z",
@@ -8142,7 +7516,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -8219,17 +7593,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -8506,8 +7880,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "un_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "previous_page_url": null,
+                                "next_cursor": "un_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -9092,17 +8466,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_page_url",
+                                    "name": "next_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the next page, `null` if no more pages.",
+                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "previous_page_url",
+                                    "name": "prev_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the previous page, `null` if on the first page.",
+                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -9745,17 +9119,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -10379,17 +9753,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -10697,7 +10071,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -10769,17 +10143,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -11026,17 +10400,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -11294,8 +10668,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "ug_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "previous_page_url": null,
+                                "next_cursor": "ug_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -11593,17 +10967,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -12556,17 +11930,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -13450,8 +12824,7 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Updated Wholesale Customers",
-                        "description": null
+                        "name": "Updated Wholesale Customers"
                     }
                 },
                 "responses": [
@@ -13581,7 +12954,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -13634,17 +13007,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -13771,8 +13144,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "previous_page_url": null,
+                                "next_cursor": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -14675,7 +14048,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -14728,17 +14101,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -14957,8 +14330,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "pytm_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "previous_page_url": null,
+                                "next_cursor": "pytm_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -15810,17 +15183,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_page_url",
+                                    "name": "next_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the next page, `null` if no more pages.",
+                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "previous_page_url",
+                                    "name": "prev_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the previous page, `null` if on the first page.",
+                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -15972,8 +15345,8 @@ export const apiTags: TagData[] = [
                 "free_shipping_service_levels": {
                     "object": "list",
                     "page_info": {
-                        "next_page_url": null,
-                        "previous_page_url": null,
+                        "next_cursor": null,
+                        "prev_cursor": null,
                         "has_next_page": false,
                         "has_prev_page": false
                     },
@@ -16662,17 +16035,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -16824,8 +16197,8 @@ export const apiTags: TagData[] = [
                             "free_shipping_service_levels": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
+                                    "next_cursor": null,
+                                    "prev_cursor": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -16961,7 +16334,10 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Collect"
+                        "name": "Collect",
+                        "flat_rate": {},
+                        "minimum_order_value": {},
+                        "free_shipping_service_level_ids": {}
                     }
                 },
                 "responses": [
@@ -17521,17 +16897,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -17683,8 +17059,8 @@ export const apiTags: TagData[] = [
                             "free_shipping_service_levels": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
+                                    "next_cursor": null,
+                                    "prev_cursor": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -17714,7 +17090,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -17770,17 +17146,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -18364,17 +17740,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -18516,8 +17892,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "shtm_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "previous_page_url": null,
+                                "next_cursor": "shtm_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -18537,8 +17913,8 @@ export const apiTags: TagData[] = [
                                     "free_shipping_service_levels": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_page_url": null,
-                                            "previous_page_url": null,
+                                            "next_cursor": null,
+                                            "prev_cursor": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -19144,17 +18520,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -19306,8 +18682,8 @@ export const apiTags: TagData[] = [
                             "free_shipping_service_levels": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
+                                    "next_cursor": null,
+                                    "prev_cursor": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -20133,7 +19509,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -20186,17 +19562,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -20384,8 +19760,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "previous_page_url": null,
+                                "next_cursor": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -20707,17 +20083,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -20752,7 +20128,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "id",
                                         "type": "string",
-                                        "description": "Address suggestion ID.",
+                                        "description": "Google Places ID.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false
@@ -20771,7 +20147,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "description",
                                         "type": "string",
-                                        "description": "Full description of the address.",
+                                        "description": "Full description.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false
@@ -20798,8 +20174,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "ChIJd8BlQ2BZwokRAFUEcm_qrcA",
-                                "previous_page_url": null,
+                                "next_cursor": "ChIJd8BlQ2BZwokRAFUEcm_qrcA",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -20851,7 +20227,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "city",
                             "type": "string",
-                            "description": "City or locality.",
+                            "description": "City.",
                             "required": true,
                             "nullable": false,
                             "expandable": false
@@ -20963,7 +20339,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "city",
                                         "type": "string",
-                                        "description": "City or locality.",
+                                        "description": "City.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false
@@ -21178,7 +20554,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -21230,17 +20606,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -21379,8 +20755,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "acss_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "previous_page_url": null,
+                                "next_cursor": "acss_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -21671,7 +21047,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "type",
                             "type": "string",
-                            "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
+                            "description": "Role type code.",
                             "required": true,
                             "nullable": false,
                             "expandable": false,
@@ -22113,7 +21489,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "type",
                                         "type": "string",
-                                        "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
+                                        "description": "Role type code.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -22547,7 +21923,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "type",
                                         "type": "string",
-                                        "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
+                                        "description": "Role type code.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -22778,7 +22154,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -22856,17 +22232,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -23000,7 +22376,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "type",
                                                 "type": "string",
-                                                "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
+                                                "description": "Role type code.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -23173,8 +22549,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "acus_01gf7a8200er3ar3pkfrb6kk29",
-                                "previous_page_url": null,
+                                "next_cursor": "acus_01gf7a8200er3ar3pkfrb6kk29",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -23365,7 +22741,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "type",
                                         "type": "string",
-                                        "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
+                                        "description": "Role type code.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -23735,17 +23111,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_page_url",
+                                    "name": "next_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the next page, `null` if no more pages.",
+                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "previous_page_url",
+                                    "name": "prev_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the previous page, `null` if on the first page.",
+                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -23992,17 +23368,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -24257,17 +23633,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -24433,7 +23809,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -24485,17 +23861,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -24582,17 +23958,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -24825,17 +24201,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -25203,17 +24579,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -25664,17 +25040,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -25948,7 +25324,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -25997,17 +25373,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -26157,17 +25533,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -26535,17 +25911,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -26984,7 +26360,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -27036,17 +26412,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -27184,8 +26560,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "pi_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "previous_page_url": null,
+                                "next_cursor": "pi_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -27590,17 +26966,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_page_url",
+                                    "name": "next_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the next page, `null` if no more pages.",
+                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "previous_page_url",
+                                    "name": "prev_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the previous page, `null` if on the first page.",
+                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -28080,17 +27456,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -28549,17 +27925,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -28753,7 +28129,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -28807,17 +28183,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -29066,17 +28442,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -29227,8 +28603,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "previous_page_url": null,
+                                "next_cursor": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -29520,17 +28896,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -30614,7 +29990,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -30674,17 +30050,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -31386,17 +30762,17 @@ export const apiTags: TagData[] = [
                                     "expandable": false,
                                     "properties": [
                                         {
-                                            "name": "next_page_url",
+                                            "name": "next_cursor",
                                             "type": "string",
-                                            "description": "URL to fetch the next page, `null` if no more pages.",
+                                            "description": "Cursor to fetch the next page, `null` if no more pages.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
                                         },
                                         {
-                                            "name": "previous_page_url",
+                                            "name": "prev_cursor",
                                             "type": "string",
-                                            "description": "URL to fetch the previous page, `null` if on the first page.",
+                                            "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -31709,17 +31085,17 @@ export const apiTags: TagData[] = [
                                             "expandable": false,
                                             "properties": [
                                                 {
-                                                    "name": "next_page_url",
+                                                    "name": "next_cursor",
                                                     "type": "string",
-                                                    "description": "URL to fetch the next page, `null` if no more pages.",
+                                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
                                                 },
                                                 {
-                                                    "name": "previous_page_url",
+                                                    "name": "prev_cursor",
                                                     "type": "string",
-                                                    "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -32152,17 +31528,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_page_url",
+                                    "name": "next_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the next page, `null` if no more pages.",
+                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "previous_page_url",
+                                    "name": "prev_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the previous page, `null` if on the first page.",
+                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -32439,8 +31815,8 @@ export const apiTags: TagData[] = [
                 "attributes": {
                     "object": "list",
                     "page_info": {
-                        "next_page_url": null,
-                        "previous_page_url": null,
+                        "next_cursor": null,
+                        "prev_cursor": null,
                         "has_next_page": false,
                         "has_prev_page": false
                     },
@@ -32480,7 +31856,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -32621,17 +31997,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -32811,17 +32187,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -33134,17 +32510,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_page_url",
+                                                                        "name": "next_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "previous_page_url",
+                                                                        "name": "prev_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -33577,17 +32953,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -33729,8 +33105,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "it_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "previous_page_url": null,
+                                "next_cursor": "it_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -33875,8 +33251,8 @@ export const apiTags: TagData[] = [
                                     "attributes": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_page_url": null,
-                                            "previous_page_url": null,
+                                            "next_cursor": null,
+                                            "prev_cursor": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -34094,17 +33470,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -34417,17 +33793,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -34860,17 +34236,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -35147,8 +34523,8 @@ export const apiTags: TagData[] = [
                             "attributes": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
+                                    "next_cursor": null,
+                                    "prev_cursor": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -35371,17 +34747,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -35694,17 +35070,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -36137,17 +35513,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -36424,8 +35800,8 @@ export const apiTags: TagData[] = [
                             "attributes": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
+                                    "next_cursor": null,
+                                    "prev_cursor": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -36648,17 +36024,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -36971,17 +36347,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -37414,17 +36790,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -37701,8 +37077,8 @@ export const apiTags: TagData[] = [
                             "attributes": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
+                                    "next_cursor": null,
+                                    "prev_cursor": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -38286,17 +37662,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -38609,17 +37985,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -39052,17 +38428,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -39339,8 +38715,8 @@ export const apiTags: TagData[] = [
                             "attributes": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
+                                    "next_cursor": null,
+                                    "prev_cursor": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -39574,17 +38950,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_page_url",
+                                    "name": "next_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the next page, `null` if no more pages.",
+                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "previous_page_url",
+                                    "name": "prev_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the previous page, `null` if on the first page.",
+                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -39897,17 +39273,17 @@ export const apiTags: TagData[] = [
                                     "expandable": false,
                                     "properties": [
                                         {
-                                            "name": "next_page_url",
+                                            "name": "next_cursor",
                                             "type": "string",
-                                            "description": "URL to fetch the next page, `null` if no more pages.",
+                                            "description": "Cursor to fetch the next page, `null` if no more pages.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
                                         },
                                         {
-                                            "name": "previous_page_url",
+                                            "name": "prev_cursor",
                                             "type": "string",
-                                            "description": "URL to fetch the previous page, `null` if on the first page.",
+                                            "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -40355,17 +39731,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -40678,17 +40054,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -41130,17 +40506,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -41453,17 +40829,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -41658,7 +41034,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -41727,17 +41103,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -41968,17 +41344,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -42291,17 +41667,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -42464,8 +41840,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "previous_page_url": null,
+                                "next_cursor": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -42732,17 +42108,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -43055,17 +42431,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -43570,17 +42946,17 @@ export const apiTags: TagData[] = [
                                             "expandable": false,
                                             "properties": [
                                                 {
-                                                    "name": "next_page_url",
+                                                    "name": "next_cursor",
                                                     "type": "string",
-                                                    "description": "URL to fetch the next page, `null` if no more pages.",
+                                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
                                                 },
                                                 {
-                                                    "name": "previous_page_url",
+                                                    "name": "prev_cursor",
                                                     "type": "string",
-                                                    "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -44072,17 +43448,17 @@ export const apiTags: TagData[] = [
                                     "expandable": false,
                                     "properties": [
                                         {
-                                            "name": "next_page_url",
+                                            "name": "next_cursor",
                                             "type": "string",
-                                            "description": "URL to fetch the next page, `null` if no more pages.",
+                                            "description": "Cursor to fetch the next page, `null` if no more pages.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
                                         },
                                         {
-                                            "name": "previous_page_url",
+                                            "name": "prev_cursor",
                                             "type": "string",
-                                            "description": "URL to fetch the previous page, `null` if on the first page.",
+                                            "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -44490,8 +43866,8 @@ export const apiTags: TagData[] = [
                     "attributes": {
                         "object": "list",
                         "page_info": {
-                            "next_page_url": null,
-                            "previous_page_url": null,
+                            "next_cursor": null,
+                            "prev_cursor": null,
                             "has_next_page": false,
                             "has_prev_page": false
                         },
@@ -44976,17 +44352,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -45478,17 +44854,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -45896,8 +45272,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
+                                        "next_cursor": null,
+                                        "prev_cursor": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -46302,17 +45678,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -46804,17 +46180,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -47222,8 +46598,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
+                                        "next_cursor": null,
+                                        "prev_cursor": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -47309,7 +46685,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -47398,17 +46774,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -47615,17 +46991,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_page_url",
+                                                                        "name": "next_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "previous_page_url",
+                                                                        "name": "prev_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -48117,17 +47493,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -48397,8 +47773,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "ml_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "previous_page_url": null,
+                                "next_cursor": "ml_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -48546,8 +47922,8 @@ export const apiTags: TagData[] = [
                                         "attributes": {
                                             "object": "list",
                                             "page_info": {
-                                                "next_page_url": null,
-                                                "previous_page_url": null,
+                                                "next_cursor": null,
+                                                "prev_cursor": null,
                                                 "has_next_page": false,
                                                 "has_prev_page": false
                                             },
@@ -48835,17 +48211,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -49337,17 +48713,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -49755,8 +49131,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
+                                        "next_cursor": null,
+                                        "prev_cursor": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -50454,17 +49830,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -50841,17 +50217,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_page_url",
+                                                                        "name": "next_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "previous_page_url",
+                                                                        "name": "prev_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -52839,17 +52215,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -54453,8 +53829,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
+                                        "next_cursor": null,
+                                        "prev_cursor": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -54709,17 +54085,17 @@ export const apiTags: TagData[] = [
                                             "expandable": false,
                                             "properties": [
                                                 {
-                                                    "name": "next_page_url",
+                                                    "name": "next_cursor",
                                                     "type": "string",
-                                                    "description": "URL to fetch the next page, `null` if no more pages.",
+                                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
                                                 },
                                                 {
-                                                    "name": "previous_page_url",
+                                                    "name": "prev_cursor",
                                                     "type": "string",
-                                                    "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -55211,17 +54587,17 @@ export const apiTags: TagData[] = [
                                     "expandable": false,
                                     "properties": [
                                         {
-                                            "name": "next_page_url",
+                                            "name": "next_cursor",
                                             "type": "string",
-                                            "description": "URL to fetch the next page, `null` if no more pages.",
+                                            "description": "Cursor to fetch the next page, `null` if no more pages.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
                                         },
                                         {
-                                            "name": "previous_page_url",
+                                            "name": "prev_cursor",
                                             "type": "string",
-                                            "description": "URL to fetch the previous page, `null` if on the first page.",
+                                            "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -55521,8 +54897,8 @@ export const apiTags: TagData[] = [
                     "attributes": {
                         "object": "list",
                         "page_info": {
-                            "next_page_url": null,
-                            "previous_page_url": null,
+                            "next_cursor": null,
+                            "prev_cursor": null,
                             "has_next_page": false,
                             "has_prev_page": false
                         },
@@ -55591,7 +54967,7 @@ export const apiTags: TagData[] = [
                             "name": "description",
                             "type": "string",
                             "description": "Description.",
-                            "required": false,
+                            "required": true,
                             "nullable": true,
                             "expandable": false
                         },
@@ -56196,17 +55572,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -56506,8 +55882,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
+                                        "next_cursor": null,
+                                        "prev_cursor": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -56584,7 +55960,7 @@ export const apiTags: TagData[] = [
                             "name": "description",
                             "type": "string",
                             "description": "Description. Send `null` to clear.",
-                            "required": false,
+                            "required": true,
                             "nullable": true,
                             "expandable": false
                         },
@@ -56592,14 +55968,15 @@ export const apiTags: TagData[] = [
                             "name": "notes",
                             "type": "string",
                             "description": "Notes. Send `null` to clear.",
-                            "required": false,
+                            "required": true,
                             "nullable": true,
                             "expandable": false
                         }
                     ],
                     "example": {
                         "sku": "BRG-6204-2RS",
-                        "description": "Deep groove ball bearing, 20x47x14mm"
+                        "description": "Deep groove ball bearing, 20x47x14mm",
+                        "notes": null
                     }
                 },
                 "responses": [
@@ -57066,17 +56443,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -57376,8 +56753,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
+                                        "next_cursor": null,
+                                        "prev_cursor": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -57421,7 +56798,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -57510,17 +56887,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -57727,17 +57104,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_page_url",
+                                                                        "name": "next_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "previous_page_url",
+                                                                        "name": "prev_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -58229,17 +57606,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -58401,8 +57778,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "pt_02kn5s7811g9qwce7cizr4e0mq",
-                                "previous_page_url": null,
+                                "next_cursor": "pt_02kn5s7811g9qwce7cizr4e0mq",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -58550,8 +57927,8 @@ export const apiTags: TagData[] = [
                                         "attributes": {
                                             "object": "list",
                                             "page_info": {
-                                                "next_page_url": null,
-                                                "previous_page_url": null,
+                                                "next_cursor": null,
+                                                "prev_cursor": null,
                                                 "has_next_page": false,
                                                 "has_prev_page": false
                                             },
@@ -58797,17 +58174,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -59299,17 +58676,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -59609,8 +58986,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
+                                        "next_cursor": null,
+                                        "prev_cursor": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -60266,17 +59643,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -60653,17 +60030,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_page_url",
+                                                                        "name": "next_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "previous_page_url",
+                                                                        "name": "prev_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -62651,17 +62028,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -63047,8 +62424,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
+                                        "next_cursor": null,
+                                        "prev_cursor": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -63138,6 +62515,14 @@ export const apiTags: TagData[] = [
                     "name": "filename",
                     "type": "string",
                     "description": "Filename of any attachment.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": false
+                },
+                {
+                    "name": "ses_message_id",
+                    "type": "string",
+                    "description": "SES message ID returned by AWS.",
                     "required": true,
                     "nullable": true,
                     "expandable": false
@@ -63237,6 +62622,7 @@ export const apiTags: TagData[] = [
                 ],
                 "subject": "Order Confirmation #1001",
                 "filename": "invoice_1001.pdf",
+                "ses_message_id": null,
                 "sent_by": {
                     "id": "us_01gf7a8200e9pvbd6bgyq395ae",
                     "object": "actor",
@@ -63296,7 +62682,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -63348,17 +62734,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -63442,6 +62828,14 @@ export const apiTags: TagData[] = [
                                         "name": "filename",
                                         "type": "string",
                                         "description": "Filename of any attachment.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "ses_message_id",
+                                        "type": "string",
+                                        "description": "SES message ID returned by AWS.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -63537,8 +62931,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "eml_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "previous_page_url": null,
+                                "next_cursor": "eml_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -63552,6 +62946,7 @@ export const apiTags: TagData[] = [
                                     ],
                                     "subject": "Order Confirmation #1001",
                                     "filename": "invoice_1001.pdf",
+                                    "ses_message_id": null,
                                     "sent_by": {
                                         "id": "us_01gf7a8200e9pvbd6bgyq395ae",
                                         "object": "actor",
@@ -63689,6 +63084,14 @@ export const apiTags: TagData[] = [
                                 "expandable": false
                             },
                             {
+                                "name": "ses_message_id",
+                                "type": "string",
+                                "description": "SES message ID returned by AWS.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
                                 "name": "sent_by",
                                 "type": "object",
                                 "description": "Actor who sent the email. Null when the email was sent by the system.",
@@ -63783,6 +63186,7 @@ export const apiTags: TagData[] = [
                             ],
                             "subject": "Order Confirmation #1001",
                             "filename": "invoice_1001.pdf",
+                            "ses_message_id": null,
                             "sent_by": {
                                 "id": "us_01gf7a8200e9pvbd6bgyq395ae",
                                 "object": "actor",
@@ -65033,17 +64437,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_page_url",
+                                    "name": "next_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the next page, `null` if no more pages.",
+                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "previous_page_url",
+                                    "name": "prev_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the previous page, `null` if on the first page.",
+                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -65417,17 +64821,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_page_url",
+                                    "name": "next_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the next page, `null` if no more pages.",
+                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "previous_page_url",
+                                    "name": "prev_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the previous page, `null` if on the first page.",
+                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -65818,8 +65222,8 @@ export const apiTags: TagData[] = [
                         "free_shipping_service_levels": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": null,
-                                "previous_page_url": null,
+                                "next_cursor": null,
+                                "prev_cursor": null,
                                 "has_next_page": false,
                                 "has_prev_page": false
                             },
@@ -65942,8 +65346,8 @@ export const apiTags: TagData[] = [
                 "price_groups": {
                     "object": "list",
                     "page_info": {
-                        "next_page_url": null,
-                        "previous_page_url": null,
+                        "next_cursor": null,
+                        "prev_cursor": null,
                         "has_next_page": false,
                         "has_prev_page": false
                     },
@@ -67641,17 +67045,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -68025,17 +67429,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -68426,8 +67830,8 @@ export const apiTags: TagData[] = [
                                     "free_shipping_service_levels": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_page_url": null,
-                                            "previous_page_url": null,
+                                            "next_cursor": null,
+                                            "prev_cursor": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -68550,8 +67954,8 @@ export const apiTags: TagData[] = [
                             "price_groups": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
+                                    "next_cursor": null,
+                                    "prev_cursor": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -68863,7 +68267,8 @@ export const apiTags: TagData[] = [
                         "name": "Acme Corp Updated",
                         "note": "Updated account notes",
                         "freight_policy": "billed_freight",
-                        "default_carrier_id": "cr_01jm4r6700f8nwq3v5hx2d9ktp"
+                        "default_carrier_id": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
+                        "credit_limit": {}
                     }
                 },
                 "responses": [
@@ -70067,17 +69472,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -70451,17 +69856,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -70852,8 +70257,8 @@ export const apiTags: TagData[] = [
                                     "free_shipping_service_levels": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_page_url": null,
-                                            "previous_page_url": null,
+                                            "next_cursor": null,
+                                            "prev_cursor": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -70976,8 +70381,8 @@ export const apiTags: TagData[] = [
                             "price_groups": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
+                                    "next_cursor": null,
+                                    "prev_cursor": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -71021,7 +70426,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -71221,17 +70626,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -72459,17 +71864,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -72843,17 +72248,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -73124,8 +72529,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "ac_01gf7a8200er3ar3pkfrb6kk29",
-                                "previous_page_url": null,
+                                "next_cursor": "ac_01gf7a8200er3ar3pkfrb6kk29",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -73255,8 +72660,8 @@ export const apiTags: TagData[] = [
                                             "free_shipping_service_levels": {
                                                 "object": "list",
                                                 "page_info": {
-                                                    "next_page_url": null,
-                                                    "previous_page_url": null,
+                                                    "next_cursor": null,
+                                                    "prev_cursor": null,
                                                     "has_next_page": false,
                                                     "has_prev_page": false
                                                 },
@@ -73379,8 +72784,8 @@ export const apiTags: TagData[] = [
                                     "price_groups": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_page_url": null,
-                                            "previous_page_url": null,
+                                            "next_cursor": null,
+                                            "prev_cursor": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -74656,17 +74061,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -75040,17 +74445,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -75441,8 +74846,8 @@ export const apiTags: TagData[] = [
                                     "free_shipping_service_levels": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_page_url": null,
-                                            "previous_page_url": null,
+                                            "next_cursor": null,
+                                            "prev_cursor": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -75565,8 +74970,8 @@ export const apiTags: TagData[] = [
                             "price_groups": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
+                                    "next_cursor": null,
+                                    "prev_cursor": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -76889,17 +76294,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -77273,17 +76678,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -77674,8 +77079,8 @@ export const apiTags: TagData[] = [
                                     "free_shipping_service_levels": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_page_url": null,
-                                            "previous_page_url": null,
+                                            "next_cursor": null,
+                                            "prev_cursor": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -77798,8 +77203,8 @@ export const apiTags: TagData[] = [
                             "price_groups": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
+                                    "next_cursor": null,
+                                    "prev_cursor": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -79036,7 +78441,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -79090,17 +78495,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -79455,8 +78860,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "pl_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "previous_page_url": null,
+                                "next_cursor": "pl_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -80255,17 +79660,17 @@ export const apiTags: TagData[] = [
                                             "expandable": false,
                                             "properties": [
                                                 {
-                                                    "name": "next_page_url",
+                                                    "name": "next_cursor",
                                                     "type": "string",
-                                                    "description": "URL to fetch the next page, `null` if no more pages.",
+                                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
                                                 },
                                                 {
-                                                    "name": "previous_page_url",
+                                                    "name": "prev_cursor",
                                                     "type": "string",
-                                                    "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -80580,17 +79985,17 @@ export const apiTags: TagData[] = [
                                             "expandable": false,
                                             "properties": [
                                                 {
-                                                    "name": "next_page_url",
+                                                    "name": "next_cursor",
                                                     "type": "string",
-                                                    "description": "URL to fetch the next page, `null` if no more pages.",
+                                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
                                                 },
                                                 {
-                                                    "name": "previous_page_url",
+                                                    "name": "prev_cursor",
                                                     "type": "string",
-                                                    "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -80903,17 +80308,17 @@ export const apiTags: TagData[] = [
                                                     "expandable": false,
                                                     "properties": [
                                                         {
-                                                            "name": "next_page_url",
+                                                            "name": "next_cursor",
                                                             "type": "string",
-                                                            "description": "URL to fetch the next page, `null` if no more pages.",
+                                                            "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                             "required": true,
                                                             "nullable": true,
                                                             "expandable": false
                                                         },
                                                         {
-                                                            "name": "previous_page_url",
+                                                            "name": "prev_cursor",
                                                             "type": "string",
-                                                            "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                            "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                             "required": true,
                                                             "nullable": true,
                                                             "expandable": false
@@ -81346,17 +80751,17 @@ export const apiTags: TagData[] = [
                                     "expandable": false,
                                     "properties": [
                                         {
-                                            "name": "next_page_url",
+                                            "name": "next_cursor",
                                             "type": "string",
-                                            "description": "URL to fetch the next page, `null` if no more pages.",
+                                            "description": "Cursor to fetch the next page, `null` if no more pages.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
                                         },
                                         {
-                                            "name": "previous_page_url",
+                                            "name": "prev_cursor",
                                             "type": "string",
-                                            "description": "URL to fetch the previous page, `null` if on the first page.",
+                                            "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -81675,8 +81080,8 @@ export const apiTags: TagData[] = [
                     "attributes": {
                         "object": "list",
                         "page_info": {
-                            "next_page_url": null,
-                            "previous_page_url": null,
+                            "next_cursor": null,
+                            "prev_cursor": null,
                             "has_next_page": false,
                             "has_prev_page": false
                         },
@@ -81755,7 +81160,7 @@ export const apiTags: TagData[] = [
                             "name": "description",
                             "type": "string",
                             "description": "Description.",
-                            "required": false,
+                            "required": true,
                             "nullable": true,
                             "expandable": false
                         },
@@ -81763,7 +81168,7 @@ export const apiTags: TagData[] = [
                             "name": "notes",
                             "type": "string",
                             "description": "Notes.",
-                            "required": false,
+                            "required": true,
                             "nullable": true,
                             "expandable": false
                         },
@@ -81928,6 +81333,8 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "sku": "ALM-2024-1001",
+                        "description": null,
+                        "notes": null,
                         "type": "sale",
                         "product_line_id": null,
                         "category_id": "ic_01jm4r6700f8nwq3v5hx2d9ktp"
@@ -82292,17 +81699,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -82617,17 +82024,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -82940,17 +82347,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_page_url",
+                                                                        "name": "next_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "previous_page_url",
+                                                                        "name": "prev_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -83383,17 +82790,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -83712,8 +83119,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
+                                        "next_cursor": null,
+                                        "prev_cursor": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -83861,9 +83268,7 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "sku": "SKU-002",
-                        "description": null,
-                        "notes": null
+                        "sku": "SKU-002"
                     }
                 },
                 "responses": [
@@ -84225,17 +83630,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -84550,17 +83955,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -84873,17 +84278,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_page_url",
+                                                                        "name": "next_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "previous_page_url",
+                                                                        "name": "prev_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -85316,17 +84721,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -85645,8 +85050,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
+                                        "next_cursor": null,
+                                        "prev_cursor": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -85690,7 +85095,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -85812,17 +85217,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -86208,17 +85613,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_page_url",
+                                                                        "name": "next_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "previous_page_url",
+                                                                        "name": "prev_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -86533,17 +85938,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_page_url",
+                                                                        "name": "next_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "previous_page_url",
+                                                                        "name": "prev_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -87191,17 +86596,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -87363,8 +86768,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "pd_01jm4r6700f8nwq3v5hx2d9ktp",
-                                "previous_page_url": null,
+                                "next_cursor": "pd_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -87531,8 +86936,8 @@ export const apiTags: TagData[] = [
                                         "attributes": {
                                             "object": "list",
                                             "page_info": {
-                                                "next_page_url": null,
-                                                "previous_page_url": null,
+                                                "next_cursor": null,
+                                                "prev_cursor": null,
                                                 "has_next_page": false,
                                                 "has_prev_page": false
                                             },
@@ -87965,17 +87370,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -88290,17 +87695,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -88613,17 +88018,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_page_url",
+                                                                        "name": "next_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "previous_page_url",
+                                                                        "name": "prev_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -89056,17 +88461,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -89385,8 +88790,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
+                                        "next_cursor": null,
+                                        "prev_cursor": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -89817,17 +89222,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -90142,17 +89547,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -90465,17 +89870,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_page_url",
+                                                                        "name": "next_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "previous_page_url",
+                                                                        "name": "prev_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -90908,17 +90313,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -91237,8 +90642,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
+                                        "next_cursor": null,
+                                        "prev_cursor": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -91676,17 +91081,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -92001,17 +91406,17 @@ export const apiTags: TagData[] = [
                                                         "expandable": false,
                                                         "properties": [
                                                             {
-                                                                "name": "next_page_url",
+                                                                "name": "next_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
                                                             },
                                                             {
-                                                                "name": "previous_page_url",
+                                                                "name": "prev_cursor",
                                                                 "type": "string",
-                                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -92324,17 +91729,17 @@ export const apiTags: TagData[] = [
                                                                 "expandable": false,
                                                                 "properties": [
                                                                     {
-                                                                        "name": "next_page_url",
+                                                                        "name": "next_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
                                                                     },
                                                                     {
-                                                                        "name": "previous_page_url",
+                                                                        "name": "prev_cursor",
                                                                         "type": "string",
-                                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -92767,17 +92172,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -93096,8 +92501,8 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
+                                        "next_cursor": null,
+                                        "prev_cursor": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -93447,17 +92852,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -93600,8 +93005,8 @@ export const apiTags: TagData[] = [
                             "children": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
+                                    "next_cursor": null,
+                                    "prev_cursor": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -93702,7 +93107,8 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Warehouse B"
+                        "name": "Warehouse B",
+                        "child_ids": {}
                     }
                 },
                 "responses": [
@@ -93870,17 +93276,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -94023,8 +93429,8 @@ export const apiTags: TagData[] = [
                             "children": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
+                                    "next_cursor": null,
+                                    "prev_cursor": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -94065,7 +93471,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -94107,17 +93513,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -94216,8 +93622,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "lc_01gf7a8200er3ar3pkfrb6kk31",
-                                "previous_page_url": null,
+                                "next_cursor": "lc_01gf7a8200er3ar3pkfrb6kk31",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -94253,7 +93659,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -94306,17 +93712,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -94508,17 +93914,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -94953,17 +94359,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -95106,8 +94512,8 @@ export const apiTags: TagData[] = [
                             "children": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
+                                    "next_cursor": null,
+                                    "prev_cursor": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -95377,17 +94783,17 @@ export const apiTags: TagData[] = [
                             "expandable": false,
                             "properties": [
                                 {
-                                    "name": "next_page_url",
+                                    "name": "next_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the next page, `null` if no more pages.",
+                                    "description": "Cursor to fetch the next page, `null` if no more pages.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
                                 },
                                 {
-                                    "name": "previous_page_url",
+                                    "name": "prev_cursor",
                                     "type": "string",
-                                    "description": "URL to fetch the previous page, `null` if on the first page.",
+                                    "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -95943,17 +95349,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -96490,17 +95896,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -96751,7 +96157,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -96804,17 +96210,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -97051,17 +96457,17 @@ export const apiTags: TagData[] = [
                                                 "expandable": false,
                                                 "properties": [
                                                     {
-                                                        "name": "next_page_url",
+                                                        "name": "next_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
                                                     },
                                                     {
-                                                        "name": "previous_page_url",
+                                                        "name": "prev_cursor",
                                                         "type": "string",
-                                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -97524,17 +96930,17 @@ export const apiTags: TagData[] = [
                                         "expandable": false,
                                         "properties": [
                                             {
-                                                "name": "next_page_url",
+                                                "name": "next_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the next page, `null` if no more pages.",
+                                                "description": "Cursor to fetch the next page, `null` if no more pages.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "previous_page_url",
+                                                "name": "prev_cursor",
                                                 "type": "string",
-                                                "description": "URL to fetch the previous page, `null` if on the first page.",
+                                                "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -97839,7 +97245,7 @@ export const apiTags: TagData[] = [
                 {
                     "name": "type",
                     "type": "string",
-                    "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
+                    "description": "Role type code.",
                     "required": true,
                     "nullable": false,
                     "expandable": false,
@@ -98126,7 +97532,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "type",
                                 "type": "string",
-                                "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
+                                "description": "Role type code.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
@@ -98362,7 +97768,7 @@ export const apiTags: TagData[] = [
                             "name": "name",
                             "type": "string",
                             "description": "Display name.",
-                            "required": false,
+                            "required": true,
                             "nullable": false,
                             "expandable": false
                         },
@@ -98370,7 +97776,7 @@ export const apiTags: TagData[] = [
                             "name": "permissions",
                             "type": "array",
                             "description": "Permissions in `<domain>:<action>` format. Replaces all existing permissions; omit to leave unchanged.",
-                            "required": false,
+                            "required": true,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
@@ -98419,7 +97825,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "type",
                                 "type": "string",
-                                "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
+                                "description": "Role type code.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
@@ -98633,7 +98039,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Cursor token used to retrieve the next or previous page of results."
+                        "description": "Cursor from a previous response's `next_cursor` field, used to fetch the next page."
                     },
                     {
                         "name": "limit",
@@ -98701,17 +98107,17 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "properties": [
                                     {
-                                        "name": "next_page_url",
+                                        "name": "next_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "description": "Cursor to fetch the next page, `null` if no more pages.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "previous_page_url",
+                                        "name": "prev_cursor",
                                         "type": "string",
-                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "description": "Cursor to fetch the previous page, `null` if on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -98773,7 +98179,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "type",
                                         "type": "string",
-                                        "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
+                                        "description": "Role type code.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -98942,8 +98348,8 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "rl_01gf7a8200er3ar3pkfrb6kk29",
-                                "previous_page_url": null,
+                                "next_cursor": "rl_01gf7a8200er3ar3pkfrb6kk29",
+                                "prev_cursor": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
                             },
@@ -99050,7 +98456,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "type",
                                 "type": "string",
-                                "description": "Role type code.\n\nThe role's type is sometimes used to gate special behaviors in the frontend\nand to restrict some actions to only certain types of roles. For example,\nonly roles with the type `admin` can create and manage API keys.",
+                                "description": "Role type code.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
