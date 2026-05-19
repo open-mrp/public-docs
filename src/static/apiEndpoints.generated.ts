@@ -9467,7 +9467,7 @@ export const apiTags: TagData[] = [
                             "name": "associated_units",
                             "type": "array",
                             "description": "Associated units to create with the group.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "object",
@@ -16094,7 +16094,7 @@ export const apiTags: TagData[] = [
                             "name": "free_shipping_service_level_ids",
                             "type": "array",
                             "description": "Service level IDs that qualify for free shipping.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
@@ -21963,7 +21963,7 @@ export const apiTags: TagData[] = [
                             "name": "preferences",
                             "type": "array",
                             "description": "Notification preferences for the user (external targets only).",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "object",
@@ -22405,7 +22405,7 @@ export const apiTags: TagData[] = [
                             "name": "preferences",
                             "type": "array",
                             "description": "Notification preferences to update (external targets only).",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "object",
@@ -32539,17 +32539,6 @@ export const apiTags: TagData[] = [
                         "required": false,
                         "description": "Filter items created on or before this date.",
                         "format": "date-time"
-                    },
-                    {
-                        "name": "match_mode",
-                        "in": "query",
-                        "type": "string",
-                        "required": false,
-                        "description": "How the search query is matched against items (default: partial).",
-                        "enum": [
-                            "exact",
-                            "partial"
-                        ]
                     },
                     {
                         "name": "subassembly_filter",
@@ -44785,7 +44774,7 @@ export const apiTags: TagData[] = [
                             "name": "attribute_ids",
                             "type": "array",
                             "description": "Attribute IDs to connect to the material at creation time.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
@@ -55720,7 +55709,7 @@ export const apiTags: TagData[] = [
                             "name": "attribute_ids",
                             "type": "array",
                             "description": "Attribute IDs to connect to the part at creation time.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
@@ -66166,7 +66155,7 @@ export const apiTags: TagData[] = [
                             "name": "customer_price_group_ids",
                             "type": "array",
                             "description": "Price group IDs.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
@@ -81920,7 +81909,7 @@ export const apiTags: TagData[] = [
                             "name": "attribute_ids",
                             "type": "array",
                             "description": "Attribute IDs to connect to the product at creation time.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
