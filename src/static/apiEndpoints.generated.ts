@@ -370,7 +370,8 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "role_id": "rl_01gf7a8200er3ar3pkfrb6kk29",
-                        "name": "Production API Key"
+                        "name": "Production API Key",
+                        "expires_at": null
                     }
                 },
                 "responses": [
@@ -1769,8 +1770,7 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Integration Testing",
-                        "mode": "blank"
+                        "name": "Integration Testing"
                     }
                 },
                 "responses": [
@@ -2865,9 +2865,20 @@ export const apiTags: TagData[] = [
                 "host": "https://api.augno.com",
                 "path": "/v1/core/sandboxes",
                 "normalized_route": "/v1/core/sandboxes",
-                "query_params": {
-                    "limit": 10
-                },
+                "query_params": [
+                    123,
+                    34,
+                    108,
+                    105,
+                    109,
+                    105,
+                    116,
+                    34,
+                    58,
+                    49,
+                    48,
+                    125
+                ],
                 "status_code": 200,
                 "latency_us": 12345,
                 "api_version": "2026-01-01",
@@ -2926,17 +2937,139 @@ export const apiTags: TagData[] = [
                     }
                 },
                 "idempotency_key": null,
-                "request_body": null,
-                "response_body": {
-                    "data": [],
-                    "object": "list",
-                    "page_info": {
-                        "has_next_page": false,
-                        "has_prev_page": false,
-                        "next_page_url": null,
-                        "previous_page_url": null
-                    }
-                }
+                "response_body": [
+                    123,
+                    34,
+                    111,
+                    98,
+                    106,
+                    101,
+                    99,
+                    116,
+                    34,
+                    58,
+                    34,
+                    108,
+                    105,
+                    115,
+                    116,
+                    34,
+                    44,
+                    34,
+                    112,
+                    97,
+                    103,
+                    101,
+                    95,
+                    105,
+                    110,
+                    102,
+                    111,
+                    34,
+                    58,
+                    123,
+                    34,
+                    110,
+                    101,
+                    120,
+                    116,
+                    95,
+                    112,
+                    97,
+                    103,
+                    101,
+                    95,
+                    117,
+                    114,
+                    108,
+                    34,
+                    58,
+                    110,
+                    117,
+                    108,
+                    108,
+                    44,
+                    34,
+                    112,
+                    114,
+                    101,
+                    118,
+                    105,
+                    111,
+                    117,
+                    115,
+                    95,
+                    112,
+                    97,
+                    103,
+                    101,
+                    95,
+                    117,
+                    114,
+                    108,
+                    34,
+                    58,
+                    110,
+                    117,
+                    108,
+                    108,
+                    44,
+                    34,
+                    104,
+                    97,
+                    115,
+                    95,
+                    110,
+                    101,
+                    120,
+                    116,
+                    95,
+                    112,
+                    97,
+                    103,
+                    101,
+                    34,
+                    58,
+                    102,
+                    97,
+                    108,
+                    115,
+                    101,
+                    44,
+                    34,
+                    104,
+                    97,
+                    115,
+                    95,
+                    112,
+                    114,
+                    101,
+                    118,
+                    95,
+                    112,
+                    97,
+                    103,
+                    101,
+                    34,
+                    58,
+                    102,
+                    97,
+                    108,
+                    115,
+                    101,
+                    125,
+                    44,
+                    34,
+                    100,
+                    97,
+                    116,
+                    97,
+                    34,
+                    58,
+                    91,
+                    93,
+                    125
+                ]
             }
         },
         "endpoints": [
@@ -3609,9 +3742,20 @@ export const apiTags: TagData[] = [
                                     "host": "https://api.augno.com",
                                     "path": "/v1/core/sandboxes",
                                     "normalized_route": "/v1/core/sandboxes",
-                                    "query_params": {
-                                        "limit": 10
-                                    },
+                                    "query_params": [
+                                        123,
+                                        34,
+                                        108,
+                                        105,
+                                        109,
+                                        105,
+                                        116,
+                                        34,
+                                        58,
+                                        49,
+                                        48,
+                                        125
+                                    ],
                                     "status_code": 200,
                                     "latency_us": 12345,
                                     "api_version": "2026-01-01",
@@ -3670,17 +3814,139 @@ export const apiTags: TagData[] = [
                                         }
                                     },
                                     "idempotency_key": null,
-                                    "request_body": null,
-                                    "response_body": {
-                                        "data": [],
-                                        "object": "list",
-                                        "page_info": {
-                                            "has_next_page": false,
-                                            "has_prev_page": false,
-                                            "next_page_url": null,
-                                            "previous_page_url": null
-                                        }
-                                    }
+                                    "response_body": [
+                                        123,
+                                        34,
+                                        111,
+                                        98,
+                                        106,
+                                        101,
+                                        99,
+                                        116,
+                                        34,
+                                        58,
+                                        34,
+                                        108,
+                                        105,
+                                        115,
+                                        116,
+                                        34,
+                                        44,
+                                        34,
+                                        112,
+                                        97,
+                                        103,
+                                        101,
+                                        95,
+                                        105,
+                                        110,
+                                        102,
+                                        111,
+                                        34,
+                                        58,
+                                        123,
+                                        34,
+                                        110,
+                                        101,
+                                        120,
+                                        116,
+                                        95,
+                                        112,
+                                        97,
+                                        103,
+                                        101,
+                                        95,
+                                        117,
+                                        114,
+                                        108,
+                                        34,
+                                        58,
+                                        110,
+                                        117,
+                                        108,
+                                        108,
+                                        44,
+                                        34,
+                                        112,
+                                        114,
+                                        101,
+                                        118,
+                                        105,
+                                        111,
+                                        117,
+                                        115,
+                                        95,
+                                        112,
+                                        97,
+                                        103,
+                                        101,
+                                        95,
+                                        117,
+                                        114,
+                                        108,
+                                        34,
+                                        58,
+                                        110,
+                                        117,
+                                        108,
+                                        108,
+                                        44,
+                                        34,
+                                        104,
+                                        97,
+                                        115,
+                                        95,
+                                        110,
+                                        101,
+                                        120,
+                                        116,
+                                        95,
+                                        112,
+                                        97,
+                                        103,
+                                        101,
+                                        34,
+                                        58,
+                                        102,
+                                        97,
+                                        108,
+                                        115,
+                                        101,
+                                        44,
+                                        34,
+                                        104,
+                                        97,
+                                        115,
+                                        95,
+                                        112,
+                                        114,
+                                        101,
+                                        118,
+                                        95,
+                                        112,
+                                        97,
+                                        103,
+                                        101,
+                                        34,
+                                        58,
+                                        102,
+                                        97,
+                                        108,
+                                        115,
+                                        101,
+                                        125,
+                                        44,
+                                        34,
+                                        100,
+                                        97,
+                                        116,
+                                        97,
+                                        34,
+                                        58,
+                                        91,
+                                        93,
+                                        125
+                                    ]
                                 }
                             ]
                         }
@@ -4139,9 +4405,20 @@ export const apiTags: TagData[] = [
                             "host": "https://api.augno.com",
                             "path": "/v1/core/sandboxes",
                             "normalized_route": "/v1/core/sandboxes",
-                            "query_params": {
-                                "limit": 10
-                            },
+                            "query_params": [
+                                123,
+                                34,
+                                108,
+                                105,
+                                109,
+                                105,
+                                116,
+                                34,
+                                58,
+                                49,
+                                48,
+                                125
+                            ],
                             "status_code": 200,
                             "latency_us": 12345,
                             "api_version": "2026-01-01",
@@ -4200,17 +4477,139 @@ export const apiTags: TagData[] = [
                                 }
                             },
                             "idempotency_key": null,
-                            "request_body": null,
-                            "response_body": {
-                                "data": [],
-                                "object": "list",
-                                "page_info": {
-                                    "has_next_page": false,
-                                    "has_prev_page": false,
-                                    "next_page_url": null,
-                                    "previous_page_url": null
-                                }
-                            }
+                            "response_body": [
+                                123,
+                                34,
+                                111,
+                                98,
+                                106,
+                                101,
+                                99,
+                                116,
+                                34,
+                                58,
+                                34,
+                                108,
+                                105,
+                                115,
+                                116,
+                                34,
+                                44,
+                                34,
+                                112,
+                                97,
+                                103,
+                                101,
+                                95,
+                                105,
+                                110,
+                                102,
+                                111,
+                                34,
+                                58,
+                                123,
+                                34,
+                                110,
+                                101,
+                                120,
+                                116,
+                                95,
+                                112,
+                                97,
+                                103,
+                                101,
+                                95,
+                                117,
+                                114,
+                                108,
+                                34,
+                                58,
+                                110,
+                                117,
+                                108,
+                                108,
+                                44,
+                                34,
+                                112,
+                                114,
+                                101,
+                                118,
+                                105,
+                                111,
+                                117,
+                                115,
+                                95,
+                                112,
+                                97,
+                                103,
+                                101,
+                                95,
+                                117,
+                                114,
+                                108,
+                                34,
+                                58,
+                                110,
+                                117,
+                                108,
+                                108,
+                                44,
+                                34,
+                                104,
+                                97,
+                                115,
+                                95,
+                                110,
+                                101,
+                                120,
+                                116,
+                                95,
+                                112,
+                                97,
+                                103,
+                                101,
+                                34,
+                                58,
+                                102,
+                                97,
+                                108,
+                                115,
+                                101,
+                                44,
+                                34,
+                                104,
+                                97,
+                                115,
+                                95,
+                                112,
+                                114,
+                                101,
+                                118,
+                                95,
+                                112,
+                                97,
+                                103,
+                                101,
+                                34,
+                                58,
+                                102,
+                                97,
+                                108,
+                                115,
+                                101,
+                                125,
+                                44,
+                                34,
+                                100,
+                                97,
+                                116,
+                                97,
+                                34,
+                                58,
+                                91,
+                                93,
+                                125
+                            ]
                         }
                     }
                 ]
@@ -4920,22 +5319,82 @@ export const apiTags: TagData[] = [
                     "data": [
                         {
                             "field": "email",
-                            "old_value": "old@example.com",
-                            "new_value": "new@example.com"
+                            "old_value": [
+                                34,
+                                111,
+                                108,
+                                100,
+                                64,
+                                101,
+                                120,
+                                97,
+                                109,
+                                112,
+                                108,
+                                101,
+                                46,
+                                99,
+                                111,
+                                109,
+                                34
+                            ],
+                            "new_value": [
+                                34,
+                                110,
+                                101,
+                                119,
+                                64,
+                                101,
+                                120,
+                                97,
+                                109,
+                                112,
+                                108,
+                                101,
+                                46,
+                                99,
+                                111,
+                                109,
+                                34
+                            ]
                         }
                     ]
                 },
-                "metadata": {
-                    "reason": "operator override"
-                },
+                "metadata": [
+                    123,
+                    34,
+                    114,
+                    101,
+                    97,
+                    115,
+                    111,
+                    110,
+                    34,
+                    58,
+                    34,
+                    111,
+                    112,
+                    101,
+                    114,
+                    97,
+                    116,
+                    111,
+                    114,
+                    32,
+                    111,
+                    118,
+                    101,
+                    114,
+                    114,
+                    105,
+                    100,
+                    101,
+                    34,
+                    125
+                ],
                 "request": {
                     "id": "rq_01jm4r6700f8nwq3v5hx2d9ktp",
                     "object": "request_log",
-                    "method": "",
-                    "host": "",
-                    "path": "",
-                    "normalized_route": "",
-                    "query_params": null,
                     "status_code": 0,
                     "latency_us": 0,
                     "api_version": null,
@@ -4944,13 +5403,9 @@ export const apiTags: TagData[] = [
                     "referrer": null,
                     "error_code": null,
                     "error_message": null,
-                    "occurred_at": "0001-01-01T00:00:00Z",
-                    "created_at": "0001-01-01T00:00:00Z",
                     "account": null,
                     "actor": null,
-                    "idempotency_key": null,
-                    "request_body": null,
-                    "response_body": null
+                    "idempotency_key": null
                 },
                 "idempotency_key": null,
                 "source_ip": "198.51.100.8",
@@ -6018,22 +6473,82 @@ export const apiTags: TagData[] = [
                                         "data": [
                                             {
                                                 "field": "email",
-                                                "old_value": "old@example.com",
-                                                "new_value": "new@example.com"
+                                                "old_value": [
+                                                    34,
+                                                    111,
+                                                    108,
+                                                    100,
+                                                    64,
+                                                    101,
+                                                    120,
+                                                    97,
+                                                    109,
+                                                    112,
+                                                    108,
+                                                    101,
+                                                    46,
+                                                    99,
+                                                    111,
+                                                    109,
+                                                    34
+                                                ],
+                                                "new_value": [
+                                                    34,
+                                                    110,
+                                                    101,
+                                                    119,
+                                                    64,
+                                                    101,
+                                                    120,
+                                                    97,
+                                                    109,
+                                                    112,
+                                                    108,
+                                                    101,
+                                                    46,
+                                                    99,
+                                                    111,
+                                                    109,
+                                                    34
+                                                ]
                                             }
                                         ]
                                     },
-                                    "metadata": {
-                                        "reason": "operator override"
-                                    },
+                                    "metadata": [
+                                        123,
+                                        34,
+                                        114,
+                                        101,
+                                        97,
+                                        115,
+                                        111,
+                                        110,
+                                        34,
+                                        58,
+                                        34,
+                                        111,
+                                        112,
+                                        101,
+                                        114,
+                                        97,
+                                        116,
+                                        111,
+                                        114,
+                                        32,
+                                        111,
+                                        118,
+                                        101,
+                                        114,
+                                        114,
+                                        105,
+                                        100,
+                                        101,
+                                        34,
+                                        125
+                                    ],
                                     "request": {
                                         "id": "rq_01jm4r6700f8nwq3v5hx2d9ktp",
                                         "object": "request_log",
-                                        "method": "",
-                                        "host": "",
-                                        "path": "",
-                                        "normalized_route": "",
-                                        "query_params": null,
                                         "status_code": 0,
                                         "latency_us": 0,
                                         "api_version": null,
@@ -6042,13 +6557,9 @@ export const apiTags: TagData[] = [
                                         "referrer": null,
                                         "error_code": null,
                                         "error_message": null,
-                                        "occurred_at": "0001-01-01T00:00:00Z",
-                                        "created_at": "0001-01-01T00:00:00Z",
                                         "account": null,
                                         "actor": null,
-                                        "idempotency_key": null,
-                                        "request_body": null,
-                                        "response_body": null
+                                        "idempotency_key": null
                                     },
                                     "idempotency_key": null,
                                     "source_ip": "198.51.100.8",
@@ -7075,22 +7586,82 @@ export const apiTags: TagData[] = [
                                 "data": [
                                     {
                                         "field": "email",
-                                        "old_value": "old@example.com",
-                                        "new_value": "new@example.com"
+                                        "old_value": [
+                                            34,
+                                            111,
+                                            108,
+                                            100,
+                                            64,
+                                            101,
+                                            120,
+                                            97,
+                                            109,
+                                            112,
+                                            108,
+                                            101,
+                                            46,
+                                            99,
+                                            111,
+                                            109,
+                                            34
+                                        ],
+                                        "new_value": [
+                                            34,
+                                            110,
+                                            101,
+                                            119,
+                                            64,
+                                            101,
+                                            120,
+                                            97,
+                                            109,
+                                            112,
+                                            108,
+                                            101,
+                                            46,
+                                            99,
+                                            111,
+                                            109,
+                                            34
+                                        ]
                                     }
                                 ]
                             },
-                            "metadata": {
-                                "reason": "operator override"
-                            },
+                            "metadata": [
+                                123,
+                                34,
+                                114,
+                                101,
+                                97,
+                                115,
+                                111,
+                                110,
+                                34,
+                                58,
+                                34,
+                                111,
+                                112,
+                                101,
+                                114,
+                                97,
+                                116,
+                                111,
+                                114,
+                                32,
+                                111,
+                                118,
+                                101,
+                                114,
+                                114,
+                                105,
+                                100,
+                                101,
+                                34,
+                                125
+                            ],
                             "request": {
                                 "id": "rq_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "request_log",
-                                "method": "",
-                                "host": "",
-                                "path": "",
-                                "normalized_route": "",
-                                "query_params": null,
                                 "status_code": 0,
                                 "latency_us": 0,
                                 "api_version": null,
@@ -7099,13 +7670,9 @@ export const apiTags: TagData[] = [
                                 "referrer": null,
                                 "error_code": null,
                                 "error_message": null,
-                                "occurred_at": "0001-01-01T00:00:00Z",
-                                "created_at": "0001-01-01T00:00:00Z",
                                 "account": null,
                                 "actor": null,
-                                "idempotency_key": null,
-                                "request_body": null,
-                                "response_body": null
+                                "idempotency_key": null
                             },
                             "idempotency_key": null,
                             "source_ip": "198.51.100.8",
@@ -7854,7 +8421,11 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Kilogram",
-                        "abbreviation": "kg"
+                        "abbreviation": "kg",
+                        "ratio_numerator": null,
+                        "ratio_denominator": null,
+                        "offset_numerator": null,
+                        "offset_denominator": null
                     }
                 },
                 "responses": [
@@ -9467,7 +10038,7 @@ export const apiTags: TagData[] = [
                             "name": "associated_units",
                             "type": "array",
                             "description": "Associated units to create with the group.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "object",
@@ -9513,6 +10084,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Weight Units",
+                        "notes": null,
                         "type": "mass",
                         "base_unit_id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
                         "associated_units": [
@@ -10156,7 +10728,9 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Weight Units (Updated)",
-                        "base_unit_id": "un_01jm4r6700f8nwq3v5hx2d9ktp"
+                        "notes": null,
+                        "base_unit_id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
+                        "associated_units": null
                     }
                 },
                 "responses": [
@@ -12205,7 +12779,35 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "format": "date-time"
                             }
-                        ]
+                        ],
+                        "example": {
+                            "id": "ugu_01jm4r6700f8nwq3v5hx2d9ktp",
+                            "object": "unit_group_unit",
+                            "unit": {
+                                "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "object": "unit",
+                                "name": "Kilogram",
+                                "abbreviation": "kg",
+                                "type": "mass",
+                                "ratio_numerator": "1000",
+                                "ratio_denominator": "1",
+                                "offset_numerator": "0",
+                                "offset_denominator": "1",
+                                "is_base_unit": false,
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "discount_percentage": 1,
+                            "discount_fixed": 0,
+                            "customer_portal_visibility": "visible",
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
                     }
                 ]
             },
@@ -12289,7 +12891,9 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "unit_id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
-                        "discount_percentage": 0.9
+                        "discount_percentage": 0.9,
+                        "discount_fixed": null,
+                        "customer_portal_visibility": null
                     }
                 },
                 "responses": [
@@ -12496,7 +13100,35 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "format": "date-time"
                             }
-                        ]
+                        ],
+                        "example": {
+                            "id": "ugu_01jm4r6700f8nwq3v5hx2d9ktp",
+                            "object": "unit_group_unit",
+                            "unit": {
+                                "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "object": "unit",
+                                "name": "Kilogram",
+                                "abbreviation": "kg",
+                                "type": "mass",
+                                "ratio_numerator": "1000",
+                                "ratio_denominator": "1",
+                                "offset_numerator": "0",
+                                "offset_denominator": "1",
+                                "is_base_unit": false,
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "discount_percentage": 1,
+                            "discount_fixed": 0,
+                            "customer_portal_visibility": "visible",
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
                     }
                 ]
             },
@@ -12799,7 +13431,46 @@ export const apiTags: TagData[] = [
                                     }
                                 ]
                             }
-                        ]
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": "ugu_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "ugu_01jm4r6700f8nwq3v5hx2d9ktp",
+                                    "object": "unit_group_unit",
+                                    "unit": {
+                                        "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
+                                        "object": "unit",
+                                        "name": "Kilogram",
+                                        "abbreviation": "kg",
+                                        "type": "mass",
+                                        "ratio_numerator": "1000",
+                                        "ratio_denominator": "1",
+                                        "offset_numerator": "0",
+                                        "offset_denominator": "1",
+                                        "is_base_unit": false,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "discount_percentage": 1,
+                                    "discount_fixed": 0,
+                                    "customer_portal_visibility": "visible",
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
                     }
                 ]
             },
@@ -13045,7 +13716,35 @@ export const apiTags: TagData[] = [
                                 "expandable": false,
                                 "format": "date-time"
                             }
-                        ]
+                        ],
+                        "example": {
+                            "id": "ugu_01jm4r6700f8nwq3v5hx2d9ktp",
+                            "object": "unit_group_unit",
+                            "unit": {
+                                "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "object": "unit",
+                                "name": "Kilogram",
+                                "abbreviation": "kg",
+                                "type": "mass",
+                                "ratio_numerator": "1000",
+                                "ratio_denominator": "1",
+                                "offset_numerator": "0",
+                                "offset_denominator": "1",
+                                "is_base_unit": false,
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "discount_percentage": 1,
+                            "discount_fixed": 0,
+                            "customer_portal_visibility": "visible",
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
                     }
                 ]
             },
@@ -13272,7 +13971,10 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Wholesale Customers",
-                        "type": "type_group"
+                        "type": "type_group",
+                        "commission_policy": null,
+                        "freight_policy": null,
+                        "description": null
                     }
                 },
                 "responses": [
@@ -13451,7 +14153,9 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Updated Wholesale Customers",
-                        "description": null
+                        "description": null,
+                        "commission_policy": null,
+                        "freight_policy": null
                     }
                 },
                 "responses": [
@@ -16094,7 +16798,7 @@ export const apiTags: TagData[] = [
                             "name": "free_shipping_service_level_ids",
                             "type": "array",
                             "description": "Service level IDs that qualify for free shipping.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
@@ -16102,7 +16806,8 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Prepaid",
-                        "type": "carrier_rate_freight"
+                        "type": "carrier_rate_freight",
+                        "free_shipping_service_level_ids": []
                     }
                 },
                 "responses": [
@@ -16961,7 +17666,11 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Collect"
+                        "name": "Collect",
+                        "type": null,
+                        "flat_rate": null,
+                        "minimum_order_value": null,
+                        "free_shipping_service_level_ids": null
                     }
                 },
                 "responses": [
@@ -19637,10 +20346,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Headquarters",
-                        "street_line_1": "123 Main St",
-                        "locality": "Springfield",
-                        "state": "IL",
-                        "postal_code": "62701",
+                        "type": null,
                         "country": "US"
                     }
                 },
@@ -19933,7 +20639,16 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Warehouse"
+                        "name": "Warehouse",
+                        "phone": null,
+                        "email": null,
+                        "type": null,
+                        "street_line_1": null,
+                        "street_line_2": null,
+                        "locality": null,
+                        "state": null,
+                        "postal_code": null,
+                        "country": null
                     }
                 },
                 "responses": [
@@ -20883,6 +21598,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "address_line_1": "123 Main St",
+                        "address_line_2": null,
                         "city": "Springfield",
                         "state": "IL",
                         "postal_code": "62701",
@@ -21963,7 +22679,7 @@ export const apiTags: TagData[] = [
                             "name": "preferences",
                             "type": "array",
                             "description": "Notification preferences for the user (external targets only).",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "object",
@@ -21997,7 +22713,6 @@ export const apiTags: TagData[] = [
                         "email": "jdoe@augno.com",
                         "username": "jdoe",
                         "password": "QgS7Z8Hhj3&1",
-                        "role_id": "rl_01gf7a8200er3ar3pkfrb6kk29",
                         "preferences": [
                             {
                                 "notification_type": "order_acknowledgement",
@@ -22405,7 +23120,7 @@ export const apiTags: TagData[] = [
                             "name": "preferences",
                             "type": "array",
                             "description": "Notification preferences to update (external targets only).",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "object",
@@ -22436,8 +23151,8 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "John Doe",
-                        "role_id": "rl_01gf7a8200er3ar3pkfrb6kk29",
-                        "department_id": "dp_01gf7a8200er3ar3pkfrb6kk30"
+                        "email": null,
+                        "username": null
                     }
                 },
                 "responses": [
@@ -24730,7 +25445,26 @@ export const apiTags: TagData[] = [
                                     }
                                 ]
                             }
-                        ]
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": "pp_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "pp_01jm4r6700f8nwq3v5hx2d9ktp",
+                                    "object": "property",
+                                    "name": "Color",
+                                    "attributes": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
                     }
                 ]
             },
@@ -25076,7 +25810,6 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "value": "Red",
-                        "color": "red",
                         "sort_order": 1
                     }
                 },
@@ -25538,7 +26271,9 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "value": "Blue"
+                        "value": "Blue",
+                        "color": null,
+                        "sort_order": null
                     }
                 },
                 "responses": [
@@ -26380,7 +27115,28 @@ export const apiTags: TagData[] = [
                                     }
                                 ]
                             }
-                        ]
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": "at_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "at_01jm4r6700f8nwq3v5hx2d9ktp",
+                                    "object": "attribute",
+                                    "value": "Premium",
+                                    "color": "red",
+                                    "sort_order": 1,
+                                    "property": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
                     }
                 ]
             },
@@ -28324,7 +29080,8 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "FedEx Express"
+                        "name": "FedEx Express",
+                        "customer_portal_visibility": null
                     }
                 },
                 "responses": [
@@ -30048,6 +30805,7 @@ export const apiTags: TagData[] = [
                     "example": {
                         "name": "Ground Shipping",
                         "code": "ground",
+                        "customer_portal_visibility": null,
                         "is_default": false
                     }
                 },
@@ -30362,7 +31120,10 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Express Shipping"
+                        "name": "Express Shipping",
+                        "code": null,
+                        "customer_portal_visibility": null,
+                        "is_default": null
                     }
                 },
                 "responses": [
@@ -30915,7 +31676,43 @@ export const apiTags: TagData[] = [
                                     }
                                 ]
                             }
-                        ]
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": "crop_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "crop_01jm4r6700f8nwq3v5hx2d9ktp",
+                                    "object": "service_level",
+                                    "name": "FedEx Ground",
+                                    "service_level_token": "fedex_ground",
+                                    "customer_portal_visibility": "visible",
+                                    "is_default": false,
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "account",
+                                        "account": {
+                                            "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
                     }
                 ]
             },
@@ -32332,14 +33129,8 @@ export const apiTags: TagData[] = [
                         "name": "US Dollar",
                         "abbreviation": "USD",
                         "type": "currency",
-                        "ratio_numerator": "",
-                        "ratio_denominator": "",
-                        "offset_numerator": "",
-                        "offset_denominator": "",
                         "is_base_unit": false,
-                        "owner": null,
-                        "created_at": "0001-01-01T00:00:00Z",
-                        "updated_at": "0001-01-01T00:00:00Z"
+                        "owner": null
                     },
                     "denominator_unit": {
                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -32347,14 +33138,8 @@ export const apiTags: TagData[] = [
                         "name": "Kilogram",
                         "abbreviation": "kg",
                         "type": "mass",
-                        "ratio_numerator": "",
-                        "ratio_denominator": "",
-                        "offset_numerator": "",
-                        "offset_denominator": "",
                         "is_base_unit": false,
-                        "owner": null,
-                        "created_at": "0001-01-01T00:00:00Z",
-                        "updated_at": "0001-01-01T00:00:00Z"
+                        "owner": null
                     },
                     "display_value": "$25.50 / kg",
                     "created_at": "2026-05-10T00:00:00Z",
@@ -32370,14 +33155,8 @@ export const apiTags: TagData[] = [
                         "name": "US Dollar",
                         "abbreviation": "USD",
                         "type": "currency",
-                        "ratio_numerator": "",
-                        "ratio_denominator": "",
-                        "offset_numerator": "",
-                        "offset_denominator": "",
                         "is_base_unit": false,
-                        "owner": null,
-                        "created_at": "0001-01-01T00:00:00Z",
-                        "updated_at": "0001-01-01T00:00:00Z"
+                        "owner": null
                     },
                     "denominator_unit": {
                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -32385,14 +33164,8 @@ export const apiTags: TagData[] = [
                         "name": "Kilogram",
                         "abbreviation": "kg",
                         "type": "mass",
-                        "ratio_numerator": "",
-                        "ratio_denominator": "",
-                        "offset_numerator": "",
-                        "offset_denominator": "",
                         "is_base_unit": false,
-                        "owner": null,
-                        "created_at": "0001-01-01T00:00:00Z",
-                        "updated_at": "0001-01-01T00:00:00Z"
+                        "owner": null
                     },
                     "display_value": "$25.50 / kg",
                     "created_at": "2026-05-10T00:00:00Z",
@@ -32408,14 +33181,8 @@ export const apiTags: TagData[] = [
                         "name": "US Dollar",
                         "abbreviation": "USD",
                         "type": "currency",
-                        "ratio_numerator": "",
-                        "ratio_denominator": "",
-                        "offset_numerator": "",
-                        "offset_denominator": "",
                         "is_base_unit": false,
-                        "owner": null,
-                        "created_at": "0001-01-01T00:00:00Z",
-                        "updated_at": "0001-01-01T00:00:00Z"
+                        "owner": null
                     },
                     "denominator_unit": {
                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -32423,14 +33190,8 @@ export const apiTags: TagData[] = [
                         "name": "Kilogram",
                         "abbreviation": "kg",
                         "type": "mass",
-                        "ratio_numerator": "",
-                        "ratio_denominator": "",
-                        "offset_numerator": "",
-                        "offset_denominator": "",
                         "is_base_unit": false,
-                        "owner": null,
-                        "created_at": "0001-01-01T00:00:00Z",
-                        "updated_at": "0001-01-01T00:00:00Z"
+                        "owner": null
                     },
                     "display_value": "$25.50 / kg",
                     "created_at": "2026-05-10T00:00:00Z",
@@ -33757,14 +34518,8 @@ export const apiTags: TagData[] = [
                                             "name": "US Dollar",
                                             "abbreviation": "USD",
                                             "type": "currency",
-                                            "ratio_numerator": "",
-                                            "ratio_denominator": "",
-                                            "offset_numerator": "",
-                                            "offset_denominator": "",
                                             "is_base_unit": false,
-                                            "owner": null,
-                                            "created_at": "0001-01-01T00:00:00Z",
-                                            "updated_at": "0001-01-01T00:00:00Z"
+                                            "owner": null
                                         },
                                         "denominator_unit": {
                                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -33772,14 +34527,8 @@ export const apiTags: TagData[] = [
                                             "name": "Kilogram",
                                             "abbreviation": "kg",
                                             "type": "mass",
-                                            "ratio_numerator": "",
-                                            "ratio_denominator": "",
-                                            "offset_numerator": "",
-                                            "offset_denominator": "",
                                             "is_base_unit": false,
-                                            "owner": null,
-                                            "created_at": "0001-01-01T00:00:00Z",
-                                            "updated_at": "0001-01-01T00:00:00Z"
+                                            "owner": null
                                         },
                                         "display_value": "$25.50 / kg",
                                         "created_at": "2026-05-10T00:00:00Z",
@@ -33795,14 +34544,8 @@ export const apiTags: TagData[] = [
                                             "name": "US Dollar",
                                             "abbreviation": "USD",
                                             "type": "currency",
-                                            "ratio_numerator": "",
-                                            "ratio_denominator": "",
-                                            "offset_numerator": "",
-                                            "offset_denominator": "",
                                             "is_base_unit": false,
-                                            "owner": null,
-                                            "created_at": "0001-01-01T00:00:00Z",
-                                            "updated_at": "0001-01-01T00:00:00Z"
+                                            "owner": null
                                         },
                                         "denominator_unit": {
                                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -33810,14 +34553,8 @@ export const apiTags: TagData[] = [
                                             "name": "Kilogram",
                                             "abbreviation": "kg",
                                             "type": "mass",
-                                            "ratio_numerator": "",
-                                            "ratio_denominator": "",
-                                            "offset_numerator": "",
-                                            "offset_denominator": "",
                                             "is_base_unit": false,
-                                            "owner": null,
-                                            "created_at": "0001-01-01T00:00:00Z",
-                                            "updated_at": "0001-01-01T00:00:00Z"
+                                            "owner": null
                                         },
                                         "display_value": "$25.50 / kg",
                                         "created_at": "2026-05-10T00:00:00Z",
@@ -33833,14 +34570,8 @@ export const apiTags: TagData[] = [
                                             "name": "US Dollar",
                                             "abbreviation": "USD",
                                             "type": "currency",
-                                            "ratio_numerator": "",
-                                            "ratio_denominator": "",
-                                            "offset_numerator": "",
-                                            "offset_denominator": "",
                                             "is_base_unit": false,
-                                            "owner": null,
-                                            "created_at": "0001-01-01T00:00:00Z",
-                                            "updated_at": "0001-01-01T00:00:00Z"
+                                            "owner": null
                                         },
                                         "denominator_unit": {
                                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -33848,14 +34579,8 @@ export const apiTags: TagData[] = [
                                             "name": "Kilogram",
                                             "abbreviation": "kg",
                                             "type": "mass",
-                                            "ratio_numerator": "",
-                                            "ratio_denominator": "",
-                                            "offset_numerator": "",
-                                            "offset_denominator": "",
                                             "is_base_unit": false,
-                                            "owner": null,
-                                            "created_at": "0001-01-01T00:00:00Z",
-                                            "updated_at": "0001-01-01T00:00:00Z"
+                                            "owner": null
                                         },
                                         "display_value": "$25.50 / kg",
                                         "created_at": "2026-05-10T00:00:00Z",
@@ -35029,14 +35754,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -35044,14 +35763,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -35067,14 +35780,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -35082,14 +35789,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -35105,14 +35806,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -35120,14 +35815,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -36306,14 +36995,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -36321,14 +37004,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -36344,14 +37021,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -36359,14 +37030,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -36382,14 +37047,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -36397,14 +37056,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -37583,14 +38236,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -37598,14 +38245,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -37621,14 +38262,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -37636,14 +38271,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -37659,14 +38288,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -37674,14 +38297,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -37998,14 +38615,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "reserved": {
@@ -38019,14 +38630,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "available_to_promise": {
@@ -38040,14 +38645,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "short": {
@@ -38061,14 +38660,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             }
                         }
@@ -39221,14 +39814,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -39236,14 +39823,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -39259,14 +39840,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -39274,14 +39849,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -39297,14 +39866,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -39312,14 +39875,8 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -40912,7 +41469,8 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Electronic Components"
+                        "name": "Electronic Components",
+                        "notes": null
                     }
                 },
                 "responses": [
@@ -44372,14 +44930,8 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -44387,14 +44939,8 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -44410,14 +44956,8 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -44425,14 +44965,8 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -44448,14 +44982,8 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -44463,14 +44991,8 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -44511,14 +45033,8 @@ export const apiTags: TagData[] = [
                         "name": "US Dollar",
                         "abbreviation": "$",
                         "type": "currency",
-                        "ratio_numerator": "",
-                        "ratio_denominator": "",
-                        "offset_numerator": "",
-                        "offset_denominator": "",
                         "is_base_unit": false,
-                        "owner": null,
-                        "created_at": "0001-01-01T00:00:00Z",
-                        "updated_at": "0001-01-01T00:00:00Z"
+                        "owner": null
                     }
                 },
                 "lead_time": {
@@ -44532,14 +45048,8 @@ export const apiTags: TagData[] = [
                         "name": "US Dollar",
                         "abbreviation": "$",
                         "type": "currency",
-                        "ratio_numerator": "",
-                        "ratio_denominator": "",
-                        "offset_numerator": "",
-                        "offset_denominator": "",
                         "is_base_unit": false,
-                        "owner": null,
-                        "created_at": "0001-01-01T00:00:00Z",
-                        "updated_at": "0001-01-01T00:00:00Z"
+                        "owner": null
                     }
                 },
                 "created_at": "2026-05-10T00:00:00Z",
@@ -44774,7 +45284,7 @@ export const apiTags: TagData[] = [
                             "name": "attribute_ids",
                             "type": "array",
                             "description": "Attribute IDs to connect to the material at creation time.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
@@ -45778,14 +46288,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -45793,14 +46297,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -45816,14 +46314,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -45831,14 +46323,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -45854,14 +46340,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -45869,14 +46349,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -45917,14 +46391,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "lead_time": {
@@ -45938,14 +46406,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "created_at": "2026-05-10T00:00:00Z",
@@ -46108,7 +46570,11 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "sku": "MAT-001-UPDATED"
+                        "sku": "MAT-001-UPDATED",
+                        "description": null,
+                        "notes": null,
+                        "order_point": null,
+                        "lead_time": null
                     }
                 },
                 "responses": [
@@ -47104,14 +47570,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -47119,14 +47579,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -47142,14 +47596,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -47157,14 +47605,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -47180,14 +47622,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -47195,14 +47631,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -47243,14 +47673,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "lead_time": {
@@ -47264,14 +47688,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "created_at": "2026-05-10T00:00:00Z",
@@ -48428,14 +48846,8 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -48443,14 +48855,8 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -48466,14 +48872,8 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -48481,14 +48881,8 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -48504,14 +48898,8 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -48519,14 +48907,8 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -48567,14 +48949,8 @@ export const apiTags: TagData[] = [
                                             "name": "US Dollar",
                                             "abbreviation": "$",
                                             "type": "currency",
-                                            "ratio_numerator": "",
-                                            "ratio_denominator": "",
-                                            "offset_numerator": "",
-                                            "offset_denominator": "",
                                             "is_base_unit": false,
-                                            "owner": null,
-                                            "created_at": "0001-01-01T00:00:00Z",
-                                            "updated_at": "0001-01-01T00:00:00Z"
+                                            "owner": null
                                         }
                                     },
                                     "lead_time": {
@@ -48588,14 +48964,8 @@ export const apiTags: TagData[] = [
                                             "name": "US Dollar",
                                             "abbreviation": "$",
                                             "type": "currency",
-                                            "ratio_numerator": "",
-                                            "ratio_denominator": "",
-                                            "offset_numerator": "",
-                                            "offset_denominator": "",
                                             "is_base_unit": false,
-                                            "owner": null,
-                                            "created_at": "0001-01-01T00:00:00Z",
-                                            "updated_at": "0001-01-01T00:00:00Z"
+                                            "owner": null
                                         }
                                     },
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -49637,14 +50007,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -49652,14 +50016,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -49675,14 +50033,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -49690,14 +50042,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -49713,14 +50059,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -49728,14 +50068,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -49776,14 +50110,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "lead_time": {
@@ -49797,14 +50125,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "created_at": "2026-05-10T00:00:00Z",
@@ -54335,14 +54657,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -54350,14 +54666,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -54373,14 +54683,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -54388,14 +54692,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -54411,14 +54709,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -54426,14 +54718,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -54474,14 +54760,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "lead_time": {
@@ -54495,14 +54775,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "created_at": "2026-05-10T00:00:00Z",
@@ -55403,14 +55677,8 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -55418,14 +55686,8 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -55441,14 +55703,8 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -55456,14 +55712,8 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -55479,14 +55729,8 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -55494,14 +55738,8 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -55709,7 +55947,7 @@ export const apiTags: TagData[] = [
                             "name": "attribute_ids",
                             "type": "array",
                             "description": "Attribute IDs to connect to the part at creation time.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
@@ -55717,7 +55955,6 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "sku": "BRG-6204-2RS",
-                        "description": "Deep groove ball bearing, 20x47x14mm",
                         "category_id": "ic_01jm4r6700f8nwq3v5hx2d9ktp"
                     }
                 },
@@ -56388,14 +56625,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -56403,14 +56634,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -56426,14 +56651,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -56441,14 +56660,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -56464,14 +56677,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -56479,14 +56686,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -56588,7 +56789,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "sku": "BRG-6204-2RS",
-                        "description": "Deep groove ball bearing, 20x47x14mm"
+                        "notes": null
                     }
                 },
                 "responses": [
@@ -57258,14 +57459,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -57273,14 +57468,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -57296,14 +57485,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -57311,14 +57494,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -57334,14 +57511,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -57349,14 +57520,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -58432,14 +58597,8 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -58447,14 +58606,8 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -58470,14 +58623,8 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -58485,14 +58632,8 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -58508,14 +58649,8 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -58523,14 +58658,8 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -59491,14 +59620,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -59506,14 +59629,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -59529,14 +59646,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -59544,14 +59655,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -59567,14 +59672,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -59582,14 +59681,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -62929,14 +63022,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -62944,14 +63031,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -62967,14 +63048,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -62982,14 +63057,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -63005,14 +63074,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -63020,14 +63083,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -65703,14 +65760,8 @@ export const apiTags: TagData[] = [
                         "name": "US Dollar",
                         "abbreviation": "$",
                         "type": "currency",
-                        "ratio_numerator": "",
-                        "ratio_denominator": "",
-                        "offset_numerator": "",
-                        "offset_denominator": "",
                         "is_base_unit": false,
-                        "owner": null,
-                        "created_at": "0001-01-01T00:00:00Z",
-                        "updated_at": "0001-01-01T00:00:00Z"
+                        "owner": null
                     }
                 },
                 "contact_info": {
@@ -66155,7 +66206,7 @@ export const apiTags: TagData[] = [
                             "name": "customer_price_group_ids",
                             "type": "array",
                             "description": "Price group IDs.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
@@ -66406,25 +66457,33 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Acme Inc.",
+                        "number": null,
                         "note": "Key enterprise account",
+                        "email": null,
+                        "phone": null,
+                        "url": null,
+                        "status": null,
+                        "edi_status": null,
+                        "commission_policy": null,
+                        "freight_policy": null,
                         "default_carrier_id": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
+                        "default_service_level_id": null,
                         "default_payment_term_id": "pytm_01jm4r6700f8nwq3v5hx2d9ktp",
                         "default_shipping_term_id": "shtm_01jm4r6700f8nwq3v5hx2d9ktp",
+                        "default_priority": null,
+                        "default_sales_rep_id": null,
                         "customer_type_group_id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
+                        "carrier_billing_type": null,
+                        "carrier_billing_account": null,
+                        "credit_limit": null,
                         "bill_to_address": {
                             "name": "Acme Inc.",
-                            "street_line_1": "123 Main St",
-                            "locality": "New York",
-                            "state": "NY",
-                            "postal_code": "10001",
+                            "type": null,
                             "country": "US"
                         },
                         "ship_to_address": {
                             "name": "Acme Inc.",
-                            "street_line_1": "123 Main St",
-                            "locality": "New York",
-                            "state": "NY",
-                            "postal_code": "10001",
+                            "type": null,
                             "country": "US"
                         }
                     }
@@ -68311,14 +68370,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "contact_info": {
@@ -68850,9 +68903,27 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Acme Corp Updated",
-                        "note": "Updated account notes",
+                        "number": null,
+                        "status": null,
+                        "email": null,
+                        "phone": null,
+                        "url": null,
+                        "edi_status": null,
+                        "commission_policy": null,
                         "freight_policy": "billed_freight",
-                        "default_carrier_id": "cr_01jm4r6700f8nwq3v5hx2d9ktp"
+                        "default_carrier_id": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
+                        "default_service_level_id": null,
+                        "default_payment_term_id": null,
+                        "default_shipping_term_id": null,
+                        "default_priority": null,
+                        "default_sales_rep_id": null,
+                        "bill_to_address_id": null,
+                        "ship_to_address_id": null,
+                        "customer_price_group_ids": null,
+                        "customer_type_group_id": null,
+                        "carrier_billing_type": null,
+                        "carrier_billing_account": null,
+                        "credit_limit": null
                     }
                 },
                 "responses": [
@@ -70737,14 +70808,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "contact_info": {
@@ -73140,14 +73205,8 @@ export const apiTags: TagData[] = [
                                             "name": "US Dollar",
                                             "abbreviation": "$",
                                             "type": "currency",
-                                            "ratio_numerator": "",
-                                            "ratio_denominator": "",
-                                            "offset_numerator": "",
-                                            "offset_denominator": "",
                                             "is_base_unit": false,
-                                            "owner": null,
-                                            "created_at": "0001-01-01T00:00:00Z",
-                                            "updated_at": "0001-01-01T00:00:00Z"
+                                            "owner": null
                                         }
                                     },
                                     "contact_info": {
@@ -75326,14 +75385,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "contact_info": {
@@ -77559,14 +77612,8 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "ratio_numerator": "",
-                                    "ratio_denominator": "",
-                                    "offset_numerator": "",
-                                    "offset_denominator": "",
                                     "is_base_unit": false,
-                                    "owner": null,
-                                    "created_at": "0001-01-01T00:00:00Z",
-                                    "updated_at": "0001-01-01T00:00:00Z"
+                                    "owner": null
                                 }
                             },
                             "contact_info": {
@@ -78661,7 +78708,10 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Updated Product Line"
+                        "name": "Updated Product Line",
+                        "commission_policy": null,
+                        "freight_policy": null,
+                        "unit_group_id": null
                     }
                 },
                 "responses": [
@@ -81557,14 +81607,8 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -81572,14 +81616,8 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -81595,14 +81633,8 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -81610,14 +81642,8 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -81633,14 +81659,8 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -81648,14 +81668,8 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "ratio_numerator": "",
-                            "ratio_denominator": "",
-                            "offset_numerator": "",
-                            "offset_denominator": "",
                             "is_base_unit": false,
-                            "owner": null,
-                            "created_at": "0001-01-01T00:00:00Z",
-                            "updated_at": "0001-01-01T00:00:00Z"
+                            "owner": null
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -81909,7 +81923,7 @@ export const apiTags: TagData[] = [
                             "name": "attribute_ids",
                             "type": "array",
                             "description": "Attribute IDs to connect to the product at creation time.",
-                            "required": true,
+                            "required": false,
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
@@ -81919,7 +81933,8 @@ export const apiTags: TagData[] = [
                         "sku": "ALM-2024-1001",
                         "type": "sale",
                         "product_line_id": null,
-                        "category_id": "ic_01jm4r6700f8nwq3v5hx2d9ktp"
+                        "category_id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
+                        "portal_visibility": null
                     }
                 },
                 "responses": [
@@ -83594,14 +83609,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -83609,14 +83618,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -83632,14 +83635,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -83647,14 +83644,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -83670,14 +83661,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -83685,14 +83670,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -83852,7 +83831,8 @@ export const apiTags: TagData[] = [
                     "example": {
                         "sku": "SKU-002",
                         "description": null,
-                        "notes": null
+                        "notes": null,
+                        "portal_visibility": null
                     }
                 },
                 "responses": [
@@ -85527,14 +85507,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -85542,14 +85516,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -85565,14 +85533,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -85580,14 +85542,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -85603,14 +85559,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -85618,14 +85568,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -87413,14 +87357,8 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -87428,14 +87366,8 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -87451,14 +87383,8 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -87466,14 +87392,8 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -87489,14 +87409,8 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -87504,14 +87418,8 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "ratio_numerator": "",
-                                                "ratio_denominator": "",
-                                                "offset_numerator": "",
-                                                "offset_denominator": "",
                                                 "is_base_unit": false,
-                                                "owner": null,
-                                                "created_at": "0001-01-01T00:00:00Z",
-                                                "updated_at": "0001-01-01T00:00:00Z"
+                                                "owner": null
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -89267,14 +89175,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -89282,14 +89184,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -89305,14 +89201,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -89320,14 +89210,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -89343,14 +89227,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -89358,14 +89236,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -91119,14 +90991,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -91134,14 +91000,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -91157,14 +91017,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -91172,14 +91026,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -91195,14 +91043,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -91210,14 +91052,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -92978,14 +92814,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -92993,14 +92823,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -93016,14 +92840,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -93031,14 +92849,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -93054,14 +92866,8 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -93069,14 +92875,8 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "ratio_numerator": "",
-                                        "ratio_denominator": "",
-                                        "offset_numerator": "",
-                                        "offset_denominator": "",
                                         "is_base_unit": false,
-                                        "owner": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "owner": null
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -93601,9 +93401,7 @@ export const apiTags: TagData[] = [
                                         "name": "Shelf A1",
                                         "type": "building",
                                         "parent": null,
-                                        "children": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "children": null
                                     }
                                 ]
                             },
@@ -93691,7 +93489,10 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Warehouse B"
+                        "name": "Warehouse B",
+                        "type": null,
+                        "parent_id": null,
+                        "child_ids": null
                     }
                 },
                 "responses": [
@@ -94024,9 +93825,7 @@ export const apiTags: TagData[] = [
                                         "name": "Shelf A1",
                                         "type": "building",
                                         "parent": null,
-                                        "children": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "children": null
                                     }
                                 ]
                             },
@@ -94642,7 +94441,46 @@ export const apiTags: TagData[] = [
                                     }
                                 ]
                             }
-                        ]
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": "lc_01gf7a8200er3ar3pkfrb6kk30",
+                                "previous_page_url": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "lc_01gf7a8200er3ar3pkfrb6kk30",
+                                    "object": "location",
+                                    "name": "Warehouse A",
+                                    "type": "building",
+                                    "parent": null,
+                                    "children": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "lc_01gf7a8200er3ar3pkfrb6kk32",
+                                                "object": "location",
+                                                "name": "Shelf A1",
+                                                "type": "building",
+                                                "parent": null,
+                                                "children": null
+                                            }
+                                        ]
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
                     }
                 ]
             },
@@ -95107,9 +94945,7 @@ export const apiTags: TagData[] = [
                                         "name": "Shelf A1",
                                         "type": "building",
                                         "parent": null,
-                                        "children": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "children": null
                                     }
                                 ]
                             },
@@ -95715,6 +95551,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Packaging Line 1",
+                        "notes": null,
                         "type": "init_batch",
                         "operator_requirement": "none",
                         "department_id": "dp_01gf7a8200er3ar3pkfrb6kk30",
@@ -96266,7 +96103,11 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Station B"
+                        "name": "Station B",
+                        "notes": null,
+                        "label_size": null,
+                        "label_type": null,
+                        "operator_requirement": null
                     }
                 },
                 "responses": [
@@ -97267,7 +97108,32 @@ export const apiTags: TagData[] = [
                                     }
                                 ]
                             }
-                        ]
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": "scst_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "scst_01jm4r6700f8nwq3v5hx2d9ktp",
+                                    "object": "scanning_station",
+                                    "name": "Packaging Line 1",
+                                    "notes": null,
+                                    "type": "init_batch",
+                                    "label_size": null,
+                                    "label_type": null,
+                                    "operator_requirement": "none",
+                                    "department": null,
+                                    "production_steps": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
                     }
                 ]
             },
