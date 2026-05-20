@@ -290,10 +290,6 @@ export const apiTags: TagData[] = [
                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                             "object": "account",
                             "name": "Acme Inc.",
-                            "default_billing_address": null,
-                            "default_shipping_address": null,
-                            "branding": null,
-                            "portal": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -310,8 +306,7 @@ export const apiTags: TagData[] = [
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z",
                 "last_used_at": "2026-05-10T00:23:00Z",
-                "expires_at": "2026-06-10T00:00:00Z",
-                "revoked_at": null
+                "expires_at": "2026-06-10T00:00:00Z"
             }
         },
         "endpoints": [
@@ -371,8 +366,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "role_id": "rl_01gf7a8200er3ar3pkfrb6kk29",
-                        "name": "Production API Key",
-                        "expires_at": null
+                        "name": "Production API Key"
                     }
                 },
                 "responses": [
@@ -598,10 +592,6 @@ export const apiTags: TagData[] = [
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                             "object": "account",
                                             "name": "Acme Inc.",
-                                            "default_billing_address": null,
-                                            "default_shipping_address": null,
-                                            "branding": null,
-                                            "portal": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -618,8 +608,7 @@ export const apiTags: TagData[] = [
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z",
                                 "last_used_at": "2026-05-10T00:23:00Z",
-                                "expires_at": "2026-06-10T00:00:00Z",
-                                "revoked_at": null
+                                "expires_at": "2026-06-10T00:00:00Z"
                             }
                         }
                     }
@@ -947,10 +936,6 @@ export const apiTags: TagData[] = [
                                                 "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                                 "object": "account",
                                                 "name": "Acme Inc.",
-                                                "default_billing_address": null,
-                                                "default_shipping_address": null,
-                                                "branding": null,
-                                                "portal": null,
                                                 "created_at": "2026-05-10T00:00:00Z",
                                                 "updated_at": "2026-05-10T00:23:00Z"
                                             }
@@ -967,8 +952,7 @@ export const apiTags: TagData[] = [
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z",
                                     "last_used_at": "2026-05-10T00:23:00Z",
-                                    "expires_at": "2026-06-10T00:00:00Z",
-                                    "revoked_at": null
+                                    "expires_at": "2026-06-10T00:00:00Z"
                                 }
                             ]
                         }
@@ -1198,10 +1182,6 @@ export const apiTags: TagData[] = [
                                         "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                         "object": "account",
                                         "name": "Acme Inc.",
-                                        "default_billing_address": null,
-                                        "default_shipping_address": null,
-                                        "branding": null,
-                                        "portal": null,
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     }
@@ -1218,8 +1198,7 @@ export const apiTags: TagData[] = [
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z",
                             "last_used_at": "2026-05-10T00:23:00Z",
-                            "expires_at": "2026-06-10T00:00:00Z",
-                            "revoked_at": null
+                            "expires_at": "2026-06-10T00:00:00Z"
                         }
                     }
                 ]
@@ -1526,10 +1505,6 @@ export const apiTags: TagData[] = [
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                             "object": "account",
                                             "name": "Acme Inc.",
-                                            "default_billing_address": null,
-                                            "default_shipping_address": null,
-                                            "branding": null,
-                                            "portal": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -1546,8 +1521,7 @@ export const apiTags: TagData[] = [
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z",
                                 "last_used_at": "2026-05-10T00:23:00Z",
-                                "expires_at": "2026-06-10T00:00:00Z",
-                                "revoked_at": null
+                                "expires_at": "2026-06-10T00:00:00Z"
                             }
                         }
                     }
@@ -1710,10 +1684,6 @@ export const apiTags: TagData[] = [
                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                     "object": "account",
                     "name": "Acme Inc.",
-                    "default_billing_address": null,
-                    "default_shipping_address": null,
-                    "branding": null,
-                    "portal": null,
                     "created_at": "2026-05-10T00:00:00Z",
                     "updated_at": "2026-05-10T00:23:00Z"
                 },
@@ -1924,10 +1894,6 @@ export const apiTags: TagData[] = [
                                 "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                 "object": "account",
                                 "name": "Acme Inc.",
-                                "default_billing_address": null,
-                                "default_shipping_address": null,
-                                "branding": null,
-                                "portal": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -2205,10 +2171,6 @@ export const apiTags: TagData[] = [
                                         "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                         "object": "account",
                                         "name": "Acme Inc.",
-                                        "default_billing_address": null,
-                                        "default_shipping_address": null,
-                                        "branding": null,
-                                        "portal": null,
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
@@ -2401,10 +2363,6 @@ export const apiTags: TagData[] = [
                                 "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                 "object": "account",
                                 "name": "Acme Inc.",
-                                "default_billing_address": null,
-                                "default_shipping_address": null,
-                                "branding": null,
-                                "portal": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -2885,19 +2843,12 @@ export const apiTags: TagData[] = [
                 "api_version": "2026-01-01",
                 "client_ip": "198.51.100.7",
                 "user_agent": "Mozilla/5.0",
-                "referrer": null,
-                "error_code": null,
-                "error_message": null,
                 "occurred_at": "2026-05-10T00:00:00Z",
                 "created_at": "2026-05-10T00:00:00Z",
                 "account": {
                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                     "object": "account",
                     "name": "Acme Inc.",
-                    "default_billing_address": null,
-                    "default_shipping_address": null,
-                    "branding": null,
-                    "portal": null,
                     "created_at": "2026-05-10T00:00:00Z",
                     "updated_at": "2026-05-10T00:23:00Z"
                 },
@@ -2919,10 +2870,6 @@ export const apiTags: TagData[] = [
                                 "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                 "object": "account",
                                 "name": "Acme Inc.",
-                                "default_billing_address": null,
-                                "default_shipping_address": null,
-                                "branding": null,
-                                "portal": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             }
@@ -2937,7 +2884,6 @@ export const apiTags: TagData[] = [
                         "updated_at": "2026-05-10T00:23:00Z"
                     }
                 },
-                "idempotency_key": null,
                 "response_body": [
                     123,
                     34,
@@ -3762,19 +3708,12 @@ export const apiTags: TagData[] = [
                                     "api_version": "2026-01-01",
                                     "client_ip": "198.51.100.7",
                                     "user_agent": "Mozilla/5.0",
-                                    "referrer": null,
-                                    "error_code": null,
-                                    "error_message": null,
                                     "occurred_at": "2026-05-10T00:00:00Z",
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "account": {
                                         "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                         "object": "account",
                                         "name": "Acme Inc.",
-                                        "default_billing_address": null,
-                                        "default_shipping_address": null,
-                                        "branding": null,
-                                        "portal": null,
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
@@ -3796,10 +3735,6 @@ export const apiTags: TagData[] = [
                                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                                     "object": "account",
                                                     "name": "Acme Inc.",
-                                                    "default_billing_address": null,
-                                                    "default_shipping_address": null,
-                                                    "branding": null,
-                                                    "portal": null,
                                                     "created_at": "2026-05-10T00:00:00Z",
                                                     "updated_at": "2026-05-10T00:23:00Z"
                                                 }
@@ -3814,7 +3749,6 @@ export const apiTags: TagData[] = [
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
-                                    "idempotency_key": null,
                                     "response_body": [
                                         123,
                                         34,
@@ -4425,19 +4359,12 @@ export const apiTags: TagData[] = [
                             "api_version": "2026-01-01",
                             "client_ip": "198.51.100.7",
                             "user_agent": "Mozilla/5.0",
-                            "referrer": null,
-                            "error_code": null,
-                            "error_message": null,
                             "occurred_at": "2026-05-10T00:00:00Z",
                             "created_at": "2026-05-10T00:00:00Z",
                             "account": {
                                 "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                 "object": "account",
                                 "name": "Acme Inc.",
-                                "default_billing_address": null,
-                                "default_shipping_address": null,
-                                "branding": null,
-                                "portal": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -4459,10 +4386,6 @@ export const apiTags: TagData[] = [
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                             "object": "account",
                                             "name": "Acme Inc.",
-                                            "default_billing_address": null,
-                                            "default_shipping_address": null,
-                                            "branding": null,
-                                            "portal": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -4477,7 +4400,6 @@ export const apiTags: TagData[] = [
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
                             },
-                            "idempotency_key": null,
                             "response_body": [
                                 123,
                                 34,
@@ -5291,10 +5213,6 @@ export const apiTags: TagData[] = [
                                 "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                 "object": "account",
                                 "name": "Acme Inc.",
-                                "default_billing_address": null,
-                                "default_shipping_address": null,
-                                "branding": null,
-                                "portal": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             }
@@ -5312,8 +5230,6 @@ export const apiTags: TagData[] = [
                 "changes": {
                     "object": "list",
                     "page_info": {
-                        "next_page_url": null,
-                        "previous_page_url": null,
                         "has_next_page": false,
                         "has_prev_page": false
                     },
@@ -5397,18 +5313,8 @@ export const apiTags: TagData[] = [
                     "id": "rq_01jm4r6700f8nwq3v5hx2d9ktp",
                     "object": "request_log",
                     "status_code": 0,
-                    "latency_us": 0,
-                    "api_version": null,
-                    "client_ip": null,
-                    "user_agent": null,
-                    "referrer": null,
-                    "error_code": null,
-                    "error_message": null,
-                    "account": null,
-                    "actor": null,
-                    "idempotency_key": null
+                    "latency_us": 0
                 },
-                "idempotency_key": null,
                 "source_ip": "198.51.100.8",
                 "occurred_at": "2026-05-10T00:00:00Z",
                 "created_at": "2026-05-10T00:00:00Z"
@@ -6445,10 +6351,6 @@ export const apiTags: TagData[] = [
                                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                                     "object": "account",
                                                     "name": "Acme Inc.",
-                                                    "default_billing_address": null,
-                                                    "default_shipping_address": null,
-                                                    "branding": null,
-                                                    "portal": null,
                                                     "created_at": "2026-05-10T00:00:00Z",
                                                     "updated_at": "2026-05-10T00:23:00Z"
                                                 }
@@ -6466,8 +6368,6 @@ export const apiTags: TagData[] = [
                                     "changes": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_page_url": null,
-                                            "previous_page_url": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -6551,18 +6451,8 @@ export const apiTags: TagData[] = [
                                         "id": "rq_01jm4r6700f8nwq3v5hx2d9ktp",
                                         "object": "request_log",
                                         "status_code": 0,
-                                        "latency_us": 0,
-                                        "api_version": null,
-                                        "client_ip": null,
-                                        "user_agent": null,
-                                        "referrer": null,
-                                        "error_code": null,
-                                        "error_message": null,
-                                        "account": null,
-                                        "actor": null,
-                                        "idempotency_key": null
+                                        "latency_us": 0
                                     },
-                                    "idempotency_key": null,
                                     "source_ip": "198.51.100.8",
                                     "occurred_at": "2026-05-10T00:00:00Z",
                                     "created_at": "2026-05-10T00:00:00Z"
@@ -7558,10 +7448,6 @@ export const apiTags: TagData[] = [
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                             "object": "account",
                                             "name": "Acme Inc.",
-                                            "default_billing_address": null,
-                                            "default_shipping_address": null,
-                                            "branding": null,
-                                            "portal": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -7579,8 +7465,6 @@ export const apiTags: TagData[] = [
                             "changes": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -7664,18 +7548,8 @@ export const apiTags: TagData[] = [
                                 "id": "rq_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "request_log",
                                 "status_code": 0,
-                                "latency_us": 0,
-                                "api_version": null,
-                                "client_ip": null,
-                                "user_agent": null,
-                                "referrer": null,
-                                "error_code": null,
-                                "error_message": null,
-                                "account": null,
-                                "actor": null,
-                                "idempotency_key": null
+                                "latency_us": 0
                             },
-                            "idempotency_key": null,
                             "source_ip": "198.51.100.8",
                             "occurred_at": "2026-05-10T00:00:00Z",
                             "created_at": "2026-05-10T00:00:00Z"
@@ -7948,8 +7822,7 @@ export const apiTags: TagData[] = [
                 "is_base_unit": false,
                 "owner": {
                     "object": "owner",
-                    "type": "system",
-                    "account": null
+                    "type": "system"
                 },
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
@@ -8323,8 +8196,7 @@ export const apiTags: TagData[] = [
                             "is_base_unit": false,
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -8422,11 +8294,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Kilogram",
-                        "abbreviation": "kg",
-                        "ratio_numerator": null,
-                        "ratio_denominator": null,
-                        "offset_numerator": null,
-                        "offset_denominator": null
+                        "abbreviation": "kg"
                     }
                 },
                 "responses": [
@@ -8687,8 +8555,7 @@ export const apiTags: TagData[] = [
                             "is_base_unit": false,
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -9097,8 +8964,7 @@ export const apiTags: TagData[] = [
                                     "is_base_unit": false,
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -9398,8 +9264,7 @@ export const apiTags: TagData[] = [
                             "is_base_unit": false,
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -9931,7 +9796,6 @@ export const apiTags: TagData[] = [
                 "id": "ug_01jm4r6700f8nwq3v5hx2d9ktp",
                 "object": "unit_group",
                 "name": "Weight",
-                "notes": null,
                 "type": "mass",
                 "base_unit": {
                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -9946,17 +9810,14 @@ export const apiTags: TagData[] = [
                     "is_base_unit": false,
                     "owner": {
                         "object": "owner",
-                        "type": "system",
-                        "account": null
+                        "type": "system"
                     },
                     "created_at": "2026-05-10T00:00:00Z",
                     "updated_at": "2026-05-10T00:23:00Z"
                 },
-                "associated_units": null,
                 "owner": {
                     "object": "owner",
-                    "type": "system",
-                    "account": null
+                    "type": "system"
                 },
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
@@ -10085,7 +9946,6 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Weight Units",
-                        "notes": null,
                         "type": "mass",
                         "base_unit_id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
                         "associated_units": [
@@ -10585,7 +10445,6 @@ export const apiTags: TagData[] = [
                             "id": "ug_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "unit_group",
                             "name": "Weight",
-                            "notes": null,
                             "type": "mass",
                             "base_unit": {
                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -10600,17 +10459,14 @@ export const apiTags: TagData[] = [
                                 "is_base_unit": false,
                                 "owner": {
                                     "object": "owner",
-                                    "type": "system",
-                                    "account": null
+                                    "type": "system"
                                 },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
-                            "associated_units": null,
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -10730,9 +10586,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Weight Units (Updated)",
-                        "notes": null,
-                        "base_unit_id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
-                        "associated_units": null
+                        "base_unit_id": "un_01jm4r6700f8nwq3v5hx2d9ktp"
                     }
                 },
                 "responses": [
@@ -11222,7 +11076,6 @@ export const apiTags: TagData[] = [
                             "id": "ug_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "unit_group",
                             "name": "Weight",
-                            "notes": null,
                             "type": "mass",
                             "base_unit": {
                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -11237,17 +11090,14 @@ export const apiTags: TagData[] = [
                                 "is_base_unit": false,
                                 "owner": {
                                     "object": "owner",
-                                    "type": "system",
-                                    "account": null
+                                    "type": "system"
                                 },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
-                            "associated_units": null,
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -11880,7 +11730,6 @@ export const apiTags: TagData[] = [
                                     "id": "ug_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "unit_group",
                                     "name": "Weight",
-                                    "notes": null,
                                     "type": "mass",
                                     "base_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -11895,17 +11744,14 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false,
                                         "owner": {
                                             "object": "owner",
-                                            "type": "system",
-                                            "account": null
+                                            "type": "system"
                                         },
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
-                                    "associated_units": null,
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -12436,7 +12282,6 @@ export const apiTags: TagData[] = [
                             "id": "ug_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "unit_group",
                             "name": "Weight",
-                            "notes": null,
                             "type": "mass",
                             "base_unit": {
                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -12451,17 +12296,14 @@ export const apiTags: TagData[] = [
                                 "is_base_unit": false,
                                 "owner": {
                                     "object": "owner",
-                                    "type": "system",
-                                    "account": null
+                                    "type": "system"
                                 },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
-                            "associated_units": null,
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -12798,8 +12640,7 @@ export const apiTags: TagData[] = [
                                 "is_base_unit": false,
                                 "owner": {
                                     "object": "owner",
-                                    "type": "system",
-                                    "account": null
+                                    "type": "system"
                                 },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
@@ -12893,9 +12734,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "unit_id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
-                        "discount_percentage": 0.9,
-                        "discount_fixed": null,
-                        "customer_portal_visibility": null
+                        "discount_percentage": 0.9
                     }
                 },
                 "responses": [
@@ -13119,8 +12958,7 @@ export const apiTags: TagData[] = [
                                 "is_base_unit": false,
                                 "owner": {
                                     "object": "owner",
-                                    "type": "system",
-                                    "account": null
+                                    "type": "system"
                                 },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
@@ -13459,8 +13297,7 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false,
                                         "owner": {
                                             "object": "owner",
-                                            "type": "system",
-                                            "account": null
+                                            "type": "system"
                                         },
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
@@ -13735,8 +13572,7 @@ export const apiTags: TagData[] = [
                                 "is_base_unit": false,
                                 "owner": {
                                     "object": "owner",
-                                    "type": "system",
-                                    "account": null
+                                    "type": "system"
                                 },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
@@ -13893,7 +13729,6 @@ export const apiTags: TagData[] = [
                 "id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
                 "object": "account_group",
                 "name": "Wholesale Customers",
-                "description": null,
                 "commission_policy": "commission_applied",
                 "freight_policy": "billed_freight",
                 "type": "type_group",
@@ -13973,10 +13808,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Wholesale Customers",
-                        "type": "type_group",
-                        "commission_policy": null,
-                        "freight_policy": null,
-                        "description": null
+                        "type": "type_group"
                     }
                 },
                 "responses": [
@@ -14078,7 +13910,6 @@ export const apiTags: TagData[] = [
                             "id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "account_group",
                             "name": "Wholesale Customers",
-                            "description": null,
                             "commission_policy": "commission_applied",
                             "freight_policy": "billed_freight",
                             "type": "type_group",
@@ -14155,10 +13986,7 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Updated Wholesale Customers",
-                        "description": null,
-                        "commission_policy": null,
-                        "freight_policy": null
+                        "name": "Updated Wholesale Customers"
                     }
                 },
                 "responses": [
@@ -14260,7 +14088,6 @@ export const apiTags: TagData[] = [
                             "id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "account_group",
                             "name": "Wholesale Customers",
-                            "description": null,
                             "commission_policy": "commission_applied",
                             "freight_policy": "billed_freight",
                             "type": "type_group",
@@ -14488,7 +14315,6 @@ export const apiTags: TagData[] = [
                                     "id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "account_group",
                                     "name": "Wholesale Customers",
-                                    "description": null,
                                     "commission_policy": "commission_applied",
                                     "freight_policy": "billed_freight",
                                     "type": "type_group",
@@ -14620,7 +14446,6 @@ export const apiTags: TagData[] = [
                             "id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "account_group",
                             "name": "Wholesale Customers",
-                            "description": null,
                             "commission_policy": "commission_applied",
                             "freight_policy": "billed_freight",
                             "type": "type_group",
@@ -14861,8 +14686,7 @@ export const apiTags: TagData[] = [
                 "status": "active",
                 "owner": {
                     "object": "owner",
-                    "type": "system",
-                    "account": null
+                    "type": "system"
                 },
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
@@ -15104,8 +14928,7 @@ export const apiTags: TagData[] = [
                             "status": "active",
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -15355,8 +15178,7 @@ export const apiTags: TagData[] = [
                             "status": "active",
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -15677,8 +15499,7 @@ export const apiTags: TagData[] = [
                                     "status": "active",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -15914,8 +15735,7 @@ export const apiTags: TagData[] = [
                             "status": "active",
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -16671,16 +16491,11 @@ export const apiTags: TagData[] = [
                 "type": "carrier_rate_freight",
                 "owner": {
                     "object": "owner",
-                    "type": "system",
-                    "account": null
+                    "type": "system"
                 },
-                "flat_rate": null,
-                "minimum_order_value": null,
                 "free_shipping_service_levels": {
                     "object": "list",
                     "page_info": {
-                        "next_page_url": null,
-                        "previous_page_url": null,
                         "has_next_page": false,
                         "has_prev_page": false
                     },
@@ -17524,16 +17339,11 @@ export const apiTags: TagData[] = [
                             "type": "carrier_rate_freight",
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
-                            "flat_rate": null,
-                            "minimum_order_value": null,
                             "free_shipping_service_levels": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -17672,11 +17482,7 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Collect",
-                        "type": null,
-                        "flat_rate": null,
-                        "minimum_order_value": null,
-                        "free_shipping_service_level_ids": null
+                        "name": "Collect"
                     }
                 },
                 "responses": [
@@ -18390,16 +18196,11 @@ export const apiTags: TagData[] = [
                             "type": "carrier_rate_freight",
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
-                            "flat_rate": null,
-                            "minimum_order_value": null,
                             "free_shipping_service_levels": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -19244,16 +19045,11 @@ export const apiTags: TagData[] = [
                                     "type": "carrier_rate_freight",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "flat_rate": null,
-                                    "minimum_order_value": null,
                                     "free_shipping_service_levels": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_page_url": null,
-                                            "previous_page_url": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -20013,16 +19809,11 @@ export const apiTags: TagData[] = [
                             "type": "carrier_rate_freight",
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
-                            "flat_rate": null,
-                            "minimum_order_value": null,
                             "free_shipping_service_levels": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -20231,14 +20022,11 @@ export const apiTags: TagData[] = [
                 "id": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
                 "object": "address",
                 "name": "Headquarters",
-                "phone": null,
-                "email": null,
                 "type": "standard",
                 "geolocation": {
                     "id": "gl_01jm4r6700f8nwq3v5hx2d9ktp",
                     "object": "geolocation",
                     "street_line_1": "4200 Industrial Pkwy",
-                    "street_line_2": null,
                     "locality": "Columbus",
                     "state": "OH",
                     "postal_code": "43204",
@@ -20352,7 +20140,6 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Headquarters",
-                        "type": null,
                         "country": "US"
                     }
                 },
@@ -20516,14 +20303,11 @@ export const apiTags: TagData[] = [
                             "id": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "address",
                             "name": "Headquarters",
-                            "phone": null,
-                            "email": null,
                             "type": "standard",
                             "geolocation": {
                                 "id": "gl_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "geolocation",
                                 "street_line_1": "4200 Industrial Pkwy",
-                                "street_line_2": null,
                                 "locality": "Columbus",
                                 "state": "OH",
                                 "postal_code": "43204",
@@ -20648,16 +20432,7 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Warehouse",
-                        "phone": null,
-                        "email": null,
-                        "type": null,
-                        "street_line_1": null,
-                        "street_line_2": null,
-                        "locality": null,
-                        "state": null,
-                        "postal_code": null,
-                        "country": null
+                        "name": "Warehouse"
                     }
                 },
                 "responses": [
@@ -20820,14 +20595,11 @@ export const apiTags: TagData[] = [
                             "id": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "address",
                             "name": "Headquarters",
-                            "phone": null,
-                            "email": null,
                             "type": "standard",
                             "geolocation": {
                                 "id": "gl_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "geolocation",
                                 "street_line_1": "4200 Industrial Pkwy",
-                                "street_line_2": null,
                                 "locality": "Columbus",
                                 "state": "OH",
                                 "postal_code": "43204",
@@ -21118,14 +20890,11 @@ export const apiTags: TagData[] = [
                                     "id": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "address",
                                     "name": "Headquarters",
-                                    "phone": null,
-                                    "email": null,
                                     "type": "standard",
                                     "geolocation": {
                                         "id": "gl_01jm4r6700f8nwq3v5hx2d9ktp",
                                         "object": "geolocation",
                                         "street_line_1": "4200 Industrial Pkwy",
-                                        "street_line_2": null,
                                         "locality": "Columbus",
                                         "state": "OH",
                                         "postal_code": "43204",
@@ -21320,14 +21089,11 @@ export const apiTags: TagData[] = [
                             "id": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "address",
                             "name": "Headquarters",
-                            "phone": null,
-                            "email": null,
                             "type": "standard",
                             "geolocation": {
                                 "id": "gl_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "geolocation",
                                 "street_line_1": "4200 Industrial Pkwy",
-                                "street_line_2": null,
                                 "locality": "Columbus",
                                 "state": "OH",
                                 "postal_code": "43204",
@@ -21607,7 +21373,6 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "address_line_1": "123 Main St",
-                        "address_line_2": null,
                         "city": "Springfield",
                         "state": "IL",
                         "postal_code": "62701",
@@ -21744,7 +21509,6 @@ export const apiTags: TagData[] = [
                             "components": {
                                 "object": "address_components",
                                 "address_line_1": "123 Main St",
-                                "address_line_2": null,
                                 "city": "Springfield",
                                 "state": "IL",
                                 "postal_code": "62701",
@@ -21877,8 +21641,7 @@ export const apiTags: TagData[] = [
                 "name": "Normal",
                 "owner": {
                     "object": "owner",
-                    "type": "system",
-                    "account": null
+                    "type": "system"
                 },
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
@@ -22117,8 +21880,7 @@ export const apiTags: TagData[] = [
                                     "name": "Normal",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -22273,8 +22035,7 @@ export const apiTags: TagData[] = [
                             "name": "Normal",
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -22569,8 +22330,6 @@ export const apiTags: TagData[] = [
                 "object": "account_user",
                 "name": "John Doe",
                 "email": "john@augno.com",
-                "username": null,
-                "image_url": null,
                 "status": "active",
                 "role": {
                     "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
@@ -22584,10 +22343,6 @@ export const apiTags: TagData[] = [
                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                             "object": "account",
                             "name": "Acme Inc.",
-                            "default_billing_address": null,
-                            "default_shipping_address": null,
-                            "branding": null,
-                            "portal": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -22601,8 +22356,6 @@ export const apiTags: TagData[] = [
                     "created_at": "2026-05-10T00:00:00Z",
                     "updated_at": "2026-05-10T00:23:00Z"
                 },
-                "department": null,
-                "last_used_at": null,
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             }
@@ -23010,8 +22763,6 @@ export const apiTags: TagData[] = [
                             "object": "account_user",
                             "name": "John Doe",
                             "email": "john@augno.com",
-                            "username": null,
-                            "image_url": null,
                             "status": "active",
                             "role": {
                                 "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
@@ -23025,10 +22776,6 @@ export const apiTags: TagData[] = [
                                         "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                         "object": "account",
                                         "name": "Acme Inc.",
-                                        "default_billing_address": null,
-                                        "default_shipping_address": null,
-                                        "branding": null,
-                                        "portal": null,
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     }
@@ -23042,8 +22789,6 @@ export const apiTags: TagData[] = [
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
-                            "department": null,
-                            "last_used_at": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -23161,9 +22906,7 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "John Doe",
-                        "email": null,
-                        "username": null
+                        "name": "John Doe"
                     }
                 },
                 "responses": [
@@ -23446,8 +23189,6 @@ export const apiTags: TagData[] = [
                             "object": "account_user",
                             "name": "John Doe",
                             "email": "john@augno.com",
-                            "username": null,
-                            "image_url": null,
                             "status": "active",
                             "role": {
                                 "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
@@ -23461,10 +23202,6 @@ export const apiTags: TagData[] = [
                                         "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                         "object": "account",
                                         "name": "Acme Inc.",
-                                        "default_billing_address": null,
-                                        "default_shipping_address": null,
-                                        "branding": null,
-                                        "portal": null,
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     }
@@ -23478,8 +23215,6 @@ export const apiTags: TagData[] = [
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
-                            "department": null,
-                            "last_used_at": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -23910,8 +23645,6 @@ export const apiTags: TagData[] = [
                                     "object": "account_user",
                                     "name": "John Doe",
                                     "email": "john@augno.com",
-                                    "username": null,
-                                    "image_url": null,
                                     "status": "active",
                                     "role": {
                                         "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
@@ -23925,10 +23658,6 @@ export const apiTags: TagData[] = [
                                                 "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                                 "object": "account",
                                                 "name": "Acme Inc.",
-                                                "default_billing_address": null,
-                                                "default_shipping_address": null,
-                                                "branding": null,
-                                                "portal": null,
                                                 "created_at": "2026-05-10T00:00:00Z",
                                                 "updated_at": "2026-05-10T00:23:00Z"
                                             }
@@ -23942,8 +23671,6 @@ export const apiTags: TagData[] = [
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
-                                    "department": null,
-                                    "last_used_at": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -24264,8 +23991,6 @@ export const apiTags: TagData[] = [
                             "object": "account_user",
                             "name": "John Doe",
                             "email": "john@augno.com",
-                            "username": null,
-                            "image_url": null,
                             "status": "active",
                             "role": {
                                 "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
@@ -24279,10 +24004,6 @@ export const apiTags: TagData[] = [
                                         "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                         "object": "account",
                                         "name": "Acme Inc.",
-                                        "default_billing_address": null,
-                                        "default_shipping_address": null,
-                                        "branding": null,
-                                        "portal": null,
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     }
@@ -24296,8 +24017,6 @@ export const apiTags: TagData[] = [
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
-                            "department": null,
-                            "last_used_at": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -24612,7 +24331,6 @@ export const apiTags: TagData[] = [
                 "id": "pp_01jm4r6700f8nwq3v5hx2d9ktp",
                 "object": "property",
                 "name": "Color",
-                "attributes": null,
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             }
@@ -24869,7 +24587,6 @@ export const apiTags: TagData[] = [
                             "id": "pp_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "property",
                             "name": "Color",
-                            "attributes": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -25134,7 +24851,6 @@ export const apiTags: TagData[] = [
                             "id": "pp_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "property",
                             "name": "Color",
-                            "attributes": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -25470,7 +25186,6 @@ export const apiTags: TagData[] = [
                                     "id": "pp_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "property",
                                     "name": "Color",
-                                    "attributes": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -25721,7 +25436,6 @@ export const apiTags: TagData[] = [
                             "id": "pp_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "property",
                             "name": "Color",
-                            "attributes": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -26206,7 +25920,6 @@ export const apiTags: TagData[] = [
                             "value": "Premium",
                             "color": "red",
                             "sort_order": 1,
-                            "property": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -26282,9 +25995,7 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "value": "Blue",
-                        "color": null,
-                        "sort_order": null
+                        "value": "Blue"
                     }
                 },
                 "responses": [
@@ -26669,7 +26380,6 @@ export const apiTags: TagData[] = [
                             "value": "Premium",
                             "color": "red",
                             "sort_order": 1,
-                            "property": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -27142,7 +26852,6 @@ export const apiTags: TagData[] = [
                                     "value": "Premium",
                                     "color": "red",
                                     "sort_order": 1,
-                                    "property": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -27561,7 +27270,6 @@ export const apiTags: TagData[] = [
                             "value": "Premium",
                             "color": "red",
                             "sort_order": 1,
-                            "property": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -27725,8 +27433,7 @@ export const apiTags: TagData[] = [
                 "name": "Normal",
                 "owner": {
                     "object": "owner",
-                    "type": "system",
-                    "account": null
+                    "type": "system"
                 },
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
@@ -27964,8 +27671,7 @@ export const apiTags: TagData[] = [
                                     "name": "Normal",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -28119,8 +27825,7 @@ export const apiTags: TagData[] = [
                             "name": "Normal",
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -28518,7 +28223,6 @@ export const apiTags: TagData[] = [
                 "object": "carrier",
                 "name": "FedEx",
                 "code": "fedex",
-                "account_number": null,
                 "customer_portal_visibility": "visible",
                 "owner": {
                     "object": "owner",
@@ -28527,16 +28231,10 @@ export const apiTags: TagData[] = [
                         "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                         "object": "account",
                         "name": "Acme Inc.",
-                        "default_billing_address": null,
-                        "default_shipping_address": null,
-                        "branding": null,
-                        "portal": null,
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
                     }
                 },
-                "service_levels": null,
-                "deleted_at": null,
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             }
@@ -29008,7 +28706,6 @@ export const apiTags: TagData[] = [
                             "object": "carrier",
                             "name": "FedEx",
                             "code": "fedex",
-                            "account_number": null,
                             "customer_portal_visibility": "visible",
                             "owner": {
                                 "object": "owner",
@@ -29017,16 +28714,10 @@ export const apiTags: TagData[] = [
                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                     "object": "account",
                                     "name": "Acme Inc.",
-                                    "default_billing_address": null,
-                                    "default_shipping_address": null,
-                                    "branding": null,
-                                    "portal": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
                             },
-                            "service_levels": null,
-                            "deleted_at": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -29091,8 +28782,7 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "FedEx Express",
-                        "customer_portal_visibility": null
+                        "name": "FedEx Express"
                     }
                 },
                 "responses": [
@@ -29478,7 +29168,6 @@ export const apiTags: TagData[] = [
                             "object": "carrier",
                             "name": "FedEx",
                             "code": "fedex",
-                            "account_number": null,
                             "customer_portal_visibility": "visible",
                             "owner": {
                                 "object": "owner",
@@ -29487,16 +29176,10 @@ export const apiTags: TagData[] = [
                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                     "object": "account",
                                     "name": "Acme Inc.",
-                                    "default_billing_address": null,
-                                    "default_shipping_address": null,
-                                    "branding": null,
-                                    "portal": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
                             },
-                            "service_levels": null,
-                            "deleted_at": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -30006,7 +29689,6 @@ export const apiTags: TagData[] = [
                                     "object": "carrier",
                                     "name": "FedEx",
                                     "code": "fedex",
-                                    "account_number": null,
                                     "customer_portal_visibility": "visible",
                                     "owner": {
                                         "object": "owner",
@@ -30015,16 +29697,10 @@ export const apiTags: TagData[] = [
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                             "object": "account",
                                             "name": "Acme Inc.",
-                                            "default_billing_address": null,
-                                            "default_shipping_address": null,
-                                            "branding": null,
-                                            "portal": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
-                                    "service_levels": null,
-                                    "deleted_at": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -30449,7 +30125,6 @@ export const apiTags: TagData[] = [
                             "object": "carrier",
                             "name": "FedEx",
                             "code": "fedex",
-                            "account_number": null,
                             "customer_portal_visibility": "visible",
                             "owner": {
                                 "object": "owner",
@@ -30458,16 +30133,10 @@ export const apiTags: TagData[] = [
                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                     "object": "account",
                                     "name": "Acme Inc.",
-                                    "default_billing_address": null,
-                                    "default_shipping_address": null,
-                                    "branding": null,
-                                    "portal": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
                             },
-                            "service_levels": null,
-                            "deleted_at": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -30728,10 +30397,6 @@ export const apiTags: TagData[] = [
                         "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                         "object": "account",
                         "name": "Acme Inc.",
-                        "default_billing_address": null,
-                        "default_shipping_address": null,
-                        "branding": null,
-                        "portal": null,
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
                     }
@@ -30816,7 +30481,6 @@ export const apiTags: TagData[] = [
                     "example": {
                         "name": "Ground Shipping",
                         "code": "ground",
-                        "customer_portal_visibility": null,
                         "is_default": false
                     }
                 },
@@ -31037,10 +30701,6 @@ export const apiTags: TagData[] = [
                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                     "object": "account",
                                     "name": "Acme Inc.",
-                                    "default_billing_address": null,
-                                    "default_shipping_address": null,
-                                    "branding": null,
-                                    "portal": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -31132,9 +30792,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Express Shipping",
-                        "code": null,
-                        "customer_portal_visibility": null,
-                        "is_default": null
+                        "is_default": false
                     }
                 },
                 "responses": [
@@ -31354,10 +31012,6 @@ export const apiTags: TagData[] = [
                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                     "object": "account",
                                     "name": "Acme Inc.",
-                                    "default_billing_address": null,
-                                    "default_shipping_address": null,
-                                    "branding": null,
-                                    "portal": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -31711,10 +31365,6 @@ export const apiTags: TagData[] = [
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                             "object": "account",
                                             "name": "Acme Inc.",
-                                            "default_billing_address": null,
-                                            "default_shipping_address": null,
-                                            "branding": null,
-                                            "portal": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -31983,10 +31633,6 @@ export const apiTags: TagData[] = [
                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                     "object": "account",
                                     "name": "Acme Inc.",
-                                    "default_billing_address": null,
-                                    "default_shipping_address": null,
-                                    "branding": null,
-                                    "portal": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -33112,21 +32758,16 @@ export const apiTags: TagData[] = [
                 "object": "item",
                 "sku": "ALM-2024-1001",
                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                "notes": null,
                 "type": "product",
                 "category": {
                     "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                     "object": "item_category",
                     "name": "Electronics",
-                    "notes": null,
                     "type": "material_category",
                     "owner": {
                         "object": "owner",
-                        "type": "system",
-                        "account": null
+                        "type": "system"
                     },
-                    "properties": null,
-                    "unit_group": null,
                     "created_at": "2026-05-10T00:00:00Z",
                     "updated_at": "2026-05-10T00:23:00Z"
                 },
@@ -33140,8 +32781,7 @@ export const apiTags: TagData[] = [
                         "name": "US Dollar",
                         "abbreviation": "USD",
                         "type": "currency",
-                        "is_base_unit": false,
-                        "owner": null
+                        "is_base_unit": false
                     },
                     "denominator_unit": {
                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -33149,8 +32789,7 @@ export const apiTags: TagData[] = [
                         "name": "Kilogram",
                         "abbreviation": "kg",
                         "type": "mass",
-                        "is_base_unit": false,
-                        "owner": null
+                        "is_base_unit": false
                     },
                     "display_value": "$25.50 / kg",
                     "created_at": "2026-05-10T00:00:00Z",
@@ -33166,8 +32805,7 @@ export const apiTags: TagData[] = [
                         "name": "US Dollar",
                         "abbreviation": "USD",
                         "type": "currency",
-                        "is_base_unit": false,
-                        "owner": null
+                        "is_base_unit": false
                     },
                     "denominator_unit": {
                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -33175,8 +32813,7 @@ export const apiTags: TagData[] = [
                         "name": "Kilogram",
                         "abbreviation": "kg",
                         "type": "mass",
-                        "is_base_unit": false,
-                        "owner": null
+                        "is_base_unit": false
                     },
                     "display_value": "$25.50 / kg",
                     "created_at": "2026-05-10T00:00:00Z",
@@ -33192,8 +32829,7 @@ export const apiTags: TagData[] = [
                         "name": "US Dollar",
                         "abbreviation": "USD",
                         "type": "currency",
-                        "is_base_unit": false,
-                        "owner": null
+                        "is_base_unit": false
                     },
                     "denominator_unit": {
                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -33201,8 +32837,7 @@ export const apiTags: TagData[] = [
                         "name": "Kilogram",
                         "abbreviation": "kg",
                         "type": "mass",
-                        "is_base_unit": false,
-                        "owner": null
+                        "is_base_unit": false
                     },
                     "display_value": "$25.50 / kg",
                     "created_at": "2026-05-10T00:00:00Z",
@@ -33211,8 +32846,6 @@ export const apiTags: TagData[] = [
                 "attributes": {
                     "object": "list",
                     "page_info": {
-                        "next_page_url": null,
-                        "previous_page_url": null,
                         "has_next_page": false,
                         "has_prev_page": false
                     },
@@ -33223,7 +32856,6 @@ export const apiTags: TagData[] = [
                             "value": "Premium",
                             "color": "red",
                             "sort_order": 1,
-                            "property": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -34501,21 +34133,16 @@ export const apiTags: TagData[] = [
                                     "object": "item",
                                     "sku": "ALM-2024-1001",
                                     "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                                    "notes": null,
                                     "type": "product",
                                     "category": {
                                         "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                         "object": "item_category",
                                         "name": "Electronics",
-                                        "notes": null,
                                         "type": "material_category",
                                         "owner": {
                                             "object": "owner",
-                                            "type": "system",
-                                            "account": null
+                                            "type": "system"
                                         },
-                                        "properties": null,
-                                        "unit_group": null,
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
@@ -34529,8 +34156,7 @@ export const apiTags: TagData[] = [
                                             "name": "US Dollar",
                                             "abbreviation": "USD",
                                             "type": "currency",
-                                            "is_base_unit": false,
-                                            "owner": null
+                                            "is_base_unit": false
                                         },
                                         "denominator_unit": {
                                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -34538,8 +34164,7 @@ export const apiTags: TagData[] = [
                                             "name": "Kilogram",
                                             "abbreviation": "kg",
                                             "type": "mass",
-                                            "is_base_unit": false,
-                                            "owner": null
+                                            "is_base_unit": false
                                         },
                                         "display_value": "$25.50 / kg",
                                         "created_at": "2026-05-10T00:00:00Z",
@@ -34555,8 +34180,7 @@ export const apiTags: TagData[] = [
                                             "name": "US Dollar",
                                             "abbreviation": "USD",
                                             "type": "currency",
-                                            "is_base_unit": false,
-                                            "owner": null
+                                            "is_base_unit": false
                                         },
                                         "denominator_unit": {
                                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -34564,8 +34188,7 @@ export const apiTags: TagData[] = [
                                             "name": "Kilogram",
                                             "abbreviation": "kg",
                                             "type": "mass",
-                                            "is_base_unit": false,
-                                            "owner": null
+                                            "is_base_unit": false
                                         },
                                         "display_value": "$25.50 / kg",
                                         "created_at": "2026-05-10T00:00:00Z",
@@ -34581,8 +34204,7 @@ export const apiTags: TagData[] = [
                                             "name": "US Dollar",
                                             "abbreviation": "USD",
                                             "type": "currency",
-                                            "is_base_unit": false,
-                                            "owner": null
+                                            "is_base_unit": false
                                         },
                                         "denominator_unit": {
                                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -34590,8 +34212,7 @@ export const apiTags: TagData[] = [
                                             "name": "Kilogram",
                                             "abbreviation": "kg",
                                             "type": "mass",
-                                            "is_base_unit": false,
-                                            "owner": null
+                                            "is_base_unit": false
                                         },
                                         "display_value": "$25.50 / kg",
                                         "created_at": "2026-05-10T00:00:00Z",
@@ -34600,8 +34221,6 @@ export const apiTags: TagData[] = [
                                     "attributes": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_page_url": null,
-                                            "previous_page_url": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -34612,7 +34231,6 @@ export const apiTags: TagData[] = [
                                                 "value": "Premium",
                                                 "color": "red",
                                                 "sort_order": 1,
-                                                "property": null,
                                                 "created_at": "2026-05-10T00:00:00Z",
                                                 "updated_at": "2026-05-10T00:23:00Z"
                                             }
@@ -35737,21 +35355,16 @@ export const apiTags: TagData[] = [
                             "object": "item",
                             "sku": "ALM-2024-1001",
                             "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                            "notes": null,
                             "type": "product",
                             "category": {
                                 "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "item_category",
                                 "name": "Electronics",
-                                "notes": null,
                                 "type": "material_category",
                                 "owner": {
                                     "object": "owner",
-                                    "type": "system",
-                                    "account": null
+                                    "type": "system"
                                 },
-                                "properties": null,
-                                "unit_group": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -35765,8 +35378,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -35774,8 +35386,7 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -35791,8 +35402,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -35800,8 +35410,7 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -35817,8 +35426,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -35826,8 +35434,7 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -35836,8 +35443,6 @@ export const apiTags: TagData[] = [
                             "attributes": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -35848,7 +35453,6 @@ export const apiTags: TagData[] = [
                                         "value": "Premium",
                                         "color": "red",
                                         "sort_order": 1,
-                                        "property": null,
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     }
@@ -36978,21 +36582,16 @@ export const apiTags: TagData[] = [
                             "object": "item",
                             "sku": "ALM-2024-1001",
                             "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                            "notes": null,
                             "type": "product",
                             "category": {
                                 "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "item_category",
                                 "name": "Electronics",
-                                "notes": null,
                                 "type": "material_category",
                                 "owner": {
                                     "object": "owner",
-                                    "type": "system",
-                                    "account": null
+                                    "type": "system"
                                 },
-                                "properties": null,
-                                "unit_group": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -37006,8 +36605,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -37015,8 +36613,7 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -37032,8 +36629,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -37041,8 +36637,7 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -37058,8 +36653,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -37067,8 +36661,7 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -37077,8 +36670,6 @@ export const apiTags: TagData[] = [
                             "attributes": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -37089,7 +36680,6 @@ export const apiTags: TagData[] = [
                                         "value": "Premium",
                                         "color": "red",
                                         "sort_order": 1,
-                                        "property": null,
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     }
@@ -38219,21 +37809,16 @@ export const apiTags: TagData[] = [
                             "object": "item",
                             "sku": "ALM-2024-1001",
                             "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                            "notes": null,
                             "type": "product",
                             "category": {
                                 "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "item_category",
                                 "name": "Electronics",
-                                "notes": null,
                                 "type": "material_category",
                                 "owner": {
                                     "object": "owner",
-                                    "type": "system",
-                                    "account": null
+                                    "type": "system"
                                 },
-                                "properties": null,
-                                "unit_group": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -38247,8 +37832,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -38256,8 +37840,7 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -38273,8 +37856,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -38282,8 +37864,7 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -38299,8 +37880,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -38308,8 +37888,7 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -38318,8 +37897,6 @@ export const apiTags: TagData[] = [
                             "attributes": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -38330,7 +37907,6 @@ export const apiTags: TagData[] = [
                                         "value": "Premium",
                                         "color": "red",
                                         "sort_order": 1,
-                                        "property": null,
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     }
@@ -38626,8 +38202,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 }
                             },
                             "reserved": {
@@ -38641,8 +38216,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 }
                             },
                             "available_to_promise": {
@@ -38656,8 +38230,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 }
                             },
                             "short": {
@@ -38671,8 +38244,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 }
                             }
                         }
@@ -39797,21 +39369,16 @@ export const apiTags: TagData[] = [
                             "object": "item",
                             "sku": "ALM-2024-1001",
                             "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                            "notes": null,
                             "type": "product",
                             "category": {
                                 "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "item_category",
                                 "name": "Electronics",
-                                "notes": null,
                                 "type": "material_category",
                                 "owner": {
                                     "object": "owner",
-                                    "type": "system",
-                                    "account": null
+                                    "type": "system"
                                 },
-                                "properties": null,
-                                "unit_group": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -39825,8 +39392,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -39834,8 +39400,7 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -39851,8 +39416,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -39860,8 +39424,7 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -39877,8 +39440,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "USD",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "denominator_unit": {
                                     "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -39886,8 +39448,7 @@ export const apiTags: TagData[] = [
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
                                     "type": "mass",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 },
                                 "display_value": "$25.50 / kg",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -39896,8 +39457,6 @@ export const apiTags: TagData[] = [
                             "attributes": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -39908,7 +39467,6 @@ export const apiTags: TagData[] = [
                                         "value": "Premium",
                                         "color": "red",
                                         "sort_order": 1,
-                                        "property": null,
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     }
@@ -40626,15 +40184,11 @@ export const apiTags: TagData[] = [
                 "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                 "object": "item_category",
                 "name": "Electronics",
-                "notes": null,
                 "type": "material_category",
                 "owner": {
                     "object": "owner",
-                    "type": "system",
-                    "account": null
+                    "type": "system"
                 },
-                "properties": null,
-                "unit_group": null,
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             }
@@ -41407,15 +40961,11 @@ export const apiTags: TagData[] = [
                             "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "item_category",
                             "name": "Electronics",
-                            "notes": null,
                             "type": "material_category",
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
-                            "properties": null,
-                            "unit_group": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -41480,8 +41030,7 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Electronic Components",
-                        "notes": null
+                        "name": "Electronic Components"
                     }
                 },
                 "responses": [
@@ -42183,15 +41732,11 @@ export const apiTags: TagData[] = [
                             "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "item_category",
                             "name": "Electronics",
-                            "notes": null,
                             "type": "material_category",
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
-                            "properties": null,
-                            "unit_group": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -43032,15 +42577,11 @@ export const apiTags: TagData[] = [
                                     "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -43785,15 +43326,11 @@ export const apiTags: TagData[] = [
                             "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "item_category",
                             "name": "Electronics",
-                            "notes": null,
                             "type": "material_category",
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
-                            "properties": null,
-                            "unit_group": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -44913,21 +44450,16 @@ export const apiTags: TagData[] = [
                     "object": "item",
                     "sku": "ALM-2024-1001",
                     "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                    "notes": null,
                     "type": "product",
                     "category": {
                         "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                         "object": "item_category",
                         "name": "Electronics",
-                        "notes": null,
                         "type": "material_category",
                         "owner": {
                             "object": "owner",
-                            "type": "system",
-                            "account": null
+                            "type": "system"
                         },
-                        "properties": null,
-                        "unit_group": null,
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
                     },
@@ -44941,8 +44473,7 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "is_base_unit": false,
-                            "owner": null
+                            "is_base_unit": false
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -44950,8 +44481,7 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "is_base_unit": false,
-                            "owner": null
+                            "is_base_unit": false
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -44967,8 +44497,7 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "is_base_unit": false,
-                            "owner": null
+                            "is_base_unit": false
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -44976,8 +44505,7 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "is_base_unit": false,
-                            "owner": null
+                            "is_base_unit": false
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -44993,8 +44521,7 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "is_base_unit": false,
-                            "owner": null
+                            "is_base_unit": false
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -45002,8 +44529,7 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "is_base_unit": false,
-                            "owner": null
+                            "is_base_unit": false
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -45012,8 +44538,6 @@ export const apiTags: TagData[] = [
                     "attributes": {
                         "object": "list",
                         "page_info": {
-                            "next_page_url": null,
-                            "previous_page_url": null,
                             "has_next_page": false,
                             "has_prev_page": false
                         },
@@ -45024,7 +44548,6 @@ export const apiTags: TagData[] = [
                                 "value": "Premium",
                                 "color": "red",
                                 "sort_order": 1,
-                                "property": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             }
@@ -45044,8 +44567,7 @@ export const apiTags: TagData[] = [
                         "name": "US Dollar",
                         "abbreviation": "$",
                         "type": "currency",
-                        "is_base_unit": false,
-                        "owner": null
+                        "is_base_unit": false
                     }
                 },
                 "lead_time": {
@@ -45059,8 +44581,7 @@ export const apiTags: TagData[] = [
                         "name": "US Dollar",
                         "abbreviation": "$",
                         "type": "currency",
-                        "is_base_unit": false,
-                        "owner": null
+                        "is_base_unit": false
                     }
                 },
                 "created_at": "2026-05-10T00:00:00Z",
@@ -46271,21 +45792,16 @@ export const apiTags: TagData[] = [
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                                "notes": null,
                                 "type": "product",
                                 "category": {
                                     "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -46299,8 +45815,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -46308,8 +45823,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -46325,8 +45839,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -46334,8 +45847,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -46351,8 +45863,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -46360,8 +45871,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -46370,8 +45880,6 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -46382,7 +45890,6 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -46402,8 +45909,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 }
                             },
                             "lead_time": {
@@ -46417,8 +45923,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 }
                             },
                             "created_at": "2026-05-10T00:00:00Z",
@@ -46581,11 +46086,7 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "sku": "MAT-001-UPDATED",
-                        "description": null,
-                        "notes": null,
-                        "order_point": null,
-                        "lead_time": null
+                        "sku": "MAT-001-UPDATED"
                     }
                 },
                 "responses": [
@@ -47553,21 +47054,16 @@ export const apiTags: TagData[] = [
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                                "notes": null,
                                 "type": "product",
                                 "category": {
                                     "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -47581,8 +47077,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -47590,8 +47085,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -47607,8 +47101,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -47616,8 +47109,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -47633,8 +47125,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -47642,8 +47133,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -47652,8 +47142,6 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -47664,7 +47152,6 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -47684,8 +47171,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 }
                             },
                             "lead_time": {
@@ -47699,8 +47185,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 }
                             },
                             "created_at": "2026-05-10T00:00:00Z",
@@ -48829,21 +48314,16 @@ export const apiTags: TagData[] = [
                                         "object": "item",
                                         "sku": "ALM-2024-1001",
                                         "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                                        "notes": null,
                                         "type": "product",
                                         "category": {
                                             "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                             "object": "item_category",
                                             "name": "Electronics",
-                                            "notes": null,
                                             "type": "material_category",
                                             "owner": {
                                                 "object": "owner",
-                                                "type": "system",
-                                                "account": null
+                                                "type": "system"
                                             },
-                                            "properties": null,
-                                            "unit_group": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         },
@@ -48857,8 +48337,7 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "is_base_unit": false,
-                                                "owner": null
+                                                "is_base_unit": false
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -48866,8 +48345,7 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "is_base_unit": false,
-                                                "owner": null
+                                                "is_base_unit": false
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -48883,8 +48361,7 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "is_base_unit": false,
-                                                "owner": null
+                                                "is_base_unit": false
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -48892,8 +48369,7 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "is_base_unit": false,
-                                                "owner": null
+                                                "is_base_unit": false
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -48909,8 +48385,7 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "is_base_unit": false,
-                                                "owner": null
+                                                "is_base_unit": false
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -48918,8 +48393,7 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "is_base_unit": false,
-                                                "owner": null
+                                                "is_base_unit": false
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -48928,8 +48402,6 @@ export const apiTags: TagData[] = [
                                         "attributes": {
                                             "object": "list",
                                             "page_info": {
-                                                "next_page_url": null,
-                                                "previous_page_url": null,
                                                 "has_next_page": false,
                                                 "has_prev_page": false
                                             },
@@ -48940,7 +48412,6 @@ export const apiTags: TagData[] = [
                                                     "value": "Premium",
                                                     "color": "red",
                                                     "sort_order": 1,
-                                                    "property": null,
                                                     "created_at": "2026-05-10T00:00:00Z",
                                                     "updated_at": "2026-05-10T00:23:00Z"
                                                 }
@@ -48960,8 +48431,7 @@ export const apiTags: TagData[] = [
                                             "name": "US Dollar",
                                             "abbreviation": "$",
                                             "type": "currency",
-                                            "is_base_unit": false,
-                                            "owner": null
+                                            "is_base_unit": false
                                         }
                                     },
                                     "lead_time": {
@@ -48975,8 +48445,7 @@ export const apiTags: TagData[] = [
                                             "name": "US Dollar",
                                             "abbreviation": "$",
                                             "type": "currency",
-                                            "is_base_unit": false,
-                                            "owner": null
+                                            "is_base_unit": false
                                         }
                                     },
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -49990,21 +49459,16 @@ export const apiTags: TagData[] = [
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                                "notes": null,
                                 "type": "product",
                                 "category": {
                                     "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -50018,8 +49482,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -50027,8 +49490,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -50044,8 +49506,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -50053,8 +49514,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -50070,8 +49530,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -50079,8 +49538,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -50089,8 +49547,6 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -50101,7 +49557,6 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -50121,8 +49576,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 }
                             },
                             "lead_time": {
@@ -50136,8 +49590,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 }
                             },
                             "created_at": "2026-05-10T00:00:00Z",
@@ -54640,21 +54093,16 @@ export const apiTags: TagData[] = [
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                                "notes": null,
                                 "type": "product",
                                 "category": {
                                     "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -54668,8 +54116,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -54677,8 +54124,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -54694,8 +54140,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -54703,8 +54148,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -54720,8 +54164,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -54729,8 +54172,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -54739,8 +54181,6 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -54751,7 +54191,6 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -54771,8 +54210,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 }
                             },
                             "lead_time": {
@@ -54786,8 +54224,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 }
                             },
                             "created_at": "2026-05-10T00:00:00Z",
@@ -55660,21 +55097,16 @@ export const apiTags: TagData[] = [
                     "object": "item",
                     "sku": "ALM-2024-1001",
                     "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                    "notes": null,
                     "type": "product",
                     "category": {
                         "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                         "object": "item_category",
                         "name": "Electronics",
-                        "notes": null,
                         "type": "material_category",
                         "owner": {
                             "object": "owner",
-                            "type": "system",
-                            "account": null
+                            "type": "system"
                         },
-                        "properties": null,
-                        "unit_group": null,
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
                     },
@@ -55688,8 +55120,7 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "is_base_unit": false,
-                            "owner": null
+                            "is_base_unit": false
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -55697,8 +55128,7 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "is_base_unit": false,
-                            "owner": null
+                            "is_base_unit": false
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -55714,8 +55144,7 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "is_base_unit": false,
-                            "owner": null
+                            "is_base_unit": false
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -55723,8 +55152,7 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "is_base_unit": false,
-                            "owner": null
+                            "is_base_unit": false
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -55740,8 +55168,7 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "is_base_unit": false,
-                            "owner": null
+                            "is_base_unit": false
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -55749,8 +55176,7 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "is_base_unit": false,
-                            "owner": null
+                            "is_base_unit": false
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -55759,8 +55185,6 @@ export const apiTags: TagData[] = [
                     "attributes": {
                         "object": "list",
                         "page_info": {
-                            "next_page_url": null,
-                            "previous_page_url": null,
                             "has_next_page": false,
                             "has_prev_page": false
                         },
@@ -55771,7 +55195,6 @@ export const apiTags: TagData[] = [
                                 "value": "Premium",
                                 "color": "red",
                                 "sort_order": 1,
-                                "property": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             }
@@ -56608,21 +56031,16 @@ export const apiTags: TagData[] = [
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                                "notes": null,
                                 "type": "product",
                                 "category": {
                                     "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -56636,8 +56054,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -56645,8 +56062,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -56662,8 +56078,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -56671,8 +56086,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -56688,8 +56102,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -56697,8 +56110,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -56707,8 +56119,6 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -56719,7 +56129,6 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -56801,8 +56210,7 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "sku": "BRG-6204-2RS",
-                        "notes": null
+                        "sku": "BRG-6204-2RS"
                     }
                 },
                 "responses": [
@@ -57444,21 +56852,16 @@ export const apiTags: TagData[] = [
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                                "notes": null,
                                 "type": "product",
                                 "category": {
                                     "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -57472,8 +56875,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -57481,8 +56883,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -57498,8 +56899,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -57507,8 +56907,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -57524,8 +56923,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -57533,8 +56931,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -57543,8 +56940,6 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -57555,7 +56950,6 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -58582,21 +57976,16 @@ export const apiTags: TagData[] = [
                                         "object": "item",
                                         "sku": "ALM-2024-1001",
                                         "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                                        "notes": null,
                                         "type": "product",
                                         "category": {
                                             "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                             "object": "item_category",
                                             "name": "Electronics",
-                                            "notes": null,
                                             "type": "material_category",
                                             "owner": {
                                                 "object": "owner",
-                                                "type": "system",
-                                                "account": null
+                                                "type": "system"
                                             },
-                                            "properties": null,
-                                            "unit_group": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         },
@@ -58610,8 +57999,7 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "is_base_unit": false,
-                                                "owner": null
+                                                "is_base_unit": false
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -58619,8 +58007,7 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "is_base_unit": false,
-                                                "owner": null
+                                                "is_base_unit": false
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -58636,8 +58023,7 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "is_base_unit": false,
-                                                "owner": null
+                                                "is_base_unit": false
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -58645,8 +58031,7 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "is_base_unit": false,
-                                                "owner": null
+                                                "is_base_unit": false
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -58662,8 +58047,7 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "is_base_unit": false,
-                                                "owner": null
+                                                "is_base_unit": false
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -58671,8 +58055,7 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "is_base_unit": false,
-                                                "owner": null
+                                                "is_base_unit": false
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -58681,8 +58064,6 @@ export const apiTags: TagData[] = [
                                         "attributes": {
                                             "object": "list",
                                             "page_info": {
-                                                "next_page_url": null,
-                                                "previous_page_url": null,
                                                 "has_next_page": false,
                                                 "has_prev_page": false
                                             },
@@ -58693,7 +58074,6 @@ export const apiTags: TagData[] = [
                                                     "value": "Premium",
                                                     "color": "red",
                                                     "sort_order": 1,
-                                                    "property": null,
                                                     "created_at": "2026-05-10T00:00:00Z",
                                                     "updated_at": "2026-05-10T00:23:00Z"
                                                 }
@@ -59605,21 +58985,16 @@ export const apiTags: TagData[] = [
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                                "notes": null,
                                 "type": "product",
                                 "category": {
                                     "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -59633,8 +59008,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -59642,8 +59016,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -59659,8 +59032,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -59668,8 +59040,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -59685,8 +59056,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -59694,8 +59064,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -59704,8 +59073,6 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -59716,7 +59083,6 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -63007,21 +62373,16 @@ export const apiTags: TagData[] = [
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                                "notes": null,
                                 "type": "product",
                                 "category": {
                                     "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -63035,8 +62396,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -63044,8 +62404,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -63061,8 +62420,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -63070,8 +62428,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -63087,8 +62444,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -63096,8 +62452,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -63106,8 +62461,6 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -63118,7 +62471,6 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -63314,10 +62666,6 @@ export const apiTags: TagData[] = [
                                 "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                 "object": "account",
                                 "name": "Acme Inc.",
-                                "default_billing_address": null,
-                                "default_shipping_address": null,
-                                "branding": null,
-                                "portal": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             }
@@ -63629,10 +62977,6 @@ export const apiTags: TagData[] = [
                                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                                     "object": "account",
                                                     "name": "Acme Inc.",
-                                                    "default_billing_address": null,
-                                                    "default_shipping_address": null,
-                                                    "branding": null,
-                                                    "portal": null,
                                                     "created_at": "2026-05-10T00:00:00Z",
                                                     "updated_at": "2026-05-10T00:23:00Z"
                                                 }
@@ -63860,10 +63204,6 @@ export const apiTags: TagData[] = [
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                             "object": "account",
                                             "name": "Acme Inc.",
-                                            "default_billing_address": null,
-                                            "default_shipping_address": null,
-                                            "branding": null,
-                                            "portal": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -65773,8 +65113,7 @@ export const apiTags: TagData[] = [
                         "name": "US Dollar",
                         "abbreviation": "$",
                         "type": "currency",
-                        "is_base_unit": false,
-                        "owner": null
+                        "is_base_unit": false
                     }
                 },
                 "contact_info": {
@@ -65791,7 +65130,6 @@ export const apiTags: TagData[] = [
                         "object": "carrier",
                         "name": "FedEx",
                         "code": "fedex",
-                        "account_number": null,
                         "customer_portal_visibility": "visible",
                         "owner": {
                             "object": "owner",
@@ -65800,16 +65138,10 @@ export const apiTags: TagData[] = [
                                 "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                 "object": "account",
                                 "name": "Acme Inc.",
-                                "default_billing_address": null,
-                                "default_shipping_address": null,
-                                "branding": null,
-                                "portal": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             }
                         },
-                        "service_levels": null,
-                        "deleted_at": null,
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
                     },
@@ -65827,10 +65159,6 @@ export const apiTags: TagData[] = [
                                 "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                 "object": "account",
                                 "name": "Acme Inc.",
-                                "default_billing_address": null,
-                                "default_shipping_address": null,
-                                "branding": null,
-                                "portal": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             }
@@ -65850,8 +65178,7 @@ export const apiTags: TagData[] = [
                         "status": "active",
                         "owner": {
                             "object": "owner",
-                            "type": "system",
-                            "account": null
+                            "type": "system"
                         },
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
@@ -65863,16 +65190,11 @@ export const apiTags: TagData[] = [
                         "type": "carrier_rate_freight",
                         "owner": {
                             "object": "owner",
-                            "type": "system",
-                            "account": null
+                            "type": "system"
                         },
-                        "flat_rate": null,
-                        "minimum_order_value": null,
                         "free_shipping_service_levels": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": null,
-                                "previous_page_url": null,
                                 "has_next_page": false,
                                 "has_prev_page": false
                             },
@@ -65888,8 +65210,7 @@ export const apiTags: TagData[] = [
                         "name": "Normal",
                         "owner": {
                             "object": "owner",
-                            "type": "system",
-                            "account": null
+                            "type": "system"
                         },
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
@@ -65899,8 +65220,6 @@ export const apiTags: TagData[] = [
                         "object": "account_user",
                         "name": "John Doe",
                         "email": "john@augno.com",
-                        "username": null,
-                        "image_url": null,
                         "status": "active",
                         "role": {
                             "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
@@ -65914,10 +65233,6 @@ export const apiTags: TagData[] = [
                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                     "object": "account",
                                     "name": "Acme Inc.",
-                                    "default_billing_address": null,
-                                    "default_shipping_address": null,
-                                    "branding": null,
-                                    "portal": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -65931,8 +65246,6 @@ export const apiTags: TagData[] = [
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         },
-                        "department": null,
-                        "last_used_at": null,
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
                     }
@@ -65945,14 +65258,11 @@ export const apiTags: TagData[] = [
                     "id": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
                     "object": "address",
                     "name": "Headquarters",
-                    "phone": null,
-                    "email": null,
                     "type": "standard",
                     "geolocation": {
                         "id": "gl_01jm4r6700f8nwq3v5hx2d9ktp",
                         "object": "geolocation",
                         "street_line_1": "4200 Industrial Pkwy",
-                        "street_line_2": null,
                         "locality": "Columbus",
                         "state": "OH",
                         "postal_code": "43204",
@@ -65965,14 +65275,11 @@ export const apiTags: TagData[] = [
                     "id": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
                     "object": "address",
                     "name": "Headquarters",
-                    "phone": null,
-                    "email": null,
                     "type": "standard",
                     "geolocation": {
                         "id": "gl_01jm4r6700f8nwq3v5hx2d9ktp",
                         "object": "geolocation",
                         "street_line_1": "4200 Industrial Pkwy",
-                        "street_line_2": null,
                         "locality": "Columbus",
                         "state": "OH",
                         "postal_code": "43204",
@@ -65985,7 +65292,6 @@ export const apiTags: TagData[] = [
                     "id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
                     "object": "account_group",
                     "name": "Wholesale Customers",
-                    "description": null,
                     "commission_policy": "commission_applied",
                     "freight_policy": "billed_freight",
                     "type": "type_group",
@@ -65995,8 +65301,6 @@ export const apiTags: TagData[] = [
                 "price_groups": {
                     "object": "list",
                     "page_info": {
-                        "next_page_url": null,
-                        "previous_page_url": null,
                         "has_next_page": false,
                         "has_prev_page": false
                     },
@@ -66005,7 +65309,6 @@ export const apiTags: TagData[] = [
                             "id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "account_group",
                             "name": "Wholesale Customers",
-                            "description": null,
                             "commission_policy": "commission_applied",
                             "freight_policy": "billed_freight",
                             "type": "type_group",
@@ -66014,8 +65317,6 @@ export const apiTags: TagData[] = [
                         }
                     ]
                 },
-                "parent_account": null,
-                "child_accounts": null,
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             }
@@ -66470,33 +65771,17 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Acme Inc.",
-                        "number": null,
                         "note": "Key enterprise account",
-                        "email": null,
-                        "phone": null,
-                        "url": null,
-                        "status": null,
-                        "edi_status": null,
-                        "commission_policy": null,
-                        "freight_policy": null,
                         "default_carrier_id": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
-                        "default_service_level_id": null,
                         "default_payment_term_id": "pytm_01jm4r6700f8nwq3v5hx2d9ktp",
                         "default_shipping_term_id": "shtm_01jm4r6700f8nwq3v5hx2d9ktp",
-                        "default_priority": null,
-                        "default_sales_rep_id": null,
                         "customer_type_group_id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
-                        "carrier_billing_type": null,
-                        "carrier_billing_account": null,
-                        "credit_limit": null,
                         "bill_to_address": {
                             "name": "Acme Inc.",
-                            "type": null,
                             "country": "US"
                         },
                         "ship_to_address": {
                             "name": "Acme Inc.",
-                            "type": null,
                             "country": "US"
                         }
                     }
@@ -68383,8 +67668,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 }
                             },
                             "contact_info": {
@@ -68401,7 +67685,6 @@ export const apiTags: TagData[] = [
                                     "object": "carrier",
                                     "name": "FedEx",
                                     "code": "fedex",
-                                    "account_number": null,
                                     "customer_portal_visibility": "visible",
                                     "owner": {
                                         "object": "owner",
@@ -68410,16 +67693,10 @@ export const apiTags: TagData[] = [
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                             "object": "account",
                                             "name": "Acme Inc.",
-                                            "default_billing_address": null,
-                                            "default_shipping_address": null,
-                                            "branding": null,
-                                            "portal": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
-                                    "service_levels": null,
-                                    "deleted_at": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -68437,10 +67714,6 @@ export const apiTags: TagData[] = [
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                             "object": "account",
                                             "name": "Acme Inc.",
-                                            "default_billing_address": null,
-                                            "default_shipping_address": null,
-                                            "branding": null,
-                                            "portal": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -68460,8 +67733,7 @@ export const apiTags: TagData[] = [
                                     "status": "active",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -68473,16 +67745,11 @@ export const apiTags: TagData[] = [
                                     "type": "carrier_rate_freight",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "flat_rate": null,
-                                    "minimum_order_value": null,
                                     "free_shipping_service_levels": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_page_url": null,
-                                            "previous_page_url": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -68498,8 +67765,7 @@ export const apiTags: TagData[] = [
                                     "name": "Normal",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -68509,8 +67775,6 @@ export const apiTags: TagData[] = [
                                     "object": "account_user",
                                     "name": "John Doe",
                                     "email": "john@augno.com",
-                                    "username": null,
-                                    "image_url": null,
                                     "status": "active",
                                     "role": {
                                         "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
@@ -68524,10 +67788,6 @@ export const apiTags: TagData[] = [
                                                 "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                                 "object": "account",
                                                 "name": "Acme Inc.",
-                                                "default_billing_address": null,
-                                                "default_shipping_address": null,
-                                                "branding": null,
-                                                "portal": null,
                                                 "created_at": "2026-05-10T00:00:00Z",
                                                 "updated_at": "2026-05-10T00:23:00Z"
                                             }
@@ -68541,8 +67801,6 @@ export const apiTags: TagData[] = [
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
-                                    "department": null,
-                                    "last_used_at": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -68555,14 +67813,11 @@ export const apiTags: TagData[] = [
                                 "id": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "address",
                                 "name": "Headquarters",
-                                "phone": null,
-                                "email": null,
                                 "type": "standard",
                                 "geolocation": {
                                     "id": "gl_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "geolocation",
                                     "street_line_1": "4200 Industrial Pkwy",
-                                    "street_line_2": null,
                                     "locality": "Columbus",
                                     "state": "OH",
                                     "postal_code": "43204",
@@ -68575,14 +67830,11 @@ export const apiTags: TagData[] = [
                                 "id": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "address",
                                 "name": "Headquarters",
-                                "phone": null,
-                                "email": null,
                                 "type": "standard",
                                 "geolocation": {
                                     "id": "gl_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "geolocation",
                                     "street_line_1": "4200 Industrial Pkwy",
-                                    "street_line_2": null,
                                     "locality": "Columbus",
                                     "state": "OH",
                                     "postal_code": "43204",
@@ -68595,7 +67847,6 @@ export const apiTags: TagData[] = [
                                 "id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "account_group",
                                 "name": "Wholesale Customers",
-                                "description": null,
                                 "commission_policy": "commission_applied",
                                 "freight_policy": "billed_freight",
                                 "type": "type_group",
@@ -68605,8 +67856,6 @@ export const apiTags: TagData[] = [
                             "price_groups": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -68615,7 +67864,6 @@ export const apiTags: TagData[] = [
                                         "id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
                                         "object": "account_group",
                                         "name": "Wholesale Customers",
-                                        "description": null,
                                         "commission_policy": "commission_applied",
                                         "freight_policy": "billed_freight",
                                         "type": "type_group",
@@ -68624,8 +67872,6 @@ export const apiTags: TagData[] = [
                                     }
                                 ]
                             },
-                            "parent_account": null,
-                            "child_accounts": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -68926,27 +68172,8 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Acme Corp Updated",
-                        "number": null,
-                        "status": null,
-                        "email": null,
-                        "phone": null,
-                        "url": null,
-                        "edi_status": null,
-                        "commission_policy": null,
                         "freight_policy": "billed_freight",
-                        "default_carrier_id": "cr_01jm4r6700f8nwq3v5hx2d9ktp",
-                        "default_service_level_id": null,
-                        "default_payment_term_id": null,
-                        "default_shipping_term_id": null,
-                        "default_priority": null,
-                        "default_sales_rep_id": null,
-                        "bill_to_address_id": null,
-                        "ship_to_address_id": null,
-                        "customer_price_group_ids": null,
-                        "customer_type_group_id": null,
-                        "carrier_billing_type": null,
-                        "carrier_billing_account": null,
-                        "credit_limit": null
+                        "default_carrier_id": "cr_01jm4r6700f8nwq3v5hx2d9ktp"
                     }
                 },
                 "responses": [
@@ -70831,8 +70058,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 }
                             },
                             "contact_info": {
@@ -70849,7 +70075,6 @@ export const apiTags: TagData[] = [
                                     "object": "carrier",
                                     "name": "FedEx",
                                     "code": "fedex",
-                                    "account_number": null,
                                     "customer_portal_visibility": "visible",
                                     "owner": {
                                         "object": "owner",
@@ -70858,16 +70083,10 @@ export const apiTags: TagData[] = [
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                             "object": "account",
                                             "name": "Acme Inc.",
-                                            "default_billing_address": null,
-                                            "default_shipping_address": null,
-                                            "branding": null,
-                                            "portal": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
-                                    "service_levels": null,
-                                    "deleted_at": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -70885,10 +70104,6 @@ export const apiTags: TagData[] = [
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                             "object": "account",
                                             "name": "Acme Inc.",
-                                            "default_billing_address": null,
-                                            "default_shipping_address": null,
-                                            "branding": null,
-                                            "portal": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -70908,8 +70123,7 @@ export const apiTags: TagData[] = [
                                     "status": "active",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -70921,16 +70135,11 @@ export const apiTags: TagData[] = [
                                     "type": "carrier_rate_freight",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "flat_rate": null,
-                                    "minimum_order_value": null,
                                     "free_shipping_service_levels": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_page_url": null,
-                                            "previous_page_url": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -70946,8 +70155,7 @@ export const apiTags: TagData[] = [
                                     "name": "Normal",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -70957,8 +70165,6 @@ export const apiTags: TagData[] = [
                                     "object": "account_user",
                                     "name": "John Doe",
                                     "email": "john@augno.com",
-                                    "username": null,
-                                    "image_url": null,
                                     "status": "active",
                                     "role": {
                                         "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
@@ -70972,10 +70178,6 @@ export const apiTags: TagData[] = [
                                                 "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                                 "object": "account",
                                                 "name": "Acme Inc.",
-                                                "default_billing_address": null,
-                                                "default_shipping_address": null,
-                                                "branding": null,
-                                                "portal": null,
                                                 "created_at": "2026-05-10T00:00:00Z",
                                                 "updated_at": "2026-05-10T00:23:00Z"
                                             }
@@ -70989,8 +70191,6 @@ export const apiTags: TagData[] = [
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
-                                    "department": null,
-                                    "last_used_at": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -71003,14 +70203,11 @@ export const apiTags: TagData[] = [
                                 "id": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "address",
                                 "name": "Headquarters",
-                                "phone": null,
-                                "email": null,
                                 "type": "standard",
                                 "geolocation": {
                                     "id": "gl_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "geolocation",
                                     "street_line_1": "4200 Industrial Pkwy",
-                                    "street_line_2": null,
                                     "locality": "Columbus",
                                     "state": "OH",
                                     "postal_code": "43204",
@@ -71023,14 +70220,11 @@ export const apiTags: TagData[] = [
                                 "id": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "address",
                                 "name": "Headquarters",
-                                "phone": null,
-                                "email": null,
                                 "type": "standard",
                                 "geolocation": {
                                     "id": "gl_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "geolocation",
                                     "street_line_1": "4200 Industrial Pkwy",
-                                    "street_line_2": null,
                                     "locality": "Columbus",
                                     "state": "OH",
                                     "postal_code": "43204",
@@ -71043,7 +70237,6 @@ export const apiTags: TagData[] = [
                                 "id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "account_group",
                                 "name": "Wholesale Customers",
-                                "description": null,
                                 "commission_policy": "commission_applied",
                                 "freight_policy": "billed_freight",
                                 "type": "type_group",
@@ -71053,8 +70246,6 @@ export const apiTags: TagData[] = [
                             "price_groups": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -71063,7 +70254,6 @@ export const apiTags: TagData[] = [
                                         "id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
                                         "object": "account_group",
                                         "name": "Wholesale Customers",
-                                        "description": null,
                                         "commission_policy": "commission_applied",
                                         "freight_policy": "billed_freight",
                                         "type": "type_group",
@@ -71072,8 +70262,6 @@ export const apiTags: TagData[] = [
                                     }
                                 ]
                             },
-                            "parent_account": null,
-                            "child_accounts": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -73228,8 +72416,7 @@ export const apiTags: TagData[] = [
                                             "name": "US Dollar",
                                             "abbreviation": "$",
                                             "type": "currency",
-                                            "is_base_unit": false,
-                                            "owner": null
+                                            "is_base_unit": false
                                         }
                                     },
                                     "contact_info": {
@@ -73246,7 +72433,6 @@ export const apiTags: TagData[] = [
                                             "object": "carrier",
                                             "name": "FedEx",
                                             "code": "fedex",
-                                            "account_number": null,
                                             "customer_portal_visibility": "visible",
                                             "owner": {
                                                 "object": "owner",
@@ -73255,16 +72441,10 @@ export const apiTags: TagData[] = [
                                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                                     "object": "account",
                                                     "name": "Acme Inc.",
-                                                    "default_billing_address": null,
-                                                    "default_shipping_address": null,
-                                                    "branding": null,
-                                                    "portal": null,
                                                     "created_at": "2026-05-10T00:00:00Z",
                                                     "updated_at": "2026-05-10T00:23:00Z"
                                                 }
                                             },
-                                            "service_levels": null,
-                                            "deleted_at": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         },
@@ -73282,10 +72462,6 @@ export const apiTags: TagData[] = [
                                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                                     "object": "account",
                                                     "name": "Acme Inc.",
-                                                    "default_billing_address": null,
-                                                    "default_shipping_address": null,
-                                                    "branding": null,
-                                                    "portal": null,
                                                     "created_at": "2026-05-10T00:00:00Z",
                                                     "updated_at": "2026-05-10T00:23:00Z"
                                                 }
@@ -73305,8 +72481,7 @@ export const apiTags: TagData[] = [
                                             "status": "active",
                                             "owner": {
                                                 "object": "owner",
-                                                "type": "system",
-                                                "account": null
+                                                "type": "system"
                                             },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
@@ -73318,16 +72493,11 @@ export const apiTags: TagData[] = [
                                             "type": "carrier_rate_freight",
                                             "owner": {
                                                 "object": "owner",
-                                                "type": "system",
-                                                "account": null
+                                                "type": "system"
                                             },
-                                            "flat_rate": null,
-                                            "minimum_order_value": null,
                                             "free_shipping_service_levels": {
                                                 "object": "list",
                                                 "page_info": {
-                                                    "next_page_url": null,
-                                                    "previous_page_url": null,
                                                     "has_next_page": false,
                                                     "has_prev_page": false
                                                 },
@@ -73343,8 +72513,7 @@ export const apiTags: TagData[] = [
                                             "name": "Normal",
                                             "owner": {
                                                 "object": "owner",
-                                                "type": "system",
-                                                "account": null
+                                                "type": "system"
                                             },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
@@ -73354,8 +72523,6 @@ export const apiTags: TagData[] = [
                                             "object": "account_user",
                                             "name": "John Doe",
                                             "email": "john@augno.com",
-                                            "username": null,
-                                            "image_url": null,
                                             "status": "active",
                                             "role": {
                                                 "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
@@ -73369,10 +72536,6 @@ export const apiTags: TagData[] = [
                                                         "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                                         "object": "account",
                                                         "name": "Acme Inc.",
-                                                        "default_billing_address": null,
-                                                        "default_shipping_address": null,
-                                                        "branding": null,
-                                                        "portal": null,
                                                         "created_at": "2026-05-10T00:00:00Z",
                                                         "updated_at": "2026-05-10T00:23:00Z"
                                                     }
@@ -73386,8 +72549,6 @@ export const apiTags: TagData[] = [
                                                 "created_at": "2026-05-10T00:00:00Z",
                                                 "updated_at": "2026-05-10T00:23:00Z"
                                             },
-                                            "department": null,
-                                            "last_used_at": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -73400,14 +72561,11 @@ export const apiTags: TagData[] = [
                                         "id": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
                                         "object": "address",
                                         "name": "Headquarters",
-                                        "phone": null,
-                                        "email": null,
                                         "type": "standard",
                                         "geolocation": {
                                             "id": "gl_01jm4r6700f8nwq3v5hx2d9ktp",
                                             "object": "geolocation",
                                             "street_line_1": "4200 Industrial Pkwy",
-                                            "street_line_2": null,
                                             "locality": "Columbus",
                                             "state": "OH",
                                             "postal_code": "43204",
@@ -73420,14 +72578,11 @@ export const apiTags: TagData[] = [
                                         "id": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
                                         "object": "address",
                                         "name": "Headquarters",
-                                        "phone": null,
-                                        "email": null,
                                         "type": "standard",
                                         "geolocation": {
                                             "id": "gl_01jm4r6700f8nwq3v5hx2d9ktp",
                                             "object": "geolocation",
                                             "street_line_1": "4200 Industrial Pkwy",
-                                            "street_line_2": null,
                                             "locality": "Columbus",
                                             "state": "OH",
                                             "postal_code": "43204",
@@ -73440,7 +72595,6 @@ export const apiTags: TagData[] = [
                                         "id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
                                         "object": "account_group",
                                         "name": "Wholesale Customers",
-                                        "description": null,
                                         "commission_policy": "commission_applied",
                                         "freight_policy": "billed_freight",
                                         "type": "type_group",
@@ -73450,8 +72604,6 @@ export const apiTags: TagData[] = [
                                     "price_groups": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_page_url": null,
-                                            "previous_page_url": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -73460,7 +72612,6 @@ export const apiTags: TagData[] = [
                                                 "id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
                                                 "object": "account_group",
                                                 "name": "Wholesale Customers",
-                                                "description": null,
                                                 "commission_policy": "commission_applied",
                                                 "freight_policy": "billed_freight",
                                                 "type": "type_group",
@@ -73469,8 +72620,6 @@ export const apiTags: TagData[] = [
                                             }
                                         ]
                                     },
-                                    "parent_account": null,
-                                    "child_accounts": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -75408,8 +74557,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 }
                             },
                             "contact_info": {
@@ -75426,7 +74574,6 @@ export const apiTags: TagData[] = [
                                     "object": "carrier",
                                     "name": "FedEx",
                                     "code": "fedex",
-                                    "account_number": null,
                                     "customer_portal_visibility": "visible",
                                     "owner": {
                                         "object": "owner",
@@ -75435,16 +74582,10 @@ export const apiTags: TagData[] = [
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                             "object": "account",
                                             "name": "Acme Inc.",
-                                            "default_billing_address": null,
-                                            "default_shipping_address": null,
-                                            "branding": null,
-                                            "portal": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
-                                    "service_levels": null,
-                                    "deleted_at": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -75462,10 +74603,6 @@ export const apiTags: TagData[] = [
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                             "object": "account",
                                             "name": "Acme Inc.",
-                                            "default_billing_address": null,
-                                            "default_shipping_address": null,
-                                            "branding": null,
-                                            "portal": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -75485,8 +74622,7 @@ export const apiTags: TagData[] = [
                                     "status": "active",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -75498,16 +74634,11 @@ export const apiTags: TagData[] = [
                                     "type": "carrier_rate_freight",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "flat_rate": null,
-                                    "minimum_order_value": null,
                                     "free_shipping_service_levels": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_page_url": null,
-                                            "previous_page_url": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -75523,8 +74654,7 @@ export const apiTags: TagData[] = [
                                     "name": "Normal",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -75534,8 +74664,6 @@ export const apiTags: TagData[] = [
                                     "object": "account_user",
                                     "name": "John Doe",
                                     "email": "john@augno.com",
-                                    "username": null,
-                                    "image_url": null,
                                     "status": "active",
                                     "role": {
                                         "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
@@ -75549,10 +74677,6 @@ export const apiTags: TagData[] = [
                                                 "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                                 "object": "account",
                                                 "name": "Acme Inc.",
-                                                "default_billing_address": null,
-                                                "default_shipping_address": null,
-                                                "branding": null,
-                                                "portal": null,
                                                 "created_at": "2026-05-10T00:00:00Z",
                                                 "updated_at": "2026-05-10T00:23:00Z"
                                             }
@@ -75566,8 +74690,6 @@ export const apiTags: TagData[] = [
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
-                                    "department": null,
-                                    "last_used_at": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -75580,14 +74702,11 @@ export const apiTags: TagData[] = [
                                 "id": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "address",
                                 "name": "Headquarters",
-                                "phone": null,
-                                "email": null,
                                 "type": "standard",
                                 "geolocation": {
                                     "id": "gl_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "geolocation",
                                     "street_line_1": "4200 Industrial Pkwy",
-                                    "street_line_2": null,
                                     "locality": "Columbus",
                                     "state": "OH",
                                     "postal_code": "43204",
@@ -75600,14 +74719,11 @@ export const apiTags: TagData[] = [
                                 "id": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "address",
                                 "name": "Headquarters",
-                                "phone": null,
-                                "email": null,
                                 "type": "standard",
                                 "geolocation": {
                                     "id": "gl_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "geolocation",
                                     "street_line_1": "4200 Industrial Pkwy",
-                                    "street_line_2": null,
                                     "locality": "Columbus",
                                     "state": "OH",
                                     "postal_code": "43204",
@@ -75620,7 +74736,6 @@ export const apiTags: TagData[] = [
                                 "id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "account_group",
                                 "name": "Wholesale Customers",
-                                "description": null,
                                 "commission_policy": "commission_applied",
                                 "freight_policy": "billed_freight",
                                 "type": "type_group",
@@ -75630,8 +74745,6 @@ export const apiTags: TagData[] = [
                             "price_groups": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -75640,7 +74753,6 @@ export const apiTags: TagData[] = [
                                         "id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
                                         "object": "account_group",
                                         "name": "Wholesale Customers",
-                                        "description": null,
                                         "commission_policy": "commission_applied",
                                         "freight_policy": "billed_freight",
                                         "type": "type_group",
@@ -75649,8 +74761,6 @@ export const apiTags: TagData[] = [
                                     }
                                 ]
                             },
-                            "parent_account": null,
-                            "child_accounts": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -77635,8 +76745,7 @@ export const apiTags: TagData[] = [
                                     "name": "US Dollar",
                                     "abbreviation": "$",
                                     "type": "currency",
-                                    "is_base_unit": false,
-                                    "owner": null
+                                    "is_base_unit": false
                                 }
                             },
                             "contact_info": {
@@ -77653,7 +76762,6 @@ export const apiTags: TagData[] = [
                                     "object": "carrier",
                                     "name": "FedEx",
                                     "code": "fedex",
-                                    "account_number": null,
                                     "customer_portal_visibility": "visible",
                                     "owner": {
                                         "object": "owner",
@@ -77662,16 +76770,10 @@ export const apiTags: TagData[] = [
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                             "object": "account",
                                             "name": "Acme Inc.",
-                                            "default_billing_address": null,
-                                            "default_shipping_address": null,
-                                            "branding": null,
-                                            "portal": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
-                                    "service_levels": null,
-                                    "deleted_at": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -77689,10 +76791,6 @@ export const apiTags: TagData[] = [
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                             "object": "account",
                                             "name": "Acme Inc.",
-                                            "default_billing_address": null,
-                                            "default_shipping_address": null,
-                                            "branding": null,
-                                            "portal": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -77712,8 +76810,7 @@ export const apiTags: TagData[] = [
                                     "status": "active",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -77725,16 +76822,11 @@ export const apiTags: TagData[] = [
                                     "type": "carrier_rate_freight",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "flat_rate": null,
-                                    "minimum_order_value": null,
                                     "free_shipping_service_levels": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_page_url": null,
-                                            "previous_page_url": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -77750,8 +76842,7 @@ export const apiTags: TagData[] = [
                                     "name": "Normal",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -77761,8 +76852,6 @@ export const apiTags: TagData[] = [
                                     "object": "account_user",
                                     "name": "John Doe",
                                     "email": "john@augno.com",
-                                    "username": null,
-                                    "image_url": null,
                                     "status": "active",
                                     "role": {
                                         "id": "rl_01gf7a8200er3ar3pkfrb6kk29",
@@ -77776,10 +76865,6 @@ export const apiTags: TagData[] = [
                                                 "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                                 "object": "account",
                                                 "name": "Acme Inc.",
-                                                "default_billing_address": null,
-                                                "default_shipping_address": null,
-                                                "branding": null,
-                                                "portal": null,
                                                 "created_at": "2026-05-10T00:00:00Z",
                                                 "updated_at": "2026-05-10T00:23:00Z"
                                             }
@@ -77793,8 +76878,6 @@ export const apiTags: TagData[] = [
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
-                                    "department": null,
-                                    "last_used_at": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -77807,14 +76890,11 @@ export const apiTags: TagData[] = [
                                 "id": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "address",
                                 "name": "Headquarters",
-                                "phone": null,
-                                "email": null,
                                 "type": "standard",
                                 "geolocation": {
                                     "id": "gl_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "geolocation",
                                     "street_line_1": "4200 Industrial Pkwy",
-                                    "street_line_2": null,
                                     "locality": "Columbus",
                                     "state": "OH",
                                     "postal_code": "43204",
@@ -77827,14 +76907,11 @@ export const apiTags: TagData[] = [
                                 "id": "ad_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "address",
                                 "name": "Headquarters",
-                                "phone": null,
-                                "email": null,
                                 "type": "standard",
                                 "geolocation": {
                                     "id": "gl_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "geolocation",
                                     "street_line_1": "4200 Industrial Pkwy",
-                                    "street_line_2": null,
                                     "locality": "Columbus",
                                     "state": "OH",
                                     "postal_code": "43204",
@@ -77847,7 +76924,6 @@ export const apiTags: TagData[] = [
                                 "id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "account_group",
                                 "name": "Wholesale Customers",
-                                "description": null,
                                 "commission_policy": "commission_applied",
                                 "freight_policy": "billed_freight",
                                 "type": "type_group",
@@ -77857,8 +76933,6 @@ export const apiTags: TagData[] = [
                             "price_groups": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -77867,7 +76941,6 @@ export const apiTags: TagData[] = [
                                         "id": "acgp_01jm4r6700f8nwq3v5hx2d9ktp",
                                         "object": "account_group",
                                         "name": "Wholesale Customers",
-                                        "description": null,
                                         "commission_policy": "commission_applied",
                                         "freight_policy": "billed_freight",
                                         "type": "type_group",
@@ -77876,8 +76949,6 @@ export const apiTags: TagData[] = [
                                     }
                                 ]
                             },
-                            "parent_account": null,
-                            "child_accounts": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -78218,16 +77289,12 @@ export const apiTags: TagData[] = [
                 "id": "pl_01jm4r6700f8nwq3v5hx2d9ktp",
                 "object": "product_line",
                 "name": "Industrial Fasteners",
-                "description": null,
-                "notes": null,
                 "commission_policy": "commission_exempt",
                 "freight_policy": "billed_freight",
                 "owner": {
                     "object": "owner",
-                    "type": "system",
-                    "account": null
+                    "type": "system"
                 },
-                "unit_group": null,
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             }
@@ -78637,16 +77704,12 @@ export const apiTags: TagData[] = [
                             "id": "pl_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "product_line",
                             "name": "Industrial Fasteners",
-                            "description": null,
-                            "notes": null,
                             "commission_policy": "commission_exempt",
                             "freight_policy": "billed_freight",
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
-                            "unit_group": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -78731,10 +77794,7 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Updated Product Line",
-                        "commission_policy": null,
-                        "freight_policy": null,
-                        "unit_group_id": null
+                        "name": "Updated Product Line"
                     }
                 },
                 "responses": [
@@ -79064,16 +78124,12 @@ export const apiTags: TagData[] = [
                             "id": "pl_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "product_line",
                             "name": "Industrial Fasteners",
-                            "description": null,
-                            "notes": null,
                             "commission_policy": "commission_exempt",
                             "freight_policy": "billed_freight",
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
-                            "unit_group": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -79527,16 +78583,12 @@ export const apiTags: TagData[] = [
                                     "id": "pl_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "product_line",
                                     "name": "Industrial Fasteners",
-                                    "description": null,
-                                    "notes": null,
                                     "commission_policy": "commission_exempt",
                                     "freight_policy": "billed_freight",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "unit_group": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -79905,16 +78957,12 @@ export const apiTags: TagData[] = [
                             "id": "pl_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "product_line",
                             "name": "Industrial Fasteners",
-                            "description": null,
-                            "notes": null,
                             "commission_policy": "commission_exempt",
                             "freight_policy": "billed_freight",
                             "owner": {
                                 "object": "owner",
-                                "type": "system",
-                                "account": null
+                                "type": "system"
                             },
-                            "unit_group": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -81584,16 +80632,12 @@ export const apiTags: TagData[] = [
                     "id": "pl_01jm4r6700f8nwq3v5hx2d9ktp",
                     "object": "product_line",
                     "name": "Industrial Fasteners",
-                    "description": null,
-                    "notes": null,
                     "commission_policy": "commission_exempt",
                     "freight_policy": "billed_freight",
                     "owner": {
                         "object": "owner",
-                        "type": "system",
-                        "account": null
+                        "type": "system"
                     },
-                    "unit_group": null,
                     "created_at": "2026-05-10T00:00:00Z",
                     "updated_at": "2026-05-10T00:23:00Z"
                 },
@@ -81602,21 +80646,16 @@ export const apiTags: TagData[] = [
                     "object": "item",
                     "sku": "ALM-2024-1001",
                     "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                    "notes": null,
                     "type": "product",
                     "category": {
                         "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                         "object": "item_category",
                         "name": "Electronics",
-                        "notes": null,
                         "type": "material_category",
                         "owner": {
                             "object": "owner",
-                            "type": "system",
-                            "account": null
+                            "type": "system"
                         },
-                        "properties": null,
-                        "unit_group": null,
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
                     },
@@ -81630,8 +80669,7 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "is_base_unit": false,
-                            "owner": null
+                            "is_base_unit": false
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -81639,8 +80677,7 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "is_base_unit": false,
-                            "owner": null
+                            "is_base_unit": false
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -81656,8 +80693,7 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "is_base_unit": false,
-                            "owner": null
+                            "is_base_unit": false
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -81665,8 +80701,7 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "is_base_unit": false,
-                            "owner": null
+                            "is_base_unit": false
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -81682,8 +80717,7 @@ export const apiTags: TagData[] = [
                             "name": "US Dollar",
                             "abbreviation": "USD",
                             "type": "currency",
-                            "is_base_unit": false,
-                            "owner": null
+                            "is_base_unit": false
                         },
                         "denominator_unit": {
                             "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -81691,8 +80725,7 @@ export const apiTags: TagData[] = [
                             "name": "Kilogram",
                             "abbreviation": "kg",
                             "type": "mass",
-                            "is_base_unit": false,
-                            "owner": null
+                            "is_base_unit": false
                         },
                         "display_value": "$25.50 / kg",
                         "created_at": "2026-05-10T00:00:00Z",
@@ -81701,8 +80734,6 @@ export const apiTags: TagData[] = [
                     "attributes": {
                         "object": "list",
                         "page_info": {
-                            "next_page_url": null,
-                            "previous_page_url": null,
                             "has_next_page": false,
                             "has_prev_page": false
                         },
@@ -81713,7 +80744,6 @@ export const apiTags: TagData[] = [
                                 "value": "Premium",
                                 "color": "red",
                                 "sort_order": 1,
-                                "property": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             }
@@ -81955,9 +80985,7 @@ export const apiTags: TagData[] = [
                     "example": {
                         "sku": "ALM-2024-1001",
                         "type": "sale",
-                        "product_line_id": null,
-                        "category_id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
-                        "portal_visibility": null
+                        "category_id": "ic_01jm4r6700f8nwq3v5hx2d9ktp"
                     }
                 },
                 "responses": [
@@ -83586,16 +82614,12 @@ export const apiTags: TagData[] = [
                                 "id": "pl_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "product_line",
                                 "name": "Industrial Fasteners",
-                                "description": null,
-                                "notes": null,
                                 "commission_policy": "commission_exempt",
                                 "freight_policy": "billed_freight",
                                 "owner": {
                                     "object": "owner",
-                                    "type": "system",
-                                    "account": null
+                                    "type": "system"
                                 },
-                                "unit_group": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -83604,21 +82628,16 @@ export const apiTags: TagData[] = [
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                                "notes": null,
                                 "type": "product",
                                 "category": {
                                     "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -83632,8 +82651,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -83641,8 +82659,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -83658,8 +82675,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -83667,8 +82683,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -83684,8 +82699,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -83693,8 +82707,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -83703,8 +82716,6 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -83715,7 +82726,6 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -83854,10 +82864,7 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "sku": "SKU-002",
-                        "description": null,
-                        "notes": null,
-                        "portal_visibility": null
+                        "sku": "SKU-002"
                     }
                 },
                 "responses": [
@@ -85486,16 +84493,12 @@ export const apiTags: TagData[] = [
                                 "id": "pl_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "product_line",
                                 "name": "Industrial Fasteners",
-                                "description": null,
-                                "notes": null,
                                 "commission_policy": "commission_exempt",
                                 "freight_policy": "billed_freight",
                                 "owner": {
                                     "object": "owner",
-                                    "type": "system",
-                                    "account": null
+                                    "type": "system"
                                 },
-                                "unit_group": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -85504,21 +84507,16 @@ export const apiTags: TagData[] = [
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                                "notes": null,
                                 "type": "product",
                                 "category": {
                                     "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -85532,8 +84530,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -85541,8 +84538,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -85558,8 +84554,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -85567,8 +84562,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -85584,8 +84578,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -85593,8 +84586,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -85603,8 +84595,6 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -85615,7 +84605,6 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -87336,16 +86325,12 @@ export const apiTags: TagData[] = [
                                         "id": "pl_01jm4r6700f8nwq3v5hx2d9ktp",
                                         "object": "product_line",
                                         "name": "Industrial Fasteners",
-                                        "description": null,
-                                        "notes": null,
                                         "commission_policy": "commission_exempt",
                                         "freight_policy": "billed_freight",
                                         "owner": {
                                             "object": "owner",
-                                            "type": "system",
-                                            "account": null
+                                            "type": "system"
                                         },
-                                        "unit_group": null,
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
@@ -87354,21 +86339,16 @@ export const apiTags: TagData[] = [
                                         "object": "item",
                                         "sku": "ALM-2024-1001",
                                         "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                                        "notes": null,
                                         "type": "product",
                                         "category": {
                                             "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                             "object": "item_category",
                                             "name": "Electronics",
-                                            "notes": null,
                                             "type": "material_category",
                                             "owner": {
                                                 "object": "owner",
-                                                "type": "system",
-                                                "account": null
+                                                "type": "system"
                                             },
-                                            "properties": null,
-                                            "unit_group": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         },
@@ -87382,8 +86362,7 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "is_base_unit": false,
-                                                "owner": null
+                                                "is_base_unit": false
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -87391,8 +86370,7 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "is_base_unit": false,
-                                                "owner": null
+                                                "is_base_unit": false
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -87408,8 +86386,7 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "is_base_unit": false,
-                                                "owner": null
+                                                "is_base_unit": false
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -87417,8 +86394,7 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "is_base_unit": false,
-                                                "owner": null
+                                                "is_base_unit": false
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -87434,8 +86410,7 @@ export const apiTags: TagData[] = [
                                                 "name": "US Dollar",
                                                 "abbreviation": "USD",
                                                 "type": "currency",
-                                                "is_base_unit": false,
-                                                "owner": null
+                                                "is_base_unit": false
                                             },
                                             "denominator_unit": {
                                                 "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -87443,8 +86418,7 @@ export const apiTags: TagData[] = [
                                                 "name": "Kilogram",
                                                 "abbreviation": "kg",
                                                 "type": "mass",
-                                                "is_base_unit": false,
-                                                "owner": null
+                                                "is_base_unit": false
                                             },
                                             "display_value": "$25.50 / kg",
                                             "created_at": "2026-05-10T00:00:00Z",
@@ -87453,8 +86427,6 @@ export const apiTags: TagData[] = [
                                         "attributes": {
                                             "object": "list",
                                             "page_info": {
-                                                "next_page_url": null,
-                                                "previous_page_url": null,
                                                 "has_next_page": false,
                                                 "has_prev_page": false
                                             },
@@ -87465,7 +86437,6 @@ export const apiTags: TagData[] = [
                                                     "value": "Premium",
                                                     "color": "red",
                                                     "sort_order": 1,
-                                                    "property": null,
                                                     "created_at": "2026-05-10T00:00:00Z",
                                                     "updated_at": "2026-05-10T00:23:00Z"
                                                 }
@@ -89154,16 +88125,12 @@ export const apiTags: TagData[] = [
                                 "id": "pl_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "product_line",
                                 "name": "Industrial Fasteners",
-                                "description": null,
-                                "notes": null,
                                 "commission_policy": "commission_exempt",
                                 "freight_policy": "billed_freight",
                                 "owner": {
                                     "object": "owner",
-                                    "type": "system",
-                                    "account": null
+                                    "type": "system"
                                 },
-                                "unit_group": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -89172,21 +88139,16 @@ export const apiTags: TagData[] = [
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                                "notes": null,
                                 "type": "product",
                                 "category": {
                                     "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -89200,8 +88162,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -89209,8 +88170,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -89226,8 +88186,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -89235,8 +88194,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -89252,8 +88210,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -89261,8 +88218,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -89271,8 +88227,6 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -89283,7 +88237,6 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -90970,16 +89923,12 @@ export const apiTags: TagData[] = [
                                 "id": "pl_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "product_line",
                                 "name": "Industrial Fasteners",
-                                "description": null,
-                                "notes": null,
                                 "commission_policy": "commission_exempt",
                                 "freight_policy": "billed_freight",
                                 "owner": {
                                     "object": "owner",
-                                    "type": "system",
-                                    "account": null
+                                    "type": "system"
                                 },
-                                "unit_group": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -90988,21 +89937,16 @@ export const apiTags: TagData[] = [
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                                "notes": null,
                                 "type": "product",
                                 "category": {
                                     "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -91016,8 +89960,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -91025,8 +89968,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -91042,8 +89984,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -91051,8 +89992,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -91068,8 +90008,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -91077,8 +90016,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -91087,8 +90025,6 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -91099,7 +90035,6 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -92793,16 +91728,12 @@ export const apiTags: TagData[] = [
                                 "id": "pl_01jm4r6700f8nwq3v5hx2d9ktp",
                                 "object": "product_line",
                                 "name": "Industrial Fasteners",
-                                "description": null,
-                                "notes": null,
                                 "commission_policy": "commission_exempt",
                                 "freight_policy": "billed_freight",
                                 "owner": {
                                     "object": "owner",
-                                    "type": "system",
-                                    "account": null
+                                    "type": "system"
                                 },
-                                "unit_group": null,
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -92811,21 +91742,16 @@ export const apiTags: TagData[] = [
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
-                                "notes": null,
                                 "type": "product",
                                 "category": {
                                     "id": "ic_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
-                                        "type": "system",
-                                        "account": null
+                                        "type": "system"
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -92839,8 +91765,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -92848,8 +91773,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -92865,8 +91789,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -92874,8 +91797,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -92891,8 +91813,7 @@ export const apiTags: TagData[] = [
                                         "name": "US Dollar",
                                         "abbreviation": "USD",
                                         "type": "currency",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "denominator_unit": {
                                         "id": "un_01jm4r6700f8nwq3v5hx2d9ktp",
@@ -92900,8 +91821,7 @@ export const apiTags: TagData[] = [
                                         "name": "Kilogram",
                                         "abbreviation": "kg",
                                         "type": "mass",
-                                        "is_base_unit": false,
-                                        "owner": null
+                                        "is_base_unit": false
                                     },
                                     "display_value": "$25.50 / kg",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -92910,8 +91830,6 @@ export const apiTags: TagData[] = [
                                 "attributes": {
                                     "object": "list",
                                     "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
                                         "has_next_page": false,
                                         "has_prev_page": false
                                     },
@@ -92922,7 +91840,6 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -93410,12 +92327,9 @@ export const apiTags: TagData[] = [
                             "object": "location",
                             "name": "Warehouse A",
                             "type": "building",
-                            "parent": null,
                             "children": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -93424,9 +92338,7 @@ export const apiTags: TagData[] = [
                                         "id": "lc_01gf7a8200er3ar3pkfrb6kk32",
                                         "object": "location",
                                         "name": "Shelf A1",
-                                        "type": "building",
-                                        "parent": null,
-                                        "children": null
+                                        "type": "building"
                                     }
                                 ]
                             },
@@ -93516,10 +92428,7 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Warehouse B",
-                        "type": null,
-                        "parent_id": null,
-                        "child_ids": null
+                        "name": "Warehouse B"
                     }
                 },
                 "responses": [
@@ -93836,12 +92745,9 @@ export const apiTags: TagData[] = [
                             "object": "location",
                             "name": "Warehouse A",
                             "type": "building",
-                            "parent": null,
                             "children": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -93850,9 +92756,7 @@ export const apiTags: TagData[] = [
                                         "id": "lc_01gf7a8200er3ar3pkfrb6kk32",
                                         "object": "location",
                                         "name": "Shelf A1",
-                                        "type": "building",
-                                        "parent": null,
-                                        "children": null
+                                        "type": "building"
                                     }
                                 ]
                             },
@@ -94483,12 +93387,9 @@ export const apiTags: TagData[] = [
                                     "object": "location",
                                     "name": "Warehouse A",
                                     "type": "building",
-                                    "parent": null,
                                     "children": {
                                         "object": "list",
                                         "page_info": {
-                                            "next_page_url": null,
-                                            "previous_page_url": null,
                                             "has_next_page": false,
                                             "has_prev_page": false
                                         },
@@ -94497,9 +93398,7 @@ export const apiTags: TagData[] = [
                                                 "id": "lc_01gf7a8200er3ar3pkfrb6kk32",
                                                 "object": "location",
                                                 "name": "Shelf A1",
-                                                "type": "building",
-                                                "parent": null,
-                                                "children": null
+                                                "type": "building"
                                             }
                                         ]
                                     },
@@ -94956,12 +93855,9 @@ export const apiTags: TagData[] = [
                             "object": "location",
                             "name": "Warehouse A",
                             "type": "building",
-                            "parent": null,
                             "children": {
                                 "object": "list",
                                 "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
                                     "has_next_page": false,
                                     "has_prev_page": false
                                 },
@@ -94970,9 +93866,7 @@ export const apiTags: TagData[] = [
                                         "id": "lc_01gf7a8200er3ar3pkfrb6kk32",
                                         "object": "location",
                                         "name": "Shelf A1",
-                                        "type": "building",
-                                        "parent": null,
-                                        "children": null
+                                        "type": "building"
                                     }
                                 ]
                             },
@@ -95459,13 +94353,8 @@ export const apiTags: TagData[] = [
                 "id": "scst_01jm4r6700f8nwq3v5hx2d9ktp",
                 "object": "scanning_station",
                 "name": "Packaging Line 1",
-                "notes": null,
                 "type": "init_batch",
-                "label_size": null,
-                "label_type": null,
                 "operator_requirement": "none",
-                "department": null,
-                "production_steps": null,
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             }
@@ -95578,7 +94467,6 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Packaging Line 1",
-                        "notes": null,
                         "type": "init_batch",
                         "operator_requirement": "none",
                         "department_id": "dp_01gf7a8200er3ar3pkfrb6kk30",
@@ -96026,13 +94914,8 @@ export const apiTags: TagData[] = [
                             "id": "scst_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "scanning_station",
                             "name": "Packaging Line 1",
-                            "notes": null,
                             "type": "init_batch",
-                            "label_size": null,
-                            "label_type": null,
                             "operator_requirement": "none",
-                            "department": null,
-                            "production_steps": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -96131,11 +95014,7 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Station B",
-                        "notes": null,
-                        "label_size": null,
-                        "label_type": null,
-                        "operator_requirement": null
+                        "name": "Station B"
                     }
                 },
                 "responses": [
@@ -96578,13 +95457,8 @@ export const apiTags: TagData[] = [
                             "id": "scst_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "scanning_station",
                             "name": "Packaging Line 1",
-                            "notes": null,
                             "type": "init_batch",
-                            "label_size": null,
-                            "label_type": null,
                             "operator_requirement": "none",
-                            "department": null,
-                            "production_steps": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -97150,13 +96024,8 @@ export const apiTags: TagData[] = [
                                     "id": "scst_01jm4r6700f8nwq3v5hx2d9ktp",
                                     "object": "scanning_station",
                                     "name": "Packaging Line 1",
-                                    "notes": null,
                                     "type": "init_batch",
-                                    "label_size": null,
-                                    "label_type": null,
                                     "operator_requirement": "none",
-                                    "department": null,
-                                    "production_steps": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -97637,13 +96506,8 @@ export const apiTags: TagData[] = [
                             "id": "scst_01jm4r6700f8nwq3v5hx2d9ktp",
                             "object": "scanning_station",
                             "name": "Packaging Line 1",
-                            "notes": null,
                             "type": "init_batch",
-                            "label_size": null,
-                            "label_type": null,
                             "operator_requirement": "none",
-                            "department": null,
-                            "production_steps": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -97898,10 +96762,6 @@ export const apiTags: TagData[] = [
                         "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                         "object": "account",
                         "name": "Acme Inc.",
-                        "default_billing_address": null,
-                        "default_shipping_address": null,
-                        "branding": null,
-                        "portal": null,
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
                     }
@@ -98185,10 +97045,6 @@ export const apiTags: TagData[] = [
                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                     "object": "account",
                                     "name": "Acme Inc.",
-                                    "default_billing_address": null,
-                                    "default_shipping_address": null,
-                                    "branding": null,
-                                    "portal": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -98478,10 +97334,6 @@ export const apiTags: TagData[] = [
                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                     "object": "account",
                                     "name": "Acme Inc.",
-                                    "default_billing_address": null,
-                                    "default_shipping_address": null,
-                                    "branding": null,
-                                    "portal": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -98843,10 +97695,6 @@ export const apiTags: TagData[] = [
                                             "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                             "object": "account",
                                             "name": "Acme Inc.",
-                                            "default_billing_address": null,
-                                            "default_shipping_address": null,
-                                            "branding": null,
-                                            "portal": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -99109,10 +97957,6 @@ export const apiTags: TagData[] = [
                                     "id": "ac_01gf7a8200eaj8fke1xvw4h50x",
                                     "object": "account",
                                     "name": "Acme Inc.",
-                                    "default_billing_address": null,
-                                    "default_shipping_address": null,
-                                    "branding": null,
-                                    "portal": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
