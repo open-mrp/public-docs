@@ -85,7 +85,7 @@ export function SdkSelectorDropdown() {
             <button
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center gap-1.5 text-xs font-medium text-gray-400 hover:text-gray-200 px-2 py-1 rounded transition-colors cursor-pointer border border-transparent hover:border-white/10"
+                className="flex items-center gap-1.5 text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--foreground)] px-2 py-1 rounded transition-colors cursor-pointer border border-transparent hover:border-[var(--foreground)]/10"
                 aria-expanded={isOpen}
                 aria-haspopup="listbox"
             >
@@ -108,7 +108,7 @@ export function SdkSelectorDropdown() {
                         aria-hidden
                     />
                     <div
-                        className="absolute right-0 top-full mt-1 z-50 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg shadow-lg py-1 min-w-[140px]"
+                        className="absolute right-0 top-full mt-1 z-50 bg-[var(--code-background)] border border-[var(--code-panel-border)] rounded-lg shadow-lg py-1 min-w-[140px]"
                         role="listbox"
                     >
                         {languages.map((lang) => (
@@ -123,8 +123,8 @@ export function SdkSelectorDropdown() {
                                 }}
                                 className={`w-full text-left px-3 py-1.5 text-xs transition-colors cursor-pointer ${
                                     lang.id === language
-                                        ? 'text-gray-100 bg-white/10'
-                                        : 'text-gray-400 hover:bg-white/5 hover:text-gray-200'
+                                        ? 'text-[var(--foreground)] bg-[var(--foreground)]/10'
+                                        : 'text-[var(--text-secondary)] hover:bg-[var(--foreground)]/5 hover:text-[var(--foreground)]'
                                 }`}
                             >
                                 {lang.label}
@@ -142,8 +142,8 @@ export type RequestExampleMode = 'example' | 'body';
 function segmentButtonClass(active: boolean) {
     return `px-2 py-0.5 text-xs rounded transition-colors cursor-pointer ${
         active
-            ? 'bg-white/10 text-gray-200'
-            : 'text-gray-500 hover:text-gray-300 hover:bg-white/5'
+            ? 'bg-[var(--foreground)]/10 text-[var(--foreground)]'
+            : 'text-[var(--text-secondary)] hover:text-[var(--foreground)] hover:bg-[var(--foreground)]/5'
     }`;
 }
 
@@ -159,7 +159,7 @@ export function RequestExampleHeader({
     return (
         <div className="flex items-center gap-2 shrink-0">
             <div
-                className="flex items-center gap-0.5 rounded-md border border-white/10 p-0.5"
+                className="flex items-center gap-0.5 rounded-md border border-[var(--code-panel-border)] p-0.5"
                 role="tablist"
                 aria-label="Request example type"
             >

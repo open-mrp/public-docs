@@ -7,7 +7,8 @@
     --foreground: #1e1d31;
     --navbar-background: #efeff1;
     --text-secondary: #79819f;
-    --code-background: #242933;
+    --code-background: #f4f5f7;
+    --code-panel-border: var(--border-color);
     --inline-code-gradient: linear-gradient(
         135deg,
         color-mix(in srgb, var(--primary) 22%, transparent) 0%,
@@ -39,6 +40,7 @@
     --navbar-background: #181a20;
     --text-secondary: #7e848b;
     --code-background: #161b27;
+    --code-panel-border: #2a2a2a;
     --inline-code-gradient: linear-gradient(
         135deg,
         color-mix(in srgb, var(--primary) 28%, transparent) 0%,
@@ -142,6 +144,89 @@
 }
 
 @import '@augno/ui/styles.css';
+
+/* Light mode syntax highlighting (Atom One Light) */
+:root:not(.dark) .hljs {
+    color: #383a42;
+}
+
+:root:not(.dark) .hljs-comment,
+:root:not(.dark) .hljs-quote {
+    color: #a0a1a7;
+}
+
+:root:not(.dark) .hljs-doctag,
+:root:not(.dark) .hljs-keyword,
+:root:not(.dark) .hljs-formula {
+    color: #a626a4;
+}
+
+:root:not(.dark) .hljs-section,
+:root:not(.dark) .hljs-name,
+:root:not(.dark) .hljs-selector-tag,
+:root:not(.dark) .hljs-deletion,
+:root:not(.dark) .hljs-subst {
+    color: #e45649;
+}
+
+:root:not(.dark) .hljs-literal {
+    color: #0184bb;
+}
+
+:root:not(.dark) .hljs-string,
+:root:not(.dark) .hljs-regexp,
+:root:not(.dark) .hljs-addition,
+:root:not(.dark) .hljs-attribute,
+:root:not(.dark) .hljs-meta .hljs-string {
+    color: #50a14f;
+}
+
+:root:not(.dark) .hljs-attr,
+:root:not(.dark) .hljs-variable,
+:root:not(.dark) .hljs-template-variable,
+:root:not(.dark) .hljs-type,
+:root:not(.dark) .hljs-selector-class,
+:root:not(.dark) .hljs-selector-attr,
+:root:not(.dark) .hljs-selector-pseudo,
+:root:not(.dark) .hljs-number {
+    color: #986801;
+}
+
+:root:not(.dark) .hljs-symbol,
+:root:not(.dark) .hljs-bullet,
+:root:not(.dark) .hljs-link,
+:root:not(.dark) .hljs-meta,
+:root:not(.dark) .hljs-selector-id,
+:root:not(.dark) .hljs-title {
+    color: #4078f2;
+}
+
+:root:not(.dark) .hljs-built_in,
+:root:not(.dark) .hljs-title.class_,
+:root:not(.dark) .hljs-class .hljs-title {
+    color: #c18401;
+}
+
+/* CodeEditor chrome tuned for light backgrounds */
+:root:not(.dark) .bg-code-background .text-gray-600 {
+    color: #a0a1a7;
+}
+
+:root:not(.dark) .bg-code-background .text-gray-300 {
+    color: #686b77;
+}
+
+:root:not(.dark) .bg-code-background .bg-gray-600\/40 {
+    background-color: rgba(160, 161, 167, 0.25);
+}
+
+:root:not(.dark) .bg-code-background .border-gray-500\/30 {
+    border-color: rgba(160, 161, 167, 0.35);
+}
+
+:root:not(.dark) .bg-code-background .cursor-text[class*='bg-white'] {
+    background-color: color-mix(in srgb, var(--foreground) 6%, transparent);
+}
 
 @theme {
     --breakpoint-sm: 425px;

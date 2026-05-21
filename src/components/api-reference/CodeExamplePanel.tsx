@@ -52,13 +52,13 @@ export function CodeExamplePanel({
 
     return (
         <div
-            className={`rounded-xl border border-[#2a2a2a] bg-[#0f0f0f] overflow-hidden flex flex-col ${
+            className={`rounded-xl border border-[var(--code-panel-border)] bg-[var(--code-background)] overflow-hidden flex flex-col ${
                 scrollable ? 'min-h-0' : ''
             } ${className}`}
         >
             <div className="flex-none">
-                <div className="flex items-center justify-between gap-3 px-4 py-2.5 border-b border-[#2a2a2a]">
-                    <span className="text-sm font-medium text-gray-200 truncate min-w-0 flex-1">
+                <div className="flex items-center justify-between gap-3 px-4 py-2.5 border-b border-[var(--code-panel-border)]">
+                    <span className="text-sm font-medium text-[var(--foreground)] truncate min-w-0 flex-1">
                         {title}
                     </span>
                     <div className="flex items-center gap-2 shrink-0">
@@ -71,8 +71,8 @@ export function CodeExamplePanel({
                                         onClick={() => setActiveId(tab.id)}
                                         className={`px-2 py-0.5 text-xs rounded transition-colors cursor-pointer ${
                                             tab.id === activeId
-                                                ? 'bg-white/10 text-gray-200'
-                                                : 'text-gray-500 hover:text-gray-300'
+                                                ? 'bg-[var(--foreground)]/10 text-[var(--foreground)]'
+                                                : 'text-[var(--text-secondary)] hover:text-[var(--foreground)]'
                                         }`}
                                     >
                                         {tab.label}
@@ -84,8 +84,8 @@ export function CodeExamplePanel({
                     </div>
                 </div>
                 {subtitle && (
-                    <div className="px-4 py-1.5 border-b border-[#2a2a2a]">
-                        <span className="text-xs text-gray-500">{subtitle}</span>
+                    <div className="px-4 py-1.5 border-b border-[var(--code-panel-border)]">
+                        <span className="text-xs text-[var(--text-secondary)]">{subtitle}</span>
                     </div>
                 )}
             </div>
