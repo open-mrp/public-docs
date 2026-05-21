@@ -92358,6 +92358,173 @@ export const apiTags: TagData[] = [
                 ]
             },
             {
+                "operationId": "list-transaction-methods",
+                "summary": "List Transaction Methods",
+                "description": "Returns a paginated list of transaction methods.",
+                "method": "GET",
+                "path": "/v1/finance/transaction-methods",
+                "domain": "finance",
+                "tag": "Transactions",
+                "tagSlug": "transactions",
+                "endpointSlug": "list-transaction-methods",
+                "actionType": "list",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Cursor token used to retrieve the next or previous page of results."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "type": "integer",
+                        "required": false,
+                        "description": "Maximum number of results per page (default: 100, max: 1000)."
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Search query used to filter results."
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for List Transaction Methods",
+                        "fields": [
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "list"
+                                ]
+                            },
+                            {
+                                "name": "page_info",
+                                "type": "object",
+                                "description": "Pagination metadata.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "properties": [
+                                    {
+                                        "name": "next_page_url",
+                                        "type": "string",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "previous_page_url",
+                                        "type": "string",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_next_page",
+                                        "type": "boolean",
+                                        "description": "Whether more results exist after this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_prev_page",
+                                        "type": "boolean",
+                                        "description": "Whether results exist before this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "data",
+                                "type": "array",
+                                "description": "Resources in this page.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "itemType": "object",
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Transaction method ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "transaction_method"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "code",
+                                        "type": "string",
+                                        "description": "Machine-readable code.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "cash",
+                                            "check",
+                                            "credit_card",
+                                            "gift_card",
+                                            "ach"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": "txmd_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "txmd_01jm4r6700f8nwq3v5hx2d9ktp",
+                                    "object": "transaction_method",
+                                    "name": "Credit Card",
+                                    "code": "credit_card"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
                 "operationId": "list-transaction-types",
                 "summary": "List Transaction Types",
                 "description": "Returns a paginated list of transaction types.",
@@ -99575,6 +99742,13 @@ export const apiNavDomains: ApiNavDomain[] = [
                         "method": "GET",
                         "actionType": "list",
                         "href": "/api-reference/transactions/list-adjustment-types"
+                    },
+                    {
+                        "name": "List Transaction Methods",
+                        "slug": "list-transaction-methods",
+                        "method": "GET",
+                        "actionType": "list",
+                        "href": "/api-reference/transactions/list-transaction-methods"
                     },
                     {
                         "name": "List Transaction Types",

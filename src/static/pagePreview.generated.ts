@@ -911,6 +911,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "List Adjustment Types",
         "subtitle": "GET /v1/finance/adjustment-types"
     },
+    "/api-reference/transactions/list-transaction-methods": {
+        "title": "List Transaction Methods",
+        "subtitle": "GET /v1/finance/transaction-methods"
+    },
     "/api-reference/transactions/list-transaction-types": {
         "title": "List Transaction Types",
         "subtitle": "GET /v1/finance/transaction-types"

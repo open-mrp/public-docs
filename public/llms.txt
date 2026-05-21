@@ -236,6 +236,7 @@
 - [GET Payment Terms Management — Retrieve Term](https://docs.augno.com/api-reference/payment-terms-management/retrieve-payment-term.md)
 - [DELETE Payment Terms Management — Delete Term](https://docs.augno.com/api-reference/payment-terms-management/delete-payment-term.md)
 - [GET Transactions — List Adjustment Types](https://docs.augno.com/api-reference/transactions/list-adjustment-types.md)
+- [GET Transactions — List Transaction Methods](https://docs.augno.com/api-reference/transactions/list-transaction-methods.md)
 - [GET Transactions — List Transaction Types](https://docs.augno.com/api-reference/transactions/list-transaction-types.md)
 
 ### Operations

@@ -344,6 +344,7 @@ export const docPaths = {
         },
         "transactions": {
             "listAdjustmentTypes": "/api-reference/transactions/list-adjustment-types",
+            "listTransactionMethods": "/api-reference/transactions/list-transaction-methods",
             "listTransactionTypes": "/api-reference/transactions/list-transaction-types"
         },
         "locationManagement": {
