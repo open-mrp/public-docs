@@ -227,6 +227,7 @@
 - [GET Customers — Retrieve Customer](https://docs.augno.com/api-reference/customers/retrieve-customer.md)
 - [DELETE Customers — Delete Customer](https://docs.augno.com/api-reference/customers/delete-customer.md)
 - [POST Customers — Merge](https://docs.augno.com/api-reference/customers/merge-customers.md)
+- [GET Sales Order Statuses — List](https://docs.augno.com/api-reference/sales-order-statuses/list-sales-order-statuses.md)
 
 ### Finance
 - [POST Payment Terms Management — Create Term](https://docs.augno.com/api-reference/payment-terms-management/create-payment-term.md)
@@ -234,6 +235,8 @@
 - [GET Payment Terms Management — List](https://docs.augno.com/api-reference/payment-terms-management/list-payment-terms.md)
 - [GET Payment Terms Management — Retrieve Term](https://docs.augno.com/api-reference/payment-terms-management/retrieve-payment-term.md)
 - [DELETE Payment Terms Management — Delete Term](https://docs.augno.com/api-reference/payment-terms-management/delete-payment-term.md)
+- [GET Transactions — List Adjustment Types](https://docs.augno.com/api-reference/transactions/list-adjustment-types.md)
+- [GET Transactions — List Transaction Types](https://docs.augno.com/api-reference/transactions/list-transaction-types.md)
 
 ### Operations
 - [POST Shipping Terms Management — Create Term](https://docs.augno.com/api-reference/shipping-terms-management/create-shipping-term.md)

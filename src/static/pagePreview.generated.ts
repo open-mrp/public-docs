@@ -903,6 +903,18 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Change Product Product Line",
         "subtitle": "PUT /v1/catalog/products/{id}/product-line/{product_line_id}"
     },
+    "/api-reference/sales-order-statuses/list-sales-order-statuses": {
+        "title": "List Sales Order Statuses",
+        "subtitle": "GET /v1/sales/sales-orders/statuses"
+    },
+    "/api-reference/transactions/list-adjustment-types": {
+        "title": "List Adjustment Types",
+        "subtitle": "GET /v1/finance/adjustment-types"
+    },
+    "/api-reference/transactions/list-transaction-types": {
+        "title": "List Transaction Types",
+        "subtitle": "GET /v1/finance/transaction-types"
+    },
     "/api-reference/location-management/create-location": {
         "title": "Create Location",
         "subtitle": "POST /v1/operations/locations"

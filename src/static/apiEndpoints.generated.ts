@@ -91857,6 +91857,675 @@ export const apiTags: TagData[] = [
         ]
     },
     {
+        "name": "Sales Order Statuses",
+        "slug": "sales-order-statuses",
+        "description": "List sales order statuses.",
+        "domain": "sales",
+        "domainLabel": "Sales",
+        "endpoints": [
+            {
+                "operationId": "list-sales-order-statuses",
+                "summary": "List Sales Order Statuses",
+                "description": "Returns a paginated list of sales order statuses.",
+                "method": "GET",
+                "path": "/v1/sales/sales-orders/statuses",
+                "domain": "sales",
+                "tag": "Sales Order Statuses",
+                "tagSlug": "sales-order-statuses",
+                "endpointSlug": "list-sales-order-statuses",
+                "actionType": "list",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Cursor token used to retrieve the next or previous page of results."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "type": "integer",
+                        "required": false,
+                        "description": "Maximum number of results per page (default: 100, max: 1000)."
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Search query used to filter results."
+                    },
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
+                        "enum": [
+                            "owner"
+                        ]
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for List Sales Order Statuses",
+                        "fields": [
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "list"
+                                ]
+                            },
+                            {
+                                "name": "page_info",
+                                "type": "object",
+                                "description": "Pagination metadata.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "properties": [
+                                    {
+                                        "name": "next_page_url",
+                                        "type": "string",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "previous_page_url",
+                                        "type": "string",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_next_page",
+                                        "type": "boolean",
+                                        "description": "Whether more results exist after this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_prev_page",
+                                        "type": "boolean",
+                                        "description": "Whether results exist before this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "data",
+                                "type": "array",
+                                "description": "Resources in this page.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "itemType": "object",
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Sales order status ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "sales_order_status"
+                                        ]
+                                    },
+                                    {
+                                        "name": "code",
+                                        "type": "string",
+                                        "description": "Machine-readable status code.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "estimate",
+                                            "issued",
+                                            "fulfilled"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "owner",
+                                        "type": "object",
+                                        "description": "Owner.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "owner"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "system",
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "account",
+                                                "type": "object",
+                                                "description": "The account that owns this resource. `null` if the object is system-owned.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            }
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": "orss_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "orss_01jm4r6700f8nwq3v5hx2d9ktp",
+                                    "object": "sales_order_status",
+                                    "code": "estimate",
+                                    "name": "Estimate",
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system"
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Transactions",
+        "slug": "transactions",
+        "description": "Create, view, update, and delete transactions.",
+        "domain": "finance",
+        "domainLabel": "Finance",
+        "endpoints": [
+            {
+                "operationId": "list-adjustment-types",
+                "summary": "List Adjustment Types",
+                "description": "Returns a paginated list of adjustment types.",
+                "method": "GET",
+                "path": "/v1/finance/adjustment-types",
+                "domain": "finance",
+                "tag": "Transactions",
+                "tagSlug": "transactions",
+                "endpointSlug": "list-adjustment-types",
+                "actionType": "list",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Cursor token used to retrieve the next or previous page of results."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "type": "integer",
+                        "required": false,
+                        "description": "Maximum number of results per page (default: 100, max: 1000)."
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Search query used to filter results."
+                    },
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
+                        "enum": [
+                            "owner"
+                        ]
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for List Adjustment Types",
+                        "fields": [
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "list"
+                                ]
+                            },
+                            {
+                                "name": "page_info",
+                                "type": "object",
+                                "description": "Pagination metadata.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "properties": [
+                                    {
+                                        "name": "next_page_url",
+                                        "type": "string",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "previous_page_url",
+                                        "type": "string",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_next_page",
+                                        "type": "boolean",
+                                        "description": "Whether more results exist after this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_prev_page",
+                                        "type": "boolean",
+                                        "description": "Whether results exist before this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "data",
+                                "type": "array",
+                                "description": "Resources in this page.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "itemType": "object",
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Adjustment ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "adjustment_type"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "code",
+                                        "type": "string",
+                                        "description": "Machine-readable code.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "discount",
+                                            "shipping_discrepancy",
+                                            "short_payment",
+                                            "write_off",
+                                            "fee",
+                                            "refund"
+                                        ]
+                                    },
+                                    {
+                                        "name": "owner",
+                                        "type": "object",
+                                        "description": "Resource owner.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "owner"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The owner type: \"system\" for platform defaults, \"account\" for account-owned resources.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "system",
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "account",
+                                                "type": "object",
+                                                "description": "The account that owns this resource. `null` if the object is system-owned.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            }
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": "adjt_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "adjt_01jm4r6700f8nwq3v5hx2d9ktp",
+                                    "object": "adjustment_type",
+                                    "name": "Discount",
+                                    "code": "discount",
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system"
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "list-transaction-types",
+                "summary": "List Transaction Types",
+                "description": "Returns a paginated list of transaction types.",
+                "method": "GET",
+                "path": "/v1/finance/transaction-types",
+                "domain": "finance",
+                "tag": "Transactions",
+                "tagSlug": "transactions",
+                "endpointSlug": "list-transaction-types",
+                "actionType": "list",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Cursor token used to retrieve the next or previous page of results."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "type": "integer",
+                        "required": false,
+                        "description": "Maximum number of results per page (default: 100, max: 1000)."
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Search query used to filter results."
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for List Transaction Types",
+                        "fields": [
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "list"
+                                ]
+                            },
+                            {
+                                "name": "page_info",
+                                "type": "object",
+                                "description": "Pagination metadata.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "properties": [
+                                    {
+                                        "name": "next_page_url",
+                                        "type": "string",
+                                        "description": "URL to fetch the next page, `null` if no more pages.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "previous_page_url",
+                                        "type": "string",
+                                        "description": "URL to fetch the previous page, `null` if on the first page.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_next_page",
+                                        "type": "boolean",
+                                        "description": "Whether more results exist after this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_prev_page",
+                                        "type": "boolean",
+                                        "description": "Whether results exist before this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "data",
+                                "type": "array",
+                                "description": "Resources in this page.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "itemType": "object",
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Transaction ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "transaction_type"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "code",
+                                        "type": "string",
+                                        "description": "Machine-readable code.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "payment",
+                                            "credit_memo",
+                                            "adjustment",
+                                            "rebate"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": "txtp_01jm4r6700f8nwq3v5hx2d9ktp",
+                                "previous_page_url": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "txtp_01jm4r6700f8nwq3v5hx2d9ktp",
+                                    "object": "transaction_type",
+                                    "name": "Payment",
+                                    "code": "payment"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "name": "Location Management",
         "slug": "location-management",
         "description": "List and manage locations.",
@@ -98835,6 +99504,19 @@ export const apiNavDomains: ApiNavDomain[] = [
                         "href": "/api-reference/customers/merge-customers"
                     }
                 ]
+            },
+            {
+                "name": "Sales Order Statuses",
+                "slug": "sales-order-statuses",
+                "endpoints": [
+                    {
+                        "name": "List",
+                        "slug": "list-sales-order-statuses",
+                        "method": "GET",
+                        "actionType": "list",
+                        "href": "/api-reference/sales-order-statuses/list-sales-order-statuses"
+                    }
+                ]
             }
         ]
     },
@@ -98880,6 +99562,26 @@ export const apiNavDomains: ApiNavDomain[] = [
                         "method": "DELETE",
                         "actionType": "delete",
                         "href": "/api-reference/payment-terms-management/delete-payment-term"
+                    }
+                ]
+            },
+            {
+                "name": "Transactions",
+                "slug": "transactions",
+                "endpoints": [
+                    {
+                        "name": "List Adjustment Types",
+                        "slug": "list-adjustment-types",
+                        "method": "GET",
+                        "actionType": "list",
+                        "href": "/api-reference/transactions/list-adjustment-types"
+                    },
+                    {
+                        "name": "List Transaction Types",
+                        "slug": "list-transaction-types",
+                        "method": "GET",
+                        "actionType": "list",
+                        "href": "/api-reference/transactions/list-transaction-types"
                     }
                 ]
             }

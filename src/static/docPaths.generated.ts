@@ -339,6 +339,13 @@ export const docPaths = {
             "deleteProduct": "/api-reference/products-management/delete-product",
             "changeProductProductLine": "/api-reference/products-management/change-product-product-line"
         },
+        "salesOrderStatuses": {
+            "listSalesOrderStatuses": "/api-reference/sales-order-statuses/list-sales-order-statuses"
+        },
+        "transactions": {
+            "listAdjustmentTypes": "/api-reference/transactions/list-adjustment-types",
+            "listTransactionTypes": "/api-reference/transactions/list-transaction-types"
+        },
         "locationManagement": {
             "createLocation": "/api-reference/location-management/create-location",
             "updateLocation": "/api-reference/location-management/update-location",
