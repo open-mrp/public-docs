@@ -19,7 +19,7 @@ interface SdkSelectorContextValue {
 }
 
 const SdkSelectorContext = createContext<SdkSelectorContextValue>({
-    language: 'curl',
+    language: 'typescript',
     setLanguage: () => {},
 });
 
@@ -28,7 +28,7 @@ function isSdkLanguage(value: string | null): value is SdkLanguage {
 }
 
 export function SdkSelectorProvider({ children }: { children: ReactNode }) {
-    const [language, setLanguageState] = useState<SdkLanguage>('curl');
+    const [language, setLanguageState] = useState<SdkLanguage>('typescript');
 
     useEffect(() => {
         try {
@@ -61,9 +61,8 @@ export function useSdkLanguage() {
     return useContext(SdkSelectorContext);
 }
 
-/** Only cURL is enabled in the docs UI for now; uncomment entries to re-enable SDKs. */
 const languages: { id: SdkLanguage; label: string }[] = [
-    // { id: 'typescript', label: 'TypeScript' },
+    { id: 'typescript', label: 'TypeScript' },
     // { id: 'python', label: 'Python' },
     // { id: 'go', label: 'Go' },
     { id: 'curl', label: 'cURL' },

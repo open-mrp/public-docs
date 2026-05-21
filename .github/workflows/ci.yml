@@ -14,10 +14,17 @@ jobs:
         permissions:
             contents: read
             packages: read
+            id-token: write
 
         steps:
             - name: Checkout
               uses: actions/checkout@v4
+
+            - name: Configure AWS Credentials
+              uses: aws-actions/configure-aws-credentials@v3
+              with:
+                  role-to-assume: arn:aws:iam::013292575751:role/github-action-role
+                  aws-region: us-east-2
 
             - name: Setup Bun
               uses: oven-sh/setup-bun@v2
@@ -33,6 +40,9 @@ jobs:
               run: bun install
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Download public release artifacts from S3
+              run: bash scripts/fetch-public-release-artifacts.sh
 
             - name: Generate docs
               run: bun run build:docs

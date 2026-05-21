@@ -1,8 +1,9 @@
 'use client';
 
+import { mergeSnippetReplacements } from '@/lib/typeId';
 import { useCodeReplacements } from '@/providers/ApiKeyProvider';
 import { CodeEditor } from '@augno/ui';
-import { ReactNode, useMemo } from 'react';
+import { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 
 interface DocsCodeEditorProps {
     children: ReactNode;
@@ -18,12 +19,29 @@ interface DocsCodeEditorProps {
  * re-reading its own replaced DOM output and applying replacements twice.
  */
 export function DocsCodeEditor({ children, className }: DocsCodeEditorProps) {
-    const replacements = useCodeReplacements();
+    const baseReplacements = useCodeReplacements();
+    const codeRef = useRef<HTMLDivElement>(null);
+    const [code, setCode] = useState('');
+
+    useEffect(() => {
+        const codeElement = codeRef.current?.querySelector('code');
+        setCode(codeElement?.textContent ?? '');
+    }, [children]);
+
+    const replacements = useMemo(
+        () => mergeSnippetReplacements(baseReplacements, code),
+        [baseReplacements, code],
+    );
     const key = useMemo(() => JSON.stringify(replacements), [replacements]);
 
     return (
-        <CodeEditor key={key} className={className} replacements={replacements}>
-            {children}
-        </CodeEditor>
+        <>
+            <div ref={codeRef} hidden>
+                {children}
+            </div>
+            <CodeEditor key={key} className={className} replacements={replacements}>
+                {children}
+            </CodeEditor>
+        </>
     );
 }

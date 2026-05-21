@@ -11,6 +11,7 @@ import { useEffect, useMemo, useState } from 'react';
 import {
     RequestExampleHeader,
     type RequestExampleMode,
+    SdkSelectorDropdown,
     useSdkLanguage,
 } from './SdkSelector';
 import { buildCurlExample } from './buildCurlExample';
@@ -507,11 +508,14 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
                             className="flex-none max-h-[50%]"
                             scrollable
                             headerActions={
-                                <RequestExampleHeader
-                                    mode={requestExampleMode}
-                                    onModeChange={setRequestExampleMode}
-                                    showBody={hasRequestBody}
-                                />
+                                <>
+                                    <SdkSelectorDropdown />
+                                    <RequestExampleHeader
+                                        mode={requestExampleMode}
+                                        onModeChange={setRequestExampleMode}
+                                        showBody={hasRequestBody}
+                                    />
+                                </>
                             }
                             tabs={requestExampleTabs}
                         />
