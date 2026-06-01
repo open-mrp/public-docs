@@ -16,6 +16,10 @@ This is a Next.js 16 documentation site for the Augno API platform. It combines 
 # Development
 bun install              # Install dependencies
 
+# Specs (standalone checkout — monorepo dev uses ../api/... instead)
+./scripts/fetch-public-release-artifacts.sh           # latest openapi.json + stainless.yml from S3
+./scripts/fetch-public-release-artifacts.sh v0.17.12  # version-pinned release artifacts
+
 # Build
 bun run build            # Production build
 bun run build:docs       # Full pipeline: API reference TS + Stainless snippets + nav/slugs
@@ -41,7 +45,7 @@ bun run index:docs       # Index docs to Algolia
 ### Build Pipeline (`bun run build:docs`)
 
 1. `scripts/generate-api-reference.ts` — Parse `specs/public_openapi_spec.json`, emit `apiEndpoints.generated.ts` (and `apiVersion.generated.ts`)
-2. `scripts/generate-sdk-snippets.ts` — Merge auto-generated Stainless resources into `specs/stainless.yml`, run vendored `packages/stainless-sdk-json`, emit `apiSnippets.generated.ts`
+2. `scripts/generate-sdk-snippets.ts` — Uses `specs/stainless.yml` (fetched from S3 with the OpenAPI spec) or `../api/stainless/public/stainless.yml` in monorepo dev, merges a docs overlay, runs vendored `packages/stainless-sdk-json`, emits `apiSnippets.generated.ts`
 3. `scripts/generate-nav.ts` — Generate navigation from frontmatter
 4. `scripts/generate-slugs.ts` — Generate static params for dynamic routes
 5. `scripts/generate-llms-txt.ts` — LLMs metadata

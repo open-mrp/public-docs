@@ -11,6 +11,8 @@ import { normalizeSnippetPlaceholders } from '../src/lib/snippetPlaceholders';
 const ROOT = process.cwd();
 const OPENAPI_PATH = path.join(ROOT, 'specs/public_openapi_spec.json');
 const CANONICAL_STAINLESS_REL = path.join(ROOT, '..', 'api', 'stainless', 'public', 'stainless.yml');
+/** Downloaded from S3 (`augno-public-openapi-specs/stainless.yml`) in CI / sync workflows. */
+const REPO_STAINLESS_PATH = path.join(ROOT, 'specs', 'stainless.yml');
 /** Fallback resource map — public stainless often keeps `resources: {}` until scoped; codegen needs mappings. */
 const INTERNAL_STAINLESS_REL = path.join(ROOT, '..', 'api', 'stainless', 'internal', 'stainless.yml');
 const OUTPUT_PATH = path.join(ROOT, 'src/static/apiSnippets.generated.ts');
@@ -105,6 +107,7 @@ function resolveCanonicalStainlessPath(): string | undefined {
     const env = process.env.PUBLIC_DOCS_STAINLESS_YML?.trim();
     if (env && fs.existsSync(env)) return path.resolve(env);
     if (fs.existsSync(CANONICAL_STAINLESS_REL)) return CANONICAL_STAINLESS_REL;
+    if (fs.existsSync(REPO_STAINLESS_PATH)) return REPO_STAINLESS_PATH;
     return undefined;
 }
 
@@ -251,8 +254,9 @@ async function main(): Promise<void> {
     if (!canonicalPath) {
         console.warn(
             `[generate-sdk-snippets] No canonical stainless config found. Expected:\n` +
-                `  - ${path.relative(ROOT, CANONICAL_STAINLESS_REL)}, or\n` +
-                `  - PUBLIC_DOCS_STAINLESS_YML pointing at api/stainless/public/stainless.yml\n` +
+                `  - ${path.relative(ROOT, CANONICAL_STAINLESS_REL)} (monorepo dev),\n` +
+                `  - ${path.relative(ROOT, REPO_STAINLESS_PATH)} (from S3 via scripts/fetch-public-release-artifacts.sh), or\n` +
+                `  - PUBLIC_DOCS_STAINLESS_YML\n` +
                 `Emitting empty snippets.`,
         );
         emitGeneratedTs({});

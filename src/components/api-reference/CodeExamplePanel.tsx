@@ -1,5 +1,6 @@
 'use client';
 
+import { mergeSnippetReplacements } from '@/lib/typeId';
 import { useCodeReplacements } from '@/providers/ApiKeyProvider';
 import { CodeEditor } from '@augno/ui';
 import type { ReactNode } from 'react';
@@ -35,10 +36,14 @@ export function CodeExamplePanel({
     scrollable,
     className = '',
 }: CodeExamplePanelProps) {
-    const replacements = useCodeReplacements();
-    const replacementKey = useMemo(() => JSON.stringify(replacements), [replacements]);
+    const baseReplacements = useCodeReplacements();
     const [activeId, setActiveId] = useState(tabs[0]?.id ?? '');
     const active = useMemo(() => tabs.find((t) => t.id === activeId) ?? tabs[0], [tabs, activeId]);
+    const replacements = useMemo(
+        () => mergeSnippetReplacements(baseReplacements, active?.code ?? ''),
+        [baseReplacements, active?.code],
+    );
+    const replacementKey = useMemo(() => JSON.stringify(replacements), [replacements]);
     const tabIds = useMemo(() => tabs.map((t) => t.id).join('\0'), [tabs]);
 
     useEffect(() => {

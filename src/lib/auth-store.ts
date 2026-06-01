@@ -1,26 +1,22 @@
 'use client';
 
-import { components, createV2Client } from '@augno/internal-sdk';
+import type { User } from '@augno/internal-sdk/resources/auth/auth';
+import type {
+    Tenancy,
+    TenancyCurrentAccount,
+    TenancyOtherAccount,
+    TenancyOwnerAccount,
+    TenancySandboxAccount,
+} from '@augno/internal-sdk/resources/identity/me/tenancy';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import { Env } from './env';
-
-// Create V2 client for auth operations
-const v2Client = createV2Client({
-    baseUrl: Env.apiV2BaseUrl,
-    credentials: 'include',
-});
+import { augnoClient } from './augno-client';
 
 // In-memory flag to track if we've checked auth this page load
 // This resets on page refresh but persists during SPA navigations
 let hasCheckedAuthThisPageLoad = false;
 
-export type User = components['schemas']['User'];
-export type Tenancy = components['schemas']['Tenancy'];
-export type TenancyCurrentAccount = components['schemas']['TenancyCurrentAccount'];
-export type TenancyOwnerAccount = components['schemas']['TenancyOwnerAccount'];
-export type TenancyOtherAccount = components['schemas']['TenancyOtherAccount'];
-export type TenancySandboxAccount = components['schemas']['TenancySandboxAccount'];
+export type { User, Tenancy, TenancyCurrentAccount, TenancyOwnerAccount, TenancyOtherAccount, TenancySandboxAccount };
 
 // `/v1/identity/me` requires a fully-resolved user identity, which the API derives from
 // the `Augno-Actor-Account` header. Callers must pass the current account ID so the server
@@ -28,28 +24,30 @@ export type TenancySandboxAccount = components['schemas']['TenancySandboxAccount
 // this — it resolves the user from the session cookie alone — so we call it first to
 // discover the account ID used for the current-user lookup.
 async function fetchCurrentUser(actorAccountID: string): Promise<User | null> {
-    const { data, error } = await v2Client.GET('/v1/identity/me', {
-        headers: { 'Augno-Actor-Account': actorAccountID },
-    });
-    if (error || !data) return null;
-    return data;
+    try {
+        return await augnoClient.identity.me.list({
+            headers: { 'Augno-Actor-Account': actorAccountID },
+        });
+    } catch {
+        return null;
+    }
 }
 
 async function fetchTenancy(): Promise<Tenancy | null> {
-    const { data, error } = await v2Client.GET('/v1/identity/me/tenancy');
-    if (error || !data) return null;
-    return data;
+    try {
+        return await augnoClient.identity.me.tenancy.list();
+    } catch {
+        return null;
+    }
 }
 
 async function fetchDocApiKey(productionAccountId: string): Promise<string | null> {
     try {
-        // The SDK client's middleware automatically handles 401 refresh + retry
-        const { data, error } = await v2Client.POST('/v1/auth/api-keys/actions/fetch-doc-api-key', {
-            headers: { 'Augno-Account': productionAccountId },
-        });
-
-        if (error || !data) return null;
-        return (data as { api_key_secret: string }).api_key_secret;
+        const data = await augnoClient.auth.apiKeys.actions.fetchDocAPIKey(
+            {},
+            { headers: { 'Augno-Account': productionAccountId } },
+        );
+        return data.api_key_secret;
     } catch {
         return null;
     }
@@ -164,9 +162,7 @@ export const useAuthStore = create<AuthState>()(
             // Logout using V2 client
             logout: async () => {
                 try {
-                    await v2Client.DELETE('/v1/auth/refresh-tokens', {
-                        params: { cookie: { '__Secure-augno.refresh-token': '' } },
-                    });
+                    await augnoClient.auth.deleteRefreshTokens();
                 } catch {
                     // ignore
                 }

@@ -913,7 +913,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "apke_01fba3a7db3996e3b3b1a07e00",
+                                "next_page_url": "/v1/auth/api-keys?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJpIjo5MDAwMDAwMDAwMDAwMDAxLCJkIjoiZiJ9.r5XugPZFb0OtO_khu04X0V5O97iX0bsgP10NkJPtXas",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -2157,7 +2157,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "sbac_01ebd87c707b138806f060b9ae",
+                                "next_page_url": "/v1/core/sandboxes?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJpIjo5MDAwMDAwMDAwMDAwMDAxLCJkIjoiZiJ9.r5XugPZFb0OtO_khu04X0V5O97iX0bsgP10NkJPtXas",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -3676,7 +3676,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "rq_01304bffe90e8cce9690cbefd4",
+                                "next_page_url": "/v1/core/request-logs?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoicnFfMDEzMDRiZmZlOTBlOGNjZTk2OTBjYmVmZDQiLCJkIjoiZiJ9.I_FtNl1BC2vR8nmtmppv6etBTI66wYYI-mN0SpevGP4",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -6347,7 +6347,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "ae_01b1c07dc3085bbd84111edcbd",
+                                "next_page_url": "/v1/core/audit-events?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoiYWVfMDFiMWMwN2RjMzA4NWJiZDg0MTExZWRjYmQiLCJkIjoiZiJ9.rB4tbzdSkwlW82H0aa7OcOo3XZSC6naG3tNOKf_4Qyc",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -6765,7 +6765,7 @@ export const apiTags: TagData[] = [
                             "page_info": {
                                 "next_page_url": null,
                                 "previous_page_url": null,
-                                "has_next_page": true,
+                                "has_next_page": false,
                                 "has_prev_page": false
                             },
                             "data": []
@@ -8986,7 +8986,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "un_01966263f74a5a0cae356000a1",
+                                "next_page_url": "/v1/catalog/units?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoidW5fMDE5NjYyNjNmNzRhNWEwY2FlMzU2MDAwYTEiLCJkIjoiZiJ9._fcFG5yqAn5oIA388jA_bOqkqHdBbhCGRdomkbG_wvY",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -11761,7 +11761,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "ug_01aad07abb8e41fd392d2d7013",
+                                "next_page_url": "/v1/catalog/unit-groups?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoidWdfMDFhYWQwN2FiYjhlNDFmZDM5MmQyZDcwMTMiLCJkIjoiZiJ9.qtHcXixevSlPHrYqyJwkG3P5ZFwJNMCxAqosQzB7oSs",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -13316,7 +13316,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "ugu_01d75e0598ed09be56fd39fab5",
+                                "next_page_url": "/v1/catalog/unit-groups/ug_01aad07abb8e41fd392d2d7013/units?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoidWd1XzAxZDc1ZTA1OThlZDA5YmU1NmZkMzlmYWI1IiwiZCI6ImYifQ.RfJx7lOf7uqBgFqI8z1sBYJ1KS_wKll4YGP6hbySETg",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -14346,7 +14346,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "acgp_018e88072d1320808dc979cfac",
+                                "next_page_url": "/v1/sales/account-groups?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoiYWNncF8wMThlODgwNzJkMTMyMDgwOGRjOTc5Y2ZhYyIsImQiOiJmIn0.kSLF8ZmCtJCSaQxV3FQthZF9tJ-PE3vOE5fHdYNKiv8",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -15527,7 +15527,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "pytm_018694d6601ea771cd1b52e890",
+                                "next_page_url": "/v1/finance/payment-terms?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoicHl0bV8wMTg2OTRkNjYwMWVhNzcxY2QxYjUyZTg5MCIsImQiOiJmIn0.wruuLIBJBciXvJIFfH8m43B2bdXhggj3NMcrwuZj7yc",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -19073,7 +19073,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "shtm_014341ab4bb5bf94d5b6936f86",
+                                "next_page_url": "/v1/operations/shipping-terms?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoic2h0bV8wMTQzNDFhYjRiYjViZjk0ZDViNjkzNmY4NiIsImQiOiJmIn0.RyB7ognVPe_lhvZ_pLfSQ2IKoCjkVdBOBItNgLHwdxw",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -20921,7 +20921,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "ad_012100950cfaa34aa0e0ad7258",
+                                "next_page_url": "/v1/sales/addresses?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoiYWRfMDEyMTAwOTUwY2ZhYTM0YWEwZTBhZDcyNTgiLCJkIjoiZiJ9.mTJayI74g0GvTp4GNj-HiZOxu9eh_WpKiDDLz80UK5k",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -21329,7 +21329,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "ChIJd8BlQ2BZwokRAFUEcm_qrcA",
+                                "next_page_url": "/v1/core/addresses/suggestions?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoiQ2hJSmQ4QmxRMkJad29rUkFGVUVjbV9xcmNBIiwiZCI6ImYifQ.kGOYdH2Tkiz4NlyqiylUQMih0elKQZUe87DfXG4Vex0",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -21908,7 +21908,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "acss_01004f532c58d60514b685cb27",
+                                "next_page_url": "/v1/sales/account-statuses?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoiYWNzc18wMTAwNGY1MzJjNThkNjA1MTRiNjg1Y2IyNyIsImQiOiJmIn0.fp64pEts8RGGKM5MTz5Fvtssr7ejwkSXrQsZ3VfkK_c",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -23675,7 +23675,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "acus_01ea9983ddb41dacc44ecf997c",
+                                "next_page_url": "/v1/identity/account-users?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoiYWN1c18wMWVhOTk4M2RkYjQxZGFjYzQ0ZWNmOTk3YyIsImQiOiJmIn0.qfFtqs2YR9DMRE12AQsoPVmp5fGHSu7DcHNttOVIumA",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -25217,7 +25217,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "pp_01e21344878064372f69e67093",
+                                "next_page_url": "/v1/catalog/properties?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoicHBfMDFlMjEzNDQ4NzgwNjQzNzJmNjllNjcwOTMiLCJkIjoiZiJ9.Z7iSFNVdx3ccbyPgjrt9m8-FoSq7DWf8QOSFjuAyszI",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -26881,7 +26881,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "at_01c9493ec0c46bb0ed12708ae4",
+                                "next_page_url": "/v1/catalog/properties/pp_01e21344878064372f69e67093/attributes?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoiYXRfMDFjOTQ5M2VjMGM0NmJiMGVkMTI3MDhhZTQiLCJkIjoiZiJ9.mWQpuA9YKprhjx8hidKvvLM2_NlytsbwQ_x9fMg9-Uk",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -27699,7 +27699,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "pi_01fc435701244bb3978bfb77ff",
+                                "next_page_url": "/v1/sales/priorities?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoicGlfMDFmYzQzNTcwMTI0NGJiMzk3OGJmYjc3ZmYiLCJkIjoiZiJ9.zS1cgG8dqH6bfn8aW8MD-O2Cxd2eOy_34UWZn-Q226A",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -29719,7 +29719,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "cr_01784fd54c9ba197bb4e42f0e6",
+                                "next_page_url": "/v1/operations/carriers?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoiY3JfMDE3ODRmZDU0YzliYTE5N2JiNGU0MmYwZTYiLCJkIjoiZiJ9.88q30iJawMU2xWXH2fXKWkGqnHl3gzgIRPxOp1ldM_4",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -31386,7 +31386,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "crop_01cfaf03f104e90ef9680e2a30",
+                                "next_page_url": "/v1/operations/carriers/cr_01784fd54c9ba197bb4e42f0e6/service-levels?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoiY3JvcF8wMWNmYWYwM2YxMDRlOTBlZjk2ODBlMmEzMCIsImQiOiJmIn0.HAB8d7C-7FYg_DcWhDPw5vtTDfFFjcjDrpOs4oR7sDs",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -34163,7 +34163,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "it_0131e386ac683e8c29a71f6f1f",
+                                "next_page_url": "/v1/catalog/items?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoiaXRfMDEzMWUzODZhYzY4M2U4YzI5YTcxZjZmMWYiLCJkIjoiZiJ9.OYJkAzZb60Q9lpBfzfGOMA5FWZSFXA6Wf9zn1-PJjo4",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -42608,7 +42608,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "ic_01ae7bd7bfd21ca0ab81e1357e",
+                                "next_page_url": "/v1/catalog/item-categories?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoiaWNfMDFhZTdiZDdiZmQyMWNhMGFiODFlMTM1N2UiLCJkIjoiZiJ9.zS86W6JQmur5wdg2KPGj9a7rt6pCqdgJGNfpZkoeoPg",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -44787,41 +44787,6 @@ export const apiTags: TagData[] = [
                             "name": "unit_cost",
                             "type": "object",
                             "description": "Initial unit cost. Same currency rule as unit_price.",
-                            "required": false,
-                            "nullable": true,
-                            "expandable": false,
-                            "properties": [
-                                {
-                                    "name": "value",
-                                    "type": "string",
-                                    "description": "Decimal value of the rate.",
-                                    "required": true,
-                                    "nullable": false,
-                                    "expandable": false,
-                                    "format": "decimal"
-                                },
-                                {
-                                    "name": "numerator_unit_id",
-                                    "type": "string",
-                                    "description": "Numerator unit ID.",
-                                    "required": true,
-                                    "nullable": false,
-                                    "expandable": false
-                                },
-                                {
-                                    "name": "denominator_unit_id",
-                                    "type": "string",
-                                    "description": "Denominator unit ID.",
-                                    "required": true,
-                                    "nullable": false,
-                                    "expandable": false
-                                }
-                            ]
-                        },
-                        {
-                            "name": "burn_rate",
-                            "type": "object",
-                            "description": "Initial burn rate (waste / scrap). No currency requirement.",
                             "required": false,
                             "nullable": true,
                             "expandable": false,
@@ -48341,7 +48306,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "ml_014613b8f7959a091d8cc0cef4",
+                                "next_page_url": "/v1/catalog/materials?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoibWxfMDE0NjEzYjhmNzk1OWEwOTFkOGNjMGNlZjQiLCJkIjoiZiJ9.6iA9iruOklNeAHMar99TlI4FpPR5P5H8LwgNYUDZRsA",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -55384,41 +55349,6 @@ export const apiTags: TagData[] = [
                             ]
                         },
                         {
-                            "name": "burn_rate",
-                            "type": "object",
-                            "description": "Initial burn rate (waste / scrap). No currency requirement.",
-                            "required": false,
-                            "nullable": true,
-                            "expandable": false,
-                            "properties": [
-                                {
-                                    "name": "value",
-                                    "type": "string",
-                                    "description": "Decimal value of the rate.",
-                                    "required": true,
-                                    "nullable": false,
-                                    "expandable": false,
-                                    "format": "decimal"
-                                },
-                                {
-                                    "name": "numerator_unit_id",
-                                    "type": "string",
-                                    "description": "Numerator unit ID.",
-                                    "required": true,
-                                    "nullable": false,
-                                    "expandable": false
-                                },
-                                {
-                                    "name": "denominator_unit_id",
-                                    "type": "string",
-                                    "description": "Denominator unit ID.",
-                                    "required": true,
-                                    "nullable": false,
-                                    "expandable": false
-                                }
-                            ]
-                        },
-                        {
                             "name": "attribute_ids",
                             "type": "array",
                             "description": "Attribute IDs to connect to the part at creation time.",
@@ -58003,7 +57933,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "pt_018d7bab53e864351f4c693a21",
+                                "next_page_url": "/v1/catalog/parts?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoicHRfMDE4ZDdiYWI1M2U4NjQzNTFmNGM2OTNhMjEiLCJkIjoiZiJ9.rQojyPstLgFvq0_SNWUItNC4diGnfK7Q67rMtDA-2hk",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -62985,7 +62915,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "eml_017b80707ada92dddff8a2c3a0",
+                                "next_page_url": "/v1/core/email-logs?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoiZW1sXzAxN2I4MDcwN2FkYTkyZGRkZmY4YTJjM2EwIiwiZCI6ImYifQ.U9OqoBoCU2Cda0dZGjVwMLeet-DH4QIE9RDWS8LmEk8",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -72430,7 +72360,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "ac_0170df1ac58e4d24c66fc89f5f",
+                                "next_page_url": "/v1/sales/customers?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoiYWNfMDE3MGRmMWFjNThlNGQyNGM2NmZjODlmNWYiLCJkIjoiZiJ9.JjkugQ0gm1EssYF7xaPUnxExMj3h14HDf4lFx01TX24",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -78614,7 +78544,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "pl_01996357326a0d3f7b129542ea",
+                                "next_page_url": "/v1/catalog/product-lines?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoicGxfMDE5OTYzNTczMjZhMGQzZjdiMTI5NTQyZWEiLCJkIjoiZiJ9.kmJVFqf8ZXNgOBoEfoY8oQr6CLRfvZE4flqRnntLBz8",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -80947,41 +80877,6 @@ export const apiTags: TagData[] = [
                             "name": "unit_cost",
                             "type": "object",
                             "description": "Initial unit cost. Same currency rule as unit_price.",
-                            "required": false,
-                            "nullable": true,
-                            "expandable": false,
-                            "properties": [
-                                {
-                                    "name": "value",
-                                    "type": "string",
-                                    "description": "Decimal value of the rate.",
-                                    "required": true,
-                                    "nullable": false,
-                                    "expandable": false,
-                                    "format": "decimal"
-                                },
-                                {
-                                    "name": "numerator_unit_id",
-                                    "type": "string",
-                                    "description": "Numerator unit ID.",
-                                    "required": true,
-                                    "nullable": false,
-                                    "expandable": false
-                                },
-                                {
-                                    "name": "denominator_unit_id",
-                                    "type": "string",
-                                    "description": "Denominator unit ID.",
-                                    "required": true,
-                                    "nullable": false,
-                                    "expandable": false
-                                }
-                            ]
-                        },
-                        {
-                            "name": "burn_rate",
-                            "type": "object",
-                            "description": "Initial burn rate (waste / scrap). No currency requirement.",
                             "required": false,
                             "nullable": true,
                             "expandable": false,
@@ -86351,7 +86246,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "pd_013c29ab3f1518d0004094c316",
+                                "next_page_url": "/v1/catalog/products?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoicGRfMDEzYzI5YWIzZjE1MThkMDAwNDA5NGMzMTYiLCJkIjoiZiJ9.n_81Ub4M8708ipVFLpAOpaaxzFbaKEFFpw45Qz2WPak",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -92122,7 +92017,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "orss_017a18cc8a4e6dfbc61f11f5a3",
+                                "next_page_url": "/v1/sales/sales-orders/statuses?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoib3Jzc18wMTdhMThjYzhhNGU2ZGZiYzYxZjExZjVhMyIsImQiOiJmIn0.sKrvXxXGVn_BdMXCov3kOsMK65Tq1KTqsGr_4DpWpUw",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -92375,7 +92270,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "adjt_01200338b135dc51aba62d4bf8",
+                                "next_page_url": "/v1/finance/adjustment-types?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoiYWRqdF8wMTIwMDMzOGIxMzVkYzUxYWJhNjJkNGJmOCIsImQiOiJmIn0.VQ8KZg6S2apxXTtvkTAlgVu-lOhn370pW7aBWpXKAGM",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -92548,7 +92443,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "txmd_011b68c574f7c84504fc256ca7",
+                                "next_page_url": "/v1/finance/transaction-methods?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoidHhtZF8wMTFiNjhjNTc0ZjdjODQ1MDRmYzI1NmNhNyIsImQiOiJmIn0.kW1ZksBAdZeq749NetKpSbGrxQxYHVvSlg0Lw4H132E",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -92714,7 +92609,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "txtp_01552974c3952ed8178ad671b8",
+                                "next_page_url": "/v1/finance/transaction-types?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoidHh0cF8wMTU1Mjk3NGMzOTUyZWQ4MTc4YWQ2NzFiOCIsImQiOiJmIn0.pkZ5kgJV1DvzSRZ4j1bIRO9e_GSC-Kmc1mrlNODKDKc",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -93812,7 +93707,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "lc_01e69cd3745a1bc0dd485986c0",
+                                "next_page_url": "/v1/operations/location-types?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoibGNfMDFlNjljZDM3NDVhMWJjMGRkNDg1OTg2YzAiLCJkIjoiZiJ9.65mtTOc2wYFJGvW3Gmqsg3LZsJuzEPk7RKpIhU2W9bY",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -94253,7 +94148,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "lc_014d187d99b31926f0c74af9d8",
+                                "next_page_url": "/v1/operations/locations?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoibGNfMDE0ZDE4N2Q5OWIzMTkyNmYwYzc0YWY5ZDgiLCJkIjoiZiJ9.v6V9YKMCW1qcwrh2ZT5tUJealoF0hFxSqd9j7UoOJM0",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -96891,7 +96786,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "scst_0129335dd6286056a97024fcc1",
+                                "next_page_url": "/v1/operations/scanning-stations?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoic2NzdF8wMTI5MzM1ZGQ2Mjg2MDU2YTk3MDI0ZmNjMSIsImQiOiJmIn0.e6wJY1VA-h43kKX6tz8XZ0QPCjm0vUqKQPMXmKzFE-E",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -98554,7 +98449,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "rl_01c16d2eb637c0d1f3a372937c",
+                                "next_page_url": "/v1/identity/roles?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoicmxfMDFjMTZkMmViNjM3YzBkMWYzYTM3MjkzN2MiLCJkIjoiZiJ9.PY4OTbfVFdeDMKg93RjWlA2WoYHNRL_sTZCN2NOmz-E",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false

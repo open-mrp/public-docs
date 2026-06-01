@@ -43,6 +43,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# specs — OpenAPI JSON is synced locally / CI; commit Stainless config used for docs snippets.
+# specs — OpenAPI + Stainless YAML are synced from S3 (see scripts/fetch-public-release-artifacts.sh)
 specs/*
-!specs/stainless.yml
