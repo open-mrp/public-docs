@@ -275,12 +275,10 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "apke_01fba3a7db3996e3b3b1a07e00",
-                "id": "apke_01fba3a7db3996e3b3b1a07e00",
                 "object": "api_key",
                 "name": "Production API Key",
                 "redacted_value": "aug_sk_prod_****hjt4",
                 "role": {
-                    "id": "rl_01c16d2eb637c0d1f3a372937c",
                     "id": "rl_01c16d2eb637c0d1f3a372937c",
                     "object": "role",
                     "name": "Admin",
@@ -289,7 +287,6 @@ export const apiTags: TagData[] = [
                         "object": "owner",
                         "type": "account",
                         "account": {
-                            "id": "ac_01148680966698341a9c0976db",
                             "id": "ac_01148680966698341a9c0976db",
                             "object": "account",
                             "name": "Acme Inc.",
@@ -368,7 +365,6 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "role_id": "rl_01c16d2eb637c0d1f3a372937c",
                         "role_id": "rl_01c16d2eb637c0d1f3a372937c",
                         "name": "Production API Key"
                     }
@@ -581,12 +577,10 @@ export const apiTags: TagData[] = [
                             "api_key_secret": "aug_sk_prod_RhxFDvTdDnb0bgtcoA5P79_60EmH4h9j9ZldsuU9XyngXlpu8NqdIlGTQw8OM8cGeCadyhjtr",
                             "api_key_info": {
                                 "id": "apke_01fba3a7db3996e3b3b1a07e00",
-                                "id": "apke_01fba3a7db3996e3b3b1a07e00",
                                 "object": "api_key",
                                 "name": "Production API Key",
                                 "redacted_value": "aug_sk_prod_****hjt4",
                                 "role": {
-                                    "id": "rl_01c16d2eb637c0d1f3a372937c",
                                     "id": "rl_01c16d2eb637c0d1f3a372937c",
                                     "object": "role",
                                     "name": "Admin",
@@ -595,7 +589,6 @@ export const apiTags: TagData[] = [
                                         "object": "owner",
                                         "type": "account",
                                         "account": {
-                                            "id": "ac_01148680966698341a9c0976db",
                                             "id": "ac_01148680966698341a9c0976db",
                                             "object": "account",
                                             "name": "Acme Inc.",
@@ -928,12 +921,10 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "apke_01fba3a7db3996e3b3b1a07e00",
-                                    "id": "apke_01fba3a7db3996e3b3b1a07e00",
                                     "object": "api_key",
                                     "name": "Production API Key",
                                     "redacted_value": "aug_sk_prod_****hjt4",
                                     "role": {
-                                        "id": "rl_01c16d2eb637c0d1f3a372937c",
                                         "id": "rl_01c16d2eb637c0d1f3a372937c",
                                         "object": "role",
                                         "name": "Admin",
@@ -942,7 +933,6 @@ export const apiTags: TagData[] = [
                                             "object": "owner",
                                             "type": "account",
                                             "account": {
-                                                "id": "ac_01148680966698341a9c0976db",
                                                 "id": "ac_01148680966698341a9c0976db",
                                                 "object": "account",
                                                 "name": "Acme Inc.",
@@ -1177,12 +1167,10 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "apke_01fba3a7db3996e3b3b1a07e00",
-                            "id": "apke_01fba3a7db3996e3b3b1a07e00",
                             "object": "api_key",
                             "name": "Production API Key",
                             "redacted_value": "aug_sk_prod_****hjt4",
                             "role": {
-                                "id": "rl_01c16d2eb637c0d1f3a372937c",
                                 "id": "rl_01c16d2eb637c0d1f3a372937c",
                                 "object": "role",
                                 "name": "Admin",
@@ -1191,7 +1179,6 @@ export const apiTags: TagData[] = [
                                     "object": "owner",
                                     "type": "account",
                                     "account": {
-                                        "id": "ac_01148680966698341a9c0976db",
                                         "id": "ac_01148680966698341a9c0976db",
                                         "object": "account",
                                         "name": "Acme Inc.",
@@ -1503,12 +1490,10 @@ export const apiTags: TagData[] = [
                             "api_key_secret": "aug_sk_prod_RhxFDvTdDnb0bgtcoA5P79_60EmH4h9j9ZldsuU9XyngXlpu8NqdIlGTQw8OM8cGeCadyhjtr",
                             "api_key_info": {
                                 "id": "apke_01fba3a7db3996e3b3b1a07e00",
-                                "id": "apke_01fba3a7db3996e3b3b1a07e00",
                                 "object": "api_key",
                                 "name": "Production API Key",
                                 "redacted_value": "aug_sk_prod_****hjt4",
                                 "role": {
-                                    "id": "rl_01c16d2eb637c0d1f3a372937c",
                                     "id": "rl_01c16d2eb637c0d1f3a372937c",
                                     "object": "role",
                                     "name": "Admin",
@@ -1517,7 +1502,6 @@ export const apiTags: TagData[] = [
                                         "object": "owner",
                                         "type": "account",
                                         "account": {
-                                            "id": "ac_01148680966698341a9c0976db",
                                             "id": "ac_01148680966698341a9c0976db",
                                             "object": "account",
                                             "name": "Acme Inc.",
@@ -1694,11 +1678,9 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "sbac_01ebd87c707b138806f060b9ae",
-                "id": "sbac_01ebd87c707b138806f060b9ae",
                 "object": "sandbox",
                 "name": "Integration Testing",
                 "owner_account": {
-                    "id": "ac_01148680966698341a9c0976db",
                     "id": "ac_01148680966698341a9c0976db",
                     "object": "account",
                     "name": "Acme Inc.",
@@ -1906,11 +1888,9 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "sbac_01ebd87c707b138806f060b9ae",
-                            "id": "sbac_01ebd87c707b138806f060b9ae",
                             "object": "sandbox",
                             "name": "Integration Testing",
                             "owner_account": {
-                                "id": "ac_01148680966698341a9c0976db",
                                 "id": "ac_01148680966698341a9c0976db",
                                 "object": "account",
                                 "name": "Acme Inc.",
@@ -2185,11 +2165,9 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "sbac_01ebd87c707b138806f060b9ae",
-                                    "id": "sbac_01ebd87c707b138806f060b9ae",
                                     "object": "sandbox",
                                     "name": "Integration Testing",
                                     "owner_account": {
-                                        "id": "ac_01148680966698341a9c0976db",
                                         "id": "ac_01148680966698341a9c0976db",
                                         "object": "account",
                                         "name": "Acme Inc.",
@@ -2379,11 +2357,9 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "sbac_01ebd87c707b138806f060b9ae",
-                            "id": "sbac_01ebd87c707b138806f060b9ae",
                             "object": "sandbox",
                             "name": "Integration Testing",
                             "owner_account": {
-                                "id": "ac_01148680966698341a9c0976db",
                                 "id": "ac_01148680966698341a9c0976db",
                                 "object": "account",
                                 "name": "Acme Inc.",
@@ -2843,7 +2819,6 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "rq_01304bffe90e8cce9690cbefd4",
-                "id": "rq_01304bffe90e8cce9690cbefd4",
                 "object": "request_log",
                 "method": "GET",
                 "host": "https://api.augno.com",
@@ -2872,7 +2847,6 @@ export const apiTags: TagData[] = [
                 "created_at": "2026-05-10T00:00:00Z",
                 "account": {
                     "id": "ac_01148680966698341a9c0976db",
-                    "id": "ac_01148680966698341a9c0976db",
                     "object": "account",
                     "name": "Acme Inc.",
                     "created_at": "2026-05-10T00:00:00Z",
@@ -2880,13 +2854,11 @@ export const apiTags: TagData[] = [
                 },
                 "actor": {
                     "id": "us_0151164dcaea4cbded27b50aae",
-                    "id": "us_0151164dcaea4cbded27b50aae",
                     "object": "actor",
                     "type": "user",
                     "name": "John Doe",
                     "handle": "jdoe@augno.com",
                     "role": {
-                        "id": "rl_01c16d2eb637c0d1f3a372937c",
                         "id": "rl_01c16d2eb637c0d1f3a372937c",
                         "object": "role",
                         "name": "Admin",
@@ -2895,7 +2867,6 @@ export const apiTags: TagData[] = [
                             "object": "owner",
                             "type": "account",
                             "account": {
-                                "id": "ac_01148680966698341a9c0976db",
                                 "id": "ac_01148680966698341a9c0976db",
                                 "object": "account",
                                 "name": "Acme Inc.",
@@ -3713,7 +3684,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "rq_01304bffe90e8cce9690cbefd4",
-                                    "id": "rq_01304bffe90e8cce9690cbefd4",
                                     "object": "request_log",
                                     "method": "GET",
                                     "host": "https://api.augno.com",
@@ -3742,7 +3712,6 @@ export const apiTags: TagData[] = [
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "account": {
                                         "id": "ac_01148680966698341a9c0976db",
-                                        "id": "ac_01148680966698341a9c0976db",
                                         "object": "account",
                                         "name": "Acme Inc.",
                                         "created_at": "2026-05-10T00:00:00Z",
@@ -3750,13 +3719,11 @@ export const apiTags: TagData[] = [
                                     },
                                     "actor": {
                                         "id": "us_0151164dcaea4cbded27b50aae",
-                                        "id": "us_0151164dcaea4cbded27b50aae",
                                         "object": "actor",
                                         "type": "user",
                                         "name": "John Doe",
                                         "handle": "jdoe@augno.com",
                                         "role": {
-                                            "id": "rl_01c16d2eb637c0d1f3a372937c",
                                             "id": "rl_01c16d2eb637c0d1f3a372937c",
                                             "object": "role",
                                             "name": "Admin",
@@ -3765,7 +3732,6 @@ export const apiTags: TagData[] = [
                                                 "object": "owner",
                                                 "type": "account",
                                                 "account": {
-                                                    "id": "ac_01148680966698341a9c0976db",
                                                     "id": "ac_01148680966698341a9c0976db",
                                                     "object": "account",
                                                     "name": "Acme Inc.",
@@ -4369,7 +4335,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "rq_01304bffe90e8cce9690cbefd4",
-                            "id": "rq_01304bffe90e8cce9690cbefd4",
                             "object": "request_log",
                             "method": "GET",
                             "host": "https://api.augno.com",
@@ -4398,7 +4363,6 @@ export const apiTags: TagData[] = [
                             "created_at": "2026-05-10T00:00:00Z",
                             "account": {
                                 "id": "ac_01148680966698341a9c0976db",
-                                "id": "ac_01148680966698341a9c0976db",
                                 "object": "account",
                                 "name": "Acme Inc.",
                                 "created_at": "2026-05-10T00:00:00Z",
@@ -4406,13 +4370,11 @@ export const apiTags: TagData[] = [
                             },
                             "actor": {
                                 "id": "us_0151164dcaea4cbded27b50aae",
-                                "id": "us_0151164dcaea4cbded27b50aae",
                                 "object": "actor",
                                 "type": "user",
                                 "name": "John Doe",
                                 "handle": "jdoe@augno.com",
                                 "role": {
-                                    "id": "rl_01c16d2eb637c0d1f3a372937c",
                                     "id": "rl_01c16d2eb637c0d1f3a372937c",
                                     "object": "role",
                                     "name": "Admin",
@@ -4421,7 +4383,6 @@ export const apiTags: TagData[] = [
                                         "object": "owner",
                                         "type": "account",
                                         "account": {
-                                            "id": "ac_01148680966698341a9c0976db",
                                             "id": "ac_01148680966698341a9c0976db",
                                             "object": "account",
                                             "name": "Acme Inc.",
@@ -4646,7 +4607,6 @@ export const apiTags: TagData[] = [
                         "enterprise_inquiry",
                         "request_log",
                         "audit_event",
-                        "audit_field_change",
                         "audit_field_change",
                         "role",
                         "unit",
@@ -4978,17 +4938,6 @@ export const apiTags: TagData[] = [
                                     ]
                                 },
                                 {
-                                    "name": "object",
-                                    "type": "string",
-                                    "description": "Resource type identifier.",
-                                    "required": true,
-                                    "nullable": false,
-                                    "expandable": false,
-                                    "enum": [
-                                        "audit_field_change"
-                                    ]
-                                },
-                                {
                                     "name": "field",
                                     "type": "string",
                                     "description": "Name of the changed field.",
@@ -5254,21 +5203,17 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "ae_01b1c07dc3085bbd84111edcbd",
-                "id": "ae_01b1c07dc3085bbd84111edcbd",
                 "object": "audit_event",
                 "action": "update",
                 "resource_type": "user",
                 "resource_id": "us_0151164dcaea4cbded27b50aae",
-                "resource_id": "us_0151164dcaea4cbded27b50aae",
                 "actor": {
-                    "id": "us_0151164dcaea4cbded27b50aae",
                     "id": "us_0151164dcaea4cbded27b50aae",
                     "object": "actor",
                     "type": "user",
                     "name": "John Doe",
                     "handle": "jdoe@augno.com",
                     "role": {
-                        "id": "rl_01c16d2eb637c0d1f3a372937c",
                         "id": "rl_01c16d2eb637c0d1f3a372937c",
                         "object": "role",
                         "name": "Admin",
@@ -5277,7 +5222,6 @@ export const apiTags: TagData[] = [
                             "object": "owner",
                             "type": "account",
                             "account": {
-                                "id": "ac_01148680966698341a9c0976db",
                                 "id": "ac_01148680966698341a9c0976db",
                                 "object": "account",
                                 "name": "Acme Inc.",
@@ -5303,7 +5247,6 @@ export const apiTags: TagData[] = [
                     },
                     "data": [
                         {
-                            "object": "audit_field_change",
                             "object": "audit_field_change",
                             "field": "email",
                             "old_value": [
@@ -5380,7 +5323,6 @@ export const apiTags: TagData[] = [
                     125
                 ],
                 "request": {
-                    "id": "rq_01304bffe90e8cce9690cbefd4",
                     "id": "rq_01304bffe90e8cce9690cbefd4",
                     "object": "request_log",
                     "status_code": 0,
@@ -5465,7 +5407,6 @@ export const apiTags: TagData[] = [
                             "enterprise_inquiry",
                             "request_log",
                             "audit_event",
-                            "audit_field_change",
                             "audit_field_change",
                             "role",
                             "unit",
@@ -5808,7 +5749,6 @@ export const apiTags: TagData[] = [
                                             "request_log",
                                             "audit_event",
                                             "audit_field_change",
-                                            "audit_field_change",
                                             "role",
                                             "unit",
                                             "account_affiliation",
@@ -6139,17 +6079,6 @@ export const apiTags: TagData[] = [
                                                         ]
                                                     },
                                                     {
-                                                        "name": "object",
-                                                        "type": "string",
-                                                        "description": "Resource type identifier.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "audit_field_change"
-                                                        ]
-                                                    },
-                                                    {
                                                         "name": "field",
                                                         "type": "string",
                                                         "description": "Name of the changed field.",
@@ -6426,21 +6355,17 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "ae_01b1c07dc3085bbd84111edcbd",
-                                    "id": "ae_01b1c07dc3085bbd84111edcbd",
                                     "object": "audit_event",
                                     "action": "update",
                                     "resource_type": "user",
                                     "resource_id": "us_0151164dcaea4cbded27b50aae",
-                                    "resource_id": "us_0151164dcaea4cbded27b50aae",
                                     "actor": {
-                                        "id": "us_0151164dcaea4cbded27b50aae",
                                         "id": "us_0151164dcaea4cbded27b50aae",
                                         "object": "actor",
                                         "type": "user",
                                         "name": "John Doe",
                                         "handle": "jdoe@augno.com",
                                         "role": {
-                                            "id": "rl_01c16d2eb637c0d1f3a372937c",
                                             "id": "rl_01c16d2eb637c0d1f3a372937c",
                                             "object": "role",
                                             "name": "Admin",
@@ -6449,7 +6374,6 @@ export const apiTags: TagData[] = [
                                                 "object": "owner",
                                                 "type": "account",
                                                 "account": {
-                                                    "id": "ac_01148680966698341a9c0976db",
                                                     "id": "ac_01148680966698341a9c0976db",
                                                     "object": "account",
                                                     "name": "Acme Inc.",
@@ -6475,7 +6399,6 @@ export const apiTags: TagData[] = [
                                         },
                                         "data": [
                                             {
-                                                "object": "audit_field_change",
                                                 "object": "audit_field_change",
                                                 "field": "email",
                                                 "old_value": [
@@ -6552,7 +6475,6 @@ export const apiTags: TagData[] = [
                                         125
                                     ],
                                     "request": {
-                                        "id": "rq_01304bffe90e8cce9690cbefd4",
                                         "id": "rq_01304bffe90e8cce9690cbefd4",
                                         "object": "request_log",
                                         "status_code": 0,
@@ -6662,7 +6584,6 @@ export const apiTags: TagData[] = [
                                     "enterprise_inquiry",
                                     "request_log",
                                     "audit_event",
-                                    "audit_field_change",
                                     "audit_field_change",
                                     "role",
                                     "unit",
@@ -6949,7 +6870,6 @@ export const apiTags: TagData[] = [
                                     "enterprise_inquiry",
                                     "request_log",
                                     "audit_event",
-                                    "audit_field_change",
                                     "audit_field_change",
                                     "role",
                                     "unit",
@@ -7281,17 +7201,6 @@ export const apiTags: TagData[] = [
                                                 ]
                                             },
                                             {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "audit_field_change"
-                                                ]
-                                            },
-                                            {
                                                 "name": "field",
                                                 "type": "string",
                                                 "description": "Name of the changed field.",
@@ -7557,21 +7466,17 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "ae_01b1c07dc3085bbd84111edcbd",
-                            "id": "ae_01b1c07dc3085bbd84111edcbd",
                             "object": "audit_event",
                             "action": "update",
                             "resource_type": "user",
                             "resource_id": "us_0151164dcaea4cbded27b50aae",
-                            "resource_id": "us_0151164dcaea4cbded27b50aae",
                             "actor": {
-                                "id": "us_0151164dcaea4cbded27b50aae",
                                 "id": "us_0151164dcaea4cbded27b50aae",
                                 "object": "actor",
                                 "type": "user",
                                 "name": "John Doe",
                                 "handle": "jdoe@augno.com",
                                 "role": {
-                                    "id": "rl_01c16d2eb637c0d1f3a372937c",
                                     "id": "rl_01c16d2eb637c0d1f3a372937c",
                                     "object": "role",
                                     "name": "Admin",
@@ -7580,7 +7485,6 @@ export const apiTags: TagData[] = [
                                         "object": "owner",
                                         "type": "account",
                                         "account": {
-                                            "id": "ac_01148680966698341a9c0976db",
                                             "id": "ac_01148680966698341a9c0976db",
                                             "object": "account",
                                             "name": "Acme Inc.",
@@ -7606,7 +7510,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "data": [
                                     {
-                                        "object": "audit_field_change",
                                         "object": "audit_field_change",
                                         "field": "email",
                                         "old_value": [
@@ -7683,7 +7586,6 @@ export const apiTags: TagData[] = [
                                 125
                             ],
                             "request": {
-                                "id": "rq_01304bffe90e8cce9690cbefd4",
                                 "id": "rq_01304bffe90e8cce9690cbefd4",
                                 "object": "request_log",
                                 "status_code": 0,
@@ -7949,7 +7851,6 @@ export const apiTags: TagData[] = [
                 }
             ],
             "example": {
-                "id": "un_01966263f74a5a0cae356000a1",
                 "id": "un_01966263f74a5a0cae356000a1",
                 "object": "unit",
                 "name": "Kilogram",
@@ -8325,7 +8226,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "un_01966263f74a5a0cae356000a1",
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "Kilogram",
                             "abbreviation": "kg",
@@ -8684,7 +8584,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "Kilogram",
@@ -9095,7 +8994,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "un_01966263f74a5a0cae356000a1",
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "Kilogram",
                                     "abbreviation": "kg",
@@ -9395,7 +9293,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "Kilogram",
@@ -9938,12 +9835,10 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "ug_01aad07abb8e41fd392d2d7013",
-                "id": "ug_01aad07abb8e41fd392d2d7013",
                 "object": "unit_group",
                 "name": "Weight",
                 "type": "mass",
                 "base_unit": {
-                    "id": "un_01966263f74a5a0cae356000a1",
                     "id": "un_01966263f74a5a0cae356000a1",
                     "object": "unit",
                     "name": "Kilogram",
@@ -10094,10 +9989,8 @@ export const apiTags: TagData[] = [
                         "name": "Weight Units",
                         "type": "mass",
                         "base_unit_id": "un_01966263f74a5a0cae356000a1",
-                        "base_unit_id": "un_01966263f74a5a0cae356000a1",
                         "associated_units": [
                             {
-                                "unit_id": "un_01966263f74a5a0cae356000a1",
                                 "unit_id": "un_01966263f74a5a0cae356000a1",
                                 "discount_percentage": 1,
                                 "discount_fixed": 0,
@@ -10591,12 +10484,10 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "ug_01aad07abb8e41fd392d2d7013",
-                            "id": "ug_01aad07abb8e41fd392d2d7013",
                             "object": "unit_group",
                             "name": "Weight",
                             "type": "mass",
                             "base_unit": {
-                                "id": "un_01966263f74a5a0cae356000a1",
                                 "id": "un_01966263f74a5a0cae356000a1",
                                 "object": "unit",
                                 "name": "Kilogram",
@@ -10736,7 +10627,6 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Weight Units (Updated)",
-                        "base_unit_id": "un_01966263f74a5a0cae356000a1"
                         "base_unit_id": "un_01966263f74a5a0cae356000a1"
                     }
                 },
@@ -11225,12 +11115,10 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "ug_01aad07abb8e41fd392d2d7013",
-                            "id": "ug_01aad07abb8e41fd392d2d7013",
                             "object": "unit_group",
                             "name": "Weight",
                             "type": "mass",
                             "base_unit": {
-                                "id": "un_01966263f74a5a0cae356000a1",
                                 "id": "un_01966263f74a5a0cae356000a1",
                                 "object": "unit",
                                 "name": "Kilogram",
@@ -11881,12 +11769,10 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "ug_01aad07abb8e41fd392d2d7013",
-                                    "id": "ug_01aad07abb8e41fd392d2d7013",
                                     "object": "unit_group",
                                     "name": "Weight",
                                     "type": "mass",
                                     "base_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -12435,12 +12321,10 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "ug_01aad07abb8e41fd392d2d7013",
-                            "id": "ug_01aad07abb8e41fd392d2d7013",
                             "object": "unit_group",
                             "name": "Weight",
                             "type": "mass",
                             "base_unit": {
-                                "id": "un_01966263f74a5a0cae356000a1",
                                 "id": "un_01966263f74a5a0cae356000a1",
                                 "object": "unit",
                                 "name": "Kilogram",
@@ -12570,7 +12454,6 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "unit_id": "un_01966263f74a5a0cae356000a1",
                         "unit_id": "un_01966263f74a5a0cae356000a1",
                         "discount_percentage": 1,
                         "discount_fixed": 0,
@@ -12784,10 +12667,8 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "ugu_01d75e0598ed09be56fd39fab5",
-                            "id": "ugu_01d75e0598ed09be56fd39fab5",
                             "object": "unit_group_unit",
                             "unit": {
-                                "id": "un_01966263f74a5a0cae356000a1",
                                 "id": "un_01966263f74a5a0cae356000a1",
                                 "object": "unit",
                                 "name": "Kilogram",
@@ -12893,7 +12774,6 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "unit_id": "un_01966263f74a5a0cae356000a1",
                         "unit_id": "un_01966263f74a5a0cae356000a1",
                         "discount_percentage": 0.9
                     }
@@ -13105,10 +12985,8 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "ugu_01d75e0598ed09be56fd39fab5",
-                            "id": "ugu_01d75e0598ed09be56fd39fab5",
                             "object": "unit_group_unit",
                             "unit": {
-                                "id": "un_01966263f74a5a0cae356000a1",
                                 "id": "un_01966263f74a5a0cae356000a1",
                                 "object": "unit",
                                 "name": "Kilogram",
@@ -13446,10 +13324,8 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "ugu_01d75e0598ed09be56fd39fab5",
-                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
                                     "object": "unit_group_unit",
                                     "unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -13723,10 +13599,8 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "ugu_01d75e0598ed09be56fd39fab5",
-                            "id": "ugu_01d75e0598ed09be56fd39fab5",
                             "object": "unit_group_unit",
                             "unit": {
-                                "id": "un_01966263f74a5a0cae356000a1",
                                 "id": "un_01966263f74a5a0cae356000a1",
                                 "object": "unit",
                                 "name": "Kilogram",
@@ -13865,7 +13739,6 @@ export const apiTags: TagData[] = [
                     "name": "type",
                     "type": "string",
                     "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
-                    "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                     "required": true,
                     "nullable": false,
                     "expandable": false,
@@ -13894,7 +13767,6 @@ export const apiTags: TagData[] = [
                 }
             ],
             "example": {
-                "id": "acgp_018e88072d1320808dc979cfac",
                 "id": "acgp_018e88072d1320808dc979cfac",
                 "object": "account_group",
                 "name": "Wholesale Customers",
@@ -14048,7 +13920,6 @@ export const apiTags: TagData[] = [
                                 "name": "type",
                                 "type": "string",
                                 "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
-                                "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
@@ -14077,7 +13948,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "acgp_018e88072d1320808dc979cfac",
                             "id": "acgp_018e88072d1320808dc979cfac",
                             "object": "account_group",
                             "name": "Wholesale Customers",
@@ -14228,7 +14098,6 @@ export const apiTags: TagData[] = [
                                 "name": "type",
                                 "type": "string",
                                 "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
-                                "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
@@ -14257,7 +14126,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "acgp_018e88072d1320808dc979cfac",
                             "id": "acgp_018e88072d1320808dc979cfac",
                             "object": "account_group",
                             "name": "Wholesale Customers",
@@ -14446,7 +14314,6 @@ export const apiTags: TagData[] = [
                                         "name": "type",
                                         "type": "string",
                                         "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
-                                        "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -14486,7 +14353,6 @@ export const apiTags: TagData[] = [
                             },
                             "data": [
                                 {
-                                    "id": "acgp_018e88072d1320808dc979cfac",
                                     "id": "acgp_018e88072d1320808dc979cfac",
                                     "object": "account_group",
                                     "name": "Wholesale Customers",
@@ -14590,7 +14456,6 @@ export const apiTags: TagData[] = [
                                 "name": "type",
                                 "type": "string",
                                 "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
-                                "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
@@ -14619,7 +14484,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "acgp_018e88072d1320808dc979cfac",
                             "id": "acgp_018e88072d1320808dc979cfac",
                             "object": "account_group",
                             "name": "Wholesale Customers",
@@ -14857,7 +14721,6 @@ export const apiTags: TagData[] = [
                 }
             ],
             "example": {
-                "id": "pytm_018694d6601ea771cd1b52e890",
                 "id": "pytm_018694d6601ea771cd1b52e890",
                 "object": "payment_term",
                 "name": "Net 30",
@@ -15100,7 +14963,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "pytm_018694d6601ea771cd1b52e890",
                             "id": "pytm_018694d6601ea771cd1b52e890",
                             "object": "payment_term",
                             "name": "Net 30",
@@ -15351,7 +15213,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "pytm_018694d6601ea771cd1b52e890",
                             "id": "pytm_018694d6601ea771cd1b52e890",
                             "object": "payment_term",
                             "name": "Net 30",
@@ -15674,7 +15535,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "pytm_018694d6601ea771cd1b52e890",
-                                    "id": "pytm_018694d6601ea771cd1b52e890",
                                     "object": "payment_term",
                                     "name": "Net 30",
                                     "status": "active",
@@ -15910,7 +15770,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "pytm_018694d6601ea771cd1b52e890",
                             "id": "pytm_018694d6601ea771cd1b52e890",
                             "object": "payment_term",
                             "name": "Net 30",
@@ -16667,7 +16526,6 @@ export const apiTags: TagData[] = [
                 }
             ],
             "example": {
-                "id": "shtm_014341ab4bb5bf94d5b6936f86",
                 "id": "shtm_014341ab4bb5bf94d5b6936f86",
                 "object": "shipping_term",
                 "name": "Prepaid",
@@ -17516,7 +17374,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "shtm_014341ab4bb5bf94d5b6936f86",
                             "id": "shtm_014341ab4bb5bf94d5b6936f86",
                             "object": "shipping_term",
                             "name": "Prepaid",
@@ -18375,7 +18232,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "shtm_014341ab4bb5bf94d5b6936f86",
-                            "id": "shtm_014341ab4bb5bf94d5b6936f86",
                             "object": "shipping_term",
                             "name": "Prepaid",
                             "type": "carrier_rate_freight",
@@ -19225,7 +19081,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "shtm_014341ab4bb5bf94d5b6936f86",
-                                    "id": "shtm_014341ab4bb5bf94d5b6936f86",
                                     "object": "shipping_term",
                                     "name": "Prepaid",
                                     "type": "carrier_rate_freight",
@@ -19990,7 +19845,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "shtm_014341ab4bb5bf94d5b6936f86",
-                            "id": "shtm_014341ab4bb5bf94d5b6936f86",
                             "object": "shipping_term",
                             "name": "Prepaid",
                             "type": "carrier_rate_freight",
@@ -20207,12 +20061,10 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "ad_012100950cfaa34aa0e0ad7258",
-                "id": "ad_012100950cfaa34aa0e0ad7258",
                 "object": "address",
                 "name": "Headquarters",
                 "type": "standard",
                 "geolocation": {
-                    "id": "gl_013e4c26412103c6757ba71806",
                     "id": "gl_013e4c26412103c6757ba71806",
                     "object": "geolocation",
                     "street_line_1": "4200 Industrial Pkwy",
@@ -20490,12 +20342,10 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "ad_012100950cfaa34aa0e0ad7258",
-                            "id": "ad_012100950cfaa34aa0e0ad7258",
                             "object": "address",
                             "name": "Headquarters",
                             "type": "standard",
                             "geolocation": {
-                                "id": "gl_013e4c26412103c6757ba71806",
                                 "id": "gl_013e4c26412103c6757ba71806",
                                 "object": "geolocation",
                                 "street_line_1": "4200 Industrial Pkwy",
@@ -20784,12 +20634,10 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "ad_012100950cfaa34aa0e0ad7258",
-                            "id": "ad_012100950cfaa34aa0e0ad7258",
                             "object": "address",
                             "name": "Headquarters",
                             "type": "standard",
                             "geolocation": {
-                                "id": "gl_013e4c26412103c6757ba71806",
                                 "id": "gl_013e4c26412103c6757ba71806",
                                 "object": "geolocation",
                                 "street_line_1": "4200 Industrial Pkwy",
@@ -21081,12 +20929,10 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "ad_012100950cfaa34aa0e0ad7258",
-                                    "id": "ad_012100950cfaa34aa0e0ad7258",
                                     "object": "address",
                                     "name": "Headquarters",
                                     "type": "standard",
                                     "geolocation": {
-                                        "id": "gl_013e4c26412103c6757ba71806",
                                         "id": "gl_013e4c26412103c6757ba71806",
                                         "object": "geolocation",
                                         "street_line_1": "4200 Industrial Pkwy",
@@ -21282,12 +21128,10 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "ad_012100950cfaa34aa0e0ad7258",
-                            "id": "ad_012100950cfaa34aa0e0ad7258",
                             "object": "address",
                             "name": "Headquarters",
                             "type": "standard",
                             "geolocation": {
-                                "id": "gl_013e4c26412103c6757ba71806",
                                 "id": "gl_013e4c26412103c6757ba71806",
                                 "object": "geolocation",
                                 "street_line_1": "4200 Industrial Pkwy",
@@ -21833,7 +21677,6 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "acss_01004f532c58d60514b685cb27",
-                "id": "acss_01004f532c58d60514b685cb27",
                 "object": "account_status",
                 "code": "normal",
                 "name": "Normal",
@@ -22073,7 +21916,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "acss_01004f532c58d60514b685cb27",
-                                    "id": "acss_01004f532c58d60514b685cb27",
                                     "object": "account_status",
                                     "code": "normal",
                                     "name": "Normal",
@@ -22228,7 +22070,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "acss_01004f532c58d60514b685cb27",
                             "id": "acss_01004f532c58d60514b685cb27",
                             "object": "account_status",
                             "code": "normal",
@@ -22527,13 +22368,11 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "acus_01ea9983ddb41dacc44ecf997c",
-                "id": "acus_01ea9983ddb41dacc44ecf997c",
                 "object": "account_user",
                 "name": "John Doe",
                 "email": "john@augno.com",
                 "status": "active",
                 "role": {
-                    "id": "rl_01c16d2eb637c0d1f3a372937c",
                     "id": "rl_01c16d2eb637c0d1f3a372937c",
                     "object": "role",
                     "name": "Admin",
@@ -22542,7 +22381,6 @@ export const apiTags: TagData[] = [
                         "object": "owner",
                         "type": "account",
                         "account": {
-                            "id": "ac_01148680966698341a9c0976db",
                             "id": "ac_01148680966698341a9c0976db",
                             "object": "account",
                             "name": "Acme Inc.",
@@ -22963,13 +22801,11 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "acus_01ea9983ddb41dacc44ecf997c",
-                            "id": "acus_01ea9983ddb41dacc44ecf997c",
                             "object": "account_user",
                             "name": "John Doe",
                             "email": "john@augno.com",
                             "status": "active",
                             "role": {
-                                "id": "rl_01c16d2eb637c0d1f3a372937c",
                                 "id": "rl_01c16d2eb637c0d1f3a372937c",
                                 "object": "role",
                                 "name": "Admin",
@@ -22978,7 +22814,6 @@ export const apiTags: TagData[] = [
                                     "object": "owner",
                                     "type": "account",
                                     "account": {
-                                        "id": "ac_01148680966698341a9c0976db",
                                         "id": "ac_01148680966698341a9c0976db",
                                         "object": "account",
                                         "name": "Acme Inc.",
@@ -23392,13 +23227,11 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "acus_01ea9983ddb41dacc44ecf997c",
-                            "id": "acus_01ea9983ddb41dacc44ecf997c",
                             "object": "account_user",
                             "name": "John Doe",
                             "email": "john@augno.com",
                             "status": "active",
                             "role": {
-                                "id": "rl_01c16d2eb637c0d1f3a372937c",
                                 "id": "rl_01c16d2eb637c0d1f3a372937c",
                                 "object": "role",
                                 "name": "Admin",
@@ -23407,7 +23240,6 @@ export const apiTags: TagData[] = [
                                     "object": "owner",
                                     "type": "account",
                                     "account": {
-                                        "id": "ac_01148680966698341a9c0976db",
                                         "id": "ac_01148680966698341a9c0976db",
                                         "object": "account",
                                         "name": "Acme Inc.",
@@ -23851,13 +23683,11 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "acus_01ea9983ddb41dacc44ecf997c",
-                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
                                     "object": "account_user",
                                     "name": "John Doe",
                                     "email": "john@augno.com",
                                     "status": "active",
                                     "role": {
-                                        "id": "rl_01c16d2eb637c0d1f3a372937c",
                                         "id": "rl_01c16d2eb637c0d1f3a372937c",
                                         "object": "role",
                                         "name": "Admin",
@@ -23866,7 +23696,6 @@ export const apiTags: TagData[] = [
                                             "object": "owner",
                                             "type": "account",
                                             "account": {
-                                                "id": "ac_01148680966698341a9c0976db",
                                                 "id": "ac_01148680966698341a9c0976db",
                                                 "object": "account",
                                                 "name": "Acme Inc.",
@@ -24200,13 +24029,11 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "acus_01ea9983ddb41dacc44ecf997c",
-                            "id": "acus_01ea9983ddb41dacc44ecf997c",
                             "object": "account_user",
                             "name": "John Doe",
                             "email": "john@augno.com",
                             "status": "active",
                             "role": {
-                                "id": "rl_01c16d2eb637c0d1f3a372937c",
                                 "id": "rl_01c16d2eb637c0d1f3a372937c",
                                 "object": "role",
                                 "name": "Admin",
@@ -24215,7 +24042,6 @@ export const apiTags: TagData[] = [
                                     "object": "owner",
                                     "type": "account",
                                     "account": {
-                                        "id": "ac_01148680966698341a9c0976db",
                                         "id": "ac_01148680966698341a9c0976db",
                                         "object": "account",
                                         "name": "Acme Inc.",
@@ -24544,7 +24370,6 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "pp_01e21344878064372f69e67093",
-                "id": "pp_01e21344878064372f69e67093",
                 "object": "property",
                 "name": "Color",
                 "created_at": "2026-05-10T00:00:00Z",
@@ -24800,7 +24625,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "pp_01e21344878064372f69e67093",
                             "id": "pp_01e21344878064372f69e67093",
                             "object": "property",
                             "name": "Color",
@@ -25065,7 +24889,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "pp_01e21344878064372f69e67093",
                             "id": "pp_01e21344878064372f69e67093",
                             "object": "property",
                             "name": "Color",
@@ -25402,7 +25225,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "pp_01e21344878064372f69e67093",
-                                    "id": "pp_01e21344878064372f69e67093",
                                     "object": "property",
                                     "name": "Color",
                                     "created_at": "2026-05-10T00:00:00Z",
@@ -25652,7 +25474,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "pp_01e21344878064372f69e67093",
                             "id": "pp_01e21344878064372f69e67093",
                             "object": "property",
                             "name": "Color",
@@ -26136,7 +25957,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "at_01c9493ec0c46bb0ed12708ae4",
-                            "id": "at_01c9493ec0c46bb0ed12708ae4",
                             "object": "attribute",
                             "value": "Premium",
                             "color": "red",
@@ -26596,7 +26416,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "at_01c9493ec0c46bb0ed12708ae4",
                             "id": "at_01c9493ec0c46bb0ed12708ae4",
                             "object": "attribute",
                             "value": "Premium",
@@ -27070,7 +26889,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "at_01c9493ec0c46bb0ed12708ae4",
-                                    "id": "at_01c9493ec0c46bb0ed12708ae4",
                                     "object": "attribute",
                                     "value": "Premium",
                                     "color": "red",
@@ -27489,7 +27307,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "at_01c9493ec0c46bb0ed12708ae4",
-                            "id": "at_01c9493ec0c46bb0ed12708ae4",
                             "object": "attribute",
                             "value": "Premium",
                             "color": "red",
@@ -27651,7 +27468,6 @@ export const apiTags: TagData[] = [
                 }
             ],
             "example": {
-                "id": "pi_01fc435701244bb3978bfb77ff",
                 "id": "pi_01fc435701244bb3978bfb77ff",
                 "object": "priority",
                 "code": "normal",
@@ -27891,7 +27707,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "pi_01fc435701244bb3978bfb77ff",
-                                    "id": "pi_01fc435701244bb3978bfb77ff",
                                     "object": "priority",
                                     "code": "normal",
                                     "name": "Normal",
@@ -28045,7 +27860,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "pi_01fc435701244bb3978bfb77ff",
                             "id": "pi_01fc435701244bb3978bfb77ff",
                             "object": "priority",
                             "code": "normal",
@@ -28447,7 +28261,6 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "cr_01784fd54c9ba197bb4e42f0e6",
-                "id": "cr_01784fd54c9ba197bb4e42f0e6",
                 "object": "carrier",
                 "name": "FedEx",
                 "code": "fedex",
@@ -28456,7 +28269,6 @@ export const apiTags: TagData[] = [
                     "object": "owner",
                     "type": "account",
                     "account": {
-                        "id": "ac_01148680966698341a9c0976db",
                         "id": "ac_01148680966698341a9c0976db",
                         "object": "account",
                         "name": "Acme Inc.",
@@ -28932,7 +28744,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "cr_01784fd54c9ba197bb4e42f0e6",
-                            "id": "cr_01784fd54c9ba197bb4e42f0e6",
                             "object": "carrier",
                             "name": "FedEx",
                             "code": "fedex",
@@ -28941,7 +28752,6 @@ export const apiTags: TagData[] = [
                                 "object": "owner",
                                 "type": "account",
                                 "account": {
-                                    "id": "ac_01148680966698341a9c0976db",
                                     "id": "ac_01148680966698341a9c0976db",
                                     "object": "account",
                                     "name": "Acme Inc.",
@@ -29396,7 +29206,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "cr_01784fd54c9ba197bb4e42f0e6",
-                            "id": "cr_01784fd54c9ba197bb4e42f0e6",
                             "object": "carrier",
                             "name": "FedEx",
                             "code": "fedex",
@@ -29405,7 +29214,6 @@ export const apiTags: TagData[] = [
                                 "object": "owner",
                                 "type": "account",
                                 "account": {
-                                    "id": "ac_01148680966698341a9c0976db",
                                     "id": "ac_01148680966698341a9c0976db",
                                     "object": "account",
                                     "name": "Acme Inc.",
@@ -29919,7 +29727,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "cr_01784fd54c9ba197bb4e42f0e6",
-                                    "id": "cr_01784fd54c9ba197bb4e42f0e6",
                                     "object": "carrier",
                                     "name": "FedEx",
                                     "code": "fedex",
@@ -29928,7 +29735,6 @@ export const apiTags: TagData[] = [
                                         "object": "owner",
                                         "type": "account",
                                         "account": {
-                                            "id": "ac_01148680966698341a9c0976db",
                                             "id": "ac_01148680966698341a9c0976db",
                                             "object": "account",
                                             "name": "Acme Inc.",
@@ -30357,7 +30163,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "cr_01784fd54c9ba197bb4e42f0e6",
-                            "id": "cr_01784fd54c9ba197bb4e42f0e6",
                             "object": "carrier",
                             "name": "FedEx",
                             "code": "fedex",
@@ -30366,7 +30171,6 @@ export const apiTags: TagData[] = [
                                 "object": "owner",
                                 "type": "account",
                                 "account": {
-                                    "id": "ac_01148680966698341a9c0976db",
                                     "id": "ac_01148680966698341a9c0976db",
                                     "object": "account",
                                     "name": "Acme Inc.",
@@ -30622,7 +30426,6 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "crop_01cfaf03f104e90ef9680e2a30",
-                "id": "crop_01cfaf03f104e90ef9680e2a30",
                 "object": "service_level",
                 "name": "FedEx Ground",
                 "service_level_token": "fedex_ground",
@@ -30632,7 +30435,6 @@ export const apiTags: TagData[] = [
                     "object": "owner",
                     "type": "account",
                     "account": {
-                        "id": "ac_01148680966698341a9c0976db",
                         "id": "ac_01148680966698341a9c0976db",
                         "object": "account",
                         "name": "Acme Inc.",
@@ -30928,7 +30730,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "crop_01cfaf03f104e90ef9680e2a30",
-                            "id": "crop_01cfaf03f104e90ef9680e2a30",
                             "object": "service_level",
                             "name": "FedEx Ground",
                             "service_level_token": "fedex_ground",
@@ -30938,7 +30739,6 @@ export const apiTags: TagData[] = [
                                 "object": "owner",
                                 "type": "account",
                                 "account": {
-                                    "id": "ac_01148680966698341a9c0976db",
                                     "id": "ac_01148680966698341a9c0976db",
                                     "object": "account",
                                     "name": "Acme Inc.",
@@ -31241,7 +31041,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "crop_01cfaf03f104e90ef9680e2a30",
-                            "id": "crop_01cfaf03f104e90ef9680e2a30",
                             "object": "service_level",
                             "name": "FedEx Ground",
                             "service_level_token": "fedex_ground",
@@ -31251,7 +31050,6 @@ export const apiTags: TagData[] = [
                                 "object": "owner",
                                 "type": "account",
                                 "account": {
-                                    "id": "ac_01148680966698341a9c0976db",
                                     "id": "ac_01148680966698341a9c0976db",
                                     "object": "account",
                                     "name": "Acme Inc.",
@@ -31596,7 +31394,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "crop_01cfaf03f104e90ef9680e2a30",
-                                    "id": "crop_01cfaf03f104e90ef9680e2a30",
                                     "object": "service_level",
                                     "name": "FedEx Ground",
                                     "service_level_token": "fedex_ground",
@@ -31606,7 +31403,6 @@ export const apiTags: TagData[] = [
                                         "object": "owner",
                                         "type": "account",
                                         "account": {
-                                            "id": "ac_01148680966698341a9c0976db",
                                             "id": "ac_01148680966698341a9c0976db",
                                             "object": "account",
                                             "name": "Acme Inc.",
@@ -31866,7 +31662,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "crop_01cfaf03f104e90ef9680e2a30",
-                            "id": "crop_01cfaf03f104e90ef9680e2a30",
                             "object": "service_level",
                             "name": "FedEx Ground",
                             "service_level_token": "fedex_ground",
@@ -31876,7 +31671,6 @@ export const apiTags: TagData[] = [
                                 "object": "owner",
                                 "type": "account",
                                 "account": {
-                                    "id": "ac_01148680966698341a9c0976db",
                                     "id": "ac_01148680966698341a9c0976db",
                                     "object": "account",
                                     "name": "Acme Inc.",
@@ -33002,13 +32796,11 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "it_0131e386ac683e8c29a71f6f1f",
-                "id": "it_0131e386ac683e8c29a71f6f1f",
                 "object": "item",
                 "sku": "ALM-2024-1001",
                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                 "type": "product",
                 "category": {
-                    "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                     "object": "item_category",
                     "name": "Electronics",
@@ -33022,11 +32814,9 @@ export const apiTags: TagData[] = [
                 },
                 "unit_value": {
                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                    "id": "ra_015aa0a9522cf222024fd21d1a",
                     "object": "rate",
                     "value": "25.500000000000000000000000000000",
                     "numerator_unit": {
-                        "id": "un_01966263f74a5a0cae356000a1",
                         "id": "un_01966263f74a5a0cae356000a1",
                         "object": "unit",
                         "name": "US Dollar",
@@ -33035,7 +32825,6 @@ export const apiTags: TagData[] = [
                         "is_base_unit": false
                     },
                     "denominator_unit": {
-                        "id": "un_01966263f74a5a0cae356000a1",
                         "id": "un_01966263f74a5a0cae356000a1",
                         "object": "unit",
                         "name": "Kilogram",
@@ -33049,11 +32838,9 @@ export const apiTags: TagData[] = [
                 },
                 "unit_cost": {
                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                    "id": "ra_015aa0a9522cf222024fd21d1a",
                     "object": "rate",
                     "value": "25.500000000000000000000000000000",
                     "numerator_unit": {
-                        "id": "un_01966263f74a5a0cae356000a1",
                         "id": "un_01966263f74a5a0cae356000a1",
                         "object": "unit",
                         "name": "US Dollar",
@@ -33062,7 +32849,6 @@ export const apiTags: TagData[] = [
                         "is_base_unit": false
                     },
                     "denominator_unit": {
-                        "id": "un_01966263f74a5a0cae356000a1",
                         "id": "un_01966263f74a5a0cae356000a1",
                         "object": "unit",
                         "name": "Kilogram",
@@ -33076,11 +32862,9 @@ export const apiTags: TagData[] = [
                 },
                 "burn_rate": {
                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                    "id": "ra_015aa0a9522cf222024fd21d1a",
                     "object": "rate",
                     "value": "25.500000000000000000000000000000",
                     "numerator_unit": {
-                        "id": "un_01966263f74a5a0cae356000a1",
                         "id": "un_01966263f74a5a0cae356000a1",
                         "object": "unit",
                         "name": "US Dollar",
@@ -33089,7 +32873,6 @@ export const apiTags: TagData[] = [
                         "is_base_unit": false
                     },
                     "denominator_unit": {
-                        "id": "un_01966263f74a5a0cae356000a1",
                         "id": "un_01966263f74a5a0cae356000a1",
                         "object": "unit",
                         "name": "Kilogram",
@@ -33109,7 +32892,6 @@ export const apiTags: TagData[] = [
                     },
                     "data": [
                         {
-                            "id": "at_01c9493ec0c46bb0ed12708ae4",
                             "id": "at_01c9493ec0c46bb0ed12708ae4",
                             "object": "attribute",
                             "value": "Premium",
@@ -34389,13 +34171,11 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "it_0131e386ac683e8c29a71f6f1f",
-                                    "id": "it_0131e386ac683e8c29a71f6f1f",
                                     "object": "item",
                                     "sku": "ALM-2024-1001",
                                     "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                                     "type": "product",
                                     "category": {
-                                        "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                         "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                         "object": "item_category",
                                         "name": "Electronics",
@@ -34409,11 +34189,9 @@ export const apiTags: TagData[] = [
                                     },
                                     "unit_value": {
                                         "id": "ra_015aa0a9522cf222024fd21d1a",
-                                        "id": "ra_015aa0a9522cf222024fd21d1a",
                                         "object": "rate",
                                         "value": "25.500000000000000000000000000000",
                                         "numerator_unit": {
-                                            "id": "un_01966263f74a5a0cae356000a1",
                                             "id": "un_01966263f74a5a0cae356000a1",
                                             "object": "unit",
                                             "name": "US Dollar",
@@ -34422,7 +34200,6 @@ export const apiTags: TagData[] = [
                                             "is_base_unit": false
                                         },
                                         "denominator_unit": {
-                                            "id": "un_01966263f74a5a0cae356000a1",
                                             "id": "un_01966263f74a5a0cae356000a1",
                                             "object": "unit",
                                             "name": "Kilogram",
@@ -34436,11 +34213,9 @@ export const apiTags: TagData[] = [
                                     },
                                     "unit_cost": {
                                         "id": "ra_015aa0a9522cf222024fd21d1a",
-                                        "id": "ra_015aa0a9522cf222024fd21d1a",
                                         "object": "rate",
                                         "value": "25.500000000000000000000000000000",
                                         "numerator_unit": {
-                                            "id": "un_01966263f74a5a0cae356000a1",
                                             "id": "un_01966263f74a5a0cae356000a1",
                                             "object": "unit",
                                             "name": "US Dollar",
@@ -34449,7 +34224,6 @@ export const apiTags: TagData[] = [
                                             "is_base_unit": false
                                         },
                                         "denominator_unit": {
-                                            "id": "un_01966263f74a5a0cae356000a1",
                                             "id": "un_01966263f74a5a0cae356000a1",
                                             "object": "unit",
                                             "name": "Kilogram",
@@ -34463,11 +34237,9 @@ export const apiTags: TagData[] = [
                                     },
                                     "burn_rate": {
                                         "id": "ra_015aa0a9522cf222024fd21d1a",
-                                        "id": "ra_015aa0a9522cf222024fd21d1a",
                                         "object": "rate",
                                         "value": "25.500000000000000000000000000000",
                                         "numerator_unit": {
-                                            "id": "un_01966263f74a5a0cae356000a1",
                                             "id": "un_01966263f74a5a0cae356000a1",
                                             "object": "unit",
                                             "name": "US Dollar",
@@ -34476,7 +34248,6 @@ export const apiTags: TagData[] = [
                                             "is_base_unit": false
                                         },
                                         "denominator_unit": {
-                                            "id": "un_01966263f74a5a0cae356000a1",
                                             "id": "un_01966263f74a5a0cae356000a1",
                                             "object": "unit",
                                             "name": "Kilogram",
@@ -34496,7 +34267,6 @@ export const apiTags: TagData[] = [
                                         },
                                         "data": [
                                             {
-                                                "id": "at_01c9493ec0c46bb0ed12708ae4",
                                                 "id": "at_01c9493ec0c46bb0ed12708ae4",
                                                 "object": "attribute",
                                                 "value": "Premium",
@@ -35623,13 +35393,11 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "it_0131e386ac683e8c29a71f6f1f",
-                            "id": "it_0131e386ac683e8c29a71f6f1f",
                             "object": "item",
                             "sku": "ALM-2024-1001",
                             "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                             "type": "product",
                             "category": {
-                                "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                 "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                 "object": "item_category",
                                 "name": "Electronics",
@@ -35643,11 +35411,9 @@ export const apiTags: TagData[] = [
                             },
                             "unit_value": {
                                 "id": "ra_015aa0a9522cf222024fd21d1a",
-                                "id": "ra_015aa0a9522cf222024fd21d1a",
                                 "object": "rate",
                                 "value": "25.500000000000000000000000000000",
                                 "numerator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -35656,7 +35422,6 @@ export const apiTags: TagData[] = [
                                     "is_base_unit": false
                                 },
                                 "denominator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "Kilogram",
@@ -35670,11 +35435,9 @@ export const apiTags: TagData[] = [
                             },
                             "unit_cost": {
                                 "id": "ra_015aa0a9522cf222024fd21d1a",
-                                "id": "ra_015aa0a9522cf222024fd21d1a",
                                 "object": "rate",
                                 "value": "25.500000000000000000000000000000",
                                 "numerator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -35683,7 +35446,6 @@ export const apiTags: TagData[] = [
                                     "is_base_unit": false
                                 },
                                 "denominator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "Kilogram",
@@ -35697,11 +35459,9 @@ export const apiTags: TagData[] = [
                             },
                             "burn_rate": {
                                 "id": "ra_015aa0a9522cf222024fd21d1a",
-                                "id": "ra_015aa0a9522cf222024fd21d1a",
                                 "object": "rate",
                                 "value": "25.500000000000000000000000000000",
                                 "numerator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -35710,7 +35470,6 @@ export const apiTags: TagData[] = [
                                     "is_base_unit": false
                                 },
                                 "denominator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "Kilogram",
@@ -35730,7 +35489,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "data": [
                                     {
-                                        "id": "at_01c9493ec0c46bb0ed12708ae4",
                                         "id": "at_01c9493ec0c46bb0ed12708ae4",
                                         "object": "attribute",
                                         "value": "Premium",
@@ -36862,13 +36620,11 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "it_0131e386ac683e8c29a71f6f1f",
-                            "id": "it_0131e386ac683e8c29a71f6f1f",
                             "object": "item",
                             "sku": "ALM-2024-1001",
                             "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                             "type": "product",
                             "category": {
-                                "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                 "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                 "object": "item_category",
                                 "name": "Electronics",
@@ -36882,11 +36638,9 @@ export const apiTags: TagData[] = [
                             },
                             "unit_value": {
                                 "id": "ra_015aa0a9522cf222024fd21d1a",
-                                "id": "ra_015aa0a9522cf222024fd21d1a",
                                 "object": "rate",
                                 "value": "25.500000000000000000000000000000",
                                 "numerator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -36895,7 +36649,6 @@ export const apiTags: TagData[] = [
                                     "is_base_unit": false
                                 },
                                 "denominator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "Kilogram",
@@ -36909,11 +36662,9 @@ export const apiTags: TagData[] = [
                             },
                             "unit_cost": {
                                 "id": "ra_015aa0a9522cf222024fd21d1a",
-                                "id": "ra_015aa0a9522cf222024fd21d1a",
                                 "object": "rate",
                                 "value": "25.500000000000000000000000000000",
                                 "numerator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -36922,7 +36673,6 @@ export const apiTags: TagData[] = [
                                     "is_base_unit": false
                                 },
                                 "denominator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "Kilogram",
@@ -36936,11 +36686,9 @@ export const apiTags: TagData[] = [
                             },
                             "burn_rate": {
                                 "id": "ra_015aa0a9522cf222024fd21d1a",
-                                "id": "ra_015aa0a9522cf222024fd21d1a",
                                 "object": "rate",
                                 "value": "25.500000000000000000000000000000",
                                 "numerator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -36949,7 +36697,6 @@ export const apiTags: TagData[] = [
                                     "is_base_unit": false
                                 },
                                 "denominator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "Kilogram",
@@ -36969,7 +36716,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "data": [
                                     {
-                                        "id": "at_01c9493ec0c46bb0ed12708ae4",
                                         "id": "at_01c9493ec0c46bb0ed12708ae4",
                                         "object": "attribute",
                                         "value": "Premium",
@@ -38101,13 +37847,11 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "it_0131e386ac683e8c29a71f6f1f",
-                            "id": "it_0131e386ac683e8c29a71f6f1f",
                             "object": "item",
                             "sku": "ALM-2024-1001",
                             "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                             "type": "product",
                             "category": {
-                                "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                 "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                 "object": "item_category",
                                 "name": "Electronics",
@@ -38121,11 +37865,9 @@ export const apiTags: TagData[] = [
                             },
                             "unit_value": {
                                 "id": "ra_015aa0a9522cf222024fd21d1a",
-                                "id": "ra_015aa0a9522cf222024fd21d1a",
                                 "object": "rate",
                                 "value": "25.500000000000000000000000000000",
                                 "numerator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -38134,7 +37876,6 @@ export const apiTags: TagData[] = [
                                     "is_base_unit": false
                                 },
                                 "denominator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "Kilogram",
@@ -38148,11 +37889,9 @@ export const apiTags: TagData[] = [
                             },
                             "unit_cost": {
                                 "id": "ra_015aa0a9522cf222024fd21d1a",
-                                "id": "ra_015aa0a9522cf222024fd21d1a",
                                 "object": "rate",
                                 "value": "25.500000000000000000000000000000",
                                 "numerator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -38161,7 +37900,6 @@ export const apiTags: TagData[] = [
                                     "is_base_unit": false
                                 },
                                 "denominator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "Kilogram",
@@ -38175,11 +37913,9 @@ export const apiTags: TagData[] = [
                             },
                             "burn_rate": {
                                 "id": "ra_015aa0a9522cf222024fd21d1a",
-                                "id": "ra_015aa0a9522cf222024fd21d1a",
                                 "object": "rate",
                                 "value": "25.500000000000000000000000000000",
                                 "numerator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -38188,7 +37924,6 @@ export const apiTags: TagData[] = [
                                     "is_base_unit": false
                                 },
                                 "denominator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "Kilogram",
@@ -38208,7 +37943,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "data": [
                                     {
-                                        "id": "at_01c9493ec0c46bb0ed12708ae4",
                                         "id": "at_01c9493ec0c46bb0ed12708ae4",
                                         "object": "attribute",
                                         "value": "Premium",
@@ -38500,12 +38234,10 @@ export const apiTags: TagData[] = [
                             "object": "item_inventory",
                             "on_hand": {
                                 "id": "qty_015a85becc1a6afdfb1afc27ff",
-                                "id": "qty_015a85becc1a6afdfb1afc27ff",
                                 "object": "quantity",
                                 "value": "1234.56",
                                 "display_value": "$1,234.56",
                                 "unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -38516,12 +38248,10 @@ export const apiTags: TagData[] = [
                             },
                             "reserved": {
                                 "id": "qty_015a85becc1a6afdfb1afc27ff",
-                                "id": "qty_015a85becc1a6afdfb1afc27ff",
                                 "object": "quantity",
                                 "value": "1234.56",
                                 "display_value": "$1,234.56",
                                 "unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -38532,12 +38262,10 @@ export const apiTags: TagData[] = [
                             },
                             "available_to_promise": {
                                 "id": "qty_015a85becc1a6afdfb1afc27ff",
-                                "id": "qty_015a85becc1a6afdfb1afc27ff",
                                 "object": "quantity",
                                 "value": "1234.56",
                                 "display_value": "$1,234.56",
                                 "unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -38548,12 +38276,10 @@ export const apiTags: TagData[] = [
                             },
                             "short": {
                                 "id": "qty_015a85becc1a6afdfb1afc27ff",
-                                "id": "qty_015a85becc1a6afdfb1afc27ff",
                                 "object": "quantity",
                                 "value": "1234.56",
                                 "display_value": "$1,234.56",
                                 "unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -39681,13 +39407,11 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "it_0131e386ac683e8c29a71f6f1f",
-                            "id": "it_0131e386ac683e8c29a71f6f1f",
                             "object": "item",
                             "sku": "ALM-2024-1001",
                             "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                             "type": "product",
                             "category": {
-                                "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                 "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                 "object": "item_category",
                                 "name": "Electronics",
@@ -39701,11 +39425,9 @@ export const apiTags: TagData[] = [
                             },
                             "unit_value": {
                                 "id": "ra_015aa0a9522cf222024fd21d1a",
-                                "id": "ra_015aa0a9522cf222024fd21d1a",
                                 "object": "rate",
                                 "value": "25.500000000000000000000000000000",
                                 "numerator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -39714,7 +39436,6 @@ export const apiTags: TagData[] = [
                                     "is_base_unit": false
                                 },
                                 "denominator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "Kilogram",
@@ -39728,11 +39449,9 @@ export const apiTags: TagData[] = [
                             },
                             "unit_cost": {
                                 "id": "ra_015aa0a9522cf222024fd21d1a",
-                                "id": "ra_015aa0a9522cf222024fd21d1a",
                                 "object": "rate",
                                 "value": "25.500000000000000000000000000000",
                                 "numerator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -39741,7 +39460,6 @@ export const apiTags: TagData[] = [
                                     "is_base_unit": false
                                 },
                                 "denominator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "Kilogram",
@@ -39755,11 +39473,9 @@ export const apiTags: TagData[] = [
                             },
                             "burn_rate": {
                                 "id": "ra_015aa0a9522cf222024fd21d1a",
-                                "id": "ra_015aa0a9522cf222024fd21d1a",
                                 "object": "rate",
                                 "value": "25.500000000000000000000000000000",
                                 "numerator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -39768,7 +39484,6 @@ export const apiTags: TagData[] = [
                                     "is_base_unit": false
                                 },
                                 "denominator_unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "Kilogram",
@@ -39788,7 +39503,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "data": [
                                     {
-                                        "id": "at_01c9493ec0c46bb0ed12708ae4",
                                         "id": "at_01c9493ec0c46bb0ed12708ae4",
                                         "object": "attribute",
                                         "value": "Premium",
@@ -40509,7 +40223,6 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
-                "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                 "object": "item_category",
                 "name": "Electronics",
                 "type": "material_category",
@@ -40587,7 +40300,6 @@ export const apiTags: TagData[] = [
                     "example": {
                         "name": "Electronics",
                         "type": "material_category",
-                        "unit_group_id": "ug_01aad07abb8e41fd392d2d7013"
                         "unit_group_id": "ug_01aad07abb8e41fd392d2d7013"
                     }
                 },
@@ -41287,7 +40999,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                             "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                             "object": "item_category",
                             "name": "Electronics",
@@ -42059,7 +41770,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                             "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                             "object": "item_category",
                             "name": "Electronics",
@@ -42906,7 +42616,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
-                                    "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
                                     "type": "material_category",
@@ -43655,7 +43364,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                             "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                             "object": "item_category",
                             "name": "Electronics",
@@ -44777,17 +44485,14 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "ml_014613b8f7959a091d8cc0cef4",
-                "id": "ml_014613b8f7959a091d8cc0cef4",
                 "object": "material",
                 "item": {
-                    "id": "it_0131e386ac683e8c29a71f6f1f",
                     "id": "it_0131e386ac683e8c29a71f6f1f",
                     "object": "item",
                     "sku": "ALM-2024-1001",
                     "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                     "type": "product",
                     "category": {
-                        "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                         "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                         "object": "item_category",
                         "name": "Electronics",
@@ -44801,11 +44506,9 @@ export const apiTags: TagData[] = [
                     },
                     "unit_value": {
                         "id": "ra_015aa0a9522cf222024fd21d1a",
-                        "id": "ra_015aa0a9522cf222024fd21d1a",
                         "object": "rate",
                         "value": "25.500000000000000000000000000000",
                         "numerator_unit": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "US Dollar",
@@ -44814,7 +44517,6 @@ export const apiTags: TagData[] = [
                             "is_base_unit": false
                         },
                         "denominator_unit": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "Kilogram",
@@ -44828,11 +44530,9 @@ export const apiTags: TagData[] = [
                     },
                     "unit_cost": {
                         "id": "ra_015aa0a9522cf222024fd21d1a",
-                        "id": "ra_015aa0a9522cf222024fd21d1a",
                         "object": "rate",
                         "value": "25.500000000000000000000000000000",
                         "numerator_unit": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "US Dollar",
@@ -44841,7 +44541,6 @@ export const apiTags: TagData[] = [
                             "is_base_unit": false
                         },
                         "denominator_unit": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "Kilogram",
@@ -44855,11 +44554,9 @@ export const apiTags: TagData[] = [
                     },
                     "burn_rate": {
                         "id": "ra_015aa0a9522cf222024fd21d1a",
-                        "id": "ra_015aa0a9522cf222024fd21d1a",
                         "object": "rate",
                         "value": "25.500000000000000000000000000000",
                         "numerator_unit": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "US Dollar",
@@ -44868,7 +44565,6 @@ export const apiTags: TagData[] = [
                             "is_base_unit": false
                         },
                         "denominator_unit": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "Kilogram",
@@ -44889,7 +44585,6 @@ export const apiTags: TagData[] = [
                         "data": [
                             {
                                 "id": "at_01c9493ec0c46bb0ed12708ae4",
-                                "id": "at_01c9493ec0c46bb0ed12708ae4",
                                 "object": "attribute",
                                 "value": "Premium",
                                 "color": "red",
@@ -44904,12 +44599,10 @@ export const apiTags: TagData[] = [
                 },
                 "order_point": {
                     "id": "qty_015a85becc1a6afdfb1afc27ff",
-                    "id": "qty_015a85becc1a6afdfb1afc27ff",
                     "object": "quantity",
                     "value": "1234.56",
                     "display_value": "$1,234.56",
                     "unit": {
-                        "id": "un_01966263f74a5a0cae356000a1",
                         "id": "un_01966263f74a5a0cae356000a1",
                         "object": "unit",
                         "name": "US Dollar",
@@ -44920,12 +44613,10 @@ export const apiTags: TagData[] = [
                 },
                 "lead_time": {
                     "id": "qty_015a85becc1a6afdfb1afc27ff",
-                    "id": "qty_015a85becc1a6afdfb1afc27ff",
                     "object": "quantity",
                     "value": "1234.56",
                     "display_value": "$1,234.56",
                     "unit": {
-                        "id": "un_01966263f74a5a0cae356000a1",
                         "id": "un_01966263f74a5a0cae356000a1",
                         "object": "unit",
                         "name": "US Dollar",
@@ -45139,7 +44830,6 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "sku": "MAT-001",
-                        "category_id": "ic_01ae7bd7bfd21ca0ab81e1357e"
                         "category_id": "ic_01ae7bd7bfd21ca0ab81e1357e"
                     }
                 },
@@ -46102,17 +45792,14 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "ml_014613b8f7959a091d8cc0cef4",
-                            "id": "ml_014613b8f7959a091d8cc0cef4",
                             "object": "material",
                             "item": {
-                                "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                                 "type": "product",
                                 "category": {
-                                    "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
@@ -46126,11 +45813,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_value": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -46139,7 +45824,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -46153,11 +45837,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_cost": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -46166,7 +45848,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -46180,11 +45861,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "burn_rate": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -46193,7 +45872,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -46214,7 +45892,6 @@ export const apiTags: TagData[] = [
                                     "data": [
                                         {
                                             "id": "at_01c9493ec0c46bb0ed12708ae4",
-                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "object": "attribute",
                                             "value": "Premium",
                                             "color": "red",
@@ -46229,12 +45906,10 @@ export const apiTags: TagData[] = [
                             },
                             "order_point": {
                                 "id": "qty_015a85becc1a6afdfb1afc27ff",
-                                "id": "qty_015a85becc1a6afdfb1afc27ff",
                                 "object": "quantity",
                                 "value": "1234.56",
                                 "display_value": "$1,234.56",
                                 "unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -46245,12 +45920,10 @@ export const apiTags: TagData[] = [
                             },
                             "lead_time": {
                                 "id": "qty_015a85becc1a6afdfb1afc27ff",
-                                "id": "qty_015a85becc1a6afdfb1afc27ff",
                                 "object": "quantity",
                                 "value": "1234.56",
                                 "display_value": "$1,234.56",
                                 "unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -47381,17 +47054,14 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "ml_014613b8f7959a091d8cc0cef4",
-                            "id": "ml_014613b8f7959a091d8cc0cef4",
                             "object": "material",
                             "item": {
-                                "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                                 "type": "product",
                                 "category": {
-                                    "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
@@ -47405,11 +47075,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_value": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -47418,7 +47086,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -47432,11 +47099,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_cost": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -47445,7 +47110,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -47459,11 +47123,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "burn_rate": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -47472,7 +47134,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -47493,7 +47154,6 @@ export const apiTags: TagData[] = [
                                     "data": [
                                         {
                                             "id": "at_01c9493ec0c46bb0ed12708ae4",
-                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "object": "attribute",
                                             "value": "Premium",
                                             "color": "red",
@@ -47508,12 +47168,10 @@ export const apiTags: TagData[] = [
                             },
                             "order_point": {
                                 "id": "qty_015a85becc1a6afdfb1afc27ff",
-                                "id": "qty_015a85becc1a6afdfb1afc27ff",
                                 "object": "quantity",
                                 "value": "1234.56",
                                 "display_value": "$1,234.56",
                                 "unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -47524,12 +47182,10 @@ export const apiTags: TagData[] = [
                             },
                             "lead_time": {
                                 "id": "qty_015a85becc1a6afdfb1afc27ff",
-                                "id": "qty_015a85becc1a6afdfb1afc27ff",
                                 "object": "quantity",
                                 "value": "1234.56",
                                 "display_value": "$1,234.56",
                                 "unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -48658,17 +48314,14 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "ml_014613b8f7959a091d8cc0cef4",
-                                    "id": "ml_014613b8f7959a091d8cc0cef4",
                                     "object": "material",
                                     "item": {
-                                        "id": "it_0131e386ac683e8c29a71f6f1f",
                                         "id": "it_0131e386ac683e8c29a71f6f1f",
                                         "object": "item",
                                         "sku": "ALM-2024-1001",
                                         "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                                         "type": "product",
                                         "category": {
-                                            "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                             "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                             "object": "item_category",
                                             "name": "Electronics",
@@ -48682,11 +48335,9 @@ export const apiTags: TagData[] = [
                                         },
                                         "unit_value": {
                                             "id": "ra_015aa0a9522cf222024fd21d1a",
-                                            "id": "ra_015aa0a9522cf222024fd21d1a",
                                             "object": "rate",
                                             "value": "25.500000000000000000000000000000",
                                             "numerator_unit": {
-                                                "id": "un_01966263f74a5a0cae356000a1",
                                                 "id": "un_01966263f74a5a0cae356000a1",
                                                 "object": "unit",
                                                 "name": "US Dollar",
@@ -48695,7 +48346,6 @@ export const apiTags: TagData[] = [
                                                 "is_base_unit": false
                                             },
                                             "denominator_unit": {
-                                                "id": "un_01966263f74a5a0cae356000a1",
                                                 "id": "un_01966263f74a5a0cae356000a1",
                                                 "object": "unit",
                                                 "name": "Kilogram",
@@ -48709,11 +48359,9 @@ export const apiTags: TagData[] = [
                                         },
                                         "unit_cost": {
                                             "id": "ra_015aa0a9522cf222024fd21d1a",
-                                            "id": "ra_015aa0a9522cf222024fd21d1a",
                                             "object": "rate",
                                             "value": "25.500000000000000000000000000000",
                                             "numerator_unit": {
-                                                "id": "un_01966263f74a5a0cae356000a1",
                                                 "id": "un_01966263f74a5a0cae356000a1",
                                                 "object": "unit",
                                                 "name": "US Dollar",
@@ -48722,7 +48370,6 @@ export const apiTags: TagData[] = [
                                                 "is_base_unit": false
                                             },
                                             "denominator_unit": {
-                                                "id": "un_01966263f74a5a0cae356000a1",
                                                 "id": "un_01966263f74a5a0cae356000a1",
                                                 "object": "unit",
                                                 "name": "Kilogram",
@@ -48736,11 +48383,9 @@ export const apiTags: TagData[] = [
                                         },
                                         "burn_rate": {
                                             "id": "ra_015aa0a9522cf222024fd21d1a",
-                                            "id": "ra_015aa0a9522cf222024fd21d1a",
                                             "object": "rate",
                                             "value": "25.500000000000000000000000000000",
                                             "numerator_unit": {
-                                                "id": "un_01966263f74a5a0cae356000a1",
                                                 "id": "un_01966263f74a5a0cae356000a1",
                                                 "object": "unit",
                                                 "name": "US Dollar",
@@ -48749,7 +48394,6 @@ export const apiTags: TagData[] = [
                                                 "is_base_unit": false
                                             },
                                             "denominator_unit": {
-                                                "id": "un_01966263f74a5a0cae356000a1",
                                                 "id": "un_01966263f74a5a0cae356000a1",
                                                 "object": "unit",
                                                 "name": "Kilogram",
@@ -48770,7 +48414,6 @@ export const apiTags: TagData[] = [
                                             "data": [
                                                 {
                                                     "id": "at_01c9493ec0c46bb0ed12708ae4",
-                                                    "id": "at_01c9493ec0c46bb0ed12708ae4",
                                                     "object": "attribute",
                                                     "value": "Premium",
                                                     "color": "red",
@@ -48785,12 +48428,10 @@ export const apiTags: TagData[] = [
                                     },
                                     "order_point": {
                                         "id": "qty_015a85becc1a6afdfb1afc27ff",
-                                        "id": "qty_015a85becc1a6afdfb1afc27ff",
                                         "object": "quantity",
                                         "value": "1234.56",
                                         "display_value": "$1,234.56",
                                         "unit": {
-                                            "id": "un_01966263f74a5a0cae356000a1",
                                             "id": "un_01966263f74a5a0cae356000a1",
                                             "object": "unit",
                                             "name": "US Dollar",
@@ -48801,12 +48442,10 @@ export const apiTags: TagData[] = [
                                     },
                                     "lead_time": {
                                         "id": "qty_015a85becc1a6afdfb1afc27ff",
-                                        "id": "qty_015a85becc1a6afdfb1afc27ff",
                                         "object": "quantity",
                                         "value": "1234.56",
                                         "display_value": "$1,234.56",
                                         "unit": {
-                                            "id": "un_01966263f74a5a0cae356000a1",
                                             "id": "un_01966263f74a5a0cae356000a1",
                                             "object": "unit",
                                             "name": "US Dollar",
@@ -49820,17 +49459,14 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "ml_014613b8f7959a091d8cc0cef4",
-                            "id": "ml_014613b8f7959a091d8cc0cef4",
                             "object": "material",
                             "item": {
-                                "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                                 "type": "product",
                                 "category": {
-                                    "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
@@ -49844,11 +49480,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_value": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -49857,7 +49491,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -49871,11 +49504,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_cost": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -49884,7 +49515,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -49898,11 +49528,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "burn_rate": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -49911,7 +49539,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -49932,7 +49559,6 @@ export const apiTags: TagData[] = [
                                     "data": [
                                         {
                                             "id": "at_01c9493ec0c46bb0ed12708ae4",
-                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "object": "attribute",
                                             "value": "Premium",
                                             "color": "red",
@@ -49947,12 +49573,10 @@ export const apiTags: TagData[] = [
                             },
                             "order_point": {
                                 "id": "qty_015a85becc1a6afdfb1afc27ff",
-                                "id": "qty_015a85becc1a6afdfb1afc27ff",
                                 "object": "quantity",
                                 "value": "1234.56",
                                 "display_value": "$1,234.56",
                                 "unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -49963,12 +49587,10 @@ export const apiTags: TagData[] = [
                             },
                             "lead_time": {
                                 "id": "qty_015a85becc1a6afdfb1afc27ff",
-                                "id": "qty_015a85becc1a6afdfb1afc27ff",
                                 "object": "quantity",
                                 "value": "1234.56",
                                 "display_value": "$1,234.56",
                                 "unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -54471,17 +54093,14 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "ml_014613b8f7959a091d8cc0cef4",
-                            "id": "ml_014613b8f7959a091d8cc0cef4",
                             "object": "material",
                             "item": {
-                                "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                                 "type": "product",
                                 "category": {
-                                    "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
@@ -54495,11 +54114,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_value": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -54508,7 +54125,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -54522,11 +54138,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_cost": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -54535,7 +54149,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -54549,11 +54162,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "burn_rate": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -54562,7 +54173,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -54583,7 +54193,6 @@ export const apiTags: TagData[] = [
                                     "data": [
                                         {
                                             "id": "at_01c9493ec0c46bb0ed12708ae4",
-                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "object": "attribute",
                                             "value": "Premium",
                                             "color": "red",
@@ -54598,12 +54207,10 @@ export const apiTags: TagData[] = [
                             },
                             "order_point": {
                                 "id": "qty_015a85becc1a6afdfb1afc27ff",
-                                "id": "qty_015a85becc1a6afdfb1afc27ff",
                                 "object": "quantity",
                                 "value": "1234.56",
                                 "display_value": "$1,234.56",
                                 "unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -54614,12 +54221,10 @@ export const apiTags: TagData[] = [
                             },
                             "lead_time": {
                                 "id": "qty_015a85becc1a6afdfb1afc27ff",
-                                "id": "qty_015a85becc1a6afdfb1afc27ff",
                                 "object": "quantity",
                                 "value": "1234.56",
                                 "display_value": "$1,234.56",
                                 "unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -55492,17 +55097,14 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "pt_018d7bab53e864351f4c693a21",
-                "id": "pt_018d7bab53e864351f4c693a21",
                 "object": "part",
                 "item": {
-                    "id": "it_0131e386ac683e8c29a71f6f1f",
                     "id": "it_0131e386ac683e8c29a71f6f1f",
                     "object": "item",
                     "sku": "ALM-2024-1001",
                     "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                     "type": "product",
                     "category": {
-                        "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                         "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                         "object": "item_category",
                         "name": "Electronics",
@@ -55516,11 +55118,9 @@ export const apiTags: TagData[] = [
                     },
                     "unit_value": {
                         "id": "ra_015aa0a9522cf222024fd21d1a",
-                        "id": "ra_015aa0a9522cf222024fd21d1a",
                         "object": "rate",
                         "value": "25.500000000000000000000000000000",
                         "numerator_unit": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "US Dollar",
@@ -55529,7 +55129,6 @@ export const apiTags: TagData[] = [
                             "is_base_unit": false
                         },
                         "denominator_unit": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "Kilogram",
@@ -55543,11 +55142,9 @@ export const apiTags: TagData[] = [
                     },
                     "unit_cost": {
                         "id": "ra_015aa0a9522cf222024fd21d1a",
-                        "id": "ra_015aa0a9522cf222024fd21d1a",
                         "object": "rate",
                         "value": "25.500000000000000000000000000000",
                         "numerator_unit": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "US Dollar",
@@ -55556,7 +55153,6 @@ export const apiTags: TagData[] = [
                             "is_base_unit": false
                         },
                         "denominator_unit": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "Kilogram",
@@ -55570,11 +55166,9 @@ export const apiTags: TagData[] = [
                     },
                     "burn_rate": {
                         "id": "ra_015aa0a9522cf222024fd21d1a",
-                        "id": "ra_015aa0a9522cf222024fd21d1a",
                         "object": "rate",
                         "value": "25.500000000000000000000000000000",
                         "numerator_unit": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "US Dollar",
@@ -55583,7 +55177,6 @@ export const apiTags: TagData[] = [
                             "is_base_unit": false
                         },
                         "denominator_unit": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "Kilogram",
@@ -55603,7 +55196,6 @@ export const apiTags: TagData[] = [
                         },
                         "data": [
                             {
-                                "id": "at_01c9493ec0c46bb0ed12708ae4",
                                 "id": "at_01c9493ec0c46bb0ed12708ae4",
                                 "object": "attribute",
                                 "value": "Premium",
@@ -55768,7 +55360,6 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "sku": "BRG-6204-2RS",
-                        "category_id": "ic_01ae7bd7bfd21ca0ab81e1357e"
                         "category_id": "ic_01ae7bd7bfd21ca0ab81e1357e"
                     }
                 },
@@ -56405,17 +55996,14 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "pt_018d7bab53e864351f4c693a21",
-                            "id": "pt_018d7bab53e864351f4c693a21",
                             "object": "part",
                             "item": {
-                                "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                                 "type": "product",
                                 "category": {
-                                    "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
@@ -56429,11 +56017,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_value": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -56442,7 +56028,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -56456,11 +56041,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_cost": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -56469,7 +56052,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -56483,11 +56065,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "burn_rate": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -56496,7 +56076,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -56516,7 +56095,6 @@ export const apiTags: TagData[] = [
                                     },
                                     "data": [
                                         {
-                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "object": "attribute",
                                             "value": "Premium",
@@ -57239,17 +56817,14 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "pt_018d7bab53e864351f4c693a21",
-                            "id": "pt_018d7bab53e864351f4c693a21",
                             "object": "part",
                             "item": {
-                                "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                                 "type": "product",
                                 "category": {
-                                    "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
@@ -57263,11 +56838,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_value": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -57276,7 +56849,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -57290,11 +56862,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_cost": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -57303,7 +56873,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -57317,11 +56886,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "burn_rate": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -57330,7 +56897,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -57350,7 +56916,6 @@ export const apiTags: TagData[] = [
                                     },
                                     "data": [
                                         {
-                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "object": "attribute",
                                             "value": "Premium",
@@ -58376,17 +57941,14 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "pt_018d7bab53e864351f4c693a21",
-                                    "id": "pt_018d7bab53e864351f4c693a21",
                                     "object": "part",
                                     "item": {
-                                        "id": "it_0131e386ac683e8c29a71f6f1f",
                                         "id": "it_0131e386ac683e8c29a71f6f1f",
                                         "object": "item",
                                         "sku": "ALM-2024-1001",
                                         "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                                         "type": "product",
                                         "category": {
-                                            "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                             "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                             "object": "item_category",
                                             "name": "Electronics",
@@ -58400,11 +57962,9 @@ export const apiTags: TagData[] = [
                                         },
                                         "unit_value": {
                                             "id": "ra_015aa0a9522cf222024fd21d1a",
-                                            "id": "ra_015aa0a9522cf222024fd21d1a",
                                             "object": "rate",
                                             "value": "25.500000000000000000000000000000",
                                             "numerator_unit": {
-                                                "id": "un_01966263f74a5a0cae356000a1",
                                                 "id": "un_01966263f74a5a0cae356000a1",
                                                 "object": "unit",
                                                 "name": "US Dollar",
@@ -58413,7 +57973,6 @@ export const apiTags: TagData[] = [
                                                 "is_base_unit": false
                                             },
                                             "denominator_unit": {
-                                                "id": "un_01966263f74a5a0cae356000a1",
                                                 "id": "un_01966263f74a5a0cae356000a1",
                                                 "object": "unit",
                                                 "name": "Kilogram",
@@ -58427,11 +57986,9 @@ export const apiTags: TagData[] = [
                                         },
                                         "unit_cost": {
                                             "id": "ra_015aa0a9522cf222024fd21d1a",
-                                            "id": "ra_015aa0a9522cf222024fd21d1a",
                                             "object": "rate",
                                             "value": "25.500000000000000000000000000000",
                                             "numerator_unit": {
-                                                "id": "un_01966263f74a5a0cae356000a1",
                                                 "id": "un_01966263f74a5a0cae356000a1",
                                                 "object": "unit",
                                                 "name": "US Dollar",
@@ -58440,7 +57997,6 @@ export const apiTags: TagData[] = [
                                                 "is_base_unit": false
                                             },
                                             "denominator_unit": {
-                                                "id": "un_01966263f74a5a0cae356000a1",
                                                 "id": "un_01966263f74a5a0cae356000a1",
                                                 "object": "unit",
                                                 "name": "Kilogram",
@@ -58454,11 +58010,9 @@ export const apiTags: TagData[] = [
                                         },
                                         "burn_rate": {
                                             "id": "ra_015aa0a9522cf222024fd21d1a",
-                                            "id": "ra_015aa0a9522cf222024fd21d1a",
                                             "object": "rate",
                                             "value": "25.500000000000000000000000000000",
                                             "numerator_unit": {
-                                                "id": "un_01966263f74a5a0cae356000a1",
                                                 "id": "un_01966263f74a5a0cae356000a1",
                                                 "object": "unit",
                                                 "name": "US Dollar",
@@ -58467,7 +58021,6 @@ export const apiTags: TagData[] = [
                                                 "is_base_unit": false
                                             },
                                             "denominator_unit": {
-                                                "id": "un_01966263f74a5a0cae356000a1",
                                                 "id": "un_01966263f74a5a0cae356000a1",
                                                 "object": "unit",
                                                 "name": "Kilogram",
@@ -58487,7 +58040,6 @@ export const apiTags: TagData[] = [
                                             },
                                             "data": [
                                                 {
-                                                    "id": "at_01c9493ec0c46bb0ed12708ae4",
                                                     "id": "at_01c9493ec0c46bb0ed12708ae4",
                                                     "object": "attribute",
                                                     "value": "Premium",
@@ -59398,17 +58950,14 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "pt_018d7bab53e864351f4c693a21",
-                            "id": "pt_018d7bab53e864351f4c693a21",
                             "object": "part",
                             "item": {
-                                "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                                 "type": "product",
                                 "category": {
-                                    "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
@@ -59422,11 +58971,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_value": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -59435,7 +58982,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -59449,11 +58995,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_cost": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -59462,7 +59006,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -59476,11 +59019,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "burn_rate": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -59489,7 +59030,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -59509,7 +59049,6 @@ export const apiTags: TagData[] = [
                                     },
                                     "data": [
                                         {
-                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "object": "attribute",
                                             "value": "Premium",
@@ -62799,17 +62338,14 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "pt_018d7bab53e864351f4c693a21",
-                            "id": "pt_018d7bab53e864351f4c693a21",
                             "object": "part",
                             "item": {
-                                "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                                 "type": "product",
                                 "category": {
-                                    "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
@@ -62823,11 +62359,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_value": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -62836,7 +62370,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -62850,11 +62383,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_cost": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -62863,7 +62394,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -62877,11 +62407,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "burn_rate": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -62890,7 +62418,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -62910,7 +62437,6 @@ export const apiTags: TagData[] = [
                                     },
                                     "data": [
                                         {
-                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "object": "attribute",
                                             "value": "Premium",
@@ -63086,7 +62612,6 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "eml_017b80707ada92dddff8a2c3a0",
-                "id": "eml_017b80707ada92dddff8a2c3a0",
                 "object": "email_log",
                 "send_status": "sent",
                 "recipients": [
@@ -63096,13 +62621,11 @@ export const apiTags: TagData[] = [
                 "filename": "invoice_1001.pdf",
                 "sent_by": {
                     "id": "us_0151164dcaea4cbded27b50aae",
-                    "id": "us_0151164dcaea4cbded27b50aae",
                     "object": "actor",
                     "type": "user",
                     "name": "John Doe",
                     "handle": "jdoe@augno.com",
                     "role": {
-                        "id": "rl_01c16d2eb637c0d1f3a372937c",
                         "id": "rl_01c16d2eb637c0d1f3a372937c",
                         "object": "role",
                         "name": "Admin",
@@ -63111,7 +62634,6 @@ export const apiTags: TagData[] = [
                             "object": "owner",
                             "type": "account",
                             "account": {
-                                "id": "ac_01148680966698341a9c0976db",
                                 "id": "ac_01148680966698341a9c0976db",
                                 "object": "account",
                                 "name": "Acme Inc.",
@@ -63401,7 +62923,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "eml_017b80707ada92dddff8a2c3a0",
-                                    "id": "eml_017b80707ada92dddff8a2c3a0",
                                     "object": "email_log",
                                     "send_status": "sent",
                                     "recipients": [
@@ -63411,13 +62932,11 @@ export const apiTags: TagData[] = [
                                     "filename": "invoice_1001.pdf",
                                     "sent_by": {
                                         "id": "us_0151164dcaea4cbded27b50aae",
-                                        "id": "us_0151164dcaea4cbded27b50aae",
                                         "object": "actor",
                                         "type": "user",
                                         "name": "John Doe",
                                         "handle": "jdoe@augno.com",
                                         "role": {
-                                            "id": "rl_01c16d2eb637c0d1f3a372937c",
                                             "id": "rl_01c16d2eb637c0d1f3a372937c",
                                             "object": "role",
                                             "name": "Admin",
@@ -63426,7 +62945,6 @@ export const apiTags: TagData[] = [
                                                 "object": "owner",
                                                 "type": "account",
                                                 "account": {
-                                                    "id": "ac_01148680966698341a9c0976db",
                                                     "id": "ac_01148680966698341a9c0976db",
                                                     "object": "account",
                                                     "name": "Acme Inc.",
@@ -63632,7 +63150,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "eml_017b80707ada92dddff8a2c3a0",
-                            "id": "eml_017b80707ada92dddff8a2c3a0",
                             "object": "email_log",
                             "send_status": "sent",
                             "recipients": [
@@ -63642,13 +63159,11 @@ export const apiTags: TagData[] = [
                             "filename": "invoice_1001.pdf",
                             "sent_by": {
                                 "id": "us_0151164dcaea4cbded27b50aae",
-                                "id": "us_0151164dcaea4cbded27b50aae",
                                 "object": "actor",
                                 "type": "user",
                                 "name": "John Doe",
                                 "handle": "jdoe@augno.com",
                                 "role": {
-                                    "id": "rl_01c16d2eb637c0d1f3a372937c",
                                     "id": "rl_01c16d2eb637c0d1f3a372937c",
                                     "object": "role",
                                     "name": "Admin",
@@ -63657,7 +63172,6 @@ export const apiTags: TagData[] = [
                                         "object": "owner",
                                         "type": "account",
                                         "account": {
-                                            "id": "ac_01148680966698341a9c0976db",
                                             "id": "ac_01148680966698341a9c0976db",
                                             "object": "account",
                                             "name": "Acme Inc.",
@@ -64833,7 +64347,6 @@ export const apiTags: TagData[] = [
                             "name": "type",
                             "type": "string",
                             "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
-                            "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                             "required": true,
                             "nullable": false,
                             "expandable": false,
@@ -64994,7 +64507,6 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "type",
                                     "type": "string",
-                                    "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                     "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                     "required": true,
                                     "nullable": false,
@@ -65553,7 +65065,6 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "ac_0170df1ac58e4d24c66fc89f5f",
-                "id": "ac_0170df1ac58e4d24c66fc89f5f",
                 "object": "customer",
                 "name": "Acme Inc.",
                 "number": "100042",
@@ -65564,12 +65075,10 @@ export const apiTags: TagData[] = [
                 "note": "Preferred customer since 2020.",
                 "credit_limit": {
                     "id": "qty_015a85becc1a6afdfb1afc27ff",
-                    "id": "qty_015a85becc1a6afdfb1afc27ff",
                     "object": "quantity",
                     "value": "1234.56",
                     "display_value": "$1,234.56",
                     "unit": {
-                        "id": "un_01966263f74a5a0cae356000a1",
                         "id": "un_01966263f74a5a0cae356000a1",
                         "object": "unit",
                         "name": "US Dollar",
@@ -65589,7 +65098,6 @@ export const apiTags: TagData[] = [
                     "status": "billed_freight",
                     "carrier": {
                         "id": "cr_01784fd54c9ba197bb4e42f0e6",
-                        "id": "cr_01784fd54c9ba197bb4e42f0e6",
                         "object": "carrier",
                         "name": "FedEx",
                         "code": "fedex",
@@ -65598,7 +65106,6 @@ export const apiTags: TagData[] = [
                             "object": "owner",
                             "type": "account",
                             "account": {
-                                "id": "ac_01148680966698341a9c0976db",
                                 "id": "ac_01148680966698341a9c0976db",
                                 "object": "account",
                                 "name": "Acme Inc.",
@@ -65611,7 +65118,6 @@ export const apiTags: TagData[] = [
                     },
                     "service_level": {
                         "id": "crop_01cfaf03f104e90ef9680e2a30",
-                        "id": "crop_01cfaf03f104e90ef9680e2a30",
                         "object": "service_level",
                         "name": "FedEx Ground",
                         "service_level_token": "fedex_ground",
@@ -65621,7 +65127,6 @@ export const apiTags: TagData[] = [
                             "object": "owner",
                             "type": "account",
                             "account": {
-                                "id": "ac_01148680966698341a9c0976db",
                                 "id": "ac_01148680966698341a9c0976db",
                                 "object": "account",
                                 "name": "Acme Inc.",
@@ -65639,7 +65144,6 @@ export const apiTags: TagData[] = [
                     "object": "customer_defaults",
                     "payment_term": {
                         "id": "pytm_018694d6601ea771cd1b52e890",
-                        "id": "pytm_018694d6601ea771cd1b52e890",
                         "object": "payment_term",
                         "name": "Net 30",
                         "status": "active",
@@ -65651,7 +65155,6 @@ export const apiTags: TagData[] = [
                         "updated_at": "2026-05-10T00:23:00Z"
                     },
                     "shipping_term": {
-                        "id": "shtm_014341ab4bb5bf94d5b6936f86",
                         "id": "shtm_014341ab4bb5bf94d5b6936f86",
                         "object": "shipping_term",
                         "name": "Prepaid",
@@ -65673,7 +65176,6 @@ export const apiTags: TagData[] = [
                     },
                     "priority": {
                         "id": "pi_01fc435701244bb3978bfb77ff",
-                        "id": "pi_01fc435701244bb3978bfb77ff",
                         "object": "priority",
                         "code": "normal",
                         "name": "Normal",
@@ -65686,13 +65188,11 @@ export const apiTags: TagData[] = [
                     },
                     "sales_rep": {
                         "id": "acus_01ea9983ddb41dacc44ecf997c",
-                        "id": "acus_01ea9983ddb41dacc44ecf997c",
                         "object": "account_user",
                         "name": "John Doe",
                         "email": "john@augno.com",
                         "status": "active",
                         "role": {
-                            "id": "rl_01c16d2eb637c0d1f3a372937c",
                             "id": "rl_01c16d2eb637c0d1f3a372937c",
                             "object": "role",
                             "name": "Admin",
@@ -65701,7 +65201,6 @@ export const apiTags: TagData[] = [
                                 "object": "owner",
                                 "type": "account",
                                 "account": {
-                                    "id": "ac_01148680966698341a9c0976db",
                                     "id": "ac_01148680966698341a9c0976db",
                                     "object": "account",
                                     "name": "Acme Inc.",
@@ -65728,12 +65227,10 @@ export const apiTags: TagData[] = [
                 },
                 "bill_to_address": {
                     "id": "ad_012100950cfaa34aa0e0ad7258",
-                    "id": "ad_012100950cfaa34aa0e0ad7258",
                     "object": "address",
                     "name": "Headquarters",
                     "type": "standard",
                     "geolocation": {
-                        "id": "gl_013e4c26412103c6757ba71806",
                         "id": "gl_013e4c26412103c6757ba71806",
                         "object": "geolocation",
                         "street_line_1": "4200 Industrial Pkwy",
@@ -65747,12 +65244,10 @@ export const apiTags: TagData[] = [
                 },
                 "ship_to_address": {
                     "id": "ad_012100950cfaa34aa0e0ad7258",
-                    "id": "ad_012100950cfaa34aa0e0ad7258",
                     "object": "address",
                     "name": "Headquarters",
                     "type": "standard",
                     "geolocation": {
-                        "id": "gl_013e4c26412103c6757ba71806",
                         "id": "gl_013e4c26412103c6757ba71806",
                         "object": "geolocation",
                         "street_line_1": "4200 Industrial Pkwy",
@@ -65765,7 +65260,6 @@ export const apiTags: TagData[] = [
                     "updated_at": "2026-05-10T00:23:00Z"
                 },
                 "type": {
-                    "id": "acgp_018e88072d1320808dc979cfac",
                     "id": "acgp_018e88072d1320808dc979cfac",
                     "object": "account_group",
                     "name": "Wholesale Customers",
@@ -65783,7 +65277,6 @@ export const apiTags: TagData[] = [
                     },
                     "data": [
                         {
-                            "id": "acgp_018e88072d1320808dc979cfac",
                             "id": "acgp_018e88072d1320808dc979cfac",
                             "object": "account_group",
                             "name": "Wholesale Customers",
@@ -66250,10 +65743,6 @@ export const apiTags: TagData[] = [
                     "example": {
                         "name": "Acme Inc.",
                         "note": "Key enterprise account",
-                        "default_carrier_id": "cr_01784fd54c9ba197bb4e42f0e6",
-                        "default_payment_term_id": "pytm_018694d6601ea771cd1b52e890",
-                        "default_shipping_term_id": "shtm_014341ab4bb5bf94d5b6936f86",
-                        "customer_type_group_id": "acgp_018e88072d1320808dc979cfac",
                         "default_carrier_id": "cr_01784fd54c9ba197bb4e42f0e6",
                         "default_payment_term_id": "pytm_018694d6601ea771cd1b52e890",
                         "default_shipping_term_id": "shtm_014341ab4bb5bf94d5b6936f86",
@@ -67413,7 +66902,6 @@ export const apiTags: TagData[] = [
                                         "name": "type",
                                         "type": "string",
                                         "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
-                                        "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -67574,7 +67062,6 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "type",
                                                 "type": "string",
-                                                "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                                 "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                                 "required": true,
                                                 "nullable": false,
@@ -68133,7 +67620,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "ac_0170df1ac58e4d24c66fc89f5f",
-                            "id": "ac_0170df1ac58e4d24c66fc89f5f",
                             "object": "customer",
                             "name": "Acme Inc.",
                             "number": "100042",
@@ -68144,12 +67630,10 @@ export const apiTags: TagData[] = [
                             "note": "Preferred customer since 2020.",
                             "credit_limit": {
                                 "id": "qty_015a85becc1a6afdfb1afc27ff",
-                                "id": "qty_015a85becc1a6afdfb1afc27ff",
                                 "object": "quantity",
                                 "value": "1234.56",
                                 "display_value": "$1,234.56",
                                 "unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -68169,7 +67653,6 @@ export const apiTags: TagData[] = [
                                 "status": "billed_freight",
                                 "carrier": {
                                     "id": "cr_01784fd54c9ba197bb4e42f0e6",
-                                    "id": "cr_01784fd54c9ba197bb4e42f0e6",
                                     "object": "carrier",
                                     "name": "FedEx",
                                     "code": "fedex",
@@ -68178,7 +67661,6 @@ export const apiTags: TagData[] = [
                                         "object": "owner",
                                         "type": "account",
                                         "account": {
-                                            "id": "ac_01148680966698341a9c0976db",
                                             "id": "ac_01148680966698341a9c0976db",
                                             "object": "account",
                                             "name": "Acme Inc.",
@@ -68191,7 +67673,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "service_level": {
                                     "id": "crop_01cfaf03f104e90ef9680e2a30",
-                                    "id": "crop_01cfaf03f104e90ef9680e2a30",
                                     "object": "service_level",
                                     "name": "FedEx Ground",
                                     "service_level_token": "fedex_ground",
@@ -68201,7 +67682,6 @@ export const apiTags: TagData[] = [
                                         "object": "owner",
                                         "type": "account",
                                         "account": {
-                                            "id": "ac_01148680966698341a9c0976db",
                                             "id": "ac_01148680966698341a9c0976db",
                                             "object": "account",
                                             "name": "Acme Inc.",
@@ -68219,7 +67699,6 @@ export const apiTags: TagData[] = [
                                 "object": "customer_defaults",
                                 "payment_term": {
                                     "id": "pytm_018694d6601ea771cd1b52e890",
-                                    "id": "pytm_018694d6601ea771cd1b52e890",
                                     "object": "payment_term",
                                     "name": "Net 30",
                                     "status": "active",
@@ -68231,7 +67710,6 @@ export const apiTags: TagData[] = [
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
                                 "shipping_term": {
-                                    "id": "shtm_014341ab4bb5bf94d5b6936f86",
                                     "id": "shtm_014341ab4bb5bf94d5b6936f86",
                                     "object": "shipping_term",
                                     "name": "Prepaid",
@@ -68253,7 +67731,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "priority": {
                                     "id": "pi_01fc435701244bb3978bfb77ff",
-                                    "id": "pi_01fc435701244bb3978bfb77ff",
                                     "object": "priority",
                                     "code": "normal",
                                     "name": "Normal",
@@ -68266,13 +67743,11 @@ export const apiTags: TagData[] = [
                                 },
                                 "sales_rep": {
                                     "id": "acus_01ea9983ddb41dacc44ecf997c",
-                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
                                     "object": "account_user",
                                     "name": "John Doe",
                                     "email": "john@augno.com",
                                     "status": "active",
                                     "role": {
-                                        "id": "rl_01c16d2eb637c0d1f3a372937c",
                                         "id": "rl_01c16d2eb637c0d1f3a372937c",
                                         "object": "role",
                                         "name": "Admin",
@@ -68281,7 +67756,6 @@ export const apiTags: TagData[] = [
                                             "object": "owner",
                                             "type": "account",
                                             "account": {
-                                                "id": "ac_01148680966698341a9c0976db",
                                                 "id": "ac_01148680966698341a9c0976db",
                                                 "object": "account",
                                                 "name": "Acme Inc.",
@@ -68308,12 +67782,10 @@ export const apiTags: TagData[] = [
                             },
                             "bill_to_address": {
                                 "id": "ad_012100950cfaa34aa0e0ad7258",
-                                "id": "ad_012100950cfaa34aa0e0ad7258",
                                 "object": "address",
                                 "name": "Headquarters",
                                 "type": "standard",
                                 "geolocation": {
-                                    "id": "gl_013e4c26412103c6757ba71806",
                                     "id": "gl_013e4c26412103c6757ba71806",
                                     "object": "geolocation",
                                     "street_line_1": "4200 Industrial Pkwy",
@@ -68327,12 +67799,10 @@ export const apiTags: TagData[] = [
                             },
                             "ship_to_address": {
                                 "id": "ad_012100950cfaa34aa0e0ad7258",
-                                "id": "ad_012100950cfaa34aa0e0ad7258",
                                 "object": "address",
                                 "name": "Headquarters",
                                 "type": "standard",
                                 "geolocation": {
-                                    "id": "gl_013e4c26412103c6757ba71806",
                                     "id": "gl_013e4c26412103c6757ba71806",
                                     "object": "geolocation",
                                     "street_line_1": "4200 Industrial Pkwy",
@@ -68345,7 +67815,6 @@ export const apiTags: TagData[] = [
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
                             "type": {
-                                "id": "acgp_018e88072d1320808dc979cfac",
                                 "id": "acgp_018e88072d1320808dc979cfac",
                                 "object": "account_group",
                                 "name": "Wholesale Customers",
@@ -68363,7 +67832,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "data": [
                                     {
-                                        "id": "acgp_018e88072d1320808dc979cfac",
                                         "id": "acgp_018e88072d1320808dc979cfac",
                                         "object": "account_group",
                                         "name": "Wholesale Customers",
@@ -68676,7 +68144,6 @@ export const apiTags: TagData[] = [
                     "example": {
                         "name": "Acme Corp Updated",
                         "freight_policy": "billed_freight",
-                        "default_carrier_id": "cr_01784fd54c9ba197bb4e42f0e6"
                         "default_carrier_id": "cr_01784fd54c9ba197bb4e42f0e6"
                     }
                 },
@@ -69825,7 +69292,6 @@ export const apiTags: TagData[] = [
                                         "name": "type",
                                         "type": "string",
                                         "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
-                                        "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -69986,7 +69452,6 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "type",
                                                 "type": "string",
-                                                "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                                 "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                                 "required": true,
                                                 "nullable": false,
@@ -70545,7 +70010,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "ac_0170df1ac58e4d24c66fc89f5f",
-                            "id": "ac_0170df1ac58e4d24c66fc89f5f",
                             "object": "customer",
                             "name": "Acme Inc.",
                             "number": "100042",
@@ -70556,12 +70020,10 @@ export const apiTags: TagData[] = [
                             "note": "Preferred customer since 2020.",
                             "credit_limit": {
                                 "id": "qty_015a85becc1a6afdfb1afc27ff",
-                                "id": "qty_015a85becc1a6afdfb1afc27ff",
                                 "object": "quantity",
                                 "value": "1234.56",
                                 "display_value": "$1,234.56",
                                 "unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -70581,7 +70043,6 @@ export const apiTags: TagData[] = [
                                 "status": "billed_freight",
                                 "carrier": {
                                     "id": "cr_01784fd54c9ba197bb4e42f0e6",
-                                    "id": "cr_01784fd54c9ba197bb4e42f0e6",
                                     "object": "carrier",
                                     "name": "FedEx",
                                     "code": "fedex",
@@ -70590,7 +70051,6 @@ export const apiTags: TagData[] = [
                                         "object": "owner",
                                         "type": "account",
                                         "account": {
-                                            "id": "ac_01148680966698341a9c0976db",
                                             "id": "ac_01148680966698341a9c0976db",
                                             "object": "account",
                                             "name": "Acme Inc.",
@@ -70603,7 +70063,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "service_level": {
                                     "id": "crop_01cfaf03f104e90ef9680e2a30",
-                                    "id": "crop_01cfaf03f104e90ef9680e2a30",
                                     "object": "service_level",
                                     "name": "FedEx Ground",
                                     "service_level_token": "fedex_ground",
@@ -70613,7 +70072,6 @@ export const apiTags: TagData[] = [
                                         "object": "owner",
                                         "type": "account",
                                         "account": {
-                                            "id": "ac_01148680966698341a9c0976db",
                                             "id": "ac_01148680966698341a9c0976db",
                                             "object": "account",
                                             "name": "Acme Inc.",
@@ -70631,7 +70089,6 @@ export const apiTags: TagData[] = [
                                 "object": "customer_defaults",
                                 "payment_term": {
                                     "id": "pytm_018694d6601ea771cd1b52e890",
-                                    "id": "pytm_018694d6601ea771cd1b52e890",
                                     "object": "payment_term",
                                     "name": "Net 30",
                                     "status": "active",
@@ -70643,7 +70100,6 @@ export const apiTags: TagData[] = [
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
                                 "shipping_term": {
-                                    "id": "shtm_014341ab4bb5bf94d5b6936f86",
                                     "id": "shtm_014341ab4bb5bf94d5b6936f86",
                                     "object": "shipping_term",
                                     "name": "Prepaid",
@@ -70665,7 +70121,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "priority": {
                                     "id": "pi_01fc435701244bb3978bfb77ff",
-                                    "id": "pi_01fc435701244bb3978bfb77ff",
                                     "object": "priority",
                                     "code": "normal",
                                     "name": "Normal",
@@ -70678,13 +70133,11 @@ export const apiTags: TagData[] = [
                                 },
                                 "sales_rep": {
                                     "id": "acus_01ea9983ddb41dacc44ecf997c",
-                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
                                     "object": "account_user",
                                     "name": "John Doe",
                                     "email": "john@augno.com",
                                     "status": "active",
                                     "role": {
-                                        "id": "rl_01c16d2eb637c0d1f3a372937c",
                                         "id": "rl_01c16d2eb637c0d1f3a372937c",
                                         "object": "role",
                                         "name": "Admin",
@@ -70693,7 +70146,6 @@ export const apiTags: TagData[] = [
                                             "object": "owner",
                                             "type": "account",
                                             "account": {
-                                                "id": "ac_01148680966698341a9c0976db",
                                                 "id": "ac_01148680966698341a9c0976db",
                                                 "object": "account",
                                                 "name": "Acme Inc.",
@@ -70720,12 +70172,10 @@ export const apiTags: TagData[] = [
                             },
                             "bill_to_address": {
                                 "id": "ad_012100950cfaa34aa0e0ad7258",
-                                "id": "ad_012100950cfaa34aa0e0ad7258",
                                 "object": "address",
                                 "name": "Headquarters",
                                 "type": "standard",
                                 "geolocation": {
-                                    "id": "gl_013e4c26412103c6757ba71806",
                                     "id": "gl_013e4c26412103c6757ba71806",
                                     "object": "geolocation",
                                     "street_line_1": "4200 Industrial Pkwy",
@@ -70739,12 +70189,10 @@ export const apiTags: TagData[] = [
                             },
                             "ship_to_address": {
                                 "id": "ad_012100950cfaa34aa0e0ad7258",
-                                "id": "ad_012100950cfaa34aa0e0ad7258",
                                 "object": "address",
                                 "name": "Headquarters",
                                 "type": "standard",
                                 "geolocation": {
-                                    "id": "gl_013e4c26412103c6757ba71806",
                                     "id": "gl_013e4c26412103c6757ba71806",
                                     "object": "geolocation",
                                     "street_line_1": "4200 Industrial Pkwy",
@@ -70757,7 +70205,6 @@ export const apiTags: TagData[] = [
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
                             "type": {
-                                "id": "acgp_018e88072d1320808dc979cfac",
                                 "id": "acgp_018e88072d1320808dc979cfac",
                                 "object": "account_group",
                                 "name": "Wholesale Customers",
@@ -70775,7 +70222,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "data": [
                                     {
-                                        "id": "acgp_018e88072d1320808dc979cfac",
                                         "id": "acgp_018e88072d1320808dc979cfac",
                                         "object": "account_group",
                                         "name": "Wholesale Customers",
@@ -72193,7 +71639,6 @@ export const apiTags: TagData[] = [
                                                 "name": "type",
                                                 "type": "string",
                                                 "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
-                                                "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -72354,7 +71799,6 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "type",
                                                         "type": "string",
-                                                        "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                                         "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                                         "required": true,
                                                         "nullable": false,
@@ -72924,7 +72368,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "ac_0170df1ac58e4d24c66fc89f5f",
-                                    "id": "ac_0170df1ac58e4d24c66fc89f5f",
                                     "object": "customer",
                                     "name": "Acme Inc.",
                                     "number": "100042",
@@ -72935,12 +72378,10 @@ export const apiTags: TagData[] = [
                                     "note": "Preferred customer since 2020.",
                                     "credit_limit": {
                                         "id": "qty_015a85becc1a6afdfb1afc27ff",
-                                        "id": "qty_015a85becc1a6afdfb1afc27ff",
                                         "object": "quantity",
                                         "value": "1234.56",
                                         "display_value": "$1,234.56",
                                         "unit": {
-                                            "id": "un_01966263f74a5a0cae356000a1",
                                             "id": "un_01966263f74a5a0cae356000a1",
                                             "object": "unit",
                                             "name": "US Dollar",
@@ -72960,7 +72401,6 @@ export const apiTags: TagData[] = [
                                         "status": "billed_freight",
                                         "carrier": {
                                             "id": "cr_01784fd54c9ba197bb4e42f0e6",
-                                            "id": "cr_01784fd54c9ba197bb4e42f0e6",
                                             "object": "carrier",
                                             "name": "FedEx",
                                             "code": "fedex",
@@ -72969,7 +72409,6 @@ export const apiTags: TagData[] = [
                                                 "object": "owner",
                                                 "type": "account",
                                                 "account": {
-                                                    "id": "ac_01148680966698341a9c0976db",
                                                     "id": "ac_01148680966698341a9c0976db",
                                                     "object": "account",
                                                     "name": "Acme Inc.",
@@ -72982,7 +72421,6 @@ export const apiTags: TagData[] = [
                                         },
                                         "service_level": {
                                             "id": "crop_01cfaf03f104e90ef9680e2a30",
-                                            "id": "crop_01cfaf03f104e90ef9680e2a30",
                                             "object": "service_level",
                                             "name": "FedEx Ground",
                                             "service_level_token": "fedex_ground",
@@ -72992,7 +72430,6 @@ export const apiTags: TagData[] = [
                                                 "object": "owner",
                                                 "type": "account",
                                                 "account": {
-                                                    "id": "ac_01148680966698341a9c0976db",
                                                     "id": "ac_01148680966698341a9c0976db",
                                                     "object": "account",
                                                     "name": "Acme Inc.",
@@ -73010,7 +72447,6 @@ export const apiTags: TagData[] = [
                                         "object": "customer_defaults",
                                         "payment_term": {
                                             "id": "pytm_018694d6601ea771cd1b52e890",
-                                            "id": "pytm_018694d6601ea771cd1b52e890",
                                             "object": "payment_term",
                                             "name": "Net 30",
                                             "status": "active",
@@ -73022,7 +72458,6 @@ export const apiTags: TagData[] = [
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         },
                                         "shipping_term": {
-                                            "id": "shtm_014341ab4bb5bf94d5b6936f86",
                                             "id": "shtm_014341ab4bb5bf94d5b6936f86",
                                             "object": "shipping_term",
                                             "name": "Prepaid",
@@ -73044,7 +72479,6 @@ export const apiTags: TagData[] = [
                                         },
                                         "priority": {
                                             "id": "pi_01fc435701244bb3978bfb77ff",
-                                            "id": "pi_01fc435701244bb3978bfb77ff",
                                             "object": "priority",
                                             "code": "normal",
                                             "name": "Normal",
@@ -73057,13 +72491,11 @@ export const apiTags: TagData[] = [
                                         },
                                         "sales_rep": {
                                             "id": "acus_01ea9983ddb41dacc44ecf997c",
-                                            "id": "acus_01ea9983ddb41dacc44ecf997c",
                                             "object": "account_user",
                                             "name": "John Doe",
                                             "email": "john@augno.com",
                                             "status": "active",
                                             "role": {
-                                                "id": "rl_01c16d2eb637c0d1f3a372937c",
                                                 "id": "rl_01c16d2eb637c0d1f3a372937c",
                                                 "object": "role",
                                                 "name": "Admin",
@@ -73072,7 +72504,6 @@ export const apiTags: TagData[] = [
                                                     "object": "owner",
                                                     "type": "account",
                                                     "account": {
-                                                        "id": "ac_01148680966698341a9c0976db",
                                                         "id": "ac_01148680966698341a9c0976db",
                                                         "object": "account",
                                                         "name": "Acme Inc.",
@@ -73099,12 +72530,10 @@ export const apiTags: TagData[] = [
                                     },
                                     "bill_to_address": {
                                         "id": "ad_012100950cfaa34aa0e0ad7258",
-                                        "id": "ad_012100950cfaa34aa0e0ad7258",
                                         "object": "address",
                                         "name": "Headquarters",
                                         "type": "standard",
                                         "geolocation": {
-                                            "id": "gl_013e4c26412103c6757ba71806",
                                             "id": "gl_013e4c26412103c6757ba71806",
                                             "object": "geolocation",
                                             "street_line_1": "4200 Industrial Pkwy",
@@ -73118,12 +72547,10 @@ export const apiTags: TagData[] = [
                                     },
                                     "ship_to_address": {
                                         "id": "ad_012100950cfaa34aa0e0ad7258",
-                                        "id": "ad_012100950cfaa34aa0e0ad7258",
                                         "object": "address",
                                         "name": "Headquarters",
                                         "type": "standard",
                                         "geolocation": {
-                                            "id": "gl_013e4c26412103c6757ba71806",
                                             "id": "gl_013e4c26412103c6757ba71806",
                                             "object": "geolocation",
                                             "street_line_1": "4200 Industrial Pkwy",
@@ -73136,7 +72563,6 @@ export const apiTags: TagData[] = [
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
                                     "type": {
-                                        "id": "acgp_018e88072d1320808dc979cfac",
                                         "id": "acgp_018e88072d1320808dc979cfac",
                                         "object": "account_group",
                                         "name": "Wholesale Customers",
@@ -73154,7 +72580,6 @@ export const apiTags: TagData[] = [
                                         },
                                         "data": [
                                             {
-                                                "id": "acgp_018e88072d1320808dc979cfac",
                                                 "id": "acgp_018e88072d1320808dc979cfac",
                                                 "object": "account_group",
                                                 "name": "Wholesale Customers",
@@ -74366,7 +73791,6 @@ export const apiTags: TagData[] = [
                                         "name": "type",
                                         "type": "string",
                                         "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
-                                        "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -74527,7 +73951,6 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "type",
                                                 "type": "string",
-                                                "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                                 "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                                 "required": true,
                                                 "nullable": false,
@@ -75086,7 +74509,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "ac_0170df1ac58e4d24c66fc89f5f",
-                            "id": "ac_0170df1ac58e4d24c66fc89f5f",
                             "object": "customer",
                             "name": "Acme Inc.",
                             "number": "100042",
@@ -75097,12 +74519,10 @@ export const apiTags: TagData[] = [
                             "note": "Preferred customer since 2020.",
                             "credit_limit": {
                                 "id": "qty_015a85becc1a6afdfb1afc27ff",
-                                "id": "qty_015a85becc1a6afdfb1afc27ff",
                                 "object": "quantity",
                                 "value": "1234.56",
                                 "display_value": "$1,234.56",
                                 "unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -75122,7 +74542,6 @@ export const apiTags: TagData[] = [
                                 "status": "billed_freight",
                                 "carrier": {
                                     "id": "cr_01784fd54c9ba197bb4e42f0e6",
-                                    "id": "cr_01784fd54c9ba197bb4e42f0e6",
                                     "object": "carrier",
                                     "name": "FedEx",
                                     "code": "fedex",
@@ -75131,7 +74550,6 @@ export const apiTags: TagData[] = [
                                         "object": "owner",
                                         "type": "account",
                                         "account": {
-                                            "id": "ac_01148680966698341a9c0976db",
                                             "id": "ac_01148680966698341a9c0976db",
                                             "object": "account",
                                             "name": "Acme Inc.",
@@ -75144,7 +74562,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "service_level": {
                                     "id": "crop_01cfaf03f104e90ef9680e2a30",
-                                    "id": "crop_01cfaf03f104e90ef9680e2a30",
                                     "object": "service_level",
                                     "name": "FedEx Ground",
                                     "service_level_token": "fedex_ground",
@@ -75154,7 +74571,6 @@ export const apiTags: TagData[] = [
                                         "object": "owner",
                                         "type": "account",
                                         "account": {
-                                            "id": "ac_01148680966698341a9c0976db",
                                             "id": "ac_01148680966698341a9c0976db",
                                             "object": "account",
                                             "name": "Acme Inc.",
@@ -75172,7 +74588,6 @@ export const apiTags: TagData[] = [
                                 "object": "customer_defaults",
                                 "payment_term": {
                                     "id": "pytm_018694d6601ea771cd1b52e890",
-                                    "id": "pytm_018694d6601ea771cd1b52e890",
                                     "object": "payment_term",
                                     "name": "Net 30",
                                     "status": "active",
@@ -75184,7 +74599,6 @@ export const apiTags: TagData[] = [
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
                                 "shipping_term": {
-                                    "id": "shtm_014341ab4bb5bf94d5b6936f86",
                                     "id": "shtm_014341ab4bb5bf94d5b6936f86",
                                     "object": "shipping_term",
                                     "name": "Prepaid",
@@ -75206,7 +74620,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "priority": {
                                     "id": "pi_01fc435701244bb3978bfb77ff",
-                                    "id": "pi_01fc435701244bb3978bfb77ff",
                                     "object": "priority",
                                     "code": "normal",
                                     "name": "Normal",
@@ -75219,13 +74632,11 @@ export const apiTags: TagData[] = [
                                 },
                                 "sales_rep": {
                                     "id": "acus_01ea9983ddb41dacc44ecf997c",
-                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
                                     "object": "account_user",
                                     "name": "John Doe",
                                     "email": "john@augno.com",
                                     "status": "active",
                                     "role": {
-                                        "id": "rl_01c16d2eb637c0d1f3a372937c",
                                         "id": "rl_01c16d2eb637c0d1f3a372937c",
                                         "object": "role",
                                         "name": "Admin",
@@ -75234,7 +74645,6 @@ export const apiTags: TagData[] = [
                                             "object": "owner",
                                             "type": "account",
                                             "account": {
-                                                "id": "ac_01148680966698341a9c0976db",
                                                 "id": "ac_01148680966698341a9c0976db",
                                                 "object": "account",
                                                 "name": "Acme Inc.",
@@ -75261,12 +74671,10 @@ export const apiTags: TagData[] = [
                             },
                             "bill_to_address": {
                                 "id": "ad_012100950cfaa34aa0e0ad7258",
-                                "id": "ad_012100950cfaa34aa0e0ad7258",
                                 "object": "address",
                                 "name": "Headquarters",
                                 "type": "standard",
                                 "geolocation": {
-                                    "id": "gl_013e4c26412103c6757ba71806",
                                     "id": "gl_013e4c26412103c6757ba71806",
                                     "object": "geolocation",
                                     "street_line_1": "4200 Industrial Pkwy",
@@ -75280,12 +74688,10 @@ export const apiTags: TagData[] = [
                             },
                             "ship_to_address": {
                                 "id": "ad_012100950cfaa34aa0e0ad7258",
-                                "id": "ad_012100950cfaa34aa0e0ad7258",
                                 "object": "address",
                                 "name": "Headquarters",
                                 "type": "standard",
                                 "geolocation": {
-                                    "id": "gl_013e4c26412103c6757ba71806",
                                     "id": "gl_013e4c26412103c6757ba71806",
                                     "object": "geolocation",
                                     "street_line_1": "4200 Industrial Pkwy",
@@ -75298,7 +74704,6 @@ export const apiTags: TagData[] = [
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
                             "type": {
-                                "id": "acgp_018e88072d1320808dc979cfac",
                                 "id": "acgp_018e88072d1320808dc979cfac",
                                 "object": "account_group",
                                 "name": "Wholesale Customers",
@@ -75316,7 +74721,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "data": [
                                     {
-                                        "id": "acgp_018e88072d1320808dc979cfac",
                                         "id": "acgp_018e88072d1320808dc979cfac",
                                         "object": "account_group",
                                         "name": "Wholesale Customers",
@@ -75426,7 +74830,6 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "source_customer_ids": [
-                            "ac_0170df1ac58e4d24c66fc89f5f"
                             "ac_0170df1ac58e4d24c66fc89f5f"
                         ]
                     }
@@ -76576,7 +75979,6 @@ export const apiTags: TagData[] = [
                                         "name": "type",
                                         "type": "string",
                                         "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
-                                        "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -76737,7 +76139,6 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "type",
                                                 "type": "string",
-                                                "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                                 "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
                                                 "required": true,
                                                 "nullable": false,
@@ -77296,7 +76697,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "ac_0170df1ac58e4d24c66fc89f5f",
-                            "id": "ac_0170df1ac58e4d24c66fc89f5f",
                             "object": "customer",
                             "name": "Acme Inc.",
                             "number": "100042",
@@ -77307,12 +76707,10 @@ export const apiTags: TagData[] = [
                             "note": "Preferred customer since 2020.",
                             "credit_limit": {
                                 "id": "qty_015a85becc1a6afdfb1afc27ff",
-                                "id": "qty_015a85becc1a6afdfb1afc27ff",
                                 "object": "quantity",
                                 "value": "1234.56",
                                 "display_value": "$1,234.56",
                                 "unit": {
-                                    "id": "un_01966263f74a5a0cae356000a1",
                                     "id": "un_01966263f74a5a0cae356000a1",
                                     "object": "unit",
                                     "name": "US Dollar",
@@ -77332,7 +76730,6 @@ export const apiTags: TagData[] = [
                                 "status": "billed_freight",
                                 "carrier": {
                                     "id": "cr_01784fd54c9ba197bb4e42f0e6",
-                                    "id": "cr_01784fd54c9ba197bb4e42f0e6",
                                     "object": "carrier",
                                     "name": "FedEx",
                                     "code": "fedex",
@@ -77341,7 +76738,6 @@ export const apiTags: TagData[] = [
                                         "object": "owner",
                                         "type": "account",
                                         "account": {
-                                            "id": "ac_01148680966698341a9c0976db",
                                             "id": "ac_01148680966698341a9c0976db",
                                             "object": "account",
                                             "name": "Acme Inc.",
@@ -77354,7 +76750,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "service_level": {
                                     "id": "crop_01cfaf03f104e90ef9680e2a30",
-                                    "id": "crop_01cfaf03f104e90ef9680e2a30",
                                     "object": "service_level",
                                     "name": "FedEx Ground",
                                     "service_level_token": "fedex_ground",
@@ -77364,7 +76759,6 @@ export const apiTags: TagData[] = [
                                         "object": "owner",
                                         "type": "account",
                                         "account": {
-                                            "id": "ac_01148680966698341a9c0976db",
                                             "id": "ac_01148680966698341a9c0976db",
                                             "object": "account",
                                             "name": "Acme Inc.",
@@ -77382,7 +76776,6 @@ export const apiTags: TagData[] = [
                                 "object": "customer_defaults",
                                 "payment_term": {
                                     "id": "pytm_018694d6601ea771cd1b52e890",
-                                    "id": "pytm_018694d6601ea771cd1b52e890",
                                     "object": "payment_term",
                                     "name": "Net 30",
                                     "status": "active",
@@ -77394,7 +76787,6 @@ export const apiTags: TagData[] = [
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
                                 "shipping_term": {
-                                    "id": "shtm_014341ab4bb5bf94d5b6936f86",
                                     "id": "shtm_014341ab4bb5bf94d5b6936f86",
                                     "object": "shipping_term",
                                     "name": "Prepaid",
@@ -77416,7 +76808,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "priority": {
                                     "id": "pi_01fc435701244bb3978bfb77ff",
-                                    "id": "pi_01fc435701244bb3978bfb77ff",
                                     "object": "priority",
                                     "code": "normal",
                                     "name": "Normal",
@@ -77429,13 +76820,11 @@ export const apiTags: TagData[] = [
                                 },
                                 "sales_rep": {
                                     "id": "acus_01ea9983ddb41dacc44ecf997c",
-                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
                                     "object": "account_user",
                                     "name": "John Doe",
                                     "email": "john@augno.com",
                                     "status": "active",
                                     "role": {
-                                        "id": "rl_01c16d2eb637c0d1f3a372937c",
                                         "id": "rl_01c16d2eb637c0d1f3a372937c",
                                         "object": "role",
                                         "name": "Admin",
@@ -77444,7 +76833,6 @@ export const apiTags: TagData[] = [
                                             "object": "owner",
                                             "type": "account",
                                             "account": {
-                                                "id": "ac_01148680966698341a9c0976db",
                                                 "id": "ac_01148680966698341a9c0976db",
                                                 "object": "account",
                                                 "name": "Acme Inc.",
@@ -77471,12 +76859,10 @@ export const apiTags: TagData[] = [
                             },
                             "bill_to_address": {
                                 "id": "ad_012100950cfaa34aa0e0ad7258",
-                                "id": "ad_012100950cfaa34aa0e0ad7258",
                                 "object": "address",
                                 "name": "Headquarters",
                                 "type": "standard",
                                 "geolocation": {
-                                    "id": "gl_013e4c26412103c6757ba71806",
                                     "id": "gl_013e4c26412103c6757ba71806",
                                     "object": "geolocation",
                                     "street_line_1": "4200 Industrial Pkwy",
@@ -77490,12 +76876,10 @@ export const apiTags: TagData[] = [
                             },
                             "ship_to_address": {
                                 "id": "ad_012100950cfaa34aa0e0ad7258",
-                                "id": "ad_012100950cfaa34aa0e0ad7258",
                                 "object": "address",
                                 "name": "Headquarters",
                                 "type": "standard",
                                 "geolocation": {
-                                    "id": "gl_013e4c26412103c6757ba71806",
                                     "id": "gl_013e4c26412103c6757ba71806",
                                     "object": "geolocation",
                                     "street_line_1": "4200 Industrial Pkwy",
@@ -77508,7 +76892,6 @@ export const apiTags: TagData[] = [
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
                             "type": {
-                                "id": "acgp_018e88072d1320808dc979cfac",
                                 "id": "acgp_018e88072d1320808dc979cfac",
                                 "object": "account_group",
                                 "name": "Wholesale Customers",
@@ -77526,7 +76909,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "data": [
                                     {
-                                        "id": "acgp_018e88072d1320808dc979cfac",
                                         "id": "acgp_018e88072d1320808dc979cfac",
                                         "object": "account_group",
                                         "name": "Wholesale Customers",
@@ -77876,7 +77258,6 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "pl_01996357326a0d3f7b129542ea",
-                "id": "pl_01996357326a0d3f7b129542ea",
                 "object": "product_line",
                 "name": "Industrial Fasteners",
                 "commission_policy": "commission_exempt",
@@ -77962,7 +77343,6 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Industrial Fasteners",
-                        "unit_group_id": "ug_01aad07abb8e41fd392d2d7013",
                         "unit_group_id": "ug_01aad07abb8e41fd392d2d7013",
                         "commission_policy": "commission_exempt",
                         "freight_policy": "billed_freight"
@@ -78292,7 +77672,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "pl_01996357326a0d3f7b129542ea",
                             "id": "pl_01996357326a0d3f7b129542ea",
                             "object": "product_line",
                             "name": "Industrial Fasteners",
@@ -78713,7 +78092,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "pl_01996357326a0d3f7b129542ea",
                             "id": "pl_01996357326a0d3f7b129542ea",
                             "object": "product_line",
                             "name": "Industrial Fasteners",
@@ -79174,7 +78552,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "pl_01996357326a0d3f7b129542ea",
-                                    "id": "pl_01996357326a0d3f7b129542ea",
                                     "object": "product_line",
                                     "name": "Industrial Fasteners",
                                     "commission_policy": "commission_exempt",
@@ -79548,7 +78925,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "pl_01996357326a0d3f7b129542ea",
                             "id": "pl_01996357326a0d3f7b129542ea",
                             "object": "product_line",
                             "name": "Industrial Fasteners",
@@ -81220,12 +80596,10 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "pd_013c29ab3f1518d0004094c316",
-                "id": "pd_013c29ab3f1518d0004094c316",
                 "object": "product",
                 "type": "sale",
                 "portal_visibility": "visible",
                 "product_line": {
-                    "id": "pl_01996357326a0d3f7b129542ea",
                     "id": "pl_01996357326a0d3f7b129542ea",
                     "object": "product_line",
                     "name": "Industrial Fasteners",
@@ -81240,13 +80614,11 @@ export const apiTags: TagData[] = [
                 },
                 "item": {
                     "id": "it_0131e386ac683e8c29a71f6f1f",
-                    "id": "it_0131e386ac683e8c29a71f6f1f",
                     "object": "item",
                     "sku": "ALM-2024-1001",
                     "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                     "type": "product",
                     "category": {
-                        "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                         "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                         "object": "item_category",
                         "name": "Electronics",
@@ -81260,11 +80632,9 @@ export const apiTags: TagData[] = [
                     },
                     "unit_value": {
                         "id": "ra_015aa0a9522cf222024fd21d1a",
-                        "id": "ra_015aa0a9522cf222024fd21d1a",
                         "object": "rate",
                         "value": "25.500000000000000000000000000000",
                         "numerator_unit": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "US Dollar",
@@ -81273,7 +80643,6 @@ export const apiTags: TagData[] = [
                             "is_base_unit": false
                         },
                         "denominator_unit": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "Kilogram",
@@ -81287,11 +80656,9 @@ export const apiTags: TagData[] = [
                     },
                     "unit_cost": {
                         "id": "ra_015aa0a9522cf222024fd21d1a",
-                        "id": "ra_015aa0a9522cf222024fd21d1a",
                         "object": "rate",
                         "value": "25.500000000000000000000000000000",
                         "numerator_unit": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "US Dollar",
@@ -81300,7 +80667,6 @@ export const apiTags: TagData[] = [
                             "is_base_unit": false
                         },
                         "denominator_unit": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "Kilogram",
@@ -81314,11 +80680,9 @@ export const apiTags: TagData[] = [
                     },
                     "burn_rate": {
                         "id": "ra_015aa0a9522cf222024fd21d1a",
-                        "id": "ra_015aa0a9522cf222024fd21d1a",
                         "object": "rate",
                         "value": "25.500000000000000000000000000000",
                         "numerator_unit": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "US Dollar",
@@ -81327,7 +80691,6 @@ export const apiTags: TagData[] = [
                             "is_base_unit": false
                         },
                         "denominator_unit": {
-                            "id": "un_01966263f74a5a0cae356000a1",
                             "id": "un_01966263f74a5a0cae356000a1",
                             "object": "unit",
                             "name": "Kilogram",
@@ -81347,7 +80710,6 @@ export const apiTags: TagData[] = [
                         },
                         "data": [
                             {
-                                "id": "at_01c9493ec0c46bb0ed12708ae4",
                                 "id": "at_01c9493ec0c46bb0ed12708ae4",
                                 "object": "attribute",
                                 "value": "Premium",
@@ -81559,7 +80921,6 @@ export const apiTags: TagData[] = [
                     "example": {
                         "sku": "ALM-2024-1001",
                         "type": "sale",
-                        "category_id": "ic_01ae7bd7bfd21ca0ab81e1357e"
                         "category_id": "ic_01ae7bd7bfd21ca0ab81e1357e"
                     }
                 },
@@ -83182,12 +82543,10 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "pd_013c29ab3f1518d0004094c316",
-                            "id": "pd_013c29ab3f1518d0004094c316",
                             "object": "product",
                             "type": "sale",
                             "portal_visibility": "visible",
                             "product_line": {
-                                "id": "pl_01996357326a0d3f7b129542ea",
                                 "id": "pl_01996357326a0d3f7b129542ea",
                                 "object": "product_line",
                                 "name": "Industrial Fasteners",
@@ -83202,13 +82561,11 @@ export const apiTags: TagData[] = [
                             },
                             "item": {
                                 "id": "it_0131e386ac683e8c29a71f6f1f",
-                                "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                                 "type": "product",
                                 "category": {
-                                    "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
@@ -83222,11 +82579,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_value": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -83235,7 +82590,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -83249,11 +82603,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_cost": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -83262,7 +82614,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -83276,11 +82627,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "burn_rate": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -83289,7 +82638,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -83309,7 +82657,6 @@ export const apiTags: TagData[] = [
                                     },
                                     "data": [
                                         {
-                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "object": "attribute",
                                             "value": "Premium",
@@ -85075,12 +84422,10 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "pd_013c29ab3f1518d0004094c316",
-                            "id": "pd_013c29ab3f1518d0004094c316",
                             "object": "product",
                             "type": "sale",
                             "portal_visibility": "visible",
                             "product_line": {
-                                "id": "pl_01996357326a0d3f7b129542ea",
                                 "id": "pl_01996357326a0d3f7b129542ea",
                                 "object": "product_line",
                                 "name": "Industrial Fasteners",
@@ -85095,13 +84440,11 @@ export const apiTags: TagData[] = [
                             },
                             "item": {
                                 "id": "it_0131e386ac683e8c29a71f6f1f",
-                                "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                                 "type": "product",
                                 "category": {
-                                    "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
@@ -85115,11 +84458,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_value": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -85128,7 +84469,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -85142,11 +84482,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_cost": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -85155,7 +84493,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -85169,11 +84506,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "burn_rate": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -85182,7 +84517,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -85202,7 +84536,6 @@ export const apiTags: TagData[] = [
                                     },
                                     "data": [
                                         {
-                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "object": "attribute",
                                             "value": "Premium",
@@ -86921,12 +86254,10 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "pd_013c29ab3f1518d0004094c316",
-                                    "id": "pd_013c29ab3f1518d0004094c316",
                                     "object": "product",
                                     "type": "sale",
                                     "portal_visibility": "visible",
                                     "product_line": {
-                                        "id": "pl_01996357326a0d3f7b129542ea",
                                         "id": "pl_01996357326a0d3f7b129542ea",
                                         "object": "product_line",
                                         "name": "Industrial Fasteners",
@@ -86941,13 +86272,11 @@ export const apiTags: TagData[] = [
                                     },
                                     "item": {
                                         "id": "it_0131e386ac683e8c29a71f6f1f",
-                                        "id": "it_0131e386ac683e8c29a71f6f1f",
                                         "object": "item",
                                         "sku": "ALM-2024-1001",
                                         "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                                         "type": "product",
                                         "category": {
-                                            "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                             "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                             "object": "item_category",
                                             "name": "Electronics",
@@ -86961,11 +86290,9 @@ export const apiTags: TagData[] = [
                                         },
                                         "unit_value": {
                                             "id": "ra_015aa0a9522cf222024fd21d1a",
-                                            "id": "ra_015aa0a9522cf222024fd21d1a",
                                             "object": "rate",
                                             "value": "25.500000000000000000000000000000",
                                             "numerator_unit": {
-                                                "id": "un_01966263f74a5a0cae356000a1",
                                                 "id": "un_01966263f74a5a0cae356000a1",
                                                 "object": "unit",
                                                 "name": "US Dollar",
@@ -86974,7 +86301,6 @@ export const apiTags: TagData[] = [
                                                 "is_base_unit": false
                                             },
                                             "denominator_unit": {
-                                                "id": "un_01966263f74a5a0cae356000a1",
                                                 "id": "un_01966263f74a5a0cae356000a1",
                                                 "object": "unit",
                                                 "name": "Kilogram",
@@ -86988,11 +86314,9 @@ export const apiTags: TagData[] = [
                                         },
                                         "unit_cost": {
                                             "id": "ra_015aa0a9522cf222024fd21d1a",
-                                            "id": "ra_015aa0a9522cf222024fd21d1a",
                                             "object": "rate",
                                             "value": "25.500000000000000000000000000000",
                                             "numerator_unit": {
-                                                "id": "un_01966263f74a5a0cae356000a1",
                                                 "id": "un_01966263f74a5a0cae356000a1",
                                                 "object": "unit",
                                                 "name": "US Dollar",
@@ -87001,7 +86325,6 @@ export const apiTags: TagData[] = [
                                                 "is_base_unit": false
                                             },
                                             "denominator_unit": {
-                                                "id": "un_01966263f74a5a0cae356000a1",
                                                 "id": "un_01966263f74a5a0cae356000a1",
                                                 "object": "unit",
                                                 "name": "Kilogram",
@@ -87015,11 +86338,9 @@ export const apiTags: TagData[] = [
                                         },
                                         "burn_rate": {
                                             "id": "ra_015aa0a9522cf222024fd21d1a",
-                                            "id": "ra_015aa0a9522cf222024fd21d1a",
                                             "object": "rate",
                                             "value": "25.500000000000000000000000000000",
                                             "numerator_unit": {
-                                                "id": "un_01966263f74a5a0cae356000a1",
                                                 "id": "un_01966263f74a5a0cae356000a1",
                                                 "object": "unit",
                                                 "name": "US Dollar",
@@ -87028,7 +86349,6 @@ export const apiTags: TagData[] = [
                                                 "is_base_unit": false
                                             },
                                             "denominator_unit": {
-                                                "id": "un_01966263f74a5a0cae356000a1",
                                                 "id": "un_01966263f74a5a0cae356000a1",
                                                 "object": "unit",
                                                 "name": "Kilogram",
@@ -87048,7 +86368,6 @@ export const apiTags: TagData[] = [
                                             },
                                             "data": [
                                                 {
-                                                    "id": "at_01c9493ec0c46bb0ed12708ae4",
                                                     "id": "at_01c9493ec0c46bb0ed12708ae4",
                                                     "object": "attribute",
                                                     "value": "Premium",
@@ -88735,12 +88054,10 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "pd_013c29ab3f1518d0004094c316",
-                            "id": "pd_013c29ab3f1518d0004094c316",
                             "object": "product",
                             "type": "sale",
                             "portal_visibility": "visible",
                             "product_line": {
-                                "id": "pl_01996357326a0d3f7b129542ea",
                                 "id": "pl_01996357326a0d3f7b129542ea",
                                 "object": "product_line",
                                 "name": "Industrial Fasteners",
@@ -88755,13 +88072,11 @@ export const apiTags: TagData[] = [
                             },
                             "item": {
                                 "id": "it_0131e386ac683e8c29a71f6f1f",
-                                "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                                 "type": "product",
                                 "category": {
-                                    "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
@@ -88775,11 +88090,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_value": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -88788,7 +88101,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -88802,11 +88114,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_cost": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -88815,7 +88125,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -88829,11 +88138,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "burn_rate": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -88842,7 +88149,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -88862,7 +88168,6 @@ export const apiTags: TagData[] = [
                                     },
                                     "data": [
                                         {
-                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "object": "attribute",
                                             "value": "Premium",
@@ -90547,12 +89852,10 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "pd_013c29ab3f1518d0004094c316",
-                            "id": "pd_013c29ab3f1518d0004094c316",
                             "object": "product",
                             "type": "sale",
                             "portal_visibility": "visible",
                             "product_line": {
-                                "id": "pl_01996357326a0d3f7b129542ea",
                                 "id": "pl_01996357326a0d3f7b129542ea",
                                 "object": "product_line",
                                 "name": "Industrial Fasteners",
@@ -90567,13 +89870,11 @@ export const apiTags: TagData[] = [
                             },
                             "item": {
                                 "id": "it_0131e386ac683e8c29a71f6f1f",
-                                "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                                 "type": "product",
                                 "category": {
-                                    "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
@@ -90587,11 +89888,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_value": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -90600,7 +89899,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -90614,11 +89912,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_cost": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -90627,7 +89923,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -90641,11 +89936,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "burn_rate": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -90654,7 +89947,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -90674,7 +89966,6 @@ export const apiTags: TagData[] = [
                                     },
                                     "data": [
                                         {
-                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "object": "attribute",
                                             "value": "Premium",
@@ -92366,12 +91657,10 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "pd_013c29ab3f1518d0004094c316",
-                            "id": "pd_013c29ab3f1518d0004094c316",
                             "object": "product",
                             "type": "sale",
                             "portal_visibility": "visible",
                             "product_line": {
-                                "id": "pl_01996357326a0d3f7b129542ea",
                                 "id": "pl_01996357326a0d3f7b129542ea",
                                 "object": "product_line",
                                 "name": "Industrial Fasteners",
@@ -92386,13 +91675,11 @@ export const apiTags: TagData[] = [
                             },
                             "item": {
                                 "id": "it_0131e386ac683e8c29a71f6f1f",
-                                "id": "it_0131e386ac683e8c29a71f6f1f",
                                 "object": "item",
                                 "sku": "ALM-2024-1001",
                                 "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
                                 "type": "product",
                                 "category": {
-                                    "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
@@ -92406,11 +91693,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_value": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -92419,7 +91704,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -92433,11 +91717,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "unit_cost": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -92446,7 +91728,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -92460,11 +91741,9 @@ export const apiTags: TagData[] = [
                                 },
                                 "burn_rate": {
                                     "id": "ra_015aa0a9522cf222024fd21d1a",
-                                    "id": "ra_015aa0a9522cf222024fd21d1a",
                                     "object": "rate",
                                     "value": "25.500000000000000000000000000000",
                                     "numerator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "US Dollar",
@@ -92473,7 +91752,6 @@ export const apiTags: TagData[] = [
                                         "is_base_unit": false
                                     },
                                     "denominator_unit": {
-                                        "id": "un_01966263f74a5a0cae356000a1",
                                         "id": "un_01966263f74a5a0cae356000a1",
                                         "object": "unit",
                                         "name": "Kilogram",
@@ -92493,7 +91771,6 @@ export const apiTags: TagData[] = [
                                     },
                                     "data": [
                                         {
-                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "id": "at_01c9493ec0c46bb0ed12708ae4",
                                             "object": "attribute",
                                             "value": "Premium",
@@ -92748,7 +92025,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "orss_017a18cc8a4e6dfbc61f11f5a3",
-                                    "id": "orss_017a18cc8a4e6dfbc61f11f5a3",
                                     "object": "sales_order_status",
                                     "code": "estimate",
                                     "name": "Estimate",
@@ -93002,7 +92278,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "adjt_01200338b135dc51aba62d4bf8",
-                                    "id": "adjt_01200338b135dc51aba62d4bf8",
                                     "object": "adjustment_type",
                                     "name": "Discount",
                                     "code": "discount",
@@ -93176,7 +92451,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "txmd_011b68c574f7c84504fc256ca7",
-                                    "id": "txmd_011b68c574f7c84504fc256ca7",
                                     "object": "transaction_method",
                                     "name": "Credit Card",
                                     "code": "credit_card"
@@ -93343,7 +92617,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "txtp_01552974c3952ed8178ad671b8",
-                                    "id": "txtp_01552974c3952ed8178ad671b8",
                                     "object": "transaction_type",
                                     "name": "Payment",
                                     "code": "payment"
@@ -93428,7 +92701,6 @@ export const apiTags: TagData[] = [
                 }
             ],
             "example": {
-                "id": "lc_01e69cd3745a1bc0dd485986c0",
                 "id": "lc_01e69cd3745a1bc0dd485986c0",
                 "object": "location_type",
                 "code": "building",
@@ -93824,7 +93096,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "lc_014d187d99b31926f0c74af9d8",
-                            "id": "lc_014d187d99b31926f0c74af9d8",
                             "object": "location",
                             "name": "Warehouse A",
                             "type": "building",
@@ -93836,7 +93107,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "data": [
                                     {
-                                        "id": "lc_0132c4db1e220da9bc596cc4c9",
                                         "id": "lc_0132c4db1e220da9bc596cc4c9",
                                         "object": "location",
                                         "name": "Shelf A1",
@@ -94244,7 +93514,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "lc_014d187d99b31926f0c74af9d8",
-                            "id": "lc_014d187d99b31926f0c74af9d8",
                             "object": "location",
                             "name": "Warehouse A",
                             "type": "building",
@@ -94256,7 +93525,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "data": [
                                     {
-                                        "id": "lc_0132c4db1e220da9bc596cc4c9",
                                         "id": "lc_0132c4db1e220da9bc596cc4c9",
                                         "object": "location",
                                         "name": "Shelf A1",
@@ -94446,7 +93714,6 @@ export const apiTags: TagData[] = [
                             },
                             "data": [
                                 {
-                                    "id": "lc_01e69cd3745a1bc0dd485986c0",
                                     "id": "lc_01e69cd3745a1bc0dd485986c0",
                                     "object": "location_type",
                                     "code": "building",
@@ -94889,7 +94156,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "lc_014d187d99b31926f0c74af9d8",
-                                    "id": "lc_014d187d99b31926f0c74af9d8",
                                     "object": "location",
                                     "name": "Warehouse A",
                                     "type": "building",
@@ -94901,7 +94167,6 @@ export const apiTags: TagData[] = [
                                         },
                                         "data": [
                                             {
-                                                "id": "lc_0132c4db1e220da9bc596cc4c9",
                                                 "id": "lc_0132c4db1e220da9bc596cc4c9",
                                                 "object": "location",
                                                 "name": "Shelf A1",
@@ -95006,7 +94271,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "lc_01e69cd3745a1bc0dd485986c0",
                             "id": "lc_01e69cd3745a1bc0dd485986c0",
                             "object": "location_type",
                             "code": "building",
@@ -95360,7 +94624,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "lc_014d187d99b31926f0c74af9d8",
-                            "id": "lc_014d187d99b31926f0c74af9d8",
                             "object": "location",
                             "name": "Warehouse A",
                             "type": "building",
@@ -95372,7 +94635,6 @@ export const apiTags: TagData[] = [
                                 },
                                 "data": [
                                     {
-                                        "id": "lc_0132c4db1e220da9bc596cc4c9",
                                         "id": "lc_0132c4db1e220da9bc596cc4c9",
                                         "object": "location",
                                         "name": "Shelf A1",
@@ -95861,7 +95123,6 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "scst_0129335dd6286056a97024fcc1",
-                "id": "scst_0129335dd6286056a97024fcc1",
                 "object": "scanning_station",
                 "name": "Packaging Line 1",
                 "type": "init_batch",
@@ -95980,7 +95241,6 @@ export const apiTags: TagData[] = [
                         "name": "Packaging Line 1",
                         "type": "init_batch",
                         "operator_requirement": "none",
-                        "department_id": "dp_01791c25ab59da4704cba61874",
                         "department_id": "dp_01791c25ab59da4704cba61874",
                         "label_size": "1x1",
                         "label_type": "tag"
@@ -96423,7 +95683,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "scst_0129335dd6286056a97024fcc1",
                             "id": "scst_0129335dd6286056a97024fcc1",
                             "object": "scanning_station",
                             "name": "Packaging Line 1",
@@ -96967,7 +96226,6 @@ export const apiTags: TagData[] = [
                             }
                         ],
                         "example": {
-                            "id": "scst_0129335dd6286056a97024fcc1",
                             "id": "scst_0129335dd6286056a97024fcc1",
                             "object": "scanning_station",
                             "name": "Packaging Line 1",
@@ -97536,7 +96794,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "scst_0129335dd6286056a97024fcc1",
-                                    "id": "scst_0129335dd6286056a97024fcc1",
                                     "object": "scanning_station",
                                     "name": "Packaging Line 1",
                                     "type": "init_batch",
@@ -98019,7 +97276,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "scst_0129335dd6286056a97024fcc1",
-                            "id": "scst_0129335dd6286056a97024fcc1",
                             "object": "scanning_station",
                             "name": "Packaging Line 1",
                             "type": "init_batch",
@@ -98268,7 +97524,6 @@ export const apiTags: TagData[] = [
             ],
             "example": {
                 "id": "rl_01c16d2eb637c0d1f3a372937c",
-                "id": "rl_01c16d2eb637c0d1f3a372937c",
                 "object": "role",
                 "name": "Admin",
                 "type": "admin",
@@ -98276,7 +97531,6 @@ export const apiTags: TagData[] = [
                     "object": "owner",
                     "type": "account",
                     "account": {
-                        "id": "ac_01148680966698341a9c0976db",
                         "id": "ac_01148680966698341a9c0976db",
                         "object": "account",
                         "name": "Acme Inc.",
@@ -98553,7 +97807,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "rl_01c16d2eb637c0d1f3a372937c",
-                            "id": "rl_01c16d2eb637c0d1f3a372937c",
                             "object": "role",
                             "name": "Admin",
                             "type": "admin",
@@ -98561,7 +97814,6 @@ export const apiTags: TagData[] = [
                                 "object": "owner",
                                 "type": "account",
                                 "account": {
-                                    "id": "ac_01148680966698341a9c0976db",
                                     "id": "ac_01148680966698341a9c0976db",
                                     "object": "account",
                                     "name": "Acme Inc.",
@@ -98844,7 +98096,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "rl_01c16d2eb637c0d1f3a372937c",
-                            "id": "rl_01c16d2eb637c0d1f3a372937c",
                             "object": "role",
                             "name": "Admin",
                             "type": "admin",
@@ -98852,7 +98103,6 @@ export const apiTags: TagData[] = [
                                 "object": "owner",
                                 "type": "account",
                                 "account": {
-                                    "id": "ac_01148680966698341a9c0976db",
                                     "id": "ac_01148680966698341a9c0976db",
                                     "object": "account",
                                     "name": "Acme Inc.",
@@ -99207,7 +98457,6 @@ export const apiTags: TagData[] = [
                             "data": [
                                 {
                                     "id": "rl_01c16d2eb637c0d1f3a372937c",
-                                    "id": "rl_01c16d2eb637c0d1f3a372937c",
                                     "object": "role",
                                     "name": "Admin",
                                     "type": "admin",
@@ -99215,7 +98464,6 @@ export const apiTags: TagData[] = [
                                         "object": "owner",
                                         "type": "account",
                                         "account": {
-                                            "id": "ac_01148680966698341a9c0976db",
                                             "id": "ac_01148680966698341a9c0976db",
                                             "object": "account",
                                             "name": "Acme Inc.",
@@ -99471,7 +98719,6 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "id": "rl_01c16d2eb637c0d1f3a372937c",
-                            "id": "rl_01c16d2eb637c0d1f3a372937c",
                             "object": "role",
                             "name": "Admin",
                             "type": "admin",
@@ -99479,7 +98726,6 @@ export const apiTags: TagData[] = [
                                 "object": "owner",
                                 "type": "account",
                                 "account": {
-                                    "id": "ac_01148680966698341a9c0976db",
                                     "id": "ac_01148680966698341a9c0976db",
                                     "object": "account",
                                     "name": "Acme Inc.",
