@@ -178,7 +178,25 @@ await client.catalog.items.list({
 
 ## Pagination
 
-List endpoints return a `data` array alongside a `page_info` object with `has_next_page`, `has_prev_page`, and `next_page_url` / `previous_page_url`. To page forward, read the `cursor` query parameter from `next_page_url` and pass it into the next `list` call. You can also set `limit` to control page size.
+List endpoints return a `data` array alongside a `page_info` object with `has_next_page`, `has_prev_page`, and `next_page_url` / `previous_page_url`. The page URLs are relative paths that carry the next/previous `cursor` as a query parameter — pull that cursor out and pass it into the next `list` call. You can also set `limit` to control page size.
+
+A small helper keeps the extraction in one place:
+
+```ts
+/**
+ * Extracts the cursor query parameter from a pagination URL.
+ * Pagination URLs are relative paths like "/v1/path?cursor=xxx&limit=10".
+ */
+export function extractCursorFromUrl(url: string | null | undefined): string | undefined {
+    if (!url) return undefined;
+    const qIdx = url.indexOf('?');
+    if (qIdx < 0) return undefined;
+    const params = new URLSearchParams(url.slice(qIdx + 1));
+    return params.get('cursor') ?? undefined;
+}
+```
+
+Then iterate until there are no more pages:
 
 ```ts
 let page = await client.catalog.items.list({ limit: 100 });
@@ -188,11 +206,10 @@ for (;;) {
         console.log(item.id);
     }
 
-    if (!page.page_info.has_next_page || !page.page_info.next_page_url) break;
+    const cursor = extractCursorFromUrl(page.page_info.next_page_url);
+    if (!page.page_info.has_next_page || !cursor) break;
 
-    // The next-page URL carries the cursor as a query parameter.
-    const cursor = new URL(page.page_info.next_page_url).searchParams.get('cursor');
-    page = await client.catalog.items.list({ cursor: cursor ?? undefined });
+    page = await client.catalog.items.list({ cursor });
 }
 ```
 
