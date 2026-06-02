@@ -26,14 +26,29 @@ import MobileDocNav from './MobileDocNav';
 export default function NavbarContents({ hideThemeToggle = false }) {
     const { hasMounted } = useDarkMode();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const { isAuthenticated, user, currentAccount, logout, isInitialized } = useAuth();
+    const { user, currentAccount, logout, isInitialized } = useAuth();
     const pathname = usePathname();
+
+    // Gate optimistic rendering behind a mount flag so the first client paint
+    // matches the SSR output (where there's no localStorage), avoiding hydration
+    // mismatches. After mount we trust the persisted `user` from the store.
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         queueMicrotask(() => setIsMenuOpen(false));
     }, [pathname]);
 
     const color = hasMounted ? 'var(--foreground)' : undefined;
+
+    // Stale-while-revalidate: once mounted, show the cached user's avatar
+    // immediately (revalidation happens in the background via AuthProvider).
+    // Only show the loading skeleton when we have no cached identity yet.
+    const showUser = mounted && user !== null;
+    const showLoggedOut = mounted && isInitialized && user === null;
+    const showAuthSkeleton = !showUser && !showLoggedOut;
 
     return (
         <>
@@ -47,9 +62,9 @@ export default function NavbarContents({ hideThemeToggle = false }) {
 
             <div className="hidden lg:flex lg:flex-shrink-0 lg:items-center lg:justify-end lg:gap-x-4 !bg-transparent">
                 {!hideThemeToggle && <DarkModeButton color={color} />}
-                {!isInitialized ? (
+                {showAuthSkeleton ? (
                     <div className="h-8 w-8 rounded-full bg-[var(--foreground)]/10 animate-pulse" />
-                ) : isAuthenticated ? (
+                ) : showUser ? (
                     <UserDropdownMenu color={color} />
                 ) : (
                     <>
@@ -98,7 +113,7 @@ export default function NavbarContents({ hideThemeToggle = false }) {
                                     <MobileDocNav onNavigate={() => setIsMenuOpen(false)} />
                                 </div>
                                 <div className="flex flex-col gap-4 py-6">
-                                    {!isInitialized ? (
+                                    {showAuthSkeleton ? (
                                         <>
                                             {/* Skeleton for user info section */}
                                             <div className="flex items-center gap-3 px-2 py-2">
@@ -112,7 +127,7 @@ export default function NavbarContents({ hideThemeToggle = false }) {
                                             <div className="h-10 w-full rounded-md bg-[var(--foreground)]/10 animate-pulse" />
                                             <div className="h-10 w-full rounded-md bg-[var(--foreground)]/10 animate-pulse" />
                                         </>
-                                    ) : isAuthenticated ? (
+                                    ) : showUser ? (
                                         <>
                                             {/* User info section */}
                                             <div className="flex items-center gap-3 px-2 py-2">

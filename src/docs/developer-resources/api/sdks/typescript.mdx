@@ -1,0 +1,237 @@
+---
+title: TypeScript SDK
+subtitle: Call the Augno API from server-side TypeScript or JavaScript.
+route: /api/typescript-sdk
+nav:
+    title: TypeScript
+    section: API
+    subsection: SDKs
+    order: 1
+---
+
+The Augno TypeScript SDK (`@augno/sdk`) is a typed client for the Augno REST API, intended for server-side TypeScript and JavaScript. It ships request and response types for every endpoint, handles authentication, retries, and timeouts, and exposes the full API through a single `Augno` client.
+
+<DocCardGroup>
+    <LinkCard
+        pathKey="npm.typescriptSdk"
+        title="npm package"
+        description="@augno/sdk on the npm registry."
+    />
+    <LinkCard
+        pathKey="github.typescriptSdk"
+        title="Source on GitHub"
+        description="Augno/typescript-sdk — source, changelog, and issues."
+    />
+</DocCardGroup>
+
+## Installation
+
+<DocTabs className="my-4">
+<DocTab label="npm">
+
+```sh
+npm install @augno/sdk
+```
+
+</DocTab>
+<DocTab label="pnpm">
+
+```sh
+pnpm add @augno/sdk
+```
+
+</DocTab>
+<DocTab label="yarn">
+
+```sh
+yarn add @augno/sdk
+```
+
+</DocTab>
+<DocTab label="bun">
+
+```sh
+bun add @augno/sdk
+```
+
+</DocTab>
+</DocTabs>
+
+## Initialize the client
+
+Create a single `Augno` client and reuse it across requests. Authenticate with an <InternalLink pathKey="api.apiKeys" text="API key" /> passed as `bearerToken`, and set `augnoAccountID` to the account you want to operate on — it is sent as the `Augno-Account` header on every request.
+
+```ts
+import Augno from '@augno/sdk';
+
+const client = new Augno({
+    bearerToken: 'YOUR_API_KEY', // or omit — defaults to process.env['AUGNO_API_KEY']
+    augnoAccountID: 'YOUR_SANDBOX_ACCOUNT_ID', // ID for the account YOUR_SANDBOX_ACCOUNT_NAME
+});
+
+const items = await client.catalog.items.list();
+
+console.log(items.data);
+```
+
+> In production, load your key from an environment variable or secret manager rather than hardcoding it — `bearerToken` defaults to `process.env['AUGNO_API_KEY']`, so you can omit it entirely. Treat the key like a password: never commit it or ship it to a browser. The SDK is intended for server-side use.
+
+### Client options
+
+| Option           | Type                                              | Default                                | Description                                                                  |
+| :--------------- | :------------------------------------------------ | :------------------------------------- | :--------------------------------------------------------------------------- |
+| `bearerToken`    | `string`                                          | `process.env['AUGNO_API_KEY']`         | API key sent as a `Bearer` token.                                            |
+| `augnoAccountID` | `string`                                          | —                                      | Account UUID, sent as the `Augno-Account` header. Update to switch accounts. |
+| `environment`    | `'production'` \| `'local'`                       | `'production'`                         | Selects the base URL. `production` → `https://api.augno.com`.                |
+| `baseURL`        | `string`                                          | `process.env['AUGNO_BASE_URL']`        | Override the base URL directly. Don't combine with `environment`.            |
+| `maxRetries`     | `number`                                          | `2`                                    | Number of automatic retries for transient failures.                          |
+| `timeout`        | `number`                                          | `60000`                                | Per-request timeout in milliseconds.                                         |
+| `logLevel`       | `'debug' \| 'info' \| 'warn' \| 'error' \| 'off'` | `process.env['AUGNO_LOG']` or `'warn'` | Controls log verbosity.                                                      |
+
+## Switching accounts
+
+If your integration spans multiple accounts, use `withOptions` to derive a client scoped to a different account without mutating the original. This is cheaper and safer than constructing a new client per account.
+
+```ts
+const otherAccount = client.withOptions({
+    augnoAccountID: 'YOUR_ACCOUNT_ID', // ID for the account YOUR_ACCOUNT_NAME
+});
+
+await otherAccount.catalog.items.list();
+```
+
+## Request & response types
+
+Every request param and response field is typed. Import the types directly off the `Augno` namespace, and rely on editor tooltips — each method, param, and field carries a docstring that appears on hover.
+
+```ts
+import Augno from '@augno/sdk';
+
+const client = new Augno();
+
+const items: Augno.Catalog.ListItem = await client.catalog.items.list();
+```
+
+## Handling errors
+
+When the SDK cannot reach the API, or the API returns a 4xx or 5xx response, it throws a subclass of `Augno.APIError`. Inspect `status`, `name`, and `headers` to branch on the failure.
+
+```ts
+const items = await client.catalog.items.list().catch(async (err) => {
+    if (err instanceof Augno.APIError) {
+        console.log(err.status); // 400
+        console.log(err.name); // BadRequestError
+        console.log(err.headers); // { server: 'nginx', ... }
+    } else {
+        throw err;
+    }
+});
+```
+
+Each status maps to a dedicated error class:
+
+| Status code | Error class                |
+| :---------- | :------------------------- |
+| 400         | `BadRequestError`          |
+| 401         | `AuthenticationError`      |
+| 403         | `PermissionDeniedError`    |
+| 404         | `NotFoundError`            |
+| 422         | `UnprocessableEntityError` |
+| 429         | `RateLimitError`           |
+| >= 500      | `InternalServerError`      |
+| N/A         | `APIConnectionError`       |
+
+For the structure of the error envelope and the full list of error codes, see <InternalLink pathKey="api.errors" text="API errors" />.
+
+## Retries
+
+The SDK automatically retries certain failures up to 2 times with a short exponential backoff. Connection errors, `408 Request Timeout`, `409 Conflict`, `429 Rate Limit`, and `>= 500` responses are retried by default. Configure or disable this per client or per request:
+
+```ts
+// For all requests:
+const client = new Augno({
+    maxRetries: 0, // default is 2
+});
+
+// Or per request:
+await client.catalog.items.list({
+    maxRetries: 5,
+});
+```
+
+## Timeouts
+
+Requests time out after 1 minute by default and throw `APIConnectionTimeoutError` on expiry. Timed-out requests are still subject to the retry policy above.
+
+```ts
+// For all requests:
+const client = new Augno({
+    timeout: 20 * 1000, // 20 seconds
+});
+
+// Or per request:
+await client.catalog.items.list({
+    timeout: 5 * 1000,
+});
+```
+
+## Pagination
+
+List endpoints return a `data` array alongside cursor-based `page_info`. Pass the cursor from a previous page to fetch the next one. Cursors are opaque, signed strings — use them exactly as returned.
+
+```ts
+let cursor: string | undefined;
+
+do {
+    const page = await client.catalog.items.list({ cursor });
+    for (const item of page.data) {
+        console.log(item.id);
+    }
+    cursor = page.page_info.has_next_page ? page.page_info.next_cursor : undefined;
+} while (cursor);
+```
+
+See <InternalLink pathKey="api.pagination" text="Pagination" /> for the full cursor semantics.
+
+## Accessing the raw response
+
+Every method returns an `APIPromise`. Use `.asResponse()` to read headers without consuming the body, or `.withResponse()` to get the parsed data and the raw `Response` together.
+
+```ts
+const response = await client.catalog.items.list().asResponse();
+console.log(response.headers.get('augno-request-id'));
+
+const { data, response: raw } = await client.catalog.items.list().withResponse();
+console.log(raw.headers.get('augno-request-id'));
+console.log(data.data);
+```
+
+The `augno-request-id` header is useful when reporting issues — see <InternalLink pathKey="api.requestIds" text="Request IDs" />.
+
+## Logging
+
+Set `logLevel` (or the `AUGNO_LOG` environment variable) to control verbosity. At `debug`, all HTTP requests and responses are logged, including headers and bodies — use it only for local debugging.
+
+```ts
+const client = new Augno({
+    logLevel: 'debug', // 'debug' | 'info' | 'warn' (default) | 'error' | 'off'
+});
+```
+
+By default the SDK logs to `globalThis.console`. You can supply a custom logger (pino, winston, bunyan, and most common loggers are supported) via the `logger` option.
+
+## Versioning
+
+The SDK is pinned to the API version it was generated against, so upgrading the package upgrades the API version your integration targets. Review the [changelog](https://github.com/Augno/typescript-sdk/blob/main/CHANGELOG.md) before bumping, and see <InternalLink pathKey="api.versioning" text="Versioning" /> for how Augno versions the API.
+
+## Requirements
+
+TypeScript 4.9 or later is supported. The SDK runs on:
+
+- Node.js 20 LTS or later (non-EOL versions)
+- Deno v1.28.0 or later
+- Bun 1.0 or later
+- Cloudflare Workers and the Vercel Edge Runtime
+- Modern browsers (server-side use is recommended so your API key stays secret)
+
+React Native is not supported at this time.

@@ -14,7 +14,8 @@ export const docPaths = {
         "requestIds": "/api/request-ids",
         "versioning": "/api/versioning",
         "requestLogs": "/api/request-logs",
-        "overview": "/api/overview"
+        "overview": "/api/overview",
+        "typescriptSdk": "/api/typescript-sdk"
     },
     "development": "/development",
     "apiTour": "/api-tour",

@@ -5,6 +5,10 @@ const augnoDashboard = augnoFrontend + '/dashboard';
 export const externalPaths = {
     github: {
         openapiSpec: 'https://github.com/Augno/openapi-spec',
+        typescriptSdk: 'https://github.com/Augno/typescript-sdk',
+    },
+    npm: {
+        typescriptSdk: 'https://www.npmjs.com/package/@augno/sdk',
     },
     frontend: {
         root: augnoFrontend,

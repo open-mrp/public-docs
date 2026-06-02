@@ -520,6 +520,15 @@ export const navData: TabbedNavData = {
                     "children": "Overview"
                 },
                 {
+                    "title": "SDKs",
+                    "items": [
+                        {
+                            "href": "/api/typescript-sdk",
+                            "children": "TypeScript"
+                        }
+                    ]
+                },
+                {
                     "title": "Authentication",
                     "items": [
                         {

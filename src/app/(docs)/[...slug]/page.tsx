@@ -95,6 +95,12 @@ export function generateStaticParams() {
   },
   {
     "slug": [
+      "api",
+      "typescript-sdk"
+    ]
+  },
+  {
+    "slug": [
       "development"
     ]
   },
