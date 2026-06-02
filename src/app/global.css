@@ -407,6 +407,15 @@ blockquote h4 {
     font-weight: 500;
 }
 
+/* Inline code should match its container's font size (tables, blockquotes, lists, etc.) */
+blockquote code,
+table code,
+td code,
+th code,
+li code {
+    font-size: inherit;
+}
+
 /* API reference markdown descriptions */
 .api-description > p {
     margin: 0;
