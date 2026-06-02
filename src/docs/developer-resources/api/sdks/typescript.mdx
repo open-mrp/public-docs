@@ -136,6 +136,7 @@ Each status maps to a dedicated error class:
 | 401         | `AuthenticationError`      |
 | 403         | `PermissionDeniedError`    |
 | 404         | `NotFoundError`            |
+| 409         | `ConflictError`            |
 | 422         | `UnprocessableEntityError` |
 | 429         | `RateLimitError`           |
 | >= 500      | `InternalServerError`      |
@@ -177,18 +178,22 @@ await client.catalog.items.list({
 
 ## Pagination
 
-List endpoints return a `data` array alongside cursor-based `page_info`. Pass the cursor from a previous page to fetch the next one. Cursors are opaque, signed strings - use them exactly as returned.
+List endpoints return a `data` array alongside a `page_info` object with `has_next_page`, `has_prev_page`, and `next_page_url` / `previous_page_url`. To page forward, read the `cursor` query parameter from `next_page_url` and pass it into the next `list` call. You can also set `limit` to control page size.
 
 ```ts
-let cursor: string | undefined;
+let page = await client.catalog.items.list({ limit: 100 });
 
-do {
-    const page = await client.catalog.items.list({ cursor });
+for (;;) {
     for (const item of page.data) {
         console.log(item.id);
     }
-    cursor = page.page_info.has_next_page ? page.page_info.next_cursor : undefined;
-} while (cursor);
+
+    if (!page.page_info.has_next_page || !page.page_info.next_page_url) break;
+
+    // The next-page URL carries the cursor as a query parameter.
+    const cursor = new URL(page.page_info.next_page_url).searchParams.get('cursor');
+    page = await client.catalog.items.list({ cursor: cursor ?? undefined });
+}
 ```
 
 See <InternalLink pathKey="api.pagination" text="Pagination" /> for the full cursor semantics.
@@ -199,14 +204,14 @@ Every method returns an `APIPromise`. Use `.asResponse()` to read headers withou
 
 ```ts
 const response = await client.catalog.items.list().asResponse();
-console.log(response.headers.get('augno-request-id'));
+console.log(response.headers.get('request-id'));
 
 const { data, response: raw } = await client.catalog.items.list().withResponse();
-console.log(raw.headers.get('augno-request-id'));
+console.log(raw.headers.get('request-id'));
 console.log(data.data);
 ```
 
-The `augno-request-id` header is useful when reporting issues - see <InternalLink pathKey="api.requestIds" text="Request IDs" />.
+The `Request-ID` header is useful when reporting issues - see <InternalLink pathKey="api.requestIds" text="Request IDs" />.
 
 ## Logging
 
