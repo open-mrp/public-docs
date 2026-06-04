@@ -27,18 +27,14 @@ import {
     DocTab,
     DocTabs,
 } from '@augno/ui';
-import fs from 'fs';
 import type { MDXComponents } from 'mdx/types';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import path from 'path';
 import { JSXElementConstructor, ReactElement } from 'react';
 import rehypeHighlight from 'rehype-highlight';
 import remarkGfm from 'remark-gfm';
 import { z } from 'zod';
-
-const rootDirectory = path.join(process.cwd(), 'src', 'docs');
 
 // Navigation frontmatter schema
 const NavSchema = z
@@ -158,17 +154,21 @@ export async function fetchPageBySlug(slug: string[]): Promise<{
         notFound();
     }
 
-    const filePath = path.join(rootDirectory, relativeFilePath);
     const realSlug = slug.join('/');
 
+    // Import the raw MDX source through the bundler instead of reading it from
+    // disk. routeToFile values always end in .mdx, so stripping and re-adding
+    // the extension keeps the import context scoped to .mdx files (see the
+    // raw-loader rule in next.config.ts). Going through the module graph means
+    // editing a doc triggers Fast Refresh in dev instead of requiring a manual
+    // reload, while compileMDX still compiles the MDX at runtime.
+    const importPath = relativeFilePath.replace(/\.mdx$/, '');
     let fileContent: string;
     try {
-        fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
-    } catch (err) {
-        if (err && typeof err === 'object' && 'code' in err && err.code === 'ENOENT') {
-            notFound();
-        }
-        throw err;
+        const mod = await import(`../../docs/${importPath}.mdx`);
+        fileContent = mod.default as unknown as string;
+    } catch {
+        notFound();
     }
 
     const { frontmatter, content } = await compileMDX({
