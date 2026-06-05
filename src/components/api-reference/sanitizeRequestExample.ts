@@ -2,14 +2,12 @@ import type { SchemaField } from '@/static/apiEndpoints.generated';
 
 /**
  * Returns whether a null value should be kept in a request-body example.
- * - `x-nullable-clear` fields use null to mean "clear this value" (PATCH).
- * - Required + nullable fields may require the key with a null value on create.
+ * Every field passed here belongs to a request body, where a nullable field is
+ * clearable: sending null clears the value (PATCH). For optional, non-nullable
+ * fields null carries no meaning and is dropped.
  */
 function shouldKeepNullInRequestExample(field: SchemaField): boolean {
-    if (field.nullableClear === true) return true;
-    // Back-compat until apiEndpoints.generated.ts is rebuilt with nullableClear.
-    if (field.description.includes('Send `null` to clear')) return true;
-    return field.required && field.nullable;
+    return field.nullable === true;
 }
 
 /**

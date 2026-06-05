@@ -43,7 +43,7 @@ describe('sanitizeRequestExample', () => {
         });
     });
 
-    test('keeps null for x-nullable-clear fields on PATCH', () => {
+    test('keeps null for nullable (clearable) fields on PATCH', () => {
         const fields: SchemaField[] = [
             { name: 'sku', type: 'string', description: '', required: false, nullable: false },
             {

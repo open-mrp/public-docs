@@ -29,7 +29,6 @@ interface OpenAPISchema {
     nullable?: boolean;
     default?: unknown;
     'x-expandable'?: boolean;
-    'x-nullable-clear'?: boolean;
     // Some specs encode `nullable: true` by including `null` inside the enum array.
     // We sanitize these at generation time so the output stays strictly `string[]`.
     enum?: Array<string | null>;
@@ -96,7 +95,6 @@ interface SchemaField {
     description: string;
     required: boolean;
     nullable: boolean;
-    nullableClear?: boolean;
     alwaysNull?: boolean;
     expandable?: boolean;
     enum?: string[];
@@ -195,6 +193,13 @@ interface SchemaExpansionOptions {
      * than rooted at the response.
      */
     resourceRoot?: string;
+    /**
+     * True when expanding a request body schema. In a request body a nullable
+     * field is a clearable PATCH field (sending null clears it), so we append a
+     * "send null to clear" hint and keep null in request examples. Response
+     * fields can also be nullable ("value or null") but carry no such meaning.
+     */
+    isRequestBody?: boolean;
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────
@@ -349,6 +354,7 @@ function schemaToFields(
     const resolved = resolveSchema(schema, spec);
     const fields: SchemaField[] = [];
     const includePaths = options.includePaths;
+    const isRequestBody = options.isRequestBody || false;
     const pathPrefix = options.pathPrefix || '';
     const insideIncludedExpandable = options.insideIncludedExpandable || false;
     const currentSchemaIsList =
@@ -410,7 +416,10 @@ function schemaToFields(
                 resolvedProp.description || '',
                 resolvedProp.default,
             );
-            const descriptionWithNullClear = resolvedProp['x-nullable-clear'] === true
+            // In a request body, a nullable field is clearable: sending null
+            // clears the stored value. Responses can also be nullable, but there
+            // null is just a possible value, so the hint only applies to requests.
+            const descriptionWithNullClear = isRequestBody && resolvedProp.nullable === true
                 ? appendNullClearHint(descriptionWithDefault)
                 : descriptionWithDefault;
             const fieldPath = pathPrefix ? `${pathPrefix}.${name}` : name;
@@ -443,7 +452,6 @@ function schemaToFields(
                 description: descriptionWithNullClear,
                 required: required.includes(name),
                 nullable: resolvedProp.nullable || false,
-                nullableClear: resolvedProp['x-nullable-clear'] === true || undefined,
                 alwaysNull: shouldMarkAlwaysNull || undefined,
                 expandable: resolvedProp['x-expandable'] === true,
             };
@@ -479,6 +487,7 @@ function schemaToFields(
                         includePaths,
                         pathPrefix: fieldPath,
                         resourceRoot,
+                        isRequestBody,
                         insideIncludedExpandable:
                             insideIncludedExpandable || (field.expandable === true && hasExplicitInclude),
                     });
@@ -488,6 +497,7 @@ function schemaToFields(
                     includePaths,
                     pathPrefix: fieldPath,
                     resourceRoot,
+                    isRequestBody,
                     insideIncludedExpandable:
                         insideIncludedExpandable || (field.expandable === true && hasExplicitInclude),
                 });
@@ -697,7 +707,9 @@ function generateEndpointData(spec: OpenAPISpec): { tags: TagData[]; nav: ApiNav
                 const bodySchema = body.schema ? resolveSchema(body.schema, spec) : undefined;
                 requestBody = {
                     description: op.operation.requestBody.description || '',
-                    fields: bodySchema ? schemaToFields(bodySchema, spec, undefined, 0, { includePaths }) : [],
+                    fields: bodySchema
+                        ? schemaToFields(bodySchema, spec, undefined, 0, { includePaths, isRequestBody: true })
+                        : [],
                     example: body.example || bodySchema?.example,
                 };
             }
@@ -795,7 +807,6 @@ export interface SchemaField {
     description: string;
     required: boolean;
     nullable: boolean;
-    nullableClear?: boolean;
     alwaysNull?: boolean;
     expandable?: boolean;
     enum?: string[];

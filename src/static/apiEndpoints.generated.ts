@@ -7,7 +7,6 @@ export interface SchemaField {
     description: string;
     required: boolean;
     nullable: boolean;
-    nullableClear?: boolean;
     alwaysNull?: boolean;
     expandable?: boolean;
     enum?: string[];
@@ -1732,7 +1731,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Controls whether the sandbox is blank or seeded with sample data. Defaults to `blank`.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "enum": [
                                 "blank",
@@ -4594,6 +4593,10 @@ export const apiTags: TagData[] = [
                         "account",
                         "actor",
                         "entity",
+                        "record",
+                        "freight",
+                        "sales_order_totals",
+                        "sales_order_related",
                         "user",
                         "address",
                         "api_key",
@@ -5394,6 +5397,10 @@ export const apiTags: TagData[] = [
                             "account",
                             "actor",
                             "entity",
+                            "record",
+                            "freight",
+                            "sales_order_totals",
+                            "sales_order_related",
                             "user",
                             "address",
                             "api_key",
@@ -5735,6 +5742,10 @@ export const apiTags: TagData[] = [
                                             "account",
                                             "actor",
                                             "entity",
+                                            "record",
+                                            "freight",
+                                            "sales_order_totals",
+                                            "sales_order_related",
                                             "user",
                                             "address",
                                             "api_key",
@@ -6571,6 +6582,10 @@ export const apiTags: TagData[] = [
                                     "account",
                                     "actor",
                                     "entity",
+                                    "record",
+                                    "freight",
+                                    "sales_order_totals",
+                                    "sales_order_related",
                                     "user",
                                     "address",
                                     "api_key",
@@ -6857,6 +6872,10 @@ export const apiTags: TagData[] = [
                                     "account",
                                     "actor",
                                     "entity",
+                                    "record",
+                                    "freight",
+                                    "sales_order_totals",
+                                    "sales_order_related",
                                     "user",
                                     "address",
                                     "api_key",
@@ -8333,10 +8352,7 @@ export const apiTags: TagData[] = [
                             "format": "decimal"
                         }
                     ],
-                    "example": {
-                        "name": "Kilogram",
-                        "abbreviation": "kg"
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
@@ -9991,10 +10007,7 @@ export const apiTags: TagData[] = [
                         "base_unit_id": "un_01966263f74a5a0cae356000a1",
                         "associated_units": [
                             {
-                                "unit_id": "un_01966263f74a5a0cae356000a1",
-                                "discount_percentage": 1,
-                                "discount_fixed": 0,
-                                "customer_portal_visibility": "visible"
+                                "unit_id": "un_01966263f74a5a0cae356000a1"
                             }
                         ]
                     }
@@ -10566,7 +10579,6 @@ export const apiTags: TagData[] = [
                             "description": "Notes. Set to null to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -10625,10 +10637,7 @@ export const apiTags: TagData[] = [
                             ]
                         }
                     ],
-                    "example": {
-                        "name": "Weight Units (Updated)",
-                        "base_unit_id": "un_01966263f74a5a0cae356000a1"
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
@@ -12454,10 +12463,7 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "unit_id": "un_01966263f74a5a0cae356000a1",
-                        "discount_percentage": 1,
-                        "discount_fixed": 0,
-                        "customer_portal_visibility": "visible"
+                        "unit_id": "un_01966263f74a5a0cae356000a1"
                     }
                 },
                 "responses": [
@@ -12773,10 +12779,7 @@ export const apiTags: TagData[] = [
                             ]
                         }
                     ],
-                    "example": {
-                        "unit_id": "un_01966263f74a5a0cae356000a1",
-                        "discount_percentage": 0.9
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
@@ -13714,7 +13717,7 @@ export const apiTags: TagData[] = [
                 {
                     "name": "commission_policy",
                     "type": "string",
-                    "description": "Commission policy.",
+                    "description": "Commission policy.\n\n- `commission_exempt`: no commission applies.\n- `commission_applied`: commission applies; if the account group is within a sales rep's territory, it will be assigned to that rep unless overridden.",
                     "required": true,
                     "nullable": false,
                     "expandable": false,
@@ -13726,7 +13729,7 @@ export const apiTags: TagData[] = [
                 {
                     "name": "freight_policy",
                     "type": "string",
-                    "description": "Freight policy.",
+                    "description": "Freight policy.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                     "required": true,
                     "nullable": false,
                     "expandable": false,
@@ -13738,7 +13741,7 @@ export const apiTags: TagData[] = [
                 {
                     "name": "type",
                     "type": "string",
-                    "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
+                    "description": "Account group type.\n\n- `pricing_group`: used for pricing rules, such as a \"Preferred\" group that receives a special discount.\n- `type_group`: used to categorize accounts, such as \"Consumers\" or \"Distributors\".",
                     "required": true,
                     "nullable": false,
                     "expandable": false,
@@ -13805,7 +13808,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "type",
                             "type": "string",
-                            "description": "Account group type.",
+                            "description": "Account group type.\n\nCannot be changed after creation.\n- `pricing_group`: used for pricing rules, such as a \"Preferred\" group that receives a special discount.\n- `type_group`: used to categorize accounts, such as \"Consumers\" or \"Distributors\".",
                             "required": true,
                             "nullable": false,
                             "expandable": false,
@@ -13817,7 +13820,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "commission_policy",
                             "type": "string",
-                            "description": "Commission policy. Defaults to `commission_exempt`.",
+                            "description": "Commission policy. Defaults to `commission_exempt`.\n\n- `commission_exempt`: no commission applies.\n- `commission_applied`: commission applies; if the account group is within a sales rep's territory, it will be assigned to that rep unless overridden.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,
@@ -13829,7 +13832,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "freight_policy",
                             "type": "string",
-                            "description": "Freight policy. Defaults to `billed_freight`.",
+                            "description": "Freight policy. Defaults to `billed_freight`.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,
@@ -13895,7 +13898,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "commission_policy",
                                 "type": "string",
-                                "description": "Commission policy.",
+                                "description": "Commission policy.\n\n- `commission_exempt`: no commission applies.\n- `commission_applied`: commission applies; if the account group is within a sales rep's territory, it will be assigned to that rep unless overridden.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
@@ -13907,7 +13910,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "freight_policy",
                                 "type": "string",
-                                "description": "Freight policy.",
+                                "description": "Freight policy.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
@@ -13919,7 +13922,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "type",
                                 "type": "string",
-                                "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
+                                "description": "Account group type.\n\n- `pricing_group`: used for pricing rules, such as a \"Preferred\" group that receives a special discount.\n- `type_group`: used to categorize accounts, such as \"Consumers\" or \"Distributors\".",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
@@ -13998,13 +14001,12 @@ export const apiTags: TagData[] = [
                             "description": "Description. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
                             "name": "commission_policy",
                             "type": "string",
-                            "description": "Commission policy.",
+                            "description": "Commission policy.\n\n- `commission_exempt`: no commission applies.\n- `commission_applied`: commission applies; if the account group is within a sales rep's territory, it will be assigned to that rep unless overridden.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,
@@ -14016,7 +14018,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "freight_policy",
                             "type": "string",
-                            "description": "Freight policy.",
+                            "description": "Freight policy.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,
@@ -14026,9 +14028,7 @@ export const apiTags: TagData[] = [
                             ]
                         }
                     ],
-                    "example": {
-                        "name": "Updated Wholesale Customers"
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
@@ -14073,7 +14073,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "commission_policy",
                                 "type": "string",
-                                "description": "Commission policy.",
+                                "description": "Commission policy.\n\n- `commission_exempt`: no commission applies.\n- `commission_applied`: commission applies; if the account group is within a sales rep's territory, it will be assigned to that rep unless overridden.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
@@ -14085,7 +14085,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "freight_policy",
                                 "type": "string",
-                                "description": "Freight policy.",
+                                "description": "Freight policy.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
@@ -14097,7 +14097,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "type",
                                 "type": "string",
-                                "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
+                                "description": "Account group type.\n\n- `pricing_group`: used for pricing rules, such as a \"Preferred\" group that receives a special discount.\n- `type_group`: used to categorize accounts, such as \"Consumers\" or \"Distributors\".",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
@@ -14289,7 +14289,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "commission_policy",
                                         "type": "string",
-                                        "description": "Commission policy.",
+                                        "description": "Commission policy.\n\n- `commission_exempt`: no commission applies.\n- `commission_applied`: commission applies; if the account group is within a sales rep's territory, it will be assigned to that rep unless overridden.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -14301,7 +14301,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "freight_policy",
                                         "type": "string",
-                                        "description": "Freight policy.",
+                                        "description": "Freight policy.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -14313,7 +14313,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "type",
                                         "type": "string",
-                                        "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
+                                        "description": "Account group type.\n\n- `pricing_group`: used for pricing rules, such as a \"Preferred\" group that receives a special discount.\n- `type_group`: used to categorize accounts, such as \"Consumers\" or \"Distributors\".",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -14431,7 +14431,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "commission_policy",
                                 "type": "string",
-                                "description": "Commission policy.",
+                                "description": "Commission policy.\n\n- `commission_exempt`: no commission applies.\n- `commission_applied`: commission applies; if the account group is within a sales rep's territory, it will be assigned to that rep unless overridden.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
@@ -14443,7 +14443,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "freight_policy",
                                 "type": "string",
-                                "description": "Freight policy.",
+                                "description": "Freight policy.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
@@ -14455,7 +14455,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "type",
                                 "type": "string",
-                                "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
+                                "description": "Account group type.\n\n- `pricing_group`: used for pricing rules, such as a \"Preferred\" group that receives a special discount.\n- `type_group`: used to categorize accounts, such as \"Consumers\" or \"Distributors\".",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
@@ -15021,9 +15021,7 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         }
                     ],
-                    "example": {
-                        "name": "Net 60"
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
@@ -16604,7 +16602,7 @@ export const apiTags: TagData[] = [
                             "type": "object",
                             "description": "Flat rate for this shipping term.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "properties": [
                                 {
@@ -16631,7 +16629,7 @@ export const apiTags: TagData[] = [
                             "type": "object",
                             "description": "Minimum order value for free shipping.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "properties": [
                                 {
@@ -17461,7 +17459,6 @@ export const apiTags: TagData[] = [
                             "description": "Flat rate. Send null to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false,
                             "properties": [
                                 {
@@ -17489,7 +17486,6 @@ export const apiTags: TagData[] = [
                             "description": "Minimum order value for free shipping. Send null to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false,
                             "properties": [
                                 {
@@ -17517,14 +17513,11 @@ export const apiTags: TagData[] = [
                             "description": "Service level IDs that qualify for free shipping. Send null to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false,
                             "itemType": "string"
                         }
                     ],
-                    "example": {
-                        "name": "Collect"
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
@@ -20107,7 +20100,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Phone number associated with the address.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -20115,7 +20108,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Email address associated with the address.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -20135,7 +20128,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "First line of the street address.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -20143,7 +20136,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Second line of the street address.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -20151,7 +20144,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "City or locality.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -20159,7 +20152,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "State or administrative area.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -20167,7 +20160,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Postal or ZIP code.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -20398,7 +20391,6 @@ export const apiTags: TagData[] = [
                             "description": "Phone number associated with the address. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -20407,7 +20399,6 @@ export const apiTags: TagData[] = [
                             "description": "Email address associated with the address. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -20436,7 +20427,6 @@ export const apiTags: TagData[] = [
                             "description": "Second line of the street address. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -20472,9 +20462,7 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         }
                     ],
-                    "example": {
-                        "name": "Warehouse"
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
@@ -22434,32 +22422,32 @@ export const apiTags: TagData[] = [
                             "name": "name",
                             "type": "string",
                             "description": "User display name.",
-                            "required": true,
-                            "nullable": true,
+                            "required": false,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
                             "name": "email",
                             "type": "string",
                             "description": "User email address.",
-                            "required": true,
-                            "nullable": true,
+                            "required": false,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
                             "name": "username",
                             "type": "string",
                             "description": "Unique username (3–255 chars; letters, numbers, underscores, hyphens).",
-                            "required": true,
-                            "nullable": true,
+                            "required": false,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
                             "name": "password",
                             "type": "string",
                             "description": "Password. Only used for scanner-role users (scanning stations).\nMust be 8–72 chars and include upper, lower, number, and special character.",
-                            "required": true,
-                            "nullable": true,
+                            "required": false,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -22467,7 +22455,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Role assigned to the user.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -22475,7 +22463,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Department assigned to the user.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -22512,10 +22500,6 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "John Doe",
-                        "email": "jdoe@augno.com",
-                        "username": "jdoe",
-                        "password": "QgS7Z8Hhj3&1",
                         "preferences": [
                             {
                                 "notification_type": "order_acknowledgement",
@@ -22901,7 +22885,6 @@ export const apiTags: TagData[] = [
                             "description": "Role assigned to the user. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -22910,7 +22893,6 @@ export const apiTags: TagData[] = [
                             "description": "Department assigned to the user. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -22946,9 +22928,7 @@ export const apiTags: TagData[] = [
                             ]
                         }
                     ],
-                    "example": {
-                        "name": "John Doe"
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
@@ -24677,9 +24657,7 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         }
                     ],
-                    "example": {
-                        "name": "Size"
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
@@ -25550,7 +25528,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Color code. Randomly assigned if not provided.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "enum": [
                                 "blue",
@@ -25569,14 +25547,13 @@ export const apiTags: TagData[] = [
                             "name": "sort_order",
                             "type": "integer",
                             "description": "Display order. Defaults to last position if not provided.",
-                            "required": true,
-                            "nullable": true,
+                            "required": false,
+                            "nullable": false,
                             "expandable": false
                         }
                     ],
                     "example": {
-                        "value": "Red",
-                        "sort_order": 1
+                        "value": "Red"
                     }
                 },
                 "responses": [
@@ -26035,9 +26012,7 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         }
                     ],
-                    "example": {
-                        "value": "Blue"
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
@@ -28322,8 +28297,8 @@ export const apiTags: TagData[] = [
                             "name": "code",
                             "type": "string",
                             "description": "Carrier code.",
-                            "required": true,
-                            "nullable": true,
+                            "required": false,
+                            "nullable": false,
                             "expandable": false,
                             "enum": [
                                 "fedex",
@@ -28340,14 +28315,14 @@ export const apiTags: TagData[] = [
                             "name": "account_number",
                             "type": "string",
                             "description": "Carrier account number. Required for UPS and USPS carriers.",
-                            "required": true,
-                            "nullable": true,
+                            "required": false,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
                             "name": "customer_portal_visibility",
                             "type": "string",
-                            "description": "Whether this carrier will be available for customers to select in the customer portal. Defaults to `visible`.",
+                            "description": "Carrier visibility in the customer portal.\n\nIf `visible`, this carrier will be available for your customers to utilize when they go to checkout. If `hidden`, this carrier will not be an option on checkout. Defaults to `visible`.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,
@@ -28358,10 +28333,7 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "FedEx",
-                        "code": "fedex",
-                        "account_number": "1234567890",
-                        "customer_portal_visibility": "visible"
+                        "name": "FedEx"
                     }
                 },
                 "responses": [
@@ -28812,7 +28784,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "customer_portal_visibility",
                             "type": "string",
-                            "description": "Whether this carrier will be available for customers to select in the customer portal.",
+                            "description": "Carrier visibility in the customer portal.\n\nIf `visible`, this carrier will be available for your customers to utilize when they go to checkout. If `hidden`, this carrier will not be an option on checkout.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,
@@ -28822,9 +28794,7 @@ export const apiTags: TagData[] = [
                             ]
                         }
                     ],
-                    "example": {
-                        "name": "FedEx Express"
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
@@ -30832,7 +30802,6 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Express Shipping",
                         "is_default": false
                     }
                 },
@@ -41070,9 +41039,7 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         }
                     ],
-                    "example": {
-                        "name": "Electronic Components"
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
@@ -44677,7 +44644,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Description.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -44685,7 +44652,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Notes.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -44701,7 +44668,7 @@ export const apiTags: TagData[] = [
                             "type": "object",
                             "description": "Order point quantity.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "properties": [
                                 {
@@ -44727,7 +44694,7 @@ export const apiTags: TagData[] = [
                             "type": "object",
                             "description": "Lead time quantity.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "properties": [
                                 {
@@ -44753,7 +44720,7 @@ export const apiTags: TagData[] = [
                             "type": "object",
                             "description": "Initial unit price. When set, numerator must be a currency unit and\ndenominator must not be.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "properties": [
                                 {
@@ -44788,7 +44755,7 @@ export const apiTags: TagData[] = [
                             "type": "object",
                             "description": "Initial unit cost. Same currency rule as unit_price.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "properties": [
                                 {
@@ -46060,7 +46027,7 @@ export const apiTags: TagData[] = [
                             "type": "object",
                             "description": "Updated unit cost. Same currency rule as on create.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "properties": [
                                 {
@@ -46091,9 +46058,7 @@ export const apiTags: TagData[] = [
                             ]
                         }
                     ],
-                    "example": {
-                        "sku": "MAT-001-UPDATED"
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
@@ -55259,7 +55224,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Description.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -55267,7 +55232,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Notes.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -55283,7 +55248,7 @@ export const apiTags: TagData[] = [
                             "type": "object",
                             "description": "Initial unit price. When set, numerator must be a currency unit and\ndenominator must not be.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "properties": [
                                 {
@@ -55318,7 +55283,7 @@ export const apiTags: TagData[] = [
                             "type": "object",
                             "description": "Initial unit cost. Same currency rule as unit_price.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "properties": [
                                 {
@@ -56167,7 +56132,6 @@ export const apiTags: TagData[] = [
                             "description": "Description. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -56176,13 +56140,10 @@ export const apiTags: TagData[] = [
                             "description": "Notes. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         }
                     ],
-                    "example": {
-                        "sku": "BRG-6204-2RS"
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
@@ -64322,7 +64283,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "commission_policy",
                             "type": "string",
-                            "description": "Commission policy.",
+                            "description": "Commission policy.\n\n- `commission_exempt`: no commission applies.\n- `commission_applied`: commission applies; if the account group is within a sales rep's territory, it will be assigned to that rep unless overridden.",
                             "required": true,
                             "nullable": false,
                             "expandable": false,
@@ -64334,7 +64295,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "freight_policy",
                             "type": "string",
-                            "description": "Freight policy.",
+                            "description": "Freight policy.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                             "required": true,
                             "nullable": false,
                             "expandable": false,
@@ -64346,7 +64307,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "type",
                             "type": "string",
-                            "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
+                            "description": "Account group type.\n\n- `pricing_group`: used for pricing rules, such as a \"Preferred\" group that receives a special discount.\n- `type_group`: used to categorize accounts, such as \"Consumers\" or \"Distributors\".",
                             "required": true,
                             "nullable": false,
                             "expandable": false,
@@ -64483,7 +64444,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "commission_policy",
                                     "type": "string",
-                                    "description": "Commission policy.",
+                                    "description": "Commission policy.\n\n- `commission_exempt`: no commission applies.\n- `commission_applied`: commission applies; if the account group is within a sales rep's territory, it will be assigned to that rep unless overridden.",
                                     "required": true,
                                     "nullable": false,
                                     "expandable": false,
@@ -64495,7 +64456,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "freight_policy",
                                     "type": "string",
-                                    "description": "Freight policy.",
+                                    "description": "Freight policy.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                                     "required": true,
                                     "nullable": false,
                                     "expandable": false,
@@ -64507,7 +64468,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "type",
                                     "type": "string",
-                                    "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
+                                    "description": "Account group type.\n\n- `pricing_group`: used for pricing rules, such as a \"Preferred\" group that receives a special discount.\n- `type_group`: used to categorize accounts, such as \"Consumers\" or \"Distributors\".",
                                     "required": true,
                                     "nullable": false,
                                     "expandable": false,
@@ -65572,7 +65533,7 @@ export const apiTags: TagData[] = [
                                     "type": "string",
                                     "description": "Phone number associated with the address.",
                                     "required": false,
-                                    "nullable": true,
+                                    "nullable": false,
                                     "expandable": false
                                 },
                                 {
@@ -65580,7 +65541,7 @@ export const apiTags: TagData[] = [
                                     "type": "string",
                                     "description": "Email address associated with the address.",
                                     "required": false,
-                                    "nullable": true,
+                                    "nullable": false,
                                     "expandable": false
                                 },
                                 {
@@ -65600,7 +65561,7 @@ export const apiTags: TagData[] = [
                                     "type": "string",
                                     "description": "First line of the street address.",
                                     "required": false,
-                                    "nullable": true,
+                                    "nullable": false,
                                     "expandable": false
                                 },
                                 {
@@ -65608,7 +65569,7 @@ export const apiTags: TagData[] = [
                                     "type": "string",
                                     "description": "Second line of the street address.",
                                     "required": false,
-                                    "nullable": true,
+                                    "nullable": false,
                                     "expandable": false
                                 },
                                 {
@@ -65616,7 +65577,7 @@ export const apiTags: TagData[] = [
                                     "type": "string",
                                     "description": "City or locality.",
                                     "required": false,
-                                    "nullable": true,
+                                    "nullable": false,
                                     "expandable": false
                                 },
                                 {
@@ -65624,7 +65585,7 @@ export const apiTags: TagData[] = [
                                     "type": "string",
                                     "description": "State or administrative area.",
                                     "required": false,
-                                    "nullable": true,
+                                    "nullable": false,
                                     "expandable": false
                                 },
                                 {
@@ -65632,7 +65593,7 @@ export const apiTags: TagData[] = [
                                     "type": "string",
                                     "description": "Postal or ZIP code.",
                                     "required": false,
-                                    "nullable": true,
+                                    "nullable": false,
                                     "expandable": false
                                 },
                                 {
@@ -65666,7 +65627,7 @@ export const apiTags: TagData[] = [
                                     "type": "string",
                                     "description": "Phone number associated with the address.",
                                     "required": false,
-                                    "nullable": true,
+                                    "nullable": false,
                                     "expandable": false
                                 },
                                 {
@@ -65674,7 +65635,7 @@ export const apiTags: TagData[] = [
                                     "type": "string",
                                     "description": "Email address associated with the address.",
                                     "required": false,
-                                    "nullable": true,
+                                    "nullable": false,
                                     "expandable": false
                                 },
                                 {
@@ -65694,7 +65655,7 @@ export const apiTags: TagData[] = [
                                     "type": "string",
                                     "description": "First line of the street address.",
                                     "required": false,
-                                    "nullable": true,
+                                    "nullable": false,
                                     "expandable": false
                                 },
                                 {
@@ -65702,7 +65663,7 @@ export const apiTags: TagData[] = [
                                     "type": "string",
                                     "description": "Second line of the street address.",
                                     "required": false,
-                                    "nullable": true,
+                                    "nullable": false,
                                     "expandable": false
                                 },
                                 {
@@ -65710,7 +65671,7 @@ export const apiTags: TagData[] = [
                                     "type": "string",
                                     "description": "City or locality.",
                                     "required": false,
-                                    "nullable": true,
+                                    "nullable": false,
                                     "expandable": false
                                 },
                                 {
@@ -65718,7 +65679,7 @@ export const apiTags: TagData[] = [
                                     "type": "string",
                                     "description": "State or administrative area.",
                                     "required": false,
-                                    "nullable": true,
+                                    "nullable": false,
                                     "expandable": false
                                 },
                                 {
@@ -65726,7 +65687,7 @@ export const apiTags: TagData[] = [
                                     "type": "string",
                                     "description": "Postal or ZIP code.",
                                     "required": false,
-                                    "nullable": true,
+                                    "nullable": false,
                                     "expandable": false
                                 },
                                 {
@@ -65742,7 +65703,6 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Acme Inc.",
-                        "note": "Key enterprise account",
                         "default_carrier_id": "cr_01784fd54c9ba197bb4e42f0e6",
                         "default_payment_term_id": "pytm_018694d6601ea771cd1b52e890",
                         "default_shipping_term_id": "shtm_014341ab4bb5bf94d5b6936f86",
@@ -66877,7 +66837,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "commission_policy",
                                         "type": "string",
-                                        "description": "Commission policy.",
+                                        "description": "Commission policy.\n\n- `commission_exempt`: no commission applies.\n- `commission_applied`: commission applies; if the account group is within a sales rep's territory, it will be assigned to that rep unless overridden.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -66889,7 +66849,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "freight_policy",
                                         "type": "string",
-                                        "description": "Freight policy.",
+                                        "description": "Freight policy.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -66901,7 +66861,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "type",
                                         "type": "string",
-                                        "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
+                                        "description": "Account group type.\n\n- `pricing_group`: used for pricing rules, such as a \"Preferred\" group that receives a special discount.\n- `type_group`: used to categorize accounts, such as \"Consumers\" or \"Distributors\".",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -67038,7 +66998,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "commission_policy",
                                                 "type": "string",
-                                                "description": "Commission policy.",
+                                                "description": "Commission policy.\n\n- `commission_exempt`: no commission applies.\n- `commission_applied`: commission applies; if the account group is within a sales rep's territory, it will be assigned to that rep unless overridden.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -67050,7 +67010,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "freight_policy",
                                                 "type": "string",
-                                                "description": "Freight policy.",
+                                                "description": "Freight policy.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -67062,7 +67022,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "type",
                                                 "type": "string",
-                                                "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
+                                                "description": "Account group type.\n\n- `pricing_group`: used for pricing rules, such as a \"Preferred\" group that receives a special discount.\n- `type_group`: used to categorize accounts, such as \"Consumers\" or \"Distributors\".",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -67921,7 +67881,6 @@ export const apiTags: TagData[] = [
                             "description": "Note. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -67944,7 +67903,6 @@ export const apiTags: TagData[] = [
                             "description": "Email address. Send null to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -67953,7 +67911,6 @@ export const apiTags: TagData[] = [
                             "description": "Phone number. Send null to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -67962,7 +67919,6 @@ export const apiTags: TagData[] = [
                             "description": "Website URL. Send null to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -68015,7 +67971,6 @@ export const apiTags: TagData[] = [
                             "description": "Default service level ID. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -68053,7 +68008,6 @@ export const apiTags: TagData[] = [
                             "description": "The ID of the account user to assign as the default sales rep. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -68062,7 +68016,6 @@ export const apiTags: TagData[] = [
                             "description": "Bill-to address ID. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -68071,7 +68024,6 @@ export const apiTags: TagData[] = [
                             "description": "Ship-to address ID. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -68109,7 +68061,6 @@ export const apiTags: TagData[] = [
                             "description": "Carrier billing account number. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -68118,7 +68069,6 @@ export const apiTags: TagData[] = [
                             "description": "Credit limit. Send null to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false,
                             "properties": [
                                 {
@@ -68141,11 +68091,7 @@ export const apiTags: TagData[] = [
                             ]
                         }
                     ],
-                    "example": {
-                        "name": "Acme Corp Updated",
-                        "freight_policy": "billed_freight",
-                        "default_carrier_id": "cr_01784fd54c9ba197bb4e42f0e6"
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
@@ -69267,7 +69213,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "commission_policy",
                                         "type": "string",
-                                        "description": "Commission policy.",
+                                        "description": "Commission policy.\n\n- `commission_exempt`: no commission applies.\n- `commission_applied`: commission applies; if the account group is within a sales rep's territory, it will be assigned to that rep unless overridden.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -69279,7 +69225,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "freight_policy",
                                         "type": "string",
-                                        "description": "Freight policy.",
+                                        "description": "Freight policy.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -69291,7 +69237,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "type",
                                         "type": "string",
-                                        "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
+                                        "description": "Account group type.\n\n- `pricing_group`: used for pricing rules, such as a \"Preferred\" group that receives a special discount.\n- `type_group`: used to categorize accounts, such as \"Consumers\" or \"Distributors\".",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -69428,7 +69374,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "commission_policy",
                                                 "type": "string",
-                                                "description": "Commission policy.",
+                                                "description": "Commission policy.\n\n- `commission_exempt`: no commission applies.\n- `commission_applied`: commission applies; if the account group is within a sales rep's territory, it will be assigned to that rep unless overridden.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -69440,7 +69386,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "freight_policy",
                                                 "type": "string",
-                                                "description": "Freight policy.",
+                                                "description": "Freight policy.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -69452,7 +69398,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "type",
                                                 "type": "string",
-                                                "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
+                                                "description": "Account group type.\n\n- `pricing_group`: used for pricing rules, such as a \"Preferred\" group that receives a special discount.\n- `type_group`: used to categorize accounts, such as \"Consumers\" or \"Distributors\".",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -71614,7 +71560,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "commission_policy",
                                                 "type": "string",
-                                                "description": "Commission policy.",
+                                                "description": "Commission policy.\n\n- `commission_exempt`: no commission applies.\n- `commission_applied`: commission applies; if the account group is within a sales rep's territory, it will be assigned to that rep unless overridden.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -71626,7 +71572,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "freight_policy",
                                                 "type": "string",
-                                                "description": "Freight policy.",
+                                                "description": "Freight policy.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -71638,7 +71584,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "type",
                                                 "type": "string",
-                                                "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
+                                                "description": "Account group type.\n\n- `pricing_group`: used for pricing rules, such as a \"Preferred\" group that receives a special discount.\n- `type_group`: used to categorize accounts, such as \"Consumers\" or \"Distributors\".",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -71775,7 +71721,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "commission_policy",
                                                         "type": "string",
-                                                        "description": "Commission policy.",
+                                                        "description": "Commission policy.\n\n- `commission_exempt`: no commission applies.\n- `commission_applied`: commission applies; if the account group is within a sales rep's territory, it will be assigned to that rep unless overridden.",
                                                         "required": true,
                                                         "nullable": false,
                                                         "expandable": false,
@@ -71787,7 +71733,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "freight_policy",
                                                         "type": "string",
-                                                        "description": "Freight policy.",
+                                                        "description": "Freight policy.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                                                         "required": true,
                                                         "nullable": false,
                                                         "expandable": false,
@@ -71799,7 +71745,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "type",
                                                         "type": "string",
-                                                        "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
+                                                        "description": "Account group type.\n\n- `pricing_group`: used for pricing rules, such as a \"Preferred\" group that receives a special discount.\n- `type_group`: used to categorize accounts, such as \"Consumers\" or \"Distributors\".",
                                                         "required": true,
                                                         "nullable": false,
                                                         "expandable": false,
@@ -73766,7 +73712,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "commission_policy",
                                         "type": "string",
-                                        "description": "Commission policy.",
+                                        "description": "Commission policy.\n\n- `commission_exempt`: no commission applies.\n- `commission_applied`: commission applies; if the account group is within a sales rep's territory, it will be assigned to that rep unless overridden.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -73778,7 +73724,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "freight_policy",
                                         "type": "string",
-                                        "description": "Freight policy.",
+                                        "description": "Freight policy.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -73790,7 +73736,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "type",
                                         "type": "string",
-                                        "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
+                                        "description": "Account group type.\n\n- `pricing_group`: used for pricing rules, such as a \"Preferred\" group that receives a special discount.\n- `type_group`: used to categorize accounts, such as \"Consumers\" or \"Distributors\".",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -73927,7 +73873,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "commission_policy",
                                                 "type": "string",
-                                                "description": "Commission policy.",
+                                                "description": "Commission policy.\n\n- `commission_exempt`: no commission applies.\n- `commission_applied`: commission applies; if the account group is within a sales rep's territory, it will be assigned to that rep unless overridden.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -73939,7 +73885,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "freight_policy",
                                                 "type": "string",
-                                                "description": "Freight policy.",
+                                                "description": "Freight policy.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -73951,7 +73897,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "type",
                                                 "type": "string",
-                                                "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
+                                                "description": "Account group type.\n\n- `pricing_group`: used for pricing rules, such as a \"Preferred\" group that receives a special discount.\n- `type_group`: used to categorize accounts, such as \"Consumers\" or \"Distributors\".",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -75954,7 +75900,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "commission_policy",
                                         "type": "string",
-                                        "description": "Commission policy.",
+                                        "description": "Commission policy.\n\n- `commission_exempt`: no commission applies.\n- `commission_applied`: commission applies; if the account group is within a sales rep's territory, it will be assigned to that rep unless overridden.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -75966,7 +75912,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "freight_policy",
                                         "type": "string",
-                                        "description": "Freight policy.",
+                                        "description": "Freight policy.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -75978,7 +75924,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "type",
                                         "type": "string",
-                                        "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
+                                        "description": "Account group type.\n\n- `pricing_group`: used for pricing rules, such as a \"Preferred\" group that receives a special discount.\n- `type_group`: used to categorize accounts, such as \"Consumers\" or \"Distributors\".",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -76115,7 +76061,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "commission_policy",
                                                 "type": "string",
-                                                "description": "Commission policy.",
+                                                "description": "Commission policy.\n\n- `commission_exempt`: no commission applies.\n- `commission_applied`: commission applies; if the account group is within a sales rep's territory, it will be assigned to that rep unless overridden.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -76127,7 +76073,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "freight_policy",
                                                 "type": "string",
-                                                "description": "Freight policy.",
+                                                "description": "Freight policy.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -76139,7 +76085,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "type",
                                                 "type": "string",
-                                                "description": "Account group type.\n\nThe type `pricing_group` indicates this account group is utilized for pricing rules. For example, you may have a 'Preferred' price group that receives a special discount rate. The type `type_group` indicates the account group is utilized to categorize a set of accounts. For example, you may have a group of accounts that are 'Consumers' or 'Distributors'.",
+                                                "description": "Account group type.\n\n- `pricing_group`: used for pricing rules, such as a \"Preferred\" group that receives a special discount.\n- `type_group`: used to categorize accounts, such as \"Consumers\" or \"Distributors\".",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false,
@@ -77764,9 +77710,7 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         }
                     ],
-                    "example": {
-                        "name": "Updated Product Line"
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
@@ -80783,7 +80727,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Description.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -80791,7 +80735,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Notes.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -80814,8 +80758,8 @@ export const apiTags: TagData[] = [
                             "name": "product_line_id",
                             "type": "string",
                             "description": "Product line ID.",
-                            "required": true,
-                            "nullable": true,
+                            "required": false,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -80843,7 +80787,7 @@ export const apiTags: TagData[] = [
                             "type": "object",
                             "description": "Initial unit price. When set, numerator must be a currency unit and\ndenominator must not be.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "properties": [
                                 {
@@ -80878,7 +80822,7 @@ export const apiTags: TagData[] = [
                             "type": "object",
                             "description": "Initial unit cost. Same currency rule as unit_price.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "properties": [
                                 {
@@ -82739,7 +82683,6 @@ export const apiTags: TagData[] = [
                             "description": "Description. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -82748,7 +82691,6 @@ export const apiTags: TagData[] = [
                             "description": "Notes. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -82768,7 +82710,7 @@ export const apiTags: TagData[] = [
                             "type": "object",
                             "description": "Updated unit price. Numerator must be a currency unit; denominator must not be.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "properties": [
                                 {
@@ -82799,9 +82741,7 @@ export const apiTags: TagData[] = [
                             ]
                         }
                     ],
-                    "example": {
-                        "sku": "SKU-002"
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
@@ -92767,7 +92707,7 @@ export const apiTags: TagData[] = [
                             "type": "string",
                             "description": "Parent location ID. Null for top-level locations.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false
                         },
                         {
@@ -92775,7 +92715,7 @@ export const apiTags: TagData[] = [
                             "type": "array",
                             "description": "IDs of child locations to attach.",
                             "required": false,
-                            "nullable": true,
+                            "nullable": false,
                             "expandable": false,
                             "itemType": "string"
                         }
@@ -93185,7 +93125,6 @@ export const apiTags: TagData[] = [
                             "description": "Parent location ID. Send null to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -93194,14 +93133,11 @@ export const apiTags: TagData[] = [
                             "description": "Child location IDs. Replaces all current children when provided. Send null to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false,
                             "itemType": "string"
                         }
                     ],
-                    "example": {
-                        "name": "Warehouse B"
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
@@ -95241,9 +95177,7 @@ export const apiTags: TagData[] = [
                         "name": "Packaging Line 1",
                         "type": "init_batch",
                         "operator_requirement": "none",
-                        "department_id": "dp_01791c25ab59da4704cba61874",
-                        "label_size": "1x1",
-                        "label_type": "tag"
+                        "department_id": "dp_01791c25ab59da4704cba61874"
                     }
                 },
                 "responses": [
@@ -95743,7 +95677,6 @@ export const apiTags: TagData[] = [
                             "description": "Notes. Send `null` to clear.",
                             "required": false,
                             "nullable": true,
-                            "nullableClear": true,
                             "expandable": false
                         },
                         {
@@ -95785,9 +95718,7 @@ export const apiTags: TagData[] = [
                             ]
                         }
                     ],
-                    "example": {
-                        "name": "Station B"
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
@@ -97887,13 +97818,7 @@ export const apiTags: TagData[] = [
                             "itemType": "string"
                         }
                     ],
-                    "example": {
-                        "name": "Updated Manager",
-                        "permissions": [
-                            "customers:read",
-                            "customers:update"
-                        ]
-                    }
+                    "example": {}
                 },
                 "responses": [
                     {
