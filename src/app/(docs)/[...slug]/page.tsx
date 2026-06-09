@@ -1,7 +1,7 @@
 import { JsonLd } from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, techArticleJsonLd } from '@/lib/jsonLd';
 import { fetchPageBySlug } from '@/lib/mdx/fetchPageBySlug';
-import { ogImageUrl } from '@/lib/site';
+import { ogImage } from '@/lib/site';
 import { buildBreadcrumbsFromRoute } from '@/static/breadcrumbConfig';
 import type { Metadata } from 'next';
 import { MarkdownPage } from '../../_components/MarkdownPage';
@@ -23,7 +23,7 @@ export async function generateMetadata({
     const trail = buildBreadcrumbsFromRoute(route, meta.title)
         .map((c) => c.label)
         .filter((label) => label && label !== 'Home' && label !== meta.title);
-    const ogImage = ogImageUrl({
+    const card = ogImage({
         title: meta.title,
         eyebrow: 'Augno Docs',
         subtitle: trail.length > 0 ? trail.join(' › ') : meta.subtitle,
@@ -38,12 +38,12 @@ export async function generateMetadata({
             title: meta.title,
             description: meta.subtitle,
             url: route,
-            images: [ogImage],
+            images: [card],
         },
         twitter: {
             title: meta.title,
             description: meta.subtitle,
-            images: [ogImage],
+            images: [card],
         },
     };
 }

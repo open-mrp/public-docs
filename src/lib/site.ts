@@ -22,6 +22,10 @@ export const ORG_URL = 'https://augno.com';
 /** Brand accent used in generated Open Graph cards (matches --primary). */
 export const BRAND_ACCENT = '#0eb981';
 
+/** Dimensions of every generated Open Graph / Twitter card (single source of truth). */
+export const OG_IMAGE_WIDTH = 1200;
+export const OG_IMAGE_HEIGHT = 630;
+
 /** Build an absolute URL for a site-relative path. */
 export function absoluteUrl(path: string): string {
     if (!path.startsWith('/')) path = `/${path}`;
@@ -29,11 +33,16 @@ export function absoluteUrl(path: string): string {
 }
 
 /**
- * Site-relative URL for a dynamically-generated Open Graph card (served by the
- * /og route handler). Relative is fine — Next resolves it against metadataBase
- * into an absolute URL for the og:image/twitter:image tags.
+ * Descriptor for a dynamically-generated Open Graph / Twitter card (served by
+ * the /og route handler), for use in `openGraph.images` / `twitter.images`.
+ *
+ * Returns the full object — not just the URL — so Next emits explicit
+ * `og:image:width`/`og:image:height`/`og:image:type` tags. Without those,
+ * social/link scrapers must download and measure the image before rendering a
+ * preview, which slows the preview and can cause it to be skipped. The URL is
+ * site-relative; Next resolves it against metadataBase into an absolute URL.
  */
-export function ogImageUrl({
+export function ogImage({
     title,
     eyebrow,
     subtitle,
@@ -41,9 +50,21 @@ export function ogImageUrl({
     title: string;
     eyebrow?: string;
     subtitle?: string;
-}): string {
+}): {
+    url: string;
+    width: number;
+    height: number;
+    type: string;
+    alt: string;
+} {
     const sp = new URLSearchParams({ t: title });
     if (eyebrow) sp.set('e', eyebrow);
     if (subtitle) sp.set('s', subtitle);
-    return `/og?${sp.toString()}`;
+    return {
+        url: `/og?${sp.toString()}`,
+        width: OG_IMAGE_WIDTH,
+        height: OG_IMAGE_HEIGHT,
+        type: 'image/png',
+        alt: title,
+    };
 }

@@ -1,7 +1,7 @@
-import { BRAND_ACCENT } from '@/lib/site';
+import { BRAND_ACCENT, OG_IMAGE_HEIGHT, OG_IMAGE_WIDTH } from '@/lib/site';
 import { ImageResponse } from 'next/og';
 
-export const OG_SIZE = { width: 1200, height: 630 };
+export const OG_SIZE = { width: OG_IMAGE_WIDTH, height: OG_IMAGE_HEIGHT };
 export const OG_CONTENT_TYPE = 'image/png';
 
 /**

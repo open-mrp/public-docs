@@ -2,7 +2,7 @@ import { ApiEndpoint } from '@/components/api-reference/ApiEndpoint';
 import { ApiReferenceOverview } from '@/components/api-reference/ApiReferenceOverview';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { techArticleJsonLd } from '@/lib/jsonLd';
-import { ogImageUrl } from '@/lib/site';
+import { ogImage } from '@/lib/site';
 import { getEndpoint, getAllEndpointSlugs } from '@/static/apiEndpoints.generated';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -39,7 +39,7 @@ export async function generateMetadata({
     const seg = segments ?? [];
 
     if (seg.length === 0) {
-        const ogImage = ogImageUrl({
+        const card = ogImage({
             title: 'API Reference',
             eyebrow: 'Augno Docs',
             subtitle: 'Every Augno API endpoint',
@@ -53,12 +53,12 @@ export async function generateMetadata({
                 title: API_REFERENCE_PAGE_TITLE,
                 description: API_REFERENCE_DESCRIPTION,
                 url: '/api-reference',
-                images: [ogImage],
+                images: [card],
             },
             twitter: {
                 title: API_REFERENCE_PAGE_TITLE,
                 description: API_REFERENCE_DESCRIPTION,
-                images: [ogImage],
+                images: [card],
             },
         };
     }
@@ -74,7 +74,7 @@ export async function generateMetadata({
             `${endpoint.method.toUpperCase()} ${endpoint.path} — Augno API reference.`,
         );
         const title = `${endpoint.summary} — ${endpoint.tag}`;
-        const ogImage = ogImageUrl({
+        const card = ogImage({
             title: endpoint.summary,
             eyebrow: 'API Reference',
             subtitle: `${endpoint.method.toUpperCase()} ${endpoint.path}`,
@@ -83,8 +83,8 @@ export async function generateMetadata({
             title,
             description,
             alternates: { canonical: route },
-            openGraph: { type: 'article', title, description, url: route, images: [ogImage] },
-            twitter: { title, description, images: [ogImage] },
+            openGraph: { type: 'article', title, description, url: route, images: [card] },
+            twitter: { title, description, images: [card] },
         };
     }
 
