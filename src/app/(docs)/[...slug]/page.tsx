@@ -1,5 +1,6 @@
 import { JsonLd } from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, techArticleJsonLd } from '@/lib/jsonLd';
+import { socialMeta } from '@/lib/metadata';
 import { fetchPageBySlug } from '@/lib/mdx/fetchPageBySlug';
 import { ogImage } from '@/lib/site';
 import { buildBreadcrumbsFromRoute } from '@/static/breadcrumbConfig';
@@ -33,18 +34,7 @@ export async function generateMetadata({
         title: meta.title,
         description: meta.subtitle,
         alternates: { canonical: route },
-        openGraph: {
-            type: 'article',
-            title: meta.title,
-            description: meta.subtitle,
-            url: route,
-            images: [card],
-        },
-        twitter: {
-            title: meta.title,
-            description: meta.subtitle,
-            images: [card],
-        },
+        ...socialMeta({ title: meta.title, description: meta.subtitle, url: route, card }),
     };
 }
 

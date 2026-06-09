@@ -1,5 +1,6 @@
 import { JsonLd } from '@/components/seo/JsonLd';
 import { organizationJsonLd, webSiteJsonLd } from '@/lib/jsonLd';
+import { socialMeta } from '@/lib/metadata';
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/lib/site';
 import { Metadata } from 'next';
 import { HomePageContent } from './_components/HomePageContent';
@@ -9,13 +10,8 @@ export const metadata: Metadata = {
     title: { absolute: SITE_TITLE },
     description: SITE_DESCRIPTION,
     alternates: { canonical: '/' },
-    openGraph: {
-        type: 'website',
-        title: SITE_TITLE,
-        description: SITE_DESCRIPTION,
-        url: '/',
-    },
-    twitter: { title: SITE_TITLE, description: SITE_DESCRIPTION },
+    // No `card` → falls back to the file-convention /opengraph-image.
+    ...socialMeta({ title: SITE_TITLE, description: SITE_DESCRIPTION, url: '/', type: 'website' }),
 };
 
 export default async function DocumentationPage() {

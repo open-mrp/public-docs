@@ -11,9 +11,13 @@ export const SITE_NAME = 'Augno Documentation';
 /** Default <title> when a page does not provide its own. */
 export const SITE_TITLE = 'Augno Documentation — Inventory & Order Fulfillment API';
 
-/** Site-wide default description and home-page meta description. */
+/**
+ * Site-wide default description and home-page meta description. Kept under ~120
+ * chars so it works as both the SEO `description` and the social
+ * `og:description` without truncation.
+ */
 export const SITE_DESCRIPTION =
-    'Guides, workflows, and a complete API reference for Augno — the platform for inventory management, manufacturing, and order fulfillment. Learn to integrate the Augno API and ship faster.';
+    'Guides, workflows, and a complete API reference for the Augno inventory management and order fulfillment platform.';
 
 export const ORG_NAME = 'Augno';
 
@@ -30,6 +34,22 @@ export const OG_IMAGE_HEIGHT = 630;
 export function absoluteUrl(path: string): string {
     if (!path.startsWith('/')) path = `/${path}`;
     return `${SITE_URL}${path}`;
+}
+
+/**
+ * Clamp a description for social cards. og:description is commonly truncated
+ * around ~125 chars (Discord and mobile clients are the strictest), so we trim
+ * at a word boundary and append an ellipsis rather than letting a platform cut
+ * mid-word. The full text is still used for the SEO `description` meta tag,
+ * where search engines allow ~155 chars.
+ */
+export function socialDescription(text: string, max = 120): string {
+    const t = text.trim();
+    if (t.length <= max) return t;
+    const cut = t.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    const base = lastSpace > 40 ? cut.slice(0, lastSpace) : cut;
+    return `${base.replace(/[\s.,;:—–-]+$/, '')}…`;
 }
 
 /**

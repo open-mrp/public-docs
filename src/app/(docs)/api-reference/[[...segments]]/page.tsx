@@ -2,6 +2,7 @@ import { ApiEndpoint } from '@/components/api-reference/ApiEndpoint';
 import { ApiReferenceOverview } from '@/components/api-reference/ApiReferenceOverview';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { techArticleJsonLd } from '@/lib/jsonLd';
+import { socialMeta } from '@/lib/metadata';
 import { ogImage } from '@/lib/site';
 import { getEndpoint, getAllEndpointSlugs } from '@/static/apiEndpoints.generated';
 import type { Metadata } from 'next';
@@ -48,18 +49,12 @@ export async function generateMetadata({
             title: API_REFERENCE_PAGE_TITLE,
             description: API_REFERENCE_DESCRIPTION,
             alternates: { canonical: '/api-reference' },
-            openGraph: {
-                type: 'article',
+            ...socialMeta({
                 title: API_REFERENCE_PAGE_TITLE,
                 description: API_REFERENCE_DESCRIPTION,
                 url: '/api-reference',
-                images: [card],
-            },
-            twitter: {
-                title: API_REFERENCE_PAGE_TITLE,
-                description: API_REFERENCE_DESCRIPTION,
-                images: [card],
-            },
+                card,
+            }),
         };
     }
 
@@ -83,8 +78,7 @@ export async function generateMetadata({
             title,
             description,
             alternates: { canonical: route },
-            openGraph: { type: 'article', title, description, url: route, images: [card] },
-            twitter: { title, description, images: [card] },
+            ...socialMeta({ title, description, url: route, card }),
         };
     }
 
