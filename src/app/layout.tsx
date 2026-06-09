@@ -44,15 +44,17 @@ export const metadata: Metadata = {
     authors: [{ name: 'Augno' }],
     creator: 'Augno',
     publisher: 'Augno',
-    alternates: {
-        canonical: '/',
-    },
+    // NOTE: deliberately no `alternates.canonical` here. A canonical set on the
+    // root layout is inherited by every page that doesn't override it, which
+    // would make those pages declare the homepage as their canonical URL. Each
+    // page sets its own self-referencing canonical in generateMetadata instead.
     openGraph: {
         type: 'website',
         siteName: SITE_NAME,
         title: SITE_TITLE,
         description: SITE_DESCRIPTION,
-        url: SITE_URL,
+        // No `url` default for the same reason as canonical above: og:url is also
+        // used by some link scrapers as the canonical, so it must be per-page.
         locale: 'en_US',
     },
     twitter: {
