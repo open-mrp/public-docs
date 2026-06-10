@@ -25,7 +25,7 @@ Begin your interaction with the Augno API by sending HTTP requests to the design
 <SdkLanguageTab language="curl">
 
 ```bash
-curl API_HOST/v1/core/units \
+curl API_HOST/v1/catalog/units \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
   -H "Augno-Account: YOUR_SANDBOX_ACCOUNT_ID"
@@ -34,14 +34,17 @@ curl API_HOST/v1/core/units \
 </SdkLanguageTab>
 <SdkLanguageTab language="typescript">
 
-```js
-const response = await fetch('API_HOST/v1/core/units', {
-    headers: {
-        Authorization: `Bearer YOUR_API_KEY`,
-        'Augno-Version': 'CURRENT_API_VERSION',
-        'Augno-Account': 'YOUR_SANDBOX_ACCOUNT_ID',
-    },
+```ts
+import Augno from '@augno/sdk';
+
+const client = new Augno({
+    bearerToken: 'YOUR_API_KEY',
+    augnoAccountID: 'YOUR_SANDBOX_ACCOUNT_ID',
 });
+
+const units = await client.catalog.units.list();
+
+console.log(units.data);
 ```
 
 </SdkLanguageTab>
@@ -53,24 +56,28 @@ Upon success, expect a response like this:
 {
     "object": "list",
     "page_info": {
-        "next_cursor": "unit_01jm4r6700f8nwq3v5hx2d9ktp",
-        "prev_cursor": null,
+        "next_page_url": "/v1/catalog/units?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoidW5fMDE5NjYyNjNmNzRhNWEwY2FlMzU2MDAwYTEiLCJkIjoiZiJ9._fcFG5yqAn5oIA388jA_bOqkqHdBbhCGRdomkbG_wvY",
+        "previous_page_url": null,
         "has_next_page": true,
         "has_prev_page": false
     },
     "data": [
         {
-            "id": "unit_01jm4r6700f8nwq3v5hx2d9ktp",
+            "id": "un_01966263f74a5a0cae356000a1",
             "object": "unit",
             "name": "Kilogram",
             "abbreviation": "kg",
             "type": "mass",
-            "ratio_numerator": "1000.000000000000000000000000000000",
-            "ratio_denominator": "1.000000000000000000000000000000",
-            "offset_numerator": "0.000000000000000000000000000000",
-            "offset_denominator": "1.000000000000000000000000000000",
+            "ratio_numerator": "1000",
+            "ratio_denominator": "1",
+            "offset_numerator": "0",
+            "offset_denominator": "1",
             "is_base_unit": false,
-            "is_internal": false,
+            "owner": {
+                "object": "owner",
+                "type": "system",
+                "account": null
+            },
             "created_at": "2026-05-10T00:00:00Z",
             "updated_at": "2026-05-10T00:23:00Z"
         }
