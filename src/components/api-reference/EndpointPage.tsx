@@ -200,12 +200,8 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
             (endpoint.requestBody.example != null || endpoint.requestBody.fields.length > 0),
     );
     const [requestExampleMode, setRequestExampleMode] = useState<RequestExampleMode>('example');
-
-    useEffect(() => {
-        if (requestExampleMode === 'body' && !hasRequestBody) {
-            setRequestExampleMode('example');
-        }
-    }, [requestExampleMode, hasRequestBody]);
+    const effectiveRequestExampleMode =
+        requestExampleMode === 'body' && !hasRequestBody ? 'example' : requestExampleMode;
     const pathParams = endpoint.parameters.filter((p) => p.in === 'path');
     const queryParams = endpoint.parameters.filter((p) => p.in === 'query');
     const headerParams = endpoint.parameters.filter((p) => p.in === 'header');
@@ -214,7 +210,7 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
         endpoint.parameters.find(
             (p) => p.in === 'query' && (p.name === 'include[]' || p.name === 'include'),
         ) ?? null;
-    const expandableIncludeValues = includeParam?.enum ?? [];
+    const expandableIncludeValues = useMemo(() => includeParam?.enum ?? [], [includeParam?.enum]);
     const expandableIncludes =
         expandableIncludeValues.length > 0
             ? { paramName: includeParam?.name ?? 'include[]', values: expandableIncludeValues }
@@ -260,7 +256,7 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
     }, [endpoint.tagSlug, endpoint.endpointSlug, endpoint.summary, addPage]);
 
     const requestExampleTabs = useMemo(() => {
-        if (requestExampleMode === 'body' && hasRequestBody) {
+        if (effectiveRequestExampleMode === 'body' && hasRequestBody) {
             return [
                 {
                     id: 'body',
@@ -283,7 +279,13 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
                 code,
             },
         ];
-    }, [endpoint, language, requestExampleMode, hasRequestBody, requestBodyExampleForDisplay]);
+    }, [
+        endpoint,
+        language,
+        effectiveRequestExampleMode,
+        hasRequestBody,
+        requestBodyExampleForDisplay,
+    ]);
 
     return (
         <div>
@@ -511,7 +513,7 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
                                 <>
                                     <SdkSelectorDropdown />
                                     <RequestExampleHeader
-                                        mode={requestExampleMode}
+                                        mode={effectiveRequestExampleMode}
                                         onModeChange={setRequestExampleMode}
                                         showBody={hasRequestBody}
                                     />

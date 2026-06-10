@@ -4,7 +4,7 @@ import { mergeSnippetReplacements } from '@/lib/typeId';
 import { useCodeReplacements } from '@/providers/ApiKeyProvider';
 import { CodeEditor } from '@augno/ui';
 import type { ReactNode } from 'react';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 type ExampleTab = {
     id: string;
@@ -37,21 +37,14 @@ export function CodeExamplePanel({
     className = '',
 }: CodeExamplePanelProps) {
     const baseReplacements = useCodeReplacements();
-    const [activeId, setActiveId] = useState(tabs[0]?.id ?? '');
+    const [selectedId, setSelectedId] = useState(tabs[0]?.id ?? '');
+    const activeId = tabs.some((t) => t.id === selectedId) ? selectedId : (tabs[0]?.id ?? '');
     const active = useMemo(() => tabs.find((t) => t.id === activeId) ?? tabs[0], [tabs, activeId]);
     const replacements = useMemo(
         () => mergeSnippetReplacements(baseReplacements, active?.code ?? ''),
         [baseReplacements, active?.code],
     );
     const replacementKey = useMemo(() => JSON.stringify(replacements), [replacements]);
-    const tabIds = useMemo(() => tabs.map((t) => t.id).join('\0'), [tabs]);
-
-    useEffect(() => {
-        setActiveId((current) => {
-            if (tabs.some((t) => t.id === current)) return current;
-            return tabs[0]?.id ?? '';
-        });
-    }, [tabIds, tabs]);
 
     if (!active) return null;
 
@@ -73,7 +66,7 @@ export function CodeExamplePanel({
                                     <button
                                         key={tab.id}
                                         type="button"
-                                        onClick={() => setActiveId(tab.id)}
+                                        onClick={() => setSelectedId(tab.id)}
                                         className={`px-2 py-0.5 text-xs rounded transition-colors cursor-pointer ${
                                             tab.id === activeId
                                                 ? 'bg-[var(--foreground)]/10 text-[var(--foreground)]'

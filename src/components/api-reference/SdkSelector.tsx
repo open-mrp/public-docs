@@ -1,74 +1,20 @@
 'use client';
 
-import type { SdkLanguage } from '@/static/apiSnippets.generated';
-import {
-    createContext,
-    ReactNode,
-    useCallback,
-    useContext,
-    useEffect,
-    useMemo,
-    useState,
-} from 'react';
+import { SDK_LANGUAGES, useSdkLanguageStore } from '@/lib/sdk-language-store';
+import { useState } from 'react';
 
-const STORAGE_KEY = 'augno-docs-sdk-language';
-
-interface SdkSelectorContextValue {
-    language: SdkLanguage;
-    setLanguage: (lang: SdkLanguage) => void;
-}
-
-const SdkSelectorContext = createContext<SdkSelectorContextValue>({
-    language: 'typescript',
-    setLanguage: () => {},
-});
-
-function isSdkLanguage(value: string | null): value is SdkLanguage {
-    return value === 'typescript' || value === 'curl' || value === 'python' || value === 'go';
-}
-
-export function SdkSelectorProvider({ children }: { children: ReactNode }) {
-    const [language, setLanguageState] = useState<SdkLanguage>('typescript');
-
-    useEffect(() => {
-        try {
-            const stored = localStorage.getItem(STORAGE_KEY);
-            if (isSdkLanguage(stored) && enabledLanguages.has(stored)) {
-                // Applying after mount avoids SSR markup differing from client localStorage.
-                // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional persisted preference restore
-                setLanguageState(stored);
-            }
-        } catch {
-            /* ignore private mode / SSR guard */
-        }
-    }, []);
-
-    const setLanguage = useCallback((lang: SdkLanguage) => {
-        setLanguageState(lang);
-        try {
-            localStorage.setItem(STORAGE_KEY, lang);
-        } catch {
-            /* ignore */
-        }
-    }, []);
-
-    const value = useMemo(() => ({ language, setLanguage }), [language, setLanguage]);
-
-    return <SdkSelectorContext.Provider value={value}>{children}</SdkSelectorContext.Provider>;
-}
-
+/**
+ * Read/write the global SDK preview language. Backed by a persisted zustand
+ * store (see sdk-language-store), so the preference is shared across the entire
+ * docs site and survives reloads — no provider required.
+ */
 export function useSdkLanguage() {
-    return useContext(SdkSelectorContext);
+    const language = useSdkLanguageStore((s) => s.language);
+    const setLanguage = useSdkLanguageStore((s) => s.setLanguage);
+    return { language, setLanguage };
 }
 
-const languages: { id: SdkLanguage; label: string }[] = [
-    { id: 'typescript', label: 'TypeScript' },
-    // { id: 'python', label: 'Python' },
-    // { id: 'go', label: 'Go' },
-    { id: 'curl', label: 'cURL' },
-];
-
-const enabledLanguages = new Set(languages.map((l) => l.id));
+const languages = SDK_LANGUAGES;
 
 export function SdkSelectorDropdown() {
     const { language, setLanguage } = useSdkLanguage();

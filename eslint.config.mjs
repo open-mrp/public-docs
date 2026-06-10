@@ -12,6 +12,8 @@ const eslintConfig = [
             'build/**',
             'next-env.d.ts',
             '.yalc/**',
+            'packages/stainless-sdk-json/**',
+            'src/static/*.generated.ts',
         ],
     },
     {

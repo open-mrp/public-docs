@@ -7,7 +7,6 @@ import TabBar from '@/components/navigation/TabBar';
 import { Navbar } from '@augno/ui';
 import { usePathname } from 'next/navigation';
 import ApiReferenceSidenav from '@/components/api-reference/ApiReferenceSidenav';
-import { SdkSelectorProvider } from '@/components/api-reference/SdkSelector';
 
 interface RootLayoutProps {
     children: React.ReactNode;
@@ -33,11 +32,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                     <div
                         className={`px-4 mx-auto py-10 lg:px-8 flex flex-col min-h-full ${isApiReference ? 'max-w-[1400px]' : 'max-w-7xl'}`}
                     >
-                        {isApiReference ? (
-                            <SdkSelectorProvider>{children}</SdkSelectorProvider>
-                        ) : (
-                            children
-                        )}
+                        {children}
                         {!isApiReference && <DocFooter />}
                     </div>
                 </main>

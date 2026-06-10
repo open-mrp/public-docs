@@ -3,11 +3,25 @@
 import { mergeSnippetReplacements } from '@/lib/typeId';
 import { useCodeReplacements } from '@/providers/ApiKeyProvider';
 import { CodeEditor } from '@augno/ui';
-import { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import { Children, isValidElement, ReactNode, useMemo } from 'react';
 
 interface DocsCodeEditorProps {
     children: ReactNode;
     className?: string;
+}
+
+function extractCodeText(children: ReactNode): string {
+    let text = '';
+    Children.forEach(children, (child) => {
+        if (typeof child === 'string' || typeof child === 'number') {
+            text += String(child);
+        } else if (isValidElement<{ children?: ReactNode }>(child)) {
+            if (child.props.children != null) {
+                text += extractCodeText(child.props.children);
+            }
+        }
+    });
+    return text;
 }
 
 /**
@@ -20,14 +34,7 @@ interface DocsCodeEditorProps {
  */
 export function DocsCodeEditor({ children, className }: DocsCodeEditorProps) {
     const baseReplacements = useCodeReplacements();
-    const codeRef = useRef<HTMLDivElement>(null);
-    const [code, setCode] = useState('');
-
-    useEffect(() => {
-        const codeElement = codeRef.current?.querySelector('code');
-        setCode(codeElement?.textContent ?? '');
-    }, [children]);
-
+    const code = useMemo(() => extractCodeText(children), [children]);
     const replacements = useMemo(
         () => mergeSnippetReplacements(baseReplacements, code),
         [baseReplacements, code],
@@ -35,13 +42,8 @@ export function DocsCodeEditor({ children, className }: DocsCodeEditorProps) {
     const key = useMemo(() => JSON.stringify(replacements), [replacements]);
 
     return (
-        <>
-            <div ref={codeRef} hidden>
-                {children}
-            </div>
-            <CodeEditor key={key} className={className} replacements={replacements}>
-                {children}
-            </CodeEditor>
-        </>
+        <CodeEditor key={key} className={className} replacements={replacements}>
+            {children}
+        </CodeEditor>
     );
 }

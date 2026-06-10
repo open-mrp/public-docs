@@ -21,8 +21,8 @@ This guide will walk you through listing units of measurement using the <Interna
 
 Begin your interaction with the Augno API by sending HTTP requests to the designated endpoints.
 
-<DocTabs className="my-4">
-<DocTab label="Curl">
+<SdkLanguageTabs className="my-4">
+<SdkLanguageTab language="curl">
 
 ```bash
 curl API_HOST/v1/core/units \
@@ -31,8 +31,8 @@ curl API_HOST/v1/core/units \
   -H "Augno-Account: YOUR_SANDBOX_ACCOUNT_ID"
 ```
 
-</DocTab>
-<DocTab label="JavaScript">
+</SdkLanguageTab>
+<SdkLanguageTab language="typescript">
 
 ```js
 const response = await fetch('API_HOST/v1/core/units', {
@@ -44,8 +44,8 @@ const response = await fetch('API_HOST/v1/core/units', {
 });
 ```
 
-</DocTab>
-</DocTabs>
+</SdkLanguageTab>
+</SdkLanguageTabs>
 
 Upon success, expect a response like this:
 

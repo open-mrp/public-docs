@@ -51,7 +51,6 @@ function FieldRow({
         expansionRoot && fullPath.startsWith(`${expansionRoot}.`)
             ? fullPath.slice(expansionRoot.length + 1)
             : fullPath;
-    const isExpandableField = field.expandable === true;
     const expandableMatch =
         expandableIncludes?.values.filter((v) => v === relativePath) ?? [];
     const isAlwaysNull = field.alwaysNull === true;

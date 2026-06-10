@@ -12,6 +12,7 @@ import { ApiEndpoint } from '@/components/api-reference/ApiEndpoint';
 import { ApiReferenceOverview } from '@/components/api-reference/ApiReferenceOverview';
 import { CustomerCRMIntegration } from '@/components/markdown/flowcharts/CustomerCRMIntegration';
 import InlineCode from '@/components/markdown/InlineCode';
+import { SdkLanguageTab, SdkLanguageTabs } from '@/components/markdown/SdkLanguageTabs';
 import DocLink from '@/components/markdown/link/DocLink';
 import InternalLink from '@/components/markdown/link/InternalLink';
 import LinkCard from '@/components/markdown/link/LinkCard';
@@ -82,6 +83,8 @@ const mdxComponents: MDXComponents = {
     DocNumberedSection,
     DocTabs,
     DocTab,
+    SdkLanguageTabs,
+    SdkLanguageTab,
     DocHeading,
     CustomerCRMIntegration,
     code: ({ children, className }) => {

@@ -13,7 +13,7 @@ import {
 } from '@augno/ui';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import DashboardButton from '../buttons/DashboardButton';
 import LoginButton from '../buttons/LoginButton';
 import RegisterButton from '../buttons/RegisterButton';
@@ -32,10 +32,11 @@ export default function NavbarContents({ hideThemeToggle = false }) {
     // Gate optimistic rendering behind a mount flag so the first client paint
     // matches the SSR output (where there's no localStorage), avoiding hydration
     // mismatches. After mount we trust the persisted `user` from the store.
-    const [mounted, setMounted] = useState(false);
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+    const mounted = useSyncExternalStore(
+        () => () => {},
+        () => true,
+        () => false,
+    );
 
     useEffect(() => {
         queueMicrotask(() => setIsMenuOpen(false));
