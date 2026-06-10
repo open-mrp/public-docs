@@ -22000,7 +22000,7 @@ export const apiTags: TagData[] = [
         "domainLabel": "Identity",
         "resource": {
             "name": "Account Users Management",
-            "description": "Account user with profile, role, and department.",
+            "description": "Account user with role and department. Profile fields (name, email,\nusername, image URL) live on the expandable user sub-resource.",
             "fields": [
                 {
                     "name": "id",
@@ -22013,15 +22013,15 @@ export const apiTags: TagData[] = [
                 {
                     "name": "user",
                     "type": "object",
-                    "description": "Underlying user reference.",
+                    "description": "Underlying user.",
                     "required": true,
                     "nullable": true,
-                    "expandable": false,
+                    "expandable": true,
                     "properties": [
                         {
                             "name": "id",
                             "type": "string",
-                            "description": "Unique identifier for the entity.",
+                            "description": "User ID.",
                             "required": true,
                             "nullable": false,
                             "expandable": false
@@ -22034,239 +22034,67 @@ export const apiTags: TagData[] = [
                             "nullable": false,
                             "expandable": false,
                             "enum": [
-                                "entity"
+                                "user"
                             ]
                         },
                         {
-                            "name": "type",
+                            "name": "email",
                             "type": "string",
-                            "description": "The resource kind that this entity references.",
+                            "description": "Email address.",
                             "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "enum": [
-                                "account",
-                                "actor",
-                                "entity",
-                                "record",
-                                "freight",
-                                "sales_order_totals",
-                                "sales_order_related",
-                                "user",
-                                "address",
-                                "api_key",
-                                "created_api_key",
-                                "refresh_token",
-                                "list",
-                                "sandbox",
-                                "registration_session",
-                                "pricing_plan",
-                                "account_plan",
-                                "plan_change",
-                                "enterprise_inquiry",
-                                "request_log",
-                                "audit_event",
-                                "audit_field_change",
-                                "role",
-                                "unit",
-                                "account_affiliation",
-                                "agent_definition",
-                                "available_tool",
-                                "agent_definition_tool",
-                                "agent_account_status",
-                                "agent_run",
-                                "agent_action",
-                                "agent_run_step",
-                                "agent_token_usage",
-                                "agent_memory",
-                                "agent_alert",
-                                "tool_group",
-                                "payment_term",
-                                "shipping_term",
-                                "quantity",
-                                "account_group",
-                                "account_status",
-                                "geolocation",
-                                "account_user",
-                                "department",
-                                "account_integration",
-                                "account_price",
-                                "product_line",
-                                "item_category",
-                                "attribute",
-                                "rate",
-                                "account_group_product_line_access",
-                                "sales_target",
-                                "adjustment_type",
-                                "account_branding",
-                                "account_portal",
-                                "account_logo_url",
-                                "public_account",
-                                "property",
-                                "carrier",
-                                "service_level",
-                                "item",
-                                "item_inventory",
-                                "product",
-                                "batch",
-                                "batch_flow_node",
-                                "scanning_consumption",
-                                "open_batch_summary",
-                                "scanning_production_step_info",
-                                "scanning_station",
-                                "production_step",
-                                "production_run",
-                                "machine",
-                                "child_account",
-                                "unit_group",
-                                "unit_group_unit",
-                                "consumption",
-                                "customer_product_line_access",
-                                "customer",
-                                "frequently_ordered_product",
-                                "priority",
-                                "delivery",
-                                "delivery_line",
-                                "sales_order",
-                                "location",
-                                "location_type",
-                                "lot",
-                                "email_log",
-                                "inventory_change_log",
-                                "invoice",
-                                "invoice_summary",
-                                "invoice_line",
-                                "invoice_allocation",
-                                "invoice_for_payment",
-                                "shipment",
-                                "shipment_summary",
-                                "shipment_line",
-                                "shipping_case",
-                                "shipping_case_label_url",
-                                "settlement",
-                                "settlement_summary",
-                                "role_permission",
-                                "registration_flow",
-                                "registration_flow_option",
-                                "transaction",
-                                "transaction_summary",
-                                "transaction_method",
-                                "transaction_type",
-                                "transaction_allocation",
-                                "usage_item",
-                                "agent_token_detail",
-                                "account_usage_response",
-                                "subscription_info",
-                                "billing_portal_session_response",
-                                "switch_plan_response",
-                                "ensure_billing_customer_response",
-                                "spending_cap_response",
-                                "agent_spend_info",
-                                "webhook_response",
-                                "address_suggestion",
-                                "address_components",
-                                "address_details_result",
-                                "validated_address",
-                                "plan_limit",
-                                "plan_change_proration",
-                                "plan_change_line_item",
-                                "setup_billing_response",
-                                "confirm_payment_response",
-                                "oauth_response",
-                                "oauth_status_response",
-                                "stripe_publishable_key",
-                                "stripe_status",
-                                "healthcheck",
-                                "agent_definition_config",
-                                "trigger_config",
-                                "customer_contact_info",
-                                "customer_freight_preferences",
-                                "customer_defaults",
-                                "customer_notification_preferences",
-                                "order_discount",
-                                "sales_order_line",
-                                "sales_order_type",
-                                "sales_order_status",
-                                "material",
-                                "supplier_material",
-                                "part",
-                                "permission_group",
-                                "permission",
-                                "pick",
-                                "pick_line",
-                                "product_type",
-                                "production",
-                                "production_flow",
-                                "map",
-                                "purchase_order",
-                                "purchase_order_line",
-                                "supplier",
-                                "supplier_summary",
-                                "receivable_entry",
-                                "receiving_order",
-                                "receiving_order_line",
-                                "email_contact",
-                                "allocation_entry",
-                                "open_credit_entry",
-                                "volume_discount",
-                                "volume_discount_tier",
-                                "analyze_deliveries_response",
-                                "analyze_manufacturing_response",
-                                "analyze_manufacturing_batch_response",
-                                "analyze_quarterly_orders_response",
-                                "analyze_new_customers_response",
-                                "analyze_oee_response",
-                                "catalog_product_line",
-                                "catalog_category",
-                                "catalog_product",
-                                "catalog_property",
-                                "catalog_attribute",
-                                "dc_location",
-                                "edi_run",
-                                "inventory_item",
-                                "analyze_weeks_of_sales_response",
-                                "bulk_reconcile_items_response",
-                                "sys_property",
-                                "sys_property_type",
-                                "sys_property_value",
-                                "territory",
-                                "tenancy",
-                                "checkout_session",
-                                "estimate_rate_result",
-                                "rate_shop_option",
-                                "rate_shop_result",
-                                "owner",
-                                "message",
-                                "account_photo_upload_result",
-                                "user_photo_upload_result",
-                                "user_photo_url",
-                                "batch_lot",
-                                "check_duplicate_result",
-                                "item_trend_point",
-                                "pack_pick_response",
-                                "pick_shipments_response",
-                                "tenancy_pending_registration",
-                                "invoice_allocation_entry",
-                                "allocation_customer",
-                                "checkout_sales_order_response",
-                                "create_production_run_response"
-                            ]
+                            "nullable": true,
+                            "expandable": false
                         },
                         {
                             "name": "name",
                             "type": "string",
-                            "description": "Human-readable display name for the entity (e.g. a user's full name, a sales order number).",
+                            "description": "Display name.",
                             "required": true,
                             "nullable": true,
                             "expandable": false
                         },
                         {
-                            "name": "handle",
+                            "name": "username",
                             "type": "string",
-                            "description": "Secondary human-readable identifier (e.g. email address, username, redacted API key value).",
+                            "description": "Username.",
                             "required": true,
                             "nullable": true,
                             "expandable": false
+                        },
+                        {
+                            "name": "email_verified_at",
+                            "type": "string",
+                            "description": "Email verified timestamp, null if unverified.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": false,
+                            "format": "date-time"
+                        },
+                        {
+                            "name": "image_url",
+                            "type": "string",
+                            "description": "Profile image URL.",
+                            "required": true,
+                            "nullable": true,
+                            "expandable": false
+                        },
+                        {
+                            "name": "created_at",
+                            "type": "string",
+                            "description": "Creation timestamp.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "format": "date-time"
+                        },
+                        {
+                            "name": "updated_at",
+                            "type": "string",
+                            "description": "Last updated timestamp.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "format": "date-time"
                         }
                     ]
                 },
@@ -22280,38 +22108,6 @@ export const apiTags: TagData[] = [
                     "enum": [
                         "account_user"
                     ]
-                },
-                {
-                    "name": "name",
-                    "type": "string",
-                    "description": "Display name.",
-                    "required": true,
-                    "nullable": true,
-                    "expandable": false
-                },
-                {
-                    "name": "email",
-                    "type": "string",
-                    "description": "Email address.",
-                    "required": true,
-                    "nullable": true,
-                    "expandable": false
-                },
-                {
-                    "name": "username",
-                    "type": "string",
-                    "description": "Username.",
-                    "required": true,
-                    "nullable": true,
-                    "expandable": false
-                },
-                {
-                    "name": "image_url",
-                    "type": "string",
-                    "description": "Profile image URL.",
-                    "required": true,
-                    "nullable": true,
-                    "expandable": false
                 },
                 {
                     "name": "status",
@@ -22536,16 +22332,16 @@ export const apiTags: TagData[] = [
                 "id": "acus_01ea9983ddb41dacc44ecf997c",
                 "user": {
                     "id": "us_0151164dcaea4cbded27b50aae",
-                    "object": "entity",
-                    "type": "user",
+                    "object": "user",
+                    "email": "jdoe@augno.com",
                     "name": "John Doe",
-                    "handle": "jdoe@augno.com"
+                    "username": "jdoe",
+                    "email_verified_at": "2026-06-10T00:00:00Z",
+                    "image_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
                 },
                 "object": "account_user",
-                "name": "John Doe",
-                "email": "john@augno.com",
-                "username": null,
-                "image_url": null,
                 "status": "active",
                 "role": {
                     "id": "rl_01c16d2eb637c0d1f3a372937c",
@@ -22603,6 +22399,7 @@ export const apiTags: TagData[] = [
                         "required": false,
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
+                            "user",
                             "role",
                             "department"
                         ]
@@ -22722,15 +22519,15 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "user",
                                 "type": "object",
-                                "description": "Underlying user reference.",
+                                "description": "Underlying user.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": false,
+                                "expandable": true,
                                 "properties": [
                                     {
                                         "name": "id",
                                         "type": "string",
-                                        "description": "Unique identifier for the entity.",
+                                        "description": "User ID.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false
@@ -22743,239 +22540,67 @@ export const apiTags: TagData[] = [
                                         "nullable": false,
                                         "expandable": false,
                                         "enum": [
-                                            "entity"
+                                            "user"
                                         ]
                                     },
                                     {
-                                        "name": "type",
+                                        "name": "email",
                                         "type": "string",
-                                        "description": "The resource kind that this entity references.",
+                                        "description": "Email address.",
                                         "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "account",
-                                            "actor",
-                                            "entity",
-                                            "record",
-                                            "freight",
-                                            "sales_order_totals",
-                                            "sales_order_related",
-                                            "user",
-                                            "address",
-                                            "api_key",
-                                            "created_api_key",
-                                            "refresh_token",
-                                            "list",
-                                            "sandbox",
-                                            "registration_session",
-                                            "pricing_plan",
-                                            "account_plan",
-                                            "plan_change",
-                                            "enterprise_inquiry",
-                                            "request_log",
-                                            "audit_event",
-                                            "audit_field_change",
-                                            "role",
-                                            "unit",
-                                            "account_affiliation",
-                                            "agent_definition",
-                                            "available_tool",
-                                            "agent_definition_tool",
-                                            "agent_account_status",
-                                            "agent_run",
-                                            "agent_action",
-                                            "agent_run_step",
-                                            "agent_token_usage",
-                                            "agent_memory",
-                                            "agent_alert",
-                                            "tool_group",
-                                            "payment_term",
-                                            "shipping_term",
-                                            "quantity",
-                                            "account_group",
-                                            "account_status",
-                                            "geolocation",
-                                            "account_user",
-                                            "department",
-                                            "account_integration",
-                                            "account_price",
-                                            "product_line",
-                                            "item_category",
-                                            "attribute",
-                                            "rate",
-                                            "account_group_product_line_access",
-                                            "sales_target",
-                                            "adjustment_type",
-                                            "account_branding",
-                                            "account_portal",
-                                            "account_logo_url",
-                                            "public_account",
-                                            "property",
-                                            "carrier",
-                                            "service_level",
-                                            "item",
-                                            "item_inventory",
-                                            "product",
-                                            "batch",
-                                            "batch_flow_node",
-                                            "scanning_consumption",
-                                            "open_batch_summary",
-                                            "scanning_production_step_info",
-                                            "scanning_station",
-                                            "production_step",
-                                            "production_run",
-                                            "machine",
-                                            "child_account",
-                                            "unit_group",
-                                            "unit_group_unit",
-                                            "consumption",
-                                            "customer_product_line_access",
-                                            "customer",
-                                            "frequently_ordered_product",
-                                            "priority",
-                                            "delivery",
-                                            "delivery_line",
-                                            "sales_order",
-                                            "location",
-                                            "location_type",
-                                            "lot",
-                                            "email_log",
-                                            "inventory_change_log",
-                                            "invoice",
-                                            "invoice_summary",
-                                            "invoice_line",
-                                            "invoice_allocation",
-                                            "invoice_for_payment",
-                                            "shipment",
-                                            "shipment_summary",
-                                            "shipment_line",
-                                            "shipping_case",
-                                            "shipping_case_label_url",
-                                            "settlement",
-                                            "settlement_summary",
-                                            "role_permission",
-                                            "registration_flow",
-                                            "registration_flow_option",
-                                            "transaction",
-                                            "transaction_summary",
-                                            "transaction_method",
-                                            "transaction_type",
-                                            "transaction_allocation",
-                                            "usage_item",
-                                            "agent_token_detail",
-                                            "account_usage_response",
-                                            "subscription_info",
-                                            "billing_portal_session_response",
-                                            "switch_plan_response",
-                                            "ensure_billing_customer_response",
-                                            "spending_cap_response",
-                                            "agent_spend_info",
-                                            "webhook_response",
-                                            "address_suggestion",
-                                            "address_components",
-                                            "address_details_result",
-                                            "validated_address",
-                                            "plan_limit",
-                                            "plan_change_proration",
-                                            "plan_change_line_item",
-                                            "setup_billing_response",
-                                            "confirm_payment_response",
-                                            "oauth_response",
-                                            "oauth_status_response",
-                                            "stripe_publishable_key",
-                                            "stripe_status",
-                                            "healthcheck",
-                                            "agent_definition_config",
-                                            "trigger_config",
-                                            "customer_contact_info",
-                                            "customer_freight_preferences",
-                                            "customer_defaults",
-                                            "customer_notification_preferences",
-                                            "order_discount",
-                                            "sales_order_line",
-                                            "sales_order_type",
-                                            "sales_order_status",
-                                            "material",
-                                            "supplier_material",
-                                            "part",
-                                            "permission_group",
-                                            "permission",
-                                            "pick",
-                                            "pick_line",
-                                            "product_type",
-                                            "production",
-                                            "production_flow",
-                                            "map",
-                                            "purchase_order",
-                                            "purchase_order_line",
-                                            "supplier",
-                                            "supplier_summary",
-                                            "receivable_entry",
-                                            "receiving_order",
-                                            "receiving_order_line",
-                                            "email_contact",
-                                            "allocation_entry",
-                                            "open_credit_entry",
-                                            "volume_discount",
-                                            "volume_discount_tier",
-                                            "analyze_deliveries_response",
-                                            "analyze_manufacturing_response",
-                                            "analyze_manufacturing_batch_response",
-                                            "analyze_quarterly_orders_response",
-                                            "analyze_new_customers_response",
-                                            "analyze_oee_response",
-                                            "catalog_product_line",
-                                            "catalog_category",
-                                            "catalog_product",
-                                            "catalog_property",
-                                            "catalog_attribute",
-                                            "dc_location",
-                                            "edi_run",
-                                            "inventory_item",
-                                            "analyze_weeks_of_sales_response",
-                                            "bulk_reconcile_items_response",
-                                            "sys_property",
-                                            "sys_property_type",
-                                            "sys_property_value",
-                                            "territory",
-                                            "tenancy",
-                                            "checkout_session",
-                                            "estimate_rate_result",
-                                            "rate_shop_option",
-                                            "rate_shop_result",
-                                            "owner",
-                                            "message",
-                                            "account_photo_upload_result",
-                                            "user_photo_upload_result",
-                                            "user_photo_url",
-                                            "batch_lot",
-                                            "check_duplicate_result",
-                                            "item_trend_point",
-                                            "pack_pick_response",
-                                            "pick_shipments_response",
-                                            "tenancy_pending_registration",
-                                            "invoice_allocation_entry",
-                                            "allocation_customer",
-                                            "checkout_sales_order_response",
-                                            "create_production_run_response"
-                                        ]
+                                        "nullable": true,
+                                        "expandable": false
                                     },
                                     {
                                         "name": "name",
                                         "type": "string",
-                                        "description": "Human-readable display name for the entity (e.g. a user's full name, a sales order number).",
+                                        "description": "Display name.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "handle",
+                                        "name": "username",
                                         "type": "string",
-                                        "description": "Secondary human-readable identifier (e.g. email address, username, redacted API key value).",
+                                        "description": "Username.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
+                                    },
+                                    {
+                                        "name": "email_verified_at",
+                                        "type": "string",
+                                        "description": "Email verified timestamp, null if unverified.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "image_url",
+                                        "type": "string",
+                                        "description": "Profile image URL.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
                                     }
                                 ]
                             },
@@ -22989,38 +22614,6 @@ export const apiTags: TagData[] = [
                                 "enum": [
                                     "account_user"
                                 ]
-                            },
-                            {
-                                "name": "name",
-                                "type": "string",
-                                "description": "Display name.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false
-                            },
-                            {
-                                "name": "email",
-                                "type": "string",
-                                "description": "Email address.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false
-                            },
-                            {
-                                "name": "username",
-                                "type": "string",
-                                "description": "Username.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false
-                            },
-                            {
-                                "name": "image_url",
-                                "type": "string",
-                                "description": "Profile image URL.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false
                             },
                             {
                                 "name": "status",
@@ -23245,16 +22838,16 @@ export const apiTags: TagData[] = [
                             "id": "acus_01ea9983ddb41dacc44ecf997c",
                             "user": {
                                 "id": "us_0151164dcaea4cbded27b50aae",
-                                "object": "entity",
-                                "type": "user",
+                                "object": "user",
+                                "email": "jdoe@augno.com",
                                 "name": "John Doe",
-                                "handle": "jdoe@augno.com"
+                                "username": "jdoe",
+                                "email_verified_at": "2026-06-10T00:00:00Z",
+                                "image_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
                             },
                             "object": "account_user",
-                            "name": "John Doe",
-                            "email": "john@augno.com",
-                            "username": null,
-                            "image_url": null,
                             "status": "active",
                             "role": {
                                 "id": "rl_01c16d2eb637c0d1f3a372937c",
@@ -23320,6 +22913,7 @@ export const apiTags: TagData[] = [
                         "required": false,
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
+                            "user",
                             "role",
                             "department"
                         ]
@@ -23423,15 +23017,15 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "user",
                                 "type": "object",
-                                "description": "Underlying user reference.",
+                                "description": "Underlying user.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": false,
+                                "expandable": true,
                                 "properties": [
                                     {
                                         "name": "id",
                                         "type": "string",
-                                        "description": "Unique identifier for the entity.",
+                                        "description": "User ID.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false
@@ -23444,239 +23038,67 @@ export const apiTags: TagData[] = [
                                         "nullable": false,
                                         "expandable": false,
                                         "enum": [
-                                            "entity"
+                                            "user"
                                         ]
                                     },
                                     {
-                                        "name": "type",
+                                        "name": "email",
                                         "type": "string",
-                                        "description": "The resource kind that this entity references.",
+                                        "description": "Email address.",
                                         "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "account",
-                                            "actor",
-                                            "entity",
-                                            "record",
-                                            "freight",
-                                            "sales_order_totals",
-                                            "sales_order_related",
-                                            "user",
-                                            "address",
-                                            "api_key",
-                                            "created_api_key",
-                                            "refresh_token",
-                                            "list",
-                                            "sandbox",
-                                            "registration_session",
-                                            "pricing_plan",
-                                            "account_plan",
-                                            "plan_change",
-                                            "enterprise_inquiry",
-                                            "request_log",
-                                            "audit_event",
-                                            "audit_field_change",
-                                            "role",
-                                            "unit",
-                                            "account_affiliation",
-                                            "agent_definition",
-                                            "available_tool",
-                                            "agent_definition_tool",
-                                            "agent_account_status",
-                                            "agent_run",
-                                            "agent_action",
-                                            "agent_run_step",
-                                            "agent_token_usage",
-                                            "agent_memory",
-                                            "agent_alert",
-                                            "tool_group",
-                                            "payment_term",
-                                            "shipping_term",
-                                            "quantity",
-                                            "account_group",
-                                            "account_status",
-                                            "geolocation",
-                                            "account_user",
-                                            "department",
-                                            "account_integration",
-                                            "account_price",
-                                            "product_line",
-                                            "item_category",
-                                            "attribute",
-                                            "rate",
-                                            "account_group_product_line_access",
-                                            "sales_target",
-                                            "adjustment_type",
-                                            "account_branding",
-                                            "account_portal",
-                                            "account_logo_url",
-                                            "public_account",
-                                            "property",
-                                            "carrier",
-                                            "service_level",
-                                            "item",
-                                            "item_inventory",
-                                            "product",
-                                            "batch",
-                                            "batch_flow_node",
-                                            "scanning_consumption",
-                                            "open_batch_summary",
-                                            "scanning_production_step_info",
-                                            "scanning_station",
-                                            "production_step",
-                                            "production_run",
-                                            "machine",
-                                            "child_account",
-                                            "unit_group",
-                                            "unit_group_unit",
-                                            "consumption",
-                                            "customer_product_line_access",
-                                            "customer",
-                                            "frequently_ordered_product",
-                                            "priority",
-                                            "delivery",
-                                            "delivery_line",
-                                            "sales_order",
-                                            "location",
-                                            "location_type",
-                                            "lot",
-                                            "email_log",
-                                            "inventory_change_log",
-                                            "invoice",
-                                            "invoice_summary",
-                                            "invoice_line",
-                                            "invoice_allocation",
-                                            "invoice_for_payment",
-                                            "shipment",
-                                            "shipment_summary",
-                                            "shipment_line",
-                                            "shipping_case",
-                                            "shipping_case_label_url",
-                                            "settlement",
-                                            "settlement_summary",
-                                            "role_permission",
-                                            "registration_flow",
-                                            "registration_flow_option",
-                                            "transaction",
-                                            "transaction_summary",
-                                            "transaction_method",
-                                            "transaction_type",
-                                            "transaction_allocation",
-                                            "usage_item",
-                                            "agent_token_detail",
-                                            "account_usage_response",
-                                            "subscription_info",
-                                            "billing_portal_session_response",
-                                            "switch_plan_response",
-                                            "ensure_billing_customer_response",
-                                            "spending_cap_response",
-                                            "agent_spend_info",
-                                            "webhook_response",
-                                            "address_suggestion",
-                                            "address_components",
-                                            "address_details_result",
-                                            "validated_address",
-                                            "plan_limit",
-                                            "plan_change_proration",
-                                            "plan_change_line_item",
-                                            "setup_billing_response",
-                                            "confirm_payment_response",
-                                            "oauth_response",
-                                            "oauth_status_response",
-                                            "stripe_publishable_key",
-                                            "stripe_status",
-                                            "healthcheck",
-                                            "agent_definition_config",
-                                            "trigger_config",
-                                            "customer_contact_info",
-                                            "customer_freight_preferences",
-                                            "customer_defaults",
-                                            "customer_notification_preferences",
-                                            "order_discount",
-                                            "sales_order_line",
-                                            "sales_order_type",
-                                            "sales_order_status",
-                                            "material",
-                                            "supplier_material",
-                                            "part",
-                                            "permission_group",
-                                            "permission",
-                                            "pick",
-                                            "pick_line",
-                                            "product_type",
-                                            "production",
-                                            "production_flow",
-                                            "map",
-                                            "purchase_order",
-                                            "purchase_order_line",
-                                            "supplier",
-                                            "supplier_summary",
-                                            "receivable_entry",
-                                            "receiving_order",
-                                            "receiving_order_line",
-                                            "email_contact",
-                                            "allocation_entry",
-                                            "open_credit_entry",
-                                            "volume_discount",
-                                            "volume_discount_tier",
-                                            "analyze_deliveries_response",
-                                            "analyze_manufacturing_response",
-                                            "analyze_manufacturing_batch_response",
-                                            "analyze_quarterly_orders_response",
-                                            "analyze_new_customers_response",
-                                            "analyze_oee_response",
-                                            "catalog_product_line",
-                                            "catalog_category",
-                                            "catalog_product",
-                                            "catalog_property",
-                                            "catalog_attribute",
-                                            "dc_location",
-                                            "edi_run",
-                                            "inventory_item",
-                                            "analyze_weeks_of_sales_response",
-                                            "bulk_reconcile_items_response",
-                                            "sys_property",
-                                            "sys_property_type",
-                                            "sys_property_value",
-                                            "territory",
-                                            "tenancy",
-                                            "checkout_session",
-                                            "estimate_rate_result",
-                                            "rate_shop_option",
-                                            "rate_shop_result",
-                                            "owner",
-                                            "message",
-                                            "account_photo_upload_result",
-                                            "user_photo_upload_result",
-                                            "user_photo_url",
-                                            "batch_lot",
-                                            "check_duplicate_result",
-                                            "item_trend_point",
-                                            "pack_pick_response",
-                                            "pick_shipments_response",
-                                            "tenancy_pending_registration",
-                                            "invoice_allocation_entry",
-                                            "allocation_customer",
-                                            "checkout_sales_order_response",
-                                            "create_production_run_response"
-                                        ]
+                                        "nullable": true,
+                                        "expandable": false
                                     },
                                     {
                                         "name": "name",
                                         "type": "string",
-                                        "description": "Human-readable display name for the entity (e.g. a user's full name, a sales order number).",
+                                        "description": "Display name.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "handle",
+                                        "name": "username",
                                         "type": "string",
-                                        "description": "Secondary human-readable identifier (e.g. email address, username, redacted API key value).",
+                                        "description": "Username.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
+                                    },
+                                    {
+                                        "name": "email_verified_at",
+                                        "type": "string",
+                                        "description": "Email verified timestamp, null if unverified.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "image_url",
+                                        "type": "string",
+                                        "description": "Profile image URL.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
                                     }
                                 ]
                             },
@@ -23690,38 +23112,6 @@ export const apiTags: TagData[] = [
                                 "enum": [
                                     "account_user"
                                 ]
-                            },
-                            {
-                                "name": "name",
-                                "type": "string",
-                                "description": "Display name.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false
-                            },
-                            {
-                                "name": "email",
-                                "type": "string",
-                                "description": "Email address.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false
-                            },
-                            {
-                                "name": "username",
-                                "type": "string",
-                                "description": "Username.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false
-                            },
-                            {
-                                "name": "image_url",
-                                "type": "string",
-                                "description": "Profile image URL.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false
                             },
                             {
                                 "name": "status",
@@ -23946,16 +23336,16 @@ export const apiTags: TagData[] = [
                             "id": "acus_01ea9983ddb41dacc44ecf997c",
                             "user": {
                                 "id": "us_0151164dcaea4cbded27b50aae",
-                                "object": "entity",
-                                "type": "user",
+                                "object": "user",
+                                "email": "jdoe@augno.com",
                                 "name": "John Doe",
-                                "handle": "jdoe@augno.com"
+                                "username": "jdoe",
+                                "email_verified_at": "2026-06-10T00:00:00Z",
+                                "image_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
                             },
                             "object": "account_user",
-                            "name": "John Doe",
-                            "email": "john@augno.com",
-                            "username": null,
-                            "image_url": null,
                             "status": "active",
                             "role": {
                                 "id": "rl_01c16d2eb637c0d1f3a372937c",
@@ -24060,6 +23450,7 @@ export const apiTags: TagData[] = [
                         "required": false,
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
+                            "user",
                             "role",
                             "department"
                         ]
@@ -24143,15 +23534,15 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "user",
                                         "type": "object",
-                                        "description": "Underlying user reference.",
+                                        "description": "Underlying user.",
                                         "required": true,
                                         "nullable": true,
-                                        "expandable": false,
+                                        "expandable": true,
                                         "properties": [
                                             {
                                                 "name": "id",
                                                 "type": "string",
-                                                "description": "Unique identifier for the entity.",
+                                                "description": "User ID.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false
@@ -24164,239 +23555,67 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "enum": [
-                                                    "entity"
+                                                    "user"
                                                 ]
                                             },
                                             {
-                                                "name": "type",
+                                                "name": "email",
                                                 "type": "string",
-                                                "description": "The resource kind that this entity references.",
+                                                "description": "Email address.",
                                                 "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "account",
-                                                    "actor",
-                                                    "entity",
-                                                    "record",
-                                                    "freight",
-                                                    "sales_order_totals",
-                                                    "sales_order_related",
-                                                    "user",
-                                                    "address",
-                                                    "api_key",
-                                                    "created_api_key",
-                                                    "refresh_token",
-                                                    "list",
-                                                    "sandbox",
-                                                    "registration_session",
-                                                    "pricing_plan",
-                                                    "account_plan",
-                                                    "plan_change",
-                                                    "enterprise_inquiry",
-                                                    "request_log",
-                                                    "audit_event",
-                                                    "audit_field_change",
-                                                    "role",
-                                                    "unit",
-                                                    "account_affiliation",
-                                                    "agent_definition",
-                                                    "available_tool",
-                                                    "agent_definition_tool",
-                                                    "agent_account_status",
-                                                    "agent_run",
-                                                    "agent_action",
-                                                    "agent_run_step",
-                                                    "agent_token_usage",
-                                                    "agent_memory",
-                                                    "agent_alert",
-                                                    "tool_group",
-                                                    "payment_term",
-                                                    "shipping_term",
-                                                    "quantity",
-                                                    "account_group",
-                                                    "account_status",
-                                                    "geolocation",
-                                                    "account_user",
-                                                    "department",
-                                                    "account_integration",
-                                                    "account_price",
-                                                    "product_line",
-                                                    "item_category",
-                                                    "attribute",
-                                                    "rate",
-                                                    "account_group_product_line_access",
-                                                    "sales_target",
-                                                    "adjustment_type",
-                                                    "account_branding",
-                                                    "account_portal",
-                                                    "account_logo_url",
-                                                    "public_account",
-                                                    "property",
-                                                    "carrier",
-                                                    "service_level",
-                                                    "item",
-                                                    "item_inventory",
-                                                    "product",
-                                                    "batch",
-                                                    "batch_flow_node",
-                                                    "scanning_consumption",
-                                                    "open_batch_summary",
-                                                    "scanning_production_step_info",
-                                                    "scanning_station",
-                                                    "production_step",
-                                                    "production_run",
-                                                    "machine",
-                                                    "child_account",
-                                                    "unit_group",
-                                                    "unit_group_unit",
-                                                    "consumption",
-                                                    "customer_product_line_access",
-                                                    "customer",
-                                                    "frequently_ordered_product",
-                                                    "priority",
-                                                    "delivery",
-                                                    "delivery_line",
-                                                    "sales_order",
-                                                    "location",
-                                                    "location_type",
-                                                    "lot",
-                                                    "email_log",
-                                                    "inventory_change_log",
-                                                    "invoice",
-                                                    "invoice_summary",
-                                                    "invoice_line",
-                                                    "invoice_allocation",
-                                                    "invoice_for_payment",
-                                                    "shipment",
-                                                    "shipment_summary",
-                                                    "shipment_line",
-                                                    "shipping_case",
-                                                    "shipping_case_label_url",
-                                                    "settlement",
-                                                    "settlement_summary",
-                                                    "role_permission",
-                                                    "registration_flow",
-                                                    "registration_flow_option",
-                                                    "transaction",
-                                                    "transaction_summary",
-                                                    "transaction_method",
-                                                    "transaction_type",
-                                                    "transaction_allocation",
-                                                    "usage_item",
-                                                    "agent_token_detail",
-                                                    "account_usage_response",
-                                                    "subscription_info",
-                                                    "billing_portal_session_response",
-                                                    "switch_plan_response",
-                                                    "ensure_billing_customer_response",
-                                                    "spending_cap_response",
-                                                    "agent_spend_info",
-                                                    "webhook_response",
-                                                    "address_suggestion",
-                                                    "address_components",
-                                                    "address_details_result",
-                                                    "validated_address",
-                                                    "plan_limit",
-                                                    "plan_change_proration",
-                                                    "plan_change_line_item",
-                                                    "setup_billing_response",
-                                                    "confirm_payment_response",
-                                                    "oauth_response",
-                                                    "oauth_status_response",
-                                                    "stripe_publishable_key",
-                                                    "stripe_status",
-                                                    "healthcheck",
-                                                    "agent_definition_config",
-                                                    "trigger_config",
-                                                    "customer_contact_info",
-                                                    "customer_freight_preferences",
-                                                    "customer_defaults",
-                                                    "customer_notification_preferences",
-                                                    "order_discount",
-                                                    "sales_order_line",
-                                                    "sales_order_type",
-                                                    "sales_order_status",
-                                                    "material",
-                                                    "supplier_material",
-                                                    "part",
-                                                    "permission_group",
-                                                    "permission",
-                                                    "pick",
-                                                    "pick_line",
-                                                    "product_type",
-                                                    "production",
-                                                    "production_flow",
-                                                    "map",
-                                                    "purchase_order",
-                                                    "purchase_order_line",
-                                                    "supplier",
-                                                    "supplier_summary",
-                                                    "receivable_entry",
-                                                    "receiving_order",
-                                                    "receiving_order_line",
-                                                    "email_contact",
-                                                    "allocation_entry",
-                                                    "open_credit_entry",
-                                                    "volume_discount",
-                                                    "volume_discount_tier",
-                                                    "analyze_deliveries_response",
-                                                    "analyze_manufacturing_response",
-                                                    "analyze_manufacturing_batch_response",
-                                                    "analyze_quarterly_orders_response",
-                                                    "analyze_new_customers_response",
-                                                    "analyze_oee_response",
-                                                    "catalog_product_line",
-                                                    "catalog_category",
-                                                    "catalog_product",
-                                                    "catalog_property",
-                                                    "catalog_attribute",
-                                                    "dc_location",
-                                                    "edi_run",
-                                                    "inventory_item",
-                                                    "analyze_weeks_of_sales_response",
-                                                    "bulk_reconcile_items_response",
-                                                    "sys_property",
-                                                    "sys_property_type",
-                                                    "sys_property_value",
-                                                    "territory",
-                                                    "tenancy",
-                                                    "checkout_session",
-                                                    "estimate_rate_result",
-                                                    "rate_shop_option",
-                                                    "rate_shop_result",
-                                                    "owner",
-                                                    "message",
-                                                    "account_photo_upload_result",
-                                                    "user_photo_upload_result",
-                                                    "user_photo_url",
-                                                    "batch_lot",
-                                                    "check_duplicate_result",
-                                                    "item_trend_point",
-                                                    "pack_pick_response",
-                                                    "pick_shipments_response",
-                                                    "tenancy_pending_registration",
-                                                    "invoice_allocation_entry",
-                                                    "allocation_customer",
-                                                    "checkout_sales_order_response",
-                                                    "create_production_run_response"
-                                                ]
+                                                "nullable": true,
+                                                "expandable": false
                                             },
                                             {
                                                 "name": "name",
                                                 "type": "string",
-                                                "description": "Human-readable display name for the entity (e.g. a user's full name, a sales order number).",
+                                                "description": "Display name.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
                                             },
                                             {
-                                                "name": "handle",
+                                                "name": "username",
                                                 "type": "string",
-                                                "description": "Secondary human-readable identifier (e.g. email address, username, redacted API key value).",
+                                                "description": "Username.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
+                                            },
+                                            {
+                                                "name": "email_verified_at",
+                                                "type": "string",
+                                                "description": "Email verified timestamp, null if unverified.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "image_url",
+                                                "type": "string",
+                                                "description": "Profile image URL.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
                                             }
                                         ]
                                     },
@@ -24410,38 +23629,6 @@ export const apiTags: TagData[] = [
                                         "enum": [
                                             "account_user"
                                         ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "Display name.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "email",
-                                        "type": "string",
-                                        "description": "Email address.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "username",
-                                        "type": "string",
-                                        "description": "Username.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "image_url",
-                                        "type": "string",
-                                        "description": "Profile image URL.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
                                     },
                                     {
                                         "name": "status",
@@ -24677,16 +23864,16 @@ export const apiTags: TagData[] = [
                                     "id": "acus_01ea9983ddb41dacc44ecf997c",
                                     "user": {
                                         "id": "us_0151164dcaea4cbded27b50aae",
-                                        "object": "entity",
-                                        "type": "user",
+                                        "object": "user",
+                                        "email": "jdoe@augno.com",
                                         "name": "John Doe",
-                                        "handle": "jdoe@augno.com"
+                                        "username": "jdoe",
+                                        "email_verified_at": "2026-06-10T00:00:00Z",
+                                        "image_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
                                     },
                                     "object": "account_user",
-                                    "name": "John Doe",
-                                    "email": "john@augno.com",
-                                    "username": null,
-                                    "image_url": null,
                                     "status": "active",
                                     "role": {
                                         "id": "rl_01c16d2eb637c0d1f3a372937c",
@@ -24754,6 +23941,7 @@ export const apiTags: TagData[] = [
                         "required": false,
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
+                            "user",
                             "role",
                             "department"
                         ]
@@ -24775,15 +23963,15 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "user",
                                 "type": "object",
-                                "description": "Underlying user reference.",
+                                "description": "Underlying user.",
                                 "required": true,
                                 "nullable": true,
-                                "expandable": false,
+                                "expandable": true,
                                 "properties": [
                                     {
                                         "name": "id",
                                         "type": "string",
-                                        "description": "Unique identifier for the entity.",
+                                        "description": "User ID.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false
@@ -24796,239 +23984,67 @@ export const apiTags: TagData[] = [
                                         "nullable": false,
                                         "expandable": false,
                                         "enum": [
-                                            "entity"
+                                            "user"
                                         ]
                                     },
                                     {
-                                        "name": "type",
+                                        "name": "email",
                                         "type": "string",
-                                        "description": "The resource kind that this entity references.",
+                                        "description": "Email address.",
                                         "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "account",
-                                            "actor",
-                                            "entity",
-                                            "record",
-                                            "freight",
-                                            "sales_order_totals",
-                                            "sales_order_related",
-                                            "user",
-                                            "address",
-                                            "api_key",
-                                            "created_api_key",
-                                            "refresh_token",
-                                            "list",
-                                            "sandbox",
-                                            "registration_session",
-                                            "pricing_plan",
-                                            "account_plan",
-                                            "plan_change",
-                                            "enterprise_inquiry",
-                                            "request_log",
-                                            "audit_event",
-                                            "audit_field_change",
-                                            "role",
-                                            "unit",
-                                            "account_affiliation",
-                                            "agent_definition",
-                                            "available_tool",
-                                            "agent_definition_tool",
-                                            "agent_account_status",
-                                            "agent_run",
-                                            "agent_action",
-                                            "agent_run_step",
-                                            "agent_token_usage",
-                                            "agent_memory",
-                                            "agent_alert",
-                                            "tool_group",
-                                            "payment_term",
-                                            "shipping_term",
-                                            "quantity",
-                                            "account_group",
-                                            "account_status",
-                                            "geolocation",
-                                            "account_user",
-                                            "department",
-                                            "account_integration",
-                                            "account_price",
-                                            "product_line",
-                                            "item_category",
-                                            "attribute",
-                                            "rate",
-                                            "account_group_product_line_access",
-                                            "sales_target",
-                                            "adjustment_type",
-                                            "account_branding",
-                                            "account_portal",
-                                            "account_logo_url",
-                                            "public_account",
-                                            "property",
-                                            "carrier",
-                                            "service_level",
-                                            "item",
-                                            "item_inventory",
-                                            "product",
-                                            "batch",
-                                            "batch_flow_node",
-                                            "scanning_consumption",
-                                            "open_batch_summary",
-                                            "scanning_production_step_info",
-                                            "scanning_station",
-                                            "production_step",
-                                            "production_run",
-                                            "machine",
-                                            "child_account",
-                                            "unit_group",
-                                            "unit_group_unit",
-                                            "consumption",
-                                            "customer_product_line_access",
-                                            "customer",
-                                            "frequently_ordered_product",
-                                            "priority",
-                                            "delivery",
-                                            "delivery_line",
-                                            "sales_order",
-                                            "location",
-                                            "location_type",
-                                            "lot",
-                                            "email_log",
-                                            "inventory_change_log",
-                                            "invoice",
-                                            "invoice_summary",
-                                            "invoice_line",
-                                            "invoice_allocation",
-                                            "invoice_for_payment",
-                                            "shipment",
-                                            "shipment_summary",
-                                            "shipment_line",
-                                            "shipping_case",
-                                            "shipping_case_label_url",
-                                            "settlement",
-                                            "settlement_summary",
-                                            "role_permission",
-                                            "registration_flow",
-                                            "registration_flow_option",
-                                            "transaction",
-                                            "transaction_summary",
-                                            "transaction_method",
-                                            "transaction_type",
-                                            "transaction_allocation",
-                                            "usage_item",
-                                            "agent_token_detail",
-                                            "account_usage_response",
-                                            "subscription_info",
-                                            "billing_portal_session_response",
-                                            "switch_plan_response",
-                                            "ensure_billing_customer_response",
-                                            "spending_cap_response",
-                                            "agent_spend_info",
-                                            "webhook_response",
-                                            "address_suggestion",
-                                            "address_components",
-                                            "address_details_result",
-                                            "validated_address",
-                                            "plan_limit",
-                                            "plan_change_proration",
-                                            "plan_change_line_item",
-                                            "setup_billing_response",
-                                            "confirm_payment_response",
-                                            "oauth_response",
-                                            "oauth_status_response",
-                                            "stripe_publishable_key",
-                                            "stripe_status",
-                                            "healthcheck",
-                                            "agent_definition_config",
-                                            "trigger_config",
-                                            "customer_contact_info",
-                                            "customer_freight_preferences",
-                                            "customer_defaults",
-                                            "customer_notification_preferences",
-                                            "order_discount",
-                                            "sales_order_line",
-                                            "sales_order_type",
-                                            "sales_order_status",
-                                            "material",
-                                            "supplier_material",
-                                            "part",
-                                            "permission_group",
-                                            "permission",
-                                            "pick",
-                                            "pick_line",
-                                            "product_type",
-                                            "production",
-                                            "production_flow",
-                                            "map",
-                                            "purchase_order",
-                                            "purchase_order_line",
-                                            "supplier",
-                                            "supplier_summary",
-                                            "receivable_entry",
-                                            "receiving_order",
-                                            "receiving_order_line",
-                                            "email_contact",
-                                            "allocation_entry",
-                                            "open_credit_entry",
-                                            "volume_discount",
-                                            "volume_discount_tier",
-                                            "analyze_deliveries_response",
-                                            "analyze_manufacturing_response",
-                                            "analyze_manufacturing_batch_response",
-                                            "analyze_quarterly_orders_response",
-                                            "analyze_new_customers_response",
-                                            "analyze_oee_response",
-                                            "catalog_product_line",
-                                            "catalog_category",
-                                            "catalog_product",
-                                            "catalog_property",
-                                            "catalog_attribute",
-                                            "dc_location",
-                                            "edi_run",
-                                            "inventory_item",
-                                            "analyze_weeks_of_sales_response",
-                                            "bulk_reconcile_items_response",
-                                            "sys_property",
-                                            "sys_property_type",
-                                            "sys_property_value",
-                                            "territory",
-                                            "tenancy",
-                                            "checkout_session",
-                                            "estimate_rate_result",
-                                            "rate_shop_option",
-                                            "rate_shop_result",
-                                            "owner",
-                                            "message",
-                                            "account_photo_upload_result",
-                                            "user_photo_upload_result",
-                                            "user_photo_url",
-                                            "batch_lot",
-                                            "check_duplicate_result",
-                                            "item_trend_point",
-                                            "pack_pick_response",
-                                            "pick_shipments_response",
-                                            "tenancy_pending_registration",
-                                            "invoice_allocation_entry",
-                                            "allocation_customer",
-                                            "checkout_sales_order_response",
-                                            "create_production_run_response"
-                                        ]
+                                        "nullable": true,
+                                        "expandable": false
                                     },
                                     {
                                         "name": "name",
                                         "type": "string",
-                                        "description": "Human-readable display name for the entity (e.g. a user's full name, a sales order number).",
+                                        "description": "Display name.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
                                     },
                                     {
-                                        "name": "handle",
+                                        "name": "username",
                                         "type": "string",
-                                        "description": "Secondary human-readable identifier (e.g. email address, username, redacted API key value).",
+                                        "description": "Username.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
+                                    },
+                                    {
+                                        "name": "email_verified_at",
+                                        "type": "string",
+                                        "description": "Email verified timestamp, null if unverified.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "image_url",
+                                        "type": "string",
+                                        "description": "Profile image URL.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
                                     }
                                 ]
                             },
@@ -25042,38 +24058,6 @@ export const apiTags: TagData[] = [
                                 "enum": [
                                     "account_user"
                                 ]
-                            },
-                            {
-                                "name": "name",
-                                "type": "string",
-                                "description": "Display name.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false
-                            },
-                            {
-                                "name": "email",
-                                "type": "string",
-                                "description": "Email address.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false
-                            },
-                            {
-                                "name": "username",
-                                "type": "string",
-                                "description": "Username.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false
-                            },
-                            {
-                                "name": "image_url",
-                                "type": "string",
-                                "description": "Profile image URL.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false
                             },
                             {
                                 "name": "status",
@@ -25298,16 +24282,16 @@ export const apiTags: TagData[] = [
                             "id": "acus_01ea9983ddb41dacc44ecf997c",
                             "user": {
                                 "id": "us_0151164dcaea4cbded27b50aae",
-                                "object": "entity",
-                                "type": "user",
+                                "object": "user",
+                                "email": "jdoe@augno.com",
                                 "name": "John Doe",
-                                "handle": "jdoe@augno.com"
+                                "username": "jdoe",
+                                "email_verified_at": "2026-06-10T00:00:00Z",
+                                "image_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
                             },
                             "object": "account_user",
-                            "name": "John Doe",
-                            "email": "john@augno.com",
-                            "username": null,
-                            "image_url": null,
                             "status": "active",
                             "role": {
                                 "id": "rl_01c16d2eb637c0d1f3a372937c",
@@ -66851,11 +65835,90 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "user",
                                     "type": "object",
-                                    "description": "Underlying user reference.",
+                                    "description": "Underlying user.",
                                     "required": true,
                                     "nullable": true,
-                                    "alwaysNull": true,
-                                    "expandable": false
+                                    "expandable": true,
+                                    "properties": [
+                                        {
+                                            "name": "id",
+                                            "type": "string",
+                                            "description": "User ID.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false
+                                        },
+                                        {
+                                            "name": "object",
+                                            "type": "string",
+                                            "description": "Resource type identifier.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false,
+                                            "enum": [
+                                                "user"
+                                            ]
+                                        },
+                                        {
+                                            "name": "email",
+                                            "type": "string",
+                                            "description": "Email address.",
+                                            "required": true,
+                                            "nullable": true,
+                                            "expandable": false
+                                        },
+                                        {
+                                            "name": "name",
+                                            "type": "string",
+                                            "description": "Display name.",
+                                            "required": true,
+                                            "nullable": true,
+                                            "expandable": false
+                                        },
+                                        {
+                                            "name": "username",
+                                            "type": "string",
+                                            "description": "Username.",
+                                            "required": true,
+                                            "nullable": true,
+                                            "expandable": false
+                                        },
+                                        {
+                                            "name": "email_verified_at",
+                                            "type": "string",
+                                            "description": "Email verified timestamp, null if unverified.",
+                                            "required": true,
+                                            "nullable": true,
+                                            "expandable": false,
+                                            "format": "date-time"
+                                        },
+                                        {
+                                            "name": "image_url",
+                                            "type": "string",
+                                            "description": "Profile image URL.",
+                                            "required": true,
+                                            "nullable": true,
+                                            "expandable": false
+                                        },
+                                        {
+                                            "name": "created_at",
+                                            "type": "string",
+                                            "description": "Creation timestamp.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false,
+                                            "format": "date-time"
+                                        },
+                                        {
+                                            "name": "updated_at",
+                                            "type": "string",
+                                            "description": "Last updated timestamp.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false,
+                                            "format": "date-time"
+                                        }
+                                    ]
                                 },
                                 {
                                     "name": "object",
@@ -66867,38 +65930,6 @@ export const apiTags: TagData[] = [
                                     "enum": [
                                         "account_user"
                                     ]
-                                },
-                                {
-                                    "name": "name",
-                                    "type": "string",
-                                    "description": "Display name.",
-                                    "required": true,
-                                    "nullable": true,
-                                    "expandable": false
-                                },
-                                {
-                                    "name": "email",
-                                    "type": "string",
-                                    "description": "Email address.",
-                                    "required": true,
-                                    "nullable": true,
-                                    "expandable": false
-                                },
-                                {
-                                    "name": "username",
-                                    "type": "string",
-                                    "description": "Username.",
-                                    "required": true,
-                                    "nullable": true,
-                                    "expandable": false
-                                },
-                                {
-                                    "name": "image_url",
-                                    "type": "string",
-                                    "description": "Profile image URL.",
-                                    "required": true,
-                                    "nullable": true,
-                                    "expandable": false
                                 },
                                 {
                                     "name": "status",
@@ -68118,16 +67149,16 @@ export const apiTags: TagData[] = [
                         "id": "acus_01ea9983ddb41dacc44ecf997c",
                         "user": {
                             "id": "us_0151164dcaea4cbded27b50aae",
-                            "object": "entity",
-                            "type": "user",
+                            "object": "user",
+                            "email": "jdoe@augno.com",
                             "name": "John Doe",
-                            "handle": "jdoe@augno.com"
+                            "username": "jdoe",
+                            "email_verified_at": "2026-06-10T00:00:00Z",
+                            "image_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
                         },
                         "object": "account_user",
-                        "name": "John Doe",
-                        "email": "john@augno.com",
-                        "username": null,
-                        "image_url": null,
                         "status": "active",
                         "role": {
                             "id": "rl_01c16d2eb637c0d1f3a372937c",
@@ -68277,6 +67308,7 @@ export const apiTags: TagData[] = [
                             "defaults.payment_term",
                             "defaults.shipping_term",
                             "defaults.sales_rep",
+                            "defaults.sales_rep.user",
                             "defaults.priority",
                             "contact_info",
                             "freight_preferences",
@@ -69479,11 +68511,90 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "user",
                                                 "type": "object",
-                                                "description": "Underlying user reference.",
+                                                "description": "Underlying user.",
                                                 "required": true,
                                                 "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": false
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "User ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "user"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "email",
+                                                        "type": "string",
+                                                        "description": "Email address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "username",
+                                                        "type": "string",
+                                                        "description": "Username.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "email_verified_at",
+                                                        "type": "string",
+                                                        "description": "Email verified timestamp, null if unverified.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "image_url",
+                                                        "type": "string",
+                                                        "description": "Profile image URL.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
                                             },
                                             {
                                                 "name": "object",
@@ -69495,38 +68606,6 @@ export const apiTags: TagData[] = [
                                                 "enum": [
                                                     "account_user"
                                                 ]
-                                            },
-                                            {
-                                                "name": "name",
-                                                "type": "string",
-                                                "description": "Display name.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "email",
-                                                "type": "string",
-                                                "description": "Email address.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "username",
-                                                "type": "string",
-                                                "description": "Username.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "image_url",
-                                                "type": "string",
-                                                "description": "Profile image URL.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
                                             },
                                             {
                                                 "name": "status",
@@ -70746,16 +69825,16 @@ export const apiTags: TagData[] = [
                                     "id": "acus_01ea9983ddb41dacc44ecf997c",
                                     "user": {
                                         "id": "us_0151164dcaea4cbded27b50aae",
-                                        "object": "entity",
-                                        "type": "user",
+                                        "object": "user",
+                                        "email": "jdoe@augno.com",
                                         "name": "John Doe",
-                                        "handle": "jdoe@augno.com"
+                                        "username": "jdoe",
+                                        "email_verified_at": "2026-06-10T00:00:00Z",
+                                        "image_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
                                     },
                                     "object": "account_user",
-                                    "name": "John Doe",
-                                    "email": "john@augno.com",
-                                    "username": null,
-                                    "image_url": null,
                                     "status": "active",
                                     "role": {
                                         "id": "rl_01c16d2eb637c0d1f3a372937c",
@@ -70913,6 +69992,7 @@ export const apiTags: TagData[] = [
                             "defaults.payment_term",
                             "defaults.shipping_term",
                             "defaults.sales_rep",
+                            "defaults.sales_rep.user",
                             "defaults.priority",
                             "contact_info",
                             "freight_preferences",
@@ -71925,11 +71005,90 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "user",
                                                 "type": "object",
-                                                "description": "Underlying user reference.",
+                                                "description": "Underlying user.",
                                                 "required": true,
                                                 "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": false
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "User ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "user"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "email",
+                                                        "type": "string",
+                                                        "description": "Email address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "username",
+                                                        "type": "string",
+                                                        "description": "Username.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "email_verified_at",
+                                                        "type": "string",
+                                                        "description": "Email verified timestamp, null if unverified.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "image_url",
+                                                        "type": "string",
+                                                        "description": "Profile image URL.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
                                             },
                                             {
                                                 "name": "object",
@@ -71941,38 +71100,6 @@ export const apiTags: TagData[] = [
                                                 "enum": [
                                                     "account_user"
                                                 ]
-                                            },
-                                            {
-                                                "name": "name",
-                                                "type": "string",
-                                                "description": "Display name.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "email",
-                                                "type": "string",
-                                                "description": "Email address.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "username",
-                                                "type": "string",
-                                                "description": "Username.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "image_url",
-                                                "type": "string",
-                                                "description": "Profile image URL.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
                                             },
                                             {
                                                 "name": "status",
@@ -73192,16 +72319,16 @@ export const apiTags: TagData[] = [
                                     "id": "acus_01ea9983ddb41dacc44ecf997c",
                                     "user": {
                                         "id": "us_0151164dcaea4cbded27b50aae",
-                                        "object": "entity",
-                                        "type": "user",
+                                        "object": "user",
+                                        "email": "jdoe@augno.com",
                                         "name": "John Doe",
-                                        "handle": "jdoe@augno.com"
+                                        "username": "jdoe",
+                                        "email_verified_at": "2026-06-10T00:00:00Z",
+                                        "image_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
                                     },
                                     "object": "account_user",
-                                    "name": "John Doe",
-                                    "email": "john@augno.com",
-                                    "username": null,
-                                    "image_url": null,
                                     "status": "active",
                                     "role": {
                                         "id": "rl_01c16d2eb637c0d1f3a372937c",
@@ -73505,6 +72632,7 @@ export const apiTags: TagData[] = [
                             "defaults.payment_term",
                             "defaults.shipping_term",
                             "defaults.sales_rep",
+                            "defaults.sales_rep.user",
                             "defaults.priority",
                             "contact_info",
                             "freight_preferences",
@@ -74337,11 +73465,90 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "user",
                                                         "type": "object",
-                                                        "description": "Underlying user reference.",
+                                                        "description": "Underlying user.",
                                                         "required": true,
                                                         "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": false
+                                                        "expandable": true,
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "User ID.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "user"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "email",
+                                                                "type": "string",
+                                                                "description": "Email address.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "name",
+                                                                "type": "string",
+                                                                "description": "Display name.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "username",
+                                                                "type": "string",
+                                                                "description": "Username.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "email_verified_at",
+                                                                "type": "string",
+                                                                "description": "Email verified timestamp, null if unverified.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            },
+                                                            {
+                                                                "name": "image_url",
+                                                                "type": "string",
+                                                                "description": "Profile image URL.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "created_at",
+                                                                "type": "string",
+                                                                "description": "Creation timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            },
+                                                            {
+                                                                "name": "updated_at",
+                                                                "type": "string",
+                                                                "description": "Last updated timestamp.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "format": "date-time"
+                                                            }
+                                                        ]
                                                     },
                                                     {
                                                         "name": "object",
@@ -74353,38 +73560,6 @@ export const apiTags: TagData[] = [
                                                         "enum": [
                                                             "account_user"
                                                         ]
-                                                    },
-                                                    {
-                                                        "name": "name",
-                                                        "type": "string",
-                                                        "description": "Display name.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "email",
-                                                        "type": "string",
-                                                        "description": "Email address.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "username",
-                                                        "type": "string",
-                                                        "description": "Username.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "image_url",
-                                                        "type": "string",
-                                                        "description": "Profile image URL.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
                                                     },
                                                     {
                                                         "name": "status",
@@ -75615,16 +74790,16 @@ export const apiTags: TagData[] = [
                                             "id": "acus_01ea9983ddb41dacc44ecf997c",
                                             "user": {
                                                 "id": "us_0151164dcaea4cbded27b50aae",
-                                                "object": "entity",
-                                                "type": "user",
+                                                "object": "user",
+                                                "email": "jdoe@augno.com",
                                                 "name": "John Doe",
-                                                "handle": "jdoe@augno.com"
+                                                "username": "jdoe",
+                                                "email_verified_at": "2026-06-10T00:00:00Z",
+                                                "image_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
                                             },
                                             "object": "account_user",
-                                            "name": "John Doe",
-                                            "email": "john@augno.com",
-                                            "username": null,
-                                            "image_url": null,
                                             "status": "active",
                                             "role": {
                                                 "id": "rl_01c16d2eb637c0d1f3a372937c",
@@ -75784,6 +74959,7 @@ export const apiTags: TagData[] = [
                             "defaults.payment_term",
                             "defaults.shipping_term",
                             "defaults.sales_rep",
+                            "defaults.sales_rep.user",
                             "defaults.priority",
                             "contact_info",
                             "freight_preferences",
@@ -76554,11 +75730,90 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "user",
                                                 "type": "object",
-                                                "description": "Underlying user reference.",
+                                                "description": "Underlying user.",
                                                 "required": true,
                                                 "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": false
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "User ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "user"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "email",
+                                                        "type": "string",
+                                                        "description": "Email address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "username",
+                                                        "type": "string",
+                                                        "description": "Username.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "email_verified_at",
+                                                        "type": "string",
+                                                        "description": "Email verified timestamp, null if unverified.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "image_url",
+                                                        "type": "string",
+                                                        "description": "Profile image URL.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
                                             },
                                             {
                                                 "name": "object",
@@ -76570,38 +75825,6 @@ export const apiTags: TagData[] = [
                                                 "enum": [
                                                     "account_user"
                                                 ]
-                                            },
-                                            {
-                                                "name": "name",
-                                                "type": "string",
-                                                "description": "Display name.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "email",
-                                                "type": "string",
-                                                "description": "Email address.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "username",
-                                                "type": "string",
-                                                "description": "Username.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "image_url",
-                                                "type": "string",
-                                                "description": "Profile image URL.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
                                             },
                                             {
                                                 "name": "status",
@@ -77821,16 +77044,16 @@ export const apiTags: TagData[] = [
                                     "id": "acus_01ea9983ddb41dacc44ecf997c",
                                     "user": {
                                         "id": "us_0151164dcaea4cbded27b50aae",
-                                        "object": "entity",
-                                        "type": "user",
+                                        "object": "user",
+                                        "email": "jdoe@augno.com",
                                         "name": "John Doe",
-                                        "handle": "jdoe@augno.com"
+                                        "username": "jdoe",
+                                        "email_verified_at": "2026-06-10T00:00:00Z",
+                                        "image_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
                                     },
                                     "object": "account_user",
-                                    "name": "John Doe",
-                                    "email": "john@augno.com",
-                                    "username": null,
-                                    "image_url": null,
                                     "status": "active",
                                     "role": {
                                         "id": "rl_01c16d2eb637c0d1f3a372937c",
@@ -78018,6 +77241,7 @@ export const apiTags: TagData[] = [
                             "defaults.payment_term",
                             "defaults.shipping_term",
                             "defaults.sales_rep",
+                            "defaults.sales_rep.user",
                             "defaults.priority",
                             "contact_info",
                             "freight_preferences",
@@ -78807,11 +78031,90 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "user",
                                                 "type": "object",
-                                                "description": "Underlying user reference.",
+                                                "description": "Underlying user.",
                                                 "required": true,
                                                 "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": false
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "User ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "user"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "email",
+                                                        "type": "string",
+                                                        "description": "Email address.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Display name.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "username",
+                                                        "type": "string",
+                                                        "description": "Username.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "email_verified_at",
+                                                        "type": "string",
+                                                        "description": "Email verified timestamp, null if unverified.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "image_url",
+                                                        "type": "string",
+                                                        "description": "Profile image URL.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
                                             },
                                             {
                                                 "name": "object",
@@ -78823,38 +78126,6 @@ export const apiTags: TagData[] = [
                                                 "enum": [
                                                     "account_user"
                                                 ]
-                                            },
-                                            {
-                                                "name": "name",
-                                                "type": "string",
-                                                "description": "Display name.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "email",
-                                                "type": "string",
-                                                "description": "Email address.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "username",
-                                                "type": "string",
-                                                "description": "Username.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "image_url",
-                                                "type": "string",
-                                                "description": "Profile image URL.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
                                             },
                                             {
                                                 "name": "status",
@@ -80074,16 +79345,16 @@ export const apiTags: TagData[] = [
                                     "id": "acus_01ea9983ddb41dacc44ecf997c",
                                     "user": {
                                         "id": "us_0151164dcaea4cbded27b50aae",
-                                        "object": "entity",
-                                        "type": "user",
+                                        "object": "user",
+                                        "email": "jdoe@augno.com",
                                         "name": "John Doe",
-                                        "handle": "jdoe@augno.com"
+                                        "username": "jdoe",
+                                        "email_verified_at": "2026-06-10T00:00:00Z",
+                                        "image_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
                                     },
                                     "object": "account_user",
-                                    "name": "John Doe",
-                                    "email": "john@augno.com",
-                                    "username": null,
-                                    "image_url": null,
                                     "status": "active",
                                     "role": {
                                         "id": "rl_01c16d2eb637c0d1f3a372937c",
@@ -96504,19 +95775,12 @@ export const apiTags: TagData[] = [
                 },
                 {
                     "name": "code",
-                    "type": "string",
+                    "type": "object",
                     "description": "Location type code.",
                     "required": true,
                     "nullable": false,
                     "expandable": false,
-                    "enum": [
-                        "building",
-                        "section",
-                        "aisle",
-                        "rack",
-                        "shelf",
-                        "bin"
-                    ]
+                    "properties": []
                 },
                 {
                     "name": "name",
@@ -96593,19 +95857,12 @@ export const apiTags: TagData[] = [
                         },
                         {
                             "name": "type",
-                            "type": "string",
+                            "type": "object",
                             "description": "Location type code.",
                             "required": true,
                             "nullable": false,
                             "expandable": false,
-                            "enum": [
-                                "building",
-                                "section",
-                                "aisle",
-                                "rack",
-                                "shelf",
-                                "bin"
-                            ]
+                            "properties": []
                         },
                         {
                             "name": "parent_id",
@@ -96664,19 +95921,12 @@ export const apiTags: TagData[] = [
                             },
                             {
                                 "name": "type",
-                                "type": "string",
+                                "type": "object",
                                 "description": "Location type code.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
-                                "enum": [
-                                    "building",
-                                    "section",
-                                    "aisle",
-                                    "rack",
-                                    "shelf",
-                                    "bin"
-                                ]
+                                "properties": []
                             },
                             {
                                 "name": "parent",
@@ -96715,19 +95965,12 @@ export const apiTags: TagData[] = [
                                     },
                                     {
                                         "name": "type",
-                                        "type": "string",
+                                        "type": "object",
                                         "description": "Location type code.",
                                         "required": true,
                                         "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "building",
-                                            "section",
-                                            "aisle",
-                                            "rack",
-                                            "shelf",
-                                            "bin"
-                                        ]
+                                        "alwaysNull": true,
+                                        "expandable": false
                                     },
                                     {
                                         "name": "parent",
@@ -96866,19 +96109,12 @@ export const apiTags: TagData[] = [
                                             },
                                             {
                                                 "name": "type",
-                                                "type": "string",
+                                                "type": "object",
                                                 "description": "Location type code.",
                                                 "required": true,
                                                 "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "building",
-                                                    "section",
-                                                    "aisle",
-                                                    "rack",
-                                                    "shelf",
-                                                    "bin"
-                                                ]
+                                                "alwaysNull": true,
+                                                "expandable": false
                                             },
                                             {
                                                 "name": "parent",
@@ -97017,19 +96253,12 @@ export const apiTags: TagData[] = [
                         },
                         {
                             "name": "type",
-                            "type": "string",
+                            "type": "object",
                             "description": "Location type code.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,
-                            "enum": [
-                                "building",
-                                "section",
-                                "aisle",
-                                "rack",
-                                "shelf",
-                                "bin"
-                            ]
+                            "properties": []
                         },
                         {
                             "name": "parent_id",
@@ -97087,19 +96316,12 @@ export const apiTags: TagData[] = [
                             },
                             {
                                 "name": "type",
-                                "type": "string",
+                                "type": "object",
                                 "description": "Location type code.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
-                                "enum": [
-                                    "building",
-                                    "section",
-                                    "aisle",
-                                    "rack",
-                                    "shelf",
-                                    "bin"
-                                ]
+                                "properties": []
                             },
                             {
                                 "name": "parent",
@@ -97138,19 +96360,12 @@ export const apiTags: TagData[] = [
                                     },
                                     {
                                         "name": "type",
-                                        "type": "string",
+                                        "type": "object",
                                         "description": "Location type code.",
                                         "required": true,
                                         "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "building",
-                                            "section",
-                                            "aisle",
-                                            "rack",
-                                            "shelf",
-                                            "bin"
-                                        ]
+                                        "alwaysNull": true,
+                                        "expandable": false
                                     },
                                     {
                                         "name": "parent",
@@ -97289,19 +96504,12 @@ export const apiTags: TagData[] = [
                                             },
                                             {
                                                 "name": "type",
-                                                "type": "string",
+                                                "type": "object",
                                                 "description": "Location type code.",
                                                 "required": true,
                                                 "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "building",
-                                                    "section",
-                                                    "aisle",
-                                                    "rack",
-                                                    "shelf",
-                                                    "bin"
-                                                ]
+                                                "alwaysNull": true,
+                                                "expandable": false
                                             },
                                             {
                                                 "name": "parent",
@@ -97518,19 +96726,12 @@ export const apiTags: TagData[] = [
                                     },
                                     {
                                         "name": "code",
-                                        "type": "string",
+                                        "type": "object",
                                         "description": "Location type code.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
-                                        "enum": [
-                                            "building",
-                                            "section",
-                                            "aisle",
-                                            "rack",
-                                            "shelf",
-                                            "bin"
-                                        ]
+                                        "properties": []
                                     },
                                     {
                                         "name": "name",
@@ -97725,19 +96926,12 @@ export const apiTags: TagData[] = [
                                     },
                                     {
                                         "name": "type",
-                                        "type": "string",
+                                        "type": "object",
                                         "description": "Location type code.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
-                                        "enum": [
-                                            "building",
-                                            "section",
-                                            "aisle",
-                                            "rack",
-                                            "shelf",
-                                            "bin"
-                                        ]
+                                        "properties": []
                                     },
                                     {
                                         "name": "parent",
@@ -97776,19 +96970,12 @@ export const apiTags: TagData[] = [
                                             },
                                             {
                                                 "name": "type",
-                                                "type": "string",
+                                                "type": "object",
                                                 "description": "Location type code.",
                                                 "required": true,
                                                 "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "building",
-                                                    "section",
-                                                    "aisle",
-                                                    "rack",
-                                                    "shelf",
-                                                    "bin"
-                                                ]
+                                                "alwaysNull": true,
+                                                "expandable": false
                                             },
                                             {
                                                 "name": "parent",
@@ -97927,19 +97114,12 @@ export const apiTags: TagData[] = [
                                                     },
                                                     {
                                                         "name": "type",
-                                                        "type": "string",
+                                                        "type": "object",
                                                         "description": "Location type code.",
                                                         "required": true,
                                                         "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "building",
-                                                            "section",
-                                                            "aisle",
-                                                            "rack",
-                                                            "shelf",
-                                                            "bin"
-                                                        ]
+                                                        "alwaysNull": true,
+                                                        "expandable": false
                                                     },
                                                     {
                                                         "name": "parent",
@@ -98093,19 +97273,12 @@ export const apiTags: TagData[] = [
                             },
                             {
                                 "name": "code",
-                                "type": "string",
+                                "type": "object",
                                 "description": "Location type code.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
-                                "enum": [
-                                    "building",
-                                    "section",
-                                    "aisle",
-                                    "rack",
-                                    "shelf",
-                                    "bin"
-                                ]
+                                "properties": []
                             },
                             {
                                 "name": "name",
@@ -98211,19 +97384,12 @@ export const apiTags: TagData[] = [
                             },
                             {
                                 "name": "type",
-                                "type": "string",
+                                "type": "object",
                                 "description": "Location type code.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
-                                "enum": [
-                                    "building",
-                                    "section",
-                                    "aisle",
-                                    "rack",
-                                    "shelf",
-                                    "bin"
-                                ]
+                                "properties": []
                             },
                             {
                                 "name": "parent",
@@ -98262,19 +97428,12 @@ export const apiTags: TagData[] = [
                                     },
                                     {
                                         "name": "type",
-                                        "type": "string",
+                                        "type": "object",
                                         "description": "Location type code.",
                                         "required": true,
                                         "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "building",
-                                            "section",
-                                            "aisle",
-                                            "rack",
-                                            "shelf",
-                                            "bin"
-                                        ]
+                                        "alwaysNull": true,
+                                        "expandable": false
                                     },
                                     {
                                         "name": "parent",
@@ -98413,19 +97572,12 @@ export const apiTags: TagData[] = [
                                             },
                                             {
                                                 "name": "type",
-                                                "type": "string",
+                                                "type": "object",
                                                 "description": "Location type code.",
                                                 "required": true,
                                                 "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "building",
-                                                    "section",
-                                                    "aisle",
-                                                    "rack",
-                                                    "shelf",
-                                                    "bin"
-                                                ]
+                                                "alwaysNull": true,
+                                                "expandable": false
                                             },
                                             {
                                                 "name": "parent",
