@@ -1,10 +1,4 @@
-import { JsonLd } from '@/components/seo/JsonLd';
-import { breadcrumbJsonLd, techArticleJsonLd } from '@/lib/jsonLd';
-import { socialMeta } from '@/lib/metadata';
 import { fetchPageBySlug } from '@/lib/mdx/fetchPageBySlug';
-import { ogImage } from '@/lib/site';
-import { buildBreadcrumbsFromRoute } from '@/static/breadcrumbConfig';
-import type { Metadata } from 'next';
 import { MarkdownPage } from '../../_components/MarkdownPage';
 
 const getPageContent = async (slug: string[]) => {
@@ -12,48 +6,17 @@ const getPageContent = async (slug: string[]) => {
     return { meta, content, cleanMarkdown };
 };
 
-export async function generateMetadata({
-    params,
-}: {
-    params: Promise<{ slug: string[] }>;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string[] }> }) {
     const { slug } = await params;
     const { meta } = await getPageContent(slug);
-    const route = '/' + slug.join('/');
-
-    const trail = buildBreadcrumbsFromRoute(route, meta.title)
-        .map((c) => c.label)
-        .filter((label) => label && label !== 'Home' && label !== meta.title);
-    const card = ogImage({
-        title: meta.title,
-        eyebrow: 'Augno Docs',
-        subtitle: trail.length > 0 ? trail.join(' › ') : meta.subtitle,
-    });
-
-    return {
-        title: meta.title,
-        description: meta.subtitle,
-        alternates: { canonical: route },
-        ...socialMeta({ title: meta.title, description: meta.subtitle, url: route, card }),
-    };
+    return { title: meta.title + ' | Augno Documentation' };
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string[] }> }) {
     const { slug } = await params;
     const { content, meta, cleanMarkdown } = await getPageContent(slug);
-    const route = '/' + slug.join('/');
 
-    return (
-        <>
-            <JsonLd
-                data={[
-                    techArticleJsonLd({ title: meta.title, description: meta.subtitle, route }),
-                    breadcrumbJsonLd(route, meta.title),
-                ]}
-            />
-            <MarkdownPage meta={meta} content={content} cleanMarkdown={cleanMarkdown} />
-        </>
-    );
+    return <MarkdownPage meta={meta} content={content} cleanMarkdown={cleanMarkdown} />;
 }
 
 export function generateStaticParams() {
