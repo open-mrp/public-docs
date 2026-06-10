@@ -2,8 +2,8 @@
 # Download public OpenAPI + Stainless config from the API release S3 bucket.
 #
 # Usage:
-#   ./scripts/fetch-public-release-artifacts.sh              # latest openapi.json + stainless.yml
-#   ./scripts/fetch-public-release-artifacts.sh v0.17.12    # version-pinned artifacts
+#   ./scripts/fetch-public-release-artifacts.sh                       # latest openapi.json + stainless.yml
+#   ./scripts/fetch-public-release-artifacts.sh 1.0.forge-preview.2   # API-version-pinned artifacts
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
