@@ -240,9 +240,19 @@
     border-color: rgba(160, 161, 167, 0.35);
 }
 
-:root:not(.dark) .code-editor .cursor-text[class*='bg-white'],
-:root:not(.dark) .bg-code-background .cursor-text[class*='bg-white'] {
+/* CodeLine renders `bg-white/[0.05]` on the active line and
+   `hover:bg-white/[0.02]` on idle lines. White overlays are invisible on light
+   backgrounds, so swap them for foreground tints — but only for those exact
+   states: a substring match like [class*='bg-white'] would also catch the
+   hover: utility and permanently tint every line. */
+:root:not(.dark) .code-editor .cursor-text.bg-white\/\[0\.05\],
+:root:not(.dark) .bg-code-background .cursor-text.bg-white\/\[0\.05\] {
     background-color: color-mix(in srgb, var(--foreground) 6%, transparent);
+}
+
+:root:not(.dark) .code-editor .cursor-text.hover\:bg-white\/\[0\.02\]:hover,
+:root:not(.dark) .bg-code-background .cursor-text.hover\:bg-white\/\[0\.02\]:hover {
+    background-color: color-mix(in srgb, var(--foreground) 3%, transparent);
 }
 
 @theme {
