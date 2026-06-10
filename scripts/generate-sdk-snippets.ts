@@ -10,6 +10,9 @@ import { normalizeSnippetPlaceholders } from '../src/lib/snippetPlaceholders';
 
 const ROOT = process.cwd();
 const OPENAPI_PATH = path.join(ROOT, 'specs/public_openapi_spec.json');
+const VERSIONS_MANIFEST_PATH = path.join(ROOT, 'api-versions.json');
+const ARCHIVED_SPECS_DIR = path.join(ROOT, 'specs/versions');
+const VERSIONED_OUTPUT_DIR = path.join(ROOT, 'src/static/api-versions');
 const CANONICAL_STAINLESS_REL = path.join(ROOT, '..', 'api', 'stainless', 'public', 'stainless.yml');
 /** Downloaded from S3 (`augno-public-openapi-specs/stainless.yml`) in CI / sync workflows. */
 const REPO_STAINLESS_PATH = path.join(ROOT, 'specs', 'stainless.yml');
@@ -201,27 +204,24 @@ function getSnippetRaw(
     return typeof content === 'string' ? content : undefined;
 }
 
-function emitGeneratedTs(data: Record<string, Partial<Record<SdkLanguage, string>>>): void {
+function emitGeneratedTs(
+    data: Record<string, Partial<Record<SdkLanguage, string>>>,
+    outputPath: string,
+): void {
     const serialized = JSON.stringify(data, null, 4);
     const contents = `// THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY.
 // Run 'bun run scripts/generate-sdk-snippets.ts' (via build:docs) to regenerate.
 
-export type SdkLanguage = 'typescript' | 'python' | 'go' | 'curl';
+import type { EndpointSnippets, SdkLanguage, SdkSnippetHighlightLanguage } from '@/lib/sdk-snippet-types';
+import { SNIPPET_HIGHLIGHT_MAP } from '@/lib/sdk-snippet-types';
 
-export type SdkSnippetHighlightLanguage = 'typescript' | 'bash' | 'python' | 'go';
-
-const HIGHLIGHT_MAP: Record<SdkLanguage, SdkSnippetHighlightLanguage> = {
-    typescript: 'typescript',
-    curl: 'bash',
-    python: 'python',
-    go: 'go',
-};
+export type { SdkLanguage, SdkSnippetHighlightLanguage };
 
 /**
  * Snippets keyed by OpenAPI operationId (matches EndpointData.operationId).
  * Values are normalized at generation time for ApiKeyProvider placeholders.
  */
-const RAW_SNIPPETS: Record<string, Partial<Record<SdkLanguage, string>>> = ${serialized};
+const RAW_SNIPPETS: Record<string, EndpointSnippets> = ${serialized};
 
 export function getEndpointSnippet(
     operationId: string,
@@ -231,8 +231,13 @@ export function getEndpointSnippet(
     if (raw === undefined || raw === '') return undefined;
     return {
         code: raw,
-        highlightLanguage: HIGHLIGHT_MAP[language],
+        highlightLanguage: SNIPPET_HIGHLIGHT_MAP[language],
     };
+}
+
+/** All snippets for an endpoint, keyed by SDK language. */
+export function getEndpointSnippets(operationId: string): EndpointSnippets | undefined {
+    return RAW_SNIPPETS[operationId];
 }
 
 export function hasAnySnippet(operationId: string): boolean {
@@ -246,47 +251,58 @@ export function hasAnySnippet(operationId: string): boolean {
     );
 }
 `;
-    fs.writeFileSync(OUTPUT_PATH, contents, 'utf8');
+    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+    fs.writeFileSync(outputPath, contents, 'utf8');
 }
 
-async function main(): Promise<void> {
-    const canonicalPath = resolveCanonicalStainlessPath();
-    if (!canonicalPath) {
-        console.warn(
-            `[generate-sdk-snippets] No canonical stainless config found. Expected:\n` +
-                `  - ${path.relative(ROOT, CANONICAL_STAINLESS_REL)} (monorepo dev),\n` +
-                `  - ${path.relative(ROOT, REPO_STAINLESS_PATH)} (from S3 via scripts/fetch-public-release-artifacts.sh), or\n` +
-                `  - PUBLIC_DOCS_STAINLESS_YML\n` +
-                `Emitting empty snippets.`,
-        );
-        emitGeneratedTs({});
+interface SnippetTarget {
+    /** Display label for logs, e.g. "latest" or an archived version string. */
+    label: string;
+    openapiPath: string;
+    stainlessPath: string | undefined;
+    outputPath: string;
+}
+
+async function generateForTarget(target: SnippetTarget): Promise<void> {
+    const logPrefix = `[generate-sdk-snippets] [${target.label}]`;
+
+    if (!target.stainlessPath) {
+        const expected =
+            target.label === 'latest'
+                ? `Expected:\n` +
+                  `  - ${path.relative(ROOT, CANONICAL_STAINLESS_REL)} (monorepo dev),\n` +
+                  `  - ${path.relative(ROOT, REPO_STAINLESS_PATH)} (from S3 via scripts/fetch-public-release-artifacts.sh), or\n` +
+                  `  - PUBLIC_DOCS_STAINLESS_YML`
+                : `Expected specs/versions/${target.label}-stainless.yml (from S3 via scripts/fetch-public-release-artifacts.sh).`;
+        console.warn(`${logPrefix} No stainless config found. ${expected}\nEmitting empty snippets.`);
+        emitGeneratedTs({}, target.outputPath);
         return;
     }
 
-    if (!fs.existsSync(OPENAPI_PATH)) {
-        console.warn(`[generate-sdk-snippets] Missing OpenAPI spec — emitting empty snippets.`);
-        emitGeneratedTs({});
+    if (!fs.existsSync(target.openapiPath)) {
+        console.warn(`${logPrefix} Missing OpenAPI spec — emitting empty snippets.`);
+        emitGeneratedTs({}, target.outputPath);
         return;
     }
 
-    const openapiJson = fs.readFileSync(OPENAPI_PATH, 'utf8');
+    const openapiJson = fs.readFileSync(target.openapiPath, 'utf8');
     const openapiSpec = JSON.parse(openapiJson) as OpenAPISpec;
     const lookup = buildEndpointToOperationIdLookup(openapiSpec);
 
     let configStr: string;
     try {
-        configStr = buildMergedStainlessConfig(fs.readFileSync(canonicalPath, 'utf8'));
+        configStr = buildMergedStainlessConfig(fs.readFileSync(target.stainlessPath, 'utf8'));
     } catch (e) {
-        console.error('[generate-sdk-snippets] Failed to merge stainless YAML:', e);
-        emitGeneratedTs({});
+        console.error(`${logPrefix} Failed to merge stainless YAML:`, e);
+        emitGeneratedTs({}, target.outputPath);
         return;
     }
 
     console.log(
-        `[generate-sdk-snippets] canonical stainless ${path.relative(ROOT, canonicalPath)} + docs overlay`,
+        `${logPrefix} canonical stainless ${path.relative(ROOT, target.stainlessPath)} + docs overlay`,
     );
 
-    console.log('[generate-sdk-snippets] Running Stainless sdk-json codegen …');
+    console.log(`${logPrefix} Running Stainless sdk-json codegen …`);
 
     let sdkJson: Spec;
     try {
@@ -302,9 +318,9 @@ async function main(): Promise<void> {
         });
         sdkJson = result.sdkJson;
     } catch (err) {
-        console.error('[generate-sdk-snippets] Stainless generation failed:', err);
-        console.warn('[generate-sdk-snippets] Emitting empty snippets so the docs build can continue.');
-        emitGeneratedTs({});
+        console.error(`${logPrefix} Stainless generation failed:`, err);
+        console.warn(`${logPrefix} Emitting empty snippets so the docs build can continue.`);
+        emitGeneratedTs({}, target.outputPath);
         process.exitCode = 0;
         return;
     }
@@ -327,10 +343,59 @@ async function main(): Promise<void> {
         }
     }
 
-    emitGeneratedTs(out);
+    emitGeneratedTs(out, target.outputPath);
     console.log(
-        `[generate-sdk-snippets] Wrote ${path.relative(ROOT, OUTPUT_PATH)} (${Object.keys(out).length} operations).`,
+        `${logPrefix} Wrote ${path.relative(ROOT, target.outputPath)} (${Object.keys(out).length} operations).`,
     );
+}
+
+function readArchivedVersionsManifest(): string[] {
+    if (!fs.existsSync(VERSIONS_MANIFEST_PATH)) return [];
+    try {
+        const manifest = JSON.parse(fs.readFileSync(VERSIONS_MANIFEST_PATH, 'utf8')) as {
+            archived?: string[];
+        };
+        return manifest.archived ?? [];
+    } catch (e) {
+        console.warn(`[generate-sdk-snippets] Could not parse ${VERSIONS_MANIFEST_PATH}:`, e);
+        return [];
+    }
+}
+
+async function main(): Promise<void> {
+    await generateForTarget({
+        label: 'latest',
+        openapiPath: OPENAPI_PATH,
+        stainlessPath: resolveCanonicalStainlessPath(),
+        outputPath: OUTPUT_PATH,
+    });
+
+    // Archived versions only get snippets for the per-version output dirs that
+    // generate-api-reference.ts created (it skips manifest versions with no spec
+    // on disk, and the version that equals latest).
+    for (const version of readArchivedVersionsManifest()) {
+        const outputDir = path.join(VERSIONED_OUTPUT_DIR, version);
+        if (!fs.existsSync(outputDir)) continue;
+
+        const openapiPath = path.join(ARCHIVED_SPECS_DIR, `${version}.json`);
+        const outputPath = path.join(outputDir, 'apiSnippets.generated.ts');
+        if (!fs.existsSync(openapiPath) && fs.existsSync(outputPath)) {
+            // Spec not on disk (e.g. local build without S3 access) — keep the
+            // committed snippets rather than overwriting them with empties.
+            console.log(`[generate-sdk-snippets] [${version}] No spec on disk — keeping existing snippets.`);
+            continue;
+        }
+
+        const stainlessPath = path.join(ARCHIVED_SPECS_DIR, `${version}-stainless.yml`);
+        await generateForTarget({
+            label: version,
+            openapiPath,
+            // Archived versions must use their own pinned stainless config; the
+            // monorepo-HEAD fallbacks would describe the wrong API surface.
+            stainlessPath: fs.existsSync(stainlessPath) ? stainlessPath : undefined,
+            outputPath,
+        });
+    }
 }
 
 await main();

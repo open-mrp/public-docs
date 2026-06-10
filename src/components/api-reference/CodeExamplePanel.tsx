@@ -88,7 +88,8 @@ export function CodeExamplePanel({
                 )}
             </div>
             <CodeEditor
-                className="!mt-0 !rounded-none !p-0 min-h-0"
+                embedded
+                className="min-h-0 flex-1"
                 key={`${active.id}-${active.language}-${replacementKey}`}
                 replacements={replacements}
                 showLanguageLabel={false}

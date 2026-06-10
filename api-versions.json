@@ -1,0 +1,6 @@
+{
+    "$comment": "Archived API versions shown in the docs version picker, newest first. The latest version always comes from specs/public_openapi_spec.json (S3 openapi.json). Each entry must exist in s3://augno-public-openapi-specs as <version>.json (and ideally <version>-stainless.yml); scripts/fetch-public-release-artifacts.sh downloads them into specs/versions/.",
+    "archived": [
+        "1.0.forge-preview.1"
+    ]
+}

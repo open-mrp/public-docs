@@ -28,13 +28,17 @@ jobs:
                   role-to-assume: arn:aws:iam::013292575751:role/github-action-role
                   aws-region: us-east-2
 
-            - name: Download public release artifacts from S3
-              run: bash scripts/fetch-public-release-artifacts.sh "${{ github.event.client_payload.api_version || '' }}"
-
             - name: Setup Bun
               uses: oven-sh/setup-bun@v2
               with:
                   bun-version: latest
+
+            # --archive-previous: when this release is a new API version, the
+            # previously published latest is added to api-versions.json so it
+            # stays available in the docs version picker, and its pinned
+            # artifacts are fetched for the versioned reference build.
+            - name: Download public release artifacts from S3
+              run: bash scripts/fetch-public-release-artifacts.sh --archive-previous "${{ github.event.client_payload.api_version || '' }}"
 
             - name: Setup Go
               uses: actions/setup-go@v5
@@ -52,7 +56,10 @@ jobs:
             - name: Check for changes
               id: diff
               run: |
-                  if git diff --quiet; then
+                  # --porcelain (not `git diff`) so brand-new untracked files —
+                  # e.g. src/static/api-versions/<version>/ for a newly archived
+                  # version — also count as changes.
+                  if [ -z "$(git status --porcelain)" ]; then
                     echo "changed=false" >> "$GITHUB_OUTPUT"
                     echo "No changes after build — skipping commit."
                   else

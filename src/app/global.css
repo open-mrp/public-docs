@@ -145,6 +145,18 @@
 
 @import '@augno/ui/styles.css';
 
+/* CodeEditor backgrounds use the docs site token directly. ui@1.9.5+ renders
+   .code-editor/.code-editor-scroll; older builds used bg-code-background, which
+   Tailwind does not scan from @augno/ui, so the utility may be missing. */
+.code-editor,
+.code-editor-scroll,
+.code-editor .hljs,
+.bg-code-background,
+.bg-code-background > .overflow-y-auto,
+.bg-code-background .hljs {
+    background: var(--code-background);
+}
+
 /* Light mode syntax highlighting (Atom One Light) */
 :root:not(.dark) .hljs {
     color: #383a42;
@@ -208,22 +220,27 @@
 }
 
 /* CodeEditor chrome tuned for light backgrounds */
+:root:not(.dark) .code-editor .text-gray-600,
 :root:not(.dark) .bg-code-background .text-gray-600 {
     color: #a0a1a7;
 }
 
+:root:not(.dark) .code-editor .text-gray-300,
 :root:not(.dark) .bg-code-background .text-gray-300 {
     color: #686b77;
 }
 
+:root:not(.dark) .code-editor .bg-gray-600\/40,
 :root:not(.dark) .bg-code-background .bg-gray-600\/40 {
     background-color: rgba(160, 161, 167, 0.25);
 }
 
+:root:not(.dark) .code-editor .border-gray-500\/30,
 :root:not(.dark) .bg-code-background .border-gray-500\/30 {
     border-color: rgba(160, 161, 167, 0.35);
 }
 
+:root:not(.dark) .code-editor .cursor-text[class*='bg-white'],
 :root:not(.dark) .bg-code-background .cursor-text[class*='bg-white'] {
     background-color: color-mix(in srgb, var(--foreground) 6%, transparent);
 }

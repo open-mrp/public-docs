@@ -1,71 +1,11 @@
 'use client';
 
-import { apiTags, type EndpointData, type TagData } from '@/static/apiEndpoints.generated';
+import type { OverviewDomain } from '@/lib/api-reference-overview';
 import Link from 'next/link';
 import { ActionMethodBadge } from './ActionMethodBadge';
 
-interface OverviewEndpoint {
-    summary: string;
-    method: string;
-    path: string;
-    actionType: string;
-    href: string;
-}
-
-interface OverviewResource {
-    name: string;
-    slug: string;
-    endpoints: OverviewEndpoint[];
-}
-
-interface OverviewDomain {
-    name: string;
-    slug: string;
-    resources: OverviewResource[];
-}
-
 function endpointCountLabel(count: number) {
     return `${count} endpoint${count === 1 ? '' : 's'}`;
-}
-
-function endpointToOverview(endpoint: EndpointData): OverviewEndpoint {
-    return {
-        summary: endpoint.summary,
-        method: endpoint.method,
-        path: endpoint.path,
-        actionType: endpoint.actionType,
-        href: `/api-reference/${endpoint.tagSlug}/${endpoint.endpointSlug}`,
-    };
-}
-
-function buildOverviewDomains(tags: TagData[]): OverviewDomain[] {
-    const domains = new Map<string, OverviewDomain>();
-
-    for (const tag of tags) {
-        let domain = domains.get(tag.domain);
-        if (!domain) {
-            domain = {
-                name: tag.domainLabel,
-                slug: tag.domain,
-                resources: [],
-            };
-            domains.set(tag.domain, domain);
-        }
-
-        domain.resources.push({
-            name: tag.name,
-            slug: tag.slug,
-            endpoints: tag.endpoints.map(endpointToOverview),
-        });
-    }
-
-    const domainOrder = ['ai', 'auth', 'core'];
-    return [...domains.values()].sort((a, b) => {
-        const ai = domainOrder.indexOf(a.slug);
-        const bi = domainOrder.indexOf(b.slug);
-        if (ai !== -1 || bi !== -1) return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
-        return a.name.localeCompare(b.name);
-    });
 }
 
 export function ApiReferenceOverviewContent({ domains }: { domains: OverviewDomain[] }) {
@@ -151,8 +91,4 @@ export function ApiReferenceOverviewContent({ domains }: { domains: OverviewDoma
             </div>
         </div>
     );
-}
-
-export function ApiReferenceOverview() {
-    return <ApiReferenceOverviewContent domains={buildOverviewDomains(apiTags)} />;
 }

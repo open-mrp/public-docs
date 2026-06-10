@@ -1,8 +1,20 @@
 import { EndpointPage } from '@/components/api-reference/EndpointPage';
-import { getEndpoint } from '@/static/apiEndpoints.generated';
+import {
+    getEndpointForVersion,
+    getSnippetsForVersion,
+} from '@/static/apiVersionData.generated';
+import { LATEST_API_VERSION, apiReferenceBasePath } from '@/static/apiVersions.generated';
 
-export function ApiEndpoint({ tagSlug, endpointSlug }: { tagSlug: string; endpointSlug: string }) {
-    const endpoint = getEndpoint(tagSlug, endpointSlug);
+export function ApiEndpoint({
+    version = LATEST_API_VERSION,
+    tagSlug,
+    endpointSlug,
+}: {
+    version?: string;
+    tagSlug: string;
+    endpointSlug: string;
+}) {
+    const endpoint = getEndpointForVersion(version, tagSlug, endpointSlug);
 
     if (!endpoint) {
         return (
@@ -15,6 +27,11 @@ export function ApiEndpoint({ tagSlug, endpointSlug }: { tagSlug: string; endpoi
         );
     }
 
-    return <EndpointPage endpoint={endpoint} />;
+    return (
+        <EndpointPage
+            endpoint={endpoint}
+            snippets={getSnippetsForVersion(version, endpoint.operationId)}
+            basePath={apiReferenceBasePath(version)}
+        />
+    );
 }
-

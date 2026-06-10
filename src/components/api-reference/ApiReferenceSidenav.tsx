@@ -1,10 +1,16 @@
 'use client';
 
-import { apiTags, type EndpointData } from '@/static/apiEndpoints.generated';
+import { apiVersionFromPathname } from '@/lib/api-reference-version';
+import { getApiNavEntries } from '@/static/apiNav.generated';
+import { apiReferenceBasePath } from '@/static/apiVersions.generated';
 import { NavItem, NavLink, NavSubSection, NavSubSectionData, Sidenav } from '@augno/ui';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
+import { ApiVersionSelector } from './ApiVersionSelector';
+
+/** Sentinel NavLink rendered as the version selector instead of a link. */
+const VERSION_SELECTOR_HREF = '#api-version-selector';
 
 type ActionKind = 'list' | 'create' | 'delete' | 'retrieve' | 'update' | 'other';
 
@@ -120,31 +126,6 @@ function titleize(segment: string) {
         .join(' ');
 }
 
-function actionLabel(endpoint: EndpointData): string {
-    if (endpoint.actionType === 'list') return 'List';
-    if (endpoint.actionType === 'retrieve') return 'Retrieve';
-    if (endpoint.actionType === 'create') return 'Create';
-    if (endpoint.actionType === 'update') return 'Update';
-    if (endpoint.actionType === 'delete') return 'Delete';
-
-    const s = endpoint.summary.trim();
-    const lower = s.toLowerCase();
-    if (lower.startsWith('list ')) return 'List';
-    if (lower.startsWith('search ')) return 'List';
-    if (lower.startsWith('get ') || lower.startsWith('retrieve ')) return 'Retrieve';
-    if (lower.startsWith('create ') || lower.startsWith('trigger ')) return 'Create';
-    if (lower.startsWith('update ') || lower.startsWith('upsert ')) return 'Update';
-    if (lower.startsWith('delete ') || lower.startsWith('revoke ')) return 'Delete';
-    return s;
-}
-
-function staticSegments(endpointPath: string): string[] {
-    const parts = endpointPath.split('/').filter(Boolean);
-    const segments = parts.slice(2).filter((s) => !s.startsWith('{'));
-    const actionsIdx = segments.indexOf('actions');
-    return actionsIdx !== -1 ? segments.slice(0, actionsIdx) : segments;
-}
-
 type TreeNode = {
     segment: string;
     title: string;
@@ -181,23 +162,22 @@ function treeNodeToSubSection(node: TreeNode): NavSubSectionData {
 export default function ApiReferenceSidenav() {
     const pathname = usePathname();
     const isPathActive = (path: string) => pathname === path;
+    const version = apiVersionFromPathname(pathname);
+    const basePath = apiReferenceBasePath(version);
 
     const sections = useMemo(() => {
         const byDomain = new Map<string, Map<string, TreeNode>>();
 
-        for (const tag of apiTags) {
-            for (const e of tag.endpoints) {
-                let domainTree = byDomain.get(e.domain);
-                if (!domainTree) {
-                    domainTree = new Map();
-                    byDomain.set(e.domain, domainTree);
-                }
-
-                const href = `/api-reference/${e.tagSlug}/${e.endpointSlug}`;
-                const segments = staticSegments(e.path);
-                const link: NavLink = { href, children: actionLabel(e) };
-                insertIntoTree(domainTree, segments, link);
+        for (const e of getApiNavEntries(version)) {
+            let domainTree = byDomain.get(e.domain);
+            if (!domainTree) {
+                domainTree = new Map();
+                byDomain.set(e.domain, domainTree);
             }
+
+            const href = `${basePath}/${e.tagSlug}/${e.endpointSlug}`;
+            const link: NavLink = { href, children: e.label };
+            insertIntoTree(domainTree, e.segments, link);
         }
 
         const domainOrder = ['ai', 'auth', 'core'];
@@ -214,9 +194,13 @@ export default function ApiReferenceSidenav() {
                 .sort((a, b) => a.title.localeCompare(b.title))
                 .map(treeNodeToSubSection),
         }));
-    }, []);
+    }, [version, basePath]);
 
     const renderNavItem = (item: NavLink | NavSubSectionData) => {
+        if (!('items' in item) && item.href === VERSION_SELECTOR_HREF) {
+            return <ApiVersionSelector key={item.href} />;
+        }
+
         if ('items' in item) {
             return (
                 <NavSubSection
@@ -264,7 +248,10 @@ export default function ApiReferenceSidenav() {
             sections={[
                 {
                     title: 'API Reference',
-                    links: [{ href: '/api-reference', children: 'Overview' }],
+                    links: [
+                        { href: VERSION_SELECTOR_HREF, children: 'API version' },
+                        { href: basePath, children: 'Overview' },
+                    ],
                 },
                 ...sections,
             ]}

@@ -2,8 +2,17 @@ import fs from 'fs';
 import path from 'path';
 
 const SPEC_PATH = path.join(process.cwd(), 'specs/public_openapi_spec.json');
+const ARCHIVED_SPECS_DIR = path.join(process.cwd(), 'specs/versions');
+const VERSIONS_MANIFEST_PATH = path.join(process.cwd(), 'api-versions.json');
 const API_VERSION_PATH = path.join(process.cwd(), 'src/static/apiVersion.generated.ts');
+const API_VERSIONS_OUTPUT_PATH = path.join(process.cwd(), 'src/static/apiVersions.generated.ts');
+const API_NAV_OUTPUT_PATH = path.join(process.cwd(), 'src/static/apiNav.generated.ts');
+const VERSION_REGISTRY_OUTPUT_PATH = path.join(
+    process.cwd(),
+    'src/static/apiVersionData.generated.ts',
+);
 const ENDPOINTS_OUTPUT_PATH = path.join(process.cwd(), 'src/static/apiEndpoints.generated.ts');
+const VERSIONED_OUTPUT_DIR = path.join(process.cwd(), 'src/static/api-versions');
 const LEGACY_API_REFERENCE_DIR = path.join(process.cwd(), 'src/docs/developer-resources/api-reference');
 const LEGACY_API_REFERENCE_OVERVIEW = path.join(process.cwd(), 'src/docs/developer-resources/api-reference.mdx');
 
@@ -639,7 +648,10 @@ function deriveActionName(summary: string, tagName: string): string {
 
 // ─── Main Generation ─────────────────────────────────────────────
 
-function generateEndpointData(spec: OpenAPISpec): { tags: TagData[]; nav: ApiNavDomain[] } {
+function generateEndpointData(
+    spec: OpenAPISpec,
+    basePath: string,
+): { tags: TagData[]; nav: ApiNavDomain[] } {
     const { tags: specTags = [], paths } = spec;
 
     // Group operations by tag
@@ -772,7 +784,7 @@ function generateEndpointData(spec: OpenAPISpec): { tags: TagData[]; nav: ApiNav
                 slug: e.endpointSlug,
                 method: e.method,
                 actionType: e.actionType,
-                href: `/api-reference/${tagSlug}/${e.endpointSlug}`,
+                href: `${basePath}/${tagSlug}/${e.endpointSlug}`,
             })),
         });
     }
@@ -925,6 +937,319 @@ export function getAllEndpointSlugs(): { tagSlug: string; endpointSlug: string }
 `;
 }
 
+/**
+ * Per-version endpoint data module, emitted under src/static/api-versions/<version>/.
+ * Identical value exports to apiEndpoints.generated.ts; types are imported from
+ * the latest module so the version registry can treat all versions uniformly.
+ */
+function generateVersionedEndpointsFile(tags: TagData[], nav: ApiNavDomain[]): string {
+    return `// THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY.
+// Run 'bun run build:docs' to regenerate.
+
+import type {
+    ApiNavDomain,
+    EndpointData,
+    ResourceData,
+    TagData,
+} from '@/static/apiEndpoints.generated';
+
+export const apiTags: TagData[] = ${JSON.stringify(tags, null, 4)};
+
+export const apiNavDomains: ApiNavDomain[] = ${JSON.stringify(nav, null, 4)};
+
+/** Look up a tag by its slug */
+export function getTagBySlug(slug: string): TagData | undefined {
+    return apiTags.find(t => t.slug === slug);
+}
+
+/** Look up an endpoint by tag slug and endpoint slug */
+export function getEndpoint(tagSlug: string, endpointSlug: string): EndpointData | undefined {
+    const tag = getTagBySlug(tagSlug);
+    return tag?.endpoints.find(e => e.endpointSlug === endpointSlug);
+}
+
+/** Look up an endpoint's resource by tag slug */
+export function getResource(tagSlug: string): ResourceData | undefined {
+    return getTagBySlug(tagSlug)?.resource;
+}
+
+/** Get all endpoint routes for static generation */
+export function getAllEndpointSlugs(): { tagSlug: string; endpointSlug: string }[] {
+    const slugs: { tagSlug: string; endpointSlug: string }[] = [];
+    for (const tag of apiTags) {
+        for (const endpoint of tag.endpoints) {
+            slugs.push({ tagSlug: tag.slug, endpointSlug: endpoint.endpointSlug });
+        }
+    }
+    return slugs;
+}
+`;
+}
+
+/**
+ * Placeholder snippets module so the version registry's static imports resolve
+ * even if snippet generation is skipped. generate-sdk-snippets.ts overwrites
+ * this with real snippets when it runs (build:docs runs it right after this script).
+ */
+function generatePlaceholderSnippetsFile(): string {
+    return `// THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY.
+// Placeholder written by generate-api-reference.ts; overwritten by generate-sdk-snippets.ts.
+
+import type { EndpointSnippets, SdkLanguage, SdkSnippetHighlightLanguage } from '@/lib/sdk-snippet-types';
+import { SNIPPET_HIGHLIGHT_MAP } from '@/lib/sdk-snippet-types';
+
+const RAW_SNIPPETS: Record<string, EndpointSnippets> = {};
+
+export function getEndpointSnippet(
+    operationId: string,
+    language: SdkLanguage,
+): { code: string; highlightLanguage: SdkSnippetHighlightLanguage } | undefined {
+    const raw = RAW_SNIPPETS[operationId]?.[language];
+    if (raw === undefined || raw === '') return undefined;
+    return { code: raw, highlightLanguage: SNIPPET_HIGHLIGHT_MAP[language] };
+}
+
+export function getEndpointSnippets(operationId: string): EndpointSnippets | undefined {
+    return RAW_SNIPPETS[operationId];
+}
+
+export function hasAnySnippet(operationId: string): boolean {
+    return false;
+}
+`;
+}
+
+// ─── Compact sidenav data (client-safe) ──────────────────────────
+
+interface ApiNavEntry {
+    domain: string;
+    /** Static URL segments of the endpoint path, used to build the nested sidenav tree. */
+    segments: string[];
+    tagSlug: string;
+    endpointSlug: string;
+    /** Short action label shown in the sidenav, e.g. "List", "Create". */
+    label: string;
+}
+
+/** Mirror of the sidenav's action label heuristic, computed at build time. */
+function sidenavActionLabel(endpoint: EndpointData): string {
+    if (endpoint.actionType === 'list') return 'List';
+    if (endpoint.actionType === 'retrieve') return 'Retrieve';
+    if (endpoint.actionType === 'create') return 'Create';
+    if (endpoint.actionType === 'update') return 'Update';
+    if (endpoint.actionType === 'delete') return 'Delete';
+
+    const s = endpoint.summary.trim();
+    const lower = s.toLowerCase();
+    if (lower.startsWith('list ')) return 'List';
+    if (lower.startsWith('search ')) return 'List';
+    if (lower.startsWith('get ') || lower.startsWith('retrieve ')) return 'Retrieve';
+    if (lower.startsWith('create ') || lower.startsWith('trigger ')) return 'Create';
+    if (lower.startsWith('update ') || lower.startsWith('upsert ')) return 'Update';
+    if (lower.startsWith('delete ') || lower.startsWith('revoke ')) return 'Delete';
+    return s;
+}
+
+/** Static (non-parameter) path segments after /v1/<domain>, cut at "actions". */
+function sidenavStaticSegments(endpointPath: string): string[] {
+    const parts = endpointPath.split('/').filter(Boolean);
+    const segments = parts.slice(2).filter((s) => !s.startsWith('{'));
+    const actionsIdx = segments.indexOf('actions');
+    return actionsIdx !== -1 ? segments.slice(0, actionsIdx) : segments;
+}
+
+function buildCompactNavEntries(tags: TagData[]): ApiNavEntry[] {
+    const entries: ApiNavEntry[] = [];
+    for (const tag of tags) {
+        for (const e of tag.endpoints) {
+            entries.push({
+                domain: e.domain,
+                segments: sidenavStaticSegments(e.path),
+                tagSlug: e.tagSlug,
+                endpointSlug: e.endpointSlug,
+                label: sidenavActionLabel(e),
+            });
+        }
+    }
+    return entries;
+}
+
+// ─── Version index, nav and registry emitters ────────────────────
+
+interface VersionedData {
+    version: string;
+    tags: TagData[];
+    nav: ApiNavDomain[];
+    /** True when loaded from a previously generated module instead of a spec. */
+    reused?: boolean;
+}
+
+function generateApiVersionsFile(latestVersion: string, archivedVersions: string[]): string {
+    const versions = [
+        { version: latestVersion, codename: parseCodename(latestVersion), isLatest: true },
+        ...archivedVersions.map((v) => ({
+            version: v,
+            codename: parseCodename(v),
+            isLatest: false,
+        })),
+    ];
+    return `// THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY.
+// Run 'bun run build:docs' to regenerate.
+//
+// Client-safe index of every API version the reference is built for,
+// latest first. Archived versions come from api-versions.json.
+
+export interface ApiVersionInfo {
+    version: string;
+    codename: string;
+    isLatest: boolean;
+}
+
+export const API_VERSIONS: ApiVersionInfo[] = ${JSON.stringify(versions, null, 4)};
+
+export const LATEST_API_VERSION = ${JSON.stringify(latestVersion)};
+
+export function isArchivedApiVersion(version: string): boolean {
+    return API_VERSIONS.some((v) => v.version === version && !v.isLatest);
+}
+
+/**
+ * Route prefix for a version's API reference. The latest version lives at the
+ * canonical /api-reference; archived versions live under /api-reference/<version>.
+ */
+export function apiReferenceBasePath(version: string): string {
+    return version === LATEST_API_VERSION ? '/api-reference' : \`/api-reference/\${version}\`;
+}
+`;
+}
+
+function generateApiNavFile(latest: VersionedData, archived: VersionedData[]): string {
+    const byVersion: Record<string, ApiNavEntry[]> = {};
+    for (const v of [latest, ...archived]) {
+        byVersion[v.version] = buildCompactNavEntries(v.tags);
+    }
+    return `// THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY.
+// Run 'bun run build:docs' to regenerate.
+//
+// Compact per-version endpoint listing for the API reference sidenav and
+// version selector. Deliberately small so it is safe to ship to the client.
+
+export interface ApiNavEntry {
+    domain: string;
+    /** Static URL segments of the endpoint path, used to build the nested sidenav tree. */
+    segments: string[];
+    tagSlug: string;
+    endpointSlug: string;
+    /** Short action label shown in the sidenav, e.g. "List", "Create". */
+    label: string;
+}
+
+export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = ${JSON.stringify(byVersion, null, 4)};
+
+export function getApiNavEntries(version: string): ApiNavEntry[] {
+    return apiNavEntriesByVersion[version] ?? [];
+}
+`;
+}
+
+function versionImportAlias(version: string): string {
+    return `v_${version.replace(/[^a-zA-Z0-9]/g, '_')}`;
+}
+
+/**
+ * Server-side registry mapping every version to its endpoint data and SDK
+ * snippets. Imports the full per-version modules, so only use it from server
+ * components / generateStaticParams — never from client components.
+ */
+function generateVersionRegistryFile(latestVersion: string, archivedVersions: string[]): string {
+    const imports = archivedVersions
+        .map((v) => {
+            const alias = versionImportAlias(v);
+            return (
+                `import * as ${alias}_endpoints from '@/static/api-versions/${v}/apiEndpoints.generated';\n` +
+                `import * as ${alias}_snippets from '@/static/api-versions/${v}/apiSnippets.generated';`
+            );
+        })
+        .join('\n');
+    const registryEntries = [
+        `    [LATEST_API_VERSION]: { endpoints: latestEndpoints, snippets: latestSnippets },`,
+        ...archivedVersions.map((v) => {
+            const alias = versionImportAlias(v);
+            return `    ${JSON.stringify(v)}: { endpoints: ${alias}_endpoints, snippets: ${alias}_snippets },`;
+        }),
+    ].join('\n');
+
+    return `// THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY.
+// Run 'bun run build:docs' to regenerate.
+
+import type { EndpointSnippets } from '@/lib/sdk-snippet-types';
+import * as latestEndpoints from '@/static/apiEndpoints.generated';
+import * as latestSnippets from '@/static/apiSnippets.generated';
+import { LATEST_API_VERSION } from '@/static/apiVersions.generated';
+${imports ? `${imports}\n` : ''}
+type VersionModules = {
+    endpoints: Pick<
+        typeof latestEndpoints,
+        'apiTags' | 'apiNavDomains' | 'getTagBySlug' | 'getEndpoint' | 'getResource' | 'getAllEndpointSlugs'
+    >;
+    snippets: Pick<typeof latestSnippets, 'getEndpointSnippet' | 'getEndpointSnippets' | 'hasAnySnippet'>;
+};
+
+const REGISTRY: Record<string, VersionModules> = {
+${registryEntries}
+};
+
+export function isKnownApiVersion(version: string): boolean {
+    return version in REGISTRY;
+}
+
+export function getTagsForVersion(version: string): typeof latestEndpoints.apiTags | undefined {
+    return REGISTRY[version]?.endpoints.apiTags;
+}
+
+export function getEndpointForVersion(
+    version: string,
+    tagSlug: string,
+    endpointSlug: string,
+): ReturnType<typeof latestEndpoints.getEndpoint> {
+    return REGISTRY[version]?.endpoints.getEndpoint(tagSlug, endpointSlug);
+}
+
+export function getSnippetsForVersion(
+    version: string,
+    operationId: string,
+): EndpointSnippets | undefined {
+    return REGISTRY[version]?.snippets.getEndpointSnippets(operationId);
+}
+
+/** Static route params for every archived version: the overview plus each endpoint. */
+export function getArchivedRouteParams(): { segments: string[] }[] {
+    const params: { segments: string[] }[] = [];
+    for (const [version, modules] of Object.entries(REGISTRY)) {
+        if (version === LATEST_API_VERSION) continue;
+        params.push({ segments: [version] });
+        for (const { tagSlug, endpointSlug } of modules.endpoints.getAllEndpointSlugs()) {
+            params.push({ segments: [version, tagSlug, endpointSlug] });
+        }
+    }
+    return params;
+}
+`;
+}
+
+function readArchivedVersionsManifest(): string[] {
+    if (!fs.existsSync(VERSIONS_MANIFEST_PATH)) return [];
+    try {
+        const manifest = JSON.parse(fs.readFileSync(VERSIONS_MANIFEST_PATH, 'utf-8')) as {
+            archived?: string[];
+        };
+        return manifest.archived ?? [];
+    } catch (e) {
+        console.warn(`Could not parse ${VERSIONS_MANIFEST_PATH}:`, e);
+        return [];
+    }
+}
+
 function parseCodename(version: string): string {
     const parts = version.split('.');
     for (const part of parts) {
@@ -963,14 +1288,104 @@ async function main() {
     );
 
     // Generate API version file
-    generateApiVersion(spec.info.version);
+    const latestVersion = spec.info.version;
+    generateApiVersion(latestVersion);
 
     // Generate structured endpoint data
     console.log('Generating structured endpoint data...');
-    const { tags, nav } = generateEndpointData(spec);
+    const { tags, nav } = generateEndpointData(spec, '/api-reference');
     const endpointsContent = generateEndpointsFile(tags, nav);
     fs.writeFileSync(ENDPOINTS_OUTPUT_PATH, endpointsContent);
     console.log(`Written: ${ENDPOINTS_OUTPUT_PATH}`);
+
+    // Generate archived versions (api-versions.json + specs/versions/<version>.json)
+    const archived: VersionedData[] = [];
+    for (const version of readArchivedVersionsManifest()) {
+        if (version === latestVersion) {
+            console.log(`Skipping archived version ${version}: it is the latest version`);
+            continue;
+        }
+        const specPath = path.join(ARCHIVED_SPECS_DIR, `${version}.json`);
+        const generatedModulePath = path.join(
+            VERSIONED_OUTPUT_DIR,
+            version,
+            'apiEndpoints.generated.ts',
+        );
+        if (fs.existsSync(specPath)) {
+            const versionSpec: OpenAPISpec = JSON.parse(fs.readFileSync(specPath, 'utf-8'));
+            if (versionSpec.info.version !== version) {
+                console.warn(
+                    `Archived spec ${specPath} reports version ${versionSpec.info.version}; ` +
+                        `using manifest version ${version} for routing`,
+                );
+            }
+            const data = generateEndpointData(versionSpec, `/api-reference/${version}`);
+            archived.push({ version, ...data });
+        } else if (fs.existsSync(generatedModulePath)) {
+            // No spec on disk (e.g. local build without S3 access): reuse the
+            // committed module so the version isn't silently dropped from the docs.
+            const mod = (await import(generatedModulePath)) as {
+                apiTags: TagData[];
+                apiNavDomains: ApiNavDomain[];
+            };
+            archived.push({ version, tags: mod.apiTags, nav: mod.apiNavDomains, reused: true });
+            console.log(
+                `Reusing previously generated data for archived version ${version} ` +
+                    `(no spec in specs/versions/; run scripts/fetch-public-release-artifacts.sh to regenerate)`,
+            );
+        } else {
+            console.warn(
+                `Skipping archived version ${version}: neither ${specPath} nor a previously ` +
+                    `generated module found (run scripts/fetch-public-release-artifacts.sh)`,
+            );
+        }
+    }
+
+    // Drop generated dirs for versions no longer in the manifest, then
+    // (re)write modules for freshly generated versions.
+    if (fs.existsSync(VERSIONED_OUTPUT_DIR)) {
+        const expected = new Set(archived.map((v) => v.version));
+        for (const entry of fs.readdirSync(VERSIONED_OUTPUT_DIR)) {
+            if (!expected.has(entry)) {
+                fs.rmSync(path.join(VERSIONED_OUTPUT_DIR, entry), {
+                    recursive: true,
+                    force: true,
+                });
+                console.log(`Removed stale generated version dir: ${entry}`);
+            }
+        }
+    }
+    for (const v of archived) {
+        if (v.reused) continue;
+        const dir = path.join(VERSIONED_OUTPUT_DIR, v.version);
+        fs.mkdirSync(dir, { recursive: true });
+        fs.writeFileSync(
+            path.join(dir, 'apiEndpoints.generated.ts'),
+            generateVersionedEndpointsFile(v.tags, v.nav),
+        );
+        fs.writeFileSync(
+            path.join(dir, 'apiSnippets.generated.ts'),
+            generatePlaceholderSnippetsFile(),
+        );
+        console.log(`Written: ${dir}/ (${v.tags.length} tags)`);
+    }
+
+    const archivedVersionStrings = archived.map((v) => v.version);
+    fs.writeFileSync(
+        API_VERSIONS_OUTPUT_PATH,
+        generateApiVersionsFile(latestVersion, archivedVersionStrings),
+    );
+    console.log(`Written: ${API_VERSIONS_OUTPUT_PATH}`);
+    fs.writeFileSync(
+        API_NAV_OUTPUT_PATH,
+        generateApiNavFile({ version: latestVersion, tags, nav }, archived),
+    );
+    console.log(`Written: ${API_NAV_OUTPUT_PATH}`);
+    fs.writeFileSync(
+        VERSION_REGISTRY_OUTPUT_PATH,
+        generateVersionRegistryFile(latestVersion, archivedVersionStrings),
+    );
+    console.log(`Written: ${VERSION_REGISTRY_OUTPUT_PATH}`);
 
     // Remove legacy generated developer-resources api-reference docs
     fs.rmSync(LEGACY_API_REFERENCE_DIR, { recursive: true, force: true });

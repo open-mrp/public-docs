@@ -2,8 +2,8 @@
 
 import BetaTag from '@/components/markdown/BetaTag';
 import { useRecentlyVisitedPages } from '@/hooks/useRecentlyVisitedPages';
+import { SNIPPET_HIGHLIGHT_MAP, type EndpointSnippets } from '@/lib/sdk-snippet-types';
 import type { EndpointData, Parameter, SchemaField } from '@/static/apiEndpoints.generated';
-import { getEndpointSnippet } from '@/static/apiSnippets.generated';
 import { CheckIcon, ClipboardIcon } from '@augno/ui';
 import copy from 'copy-to-clipboard';
 import Link from 'next/link';
@@ -193,7 +193,17 @@ function endpointToMarkdown(ep: EndpointData): string {
     return lines.join('\n');
 }
 
-export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
+export function EndpointPage({
+    endpoint,
+    snippets,
+    basePath = '/api-reference',
+}: {
+    endpoint: EndpointData;
+    /** SDK snippets for this endpoint keyed by language, resolved server-side for the page's API version. */
+    snippets?: EndpointSnippets;
+    /** Route prefix of the API version being viewed, e.g. /api-reference or /api-reference/<version>. */
+    basePath?: string;
+}) {
     const { language } = useSdkLanguage();
     const hasRequestBody = Boolean(
         endpoint.requestBody &&
@@ -251,9 +261,9 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
 
     const { addPage } = useRecentlyVisitedPages();
     useEffect(() => {
-        const path = `/api-reference/${endpoint.tagSlug}/${endpoint.endpointSlug}`;
+        const path = `${basePath}/${endpoint.tagSlug}/${endpoint.endpointSlug}`;
         addPage(path, endpoint.summary);
-    }, [endpoint.tagSlug, endpoint.endpointSlug, endpoint.summary, addPage]);
+    }, [basePath, endpoint.tagSlug, endpoint.endpointSlug, endpoint.summary, addPage]);
 
     const requestExampleTabs = useMemo(() => {
         if (effectiveRequestExampleMode === 'body' && hasRequestBody) {
@@ -267,9 +277,10 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
             ];
         }
 
-        const snippet = getEndpointSnippet(endpoint.operationId, language);
-        const code = snippet?.code ?? buildCurlExample(endpoint);
-        const highlightLanguage = snippet?.highlightLanguage ?? 'bash';
+        const raw = snippets?.[language];
+        const hasSnippet = raw !== undefined && raw !== '';
+        const code = hasSnippet ? raw : buildCurlExample(endpoint);
+        const highlightLanguage = hasSnippet ? SNIPPET_HIGHLIGHT_MAP[language] : 'bash';
 
         return [
             {
@@ -281,6 +292,7 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
         ];
     }, [
         endpoint,
+        snippets,
         language,
         effectiveRequestExampleMode,
         hasRequestBody,
@@ -293,7 +305,7 @@ export function EndpointPage({ endpoint }: { endpoint: EndpointData }) {
                 <div className="min-w-0">
                     <nav className="flex items-center gap-1.5 text-sm text-[var(--text-secondary)] mb-6">
                         <Link
-                            href="/api-reference"
+                            href={basePath}
                             className="hover:text-[var(--foreground)] transition-colors"
                         >
                             API Reference

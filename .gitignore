@@ -2,6 +2,7 @@
 .vscode/
 
 .yalc/
+yalc.lock
 
 # dependencies
 /node_modules
