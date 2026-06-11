@@ -6,6 +6,7 @@
 - [Overview](https://docs.augno.com/developer-resources/api/overview.md): Learn more about Augno's APIs.
 - [TypeScript](https://docs.augno.com/developer-resources/api/sdks/typescript.md): Call the Augno API from server-side TypeScript or JavaScript.
 - [Managing API Keys](https://docs.augno.com/developer-resources/api/authentication/managing-api-keys.md): Learn the best practices for managing secret API keys.
+- [Go](https://docs.augno.com/developer-resources/api/sdks/go.md): Call the Augno API from Go applications.
 - [API URIs](https://docs.augno.com/developer-resources/api/make-requests/api-uris.md): Learn the general format of Augno API URIs.
 - [Idempotency](https://docs.augno.com/developer-resources/api/make-requests/idempotency.md): Safely retry requests without duplicating work.
 - [Rate limiting](https://docs.augno.com/developer-resources/api/make-requests/rate-limiting.md): Understand rate limits and implement retry strategies.

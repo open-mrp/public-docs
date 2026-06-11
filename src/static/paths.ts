@@ -6,9 +6,13 @@ export const externalPaths = {
     github: {
         openapiSpec: 'https://github.com/Augno/openapi-spec',
         typescriptSdk: 'https://github.com/Augno/typescript-sdk',
+        goSdk: 'https://github.com/Augno/augno-go',
     },
     npm: {
         typescriptSdk: 'https://www.npmjs.com/package/@augno/sdk',
+    },
+    pkgGoDev: {
+        goSdk: 'https://pkg.go.dev/github.com/augno/augno-go',
     },
     frontend: {
         root: augnoFrontend,

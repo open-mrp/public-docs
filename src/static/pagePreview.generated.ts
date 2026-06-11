@@ -55,6 +55,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Augno's APIs",
         "subtitle": "Learn more about Augno's APIs."
     },
+    "/api/go-sdk": {
+        "title": "Go SDK",
+        "subtitle": "Call the Augno API from Go applications."
+    },
     "/api/typescript-sdk": {
         "title": "TypeScript SDK",
         "subtitle": "Call the Augno API from server-side TypeScript or JavaScript."

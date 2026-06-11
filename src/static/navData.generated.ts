@@ -525,6 +525,10 @@ export const navData: TabbedNavData = {
                         {
                             "href": "/api/typescript-sdk",
                             "children": "TypeScript"
+                        },
+                        {
+                            "href": "/api/go-sdk",
+                            "children": "Go"
                         }
                     ]
                 },

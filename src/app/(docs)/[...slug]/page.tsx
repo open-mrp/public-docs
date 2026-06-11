@@ -96,6 +96,12 @@ export function generateStaticParams() {
   {
     "slug": [
       "api",
+      "go-sdk"
+    ]
+  },
+  {
+    "slug": [
+      "api",
       "typescript-sdk"
     ]
   },

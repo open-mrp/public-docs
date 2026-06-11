@@ -1,0 +1,274 @@
+---
+title: Go SDK
+subtitle: Call the Augno API from Go applications.
+route: /api/go-sdk
+nav:
+    title: Go
+    section: API
+    subsection: SDKs
+    order: 2
+---
+
+The Augno Go SDK, `github.com/augno/augno-go`, is a typed client for the Augno REST API. It ships request and response types for every endpoint, handles authentication, retries, and timeouts, and exposes the full API through a single `augno.Client`.
+
+<DocCardGroup>
+    <LinkCard
+        pathKey="pkgGoDev.goSdk"
+        title="Go package"
+        description="github.com/augno/augno-go on pkg.go.dev."
+    />
+    <LinkCard
+        pathKey="github.goSdk"
+        title="Source on GitHub"
+        description="Augno/augno-go - source, changelog, and issues."
+    />
+</DocCardGroup>
+
+## Installation
+
+```sh
+go get github.com/augno/augno-go
+```
+
+Or pin a specific version:
+
+```sh
+go get github.com/augno/augno-go@v0.1.1
+```
+
+## Initialize the client
+
+Create a single client with `augno.NewClient` and reuse it across requests. Authenticate with an <InternalLink pathKey="api.apiKeys" text="API key" /> passed via `option.WithBearerToken`, and set `option.WithAugnoAccountID` to the account you want to operate on - it is sent as the `Augno-Account` header on every request.
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/augno/augno-go"
+	"github.com/augno/augno-go/option"
+)
+
+func main() {
+	client := augno.NewClient(
+		option.WithBearerToken("YOUR_API_KEY"),             // or omit - defaults to os.LookupEnv("AUGNO_API_KEY")
+		option.WithAugnoAccountID("YOUR_SANDBOX_ACCOUNT_ID"), // ID for the account YOUR_SANDBOX_ACCOUNT_NAME
+	)
+
+	items, err := client.Catalog.Items.List(context.Background(), augno.CatalogItemListParams{})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Printf("%+v\n", items.Data)
+}
+```
+
+> In production, load your key from an environment variable or secret manager rather than hardcoding it (the bearer token defaults to `os.LookupEnv("AUGNO_API_KEY")`, so you can omit the option entirely). Treat the key like a password and never commit it.
+
+### Client options
+
+The SDK uses the functional options pattern: every option below can be passed to `augno.NewClient` to apply to all requests, or to an individual method call to apply to just that request.
+
+| Option                                     | Default                          | Description                                                                    |
+| :----------------------------------------- | :------------------------------- | :----------------------------------------------------------------------------- |
+| `option.WithBearerToken(string)`           | `os.LookupEnv("AUGNO_API_KEY")`  | API key sent as a `Bearer` token.                                              |
+| `option.WithAugnoAccountID(string)`        | -                                | Account UUID, sent as the `Augno-Account` header. Override to switch accounts. |
+| `option.WithEnvironmentProduction()`       | (default)                        | Targets `https://api.augno.com`.                                               |
+| `option.WithEnvironmentLocal()`            | -                                | Targets `http://localhost:8081`.                                               |
+| `option.WithBaseURL(string)`               | `os.LookupEnv("AUGNO_BASE_URL")` | Override the base URL directly. Don't combine with an environment option.      |
+| `option.WithMaxRetries(int)`               | `2`                              | Number of automatic retries for transient failures.                            |
+| `option.WithRequestTimeout(time.Duration)` | none                             | Per-retry request timeout. Use a `context` deadline for an overall timeout.    |
+
+See the [full list of request options](https://pkg.go.dev/github.com/augno/augno-go/option) on pkg.go.dev.
+
+## Switching accounts
+
+If your integration spans multiple accounts, pass `option.WithAugnoAccountID` on individual requests to override the client-level account without constructing a new client.
+
+```go
+items, err := client.Catalog.Items.List(
+	context.Background(),
+	augno.CatalogItemListParams{},
+	option.WithAugnoAccountID("YOUR_ACCOUNT_ID"), // ID for the account YOUR_ACCOUNT_NAME
+)
+```
+
+## Request & response types
+
+Every request param and response field is typed, and each carries a docstring that appears on hover in your editor.
+
+Required request fields are plain Go values; optional fields are wrapped in `param.Opt[T]` and set with helpers like `augno.String(...)` and `augno.Int(...)`. Zero-valued optional fields are omitted from the request.
+
+```go
+page, err := client.Catalog.Items.List(context.Background(), augno.CatalogItemListParams{
+	Limit: augno.Int(50), // optional field
+})
+```
+
+Response struct fields are ordinary value types. To distinguish a missing or `null` field from a genuine zero value, check the field's metadata via the `JSON` struct on every response type:
+
+```go
+item := page.Data[0]
+
+if item.JSON.Name.Valid() {
+	fmt.Println(item.Name)
+}
+```
+
+## Handling errors
+
+When the API returns a 4xx or 5xx response, the SDK returns an error of type `*augno.Error`. It carries the `StatusCode` plus the underlying `*http.Request` and `*http.Response`. Use the `errors.As` pattern to branch on it:
+
+```go
+_, err := client.Catalog.Items.List(context.Background(), augno.CatalogItemListParams{})
+if err != nil {
+	var apierr *augno.Error
+	if errors.As(err, &apierr) {
+		fmt.Println(apierr.StatusCode)                // 400
+		fmt.Println(string(apierr.DumpRequest(true))) // serialized HTTP request
+		fmt.Println(string(apierr.DumpResponse(true))) // serialized HTTP response
+	}
+	panic(err) // GET "/v1/catalog/items": 400 Bad Request { ... }
+}
+```
+
+Transport-level failures are returned unwrapped - for example, a failed connection surfaces as a `*url.Error`.
+
+For the structure of the error envelope and the full list of error codes, see <InternalLink pathKey="api.errors" text="API errors" />.
+
+## Retries
+
+The SDK automatically retries certain failures up to 2 times with a short exponential backoff. Connection errors, `408 Request Timeout`, `409 Conflict`, `429 Rate Limit`, and `>= 500` responses are retried by default. Configure or disable this per client or per request:
+
+```go
+// For all requests:
+client := augno.NewClient(
+	option.WithMaxRetries(0), // default is 2
+)
+
+// Or per request:
+client.Catalog.Items.List(
+	context.Background(),
+	augno.CatalogItemListParams{},
+	option.WithMaxRetries(5),
+)
+```
+
+## Timeouts
+
+Requests do not time out by default. Use a `context` deadline to bound the whole request lifecycle (including retries), and `option.WithRequestTimeout` to bound each individual attempt:
+
+```go
+// Overall timeout, including all retries:
+ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
+defer cancel()
+
+client.Catalog.Items.List(
+	ctx,
+	augno.CatalogItemListParams{},
+	// Per-retry timeout:
+	option.WithRequestTimeout(20*time.Second),
+)
+```
+
+## Pagination
+
+List endpoints return a `Data` slice alongside a `PageInfo` struct with `HasNextPage`, `HasPrevPage`, and `NextPageURL` / `PreviousPageURL`. The page URLs are relative paths that carry the next/previous `cursor` as a query parameter — pull that cursor out and pass it into the next `List` call. You can also set `Limit` to control page size.
+
+A small helper keeps the extraction in one place:
+
+```go
+// extractCursor pulls the cursor query parameter from a pagination URL.
+// Pagination URLs are relative paths like "/v1/path?cursor=xxx&limit=10".
+func extractCursor(pageURL string) string {
+	u, err := url.Parse(pageURL)
+	if err != nil {
+		return ""
+	}
+	return u.Query().Get("cursor")
+}
+```
+
+Then iterate until there are no more pages:
+
+```go
+page, err := client.Catalog.Items.List(context.Background(), augno.CatalogItemListParams{
+	Limit: augno.Int(100),
+})
+if err != nil {
+	panic(err)
+}
+
+for {
+	for _, item := range page.Data {
+		fmt.Println(item.ID)
+	}
+
+	cursor := extractCursor(page.PageInfo.NextPageURL)
+	if !page.PageInfo.HasNextPage || cursor == "" {
+		break
+	}
+
+	page, err = client.Catalog.Items.List(context.Background(), augno.CatalogItemListParams{
+		Cursor: augno.String(cursor),
+	})
+	if err != nil {
+		panic(err)
+	}
+}
+```
+
+See <InternalLink pathKey="api.pagination" text="Pagination" /> for the full cursor semantics.
+
+## Accessing the raw response
+
+Use `option.WithResponseInto` to capture the raw `*http.Response` alongside the parsed result - useful for reading headers and status codes.
+
+```go
+var response *http.Response
+
+items, err := client.Catalog.Items.List(
+	context.Background(),
+	augno.CatalogItemListParams{},
+	option.WithResponseInto(&response),
+)
+if err != nil {
+	panic(err)
+}
+
+fmt.Println(response.StatusCode)
+fmt.Println(response.Header.Get("Request-Id"))
+fmt.Printf("%+v\n", items.Data)
+```
+
+The `Request-ID` header is useful when reporting issues - see <InternalLink pathKey="api.requestIds" text="Request IDs" />.
+
+## Logging
+
+Pass `option.WithDebugLog(nil)` to log all HTTP requests and responses, including headers and bodies - use it only for local debugging. Pass a custom `*log.Logger` instead of `nil` to control where output goes.
+
+For structured logging or metrics, `option.WithMiddleware` lets you wrap every request:
+
+```go
+func logger(req *http.Request, next option.MiddlewareNext) (*http.Response, error) {
+	start := time.Now()
+	res, err := next(req)
+	log.Printf("%s %s -> %v (%s)", req.Method, req.URL.Path, err, time.Since(start))
+	return res, err
+}
+
+client := augno.NewClient(
+	option.WithMiddleware(logger),
+)
+```
+
+## Versioning
+
+The SDK is pinned to the API version it was generated against, so upgrading the module upgrades the API version your integration targets. Review the [changelog](https://github.com/Augno/augno-go/blob/main/CHANGELOG.md) before bumping, and see <InternalLink pathKey="api.versioning" text="Versioning" /> for how Augno versions the API.
+
+## Requirements
+
+Go 1.22 or later.
