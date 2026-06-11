@@ -2748,7 +2748,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "handle",
                             "type": "string",
-                            "description": "Human-readable handle (`email` for users, `redacted_value` for API keys, `slug` for agents).",
+                            "description": "Human-readable handle.\n\n- `email` for users\n- `redacted_value` for API keys\n- `slug` for agents",
                             "required": true,
                             "nullable": true,
                             "expandable": false
@@ -3488,7 +3488,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "handle",
                                                 "type": "string",
-                                                "description": "Human-readable handle (`email` for users, `redacted_value` for API keys, `slug` for agents).",
+                                                "description": "Human-readable handle.\n\n- `email` for users\n- `redacted_value` for API keys\n- `slug` for agents",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -4029,7 +4029,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "handle",
                                         "type": "string",
-                                        "description": "Human-readable handle (`email` for users, `redacted_value` for API keys, `slug` for agents).",
+                                        "description": "Human-readable handle.\n\n- `email` for users\n- `redacted_value` for API keys\n- `slug` for agents",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -4552,7 +4552,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "handle",
                             "type": "string",
-                            "description": "Human-readable handle (`email` for users, `redacted_value` for API keys, `slug` for agents).",
+                            "description": "Human-readable handle.\n\n- `email` for users\n- `redacted_value` for API keys\n- `slug` for agents",
                             "required": true,
                             "nullable": true,
                             "expandable": false
@@ -5743,7 +5743,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "handle",
                                                 "type": "string",
-                                                "description": "Human-readable handle (`email` for users, `redacted_value` for API keys, `slug` for agents).",
+                                                "description": "Human-readable handle.\n\n- `email` for users\n- `redacted_value` for API keys\n- `slug` for agents",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -6915,7 +6915,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "handle",
                                         "type": "string",
-                                        "description": "Human-readable handle (`email` for users, `redacted_value` for API keys, `slug` for agents).",
+                                        "description": "Human-readable handle.\n\n- `email` for users\n- `redacted_value` for API keys\n- `slug` for agents",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -64437,7 +64437,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "handle",
                             "type": "string",
-                            "description": "Human-readable handle (`email` for users, `redacted_value` for API keys, `slug` for agents).",
+                            "description": "Human-readable handle.\n\n- `email` for users\n- `redacted_value` for API keys\n- `slug` for agents",
                             "required": true,
                             "nullable": true,
                             "expandable": false
@@ -64741,7 +64741,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "handle",
                                                 "type": "string",
-                                                "description": "Human-readable handle (`email` for users, `redacted_value` for API keys, `slug` for agents).",
+                                                "description": "Human-readable handle.\n\n- `email` for users\n- `redacted_value` for API keys\n- `slug` for agents",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -64983,7 +64983,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "handle",
                                         "type": "string",
-                                        "description": "Human-readable handle (`email` for users, `redacted_value` for API keys, `slug` for agents).",
+                                        "description": "Human-readable handle.\n\n- `email` for users\n- `redacted_value` for API keys\n- `slug` for agents",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
