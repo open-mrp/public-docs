@@ -42,7 +42,7 @@ You do not need to set the `Augno-Version` header yourself — the server pins t
 
 ## Connect a client
 
-The MCP server is hosted at `https://mcp.augno.com`. Connect to it over HTTP — there's nothing to install — or run a **local** server over stdio if you prefer. Either way, authenticate with your API key. Setup for Cursor, Claude Code, and ChatGPT is below.
+The MCP server is hosted at `https://mcp.augno.com`. Connect to it over HTTP — there's nothing to install — or run a **local** server over stdio if you prefer. Either way, authenticate with your API key. Setup for Cursor and Claude Code is below.
 
 <DocTabs className="my-4">
 <DocTab label="Cursor">
@@ -115,24 +115,6 @@ By default the server is saved for the current project only. Add `--scope user` 
 ```
 
 Verify the connection with `claude mcp list` (or `/mcp` inside a session), and remove it with `claude mcp remove augno`.
-
-</DocTab>
-<DocTab label="ChatGPT">
-
-ChatGPT connects to remote MCP servers as **custom connectors**, set up through developer mode. It only speaks HTTP, so use the hosted server — there's no local (stdio) option here. Developer mode is available on the Pro, Plus, Business, Enterprise, and Edu plans.
-
-1. Open **Settings → Apps & Connectors → Advanced settings** and turn on **Developer mode**.
-2. Back on **Apps & Connectors**, choose **Add new connector**.
-3. Fill in the connector:
-    - **Name:** `Augno`
-    - **Description:** anything, e.g. _Read and write Augno data._
-    - **MCP Server URL:** `https://mcp.augno.com`
-    - **Authentication:** select **API key** and paste your API key. ChatGPT sends it as an `Authorization: Bearer` token on every request.
-4. Save, then enable the connector in a chat from the **+** (tools) menu.
-
-To remove it, open the connector from **Settings → Apps & Connectors** and delete it.
-
-> Developer mode lets a connector's tools take write actions on your account, scoped to your key. Enabling it also turns off ChatGPT's memory. Connect a least-privilege key and review actions before confirming them.
 
 </DocTab>
 </DocTabs>
