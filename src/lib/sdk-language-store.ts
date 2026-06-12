@@ -11,7 +11,7 @@ import { createJSONStorage, persist } from 'zustand/middleware';
 export const SDK_LANGUAGES: { id: SdkLanguage; label: string }[] = [
     { id: 'typescript', label: 'TypeScript' },
     // { id: 'python', label: 'Python' },
-    // { id: 'go', label: 'Go' },
+    { id: 'go', label: 'Go' },
     { id: 'curl', label: 'cURL' },
 ];
 
