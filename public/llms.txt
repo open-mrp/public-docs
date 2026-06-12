@@ -2,6 +2,7 @@
 
 ## API
 - [API Keys](https://docs.augno.com/developer-resources/api/authentication/api-keys.md): Learn how to authenticate requests with API keys.
+- [MCP server](https://docs.augno.com/developer-resources/api/mcp/mcp-server.md): Connect AI agents and assistants to the Augno API over the Model Context Protocol.
 - [Request logs](https://docs.augno.com/developer-resources/api/monitoring/request-logs.md): Monitor and debug your API activity with request logs.
 - [Overview](https://docs.augno.com/developer-resources/api/overview.md): Learn more about Augno's APIs.
 - [TypeScript](https://docs.augno.com/developer-resources/api/sdks/typescript.md): Call the Augno API from server-side TypeScript or JavaScript.

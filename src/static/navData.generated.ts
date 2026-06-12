@@ -533,6 +533,15 @@ export const navData: TabbedNavData = {
                     ]
                 },
                 {
+                    "title": "MCP",
+                    "items": [
+                        {
+                            "href": "/api/mcp-server",
+                            "children": "MCP server"
+                        }
+                    ]
+                },
+                {
                     "title": "Authentication",
                     "items": [
                         {

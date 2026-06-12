@@ -84,6 +84,12 @@ export function generateStaticParams() {
   {
     "slug": [
       "api",
+      "mcp-server"
+    ]
+  },
+  {
+    "slug": [
+      "api",
       "request-logs"
     ]
   },

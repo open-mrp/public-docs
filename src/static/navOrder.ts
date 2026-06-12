@@ -105,6 +105,7 @@ export const navOrder: TabNavOrder[] = [
                 subsections: [
                     'Overview',
                     'SDKs',
+                    'MCP',
                     'Authentication',
                     'Make Requests',
                     'Handling Errors',

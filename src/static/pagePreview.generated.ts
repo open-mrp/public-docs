@@ -47,6 +47,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "API Versioning",
         "subtitle": "Understand how Augno versions its API and manage version upgrades."
     },
+    "/api/mcp-server": {
+        "title": "MCP server",
+        "subtitle": "Connect AI agents and assistants to the Augno API over the Model Context Protocol."
+    },
     "/api/request-logs": {
         "title": "Request Logs",
         "subtitle": "Monitor and debug your API activity with request logs."

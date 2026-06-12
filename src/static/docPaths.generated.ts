@@ -13,6 +13,7 @@ export const docPaths = {
         "rateLimiting": "/api/rate-limiting",
         "requestIds": "/api/request-ids",
         "versioning": "/api/versioning",
+        "mcpServer": "/api/mcp-server",
         "requestLogs": "/api/request-logs",
         "overview": "/api/overview",
         "goSdk": "/api/go-sdk",
