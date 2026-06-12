@@ -708,7 +708,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -716,7 +716,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -2018,7 +2018,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -2026,7 +2026,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -3165,7 +3165,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -3173,7 +3173,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -4569,6 +4569,97 @@ export const apiTags: TagData[] = [
                     ]
                 },
                 {
+                    "name": "account",
+                    "type": "object",
+                    "description": "Account the audited mutation was performed against.\n\nFor a mutation on one of your own resources this is your account; when you act on a customer's or supplier's account, it is that account.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": true,
+                    "properties": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "description": "Account ID.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "object",
+                            "type": "string",
+                            "description": "Resource type identifier.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "account"
+                            ]
+                        },
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "description": "Display name.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "default_billing_address",
+                            "type": "object",
+                            "description": "Default billing address.",
+                            "required": true,
+                            "nullable": true,
+                            "alwaysNull": true,
+                            "expandable": true
+                        },
+                        {
+                            "name": "default_shipping_address",
+                            "type": "object",
+                            "description": "Default shipping address.",
+                            "required": true,
+                            "nullable": true,
+                            "alwaysNull": true,
+                            "expandable": true
+                        },
+                        {
+                            "name": "branding",
+                            "type": "object",
+                            "description": "Customer-facing branding for the account, such as the logo, support contacts, and social links.",
+                            "required": true,
+                            "nullable": true,
+                            "alwaysNull": true,
+                            "expandable": true
+                        },
+                        {
+                            "name": "portal",
+                            "type": "object",
+                            "description": "The account's customer portal settings, including the portal URL slug.",
+                            "required": true,
+                            "nullable": true,
+                            "alwaysNull": true,
+                            "expandable": true
+                        },
+                        {
+                            "name": "created_at",
+                            "type": "string",
+                            "description": "Creation timestamp.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "format": "date-time"
+                        },
+                        {
+                            "name": "updated_at",
+                            "type": "string",
+                            "description": "Last updated timestamp.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "format": "date-time"
+                        }
+                    ]
+                },
+                {
                     "name": "changes",
                     "type": "object",
                     "description": "Field-level changes recorded for this event.",
@@ -4598,7 +4689,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                    "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -4606,7 +4697,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                    "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -4954,6 +5045,17 @@ export const apiTags: TagData[] = [
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
                     }
+                },
+                "account": {
+                    "id": "ac_01148680966698341a9c0976db",
+                    "object": "account",
+                    "name": "Acme Inc.",
+                    "default_billing_address": null,
+                    "default_shipping_address": null,
+                    "branding": null,
+                    "portal": null,
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
                 },
                 "changes": {
                     "object": "list",
@@ -5355,12 +5457,20 @@ export const apiTags: TagData[] = [
                         ]
                     },
                     {
+                        "name": "account_ids[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter by the target account the mutation was performed against.\n\nNarrows results to audit events whose `account` is one of the given account IDs — for example a specific customer's or supplier's account."
+                    },
+                    {
                         "name": "include[]",
                         "in": "query",
                         "type": "array",
                         "required": false,
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
+                            "account",
                             "actor",
                             "changes",
                             "metadata",
@@ -5395,7 +5505,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -5403,7 +5513,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -5760,6 +5870,97 @@ export const apiTags: TagData[] = [
                                         ]
                                     },
                                     {
+                                        "name": "account",
+                                        "type": "object",
+                                        "description": "Account the audited mutation was performed against.\n\nFor a mutation on one of your own resources this is your account; when you act on a customer's or supplier's account, it is that account.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Account ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "default_billing_address",
+                                                "type": "object",
+                                                "description": "Default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "default_shipping_address",
+                                                "type": "object",
+                                                "description": "Default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "branding",
+                                                "type": "object",
+                                                "description": "Customer-facing branding for the account, such as the logo, support contacts, and social links.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "portal",
+                                                "type": "object",
+                                                "description": "The account's customer portal settings, including the portal URL slug.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    },
+                                    {
                                         "name": "changes",
                                         "type": "object",
                                         "description": "Field-level changes recorded for this event.",
@@ -5789,7 +5990,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -5797,7 +5998,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -6157,6 +6358,17 @@ export const apiTags: TagData[] = [
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
+                                    "account": {
+                                        "id": "ac_01148680966698341a9c0976db",
+                                        "object": "account",
+                                        "name": "Acme Inc.",
+                                        "default_billing_address": null,
+                                        "default_shipping_address": null,
+                                        "branding": null,
+                                        "portal": null,
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "changes": {
                                         "object": "list",
                                         "page_info": {
@@ -6307,7 +6519,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -6315,7 +6527,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -6595,6 +6807,7 @@ export const apiTags: TagData[] = [
                         "required": false,
                         "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
                         "enum": [
+                            "account",
                             "actor",
                             "changes",
                             "metadata",
@@ -6932,6 +7145,97 @@ export const apiTags: TagData[] = [
                                 ]
                             },
                             {
+                                "name": "account",
+                                "type": "object",
+                                "description": "Account the audited mutation was performed against.\n\nFor a mutation on one of your own resources this is your account; when you act on a customer's or supplier's account, it is that account.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Account ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "account"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "default_billing_address",
+                                        "type": "object",
+                                        "description": "Default billing address.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "default_shipping_address",
+                                        "type": "object",
+                                        "description": "Default shipping address.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "branding",
+                                        "type": "object",
+                                        "description": "Customer-facing branding for the account, such as the logo, support contacts, and social links.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "portal",
+                                        "type": "object",
+                                        "description": "The account's customer portal settings, including the portal URL slug.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            },
+                            {
                                 "name": "changes",
                                 "type": "object",
                                 "description": "Field-level changes recorded for this event.",
@@ -6961,7 +7265,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -6969,7 +7273,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -7317,6 +7621,17 @@ export const apiTags: TagData[] = [
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
+                            },
+                            "account": {
+                                "id": "ac_01148680966698341a9c0976db",
+                                "object": "account",
+                                "name": "Acme Inc.",
+                                "default_billing_address": null,
+                                "default_shipping_address": null,
+                                "branding": null,
+                                "portal": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
                             },
                             "changes": {
                                 "object": "list",
@@ -8532,7 +8847,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -8540,7 +8855,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -9405,7 +9720,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                    "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -9413,7 +9728,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                    "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -10058,7 +10373,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -10066,7 +10381,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -10692,7 +11007,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -10700,7 +11015,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -11082,7 +11397,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -11090,7 +11405,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -11339,7 +11654,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -11347,7 +11662,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -11906,7 +12221,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -11914,7 +12229,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -12925,7 +13240,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -12933,7 +13248,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -14069,7 +14384,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -14077,7 +14392,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -15163,7 +15478,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -15171,7 +15486,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -16245,7 +16560,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                    "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -16253,7 +16568,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                    "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -17097,7 +17412,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -17105,7 +17420,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -17956,7 +18271,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -17964,7 +18279,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -18205,7 +18520,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -18213,7 +18528,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -18799,7 +19114,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -18807,7 +19122,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -19579,7 +19894,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -19587,7 +19902,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -20621,7 +20936,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -20629,7 +20944,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -21142,7 +21457,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -21150,7 +21465,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -21665,7 +21980,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -21673,7 +21988,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -23483,7 +23798,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -23491,7 +23806,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -24489,7 +24804,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                    "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -24497,7 +24812,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                    "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -24746,7 +25061,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -24754,7 +25069,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -25011,7 +25326,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -25019,7 +25334,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -25239,7 +25554,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -25247,7 +25562,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -25336,7 +25651,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -25344,7 +25659,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -25598,7 +25913,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -25606,7 +25921,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -25976,7 +26291,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -25984,7 +26299,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -26437,7 +26752,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -26445,7 +26760,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -26770,7 +27085,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -26778,7 +27093,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -26930,7 +27245,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -26938,7 +27253,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -27329,7 +27644,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -27337,7 +27652,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -27830,7 +28145,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -27838,7 +28153,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -28384,7 +28699,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                    "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -28392,7 +28707,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                    "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -28874,7 +29189,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -28882,7 +29197,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -29343,7 +29658,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -29351,7 +29666,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -29601,7 +29916,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -29609,7 +29924,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -29860,7 +30175,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -29868,7 +30183,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -30314,7 +30629,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -30322,7 +30637,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -31469,7 +31784,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -31477,7 +31792,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -32217,7 +32532,7 @@ export const apiTags: TagData[] = [
                                         {
                                             "name": "next_page_url",
                                             "type": "string",
-                                            "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                            "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -32225,7 +32540,7 @@ export const apiTags: TagData[] = [
                                         {
                                             "name": "previous_page_url",
                                             "type": "string",
-                                            "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                            "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -32540,7 +32855,7 @@ export const apiTags: TagData[] = [
                                                 {
                                                     "name": "next_page_url",
                                                     "type": "string",
-                                                    "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                    "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -32548,7 +32863,7 @@ export const apiTags: TagData[] = [
                                                 {
                                                     "name": "previous_page_url",
                                                     "type": "string",
-                                                    "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                    "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -32983,7 +33298,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                    "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -32991,7 +33306,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                    "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -33465,7 +33780,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -33473,7 +33788,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -33655,7 +33970,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -33663,7 +33978,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -33978,7 +34293,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -33986,7 +34301,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -34421,7 +34736,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -34429,7 +34744,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -34962,7 +35277,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -34970,7 +35285,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -35285,7 +35600,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -35293,7 +35608,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -35728,7 +36043,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -35736,7 +36051,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -36263,7 +36578,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -36271,7 +36586,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -36586,7 +36901,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -36594,7 +36909,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -37029,7 +37344,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -37037,7 +37352,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -37564,7 +37879,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -37572,7 +37887,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -37887,7 +38202,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -37895,7 +38210,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -38330,7 +38645,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -38338,7 +38653,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -39242,7 +39557,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -39250,7 +39565,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -39565,7 +39880,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -39573,7 +39888,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -40008,7 +40323,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -40016,7 +40331,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -40554,7 +40869,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                    "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -40562,7 +40877,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                    "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -40877,7 +41192,7 @@ export const apiTags: TagData[] = [
                                         {
                                             "name": "next_page_url",
                                             "type": "string",
-                                            "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                            "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -40885,7 +41200,7 @@ export const apiTags: TagData[] = [
                                         {
                                             "name": "previous_page_url",
                                             "type": "string",
-                                            "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                            "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -41335,7 +41650,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -41343,7 +41658,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -41658,7 +41973,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -41666,7 +41981,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -42110,7 +42425,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -42118,7 +42433,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -42433,7 +42748,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -42441,7 +42756,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -42707,7 +43022,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -42715,7 +43030,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -42948,7 +43263,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -42956,7 +43271,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -43271,7 +43586,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -43279,7 +43594,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -43712,7 +44027,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -43720,7 +44035,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -44035,7 +44350,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -44043,7 +44358,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -44550,7 +44865,7 @@ export const apiTags: TagData[] = [
                                                 {
                                                     "name": "next_page_url",
                                                     "type": "string",
-                                                    "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                    "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -44558,7 +44873,7 @@ export const apiTags: TagData[] = [
                                                 {
                                                     "name": "previous_page_url",
                                                     "type": "string",
-                                                    "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                    "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -45052,7 +45367,7 @@ export const apiTags: TagData[] = [
                                         {
                                             "name": "next_page_url",
                                             "type": "string",
-                                            "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                            "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -45060,7 +45375,7 @@ export const apiTags: TagData[] = [
                                         {
                                             "name": "previous_page_url",
                                             "type": "string",
-                                            "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                            "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -45953,7 +46268,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -45961,7 +46276,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -46455,7 +46770,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -46463,7 +46778,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -47311,7 +47626,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -47319,7 +47634,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -47813,7 +48128,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -47821,7 +48136,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -48439,7 +48754,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -48447,7 +48762,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -48656,7 +48971,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -48664,7 +48979,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -49158,7 +49473,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -49166,7 +49481,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -49908,7 +50223,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -49916,7 +50231,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -50410,7 +50725,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -50418,7 +50733,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -51559,7 +51874,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -51567,7 +51882,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -51946,7 +52261,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -51954,7 +52269,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -53944,7 +54259,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -53952,7 +54267,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -55846,7 +56161,7 @@ export const apiTags: TagData[] = [
                                                 {
                                                     "name": "next_page_url",
                                                     "type": "string",
-                                                    "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                    "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -55854,7 +56169,7 @@ export const apiTags: TagData[] = [
                                                 {
                                                     "name": "previous_page_url",
                                                     "type": "string",
-                                                    "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                    "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -56348,7 +56663,7 @@ export const apiTags: TagData[] = [
                                         {
                                             "name": "next_page_url",
                                             "type": "string",
-                                            "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                            "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -56356,7 +56671,7 @@ export const apiTags: TagData[] = [
                                         {
                                             "name": "previous_page_url",
                                             "type": "string",
-                                            "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                            "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -57322,7 +57637,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -57330,7 +57645,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -58216,7 +58531,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -58224,7 +58539,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -58684,7 +58999,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -58692,7 +59007,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -58901,7 +59216,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -58909,7 +59224,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -59403,7 +59718,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -59411,7 +59726,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -59995,7 +60310,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -60003,7 +60318,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -60497,7 +60812,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -60505,7 +60820,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -61488,7 +61803,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -61496,7 +61811,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -61875,7 +62190,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -61883,7 +62198,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -63873,7 +64188,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -63881,7 +64196,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -64594,7 +64909,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -64602,7 +64917,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -66335,7 +66650,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                    "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -66343,7 +66658,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                    "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -66719,7 +67034,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                    "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -66727,7 +67042,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                    "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -69011,7 +69326,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -69019,7 +69334,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -69395,7 +69710,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -69403,7 +69718,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -71505,7 +71820,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -71513,7 +71828,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -71889,7 +72204,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -71897,7 +72212,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -72671,7 +72986,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -72679,7 +72994,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -73965,7 +74280,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -73973,7 +74288,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -74349,7 +74664,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -74357,7 +74672,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -76230,7 +76545,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -76238,7 +76553,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -76614,7 +76929,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -76622,7 +76937,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -78531,7 +78846,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -78539,7 +78854,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -78915,7 +79230,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -78923,7 +79238,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -80743,7 +81058,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -80751,7 +81066,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -81908,7 +82223,7 @@ export const apiTags: TagData[] = [
                                                 {
                                                     "name": "next_page_url",
                                                     "type": "string",
-                                                    "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                    "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -81916,7 +82231,7 @@ export const apiTags: TagData[] = [
                                                 {
                                                     "name": "previous_page_url",
                                                     "type": "string",
-                                                    "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                    "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -82233,7 +82548,7 @@ export const apiTags: TagData[] = [
                                                 {
                                                     "name": "next_page_url",
                                                     "type": "string",
-                                                    "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                    "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -82241,7 +82556,7 @@ export const apiTags: TagData[] = [
                                                 {
                                                     "name": "previous_page_url",
                                                     "type": "string",
-                                                    "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                    "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                     "required": true,
                                                     "nullable": true,
                                                     "expandable": false
@@ -82556,7 +82871,7 @@ export const apiTags: TagData[] = [
                                                         {
                                                             "name": "next_page_url",
                                                             "type": "string",
-                                                            "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                            "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                             "required": true,
                                                             "nullable": true,
                                                             "expandable": false
@@ -82564,7 +82879,7 @@ export const apiTags: TagData[] = [
                                                         {
                                                             "name": "previous_page_url",
                                                             "type": "string",
-                                                            "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                            "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                             "required": true,
                                                             "nullable": true,
                                                             "expandable": false
@@ -82999,7 +83314,7 @@ export const apiTags: TagData[] = [
                                         {
                                             "name": "next_page_url",
                                             "type": "string",
-                                            "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                            "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -83007,7 +83322,7 @@ export const apiTags: TagData[] = [
                                         {
                                             "name": "previous_page_url",
                                             "type": "string",
-                                            "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                            "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -83933,7 +84248,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -83941,7 +84256,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -84258,7 +84573,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -84266,7 +84581,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -84581,7 +84896,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -84589,7 +84904,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -85024,7 +85339,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -85032,7 +85347,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -85888,7 +86203,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -85896,7 +86211,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -86213,7 +86528,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -86221,7 +86536,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -86536,7 +86851,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -86544,7 +86859,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -86979,7 +87294,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -86987,7 +87302,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -87499,7 +87814,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -87507,7 +87822,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -87895,7 +88210,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -87903,7 +88218,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -88220,7 +88535,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -88228,7 +88543,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -88878,7 +89193,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -88886,7 +89201,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -89676,7 +89991,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -89684,7 +89999,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -90001,7 +90316,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -90009,7 +90324,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -90324,7 +90639,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -90332,7 +90647,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -90767,7 +91082,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -90775,7 +91090,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -91552,7 +91867,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -91560,7 +91875,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -91877,7 +92192,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -91885,7 +92200,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -92200,7 +92515,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -92208,7 +92523,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -92643,7 +92958,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -92651,7 +92966,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -93435,7 +93750,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -93443,7 +93758,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -93760,7 +94075,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "next_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -93768,7 +94083,7 @@ export const apiTags: TagData[] = [
                                                             {
                                                                 "name": "previous_page_url",
                                                                 "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                 "required": true,
                                                                 "nullable": true,
                                                                 "expandable": false
@@ -94083,7 +94398,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "next_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -94091,7 +94406,7 @@ export const apiTags: TagData[] = [
                                                                     {
                                                                         "name": "previous_page_url",
                                                                         "type": "string",
-                                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                                         "required": true,
                                                                         "nullable": true,
                                                                         "expandable": false
@@ -94526,7 +94841,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -94534,7 +94849,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -94985,7 +95300,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -94993,7 +95308,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -95236,7 +95551,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -95244,7 +95559,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -95471,7 +95786,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -95479,7 +95794,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -95638,7 +95953,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -95646,7 +95961,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -96040,7 +96355,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -96048,7 +96363,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -96435,7 +96750,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -96443,7 +96758,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -96665,7 +96980,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -96673,7 +96988,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -96857,7 +97172,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -96865,7 +97180,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -97045,7 +97360,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -97053,7 +97368,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -97503,7 +97818,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -97511,7 +97826,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -97920,7 +98235,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "next_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                    "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -97928,7 +98243,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "previous_page_url",
                                     "type": "string",
-                                    "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                    "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -98486,7 +98801,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -98494,7 +98809,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -99033,7 +99348,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -99041,7 +99356,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -99347,7 +99662,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -99355,7 +99670,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -99594,7 +99909,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "next_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -99602,7 +99917,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "previous_page_url",
                                                         "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -100092,7 +100407,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "next_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -100100,7 +100415,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "previous_page_url",
                                                 "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -101269,7 +101584,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "next_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\nAbsent once the last page has been reached.",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -101277,7 +101592,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "previous_page_url",
                                         "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\nAbsent while on the first page.",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
