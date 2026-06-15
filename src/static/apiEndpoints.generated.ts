@@ -2609,7 +2609,7 @@ export const apiTags: TagData[] = [
                 {
                     "name": "account",
                     "type": "object",
-                    "description": "Account _targeted_ by the request — your own account, since that is the only account you can view request logs for.\n\nThis is the request's target, not the acting account. To filter by who acted (which may be another account operating on yours), use the `account_ids` query parameter, which matches the acting account instead.",
+                    "description": "Account _targeted_ by the request: the account the request acted upon.\n\nResults are scoped to logs where your account is either the acting account or the target account. Use the `target_account_ids` query parameter to filter by which account was acted upon, and `actor_account_ids` to filter by who acted.",
                     "required": true,
                     "nullable": true,
                     "expandable": true,
@@ -3072,11 +3072,18 @@ export const apiTags: TagData[] = [
                         ]
                     },
                     {
-                        "name": "account_ids[]",
+                        "name": "actor_account_ids[]",
                         "in": "query",
                         "type": "array",
                         "required": false,
-                        "description": "Filter by the _acting_ account: the account the actor belongs to, not the account targeted by the request.\n\nThis is usually your own account, but differs when another account acts on yours — for example a customer using a customer-portal API key, whose acting account is the customer's account. The request's target account is always your own account (the only account you are authorized to view request logs for), so this filter narrows by _who acted_, not by which account was acted upon."
+                        "description": "Filter by the _acting_ account: the account the actor belongs to (the log's `account.id`).\n\nResults are always scoped to logs where your account is either the acting account or the target account; this narrows that set to specific acting accounts. For example, pass a customer's account ID to see only requests that customer's actors made against your account."
+                    },
+                    {
+                        "name": "target_account_ids[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter by the _target_ account: the account the request acted upon (the log's target account).\n\nResults are always scoped to logs where your account is either the acting account or the target account; this narrows that set to specific target accounts. For example, pass a supplier's account ID to see only requests your account made against that supplier."
                     },
                     {
                         "name": "actor_ids[]",
@@ -3349,7 +3356,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "Account _targeted_ by the request — your own account, since that is the only account you can view request logs for.\n\nThis is the request's target, not the acting account. To filter by who acted (which may be another account operating on yours), use the `account_ids` query parameter, which matches the acting account instead.",
+                                        "description": "Account _targeted_ by the request: the account the request acted upon.\n\nResults are scoped to logs where your account is either the acting account or the target account. Use the `target_account_ids` query parameter to filter by which account was acted upon, and `actor_account_ids` to filter by who acted.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": true,
@@ -3890,7 +3897,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "account",
                                 "type": "object",
-                                "description": "Account _targeted_ by the request — your own account, since that is the only account you can view request logs for.\n\nThis is the request's target, not the acting account. To filter by who acted (which may be another account operating on yours), use the `account_ids` query parameter, which matches the acting account instead.",
+                                "description": "Account _targeted_ by the request: the account the request acted upon.\n\nResults are scoped to logs where your account is either the acting account or the target account. Use the `target_account_ids` query parameter to filter by which account was acted upon, and `actor_account_ids` to filter by who acted.",
                                 "required": true,
                                 "nullable": true,
                                 "expandable": true,
@@ -4928,7 +4935,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "account",
                             "type": "object",
-                            "description": "Account _targeted_ by the request — your own account, since that is the only account you can view request logs for.\n\nThis is the request's target, not the acting account. To filter by who acted (which may be another account operating on yours), use the `account_ids` query parameter, which matches the acting account instead.",
+                            "description": "Account _targeted_ by the request: the account the request acted upon.\n\nResults are scoped to logs where your account is either the acting account or the target account. Use the `target_account_ids` query parameter to filter by which account was acted upon, and `actor_account_ids` to filter by who acted.",
                             "required": true,
                             "nullable": true,
                             "alwaysNull": true,
@@ -5457,11 +5464,18 @@ export const apiTags: TagData[] = [
                         ]
                     },
                     {
-                        "name": "account_ids[]",
+                        "name": "actor_account_ids[]",
                         "in": "query",
                         "type": "array",
                         "required": false,
-                        "description": "Filter by the target account the mutation was performed against.\n\nNarrows results to audit events whose `account` is one of the given account IDs — for example a specific customer's or supplier's account."
+                        "description": "Filter by the _acting_ account: the account that performed the mutation.\n\nResults are always scoped to events where your account is either the acting account or the target account; this narrows that set to specific acting accounts — for example a specific customer's account that mutated a resource on your account."
+                    },
+                    {
+                        "name": "target_account_ids[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter by the _target_ account the mutation was performed against (the event's `account`).\n\nResults are always scoped to events where your account is either the acting account or the target account; this narrows that set to specific target accounts — for example a specific customer's or supplier's account."
                     },
                     {
                         "name": "include[]",
@@ -6229,7 +6243,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "account",
                                                 "type": "object",
-                                                "description": "Account _targeted_ by the request — your own account, since that is the only account you can view request logs for.\n\nThis is the request's target, not the acting account. To filter by who acted (which may be another account operating on yours), use the `account_ids` query parameter, which matches the acting account instead.",
+                                                "description": "Account _targeted_ by the request: the account the request acted upon.\n\nResults are scoped to logs where your account is either the acting account or the target account. Use the `target_account_ids` query parameter to filter by which account was acted upon, and `actor_account_ids` to filter by who acted.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "alwaysNull": true,
@@ -7504,7 +7518,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "account",
                                         "type": "object",
-                                        "description": "Account _targeted_ by the request — your own account, since that is the only account you can view request logs for.\n\nThis is the request's target, not the acting account. To filter by who acted (which may be another account operating on yours), use the `account_ids` query parameter, which matches the acting account instead.",
+                                        "description": "Account _targeted_ by the request: the account the request acted upon.\n\nResults are scoped to logs where your account is either the acting account or the target account. Use the `target_account_ids` query parameter to filter by which account was acted upon, and `actor_account_ids` to filter by who acted.",
                                         "required": true,
                                         "nullable": true,
                                         "alwaysNull": true,
