@@ -29565,7 +29565,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "customer_portal_visibility",
                             "type": "string",
-                            "description": "Carrier visibility in the customer portal.\n\nIf `visible`, this carrier will be available for your customers to utilize when they go to checkout. If `hidden`, this carrier will not be an option on checkout. Defaults to `visible`.",
+                            "description": "Carrier visibility in the customer portal. Defaults to `visible`.\n\nIf `visible`, this carrier will be available for your customers to utilize when they go to checkout. If `hidden`, this carrier will not be an option on checkout.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,

@@ -1768,7 +1768,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "mode",
                             "type": "string",
-                            "description": "Controls how the sandbox is initialized.\n\n- `blank`: starts empty, with no pre-populated data.\n- `seeded`: starts with sample data, populated asynchronously after the sandbox is created. Defaults to `blank`.",
+                            "description": "Controls how the sandbox is initialized. Defaults to `blank`.\n\n- `blank`: starts empty, with no pre-populated data.\n- `seeded`: starts with sample data, populated asynchronously after the sandbox is created.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,
@@ -14003,7 +14003,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "commission_policy",
                             "type": "string",
-                            "description": "How sales commission applies to accounts in this group.\n\n- `commission_applied`: sales commission is calculated on orders from accounts in this group.\n- `commission_exempt`: orders from accounts in this group are exempt from commission. Defaults to `commission_exempt`.",
+                            "description": "How sales commission applies to accounts in this group. Defaults to `commission_exempt`.\n\n- `commission_applied`: sales commission is calculated on orders from accounts in this group.\n- `commission_exempt`: orders from accounts in this group are exempt from commission.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,
@@ -14015,7 +14015,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "freight_policy",
                             "type": "string",
-                            "description": "How freight charges apply to orders from accounts in this group.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere. Defaults to `billed_freight`.",
+                            "description": "How freight charges apply to orders from accounts in this group. Defaults to `billed_freight`.\n\n- `free_freight`: customers within this group will not have to pay for freight.\n- `billed_freight`: freight will be applied to any order within this account group, unless overridden elsewhere.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,
@@ -20339,7 +20339,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "type",
                             "type": "string",
-                            "description": "Address type.\n\n- `standard`: a normal shipping or billing address.\n- `drop_ship`: an address an order is shipped to directly, typically a third party or end customer rather than the account itself. Defaults to `standard`.",
+                            "description": "Address type. Defaults to `standard`.\n\n- `standard`: a normal shipping or billing address.\n- `drop_ship`: an address an order is shipped to directly, typically a third party or end customer rather than the account itself.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,
@@ -28962,7 +28962,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "customer_portal_visibility",
                             "type": "string",
-                            "description": "Carrier visibility in the customer portal.\n\nA `visible` carrier can be selected by your customers at checkout; a `hidden` carrier is not offered there. New carriers are visible unless set to `hidden`. Defaults to `visible`.",
+                            "description": "Carrier visibility in the customer portal. Defaults to `visible`.\n\nA `visible` carrier can be selected by your customers at checkout; a `hidden` carrier is not offered there. New carriers are visible unless set to `hidden`.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,
@@ -31148,7 +31148,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "customer_portal_visibility",
                             "type": "string",
-                            "description": "Service level visibility in the customer portal.\n\nA `visible` service level can be selected by your customers at checkout; a `hidden` one is not offered there. New service levels are visible unless set to `hidden`. Defaults to `visible`.",
+                            "description": "Service level visibility in the customer portal. Defaults to `visible`.\n\nA `visible` service level can be selected by your customers at checkout; a `hidden` one is not offered there. New service levels are visible unless set to `hidden`.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,
@@ -67703,7 +67703,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "status",
                             "type": "string",
-                            "description": "Account status code, controlling whether the customer can transact.\n\n- `normal`: standard active account with no restrictions.\n- `preferred`: active account flagged as preferred.\n- `hold_shipment`: orders can be placed, but shipments are held.\n- `hold_all`: all activity is on hold. Defaults to `normal`.",
+                            "description": "Account status code, controlling whether the customer can transact. Defaults to `normal`.\n\n- `normal`: standard active account with no restrictions.\n- `preferred`: active account flagged as preferred.\n- `hold_shipment`: orders can be placed, but shipments are held.\n- `hold_all`: all activity is on hold.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,
@@ -67729,7 +67729,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "commission_policy",
                             "type": "string",
-                            "description": "How sales commission applies to this customer's orders.\n\n- `commission_exempt`: this customer's orders are exempt from sales commission.\n- `commission_applied`: sales commission is calculated on this customer's orders. Defaults to `commission_exempt`.",
+                            "description": "How sales commission applies to this customer's orders. Defaults to `commission_exempt`.\n\n- `commission_exempt`: this customer's orders are exempt from sales commission.\n- `commission_applied`: sales commission is calculated on this customer's orders.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,
@@ -67741,7 +67741,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "freight_policy",
                             "type": "string",
-                            "description": "Whether this customer is billed for freight on their orders.\n\n- `free_freight`: the customer is not billed for freight.\n- `billed_freight`: freight is billed to the customer, unless overridden on the order. Defaults to `billed_freight`.",
+                            "description": "Whether this customer is billed for freight on their orders. Defaults to `billed_freight`.\n\n- `free_freight`: the customer is not billed for freight.\n- `billed_freight`: freight is billed to the customer, unless overridden on the order.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,
@@ -67823,7 +67823,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "carrier_billing_type",
                             "type": "string",
-                            "description": "Who pays the carrier for shipments.\n\n- `sender`: the shipper (you) pays the carrier.\n- `third_party`: a third party is billed, using `carrier_billing_account`. Defaults to `sender`.",
+                            "description": "Who pays the carrier for shipments. Defaults to `sender`.\n\n- `sender`: the shipper (you) pays the carrier.\n- `third_party`: a third party is billed, using `carrier_billing_account`.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,
@@ -67902,7 +67902,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "type",
                                     "type": "string",
-                                    "description": "Address type.\n\n- `standard`: a normal shipping or billing address.\n- `drop_ship`: an address an order is shipped to directly, typically a third party or end customer rather than the account itself. Defaults to `standard`.",
+                                    "description": "Address type. Defaults to `standard`.\n\n- `standard`: a normal shipping or billing address.\n- `drop_ship`: an address an order is shipped to directly, typically a third party or end customer rather than the account itself.",
                                     "required": false,
                                     "nullable": false,
                                     "expandable": false,
@@ -67996,7 +67996,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "type",
                                     "type": "string",
-                                    "description": "Address type.\n\n- `standard`: a normal shipping or billing address.\n- `drop_ship`: an address an order is shipped to directly, typically a third party or end customer rather than the account itself. Defaults to `standard`.",
+                                    "description": "Address type. Defaults to `standard`.\n\n- `standard`: a normal shipping or billing address.\n- `drop_ship`: an address an order is shipped to directly, typically a third party or end customer rather than the account itself.",
                                     "required": false,
                                     "nullable": false,
                                     "expandable": false,
@@ -83806,7 +83806,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "portal_visibility",
                             "type": "string",
-                            "description": "Whether the product is shown to buyers in the customer portal.\n\n- `visible`: buyers can see and order the product in the portal.\n- `hidden`: the product is concealed from the portal but remains usable internally.\n\nWhen omitted, the product is created hidden, so it must be set to `visible` before buyers can see it. Defaults to `hidden`.",
+                            "description": "Whether the product is shown to buyers in the customer portal. Defaults to `hidden`.\n\n- `visible`: buyers can see and order the product in the portal.\n- `hidden`: the product is concealed from the portal but remains usable internally.\n\nWhen omitted, the product is created hidden, so it must be set to `visible` before buyers can see it.",
                             "required": false,
                             "nullable": false,
                             "expandable": false,

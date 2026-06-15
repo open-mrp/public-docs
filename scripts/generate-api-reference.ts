@@ -251,6 +251,13 @@ function appendNullClearHint(description: string): string {
     return `${base}. ${hint}`;
 }
 
+function appendSentenceToParagraph(paragraph: string, sentence: string): string {
+    const base = paragraph.trim();
+    if (!base) return sentence;
+    if (/[.!?]$/.test(base)) return `${base} ${sentence}`;
+    return `${base}. ${sentence}`;
+}
+
 function appendDefaultToDescription(description: string, defaultValue: unknown): string {
     if (defaultValue === undefined) return description;
 
@@ -260,8 +267,14 @@ function appendDefaultToDescription(description: string, defaultValue: unknown):
 
     if (!base) return sentence;
     if (/Defaults to\b/i.test(base)) return base; // avoid double-appending if spec already includes this
-    if (/[.!?]$/.test(base)) return `${base} ${sentence}`;
-    return `${base}. ${sentence}`;
+
+    const paragraphBreak = base.indexOf('\n\n');
+    if (paragraphBreak === -1) return appendSentenceToParagraph(base, sentence);
+
+    const firstParagraph = base.slice(0, paragraphBreak);
+    const rest = base.slice(paragraphBreak + 2);
+    const firstWithDefault = appendSentenceToParagraph(firstParagraph, sentence);
+    return rest ? `${firstWithDefault}\n\n${rest}` : firstWithDefault;
 }
 
 const domainLabels: Record<string, string> = {
