@@ -21925,7 +21925,7 @@ export const apiTags: TagData[] = [
             {
                 "operationId": "list-account-statuses",
                 "summary": "List Account Statuses",
-                "description": "Returns a paginated list of account statuses.\n\nAccount statuses are system-provided lookup values shared across all accounts, used to set a customer's status (for example, placing a customer on shipment hold).",
+                "description": "Returns a paginated list of account statuses.\n\nAccount statuses are system-provided lookup values shared across all accounts, used to set a customer's status (for example, placing a customer on a credit hold).",
                 "method": "GET",
                 "path": "/v1/sales/account-statuses",
                 "domain": "sales",
