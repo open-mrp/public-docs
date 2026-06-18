@@ -659,6 +659,42 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "label": "Delete"
         },
         {
+            "domain": "identity",
+            "segments": [
+                "integrations"
+            ],
+            "tagSlug": "account-integrations",
+            "endpointSlug": "create-account-integration",
+            "label": "Create"
+        },
+        {
+            "domain": "identity",
+            "segments": [
+                "integrations"
+            ],
+            "tagSlug": "account-integrations",
+            "endpointSlug": "update-account-integration",
+            "label": "Update"
+        },
+        {
+            "domain": "identity",
+            "segments": [
+                "integrations"
+            ],
+            "tagSlug": "account-integrations",
+            "endpointSlug": "list-account-integrations",
+            "label": "List"
+        },
+        {
+            "domain": "identity",
+            "segments": [
+                "integrations"
+            ],
+            "tagSlug": "account-integrations",
+            "endpointSlug": "delete-account-integration",
+            "label": "Delete"
+        },
+        {
             "domain": "sales",
             "segments": [
                 "priorities"

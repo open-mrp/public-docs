@@ -4498,7 +4498,8 @@ export const apiTags: TagData[] = [
                         "invoice_allocation_entry",
                         "allocation_customer",
                         "checkout_sales_order_response",
-                        "create_production_run_response"
+                        "create_production_run_response",
+                        "sales_order_price_quote"
                     ]
                 },
                 {
@@ -5434,7 +5435,8 @@ export const apiTags: TagData[] = [
                             "invoice_allocation_entry",
                             "allocation_customer",
                             "checkout_sales_order_response",
-                            "create_production_run_response"
+                            "create_production_run_response",
+                            "sales_order_price_quote"
                         ]
                     },
                     {
@@ -5808,7 +5810,8 @@ export const apiTags: TagData[] = [
                                             "invoice_allocation_entry",
                                             "allocation_customer",
                                             "checkout_sales_order_response",
-                                            "create_production_run_response"
+                                            "create_production_run_response",
+                                            "sales_order_price_quote"
                                         ]
                                     },
                                     {
@@ -6780,7 +6783,8 @@ export const apiTags: TagData[] = [
                                     "invoice_allocation_entry",
                                     "allocation_customer",
                                     "checkout_sales_order_response",
-                                    "create_production_run_response"
+                                    "create_production_run_response",
+                                    "sales_order_price_quote"
                                 ],
                                 "itemType": "string"
                             }
@@ -7085,7 +7089,8 @@ export const apiTags: TagData[] = [
                                     "invoice_allocation_entry",
                                     "allocation_customer",
                                     "checkout_sales_order_response",
-                                    "create_production_run_response"
+                                    "create_production_run_response",
+                                    "sales_order_price_quote"
                                 ]
                             },
                             {
@@ -27961,6 +27966,599 @@ export const apiTags: TagData[] = [
                         "description": "Successful response for Delete Attribute",
                         "fields": [],
                         "example": {}
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Account Integrations",
+        "slug": "account-integrations",
+        "description": "List and manage third-party account integrations.",
+        "domain": "identity",
+        "domainLabel": "Identity",
+        "endpoints": [
+            {
+                "operationId": "create-account-integration",
+                "summary": "Create Account Integration",
+                "description": "Creates an account integration, or updates the name and credentials of an existing one with the same integration code.\n\nCredentials are validated for the provider, encrypted at rest, and never returned in API responses. An account can have at most one integration per integration code.",
+                "method": "POST",
+                "path": "/v1/identity/integrations",
+                "domain": "identity",
+                "tag": "Account Integrations",
+                "tagSlug": "account-integrations",
+                "endpointSlug": "create-account-integration",
+                "actionType": "create",
+                "isPreview": true,
+                "parameters": [],
+                "requestBody": {
+                    "description": "The request body for Create Account Integration",
+                    "fields": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "description": "Display name of the integration.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "provider",
+                            "type": "string",
+                            "description": "Integration provider code.\n\n- `stripe`: Stripe payment processing.\n- `shippo`: Shippo shipping and label generation.\n- `hubspot`: HubSpot CRM.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "stripe",
+                                "shippo",
+                                "hubspot"
+                            ]
+                        },
+                        {
+                            "name": "credentials",
+                            "type": "string",
+                            "description": "JSON string containing the provider's credentials.\n\nRequired keys depend on the provider:\n\n- `stripe`: `private_key` (`sk_...`), `publishable_key` (`pk_...`), and `webhook_secret` (`whsec_...`).\n- `shippo`: `api_key` (`shippo_live_...` or `shippo_test_...`).\n- `hubspot`: `access_token` (`pat-...`).\n\nSandbox accounts must use test keys and production accounts must use live keys; credentials that do not match are rejected.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        }
+                    ],
+                    "example": {
+                        "name": "My Stripe Integration",
+                        "provider": "stripe",
+                        "credentials": "{\"private_key\":\"sk_test_...\",\"publishable_key\":\"pk_test_...\",\"webhook_secret\":\"whsec_...\"}"
+                    }
+                },
+                "responses": [
+                    {
+                        "statusCode": "201",
+                        "description": "Successful response for Create Account Integration",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string",
+                                "description": "Account integration ID.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "account_integration"
+                                ]
+                            },
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "description": "Display name of the integration.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "provider",
+                                "type": "string",
+                                "description": "Integration provider code.\n\n- `stripe`: Stripe payment processing.\n- `shippo`: Shippo shipping and label generation.\n- `hubspot`: HubSpot CRM.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "stripe",
+                                    "shippo",
+                                    "hubspot"
+                                ]
+                            },
+                            {
+                                "name": "status",
+                                "type": "string",
+                                "description": "Lifecycle status of the integration.\n\nIntegrations are created `active`. Setting an integration to `inactive` keeps its stored credentials but stops it from being used (for example, the Stripe publishable key cannot be retrieved while the Stripe integration is inactive).",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "active",
+                                    "inactive"
+                                ]
+                            },
+                            {
+                                "name": "created_at",
+                                "type": "string",
+                                "description": "Creation timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "updated_at",
+                                "type": "string",
+                                "description": "Last updated timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            }
+                        ],
+                        "example": {
+                            "id": "acig_0177772eae113431f64d473124",
+                            "object": "account_integration",
+                            "name": "My Stripe Integration",
+                            "provider": "stripe",
+                            "status": "active",
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "update-account-integration",
+                "summary": "Update Account Integration",
+                "description": "Updates an account integration's name and active status.\n\nOmitted fields are left unchanged. Credentials cannot be changed with this endpoint; to rotate credentials, call Create Account Integration again with the same integration code.",
+                "method": "PUT",
+                "path": "/v1/identity/integrations/{id}",
+                "domain": "identity",
+                "tag": "Account Integrations",
+                "tagSlug": "account-integrations",
+                "endpointSlug": "update-account-integration",
+                "actionType": "update",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Account integration ID."
+                    }
+                ],
+                "requestBody": {
+                    "description": "The request body for Update Account Integration",
+                    "fields": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "description": "Display name of the integration.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "status",
+                            "type": "string",
+                            "description": "Lifecycle status of the integration.\n\nSet to `inactive` to deactivate the integration without deleting its stored credentials.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "active",
+                                "inactive"
+                            ]
+                        }
+                    ],
+                    "example": {
+                        "name": "Updated Stripe Integration"
+                    }
+                },
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for Update Account Integration",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string",
+                                "description": "Account integration ID.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "account_integration"
+                                ]
+                            },
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "description": "Display name of the integration.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "provider",
+                                "type": "string",
+                                "description": "Integration provider code.\n\n- `stripe`: Stripe payment processing.\n- `shippo`: Shippo shipping and label generation.\n- `hubspot`: HubSpot CRM.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "stripe",
+                                    "shippo",
+                                    "hubspot"
+                                ]
+                            },
+                            {
+                                "name": "status",
+                                "type": "string",
+                                "description": "Lifecycle status of the integration.\n\nIntegrations are created `active`. Setting an integration to `inactive` keeps its stored credentials but stops it from being used (for example, the Stripe publishable key cannot be retrieved while the Stripe integration is inactive).",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "active",
+                                    "inactive"
+                                ]
+                            },
+                            {
+                                "name": "created_at",
+                                "type": "string",
+                                "description": "Creation timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "updated_at",
+                                "type": "string",
+                                "description": "Last updated timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            }
+                        ],
+                        "example": {
+                            "id": "acig_0177772eae113431f64d473124",
+                            "object": "account_integration",
+                            "name": "My Stripe Integration",
+                            "provider": "stripe",
+                            "status": "active",
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "list-account-integrations",
+                "summary": "List Account Integrations",
+                "description": "Returns a paginated list of account integrations for the target account.",
+                "method": "GET",
+                "path": "/v1/identity/integrations",
+                "domain": "identity",
+                "tag": "Account Integrations",
+                "tagSlug": "account-integrations",
+                "endpointSlug": "list-account-integrations",
+                "actionType": "list",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Opaque cursor token identifying where the page of results starts.\n\nUse the `cursor` value embedded in a previous response's `next_page_url` or `previous_page_url` to fetch the adjacent page. Omit to start from the first page."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "type": "integer",
+                        "required": false,
+                        "description": "Maximum number of results to return in a single page."
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Free-text search term used to filter results.\n\nWhich fields are matched against the term varies by endpoint."
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for List Account Integrations",
+                        "fields": [
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "list"
+                                ]
+                            },
+                            {
+                                "name": "page_info",
+                                "type": "object",
+                                "description": "Pagination metadata.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "properties": [
+                                    {
+                                        "name": "next_page_url",
+                                        "type": "string",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "previous_page_url",
+                                        "type": "string",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_next_page",
+                                        "type": "boolean",
+                                        "description": "Whether more results exist after this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_prev_page",
+                                        "type": "boolean",
+                                        "description": "Whether results exist before this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "data",
+                                "type": "array",
+                                "description": "Resources in this page.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "itemType": "object",
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Account integration ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "account_integration"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name of the integration.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "provider",
+                                        "type": "string",
+                                        "description": "Integration provider code.\n\n- `stripe`: Stripe payment processing.\n- `shippo`: Shippo shipping and label generation.\n- `hubspot`: HubSpot CRM.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "stripe",
+                                            "shippo",
+                                            "hubspot"
+                                        ]
+                                    },
+                                    {
+                                        "name": "status",
+                                        "type": "string",
+                                        "description": "Lifecycle status of the integration.\n\nIntegrations are created `active`. Setting an integration to `inactive` keeps its stored credentials but stops it from being used (for example, the Stripe publishable key cannot be retrieved while the Stripe integration is inactive).",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "active",
+                                            "inactive"
+                                        ]
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            }
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": "/v1/identity/integrations?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoiYWNpZ18wMTc3NzcyZWFlMTEzNDMxZjY0ZDQ3MzEyNCIsImQiOiJmIn0.BWZdti4lF3a5fZAg2m_q5kmq6KuqRTL3snVnKiZ8POk",
+                                "previous_page_url": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "acig_0177772eae113431f64d473124",
+                                    "object": "account_integration",
+                                    "name": "My Stripe Integration",
+                                    "provider": "stripe",
+                                    "status": "active",
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "delete-account-integration",
+                "summary": "Delete Account Integration",
+                "description": "Deletes an account integration and returns the deleted resource.",
+                "method": "DELETE",
+                "path": "/v1/identity/integrations/{id}",
+                "domain": "identity",
+                "tag": "Account Integrations",
+                "tagSlug": "account-integrations",
+                "endpointSlug": "delete-account-integration",
+                "actionType": "delete",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Account integration ID."
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for Delete Account Integration",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string",
+                                "description": "Account integration ID.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "account_integration"
+                                ]
+                            },
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "description": "Display name of the integration.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "provider",
+                                "type": "string",
+                                "description": "Integration provider code.\n\n- `stripe`: Stripe payment processing.\n- `shippo`: Shippo shipping and label generation.\n- `hubspot`: HubSpot CRM.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "stripe",
+                                    "shippo",
+                                    "hubspot"
+                                ]
+                            },
+                            {
+                                "name": "status",
+                                "type": "string",
+                                "description": "Lifecycle status of the integration.\n\nIntegrations are created `active`. Setting an integration to `inactive` keeps its stored credentials but stops it from being used (for example, the Stripe publishable key cannot be retrieved while the Stripe integration is inactive).",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "active",
+                                    "inactive"
+                                ]
+                            },
+                            {
+                                "name": "created_at",
+                                "type": "string",
+                                "description": "Creation timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "updated_at",
+                                "type": "string",
+                                "description": "Last updated timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            }
+                        ],
+                        "example": {
+                            "id": "acig_0177772eae113431f64d473124",
+                            "object": "account_integration",
+                            "name": "My Stripe Integration",
+                            "provider": "stripe",
+                            "status": "active",
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
                     }
                 ]
             }
@@ -103379,6 +103977,40 @@ export const apiNavDomains: ApiNavDomain[] = [
                         "method": "PUT",
                         "actionType": "action",
                         "href": "/api-reference/account-users-management/remove-account-user"
+                    }
+                ]
+            },
+            {
+                "name": "Account Integrations",
+                "slug": "account-integrations",
+                "endpoints": [
+                    {
+                        "name": "Create Integration",
+                        "slug": "create-account-integration",
+                        "method": "POST",
+                        "actionType": "create",
+                        "href": "/api-reference/account-integrations/create-account-integration"
+                    },
+                    {
+                        "name": "Update Integration",
+                        "slug": "update-account-integration",
+                        "method": "PUT",
+                        "actionType": "update",
+                        "href": "/api-reference/account-integrations/update-account-integration"
+                    },
+                    {
+                        "name": "List",
+                        "slug": "list-account-integrations",
+                        "method": "GET",
+                        "actionType": "list",
+                        "href": "/api-reference/account-integrations/list-account-integrations"
+                    },
+                    {
+                        "name": "Delete Integration",
+                        "slug": "delete-account-integration",
+                        "method": "DELETE",
+                        "actionType": "delete",
+                        "href": "/api-reference/account-integrations/delete-account-integration"
                     }
                 ]
             },

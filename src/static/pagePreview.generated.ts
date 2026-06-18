@@ -695,6 +695,22 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Delete Attribute",
         "subtitle": "DELETE /v1/catalog/properties/{property_id}/attributes/{id}"
     },
+    "/api-reference/account-integrations/create-account-integration": {
+        "title": "Create Account Integration",
+        "subtitle": "POST /v1/identity/integrations"
+    },
+    "/api-reference/account-integrations/update-account-integration": {
+        "title": "Update Account Integration",
+        "subtitle": "PUT /v1/identity/integrations/{id}"
+    },
+    "/api-reference/account-integrations/list-account-integrations": {
+        "title": "List Account Integrations",
+        "subtitle": "GET /v1/identity/integrations"
+    },
+    "/api-reference/account-integrations/delete-account-integration": {
+        "title": "Delete Account Integration",
+        "subtitle": "DELETE /v1/identity/integrations/{id}"
+    },
     "/api-reference/priorities/list-priorities": {
         "title": "List Priorities",
         "subtitle": "GET /v1/sales/priorities"

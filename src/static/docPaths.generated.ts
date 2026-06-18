@@ -265,6 +265,12 @@ export const docPaths = {
             "retrieveAttribute": "/api-reference/properties-management/retrieve-attribute",
             "deleteAttribute": "/api-reference/properties-management/delete-attribute"
         },
+        "accountIntegrations": {
+            "createAccountIntegration": "/api-reference/account-integrations/create-account-integration",
+            "updateAccountIntegration": "/api-reference/account-integrations/update-account-integration",
+            "listAccountIntegrations": "/api-reference/account-integrations/list-account-integrations",
+            "deleteAccountIntegration": "/api-reference/account-integrations/delete-account-integration"
+        },
         "priorities": {
             "listPriorities": "/api-reference/priorities/list-priorities",
             "retrievePriority": "/api-reference/priorities/retrieve-priority"
