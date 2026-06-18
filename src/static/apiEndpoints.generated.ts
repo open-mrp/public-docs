@@ -4300,6 +4300,7 @@ export const apiTags: TagData[] = [
                         "freight",
                         "sales_order_totals",
                         "sales_order_related",
+                        "order_contact",
                         "user",
                         "address",
                         "api_key",
@@ -5237,6 +5238,7 @@ export const apiTags: TagData[] = [
                             "freight",
                             "sales_order_totals",
                             "sales_order_related",
+                            "order_contact",
                             "user",
                             "address",
                             "api_key",
@@ -5612,6 +5614,7 @@ export const apiTags: TagData[] = [
                                             "freight",
                                             "sales_order_totals",
                                             "sales_order_related",
+                                            "order_contact",
                                             "user",
                                             "address",
                                             "api_key",
@@ -6585,6 +6588,7 @@ export const apiTags: TagData[] = [
                                     "freight",
                                     "sales_order_totals",
                                     "sales_order_related",
+                                    "order_contact",
                                     "user",
                                     "address",
                                     "api_key",
@@ -6891,6 +6895,7 @@ export const apiTags: TagData[] = [
                                     "freight",
                                     "sales_order_totals",
                                     "sales_order_related",
+                                    "order_contact",
                                     "user",
                                     "address",
                                     "api_key",
@@ -27975,16 +27980,16 @@ export const apiTags: TagData[] = [
         "name": "Account Integrations",
         "slug": "account-integrations",
         "description": "List and manage third-party account integrations.",
-        "domain": "identity",
-        "domainLabel": "Identity",
+        "domain": "settings",
+        "domainLabel": "Settings",
         "endpoints": [
             {
                 "operationId": "create-account-integration",
                 "summary": "Create Account Integration",
                 "description": "Creates an account integration, or updates the name and credentials of an existing one with the same integration code.\n\nCredentials are validated for the provider, encrypted at rest, and never returned in API responses. An account can have at most one integration per integration code.",
                 "method": "POST",
-                "path": "/v1/identity/integrations",
-                "domain": "identity",
+                "path": "/v1/settings/integrations",
+                "domain": "settings",
                 "tag": "Account Integrations",
                 "tagSlug": "account-integrations",
                 "endpointSlug": "create-account-integration",
@@ -28123,8 +28128,8 @@ export const apiTags: TagData[] = [
                 "summary": "Update Account Integration",
                 "description": "Updates an account integration's name and active status.\n\nOmitted fields are left unchanged. Credentials cannot be changed with this endpoint; to rotate credentials, call Create Account Integration again with the same integration code.",
                 "method": "PUT",
-                "path": "/v1/identity/integrations/{id}",
-                "domain": "identity",
+                "path": "/v1/settings/integrations/{id}",
+                "domain": "settings",
                 "tag": "Account Integrations",
                 "tagSlug": "account-integrations",
                 "endpointSlug": "update-account-integration",
@@ -28260,8 +28265,8 @@ export const apiTags: TagData[] = [
                 "summary": "List Account Integrations",
                 "description": "Returns a paginated list of account integrations for the target account.",
                 "method": "GET",
-                "path": "/v1/identity/integrations",
-                "domain": "identity",
+                "path": "/v1/settings/integrations",
+                "domain": "settings",
                 "tag": "Account Integrations",
                 "tagSlug": "account-integrations",
                 "endpointSlug": "list-account-integrations",
@@ -28433,7 +28438,7 @@ export const apiTags: TagData[] = [
                         "example": {
                             "object": "list",
                             "page_info": {
-                                "next_page_url": "/v1/identity/integrations?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoiYWNpZ18wMTc3NzcyZWFlMTEzNDMxZjY0ZDQ3MzEyNCIsImQiOiJmIn0.BWZdti4lF3a5fZAg2m_q5kmq6KuqRTL3snVnKiZ8POk",
+                                "next_page_url": "/v1/settings/integrations?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoiYWNpZ18wMTc3NzcyZWFlMTEzNDMxZjY0ZDQ3MzEyNCIsImQiOiJmIn0.BWZdti4lF3a5fZAg2m_q5kmq6KuqRTL3snVnKiZ8POk",
                                 "previous_page_url": null,
                                 "has_next_page": true,
                                 "has_prev_page": false
@@ -28458,8 +28463,8 @@ export const apiTags: TagData[] = [
                 "summary": "Delete Account Integration",
                 "description": "Deletes an account integration and returns the deleted resource.",
                 "method": "DELETE",
-                "path": "/v1/identity/integrations/{id}",
-                "domain": "identity",
+                "path": "/v1/settings/integrations/{id}",
+                "domain": "settings",
                 "tag": "Account Integrations",
                 "tagSlug": "account-integrations",
                 "endpointSlug": "delete-account-integration",
@@ -103981,40 +103986,6 @@ export const apiNavDomains: ApiNavDomain[] = [
                 ]
             },
             {
-                "name": "Account Integrations",
-                "slug": "account-integrations",
-                "endpoints": [
-                    {
-                        "name": "Create Integration",
-                        "slug": "create-account-integration",
-                        "method": "POST",
-                        "actionType": "create",
-                        "href": "/api-reference/account-integrations/create-account-integration"
-                    },
-                    {
-                        "name": "Update Integration",
-                        "slug": "update-account-integration",
-                        "method": "PUT",
-                        "actionType": "update",
-                        "href": "/api-reference/account-integrations/update-account-integration"
-                    },
-                    {
-                        "name": "List",
-                        "slug": "list-account-integrations",
-                        "method": "GET",
-                        "actionType": "list",
-                        "href": "/api-reference/account-integrations/list-account-integrations"
-                    },
-                    {
-                        "name": "Delete Integration",
-                        "slug": "delete-account-integration",
-                        "method": "DELETE",
-                        "actionType": "delete",
-                        "href": "/api-reference/account-integrations/delete-account-integration"
-                    }
-                ]
-            },
-            {
                 "name": "Roles",
                 "slug": "roles",
                 "endpoints": [
@@ -104052,6 +104023,46 @@ export const apiNavDomains: ApiNavDomain[] = [
                         "method": "DELETE",
                         "actionType": "delete",
                         "href": "/api-reference/roles/delete-role"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Settings",
+        "slug": "settings",
+        "resources": [
+            {
+                "name": "Account Integrations",
+                "slug": "account-integrations",
+                "endpoints": [
+                    {
+                        "name": "Create Integration",
+                        "slug": "create-account-integration",
+                        "method": "POST",
+                        "actionType": "create",
+                        "href": "/api-reference/account-integrations/create-account-integration"
+                    },
+                    {
+                        "name": "Update Integration",
+                        "slug": "update-account-integration",
+                        "method": "PUT",
+                        "actionType": "update",
+                        "href": "/api-reference/account-integrations/update-account-integration"
+                    },
+                    {
+                        "name": "List",
+                        "slug": "list-account-integrations",
+                        "method": "GET",
+                        "actionType": "list",
+                        "href": "/api-reference/account-integrations/list-account-integrations"
+                    },
+                    {
+                        "name": "Delete Integration",
+                        "slug": "delete-account-integration",
+                        "method": "DELETE",
+                        "actionType": "delete",
+                        "href": "/api-reference/account-integrations/delete-account-integration"
                     }
                 ]
             }

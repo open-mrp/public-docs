@@ -659,7 +659,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "label": "Delete"
         },
         {
-            "domain": "identity",
+            "domain": "settings",
             "segments": [
                 "integrations"
             ],
@@ -668,7 +668,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "label": "Create"
         },
         {
-            "domain": "identity",
+            "domain": "settings",
             "segments": [
                 "integrations"
             ],
@@ -677,7 +677,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "label": "Update"
         },
         {
-            "domain": "identity",
+            "domain": "settings",
             "segments": [
                 "integrations"
             ],
@@ -686,7 +686,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "label": "List"
         },
         {
-            "domain": "identity",
+            "domain": "settings",
             "segments": [
                 "integrations"
             ],
