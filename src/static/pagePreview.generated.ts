@@ -935,6 +935,14 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "List Sales Order Statuses",
         "subtitle": "GET /v1/sales/sales-orders/statuses"
     },
+    "/api-reference/sales-orders/create-sales-order": {
+        "title": "Create Sales Order",
+        "subtitle": "POST /v1/sales/sales-orders"
+    },
+    "/api-reference/sales-orders/list-sales-orders": {
+        "title": "List Sales Orders",
+        "subtitle": "GET /v1/sales/sales-orders"
+    },
     "/api-reference/transactions/list-adjustment-types": {
         "title": "List Adjustment Types",
         "subtitle": "GET /v1/finance/adjustment-types"

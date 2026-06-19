@@ -231,6 +231,8 @@
 - [DELETE Customers — Delete Customer](https://docs.augno.com/api-reference/customers/delete-customer.md)
 - [POST Customers — Merge](https://docs.augno.com/api-reference/customers/merge-customers.md)
 - [GET Sales Order Statuses — List](https://docs.augno.com/api-reference/sales-order-statuses/list-sales-order-statuses.md)
+- [POST Sales Orders — Create Order](https://docs.augno.com/api-reference/sales-orders/create-sales-order.md)
+- [GET Sales Orders — List](https://docs.augno.com/api-reference/sales-orders/list-sales-orders.md)
 
 ### Finance
 - [POST Payment Terms Management — Create Term](https://docs.augno.com/api-reference/payment-terms-management/create-payment-term.md)

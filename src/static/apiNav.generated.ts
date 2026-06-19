@@ -1213,6 +1213,24 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "label": "List"
         },
         {
+            "domain": "sales",
+            "segments": [
+                "sales-orders"
+            ],
+            "tagSlug": "sales-orders",
+            "endpointSlug": "create-sales-order",
+            "label": "Create"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "sales-orders"
+            ],
+            "tagSlug": "sales-orders",
+            "endpointSlug": "list-sales-orders",
+            "label": "List"
+        },
+        {
             "domain": "finance",
             "segments": [
                 "adjustment-types"

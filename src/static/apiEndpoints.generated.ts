@@ -96095,6 +96095,4257 @@ export const apiTags: TagData[] = [
         ]
     },
     {
+        "name": "Sales Orders",
+        "slug": "sales-orders",
+        "description": "List, view, create, update, and delete sales orders.",
+        "domain": "sales",
+        "domainLabel": "Sales",
+        "endpoints": [
+            {
+                "operationId": "create-sales-order",
+                "summary": "Create Sales Order",
+                "description": "Creates a sales order in `estimate` status.\n\nThe order number is assigned automatically, and a sales rep is auto-assigned when none is provided. A shipping line is always added to the order, plus a discount line when an order discount is supplied.",
+                "method": "POST",
+                "path": "/v1/sales/sales-orders",
+                "domain": "sales",
+                "tag": "Sales Orders",
+                "tagSlug": "sales-orders",
+                "endpointSlug": "create-sales-order",
+                "actionType": "create",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
+                        "enum": [
+                            "customer",
+                            "sales_rep",
+                            "bill_to_address",
+                            "ship_to_address",
+                            "freight",
+                            "payment_term",
+                            "shipping_term",
+                            "order_discount",
+                            "totals",
+                            "contacts",
+                            "related.pick",
+                            "related.production_run",
+                            "related.shipments",
+                            "lines",
+                            "lines.product",
+                            "lines.quantity_ordered",
+                            "lines.unit_price",
+                            "lines.unit_cost",
+                            "lines.totals"
+                        ]
+                    }
+                ],
+                "requestBody": {
+                    "description": "The request body for Create Sales Order",
+                    "fields": [
+                        {
+                            "name": "buyer_account_id",
+                            "type": "string",
+                            "description": "ID of the customer account the order is for.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "customer_purchase_order_number",
+                            "type": "string",
+                            "description": "The customer's own purchase order number, for cross-referencing.\n\nMust be unique among your orders for this customer.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "note",
+                            "type": "string",
+                            "description": "Order note.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "carrier_id",
+                            "type": "string",
+                            "description": "Carrier ID.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "service_level_id",
+                            "type": "string",
+                            "description": "Service level ID.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "carrier_billing_type",
+                            "type": "string",
+                            "description": "Who is billed for freight.\n\n- `sender`: the sender pays for shipping.\n- `third_party`: a third party pays for shipping, using the carrier billing account number.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "sender",
+                                "third_party"
+                            ]
+                        },
+                        {
+                            "name": "carrier_billing_account_number",
+                            "type": "string",
+                            "description": "Carrier billing account number.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "priority_code",
+                            "type": "string",
+                            "description": "Fulfillment priority used to rank the order on the shop floor.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "sales_rep_id",
+                            "type": "string",
+                            "description": "Sales rep ID.\n\nWhen omitted, a rep is assigned automatically: the customer's default sales rep first, then the sales territory matching the ship-to postal code, then the ship-to state.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "shipping_term_id",
+                            "type": "string",
+                            "description": "Shipping term ID.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "payment_term_id",
+                            "type": "string",
+                            "description": "Payment term ID.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "order_discount_id",
+                            "type": "string",
+                            "description": "Order discount ID.\n\nWhen supplied, a discount line is added to the order automatically.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "promised_at",
+                            "type": "string",
+                            "description": "Promised delivery date.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false,
+                            "format": "date-time"
+                        },
+                        {
+                            "name": "bill_to_address_id",
+                            "type": "string",
+                            "description": "Bill-to address ID. Must reference an existing address on the order's owner or buyer account.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "ship_to_address_id",
+                            "type": "string",
+                            "description": "Ship-to address ID. Must reference an existing address on the order's owner or buyer account.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
+                            "name": "lines",
+                            "type": "array",
+                            "description": "Order lines to create.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "itemType": "object",
+                            "properties": [
+                                {
+                                    "name": "product_id",
+                                    "type": "string",
+                                    "description": "ID of the product being ordered.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "quantity",
+                                    "type": "object",
+                                    "description": "Quantity ordered.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "properties": [
+                                        {
+                                            "name": "value",
+                                            "type": "string",
+                                            "description": "Decimal value, as a string to preserve precision.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false,
+                                            "format": "decimal"
+                                        },
+                                        {
+                                            "name": "unit_id",
+                                            "type": "string",
+                                            "description": "ID of the unit of measure for the value.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "product_sku",
+                                    "type": "string",
+                                    "description": "SKU recorded on the line. Defaults to the product's SKU when omitted.",
+                                    "required": false,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "product_description",
+                                    "type": "string",
+                                    "description": "Description recorded on the line. Defaults to the product's description when omitted.",
+                                    "required": false,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "unit_price",
+                                    "type": "object",
+                                    "description": "Unit price override. Honored only for internal users; for customer accounts it is\nignored and the price is calculated server-side.",
+                                    "required": false,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "properties": [
+                                        {
+                                            "name": "value",
+                                            "type": "string",
+                                            "description": "Decimal value of the rate, expressed as the amount of the numerator unit per one denominator unit.",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false,
+                                            "format": "decimal"
+                                        },
+                                        {
+                                            "name": "numerator_unit_id",
+                                            "type": "string",
+                                            "description": "ID of the unit for the rate's numerator (e.g. the currency of a price).",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false
+                                        },
+                                        {
+                                            "name": "denominator_unit_id",
+                                            "type": "string",
+                                            "description": "ID of the unit for the rate's denominator (the per-unit basis).",
+                                            "required": true,
+                                            "nullable": false,
+                                            "expandable": false
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "edi_line_item_id",
+                                    "type": "string",
+                                    "description": "EDI line item ID.",
+                                    "required": false,
+                                    "nullable": false,
+                                    "expandable": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "acknowledgement_email_contacts",
+                            "type": "array",
+                            "description": "Account users who should receive order acknowledgement emails.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false,
+                            "itemType": "object",
+                            "properties": [
+                                {
+                                    "name": "account_user_id",
+                                    "type": "string",
+                                    "description": "Account user ID to receive the notification.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "invoice_email_contacts",
+                            "type": "array",
+                            "description": "Account users who should receive invoice emails.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false,
+                            "itemType": "object",
+                            "properties": [
+                                {
+                                    "name": "account_user_id",
+                                    "type": "string",
+                                    "description": "Account user ID to receive the notification.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                }
+                            ]
+                        }
+                    ],
+                    "example": {
+                        "buyer_account_id": "ac_0170df1ac58e4d24c66fc89f5f",
+                        "note": "Rush order for trade show",
+                        "carrier_id": "cr_01784fd54c9ba197bb4e42f0e6",
+                        "service_level_id": "crop_01cfaf03f104e90ef9680e2a30",
+                        "priority_code": "normal",
+                        "bill_to_address_id": "ad_012c2e4aeeb20f56c1a3d06cc7",
+                        "ship_to_address_id": "ad_012c2e4aeeb20f56c1a3d06cc7",
+                        "lines": [
+                            {
+                                "product_id": "pd_013c29ab3f1518d0004094c316",
+                                "quantity": {
+                                    "value": "10",
+                                    "unit_id": "un_01966263f74a5a0cae356000a1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "responses": [
+                    {
+                        "statusCode": "201",
+                        "description": "Successful response for Create Sales Order",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string",
+                                "description": "Sales order ID.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "sales_order"
+                                ]
+                            },
+                            {
+                                "name": "number",
+                                "type": "string",
+                                "description": "Human-readable order number, e.g. `SO-001`.\n\nAssigned automatically when the order is created; unique within your account.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "customer_purchase_order_number",
+                                "type": "string",
+                                "description": "The customer's own purchase order number, for cross-referencing.\n\nUnique among this customer's orders.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "note",
+                                "type": "string",
+                                "description": "Order note.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "status",
+                                "type": "string",
+                                "description": "Order lifecycle status.\n\n- `estimate`: a draft quote that has not yet been committed; not counted as a real order.\n- `issued`: the order has been issued and is being fulfilled.\n- `fulfilled`: the order has been completed and closed.\n\nStatus changes are made through the issue, unissue, close, and reopen action endpoints rather than by updating this field.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "estimate",
+                                    "issued",
+                                    "fulfilled"
+                                ]
+                            },
+                            {
+                                "name": "priority",
+                                "type": "string",
+                                "description": "Fulfillment priority, used to rank orders on the shop floor.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "low",
+                                    "normal",
+                                    "high"
+                                ]
+                            },
+                            {
+                                "name": "payment_status",
+                                "type": "string",
+                                "description": "Payment state of the order.\n\nPayment tracking is not yet wired up, so this currently always reports `unpaid`.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "unpaid",
+                                    "partially_paid",
+                                    "paid"
+                                ]
+                            },
+                            {
+                                "name": "acknowledgment_status",
+                                "type": "string",
+                                "description": "Whether an order acknowledgment has been sent to the customer.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "not_sent",
+                                    "sent"
+                                ]
+                            },
+                            {
+                                "name": "customer",
+                                "type": "object",
+                                "description": "Associated customer.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Customer ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "customer"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "The customer's business name, as shown throughout the app and on documents.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "number",
+                                        "type": "string",
+                                        "description": "Human-readable customer number used to identify the account, distinct from the `id`.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "status",
+                                        "type": "string",
+                                        "description": "Account status code, controlling whether the customer can transact.\n\n- `normal`: standard active account with no restrictions.\n- `preferred`: active account flagged as preferred.\n- `hold_shipment`: orders can be placed, but shipments are held.\n- `hold_all`: all activity is on hold.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "normal",
+                                            "preferred",
+                                            "hold_shipment",
+                                            "hold_all"
+                                        ]
+                                    },
+                                    {
+                                        "name": "edi_status",
+                                        "type": "string",
+                                        "description": "Whether EDI (Electronic Data Interchange) is enabled for exchanging orders and documents with this customer.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "enabled",
+                                            "disabled"
+                                        ]
+                                    },
+                                    {
+                                        "name": "relationship_type",
+                                        "type": "string",
+                                        "description": "The customer's position in the account hierarchy.\n\n- `standalone`: no parent or child accounts.\n- `parent`: has one or more child accounts (see `child_accounts`).\n- `child`: belongs to a parent account (see `parent_account`).",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "standalone",
+                                            "parent",
+                                            "child"
+                                        ]
+                                    },
+                                    {
+                                        "name": "commission_policy",
+                                        "type": "string",
+                                        "description": "How sales commission applies to this customer's orders.\n\n- `commission_exempt`: this customer's orders are exempt from sales commission.\n- `commission_applied`: sales commission is calculated on this customer's orders.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "commission_applied",
+                                            "commission_exempt"
+                                        ]
+                                    },
+                                    {
+                                        "name": "note",
+                                        "type": "string",
+                                        "description": "Free-form note about the customer.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "credit_limit",
+                                        "type": "object",
+                                        "description": "Maximum credit extended to this customer.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "contact_info",
+                                        "type": "object",
+                                        "description": "Contact information.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "freight_preferences",
+                                        "type": "object",
+                                        "description": "Freight and carrier preferences applied to this customer's shipments.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "defaults",
+                                        "type": "object",
+                                        "description": "Default settings applied to new orders for this customer.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "notification_preferences",
+                                        "type": "object",
+                                        "description": "Notification preferences.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "bill_to_address",
+                                        "type": "object",
+                                        "description": "Default billing address.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "ship_to_address",
+                                        "type": "object",
+                                        "description": "Default shipping address.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "object",
+                                        "description": "The account group of type `type_group` that categorizes this customer (for example \"Distributors\").",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "price_groups",
+                                        "type": "object",
+                                        "description": "Account groups of type `pricing_group` that this customer belongs to, used to apply pricing rules.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "parent_account",
+                                        "type": "object",
+                                        "description": "Parent account.\n\nPresent if this is a child account.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "child_accounts",
+                                        "type": "object",
+                                        "description": "Child accounts.\n\nPresent if this is a parent account.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "sales_rep",
+                                "type": "object",
+                                "description": "Sales representative.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Actor ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "actor"
+                                        ]
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "string",
+                                        "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "user",
+                                            "api_key",
+                                            "agent"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "The actor's display name.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "handle",
+                                        "type": "string",
+                                        "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nAgent actors carry no handle.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "role",
+                                        "type": "object",
+                                        "description": "Assigned role.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "created_by",
+                                "type": "object",
+                                "description": "Who created this order, and their relation (internal/customer/system).",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true
+                            },
+                            {
+                                "name": "bill_to_address",
+                                "type": "object",
+                                "description": "Billing address.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Address ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "address"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name of the address.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "phone",
+                                        "type": "string",
+                                        "description": "Phone number associated with the address.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "email",
+                                        "type": "string",
+                                        "description": "Email address associated with the address.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "string",
+                                        "description": "Address type.\n\n- `standard`: a normal shipping or billing address.\n- `drop_ship`: an address an order is shipped to directly, typically a third party or end customer rather than the account itself.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "standard",
+                                            "drop_ship"
+                                        ]
+                                    },
+                                    {
+                                        "name": "geolocation",
+                                        "type": "object",
+                                        "description": "Geolocation details for the address.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "ship_to_address",
+                                "type": "object",
+                                "description": "Shipping address.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Address ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "address"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name of the address.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "phone",
+                                        "type": "string",
+                                        "description": "Phone number associated with the address.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "email",
+                                        "type": "string",
+                                        "description": "Email address associated with the address.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "string",
+                                        "description": "Address type.\n\n- `standard`: a normal shipping or billing address.\n- `drop_ship`: an address an order is shipped to directly, typically a third party or end customer rather than the account itself.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "standard",
+                                            "drop_ship"
+                                        ]
+                                    },
+                                    {
+                                        "name": "geolocation",
+                                        "type": "object",
+                                        "description": "Geolocation details for the address.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "freight",
+                                "type": "object",
+                                "description": "Carrier selection and freight billing for this order.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "freight"
+                                        ]
+                                    },
+                                    {
+                                        "name": "policy",
+                                        "type": "string",
+                                        "description": "Freight policy (who arranges and pays for freight).\n\nPopulated where a policy applies, such as customer defaults; null otherwise.\n\n- `free_freight`: no shipping cost to the buyer.\n- `billed_freight`: freight is billed to the buyer.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false,
+                                        "enum": [
+                                            "free_freight",
+                                            "billed_freight"
+                                        ]
+                                    },
+                                    {
+                                        "name": "carrier",
+                                        "type": "object",
+                                        "description": "Carrier.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "service_level",
+                                        "type": "object",
+                                        "description": "Service level.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "billing_type",
+                                        "type": "string",
+                                        "description": "Which party the carrier bills for the shipment.\n\n- `sender`: the shipper (your account) is billed.\n- `third_party`: a third party is billed via `billing_account_number`.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false,
+                                        "enum": [
+                                            "sender",
+                                            "third_party"
+                                        ]
+                                    },
+                                    {
+                                        "name": "billing_account_number",
+                                        "type": "string",
+                                        "description": "Carrier account number to bill, used when `billing_type` is `third_party`.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "payment_term",
+                                "type": "object",
+                                "description": "Payment term.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Payment term ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "payment_term"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name (e.g. `Net 30`).",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "status",
+                                        "type": "string",
+                                        "description": "Lifecycle status of the payment term.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "active",
+                                            "inactive"
+                                        ]
+                                    },
+                                    {
+                                        "name": "owner",
+                                        "type": "object",
+                                        "description": "Owner of this resource, indicating whether it is an Augno-provided system default or was created by your account.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last-updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "shipping_term",
+                                "type": "object",
+                                "description": "Shipping term.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Shipping term ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "shipping_term"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Human-readable name for the shipping term, used to identify it when assigning shipping terms to customers and orders.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "string",
+                                        "description": "Freight pricing model applied by this shipping term.\n\n- `free_freight`: no shipping cost to the buyer.\n- `flat_rate_freight`: a fixed shipping cost regardless of order details (see `flat_rate`).\n- `carrier_rate_freight`: shipping cost is determined by the carrier's quoted rate.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "free_freight",
+                                            "flat_rate_freight",
+                                            "carrier_rate_freight"
+                                        ]
+                                    },
+                                    {
+                                        "name": "owner",
+                                        "type": "object",
+                                        "description": "Provenance of this shipping term.\n\nSystem-owned shipping terms are platform-provided defaults shared across all accounts and cannot be updated or deleted; account-owned shipping terms are custom to your account.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "flat_rate",
+                                        "type": "object",
+                                        "description": "Fixed shipping charge applied to the order.\n\nApplied only when `type` is `flat_rate_freight`; ignored for other freight pricing models.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "minimum_order_value",
+                                        "type": "object",
+                                        "description": "Order subtotal a buyer must reach before this term's free-shipping rules apply.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "free_shipping_service_levels",
+                                        "type": "object",
+                                        "description": "Service levels that ship for free under this term (typically once `minimum_order_value` is met).",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "When this shipping term was created.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "When this shipping term was last updated.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "order_discount",
+                                "type": "object",
+                                "description": "Order discount.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Order discount ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "order_discount"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Display name.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "code",
+                                        "type": "string",
+                                        "description": "The code entered to apply this discount to an order.\n\nMust be unique within the account.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "percentage",
+                                        "type": "string",
+                                        "description": "Percent off as a decimal string (e.g. `10` for 10%).\n\nApplies when `discount_type` is `percentage`; otherwise `0`.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "decimal"
+                                    },
+                                    {
+                                        "name": "amount",
+                                        "type": "string",
+                                        "description": "Fixed amount off as a decimal string.\n\nApplies when `discount_type` is `amount`; otherwise `0`.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "decimal"
+                                    },
+                                    {
+                                        "name": "discount_type",
+                                        "type": "string",
+                                        "description": "How the discount is calculated, determining whether `percentage` or `amount` is used.\n\n- `percentage`: the discount is a percent off, taken from `percentage`.\n- `amount`: the discount is a fixed amount off, taken from `amount`.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "percentage",
+                                            "amount"
+                                        ]
+                                    },
+                                    {
+                                        "name": "order_count",
+                                        "type": "integer",
+                                        "description": "Number of orders currently using this discount.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "lines",
+                                "type": "object",
+                                "description": "Order lines.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "name": "page_info",
+                                        "type": "object",
+                                        "description": "Pagination metadata.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "properties": [
+                                            {
+                                                "name": "next_page_url",
+                                                "type": "string",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "previous_page_url",
+                                                "type": "string",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "has_next_page",
+                                                "type": "boolean",
+                                                "description": "Whether more results exist after this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "has_prev_page",
+                                                "type": "boolean",
+                                                "description": "Whether results exist before this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "data",
+                                        "type": "array",
+                                        "description": "Resources in this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "itemType": "object",
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Sales order line ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "sales_order_line"
+                                                ]
+                                            },
+                                            {
+                                                "name": "line_item_number",
+                                                "type": "integer",
+                                                "description": "Position of the line on the order.\n\nAssigned automatically in sequence, starting at `1`.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "product_sku",
+                                                "type": "string",
+                                                "description": "Product SKU.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "product_description",
+                                                "type": "string",
+                                                "description": "Product description.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "product",
+                                                "type": "object",
+                                                "description": "Associated product.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "quantity_ordered",
+                                                "type": "object",
+                                                "description": "Quantity ordered.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "unit_price",
+                                                "type": "object",
+                                                "description": "Price charged per unit.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "unit_cost",
+                                                "type": "object",
+                                                "description": "Internal cost per unit, used to derive line profitability rather than what the customer is charged.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "totals",
+                                                "type": "object",
+                                                "description": "Derived monetary totals for this line.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "line_count",
+                                "type": "integer",
+                                "description": "Number of order lines on this order, returned even when the `lines` list itself is not expanded.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "totals",
+                                "type": "object",
+                                "description": "Derived monetary totals.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "sales_order_totals"
+                                        ]
+                                    },
+                                    {
+                                        "name": "ordered",
+                                        "type": "string",
+                                        "description": "Total ordered amount as a decimal string (unit price x quantity ordered).",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "decimal"
+                                    },
+                                    {
+                                        "name": "packed",
+                                        "type": "string",
+                                        "description": "Total packed amount as a decimal string (unit price x quantity packed).",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "decimal"
+                                    },
+                                    {
+                                        "name": "invoiced",
+                                        "type": "string",
+                                        "description": "Total invoiced amount as a decimal string (unit price x quantity invoiced).",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "decimal"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "related",
+                                "type": "object",
+                                "description": "Records related to this order (pick, production run, shipments).",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "properties": [
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "sales_order_related"
+                                        ]
+                                    },
+                                    {
+                                        "name": "pick",
+                                        "type": "object",
+                                        "description": "Associated pick, as a lightweight record reference.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Record ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "record"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The kind of business record referenced.\n\nDetermines how to resolve the record and which `status` and `metadata` keys may appear.\n\n- `sales_order`: a customer order.\n- `purchase_order`: an order placed with a supplier.\n- `receiving_order`: an inbound order being received into inventory.\n- `pick`: a warehouse pick task.\n- `shipment`: an outbound shipment.\n- `delivery`: a delivery of one or more shipments to a destination.\n- `production_run`: a manufacturing production run.\n- `invoice`: a customer invoice.\n- `transaction`: a payment or financial transaction.\n- `settlement`: a settlement reconciling transactions against invoices.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "sales_order",
+                                                    "purchase_order",
+                                                    "receiving_order",
+                                                    "pick",
+                                                    "shipment",
+                                                    "delivery",
+                                                    "production_run",
+                                                    "invoice",
+                                                    "transaction",
+                                                    "settlement"
+                                                ]
+                                            },
+                                            {
+                                                "name": "number",
+                                                "type": "string",
+                                                "description": "Human-readable record number, when the record has one.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "status",
+                                                "type": "string",
+                                                "description": "Type-specific status code, when applicable.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "metadata",
+                                                "type": "object",
+                                                "description": "Type-specific metadata.\n\nThe set of keys varies by record type.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "production_run",
+                                        "type": "object",
+                                        "description": "Associated production run, as a lightweight record reference.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Record ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "record"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The kind of business record referenced.\n\nDetermines how to resolve the record and which `status` and `metadata` keys may appear.\n\n- `sales_order`: a customer order.\n- `purchase_order`: an order placed with a supplier.\n- `receiving_order`: an inbound order being received into inventory.\n- `pick`: a warehouse pick task.\n- `shipment`: an outbound shipment.\n- `delivery`: a delivery of one or more shipments to a destination.\n- `production_run`: a manufacturing production run.\n- `invoice`: a customer invoice.\n- `transaction`: a payment or financial transaction.\n- `settlement`: a settlement reconciling transactions against invoices.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "sales_order",
+                                                    "purchase_order",
+                                                    "receiving_order",
+                                                    "pick",
+                                                    "shipment",
+                                                    "delivery",
+                                                    "production_run",
+                                                    "invoice",
+                                                    "transaction",
+                                                    "settlement"
+                                                ]
+                                            },
+                                            {
+                                                "name": "number",
+                                                "type": "string",
+                                                "description": "Human-readable record number, when the record has one.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "status",
+                                                "type": "string",
+                                                "description": "Type-specific status code, when applicable.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "metadata",
+                                                "type": "object",
+                                                "description": "Type-specific metadata.\n\nThe set of keys varies by record type.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "shipments",
+                                        "type": "object",
+                                        "description": "Associated shipments, as lightweight record references.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "list"
+                                                ]
+                                            },
+                                            {
+                                                "name": "page_info",
+                                                "type": "object",
+                                                "description": "Pagination metadata.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "properties": [
+                                                    {
+                                                        "name": "next_page_url",
+                                                        "type": "string",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "previous_page_url",
+                                                        "type": "string",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_next_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether more results exist after this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_prev_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether results exist before this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "array",
+                                                "description": "Resources in this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "itemType": "object",
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Record ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "record"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "type",
+                                                        "type": "string",
+                                                        "description": "The kind of business record referenced.\n\nDetermines how to resolve the record and which `status` and `metadata` keys may appear.\n\n- `sales_order`: a customer order.\n- `purchase_order`: an order placed with a supplier.\n- `receiving_order`: an inbound order being received into inventory.\n- `pick`: a warehouse pick task.\n- `shipment`: an outbound shipment.\n- `delivery`: a delivery of one or more shipments to a destination.\n- `production_run`: a manufacturing production run.\n- `invoice`: a customer invoice.\n- `transaction`: a payment or financial transaction.\n- `settlement`: a settlement reconciling transactions against invoices.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "sales_order",
+                                                            "purchase_order",
+                                                            "receiving_order",
+                                                            "pick",
+                                                            "shipment",
+                                                            "delivery",
+                                                            "production_run",
+                                                            "invoice",
+                                                            "transaction",
+                                                            "settlement"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "number",
+                                                        "type": "string",
+                                                        "description": "Human-readable record number, when the record has one.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "status",
+                                                        "type": "string",
+                                                        "description": "Type-specific status code, when applicable.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "metadata",
+                                                        "type": "object",
+                                                        "description": "Type-specific metadata.\n\nThe set of keys varies by record type.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "contacts",
+                                "type": "object",
+                                "description": "Email recipients grouped by notification purpose.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "properties": [
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "order_contact"
+                                        ]
+                                    },
+                                    {
+                                        "name": "invoice",
+                                        "type": "array",
+                                        "description": "Email addresses that receive invoices for this order.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "itemType": "string"
+                                    },
+                                    {
+                                        "name": "acknowledgement",
+                                        "type": "array",
+                                        "description": "Email addresses that receive order acknowledgements for this order.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "itemType": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "issued_at",
+                                "type": "string",
+                                "description": "When the order was issued (moved out of `estimate`).",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "completed_at",
+                                "type": "string",
+                                "description": "When the order was fulfilled and closed.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "first_ship_at",
+                                "type": "string",
+                                "description": "When the first shipment against this order went out.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "expired_at",
+                                "type": "string",
+                                "description": "When this estimate expires, if an expiration was set.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "promised_at",
+                                "type": "string",
+                                "description": "Date promised to the customer for delivery, if one was committed.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "created_at",
+                                "type": "string",
+                                "description": "Creation timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "updated_at",
+                                "type": "string",
+                                "description": "Last updated timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            }
+                        ],
+                        "example": {
+                            "id": "or_01d5034136c3ccc048abecc312",
+                            "object": "sales_order",
+                            "number": "SO-001",
+                            "customer_purchase_order_number": "PO-12345",
+                            "note": "Rush order",
+                            "status": "estimate",
+                            "priority": "normal",
+                            "payment_status": "unpaid",
+                            "acknowledgment_status": "not_sent",
+                            "customer": {
+                                "id": "ac_0170df1ac58e4d24c66fc89f5f",
+                                "object": "customer",
+                                "name": "Acme Inc.",
+                                "number": "100042",
+                                "status": "",
+                                "edi_status": "",
+                                "relationship_type": "",
+                                "commission_policy": "",
+                                "note": null,
+                                "credit_limit": null,
+                                "contact_info": null,
+                                "freight_preferences": null,
+                                "defaults": null,
+                                "notification_preferences": null,
+                                "bill_to_address": null,
+                                "ship_to_address": null,
+                                "type": null,
+                                "price_groups": null,
+                                "parent_account": null,
+                                "child_accounts": null,
+                                "created_at": "0001-01-01T00:00:00Z",
+                                "updated_at": "0001-01-01T00:00:00Z"
+                            },
+                            "sales_rep": null,
+                            "created_by": null,
+                            "bill_to_address": {
+                                "id": "ad_012100950cfaa34aa0e0ad7258",
+                                "object": "address",
+                                "name": "Headquarters",
+                                "phone": null,
+                                "email": null,
+                                "type": "standard",
+                                "geolocation": {
+                                    "id": "gl_013e4c26412103c6757ba71806",
+                                    "object": "geolocation",
+                                    "street_line_1": "4200 Industrial Pkwy",
+                                    "street_line_2": null,
+                                    "locality": "Columbus",
+                                    "state": "OH",
+                                    "postal_code": "43204",
+                                    "country": "US"
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "ship_to_address": {
+                                "id": "ad_012100950cfaa34aa0e0ad7258",
+                                "object": "address",
+                                "name": "Headquarters",
+                                "phone": null,
+                                "email": null,
+                                "type": "standard",
+                                "geolocation": {
+                                    "id": "gl_013e4c26412103c6757ba71806",
+                                    "object": "geolocation",
+                                    "street_line_1": "4200 Industrial Pkwy",
+                                    "street_line_2": null,
+                                    "locality": "Columbus",
+                                    "state": "OH",
+                                    "postal_code": "43204",
+                                    "country": "US"
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "freight": {
+                                "object": "freight",
+                                "policy": null,
+                                "carrier": {
+                                    "id": "cr_01784fd54c9ba197bb4e42f0e6",
+                                    "object": "carrier",
+                                    "name": "FedEx",
+                                    "code": "fedex",
+                                    "account_number": null,
+                                    "customer_portal_visibility": "visible",
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "account",
+                                        "account": {
+                                            "id": "ac_01148680966698341a9c0976db",
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    },
+                                    "service_levels": null,
+                                    "deleted_at": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "service_level": {
+                                    "id": "crop_01cfaf03f104e90ef9680e2a30",
+                                    "object": "service_level",
+                                    "name": "FedEx Ground",
+                                    "service_level_token": "fedex_ground",
+                                    "customer_portal_visibility": "visible",
+                                    "is_default": false,
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "account",
+                                        "account": {
+                                            "id": "ac_01148680966698341a9c0976db",
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "billing_type": "third_party",
+                                "billing_account_number": "123456789"
+                            },
+                            "payment_term": null,
+                            "shipping_term": null,
+                            "order_discount": null,
+                            "lines": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "orln_0142f9b74268973450b3a76ce3",
+                                        "object": "sales_order_line",
+                                        "line_item_number": 1,
+                                        "product_sku": "ALM-2024-1001",
+                                        "product_description": "6061-T6 Aluminum Sheet 4x8",
+                                        "product": null,
+                                        "quantity_ordered": {
+                                            "id": "qty_015a85becc1a6afdfb1afc27ff",
+                                            "object": "quantity",
+                                            "value": "1234.56",
+                                            "display_value": "$1,234.56",
+                                            "unit": {
+                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                "object": "unit",
+                                                "name": "US Dollar",
+                                                "abbreviation": "$",
+                                                "type": "currency",
+                                                "ratio_numerator": "1",
+                                                "ratio_denominator": "1",
+                                                "offset_numerator": "0",
+                                                "offset_denominator": "1",
+                                                "is_base_unit": true,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        },
+                                        "unit_price": {
+                                            "id": "ra_015aa0a9522cf222024fd21d1a",
+                                            "object": "rate",
+                                            "value": "25.500000000000000000000000000000",
+                                            "numerator_unit": {
+                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                "object": "unit",
+                                                "name": "US Dollar",
+                                                "abbreviation": "USD",
+                                                "type": "currency",
+                                                "ratio_numerator": "1",
+                                                "ratio_denominator": "1",
+                                                "offset_numerator": "0",
+                                                "offset_denominator": "1",
+                                                "is_base_unit": true,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "denominator_unit": {
+                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                "object": "unit",
+                                                "name": "Kilogram",
+                                                "abbreviation": "kg",
+                                                "type": "mass",
+                                                "ratio_numerator": "1",
+                                                "ratio_denominator": "1",
+                                                "offset_numerator": "0",
+                                                "offset_denominator": "1",
+                                                "is_base_unit": true,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "display_value": "$25.50 / kg",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "unit_cost": null,
+                                        "totals": {
+                                            "object": "sales_order_totals",
+                                            "ordered": "1234.560000000000000000000000000000",
+                                            "packed": "0.000000000000000000000000000000",
+                                            "invoiced": "0.000000000000000000000000000000"
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
+                            "line_count": 1,
+                            "totals": {
+                                "object": "sales_order_totals",
+                                "ordered": "1234.560000000000000000000000000000",
+                                "packed": "0.000000000000000000000000000000",
+                                "invoiced": "0.000000000000000000000000000000"
+                            },
+                            "related": {
+                                "object": "sales_order_related",
+                                "pick": null,
+                                "production_run": null,
+                                "shipments": null
+                            },
+                            "contacts": null,
+                            "issued_at": null,
+                            "completed_at": null,
+                            "first_ship_at": null,
+                            "expired_at": null,
+                            "promised_at": null,
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "list-sales-orders",
+                "summary": "List Sales Orders",
+                "description": "Returns a paginated list of sales orders for the current account.",
+                "method": "GET",
+                "path": "/v1/sales/sales-orders",
+                "domain": "sales",
+                "tag": "Sales Orders",
+                "tagSlug": "sales-orders",
+                "endpointSlug": "list-sales-orders",
+                "actionType": "list",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Opaque cursor token identifying where the page of results starts.\n\nUse the `cursor` value embedded in a previous response's `next_page_url` or `previous_page_url` to fetch the adjacent page. Omit to start from the first page."
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "type": "integer",
+                        "required": false,
+                        "description": "Maximum number of results to return in a single page."
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Free-text search term used to filter results.\n\nWhich fields are matched against the term varies by endpoint."
+                    },
+                    {
+                        "name": "status_codes[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter by status codes."
+                    },
+                    {
+                        "name": "item_ids[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter by item IDs."
+                    },
+                    {
+                        "name": "product_line_ids[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter by product line IDs."
+                    },
+                    {
+                        "name": "customer_ids[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter by customer IDs."
+                    },
+                    {
+                        "name": "customer_group_ids[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter by customer group IDs."
+                    },
+                    {
+                        "name": "sales_rep_ids[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Filter by sales rep IDs."
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Earliest order creation date to include, in `YYYY-MM-DD` format (inclusive)."
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": "Latest order creation date to include, in `YYYY-MM-DD` format (inclusive)."
+                    },
+                    {
+                        "name": "exclude_internal_orders",
+                        "in": "query",
+                        "type": "boolean",
+                        "required": false,
+                        "description": "Whether to exclude internal orders.\n\nWhen `true`, omits orders the account placed with itself (the buyer is the same account that owns the order)."
+                    },
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
+                        "enum": [
+                            "customer",
+                            "sales_rep",
+                            "created_by",
+                            "bill_to_address",
+                            "ship_to_address",
+                            "freight",
+                            "payment_term",
+                            "shipping_term",
+                            "order_discount",
+                            "totals",
+                            "contacts",
+                            "related.pick",
+                            "related.production_run",
+                            "related.shipments",
+                            "lines",
+                            "lines.product",
+                            "lines.product.item",
+                            "lines.product.product_line",
+                            "lines.quantity_ordered",
+                            "lines.unit_price",
+                            "lines.unit_cost",
+                            "lines.totals"
+                        ]
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for List Sales Orders",
+                        "fields": [
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "list"
+                                ]
+                            },
+                            {
+                                "name": "page_info",
+                                "type": "object",
+                                "description": "Pagination metadata.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "properties": [
+                                    {
+                                        "name": "next_page_url",
+                                        "type": "string",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "previous_page_url",
+                                        "type": "string",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_next_page",
+                                        "type": "boolean",
+                                        "description": "Whether more results exist after this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_prev_page",
+                                        "type": "boolean",
+                                        "description": "Whether results exist before this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "data",
+                                "type": "array",
+                                "description": "Resources in this page.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "itemType": "object",
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Sales order ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "sales_order"
+                                        ]
+                                    },
+                                    {
+                                        "name": "number",
+                                        "type": "string",
+                                        "description": "Human-readable order number, e.g. `SO-001`.\n\nAssigned automatically when the order is created; unique within your account.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "customer_purchase_order_number",
+                                        "type": "string",
+                                        "description": "The customer's own purchase order number, for cross-referencing.\n\nUnique among this customer's orders.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "note",
+                                        "type": "string",
+                                        "description": "Order note.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "status",
+                                        "type": "string",
+                                        "description": "Order lifecycle status.\n\n- `estimate`: a draft quote that has not yet been committed; not counted as a real order.\n- `issued`: the order has been issued and is being fulfilled.\n- `fulfilled`: the order has been completed and closed.\n\nStatus changes are made through the issue, unissue, close, and reopen action endpoints rather than by updating this field.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "estimate",
+                                            "issued",
+                                            "fulfilled"
+                                        ]
+                                    },
+                                    {
+                                        "name": "priority",
+                                        "type": "string",
+                                        "description": "Fulfillment priority, used to rank orders on the shop floor.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "low",
+                                            "normal",
+                                            "high"
+                                        ]
+                                    },
+                                    {
+                                        "name": "payment_status",
+                                        "type": "string",
+                                        "description": "Payment state of the order.\n\nPayment tracking is not yet wired up, so this currently always reports `unpaid`.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "unpaid",
+                                            "partially_paid",
+                                            "paid"
+                                        ]
+                                    },
+                                    {
+                                        "name": "acknowledgment_status",
+                                        "type": "string",
+                                        "description": "Whether an order acknowledgment has been sent to the customer.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "not_sent",
+                                            "sent"
+                                        ]
+                                    },
+                                    {
+                                        "name": "customer",
+                                        "type": "object",
+                                        "description": "Associated customer.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Customer ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "customer"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The customer's business name, as shown throughout the app and on documents.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "number",
+                                                "type": "string",
+                                                "description": "Human-readable customer number used to identify the account, distinct from the `id`.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "status",
+                                                "type": "string",
+                                                "description": "Account status code, controlling whether the customer can transact.\n\n- `normal`: standard active account with no restrictions.\n- `preferred`: active account flagged as preferred.\n- `hold_shipment`: orders can be placed, but shipments are held.\n- `hold_all`: all activity is on hold.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "normal",
+                                                    "preferred",
+                                                    "hold_shipment",
+                                                    "hold_all"
+                                                ]
+                                            },
+                                            {
+                                                "name": "edi_status",
+                                                "type": "string",
+                                                "description": "Whether EDI (Electronic Data Interchange) is enabled for exchanging orders and documents with this customer.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "enabled",
+                                                    "disabled"
+                                                ]
+                                            },
+                                            {
+                                                "name": "relationship_type",
+                                                "type": "string",
+                                                "description": "The customer's position in the account hierarchy.\n\n- `standalone`: no parent or child accounts.\n- `parent`: has one or more child accounts (see `child_accounts`).\n- `child`: belongs to a parent account (see `parent_account`).",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "standalone",
+                                                    "parent",
+                                                    "child"
+                                                ]
+                                            },
+                                            {
+                                                "name": "commission_policy",
+                                                "type": "string",
+                                                "description": "How sales commission applies to this customer's orders.\n\n- `commission_exempt`: this customer's orders are exempt from sales commission.\n- `commission_applied`: sales commission is calculated on this customer's orders.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "commission_applied",
+                                                    "commission_exempt"
+                                                ]
+                                            },
+                                            {
+                                                "name": "note",
+                                                "type": "string",
+                                                "description": "Free-form note about the customer.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "credit_limit",
+                                                "type": "object",
+                                                "description": "Maximum credit extended to this customer.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "contact_info",
+                                                "type": "object",
+                                                "description": "Contact information.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "freight_preferences",
+                                                "type": "object",
+                                                "description": "Freight and carrier preferences applied to this customer's shipments.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "defaults",
+                                                "type": "object",
+                                                "description": "Default settings applied to new orders for this customer.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "notification_preferences",
+                                                "type": "object",
+                                                "description": "Notification preferences.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "bill_to_address",
+                                                "type": "object",
+                                                "description": "Default billing address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "ship_to_address",
+                                                "type": "object",
+                                                "description": "Default shipping address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "object",
+                                                "description": "The account group of type `type_group` that categorizes this customer (for example \"Distributors\").",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "price_groups",
+                                                "type": "object",
+                                                "description": "Account groups of type `pricing_group` that this customer belongs to, used to apply pricing rules.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "parent_account",
+                                                "type": "object",
+                                                "description": "Parent account.\n\nPresent if this is a child account.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "child_accounts",
+                                                "type": "object",
+                                                "description": "Child accounts.\n\nPresent if this is a parent account.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "sales_rep",
+                                        "type": "object",
+                                        "description": "Sales representative.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Actor ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "actor"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "user",
+                                                    "api_key",
+                                                    "agent"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The actor's display name.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "handle",
+                                                "type": "string",
+                                                "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nAgent actors carry no handle.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "role",
+                                                "type": "object",
+                                                "description": "Assigned role.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "created_by",
+                                        "type": "object",
+                                        "description": "Who created this order, and their relation (internal/customer/system).",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "created_by"
+                                                ]
+                                            },
+                                            {
+                                                "name": "relation",
+                                                "type": "string",
+                                                "description": "The creator's relationship to the account that owns the resource.\n\n- `internal`: created by a user of the owning account.\n- `customer`: created by a customer of the owning account.\n- `system`: created automatically with no human actor (e.g. an EDI import).",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "internal",
+                                                    "customer",
+                                                    "system"
+                                                ]
+                                            },
+                                            {
+                                                "name": "actor",
+                                                "type": "object",
+                                                "description": "The actor who created the resource. Null when `relation` is `system`.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "bill_to_address",
+                                        "type": "object",
+                                        "description": "Billing address.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Address ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "address"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name of the address.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "phone",
+                                                "type": "string",
+                                                "description": "Phone number associated with the address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "email",
+                                                "type": "string",
+                                                "description": "Email address associated with the address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "Address type.\n\n- `standard`: a normal shipping or billing address.\n- `drop_ship`: an address an order is shipped to directly, typically a third party or end customer rather than the account itself.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "standard",
+                                                    "drop_ship"
+                                                ]
+                                            },
+                                            {
+                                                "name": "geolocation",
+                                                "type": "object",
+                                                "description": "Geolocation details for the address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "ship_to_address",
+                                        "type": "object",
+                                        "description": "Shipping address.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Address ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "address"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name of the address.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "phone",
+                                                "type": "string",
+                                                "description": "Phone number associated with the address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "email",
+                                                "type": "string",
+                                                "description": "Email address associated with the address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "Address type.\n\n- `standard`: a normal shipping or billing address.\n- `drop_ship`: an address an order is shipped to directly, typically a third party or end customer rather than the account itself.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "standard",
+                                                    "drop_ship"
+                                                ]
+                                            },
+                                            {
+                                                "name": "geolocation",
+                                                "type": "object",
+                                                "description": "Geolocation details for the address.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "freight",
+                                        "type": "object",
+                                        "description": "Carrier selection and freight billing for this order.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "freight"
+                                                ]
+                                            },
+                                            {
+                                                "name": "policy",
+                                                "type": "string",
+                                                "description": "Freight policy (who arranges and pays for freight).\n\nPopulated where a policy applies, such as customer defaults; null otherwise.\n\n- `free_freight`: no shipping cost to the buyer.\n- `billed_freight`: freight is billed to the buyer.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "free_freight",
+                                                    "billed_freight"
+                                                ]
+                                            },
+                                            {
+                                                "name": "carrier",
+                                                "type": "object",
+                                                "description": "Carrier.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "service_level",
+                                                "type": "object",
+                                                "description": "Service level.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "billing_type",
+                                                "type": "string",
+                                                "description": "Which party the carrier bills for the shipment.\n\n- `sender`: the shipper (your account) is billed.\n- `third_party`: a third party is billed via `billing_account_number`.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "sender",
+                                                    "third_party"
+                                                ]
+                                            },
+                                            {
+                                                "name": "billing_account_number",
+                                                "type": "string",
+                                                "description": "Carrier account number to bill, used when `billing_type` is `third_party`.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "payment_term",
+                                        "type": "object",
+                                        "description": "Payment term.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Payment term ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "payment_term"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name (e.g. `Net 30`).",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "status",
+                                                "type": "string",
+                                                "description": "Lifecycle status of the payment term.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "active",
+                                                    "inactive"
+                                                ]
+                                            },
+                                            {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "Owner of this resource, indicating whether it is an Augno-provided system default or was created by your account.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last-updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "shipping_term",
+                                        "type": "object",
+                                        "description": "Shipping term.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Shipping term ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "shipping_term"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Human-readable name for the shipping term, used to identify it when assigning shipping terms to customers and orders.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "Freight pricing model applied by this shipping term.\n\n- `free_freight`: no shipping cost to the buyer.\n- `flat_rate_freight`: a fixed shipping cost regardless of order details (see `flat_rate`).\n- `carrier_rate_freight`: shipping cost is determined by the carrier's quoted rate.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "free_freight",
+                                                    "flat_rate_freight",
+                                                    "carrier_rate_freight"
+                                                ]
+                                            },
+                                            {
+                                                "name": "owner",
+                                                "type": "object",
+                                                "description": "Provenance of this shipping term.\n\nSystem-owned shipping terms are platform-provided defaults shared across all accounts and cannot be updated or deleted; account-owned shipping terms are custom to your account.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "flat_rate",
+                                                "type": "object",
+                                                "description": "Fixed shipping charge applied to the order.\n\nApplied only when `type` is `flat_rate_freight`; ignored for other freight pricing models.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "minimum_order_value",
+                                                "type": "object",
+                                                "description": "Order subtotal a buyer must reach before this term's free-shipping rules apply.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "free_shipping_service_levels",
+                                                "type": "object",
+                                                "description": "Service levels that ship for free under this term (typically once `minimum_order_value` is met).",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "When this shipping term was created.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "When this shipping term was last updated.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "order_discount",
+                                        "type": "object",
+                                        "description": "Order discount.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Order discount ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "order_discount"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Display name.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "code",
+                                                "type": "string",
+                                                "description": "The code entered to apply this discount to an order.\n\nMust be unique within the account.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "percentage",
+                                                "type": "string",
+                                                "description": "Percent off as a decimal string (e.g. `10` for 10%).\n\nApplies when `discount_type` is `percentage`; otherwise `0`.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "decimal"
+                                            },
+                                            {
+                                                "name": "amount",
+                                                "type": "string",
+                                                "description": "Fixed amount off as a decimal string.\n\nApplies when `discount_type` is `amount`; otherwise `0`.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "decimal"
+                                            },
+                                            {
+                                                "name": "discount_type",
+                                                "type": "string",
+                                                "description": "How the discount is calculated, determining whether `percentage` or `amount` is used.\n\n- `percentage`: the discount is a percent off, taken from `percentage`.\n- `amount`: the discount is a fixed amount off, taken from `amount`.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "percentage",
+                                                    "amount"
+                                                ]
+                                            },
+                                            {
+                                                "name": "order_count",
+                                                "type": "integer",
+                                                "description": "Number of orders currently using this discount.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "created_at",
+                                                "type": "string",
+                                                "description": "Creation timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            },
+                                            {
+                                                "name": "updated_at",
+                                                "type": "string",
+                                                "description": "Last updated timestamp.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "date-time"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "lines",
+                                        "type": "object",
+                                        "description": "Order lines.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "list"
+                                                ]
+                                            },
+                                            {
+                                                "name": "page_info",
+                                                "type": "object",
+                                                "description": "Pagination metadata.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "properties": [
+                                                    {
+                                                        "name": "next_page_url",
+                                                        "type": "string",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "previous_page_url",
+                                                        "type": "string",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_next_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether more results exist after this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_prev_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether results exist before this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "array",
+                                                "description": "Resources in this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "itemType": "object",
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Sales order line ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "sales_order_line"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "line_item_number",
+                                                        "type": "integer",
+                                                        "description": "Position of the line on the order.\n\nAssigned automatically in sequence, starting at `1`.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "product_sku",
+                                                        "type": "string",
+                                                        "description": "Product SKU.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "product_description",
+                                                        "type": "string",
+                                                        "description": "Product description.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "product",
+                                                        "type": "object",
+                                                        "description": "Associated product.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "quantity_ordered",
+                                                        "type": "object",
+                                                        "description": "Quantity ordered.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "unit_price",
+                                                        "type": "object",
+                                                        "description": "Price charged per unit.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "unit_cost",
+                                                        "type": "object",
+                                                        "description": "Internal cost per unit, used to derive line profitability rather than what the customer is charged.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "totals",
+                                                        "type": "object",
+                                                        "description": "Derived monetary totals for this line.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    },
+                                                    {
+                                                        "name": "updated_at",
+                                                        "type": "string",
+                                                        "description": "Last updated timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "line_count",
+                                        "type": "integer",
+                                        "description": "Number of order lines on this order, returned even when the `lines` list itself is not expanded.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "totals",
+                                        "type": "object",
+                                        "description": "Derived monetary totals.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "sales_order_totals"
+                                                ]
+                                            },
+                                            {
+                                                "name": "ordered",
+                                                "type": "string",
+                                                "description": "Total ordered amount as a decimal string (unit price x quantity ordered).",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "decimal"
+                                            },
+                                            {
+                                                "name": "packed",
+                                                "type": "string",
+                                                "description": "Total packed amount as a decimal string (unit price x quantity packed).",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "decimal"
+                                            },
+                                            {
+                                                "name": "invoiced",
+                                                "type": "string",
+                                                "description": "Total invoiced amount as a decimal string (unit price x quantity invoiced).",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "format": "decimal"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "related",
+                                        "type": "object",
+                                        "description": "Records related to this order (pick, production run, shipments).",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "sales_order_related"
+                                                ]
+                                            },
+                                            {
+                                                "name": "pick",
+                                                "type": "object",
+                                                "description": "Associated pick, as a lightweight record reference.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Record ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "record"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "type",
+                                                        "type": "string",
+                                                        "description": "The kind of business record referenced.\n\nDetermines how to resolve the record and which `status` and `metadata` keys may appear.\n\n- `sales_order`: a customer order.\n- `purchase_order`: an order placed with a supplier.\n- `receiving_order`: an inbound order being received into inventory.\n- `pick`: a warehouse pick task.\n- `shipment`: an outbound shipment.\n- `delivery`: a delivery of one or more shipments to a destination.\n- `production_run`: a manufacturing production run.\n- `invoice`: a customer invoice.\n- `transaction`: a payment or financial transaction.\n- `settlement`: a settlement reconciling transactions against invoices.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "sales_order",
+                                                            "purchase_order",
+                                                            "receiving_order",
+                                                            "pick",
+                                                            "shipment",
+                                                            "delivery",
+                                                            "production_run",
+                                                            "invoice",
+                                                            "transaction",
+                                                            "settlement"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "number",
+                                                        "type": "string",
+                                                        "description": "Human-readable record number, when the record has one.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "status",
+                                                        "type": "string",
+                                                        "description": "Type-specific status code, when applicable.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "metadata",
+                                                        "type": "object",
+                                                        "description": "Type-specific metadata.\n\nThe set of keys varies by record type.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "production_run",
+                                                "type": "object",
+                                                "description": "Associated production run, as a lightweight record reference.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Record ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "record"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "type",
+                                                        "type": "string",
+                                                        "description": "The kind of business record referenced.\n\nDetermines how to resolve the record and which `status` and `metadata` keys may appear.\n\n- `sales_order`: a customer order.\n- `purchase_order`: an order placed with a supplier.\n- `receiving_order`: an inbound order being received into inventory.\n- `pick`: a warehouse pick task.\n- `shipment`: an outbound shipment.\n- `delivery`: a delivery of one or more shipments to a destination.\n- `production_run`: a manufacturing production run.\n- `invoice`: a customer invoice.\n- `transaction`: a payment or financial transaction.\n- `settlement`: a settlement reconciling transactions against invoices.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "sales_order",
+                                                            "purchase_order",
+                                                            "receiving_order",
+                                                            "pick",
+                                                            "shipment",
+                                                            "delivery",
+                                                            "production_run",
+                                                            "invoice",
+                                                            "transaction",
+                                                            "settlement"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "number",
+                                                        "type": "string",
+                                                        "description": "Human-readable record number, when the record has one.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "status",
+                                                        "type": "string",
+                                                        "description": "Type-specific status code, when applicable.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "metadata",
+                                                        "type": "object",
+                                                        "description": "Type-specific metadata.\n\nThe set of keys varies by record type.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "shipments",
+                                                "type": "object",
+                                                "description": "Associated shipments, as lightweight record references.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "properties": [
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "list"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "page_info",
+                                                        "type": "object",
+                                                        "description": "Pagination metadata.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "properties": [
+                                                            {
+                                                                "name": "next_page_url",
+                                                                "type": "string",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "previous_page_url",
+                                                                "type": "string",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "has_next_page",
+                                                                "type": "boolean",
+                                                                "description": "Whether more results exist after this page.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "has_prev_page",
+                                                                "type": "boolean",
+                                                                "description": "Whether results exist before this page.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "data",
+                                                        "type": "array",
+                                                        "description": "Resources in this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "itemType": "object",
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "Record ID.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "record"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "type",
+                                                                "type": "string",
+                                                                "description": "The kind of business record referenced.\n\nDetermines how to resolve the record and which `status` and `metadata` keys may appear.\n\n- `sales_order`: a customer order.\n- `purchase_order`: an order placed with a supplier.\n- `receiving_order`: an inbound order being received into inventory.\n- `pick`: a warehouse pick task.\n- `shipment`: an outbound shipment.\n- `delivery`: a delivery of one or more shipments to a destination.\n- `production_run`: a manufacturing production run.\n- `invoice`: a customer invoice.\n- `transaction`: a payment or financial transaction.\n- `settlement`: a settlement reconciling transactions against invoices.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "sales_order",
+                                                                    "purchase_order",
+                                                                    "receiving_order",
+                                                                    "pick",
+                                                                    "shipment",
+                                                                    "delivery",
+                                                                    "production_run",
+                                                                    "invoice",
+                                                                    "transaction",
+                                                                    "settlement"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "number",
+                                                                "type": "string",
+                                                                "description": "Human-readable record number, when the record has one.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "status",
+                                                                "type": "string",
+                                                                "description": "Type-specific status code, when applicable.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "metadata",
+                                                                "type": "object",
+                                                                "description": "Type-specific metadata.\n\nThe set of keys varies by record type.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "contacts",
+                                        "type": "object",
+                                        "description": "Email recipients grouped by notification purpose.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "order_contact"
+                                                ]
+                                            },
+                                            {
+                                                "name": "invoice",
+                                                "type": "array",
+                                                "description": "Email addresses that receive invoices for this order.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "itemType": "string"
+                                            },
+                                            {
+                                                "name": "acknowledgement",
+                                                "type": "array",
+                                                "description": "Email addresses that receive order acknowledgements for this order.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "itemType": "string"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "issued_at",
+                                        "type": "string",
+                                        "description": "When the order was issued (moved out of `estimate`).",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "completed_at",
+                                        "type": "string",
+                                        "description": "When the order was fulfilled and closed.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "first_ship_at",
+                                        "type": "string",
+                                        "description": "When the first shipment against this order went out.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "expired_at",
+                                        "type": "string",
+                                        "description": "When this estimate expires, if an expiration was set.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "promised_at",
+                                        "type": "string",
+                                        "description": "Date promised to the customer for delivery, if one was committed.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            }
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": "/v1/sales/sales-orders?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoib3JfMDFkNTAzNDEzNmMzY2NjMDQ4YWJlY2MzMTIiLCJkIjoiZiJ9.2W-bfMegnnyvVAcsrei7so725TL_PSU29p4F5Kc0JNk",
+                                "previous_page_url": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "or_01d5034136c3ccc048abecc312",
+                                    "object": "sales_order",
+                                    "number": "SO-001",
+                                    "customer_purchase_order_number": "PO-12345",
+                                    "note": "Rush order",
+                                    "status": "estimate",
+                                    "priority": "normal",
+                                    "payment_status": "unpaid",
+                                    "acknowledgment_status": "not_sent",
+                                    "customer": {
+                                        "id": "ac_0170df1ac58e4d24c66fc89f5f",
+                                        "object": "customer",
+                                        "name": "Acme Inc.",
+                                        "number": "100042",
+                                        "status": "",
+                                        "edi_status": "",
+                                        "relationship_type": "",
+                                        "commission_policy": "",
+                                        "note": null,
+                                        "credit_limit": null,
+                                        "contact_info": null,
+                                        "freight_preferences": null,
+                                        "defaults": null,
+                                        "notification_preferences": null,
+                                        "bill_to_address": null,
+                                        "ship_to_address": null,
+                                        "type": null,
+                                        "price_groups": null,
+                                        "parent_account": null,
+                                        "child_accounts": null,
+                                        "created_at": "0001-01-01T00:00:00Z",
+                                        "updated_at": "0001-01-01T00:00:00Z"
+                                    },
+                                    "sales_rep": null,
+                                    "created_by": null,
+                                    "bill_to_address": {
+                                        "id": "ad_012100950cfaa34aa0e0ad7258",
+                                        "object": "address",
+                                        "name": "Headquarters",
+                                        "phone": null,
+                                        "email": null,
+                                        "type": "standard",
+                                        "geolocation": {
+                                            "id": "gl_013e4c26412103c6757ba71806",
+                                            "object": "geolocation",
+                                            "street_line_1": "4200 Industrial Pkwy",
+                                            "street_line_2": null,
+                                            "locality": "Columbus",
+                                            "state": "OH",
+                                            "postal_code": "43204",
+                                            "country": "US"
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "ship_to_address": {
+                                        "id": "ad_012100950cfaa34aa0e0ad7258",
+                                        "object": "address",
+                                        "name": "Headquarters",
+                                        "phone": null,
+                                        "email": null,
+                                        "type": "standard",
+                                        "geolocation": {
+                                            "id": "gl_013e4c26412103c6757ba71806",
+                                            "object": "geolocation",
+                                            "street_line_1": "4200 Industrial Pkwy",
+                                            "street_line_2": null,
+                                            "locality": "Columbus",
+                                            "state": "OH",
+                                            "postal_code": "43204",
+                                            "country": "US"
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "freight": {
+                                        "object": "freight",
+                                        "policy": null,
+                                        "carrier": {
+                                            "id": "cr_01784fd54c9ba197bb4e42f0e6",
+                                            "object": "carrier",
+                                            "name": "FedEx",
+                                            "code": "fedex",
+                                            "account_number": null,
+                                            "customer_portal_visibility": "visible",
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "account",
+                                                "account": {
+                                                    "id": "ac_01148680966698341a9c0976db",
+                                                    "object": "account",
+                                                    "name": "Acme Inc.",
+                                                    "default_billing_address": null,
+                                                    "default_shipping_address": null,
+                                                    "branding": null,
+                                                    "portal": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            },
+                                            "service_levels": null,
+                                            "deleted_at": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "service_level": {
+                                            "id": "crop_01cfaf03f104e90ef9680e2a30",
+                                            "object": "service_level",
+                                            "name": "FedEx Ground",
+                                            "service_level_token": "fedex_ground",
+                                            "customer_portal_visibility": "visible",
+                                            "is_default": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "account",
+                                                "account": {
+                                                    "id": "ac_01148680966698341a9c0976db",
+                                                    "object": "account",
+                                                    "name": "Acme Inc.",
+                                                    "default_billing_address": null,
+                                                    "default_shipping_address": null,
+                                                    "branding": null,
+                                                    "portal": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "billing_type": "third_party",
+                                        "billing_account_number": "123456789"
+                                    },
+                                    "payment_term": null,
+                                    "shipping_term": null,
+                                    "order_discount": null,
+                                    "lines": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "orln_0142f9b74268973450b3a76ce3",
+                                                "object": "sales_order_line",
+                                                "line_item_number": 1,
+                                                "product_sku": "ALM-2024-1001",
+                                                "product_description": "6061-T6 Aluminum Sheet 4x8",
+                                                "product": null,
+                                                "quantity_ordered": {
+                                                    "id": "qty_015a85becc1a6afdfb1afc27ff",
+                                                    "object": "quantity",
+                                                    "value": "1234.56",
+                                                    "display_value": "$1,234.56",
+                                                    "unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "US Dollar",
+                                                        "abbreviation": "$",
+                                                        "type": "currency",
+                                                        "ratio_numerator": "1",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": true,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                },
+                                                "unit_price": {
+                                                    "id": "ra_015aa0a9522cf222024fd21d1a",
+                                                    "object": "rate",
+                                                    "value": "25.500000000000000000000000000000",
+                                                    "numerator_unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "US Dollar",
+                                                        "abbreviation": "USD",
+                                                        "type": "currency",
+                                                        "ratio_numerator": "1",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": true,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "denominator_unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": true,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "display_value": "$25.50 / kg",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "unit_cost": null,
+                                                "totals": {
+                                                    "object": "sales_order_totals",
+                                                    "ordered": "1234.560000000000000000000000000000",
+                                                    "packed": "0.000000000000000000000000000000",
+                                                    "invoiced": "0.000000000000000000000000000000"
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "line_count": 1,
+                                    "totals": {
+                                        "object": "sales_order_totals",
+                                        "ordered": "1234.560000000000000000000000000000",
+                                        "packed": "0.000000000000000000000000000000",
+                                        "invoiced": "0.000000000000000000000000000000"
+                                    },
+                                    "related": {
+                                        "object": "sales_order_related",
+                                        "pick": null,
+                                        "production_run": null,
+                                        "shipments": null
+                                    },
+                                    "contacts": null,
+                                    "issued_at": null,
+                                    "completed_at": null,
+                                    "first_ship_at": null,
+                                    "expired_at": null,
+                                    "promised_at": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "name": "Transactions",
         "slug": "transactions",
         "description": "Create, view, update, and delete transactions.",
@@ -103622,6 +107873,26 @@ export const apiNavDomains: ApiNavDomain[] = [
                         "method": "GET",
                         "actionType": "list",
                         "href": "/api-reference/sales-order-statuses/list-sales-order-statuses"
+                    }
+                ]
+            },
+            {
+                "name": "Sales Orders",
+                "slug": "sales-orders",
+                "endpoints": [
+                    {
+                        "name": "Create Order",
+                        "slug": "create-sales-order",
+                        "method": "POST",
+                        "actionType": "create",
+                        "href": "/api-reference/sales-orders/create-sales-order"
+                    },
+                    {
+                        "name": "List",
+                        "slug": "list-sales-orders",
+                        "method": "GET",
+                        "actionType": "list",
+                        "href": "/api-reference/sales-orders/list-sales-orders"
                     }
                 ]
             }

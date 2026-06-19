@@ -351,6 +351,10 @@ export const docPaths = {
         "salesOrderStatuses": {
             "listSalesOrderStatuses": "/api-reference/sales-order-statuses/list-sales-order-statuses"
         },
+        "salesOrders": {
+            "createSalesOrder": "/api-reference/sales-orders/create-sales-order",
+            "listSalesOrders": "/api-reference/sales-orders/list-sales-orders"
+        },
         "transactions": {
             "listAdjustmentTypes": "/api-reference/transactions/list-adjustment-types",
             "listTransactionMethods": "/api-reference/transactions/list-transaction-methods",
