@@ -12,6 +12,8 @@ import { RecentlyVisitedCard } from './RecentlyVisitedCard';
 
 const LIGHT_BACKGROUND_COLOR: RGBColor = [255, 255, 255];
 const BLACK_BACKGROUND_COLOR: RGBColor = [15, 14, 24];
+/** Max CSS height for the WebGL canvas (4096 internal px at 2x DPR). */
+const MAX_WAVE_SHADER_HEIGHT = 2048;
 
 export function HomePageContent() {
     const { isDark, hasMounted } = useDarkMode();
@@ -35,6 +37,9 @@ export function HomePageContent() {
         };
     }, []);
 
+    const waveShaderHeight = Math.min(shaderHeight, MAX_WAVE_SHADER_HEIGHT);
+    const waveShaderScaleY = shaderHeight / waveShaderHeight;
+
     // Before mount, always default to dark so SSR and the first client render
     // produce identical markup (avoids hydration mismatch). Once mounted, trust
     // the hook state which reflects the real theme.
@@ -55,15 +60,26 @@ export function HomePageContent() {
                 className={`absolute inset-x-0 top-0 pointer-events-none z-1 ${isDesktop ? '' : 'overflow-hidden'}`}
                 style={{ height: shaderHeight }}
             >
-                <WaveShader
-                    skew={isDesktop ? undefined : undefined}
-                    height={shaderHeight}
-                    // skewDegree={isDesktop ? 60 : undefined}
-                    // maintainHeight={0.3}
-                    seed={16192}
-                    numWaves={8}
-                    backgroundColor={backgroundColor}
-                />
+                {hasMounted && (
+                    <div
+                        style={{
+                            height: waveShaderHeight,
+                            transform: waveShaderScaleY > 1 ? `scaleY(${waveShaderScaleY})` : undefined,
+                            transformOrigin: 'top left',
+                        }}
+                    >
+                        <WaveShader
+                            height={waveShaderHeight}
+                            seed={16192}
+                            numWaves={8}
+                            backgroundColor={backgroundColor}
+                            fallbackImage={{
+                                dark: '/wave-shader-still-dark.webp',
+                                light: '/wave-shader-still-light.webp',
+                            }}
+                        />
+                    </div>
+                )}
             </div>
 
             {/* Main content */}
