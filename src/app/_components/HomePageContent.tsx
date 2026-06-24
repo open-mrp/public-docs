@@ -6,8 +6,9 @@ import DocFooter from '@/components/navigation/DocFooter';
 import HomeNavBar from '@/components/navigation/HomeNavBar';
 import { useIsAuthenticated } from '@/lib/auth-store';
 import { BlendText, ChevronRightIcon, RGBColor, useDarkMode, WaveShader } from '@augno/ui';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ApiKeysCard } from './ApiKeysCard';
+import { HomeQuickLinks } from './HomeQuickLinks';
 import { RecentlyVisitedCard } from './RecentlyVisitedCard';
 
 const LIGHT_BACKGROUND_COLOR: RGBColor = [255, 255, 255];
@@ -21,6 +22,7 @@ export function HomePageContent() {
 
     const [isDesktop, setIsDesktop] = useState(false);
     const [shaderHeight, setShaderHeight] = useState(1000);
+    const contentRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const updateHeight = () => {
@@ -29,8 +31,12 @@ export function HomePageContent() {
         };
         updateHeight();
         window.addEventListener('resize', updateHeight);
+        // Observe the content wrapper rather than <body>: the body is locked to
+        // `h-screen` (see layout.tsx) so its size never changes, but the content
+        // element grows as async cards/quick-links render — that's what must
+        // drive the shader height so the wave always covers the full page.
         const ro = new ResizeObserver(updateHeight);
-        ro.observe(document.body);
+        if (contentRef.current) ro.observe(contentRef.current);
         return () => {
             window.removeEventListener('resize', updateHeight);
             ro.disconnect();
@@ -83,7 +89,7 @@ export function HomePageContent() {
             </div>
 
             {/* Main content */}
-            <div className="relative max-w-4xl mx-auto px-4 py-6 flex-1 flex flex-col">
+            <div ref={contentRef} className="relative max-w-4xl mx-auto px-4 py-6 flex-1 flex flex-col">
                 <section className="mt-12 flex flex-col gap-2">
                     <BlendText
                         revertColor={revertColor}
@@ -110,17 +116,22 @@ export function HomePageContent() {
                     >
                         Explore our guides and examples to integrate Augno into your business.
                     </BlendText>
-                    <LinkButton
-                        className="mt-8 relative z-10"
-                        href="/get-started"
-                        variant="text"
-                        blur
-                        size="lg"
-                        color={color}
-                    >
-                        <span className="mr-2">Get started</span>
-                        <ChevronRightIcon />
-                    </LinkButton>
+                    <div className="mt-8 relative z-10 flex flex-wrap items-center gap-3">
+                        <LinkButton href="/get-started" variant="text" blur size="lg" color={color}>
+                            <span className="mr-2">Get started</span>
+                            <ChevronRightIcon />
+                        </LinkButton>
+                        <LinkButton
+                            href="/api-reference"
+                            variant="text"
+                            blur
+                            size="lg"
+                            color={color}
+                        >
+                            <span className="mr-2">API reference</span>
+                            <ChevronRightIcon />
+                        </LinkButton>
+                    </div>
                 </section>
                 {/* Cards + footer in one grid for aligned width; stack on small, two columns on lg */}
                 <div className="relative z-10 flex-1 flex flex-col mt-[88px] w-full max-w-4xl">
@@ -134,6 +145,11 @@ export function HomePageContent() {
                             <RecentlyVisitedCard />
                         </div>
                     </div>
+
+                    <div className="mt-6">
+                        <HomeQuickLinks />
+                    </div>
+
                     <div className="mt-auto pt-16 w-full">
                         <FrostedSurface className="rounded-2xl px-4 [&_footer]:border-t-0 [&_footer]:mt-0">
                             <DocFooter className="mt-0 pt-0" />
