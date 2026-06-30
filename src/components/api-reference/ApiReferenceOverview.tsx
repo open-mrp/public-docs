@@ -1,14 +1,22 @@
 'use client';
 
+import type { OverviewObjectDomain } from '@/lib/api-reference-objects-overview';
 import type { OverviewDomain } from '@/lib/api-reference-overview';
 import Link from 'next/link';
 import { ActionMethodBadge } from './ActionMethodBadge';
+import { ObjectCardsByDomain } from './ObjectsOverview';
 
 function endpointCountLabel(count: number) {
     return `${count} endpoint${count === 1 ? '' : 's'}`;
 }
 
-export function ApiReferenceOverviewContent({ domains }: { domains: OverviewDomain[] }) {
+export function ApiReferenceOverviewContent({
+    domains,
+    objectDomains,
+}: {
+    domains: OverviewDomain[];
+    objectDomains?: OverviewObjectDomain[];
+}) {
     return (
         <div className="pb-8">
             <p className="text-sm font-medium uppercase tracking-[0.16em] text-[var(--text-secondary)]">
@@ -89,6 +97,21 @@ export function ApiReferenceOverviewContent({ domains }: { domains: OverviewDoma
                     </section>
                 ))}
             </div>
+
+            {objectDomains && objectDomains.length > 0 && (
+                <div className="mt-16">
+                    <h2 className="text-2xl font-semibold tracking-tight text-[var(--foreground)] md:text-3xl">
+                        Objects
+                    </h2>
+                    <p className="mt-3 max-w-3xl text-[15px] leading-7 text-[var(--text-secondary)]">
+                        The resources the API returns. Open an object for its attributes, an example,
+                        and the endpoints that use it.
+                    </p>
+                    <div className="mt-8">
+                        <ObjectCardsByDomain domains={objectDomains} />
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

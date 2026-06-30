@@ -415,121 +415,401 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "API Reference",
         "subtitle": "Complete API documentation for all endpoints"
     },
-    "/api-reference/api-key-management/create-api-key": {
+    "/api-reference/api-key/create-api-key": {
         "title": "Create API Key",
         "subtitle": "POST /v1/auth/api-keys"
     },
-    "/api-reference/api-key-management/list-api-keys": {
+    "/api-reference/api-key/list-api-keys": {
         "title": "List API Keys",
         "subtitle": "GET /v1/auth/api-keys"
     },
-    "/api-reference/api-key-management/retrieve-api-key": {
+    "/api-reference/api-key/retrieve-api-key": {
         "title": "Retrieve API Key",
         "subtitle": "GET /v1/auth/api-keys/{id}"
     },
-    "/api-reference/api-key-management/revoke-api-key": {
+    "/api-reference/api-key/revoke-api-key": {
         "title": "Revoke API Key",
         "subtitle": "DELETE /v1/auth/api-keys/{id}"
     },
-    "/api-reference/api-key-management/rotate-api-key": {
+    "/api-reference/api-key/rotate-api-key": {
         "title": "Rotate API Key",
         "subtitle": "POST /v1/auth/api-keys/{id}/actions/rotate"
     },
-    "/api-reference/sandbox-management/create-sandbox": {
+    "/api-reference/sandbox/create-sandbox": {
         "title": "Create Sandbox",
         "subtitle": "POST /v1/core/sandboxes"
     },
-    "/api-reference/sandbox-management/list-sandboxes": {
+    "/api-reference/sandbox/list-sandboxes": {
         "title": "List Sandboxes",
         "subtitle": "GET /v1/core/sandboxes"
     },
-    "/api-reference/sandbox-management/retrieve-sandbox": {
+    "/api-reference/sandbox/retrieve-sandbox": {
         "title": "Retrieve Sandbox",
         "subtitle": "GET /v1/core/sandboxes/{id}"
     },
-    "/api-reference/sandbox-management/delete-sandbox": {
+    "/api-reference/sandbox/delete-sandbox": {
         "title": "Delete Sandbox",
         "subtitle": "DELETE /v1/core/sandboxes/{id}"
     },
-    "/api-reference/request-log-management/list-request-logs": {
+    "/api-reference/request-log/list-request-logs": {
         "title": "List Request Logs",
         "subtitle": "GET /v1/core/request-logs"
     },
-    "/api-reference/request-log-management/retrieve-request-log": {
+    "/api-reference/request-log/retrieve-request-log": {
         "title": "Retrieve Request Log",
         "subtitle": "GET /v1/core/request-logs/{id}"
     },
-    "/api-reference/audit-event-management/list-audit-events": {
+    "/api-reference/audit-event/list-audit-events": {
         "title": "List Audit Events",
         "subtitle": "GET /v1/core/audit-events"
     },
-    "/api-reference/audit-event-management/list-audit-event-resource-types": {
+    "/api-reference/audit-event/list-audit-event-resource-types": {
         "title": "List Audit Event Resource Types",
         "subtitle": "GET /v1/core/audit-events/resource-types"
     },
-    "/api-reference/audit-event-management/retrieve-audit-event": {
+    "/api-reference/audit-event/retrieve-audit-event": {
         "title": "Retrieve Audit Event",
         "subtitle": "GET /v1/core/audit-events/{id}"
     },
-    "/api-reference/units-management/create-unit": {
+    "/api-reference/units/create-unit": {
         "title": "Create Unit",
         "subtitle": "POST /v1/catalog/units"
     },
-    "/api-reference/units-management/update-unit": {
+    "/api-reference/units/update-unit": {
         "title": "Update Unit",
         "subtitle": "PATCH /v1/catalog/units/{id}"
     },
-    "/api-reference/units-management/list-units": {
+    "/api-reference/units/list-units": {
         "title": "List Units",
         "subtitle": "GET /v1/catalog/units"
     },
-    "/api-reference/units-management/retrieve-unit": {
+    "/api-reference/units/retrieve-unit": {
         "title": "Retrieve Unit",
         "subtitle": "GET /v1/catalog/units/{id}"
     },
-    "/api-reference/units-management/delete-unit": {
+    "/api-reference/units/delete-unit": {
         "title": "Delete Unit",
         "subtitle": "DELETE /v1/catalog/units/{id}"
     },
-    "/api-reference/unit-groups-management/create-unit-group": {
+    "/api-reference/unit-groups/create-unit-group": {
         "title": "Create Unit Group",
         "subtitle": "POST /v1/catalog/unit-groups"
     },
-    "/api-reference/unit-groups-management/update-unit-group": {
+    "/api-reference/unit-groups/update-unit-group": {
         "title": "Update Unit Group",
         "subtitle": "PATCH /v1/catalog/unit-groups/{id}"
     },
-    "/api-reference/unit-groups-management/list-unit-groups": {
+    "/api-reference/unit-groups/list-unit-groups": {
         "title": "List Unit Groups",
         "subtitle": "GET /v1/catalog/unit-groups"
     },
-    "/api-reference/unit-groups-management/retrieve-unit-group": {
+    "/api-reference/unit-groups/retrieve-unit-group": {
         "title": "Retrieve Unit Group",
         "subtitle": "GET /v1/catalog/unit-groups/{id}"
     },
-    "/api-reference/unit-groups-management/delete-unit-group": {
+    "/api-reference/unit-groups/delete-unit-group": {
         "title": "Delete Unit Group",
         "subtitle": "DELETE /v1/catalog/unit-groups/{id}"
     },
-    "/api-reference/unit-groups-management/create-unit-group-associated-unit": {
+    "/api-reference/unit-groups/create-unit-group-associated-unit": {
         "title": "Create Unit Group Associated Unit",
         "subtitle": "POST /v1/catalog/unit-groups/{unit_group_id}/units"
     },
-    "/api-reference/unit-groups-management/update-unit-group-associated-unit": {
+    "/api-reference/unit-groups/update-unit-group-associated-unit": {
         "title": "Update Unit Group Associated Unit",
         "subtitle": "PATCH /v1/catalog/unit-groups/{unit_group_id}/units/{id}"
     },
-    "/api-reference/unit-groups-management/list-unit-group-units": {
+    "/api-reference/unit-groups/list-unit-group-units": {
         "title": "List Unit Group Units",
         "subtitle": "GET /v1/catalog/unit-groups/{unit_group_id}/units"
     },
-    "/api-reference/unit-groups-management/retrieve-unit-group-unit": {
+    "/api-reference/unit-groups/retrieve-unit-group-unit": {
         "title": "Retrieve Unit Group Unit",
         "subtitle": "GET /v1/catalog/unit-groups/{unit_group_id}/units/{id}"
     },
-    "/api-reference/unit-groups-management/delete-unit-group-associated-unit": {
+    "/api-reference/unit-groups/delete-unit-group-associated-unit": {
         "title": "Delete Unit Group Associated Unit",
         "subtitle": "DELETE /v1/catalog/unit-groups/{unit_group_id}/units/{id}"
+    },
+    "/api-reference/notifications/send-notification": {
+        "title": "Send Notification",
+        "subtitle": "POST /v1/messaging/notifications"
+    },
+    "/api-reference/notifications/list-notifications": {
+        "title": "List Notifications",
+        "subtitle": "GET /v1/messaging/notifications"
+    },
+    "/api-reference/notifications/get-notification-unread-count": {
+        "title": "Get Notification Unread Count",
+        "subtitle": "GET /v1/messaging/notifications/unread-count"
+    },
+    "/api-reference/notifications/get-cross-account-unread-summary": {
+        "title": "Get Cross-Account Unread Summary",
+        "subtitle": "GET /v1/messaging/notifications/unread-summary"
+    },
+    "/api-reference/notifications/retrieve-notification": {
+        "title": "Retrieve Notification",
+        "subtitle": "GET /v1/messaging/notifications/{id}"
+    },
+    "/api-reference/notifications/mark-all-notifications-seen": {
+        "title": "Mark All Notifications Seen",
+        "subtitle": "POST /v1/messaging/notifications/actions/mark-all-seen"
+    },
+    "/api-reference/notifications/dismiss-notification": {
+        "title": "Dismiss Notification",
+        "subtitle": "POST /v1/messaging/notifications/{id}/actions/dismiss"
+    },
+    "/api-reference/notifications/mark-notification-read": {
+        "title": "Mark Notification Read",
+        "subtitle": "POST /v1/messaging/notifications/{id}/actions/read"
+    },
+    "/api-reference/notifications/mark-notification-seen": {
+        "title": "Mark Notification Seen",
+        "subtitle": "POST /v1/messaging/notifications/{id}/actions/seen"
+    },
+    "/api-reference/announcements/list-announcements": {
+        "title": "List Announcements",
+        "subtitle": "GET /v1/messaging/announcements"
+    },
+    "/api-reference/announcements/retrieve-announcement": {
+        "title": "Retrieve Announcement",
+        "subtitle": "GET /v1/messaging/announcements/{id}"
+    },
+    "/api-reference/announcements/mark-announcement-dismissed": {
+        "title": "Mark Announcement Dismissed",
+        "subtitle": "POST /v1/messaging/announcements/{id}/actions/dismiss"
+    },
+    "/api-reference/announcements/mark-announcement-read": {
+        "title": "Mark Announcement Read",
+        "subtitle": "POST /v1/messaging/announcements/{id}/actions/read"
+    },
+    "/api-reference/announcements/mark-announcement-seen": {
+        "title": "Mark Announcement Seen",
+        "subtitle": "POST /v1/messaging/announcements/{id}/actions/seen"
+    },
+    "/api-reference/conversations/create-conversation": {
+        "title": "Create Conversation",
+        "subtitle": "POST /v1/messaging/conversations"
+    },
+    "/api-reference/conversations/update-conversation": {
+        "title": "Update Conversation",
+        "subtitle": "PATCH /v1/messaging/conversations/{id}"
+    },
+    "/api-reference/conversations/list-conversations": {
+        "title": "List Conversations",
+        "subtitle": "GET /v1/messaging/conversations"
+    },
+    "/api-reference/conversations/list-conversations-by-record": {
+        "title": "List Conversations By Record",
+        "subtitle": "GET /v1/messaging/conversations/by-record"
+    },
+    "/api-reference/conversations/list-inbox": {
+        "title": "List Inbox",
+        "subtitle": "GET /v1/messaging/inbox"
+    },
+    "/api-reference/conversations/retrieve-conversation": {
+        "title": "Retrieve Conversation",
+        "subtitle": "GET /v1/messaging/conversations/{id}"
+    },
+    "/api-reference/conversations/link-record": {
+        "title": "Link Record",
+        "subtitle": "POST /v1/messaging/conversations/{id}/links"
+    },
+    "/api-reference/conversations/redact-conversation": {
+        "title": "Redact Conversation",
+        "subtitle": "POST /v1/messaging/conversations/{id}/redact"
+    },
+    "/api-reference/conversations/list-links": {
+        "title": "List Links",
+        "subtitle": "GET /v1/messaging/conversations/{id}/links"
+    },
+    "/api-reference/conversations/assign-case": {
+        "title": "Assign Case",
+        "subtitle": "POST /v1/messaging/conversations/{id}/actions/assign"
+    },
+    "/api-reference/conversations/hide-conversation": {
+        "title": "Hide Conversation",
+        "subtitle": "POST /v1/messaging/conversations/{id}/actions/hide"
+    },
+    "/api-reference/conversations/leave-conversation": {
+        "title": "Leave Conversation",
+        "subtitle": "POST /v1/messaging/conversations/{id}/actions/leave"
+    },
+    "/api-reference/conversations/mute-conversation": {
+        "title": "Mute Conversation",
+        "subtitle": "POST /v1/messaging/conversations/{id}/actions/mute"
+    },
+    "/api-reference/conversations/mark-conversation-read": {
+        "title": "Mark Conversation Read",
+        "subtitle": "POST /v1/messaging/conversations/{id}/actions/read"
+    },
+    "/api-reference/conversations/set-case-status": {
+        "title": "Set Case Status",
+        "subtitle": "POST /v1/messaging/conversations/{id}/actions/set-status"
+    },
+    "/api-reference/conversations/unhide-conversation": {
+        "title": "Unhide Conversation",
+        "subtitle": "POST /v1/messaging/conversations/{id}/actions/unhide"
+    },
+    "/api-reference/conversations/unmute-conversation": {
+        "title": "Unmute Conversation",
+        "subtitle": "POST /v1/messaging/conversations/{id}/actions/unmute"
+    },
+    "/api-reference/conversations/set-legal-hold": {
+        "title": "Set Legal Hold",
+        "subtitle": "PATCH /v1/messaging/conversations/{id}/legal-hold"
+    },
+    "/api-reference/conversations/unlink-record": {
+        "title": "Unlink Record",
+        "subtitle": "DELETE /v1/messaging/conversations/{id}/links"
+    },
+    "/api-reference/search/search": {
+        "title": "Search",
+        "subtitle": "GET /v1/core/search"
+    },
+    "/api-reference/messages/send-message": {
+        "title": "Send Message",
+        "subtitle": "POST /v1/messaging/conversations/{id}/messages"
+    },
+    "/api-reference/messages/list-messages": {
+        "title": "List Messages",
+        "subtitle": "GET /v1/messaging/conversations/{id}/messages"
+    },
+    "/api-reference/messages/reply-to-customer": {
+        "title": "Reply To Customer",
+        "subtitle": "POST /v1/messaging/conversations/{id}/actions/reply-customer"
+    },
+    "/api-reference/conversation-participants/add-participant": {
+        "title": "Add Participant",
+        "subtitle": "POST /v1/messaging/conversations/{id}/participants"
+    },
+    "/api-reference/conversation-participants/remove-participant": {
+        "title": "Remove Participant",
+        "subtitle": "DELETE /v1/messaging/conversations/{id}/participants/{pid}"
+    },
+    "/api-reference/conversation-participants/update-participant-role": {
+        "title": "Update Participant Role",
+        "subtitle": "POST /v1/messaging/conversations/{id}/participants/{pid}/actions/set-role"
+    },
+    "/api-reference/reply-drafts/update-reply-draft": {
+        "title": "Update Reply Draft",
+        "subtitle": "PATCH /v1/messaging/reply-drafts/{id}"
+    },
+    "/api-reference/reply-drafts/create-reply-draft": {
+        "title": "Create Reply Draft",
+        "subtitle": "POST /v1/messaging/conversations/{id}/reply-drafts"
+    },
+    "/api-reference/reply-drafts/list-reply-drafts": {
+        "title": "List Reply Drafts",
+        "subtitle": "GET /v1/messaging/conversations/{id}/reply-drafts"
+    },
+    "/api-reference/reply-drafts/approve-and-send-reply-draft": {
+        "title": "Approve And Send Reply Draft",
+        "subtitle": "POST /v1/messaging/reply-drafts/{id}/actions/approve-send"
+    },
+    "/api-reference/reply-drafts/reject-reply-draft": {
+        "title": "Reject Reply Draft",
+        "subtitle": "POST /v1/messaging/reply-drafts/{id}/actions/reject"
+    },
+    "/api-reference/scheduled-messages/list-scheduled-messages": {
+        "title": "List Scheduled Messages",
+        "subtitle": "GET /v1/messaging/scheduled-messages"
+    },
+    "/api-reference/scheduled-messages/cancel-scheduled-message": {
+        "title": "Cancel Scheduled Message",
+        "subtitle": "DELETE /v1/messaging/scheduled-messages/{id}"
+    },
+    "/api-reference/scheduled-messages/schedule-message": {
+        "title": "Schedule Message",
+        "subtitle": "POST /v1/messaging/conversations/{id}/scheduled-messages"
+    },
+    "/api-reference/message-attachments/create-attachment-upload-url": {
+        "title": "Create Attachment Upload URL",
+        "subtitle": "POST /v1/messaging/conversations/{id}/attachments/actions/upload-url"
+    },
+    "/api-reference/message-blocks/block-user": {
+        "title": "Block User",
+        "subtitle": "POST /v1/messaging/blocks"
+    },
+    "/api-reference/message-blocks/list-blocks": {
+        "title": "List Blocks",
+        "subtitle": "GET /v1/messaging/blocks"
+    },
+    "/api-reference/message-blocks/unblock-user": {
+        "title": "Unblock User",
+        "subtitle": "DELETE /v1/messaging/blocks/{id}"
+    },
+    "/api-reference/sender-identities/create-sender-identity": {
+        "title": "Create Sender Identity",
+        "subtitle": "POST /v1/messaging/sender-identities"
+    },
+    "/api-reference/sender-identities/update-sender-identity": {
+        "title": "Update Sender Identity",
+        "subtitle": "PATCH /v1/messaging/sender-identities/{id}"
+    },
+    "/api-reference/sender-identities/list-sender-identities": {
+        "title": "List Sender Identities",
+        "subtitle": "GET /v1/messaging/sender-identities"
+    },
+    "/api-reference/sender-identities/get-sender-identity": {
+        "title": "Get Sender Identity",
+        "subtitle": "GET /v1/messaging/sender-identities/{id}"
+    },
+    "/api-reference/sender-identities/delete-sender-identity": {
+        "title": "Delete Sender Identity",
+        "subtitle": "DELETE /v1/messaging/sender-identities/{id}"
+    },
+    "/api-reference/notification-preferences/list-notification-preferences": {
+        "title": "List Notification Preferences",
+        "subtitle": "GET /v1/messaging/preferences"
+    },
+    "/api-reference/notification-preferences/upsert-notification-preference": {
+        "title": "Upsert Notification Preference",
+        "subtitle": "PUT /v1/messaging/preferences"
+    },
+    "/api-reference/messaging-contacts/list-messaging-contacts": {
+        "title": "List Messaging Contacts",
+        "subtitle": "GET /v1/messaging/contacts"
+    },
+    "/api-reference/message-reports/report-conversation": {
+        "title": "Report Conversation",
+        "subtitle": "POST /v1/messaging/conversations/{id}/report"
+    },
+    "/api-reference/email-domains/create-email-domain": {
+        "title": "Create Email Domain",
+        "subtitle": "POST /v1/messaging/email-domains"
+    },
+    "/api-reference/email-domains/list-email-domains": {
+        "title": "List Email Domains",
+        "subtitle": "GET /v1/messaging/email-domains"
+    },
+    "/api-reference/email-domains/get-email-domain": {
+        "title": "Get Email Domain",
+        "subtitle": "GET /v1/messaging/email-domains/{id}"
+    },
+    "/api-reference/email-domains/verify-email-domain": {
+        "title": "Verify Email Domain",
+        "subtitle": "POST /v1/messaging/email-domains/{id}/actions/verify"
+    },
+    "/api-reference/email-inboxes/create-email-inbox": {
+        "title": "Create Email Inbox",
+        "subtitle": "POST /v1/messaging/email-inboxes"
+    },
+    "/api-reference/email-inboxes/update-email-inbox": {
+        "title": "Update Email Inbox",
+        "subtitle": "PATCH /v1/messaging/email-inboxes/{id}"
+    },
+    "/api-reference/email-inboxes/list-email-inboxes": {
+        "title": "List Email Inboxes",
+        "subtitle": "GET /v1/messaging/email-inboxes"
+    },
+    "/api-reference/email-inboxes/get-email-inbox": {
+        "title": "Get Email Inbox",
+        "subtitle": "GET /v1/messaging/email-inboxes/{id}"
+    },
+    "/api-reference/email-inboxes/delete-email-inbox": {
+        "title": "Delete Email Inbox",
+        "subtitle": "DELETE /v1/messaging/email-inboxes/{id}"
     },
     "/api-reference/account-groups/create-account-group": {
         "title": "Create Account Group",
@@ -551,63 +831,63 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Delete Account Group",
         "subtitle": "DELETE /v1/sales/account-groups/{id}"
     },
-    "/api-reference/payment-terms-management/create-payment-term": {
+    "/api-reference/payment-terms/create-payment-term": {
         "title": "Create Payment Term",
         "subtitle": "POST /v1/finance/payment-terms"
     },
-    "/api-reference/payment-terms-management/update-payment-term": {
+    "/api-reference/payment-terms/update-payment-term": {
         "title": "Update Payment Term",
         "subtitle": "PATCH /v1/finance/payment-terms/{id}"
     },
-    "/api-reference/payment-terms-management/list-payment-terms": {
+    "/api-reference/payment-terms/list-payment-terms": {
         "title": "List Payment Terms",
         "subtitle": "GET /v1/finance/payment-terms"
     },
-    "/api-reference/payment-terms-management/retrieve-payment-term": {
+    "/api-reference/payment-terms/retrieve-payment-term": {
         "title": "Retrieve Payment Term",
         "subtitle": "GET /v1/finance/payment-terms/{id}"
     },
-    "/api-reference/payment-terms-management/delete-payment-term": {
+    "/api-reference/payment-terms/delete-payment-term": {
         "title": "Delete Payment Term",
         "subtitle": "DELETE /v1/finance/payment-terms/{id}"
     },
-    "/api-reference/shipping-terms-management/create-shipping-term": {
+    "/api-reference/shipping-terms/create-shipping-term": {
         "title": "Create Shipping Term",
         "subtitle": "POST /v1/operations/shipping-terms"
     },
-    "/api-reference/shipping-terms-management/update-shipping-term": {
+    "/api-reference/shipping-terms/update-shipping-term": {
         "title": "Update Shipping Term",
         "subtitle": "PATCH /v1/operations/shipping-terms/{id}"
     },
-    "/api-reference/shipping-terms-management/list-shipping-terms": {
+    "/api-reference/shipping-terms/list-shipping-terms": {
         "title": "List Shipping Terms",
         "subtitle": "GET /v1/operations/shipping-terms"
     },
-    "/api-reference/shipping-terms-management/retrieve-shipping-term": {
+    "/api-reference/shipping-terms/retrieve-shipping-term": {
         "title": "Retrieve Shipping Term",
         "subtitle": "GET /v1/operations/shipping-terms/{id}"
     },
-    "/api-reference/shipping-terms-management/delete-shipping-term": {
+    "/api-reference/shipping-terms/delete-shipping-term": {
         "title": "Delete Shipping Term",
         "subtitle": "DELETE /v1/operations/shipping-terms/{id}"
     },
-    "/api-reference/address-management/create-address": {
+    "/api-reference/address/create-address": {
         "title": "Create Address",
         "subtitle": "POST /v1/sales/addresses"
     },
-    "/api-reference/address-management/update-address": {
+    "/api-reference/address/update-address": {
         "title": "Update Address",
         "subtitle": "PATCH /v1/sales/addresses/{id}"
     },
-    "/api-reference/address-management/list-addresses": {
+    "/api-reference/address/list-addresses": {
         "title": "List Addresses",
         "subtitle": "GET /v1/sales/addresses"
     },
-    "/api-reference/address-management/retrieve-address": {
+    "/api-reference/address/retrieve-address": {
         "title": "Retrieve Address",
         "subtitle": "GET /v1/sales/addresses/{id}"
     },
-    "/api-reference/address-management/delete-address": {
+    "/api-reference/address/delete-address": {
         "title": "Delete Address",
         "subtitle": "DELETE /v1/sales/addresses/{id}"
     },
@@ -627,71 +907,71 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Retrieve Account Status",
         "subtitle": "GET /v1/sales/account-statuses/{id}"
     },
-    "/api-reference/account-users-management/create-account-user": {
+    "/api-reference/account-users/create-account-user": {
         "title": "Create Account User",
         "subtitle": "POST /v1/identity/account-users"
     },
-    "/api-reference/account-users-management/update-account-user": {
+    "/api-reference/account-users/update-account-user": {
         "title": "Update Account User",
         "subtitle": "PATCH /v1/identity/account-users/{id}"
     },
-    "/api-reference/account-users-management/list-account-users": {
+    "/api-reference/account-users/list-account-users": {
         "title": "List Account Users",
         "subtitle": "GET /v1/identity/account-users"
     },
-    "/api-reference/account-users-management/retrieve-account-user": {
+    "/api-reference/account-users/retrieve-account-user": {
         "title": "Retrieve Account User",
         "subtitle": "GET /v1/identity/account-users/{id}"
     },
-    "/api-reference/account-users-management/activate-account-user": {
+    "/api-reference/account-users/activate-account-user": {
         "title": "Activate Account User",
         "subtitle": "PUT /v1/identity/account-users/{id}/actions/activate"
     },
-    "/api-reference/account-users-management/disable-account-user": {
+    "/api-reference/account-users/disable-account-user": {
         "title": "Disable Account User",
         "subtitle": "PUT /v1/identity/account-users/{id}/actions/disable"
     },
-    "/api-reference/account-users-management/remove-account-user": {
+    "/api-reference/account-users/remove-account-user": {
         "title": "Remove Account User",
         "subtitle": "PUT /v1/identity/account-users/{id}/actions/remove"
     },
-    "/api-reference/properties-management/create-property": {
+    "/api-reference/properties/create-property": {
         "title": "Create Property",
         "subtitle": "POST /v1/catalog/properties"
     },
-    "/api-reference/properties-management/update-property": {
+    "/api-reference/properties/update-property": {
         "title": "Update Property",
         "subtitle": "PATCH /v1/catalog/properties/{id}"
     },
-    "/api-reference/properties-management/list-properties": {
+    "/api-reference/properties/list-properties": {
         "title": "List Properties",
         "subtitle": "GET /v1/catalog/properties"
     },
-    "/api-reference/properties-management/retrieve-property": {
+    "/api-reference/properties/retrieve-property": {
         "title": "Retrieve Property",
         "subtitle": "GET /v1/catalog/properties/{id}"
     },
-    "/api-reference/properties-management/delete-property": {
+    "/api-reference/properties/delete-property": {
         "title": "Delete Property",
         "subtitle": "DELETE /v1/catalog/properties/{id}"
     },
-    "/api-reference/properties-management/create-attribute": {
+    "/api-reference/properties/create-attribute": {
         "title": "Create Attribute",
         "subtitle": "POST /v1/catalog/properties/{property_id}/attributes"
     },
-    "/api-reference/properties-management/update-attribute": {
+    "/api-reference/properties/update-attribute": {
         "title": "Update Attribute",
         "subtitle": "PATCH /v1/catalog/properties/{property_id}/attributes/{id}"
     },
-    "/api-reference/properties-management/list-attributes": {
+    "/api-reference/properties/list-attributes": {
         "title": "List Attributes",
         "subtitle": "GET /v1/catalog/properties/{property_id}/attributes"
     },
-    "/api-reference/properties-management/retrieve-attribute": {
+    "/api-reference/properties/retrieve-attribute": {
         "title": "Retrieve Attribute",
         "subtitle": "GET /v1/catalog/properties/{property_id}/attributes/{id}"
     },
-    "/api-reference/properties-management/delete-attribute": {
+    "/api-reference/properties/delete-attribute": {
         "title": "Delete Attribute",
         "subtitle": "DELETE /v1/catalog/properties/{property_id}/attributes/{id}"
     },
@@ -719,139 +999,139 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Retrieve Priority",
         "subtitle": "GET /v1/sales/priorities/{id}"
     },
-    "/api-reference/carriers-management/create-carrier": {
+    "/api-reference/carriers/create-carrier": {
         "title": "Create Carrier",
         "subtitle": "POST /v1/operations/carriers"
     },
-    "/api-reference/carriers-management/update-carrier": {
+    "/api-reference/carriers/update-carrier": {
         "title": "Update Carrier",
         "subtitle": "PATCH /v1/operations/carriers/{id}"
     },
-    "/api-reference/carriers-management/list-carriers": {
+    "/api-reference/carriers/list-carriers": {
         "title": "List Carriers",
         "subtitle": "GET /v1/operations/carriers"
     },
-    "/api-reference/carriers-management/retrieve-carrier": {
+    "/api-reference/carriers/retrieve-carrier": {
         "title": "Retrieve Carrier",
         "subtitle": "GET /v1/operations/carriers/{id}"
     },
-    "/api-reference/carriers-management/delete-carrier": {
+    "/api-reference/carriers/delete-carrier": {
         "title": "Delete Carrier",
         "subtitle": "DELETE /v1/operations/carriers/{id}"
     },
-    "/api-reference/service-levels-management/create-service-level": {
+    "/api-reference/service-levels/create-service-level": {
         "title": "Create Service Level",
         "subtitle": "POST /v1/operations/carriers/{carrier_id}/service-levels"
     },
-    "/api-reference/service-levels-management/update-service-level": {
+    "/api-reference/service-levels/update-service-level": {
         "title": "Update Service Level",
         "subtitle": "PATCH /v1/operations/carriers/{carrier_id}/service-levels/{id}"
     },
-    "/api-reference/service-levels-management/list-service-levels": {
+    "/api-reference/service-levels/list-service-levels": {
         "title": "List Service Levels",
         "subtitle": "GET /v1/operations/carriers/{carrier_id}/service-levels"
     },
-    "/api-reference/service-levels-management/retrieve-service-level": {
+    "/api-reference/service-levels/retrieve-service-level": {
         "title": "Retrieve Service Level",
         "subtitle": "GET /v1/operations/carriers/{carrier_id}/service-levels/{id}"
     },
-    "/api-reference/service-levels-management/delete-service-level": {
+    "/api-reference/service-levels/delete-service-level": {
         "title": "Delete Service Level",
         "subtitle": "DELETE /v1/operations/carriers/{carrier_id}/service-levels/{id}"
     },
-    "/api-reference/items-management/list-items": {
+    "/api-reference/items/list-items": {
         "title": "List Items",
         "subtitle": "GET /v1/catalog/items"
     },
-    "/api-reference/items-management/retrieve-item": {
+    "/api-reference/items/retrieve-item": {
         "title": "Retrieve Item",
         "subtitle": "GET /v1/catalog/items/{id}"
     },
-    "/api-reference/items-management/add-item-attribute": {
+    "/api-reference/items/add-item-attribute": {
         "title": "Add Item Attribute",
         "subtitle": "PUT /v1/catalog/items/{id}/attributes/{attribute_id}"
     },
-    "/api-reference/items-management/change-item-category": {
+    "/api-reference/items/change-item-category": {
         "title": "Change Item Category",
         "subtitle": "PUT /v1/catalog/items/{id}/category/{category_id}"
     },
-    "/api-reference/items-management/retrieve-item-inventory": {
+    "/api-reference/items/retrieve-item-inventory": {
         "title": "Retrieve Item Inventory",
         "subtitle": "GET /v1/catalog/items/{id}/inventory"
     },
-    "/api-reference/items-management/remove-item-attribute": {
+    "/api-reference/items/remove-item-attribute": {
         "title": "Remove Item Attribute",
         "subtitle": "DELETE /v1/catalog/items/{id}/attributes/{attribute_id}"
     },
-    "/api-reference/item-categories-management/create-item-category": {
+    "/api-reference/item-categories/create-item-category": {
         "title": "Create Item Category",
         "subtitle": "POST /v1/catalog/item-categories"
     },
-    "/api-reference/item-categories-management/update-item-category": {
+    "/api-reference/item-categories/update-item-category": {
         "title": "Update Item Category",
         "subtitle": "PATCH /v1/catalog/item-categories/{id}"
     },
-    "/api-reference/item-categories-management/list-item-categories": {
+    "/api-reference/item-categories/list-item-categories": {
         "title": "List Item Categories",
         "subtitle": "GET /v1/catalog/item-categories"
     },
-    "/api-reference/item-categories-management/retrieve-item-category": {
+    "/api-reference/item-categories/retrieve-item-category": {
         "title": "Retrieve Item Category",
         "subtitle": "GET /v1/catalog/item-categories/{id}"
     },
-    "/api-reference/item-categories-management/delete-item-category": {
+    "/api-reference/item-categories/delete-item-category": {
         "title": "Delete Item Category",
         "subtitle": "DELETE /v1/catalog/item-categories/{id}"
     },
-    "/api-reference/item-categories-management/add-item-category-property": {
+    "/api-reference/item-categories/add-item-category-property": {
         "title": "Add Item Category Property",
         "subtitle": "PUT /v1/catalog/item-categories/{id}/properties/{property_id}"
     },
-    "/api-reference/item-categories-management/change-item-category-unit-group": {
+    "/api-reference/item-categories/change-item-category-unit-group": {
         "title": "Change Item Category Unit Group",
         "subtitle": "PUT /v1/catalog/item-categories/{id}/unit-groups/{unit_group_id}"
     },
-    "/api-reference/item-categories-management/remove-item-category-property": {
+    "/api-reference/item-categories/remove-item-category-property": {
         "title": "Remove Item Category Property",
         "subtitle": "DELETE /v1/catalog/item-categories/{id}/properties/{property_id}"
     },
-    "/api-reference/materials-management/create-material": {
+    "/api-reference/materials/create-material": {
         "title": "Create Material",
         "subtitle": "POST /v1/catalog/materials"
     },
-    "/api-reference/materials-management/update-material": {
+    "/api-reference/materials/update-material": {
         "title": "Update Material",
         "subtitle": "PATCH /v1/catalog/materials/{id}"
     },
-    "/api-reference/materials-management/list-materials": {
+    "/api-reference/materials/list-materials": {
         "title": "List Materials",
         "subtitle": "GET /v1/catalog/materials"
     },
-    "/api-reference/materials-management/retrieve-material": {
+    "/api-reference/materials/retrieve-material": {
         "title": "Retrieve Material",
         "subtitle": "GET /v1/catalog/materials/{id}"
     },
-    "/api-reference/materials-management/delete-material": {
+    "/api-reference/materials/delete-material": {
         "title": "Delete Material",
         "subtitle": "DELETE /v1/catalog/materials/{id}"
     },
-    "/api-reference/parts-management/create-part": {
+    "/api-reference/parts/create-part": {
         "title": "Create Part",
         "subtitle": "POST /v1/catalog/parts"
     },
-    "/api-reference/parts-management/update-part": {
+    "/api-reference/parts/update-part": {
         "title": "Update Part",
         "subtitle": "PATCH /v1/catalog/parts/{id}"
     },
-    "/api-reference/parts-management/list-parts": {
+    "/api-reference/parts/list-parts": {
         "title": "List Parts",
         "subtitle": "GET /v1/catalog/parts"
     },
-    "/api-reference/parts-management/retrieve-part": {
+    "/api-reference/parts/retrieve-part": {
         "title": "Retrieve Part",
         "subtitle": "GET /v1/catalog/parts/{id}"
     },
-    "/api-reference/parts-management/delete-part": {
+    "/api-reference/parts/delete-part": {
         "title": "Delete Part",
         "subtitle": "DELETE /v1/catalog/parts/{id}"
     },
@@ -887,47 +1167,51 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Merge Customers",
         "subtitle": "POST /v1/sales/customers/{id}/actions/merge"
     },
-    "/api-reference/product-lines-management/create-product-line": {
+    "/api-reference/contacts/find-contact-by-email": {
+        "title": "Find Contact by Email",
+        "subtitle": "POST /v1/sales/contacts/actions/find-by-email"
+    },
+    "/api-reference/product-lines/create-product-line": {
         "title": "Create Product Line",
         "subtitle": "POST /v1/catalog/product-lines"
     },
-    "/api-reference/product-lines-management/update-product-line": {
+    "/api-reference/product-lines/update-product-line": {
         "title": "Update Product Line",
         "subtitle": "PATCH /v1/catalog/product-lines/{id}"
     },
-    "/api-reference/product-lines-management/list-product-lines": {
+    "/api-reference/product-lines/list-product-lines": {
         "title": "List Product Lines",
         "subtitle": "GET /v1/catalog/product-lines"
     },
-    "/api-reference/product-lines-management/retrieve-product-line": {
+    "/api-reference/product-lines/retrieve-product-line": {
         "title": "Retrieve Product Line",
         "subtitle": "GET /v1/catalog/product-lines/{id}"
     },
-    "/api-reference/product-lines-management/delete-product-line": {
+    "/api-reference/product-lines/delete-product-line": {
         "title": "Delete Product Line",
         "subtitle": "DELETE /v1/catalog/product-lines/{id}"
     },
-    "/api-reference/products-management/create-product": {
+    "/api-reference/products/create-product": {
         "title": "Create Product",
         "subtitle": "POST /v1/catalog/products"
     },
-    "/api-reference/products-management/update-product": {
+    "/api-reference/products/update-product": {
         "title": "Update Product",
         "subtitle": "PATCH /v1/catalog/products/{id}"
     },
-    "/api-reference/products-management/list-products": {
+    "/api-reference/products/list-products": {
         "title": "List Products",
         "subtitle": "GET /v1/catalog/products"
     },
-    "/api-reference/products-management/retrieve-product": {
+    "/api-reference/products/retrieve-product": {
         "title": "Retrieve Product",
         "subtitle": "GET /v1/catalog/products/{id}"
     },
-    "/api-reference/products-management/delete-product": {
+    "/api-reference/products/delete-product": {
         "title": "Delete Product",
         "subtitle": "DELETE /v1/catalog/products/{id}"
     },
-    "/api-reference/products-management/change-product-product-line": {
+    "/api-reference/products/change-product-product-line": {
         "title": "Change Product Product Line",
         "subtitle": "PUT /v1/catalog/products/{id}/product-line/{product_line_id}"
     },
@@ -955,51 +1239,51 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "List Transaction Types",
         "subtitle": "GET /v1/finance/transaction-types"
     },
-    "/api-reference/location-management/create-location": {
+    "/api-reference/location/create-location": {
         "title": "Create Location",
         "subtitle": "POST /v1/operations/locations"
     },
-    "/api-reference/location-management/update-location": {
+    "/api-reference/location/update-location": {
         "title": "Update Location",
         "subtitle": "PATCH /v1/operations/locations/{id}"
     },
-    "/api-reference/location-management/list-location-types": {
+    "/api-reference/location/list-location-types": {
         "title": "List Location Types",
         "subtitle": "GET /v1/operations/location-types"
     },
-    "/api-reference/location-management/list-locations": {
+    "/api-reference/location/list-locations": {
         "title": "List Locations",
         "subtitle": "GET /v1/operations/locations"
     },
-    "/api-reference/location-management/retrieve-location-type": {
+    "/api-reference/location/retrieve-location-type": {
         "title": "Retrieve Location Type",
         "subtitle": "GET /v1/operations/location-types/{id}"
     },
-    "/api-reference/location-management/retrieve-location": {
+    "/api-reference/location/retrieve-location": {
         "title": "Retrieve Location",
         "subtitle": "GET /v1/operations/locations/{id}"
     },
-    "/api-reference/location-management/delete-location": {
+    "/api-reference/location/delete-location": {
         "title": "Delete Location",
         "subtitle": "DELETE /v1/operations/locations/{id}"
     },
-    "/api-reference/scanning-stations-management/create-scanning-station": {
+    "/api-reference/scanning-stations/create-scanning-station": {
         "title": "Create Scanning Station",
         "subtitle": "POST /v1/operations/scanning-stations"
     },
-    "/api-reference/scanning-stations-management/update-scanning-station": {
+    "/api-reference/scanning-stations/update-scanning-station": {
         "title": "Update Scanning Station",
         "subtitle": "PATCH /v1/operations/scanning-stations/{id}"
     },
-    "/api-reference/scanning-stations-management/list-scanning-stations": {
+    "/api-reference/scanning-stations/list-scanning-stations": {
         "title": "List Scanning Stations",
         "subtitle": "GET /v1/operations/scanning-stations"
     },
-    "/api-reference/scanning-stations-management/retrieve-scanning-station": {
+    "/api-reference/scanning-stations/retrieve-scanning-station": {
         "title": "Retrieve Scanning Station",
         "subtitle": "GET /v1/operations/scanning-stations/{id}"
     },
-    "/api-reference/scanning-stations-management/delete-scanning-station": {
+    "/api-reference/scanning-stations/delete-scanning-station": {
         "title": "Delete Scanning Station",
         "subtitle": "DELETE /v1/operations/scanning-stations/{id}"
     },

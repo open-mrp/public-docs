@@ -15,8 +15,11 @@ import {
     useSdkLanguage,
 } from './SdkSelector';
 import { buildCurlExample } from './buildCurlExample';
+import { AuthorizationSection } from './AuthorizationSection';
 import { CodeExamplePanel } from './CodeExamplePanel';
+import { extractAuthorization } from './extractPermissions';
 import { MarkdownBlock } from './MarkdownText';
+import { makeObjectHref } from './objectHref';
 import { ParameterTable, SchemaFieldTable } from './ParameterTable';
 import { sanitizeRequestExample } from './sanitizeRequestExample';
 import { findExpansionRoot, sanitizeResponseExampleForEndpoint } from './sanitizeResponseExample';
@@ -197,12 +200,15 @@ export function EndpointPage({
     endpoint,
     snippets,
     basePath = '/api-reference',
+    objectSlugs,
 }: {
     endpoint: EndpointData;
     /** SDK snippets for this endpoint keyed by language, resolved server-side for the page's API version. */
     snippets?: EndpointSnippets;
     /** Route prefix of the API version being viewed, e.g. /api-reference or /api-reference/<version>. */
     basePath?: string;
+    /** Slugs of objects that have a page in this version, used to link field types. */
+    objectSlugs?: string[];
 }) {
     const { language } = useSdkLanguage();
     const hasRequestBody = Boolean(
@@ -250,6 +256,16 @@ export function EndpointPage({
             endpoint.requestBody.fields,
         );
     }, [endpoint.requestBody]);
+
+    const { description: descriptionBody, authorization } = useMemo(
+        () => extractAuthorization(endpoint.description ?? ''),
+        [endpoint.description],
+    );
+
+    const objectHref = useMemo(
+        () => makeObjectHref(basePath, objectSlugs),
+        [basePath, objectSlugs],
+    );
 
     const cleanMarkdown = useMemo(() => endpointToMarkdown(endpoint), [endpoint]);
     const [copied, setCopied] = useState(false);
@@ -416,14 +432,16 @@ export function EndpointPage({
                         )}
                     </p>
 
-                    {endpoint.description && (
+                    {descriptionBody && (
                         <MarkdownBlock
-                            text={endpoint.description}
+                            text={descriptionBody}
                             className="api-description mt-5 text-[15px] leading-7 text-[var(--text-secondary)]"
                         />
                     )}
 
                     <div className="mt-10 space-y-8">
+                        <AuthorizationSection authorization={authorization} />
+
                         {pathParams.length > 0 && (
                             <ParameterTable
                                 title="Path Parameters"
@@ -467,6 +485,7 @@ export function EndpointPage({
                             <SchemaFieldTable
                                 title="Request Body"
                                 fields={endpoint.requestBody.fields}
+                                objectHref={objectHref}
                             />
                         )}
 
@@ -476,6 +495,7 @@ export function EndpointPage({
                                 fields={responseFields}
                                 expandableIncludes={expandableIncludes}
                                 expansionRoot={expansionRoot}
+                                objectHref={objectHref}
                             />
                         )}
 

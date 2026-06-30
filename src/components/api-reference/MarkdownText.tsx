@@ -18,10 +18,16 @@ marked.setOptions({
  * the markdown parser can recognize the fence and render a proper code block.
  */
 function normalizeApiDescriptionMarkdown(text: string) {
-    // Fast path: don't touch normal descriptions.
-    if (!/^\s*\/\/\s*(```|~~~)/m.test(text)) return text;
+    // Break the boilerplate "Encoded as a JSON value …" note onto its own line.
+    let result = text.replace(/[ \t]+(Encoded as a JSON value)/g, '\n\n$1');
 
-    return text.replace(/^[ \t]*\/\/[ \t]?/gm, '');
+    // Strip Go-comment `// ` prefixes around embedded code fences so the markdown
+    // parser can recognize the fence and render a proper code block.
+    if (/^\s*\/\/\s*(```|~~~)/m.test(result)) {
+        result = result.replace(/^[ \t]*\/\/[ \t]?/gm, '');
+    }
+
+    return result;
 }
 
 /**

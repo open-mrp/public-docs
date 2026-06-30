@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Chip } from './Chip';
 import { ToggleLink } from './ToggleLink';
 
-export function EnumChips({ values }: { values: string[] }) {
+export function EnumChips({ values, label = 'Values:' }: { values: string[]; label?: string }) {
     const [expanded, setExpanded] = useState(false);
     const maxShown = 3;
     const baseValues = values.slice(0, maxShown);
@@ -13,7 +13,7 @@ export function EnumChips({ values }: { values: string[] }) {
 
     return (
         <span className="inline-flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs text-[var(--text-secondary)]">
-            <span className="shrink-0">Values:</span>
+            <span className="shrink-0">{label}</span>
             {baseValues.map((v, i) => (
                 <Chip key={`${v}-${i}`} mono>
                     {v}
