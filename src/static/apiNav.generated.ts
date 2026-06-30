@@ -448,25 +448,6 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
         {
             "domain": "messaging",
             "segments": [
-                "conversations",
-                "by-record"
-            ],
-            "tagSlug": "conversations",
-            "endpointSlug": "list-conversations-by-record",
-            "label": "List"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
-                "inbox"
-            ],
-            "tagSlug": "conversations",
-            "endpointSlug": "list-inbox",
-            "label": "List"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
                 "conversations"
             ],
             "tagSlug": "conversations",
@@ -502,6 +483,25 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "tagSlug": "conversations",
             "endpointSlug": "list-links",
             "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations",
+                "links"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "unlink-record",
+            "label": "Delete"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "archive-conversation",
+            "label": "Archive Conversation"
         },
         {
             "domain": "messaging",
@@ -554,8 +554,35 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "conversations"
             ],
             "tagSlug": "conversations",
+            "endpointSlug": "report-conversation",
+            "label": "Report Conversation"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "set-legal-hold",
+            "label": "Set Legal Hold"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
             "endpointSlug": "set-case-status",
             "label": "Set Case Status"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "unarchive-conversation",
+            "label": "Unarchive Conversation"
         },
         {
             "domain": "messaging",
@@ -576,32 +603,31 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "label": "Unmute Conversation"
         },
         {
-            "domain": "messaging",
-            "segments": [
-                "conversations",
-                "legal-hold"
-            ],
-            "tagSlug": "conversations",
-            "endpointSlug": "set-legal-hold",
-            "label": "Set Legal Hold"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
-                "conversations",
-                "links"
-            ],
-            "tagSlug": "conversations",
-            "endpointSlug": "unlink-record",
-            "label": "Unlink Record"
-        },
-        {
             "domain": "core",
             "segments": [
                 "search"
             ],
             "tagSlug": "search",
             "endpointSlug": "search",
+            "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "messages"
+            ],
+            "tagSlug": "messages",
+            "endpointSlug": "update-reply-draft",
+            "label": "Update"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "messages",
+                "scheduled"
+            ],
+            "tagSlug": "messages",
+            "endpointSlug": "list-scheduled-messages",
             "label": "List"
         },
         {
@@ -618,6 +644,17 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "domain": "messaging",
             "segments": [
                 "conversations",
+                "messages",
+                "drafts"
+            ],
+            "tagSlug": "messages",
+            "endpointSlug": "create-reply-draft",
+            "label": "Create"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations",
                 "messages"
             ],
             "tagSlug": "messages",
@@ -627,11 +664,29 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
         {
             "domain": "messaging",
             "segments": [
-                "conversations"
+                "messages"
             ],
             "tagSlug": "messages",
-            "endpointSlug": "reply-to-customer",
-            "label": "Reply To Customer"
+            "endpointSlug": "approve-and-send-reply-draft",
+            "label": "Approve And Send Reply Draft"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "messages"
+            ],
+            "tagSlug": "messages",
+            "endpointSlug": "cancel-scheduled-message",
+            "label": "Cancel Scheduled Message"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "messages"
+            ],
+            "tagSlug": "messages",
+            "endpointSlug": "reject-reply-draft",
+            "label": "Reject Reply Draft"
         },
         {
             "domain": "messaging",
@@ -727,81 +782,6 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "tagSlug": "messaging-groups",
             "endpointSlug": "remove-messaging-group-member",
             "label": "Delete"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
-                "reply-drafts"
-            ],
-            "tagSlug": "reply-drafts",
-            "endpointSlug": "update-reply-draft",
-            "label": "Update"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
-                "conversations",
-                "reply-drafts"
-            ],
-            "tagSlug": "reply-drafts",
-            "endpointSlug": "create-reply-draft",
-            "label": "Create"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
-                "conversations",
-                "reply-drafts"
-            ],
-            "tagSlug": "reply-drafts",
-            "endpointSlug": "list-reply-drafts",
-            "label": "List"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
-                "reply-drafts"
-            ],
-            "tagSlug": "reply-drafts",
-            "endpointSlug": "approve-and-send-reply-draft",
-            "label": "Approve And Send Reply Draft"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
-                "reply-drafts"
-            ],
-            "tagSlug": "reply-drafts",
-            "endpointSlug": "reject-reply-draft",
-            "label": "Reject Reply Draft"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
-                "scheduled-messages"
-            ],
-            "tagSlug": "scheduled-messages",
-            "endpointSlug": "list-scheduled-messages",
-            "label": "List"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
-                "scheduled-messages"
-            ],
-            "tagSlug": "scheduled-messages",
-            "endpointSlug": "cancel-scheduled-message",
-            "label": "Delete"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
-                "conversations",
-                "scheduled-messages"
-            ],
-            "tagSlug": "scheduled-messages",
-            "endpointSlug": "schedule-message",
-            "label": "Create"
         },
         {
             "domain": "messaging",
@@ -911,16 +891,6 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "tagSlug": "messaging-contacts",
             "endpointSlug": "list-messaging-contacts",
             "label": "List"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
-                "conversations",
-                "report"
-            ],
-            "tagSlug": "message-reports",
-            "endpointSlug": "report-conversation",
-            "label": "Create"
         },
         {
             "domain": "messaging",

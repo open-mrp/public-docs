@@ -599,14 +599,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "List Conversations",
         "subtitle": "GET /v1/messaging/conversations"
     },
-    "/api-reference/conversations/list-conversations-by-record": {
-        "title": "List Conversations by Record",
-        "subtitle": "GET /v1/messaging/conversations/by-record"
-    },
-    "/api-reference/conversations/list-inbox": {
-        "title": "List Inbox",
-        "subtitle": "GET /v1/messaging/inbox"
-    },
     "/api-reference/conversations/retrieve-conversation": {
         "title": "Retrieve Conversation",
         "subtitle": "GET /v1/messaging/conversations/{id}"
@@ -622,6 +614,14 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/conversations/list-links": {
         "title": "List Links",
         "subtitle": "GET /v1/messaging/conversations/{id}/links"
+    },
+    "/api-reference/conversations/unlink-record": {
+        "title": "Unlink Record",
+        "subtitle": "DELETE /v1/messaging/conversations/{id}/links/{link_id}"
+    },
+    "/api-reference/conversations/archive-conversation": {
+        "title": "Archive Conversation",
+        "subtitle": "POST /v1/messaging/conversations/{id}/actions/archive"
     },
     "/api-reference/conversations/assign-case": {
         "title": "Assign Case",
@@ -643,9 +643,21 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Mark Conversation Read",
         "subtitle": "POST /v1/messaging/conversations/{id}/actions/read"
     },
+    "/api-reference/conversations/report-conversation": {
+        "title": "Report Conversation",
+        "subtitle": "POST /v1/messaging/conversations/{id}/actions/report"
+    },
+    "/api-reference/conversations/set-legal-hold": {
+        "title": "Set Legal Hold",
+        "subtitle": "POST /v1/messaging/conversations/{id}/actions/set-legal-hold"
+    },
     "/api-reference/conversations/set-case-status": {
         "title": "Set Case Status",
         "subtitle": "POST /v1/messaging/conversations/{id}/actions/set-status"
+    },
+    "/api-reference/conversations/unarchive-conversation": {
+        "title": "Unarchive Conversation",
+        "subtitle": "POST /v1/messaging/conversations/{id}/actions/unarchive"
     },
     "/api-reference/conversations/unhide-conversation": {
         "title": "Unhide Conversation",
@@ -655,29 +667,41 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Unmute Conversation",
         "subtitle": "POST /v1/messaging/conversations/{id}/actions/unmute"
     },
-    "/api-reference/conversations/set-legal-hold": {
-        "title": "Set Legal Hold",
-        "subtitle": "PATCH /v1/messaging/conversations/{id}/legal-hold"
-    },
-    "/api-reference/conversations/unlink-record": {
-        "title": "Unlink Record",
-        "subtitle": "DELETE /v1/messaging/conversations/{id}/links"
-    },
     "/api-reference/search/search": {
         "title": "Search",
         "subtitle": "GET /v1/core/search"
+    },
+    "/api-reference/messages/update-reply-draft": {
+        "title": "Update Reply Draft",
+        "subtitle": "PATCH /v1/messaging/messages/{id}"
+    },
+    "/api-reference/messages/list-scheduled-messages": {
+        "title": "List Scheduled Messages",
+        "subtitle": "GET /v1/messaging/messages/scheduled"
     },
     "/api-reference/messages/send-message": {
         "title": "Send Message",
         "subtitle": "POST /v1/messaging/conversations/{id}/messages"
     },
+    "/api-reference/messages/create-reply-draft": {
+        "title": "Create Reply Draft",
+        "subtitle": "POST /v1/messaging/conversations/{id}/messages/drafts"
+    },
     "/api-reference/messages/list-messages": {
         "title": "List Messages",
         "subtitle": "GET /v1/messaging/conversations/{id}/messages"
     },
-    "/api-reference/messages/reply-to-customer": {
-        "title": "Reply To Customer",
-        "subtitle": "POST /v1/messaging/conversations/{id}/actions/reply-customer"
+    "/api-reference/messages/approve-and-send-reply-draft": {
+        "title": "Approve And Send Reply Draft",
+        "subtitle": "POST /v1/messaging/messages/{id}/actions/approve-send"
+    },
+    "/api-reference/messages/cancel-scheduled-message": {
+        "title": "Cancel Scheduled Message",
+        "subtitle": "POST /v1/messaging/messages/{id}/actions/cancel"
+    },
+    "/api-reference/messages/reject-reply-draft": {
+        "title": "Reject Reply Draft",
+        "subtitle": "POST /v1/messaging/messages/{id}/actions/reject"
     },
     "/api-reference/conversation-participants/add-participant": {
         "title": "Add Participant",
@@ -718,38 +742,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/messaging-groups/remove-messaging-group-member": {
         "title": "Remove Messaging Group Member",
         "subtitle": "DELETE /v1/messaging/groups/{id}/members/{member_id}"
-    },
-    "/api-reference/reply-drafts/update-reply-draft": {
-        "title": "Update Reply Draft",
-        "subtitle": "PATCH /v1/messaging/reply-drafts/{id}"
-    },
-    "/api-reference/reply-drafts/create-reply-draft": {
-        "title": "Create Reply Draft",
-        "subtitle": "POST /v1/messaging/conversations/{id}/reply-drafts"
-    },
-    "/api-reference/reply-drafts/list-reply-drafts": {
-        "title": "List Reply Drafts",
-        "subtitle": "GET /v1/messaging/conversations/{id}/reply-drafts"
-    },
-    "/api-reference/reply-drafts/approve-and-send-reply-draft": {
-        "title": "Approve And Send Reply Draft",
-        "subtitle": "POST /v1/messaging/reply-drafts/{id}/actions/approve-send"
-    },
-    "/api-reference/reply-drafts/reject-reply-draft": {
-        "title": "Reject Reply Draft",
-        "subtitle": "POST /v1/messaging/reply-drafts/{id}/actions/reject"
-    },
-    "/api-reference/scheduled-messages/list-scheduled-messages": {
-        "title": "List Scheduled Messages",
-        "subtitle": "GET /v1/messaging/scheduled-messages"
-    },
-    "/api-reference/scheduled-messages/cancel-scheduled-message": {
-        "title": "Cancel Scheduled Message",
-        "subtitle": "DELETE /v1/messaging/scheduled-messages/{id}"
-    },
-    "/api-reference/scheduled-messages/schedule-message": {
-        "title": "Schedule Message",
-        "subtitle": "POST /v1/messaging/conversations/{id}/scheduled-messages"
     },
     "/api-reference/message-attachments/create-attachment-upload-url": {
         "title": "Create Attachment Upload URL",
@@ -798,10 +790,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/messaging-contacts/list-messaging-contacts": {
         "title": "List Messaging Contacts",
         "subtitle": "GET /v1/messaging/contacts"
-    },
-    "/api-reference/message-reports/report-conversation": {
-        "title": "Report Conversation",
-        "subtitle": "POST /v1/messaging/conversations/{id}/report"
     },
     "/api-reference/email-domains/create-email-domain": {
         "title": "Create Email Domain",

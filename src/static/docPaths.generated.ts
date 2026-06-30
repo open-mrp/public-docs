@@ -230,30 +230,36 @@ export const docPaths = {
             "createConversation": "/api-reference/conversations/create-conversation",
             "updateConversation": "/api-reference/conversations/update-conversation",
             "listConversations": "/api-reference/conversations/list-conversations",
-            "listConversationsByRecord": "/api-reference/conversations/list-conversations-by-record",
-            "listInbox": "/api-reference/conversations/list-inbox",
             "retrieveConversation": "/api-reference/conversations/retrieve-conversation",
             "linkRecord": "/api-reference/conversations/link-record",
             "redactConversation": "/api-reference/conversations/redact-conversation",
             "listLinks": "/api-reference/conversations/list-links",
+            "unlinkRecord": "/api-reference/conversations/unlink-record",
+            "archiveConversation": "/api-reference/conversations/archive-conversation",
             "assignCase": "/api-reference/conversations/assign-case",
             "hideConversation": "/api-reference/conversations/hide-conversation",
             "leaveConversation": "/api-reference/conversations/leave-conversation",
             "muteConversation": "/api-reference/conversations/mute-conversation",
             "markConversationRead": "/api-reference/conversations/mark-conversation-read",
-            "setCaseStatus": "/api-reference/conversations/set-case-status",
-            "unhideConversation": "/api-reference/conversations/unhide-conversation",
-            "unmuteConversation": "/api-reference/conversations/unmute-conversation",
+            "reportConversation": "/api-reference/conversations/report-conversation",
             "setLegalHold": "/api-reference/conversations/set-legal-hold",
-            "unlinkRecord": "/api-reference/conversations/unlink-record"
+            "setCaseStatus": "/api-reference/conversations/set-case-status",
+            "unarchiveConversation": "/api-reference/conversations/unarchive-conversation",
+            "unhideConversation": "/api-reference/conversations/unhide-conversation",
+            "unmuteConversation": "/api-reference/conversations/unmute-conversation"
         },
         "search": {
             "search": "/api-reference/search/search"
         },
         "messages": {
+            "updateReplyDraft": "/api-reference/messages/update-reply-draft",
+            "listScheduledMessages": "/api-reference/messages/list-scheduled-messages",
             "sendMessage": "/api-reference/messages/send-message",
+            "createReplyDraft": "/api-reference/messages/create-reply-draft",
             "listMessages": "/api-reference/messages/list-messages",
-            "replyToCustomer": "/api-reference/messages/reply-to-customer"
+            "approveAndSendReplyDraft": "/api-reference/messages/approve-and-send-reply-draft",
+            "cancelScheduledMessage": "/api-reference/messages/cancel-scheduled-message",
+            "rejectReplyDraft": "/api-reference/messages/reject-reply-draft"
         },
         "conversationParticipants": {
             "addParticipant": "/api-reference/conversation-participants/add-participant",
@@ -268,18 +274,6 @@ export const docPaths = {
             "deleteMessagingGroup": "/api-reference/messaging-groups/delete-messaging-group",
             "addMessagingGroupMember": "/api-reference/messaging-groups/add-messaging-group-member",
             "removeMessagingGroupMember": "/api-reference/messaging-groups/remove-messaging-group-member"
-        },
-        "replyDrafts": {
-            "updateReplyDraft": "/api-reference/reply-drafts/update-reply-draft",
-            "createReplyDraft": "/api-reference/reply-drafts/create-reply-draft",
-            "listReplyDrafts": "/api-reference/reply-drafts/list-reply-drafts",
-            "approveAndSendReplyDraft": "/api-reference/reply-drafts/approve-and-send-reply-draft",
-            "rejectReplyDraft": "/api-reference/reply-drafts/reject-reply-draft"
-        },
-        "scheduledMessages": {
-            "listScheduledMessages": "/api-reference/scheduled-messages/list-scheduled-messages",
-            "cancelScheduledMessage": "/api-reference/scheduled-messages/cancel-scheduled-message",
-            "scheduleMessage": "/api-reference/scheduled-messages/schedule-message"
         },
         "messageAttachments": {
             "createAttachmentUploadUrl": "/api-reference/message-attachments/create-attachment-upload-url"
@@ -302,9 +296,6 @@ export const docPaths = {
         },
         "messagingContacts": {
             "listMessagingContacts": "/api-reference/messaging-contacts/list-messaging-contacts"
-        },
-        "messageReports": {
-            "reportConversation": "/api-reference/message-reports/report-conversation"
         },
         "emailDomains": {
             "createEmailDomain": "/api-reference/email-domains/create-email-domain",
