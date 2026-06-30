@@ -666,6 +666,71 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
         {
             "domain": "messaging",
             "segments": [
+                "groups"
+            ],
+            "tagSlug": "messaging-groups",
+            "endpointSlug": "create-messaging-group",
+            "label": "Create"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "groups"
+            ],
+            "tagSlug": "messaging-groups",
+            "endpointSlug": "update-messaging-group",
+            "label": "Update"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "groups"
+            ],
+            "tagSlug": "messaging-groups",
+            "endpointSlug": "list-messaging-groups",
+            "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "groups"
+            ],
+            "tagSlug": "messaging-groups",
+            "endpointSlug": "retrieve-messaging-group",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "groups"
+            ],
+            "tagSlug": "messaging-groups",
+            "endpointSlug": "delete-messaging-group",
+            "label": "Delete"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "groups",
+                "members"
+            ],
+            "tagSlug": "messaging-groups",
+            "endpointSlug": "add-messaging-group-member",
+            "label": "Create"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "groups",
+                "members"
+            ],
+            "tagSlug": "messaging-groups",
+            "endpointSlug": "remove-messaging-group-member",
+            "label": "Delete"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
                 "reply-drafts"
             ],
             "tagSlug": "reply-drafts",
@@ -3528,6 +3593,12 @@ export const apiObjectNavEntriesByVersion: Record<string, ApiObjectNavEntry[]> =
             "domainLabel": "Messaging",
             "slug": "list",
             "label": "Messages"
+        },
+        {
+            "domain": "messaging",
+            "domainLabel": "Messaging",
+            "slug": "messaging-group",
+            "label": "Messaging Groups"
         },
         {
             "domain": "messaging",

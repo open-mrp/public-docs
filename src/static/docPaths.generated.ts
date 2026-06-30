@@ -260,6 +260,15 @@ export const docPaths = {
             "removeParticipant": "/api-reference/conversation-participants/remove-participant",
             "updateParticipantRole": "/api-reference/conversation-participants/update-participant-role"
         },
+        "messagingGroups": {
+            "createMessagingGroup": "/api-reference/messaging-groups/create-messaging-group",
+            "updateMessagingGroup": "/api-reference/messaging-groups/update-messaging-group",
+            "listMessagingGroups": "/api-reference/messaging-groups/list-messaging-groups",
+            "retrieveMessagingGroup": "/api-reference/messaging-groups/retrieve-messaging-group",
+            "deleteMessagingGroup": "/api-reference/messaging-groups/delete-messaging-group",
+            "addMessagingGroupMember": "/api-reference/messaging-groups/add-messaging-group-member",
+            "removeMessagingGroupMember": "/api-reference/messaging-groups/remove-messaging-group-member"
+        },
         "replyDrafts": {
             "updateReplyDraft": "/api-reference/reply-drafts/update-reply-draft",
             "createReplyDraft": "/api-reference/reply-drafts/create-reply-draft",

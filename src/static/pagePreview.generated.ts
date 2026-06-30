@@ -600,7 +600,7 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "subtitle": "GET /v1/messaging/conversations"
     },
     "/api-reference/conversations/list-conversations-by-record": {
-        "title": "List Conversations By Record",
+        "title": "List Conversations by Record",
         "subtitle": "GET /v1/messaging/conversations/by-record"
     },
     "/api-reference/conversations/list-inbox": {
@@ -690,6 +690,34 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/conversation-participants/update-participant-role": {
         "title": "Update Participant Role",
         "subtitle": "POST /v1/messaging/conversations/{id}/participants/{pid}/actions/set-role"
+    },
+    "/api-reference/messaging-groups/create-messaging-group": {
+        "title": "Create Messaging Group",
+        "subtitle": "POST /v1/messaging/groups"
+    },
+    "/api-reference/messaging-groups/update-messaging-group": {
+        "title": "Update Messaging Group",
+        "subtitle": "PATCH /v1/messaging/groups/{id}"
+    },
+    "/api-reference/messaging-groups/list-messaging-groups": {
+        "title": "List Messaging Groups",
+        "subtitle": "GET /v1/messaging/groups"
+    },
+    "/api-reference/messaging-groups/retrieve-messaging-group": {
+        "title": "Retrieve Messaging Group",
+        "subtitle": "GET /v1/messaging/groups/{id}"
+    },
+    "/api-reference/messaging-groups/delete-messaging-group": {
+        "title": "Delete Messaging Group",
+        "subtitle": "DELETE /v1/messaging/groups/{id}"
+    },
+    "/api-reference/messaging-groups/add-messaging-group-member": {
+        "title": "Add Messaging Group Member",
+        "subtitle": "POST /v1/messaging/groups/{id}/members"
+    },
+    "/api-reference/messaging-groups/remove-messaging-group-member": {
+        "title": "Remove Messaging Group Member",
+        "subtitle": "DELETE /v1/messaging/groups/{id}/members/{member_id}"
     },
     "/api-reference/reply-drafts/update-reply-draft": {
         "title": "Update Reply Draft",

@@ -228,7 +228,7 @@
 - [POST Conversations — Create Conversation](https://docs.augno.com/api-reference/conversations/create-conversation.md)
 - [PATCH Conversations — Update Conversation](https://docs.augno.com/api-reference/conversations/update-conversation.md)
 - [GET Conversations — List](https://docs.augno.com/api-reference/conversations/list-conversations.md)
-- [GET Conversations — List By Record](https://docs.augno.com/api-reference/conversations/list-conversations-by-record.md)
+- [GET Conversations — List by Record](https://docs.augno.com/api-reference/conversations/list-conversations-by-record.md)
 - [GET Conversations — List Inbox](https://docs.augno.com/api-reference/conversations/list-inbox.md)
 - [GET Conversations — Retrieve Conversation](https://docs.augno.com/api-reference/conversations/retrieve-conversation.md)
 - [POST Conversations — Link Record](https://docs.augno.com/api-reference/conversations/link-record.md)
@@ -250,6 +250,13 @@
 - [POST Conversation Participants — Add Participant](https://docs.augno.com/api-reference/conversation-participants/add-participant.md)
 - [DELETE Conversation Participants — Remove Participant](https://docs.augno.com/api-reference/conversation-participants/remove-participant.md)
 - [POST Conversation Participants — Update Participant Role](https://docs.augno.com/api-reference/conversation-participants/update-participant-role.md)
+- [POST Messaging Groups — Create Group](https://docs.augno.com/api-reference/messaging-groups/create-messaging-group.md)
+- [PATCH Messaging Groups — Update Group](https://docs.augno.com/api-reference/messaging-groups/update-messaging-group.md)
+- [GET Messaging Groups — List](https://docs.augno.com/api-reference/messaging-groups/list-messaging-groups.md)
+- [GET Messaging Groups — Retrieve Group](https://docs.augno.com/api-reference/messaging-groups/retrieve-messaging-group.md)
+- [DELETE Messaging Groups — Delete Group](https://docs.augno.com/api-reference/messaging-groups/delete-messaging-group.md)
+- [POST Messaging Groups — Add Group Member](https://docs.augno.com/api-reference/messaging-groups/add-messaging-group-member.md)
+- [DELETE Messaging Groups — Remove Group Member](https://docs.augno.com/api-reference/messaging-groups/remove-messaging-group-member.md)
 - [PATCH Reply Drafts — Update Draft](https://docs.augno.com/api-reference/reply-drafts/update-reply-draft.md)
 - [POST Reply Drafts — Create Draft](https://docs.augno.com/api-reference/reply-drafts/create-reply-draft.md)
 - [GET Reply Drafts — List](https://docs.augno.com/api-reference/reply-drafts/list-reply-drafts.md)
@@ -401,6 +408,7 @@
 - [Email Domains object](https://docs.augno.com/api-reference/objects/email-domain.md): A customer-owned domain registered with the email bridge for sending and receiving mail.
 - [Email Inboxes object](https://docs.augno.com/api-reference/objects/email-inbox.md): A routable email inbox on a verified domain.
 - [Messages object](https://docs.augno.com/api-reference/objects/list.md): List represents a paginated list of resources.
+- [Messaging Groups object](https://docs.augno.com/api-reference/objects/messaging-group.md): A reusable roster: a named set of members (users and/or agents) that seeds new conversations.
 - [Notifications object](https://docs.augno.com/api-reference/objects/notification.md): An in-app notification in the user's bell feed.
 - [Sender Identities object](https://docs.augno.com/api-reference/objects/sender-identity.md): A sender identity (persona) a message can be posted as: a user's own identity, a shared group
 persona (optionally anonymizing), an agent, or the system.
