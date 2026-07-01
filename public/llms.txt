@@ -401,8 +401,8 @@
 
 ### Messaging
 - [Announcements object](https://docs.augno.com/api-reference/objects/announcement.md): A broadcast announcement shown in the bell feed, with the caller's per-user read state.
-- [Conversations object](https://docs.augno.com/api-reference/objects/conversation.md): A conversation (1:1 DM in Phase 2) the caller participates in.
-- [Email Domains object](https://docs.augno.com/api-reference/objects/email-domain.md): A customer-owned domain registered with the email bridge for sending and receiving mail.
+- [Conversations object](https://docs.augno.com/api-reference/objects/conversation.md): A conversation thread the caller participates in.
+- [Email Domains object](https://docs.augno.com/api-reference/objects/email-domain.md): A domain registered with the email bridge for sending and receiving mail.
 - [Email Inboxes object](https://docs.augno.com/api-reference/objects/email-inbox.md): A routable email inbox on a verified domain.
 - [Messages object](https://docs.augno.com/api-reference/objects/list.md): List represents a paginated list of resources.
 - [Messaging Groups object](https://docs.augno.com/api-reference/objects/messaging-group.md): A reusable roster: a named set of members (users and/or agents) that seeds new conversations.
