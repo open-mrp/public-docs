@@ -181180,24 +181180,402 @@ export const apiTags: TagData[] = [
                                 "object": "customer",
                                 "name": "Acme Inc.",
                                 "number": "100042",
-                                "status": "",
-                                "edi_status": "",
-                                "relationship_type": "",
-                                "commission_policy": "",
-                                "note": null,
-                                "credit_limit": null,
-                                "contact_info": null,
-                                "freight_preferences": null,
-                                "defaults": null,
-                                "notification_preferences": null,
-                                "bill_to_address": null,
-                                "ship_to_address": null,
-                                "type": null,
-                                "price_groups": null,
+                                "status": "normal",
+                                "edi_status": "disabled",
+                                "relationship_type": "standalone",
+                                "commission_policy": "commission_applied",
+                                "note": "Preferred customer since 2020.",
+                                "credit_limit": {
+                                    "id": "qty_015a85becc1a6afdfb1afc27ff",
+                                    "object": "quantity",
+                                    "value": "1234.56",
+                                    "display_value": "$1,234.56",
+                                    "unit": {
+                                        "id": "un_01966263f74a5a0cae356000a1",
+                                        "object": "unit",
+                                        "name": "US Dollar",
+                                        "abbreviation": "$",
+                                        "type": "currency",
+                                        "ratio_numerator": "1",
+                                        "ratio_denominator": "1",
+                                        "offset_numerator": "0",
+                                        "offset_denominator": "1",
+                                        "is_base_unit": true,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                },
+                                "contact_info": {
+                                    "object": "customer_contact_info",
+                                    "email": "orders@acme.com",
+                                    "phone": "555-123-4567",
+                                    "url": "https://acme.com"
+                                },
+                                "freight_preferences": {
+                                    "object": "customer_freight_preferences",
+                                    "status": "billed_freight",
+                                    "carrier": {
+                                        "id": "cr_01784fd54c9ba197bb4e42f0e6",
+                                        "object": "carrier",
+                                        "name": "FedEx",
+                                        "code": "fedex",
+                                        "account_number": "603145678",
+                                        "customer_portal_visibility": "visible",
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "account",
+                                            "account": {
+                                                "id": "ac_01148680966698341a9c0976db",
+                                                "object": "account",
+                                                "name": "Acme Inc.",
+                                                "default_billing_address": null,
+                                                "default_shipping_address": null,
+                                                "branding": null,
+                                                "portal": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        },
+                                        "service_levels": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "crop_01cfaf03f104e90ef9680e2a30",
+                                                    "object": "service_level",
+                                                    "name": "FedEx Ground",
+                                                    "service_level_token": "fedex_ground",
+                                                    "customer_portal_visibility": "visible",
+                                                    "is_default": true,
+                                                    "owner": {
+                                                        "object": "owner",
+                                                        "type": "account",
+                                                        "account": {
+                                                            "id": "ac_01148680966698341a9c0976db",
+                                                            "object": "account",
+                                                            "name": "Acme Inc.",
+                                                            "default_billing_address": null,
+                                                            "default_shipping_address": null,
+                                                            "branding": null,
+                                                            "portal": null,
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "deleted_at": null,
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "service_level": {
+                                        "id": "crop_01cfaf03f104e90ef9680e2a30",
+                                        "object": "service_level",
+                                        "name": "FedEx Ground",
+                                        "service_level_token": "fedex_ground",
+                                        "customer_portal_visibility": "visible",
+                                        "is_default": true,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "account",
+                                            "account": {
+                                                "id": "ac_01148680966698341a9c0976db",
+                                                "object": "account",
+                                                "name": "Acme Inc.",
+                                                "default_billing_address": null,
+                                                "default_shipping_address": null,
+                                                "branding": null,
+                                                "portal": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "billing_type": "sender",
+                                    "billing_account": "123456789"
+                                },
+                                "defaults": {
+                                    "object": "customer_defaults",
+                                    "payment_term": {
+                                        "id": "pytm_018694d6601ea771cd1b52e890",
+                                        "object": "payment_term",
+                                        "name": "Net 30",
+                                        "status": "active",
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "shipping_term": {
+                                        "id": "shtm_014341ab4bb5bf94d5b6936f86",
+                                        "object": "shipping_term",
+                                        "name": "Prepaid",
+                                        "type": "carrier_rate_freight",
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "flat_rate": null,
+                                        "minimum_order_value": null,
+                                        "free_shipping_service_levels": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": []
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "priority": {
+                                        "id": "pi_01fc435701244bb3978bfb77ff",
+                                        "object": "priority",
+                                        "code": "normal",
+                                        "name": "Normal",
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "sales_rep": {
+                                        "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                        "object": "account_user",
+                                        "status": "active",
+                                        "role": {
+                                            "id": "rl_01c16d2eb637c0d1f3a372937c",
+                                            "object": "role",
+                                            "name": "Admin",
+                                            "type": "admin",
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "account",
+                                                "account": {
+                                                    "id": "ac_01148680966698341a9c0976db",
+                                                    "object": "account",
+                                                    "name": "Acme Inc.",
+                                                    "default_billing_address": null,
+                                                    "default_shipping_address": null,
+                                                    "branding": null,
+                                                    "portal": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            },
+                                            "permissions": [
+                                                "customers:create",
+                                                "customers:read",
+                                                "customers:update",
+                                                "customers:delete"
+                                            ],
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "department": {
+                                            "id": "dp_01791c25ab59da4704cba61874",
+                                            "object": "department",
+                                            "name": "Fabrication",
+                                            "notes": null,
+                                            "location": {
+                                                "id": "lc_014d187d99b31926f0c74af9d8",
+                                                "object": "location",
+                                                "name": "Warehouse A",
+                                                "type": "building",
+                                                "parent": null,
+                                                "children": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "lc_0132c4db1e220da9bc596cc4c9",
+                                                            "object": "location",
+                                                            "name": "Shelf A1",
+                                                            "type": "building",
+                                                            "parent": null,
+                                                            "children": null,
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "scanning_stations": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "scst_0129335dd6286056a97024fcc1",
+                                                        "object": "scanning_station",
+                                                        "name": "Packaging Line 1",
+                                                        "notes": "Initializes batches at the start of the packaging line.",
+                                                        "type": "init_batch",
+                                                        "label_size": "2x4",
+                                                        "label_type": "traveler",
+                                                        "operator_requirement": "none",
+                                                        "department": null,
+                                                        "production_steps": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "machines": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "mc_0177d18f55a1615f783d3bf8d0",
+                                                        "object": "machine",
+                                                        "name": "CNC Router",
+                                                        "serial_number": "SN-2024-0001",
+                                                        "notes": null,
+                                                        "department": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "user": {
+                                            "id": "us_0151164dcaea4cbded27b50aae",
+                                            "object": "user",
+                                            "email": "jdoe@augno.com",
+                                            "name": "John Doe",
+                                            "username": "jdoe",
+                                            "email_verified_at": "2026-06-10T00:00:00Z",
+                                            "image_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "last_used_at": "2026-05-10T00:23:00Z",
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                },
+                                "notification_preferences": {
+                                    "object": "customer_notification_preferences",
+                                    "accepts_invoice_emails": true
+                                },
+                                "bill_to_address": {
+                                    "id": "ad_012100950cfaa34aa0e0ad7258",
+                                    "object": "address",
+                                    "name": "Headquarters",
+                                    "phone": "+1-614-555-0142",
+                                    "email": "receiving@acme.example.com",
+                                    "type": "standard",
+                                    "geolocation": {
+                                        "id": "gl_013e4c26412103c6757ba71806",
+                                        "object": "geolocation",
+                                        "street_line_1": "4200 Industrial Pkwy",
+                                        "street_line_2": null,
+                                        "locality": "Columbus",
+                                        "state": "OH",
+                                        "postal_code": "43204",
+                                        "country": "US"
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "ship_to_address": {
+                                    "id": "ad_012100950cfaa34aa0e0ad7258",
+                                    "object": "address",
+                                    "name": "Headquarters",
+                                    "phone": "+1-614-555-0142",
+                                    "email": "receiving@acme.example.com",
+                                    "type": "standard",
+                                    "geolocation": {
+                                        "id": "gl_013e4c26412103c6757ba71806",
+                                        "object": "geolocation",
+                                        "street_line_1": "4200 Industrial Pkwy",
+                                        "street_line_2": null,
+                                        "locality": "Columbus",
+                                        "state": "OH",
+                                        "postal_code": "43204",
+                                        "country": "US"
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "type": {
+                                    "id": "acgp_018e88072d1320808dc979cfac",
+                                    "object": "account_group",
+                                    "type": "type_group",
+                                    "name": "Wholesale Customers",
+                                    "description": null,
+                                    "commission_policy": "commission_applied",
+                                    "freight_policy": "billed_freight",
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "price_groups": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "acgp_018e88072d1320808dc979cfac",
+                                            "object": "account_group",
+                                            "type": "type_group",
+                                            "name": "Wholesale Customers",
+                                            "description": null,
+                                            "commission_policy": "commission_applied",
+                                            "freight_policy": "billed_freight",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
                                 "parent_account": null,
                                 "child_accounts": null,
-                                "created_at": "0001-01-01T00:00:00Z",
-                                "updated_at": "0001-01-01T00:00:00Z"
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
                             },
                             "sales_rep": {
                                 "id": "us_0151164dcaea4cbded27b50aae",
@@ -183914,24 +184292,402 @@ export const apiTags: TagData[] = [
                                         "object": "customer",
                                         "name": "Acme Inc.",
                                         "number": "100042",
-                                        "status": "",
-                                        "edi_status": "",
-                                        "relationship_type": "",
-                                        "commission_policy": "",
-                                        "note": null,
-                                        "credit_limit": null,
-                                        "contact_info": null,
-                                        "freight_preferences": null,
-                                        "defaults": null,
-                                        "notification_preferences": null,
-                                        "bill_to_address": null,
-                                        "ship_to_address": null,
-                                        "type": null,
-                                        "price_groups": null,
+                                        "status": "normal",
+                                        "edi_status": "disabled",
+                                        "relationship_type": "standalone",
+                                        "commission_policy": "commission_applied",
+                                        "note": "Preferred customer since 2020.",
+                                        "credit_limit": {
+                                            "id": "qty_015a85becc1a6afdfb1afc27ff",
+                                            "object": "quantity",
+                                            "value": "1234.56",
+                                            "display_value": "$1,234.56",
+                                            "unit": {
+                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                "object": "unit",
+                                                "name": "US Dollar",
+                                                "abbreviation": "$",
+                                                "type": "currency",
+                                                "ratio_numerator": "1",
+                                                "ratio_denominator": "1",
+                                                "offset_numerator": "0",
+                                                "offset_denominator": "1",
+                                                "is_base_unit": true,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        },
+                                        "contact_info": {
+                                            "object": "customer_contact_info",
+                                            "email": "orders@acme.com",
+                                            "phone": "555-123-4567",
+                                            "url": "https://acme.com"
+                                        },
+                                        "freight_preferences": {
+                                            "object": "customer_freight_preferences",
+                                            "status": "billed_freight",
+                                            "carrier": {
+                                                "id": "cr_01784fd54c9ba197bb4e42f0e6",
+                                                "object": "carrier",
+                                                "name": "FedEx",
+                                                "code": "fedex",
+                                                "account_number": "603145678",
+                                                "customer_portal_visibility": "visible",
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "account",
+                                                    "account": {
+                                                        "id": "ac_01148680966698341a9c0976db",
+                                                        "object": "account",
+                                                        "name": "Acme Inc.",
+                                                        "default_billing_address": null,
+                                                        "default_shipping_address": null,
+                                                        "branding": null,
+                                                        "portal": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                },
+                                                "service_levels": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "crop_01cfaf03f104e90ef9680e2a30",
+                                                            "object": "service_level",
+                                                            "name": "FedEx Ground",
+                                                            "service_level_token": "fedex_ground",
+                                                            "customer_portal_visibility": "visible",
+                                                            "is_default": true,
+                                                            "owner": {
+                                                                "object": "owner",
+                                                                "type": "account",
+                                                                "account": {
+                                                                    "id": "ac_01148680966698341a9c0976db",
+                                                                    "object": "account",
+                                                                    "name": "Acme Inc.",
+                                                                    "default_billing_address": null,
+                                                                    "default_shipping_address": null,
+                                                                    "branding": null,
+                                                                    "portal": null,
+                                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                                }
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "deleted_at": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "service_level": {
+                                                "id": "crop_01cfaf03f104e90ef9680e2a30",
+                                                "object": "service_level",
+                                                "name": "FedEx Ground",
+                                                "service_level_token": "fedex_ground",
+                                                "customer_portal_visibility": "visible",
+                                                "is_default": true,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "account",
+                                                    "account": {
+                                                        "id": "ac_01148680966698341a9c0976db",
+                                                        "object": "account",
+                                                        "name": "Acme Inc.",
+                                                        "default_billing_address": null,
+                                                        "default_shipping_address": null,
+                                                        "branding": null,
+                                                        "portal": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "billing_type": "sender",
+                                            "billing_account": "123456789"
+                                        },
+                                        "defaults": {
+                                            "object": "customer_defaults",
+                                            "payment_term": {
+                                                "id": "pytm_018694d6601ea771cd1b52e890",
+                                                "object": "payment_term",
+                                                "name": "Net 30",
+                                                "status": "active",
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "shipping_term": {
+                                                "id": "shtm_014341ab4bb5bf94d5b6936f86",
+                                                "object": "shipping_term",
+                                                "name": "Prepaid",
+                                                "type": "carrier_rate_freight",
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "flat_rate": null,
+                                                "minimum_order_value": null,
+                                                "free_shipping_service_levels": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": []
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "priority": {
+                                                "id": "pi_01fc435701244bb3978bfb77ff",
+                                                "object": "priority",
+                                                "code": "normal",
+                                                "name": "Normal",
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "sales_rep": {
+                                                "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                                "object": "account_user",
+                                                "status": "active",
+                                                "role": {
+                                                    "id": "rl_01c16d2eb637c0d1f3a372937c",
+                                                    "object": "role",
+                                                    "name": "Admin",
+                                                    "type": "admin",
+                                                    "owner": {
+                                                        "object": "owner",
+                                                        "type": "account",
+                                                        "account": {
+                                                            "id": "ac_01148680966698341a9c0976db",
+                                                            "object": "account",
+                                                            "name": "Acme Inc.",
+                                                            "default_billing_address": null,
+                                                            "default_shipping_address": null,
+                                                            "branding": null,
+                                                            "portal": null,
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    },
+                                                    "permissions": [
+                                                        "customers:create",
+                                                        "customers:read",
+                                                        "customers:update",
+                                                        "customers:delete"
+                                                    ],
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "department": {
+                                                    "id": "dp_01791c25ab59da4704cba61874",
+                                                    "object": "department",
+                                                    "name": "Fabrication",
+                                                    "notes": null,
+                                                    "location": {
+                                                        "id": "lc_014d187d99b31926f0c74af9d8",
+                                                        "object": "location",
+                                                        "name": "Warehouse A",
+                                                        "type": "building",
+                                                        "parent": null,
+                                                        "children": {
+                                                            "object": "list",
+                                                            "page_info": {
+                                                                "next_page_url": null,
+                                                                "previous_page_url": null,
+                                                                "has_next_page": false,
+                                                                "has_prev_page": false
+                                                            },
+                                                            "data": [
+                                                                {
+                                                                    "id": "lc_0132c4db1e220da9bc596cc4c9",
+                                                                    "object": "location",
+                                                                    "name": "Shelf A1",
+                                                                    "type": "building",
+                                                                    "parent": null,
+                                                                    "children": null,
+                                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "scanning_stations": {
+                                                        "object": "list",
+                                                        "page_info": {
+                                                            "next_page_url": null,
+                                                            "previous_page_url": null,
+                                                            "has_next_page": false,
+                                                            "has_prev_page": false
+                                                        },
+                                                        "data": [
+                                                            {
+                                                                "id": "scst_0129335dd6286056a97024fcc1",
+                                                                "object": "scanning_station",
+                                                                "name": "Packaging Line 1",
+                                                                "notes": "Initializes batches at the start of the packaging line.",
+                                                                "type": "init_batch",
+                                                                "label_size": "2x4",
+                                                                "label_type": "traveler",
+                                                                "operator_requirement": "none",
+                                                                "department": null,
+                                                                "production_steps": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "machines": {
+                                                        "object": "list",
+                                                        "page_info": {
+                                                            "next_page_url": null,
+                                                            "previous_page_url": null,
+                                                            "has_next_page": false,
+                                                            "has_prev_page": false
+                                                        },
+                                                        "data": [
+                                                            {
+                                                                "id": "mc_0177d18f55a1615f783d3bf8d0",
+                                                                "object": "machine",
+                                                                "name": "CNC Router",
+                                                                "serial_number": "SN-2024-0001",
+                                                                "notes": null,
+                                                                "department": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "user": {
+                                                    "id": "us_0151164dcaea4cbded27b50aae",
+                                                    "object": "user",
+                                                    "email": "jdoe@augno.com",
+                                                    "name": "John Doe",
+                                                    "username": "jdoe",
+                                                    "email_verified_at": "2026-06-10T00:00:00Z",
+                                                    "image_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "last_used_at": "2026-05-10T00:23:00Z",
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        },
+                                        "notification_preferences": {
+                                            "object": "customer_notification_preferences",
+                                            "accepts_invoice_emails": true
+                                        },
+                                        "bill_to_address": {
+                                            "id": "ad_012100950cfaa34aa0e0ad7258",
+                                            "object": "address",
+                                            "name": "Headquarters",
+                                            "phone": "+1-614-555-0142",
+                                            "email": "receiving@acme.example.com",
+                                            "type": "standard",
+                                            "geolocation": {
+                                                "id": "gl_013e4c26412103c6757ba71806",
+                                                "object": "geolocation",
+                                                "street_line_1": "4200 Industrial Pkwy",
+                                                "street_line_2": null,
+                                                "locality": "Columbus",
+                                                "state": "OH",
+                                                "postal_code": "43204",
+                                                "country": "US"
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "ship_to_address": {
+                                            "id": "ad_012100950cfaa34aa0e0ad7258",
+                                            "object": "address",
+                                            "name": "Headquarters",
+                                            "phone": "+1-614-555-0142",
+                                            "email": "receiving@acme.example.com",
+                                            "type": "standard",
+                                            "geolocation": {
+                                                "id": "gl_013e4c26412103c6757ba71806",
+                                                "object": "geolocation",
+                                                "street_line_1": "4200 Industrial Pkwy",
+                                                "street_line_2": null,
+                                                "locality": "Columbus",
+                                                "state": "OH",
+                                                "postal_code": "43204",
+                                                "country": "US"
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "type": {
+                                            "id": "acgp_018e88072d1320808dc979cfac",
+                                            "object": "account_group",
+                                            "type": "type_group",
+                                            "name": "Wholesale Customers",
+                                            "description": null,
+                                            "commission_policy": "commission_applied",
+                                            "freight_policy": "billed_freight",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "price_groups": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "acgp_018e88072d1320808dc979cfac",
+                                                    "object": "account_group",
+                                                    "type": "type_group",
+                                                    "name": "Wholesale Customers",
+                                                    "description": null,
+                                                    "commission_policy": "commission_applied",
+                                                    "freight_policy": "billed_freight",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
                                         "parent_account": null,
                                         "child_accounts": null,
-                                        "created_at": "0001-01-01T00:00:00Z",
-                                        "updated_at": "0001-01-01T00:00:00Z"
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
                                     },
                                     "sales_rep": {
                                         "id": "us_0151164dcaea4cbded27b50aae",
