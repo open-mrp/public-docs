@@ -397,7 +397,8 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "role_id": "rl_01c16d2eb637c0d1f3a372937c",
-                        "name": "Production API Key"
+                        "name": "Production API Key",
+                        "expires_at": "2027-01-01T00:00:00Z"
                     }
                 },
                 "responses": [
@@ -2960,7 +2961,7 @@ export const apiTags: TagData[] = [
                 "api_version": "2026-01-01",
                 "client_ip": "198.51.100.7",
                 "user_agent": "Mozilla/5.0",
-                "referrer": null,
+                "referrer": "https://app.augno.com",
                 "error_code": null,
                 "error_message": null,
                 "occurred_at": "2026-05-10T00:00:00Z",
@@ -2969,10 +2970,67 @@ export const apiTags: TagData[] = [
                     "id": "ac_01148680966698341a9c0976db",
                     "object": "account",
                     "name": "Acme Inc.",
-                    "default_billing_address": null,
-                    "default_shipping_address": null,
-                    "branding": null,
-                    "portal": null,
+                    "default_billing_address": {
+                        "id": "ad_012100950cfaa34aa0e0ad7258",
+                        "object": "address",
+                        "name": "Headquarters",
+                        "phone": "+1-614-555-0142",
+                        "email": "receiving@acme.example.com",
+                        "type": "standard",
+                        "geolocation": {
+                            "id": "gl_013e4c26412103c6757ba71806",
+                            "object": "geolocation",
+                            "street_line_1": "4200 Industrial Pkwy",
+                            "street_line_2": null,
+                            "locality": "Columbus",
+                            "state": "OH",
+                            "postal_code": "43204",
+                            "country": "US"
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
+                    "default_shipping_address": {
+                        "id": "ad_012100950cfaa34aa0e0ad7258",
+                        "object": "address",
+                        "name": "Headquarters",
+                        "phone": "+1-614-555-0142",
+                        "email": "receiving@acme.example.com",
+                        "type": "standard",
+                        "geolocation": {
+                            "id": "gl_013e4c26412103c6757ba71806",
+                            "object": "geolocation",
+                            "street_line_1": "4200 Industrial Pkwy",
+                            "street_line_2": null,
+                            "locality": "Columbus",
+                            "state": "OH",
+                            "postal_code": "43204",
+                            "country": "US"
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
+                    "branding": {
+                        "id": "abr_01fa710842028837ac3ca9d590",
+                        "object": "account_branding",
+                        "support_email": "support@acme.example.com",
+                        "phone_number": "+1-614-555-0100",
+                        "logo_url": "https://cdn.augno.com/branding/abr_01fa710842028837ac3ca9d590/logo.png",
+                        "facebook_handle": "acmeinc",
+                        "instagram_handle": "acmeinc",
+                        "linkedin_handle": "acme-inc",
+                        "twitter_handle": "acmeinc",
+                        "website_url": "https://www.acme.example.com",
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
+                    "portal": {
+                        "id": "apo_0167f0d01165cbb56b55bc01fa",
+                        "object": "account_portal",
+                        "slug": "acme",
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
                     "created_at": "2026-05-10T00:00:00Z",
                     "updated_at": "2026-05-10T00:23:00Z"
                 },
@@ -2982,7 +3040,7 @@ export const apiTags: TagData[] = [
                     "type": "user",
                     "name": "John Doe",
                     "handle": "jdoe@augno.com",
-                    "avatar_url": null,
+                    "avatar_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
                     "role": {
                         "id": "rl_01c16d2eb637c0d1f3a372937c",
                         "object": "role",
@@ -3739,7 +3797,7 @@ export const apiTags: TagData[] = [
                                     "api_version": "2026-01-01",
                                     "client_ip": "198.51.100.7",
                                     "user_agent": "Mozilla/5.0",
-                                    "referrer": null,
+                                    "referrer": "https://app.augno.com",
                                     "error_code": null,
                                     "error_message": null,
                                     "occurred_at": "2026-05-10T00:00:00Z",
@@ -3748,10 +3806,67 @@ export const apiTags: TagData[] = [
                                         "id": "ac_01148680966698341a9c0976db",
                                         "object": "account",
                                         "name": "Acme Inc.",
-                                        "default_billing_address": null,
-                                        "default_shipping_address": null,
-                                        "branding": null,
-                                        "portal": null,
+                                        "default_billing_address": {
+                                            "id": "ad_012100950cfaa34aa0e0ad7258",
+                                            "object": "address",
+                                            "name": "Headquarters",
+                                            "phone": "+1-614-555-0142",
+                                            "email": "receiving@acme.example.com",
+                                            "type": "standard",
+                                            "geolocation": {
+                                                "id": "gl_013e4c26412103c6757ba71806",
+                                                "object": "geolocation",
+                                                "street_line_1": "4200 Industrial Pkwy",
+                                                "street_line_2": null,
+                                                "locality": "Columbus",
+                                                "state": "OH",
+                                                "postal_code": "43204",
+                                                "country": "US"
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "default_shipping_address": {
+                                            "id": "ad_012100950cfaa34aa0e0ad7258",
+                                            "object": "address",
+                                            "name": "Headquarters",
+                                            "phone": "+1-614-555-0142",
+                                            "email": "receiving@acme.example.com",
+                                            "type": "standard",
+                                            "geolocation": {
+                                                "id": "gl_013e4c26412103c6757ba71806",
+                                                "object": "geolocation",
+                                                "street_line_1": "4200 Industrial Pkwy",
+                                                "street_line_2": null,
+                                                "locality": "Columbus",
+                                                "state": "OH",
+                                                "postal_code": "43204",
+                                                "country": "US"
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "branding": {
+                                            "id": "abr_01fa710842028837ac3ca9d590",
+                                            "object": "account_branding",
+                                            "support_email": "support@acme.example.com",
+                                            "phone_number": "+1-614-555-0100",
+                                            "logo_url": "https://cdn.augno.com/branding/abr_01fa710842028837ac3ca9d590/logo.png",
+                                            "facebook_handle": "acmeinc",
+                                            "instagram_handle": "acmeinc",
+                                            "linkedin_handle": "acme-inc",
+                                            "twitter_handle": "acmeinc",
+                                            "website_url": "https://www.acme.example.com",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "portal": {
+                                            "id": "apo_0167f0d01165cbb56b55bc01fa",
+                                            "object": "account_portal",
+                                            "slug": "acme",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
@@ -3761,7 +3876,7 @@ export const apiTags: TagData[] = [
                                         "type": "user",
                                         "name": "John Doe",
                                         "handle": "jdoe@augno.com",
-                                        "avatar_url": null,
+                                        "avatar_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
                                         "role": {
                                             "id": "rl_01c16d2eb637c0d1f3a372937c",
                                             "object": "role",
@@ -4287,7 +4402,7 @@ export const apiTags: TagData[] = [
                             "api_version": "2026-01-01",
                             "client_ip": "198.51.100.7",
                             "user_agent": "Mozilla/5.0",
-                            "referrer": null,
+                            "referrer": "https://app.augno.com",
                             "error_code": null,
                             "error_message": null,
                             "occurred_at": "2026-05-10T00:00:00Z",
@@ -4296,10 +4411,67 @@ export const apiTags: TagData[] = [
                                 "id": "ac_01148680966698341a9c0976db",
                                 "object": "account",
                                 "name": "Acme Inc.",
-                                "default_billing_address": null,
-                                "default_shipping_address": null,
-                                "branding": null,
-                                "portal": null,
+                                "default_billing_address": {
+                                    "id": "ad_012100950cfaa34aa0e0ad7258",
+                                    "object": "address",
+                                    "name": "Headquarters",
+                                    "phone": "+1-614-555-0142",
+                                    "email": "receiving@acme.example.com",
+                                    "type": "standard",
+                                    "geolocation": {
+                                        "id": "gl_013e4c26412103c6757ba71806",
+                                        "object": "geolocation",
+                                        "street_line_1": "4200 Industrial Pkwy",
+                                        "street_line_2": null,
+                                        "locality": "Columbus",
+                                        "state": "OH",
+                                        "postal_code": "43204",
+                                        "country": "US"
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "default_shipping_address": {
+                                    "id": "ad_012100950cfaa34aa0e0ad7258",
+                                    "object": "address",
+                                    "name": "Headquarters",
+                                    "phone": "+1-614-555-0142",
+                                    "email": "receiving@acme.example.com",
+                                    "type": "standard",
+                                    "geolocation": {
+                                        "id": "gl_013e4c26412103c6757ba71806",
+                                        "object": "geolocation",
+                                        "street_line_1": "4200 Industrial Pkwy",
+                                        "street_line_2": null,
+                                        "locality": "Columbus",
+                                        "state": "OH",
+                                        "postal_code": "43204",
+                                        "country": "US"
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "branding": {
+                                    "id": "abr_01fa710842028837ac3ca9d590",
+                                    "object": "account_branding",
+                                    "support_email": "support@acme.example.com",
+                                    "phone_number": "+1-614-555-0100",
+                                    "logo_url": "https://cdn.augno.com/branding/abr_01fa710842028837ac3ca9d590/logo.png",
+                                    "facebook_handle": "acmeinc",
+                                    "instagram_handle": "acmeinc",
+                                    "linkedin_handle": "acme-inc",
+                                    "twitter_handle": "acmeinc",
+                                    "website_url": "https://www.acme.example.com",
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "portal": {
+                                    "id": "apo_0167f0d01165cbb56b55bc01fa",
+                                    "object": "account_portal",
+                                    "slug": "acme",
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -4309,7 +4481,7 @@ export const apiTags: TagData[] = [
                                 "type": "user",
                                 "name": "John Doe",
                                 "handle": "jdoe@augno.com",
-                                "avatar_url": null,
+                                "avatar_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
                                 "role": {
                                     "id": "rl_01c16d2eb637c0d1f3a372937c",
                                     "object": "role",
@@ -5229,10 +5401,67 @@ export const apiTags: TagData[] = [
                     "id": "ac_01148680966698341a9c0976db",
                     "object": "account",
                     "name": "Acme Inc.",
-                    "default_billing_address": null,
-                    "default_shipping_address": null,
-                    "branding": null,
-                    "portal": null,
+                    "default_billing_address": {
+                        "id": "ad_012100950cfaa34aa0e0ad7258",
+                        "object": "address",
+                        "name": "Headquarters",
+                        "phone": "+1-614-555-0142",
+                        "email": "receiving@acme.example.com",
+                        "type": "standard",
+                        "geolocation": {
+                            "id": "gl_013e4c26412103c6757ba71806",
+                            "object": "geolocation",
+                            "street_line_1": "4200 Industrial Pkwy",
+                            "street_line_2": null,
+                            "locality": "Columbus",
+                            "state": "OH",
+                            "postal_code": "43204",
+                            "country": "US"
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
+                    "default_shipping_address": {
+                        "id": "ad_012100950cfaa34aa0e0ad7258",
+                        "object": "address",
+                        "name": "Headquarters",
+                        "phone": "+1-614-555-0142",
+                        "email": "receiving@acme.example.com",
+                        "type": "standard",
+                        "geolocation": {
+                            "id": "gl_013e4c26412103c6757ba71806",
+                            "object": "geolocation",
+                            "street_line_1": "4200 Industrial Pkwy",
+                            "street_line_2": null,
+                            "locality": "Columbus",
+                            "state": "OH",
+                            "postal_code": "43204",
+                            "country": "US"
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
+                    "branding": {
+                        "id": "abr_01fa710842028837ac3ca9d590",
+                        "object": "account_branding",
+                        "support_email": "support@acme.example.com",
+                        "phone_number": "+1-614-555-0100",
+                        "logo_url": "https://cdn.augno.com/branding/abr_01fa710842028837ac3ca9d590/logo.png",
+                        "facebook_handle": "acmeinc",
+                        "instagram_handle": "acmeinc",
+                        "linkedin_handle": "acme-inc",
+                        "twitter_handle": "acmeinc",
+                        "website_url": "https://www.acme.example.com",
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
+                    "portal": {
+                        "id": "apo_0167f0d01165cbb56b55bc01fa",
+                        "object": "account_portal",
+                        "slug": "acme",
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
                     "created_at": "2026-05-10T00:00:00Z",
                     "updated_at": "2026-05-10T00:23:00Z"
                 },
@@ -5271,7 +5500,7 @@ export const apiTags: TagData[] = [
                     "api_version": "2026-01-01",
                     "client_ip": "198.51.100.7",
                     "user_agent": "Mozilla/5.0",
-                    "referrer": null,
+                    "referrer": "https://app.augno.com",
                     "error_code": null,
                     "error_message": null,
                     "occurred_at": "2026-05-10T00:00:00Z",
@@ -5280,10 +5509,67 @@ export const apiTags: TagData[] = [
                         "id": "ac_01148680966698341a9c0976db",
                         "object": "account",
                         "name": "Acme Inc.",
-                        "default_billing_address": null,
-                        "default_shipping_address": null,
-                        "branding": null,
-                        "portal": null,
+                        "default_billing_address": {
+                            "id": "ad_012100950cfaa34aa0e0ad7258",
+                            "object": "address",
+                            "name": "Headquarters",
+                            "phone": "+1-614-555-0142",
+                            "email": "receiving@acme.example.com",
+                            "type": "standard",
+                            "geolocation": {
+                                "id": "gl_013e4c26412103c6757ba71806",
+                                "object": "geolocation",
+                                "street_line_1": "4200 Industrial Pkwy",
+                                "street_line_2": null,
+                                "locality": "Columbus",
+                                "state": "OH",
+                                "postal_code": "43204",
+                                "country": "US"
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        },
+                        "default_shipping_address": {
+                            "id": "ad_012100950cfaa34aa0e0ad7258",
+                            "object": "address",
+                            "name": "Headquarters",
+                            "phone": "+1-614-555-0142",
+                            "email": "receiving@acme.example.com",
+                            "type": "standard",
+                            "geolocation": {
+                                "id": "gl_013e4c26412103c6757ba71806",
+                                "object": "geolocation",
+                                "street_line_1": "4200 Industrial Pkwy",
+                                "street_line_2": null,
+                                "locality": "Columbus",
+                                "state": "OH",
+                                "postal_code": "43204",
+                                "country": "US"
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        },
+                        "branding": {
+                            "id": "abr_01fa710842028837ac3ca9d590",
+                            "object": "account_branding",
+                            "support_email": "support@acme.example.com",
+                            "phone_number": "+1-614-555-0100",
+                            "logo_url": "https://cdn.augno.com/branding/abr_01fa710842028837ac3ca9d590/logo.png",
+                            "facebook_handle": "acmeinc",
+                            "instagram_handle": "acmeinc",
+                            "linkedin_handle": "acme-inc",
+                            "twitter_handle": "acmeinc",
+                            "website_url": "https://www.acme.example.com",
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        },
+                        "portal": {
+                            "id": "apo_0167f0d01165cbb56b55bc01fa",
+                            "object": "account_portal",
+                            "slug": "acme",
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        },
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
                     },
@@ -5293,7 +5579,7 @@ export const apiTags: TagData[] = [
                         "type": "user",
                         "name": "John Doe",
                         "handle": "jdoe@augno.com",
-                        "avatar_url": null,
+                        "avatar_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
                         "role": {
                             "id": "rl_01c16d2eb637c0d1f3a372937c",
                             "object": "role",
@@ -5337,7 +5623,7 @@ export const apiTags: TagData[] = [
                         }
                     }
                 },
-                "idempotency_key": null,
+                "idempotency_key": "3f2504e0-4f89-41d3-9a0c-0305e82c3301",
                 "source_ip": "198.51.100.8",
                 "occurred_at": "2026-05-10T00:00:00Z",
                 "created_at": "2026-05-10T00:00:00Z"
@@ -6652,10 +6938,67 @@ export const apiTags: TagData[] = [
                                         "id": "ac_01148680966698341a9c0976db",
                                         "object": "account",
                                         "name": "Acme Inc.",
-                                        "default_billing_address": null,
-                                        "default_shipping_address": null,
-                                        "branding": null,
-                                        "portal": null,
+                                        "default_billing_address": {
+                                            "id": "ad_012100950cfaa34aa0e0ad7258",
+                                            "object": "address",
+                                            "name": "Headquarters",
+                                            "phone": "+1-614-555-0142",
+                                            "email": "receiving@acme.example.com",
+                                            "type": "standard",
+                                            "geolocation": {
+                                                "id": "gl_013e4c26412103c6757ba71806",
+                                                "object": "geolocation",
+                                                "street_line_1": "4200 Industrial Pkwy",
+                                                "street_line_2": null,
+                                                "locality": "Columbus",
+                                                "state": "OH",
+                                                "postal_code": "43204",
+                                                "country": "US"
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "default_shipping_address": {
+                                            "id": "ad_012100950cfaa34aa0e0ad7258",
+                                            "object": "address",
+                                            "name": "Headquarters",
+                                            "phone": "+1-614-555-0142",
+                                            "email": "receiving@acme.example.com",
+                                            "type": "standard",
+                                            "geolocation": {
+                                                "id": "gl_013e4c26412103c6757ba71806",
+                                                "object": "geolocation",
+                                                "street_line_1": "4200 Industrial Pkwy",
+                                                "street_line_2": null,
+                                                "locality": "Columbus",
+                                                "state": "OH",
+                                                "postal_code": "43204",
+                                                "country": "US"
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "branding": {
+                                            "id": "abr_01fa710842028837ac3ca9d590",
+                                            "object": "account_branding",
+                                            "support_email": "support@acme.example.com",
+                                            "phone_number": "+1-614-555-0100",
+                                            "logo_url": "https://cdn.augno.com/branding/abr_01fa710842028837ac3ca9d590/logo.png",
+                                            "facebook_handle": "acmeinc",
+                                            "instagram_handle": "acmeinc",
+                                            "linkedin_handle": "acme-inc",
+                                            "twitter_handle": "acmeinc",
+                                            "website_url": "https://www.acme.example.com",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "portal": {
+                                            "id": "apo_0167f0d01165cbb56b55bc01fa",
+                                            "object": "account_portal",
+                                            "slug": "acme",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
@@ -6694,7 +7037,7 @@ export const apiTags: TagData[] = [
                                         "api_version": "2026-01-01",
                                         "client_ip": "198.51.100.7",
                                         "user_agent": "Mozilla/5.0",
-                                        "referrer": null,
+                                        "referrer": "https://app.augno.com",
                                         "error_code": null,
                                         "error_message": null,
                                         "occurred_at": "2026-05-10T00:00:00Z",
@@ -6703,10 +7046,67 @@ export const apiTags: TagData[] = [
                                             "id": "ac_01148680966698341a9c0976db",
                                             "object": "account",
                                             "name": "Acme Inc.",
-                                            "default_billing_address": null,
-                                            "default_shipping_address": null,
-                                            "branding": null,
-                                            "portal": null,
+                                            "default_billing_address": {
+                                                "id": "ad_012100950cfaa34aa0e0ad7258",
+                                                "object": "address",
+                                                "name": "Headquarters",
+                                                "phone": "+1-614-555-0142",
+                                                "email": "receiving@acme.example.com",
+                                                "type": "standard",
+                                                "geolocation": {
+                                                    "id": "gl_013e4c26412103c6757ba71806",
+                                                    "object": "geolocation",
+                                                    "street_line_1": "4200 Industrial Pkwy",
+                                                    "street_line_2": null,
+                                                    "locality": "Columbus",
+                                                    "state": "OH",
+                                                    "postal_code": "43204",
+                                                    "country": "US"
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "default_shipping_address": {
+                                                "id": "ad_012100950cfaa34aa0e0ad7258",
+                                                "object": "address",
+                                                "name": "Headquarters",
+                                                "phone": "+1-614-555-0142",
+                                                "email": "receiving@acme.example.com",
+                                                "type": "standard",
+                                                "geolocation": {
+                                                    "id": "gl_013e4c26412103c6757ba71806",
+                                                    "object": "geolocation",
+                                                    "street_line_1": "4200 Industrial Pkwy",
+                                                    "street_line_2": null,
+                                                    "locality": "Columbus",
+                                                    "state": "OH",
+                                                    "postal_code": "43204",
+                                                    "country": "US"
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "branding": {
+                                                "id": "abr_01fa710842028837ac3ca9d590",
+                                                "object": "account_branding",
+                                                "support_email": "support@acme.example.com",
+                                                "phone_number": "+1-614-555-0100",
+                                                "logo_url": "https://cdn.augno.com/branding/abr_01fa710842028837ac3ca9d590/logo.png",
+                                                "facebook_handle": "acmeinc",
+                                                "instagram_handle": "acmeinc",
+                                                "linkedin_handle": "acme-inc",
+                                                "twitter_handle": "acmeinc",
+                                                "website_url": "https://www.acme.example.com",
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "portal": {
+                                                "id": "apo_0167f0d01165cbb56b55bc01fa",
+                                                "object": "account_portal",
+                                                "slug": "acme",
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         },
@@ -6716,7 +7116,7 @@ export const apiTags: TagData[] = [
                                             "type": "user",
                                             "name": "John Doe",
                                             "handle": "jdoe@augno.com",
-                                            "avatar_url": null,
+                                            "avatar_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
                                             "role": {
                                                 "id": "rl_01c16d2eb637c0d1f3a372937c",
                                                 "object": "role",
@@ -6760,7 +7160,7 @@ export const apiTags: TagData[] = [
                                             }
                                         }
                                     },
-                                    "idempotency_key": null,
+                                    "idempotency_key": "3f2504e0-4f89-41d3-9a0c-0305e82c3301",
                                     "source_ip": "198.51.100.8",
                                     "occurred_at": "2026-05-10T00:00:00Z",
                                     "created_at": "2026-05-10T00:00:00Z"
@@ -8003,10 +8403,67 @@ export const apiTags: TagData[] = [
                                 "id": "ac_01148680966698341a9c0976db",
                                 "object": "account",
                                 "name": "Acme Inc.",
-                                "default_billing_address": null,
-                                "default_shipping_address": null,
-                                "branding": null,
-                                "portal": null,
+                                "default_billing_address": {
+                                    "id": "ad_012100950cfaa34aa0e0ad7258",
+                                    "object": "address",
+                                    "name": "Headquarters",
+                                    "phone": "+1-614-555-0142",
+                                    "email": "receiving@acme.example.com",
+                                    "type": "standard",
+                                    "geolocation": {
+                                        "id": "gl_013e4c26412103c6757ba71806",
+                                        "object": "geolocation",
+                                        "street_line_1": "4200 Industrial Pkwy",
+                                        "street_line_2": null,
+                                        "locality": "Columbus",
+                                        "state": "OH",
+                                        "postal_code": "43204",
+                                        "country": "US"
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "default_shipping_address": {
+                                    "id": "ad_012100950cfaa34aa0e0ad7258",
+                                    "object": "address",
+                                    "name": "Headquarters",
+                                    "phone": "+1-614-555-0142",
+                                    "email": "receiving@acme.example.com",
+                                    "type": "standard",
+                                    "geolocation": {
+                                        "id": "gl_013e4c26412103c6757ba71806",
+                                        "object": "geolocation",
+                                        "street_line_1": "4200 Industrial Pkwy",
+                                        "street_line_2": null,
+                                        "locality": "Columbus",
+                                        "state": "OH",
+                                        "postal_code": "43204",
+                                        "country": "US"
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "branding": {
+                                    "id": "abr_01fa710842028837ac3ca9d590",
+                                    "object": "account_branding",
+                                    "support_email": "support@acme.example.com",
+                                    "phone_number": "+1-614-555-0100",
+                                    "logo_url": "https://cdn.augno.com/branding/abr_01fa710842028837ac3ca9d590/logo.png",
+                                    "facebook_handle": "acmeinc",
+                                    "instagram_handle": "acmeinc",
+                                    "linkedin_handle": "acme-inc",
+                                    "twitter_handle": "acmeinc",
+                                    "website_url": "https://www.acme.example.com",
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "portal": {
+                                    "id": "apo_0167f0d01165cbb56b55bc01fa",
+                                    "object": "account_portal",
+                                    "slug": "acme",
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -8045,7 +8502,7 @@ export const apiTags: TagData[] = [
                                 "api_version": "2026-01-01",
                                 "client_ip": "198.51.100.7",
                                 "user_agent": "Mozilla/5.0",
-                                "referrer": null,
+                                "referrer": "https://app.augno.com",
                                 "error_code": null,
                                 "error_message": null,
                                 "occurred_at": "2026-05-10T00:00:00Z",
@@ -8054,10 +8511,67 @@ export const apiTags: TagData[] = [
                                     "id": "ac_01148680966698341a9c0976db",
                                     "object": "account",
                                     "name": "Acme Inc.",
-                                    "default_billing_address": null,
-                                    "default_shipping_address": null,
-                                    "branding": null,
-                                    "portal": null,
+                                    "default_billing_address": {
+                                        "id": "ad_012100950cfaa34aa0e0ad7258",
+                                        "object": "address",
+                                        "name": "Headquarters",
+                                        "phone": "+1-614-555-0142",
+                                        "email": "receiving@acme.example.com",
+                                        "type": "standard",
+                                        "geolocation": {
+                                            "id": "gl_013e4c26412103c6757ba71806",
+                                            "object": "geolocation",
+                                            "street_line_1": "4200 Industrial Pkwy",
+                                            "street_line_2": null,
+                                            "locality": "Columbus",
+                                            "state": "OH",
+                                            "postal_code": "43204",
+                                            "country": "US"
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "default_shipping_address": {
+                                        "id": "ad_012100950cfaa34aa0e0ad7258",
+                                        "object": "address",
+                                        "name": "Headquarters",
+                                        "phone": "+1-614-555-0142",
+                                        "email": "receiving@acme.example.com",
+                                        "type": "standard",
+                                        "geolocation": {
+                                            "id": "gl_013e4c26412103c6757ba71806",
+                                            "object": "geolocation",
+                                            "street_line_1": "4200 Industrial Pkwy",
+                                            "street_line_2": null,
+                                            "locality": "Columbus",
+                                            "state": "OH",
+                                            "postal_code": "43204",
+                                            "country": "US"
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "branding": {
+                                        "id": "abr_01fa710842028837ac3ca9d590",
+                                        "object": "account_branding",
+                                        "support_email": "support@acme.example.com",
+                                        "phone_number": "+1-614-555-0100",
+                                        "logo_url": "https://cdn.augno.com/branding/abr_01fa710842028837ac3ca9d590/logo.png",
+                                        "facebook_handle": "acmeinc",
+                                        "instagram_handle": "acmeinc",
+                                        "linkedin_handle": "acme-inc",
+                                        "twitter_handle": "acmeinc",
+                                        "website_url": "https://www.acme.example.com",
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "portal": {
+                                        "id": "apo_0167f0d01165cbb56b55bc01fa",
+                                        "object": "account_portal",
+                                        "slug": "acme",
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -8067,7 +8581,7 @@ export const apiTags: TagData[] = [
                                     "type": "user",
                                     "name": "John Doe",
                                     "handle": "jdoe@augno.com",
-                                    "avatar_url": null,
+                                    "avatar_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
                                     "role": {
                                         "id": "rl_01c16d2eb637c0d1f3a372937c",
                                         "object": "role",
@@ -8111,7 +8625,7 @@ export const apiTags: TagData[] = [
                                     }
                                 }
                             },
-                            "idempotency_key": null,
+                            "idempotency_key": "3f2504e0-4f89-41d3-9a0c-0305e82c3301",
                             "source_ip": "198.51.100.8",
                             "occurred_at": "2026-05-10T00:00:00Z",
                             "created_at": "2026-05-10T00:00:00Z"
@@ -8871,7 +9385,11 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Kilogram",
-                        "abbreviation": "kg"
+                        "abbreviation": "kg",
+                        "ratio_numerator": "1000",
+                        "ratio_denominator": "1",
+                        "offset_numerator": "0",
+                        "offset_denominator": "1"
                     }
                 },
                 "responses": [
@@ -10406,7 +10924,7 @@ export const apiTags: TagData[] = [
                 "id": "ug_01aad07abb8e41fd392d2d7013",
                 "object": "unit_group",
                 "name": "Weight",
-                "notes": null,
+                "notes": "Mass units used for ordering raw materials by weight.",
                 "type": "mass",
                 "base_unit": {
                     "id": "un_01966263f74a5a0cae356000a1",
@@ -10427,7 +10945,45 @@ export const apiTags: TagData[] = [
                     "created_at": "2026-05-10T00:00:00Z",
                     "updated_at": "2026-05-10T00:23:00Z"
                 },
-                "associated_units": null,
+                "associated_units": {
+                    "object": "list",
+                    "page_info": {
+                        "next_page_url": null,
+                        "previous_page_url": null,
+                        "has_next_page": false,
+                        "has_prev_page": false
+                    },
+                    "data": [
+                        {
+                            "id": "ugu_01d75e0598ed09be56fd39fab5",
+                            "object": "unit_group_unit",
+                            "unit": {
+                                "id": "un_01966263f74a5a0cae356000a1",
+                                "object": "unit",
+                                "name": "Kilogram",
+                                "abbreviation": "kg",
+                                "type": "mass",
+                                "ratio_numerator": "1000",
+                                "ratio_denominator": "1",
+                                "offset_numerator": "0",
+                                "offset_denominator": "1",
+                                "is_base_unit": false,
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "discount_percentage": 1,
+                            "discount_fixed": 0,
+                            "customer_portal_visibility": "visible",
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    ]
+                },
                 "owner": {
                     "object": "owner",
                     "type": "system",
@@ -10561,6 +11117,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Weight Units",
+                        "notes": "Used for raw-material weight tracking across the warehouse.",
                         "type": "mass",
                         "base_unit_id": "un_01966263f74a5a0cae356000a1",
                         "associated_units": [
@@ -11071,7 +11628,7 @@ export const apiTags: TagData[] = [
                             "id": "ug_01aad07abb8e41fd392d2d7013",
                             "object": "unit_group",
                             "name": "Weight",
-                            "notes": null,
+                            "notes": "Mass units used for ordering raw materials by weight.",
                             "type": "mass",
                             "base_unit": {
                                 "id": "un_01966263f74a5a0cae356000a1",
@@ -11092,7 +11649,45 @@ export const apiTags: TagData[] = [
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
-                            "associated_units": null,
+                            "associated_units": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                        "object": "unit_group_unit",
+                                        "unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "discount_percentage": 1,
+                                        "discount_fixed": 0,
+                                        "customer_portal_visibility": "visible",
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
                             "owner": {
                                 "object": "owner",
                                 "type": "system",
@@ -11215,7 +11810,16 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Weight Units (Updated)",
-                        "base_unit_id": "un_01966263f74a5a0cae356000a1"
+                        "notes": "Added kilogram association for metric orders.",
+                        "base_unit_id": "un_01966263f74a5a0cae356000a1",
+                        "associated_units": [
+                            {
+                                "unit_id": "un_01966263f74a5a0cae356000a1",
+                                "discount_percentage": 1,
+                                "discount_fixed": 0,
+                                "customer_portal_visibility": "visible"
+                            }
+                        ]
                     }
                 },
                 "responses": [
@@ -11716,7 +12320,7 @@ export const apiTags: TagData[] = [
                             "id": "ug_01aad07abb8e41fd392d2d7013",
                             "object": "unit_group",
                             "name": "Weight",
-                            "notes": null,
+                            "notes": "Mass units used for ordering raw materials by weight.",
                             "type": "mass",
                             "base_unit": {
                                 "id": "un_01966263f74a5a0cae356000a1",
@@ -11737,7 +12341,45 @@ export const apiTags: TagData[] = [
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
-                            "associated_units": null,
+                            "associated_units": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                        "object": "unit_group_unit",
+                                        "unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "discount_percentage": 1,
+                                        "discount_fixed": 0,
+                                        "customer_portal_visibility": "visible",
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
                             "owner": {
                                 "object": "owner",
                                 "type": "system",
@@ -12386,7 +13028,7 @@ export const apiTags: TagData[] = [
                                     "id": "ug_01aad07abb8e41fd392d2d7013",
                                     "object": "unit_group",
                                     "name": "Weight",
-                                    "notes": null,
+                                    "notes": "Mass units used for ordering raw materials by weight.",
                                     "type": "mass",
                                     "base_unit": {
                                         "id": "un_01966263f74a5a0cae356000a1",
@@ -12407,7 +13049,45 @@ export const apiTags: TagData[] = [
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
-                                    "associated_units": null,
+                                    "associated_units": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                "object": "unit_group_unit",
+                                                "unit": {
+                                                    "id": "un_01966263f74a5a0cae356000a1",
+                                                    "object": "unit",
+                                                    "name": "Kilogram",
+                                                    "abbreviation": "kg",
+                                                    "type": "mass",
+                                                    "ratio_numerator": "1000",
+                                                    "ratio_denominator": "1",
+                                                    "offset_numerator": "0",
+                                                    "offset_denominator": "1",
+                                                    "is_base_unit": false,
+                                                    "owner": {
+                                                        "object": "owner",
+                                                        "type": "system",
+                                                        "account": null
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "discount_percentage": 1,
+                                                "discount_fixed": 0,
+                                                "customer_portal_visibility": "visible",
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
                                     "owner": {
                                         "object": "owner",
                                         "type": "system",
@@ -12953,7 +13633,7 @@ export const apiTags: TagData[] = [
                             "id": "ug_01aad07abb8e41fd392d2d7013",
                             "object": "unit_group",
                             "name": "Weight",
-                            "notes": null,
+                            "notes": "Mass units used for ordering raw materials by weight.",
                             "type": "mass",
                             "base_unit": {
                                 "id": "un_01966263f74a5a0cae356000a1",
@@ -12974,7 +13654,45 @@ export const apiTags: TagData[] = [
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
-                            "associated_units": null,
+                            "associated_units": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                        "object": "unit_group_unit",
+                                        "unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "discount_percentage": 1,
+                                        "discount_fixed": 0,
+                                        "customer_portal_visibility": "visible",
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
                             "owner": {
                                 "object": "owner",
                                 "type": "system",
@@ -13412,7 +14130,9 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "unit_id": "un_01966263f74a5a0cae356000a1",
-                        "discount_percentage": 0.9
+                        "discount_percentage": 0.9,
+                        "discount_fixed": 2.5,
+                        "customer_portal_visibility": "visible"
                     }
                 },
                 "responses": [
@@ -14836,7 +15556,13 @@ export const apiTags: TagData[] = [
                     "avatar_url": null,
                     "role": null
                 },
-                "resource": null,
+                "resource": {
+                    "id": "or_01d5034136c3ccc048abecc312",
+                    "object": "entity",
+                    "type": "sales_order",
+                    "name": "SO-001",
+                    "handle": null
+                },
                 "seen_at": null,
                 "read_at": null,
                 "dismissed_at": null,
@@ -15200,7 +15926,11 @@ export const apiTags: TagData[] = [
                             "type": "account_user",
                             "id": "acus_01ea9983ddb41dacc44ecf997c"
                         },
-                        "title": "Order updated"
+                        "title": "Order updated",
+                        "body": "Order #1042 was updated.",
+                        "priority": "high",
+                        "link_resource_type": "sales_order",
+                        "link_resource_id": "or_01d5034136c3ccc048abecc312"
                     }
                 },
                 "responses": [
@@ -15923,7 +16653,13 @@ export const apiTags: TagData[] = [
                                         "avatar_url": null,
                                         "role": null
                                     },
-                                    "resource": null,
+                                    "resource": {
+                                        "id": "or_01d5034136c3ccc048abecc312",
+                                        "object": "entity",
+                                        "type": "sales_order",
+                                        "name": "SO-001",
+                                        "handle": null
+                                    },
                                     "seen_at": null,
                                     "read_at": null,
                                     "dismissed_at": null,
@@ -17002,7 +17738,13 @@ export const apiTags: TagData[] = [
                                 "avatar_url": null,
                                 "role": null
                             },
-                            "resource": null,
+                            "resource": {
+                                "id": "or_01d5034136c3ccc048abecc312",
+                                "object": "entity",
+                                "type": "sales_order",
+                                "name": "SO-001",
+                                "handle": null
+                            },
                             "seen_at": null,
                             "read_at": null,
                             "dismissed_at": null,
@@ -17584,7 +18326,13 @@ export const apiTags: TagData[] = [
                                 "avatar_url": null,
                                 "role": null
                             },
-                            "resource": null,
+                            "resource": {
+                                "id": "or_01d5034136c3ccc048abecc312",
+                                "object": "entity",
+                                "type": "sales_order",
+                                "name": "SO-001",
+                                "handle": null
+                            },
                             "seen_at": null,
                             "read_at": null,
                             "dismissed_at": null,
@@ -18144,7 +18892,13 @@ export const apiTags: TagData[] = [
                                 "avatar_url": null,
                                 "role": null
                             },
-                            "resource": null,
+                            "resource": {
+                                "id": "or_01d5034136c3ccc048abecc312",
+                                "object": "entity",
+                                "type": "sales_order",
+                                "name": "SO-001",
+                                "handle": null
+                            },
                             "seen_at": null,
                             "read_at": null,
                             "dismissed_at": null,
@@ -18704,7 +19458,13 @@ export const apiTags: TagData[] = [
                                 "avatar_url": null,
                                 "role": null
                             },
-                            "resource": null,
+                            "resource": {
+                                "id": "or_01d5034136c3ccc048abecc312",
+                                "object": "entity",
+                                "type": "sales_order",
+                                "name": "SO-001",
+                                "handle": null
+                            },
                             "seen_at": null,
                             "read_at": null,
                             "dismissed_at": null,
@@ -19183,9 +19943,15 @@ export const apiTags: TagData[] = [
                 "body": "The platform will be briefly unavailable tonight at 2am UTC.",
                 "status": "unseen",
                 "priority": "normal",
-                "resource": null,
+                "resource": {
+                    "id": "or_01d5034136c3ccc048abecc312",
+                    "object": "entity",
+                    "type": "sales_order",
+                    "name": "Order #1042",
+                    "handle": null
+                },
                 "publish_at": "2026-05-10T00:00:00Z",
-                "expires_at": null,
+                "expires_at": "2026-06-10T00:00:00Z",
                 "seen_at": null,
                 "read_at": null,
                 "dismissed_at": null,
@@ -19776,9 +20542,15 @@ export const apiTags: TagData[] = [
                                     "body": "The platform will be briefly unavailable tonight at 2am UTC.",
                                     "status": "unseen",
                                     "priority": "normal",
-                                    "resource": null,
+                                    "resource": {
+                                        "id": "or_01d5034136c3ccc048abecc312",
+                                        "object": "entity",
+                                        "type": "sales_order",
+                                        "name": "Order #1042",
+                                        "handle": null
+                                    },
                                     "publish_at": "2026-05-10T00:00:00Z",
-                                    "expires_at": null,
+                                    "expires_at": "2026-06-10T00:00:00Z",
                                     "seen_at": null,
                                     "read_at": null,
                                     "dismissed_at": null,
@@ -20283,9 +21055,15 @@ export const apiTags: TagData[] = [
                             "body": "The platform will be briefly unavailable tonight at 2am UTC.",
                             "status": "unseen",
                             "priority": "normal",
-                            "resource": null,
+                            "resource": {
+                                "id": "or_01d5034136c3ccc048abecc312",
+                                "object": "entity",
+                                "type": "sales_order",
+                                "name": "Order #1042",
+                                "handle": null
+                            },
                             "publish_at": "2026-05-10T00:00:00Z",
-                            "expires_at": null,
+                            "expires_at": "2026-06-10T00:00:00Z",
                             "seen_at": null,
                             "read_at": null,
                             "dismissed_at": null,
@@ -20788,9 +21566,15 @@ export const apiTags: TagData[] = [
                             "body": "The platform will be briefly unavailable tonight at 2am UTC.",
                             "status": "unseen",
                             "priority": "normal",
-                            "resource": null,
+                            "resource": {
+                                "id": "or_01d5034136c3ccc048abecc312",
+                                "object": "entity",
+                                "type": "sales_order",
+                                "name": "Order #1042",
+                                "handle": null
+                            },
                             "publish_at": "2026-05-10T00:00:00Z",
-                            "expires_at": null,
+                            "expires_at": "2026-06-10T00:00:00Z",
                             "seen_at": null,
                             "read_at": null,
                             "dismissed_at": null,
@@ -21293,9 +22077,15 @@ export const apiTags: TagData[] = [
                             "body": "The platform will be briefly unavailable tonight at 2am UTC.",
                             "status": "unseen",
                             "priority": "normal",
-                            "resource": null,
+                            "resource": {
+                                "id": "or_01d5034136c3ccc048abecc312",
+                                "object": "entity",
+                                "type": "sales_order",
+                                "name": "Order #1042",
+                                "handle": null
+                            },
                             "publish_at": "2026-05-10T00:00:00Z",
-                            "expires_at": null,
+                            "expires_at": "2026-06-10T00:00:00Z",
                             "seen_at": null,
                             "read_at": null,
                             "dismissed_at": null,
@@ -21798,9 +22588,15 @@ export const apiTags: TagData[] = [
                             "body": "The platform will be briefly unavailable tonight at 2am UTC.",
                             "status": "unseen",
                             "priority": "normal",
-                            "resource": null,
+                            "resource": {
+                                "id": "or_01d5034136c3ccc048abecc312",
+                                "object": "entity",
+                                "type": "sales_order",
+                                "name": "Order #1042",
+                                "handle": null
+                            },
                             "publish_at": "2026-05-10T00:00:00Z",
-                            "expires_at": null,
+                            "expires_at": "2026-06-10T00:00:00Z",
                             "seen_at": null,
                             "read_at": null,
                             "dismissed_at": null,
@@ -23423,7 +24219,39 @@ export const apiTags: TagData[] = [
                 "topic": null,
                 "unread": 2,
                 "last_message_at": "2026-05-10T00:23:00Z",
-                "last_message": null,
+                "last_message": {
+                    "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                    "object": "chat_message",
+                    "kind": "chat",
+                    "status": "sent",
+                    "visibility": "internal",
+                    "conversation": null,
+                    "sequence": 42,
+                    "body": "Sounds good — shipping it today.",
+                    "subject": null,
+                    "sender": {
+                        "id": "acus_01ea9983ddb41dacc44ecf997c",
+                        "object": "actor",
+                        "type": "user",
+                        "name": "Jie Yan",
+                        "handle": null,
+                        "avatar_url": null,
+                        "role": null
+                    },
+                    "author": null,
+                    "attachments": null,
+                    "reply_to": null,
+                    "resource": null,
+                    "channel": "message",
+                    "scheduled_at": null,
+                    "agent_run": null,
+                    "streaming_state": null,
+                    "client_message_id": null,
+                    "edited_at": null,
+                    "deleted_at": null,
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
+                },
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             },
@@ -23760,10 +24588,14 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "type": "direct_message",
+                        "type": "group",
                         "participant_account_user_ids": [
                             "acus_01ea9983ddb41dacc44ecf997c"
-                        ]
+                        ],
+                        "group_id": "cvgp_018e88072d1320808dc97abc",
+                        "title": "Order #1042 — shipping question",
+                        "topic_resource_type": "sales_order",
+                        "topic_resource_id": "or_01d5034136c3ccc048abecc312"
                     }
                 },
                 "responses": [
@@ -25372,7 +26204,39 @@ export const apiTags: TagData[] = [
                             "topic": null,
                             "unread": 2,
                             "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
+                            "last_message": {
+                                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                "object": "chat_message",
+                                "kind": "chat",
+                                "status": "sent",
+                                "visibility": "internal",
+                                "conversation": null,
+                                "sequence": 42,
+                                "body": "Sounds good — shipping it today.",
+                                "subject": null,
+                                "sender": {
+                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "Jie Yan",
+                                    "handle": null,
+                                    "avatar_url": null,
+                                    "role": null
+                                },
+                                "author": null,
+                                "attachments": null,
+                                "reply_to": null,
+                                "resource": null,
+                                "channel": "message",
+                                "scheduled_at": null,
+                                "agent_run": null,
+                                "streaming_state": null,
+                                "client_message_id": null,
+                                "edited_at": null,
+                                "deleted_at": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -27041,7 +27905,39 @@ export const apiTags: TagData[] = [
                             "topic": null,
                             "unread": 2,
                             "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
+                            "last_message": {
+                                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                "object": "chat_message",
+                                "kind": "chat",
+                                "status": "sent",
+                                "visibility": "internal",
+                                "conversation": null,
+                                "sequence": 42,
+                                "body": "Sounds good — shipping it today.",
+                                "subject": null,
+                                "sender": {
+                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "Jie Yan",
+                                    "handle": null,
+                                    "avatar_url": null,
+                                    "role": null
+                                },
+                                "author": null,
+                                "attachments": null,
+                                "reply_to": null,
+                                "resource": null,
+                                "channel": "message",
+                                "scheduled_at": null,
+                                "agent_run": null,
+                                "streaming_state": null,
+                                "client_message_id": null,
+                                "edited_at": null,
+                                "deleted_at": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -29104,7 +30000,39 @@ export const apiTags: TagData[] = [
                                     "topic": null,
                                     "unread": 2,
                                     "last_message_at": "2026-05-10T00:23:00Z",
-                                    "last_message": null,
+                                    "last_message": {
+                                        "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                        "object": "chat_message",
+                                        "kind": "chat",
+                                        "status": "sent",
+                                        "visibility": "internal",
+                                        "conversation": null,
+                                        "sequence": 42,
+                                        "body": "Sounds good — shipping it today.",
+                                        "subject": null,
+                                        "sender": {
+                                            "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                            "object": "actor",
+                                            "type": "user",
+                                            "name": "Jie Yan",
+                                            "handle": null,
+                                            "avatar_url": null,
+                                            "role": null
+                                        },
+                                        "author": null,
+                                        "attachments": null,
+                                        "reply_to": null,
+                                        "resource": null,
+                                        "channel": "message",
+                                        "scheduled_at": null,
+                                        "agent_run": null,
+                                        "streaming_state": null,
+                                        "client_message_id": null,
+                                        "edited_at": null,
+                                        "deleted_at": null,
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -30759,7 +31687,39 @@ export const apiTags: TagData[] = [
                             "topic": null,
                             "unread": 2,
                             "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
+                            "last_message": {
+                                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                "object": "chat_message",
+                                "kind": "chat",
+                                "status": "sent",
+                                "visibility": "internal",
+                                "conversation": null,
+                                "sequence": 42,
+                                "body": "Sounds good — shipping it today.",
+                                "subject": null,
+                                "sender": {
+                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "Jie Yan",
+                                    "handle": null,
+                                    "avatar_url": null,
+                                    "role": null
+                                },
+                                "author": null,
+                                "attachments": null,
+                                "reply_to": null,
+                                "resource": null,
+                                "channel": "message",
+                                "scheduled_at": null,
+                                "agent_run": null,
+                                "streaming_state": null,
+                                "client_message_id": null,
+                                "edited_at": null,
+                                "deleted_at": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -33010,7 +33970,39 @@ export const apiTags: TagData[] = [
                                 "topic": null,
                                 "unread": 2,
                                 "last_message_at": "2026-05-10T00:23:00Z",
-                                "last_message": null,
+                                "last_message": {
+                                    "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                    "object": "chat_message",
+                                    "kind": "chat",
+                                    "status": "sent",
+                                    "visibility": "internal",
+                                    "conversation": null,
+                                    "sequence": 42,
+                                    "body": "Sounds good — shipping it today.",
+                                    "subject": null,
+                                    "sender": {
+                                        "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                        "object": "actor",
+                                        "type": "user",
+                                        "name": "Jie Yan",
+                                        "handle": null,
+                                        "avatar_url": null,
+                                        "role": null
+                                    },
+                                    "author": null,
+                                    "attachments": null,
+                                    "reply_to": null,
+                                    "resource": null,
+                                    "channel": "message",
+                                    "scheduled_at": null,
+                                    "agent_run": null,
+                                    "streaming_state": null,
+                                    "client_message_id": null,
+                                    "edited_at": null,
+                                    "deleted_at": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -35081,7 +36073,39 @@ export const apiTags: TagData[] = [
                                         "topic": null,
                                         "unread": 2,
                                         "last_message_at": "2026-05-10T00:23:00Z",
-                                        "last_message": null,
+                                        "last_message": {
+                                            "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                            "object": "chat_message",
+                                            "kind": "chat",
+                                            "status": "sent",
+                                            "visibility": "internal",
+                                            "conversation": null,
+                                            "sequence": 42,
+                                            "body": "Sounds good — shipping it today.",
+                                            "subject": null,
+                                            "sender": {
+                                                "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                                "object": "actor",
+                                                "type": "user",
+                                                "name": "Jie Yan",
+                                                "handle": null,
+                                                "avatar_url": null,
+                                                "role": null
+                                            },
+                                            "author": null,
+                                            "attachments": null,
+                                            "reply_to": null,
+                                            "resource": null,
+                                            "channel": "message",
+                                            "scheduled_at": null,
+                                            "agent_run": null,
+                                            "streaming_state": null,
+                                            "client_message_id": null,
+                                            "edited_at": null,
+                                            "deleted_at": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
@@ -36782,7 +37806,39 @@ export const apiTags: TagData[] = [
                             "topic": null,
                             "unread": 2,
                             "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
+                            "last_message": {
+                                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                "object": "chat_message",
+                                "kind": "chat",
+                                "status": "sent",
+                                "visibility": "internal",
+                                "conversation": null,
+                                "sequence": 42,
+                                "body": "Sounds good — shipping it today.",
+                                "subject": null,
+                                "sender": {
+                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "Jie Yan",
+                                    "handle": null,
+                                    "avatar_url": null,
+                                    "role": null
+                                },
+                                "author": null,
+                                "attachments": null,
+                                "reply_to": null,
+                                "resource": null,
+                                "channel": "message",
+                                "scheduled_at": null,
+                                "agent_run": null,
+                                "streaming_state": null,
+                                "client_message_id": null,
+                                "edited_at": null,
+                                "deleted_at": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -38460,7 +39516,39 @@ export const apiTags: TagData[] = [
                             "topic": null,
                             "unread": 2,
                             "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
+                            "last_message": {
+                                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                "object": "chat_message",
+                                "kind": "chat",
+                                "status": "sent",
+                                "visibility": "internal",
+                                "conversation": null,
+                                "sequence": 42,
+                                "body": "Sounds good — shipping it today.",
+                                "subject": null,
+                                "sender": {
+                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "Jie Yan",
+                                    "handle": null,
+                                    "avatar_url": null,
+                                    "role": null
+                                },
+                                "author": null,
+                                "attachments": null,
+                                "reply_to": null,
+                                "resource": null,
+                                "channel": "message",
+                                "scheduled_at": null,
+                                "agent_run": null,
+                                "streaming_state": null,
+                                "client_message_id": null,
+                                "edited_at": null,
+                                "deleted_at": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -40113,7 +41201,39 @@ export const apiTags: TagData[] = [
                             "topic": null,
                             "unread": 2,
                             "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
+                            "last_message": {
+                                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                "object": "chat_message",
+                                "kind": "chat",
+                                "status": "sent",
+                                "visibility": "internal",
+                                "conversation": null,
+                                "sequence": 42,
+                                "body": "Sounds good — shipping it today.",
+                                "subject": null,
+                                "sender": {
+                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "Jie Yan",
+                                    "handle": null,
+                                    "avatar_url": null,
+                                    "role": null
+                                },
+                                "author": null,
+                                "attachments": null,
+                                "reply_to": null,
+                                "resource": null,
+                                "channel": "message",
+                                "scheduled_at": null,
+                                "agent_run": null,
+                                "streaming_state": null,
+                                "client_message_id": null,
+                                "edited_at": null,
+                                "deleted_at": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -41766,7 +42886,39 @@ export const apiTags: TagData[] = [
                             "topic": null,
                             "unread": 2,
                             "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
+                            "last_message": {
+                                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                "object": "chat_message",
+                                "kind": "chat",
+                                "status": "sent",
+                                "visibility": "internal",
+                                "conversation": null,
+                                "sequence": 42,
+                                "body": "Sounds good — shipping it today.",
+                                "subject": null,
+                                "sender": {
+                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "Jie Yan",
+                                    "handle": null,
+                                    "avatar_url": null,
+                                    "role": null
+                                },
+                                "author": null,
+                                "attachments": null,
+                                "reply_to": null,
+                                "resource": null,
+                                "channel": "message",
+                                "scheduled_at": null,
+                                "agent_run": null,
+                                "streaming_state": null,
+                                "client_message_id": null,
+                                "edited_at": null,
+                                "deleted_at": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -43436,7 +44588,39 @@ export const apiTags: TagData[] = [
                             "topic": null,
                             "unread": 2,
                             "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
+                            "last_message": {
+                                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                "object": "chat_message",
+                                "kind": "chat",
+                                "status": "sent",
+                                "visibility": "internal",
+                                "conversation": null,
+                                "sequence": 42,
+                                "body": "Sounds good — shipping it today.",
+                                "subject": null,
+                                "sender": {
+                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "Jie Yan",
+                                    "handle": null,
+                                    "avatar_url": null,
+                                    "role": null
+                                },
+                                "author": null,
+                                "attachments": null,
+                                "reply_to": null,
+                                "resource": null,
+                                "channel": "message",
+                                "scheduled_at": null,
+                                "agent_run": null,
+                                "streaming_state": null,
+                                "client_message_id": null,
+                                "edited_at": null,
+                                "deleted_at": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -45105,7 +46289,39 @@ export const apiTags: TagData[] = [
                             "topic": null,
                             "unread": 2,
                             "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
+                            "last_message": {
+                                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                "object": "chat_message",
+                                "kind": "chat",
+                                "status": "sent",
+                                "visibility": "internal",
+                                "conversation": null,
+                                "sequence": 42,
+                                "body": "Sounds good — shipping it today.",
+                                "subject": null,
+                                "sender": {
+                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "Jie Yan",
+                                    "handle": null,
+                                    "avatar_url": null,
+                                    "role": null
+                                },
+                                "author": null,
+                                "attachments": null,
+                                "reply_to": null,
+                                "resource": null,
+                                "channel": "message",
+                                "scheduled_at": null,
+                                "agent_run": null,
+                                "streaming_state": null,
+                                "client_message_id": null,
+                                "edited_at": null,
+                                "deleted_at": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -46758,7 +47974,39 @@ export const apiTags: TagData[] = [
                             "topic": null,
                             "unread": 2,
                             "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
+                            "last_message": {
+                                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                "object": "chat_message",
+                                "kind": "chat",
+                                "status": "sent",
+                                "visibility": "internal",
+                                "conversation": null,
+                                "sequence": 42,
+                                "body": "Sounds good — shipping it today.",
+                                "subject": null,
+                                "sender": {
+                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "Jie Yan",
+                                    "handle": null,
+                                    "avatar_url": null,
+                                    "role": null
+                                },
+                                "author": null,
+                                "attachments": null,
+                                "reply_to": null,
+                                "resource": null,
+                                "channel": "message",
+                                "scheduled_at": null,
+                                "agent_run": null,
+                                "streaming_state": null,
+                                "client_message_id": null,
+                                "edited_at": null,
+                                "deleted_at": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -48436,7 +49684,39 @@ export const apiTags: TagData[] = [
                             "topic": null,
                             "unread": 2,
                             "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
+                            "last_message": {
+                                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                "object": "chat_message",
+                                "kind": "chat",
+                                "status": "sent",
+                                "visibility": "internal",
+                                "conversation": null,
+                                "sequence": 42,
+                                "body": "Sounds good — shipping it today.",
+                                "subject": null,
+                                "sender": {
+                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "Jie Yan",
+                                    "handle": null,
+                                    "avatar_url": null,
+                                    "role": null
+                                },
+                                "author": null,
+                                "attachments": null,
+                                "reply_to": null,
+                                "resource": null,
+                                "channel": "message",
+                                "scheduled_at": null,
+                                "agent_run": null,
+                                "streaming_state": null,
+                                "client_message_id": null,
+                                "edited_at": null,
+                                "deleted_at": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -50109,7 +51389,39 @@ export const apiTags: TagData[] = [
                             "topic": null,
                             "unread": 2,
                             "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
+                            "last_message": {
+                                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                "object": "chat_message",
+                                "kind": "chat",
+                                "status": "sent",
+                                "visibility": "internal",
+                                "conversation": null,
+                                "sequence": 42,
+                                "body": "Sounds good — shipping it today.",
+                                "subject": null,
+                                "sender": {
+                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "Jie Yan",
+                                    "handle": null,
+                                    "avatar_url": null,
+                                    "role": null
+                                },
+                                "author": null,
+                                "attachments": null,
+                                "reply_to": null,
+                                "resource": null,
+                                "channel": "message",
+                                "scheduled_at": null,
+                                "agent_run": null,
+                                "streaming_state": null,
+                                "client_message_id": null,
+                                "edited_at": null,
+                                "deleted_at": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -51786,7 +53098,39 @@ export const apiTags: TagData[] = [
                             "topic": null,
                             "unread": 2,
                             "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
+                            "last_message": {
+                                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                "object": "chat_message",
+                                "kind": "chat",
+                                "status": "sent",
+                                "visibility": "internal",
+                                "conversation": null,
+                                "sequence": 42,
+                                "body": "Sounds good — shipping it today.",
+                                "subject": null,
+                                "sender": {
+                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "Jie Yan",
+                                    "handle": null,
+                                    "avatar_url": null,
+                                    "role": null
+                                },
+                                "author": null,
+                                "attachments": null,
+                                "reply_to": null,
+                                "resource": null,
+                                "channel": "message",
+                                "scheduled_at": null,
+                                "agent_run": null,
+                                "streaming_state": null,
+                                "client_message_id": null,
+                                "edited_at": null,
+                                "deleted_at": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -53439,7 +54783,39 @@ export const apiTags: TagData[] = [
                             "topic": null,
                             "unread": 2,
                             "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
+                            "last_message": {
+                                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                "object": "chat_message",
+                                "kind": "chat",
+                                "status": "sent",
+                                "visibility": "internal",
+                                "conversation": null,
+                                "sequence": 42,
+                                "body": "Sounds good — shipping it today.",
+                                "subject": null,
+                                "sender": {
+                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "Jie Yan",
+                                    "handle": null,
+                                    "avatar_url": null,
+                                    "role": null
+                                },
+                                "author": null,
+                                "attachments": null,
+                                "reply_to": null,
+                                "resource": null,
+                                "channel": "message",
+                                "scheduled_at": null,
+                                "agent_run": null,
+                                "streaming_state": null,
+                                "client_message_id": null,
+                                "edited_at": null,
+                                "deleted_at": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -55092,7 +56468,39 @@ export const apiTags: TagData[] = [
                             "topic": null,
                             "unread": 2,
                             "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
+                            "last_message": {
+                                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                "object": "chat_message",
+                                "kind": "chat",
+                                "status": "sent",
+                                "visibility": "internal",
+                                "conversation": null,
+                                "sequence": 42,
+                                "body": "Sounds good — shipping it today.",
+                                "subject": null,
+                                "sender": {
+                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "Jie Yan",
+                                    "handle": null,
+                                    "avatar_url": null,
+                                    "role": null
+                                },
+                                "author": null,
+                                "attachments": null,
+                                "reply_to": null,
+                                "resource": null,
+                                "channel": "message",
+                                "scheduled_at": null,
+                                "agent_run": null,
+                                "streaming_state": null,
+                                "client_message_id": null,
+                                "edited_at": null,
+                                "deleted_at": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -56745,7 +58153,39 @@ export const apiTags: TagData[] = [
                             "topic": null,
                             "unread": 2,
                             "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
+                            "last_message": {
+                                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                "object": "chat_message",
+                                "kind": "chat",
+                                "status": "sent",
+                                "visibility": "internal",
+                                "conversation": null,
+                                "sequence": 42,
+                                "body": "Sounds good — shipping it today.",
+                                "subject": null,
+                                "sender": {
+                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "Jie Yan",
+                                    "handle": null,
+                                    "avatar_url": null,
+                                    "role": null
+                                },
+                                "author": null,
+                                "attachments": null,
+                                "reply_to": null,
+                                "resource": null,
+                                "channel": "message",
+                                "scheduled_at": null,
+                                "agent_run": null,
+                                "streaming_state": null,
+                                "client_message_id": null,
+                                "edited_at": null,
+                                "deleted_at": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -59619,7 +61059,39 @@ export const apiTags: TagData[] = [
                             "topic": null,
                             "unread": 2,
                             "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
+                            "last_message": {
+                                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                "object": "chat_message",
+                                "kind": "chat",
+                                "status": "sent",
+                                "visibility": "internal",
+                                "conversation": null,
+                                "sequence": 42,
+                                "body": "Sounds good — shipping it today.",
+                                "subject": null,
+                                "sender": {
+                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "Jie Yan",
+                                    "handle": null,
+                                    "avatar_url": null,
+                                    "role": null
+                                },
+                                "author": null,
+                                "attachments": null,
+                                "reply_to": null,
+                                "resource": null,
+                                "channel": "message",
+                                "scheduled_at": null,
+                                "agent_run": null,
+                                "streaming_state": null,
+                                "client_message_id": null,
+                                "edited_at": null,
+                                "deleted_at": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         },
@@ -59667,7 +61139,13 @@ export const apiTags: TagData[] = [
                             ]
                         },
                         "reply_to": null,
-                        "resource": null,
+                        "resource": {
+                            "id": "or_01d5034136c3ccc048abecc312",
+                            "object": "entity",
+                            "type": "sales_order",
+                            "name": "Order #1042",
+                            "handle": null
+                        },
                         "channel": "message",
                         "scheduled_at": null,
                         "agent_run": null,
@@ -59747,7 +61225,8 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "body": "Hi Joe — good news, your order ships tomorrow."
+                        "body": "Hi Joe — good news, your order ships tomorrow.",
+                        "subject": "Re: Order #1042"
                     }
                 },
                 "responses": [
@@ -61867,7 +63346,39 @@ export const apiTags: TagData[] = [
                                 "topic": null,
                                 "unread": 2,
                                 "last_message_at": "2026-05-10T00:23:00Z",
-                                "last_message": null,
+                                "last_message": {
+                                    "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                    "object": "chat_message",
+                                    "kind": "chat",
+                                    "status": "sent",
+                                    "visibility": "internal",
+                                    "conversation": null,
+                                    "sequence": 42,
+                                    "body": "Sounds good — shipping it today.",
+                                    "subject": null,
+                                    "sender": {
+                                        "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                        "object": "actor",
+                                        "type": "user",
+                                        "name": "Jie Yan",
+                                        "handle": null,
+                                        "avatar_url": null,
+                                        "role": null
+                                    },
+                                    "author": null,
+                                    "attachments": null,
+                                    "reply_to": null,
+                                    "resource": null,
+                                    "channel": "message",
+                                    "scheduled_at": null,
+                                    "agent_run": null,
+                                    "streaming_state": null,
+                                    "client_message_id": null,
+                                    "edited_at": null,
+                                    "deleted_at": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -61915,7 +63426,13 @@ export const apiTags: TagData[] = [
                                 ]
                             },
                             "reply_to": null,
-                            "resource": null,
+                            "resource": {
+                                "id": "or_01d5034136c3ccc048abecc312",
+                                "object": "entity",
+                                "type": "sales_order",
+                                "name": "Order #1042",
+                                "handle": null
+                            },
                             "channel": "message",
                             "scheduled_at": null,
                             "agent_run": null,
@@ -62416,7 +63933,31 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "body": "Sounds good — shipping it today.",
-                        "client_message_id": "client_msg_8c7d2f"
+                        "mode": "send",
+                        "channel": "email",
+                        "source_thread_message_id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                        "client_message_id": "client_msg_8c7d2f",
+                        "audience": "customer",
+                        "subject": "Re: Order #1042",
+                        "cc": [
+                            "ap@acme.com"
+                        ],
+                        "scheduled_at": "2026-05-10T15:00:00Z",
+                        "reply_to_message_id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                        "link_resource_type": "sales_order",
+                        "link_resource_id": "or_01d5034136c3ccc048abecc312",
+                        "attachments": [
+                            {
+                                "kind": "file",
+                                "s3_key": "uploads/acme/quote.pdf",
+                                "filename": "quote.pdf",
+                                "content_type": "application/pdf",
+                                "size_bytes": 20480
+                            }
+                        ],
+                        "mentions": [
+                            "acus_01ea9983ddb41dacc44ecf997c"
+                        ]
                     }
                 },
                 "responses": [
@@ -64536,7 +66077,39 @@ export const apiTags: TagData[] = [
                                 "topic": null,
                                 "unread": 2,
                                 "last_message_at": "2026-05-10T00:23:00Z",
-                                "last_message": null,
+                                "last_message": {
+                                    "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                    "object": "chat_message",
+                                    "kind": "chat",
+                                    "status": "sent",
+                                    "visibility": "internal",
+                                    "conversation": null,
+                                    "sequence": 42,
+                                    "body": "Sounds good — shipping it today.",
+                                    "subject": null,
+                                    "sender": {
+                                        "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                        "object": "actor",
+                                        "type": "user",
+                                        "name": "Jie Yan",
+                                        "handle": null,
+                                        "avatar_url": null,
+                                        "role": null
+                                    },
+                                    "author": null,
+                                    "attachments": null,
+                                    "reply_to": null,
+                                    "resource": null,
+                                    "channel": "message",
+                                    "scheduled_at": null,
+                                    "agent_run": null,
+                                    "streaming_state": null,
+                                    "client_message_id": null,
+                                    "edited_at": null,
+                                    "deleted_at": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -64584,7 +66157,13 @@ export const apiTags: TagData[] = [
                                 ]
                             },
                             "reply_to": null,
-                            "resource": null,
+                            "resource": {
+                                "id": "or_01d5034136c3ccc048abecc312",
+                                "object": "entity",
+                                "type": "sales_order",
+                                "name": "Order #1042",
+                                "handle": null
+                            },
                             "channel": "message",
                             "scheduled_at": null,
                             "agent_run": null,
@@ -66876,7 +68455,39 @@ export const apiTags: TagData[] = [
                                         "topic": null,
                                         "unread": 2,
                                         "last_message_at": "2026-05-10T00:23:00Z",
-                                        "last_message": null,
+                                        "last_message": {
+                                            "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                            "object": "chat_message",
+                                            "kind": "chat",
+                                            "status": "sent",
+                                            "visibility": "internal",
+                                            "conversation": null,
+                                            "sequence": 42,
+                                            "body": "Sounds good — shipping it today.",
+                                            "subject": null,
+                                            "sender": {
+                                                "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                                "object": "actor",
+                                                "type": "user",
+                                                "name": "Jie Yan",
+                                                "handle": null,
+                                                "avatar_url": null,
+                                                "role": null
+                                            },
+                                            "author": null,
+                                            "attachments": null,
+                                            "reply_to": null,
+                                            "resource": null,
+                                            "channel": "message",
+                                            "scheduled_at": null,
+                                            "agent_run": null,
+                                            "streaming_state": null,
+                                            "client_message_id": null,
+                                            "edited_at": null,
+                                            "deleted_at": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
@@ -66924,7 +68535,13 @@ export const apiTags: TagData[] = [
                                         ]
                                     },
                                     "reply_to": null,
-                                    "resource": null,
+                                    "resource": {
+                                        "id": "or_01d5034136c3ccc048abecc312",
+                                        "object": "entity",
+                                        "type": "sales_order",
+                                        "name": "Order #1042",
+                                        "handle": null
+                                    },
                                     "channel": "message",
                                     "scheduled_at": null,
                                     "agent_run": null,
@@ -69116,7 +70733,39 @@ export const apiTags: TagData[] = [
                                 "topic": null,
                                 "unread": 2,
                                 "last_message_at": "2026-05-10T00:23:00Z",
-                                "last_message": null,
+                                "last_message": {
+                                    "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                    "object": "chat_message",
+                                    "kind": "chat",
+                                    "status": "sent",
+                                    "visibility": "internal",
+                                    "conversation": null,
+                                    "sequence": 42,
+                                    "body": "Sounds good — shipping it today.",
+                                    "subject": null,
+                                    "sender": {
+                                        "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                        "object": "actor",
+                                        "type": "user",
+                                        "name": "Jie Yan",
+                                        "handle": null,
+                                        "avatar_url": null,
+                                        "role": null
+                                    },
+                                    "author": null,
+                                    "attachments": null,
+                                    "reply_to": null,
+                                    "resource": null,
+                                    "channel": "message",
+                                    "scheduled_at": null,
+                                    "agent_run": null,
+                                    "streaming_state": null,
+                                    "client_message_id": null,
+                                    "edited_at": null,
+                                    "deleted_at": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -69164,7 +70813,13 @@ export const apiTags: TagData[] = [
                                 ]
                             },
                             "reply_to": null,
-                            "resource": null,
+                            "resource": {
+                                "id": "or_01d5034136c3ccc048abecc312",
+                                "object": "entity",
+                                "type": "sales_order",
+                                "name": "Order #1042",
+                                "handle": null
+                            },
                             "channel": "message",
                             "scheduled_at": null,
                             "agent_run": null,
@@ -71338,7 +72993,39 @@ export const apiTags: TagData[] = [
                                 "topic": null,
                                 "unread": 2,
                                 "last_message_at": "2026-05-10T00:23:00Z",
-                                "last_message": null,
+                                "last_message": {
+                                    "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                    "object": "chat_message",
+                                    "kind": "chat",
+                                    "status": "sent",
+                                    "visibility": "internal",
+                                    "conversation": null,
+                                    "sequence": 42,
+                                    "body": "Sounds good — shipping it today.",
+                                    "subject": null,
+                                    "sender": {
+                                        "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                        "object": "actor",
+                                        "type": "user",
+                                        "name": "Jie Yan",
+                                        "handle": null,
+                                        "avatar_url": null,
+                                        "role": null
+                                    },
+                                    "author": null,
+                                    "attachments": null,
+                                    "reply_to": null,
+                                    "resource": null,
+                                    "channel": "message",
+                                    "scheduled_at": null,
+                                    "agent_run": null,
+                                    "streaming_state": null,
+                                    "client_message_id": null,
+                                    "edited_at": null,
+                                    "deleted_at": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -71386,7 +73073,13 @@ export const apiTags: TagData[] = [
                                 ]
                             },
                             "reply_to": null,
-                            "resource": null,
+                            "resource": {
+                                "id": "or_01d5034136c3ccc048abecc312",
+                                "object": "entity",
+                                "type": "sales_order",
+                                "name": "Order #1042",
+                                "handle": null
+                            },
                             "channel": "message",
                             "scheduled_at": null,
                             "agent_run": null,
@@ -73560,7 +75253,39 @@ export const apiTags: TagData[] = [
                                 "topic": null,
                                 "unread": 2,
                                 "last_message_at": "2026-05-10T00:23:00Z",
-                                "last_message": null,
+                                "last_message": {
+                                    "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                    "object": "chat_message",
+                                    "kind": "chat",
+                                    "status": "sent",
+                                    "visibility": "internal",
+                                    "conversation": null,
+                                    "sequence": 42,
+                                    "body": "Sounds good — shipping it today.",
+                                    "subject": null,
+                                    "sender": {
+                                        "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                        "object": "actor",
+                                        "type": "user",
+                                        "name": "Jie Yan",
+                                        "handle": null,
+                                        "avatar_url": null,
+                                        "role": null
+                                    },
+                                    "author": null,
+                                    "attachments": null,
+                                    "reply_to": null,
+                                    "resource": null,
+                                    "channel": "message",
+                                    "scheduled_at": null,
+                                    "agent_run": null,
+                                    "streaming_state": null,
+                                    "client_message_id": null,
+                                    "edited_at": null,
+                                    "deleted_at": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -73608,7 +75333,13 @@ export const apiTags: TagData[] = [
                                 ]
                             },
                             "reply_to": null,
-                            "resource": null,
+                            "resource": {
+                                "id": "or_01d5034136c3ccc048abecc312",
+                                "object": "entity",
+                                "type": "sales_order",
+                                "name": "Order #1042",
+                                "handle": null
+                            },
                             "channel": "message",
                             "scheduled_at": null,
                             "agent_run": null,
@@ -75179,7 +76910,39 @@ export const apiTags: TagData[] = [
                             "topic": null,
                             "unread": 2,
                             "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
+                            "last_message": {
+                                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                "object": "chat_message",
+                                "kind": "chat",
+                                "status": "sent",
+                                "visibility": "internal",
+                                "conversation": null,
+                                "sequence": 42,
+                                "body": "Sounds good — shipping it today.",
+                                "subject": null,
+                                "sender": {
+                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "Jie Yan",
+                                    "handle": null,
+                                    "avatar_url": null,
+                                    "role": null
+                                },
+                                "author": null,
+                                "attachments": null,
+                                "reply_to": null,
+                                "resource": null,
+                                "channel": "message",
+                                "scheduled_at": null,
+                                "agent_run": null,
+                                "streaming_state": null,
+                                "client_message_id": null,
+                                "edited_at": null,
+                                "deleted_at": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -76769,7 +78532,39 @@ export const apiTags: TagData[] = [
                             "topic": null,
                             "unread": 2,
                             "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
+                            "last_message": {
+                                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                                "object": "chat_message",
+                                "kind": "chat",
+                                "status": "sent",
+                                "visibility": "internal",
+                                "conversation": null,
+                                "sequence": 42,
+                                "body": "Sounds good — shipping it today.",
+                                "subject": null,
+                                "sender": {
+                                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "Jie Yan",
+                                    "handle": null,
+                                    "avatar_url": null,
+                                    "role": null
+                                },
+                                "author": null,
+                                "attachments": null,
+                                "reply_to": null,
+                                "resource": null,
+                                "channel": "message",
+                                "scheduled_at": null,
+                                "agent_run": null,
+                                "streaming_state": null,
+                                "client_message_id": null,
+                                "edited_at": null,
+                                "deleted_at": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -77202,6 +78997,9 @@ export const apiTags: TagData[] = [
                         "name": "Operations Team",
                         "member_account_user_ids": [
                             "acus_01ea9983ddb41dacc44ecf997c"
+                        ],
+                        "member_agent_config_ids": [
+                            "agdf_01b9ef28feb99e6954201aca63"
                         ]
                     }
                 },
@@ -78891,7 +80689,8 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "member_type": "user",
-                        "account_user_id": "acus_01ea9983ddb41dacc44ecf997c"
+                        "account_user_id": "acus_01ea9983ddb41dacc44ecf997c",
+                        "agent_config_id": "agdf_01b9ef28feb99e6954201aca63"
                     }
                 },
                 "responses": [
@@ -80603,7 +82402,138 @@ export const apiTags: TagData[] = [
                         "example": {
                             "id": "mgbk_01h9z8q1w2e3r4t5y6mgbk",
                             "object": "messaging_block",
-                            "blocked_user": null,
+                            "blocked_user": {
+                                "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                "object": "account_user",
+                                "status": "active",
+                                "role": {
+                                    "id": "rl_01c16d2eb637c0d1f3a372937c",
+                                    "object": "role",
+                                    "name": "Admin",
+                                    "type": "admin",
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "account",
+                                        "account": {
+                                            "id": "ac_01148680966698341a9c0976db",
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    },
+                                    "permissions": [
+                                        "customers:create",
+                                        "customers:read",
+                                        "customers:update",
+                                        "customers:delete"
+                                    ],
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "department": {
+                                    "id": "dp_01791c25ab59da4704cba61874",
+                                    "object": "department",
+                                    "name": "Fabrication",
+                                    "notes": null,
+                                    "location": {
+                                        "id": "lc_014d187d99b31926f0c74af9d8",
+                                        "object": "location",
+                                        "name": "Warehouse A",
+                                        "type": "building",
+                                        "parent": null,
+                                        "children": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "lc_0132c4db1e220da9bc596cc4c9",
+                                                    "object": "location",
+                                                    "name": "Shelf A1",
+                                                    "type": "building",
+                                                    "parent": null,
+                                                    "children": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "scanning_stations": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "scst_0129335dd6286056a97024fcc1",
+                                                "object": "scanning_station",
+                                                "name": "Packaging Line 1",
+                                                "notes": "Initializes batches at the start of the packaging line.",
+                                                "type": "init_batch",
+                                                "label_size": "2x4",
+                                                "label_type": "traveler",
+                                                "operator_requirement": "none",
+                                                "department": null,
+                                                "production_steps": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "machines": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "mc_0177d18f55a1615f783d3bf8d0",
+                                                "object": "machine",
+                                                "name": "CNC Router",
+                                                "serial_number": "SN-2024-0001",
+                                                "notes": null,
+                                                "department": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "user": {
+                                    "id": "us_0151164dcaea4cbded27b50aae",
+                                    "object": "user",
+                                    "email": "jdoe@augno.com",
+                                    "name": "John Doe",
+                                    "username": "jdoe",
+                                    "email_verified_at": "2026-06-10T00:00:00Z",
+                                    "image_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "last_used_at": "2026-05-10T00:23:00Z",
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z"
                         }
                     }
@@ -81090,7 +83020,138 @@ export const apiTags: TagData[] = [
                                 {
                                     "id": "mgbk_01h9z8q1w2e3r4t5y6mgbk",
                                     "object": "messaging_block",
-                                    "blocked_user": null,
+                                    "blocked_user": {
+                                        "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                        "object": "account_user",
+                                        "status": "active",
+                                        "role": {
+                                            "id": "rl_01c16d2eb637c0d1f3a372937c",
+                                            "object": "role",
+                                            "name": "Admin",
+                                            "type": "admin",
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "account",
+                                                "account": {
+                                                    "id": "ac_01148680966698341a9c0976db",
+                                                    "object": "account",
+                                                    "name": "Acme Inc.",
+                                                    "default_billing_address": null,
+                                                    "default_shipping_address": null,
+                                                    "branding": null,
+                                                    "portal": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            },
+                                            "permissions": [
+                                                "customers:create",
+                                                "customers:read",
+                                                "customers:update",
+                                                "customers:delete"
+                                            ],
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "department": {
+                                            "id": "dp_01791c25ab59da4704cba61874",
+                                            "object": "department",
+                                            "name": "Fabrication",
+                                            "notes": null,
+                                            "location": {
+                                                "id": "lc_014d187d99b31926f0c74af9d8",
+                                                "object": "location",
+                                                "name": "Warehouse A",
+                                                "type": "building",
+                                                "parent": null,
+                                                "children": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "lc_0132c4db1e220da9bc596cc4c9",
+                                                            "object": "location",
+                                                            "name": "Shelf A1",
+                                                            "type": "building",
+                                                            "parent": null,
+                                                            "children": null,
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "scanning_stations": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "scst_0129335dd6286056a97024fcc1",
+                                                        "object": "scanning_station",
+                                                        "name": "Packaging Line 1",
+                                                        "notes": "Initializes batches at the start of the packaging line.",
+                                                        "type": "init_batch",
+                                                        "label_size": "2x4",
+                                                        "label_type": "traveler",
+                                                        "operator_requirement": "none",
+                                                        "department": null,
+                                                        "production_steps": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "machines": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "mc_0177d18f55a1615f783d3bf8d0",
+                                                        "object": "machine",
+                                                        "name": "CNC Router",
+                                                        "serial_number": "SN-2024-0001",
+                                                        "notes": null,
+                                                        "department": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "user": {
+                                            "id": "us_0151164dcaea4cbded27b50aae",
+                                            "object": "user",
+                                            "email": "jdoe@augno.com",
+                                            "name": "John Doe",
+                                            "username": "jdoe",
+                                            "email_verified_at": "2026-06-10T00:00:00Z",
+                                            "image_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "last_used_at": "2026-05-10T00:23:00Z",
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z"
                                 }
                             ]
@@ -82912,7 +84973,14 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "email_domain_id": "emdom_018e88072d1320808dc9aaa01",
-                        "address": "support@acme.com"
+                        "address": "support@acme.com",
+                        "from_name": "Acme Support",
+                        "agent_config_id": "agdf_01b9ef28feb99e6954201aca63",
+                        "agent_trigger_policy": "keyword",
+                        "agent_trigger_keywords": [
+                            "invoice",
+                            "refund"
+                        ]
                     }
                 },
                 "responses": [
@@ -83360,7 +85428,14 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "status": "active"
+                        "status": "active",
+                        "from_name": "Acme Support",
+                        "agent_config_id": "agdf_01b9ef28feb99e6954201aca63",
+                        "agent_trigger_policy": "keyword",
+                        "agent_trigger_keywords": [
+                            "invoice",
+                            "refund"
+                        ]
                     }
                 },
                 "responses": [
@@ -84814,7 +86889,10 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Wholesale Customers",
-                        "type": "type_group"
+                        "type": "type_group",
+                        "commission_policy": "commission_exempt",
+                        "freight_policy": "billed_freight",
+                        "description": "Customers who buy in bulk at wholesale pricing."
                     }
                 },
                 "responses": [
@@ -84992,7 +87070,10 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Updated Wholesale Customers"
+                        "name": "Updated Wholesale Customers",
+                        "description": "Customers who buy in bulk at wholesale pricing.",
+                        "commission_policy": "commission_exempt",
+                        "freight_policy": "billed_freight"
                     }
                 },
                 "responses": [
@@ -87692,7 +89773,18 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Prepaid",
-                        "type": "carrier_rate_freight"
+                        "type": "flat_rate_freight",
+                        "flat_rate": {
+                            "value": "15.00",
+                            "unit_id": "un_01966263f74a5a0cae356000a1"
+                        },
+                        "minimum_order_value": {
+                            "value": "500.00",
+                            "unit_id": "un_01966263f74a5a0cae356000a1"
+                        },
+                        "free_shipping_service_level_ids": [
+                            "crop_01cfaf03f104e90ef9680e2a30"
+                        ]
                     }
                 },
                 "responses": [
@@ -88566,7 +90658,19 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Collect"
+                        "name": "Collect",
+                        "type": "flat_rate_freight",
+                        "flat_rate": {
+                            "value": "15.00",
+                            "unit_id": "un_01966263f74a5a0cae356000a1"
+                        },
+                        "minimum_order_value": {
+                            "value": "500.00",
+                            "unit_id": "un_01966263f74a5a0cae356000a1"
+                        },
+                        "free_shipping_service_level_ids": [
+                            "crop_01cfaf03f104e90ef9680e2a30"
+                        ]
                     }
                 },
                 "responses": [
@@ -91168,8 +93272,8 @@ export const apiTags: TagData[] = [
                 "id": "ad_012100950cfaa34aa0e0ad7258",
                 "object": "address",
                 "name": "Headquarters",
-                "phone": null,
-                "email": null,
+                "phone": "+1-614-555-0142",
+                "email": "receiving@acme.example.com",
                 "type": "standard",
                 "geolocation": {
                     "id": "gl_013e4c26412103c6757ba71806",
@@ -91290,7 +93394,11 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Headquarters",
+                        "phone": "555-123-4567",
+                        "email": "warehouse@acme.com",
+                        "type": "standard",
                         "street_line_1": "123 Main St",
+                        "street_line_2": "Suite 400",
                         "locality": "Springfield",
                         "state": "IL",
                         "postal_code": "62701",
@@ -91458,8 +93566,8 @@ export const apiTags: TagData[] = [
                             "id": "ad_012100950cfaa34aa0e0ad7258",
                             "object": "address",
                             "name": "Headquarters",
-                            "phone": null,
-                            "email": null,
+                            "phone": "+1-614-555-0142",
+                            "email": "receiving@acme.example.com",
                             "type": "standard",
                             "geolocation": {
                                 "id": "gl_013e4c26412103c6757ba71806",
@@ -91587,7 +93695,16 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Warehouse"
+                        "name": "Warehouse",
+                        "phone": "555-123-4567",
+                        "email": "warehouse@acme.com",
+                        "type": "standard",
+                        "street_line_1": "123 Main St",
+                        "street_line_2": "Suite 400",
+                        "locality": "Springfield",
+                        "state": "IL",
+                        "postal_code": "62701",
+                        "country": "US"
                     }
                 },
                 "responses": [
@@ -91751,8 +93868,8 @@ export const apiTags: TagData[] = [
                             "id": "ad_012100950cfaa34aa0e0ad7258",
                             "object": "address",
                             "name": "Headquarters",
-                            "phone": null,
-                            "email": null,
+                            "phone": "+1-614-555-0142",
+                            "email": "receiving@acme.example.com",
                             "type": "standard",
                             "geolocation": {
                                 "id": "gl_013e4c26412103c6757ba71806",
@@ -92051,8 +94168,8 @@ export const apiTags: TagData[] = [
                                     "id": "ad_012100950cfaa34aa0e0ad7258",
                                     "object": "address",
                                     "name": "Headquarters",
-                                    "phone": null,
-                                    "email": null,
+                                    "phone": "+1-614-555-0142",
+                                    "email": "receiving@acme.example.com",
                                     "type": "standard",
                                     "geolocation": {
                                         "id": "gl_013e4c26412103c6757ba71806",
@@ -92254,8 +94371,8 @@ export const apiTags: TagData[] = [
                             "id": "ad_012100950cfaa34aa0e0ad7258",
                             "object": "address",
                             "name": "Headquarters",
-                            "phone": null,
-                            "email": null,
+                            "phone": "+1-614-555-0142",
+                            "email": "receiving@acme.example.com",
                             "type": "standard",
                             "geolocation": {
                                 "id": "gl_013e4c26412103c6757ba71806",
@@ -92542,6 +94659,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "address_line_1": "123 Main St",
+                        "address_line_2": "Suite 400",
                         "city": "Springfield",
                         "state": "IL",
                         "postal_code": "62701",
@@ -93603,7 +95721,90 @@ export const apiTags: TagData[] = [
                     "created_at": "2026-05-10T00:00:00Z",
                     "updated_at": "2026-05-10T00:23:00Z"
                 },
-                "department": null,
+                "department": {
+                    "id": "dp_01791c25ab59da4704cba61874",
+                    "object": "department",
+                    "name": "Fabrication",
+                    "notes": null,
+                    "location": {
+                        "id": "lc_014d187d99b31926f0c74af9d8",
+                        "object": "location",
+                        "name": "Warehouse A",
+                        "type": "building",
+                        "parent": null,
+                        "children": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": null,
+                                "previous_page_url": null,
+                                "has_next_page": false,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "lc_0132c4db1e220da9bc596cc4c9",
+                                    "object": "location",
+                                    "name": "Shelf A1",
+                                    "type": "building",
+                                    "parent": null,
+                                    "children": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
+                    "scanning_stations": {
+                        "object": "list",
+                        "page_info": {
+                            "next_page_url": null,
+                            "previous_page_url": null,
+                            "has_next_page": false,
+                            "has_prev_page": false
+                        },
+                        "data": [
+                            {
+                                "id": "scst_0129335dd6286056a97024fcc1",
+                                "object": "scanning_station",
+                                "name": "Packaging Line 1",
+                                "notes": "Initializes batches at the start of the packaging line.",
+                                "type": "init_batch",
+                                "label_size": "2x4",
+                                "label_type": "traveler",
+                                "operator_requirement": "none",
+                                "department": null,
+                                "production_steps": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            }
+                        ]
+                    },
+                    "machines": {
+                        "object": "list",
+                        "page_info": {
+                            "next_page_url": null,
+                            "previous_page_url": null,
+                            "has_next_page": false,
+                            "has_prev_page": false
+                        },
+                        "data": [
+                            {
+                                "id": "mc_0177d18f55a1615f783d3bf8d0",
+                                "object": "machine",
+                                "name": "CNC Router",
+                                "serial_number": "SN-2024-0001",
+                                "notes": null,
+                                "department": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            }
+                        ]
+                    },
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
+                },
                 "user": {
                     "id": "us_0151164dcaea4cbded27b50aae",
                     "object": "user",
@@ -93615,7 +95816,7 @@ export const apiTags: TagData[] = [
                     "created_at": "2026-05-10T00:00:00Z",
                     "updated_at": "2026-05-10T00:23:00Z"
                 },
-                "last_used_at": null,
+                "last_used_at": "2026-05-10T00:23:00Z",
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             },
@@ -93738,6 +95939,7 @@ export const apiTags: TagData[] = [
                         "username": "jdoe",
                         "password": "QgS7Z8Hhj3&1",
                         "role_id": "rl_01c16d2eb637c0d1f3a372937c",
+                        "department_id": "dp_01791c25ab59da4704cba61874",
                         "preferences": [
                             {
                                 "notification_type": "order_acknowledgement",
@@ -94117,7 +96319,90 @@ export const apiTags: TagData[] = [
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
-                            "department": null,
+                            "department": {
+                                "id": "dp_01791c25ab59da4704cba61874",
+                                "object": "department",
+                                "name": "Fabrication",
+                                "notes": null,
+                                "location": {
+                                    "id": "lc_014d187d99b31926f0c74af9d8",
+                                    "object": "location",
+                                    "name": "Warehouse A",
+                                    "type": "building",
+                                    "parent": null,
+                                    "children": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "lc_0132c4db1e220da9bc596cc4c9",
+                                                "object": "location",
+                                                "name": "Shelf A1",
+                                                "type": "building",
+                                                "parent": null,
+                                                "children": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "scanning_stations": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "scst_0129335dd6286056a97024fcc1",
+                                            "object": "scanning_station",
+                                            "name": "Packaging Line 1",
+                                            "notes": "Initializes batches at the start of the packaging line.",
+                                            "type": "init_batch",
+                                            "label_size": "2x4",
+                                            "label_type": "traveler",
+                                            "operator_requirement": "none",
+                                            "department": null,
+                                            "production_steps": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "machines": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "mc_0177d18f55a1615f783d3bf8d0",
+                                            "object": "machine",
+                                            "name": "CNC Router",
+                                            "serial_number": "SN-2024-0001",
+                                            "notes": null,
+                                            "department": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "user": {
                                 "id": "us_0151164dcaea4cbded27b50aae",
                                 "object": "user",
@@ -94129,7 +96414,7 @@ export const apiTags: TagData[] = [
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
-                            "last_used_at": null,
+                            "last_used_at": "2026-05-10T00:23:00Z",
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -94247,8 +96532,16 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "John Doe",
+                        "email": "jdoe@augno.com",
+                        "username": "jdoe",
                         "role_id": "rl_01c16d2eb637c0d1f3a372937c",
-                        "department_id": "dp_01791c25ab59da4704cba61874"
+                        "department_id": "dp_01791c25ab59da4704cba61874",
+                        "preferences": [
+                            {
+                                "notification_type": "order_acknowledgement",
+                                "enabled": true
+                            }
+                        ]
                     }
                 },
                 "responses": [
@@ -94622,7 +96915,90 @@ export const apiTags: TagData[] = [
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
-                            "department": null,
+                            "department": {
+                                "id": "dp_01791c25ab59da4704cba61874",
+                                "object": "department",
+                                "name": "Fabrication",
+                                "notes": null,
+                                "location": {
+                                    "id": "lc_014d187d99b31926f0c74af9d8",
+                                    "object": "location",
+                                    "name": "Warehouse A",
+                                    "type": "building",
+                                    "parent": null,
+                                    "children": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "lc_0132c4db1e220da9bc596cc4c9",
+                                                "object": "location",
+                                                "name": "Shelf A1",
+                                                "type": "building",
+                                                "parent": null,
+                                                "children": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "scanning_stations": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "scst_0129335dd6286056a97024fcc1",
+                                            "object": "scanning_station",
+                                            "name": "Packaging Line 1",
+                                            "notes": "Initializes batches at the start of the packaging line.",
+                                            "type": "init_batch",
+                                            "label_size": "2x4",
+                                            "label_type": "traveler",
+                                            "operator_requirement": "none",
+                                            "department": null,
+                                            "production_steps": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "machines": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "mc_0177d18f55a1615f783d3bf8d0",
+                                            "object": "machine",
+                                            "name": "CNC Router",
+                                            "serial_number": "SN-2024-0001",
+                                            "notes": null,
+                                            "department": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "user": {
                                 "id": "us_0151164dcaea4cbded27b50aae",
                                 "object": "user",
@@ -94634,7 +97010,7 @@ export const apiTags: TagData[] = [
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
-                            "last_used_at": null,
+                            "last_used_at": "2026-05-10T00:23:00Z",
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -95158,7 +97534,90 @@ export const apiTags: TagData[] = [
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
-                                    "department": null,
+                                    "department": {
+                                        "id": "dp_01791c25ab59da4704cba61874",
+                                        "object": "department",
+                                        "name": "Fabrication",
+                                        "notes": null,
+                                        "location": {
+                                            "id": "lc_014d187d99b31926f0c74af9d8",
+                                            "object": "location",
+                                            "name": "Warehouse A",
+                                            "type": "building",
+                                            "parent": null,
+                                            "children": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "lc_0132c4db1e220da9bc596cc4c9",
+                                                        "object": "location",
+                                                        "name": "Shelf A1",
+                                                        "type": "building",
+                                                        "parent": null,
+                                                        "children": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "scanning_stations": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "scst_0129335dd6286056a97024fcc1",
+                                                    "object": "scanning_station",
+                                                    "name": "Packaging Line 1",
+                                                    "notes": "Initializes batches at the start of the packaging line.",
+                                                    "type": "init_batch",
+                                                    "label_size": "2x4",
+                                                    "label_type": "traveler",
+                                                    "operator_requirement": "none",
+                                                    "department": null,
+                                                    "production_steps": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "machines": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "mc_0177d18f55a1615f783d3bf8d0",
+                                                    "object": "machine",
+                                                    "name": "CNC Router",
+                                                    "serial_number": "SN-2024-0001",
+                                                    "notes": null,
+                                                    "department": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "user": {
                                         "id": "us_0151164dcaea4cbded27b50aae",
                                         "object": "user",
@@ -95170,7 +97629,7 @@ export const apiTags: TagData[] = [
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
-                                    "last_used_at": null,
+                                    "last_used_at": "2026-05-10T00:23:00Z",
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -95583,7 +98042,90 @@ export const apiTags: TagData[] = [
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
-                            "department": null,
+                            "department": {
+                                "id": "dp_01791c25ab59da4704cba61874",
+                                "object": "department",
+                                "name": "Fabrication",
+                                "notes": null,
+                                "location": {
+                                    "id": "lc_014d187d99b31926f0c74af9d8",
+                                    "object": "location",
+                                    "name": "Warehouse A",
+                                    "type": "building",
+                                    "parent": null,
+                                    "children": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "lc_0132c4db1e220da9bc596cc4c9",
+                                                "object": "location",
+                                                "name": "Shelf A1",
+                                                "type": "building",
+                                                "parent": null,
+                                                "children": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "scanning_stations": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "scst_0129335dd6286056a97024fcc1",
+                                            "object": "scanning_station",
+                                            "name": "Packaging Line 1",
+                                            "notes": "Initializes batches at the start of the packaging line.",
+                                            "type": "init_batch",
+                                            "label_size": "2x4",
+                                            "label_type": "traveler",
+                                            "operator_requirement": "none",
+                                            "department": null,
+                                            "production_steps": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "machines": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "mc_0177d18f55a1615f783d3bf8d0",
+                                            "object": "machine",
+                                            "name": "CNC Router",
+                                            "serial_number": "SN-2024-0001",
+                                            "notes": null,
+                                            "department": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "user": {
                                 "id": "us_0151164dcaea4cbded27b50aae",
                                 "object": "user",
@@ -95595,7 +98137,7 @@ export const apiTags: TagData[] = [
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
-                            "last_used_at": null,
+                            "last_used_at": "2026-05-10T00:23:00Z",
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -95913,7 +98455,34 @@ export const apiTags: TagData[] = [
                 "id": "pp_01e21344878064372f69e67093",
                 "object": "property",
                 "name": "Color",
-                "attributes": null,
+                "attributes": {
+                    "object": "list",
+                    "page_info": {
+                        "next_page_url": null,
+                        "previous_page_url": null,
+                        "has_next_page": false,
+                        "has_prev_page": false
+                    },
+                    "data": [
+                        {
+                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                            "object": "attribute",
+                            "value": "Premium",
+                            "color": "red",
+                            "sort_order": 1,
+                            "property": {
+                                "id": "pp_01e21344878064372f69e67093",
+                                "object": "property",
+                                "name": "Color",
+                                "attributes": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    ]
+                },
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             },
@@ -96174,7 +98743,34 @@ export const apiTags: TagData[] = [
                             "id": "pp_01e21344878064372f69e67093",
                             "object": "property",
                             "name": "Color",
-                            "attributes": null,
+                            "attributes": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                        "object": "attribute",
+                                        "value": "Premium",
+                                        "color": "red",
+                                        "sort_order": 1,
+                                        "property": {
+                                            "id": "pp_01e21344878064372f69e67093",
+                                            "object": "property",
+                                            "name": "Color",
+                                            "attributes": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -96442,7 +99038,34 @@ export const apiTags: TagData[] = [
                             "id": "pp_01e21344878064372f69e67093",
                             "object": "property",
                             "name": "Color",
-                            "attributes": null,
+                            "attributes": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                        "object": "attribute",
+                                        "value": "Premium",
+                                        "color": "red",
+                                        "sort_order": 1,
+                                        "property": {
+                                            "id": "pp_01e21344878064372f69e67093",
+                                            "object": "property",
+                                            "name": "Color",
+                                            "attributes": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -96782,7 +99405,34 @@ export const apiTags: TagData[] = [
                                     "id": "pp_01e21344878064372f69e67093",
                                     "object": "property",
                                     "name": "Color",
-                                    "attributes": null,
+                                    "attributes": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                "object": "attribute",
+                                                "value": "Premium",
+                                                "color": "red",
+                                                "sort_order": 1,
+                                                "property": {
+                                                    "id": "pp_01e21344878064372f69e67093",
+                                                    "object": "property",
+                                                    "name": "Color",
+                                                    "attributes": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -97036,7 +99686,34 @@ export const apiTags: TagData[] = [
                             "id": "pp_01e21344878064372f69e67093",
                             "object": "property",
                             "name": "Color",
-                            "attributes": null,
+                            "attributes": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                        "object": "attribute",
+                                        "value": "Premium",
+                                        "color": "red",
+                                        "sort_order": 1,
+                                        "property": {
+                                            "id": "pp_01e21344878064372f69e67093",
+                                            "object": "property",
+                                            "name": "Color",
+                                            "attributes": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -97528,7 +100205,14 @@ export const apiTags: TagData[] = [
                             "value": "Premium",
                             "color": "red",
                             "sort_order": 1,
-                            "property": null,
+                            "property": {
+                                "id": "pp_01e21344878064372f69e67093",
+                                "object": "property",
+                                "name": "Color",
+                                "attributes": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -97604,7 +100288,9 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "value": "Blue"
+                        "value": "Blue",
+                        "color": "blue",
+                        "sort_order": 2
                     }
                 },
                 "responses": [
@@ -97995,7 +100681,14 @@ export const apiTags: TagData[] = [
                             "value": "Premium",
                             "color": "red",
                             "sort_order": 1,
-                            "property": null,
+                            "property": {
+                                "id": "pp_01e21344878064372f69e67093",
+                                "object": "property",
+                                "name": "Color",
+                                "attributes": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -98474,7 +101167,14 @@ export const apiTags: TagData[] = [
                                     "value": "Premium",
                                     "color": "red",
                                     "sort_order": 1,
-                                    "property": null,
+                                    "property": {
+                                        "id": "pp_01e21344878064372f69e67093",
+                                        "object": "property",
+                                        "name": "Color",
+                                        "attributes": null,
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -98899,7 +101599,14 @@ export const apiTags: TagData[] = [
                             "value": "Premium",
                             "color": "red",
                             "sort_order": 1,
-                            "property": null,
+                            "property": {
+                                "id": "pp_01e21344878064372f69e67093",
+                                "object": "property",
+                                "name": "Color",
+                                "attributes": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -99138,7 +101845,8 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Updated Stripe Integration"
+                        "name": "Updated Stripe Integration",
+                        "status": "active"
                     }
                 },
                 "responses": [
@@ -100467,7 +103175,7 @@ export const apiTags: TagData[] = [
                 "object": "carrier",
                 "name": "FedEx",
                 "code": "fedex",
-                "account_number": null,
+                "account_number": "603145678",
                 "customer_portal_visibility": "visible",
                 "owner": {
                     "object": "owner",
@@ -100484,7 +103192,42 @@ export const apiTags: TagData[] = [
                         "updated_at": "2026-05-10T00:23:00Z"
                     }
                 },
-                "service_levels": null,
+                "service_levels": {
+                    "object": "list",
+                    "page_info": {
+                        "next_page_url": null,
+                        "previous_page_url": null,
+                        "has_next_page": false,
+                        "has_prev_page": false
+                    },
+                    "data": [
+                        {
+                            "id": "crop_01cfaf03f104e90ef9680e2a30",
+                            "object": "service_level",
+                            "name": "FedEx Ground",
+                            "service_level_token": "fedex_ground",
+                            "customer_portal_visibility": "visible",
+                            "is_default": true,
+                            "owner": {
+                                "object": "owner",
+                                "type": "account",
+                                "account": {
+                                    "id": "ac_01148680966698341a9c0976db",
+                                    "object": "account",
+                                    "name": "Acme Inc.",
+                                    "default_billing_address": null,
+                                    "default_shipping_address": null,
+                                    "branding": null,
+                                    "portal": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    ]
+                },
                 "deleted_at": null,
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
@@ -100967,7 +103710,7 @@ export const apiTags: TagData[] = [
                             "object": "carrier",
                             "name": "FedEx",
                             "code": "fedex",
-                            "account_number": null,
+                            "account_number": "603145678",
                             "customer_portal_visibility": "visible",
                             "owner": {
                                 "object": "owner",
@@ -100984,7 +103727,42 @@ export const apiTags: TagData[] = [
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
                             },
-                            "service_levels": null,
+                            "service_levels": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "crop_01cfaf03f104e90ef9680e2a30",
+                                        "object": "service_level",
+                                        "name": "FedEx Ground",
+                                        "service_level_token": "fedex_ground",
+                                        "customer_portal_visibility": "visible",
+                                        "is_default": true,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "account",
+                                            "account": {
+                                                "id": "ac_01148680966698341a9c0976db",
+                                                "object": "account",
+                                                "name": "Acme Inc.",
+                                                "default_billing_address": null,
+                                                "default_shipping_address": null,
+                                                "branding": null,
+                                                "portal": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
                             "deleted_at": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -101050,7 +103828,8 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "FedEx Express"
+                        "name": "FedEx Express",
+                        "customer_portal_visibility": "visible"
                     }
                 },
                 "responses": [
@@ -101445,7 +104224,7 @@ export const apiTags: TagData[] = [
                             "object": "carrier",
                             "name": "FedEx",
                             "code": "fedex",
-                            "account_number": null,
+                            "account_number": "603145678",
                             "customer_portal_visibility": "visible",
                             "owner": {
                                 "object": "owner",
@@ -101462,7 +104241,42 @@ export const apiTags: TagData[] = [
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
                             },
-                            "service_levels": null,
+                            "service_levels": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "crop_01cfaf03f104e90ef9680e2a30",
+                                        "object": "service_level",
+                                        "name": "FedEx Ground",
+                                        "service_level_token": "fedex_ground",
+                                        "customer_portal_visibility": "visible",
+                                        "is_default": true,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "account",
+                                            "account": {
+                                                "id": "ac_01148680966698341a9c0976db",
+                                                "object": "account",
+                                                "name": "Acme Inc.",
+                                                "default_billing_address": null,
+                                                "default_shipping_address": null,
+                                                "branding": null,
+                                                "portal": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
                             "deleted_at": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -101983,7 +104797,7 @@ export const apiTags: TagData[] = [
                                     "object": "carrier",
                                     "name": "FedEx",
                                     "code": "fedex",
-                                    "account_number": null,
+                                    "account_number": "603145678",
                                     "customer_portal_visibility": "visible",
                                     "owner": {
                                         "object": "owner",
@@ -102000,7 +104814,42 @@ export const apiTags: TagData[] = [
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
-                                    "service_levels": null,
+                                    "service_levels": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "crop_01cfaf03f104e90ef9680e2a30",
+                                                "object": "service_level",
+                                                "name": "FedEx Ground",
+                                                "service_level_token": "fedex_ground",
+                                                "customer_portal_visibility": "visible",
+                                                "is_default": true,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "account",
+                                                    "account": {
+                                                        "id": "ac_01148680966698341a9c0976db",
+                                                        "object": "account",
+                                                        "name": "Acme Inc.",
+                                                        "default_billing_address": null,
+                                                        "default_shipping_address": null,
+                                                        "branding": null,
+                                                        "portal": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
                                     "deleted_at": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -102435,7 +105284,7 @@ export const apiTags: TagData[] = [
                             "object": "carrier",
                             "name": "FedEx",
                             "code": "fedex",
-                            "account_number": null,
+                            "account_number": "603145678",
                             "customer_portal_visibility": "visible",
                             "owner": {
                                 "object": "owner",
@@ -102452,7 +105301,42 @@ export const apiTags: TagData[] = [
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
                             },
-                            "service_levels": null,
+                            "service_levels": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "crop_01cfaf03f104e90ef9680e2a30",
+                                        "object": "service_level",
+                                        "name": "FedEx Ground",
+                                        "service_level_token": "fedex_ground",
+                                        "customer_portal_visibility": "visible",
+                                        "is_default": true,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "account",
+                                            "account": {
+                                                "id": "ac_01148680966698341a9c0976db",
+                                                "object": "account",
+                                                "name": "Acme Inc.",
+                                                "default_billing_address": null,
+                                                "default_shipping_address": null,
+                                                "branding": null,
+                                                "portal": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
                             "deleted_at": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
@@ -102712,7 +105596,7 @@ export const apiTags: TagData[] = [
                 "name": "FedEx Ground",
                 "service_level_token": "fedex_ground",
                 "customer_portal_visibility": "visible",
-                "is_default": false,
+                "is_default": true,
                 "owner": {
                     "object": "owner",
                     "type": "account",
@@ -102809,6 +105693,7 @@ export const apiTags: TagData[] = [
                     "example": {
                         "name": "Ground Shipping",
                         "code": "ground",
+                        "customer_portal_visibility": "visible",
                         "is_default": false
                     }
                 },
@@ -103027,7 +105912,7 @@ export const apiTags: TagData[] = [
                             "name": "FedEx Ground",
                             "service_level_token": "fedex_ground",
                             "customer_portal_visibility": "visible",
-                            "is_default": false,
+                            "is_default": true,
                             "owner": {
                                 "object": "owner",
                                 "type": "account",
@@ -103130,6 +106015,8 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Express Shipping",
+                        "code": "express",
+                        "customer_portal_visibility": "visible",
                         "is_default": false
                     }
                 },
@@ -103348,7 +106235,7 @@ export const apiTags: TagData[] = [
                             "name": "FedEx Ground",
                             "service_level_token": "fedex_ground",
                             "customer_portal_visibility": "visible",
-                            "is_default": false,
+                            "is_default": true,
                             "owner": {
                                 "object": "owner",
                                 "type": "account",
@@ -103712,7 +106599,7 @@ export const apiTags: TagData[] = [
                                     "name": "FedEx Ground",
                                     "service_level_token": "fedex_ground",
                                     "customer_portal_visibility": "visible",
-                                    "is_default": false,
+                                    "is_default": true,
                                     "owner": {
                                         "object": "owner",
                                         "type": "account",
@@ -103990,7 +106877,7 @@ export const apiTags: TagData[] = [
                             "name": "FedEx Ground",
                             "service_level_token": "fedex_ground",
                             "customer_portal_visibility": "visible",
-                            "is_default": false,
+                            "is_default": true,
                             "owner": {
                                 "object": "owner",
                                 "type": "account",
@@ -105157,15 +108044,131 @@ export const apiTags: TagData[] = [
                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                     "object": "item_category",
                     "name": "Electronics",
-                    "notes": null,
+                    "notes": "Components and raw materials used across the electronics assembly line.",
                     "type": "material_category",
                     "owner": {
                         "object": "owner",
                         "type": "system",
                         "account": null
                     },
-                    "properties": null,
-                    "unit_group": null,
+                    "properties": {
+                        "object": "list",
+                        "page_info": {
+                            "next_page_url": null,
+                            "previous_page_url": null,
+                            "has_next_page": false,
+                            "has_prev_page": false
+                        },
+                        "data": [
+                            {
+                                "id": "pp_01e21344878064372f69e67093",
+                                "object": "property",
+                                "name": "Color",
+                                "attributes": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                            "object": "attribute",
+                                            "value": "Premium",
+                                            "color": "red",
+                                            "sort_order": 1,
+                                            "property": {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            }
+                        ]
+                    },
+                    "unit_group": {
+                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                        "object": "unit_group",
+                        "name": "Weight",
+                        "notes": "Mass units used for ordering raw materials by weight.",
+                        "type": "mass",
+                        "base_unit": {
+                            "id": "un_01966263f74a5a0cae356000a1",
+                            "object": "unit",
+                            "name": "Kilogram",
+                            "abbreviation": "kg",
+                            "type": "mass",
+                            "ratio_numerator": "1000",
+                            "ratio_denominator": "1",
+                            "offset_numerator": "0",
+                            "offset_denominator": "1",
+                            "is_base_unit": false,
+                            "owner": {
+                                "object": "owner",
+                                "type": "system",
+                                "account": null
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        },
+                        "associated_units": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": null,
+                                "previous_page_url": null,
+                                "has_next_page": false,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                    "object": "unit_group_unit",
+                                    "unit": {
+                                        "id": "un_01966263f74a5a0cae356000a1",
+                                        "object": "unit",
+                                        "name": "Kilogram",
+                                        "abbreviation": "kg",
+                                        "type": "mass",
+                                        "ratio_numerator": "1000",
+                                        "ratio_denominator": "1",
+                                        "offset_numerator": "0",
+                                        "offset_denominator": "1",
+                                        "is_base_unit": false,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "discount_percentage": 1,
+                                    "discount_fixed": 0,
+                                    "customer_portal_visibility": "visible",
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        },
+                        "owner": {
+                            "object": "owner",
+                            "type": "system",
+                            "account": null
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
                     "created_at": "2026-05-10T00:00:00Z",
                     "updated_at": "2026-05-10T00:23:00Z"
                 },
@@ -105322,7 +108325,14 @@ export const apiTags: TagData[] = [
                             "value": "Premium",
                             "color": "red",
                             "sort_order": 1,
-                            "property": null,
+                            "property": {
+                                "id": "pp_01e21344878064372f69e67093",
+                                "object": "property",
+                                "name": "Color",
+                                "attributes": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -106632,15 +109642,131 @@ export const apiTags: TagData[] = [
                                         "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                         "object": "item_category",
                                         "name": "Electronics",
-                                        "notes": null,
+                                        "notes": "Components and raw materials used across the electronics assembly line.",
                                         "type": "material_category",
                                         "owner": {
                                             "object": "owner",
                                             "type": "system",
                                             "account": null
                                         },
-                                        "properties": null,
-                                        "unit_group": null,
+                                        "properties": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "pp_01e21344878064372f69e67093",
+                                                    "object": "property",
+                                                    "name": "Color",
+                                                    "attributes": {
+                                                        "object": "list",
+                                                        "page_info": {
+                                                            "next_page_url": null,
+                                                            "previous_page_url": null,
+                                                            "has_next_page": false,
+                                                            "has_prev_page": false
+                                                        },
+                                                        "data": [
+                                                            {
+                                                                "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                                "object": "attribute",
+                                                                "value": "Premium",
+                                                                "color": "red",
+                                                                "sort_order": 1,
+                                                                "property": {
+                                                                    "id": "pp_01e21344878064372f69e67093",
+                                                                    "object": "property",
+                                                                    "name": "Color",
+                                                                    "attributes": null,
+                                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                                },
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "unit_group": {
+                                            "id": "ug_01aad07abb8e41fd392d2d7013",
+                                            "object": "unit_group",
+                                            "name": "Weight",
+                                            "notes": "Mass units used for ordering raw materials by weight.",
+                                            "type": "mass",
+                                            "base_unit": {
+                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                "object": "unit",
+                                                "name": "Kilogram",
+                                                "abbreviation": "kg",
+                                                "type": "mass",
+                                                "ratio_numerator": "1000",
+                                                "ratio_denominator": "1",
+                                                "offset_numerator": "0",
+                                                "offset_denominator": "1",
+                                                "is_base_unit": false,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "associated_units": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                        "object": "unit_group_unit",
+                                                        "unit": {
+                                                            "id": "un_01966263f74a5a0cae356000a1",
+                                                            "object": "unit",
+                                                            "name": "Kilogram",
+                                                            "abbreviation": "kg",
+                                                            "type": "mass",
+                                                            "ratio_numerator": "1000",
+                                                            "ratio_denominator": "1",
+                                                            "offset_numerator": "0",
+                                                            "offset_denominator": "1",
+                                                            "is_base_unit": false,
+                                                            "owner": {
+                                                                "object": "owner",
+                                                                "type": "system",
+                                                                "account": null
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        },
+                                                        "discount_percentage": 1,
+                                                        "discount_fixed": 0,
+                                                        "customer_portal_visibility": "visible",
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
@@ -106797,7 +109923,14 @@ export const apiTags: TagData[] = [
                                                 "value": "Premium",
                                                 "color": "red",
                                                 "sort_order": 1,
-                                                "property": null,
+                                                "property": {
+                                                    "id": "pp_01e21344878064372f69e67093",
+                                                    "object": "property",
+                                                    "name": "Color",
+                                                    "attributes": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
                                                 "created_at": "2026-05-10T00:00:00Z",
                                                 "updated_at": "2026-05-10T00:23:00Z"
                                             }
@@ -107952,15 +111085,131 @@ export const apiTags: TagData[] = [
                                 "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                 "object": "item_category",
                                 "name": "Electronics",
-                                "notes": null,
+                                "notes": "Components and raw materials used across the electronics assembly line.",
                                 "type": "material_category",
                                 "owner": {
                                     "object": "owner",
                                     "type": "system",
                                     "account": null
                                 },
-                                "properties": null,
-                                "unit_group": null,
+                                "properties": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "pp_01e21344878064372f69e67093",
+                                            "object": "property",
+                                            "name": "Color",
+                                            "attributes": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                        "object": "attribute",
+                                                        "value": "Premium",
+                                                        "color": "red",
+                                                        "sort_order": 1,
+                                                        "property": {
+                                                            "id": "pp_01e21344878064372f69e67093",
+                                                            "object": "property",
+                                                            "name": "Color",
+                                                            "attributes": null,
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "unit_group": {
+                                    "id": "ug_01aad07abb8e41fd392d2d7013",
+                                    "object": "unit_group",
+                                    "name": "Weight",
+                                    "notes": "Mass units used for ordering raw materials by weight.",
+                                    "type": "mass",
+                                    "base_unit": {
+                                        "id": "un_01966263f74a5a0cae356000a1",
+                                        "object": "unit",
+                                        "name": "Kilogram",
+                                        "abbreviation": "kg",
+                                        "type": "mass",
+                                        "ratio_numerator": "1000",
+                                        "ratio_denominator": "1",
+                                        "offset_numerator": "0",
+                                        "offset_denominator": "1",
+                                        "is_base_unit": false,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "associated_units": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                "object": "unit_group_unit",
+                                                "unit": {
+                                                    "id": "un_01966263f74a5a0cae356000a1",
+                                                    "object": "unit",
+                                                    "name": "Kilogram",
+                                                    "abbreviation": "kg",
+                                                    "type": "mass",
+                                                    "ratio_numerator": "1000",
+                                                    "ratio_denominator": "1",
+                                                    "offset_numerator": "0",
+                                                    "offset_denominator": "1",
+                                                    "is_base_unit": false,
+                                                    "owner": {
+                                                        "object": "owner",
+                                                        "type": "system",
+                                                        "account": null
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "discount_percentage": 1,
+                                                "discount_fixed": 0,
+                                                "customer_portal_visibility": "visible",
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system",
+                                        "account": null
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -108117,7 +111366,14 @@ export const apiTags: TagData[] = [
                                         "value": "Premium",
                                         "color": "red",
                                         "sort_order": 1,
-                                        "property": null,
+                                        "property": {
+                                            "id": "pp_01e21344878064372f69e67093",
+                                            "object": "property",
+                                            "name": "Color",
+                                            "attributes": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     }
@@ -109277,15 +112533,131 @@ export const apiTags: TagData[] = [
                                 "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                 "object": "item_category",
                                 "name": "Electronics",
-                                "notes": null,
+                                "notes": "Components and raw materials used across the electronics assembly line.",
                                 "type": "material_category",
                                 "owner": {
                                     "object": "owner",
                                     "type": "system",
                                     "account": null
                                 },
-                                "properties": null,
-                                "unit_group": null,
+                                "properties": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "pp_01e21344878064372f69e67093",
+                                            "object": "property",
+                                            "name": "Color",
+                                            "attributes": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                        "object": "attribute",
+                                                        "value": "Premium",
+                                                        "color": "red",
+                                                        "sort_order": 1,
+                                                        "property": {
+                                                            "id": "pp_01e21344878064372f69e67093",
+                                                            "object": "property",
+                                                            "name": "Color",
+                                                            "attributes": null,
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "unit_group": {
+                                    "id": "ug_01aad07abb8e41fd392d2d7013",
+                                    "object": "unit_group",
+                                    "name": "Weight",
+                                    "notes": "Mass units used for ordering raw materials by weight.",
+                                    "type": "mass",
+                                    "base_unit": {
+                                        "id": "un_01966263f74a5a0cae356000a1",
+                                        "object": "unit",
+                                        "name": "Kilogram",
+                                        "abbreviation": "kg",
+                                        "type": "mass",
+                                        "ratio_numerator": "1000",
+                                        "ratio_denominator": "1",
+                                        "offset_numerator": "0",
+                                        "offset_denominator": "1",
+                                        "is_base_unit": false,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "associated_units": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                "object": "unit_group_unit",
+                                                "unit": {
+                                                    "id": "un_01966263f74a5a0cae356000a1",
+                                                    "object": "unit",
+                                                    "name": "Kilogram",
+                                                    "abbreviation": "kg",
+                                                    "type": "mass",
+                                                    "ratio_numerator": "1000",
+                                                    "ratio_denominator": "1",
+                                                    "offset_numerator": "0",
+                                                    "offset_denominator": "1",
+                                                    "is_base_unit": false,
+                                                    "owner": {
+                                                        "object": "owner",
+                                                        "type": "system",
+                                                        "account": null
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "discount_percentage": 1,
+                                                "discount_fixed": 0,
+                                                "customer_portal_visibility": "visible",
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system",
+                                        "account": null
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -109442,7 +112814,14 @@ export const apiTags: TagData[] = [
                                         "value": "Premium",
                                         "color": "red",
                                         "sort_order": 1,
-                                        "property": null,
+                                        "property": {
+                                            "id": "pp_01e21344878064372f69e67093",
+                                            "object": "property",
+                                            "name": "Color",
+                                            "attributes": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     }
@@ -110602,15 +113981,131 @@ export const apiTags: TagData[] = [
                                 "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                 "object": "item_category",
                                 "name": "Electronics",
-                                "notes": null,
+                                "notes": "Components and raw materials used across the electronics assembly line.",
                                 "type": "material_category",
                                 "owner": {
                                     "object": "owner",
                                     "type": "system",
                                     "account": null
                                 },
-                                "properties": null,
-                                "unit_group": null,
+                                "properties": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "pp_01e21344878064372f69e67093",
+                                            "object": "property",
+                                            "name": "Color",
+                                            "attributes": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                        "object": "attribute",
+                                                        "value": "Premium",
+                                                        "color": "red",
+                                                        "sort_order": 1,
+                                                        "property": {
+                                                            "id": "pp_01e21344878064372f69e67093",
+                                                            "object": "property",
+                                                            "name": "Color",
+                                                            "attributes": null,
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "unit_group": {
+                                    "id": "ug_01aad07abb8e41fd392d2d7013",
+                                    "object": "unit_group",
+                                    "name": "Weight",
+                                    "notes": "Mass units used for ordering raw materials by weight.",
+                                    "type": "mass",
+                                    "base_unit": {
+                                        "id": "un_01966263f74a5a0cae356000a1",
+                                        "object": "unit",
+                                        "name": "Kilogram",
+                                        "abbreviation": "kg",
+                                        "type": "mass",
+                                        "ratio_numerator": "1000",
+                                        "ratio_denominator": "1",
+                                        "offset_numerator": "0",
+                                        "offset_denominator": "1",
+                                        "is_base_unit": false,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "associated_units": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                "object": "unit_group_unit",
+                                                "unit": {
+                                                    "id": "un_01966263f74a5a0cae356000a1",
+                                                    "object": "unit",
+                                                    "name": "Kilogram",
+                                                    "abbreviation": "kg",
+                                                    "type": "mass",
+                                                    "ratio_numerator": "1000",
+                                                    "ratio_denominator": "1",
+                                                    "offset_numerator": "0",
+                                                    "offset_denominator": "1",
+                                                    "is_base_unit": false,
+                                                    "owner": {
+                                                        "object": "owner",
+                                                        "type": "system",
+                                                        "account": null
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "discount_percentage": 1,
+                                                "discount_fixed": 0,
+                                                "customer_portal_visibility": "visible",
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system",
+                                        "account": null
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -110767,7 +114262,14 @@ export const apiTags: TagData[] = [
                                         "value": "Premium",
                                         "color": "red",
                                         "sort_order": 1,
-                                        "property": null,
+                                        "property": {
+                                            "id": "pp_01e21344878064372f69e67093",
+                                            "object": "property",
+                                            "name": "Color",
+                                            "attributes": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     }
@@ -112312,15 +115814,131 @@ export const apiTags: TagData[] = [
                                 "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                 "object": "item_category",
                                 "name": "Electronics",
-                                "notes": null,
+                                "notes": "Components and raw materials used across the electronics assembly line.",
                                 "type": "material_category",
                                 "owner": {
                                     "object": "owner",
                                     "type": "system",
                                     "account": null
                                 },
-                                "properties": null,
-                                "unit_group": null,
+                                "properties": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "pp_01e21344878064372f69e67093",
+                                            "object": "property",
+                                            "name": "Color",
+                                            "attributes": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                        "object": "attribute",
+                                                        "value": "Premium",
+                                                        "color": "red",
+                                                        "sort_order": 1,
+                                                        "property": {
+                                                            "id": "pp_01e21344878064372f69e67093",
+                                                            "object": "property",
+                                                            "name": "Color",
+                                                            "attributes": null,
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "unit_group": {
+                                    "id": "ug_01aad07abb8e41fd392d2d7013",
+                                    "object": "unit_group",
+                                    "name": "Weight",
+                                    "notes": "Mass units used for ordering raw materials by weight.",
+                                    "type": "mass",
+                                    "base_unit": {
+                                        "id": "un_01966263f74a5a0cae356000a1",
+                                        "object": "unit",
+                                        "name": "Kilogram",
+                                        "abbreviation": "kg",
+                                        "type": "mass",
+                                        "ratio_numerator": "1000",
+                                        "ratio_denominator": "1",
+                                        "offset_numerator": "0",
+                                        "offset_denominator": "1",
+                                        "is_base_unit": false,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "associated_units": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                "object": "unit_group_unit",
+                                                "unit": {
+                                                    "id": "un_01966263f74a5a0cae356000a1",
+                                                    "object": "unit",
+                                                    "name": "Kilogram",
+                                                    "abbreviation": "kg",
+                                                    "type": "mass",
+                                                    "ratio_numerator": "1000",
+                                                    "ratio_denominator": "1",
+                                                    "offset_numerator": "0",
+                                                    "offset_denominator": "1",
+                                                    "is_base_unit": false,
+                                                    "owner": {
+                                                        "object": "owner",
+                                                        "type": "system",
+                                                        "account": null
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "discount_percentage": 1,
+                                                "discount_fixed": 0,
+                                                "customer_portal_visibility": "visible",
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system",
+                                        "account": null
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -112477,7 +116095,14 @@ export const apiTags: TagData[] = [
                                         "value": "Premium",
                                         "color": "red",
                                         "sort_order": 1,
-                                        "property": null,
+                                        "property": {
+                                            "id": "pp_01e21344878064372f69e67093",
+                                            "object": "property",
+                                            "name": "Color",
+                                            "attributes": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     }
@@ -113211,15 +116836,131 @@ export const apiTags: TagData[] = [
                 "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                 "object": "item_category",
                 "name": "Electronics",
-                "notes": null,
+                "notes": "Components and raw materials used across the electronics assembly line.",
                 "type": "material_category",
                 "owner": {
                     "object": "owner",
                     "type": "system",
                     "account": null
                 },
-                "properties": null,
-                "unit_group": null,
+                "properties": {
+                    "object": "list",
+                    "page_info": {
+                        "next_page_url": null,
+                        "previous_page_url": null,
+                        "has_next_page": false,
+                        "has_prev_page": false
+                    },
+                    "data": [
+                        {
+                            "id": "pp_01e21344878064372f69e67093",
+                            "object": "property",
+                            "name": "Color",
+                            "attributes": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                        "object": "attribute",
+                                        "value": "Premium",
+                                        "color": "red",
+                                        "sort_order": 1,
+                                        "property": {
+                                            "id": "pp_01e21344878064372f69e67093",
+                                            "object": "property",
+                                            "name": "Color",
+                                            "attributes": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    ]
+                },
+                "unit_group": {
+                    "id": "ug_01aad07abb8e41fd392d2d7013",
+                    "object": "unit_group",
+                    "name": "Weight",
+                    "notes": "Mass units used for ordering raw materials by weight.",
+                    "type": "mass",
+                    "base_unit": {
+                        "id": "un_01966263f74a5a0cae356000a1",
+                        "object": "unit",
+                        "name": "Kilogram",
+                        "abbreviation": "kg",
+                        "type": "mass",
+                        "ratio_numerator": "1000",
+                        "ratio_denominator": "1",
+                        "offset_numerator": "0",
+                        "offset_denominator": "1",
+                        "is_base_unit": false,
+                        "owner": {
+                            "object": "owner",
+                            "type": "system",
+                            "account": null
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
+                    "associated_units": {
+                        "object": "list",
+                        "page_info": {
+                            "next_page_url": null,
+                            "previous_page_url": null,
+                            "has_next_page": false,
+                            "has_prev_page": false
+                        },
+                        "data": [
+                            {
+                                "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                "object": "unit_group_unit",
+                                "unit": {
+                                    "id": "un_01966263f74a5a0cae356000a1",
+                                    "object": "unit",
+                                    "name": "Kilogram",
+                                    "abbreviation": "kg",
+                                    "type": "mass",
+                                    "ratio_numerator": "1000",
+                                    "ratio_denominator": "1",
+                                    "offset_numerator": "0",
+                                    "offset_denominator": "1",
+                                    "is_base_unit": false,
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system",
+                                        "account": null
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "discount_percentage": 1,
+                                "discount_fixed": 0,
+                                "customer_portal_visibility": "visible",
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            }
+                        ]
+                    },
+                    "owner": {
+                        "object": "owner",
+                        "type": "system",
+                        "account": null
+                    },
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
+                },
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             },
@@ -114009,15 +117750,131 @@ export const apiTags: TagData[] = [
                             "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                             "object": "item_category",
                             "name": "Electronics",
-                            "notes": null,
+                            "notes": "Components and raw materials used across the electronics assembly line.",
                             "type": "material_category",
                             "owner": {
                                 "object": "owner",
                                 "type": "system",
                                 "account": null
                             },
-                            "properties": null,
-                            "unit_group": null,
+                            "properties": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "pp_01e21344878064372f69e67093",
+                                        "object": "property",
+                                        "name": "Color",
+                                        "attributes": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                    "object": "attribute",
+                                                    "value": "Premium",
+                                                    "color": "red",
+                                                    "sort_order": 1,
+                                                    "property": {
+                                                        "id": "pp_01e21344878064372f69e67093",
+                                                        "object": "property",
+                                                        "name": "Color",
+                                                        "attributes": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
+                            "unit_group": {
+                                "id": "ug_01aad07abb8e41fd392d2d7013",
+                                "object": "unit_group",
+                                "name": "Weight",
+                                "notes": "Mass units used for ordering raw materials by weight.",
+                                "type": "mass",
+                                "base_unit": {
+                                    "id": "un_01966263f74a5a0cae356000a1",
+                                    "object": "unit",
+                                    "name": "Kilogram",
+                                    "abbreviation": "kg",
+                                    "type": "mass",
+                                    "ratio_numerator": "1000",
+                                    "ratio_denominator": "1",
+                                    "offset_numerator": "0",
+                                    "offset_denominator": "1",
+                                    "is_base_unit": false,
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system",
+                                        "account": null
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "associated_units": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                            "object": "unit_group_unit",
+                                            "unit": {
+                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                "object": "unit",
+                                                "name": "Kilogram",
+                                                "abbreviation": "kg",
+                                                "type": "mass",
+                                                "ratio_numerator": "1000",
+                                                "ratio_denominator": "1",
+                                                "offset_numerator": "0",
+                                                "offset_denominator": "1",
+                                                "is_base_unit": false,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "discount_percentage": 1,
+                                            "discount_fixed": 0,
+                                            "customer_portal_visibility": "visible",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -114082,7 +117939,8 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Electronic Components"
+                        "name": "Electronic Components",
+                        "notes": "Covers passive and active components; excludes assemblies."
                     }
                 },
                 "responses": [
@@ -114800,15 +118658,131 @@ export const apiTags: TagData[] = [
                             "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                             "object": "item_category",
                             "name": "Electronics",
-                            "notes": null,
+                            "notes": "Components and raw materials used across the electronics assembly line.",
                             "type": "material_category",
                             "owner": {
                                 "object": "owner",
                                 "type": "system",
                                 "account": null
                             },
-                            "properties": null,
-                            "unit_group": null,
+                            "properties": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "pp_01e21344878064372f69e67093",
+                                        "object": "property",
+                                        "name": "Color",
+                                        "attributes": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                    "object": "attribute",
+                                                    "value": "Premium",
+                                                    "color": "red",
+                                                    "sort_order": 1,
+                                                    "property": {
+                                                        "id": "pp_01e21344878064372f69e67093",
+                                                        "object": "property",
+                                                        "name": "Color",
+                                                        "attributes": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
+                            "unit_group": {
+                                "id": "ug_01aad07abb8e41fd392d2d7013",
+                                "object": "unit_group",
+                                "name": "Weight",
+                                "notes": "Mass units used for ordering raw materials by weight.",
+                                "type": "mass",
+                                "base_unit": {
+                                    "id": "un_01966263f74a5a0cae356000a1",
+                                    "object": "unit",
+                                    "name": "Kilogram",
+                                    "abbreviation": "kg",
+                                    "type": "mass",
+                                    "ratio_numerator": "1000",
+                                    "ratio_denominator": "1",
+                                    "offset_numerator": "0",
+                                    "offset_denominator": "1",
+                                    "is_base_unit": false,
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system",
+                                        "account": null
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "associated_units": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                            "object": "unit_group_unit",
+                                            "unit": {
+                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                "object": "unit",
+                                                "name": "Kilogram",
+                                                "abbreviation": "kg",
+                                                "type": "mass",
+                                                "ratio_numerator": "1000",
+                                                "ratio_denominator": "1",
+                                                "offset_numerator": "0",
+                                                "offset_denominator": "1",
+                                                "is_base_unit": false,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "discount_percentage": 1,
+                                            "discount_fixed": 0,
+                                            "customer_portal_visibility": "visible",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -115666,15 +119640,131 @@ export const apiTags: TagData[] = [
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
+                                    "notes": "Components and raw materials used across the electronics assembly line.",
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
                                         "type": "system",
                                         "account": null
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
+                                    "properties": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                            "object": "attribute",
+                                                            "value": "Premium",
+                                                            "color": "red",
+                                                            "sort_order": 1,
+                                                            "property": {
+                                                                "id": "pp_01e21344878064372f69e67093",
+                                                                "object": "property",
+                                                                "name": "Color",
+                                                                "attributes": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "unit_group": {
+                                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                                        "object": "unit_group",
+                                        "name": "Weight",
+                                        "notes": "Mass units used for ordering raw materials by weight.",
+                                        "type": "mass",
+                                        "base_unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "associated_units": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                    "object": "unit_group_unit",
+                                                    "unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1000",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": false,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "discount_percentage": 1,
+                                                    "discount_fixed": 0,
+                                                    "customer_portal_visibility": "visible",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -116435,15 +120525,131 @@ export const apiTags: TagData[] = [
                             "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                             "object": "item_category",
                             "name": "Electronics",
-                            "notes": null,
+                            "notes": "Components and raw materials used across the electronics assembly line.",
                             "type": "material_category",
                             "owner": {
                                 "object": "owner",
                                 "type": "system",
                                 "account": null
                             },
-                            "properties": null,
-                            "unit_group": null,
+                            "properties": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "pp_01e21344878064372f69e67093",
+                                        "object": "property",
+                                        "name": "Color",
+                                        "attributes": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                    "object": "attribute",
+                                                    "value": "Premium",
+                                                    "color": "red",
+                                                    "sort_order": 1,
+                                                    "property": {
+                                                        "id": "pp_01e21344878064372f69e67093",
+                                                        "object": "property",
+                                                        "name": "Color",
+                                                        "attributes": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
+                            "unit_group": {
+                                "id": "ug_01aad07abb8e41fd392d2d7013",
+                                "object": "unit_group",
+                                "name": "Weight",
+                                "notes": "Mass units used for ordering raw materials by weight.",
+                                "type": "mass",
+                                "base_unit": {
+                                    "id": "un_01966263f74a5a0cae356000a1",
+                                    "object": "unit",
+                                    "name": "Kilogram",
+                                    "abbreviation": "kg",
+                                    "type": "mass",
+                                    "ratio_numerator": "1000",
+                                    "ratio_denominator": "1",
+                                    "offset_numerator": "0",
+                                    "offset_denominator": "1",
+                                    "is_base_unit": false,
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system",
+                                        "account": null
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "associated_units": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                            "object": "unit_group_unit",
+                                            "unit": {
+                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                "object": "unit",
+                                                "name": "Kilogram",
+                                                "abbreviation": "kg",
+                                                "type": "mass",
+                                                "ratio_numerator": "1000",
+                                                "ratio_denominator": "1",
+                                                "offset_numerator": "0",
+                                                "offset_denominator": "1",
+                                                "is_base_unit": false,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "discount_percentage": 1,
+                                            "discount_fixed": 0,
+                                            "customer_portal_visibility": "visible",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -117595,15 +121801,131 @@ export const apiTags: TagData[] = [
                         "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                         "object": "item_category",
                         "name": "Electronics",
-                        "notes": null,
+                        "notes": "Components and raw materials used across the electronics assembly line.",
                         "type": "material_category",
                         "owner": {
                             "object": "owner",
                             "type": "system",
                             "account": null
                         },
-                        "properties": null,
-                        "unit_group": null,
+                        "properties": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": null,
+                                "previous_page_url": null,
+                                "has_next_page": false,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "pp_01e21344878064372f69e67093",
+                                    "object": "property",
+                                    "name": "Color",
+                                    "attributes": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                "object": "attribute",
+                                                "value": "Premium",
+                                                "color": "red",
+                                                "sort_order": 1,
+                                                "property": {
+                                                    "id": "pp_01e21344878064372f69e67093",
+                                                    "object": "property",
+                                                    "name": "Color",
+                                                    "attributes": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        },
+                        "unit_group": {
+                            "id": "ug_01aad07abb8e41fd392d2d7013",
+                            "object": "unit_group",
+                            "name": "Weight",
+                            "notes": "Mass units used for ordering raw materials by weight.",
+                            "type": "mass",
+                            "base_unit": {
+                                "id": "un_01966263f74a5a0cae356000a1",
+                                "object": "unit",
+                                "name": "Kilogram",
+                                "abbreviation": "kg",
+                                "type": "mass",
+                                "ratio_numerator": "1000",
+                                "ratio_denominator": "1",
+                                "offset_numerator": "0",
+                                "offset_denominator": "1",
+                                "is_base_unit": false,
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "associated_units": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                        "object": "unit_group_unit",
+                                        "unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "discount_percentage": 1,
+                                        "discount_fixed": 0,
+                                        "customer_portal_visibility": "visible",
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
+                            "owner": {
+                                "object": "owner",
+                                "type": "system",
+                                "account": null
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        },
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
                     },
@@ -117760,7 +122082,14 @@ export const apiTags: TagData[] = [
                                 "value": "Premium",
                                 "color": "red",
                                 "sort_order": 1,
-                                "property": null,
+                                "property": {
+                                    "id": "pp_01e21344878064372f69e67093",
+                                    "object": "property",
+                                    "name": "Color",
+                                    "attributes": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             }
@@ -118025,7 +122354,30 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "sku": "MAT-001",
-                        "category_id": "ic_01ae7bd7bfd21ca0ab81e1357e"
+                        "description": "Cold-rolled 304 stainless steel sheet, 1.5mm",
+                        "notes": "Store flat in a dry area to avoid surface oxidation.",
+                        "category_id": "ic_01ae7bd7bfd21ca0ab81e1357e",
+                        "order_point": {
+                            "value": "100.00",
+                            "unit_id": "un_01966263f74a5a0cae356000a1"
+                        },
+                        "lead_time": {
+                            "value": "7.00",
+                            "unit_id": "un_01966263f74a5a0cae356000a1"
+                        },
+                        "unit_price": {
+                            "value": "12.50",
+                            "numerator_unit_id": "un_01966263f74a5a0cae356000a1",
+                            "denominator_unit_id": "un_01966263f74a5a0cae356000a1"
+                        },
+                        "unit_cost": {
+                            "value": "8.25",
+                            "numerator_unit_id": "un_01966263f74a5a0cae356000a1",
+                            "denominator_unit_id": "un_01966263f74a5a0cae356000a1"
+                        },
+                        "attribute_ids": [
+                            "at_01c9493ec0c46bb0ed12708ae4"
+                        ]
                     }
                 },
                 "responses": [
@@ -119025,15 +123377,131 @@ export const apiTags: TagData[] = [
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
+                                    "notes": "Components and raw materials used across the electronics assembly line.",
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
                                         "type": "system",
                                         "account": null
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
+                                    "properties": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                            "object": "attribute",
+                                                            "value": "Premium",
+                                                            "color": "red",
+                                                            "sort_order": 1,
+                                                            "property": {
+                                                                "id": "pp_01e21344878064372f69e67093",
+                                                                "object": "property",
+                                                                "name": "Color",
+                                                                "attributes": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "unit_group": {
+                                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                                        "object": "unit_group",
+                                        "name": "Weight",
+                                        "notes": "Mass units used for ordering raw materials by weight.",
+                                        "type": "mass",
+                                        "base_unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "associated_units": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                    "object": "unit_group_unit",
+                                                    "unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1000",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": false,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "discount_percentage": 1,
+                                                    "discount_fixed": 0,
+                                                    "customer_portal_visibility": "visible",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -119190,7 +123658,14 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
+                                            "property": {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -119409,7 +123884,22 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "sku": "MAT-001-UPDATED"
+                        "sku": "MAT-001-UPDATED",
+                        "description": "Cold-rolled 304 stainless steel sheet, 2.0mm",
+                        "notes": "Reorder point raised after Q2 demand spike.",
+                        "order_point": {
+                            "value": "150.00",
+                            "unit_id": "un_01966263f74a5a0cae356000a1"
+                        },
+                        "lead_time": {
+                            "value": "10.00",
+                            "unit_id": "un_01966263f74a5a0cae356000a1"
+                        },
+                        "unit_cost": {
+                            "value": "9.10",
+                            "numerator_unit_id": "un_01966263f74a5a0cae356000a1",
+                            "denominator_unit_id": "un_01966263f74a5a0cae356000a1"
+                        }
                     }
                 },
                 "responses": [
@@ -120409,15 +124899,131 @@ export const apiTags: TagData[] = [
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
+                                    "notes": "Components and raw materials used across the electronics assembly line.",
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
                                         "type": "system",
                                         "account": null
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
+                                    "properties": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                            "object": "attribute",
+                                                            "value": "Premium",
+                                                            "color": "red",
+                                                            "sort_order": 1,
+                                                            "property": {
+                                                                "id": "pp_01e21344878064372f69e67093",
+                                                                "object": "property",
+                                                                "name": "Color",
+                                                                "attributes": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "unit_group": {
+                                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                                        "object": "unit_group",
+                                        "name": "Weight",
+                                        "notes": "Mass units used for ordering raw materials by weight.",
+                                        "type": "mass",
+                                        "base_unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "associated_units": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                    "object": "unit_group_unit",
+                                                    "unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1000",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": false,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "discount_percentage": 1,
+                                                    "discount_fixed": 0,
+                                                    "customer_portal_visibility": "visible",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -120574,7 +125180,14 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
+                                            "property": {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -121792,15 +126405,131 @@ export const apiTags: TagData[] = [
                                             "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                             "object": "item_category",
                                             "name": "Electronics",
-                                            "notes": null,
+                                            "notes": "Components and raw materials used across the electronics assembly line.",
                                             "type": "material_category",
                                             "owner": {
                                                 "object": "owner",
                                                 "type": "system",
                                                 "account": null
                                             },
-                                            "properties": null,
-                                            "unit_group": null,
+                                            "properties": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "pp_01e21344878064372f69e67093",
+                                                        "object": "property",
+                                                        "name": "Color",
+                                                        "attributes": {
+                                                            "object": "list",
+                                                            "page_info": {
+                                                                "next_page_url": null,
+                                                                "previous_page_url": null,
+                                                                "has_next_page": false,
+                                                                "has_prev_page": false
+                                                            },
+                                                            "data": [
+                                                                {
+                                                                    "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                                    "object": "attribute",
+                                                                    "value": "Premium",
+                                                                    "color": "red",
+                                                                    "sort_order": 1,
+                                                                    "property": {
+                                                                        "id": "pp_01e21344878064372f69e67093",
+                                                                        "object": "property",
+                                                                        "name": "Color",
+                                                                        "attributes": null,
+                                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                                    },
+                                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "unit_group": {
+                                                "id": "ug_01aad07abb8e41fd392d2d7013",
+                                                "object": "unit_group",
+                                                "name": "Weight",
+                                                "notes": "Mass units used for ordering raw materials by weight.",
+                                                "type": "mass",
+                                                "base_unit": {
+                                                    "id": "un_01966263f74a5a0cae356000a1",
+                                                    "object": "unit",
+                                                    "name": "Kilogram",
+                                                    "abbreviation": "kg",
+                                                    "type": "mass",
+                                                    "ratio_numerator": "1000",
+                                                    "ratio_denominator": "1",
+                                                    "offset_numerator": "0",
+                                                    "offset_denominator": "1",
+                                                    "is_base_unit": false,
+                                                    "owner": {
+                                                        "object": "owner",
+                                                        "type": "system",
+                                                        "account": null
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "associated_units": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                            "object": "unit_group_unit",
+                                                            "unit": {
+                                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                                "object": "unit",
+                                                                "name": "Kilogram",
+                                                                "abbreviation": "kg",
+                                                                "type": "mass",
+                                                                "ratio_numerator": "1000",
+                                                                "ratio_denominator": "1",
+                                                                "offset_numerator": "0",
+                                                                "offset_denominator": "1",
+                                                                "is_base_unit": false,
+                                                                "owner": {
+                                                                    "object": "owner",
+                                                                    "type": "system",
+                                                                    "account": null
+                                                                },
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "discount_percentage": 1,
+                                                            "discount_fixed": 0,
+                                                            "customer_portal_visibility": "visible",
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         },
@@ -121957,7 +126686,14 @@ export const apiTags: TagData[] = [
                                                     "value": "Premium",
                                                     "color": "red",
                                                     "sort_order": 1,
-                                                    "property": null,
+                                                    "property": {
+                                                        "id": "pp_01e21344878064372f69e67093",
+                                                        "object": "property",
+                                                        "name": "Color",
+                                                        "attributes": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
                                                     "created_at": "2026-05-10T00:00:00Z",
                                                     "updated_at": "2026-05-10T00:23:00Z"
                                                 }
@@ -123059,15 +127795,131 @@ export const apiTags: TagData[] = [
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
+                                    "notes": "Components and raw materials used across the electronics assembly line.",
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
                                         "type": "system",
                                         "account": null
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
+                                    "properties": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                            "object": "attribute",
+                                                            "value": "Premium",
+                                                            "color": "red",
+                                                            "sort_order": 1,
+                                                            "property": {
+                                                                "id": "pp_01e21344878064372f69e67093",
+                                                                "object": "property",
+                                                                "name": "Color",
+                                                                "attributes": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "unit_group": {
+                                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                                        "object": "unit_group",
+                                        "name": "Weight",
+                                        "notes": "Mass units used for ordering raw materials by weight.",
+                                        "type": "mass",
+                                        "base_unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "associated_units": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                    "object": "unit_group_unit",
+                                                    "unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1000",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": false,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "discount_percentage": 1,
+                                                    "discount_fixed": 0,
+                                                    "customer_portal_visibility": "visible",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -123224,7 +128076,14 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
+                                            "property": {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -127886,15 +132745,131 @@ export const apiTags: TagData[] = [
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
+                                    "notes": "Components and raw materials used across the electronics assembly line.",
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
                                         "type": "system",
                                         "account": null
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
+                                    "properties": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                            "object": "attribute",
+                                                            "value": "Premium",
+                                                            "color": "red",
+                                                            "sort_order": 1,
+                                                            "property": {
+                                                                "id": "pp_01e21344878064372f69e67093",
+                                                                "object": "property",
+                                                                "name": "Color",
+                                                                "attributes": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "unit_group": {
+                                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                                        "object": "unit_group",
+                                        "name": "Weight",
+                                        "notes": "Mass units used for ordering raw materials by weight.",
+                                        "type": "mass",
+                                        "base_unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "associated_units": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                    "object": "unit_group_unit",
+                                                    "unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1000",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": false,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "discount_percentage": 1,
+                                                    "discount_fixed": 0,
+                                                    "customer_portal_visibility": "visible",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -128051,7 +133026,14 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
+                                            "property": {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -129008,15 +133990,131 @@ export const apiTags: TagData[] = [
                         "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                         "object": "item_category",
                         "name": "Electronics",
-                        "notes": null,
+                        "notes": "Components and raw materials used across the electronics assembly line.",
                         "type": "material_category",
                         "owner": {
                             "object": "owner",
                             "type": "system",
                             "account": null
                         },
-                        "properties": null,
-                        "unit_group": null,
+                        "properties": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": null,
+                                "previous_page_url": null,
+                                "has_next_page": false,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "pp_01e21344878064372f69e67093",
+                                    "object": "property",
+                                    "name": "Color",
+                                    "attributes": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                "object": "attribute",
+                                                "value": "Premium",
+                                                "color": "red",
+                                                "sort_order": 1,
+                                                "property": {
+                                                    "id": "pp_01e21344878064372f69e67093",
+                                                    "object": "property",
+                                                    "name": "Color",
+                                                    "attributes": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        },
+                        "unit_group": {
+                            "id": "ug_01aad07abb8e41fd392d2d7013",
+                            "object": "unit_group",
+                            "name": "Weight",
+                            "notes": "Mass units used for ordering raw materials by weight.",
+                            "type": "mass",
+                            "base_unit": {
+                                "id": "un_01966263f74a5a0cae356000a1",
+                                "object": "unit",
+                                "name": "Kilogram",
+                                "abbreviation": "kg",
+                                "type": "mass",
+                                "ratio_numerator": "1000",
+                                "ratio_denominator": "1",
+                                "offset_numerator": "0",
+                                "offset_denominator": "1",
+                                "is_base_unit": false,
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "associated_units": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                        "object": "unit_group_unit",
+                                        "unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "discount_percentage": 1,
+                                        "discount_fixed": 0,
+                                        "customer_portal_visibility": "visible",
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
+                            "owner": {
+                                "object": "owner",
+                                "type": "system",
+                                "account": null
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        },
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
                     },
@@ -129173,7 +134271,14 @@ export const apiTags: TagData[] = [
                                 "value": "Premium",
                                 "color": "red",
                                 "sort_order": 1,
-                                "property": null,
+                                "property": {
+                                    "id": "pp_01e21344878064372f69e67093",
+                                    "object": "property",
+                                    "name": "Color",
+                                    "attributes": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             }
@@ -129335,7 +134440,21 @@ export const apiTags: TagData[] = [
                     "example": {
                         "sku": "BRG-6204-2RS",
                         "description": "Deep groove ball bearing, 20x47x14mm",
-                        "category_id": "ic_01ae7bd7bfd21ca0ab81e1357e"
+                        "notes": "OEM-equivalent; verify shielding type before substitution.",
+                        "category_id": "ic_01ae7bd7bfd21ca0ab81e1357e",
+                        "unit_price": {
+                            "value": "14.99",
+                            "numerator_unit_id": "un_01966263f74a5a0cae356000a1",
+                            "denominator_unit_id": "un_01966263f74a5a0cae356000a1"
+                        },
+                        "unit_cost": {
+                            "value": "9.40",
+                            "numerator_unit_id": "un_01966263f74a5a0cae356000a1",
+                            "denominator_unit_id": "un_01966263f74a5a0cae356000a1"
+                        },
+                        "attribute_ids": [
+                            "at_01c9493ec0c46bb0ed12708ae4"
+                        ]
                     }
                 },
                 "responses": [
@@ -130000,15 +135119,131 @@ export const apiTags: TagData[] = [
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
+                                    "notes": "Components and raw materials used across the electronics assembly line.",
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
                                         "type": "system",
                                         "account": null
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
+                                    "properties": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                            "object": "attribute",
+                                                            "value": "Premium",
+                                                            "color": "red",
+                                                            "sort_order": 1,
+                                                            "property": {
+                                                                "id": "pp_01e21344878064372f69e67093",
+                                                                "object": "property",
+                                                                "name": "Color",
+                                                                "attributes": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "unit_group": {
+                                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                                        "object": "unit_group",
+                                        "name": "Weight",
+                                        "notes": "Mass units used for ordering raw materials by weight.",
+                                        "type": "mass",
+                                        "base_unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "associated_units": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                    "object": "unit_group_unit",
+                                                    "unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1000",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": false,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "discount_percentage": 1,
+                                                    "discount_fixed": 0,
+                                                    "customer_portal_visibility": "visible",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -130165,7 +135400,14 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
+                                            "property": {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -130246,7 +135488,8 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "sku": "BRG-6204-2RS",
-                        "description": "Deep groove ball bearing, 20x47x14mm"
+                        "description": "Deep groove ball bearing, 20x47x14mm",
+                        "notes": "Superseded by low-friction variant; keep for legacy assemblies."
                     }
                 },
                 "responses": [
@@ -130911,15 +136154,131 @@ export const apiTags: TagData[] = [
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
+                                    "notes": "Components and raw materials used across the electronics assembly line.",
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
                                         "type": "system",
                                         "account": null
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
+                                    "properties": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                            "object": "attribute",
+                                                            "value": "Premium",
+                                                            "color": "red",
+                                                            "sort_order": 1,
+                                                            "property": {
+                                                                "id": "pp_01e21344878064372f69e67093",
+                                                                "object": "property",
+                                                                "name": "Color",
+                                                                "attributes": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "unit_group": {
+                                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                                        "object": "unit_group",
+                                        "name": "Weight",
+                                        "notes": "Mass units used for ordering raw materials by weight.",
+                                        "type": "mass",
+                                        "base_unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "associated_units": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                    "object": "unit_group_unit",
+                                                    "unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1000",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": false,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "discount_percentage": 1,
+                                                    "discount_fixed": 0,
+                                                    "customer_portal_visibility": "visible",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -131076,7 +136435,14 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
+                                            "property": {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -132132,15 +137498,131 @@ export const apiTags: TagData[] = [
                                             "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                             "object": "item_category",
                                             "name": "Electronics",
-                                            "notes": null,
+                                            "notes": "Components and raw materials used across the electronics assembly line.",
                                             "type": "material_category",
                                             "owner": {
                                                 "object": "owner",
                                                 "type": "system",
                                                 "account": null
                                             },
-                                            "properties": null,
-                                            "unit_group": null,
+                                            "properties": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "pp_01e21344878064372f69e67093",
+                                                        "object": "property",
+                                                        "name": "Color",
+                                                        "attributes": {
+                                                            "object": "list",
+                                                            "page_info": {
+                                                                "next_page_url": null,
+                                                                "previous_page_url": null,
+                                                                "has_next_page": false,
+                                                                "has_prev_page": false
+                                                            },
+                                                            "data": [
+                                                                {
+                                                                    "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                                    "object": "attribute",
+                                                                    "value": "Premium",
+                                                                    "color": "red",
+                                                                    "sort_order": 1,
+                                                                    "property": {
+                                                                        "id": "pp_01e21344878064372f69e67093",
+                                                                        "object": "property",
+                                                                        "name": "Color",
+                                                                        "attributes": null,
+                                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                                    },
+                                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "unit_group": {
+                                                "id": "ug_01aad07abb8e41fd392d2d7013",
+                                                "object": "unit_group",
+                                                "name": "Weight",
+                                                "notes": "Mass units used for ordering raw materials by weight.",
+                                                "type": "mass",
+                                                "base_unit": {
+                                                    "id": "un_01966263f74a5a0cae356000a1",
+                                                    "object": "unit",
+                                                    "name": "Kilogram",
+                                                    "abbreviation": "kg",
+                                                    "type": "mass",
+                                                    "ratio_numerator": "1000",
+                                                    "ratio_denominator": "1",
+                                                    "offset_numerator": "0",
+                                                    "offset_denominator": "1",
+                                                    "is_base_unit": false,
+                                                    "owner": {
+                                                        "object": "owner",
+                                                        "type": "system",
+                                                        "account": null
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "associated_units": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                            "object": "unit_group_unit",
+                                                            "unit": {
+                                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                                "object": "unit",
+                                                                "name": "Kilogram",
+                                                                "abbreviation": "kg",
+                                                                "type": "mass",
+                                                                "ratio_numerator": "1000",
+                                                                "ratio_denominator": "1",
+                                                                "offset_numerator": "0",
+                                                                "offset_denominator": "1",
+                                                                "is_base_unit": false,
+                                                                "owner": {
+                                                                    "object": "owner",
+                                                                    "type": "system",
+                                                                    "account": null
+                                                                },
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "discount_percentage": 1,
+                                                            "discount_fixed": 0,
+                                                            "customer_portal_visibility": "visible",
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         },
@@ -132297,7 +137779,14 @@ export const apiTags: TagData[] = [
                                                     "value": "Premium",
                                                     "color": "red",
                                                     "sort_order": 1,
-                                                    "property": null,
+                                                    "property": {
+                                                        "id": "pp_01e21344878064372f69e67093",
+                                                        "object": "property",
+                                                        "name": "Color",
+                                                        "attributes": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
                                                     "created_at": "2026-05-10T00:00:00Z",
                                                     "updated_at": "2026-05-10T00:23:00Z"
                                                 }
@@ -133237,15 +138726,131 @@ export const apiTags: TagData[] = [
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
+                                    "notes": "Components and raw materials used across the electronics assembly line.",
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
                                         "type": "system",
                                         "account": null
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
+                                    "properties": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                            "object": "attribute",
+                                                            "value": "Premium",
+                                                            "color": "red",
+                                                            "sort_order": 1,
+                                                            "property": {
+                                                                "id": "pp_01e21344878064372f69e67093",
+                                                                "object": "property",
+                                                                "name": "Color",
+                                                                "attributes": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "unit_group": {
+                                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                                        "object": "unit_group",
+                                        "name": "Weight",
+                                        "notes": "Mass units used for ordering raw materials by weight.",
+                                        "type": "mass",
+                                        "base_unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "associated_units": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                    "object": "unit_group_unit",
+                                                    "unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1000",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": false,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "discount_percentage": 1,
+                                                    "discount_fixed": 0,
+                                                    "customer_portal_visibility": "visible",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -133402,7 +139007,14 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
+                                            "property": {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -136776,15 +142388,131 @@ export const apiTags: TagData[] = [
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
+                                    "notes": "Components and raw materials used across the electronics assembly line.",
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
                                         "type": "system",
                                         "account": null
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
+                                    "properties": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                            "object": "attribute",
+                                                            "value": "Premium",
+                                                            "color": "red",
+                                                            "sort_order": 1,
+                                                            "property": {
+                                                                "id": "pp_01e21344878064372f69e67093",
+                                                                "object": "property",
+                                                                "name": "Color",
+                                                                "attributes": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "unit_group": {
+                                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                                        "object": "unit_group",
+                                        "name": "Weight",
+                                        "notes": "Mass units used for ordering raw materials by weight.",
+                                        "type": "mass",
+                                        "base_unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "associated_units": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                    "object": "unit_group_unit",
+                                                    "unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1000",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": false,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "discount_percentage": 1,
+                                                    "discount_fixed": 0,
+                                                    "customer_portal_visibility": "visible",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -136941,7 +142669,14 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
+                                            "property": {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -140049,7 +145784,7 @@ export const apiTags: TagData[] = [
                         "object": "carrier",
                         "name": "FedEx",
                         "code": "fedex",
-                        "account_number": null,
+                        "account_number": "603145678",
                         "customer_portal_visibility": "visible",
                         "owner": {
                             "object": "owner",
@@ -140066,7 +145801,42 @@ export const apiTags: TagData[] = [
                                 "updated_at": "2026-05-10T00:23:00Z"
                             }
                         },
-                        "service_levels": null,
+                        "service_levels": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": null,
+                                "previous_page_url": null,
+                                "has_next_page": false,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "crop_01cfaf03f104e90ef9680e2a30",
+                                    "object": "service_level",
+                                    "name": "FedEx Ground",
+                                    "service_level_token": "fedex_ground",
+                                    "customer_portal_visibility": "visible",
+                                    "is_default": true,
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "account",
+                                        "account": {
+                                            "id": "ac_01148680966698341a9c0976db",
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        },
                         "deleted_at": null,
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
@@ -140077,7 +145847,7 @@ export const apiTags: TagData[] = [
                         "name": "FedEx Ground",
                         "service_level_token": "fedex_ground",
                         "customer_portal_visibility": "visible",
-                        "is_default": false,
+                        "is_default": true,
                         "owner": {
                             "object": "owner",
                             "type": "account",
@@ -140185,7 +145955,90 @@ export const apiTags: TagData[] = [
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         },
-                        "department": null,
+                        "department": {
+                            "id": "dp_01791c25ab59da4704cba61874",
+                            "object": "department",
+                            "name": "Fabrication",
+                            "notes": null,
+                            "location": {
+                                "id": "lc_014d187d99b31926f0c74af9d8",
+                                "object": "location",
+                                "name": "Warehouse A",
+                                "type": "building",
+                                "parent": null,
+                                "children": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "lc_0132c4db1e220da9bc596cc4c9",
+                                            "object": "location",
+                                            "name": "Shelf A1",
+                                            "type": "building",
+                                            "parent": null,
+                                            "children": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "scanning_stations": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "scst_0129335dd6286056a97024fcc1",
+                                        "object": "scanning_station",
+                                        "name": "Packaging Line 1",
+                                        "notes": "Initializes batches at the start of the packaging line.",
+                                        "type": "init_batch",
+                                        "label_size": "2x4",
+                                        "label_type": "traveler",
+                                        "operator_requirement": "none",
+                                        "department": null,
+                                        "production_steps": null,
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
+                            "machines": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "mc_0177d18f55a1615f783d3bf8d0",
+                                        "object": "machine",
+                                        "name": "CNC Router",
+                                        "serial_number": "SN-2024-0001",
+                                        "notes": null,
+                                        "department": null,
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        },
                         "user": {
                             "id": "us_0151164dcaea4cbded27b50aae",
                             "object": "user",
@@ -140197,7 +146050,7 @@ export const apiTags: TagData[] = [
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         },
-                        "last_used_at": null,
+                        "last_used_at": "2026-05-10T00:23:00Z",
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
                     }
@@ -140210,8 +146063,8 @@ export const apiTags: TagData[] = [
                     "id": "ad_012100950cfaa34aa0e0ad7258",
                     "object": "address",
                     "name": "Headquarters",
-                    "phone": null,
-                    "email": null,
+                    "phone": "+1-614-555-0142",
+                    "email": "receiving@acme.example.com",
                     "type": "standard",
                     "geolocation": {
                         "id": "gl_013e4c26412103c6757ba71806",
@@ -140230,8 +146083,8 @@ export const apiTags: TagData[] = [
                     "id": "ad_012100950cfaa34aa0e0ad7258",
                     "object": "address",
                     "name": "Headquarters",
-                    "phone": null,
-                    "email": null,
+                    "phone": "+1-614-555-0142",
+                    "email": "receiving@acme.example.com",
                     "type": "standard",
                     "geolocation": {
                         "id": "gl_013e4c26412103c6757ba71806",
@@ -140739,11 +146592,31 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Acme Inc.",
+                        "number": "100042",
                         "note": "Key enterprise account",
+                        "email": "orders@acme.com",
+                        "phone": "555-123-4567",
+                        "url": "https://acme.com",
+                        "status": "normal",
+                        "edi_status": "disabled",
+                        "commission_policy": "commission_applied",
+                        "freight_policy": "billed_freight",
                         "default_carrier_id": "cr_01784fd54c9ba197bb4e42f0e6",
+                        "default_service_level_id": "crop_01cfaf03f104e90ef9680e2a30",
                         "default_payment_term_id": "pytm_018694d6601ea771cd1b52e890",
                         "default_shipping_term_id": "shtm_014341ab4bb5bf94d5b6936f86",
+                        "default_priority": "normal",
+                        "default_sales_rep_id": "acus_01ea9983ddb41dacc44ecf997c",
+                        "customer_price_group_ids": [
+                            "acgp_018e88072d1320808dc979cfac"
+                        ],
                         "customer_type_group_id": "acgp_018e88072d1320808dc979cfac",
+                        "carrier_billing_type": "sender",
+                        "carrier_billing_account": "123456789",
+                        "credit_limit": {
+                            "value": "10000.00",
+                            "unit_id": "un_01966263f74a5a0cae356000a1"
+                        },
                         "bill_to_address": {
                             "name": "Acme Inc.",
                             "street_line_1": "123 Main St",
@@ -143059,7 +148932,7 @@ export const apiTags: TagData[] = [
                                     "object": "carrier",
                                     "name": "FedEx",
                                     "code": "fedex",
-                                    "account_number": null,
+                                    "account_number": "603145678",
                                     "customer_portal_visibility": "visible",
                                     "owner": {
                                         "object": "owner",
@@ -143076,7 +148949,42 @@ export const apiTags: TagData[] = [
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
-                                    "service_levels": null,
+                                    "service_levels": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "crop_01cfaf03f104e90ef9680e2a30",
+                                                "object": "service_level",
+                                                "name": "FedEx Ground",
+                                                "service_level_token": "fedex_ground",
+                                                "customer_portal_visibility": "visible",
+                                                "is_default": true,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "account",
+                                                    "account": {
+                                                        "id": "ac_01148680966698341a9c0976db",
+                                                        "object": "account",
+                                                        "name": "Acme Inc.",
+                                                        "default_billing_address": null,
+                                                        "default_shipping_address": null,
+                                                        "branding": null,
+                                                        "portal": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
                                     "deleted_at": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -143087,7 +148995,7 @@ export const apiTags: TagData[] = [
                                     "name": "FedEx Ground",
                                     "service_level_token": "fedex_ground",
                                     "customer_portal_visibility": "visible",
-                                    "is_default": false,
+                                    "is_default": true,
                                     "owner": {
                                         "object": "owner",
                                         "type": "account",
@@ -143195,7 +149103,90 @@ export const apiTags: TagData[] = [
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
-                                    "department": null,
+                                    "department": {
+                                        "id": "dp_01791c25ab59da4704cba61874",
+                                        "object": "department",
+                                        "name": "Fabrication",
+                                        "notes": null,
+                                        "location": {
+                                            "id": "lc_014d187d99b31926f0c74af9d8",
+                                            "object": "location",
+                                            "name": "Warehouse A",
+                                            "type": "building",
+                                            "parent": null,
+                                            "children": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "lc_0132c4db1e220da9bc596cc4c9",
+                                                        "object": "location",
+                                                        "name": "Shelf A1",
+                                                        "type": "building",
+                                                        "parent": null,
+                                                        "children": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "scanning_stations": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "scst_0129335dd6286056a97024fcc1",
+                                                    "object": "scanning_station",
+                                                    "name": "Packaging Line 1",
+                                                    "notes": "Initializes batches at the start of the packaging line.",
+                                                    "type": "init_batch",
+                                                    "label_size": "2x4",
+                                                    "label_type": "traveler",
+                                                    "operator_requirement": "none",
+                                                    "department": null,
+                                                    "production_steps": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "machines": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "mc_0177d18f55a1615f783d3bf8d0",
+                                                    "object": "machine",
+                                                    "name": "CNC Router",
+                                                    "serial_number": "SN-2024-0001",
+                                                    "notes": null,
+                                                    "department": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "user": {
                                         "id": "us_0151164dcaea4cbded27b50aae",
                                         "object": "user",
@@ -143207,7 +149198,7 @@ export const apiTags: TagData[] = [
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
-                                    "last_used_at": null,
+                                    "last_used_at": "2026-05-10T00:23:00Z",
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -143220,8 +149211,8 @@ export const apiTags: TagData[] = [
                                 "id": "ad_012100950cfaa34aa0e0ad7258",
                                 "object": "address",
                                 "name": "Headquarters",
-                                "phone": null,
-                                "email": null,
+                                "phone": "+1-614-555-0142",
+                                "email": "receiving@acme.example.com",
                                 "type": "standard",
                                 "geolocation": {
                                     "id": "gl_013e4c26412103c6757ba71806",
@@ -143240,8 +149231,8 @@ export const apiTags: TagData[] = [
                                 "id": "ad_012100950cfaa34aa0e0ad7258",
                                 "object": "address",
                                 "name": "Headquarters",
-                                "phone": null,
-                                "email": null,
+                                "phone": "+1-614-555-0142",
+                                "email": "receiving@acme.example.com",
                                 "type": "standard",
                                 "geolocation": {
                                     "id": "gl_013e4c26412103c6757ba71806",
@@ -143584,9 +149575,33 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Acme Corp Updated",
+                        "number": "100042",
                         "note": "Updated account notes",
+                        "status": "normal",
+                        "email": "orders@acme.com",
+                        "phone": "555-123-4567",
+                        "url": "https://acme.com",
+                        "edi_status": "disabled",
+                        "commission_policy": "commission_applied",
                         "freight_policy": "billed_freight",
-                        "default_carrier_id": "cr_01784fd54c9ba197bb4e42f0e6"
+                        "default_carrier_id": "cr_01784fd54c9ba197bb4e42f0e6",
+                        "default_service_level_id": "crop_01cfaf03f104e90ef9680e2a30",
+                        "default_payment_term_id": "pytm_018694d6601ea771cd1b52e890",
+                        "default_shipping_term_id": "shtm_014341ab4bb5bf94d5b6936f86",
+                        "default_priority": "normal",
+                        "default_sales_rep_id": "acus_01ea9983ddb41dacc44ecf997c",
+                        "bill_to_address_id": "ad_012c2e4aeeb20f56c1a3d06cc7",
+                        "ship_to_address_id": "ad_012c2e4aeeb20f56c1a3d06cc7",
+                        "customer_price_group_ids": [
+                            "acgp_018e88072d1320808dc979cfac"
+                        ],
+                        "customer_type_group_id": "acgp_018e88072d1320808dc979cfac",
+                        "carrier_billing_type": "sender",
+                        "carrier_billing_account": "123456789",
+                        "credit_limit": {
+                            "value": "10000.00",
+                            "unit_id": "un_01966263f74a5a0cae356000a1"
+                        }
                     }
                 },
                 "responses": [
@@ -145886,7 +151901,7 @@ export const apiTags: TagData[] = [
                                     "object": "carrier",
                                     "name": "FedEx",
                                     "code": "fedex",
-                                    "account_number": null,
+                                    "account_number": "603145678",
                                     "customer_portal_visibility": "visible",
                                     "owner": {
                                         "object": "owner",
@@ -145903,7 +151918,42 @@ export const apiTags: TagData[] = [
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
-                                    "service_levels": null,
+                                    "service_levels": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "crop_01cfaf03f104e90ef9680e2a30",
+                                                "object": "service_level",
+                                                "name": "FedEx Ground",
+                                                "service_level_token": "fedex_ground",
+                                                "customer_portal_visibility": "visible",
+                                                "is_default": true,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "account",
+                                                    "account": {
+                                                        "id": "ac_01148680966698341a9c0976db",
+                                                        "object": "account",
+                                                        "name": "Acme Inc.",
+                                                        "default_billing_address": null,
+                                                        "default_shipping_address": null,
+                                                        "branding": null,
+                                                        "portal": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
                                     "deleted_at": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -145914,7 +151964,7 @@ export const apiTags: TagData[] = [
                                     "name": "FedEx Ground",
                                     "service_level_token": "fedex_ground",
                                     "customer_portal_visibility": "visible",
-                                    "is_default": false,
+                                    "is_default": true,
                                     "owner": {
                                         "object": "owner",
                                         "type": "account",
@@ -146022,7 +152072,90 @@ export const apiTags: TagData[] = [
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
-                                    "department": null,
+                                    "department": {
+                                        "id": "dp_01791c25ab59da4704cba61874",
+                                        "object": "department",
+                                        "name": "Fabrication",
+                                        "notes": null,
+                                        "location": {
+                                            "id": "lc_014d187d99b31926f0c74af9d8",
+                                            "object": "location",
+                                            "name": "Warehouse A",
+                                            "type": "building",
+                                            "parent": null,
+                                            "children": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "lc_0132c4db1e220da9bc596cc4c9",
+                                                        "object": "location",
+                                                        "name": "Shelf A1",
+                                                        "type": "building",
+                                                        "parent": null,
+                                                        "children": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "scanning_stations": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "scst_0129335dd6286056a97024fcc1",
+                                                    "object": "scanning_station",
+                                                    "name": "Packaging Line 1",
+                                                    "notes": "Initializes batches at the start of the packaging line.",
+                                                    "type": "init_batch",
+                                                    "label_size": "2x4",
+                                                    "label_type": "traveler",
+                                                    "operator_requirement": "none",
+                                                    "department": null,
+                                                    "production_steps": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "machines": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "mc_0177d18f55a1615f783d3bf8d0",
+                                                    "object": "machine",
+                                                    "name": "CNC Router",
+                                                    "serial_number": "SN-2024-0001",
+                                                    "notes": null,
+                                                    "department": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "user": {
                                         "id": "us_0151164dcaea4cbded27b50aae",
                                         "object": "user",
@@ -146034,7 +152167,7 @@ export const apiTags: TagData[] = [
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
-                                    "last_used_at": null,
+                                    "last_used_at": "2026-05-10T00:23:00Z",
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -146047,8 +152180,8 @@ export const apiTags: TagData[] = [
                                 "id": "ad_012100950cfaa34aa0e0ad7258",
                                 "object": "address",
                                 "name": "Headquarters",
-                                "phone": null,
-                                "email": null,
+                                "phone": "+1-614-555-0142",
+                                "email": "receiving@acme.example.com",
                                 "type": "standard",
                                 "geolocation": {
                                     "id": "gl_013e4c26412103c6757ba71806",
@@ -146067,8 +152200,8 @@ export const apiTags: TagData[] = [
                                 "id": "ad_012100950cfaa34aa0e0ad7258",
                                 "object": "address",
                                 "name": "Headquarters",
-                                "phone": null,
-                                "email": null,
+                                "phone": "+1-614-555-0142",
+                                "email": "receiving@acme.example.com",
                                 "type": "standard",
                                 "geolocation": {
                                     "id": "gl_013e4c26412103c6757ba71806",
@@ -148691,7 +154824,7 @@ export const apiTags: TagData[] = [
                                             "object": "carrier",
                                             "name": "FedEx",
                                             "code": "fedex",
-                                            "account_number": null,
+                                            "account_number": "603145678",
                                             "customer_portal_visibility": "visible",
                                             "owner": {
                                                 "object": "owner",
@@ -148708,7 +154841,42 @@ export const apiTags: TagData[] = [
                                                     "updated_at": "2026-05-10T00:23:00Z"
                                                 }
                                             },
-                                            "service_levels": null,
+                                            "service_levels": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "crop_01cfaf03f104e90ef9680e2a30",
+                                                        "object": "service_level",
+                                                        "name": "FedEx Ground",
+                                                        "service_level_token": "fedex_ground",
+                                                        "customer_portal_visibility": "visible",
+                                                        "is_default": true,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "account",
+                                                            "account": {
+                                                                "id": "ac_01148680966698341a9c0976db",
+                                                                "object": "account",
+                                                                "name": "Acme Inc.",
+                                                                "default_billing_address": null,
+                                                                "default_shipping_address": null,
+                                                                "branding": null,
+                                                                "portal": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            }
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
                                             "deleted_at": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
@@ -148719,7 +154887,7 @@ export const apiTags: TagData[] = [
                                             "name": "FedEx Ground",
                                             "service_level_token": "fedex_ground",
                                             "customer_portal_visibility": "visible",
-                                            "is_default": false,
+                                            "is_default": true,
                                             "owner": {
                                                 "object": "owner",
                                                 "type": "account",
@@ -148827,7 +154995,90 @@ export const apiTags: TagData[] = [
                                                 "created_at": "2026-05-10T00:00:00Z",
                                                 "updated_at": "2026-05-10T00:23:00Z"
                                             },
-                                            "department": null,
+                                            "department": {
+                                                "id": "dp_01791c25ab59da4704cba61874",
+                                                "object": "department",
+                                                "name": "Fabrication",
+                                                "notes": null,
+                                                "location": {
+                                                    "id": "lc_014d187d99b31926f0c74af9d8",
+                                                    "object": "location",
+                                                    "name": "Warehouse A",
+                                                    "type": "building",
+                                                    "parent": null,
+                                                    "children": {
+                                                        "object": "list",
+                                                        "page_info": {
+                                                            "next_page_url": null,
+                                                            "previous_page_url": null,
+                                                            "has_next_page": false,
+                                                            "has_prev_page": false
+                                                        },
+                                                        "data": [
+                                                            {
+                                                                "id": "lc_0132c4db1e220da9bc596cc4c9",
+                                                                "object": "location",
+                                                                "name": "Shelf A1",
+                                                                "type": "building",
+                                                                "parent": null,
+                                                                "children": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "scanning_stations": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "scst_0129335dd6286056a97024fcc1",
+                                                            "object": "scanning_station",
+                                                            "name": "Packaging Line 1",
+                                                            "notes": "Initializes batches at the start of the packaging line.",
+                                                            "type": "init_batch",
+                                                            "label_size": "2x4",
+                                                            "label_type": "traveler",
+                                                            "operator_requirement": "none",
+                                                            "department": null,
+                                                            "production_steps": null,
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "machines": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "mc_0177d18f55a1615f783d3bf8d0",
+                                                            "object": "machine",
+                                                            "name": "CNC Router",
+                                                            "serial_number": "SN-2024-0001",
+                                                            "notes": null,
+                                                            "department": null,
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
                                             "user": {
                                                 "id": "us_0151164dcaea4cbded27b50aae",
                                                 "object": "user",
@@ -148839,7 +155090,7 @@ export const apiTags: TagData[] = [
                                                 "created_at": "2026-05-10T00:00:00Z",
                                                 "updated_at": "2026-05-10T00:23:00Z"
                                             },
-                                            "last_used_at": null,
+                                            "last_used_at": "2026-05-10T00:23:00Z",
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -148852,8 +155103,8 @@ export const apiTags: TagData[] = [
                                         "id": "ad_012100950cfaa34aa0e0ad7258",
                                         "object": "address",
                                         "name": "Headquarters",
-                                        "phone": null,
-                                        "email": null,
+                                        "phone": "+1-614-555-0142",
+                                        "email": "receiving@acme.example.com",
                                         "type": "standard",
                                         "geolocation": {
                                             "id": "gl_013e4c26412103c6757ba71806",
@@ -148872,8 +155123,8 @@ export const apiTags: TagData[] = [
                                         "id": "ad_012100950cfaa34aa0e0ad7258",
                                         "object": "address",
                                         "name": "Headquarters",
-                                        "phone": null,
-                                        "email": null,
+                                        "phone": "+1-614-555-0142",
+                                        "email": "receiving@acme.example.com",
                                         "type": "standard",
                                         "geolocation": {
                                             "id": "gl_013e4c26412103c6757ba71806",
@@ -151278,7 +157529,7 @@ export const apiTags: TagData[] = [
                                     "object": "carrier",
                                     "name": "FedEx",
                                     "code": "fedex",
-                                    "account_number": null,
+                                    "account_number": "603145678",
                                     "customer_portal_visibility": "visible",
                                     "owner": {
                                         "object": "owner",
@@ -151295,7 +157546,42 @@ export const apiTags: TagData[] = [
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
-                                    "service_levels": null,
+                                    "service_levels": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "crop_01cfaf03f104e90ef9680e2a30",
+                                                "object": "service_level",
+                                                "name": "FedEx Ground",
+                                                "service_level_token": "fedex_ground",
+                                                "customer_portal_visibility": "visible",
+                                                "is_default": true,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "account",
+                                                    "account": {
+                                                        "id": "ac_01148680966698341a9c0976db",
+                                                        "object": "account",
+                                                        "name": "Acme Inc.",
+                                                        "default_billing_address": null,
+                                                        "default_shipping_address": null,
+                                                        "branding": null,
+                                                        "portal": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
                                     "deleted_at": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -151306,7 +157592,7 @@ export const apiTags: TagData[] = [
                                     "name": "FedEx Ground",
                                     "service_level_token": "fedex_ground",
                                     "customer_portal_visibility": "visible",
-                                    "is_default": false,
+                                    "is_default": true,
                                     "owner": {
                                         "object": "owner",
                                         "type": "account",
@@ -151414,7 +157700,90 @@ export const apiTags: TagData[] = [
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
-                                    "department": null,
+                                    "department": {
+                                        "id": "dp_01791c25ab59da4704cba61874",
+                                        "object": "department",
+                                        "name": "Fabrication",
+                                        "notes": null,
+                                        "location": {
+                                            "id": "lc_014d187d99b31926f0c74af9d8",
+                                            "object": "location",
+                                            "name": "Warehouse A",
+                                            "type": "building",
+                                            "parent": null,
+                                            "children": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "lc_0132c4db1e220da9bc596cc4c9",
+                                                        "object": "location",
+                                                        "name": "Shelf A1",
+                                                        "type": "building",
+                                                        "parent": null,
+                                                        "children": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "scanning_stations": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "scst_0129335dd6286056a97024fcc1",
+                                                    "object": "scanning_station",
+                                                    "name": "Packaging Line 1",
+                                                    "notes": "Initializes batches at the start of the packaging line.",
+                                                    "type": "init_batch",
+                                                    "label_size": "2x4",
+                                                    "label_type": "traveler",
+                                                    "operator_requirement": "none",
+                                                    "department": null,
+                                                    "production_steps": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "machines": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "mc_0177d18f55a1615f783d3bf8d0",
+                                                    "object": "machine",
+                                                    "name": "CNC Router",
+                                                    "serial_number": "SN-2024-0001",
+                                                    "notes": null,
+                                                    "department": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "user": {
                                         "id": "us_0151164dcaea4cbded27b50aae",
                                         "object": "user",
@@ -151426,7 +157795,7 @@ export const apiTags: TagData[] = [
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
-                                    "last_used_at": null,
+                                    "last_used_at": "2026-05-10T00:23:00Z",
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -151439,8 +157808,8 @@ export const apiTags: TagData[] = [
                                 "id": "ad_012100950cfaa34aa0e0ad7258",
                                 "object": "address",
                                 "name": "Headquarters",
-                                "phone": null,
-                                "email": null,
+                                "phone": "+1-614-555-0142",
+                                "email": "receiving@acme.example.com",
                                 "type": "standard",
                                 "geolocation": {
                                     "id": "gl_013e4c26412103c6757ba71806",
@@ -151459,8 +157828,8 @@ export const apiTags: TagData[] = [
                                 "id": "ad_012100950cfaa34aa0e0ad7258",
                                 "object": "address",
                                 "name": "Headquarters",
-                                "phone": null,
-                                "email": null,
+                                "phone": "+1-614-555-0142",
+                                "email": "receiving@acme.example.com",
                                 "type": "standard",
                                 "geolocation": {
                                     "id": "gl_013e4c26412103c6757ba71806",
@@ -153912,7 +160281,7 @@ export const apiTags: TagData[] = [
                                     "object": "carrier",
                                     "name": "FedEx",
                                     "code": "fedex",
-                                    "account_number": null,
+                                    "account_number": "603145678",
                                     "customer_portal_visibility": "visible",
                                     "owner": {
                                         "object": "owner",
@@ -153929,7 +160298,42 @@ export const apiTags: TagData[] = [
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
-                                    "service_levels": null,
+                                    "service_levels": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "crop_01cfaf03f104e90ef9680e2a30",
+                                                "object": "service_level",
+                                                "name": "FedEx Ground",
+                                                "service_level_token": "fedex_ground",
+                                                "customer_portal_visibility": "visible",
+                                                "is_default": true,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "account",
+                                                    "account": {
+                                                        "id": "ac_01148680966698341a9c0976db",
+                                                        "object": "account",
+                                                        "name": "Acme Inc.",
+                                                        "default_billing_address": null,
+                                                        "default_shipping_address": null,
+                                                        "branding": null,
+                                                        "portal": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
                                     "deleted_at": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -153940,7 +160344,7 @@ export const apiTags: TagData[] = [
                                     "name": "FedEx Ground",
                                     "service_level_token": "fedex_ground",
                                     "customer_portal_visibility": "visible",
-                                    "is_default": false,
+                                    "is_default": true,
                                     "owner": {
                                         "object": "owner",
                                         "type": "account",
@@ -154048,7 +160452,90 @@ export const apiTags: TagData[] = [
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
-                                    "department": null,
+                                    "department": {
+                                        "id": "dp_01791c25ab59da4704cba61874",
+                                        "object": "department",
+                                        "name": "Fabrication",
+                                        "notes": null,
+                                        "location": {
+                                            "id": "lc_014d187d99b31926f0c74af9d8",
+                                            "object": "location",
+                                            "name": "Warehouse A",
+                                            "type": "building",
+                                            "parent": null,
+                                            "children": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "lc_0132c4db1e220da9bc596cc4c9",
+                                                        "object": "location",
+                                                        "name": "Shelf A1",
+                                                        "type": "building",
+                                                        "parent": null,
+                                                        "children": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "scanning_stations": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "scst_0129335dd6286056a97024fcc1",
+                                                    "object": "scanning_station",
+                                                    "name": "Packaging Line 1",
+                                                    "notes": "Initializes batches at the start of the packaging line.",
+                                                    "type": "init_batch",
+                                                    "label_size": "2x4",
+                                                    "label_type": "traveler",
+                                                    "operator_requirement": "none",
+                                                    "department": null,
+                                                    "production_steps": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "machines": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "mc_0177d18f55a1615f783d3bf8d0",
+                                                    "object": "machine",
+                                                    "name": "CNC Router",
+                                                    "serial_number": "SN-2024-0001",
+                                                    "notes": null,
+                                                    "department": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "user": {
                                         "id": "us_0151164dcaea4cbded27b50aae",
                                         "object": "user",
@@ -154060,7 +160547,7 @@ export const apiTags: TagData[] = [
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
-                                    "last_used_at": null,
+                                    "last_used_at": "2026-05-10T00:23:00Z",
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -154073,8 +160560,8 @@ export const apiTags: TagData[] = [
                                 "id": "ad_012100950cfaa34aa0e0ad7258",
                                 "object": "address",
                                 "name": "Headquarters",
-                                "phone": null,
-                                "email": null,
+                                "phone": "+1-614-555-0142",
+                                "email": "receiving@acme.example.com",
                                 "type": "standard",
                                 "geolocation": {
                                     "id": "gl_013e4c26412103c6757ba71806",
@@ -154093,8 +160580,8 @@ export const apiTags: TagData[] = [
                                 "id": "ad_012100950cfaa34aa0e0ad7258",
                                 "object": "address",
                                 "name": "Headquarters",
-                                "phone": null,
-                                "email": null,
+                                "phone": "+1-614-555-0142",
+                                "email": "receiving@acme.example.com",
                                 "type": "standard",
                                 "geolocation": {
                                     "id": "gl_013e4c26412103c6757ba71806",
@@ -154779,8 +161266,206 @@ export const apiTags: TagData[] = [
                                     "object": "contact_match",
                                     "relationship": "customer",
                                     "email": "buyer@acme-co.example",
-                                    "account_user": null,
-                                    "account": null
+                                    "account_user": {
+                                        "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                        "object": "account_user",
+                                        "status": "active",
+                                        "role": {
+                                            "id": "rl_01c16d2eb637c0d1f3a372937c",
+                                            "object": "role",
+                                            "name": "Admin",
+                                            "type": "admin",
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "account",
+                                                "account": {
+                                                    "id": "ac_01148680966698341a9c0976db",
+                                                    "object": "account",
+                                                    "name": "Acme Inc.",
+                                                    "default_billing_address": null,
+                                                    "default_shipping_address": null,
+                                                    "branding": null,
+                                                    "portal": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            },
+                                            "permissions": [
+                                                "customers:create",
+                                                "customers:read",
+                                                "customers:update",
+                                                "customers:delete"
+                                            ],
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "department": {
+                                            "id": "dp_01791c25ab59da4704cba61874",
+                                            "object": "department",
+                                            "name": "Fabrication",
+                                            "notes": null,
+                                            "location": {
+                                                "id": "lc_014d187d99b31926f0c74af9d8",
+                                                "object": "location",
+                                                "name": "Warehouse A",
+                                                "type": "building",
+                                                "parent": null,
+                                                "children": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "lc_0132c4db1e220da9bc596cc4c9",
+                                                            "object": "location",
+                                                            "name": "Shelf A1",
+                                                            "type": "building",
+                                                            "parent": null,
+                                                            "children": null,
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "scanning_stations": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "scst_0129335dd6286056a97024fcc1",
+                                                        "object": "scanning_station",
+                                                        "name": "Packaging Line 1",
+                                                        "notes": "Initializes batches at the start of the packaging line.",
+                                                        "type": "init_batch",
+                                                        "label_size": "2x4",
+                                                        "label_type": "traveler",
+                                                        "operator_requirement": "none",
+                                                        "department": null,
+                                                        "production_steps": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "machines": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "mc_0177d18f55a1615f783d3bf8d0",
+                                                        "object": "machine",
+                                                        "name": "CNC Router",
+                                                        "serial_number": "SN-2024-0001",
+                                                        "notes": null,
+                                                        "department": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "user": {
+                                            "id": "us_0151164dcaea4cbded27b50aae",
+                                            "object": "user",
+                                            "email": "jdoe@augno.com",
+                                            "name": "John Doe",
+                                            "username": "jdoe",
+                                            "email_verified_at": "2026-06-10T00:00:00Z",
+                                            "image_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "last_used_at": "2026-05-10T00:23:00Z",
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "account": {
+                                        "id": "ac_01148680966698341a9c0976db",
+                                        "object": "account",
+                                        "name": "Acme Inc.",
+                                        "default_billing_address": {
+                                            "id": "ad_012100950cfaa34aa0e0ad7258",
+                                            "object": "address",
+                                            "name": "Headquarters",
+                                            "phone": "+1-614-555-0142",
+                                            "email": "receiving@acme.example.com",
+                                            "type": "standard",
+                                            "geolocation": {
+                                                "id": "gl_013e4c26412103c6757ba71806",
+                                                "object": "geolocation",
+                                                "street_line_1": "4200 Industrial Pkwy",
+                                                "street_line_2": null,
+                                                "locality": "Columbus",
+                                                "state": "OH",
+                                                "postal_code": "43204",
+                                                "country": "US"
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "default_shipping_address": {
+                                            "id": "ad_012100950cfaa34aa0e0ad7258",
+                                            "object": "address",
+                                            "name": "Headquarters",
+                                            "phone": "+1-614-555-0142",
+                                            "email": "receiving@acme.example.com",
+                                            "type": "standard",
+                                            "geolocation": {
+                                                "id": "gl_013e4c26412103c6757ba71806",
+                                                "object": "geolocation",
+                                                "street_line_1": "4200 Industrial Pkwy",
+                                                "street_line_2": null,
+                                                "locality": "Columbus",
+                                                "state": "OH",
+                                                "postal_code": "43204",
+                                                "country": "US"
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "branding": {
+                                            "id": "abr_01fa710842028837ac3ca9d590",
+                                            "object": "account_branding",
+                                            "support_email": "support@acme.example.com",
+                                            "phone_number": "+1-614-555-0100",
+                                            "logo_url": "https://cdn.augno.com/branding/abr_01fa710842028837ac3ca9d590/logo.png",
+                                            "facebook_handle": "acmeinc",
+                                            "instagram_handle": "acmeinc",
+                                            "linkedin_handle": "acme-inc",
+                                            "twitter_handle": "acmeinc",
+                                            "website_url": "https://www.acme.example.com",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "portal": {
+                                            "id": "apo_0167f0d01165cbb56b55bc01fa",
+                                            "object": "account_portal",
+                                            "slug": "acme",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
                                 }
                             ]
                         }
@@ -155131,8 +161816,8 @@ export const apiTags: TagData[] = [
                 "id": "pl_01996357326a0d3f7b129542ea",
                 "object": "product_line",
                 "name": "Industrial Fasteners",
-                "description": null,
-                "notes": null,
+                "description": "Bolts, screws, and anchors for heavy industrial assembly.",
+                "notes": "Priced per the 2026 supplier contract; review pricing each quarter.",
                 "commission_policy": "commission_exempt",
                 "freight_policy": "billed_freight",
                 "owner": {
@@ -155140,7 +161825,78 @@ export const apiTags: TagData[] = [
                     "type": "system",
                     "account": null
                 },
-                "unit_group": null,
+                "unit_group": {
+                    "id": "ug_01aad07abb8e41fd392d2d7013",
+                    "object": "unit_group",
+                    "name": "Weight",
+                    "notes": "Mass units used for ordering raw materials by weight.",
+                    "type": "mass",
+                    "base_unit": {
+                        "id": "un_01966263f74a5a0cae356000a1",
+                        "object": "unit",
+                        "name": "Kilogram",
+                        "abbreviation": "kg",
+                        "type": "mass",
+                        "ratio_numerator": "1000",
+                        "ratio_denominator": "1",
+                        "offset_numerator": "0",
+                        "offset_denominator": "1",
+                        "is_base_unit": false,
+                        "owner": {
+                            "object": "owner",
+                            "type": "system",
+                            "account": null
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
+                    "associated_units": {
+                        "object": "list",
+                        "page_info": {
+                            "next_page_url": null,
+                            "previous_page_url": null,
+                            "has_next_page": false,
+                            "has_prev_page": false
+                        },
+                        "data": [
+                            {
+                                "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                "object": "unit_group_unit",
+                                "unit": {
+                                    "id": "un_01966263f74a5a0cae356000a1",
+                                    "object": "unit",
+                                    "name": "Kilogram",
+                                    "abbreviation": "kg",
+                                    "type": "mass",
+                                    "ratio_numerator": "1000",
+                                    "ratio_denominator": "1",
+                                    "offset_numerator": "0",
+                                    "offset_denominator": "1",
+                                    "is_base_unit": false,
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system",
+                                        "account": null
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "discount_percentage": 1,
+                                "discount_fixed": 0,
+                                "customer_portal_visibility": "visible",
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            }
+                        ]
+                    },
+                    "owner": {
+                        "object": "owner",
+                        "type": "system",
+                        "account": null
+                    },
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
+                },
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             },
@@ -155561,8 +162317,8 @@ export const apiTags: TagData[] = [
                             "id": "pl_01996357326a0d3f7b129542ea",
                             "object": "product_line",
                             "name": "Industrial Fasteners",
-                            "description": null,
-                            "notes": null,
+                            "description": "Bolts, screws, and anchors for heavy industrial assembly.",
+                            "notes": "Priced per the 2026 supplier contract; review pricing each quarter.",
                             "commission_policy": "commission_exempt",
                             "freight_policy": "billed_freight",
                             "owner": {
@@ -155570,7 +162326,78 @@ export const apiTags: TagData[] = [
                                 "type": "system",
                                 "account": null
                             },
-                            "unit_group": null,
+                            "unit_group": {
+                                "id": "ug_01aad07abb8e41fd392d2d7013",
+                                "object": "unit_group",
+                                "name": "Weight",
+                                "notes": "Mass units used for ordering raw materials by weight.",
+                                "type": "mass",
+                                "base_unit": {
+                                    "id": "un_01966263f74a5a0cae356000a1",
+                                    "object": "unit",
+                                    "name": "Kilogram",
+                                    "abbreviation": "kg",
+                                    "type": "mass",
+                                    "ratio_numerator": "1000",
+                                    "ratio_denominator": "1",
+                                    "offset_numerator": "0",
+                                    "offset_denominator": "1",
+                                    "is_base_unit": false,
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system",
+                                        "account": null
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "associated_units": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                            "object": "unit_group_unit",
+                                            "unit": {
+                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                "object": "unit",
+                                                "name": "Kilogram",
+                                                "abbreviation": "kg",
+                                                "type": "mass",
+                                                "ratio_numerator": "1000",
+                                                "ratio_denominator": "1",
+                                                "offset_numerator": "0",
+                                                "offset_denominator": "1",
+                                                "is_base_unit": false,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "discount_percentage": 1,
+                                            "discount_fixed": 0,
+                                            "customer_portal_visibility": "visible",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -155655,7 +162482,10 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Updated Product Line"
+                        "name": "Updated Product Line",
+                        "commission_policy": "commission_applied",
+                        "freight_policy": "billed_freight",
+                        "unit_group_id": "ug_01aad07abb8e41fd392d2d7013"
                     }
                 },
                 "responses": [
@@ -155995,8 +162825,8 @@ export const apiTags: TagData[] = [
                             "id": "pl_01996357326a0d3f7b129542ea",
                             "object": "product_line",
                             "name": "Industrial Fasteners",
-                            "description": null,
-                            "notes": null,
+                            "description": "Bolts, screws, and anchors for heavy industrial assembly.",
+                            "notes": "Priced per the 2026 supplier contract; review pricing each quarter.",
                             "commission_policy": "commission_exempt",
                             "freight_policy": "billed_freight",
                             "owner": {
@@ -156004,7 +162834,78 @@ export const apiTags: TagData[] = [
                                 "type": "system",
                                 "account": null
                             },
-                            "unit_group": null,
+                            "unit_group": {
+                                "id": "ug_01aad07abb8e41fd392d2d7013",
+                                "object": "unit_group",
+                                "name": "Weight",
+                                "notes": "Mass units used for ordering raw materials by weight.",
+                                "type": "mass",
+                                "base_unit": {
+                                    "id": "un_01966263f74a5a0cae356000a1",
+                                    "object": "unit",
+                                    "name": "Kilogram",
+                                    "abbreviation": "kg",
+                                    "type": "mass",
+                                    "ratio_numerator": "1000",
+                                    "ratio_denominator": "1",
+                                    "offset_numerator": "0",
+                                    "offset_denominator": "1",
+                                    "is_base_unit": false,
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system",
+                                        "account": null
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "associated_units": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                            "object": "unit_group_unit",
+                                            "unit": {
+                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                "object": "unit",
+                                                "name": "Kilogram",
+                                                "abbreviation": "kg",
+                                                "type": "mass",
+                                                "ratio_numerator": "1000",
+                                                "ratio_denominator": "1",
+                                                "offset_numerator": "0",
+                                                "offset_denominator": "1",
+                                                "is_base_unit": false,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "discount_percentage": 1,
+                                            "discount_fixed": 0,
+                                            "customer_portal_visibility": "visible",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -156469,8 +163370,8 @@ export const apiTags: TagData[] = [
                                     "id": "pl_01996357326a0d3f7b129542ea",
                                     "object": "product_line",
                                     "name": "Industrial Fasteners",
-                                    "description": null,
-                                    "notes": null,
+                                    "description": "Bolts, screws, and anchors for heavy industrial assembly.",
+                                    "notes": "Priced per the 2026 supplier contract; review pricing each quarter.",
                                     "commission_policy": "commission_exempt",
                                     "freight_policy": "billed_freight",
                                     "owner": {
@@ -156478,7 +163379,78 @@ export const apiTags: TagData[] = [
                                         "type": "system",
                                         "account": null
                                     },
-                                    "unit_group": null,
+                                    "unit_group": {
+                                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                                        "object": "unit_group",
+                                        "name": "Weight",
+                                        "notes": "Mass units used for ordering raw materials by weight.",
+                                        "type": "mass",
+                                        "base_unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "associated_units": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                    "object": "unit_group_unit",
+                                                    "unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1000",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": false,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "discount_percentage": 1,
+                                                    "discount_fixed": 0,
+                                                    "customer_portal_visibility": "visible",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -156857,8 +163829,8 @@ export const apiTags: TagData[] = [
                             "id": "pl_01996357326a0d3f7b129542ea",
                             "object": "product_line",
                             "name": "Industrial Fasteners",
-                            "description": null,
-                            "notes": null,
+                            "description": "Bolts, screws, and anchors for heavy industrial assembly.",
+                            "notes": "Priced per the 2026 supplier contract; review pricing each quarter.",
                             "commission_policy": "commission_exempt",
                             "freight_policy": "billed_freight",
                             "owner": {
@@ -156866,7 +163838,78 @@ export const apiTags: TagData[] = [
                                 "type": "system",
                                 "account": null
                             },
-                            "unit_group": null,
+                            "unit_group": {
+                                "id": "ug_01aad07abb8e41fd392d2d7013",
+                                "object": "unit_group",
+                                "name": "Weight",
+                                "notes": "Mass units used for ordering raw materials by weight.",
+                                "type": "mass",
+                                "base_unit": {
+                                    "id": "un_01966263f74a5a0cae356000a1",
+                                    "object": "unit",
+                                    "name": "Kilogram",
+                                    "abbreviation": "kg",
+                                    "type": "mass",
+                                    "ratio_numerator": "1000",
+                                    "ratio_denominator": "1",
+                                    "offset_numerator": "0",
+                                    "offset_denominator": "1",
+                                    "is_base_unit": false,
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system",
+                                        "account": null
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "associated_units": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                            "object": "unit_group_unit",
+                                            "unit": {
+                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                "object": "unit",
+                                                "name": "Kilogram",
+                                                "abbreviation": "kg",
+                                                "type": "mass",
+                                                "ratio_numerator": "1000",
+                                                "ratio_denominator": "1",
+                                                "offset_numerator": "0",
+                                                "offset_denominator": "1",
+                                                "is_base_unit": false,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "discount_percentage": 1,
+                                            "discount_fixed": 0,
+                                            "customer_portal_visibility": "visible",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -158570,8 +165613,8 @@ export const apiTags: TagData[] = [
                     "id": "pl_01996357326a0d3f7b129542ea",
                     "object": "product_line",
                     "name": "Industrial Fasteners",
-                    "description": null,
-                    "notes": null,
+                    "description": "Bolts, screws, and anchors for heavy industrial assembly.",
+                    "notes": "Priced per the 2026 supplier contract; review pricing each quarter.",
                     "commission_policy": "commission_exempt",
                     "freight_policy": "billed_freight",
                     "owner": {
@@ -158579,7 +165622,78 @@ export const apiTags: TagData[] = [
                         "type": "system",
                         "account": null
                     },
-                    "unit_group": null,
+                    "unit_group": {
+                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                        "object": "unit_group",
+                        "name": "Weight",
+                        "notes": "Mass units used for ordering raw materials by weight.",
+                        "type": "mass",
+                        "base_unit": {
+                            "id": "un_01966263f74a5a0cae356000a1",
+                            "object": "unit",
+                            "name": "Kilogram",
+                            "abbreviation": "kg",
+                            "type": "mass",
+                            "ratio_numerator": "1000",
+                            "ratio_denominator": "1",
+                            "offset_numerator": "0",
+                            "offset_denominator": "1",
+                            "is_base_unit": false,
+                            "owner": {
+                                "object": "owner",
+                                "type": "system",
+                                "account": null
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        },
+                        "associated_units": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": null,
+                                "previous_page_url": null,
+                                "has_next_page": false,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                    "object": "unit_group_unit",
+                                    "unit": {
+                                        "id": "un_01966263f74a5a0cae356000a1",
+                                        "object": "unit",
+                                        "name": "Kilogram",
+                                        "abbreviation": "kg",
+                                        "type": "mass",
+                                        "ratio_numerator": "1000",
+                                        "ratio_denominator": "1",
+                                        "offset_numerator": "0",
+                                        "offset_denominator": "1",
+                                        "is_base_unit": false,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "discount_percentage": 1,
+                                    "discount_fixed": 0,
+                                    "customer_portal_visibility": "visible",
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        },
+                        "owner": {
+                            "object": "owner",
+                            "type": "system",
+                            "account": null
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
                     "created_at": "2026-05-10T00:00:00Z",
                     "updated_at": "2026-05-10T00:23:00Z"
                 },
@@ -158594,15 +165708,131 @@ export const apiTags: TagData[] = [
                         "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                         "object": "item_category",
                         "name": "Electronics",
-                        "notes": null,
+                        "notes": "Components and raw materials used across the electronics assembly line.",
                         "type": "material_category",
                         "owner": {
                             "object": "owner",
                             "type": "system",
                             "account": null
                         },
-                        "properties": null,
-                        "unit_group": null,
+                        "properties": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": null,
+                                "previous_page_url": null,
+                                "has_next_page": false,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "pp_01e21344878064372f69e67093",
+                                    "object": "property",
+                                    "name": "Color",
+                                    "attributes": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                "object": "attribute",
+                                                "value": "Premium",
+                                                "color": "red",
+                                                "sort_order": 1,
+                                                "property": {
+                                                    "id": "pp_01e21344878064372f69e67093",
+                                                    "object": "property",
+                                                    "name": "Color",
+                                                    "attributes": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        },
+                        "unit_group": {
+                            "id": "ug_01aad07abb8e41fd392d2d7013",
+                            "object": "unit_group",
+                            "name": "Weight",
+                            "notes": "Mass units used for ordering raw materials by weight.",
+                            "type": "mass",
+                            "base_unit": {
+                                "id": "un_01966263f74a5a0cae356000a1",
+                                "object": "unit",
+                                "name": "Kilogram",
+                                "abbreviation": "kg",
+                                "type": "mass",
+                                "ratio_numerator": "1000",
+                                "ratio_denominator": "1",
+                                "offset_numerator": "0",
+                                "offset_denominator": "1",
+                                "is_base_unit": false,
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "associated_units": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                        "object": "unit_group_unit",
+                                        "unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "discount_percentage": 1,
+                                        "discount_fixed": 0,
+                                        "customer_portal_visibility": "visible",
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
+                            "owner": {
+                                "object": "owner",
+                                "type": "system",
+                                "account": null
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        },
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
                     },
@@ -158759,7 +165989,14 @@ export const apiTags: TagData[] = [
                                 "value": "Premium",
                                 "color": "red",
                                 "sort_order": 1,
-                                "property": null,
+                                "property": {
+                                    "id": "pp_01e21344878064372f69e67093",
+                                    "object": "property",
+                                    "name": "Color",
+                                    "attributes": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             }
@@ -158966,8 +166203,25 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "sku": "ALM-2024-1001",
+                        "description": "Wireless barcode scanner with charging cradle",
+                        "notes": "Ships with a 2-year warranty; register for extended coverage.",
                         "type": "sale",
-                        "category_id": "ic_01ae7bd7bfd21ca0ab81e1357e"
+                        "product_line_id": "pl_01996357326a0d3f7b129542ea",
+                        "category_id": "ic_01ae7bd7bfd21ca0ab81e1357e",
+                        "portal_visibility": "visible",
+                        "unit_price": {
+                            "value": "199.00",
+                            "numerator_unit_id": "un_01966263f74a5a0cae356000a1",
+                            "denominator_unit_id": "un_01966263f74a5a0cae356000a1"
+                        },
+                        "unit_cost": {
+                            "value": "112.00",
+                            "numerator_unit_id": "un_01966263f74a5a0cae356000a1",
+                            "denominator_unit_id": "un_01966263f74a5a0cae356000a1"
+                        },
+                        "attribute_ids": [
+                            "at_01c9493ec0c46bb0ed12708ae4"
+                        ]
                     }
                 },
                 "responses": [
@@ -160630,8 +167884,8 @@ export const apiTags: TagData[] = [
                                 "id": "pl_01996357326a0d3f7b129542ea",
                                 "object": "product_line",
                                 "name": "Industrial Fasteners",
-                                "description": null,
-                                "notes": null,
+                                "description": "Bolts, screws, and anchors for heavy industrial assembly.",
+                                "notes": "Priced per the 2026 supplier contract; review pricing each quarter.",
                                 "commission_policy": "commission_exempt",
                                 "freight_policy": "billed_freight",
                                 "owner": {
@@ -160639,7 +167893,78 @@ export const apiTags: TagData[] = [
                                     "type": "system",
                                     "account": null
                                 },
-                                "unit_group": null,
+                                "unit_group": {
+                                    "id": "ug_01aad07abb8e41fd392d2d7013",
+                                    "object": "unit_group",
+                                    "name": "Weight",
+                                    "notes": "Mass units used for ordering raw materials by weight.",
+                                    "type": "mass",
+                                    "base_unit": {
+                                        "id": "un_01966263f74a5a0cae356000a1",
+                                        "object": "unit",
+                                        "name": "Kilogram",
+                                        "abbreviation": "kg",
+                                        "type": "mass",
+                                        "ratio_numerator": "1000",
+                                        "ratio_denominator": "1",
+                                        "offset_numerator": "0",
+                                        "offset_denominator": "1",
+                                        "is_base_unit": false,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "associated_units": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                "object": "unit_group_unit",
+                                                "unit": {
+                                                    "id": "un_01966263f74a5a0cae356000a1",
+                                                    "object": "unit",
+                                                    "name": "Kilogram",
+                                                    "abbreviation": "kg",
+                                                    "type": "mass",
+                                                    "ratio_numerator": "1000",
+                                                    "ratio_denominator": "1",
+                                                    "offset_numerator": "0",
+                                                    "offset_denominator": "1",
+                                                    "is_base_unit": false,
+                                                    "owner": {
+                                                        "object": "owner",
+                                                        "type": "system",
+                                                        "account": null
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "discount_percentage": 1,
+                                                "discount_fixed": 0,
+                                                "customer_portal_visibility": "visible",
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system",
+                                        "account": null
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -160654,15 +167979,131 @@ export const apiTags: TagData[] = [
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
+                                    "notes": "Components and raw materials used across the electronics assembly line.",
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
                                         "type": "system",
                                         "account": null
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
+                                    "properties": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                            "object": "attribute",
+                                                            "value": "Premium",
+                                                            "color": "red",
+                                                            "sort_order": 1,
+                                                            "property": {
+                                                                "id": "pp_01e21344878064372f69e67093",
+                                                                "object": "property",
+                                                                "name": "Color",
+                                                                "attributes": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "unit_group": {
+                                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                                        "object": "unit_group",
+                                        "name": "Weight",
+                                        "notes": "Mass units used for ordering raw materials by weight.",
+                                        "type": "mass",
+                                        "base_unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "associated_units": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                    "object": "unit_group_unit",
+                                                    "unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1000",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": false,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "discount_percentage": 1,
+                                                    "discount_fixed": 0,
+                                                    "customer_portal_visibility": "visible",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -160819,7 +168260,14 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
+                                            "property": {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -160956,7 +168404,15 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "sku": "SKU-002"
+                        "sku": "SKU-002",
+                        "description": "Wireless barcode scanner with charging cradle (v2)",
+                        "notes": "Firmware 2.1 improves Bluetooth pairing reliability.",
+                        "portal_visibility": "visible",
+                        "unit_price": {
+                            "value": "219.00",
+                            "numerator_unit_id": "un_01966263f74a5a0cae356000a1",
+                            "denominator_unit_id": "un_01966263f74a5a0cae356000a1"
+                        }
                     }
                 },
                 "responses": [
@@ -162619,8 +170075,8 @@ export const apiTags: TagData[] = [
                                 "id": "pl_01996357326a0d3f7b129542ea",
                                 "object": "product_line",
                                 "name": "Industrial Fasteners",
-                                "description": null,
-                                "notes": null,
+                                "description": "Bolts, screws, and anchors for heavy industrial assembly.",
+                                "notes": "Priced per the 2026 supplier contract; review pricing each quarter.",
                                 "commission_policy": "commission_exempt",
                                 "freight_policy": "billed_freight",
                                 "owner": {
@@ -162628,7 +170084,78 @@ export const apiTags: TagData[] = [
                                     "type": "system",
                                     "account": null
                                 },
-                                "unit_group": null,
+                                "unit_group": {
+                                    "id": "ug_01aad07abb8e41fd392d2d7013",
+                                    "object": "unit_group",
+                                    "name": "Weight",
+                                    "notes": "Mass units used for ordering raw materials by weight.",
+                                    "type": "mass",
+                                    "base_unit": {
+                                        "id": "un_01966263f74a5a0cae356000a1",
+                                        "object": "unit",
+                                        "name": "Kilogram",
+                                        "abbreviation": "kg",
+                                        "type": "mass",
+                                        "ratio_numerator": "1000",
+                                        "ratio_denominator": "1",
+                                        "offset_numerator": "0",
+                                        "offset_denominator": "1",
+                                        "is_base_unit": false,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "associated_units": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                "object": "unit_group_unit",
+                                                "unit": {
+                                                    "id": "un_01966263f74a5a0cae356000a1",
+                                                    "object": "unit",
+                                                    "name": "Kilogram",
+                                                    "abbreviation": "kg",
+                                                    "type": "mass",
+                                                    "ratio_numerator": "1000",
+                                                    "ratio_denominator": "1",
+                                                    "offset_numerator": "0",
+                                                    "offset_denominator": "1",
+                                                    "is_base_unit": false,
+                                                    "owner": {
+                                                        "object": "owner",
+                                                        "type": "system",
+                                                        "account": null
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "discount_percentage": 1,
+                                                "discount_fixed": 0,
+                                                "customer_portal_visibility": "visible",
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system",
+                                        "account": null
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -162643,15 +170170,131 @@ export const apiTags: TagData[] = [
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
+                                    "notes": "Components and raw materials used across the electronics assembly line.",
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
                                         "type": "system",
                                         "account": null
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
+                                    "properties": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                            "object": "attribute",
+                                                            "value": "Premium",
+                                                            "color": "red",
+                                                            "sort_order": 1,
+                                                            "property": {
+                                                                "id": "pp_01e21344878064372f69e67093",
+                                                                "object": "property",
+                                                                "name": "Color",
+                                                                "attributes": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "unit_group": {
+                                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                                        "object": "unit_group",
+                                        "name": "Weight",
+                                        "notes": "Mass units used for ordering raw materials by weight.",
+                                        "type": "mass",
+                                        "base_unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "associated_units": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                    "object": "unit_group_unit",
+                                                    "unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1000",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": false,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "discount_percentage": 1,
+                                                    "discount_fixed": 0,
+                                                    "customer_portal_visibility": "visible",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -162808,7 +170451,14 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
+                                            "property": {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -164563,8 +172213,8 @@ export const apiTags: TagData[] = [
                                         "id": "pl_01996357326a0d3f7b129542ea",
                                         "object": "product_line",
                                         "name": "Industrial Fasteners",
-                                        "description": null,
-                                        "notes": null,
+                                        "description": "Bolts, screws, and anchors for heavy industrial assembly.",
+                                        "notes": "Priced per the 2026 supplier contract; review pricing each quarter.",
                                         "commission_policy": "commission_exempt",
                                         "freight_policy": "billed_freight",
                                         "owner": {
@@ -164572,7 +172222,78 @@ export const apiTags: TagData[] = [
                                             "type": "system",
                                             "account": null
                                         },
-                                        "unit_group": null,
+                                        "unit_group": {
+                                            "id": "ug_01aad07abb8e41fd392d2d7013",
+                                            "object": "unit_group",
+                                            "name": "Weight",
+                                            "notes": "Mass units used for ordering raw materials by weight.",
+                                            "type": "mass",
+                                            "base_unit": {
+                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                "object": "unit",
+                                                "name": "Kilogram",
+                                                "abbreviation": "kg",
+                                                "type": "mass",
+                                                "ratio_numerator": "1000",
+                                                "ratio_denominator": "1",
+                                                "offset_numerator": "0",
+                                                "offset_denominator": "1",
+                                                "is_base_unit": false,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "associated_units": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                        "object": "unit_group_unit",
+                                                        "unit": {
+                                                            "id": "un_01966263f74a5a0cae356000a1",
+                                                            "object": "unit",
+                                                            "name": "Kilogram",
+                                                            "abbreviation": "kg",
+                                                            "type": "mass",
+                                                            "ratio_numerator": "1000",
+                                                            "ratio_denominator": "1",
+                                                            "offset_numerator": "0",
+                                                            "offset_denominator": "1",
+                                                            "is_base_unit": false,
+                                                            "owner": {
+                                                                "object": "owner",
+                                                                "type": "system",
+                                                                "account": null
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        },
+                                                        "discount_percentage": 1,
+                                                        "discount_fixed": 0,
+                                                        "customer_portal_visibility": "visible",
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
                                         "created_at": "2026-05-10T00:00:00Z",
                                         "updated_at": "2026-05-10T00:23:00Z"
                                     },
@@ -164587,15 +172308,131 @@ export const apiTags: TagData[] = [
                                             "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                             "object": "item_category",
                                             "name": "Electronics",
-                                            "notes": null,
+                                            "notes": "Components and raw materials used across the electronics assembly line.",
                                             "type": "material_category",
                                             "owner": {
                                                 "object": "owner",
                                                 "type": "system",
                                                 "account": null
                                             },
-                                            "properties": null,
-                                            "unit_group": null,
+                                            "properties": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "pp_01e21344878064372f69e67093",
+                                                        "object": "property",
+                                                        "name": "Color",
+                                                        "attributes": {
+                                                            "object": "list",
+                                                            "page_info": {
+                                                                "next_page_url": null,
+                                                                "previous_page_url": null,
+                                                                "has_next_page": false,
+                                                                "has_prev_page": false
+                                                            },
+                                                            "data": [
+                                                                {
+                                                                    "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                                    "object": "attribute",
+                                                                    "value": "Premium",
+                                                                    "color": "red",
+                                                                    "sort_order": 1,
+                                                                    "property": {
+                                                                        "id": "pp_01e21344878064372f69e67093",
+                                                                        "object": "property",
+                                                                        "name": "Color",
+                                                                        "attributes": null,
+                                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                                    },
+                                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
+                                            "unit_group": {
+                                                "id": "ug_01aad07abb8e41fd392d2d7013",
+                                                "object": "unit_group",
+                                                "name": "Weight",
+                                                "notes": "Mass units used for ordering raw materials by weight.",
+                                                "type": "mass",
+                                                "base_unit": {
+                                                    "id": "un_01966263f74a5a0cae356000a1",
+                                                    "object": "unit",
+                                                    "name": "Kilogram",
+                                                    "abbreviation": "kg",
+                                                    "type": "mass",
+                                                    "ratio_numerator": "1000",
+                                                    "ratio_denominator": "1",
+                                                    "offset_numerator": "0",
+                                                    "offset_denominator": "1",
+                                                    "is_base_unit": false,
+                                                    "owner": {
+                                                        "object": "owner",
+                                                        "type": "system",
+                                                        "account": null
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "associated_units": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                            "object": "unit_group_unit",
+                                                            "unit": {
+                                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                                "object": "unit",
+                                                                "name": "Kilogram",
+                                                                "abbreviation": "kg",
+                                                                "type": "mass",
+                                                                "ratio_numerator": "1000",
+                                                                "ratio_denominator": "1",
+                                                                "offset_numerator": "0",
+                                                                "offset_denominator": "1",
+                                                                "is_base_unit": false,
+                                                                "owner": {
+                                                                    "object": "owner",
+                                                                    "type": "system",
+                                                                    "account": null
+                                                                },
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "discount_percentage": 1,
+                                                            "discount_fixed": 0,
+                                                            "customer_portal_visibility": "visible",
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         },
@@ -164752,7 +172589,14 @@ export const apiTags: TagData[] = [
                                                     "value": "Premium",
                                                     "color": "red",
                                                     "sort_order": 1,
-                                                    "property": null,
+                                                    "property": {
+                                                        "id": "pp_01e21344878064372f69e67093",
+                                                        "object": "property",
+                                                        "name": "Color",
+                                                        "attributes": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
                                                     "created_at": "2026-05-10T00:00:00Z",
                                                     "updated_at": "2026-05-10T00:23:00Z"
                                                 }
@@ -166475,8 +174319,8 @@ export const apiTags: TagData[] = [
                                 "id": "pl_01996357326a0d3f7b129542ea",
                                 "object": "product_line",
                                 "name": "Industrial Fasteners",
-                                "description": null,
-                                "notes": null,
+                                "description": "Bolts, screws, and anchors for heavy industrial assembly.",
+                                "notes": "Priced per the 2026 supplier contract; review pricing each quarter.",
                                 "commission_policy": "commission_exempt",
                                 "freight_policy": "billed_freight",
                                 "owner": {
@@ -166484,7 +174328,78 @@ export const apiTags: TagData[] = [
                                     "type": "system",
                                     "account": null
                                 },
-                                "unit_group": null,
+                                "unit_group": {
+                                    "id": "ug_01aad07abb8e41fd392d2d7013",
+                                    "object": "unit_group",
+                                    "name": "Weight",
+                                    "notes": "Mass units used for ordering raw materials by weight.",
+                                    "type": "mass",
+                                    "base_unit": {
+                                        "id": "un_01966263f74a5a0cae356000a1",
+                                        "object": "unit",
+                                        "name": "Kilogram",
+                                        "abbreviation": "kg",
+                                        "type": "mass",
+                                        "ratio_numerator": "1000",
+                                        "ratio_denominator": "1",
+                                        "offset_numerator": "0",
+                                        "offset_denominator": "1",
+                                        "is_base_unit": false,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "associated_units": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                "object": "unit_group_unit",
+                                                "unit": {
+                                                    "id": "un_01966263f74a5a0cae356000a1",
+                                                    "object": "unit",
+                                                    "name": "Kilogram",
+                                                    "abbreviation": "kg",
+                                                    "type": "mass",
+                                                    "ratio_numerator": "1000",
+                                                    "ratio_denominator": "1",
+                                                    "offset_numerator": "0",
+                                                    "offset_denominator": "1",
+                                                    "is_base_unit": false,
+                                                    "owner": {
+                                                        "object": "owner",
+                                                        "type": "system",
+                                                        "account": null
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "discount_percentage": 1,
+                                                "discount_fixed": 0,
+                                                "customer_portal_visibility": "visible",
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system",
+                                        "account": null
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -166499,15 +174414,131 @@ export const apiTags: TagData[] = [
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
+                                    "notes": "Components and raw materials used across the electronics assembly line.",
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
                                         "type": "system",
                                         "account": null
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
+                                    "properties": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                            "object": "attribute",
+                                                            "value": "Premium",
+                                                            "color": "red",
+                                                            "sort_order": 1,
+                                                            "property": {
+                                                                "id": "pp_01e21344878064372f69e67093",
+                                                                "object": "property",
+                                                                "name": "Color",
+                                                                "attributes": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "unit_group": {
+                                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                                        "object": "unit_group",
+                                        "name": "Weight",
+                                        "notes": "Mass units used for ordering raw materials by weight.",
+                                        "type": "mass",
+                                        "base_unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "associated_units": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                    "object": "unit_group_unit",
+                                                    "unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1000",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": false,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "discount_percentage": 1,
+                                                    "discount_fixed": 0,
+                                                    "customer_portal_visibility": "visible",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -166664,7 +174695,14 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
+                                            "property": {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -168385,8 +176423,8 @@ export const apiTags: TagData[] = [
                                 "id": "pl_01996357326a0d3f7b129542ea",
                                 "object": "product_line",
                                 "name": "Industrial Fasteners",
-                                "description": null,
-                                "notes": null,
+                                "description": "Bolts, screws, and anchors for heavy industrial assembly.",
+                                "notes": "Priced per the 2026 supplier contract; review pricing each quarter.",
                                 "commission_policy": "commission_exempt",
                                 "freight_policy": "billed_freight",
                                 "owner": {
@@ -168394,7 +176432,78 @@ export const apiTags: TagData[] = [
                                     "type": "system",
                                     "account": null
                                 },
-                                "unit_group": null,
+                                "unit_group": {
+                                    "id": "ug_01aad07abb8e41fd392d2d7013",
+                                    "object": "unit_group",
+                                    "name": "Weight",
+                                    "notes": "Mass units used for ordering raw materials by weight.",
+                                    "type": "mass",
+                                    "base_unit": {
+                                        "id": "un_01966263f74a5a0cae356000a1",
+                                        "object": "unit",
+                                        "name": "Kilogram",
+                                        "abbreviation": "kg",
+                                        "type": "mass",
+                                        "ratio_numerator": "1000",
+                                        "ratio_denominator": "1",
+                                        "offset_numerator": "0",
+                                        "offset_denominator": "1",
+                                        "is_base_unit": false,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "associated_units": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                "object": "unit_group_unit",
+                                                "unit": {
+                                                    "id": "un_01966263f74a5a0cae356000a1",
+                                                    "object": "unit",
+                                                    "name": "Kilogram",
+                                                    "abbreviation": "kg",
+                                                    "type": "mass",
+                                                    "ratio_numerator": "1000",
+                                                    "ratio_denominator": "1",
+                                                    "offset_numerator": "0",
+                                                    "offset_denominator": "1",
+                                                    "is_base_unit": false,
+                                                    "owner": {
+                                                        "object": "owner",
+                                                        "type": "system",
+                                                        "account": null
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "discount_percentage": 1,
+                                                "discount_fixed": 0,
+                                                "customer_portal_visibility": "visible",
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system",
+                                        "account": null
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -168409,15 +176518,131 @@ export const apiTags: TagData[] = [
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
+                                    "notes": "Components and raw materials used across the electronics assembly line.",
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
                                         "type": "system",
                                         "account": null
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
+                                    "properties": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                            "object": "attribute",
+                                                            "value": "Premium",
+                                                            "color": "red",
+                                                            "sort_order": 1,
+                                                            "property": {
+                                                                "id": "pp_01e21344878064372f69e67093",
+                                                                "object": "property",
+                                                                "name": "Color",
+                                                                "attributes": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "unit_group": {
+                                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                                        "object": "unit_group",
+                                        "name": "Weight",
+                                        "notes": "Mass units used for ordering raw materials by weight.",
+                                        "type": "mass",
+                                        "base_unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "associated_units": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                    "object": "unit_group_unit",
+                                                    "unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1000",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": false,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "discount_percentage": 1,
+                                                    "discount_fixed": 0,
+                                                    "customer_portal_visibility": "visible",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -168574,7 +176799,14 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
+                                            "property": {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -170302,8 +178534,8 @@ export const apiTags: TagData[] = [
                                 "id": "pl_01996357326a0d3f7b129542ea",
                                 "object": "product_line",
                                 "name": "Industrial Fasteners",
-                                "description": null,
-                                "notes": null,
+                                "description": "Bolts, screws, and anchors for heavy industrial assembly.",
+                                "notes": "Priced per the 2026 supplier contract; review pricing each quarter.",
                                 "commission_policy": "commission_exempt",
                                 "freight_policy": "billed_freight",
                                 "owner": {
@@ -170311,7 +178543,78 @@ export const apiTags: TagData[] = [
                                     "type": "system",
                                     "account": null
                                 },
-                                "unit_group": null,
+                                "unit_group": {
+                                    "id": "ug_01aad07abb8e41fd392d2d7013",
+                                    "object": "unit_group",
+                                    "name": "Weight",
+                                    "notes": "Mass units used for ordering raw materials by weight.",
+                                    "type": "mass",
+                                    "base_unit": {
+                                        "id": "un_01966263f74a5a0cae356000a1",
+                                        "object": "unit",
+                                        "name": "Kilogram",
+                                        "abbreviation": "kg",
+                                        "type": "mass",
+                                        "ratio_numerator": "1000",
+                                        "ratio_denominator": "1",
+                                        "offset_numerator": "0",
+                                        "offset_denominator": "1",
+                                        "is_base_unit": false,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "associated_units": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                "object": "unit_group_unit",
+                                                "unit": {
+                                                    "id": "un_01966263f74a5a0cae356000a1",
+                                                    "object": "unit",
+                                                    "name": "Kilogram",
+                                                    "abbreviation": "kg",
+                                                    "type": "mass",
+                                                    "ratio_numerator": "1000",
+                                                    "ratio_denominator": "1",
+                                                    "offset_numerator": "0",
+                                                    "offset_denominator": "1",
+                                                    "is_base_unit": false,
+                                                    "owner": {
+                                                        "object": "owner",
+                                                        "type": "system",
+                                                        "account": null
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "discount_percentage": 1,
+                                                "discount_fixed": 0,
+                                                "customer_portal_visibility": "visible",
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system",
+                                        "account": null
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
                                 "created_at": "2026-05-10T00:00:00Z",
                                 "updated_at": "2026-05-10T00:23:00Z"
                             },
@@ -170326,15 +178629,131 @@ export const apiTags: TagData[] = [
                                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                                     "object": "item_category",
                                     "name": "Electronics",
-                                    "notes": null,
+                                    "notes": "Components and raw materials used across the electronics assembly line.",
                                     "type": "material_category",
                                     "owner": {
                                         "object": "owner",
                                         "type": "system",
                                         "account": null
                                     },
-                                    "properties": null,
-                                    "unit_group": null,
+                                    "properties": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                            "object": "attribute",
+                                                            "value": "Premium",
+                                                            "color": "red",
+                                                            "sort_order": 1,
+                                                            "property": {
+                                                                "id": "pp_01e21344878064372f69e67093",
+                                                                "object": "property",
+                                                                "name": "Color",
+                                                                "attributes": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "unit_group": {
+                                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                                        "object": "unit_group",
+                                        "name": "Weight",
+                                        "notes": "Mass units used for ordering raw materials by weight.",
+                                        "type": "mass",
+                                        "base_unit": {
+                                            "id": "un_01966263f74a5a0cae356000a1",
+                                            "object": "unit",
+                                            "name": "Kilogram",
+                                            "abbreviation": "kg",
+                                            "type": "mass",
+                                            "ratio_numerator": "1000",
+                                            "ratio_denominator": "1",
+                                            "offset_numerator": "0",
+                                            "offset_denominator": "1",
+                                            "is_base_unit": false,
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "system",
+                                                "account": null
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "associated_units": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                    "object": "unit_group_unit",
+                                                    "unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1000",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": false,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "discount_percentage": 1,
+                                                    "discount_fixed": 0,
+                                                    "customer_portal_visibility": "visible",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            ]
+                                        },
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 },
@@ -170491,7 +178910,14 @@ export const apiTags: TagData[] = [
                                             "value": "Premium",
                                             "color": "red",
                                             "sort_order": 1,
-                                            "property": null,
+                                            "property": {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
@@ -171077,10 +179503,18 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "buyer_account_id": "ac_0170df1ac58e4d24c66fc89f5f",
+                        "customer_purchase_order_number": "PO-88231",
                         "note": "Rush order for trade show",
                         "carrier_id": "cr_01784fd54c9ba197bb4e42f0e6",
                         "service_level_id": "crop_01cfaf03f104e90ef9680e2a30",
+                        "carrier_billing_type": "sender",
+                        "carrier_billing_account_number": "123456789",
                         "priority_code": "normal",
+                        "sales_rep_id": "acus_01ea9983ddb41dacc44ecf997c",
+                        "shipping_term_id": "shtm_014341ab4bb5bf94d5b6936f86",
+                        "payment_term_id": "pytm_018694d6601ea771cd1b52e890",
+                        "order_discount_id": "ords_01121c5e2f6937a6b896daad3a",
+                        "promised_at": "2026-05-20T00:00:00Z",
                         "bill_to_address_id": "ad_012c2e4aeeb20f56c1a3d06cc7",
                         "ship_to_address_id": "ad_012c2e4aeeb20f56c1a3d06cc7",
                         "lines": [
@@ -171090,6 +179524,16 @@ export const apiTags: TagData[] = [
                                     "value": "10",
                                     "unit_id": "un_01966263f74a5a0cae356000a1"
                                 }
+                            }
+                        ],
+                        "acknowledgement_email_contacts": [
+                            {
+                                "account_user_id": "acus_01ea9983ddb41dacc44ecf997c"
+                            }
+                        ],
+                        "invoice_email_contacts": [
+                            {
+                                "account_user_id": "acus_01ea9983ddb41dacc44ecf997c"
                             }
                         ]
                     }
@@ -172755,14 +181199,90 @@ export const apiTags: TagData[] = [
                                 "created_at": "0001-01-01T00:00:00Z",
                                 "updated_at": "0001-01-01T00:00:00Z"
                             },
-                            "sales_rep": null,
-                            "created_by": null,
+                            "sales_rep": {
+                                "id": "us_0151164dcaea4cbded27b50aae",
+                                "object": "actor",
+                                "type": "user",
+                                "name": "John Doe",
+                                "handle": "jdoe@augno.com",
+                                "avatar_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                                "role": {
+                                    "id": "rl_01c16d2eb637c0d1f3a372937c",
+                                    "object": "role",
+                                    "name": "Admin",
+                                    "type": "admin",
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "account",
+                                        "account": {
+                                            "id": "ac_01148680966698341a9c0976db",
+                                            "object": "account",
+                                            "name": "Acme Inc.",
+                                            "default_billing_address": null,
+                                            "default_shipping_address": null,
+                                            "branding": null,
+                                            "portal": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    },
+                                    "permissions": [
+                                        "customers:create",
+                                        "customers:read",
+                                        "customers:update",
+                                        "customers:delete"
+                                    ],
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            },
+                            "created_by": {
+                                "object": "created_by",
+                                "relation": "internal",
+                                "actor": {
+                                    "id": "us_0151164dcaea4cbded27b50aae",
+                                    "object": "actor",
+                                    "type": "user",
+                                    "name": "John Doe",
+                                    "handle": "jdoe@augno.com",
+                                    "avatar_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                                    "role": {
+                                        "id": "rl_01c16d2eb637c0d1f3a372937c",
+                                        "object": "role",
+                                        "name": "Admin",
+                                        "type": "admin",
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "account",
+                                            "account": {
+                                                "id": "ac_01148680966698341a9c0976db",
+                                                "object": "account",
+                                                "name": "Acme Inc.",
+                                                "default_billing_address": null,
+                                                "default_shipping_address": null,
+                                                "branding": null,
+                                                "portal": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        },
+                                        "permissions": [
+                                            "customers:create",
+                                            "customers:read",
+                                            "customers:update",
+                                            "customers:delete"
+                                        ],
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                }
+                            },
                             "bill_to_address": {
                                 "id": "ad_012100950cfaa34aa0e0ad7258",
                                 "object": "address",
                                 "name": "Headquarters",
-                                "phone": null,
-                                "email": null,
+                                "phone": "+1-614-555-0142",
+                                "email": "receiving@acme.example.com",
                                 "type": "standard",
                                 "geolocation": {
                                     "id": "gl_013e4c26412103c6757ba71806",
@@ -172781,8 +181301,8 @@ export const apiTags: TagData[] = [
                                 "id": "ad_012100950cfaa34aa0e0ad7258",
                                 "object": "address",
                                 "name": "Headquarters",
-                                "phone": null,
-                                "email": null,
+                                "phone": "+1-614-555-0142",
+                                "email": "receiving@acme.example.com",
                                 "type": "standard",
                                 "geolocation": {
                                     "id": "gl_013e4c26412103c6757ba71806",
@@ -172799,13 +181319,13 @@ export const apiTags: TagData[] = [
                             },
                             "freight": {
                                 "object": "freight",
-                                "policy": null,
+                                "policy": "billed_freight",
                                 "carrier": {
                                     "id": "cr_01784fd54c9ba197bb4e42f0e6",
                                     "object": "carrier",
                                     "name": "FedEx",
                                     "code": "fedex",
-                                    "account_number": null,
+                                    "account_number": "603145678",
                                     "customer_portal_visibility": "visible",
                                     "owner": {
                                         "object": "owner",
@@ -172822,7 +181342,42 @@ export const apiTags: TagData[] = [
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         }
                                     },
-                                    "service_levels": null,
+                                    "service_levels": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "id": "crop_01cfaf03f104e90ef9680e2a30",
+                                                "object": "service_level",
+                                                "name": "FedEx Ground",
+                                                "service_level_token": "fedex_ground",
+                                                "customer_portal_visibility": "visible",
+                                                "is_default": true,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "account",
+                                                    "account": {
+                                                        "id": "ac_01148680966698341a9c0976db",
+                                                        "object": "account",
+                                                        "name": "Acme Inc.",
+                                                        "default_billing_address": null,
+                                                        "default_shipping_address": null,
+                                                        "branding": null,
+                                                        "portal": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        ]
+                                    },
                                     "deleted_at": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
@@ -172833,7 +181388,7 @@ export const apiTags: TagData[] = [
                                     "name": "FedEx Ground",
                                     "service_level_token": "fedex_ground",
                                     "customer_portal_visibility": "visible",
-                                    "is_default": false,
+                                    "is_default": true,
                                     "owner": {
                                         "object": "owner",
                                         "type": "account",
@@ -172855,9 +181410,56 @@ export const apiTags: TagData[] = [
                                 "billing_type": "third_party",
                                 "billing_account_number": "123456789"
                             },
-                            "payment_term": null,
-                            "shipping_term": null,
-                            "order_discount": null,
+                            "payment_term": {
+                                "id": "pytm_018694d6601ea771cd1b52e890",
+                                "object": "payment_term",
+                                "name": "Net 30",
+                                "status": "active",
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "shipping_term": {
+                                "id": "shtm_014341ab4bb5bf94d5b6936f86",
+                                "object": "shipping_term",
+                                "name": "Prepaid",
+                                "type": "carrier_rate_freight",
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "flat_rate": null,
+                                "minimum_order_value": null,
+                                "free_shipping_service_levels": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": []
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "order_discount": {
+                                "id": "ords_01121c5e2f6937a6b896daad3a",
+                                "object": "order_discount",
+                                "name": "10% Off",
+                                "code": "SAVE10",
+                                "percentage": "10.000000000000000000000000000000",
+                                "amount": "0.000000000000000000000000000000",
+                                "discount_type": "percentage",
+                                "order_count": 5,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "lines": {
                                 "object": "list",
                                 "page_info": {
@@ -172873,7 +181475,410 @@ export const apiTags: TagData[] = [
                                         "line_item_number": 1,
                                         "product_sku": "ALM-2024-1001",
                                         "product_description": "6061-T6 Aluminum Sheet 4x8",
-                                        "product": null,
+                                        "product": {
+                                            "id": "pd_013c29ab3f1518d0004094c316",
+                                            "object": "product",
+                                            "type": "sale",
+                                            "portal_visibility": "visible",
+                                            "product_line": {
+                                                "id": "pl_01996357326a0d3f7b129542ea",
+                                                "object": "product_line",
+                                                "name": "Industrial Fasteners",
+                                                "description": "Bolts, screws, and anchors for heavy industrial assembly.",
+                                                "notes": "Priced per the 2026 supplier contract; review pricing each quarter.",
+                                                "commission_policy": "commission_exempt",
+                                                "freight_policy": "billed_freight",
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "unit_group": {
+                                                    "id": "ug_01aad07abb8e41fd392d2d7013",
+                                                    "object": "unit_group",
+                                                    "name": "Weight",
+                                                    "notes": "Mass units used for ordering raw materials by weight.",
+                                                    "type": "mass",
+                                                    "base_unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1000",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": false,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "associated_units": {
+                                                        "object": "list",
+                                                        "page_info": {
+                                                            "next_page_url": null,
+                                                            "previous_page_url": null,
+                                                            "has_next_page": false,
+                                                            "has_prev_page": false
+                                                        },
+                                                        "data": [
+                                                            {
+                                                                "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                                "object": "unit_group_unit",
+                                                                "unit": {
+                                                                    "id": "un_01966263f74a5a0cae356000a1",
+                                                                    "object": "unit",
+                                                                    "name": "Kilogram",
+                                                                    "abbreviation": "kg",
+                                                                    "type": "mass",
+                                                                    "ratio_numerator": "1000",
+                                                                    "ratio_denominator": "1",
+                                                                    "offset_numerator": "0",
+                                                                    "offset_denominator": "1",
+                                                                    "is_base_unit": false,
+                                                                    "owner": {
+                                                                        "object": "owner",
+                                                                        "type": "system",
+                                                                        "account": null
+                                                                    },
+                                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                                },
+                                                                "discount_percentage": 1,
+                                                                "discount_fixed": 0,
+                                                                "customer_portal_visibility": "visible",
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "owner": {
+                                                        "object": "owner",
+                                                        "type": "system",
+                                                        "account": null
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "item": {
+                                                "id": "it_0131e386ac683e8c29a71f6f1f",
+                                                "object": "item",
+                                                "sku": "ALM-2024-1001",
+                                                "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
+                                                "notes": null,
+                                                "type": "product",
+                                                "category": {
+                                                    "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
+                                                    "object": "item_category",
+                                                    "name": "Electronics",
+                                                    "notes": "Components and raw materials used across the electronics assembly line.",
+                                                    "type": "material_category",
+                                                    "owner": {
+                                                        "object": "owner",
+                                                        "type": "system",
+                                                        "account": null
+                                                    },
+                                                    "properties": {
+                                                        "object": "list",
+                                                        "page_info": {
+                                                            "next_page_url": null,
+                                                            "previous_page_url": null,
+                                                            "has_next_page": false,
+                                                            "has_prev_page": false
+                                                        },
+                                                        "data": [
+                                                            {
+                                                                "id": "pp_01e21344878064372f69e67093",
+                                                                "object": "property",
+                                                                "name": "Color",
+                                                                "attributes": {
+                                                                    "object": "list",
+                                                                    "page_info": {
+                                                                        "next_page_url": null,
+                                                                        "previous_page_url": null,
+                                                                        "has_next_page": false,
+                                                                        "has_prev_page": false
+                                                                    },
+                                                                    "data": [
+                                                                        {
+                                                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                                            "object": "attribute",
+                                                                            "value": "Premium",
+                                                                            "color": "red",
+                                                                            "sort_order": 1,
+                                                                            "property": {
+                                                                                "id": "pp_01e21344878064372f69e67093",
+                                                                                "object": "property",
+                                                                                "name": "Color",
+                                                                                "attributes": null,
+                                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                                            },
+                                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "unit_group": {
+                                                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                                                        "object": "unit_group",
+                                                        "name": "Weight",
+                                                        "notes": "Mass units used for ordering raw materials by weight.",
+                                                        "type": "mass",
+                                                        "base_unit": {
+                                                            "id": "un_01966263f74a5a0cae356000a1",
+                                                            "object": "unit",
+                                                            "name": "Kilogram",
+                                                            "abbreviation": "kg",
+                                                            "type": "mass",
+                                                            "ratio_numerator": "1000",
+                                                            "ratio_denominator": "1",
+                                                            "offset_numerator": "0",
+                                                            "offset_denominator": "1",
+                                                            "is_base_unit": false,
+                                                            "owner": {
+                                                                "object": "owner",
+                                                                "type": "system",
+                                                                "account": null
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        },
+                                                        "associated_units": {
+                                                            "object": "list",
+                                                            "page_info": {
+                                                                "next_page_url": null,
+                                                                "previous_page_url": null,
+                                                                "has_next_page": false,
+                                                                "has_prev_page": false
+                                                            },
+                                                            "data": [
+                                                                {
+                                                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                                    "object": "unit_group_unit",
+                                                                    "unit": {
+                                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                                        "object": "unit",
+                                                                        "name": "Kilogram",
+                                                                        "abbreviation": "kg",
+                                                                        "type": "mass",
+                                                                        "ratio_numerator": "1000",
+                                                                        "ratio_denominator": "1",
+                                                                        "offset_numerator": "0",
+                                                                        "offset_denominator": "1",
+                                                                        "is_base_unit": false,
+                                                                        "owner": {
+                                                                            "object": "owner",
+                                                                            "type": "system",
+                                                                            "account": null
+                                                                        },
+                                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                                    },
+                                                                    "discount_percentage": 1,
+                                                                    "discount_fixed": 0,
+                                                                    "customer_portal_visibility": "visible",
+                                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "unit_value": {
+                                                    "id": "ra_015aa0a9522cf222024fd21d1a",
+                                                    "object": "rate",
+                                                    "value": "25.500000000000000000000000000000",
+                                                    "numerator_unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "US Dollar",
+                                                        "abbreviation": "USD",
+                                                        "type": "currency",
+                                                        "ratio_numerator": "1",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": true,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "denominator_unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": true,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "display_value": "$25.50 / kg",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "unit_cost": {
+                                                    "id": "ra_015aa0a9522cf222024fd21d1a",
+                                                    "object": "rate",
+                                                    "value": "25.500000000000000000000000000000",
+                                                    "numerator_unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "US Dollar",
+                                                        "abbreviation": "USD",
+                                                        "type": "currency",
+                                                        "ratio_numerator": "1",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": true,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "denominator_unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": true,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "display_value": "$25.50 / kg",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "burn_rate": {
+                                                    "id": "ra_015aa0a9522cf222024fd21d1a",
+                                                    "object": "rate",
+                                                    "value": "25.500000000000000000000000000000",
+                                                    "numerator_unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "US Dollar",
+                                                        "abbreviation": "USD",
+                                                        "type": "currency",
+                                                        "ratio_numerator": "1",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": true,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "denominator_unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": true,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "display_value": "$25.50 / kg",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
+                                                "attributes": {
+                                                    "object": "list",
+                                                    "page_info": {
+                                                        "next_page_url": null,
+                                                        "previous_page_url": null,
+                                                        "has_next_page": false,
+                                                        "has_prev_page": false
+                                                    },
+                                                    "data": [
+                                                        {
+                                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                            "object": "attribute",
+                                                            "value": "Premium",
+                                                            "color": "red",
+                                                            "sort_order": 1,
+                                                            "property": {
+                                                                "id": "pp_01e21344878064372f69e67093",
+                                                                "object": "property",
+                                                                "name": "Color",
+                                                                "attributes": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        }
+                                                    ]
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
                                         "quantity_ordered": {
                                             "id": "qty_015a85becc1a6afdfb1afc27ff",
                                             "object": "quantity",
@@ -172945,7 +181950,52 @@ export const apiTags: TagData[] = [
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
                                         },
-                                        "unit_cost": null,
+                                        "unit_cost": {
+                                            "id": "ra_015aa0a9522cf222024fd21d1a",
+                                            "object": "rate",
+                                            "value": "25.500000000000000000000000000000",
+                                            "numerator_unit": {
+                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                "object": "unit",
+                                                "name": "US Dollar",
+                                                "abbreviation": "USD",
+                                                "type": "currency",
+                                                "ratio_numerator": "1",
+                                                "ratio_denominator": "1",
+                                                "offset_numerator": "0",
+                                                "offset_denominator": "1",
+                                                "is_base_unit": true,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "denominator_unit": {
+                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                "object": "unit",
+                                                "name": "Kilogram",
+                                                "abbreviation": "kg",
+                                                "type": "mass",
+                                                "ratio_numerator": "1",
+                                                "ratio_denominator": "1",
+                                                "offset_numerator": "0",
+                                                "offset_denominator": "1",
+                                                "is_base_unit": true,
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "system",
+                                                    "account": null
+                                                },
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "display_value": "$25.50 / kg",
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
                                         "totals": {
                                             "object": "sales_order_totals",
                                             "ordered": "1234.560000000000000000000000000000",
@@ -172970,12 +182020,20 @@ export const apiTags: TagData[] = [
                                 "production_run": null,
                                 "shipments": null
                             },
-                            "contacts": null,
+                            "contacts": {
+                                "object": "order_contact",
+                                "invoice": [
+                                    "ap@acme.example.com"
+                                ],
+                                "acknowledgement": [
+                                    "purchasing@acme.example.com"
+                                ]
+                            },
                             "issued_at": null,
                             "completed_at": null,
                             "first_ship_at": null,
                             "expired_at": null,
-                            "promised_at": null,
+                            "promised_at": "2026-06-10T00:00:00Z",
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -174875,14 +183933,90 @@ export const apiTags: TagData[] = [
                                         "created_at": "0001-01-01T00:00:00Z",
                                         "updated_at": "0001-01-01T00:00:00Z"
                                     },
-                                    "sales_rep": null,
-                                    "created_by": null,
+                                    "sales_rep": {
+                                        "id": "us_0151164dcaea4cbded27b50aae",
+                                        "object": "actor",
+                                        "type": "user",
+                                        "name": "John Doe",
+                                        "handle": "jdoe@augno.com",
+                                        "avatar_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                                        "role": {
+                                            "id": "rl_01c16d2eb637c0d1f3a372937c",
+                                            "object": "role",
+                                            "name": "Admin",
+                                            "type": "admin",
+                                            "owner": {
+                                                "object": "owner",
+                                                "type": "account",
+                                                "account": {
+                                                    "id": "ac_01148680966698341a9c0976db",
+                                                    "object": "account",
+                                                    "name": "Acme Inc.",
+                                                    "default_billing_address": null,
+                                                    "default_shipping_address": null,
+                                                    "branding": null,
+                                                    "portal": null,
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                }
+                                            },
+                                            "permissions": [
+                                                "customers:create",
+                                                "customers:read",
+                                                "customers:update",
+                                                "customers:delete"
+                                            ],
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    },
+                                    "created_by": {
+                                        "object": "created_by",
+                                        "relation": "internal",
+                                        "actor": {
+                                            "id": "us_0151164dcaea4cbded27b50aae",
+                                            "object": "actor",
+                                            "type": "user",
+                                            "name": "John Doe",
+                                            "handle": "jdoe@augno.com",
+                                            "avatar_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
+                                            "role": {
+                                                "id": "rl_01c16d2eb637c0d1f3a372937c",
+                                                "object": "role",
+                                                "name": "Admin",
+                                                "type": "admin",
+                                                "owner": {
+                                                    "object": "owner",
+                                                    "type": "account",
+                                                    "account": {
+                                                        "id": "ac_01148680966698341a9c0976db",
+                                                        "object": "account",
+                                                        "name": "Acme Inc.",
+                                                        "default_billing_address": null,
+                                                        "default_shipping_address": null,
+                                                        "branding": null,
+                                                        "portal": null,
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                },
+                                                "permissions": [
+                                                    "customers:create",
+                                                    "customers:read",
+                                                    "customers:update",
+                                                    "customers:delete"
+                                                ],
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            }
+                                        }
+                                    },
                                     "bill_to_address": {
                                         "id": "ad_012100950cfaa34aa0e0ad7258",
                                         "object": "address",
                                         "name": "Headquarters",
-                                        "phone": null,
-                                        "email": null,
+                                        "phone": "+1-614-555-0142",
+                                        "email": "receiving@acme.example.com",
                                         "type": "standard",
                                         "geolocation": {
                                             "id": "gl_013e4c26412103c6757ba71806",
@@ -174901,8 +184035,8 @@ export const apiTags: TagData[] = [
                                         "id": "ad_012100950cfaa34aa0e0ad7258",
                                         "object": "address",
                                         "name": "Headquarters",
-                                        "phone": null,
-                                        "email": null,
+                                        "phone": "+1-614-555-0142",
+                                        "email": "receiving@acme.example.com",
                                         "type": "standard",
                                         "geolocation": {
                                             "id": "gl_013e4c26412103c6757ba71806",
@@ -174919,13 +184053,13 @@ export const apiTags: TagData[] = [
                                     },
                                     "freight": {
                                         "object": "freight",
-                                        "policy": null,
+                                        "policy": "billed_freight",
                                         "carrier": {
                                             "id": "cr_01784fd54c9ba197bb4e42f0e6",
                                             "object": "carrier",
                                             "name": "FedEx",
                                             "code": "fedex",
-                                            "account_number": null,
+                                            "account_number": "603145678",
                                             "customer_portal_visibility": "visible",
                                             "owner": {
                                                 "object": "owner",
@@ -174942,7 +184076,42 @@ export const apiTags: TagData[] = [
                                                     "updated_at": "2026-05-10T00:23:00Z"
                                                 }
                                             },
-                                            "service_levels": null,
+                                            "service_levels": {
+                                                "object": "list",
+                                                "page_info": {
+                                                    "next_page_url": null,
+                                                    "previous_page_url": null,
+                                                    "has_next_page": false,
+                                                    "has_prev_page": false
+                                                },
+                                                "data": [
+                                                    {
+                                                        "id": "crop_01cfaf03f104e90ef9680e2a30",
+                                                        "object": "service_level",
+                                                        "name": "FedEx Ground",
+                                                        "service_level_token": "fedex_ground",
+                                                        "customer_portal_visibility": "visible",
+                                                        "is_default": true,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "account",
+                                                            "account": {
+                                                                "id": "ac_01148680966698341a9c0976db",
+                                                                "object": "account",
+                                                                "name": "Acme Inc.",
+                                                                "default_billing_address": null,
+                                                                "default_shipping_address": null,
+                                                                "branding": null,
+                                                                "portal": null,
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            }
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    }
+                                                ]
+                                            },
                                             "deleted_at": null,
                                             "created_at": "2026-05-10T00:00:00Z",
                                             "updated_at": "2026-05-10T00:23:00Z"
@@ -174953,7 +184122,7 @@ export const apiTags: TagData[] = [
                                             "name": "FedEx Ground",
                                             "service_level_token": "fedex_ground",
                                             "customer_portal_visibility": "visible",
-                                            "is_default": false,
+                                            "is_default": true,
                                             "owner": {
                                                 "object": "owner",
                                                 "type": "account",
@@ -174975,9 +184144,56 @@ export const apiTags: TagData[] = [
                                         "billing_type": "third_party",
                                         "billing_account_number": "123456789"
                                     },
-                                    "payment_term": null,
-                                    "shipping_term": null,
-                                    "order_discount": null,
+                                    "payment_term": {
+                                        "id": "pytm_018694d6601ea771cd1b52e890",
+                                        "object": "payment_term",
+                                        "name": "Net 30",
+                                        "status": "active",
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "shipping_term": {
+                                        "id": "shtm_014341ab4bb5bf94d5b6936f86",
+                                        "object": "shipping_term",
+                                        "name": "Prepaid",
+                                        "type": "carrier_rate_freight",
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "flat_rate": null,
+                                        "minimum_order_value": null,
+                                        "free_shipping_service_levels": {
+                                            "object": "list",
+                                            "page_info": {
+                                                "next_page_url": null,
+                                                "previous_page_url": null,
+                                                "has_next_page": false,
+                                                "has_prev_page": false
+                                            },
+                                            "data": []
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "order_discount": {
+                                        "id": "ords_01121c5e2f6937a6b896daad3a",
+                                        "object": "order_discount",
+                                        "name": "10% Off",
+                                        "code": "SAVE10",
+                                        "percentage": "10.000000000000000000000000000000",
+                                        "amount": "0.000000000000000000000000000000",
+                                        "discount_type": "percentage",
+                                        "order_count": 5,
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
                                     "lines": {
                                         "object": "list",
                                         "page_info": {
@@ -174993,7 +184209,410 @@ export const apiTags: TagData[] = [
                                                 "line_item_number": 1,
                                                 "product_sku": "ALM-2024-1001",
                                                 "product_description": "6061-T6 Aluminum Sheet 4x8",
-                                                "product": null,
+                                                "product": {
+                                                    "id": "pd_013c29ab3f1518d0004094c316",
+                                                    "object": "product",
+                                                    "type": "sale",
+                                                    "portal_visibility": "visible",
+                                                    "product_line": {
+                                                        "id": "pl_01996357326a0d3f7b129542ea",
+                                                        "object": "product_line",
+                                                        "name": "Industrial Fasteners",
+                                                        "description": "Bolts, screws, and anchors for heavy industrial assembly.",
+                                                        "notes": "Priced per the 2026 supplier contract; review pricing each quarter.",
+                                                        "commission_policy": "commission_exempt",
+                                                        "freight_policy": "billed_freight",
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "unit_group": {
+                                                            "id": "ug_01aad07abb8e41fd392d2d7013",
+                                                            "object": "unit_group",
+                                                            "name": "Weight",
+                                                            "notes": "Mass units used for ordering raw materials by weight.",
+                                                            "type": "mass",
+                                                            "base_unit": {
+                                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                                "object": "unit",
+                                                                "name": "Kilogram",
+                                                                "abbreviation": "kg",
+                                                                "type": "mass",
+                                                                "ratio_numerator": "1000",
+                                                                "ratio_denominator": "1",
+                                                                "offset_numerator": "0",
+                                                                "offset_denominator": "1",
+                                                                "is_base_unit": false,
+                                                                "owner": {
+                                                                    "object": "owner",
+                                                                    "type": "system",
+                                                                    "account": null
+                                                                },
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "associated_units": {
+                                                                "object": "list",
+                                                                "page_info": {
+                                                                    "next_page_url": null,
+                                                                    "previous_page_url": null,
+                                                                    "has_next_page": false,
+                                                                    "has_prev_page": false
+                                                                },
+                                                                "data": [
+                                                                    {
+                                                                        "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                                        "object": "unit_group_unit",
+                                                                        "unit": {
+                                                                            "id": "un_01966263f74a5a0cae356000a1",
+                                                                            "object": "unit",
+                                                                            "name": "Kilogram",
+                                                                            "abbreviation": "kg",
+                                                                            "type": "mass",
+                                                                            "ratio_numerator": "1000",
+                                                                            "ratio_denominator": "1",
+                                                                            "offset_numerator": "0",
+                                                                            "offset_denominator": "1",
+                                                                            "is_base_unit": false,
+                                                                            "owner": {
+                                                                                "object": "owner",
+                                                                                "type": "system",
+                                                                                "account": null
+                                                                            },
+                                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                                        },
+                                                                        "discount_percentage": 1,
+                                                                        "discount_fixed": 0,
+                                                                        "customer_portal_visibility": "visible",
+                                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "owner": {
+                                                                "object": "owner",
+                                                                "type": "system",
+                                                                "account": null
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "item": {
+                                                        "id": "it_0131e386ac683e8c29a71f6f1f",
+                                                        "object": "item",
+                                                        "sku": "ALM-2024-1001",
+                                                        "description": "6061-T6 aluminum sheet, 4ft x 8ft, 0.125in thick",
+                                                        "notes": null,
+                                                        "type": "product",
+                                                        "category": {
+                                                            "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
+                                                            "object": "item_category",
+                                                            "name": "Electronics",
+                                                            "notes": "Components and raw materials used across the electronics assembly line.",
+                                                            "type": "material_category",
+                                                            "owner": {
+                                                                "object": "owner",
+                                                                "type": "system",
+                                                                "account": null
+                                                            },
+                                                            "properties": {
+                                                                "object": "list",
+                                                                "page_info": {
+                                                                    "next_page_url": null,
+                                                                    "previous_page_url": null,
+                                                                    "has_next_page": false,
+                                                                    "has_prev_page": false
+                                                                },
+                                                                "data": [
+                                                                    {
+                                                                        "id": "pp_01e21344878064372f69e67093",
+                                                                        "object": "property",
+                                                                        "name": "Color",
+                                                                        "attributes": {
+                                                                            "object": "list",
+                                                                            "page_info": {
+                                                                                "next_page_url": null,
+                                                                                "previous_page_url": null,
+                                                                                "has_next_page": false,
+                                                                                "has_prev_page": false
+                                                                            },
+                                                                            "data": [
+                                                                                {
+                                                                                    "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                                                    "object": "attribute",
+                                                                                    "value": "Premium",
+                                                                                    "color": "red",
+                                                                                    "sort_order": 1,
+                                                                                    "property": {
+                                                                                        "id": "pp_01e21344878064372f69e67093",
+                                                                                        "object": "property",
+                                                                                        "name": "Color",
+                                                                                        "attributes": null,
+                                                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                                                    },
+                                                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "unit_group": {
+                                                                "id": "ug_01aad07abb8e41fd392d2d7013",
+                                                                "object": "unit_group",
+                                                                "name": "Weight",
+                                                                "notes": "Mass units used for ordering raw materials by weight.",
+                                                                "type": "mass",
+                                                                "base_unit": {
+                                                                    "id": "un_01966263f74a5a0cae356000a1",
+                                                                    "object": "unit",
+                                                                    "name": "Kilogram",
+                                                                    "abbreviation": "kg",
+                                                                    "type": "mass",
+                                                                    "ratio_numerator": "1000",
+                                                                    "ratio_denominator": "1",
+                                                                    "offset_numerator": "0",
+                                                                    "offset_denominator": "1",
+                                                                    "is_base_unit": false,
+                                                                    "owner": {
+                                                                        "object": "owner",
+                                                                        "type": "system",
+                                                                        "account": null
+                                                                    },
+                                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                                },
+                                                                "associated_units": {
+                                                                    "object": "list",
+                                                                    "page_info": {
+                                                                        "next_page_url": null,
+                                                                        "previous_page_url": null,
+                                                                        "has_next_page": false,
+                                                                        "has_prev_page": false
+                                                                    },
+                                                                    "data": [
+                                                                        {
+                                                                            "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                                                            "object": "unit_group_unit",
+                                                                            "unit": {
+                                                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                                                "object": "unit",
+                                                                                "name": "Kilogram",
+                                                                                "abbreviation": "kg",
+                                                                                "type": "mass",
+                                                                                "ratio_numerator": "1000",
+                                                                                "ratio_denominator": "1",
+                                                                                "offset_numerator": "0",
+                                                                                "offset_denominator": "1",
+                                                                                "is_base_unit": false,
+                                                                                "owner": {
+                                                                                    "object": "owner",
+                                                                                    "type": "system",
+                                                                                    "account": null
+                                                                                },
+                                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                                            },
+                                                                            "discount_percentage": 1,
+                                                                            "discount_fixed": 0,
+                                                                            "customer_portal_visibility": "visible",
+                                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "owner": {
+                                                                    "object": "owner",
+                                                                    "type": "system",
+                                                                    "account": null
+                                                                },
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        },
+                                                        "unit_value": {
+                                                            "id": "ra_015aa0a9522cf222024fd21d1a",
+                                                            "object": "rate",
+                                                            "value": "25.500000000000000000000000000000",
+                                                            "numerator_unit": {
+                                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                                "object": "unit",
+                                                                "name": "US Dollar",
+                                                                "abbreviation": "USD",
+                                                                "type": "currency",
+                                                                "ratio_numerator": "1",
+                                                                "ratio_denominator": "1",
+                                                                "offset_numerator": "0",
+                                                                "offset_denominator": "1",
+                                                                "is_base_unit": true,
+                                                                "owner": {
+                                                                    "object": "owner",
+                                                                    "type": "system",
+                                                                    "account": null
+                                                                },
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "denominator_unit": {
+                                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                                "object": "unit",
+                                                                "name": "Kilogram",
+                                                                "abbreviation": "kg",
+                                                                "type": "mass",
+                                                                "ratio_numerator": "1",
+                                                                "ratio_denominator": "1",
+                                                                "offset_numerator": "0",
+                                                                "offset_denominator": "1",
+                                                                "is_base_unit": true,
+                                                                "owner": {
+                                                                    "object": "owner",
+                                                                    "type": "system",
+                                                                    "account": null
+                                                                },
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "display_value": "$25.50 / kg",
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        },
+                                                        "unit_cost": {
+                                                            "id": "ra_015aa0a9522cf222024fd21d1a",
+                                                            "object": "rate",
+                                                            "value": "25.500000000000000000000000000000",
+                                                            "numerator_unit": {
+                                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                                "object": "unit",
+                                                                "name": "US Dollar",
+                                                                "abbreviation": "USD",
+                                                                "type": "currency",
+                                                                "ratio_numerator": "1",
+                                                                "ratio_denominator": "1",
+                                                                "offset_numerator": "0",
+                                                                "offset_denominator": "1",
+                                                                "is_base_unit": true,
+                                                                "owner": {
+                                                                    "object": "owner",
+                                                                    "type": "system",
+                                                                    "account": null
+                                                                },
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "denominator_unit": {
+                                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                                "object": "unit",
+                                                                "name": "Kilogram",
+                                                                "abbreviation": "kg",
+                                                                "type": "mass",
+                                                                "ratio_numerator": "1",
+                                                                "ratio_denominator": "1",
+                                                                "offset_numerator": "0",
+                                                                "offset_denominator": "1",
+                                                                "is_base_unit": true,
+                                                                "owner": {
+                                                                    "object": "owner",
+                                                                    "type": "system",
+                                                                    "account": null
+                                                                },
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "display_value": "$25.50 / kg",
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        },
+                                                        "burn_rate": {
+                                                            "id": "ra_015aa0a9522cf222024fd21d1a",
+                                                            "object": "rate",
+                                                            "value": "25.500000000000000000000000000000",
+                                                            "numerator_unit": {
+                                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                                "object": "unit",
+                                                                "name": "US Dollar",
+                                                                "abbreviation": "USD",
+                                                                "type": "currency",
+                                                                "ratio_numerator": "1",
+                                                                "ratio_denominator": "1",
+                                                                "offset_numerator": "0",
+                                                                "offset_denominator": "1",
+                                                                "is_base_unit": true,
+                                                                "owner": {
+                                                                    "object": "owner",
+                                                                    "type": "system",
+                                                                    "account": null
+                                                                },
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "denominator_unit": {
+                                                                "id": "un_01966263f74a5a0cae356000a1",
+                                                                "object": "unit",
+                                                                "name": "Kilogram",
+                                                                "abbreviation": "kg",
+                                                                "type": "mass",
+                                                                "ratio_numerator": "1",
+                                                                "ratio_denominator": "1",
+                                                                "offset_numerator": "0",
+                                                                "offset_denominator": "1",
+                                                                "is_base_unit": true,
+                                                                "owner": {
+                                                                    "object": "owner",
+                                                                    "type": "system",
+                                                                    "account": null
+                                                                },
+                                                                "created_at": "2026-05-10T00:00:00Z",
+                                                                "updated_at": "2026-05-10T00:23:00Z"
+                                                            },
+                                                            "display_value": "$25.50 / kg",
+                                                            "created_at": "2026-05-10T00:00:00Z",
+                                                            "updated_at": "2026-05-10T00:23:00Z"
+                                                        },
+                                                        "attributes": {
+                                                            "object": "list",
+                                                            "page_info": {
+                                                                "next_page_url": null,
+                                                                "previous_page_url": null,
+                                                                "has_next_page": false,
+                                                                "has_prev_page": false
+                                                            },
+                                                            "data": [
+                                                                {
+                                                                    "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                                                    "object": "attribute",
+                                                                    "value": "Premium",
+                                                                    "color": "red",
+                                                                    "sort_order": 1,
+                                                                    "property": {
+                                                                        "id": "pp_01e21344878064372f69e67093",
+                                                                        "object": "property",
+                                                                        "name": "Color",
+                                                                        "attributes": null,
+                                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                                    },
+                                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
                                                 "quantity_ordered": {
                                                     "id": "qty_015a85becc1a6afdfb1afc27ff",
                                                     "object": "quantity",
@@ -175065,7 +184684,52 @@ export const apiTags: TagData[] = [
                                                     "created_at": "2026-05-10T00:00:00Z",
                                                     "updated_at": "2026-05-10T00:23:00Z"
                                                 },
-                                                "unit_cost": null,
+                                                "unit_cost": {
+                                                    "id": "ra_015aa0a9522cf222024fd21d1a",
+                                                    "object": "rate",
+                                                    "value": "25.500000000000000000000000000000",
+                                                    "numerator_unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "US Dollar",
+                                                        "abbreviation": "USD",
+                                                        "type": "currency",
+                                                        "ratio_numerator": "1",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": true,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "denominator_unit": {
+                                                        "id": "un_01966263f74a5a0cae356000a1",
+                                                        "object": "unit",
+                                                        "name": "Kilogram",
+                                                        "abbreviation": "kg",
+                                                        "type": "mass",
+                                                        "ratio_numerator": "1",
+                                                        "ratio_denominator": "1",
+                                                        "offset_numerator": "0",
+                                                        "offset_denominator": "1",
+                                                        "is_base_unit": true,
+                                                        "owner": {
+                                                            "object": "owner",
+                                                            "type": "system",
+                                                            "account": null
+                                                        },
+                                                        "created_at": "2026-05-10T00:00:00Z",
+                                                        "updated_at": "2026-05-10T00:23:00Z"
+                                                    },
+                                                    "display_value": "$25.50 / kg",
+                                                    "created_at": "2026-05-10T00:00:00Z",
+                                                    "updated_at": "2026-05-10T00:23:00Z"
+                                                },
                                                 "totals": {
                                                     "object": "sales_order_totals",
                                                     "ordered": "1234.560000000000000000000000000000",
@@ -175090,12 +184754,20 @@ export const apiTags: TagData[] = [
                                         "production_run": null,
                                         "shipments": null
                                     },
-                                    "contacts": null,
+                                    "contacts": {
+                                        "object": "order_contact",
+                                        "invoice": [
+                                            "ap@acme.example.com"
+                                        ],
+                                        "acknowledgement": [
+                                            "purchasing@acme.example.com"
+                                        ]
+                                    },
                                     "issued_at": null,
                                     "completed_at": null,
                                     "first_ship_at": null,
                                     "expired_at": null,
-                                    "promised_at": null,
+                                    "promised_at": "2026-06-10T00:00:00Z",
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -175839,7 +185511,11 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Warehouse A",
-                        "type": "building"
+                        "type": "building",
+                        "parent_id": "lc_014d187d99b31926f0c74af9d8",
+                        "child_ids": [
+                            "lc_014d187d99b31926f0c74af9d8"
+                        ]
                     }
                 },
                 "responses": [
@@ -176241,7 +185917,12 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Warehouse B"
+                        "name": "Warehouse B",
+                        "type": "section",
+                        "parent_id": "lc_014d187d99b31926f0c74af9d8",
+                        "child_ids": [
+                            "lc_014d187d99b31926f0c74af9d8"
+                        ]
                     }
                 },
                 "responses": [
@@ -178149,10 +187830,10 @@ export const apiTags: TagData[] = [
                 "id": "scst_0129335dd6286056a97024fcc1",
                 "object": "scanning_station",
                 "name": "Packaging Line 1",
-                "notes": null,
+                "notes": "Initializes batches at the start of the packaging line.",
                 "type": "init_batch",
-                "label_size": null,
-                "label_type": null,
+                "label_size": "2x4",
+                "label_type": "traveler",
                 "operator_requirement": "none",
                 "department": null,
                 "production_steps": null,
@@ -178269,6 +187950,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "Packaging Line 1",
+                        "notes": "Primary intake station on the receiving dock.",
                         "type": "init_batch",
                         "operator_requirement": "none",
                         "department_id": "dp_01791c25ab59da4704cba61874",
@@ -178732,10 +188414,10 @@ export const apiTags: TagData[] = [
                             "id": "scst_0129335dd6286056a97024fcc1",
                             "object": "scanning_station",
                             "name": "Packaging Line 1",
-                            "notes": null,
+                            "notes": "Initializes batches at the start of the packaging line.",
                             "type": "init_batch",
-                            "label_size": null,
-                            "label_type": null,
+                            "label_size": "2x4",
+                            "label_type": "traveler",
                             "operator_requirement": "none",
                             "department": null,
                             "production_steps": null,
@@ -178836,7 +188518,11 @@ export const apiTags: TagData[] = [
                         }
                     ],
                     "example": {
-                        "name": "Station B"
+                        "name": "Station B",
+                        "notes": "Relocated to the finishing area.",
+                        "label_size": "1x1",
+                        "label_type": "tag",
+                        "operator_requirement": "material_check"
                     }
                 },
                 "responses": [
@@ -179295,10 +188981,10 @@ export const apiTags: TagData[] = [
                             "id": "scst_0129335dd6286056a97024fcc1",
                             "object": "scanning_station",
                             "name": "Packaging Line 1",
-                            "notes": null,
+                            "notes": "Initializes batches at the start of the packaging line.",
                             "type": "init_batch",
-                            "label_size": null,
-                            "label_type": null,
+                            "label_size": "2x4",
+                            "label_type": "traveler",
                             "operator_requirement": "none",
                             "department": null,
                             "production_steps": null,
@@ -179884,10 +189570,10 @@ export const apiTags: TagData[] = [
                                     "id": "scst_0129335dd6286056a97024fcc1",
                                     "object": "scanning_station",
                                     "name": "Packaging Line 1",
-                                    "notes": null,
+                                    "notes": "Initializes batches at the start of the packaging line.",
                                     "type": "init_batch",
-                                    "label_size": null,
-                                    "label_type": null,
+                                    "label_size": "2x4",
+                                    "label_type": "traveler",
                                     "operator_requirement": "none",
                                     "department": null,
                                     "production_steps": null,
@@ -180387,10 +190073,10 @@ export const apiTags: TagData[] = [
                             "id": "scst_0129335dd6286056a97024fcc1",
                             "object": "scanning_station",
                             "name": "Packaging Line 1",
-                            "notes": null,
+                            "notes": "Initializes batches at the start of the packaging line.",
                             "type": "init_batch",
-                            "label_size": null,
-                            "label_type": null,
+                            "label_size": "2x4",
+                            "label_type": "traveler",
                             "operator_requirement": "none",
                             "department": null,
                             "production_steps": null,
@@ -184545,7 +194231,90 @@ export const apiObjects: ObjectData[] = [
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             },
-            "department": null,
+            "department": {
+                "id": "dp_01791c25ab59da4704cba61874",
+                "object": "department",
+                "name": "Fabrication",
+                "notes": null,
+                "location": {
+                    "id": "lc_014d187d99b31926f0c74af9d8",
+                    "object": "location",
+                    "name": "Warehouse A",
+                    "type": "building",
+                    "parent": null,
+                    "children": {
+                        "object": "list",
+                        "page_info": {
+                            "next_page_url": null,
+                            "previous_page_url": null,
+                            "has_next_page": false,
+                            "has_prev_page": false
+                        },
+                        "data": [
+                            {
+                                "id": "lc_0132c4db1e220da9bc596cc4c9",
+                                "object": "location",
+                                "name": "Shelf A1",
+                                "type": "building",
+                                "parent": null,
+                                "children": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            }
+                        ]
+                    },
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
+                },
+                "scanning_stations": {
+                    "object": "list",
+                    "page_info": {
+                        "next_page_url": null,
+                        "previous_page_url": null,
+                        "has_next_page": false,
+                        "has_prev_page": false
+                    },
+                    "data": [
+                        {
+                            "id": "scst_0129335dd6286056a97024fcc1",
+                            "object": "scanning_station",
+                            "name": "Packaging Line 1",
+                            "notes": "Initializes batches at the start of the packaging line.",
+                            "type": "init_batch",
+                            "label_size": "2x4",
+                            "label_type": "traveler",
+                            "operator_requirement": "none",
+                            "department": null,
+                            "production_steps": null,
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    ]
+                },
+                "machines": {
+                    "object": "list",
+                    "page_info": {
+                        "next_page_url": null,
+                        "previous_page_url": null,
+                        "has_next_page": false,
+                        "has_prev_page": false
+                    },
+                    "data": [
+                        {
+                            "id": "mc_0177d18f55a1615f783d3bf8d0",
+                            "object": "machine",
+                            "name": "CNC Router",
+                            "serial_number": "SN-2024-0001",
+                            "notes": null,
+                            "department": null,
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    ]
+                },
+                "created_at": "2026-05-10T00:00:00Z",
+                "updated_at": "2026-05-10T00:23:00Z"
+            },
             "user": {
                 "id": "us_0151164dcaea4cbded27b50aae",
                 "object": "user",
@@ -184557,7 +194326,7 @@ export const apiObjects: ObjectData[] = [
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             },
-            "last_used_at": null,
+            "last_used_at": "2026-05-10T00:23:00Z",
             "created_at": "2026-05-10T00:00:00Z",
             "updated_at": "2026-05-10T00:23:00Z"
         },
@@ -184848,8 +194617,8 @@ export const apiObjects: ObjectData[] = [
             "id": "ad_012100950cfaa34aa0e0ad7258",
             "object": "address",
             "name": "Headquarters",
-            "phone": null,
-            "email": null,
+            "phone": "+1-614-555-0142",
+            "email": "receiving@acme.example.com",
             "type": "standard",
             "geolocation": {
                 "id": "gl_013e4c26412103c6757ba71806",
@@ -185796,9 +195565,15 @@ export const apiObjects: ObjectData[] = [
             "body": "The platform will be briefly unavailable tonight at 2am UTC.",
             "status": "unseen",
             "priority": "normal",
-            "resource": null,
+            "resource": {
+                "id": "or_01d5034136c3ccc048abecc312",
+                "object": "entity",
+                "type": "sales_order",
+                "name": "Order #1042",
+                "handle": null
+            },
             "publish_at": "2026-05-10T00:00:00Z",
-            "expires_at": null,
+            "expires_at": "2026-06-10T00:00:00Z",
             "seen_at": null,
             "read_at": null,
             "dismissed_at": null,
@@ -186979,10 +196754,67 @@ export const apiObjects: ObjectData[] = [
                 "id": "ac_01148680966698341a9c0976db",
                 "object": "account",
                 "name": "Acme Inc.",
-                "default_billing_address": null,
-                "default_shipping_address": null,
-                "branding": null,
-                "portal": null,
+                "default_billing_address": {
+                    "id": "ad_012100950cfaa34aa0e0ad7258",
+                    "object": "address",
+                    "name": "Headquarters",
+                    "phone": "+1-614-555-0142",
+                    "email": "receiving@acme.example.com",
+                    "type": "standard",
+                    "geolocation": {
+                        "id": "gl_013e4c26412103c6757ba71806",
+                        "object": "geolocation",
+                        "street_line_1": "4200 Industrial Pkwy",
+                        "street_line_2": null,
+                        "locality": "Columbus",
+                        "state": "OH",
+                        "postal_code": "43204",
+                        "country": "US"
+                    },
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
+                },
+                "default_shipping_address": {
+                    "id": "ad_012100950cfaa34aa0e0ad7258",
+                    "object": "address",
+                    "name": "Headquarters",
+                    "phone": "+1-614-555-0142",
+                    "email": "receiving@acme.example.com",
+                    "type": "standard",
+                    "geolocation": {
+                        "id": "gl_013e4c26412103c6757ba71806",
+                        "object": "geolocation",
+                        "street_line_1": "4200 Industrial Pkwy",
+                        "street_line_2": null,
+                        "locality": "Columbus",
+                        "state": "OH",
+                        "postal_code": "43204",
+                        "country": "US"
+                    },
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
+                },
+                "branding": {
+                    "id": "abr_01fa710842028837ac3ca9d590",
+                    "object": "account_branding",
+                    "support_email": "support@acme.example.com",
+                    "phone_number": "+1-614-555-0100",
+                    "logo_url": "https://cdn.augno.com/branding/abr_01fa710842028837ac3ca9d590/logo.png",
+                    "facebook_handle": "acmeinc",
+                    "instagram_handle": "acmeinc",
+                    "linkedin_handle": "acme-inc",
+                    "twitter_handle": "acmeinc",
+                    "website_url": "https://www.acme.example.com",
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
+                },
+                "portal": {
+                    "id": "apo_0167f0d01165cbb56b55bc01fa",
+                    "object": "account_portal",
+                    "slug": "acme",
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
+                },
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             },
@@ -187021,7 +196853,7 @@ export const apiObjects: ObjectData[] = [
                 "api_version": "2026-01-01",
                 "client_ip": "198.51.100.7",
                 "user_agent": "Mozilla/5.0",
-                "referrer": null,
+                "referrer": "https://app.augno.com",
                 "error_code": null,
                 "error_message": null,
                 "occurred_at": "2026-05-10T00:00:00Z",
@@ -187030,10 +196862,67 @@ export const apiObjects: ObjectData[] = [
                     "id": "ac_01148680966698341a9c0976db",
                     "object": "account",
                     "name": "Acme Inc.",
-                    "default_billing_address": null,
-                    "default_shipping_address": null,
-                    "branding": null,
-                    "portal": null,
+                    "default_billing_address": {
+                        "id": "ad_012100950cfaa34aa0e0ad7258",
+                        "object": "address",
+                        "name": "Headquarters",
+                        "phone": "+1-614-555-0142",
+                        "email": "receiving@acme.example.com",
+                        "type": "standard",
+                        "geolocation": {
+                            "id": "gl_013e4c26412103c6757ba71806",
+                            "object": "geolocation",
+                            "street_line_1": "4200 Industrial Pkwy",
+                            "street_line_2": null,
+                            "locality": "Columbus",
+                            "state": "OH",
+                            "postal_code": "43204",
+                            "country": "US"
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
+                    "default_shipping_address": {
+                        "id": "ad_012100950cfaa34aa0e0ad7258",
+                        "object": "address",
+                        "name": "Headquarters",
+                        "phone": "+1-614-555-0142",
+                        "email": "receiving@acme.example.com",
+                        "type": "standard",
+                        "geolocation": {
+                            "id": "gl_013e4c26412103c6757ba71806",
+                            "object": "geolocation",
+                            "street_line_1": "4200 Industrial Pkwy",
+                            "street_line_2": null,
+                            "locality": "Columbus",
+                            "state": "OH",
+                            "postal_code": "43204",
+                            "country": "US"
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
+                    "branding": {
+                        "id": "abr_01fa710842028837ac3ca9d590",
+                        "object": "account_branding",
+                        "support_email": "support@acme.example.com",
+                        "phone_number": "+1-614-555-0100",
+                        "logo_url": "https://cdn.augno.com/branding/abr_01fa710842028837ac3ca9d590/logo.png",
+                        "facebook_handle": "acmeinc",
+                        "instagram_handle": "acmeinc",
+                        "linkedin_handle": "acme-inc",
+                        "twitter_handle": "acmeinc",
+                        "website_url": "https://www.acme.example.com",
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
+                    "portal": {
+                        "id": "apo_0167f0d01165cbb56b55bc01fa",
+                        "object": "account_portal",
+                        "slug": "acme",
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
                     "created_at": "2026-05-10T00:00:00Z",
                     "updated_at": "2026-05-10T00:23:00Z"
                 },
@@ -187043,7 +196932,7 @@ export const apiObjects: ObjectData[] = [
                     "type": "user",
                     "name": "John Doe",
                     "handle": "jdoe@augno.com",
-                    "avatar_url": null,
+                    "avatar_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
                     "role": {
                         "id": "rl_01c16d2eb637c0d1f3a372937c",
                         "object": "role",
@@ -187087,7 +196976,7 @@ export const apiObjects: ObjectData[] = [
                     }
                 }
             },
-            "idempotency_key": null,
+            "idempotency_key": "3f2504e0-4f89-41d3-9a0c-0305e82c3301",
             "source_ip": "198.51.100.8",
             "occurred_at": "2026-05-10T00:00:00Z",
             "created_at": "2026-05-10T00:00:00Z"
@@ -187514,7 +197403,7 @@ export const apiObjects: ObjectData[] = [
             "object": "carrier",
             "name": "FedEx",
             "code": "fedex",
-            "account_number": null,
+            "account_number": "603145678",
             "customer_portal_visibility": "visible",
             "owner": {
                 "object": "owner",
@@ -187531,7 +197420,42 @@ export const apiObjects: ObjectData[] = [
                     "updated_at": "2026-05-10T00:23:00Z"
                 }
             },
-            "service_levels": null,
+            "service_levels": {
+                "object": "list",
+                "page_info": {
+                    "next_page_url": null,
+                    "previous_page_url": null,
+                    "has_next_page": false,
+                    "has_prev_page": false
+                },
+                "data": [
+                    {
+                        "id": "crop_01cfaf03f104e90ef9680e2a30",
+                        "object": "service_level",
+                        "name": "FedEx Ground",
+                        "service_level_token": "fedex_ground",
+                        "customer_portal_visibility": "visible",
+                        "is_default": true,
+                        "owner": {
+                            "object": "owner",
+                            "type": "account",
+                            "account": {
+                                "id": "ac_01148680966698341a9c0976db",
+                                "object": "account",
+                                "name": "Acme Inc.",
+                                "default_billing_address": null,
+                                "default_shipping_address": null,
+                                "branding": null,
+                                "portal": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            }
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    }
+                ]
+            },
             "deleted_at": null,
             "created_at": "2026-05-10T00:00:00Z",
             "updated_at": "2026-05-10T00:23:00Z"
@@ -189244,7 +199168,39 @@ export const apiObjects: ObjectData[] = [
             "topic": null,
             "unread": 2,
             "last_message_at": "2026-05-10T00:23:00Z",
-            "last_message": null,
+            "last_message": {
+                "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                "object": "chat_message",
+                "kind": "chat",
+                "status": "sent",
+                "visibility": "internal",
+                "conversation": null,
+                "sequence": 42,
+                "body": "Sounds good — shipping it today.",
+                "subject": null,
+                "sender": {
+                    "id": "acus_01ea9983ddb41dacc44ecf997c",
+                    "object": "actor",
+                    "type": "user",
+                    "name": "Jie Yan",
+                    "handle": null,
+                    "avatar_url": null,
+                    "role": null
+                },
+                "author": null,
+                "attachments": null,
+                "reply_to": null,
+                "resource": null,
+                "channel": "message",
+                "scheduled_at": null,
+                "agent_run": null,
+                "streaming_state": null,
+                "client_message_id": null,
+                "edited_at": null,
+                "deleted_at": null,
+                "created_at": "2026-05-10T00:00:00Z",
+                "updated_at": "2026-05-10T00:23:00Z"
+            },
             "created_at": "2026-05-10T00:00:00Z",
             "updated_at": "2026-05-10T00:23:00Z"
         },
@@ -191775,7 +201731,7 @@ export const apiObjects: ObjectData[] = [
                     "object": "carrier",
                     "name": "FedEx",
                     "code": "fedex",
-                    "account_number": null,
+                    "account_number": "603145678",
                     "customer_portal_visibility": "visible",
                     "owner": {
                         "object": "owner",
@@ -191792,7 +201748,42 @@ export const apiObjects: ObjectData[] = [
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
                     },
-                    "service_levels": null,
+                    "service_levels": {
+                        "object": "list",
+                        "page_info": {
+                            "next_page_url": null,
+                            "previous_page_url": null,
+                            "has_next_page": false,
+                            "has_prev_page": false
+                        },
+                        "data": [
+                            {
+                                "id": "crop_01cfaf03f104e90ef9680e2a30",
+                                "object": "service_level",
+                                "name": "FedEx Ground",
+                                "service_level_token": "fedex_ground",
+                                "customer_portal_visibility": "visible",
+                                "is_default": true,
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "account",
+                                    "account": {
+                                        "id": "ac_01148680966698341a9c0976db",
+                                        "object": "account",
+                                        "name": "Acme Inc.",
+                                        "default_billing_address": null,
+                                        "default_shipping_address": null,
+                                        "branding": null,
+                                        "portal": null,
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            }
+                        ]
+                    },
                     "deleted_at": null,
                     "created_at": "2026-05-10T00:00:00Z",
                     "updated_at": "2026-05-10T00:23:00Z"
@@ -191803,7 +201794,7 @@ export const apiObjects: ObjectData[] = [
                     "name": "FedEx Ground",
                     "service_level_token": "fedex_ground",
                     "customer_portal_visibility": "visible",
-                    "is_default": false,
+                    "is_default": true,
                     "owner": {
                         "object": "owner",
                         "type": "account",
@@ -191911,7 +201902,90 @@ export const apiObjects: ObjectData[] = [
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
                     },
-                    "department": null,
+                    "department": {
+                        "id": "dp_01791c25ab59da4704cba61874",
+                        "object": "department",
+                        "name": "Fabrication",
+                        "notes": null,
+                        "location": {
+                            "id": "lc_014d187d99b31926f0c74af9d8",
+                            "object": "location",
+                            "name": "Warehouse A",
+                            "type": "building",
+                            "parent": null,
+                            "children": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "lc_0132c4db1e220da9bc596cc4c9",
+                                        "object": "location",
+                                        "name": "Shelf A1",
+                                        "type": "building",
+                                        "parent": null,
+                                        "children": null,
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        },
+                        "scanning_stations": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": null,
+                                "previous_page_url": null,
+                                "has_next_page": false,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "scst_0129335dd6286056a97024fcc1",
+                                    "object": "scanning_station",
+                                    "name": "Packaging Line 1",
+                                    "notes": "Initializes batches at the start of the packaging line.",
+                                    "type": "init_batch",
+                                    "label_size": "2x4",
+                                    "label_type": "traveler",
+                                    "operator_requirement": "none",
+                                    "department": null,
+                                    "production_steps": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        },
+                        "machines": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": null,
+                                "previous_page_url": null,
+                                "has_next_page": false,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "mc_0177d18f55a1615f783d3bf8d0",
+                                    "object": "machine",
+                                    "name": "CNC Router",
+                                    "serial_number": "SN-2024-0001",
+                                    "notes": null,
+                                    "department": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
                     "user": {
                         "id": "us_0151164dcaea4cbded27b50aae",
                         "object": "user",
@@ -191923,7 +201997,7 @@ export const apiObjects: ObjectData[] = [
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
                     },
-                    "last_used_at": null,
+                    "last_used_at": "2026-05-10T00:23:00Z",
                     "created_at": "2026-05-10T00:00:00Z",
                     "updated_at": "2026-05-10T00:23:00Z"
                 }
@@ -191936,8 +202010,8 @@ export const apiObjects: ObjectData[] = [
                 "id": "ad_012100950cfaa34aa0e0ad7258",
                 "object": "address",
                 "name": "Headquarters",
-                "phone": null,
-                "email": null,
+                "phone": "+1-614-555-0142",
+                "email": "receiving@acme.example.com",
                 "type": "standard",
                 "geolocation": {
                     "id": "gl_013e4c26412103c6757ba71806",
@@ -191956,8 +202030,8 @@ export const apiObjects: ObjectData[] = [
                 "id": "ad_012100950cfaa34aa0e0ad7258",
                 "object": "address",
                 "name": "Headquarters",
-                "phone": null,
-                "email": null,
+                "phone": "+1-614-555-0142",
+                "email": "receiving@acme.example.com",
                 "type": "standard",
                 "geolocation": {
                     "id": "gl_013e4c26412103c6757ba71806",
@@ -193594,15 +203668,131 @@ export const apiObjects: ObjectData[] = [
             "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
             "object": "item_category",
             "name": "Electronics",
-            "notes": null,
+            "notes": "Components and raw materials used across the electronics assembly line.",
             "type": "material_category",
             "owner": {
                 "object": "owner",
                 "type": "system",
                 "account": null
             },
-            "properties": null,
-            "unit_group": null,
+            "properties": {
+                "object": "list",
+                "page_info": {
+                    "next_page_url": null,
+                    "previous_page_url": null,
+                    "has_next_page": false,
+                    "has_prev_page": false
+                },
+                "data": [
+                    {
+                        "id": "pp_01e21344878064372f69e67093",
+                        "object": "property",
+                        "name": "Color",
+                        "attributes": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": null,
+                                "previous_page_url": null,
+                                "has_next_page": false,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                    "object": "attribute",
+                                    "value": "Premium",
+                                    "color": "red",
+                                    "sort_order": 1,
+                                    "property": {
+                                        "id": "pp_01e21344878064372f69e67093",
+                                        "object": "property",
+                                        "name": "Color",
+                                        "attributes": null,
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    }
+                ]
+            },
+            "unit_group": {
+                "id": "ug_01aad07abb8e41fd392d2d7013",
+                "object": "unit_group",
+                "name": "Weight",
+                "notes": "Mass units used for ordering raw materials by weight.",
+                "type": "mass",
+                "base_unit": {
+                    "id": "un_01966263f74a5a0cae356000a1",
+                    "object": "unit",
+                    "name": "Kilogram",
+                    "abbreviation": "kg",
+                    "type": "mass",
+                    "ratio_numerator": "1000",
+                    "ratio_denominator": "1",
+                    "offset_numerator": "0",
+                    "offset_denominator": "1",
+                    "is_base_unit": false,
+                    "owner": {
+                        "object": "owner",
+                        "type": "system",
+                        "account": null
+                    },
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
+                },
+                "associated_units": {
+                    "object": "list",
+                    "page_info": {
+                        "next_page_url": null,
+                        "previous_page_url": null,
+                        "has_next_page": false,
+                        "has_prev_page": false
+                    },
+                    "data": [
+                        {
+                            "id": "ugu_01d75e0598ed09be56fd39fab5",
+                            "object": "unit_group_unit",
+                            "unit": {
+                                "id": "un_01966263f74a5a0cae356000a1",
+                                "object": "unit",
+                                "name": "Kilogram",
+                                "abbreviation": "kg",
+                                "type": "mass",
+                                "ratio_numerator": "1000",
+                                "ratio_denominator": "1",
+                                "offset_numerator": "0",
+                                "offset_denominator": "1",
+                                "is_base_unit": false,
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "discount_percentage": 1,
+                            "discount_fixed": 0,
+                            "customer_portal_visibility": "visible",
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    ]
+                },
+                "owner": {
+                    "object": "owner",
+                    "type": "system",
+                    "account": null
+                },
+                "created_at": "2026-05-10T00:00:00Z",
+                "updated_at": "2026-05-10T00:23:00Z"
+            },
             "created_at": "2026-05-10T00:00:00Z",
             "updated_at": "2026-05-10T00:23:00Z"
         },
@@ -194945,15 +205135,131 @@ export const apiObjects: ObjectData[] = [
                 "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                 "object": "item_category",
                 "name": "Electronics",
-                "notes": null,
+                "notes": "Components and raw materials used across the electronics assembly line.",
                 "type": "material_category",
                 "owner": {
                     "object": "owner",
                     "type": "system",
                     "account": null
                 },
-                "properties": null,
-                "unit_group": null,
+                "properties": {
+                    "object": "list",
+                    "page_info": {
+                        "next_page_url": null,
+                        "previous_page_url": null,
+                        "has_next_page": false,
+                        "has_prev_page": false
+                    },
+                    "data": [
+                        {
+                            "id": "pp_01e21344878064372f69e67093",
+                            "object": "property",
+                            "name": "Color",
+                            "attributes": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                        "object": "attribute",
+                                        "value": "Premium",
+                                        "color": "red",
+                                        "sort_order": 1,
+                                        "property": {
+                                            "id": "pp_01e21344878064372f69e67093",
+                                            "object": "property",
+                                            "name": "Color",
+                                            "attributes": null,
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    }
+                                ]
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    ]
+                },
+                "unit_group": {
+                    "id": "ug_01aad07abb8e41fd392d2d7013",
+                    "object": "unit_group",
+                    "name": "Weight",
+                    "notes": "Mass units used for ordering raw materials by weight.",
+                    "type": "mass",
+                    "base_unit": {
+                        "id": "un_01966263f74a5a0cae356000a1",
+                        "object": "unit",
+                        "name": "Kilogram",
+                        "abbreviation": "kg",
+                        "type": "mass",
+                        "ratio_numerator": "1000",
+                        "ratio_denominator": "1",
+                        "offset_numerator": "0",
+                        "offset_denominator": "1",
+                        "is_base_unit": false,
+                        "owner": {
+                            "object": "owner",
+                            "type": "system",
+                            "account": null
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
+                    "associated_units": {
+                        "object": "list",
+                        "page_info": {
+                            "next_page_url": null,
+                            "previous_page_url": null,
+                            "has_next_page": false,
+                            "has_prev_page": false
+                        },
+                        "data": [
+                            {
+                                "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                "object": "unit_group_unit",
+                                "unit": {
+                                    "id": "un_01966263f74a5a0cae356000a1",
+                                    "object": "unit",
+                                    "name": "Kilogram",
+                                    "abbreviation": "kg",
+                                    "type": "mass",
+                                    "ratio_numerator": "1000",
+                                    "ratio_denominator": "1",
+                                    "offset_numerator": "0",
+                                    "offset_denominator": "1",
+                                    "is_base_unit": false,
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system",
+                                        "account": null
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "discount_percentage": 1,
+                                "discount_fixed": 0,
+                                "customer_portal_visibility": "visible",
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            }
+                        ]
+                    },
+                    "owner": {
+                        "object": "owner",
+                        "type": "system",
+                        "account": null
+                    },
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
+                },
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             },
@@ -195110,7 +205416,14 @@ export const apiObjects: ObjectData[] = [
                         "value": "Premium",
                         "color": "red",
                         "sort_order": 1,
-                        "property": null,
+                        "property": {
+                            "id": "pp_01e21344878064372f69e67093",
+                            "object": "property",
+                            "name": "Color",
+                            "attributes": null,
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        },
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
                     }
@@ -196428,15 +206741,131 @@ export const apiObjects: ObjectData[] = [
                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                     "object": "item_category",
                     "name": "Electronics",
-                    "notes": null,
+                    "notes": "Components and raw materials used across the electronics assembly line.",
                     "type": "material_category",
                     "owner": {
                         "object": "owner",
                         "type": "system",
                         "account": null
                     },
-                    "properties": null,
-                    "unit_group": null,
+                    "properties": {
+                        "object": "list",
+                        "page_info": {
+                            "next_page_url": null,
+                            "previous_page_url": null,
+                            "has_next_page": false,
+                            "has_prev_page": false
+                        },
+                        "data": [
+                            {
+                                "id": "pp_01e21344878064372f69e67093",
+                                "object": "property",
+                                "name": "Color",
+                                "attributes": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                            "object": "attribute",
+                                            "value": "Premium",
+                                            "color": "red",
+                                            "sort_order": 1,
+                                            "property": {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            }
+                        ]
+                    },
+                    "unit_group": {
+                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                        "object": "unit_group",
+                        "name": "Weight",
+                        "notes": "Mass units used for ordering raw materials by weight.",
+                        "type": "mass",
+                        "base_unit": {
+                            "id": "un_01966263f74a5a0cae356000a1",
+                            "object": "unit",
+                            "name": "Kilogram",
+                            "abbreviation": "kg",
+                            "type": "mass",
+                            "ratio_numerator": "1000",
+                            "ratio_denominator": "1",
+                            "offset_numerator": "0",
+                            "offset_denominator": "1",
+                            "is_base_unit": false,
+                            "owner": {
+                                "object": "owner",
+                                "type": "system",
+                                "account": null
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        },
+                        "associated_units": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": null,
+                                "previous_page_url": null,
+                                "has_next_page": false,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                    "object": "unit_group_unit",
+                                    "unit": {
+                                        "id": "un_01966263f74a5a0cae356000a1",
+                                        "object": "unit",
+                                        "name": "Kilogram",
+                                        "abbreviation": "kg",
+                                        "type": "mass",
+                                        "ratio_numerator": "1000",
+                                        "ratio_denominator": "1",
+                                        "offset_numerator": "0",
+                                        "offset_denominator": "1",
+                                        "is_base_unit": false,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "discount_percentage": 1,
+                                    "discount_fixed": 0,
+                                    "customer_portal_visibility": "visible",
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        },
+                        "owner": {
+                            "object": "owner",
+                            "type": "system",
+                            "account": null
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
                     "created_at": "2026-05-10T00:00:00Z",
                     "updated_at": "2026-05-10T00:23:00Z"
                 },
@@ -196593,7 +207022,14 @@ export const apiObjects: ObjectData[] = [
                             "value": "Premium",
                             "color": "red",
                             "sort_order": 1,
-                            "property": null,
+                            "property": {
+                                "id": "pp_01e21344878064372f69e67093",
+                                "object": "property",
+                                "name": "Color",
+                                "attributes": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -198892,7 +209328,39 @@ export const apiObjects: ObjectData[] = [
                         "topic": null,
                         "unread": 2,
                         "last_message_at": "2026-05-10T00:23:00Z",
-                        "last_message": null,
+                        "last_message": {
+                            "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
+                            "object": "chat_message",
+                            "kind": "chat",
+                            "status": "sent",
+                            "visibility": "internal",
+                            "conversation": null,
+                            "sequence": 42,
+                            "body": "Sounds good — shipping it today.",
+                            "subject": null,
+                            "sender": {
+                                "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                "object": "actor",
+                                "type": "user",
+                                "name": "Jie Yan",
+                                "handle": null,
+                                "avatar_url": null,
+                                "role": null
+                            },
+                            "author": null,
+                            "attachments": null,
+                            "reply_to": null,
+                            "resource": null,
+                            "channel": "message",
+                            "scheduled_at": null,
+                            "agent_run": null,
+                            "streaming_state": null,
+                            "client_message_id": null,
+                            "edited_at": null,
+                            "deleted_at": null,
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        },
                         "created_at": "2026-05-10T00:00:00Z",
                         "updated_at": "2026-05-10T00:23:00Z"
                     },
@@ -198940,7 +209408,13 @@ export const apiObjects: ObjectData[] = [
                         ]
                     },
                     "reply_to": null,
-                    "resource": null,
+                    "resource": {
+                        "id": "or_01d5034136c3ccc048abecc312",
+                        "object": "entity",
+                        "type": "sales_order",
+                        "name": "Order #1042",
+                        "handle": null
+                    },
                     "channel": "message",
                     "scheduled_at": null,
                     "agent_run": null,
@@ -201012,7 +211486,13 @@ export const apiObjects: ObjectData[] = [
                 "avatar_url": null,
                 "role": null
             },
-            "resource": null,
+            "resource": {
+                "id": "or_01d5034136c3ccc048abecc312",
+                "object": "entity",
+                "type": "sales_order",
+                "name": "SO-001",
+                "handle": null
+            },
             "seen_at": null,
             "read_at": null,
             "dismissed_at": null,
@@ -201982,15 +212462,131 @@ export const apiObjects: ObjectData[] = [
                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                     "object": "item_category",
                     "name": "Electronics",
-                    "notes": null,
+                    "notes": "Components and raw materials used across the electronics assembly line.",
                     "type": "material_category",
                     "owner": {
                         "object": "owner",
                         "type": "system",
                         "account": null
                     },
-                    "properties": null,
-                    "unit_group": null,
+                    "properties": {
+                        "object": "list",
+                        "page_info": {
+                            "next_page_url": null,
+                            "previous_page_url": null,
+                            "has_next_page": false,
+                            "has_prev_page": false
+                        },
+                        "data": [
+                            {
+                                "id": "pp_01e21344878064372f69e67093",
+                                "object": "property",
+                                "name": "Color",
+                                "attributes": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                            "object": "attribute",
+                                            "value": "Premium",
+                                            "color": "red",
+                                            "sort_order": 1,
+                                            "property": {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            }
+                        ]
+                    },
+                    "unit_group": {
+                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                        "object": "unit_group",
+                        "name": "Weight",
+                        "notes": "Mass units used for ordering raw materials by weight.",
+                        "type": "mass",
+                        "base_unit": {
+                            "id": "un_01966263f74a5a0cae356000a1",
+                            "object": "unit",
+                            "name": "Kilogram",
+                            "abbreviation": "kg",
+                            "type": "mass",
+                            "ratio_numerator": "1000",
+                            "ratio_denominator": "1",
+                            "offset_numerator": "0",
+                            "offset_denominator": "1",
+                            "is_base_unit": false,
+                            "owner": {
+                                "object": "owner",
+                                "type": "system",
+                                "account": null
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        },
+                        "associated_units": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": null,
+                                "previous_page_url": null,
+                                "has_next_page": false,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                    "object": "unit_group_unit",
+                                    "unit": {
+                                        "id": "un_01966263f74a5a0cae356000a1",
+                                        "object": "unit",
+                                        "name": "Kilogram",
+                                        "abbreviation": "kg",
+                                        "type": "mass",
+                                        "ratio_numerator": "1000",
+                                        "ratio_denominator": "1",
+                                        "offset_numerator": "0",
+                                        "offset_denominator": "1",
+                                        "is_base_unit": false,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "discount_percentage": 1,
+                                    "discount_fixed": 0,
+                                    "customer_portal_visibility": "visible",
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        },
+                        "owner": {
+                            "object": "owner",
+                            "type": "system",
+                            "account": null
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
                     "created_at": "2026-05-10T00:00:00Z",
                     "updated_at": "2026-05-10T00:23:00Z"
                 },
@@ -202147,7 +212743,14 @@ export const apiObjects: ObjectData[] = [
                             "value": "Premium",
                             "color": "red",
                             "sort_order": 1,
-                            "property": null,
+                            "property": {
+                                "id": "pp_01e21344878064372f69e67093",
+                                "object": "property",
+                                "name": "Color",
+                                "attributes": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -203033,8 +213636,8 @@ export const apiObjects: ObjectData[] = [
             "id": "pl_01996357326a0d3f7b129542ea",
             "object": "product_line",
             "name": "Industrial Fasteners",
-            "description": null,
-            "notes": null,
+            "description": "Bolts, screws, and anchors for heavy industrial assembly.",
+            "notes": "Priced per the 2026 supplier contract; review pricing each quarter.",
             "commission_policy": "commission_exempt",
             "freight_policy": "billed_freight",
             "owner": {
@@ -203042,7 +213645,78 @@ export const apiObjects: ObjectData[] = [
                 "type": "system",
                 "account": null
             },
-            "unit_group": null,
+            "unit_group": {
+                "id": "ug_01aad07abb8e41fd392d2d7013",
+                "object": "unit_group",
+                "name": "Weight",
+                "notes": "Mass units used for ordering raw materials by weight.",
+                "type": "mass",
+                "base_unit": {
+                    "id": "un_01966263f74a5a0cae356000a1",
+                    "object": "unit",
+                    "name": "Kilogram",
+                    "abbreviation": "kg",
+                    "type": "mass",
+                    "ratio_numerator": "1000",
+                    "ratio_denominator": "1",
+                    "offset_numerator": "0",
+                    "offset_denominator": "1",
+                    "is_base_unit": false,
+                    "owner": {
+                        "object": "owner",
+                        "type": "system",
+                        "account": null
+                    },
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
+                },
+                "associated_units": {
+                    "object": "list",
+                    "page_info": {
+                        "next_page_url": null,
+                        "previous_page_url": null,
+                        "has_next_page": false,
+                        "has_prev_page": false
+                    },
+                    "data": [
+                        {
+                            "id": "ugu_01d75e0598ed09be56fd39fab5",
+                            "object": "unit_group_unit",
+                            "unit": {
+                                "id": "un_01966263f74a5a0cae356000a1",
+                                "object": "unit",
+                                "name": "Kilogram",
+                                "abbreviation": "kg",
+                                "type": "mass",
+                                "ratio_numerator": "1000",
+                                "ratio_denominator": "1",
+                                "offset_numerator": "0",
+                                "offset_denominator": "1",
+                                "is_base_unit": false,
+                                "owner": {
+                                    "object": "owner",
+                                    "type": "system",
+                                    "account": null
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
+                            "discount_percentage": 1,
+                            "discount_fixed": 0,
+                            "customer_portal_visibility": "visible",
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    ]
+                },
+                "owner": {
+                    "object": "owner",
+                    "type": "system",
+                    "account": null
+                },
+                "created_at": "2026-05-10T00:00:00Z",
+                "updated_at": "2026-05-10T00:23:00Z"
+            },
             "created_at": "2026-05-10T00:00:00Z",
             "updated_at": "2026-05-10T00:23:00Z"
         },
@@ -204800,8 +215474,8 @@ export const apiObjects: ObjectData[] = [
                 "id": "pl_01996357326a0d3f7b129542ea",
                 "object": "product_line",
                 "name": "Industrial Fasteners",
-                "description": null,
-                "notes": null,
+                "description": "Bolts, screws, and anchors for heavy industrial assembly.",
+                "notes": "Priced per the 2026 supplier contract; review pricing each quarter.",
                 "commission_policy": "commission_exempt",
                 "freight_policy": "billed_freight",
                 "owner": {
@@ -204809,7 +215483,78 @@ export const apiObjects: ObjectData[] = [
                     "type": "system",
                     "account": null
                 },
-                "unit_group": null,
+                "unit_group": {
+                    "id": "ug_01aad07abb8e41fd392d2d7013",
+                    "object": "unit_group",
+                    "name": "Weight",
+                    "notes": "Mass units used for ordering raw materials by weight.",
+                    "type": "mass",
+                    "base_unit": {
+                        "id": "un_01966263f74a5a0cae356000a1",
+                        "object": "unit",
+                        "name": "Kilogram",
+                        "abbreviation": "kg",
+                        "type": "mass",
+                        "ratio_numerator": "1000",
+                        "ratio_denominator": "1",
+                        "offset_numerator": "0",
+                        "offset_denominator": "1",
+                        "is_base_unit": false,
+                        "owner": {
+                            "object": "owner",
+                            "type": "system",
+                            "account": null
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
+                    "associated_units": {
+                        "object": "list",
+                        "page_info": {
+                            "next_page_url": null,
+                            "previous_page_url": null,
+                            "has_next_page": false,
+                            "has_prev_page": false
+                        },
+                        "data": [
+                            {
+                                "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                "object": "unit_group_unit",
+                                "unit": {
+                                    "id": "un_01966263f74a5a0cae356000a1",
+                                    "object": "unit",
+                                    "name": "Kilogram",
+                                    "abbreviation": "kg",
+                                    "type": "mass",
+                                    "ratio_numerator": "1000",
+                                    "ratio_denominator": "1",
+                                    "offset_numerator": "0",
+                                    "offset_denominator": "1",
+                                    "is_base_unit": false,
+                                    "owner": {
+                                        "object": "owner",
+                                        "type": "system",
+                                        "account": null
+                                    },
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                },
+                                "discount_percentage": 1,
+                                "discount_fixed": 0,
+                                "customer_portal_visibility": "visible",
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            }
+                        ]
+                    },
+                    "owner": {
+                        "object": "owner",
+                        "type": "system",
+                        "account": null
+                    },
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
+                },
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             },
@@ -204824,15 +215569,131 @@ export const apiObjects: ObjectData[] = [
                     "id": "ic_01ae7bd7bfd21ca0ab81e1357e",
                     "object": "item_category",
                     "name": "Electronics",
-                    "notes": null,
+                    "notes": "Components and raw materials used across the electronics assembly line.",
                     "type": "material_category",
                     "owner": {
                         "object": "owner",
                         "type": "system",
                         "account": null
                     },
-                    "properties": null,
-                    "unit_group": null,
+                    "properties": {
+                        "object": "list",
+                        "page_info": {
+                            "next_page_url": null,
+                            "previous_page_url": null,
+                            "has_next_page": false,
+                            "has_prev_page": false
+                        },
+                        "data": [
+                            {
+                                "id": "pp_01e21344878064372f69e67093",
+                                "object": "property",
+                                "name": "Color",
+                                "attributes": {
+                                    "object": "list",
+                                    "page_info": {
+                                        "next_page_url": null,
+                                        "previous_page_url": null,
+                                        "has_next_page": false,
+                                        "has_prev_page": false
+                                    },
+                                    "data": [
+                                        {
+                                            "id": "at_01c9493ec0c46bb0ed12708ae4",
+                                            "object": "attribute",
+                                            "value": "Premium",
+                                            "color": "red",
+                                            "sort_order": 1,
+                                            "property": {
+                                                "id": "pp_01e21344878064372f69e67093",
+                                                "object": "property",
+                                                "name": "Color",
+                                                "attributes": null,
+                                                "created_at": "2026-05-10T00:00:00Z",
+                                                "updated_at": "2026-05-10T00:23:00Z"
+                                            },
+                                            "created_at": "2026-05-10T00:00:00Z",
+                                            "updated_at": "2026-05-10T00:23:00Z"
+                                        }
+                                    ]
+                                },
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            }
+                        ]
+                    },
+                    "unit_group": {
+                        "id": "ug_01aad07abb8e41fd392d2d7013",
+                        "object": "unit_group",
+                        "name": "Weight",
+                        "notes": "Mass units used for ordering raw materials by weight.",
+                        "type": "mass",
+                        "base_unit": {
+                            "id": "un_01966263f74a5a0cae356000a1",
+                            "object": "unit",
+                            "name": "Kilogram",
+                            "abbreviation": "kg",
+                            "type": "mass",
+                            "ratio_numerator": "1000",
+                            "ratio_denominator": "1",
+                            "offset_numerator": "0",
+                            "offset_denominator": "1",
+                            "is_base_unit": false,
+                            "owner": {
+                                "object": "owner",
+                                "type": "system",
+                                "account": null
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        },
+                        "associated_units": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": null,
+                                "previous_page_url": null,
+                                "has_next_page": false,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "ugu_01d75e0598ed09be56fd39fab5",
+                                    "object": "unit_group_unit",
+                                    "unit": {
+                                        "id": "un_01966263f74a5a0cae356000a1",
+                                        "object": "unit",
+                                        "name": "Kilogram",
+                                        "abbreviation": "kg",
+                                        "type": "mass",
+                                        "ratio_numerator": "1000",
+                                        "ratio_denominator": "1",
+                                        "offset_numerator": "0",
+                                        "offset_denominator": "1",
+                                        "is_base_unit": false,
+                                        "owner": {
+                                            "object": "owner",
+                                            "type": "system",
+                                            "account": null
+                                        },
+                                        "created_at": "2026-05-10T00:00:00Z",
+                                        "updated_at": "2026-05-10T00:23:00Z"
+                                    },
+                                    "discount_percentage": 1,
+                                    "discount_fixed": 0,
+                                    "customer_portal_visibility": "visible",
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        },
+                        "owner": {
+                            "object": "owner",
+                            "type": "system",
+                            "account": null
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    },
                     "created_at": "2026-05-10T00:00:00Z",
                     "updated_at": "2026-05-10T00:23:00Z"
                 },
@@ -204989,7 +215850,14 @@ export const apiObjects: ObjectData[] = [
                             "value": "Premium",
                             "color": "red",
                             "sort_order": 1,
-                            "property": null,
+                            "property": {
+                                "id": "pp_01e21344878064372f69e67093",
+                                "object": "property",
+                                "name": "Color",
+                                "attributes": null,
+                                "created_at": "2026-05-10T00:00:00Z",
+                                "updated_at": "2026-05-10T00:23:00Z"
+                            },
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -205285,7 +216153,34 @@ export const apiObjects: ObjectData[] = [
             "id": "pp_01e21344878064372f69e67093",
             "object": "property",
             "name": "Color",
-            "attributes": null,
+            "attributes": {
+                "object": "list",
+                "page_info": {
+                    "next_page_url": null,
+                    "previous_page_url": null,
+                    "has_next_page": false,
+                    "has_prev_page": false
+                },
+                "data": [
+                    {
+                        "id": "at_01c9493ec0c46bb0ed12708ae4",
+                        "object": "attribute",
+                        "value": "Premium",
+                        "color": "red",
+                        "sort_order": 1,
+                        "property": {
+                            "id": "pp_01e21344878064372f69e67093",
+                            "object": "property",
+                            "name": "Color",
+                            "attributes": null,
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        },
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    }
+                ]
+            },
             "created_at": "2026-05-10T00:00:00Z",
             "updated_at": "2026-05-10T00:23:00Z"
         },
@@ -206015,7 +216910,7 @@ export const apiObjects: ObjectData[] = [
             "api_version": "2026-01-01",
             "client_ip": "198.51.100.7",
             "user_agent": "Mozilla/5.0",
-            "referrer": null,
+            "referrer": "https://app.augno.com",
             "error_code": null,
             "error_message": null,
             "occurred_at": "2026-05-10T00:00:00Z",
@@ -206024,10 +216919,67 @@ export const apiObjects: ObjectData[] = [
                 "id": "ac_01148680966698341a9c0976db",
                 "object": "account",
                 "name": "Acme Inc.",
-                "default_billing_address": null,
-                "default_shipping_address": null,
-                "branding": null,
-                "portal": null,
+                "default_billing_address": {
+                    "id": "ad_012100950cfaa34aa0e0ad7258",
+                    "object": "address",
+                    "name": "Headquarters",
+                    "phone": "+1-614-555-0142",
+                    "email": "receiving@acme.example.com",
+                    "type": "standard",
+                    "geolocation": {
+                        "id": "gl_013e4c26412103c6757ba71806",
+                        "object": "geolocation",
+                        "street_line_1": "4200 Industrial Pkwy",
+                        "street_line_2": null,
+                        "locality": "Columbus",
+                        "state": "OH",
+                        "postal_code": "43204",
+                        "country": "US"
+                    },
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
+                },
+                "default_shipping_address": {
+                    "id": "ad_012100950cfaa34aa0e0ad7258",
+                    "object": "address",
+                    "name": "Headquarters",
+                    "phone": "+1-614-555-0142",
+                    "email": "receiving@acme.example.com",
+                    "type": "standard",
+                    "geolocation": {
+                        "id": "gl_013e4c26412103c6757ba71806",
+                        "object": "geolocation",
+                        "street_line_1": "4200 Industrial Pkwy",
+                        "street_line_2": null,
+                        "locality": "Columbus",
+                        "state": "OH",
+                        "postal_code": "43204",
+                        "country": "US"
+                    },
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
+                },
+                "branding": {
+                    "id": "abr_01fa710842028837ac3ca9d590",
+                    "object": "account_branding",
+                    "support_email": "support@acme.example.com",
+                    "phone_number": "+1-614-555-0100",
+                    "logo_url": "https://cdn.augno.com/branding/abr_01fa710842028837ac3ca9d590/logo.png",
+                    "facebook_handle": "acmeinc",
+                    "instagram_handle": "acmeinc",
+                    "linkedin_handle": "acme-inc",
+                    "twitter_handle": "acmeinc",
+                    "website_url": "https://www.acme.example.com",
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
+                },
+                "portal": {
+                    "id": "apo_0167f0d01165cbb56b55bc01fa",
+                    "object": "account_portal",
+                    "slug": "acme",
+                    "created_at": "2026-05-10T00:00:00Z",
+                    "updated_at": "2026-05-10T00:23:00Z"
+                },
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             },
@@ -206037,7 +216989,7 @@ export const apiObjects: ObjectData[] = [
                 "type": "user",
                 "name": "John Doe",
                 "handle": "jdoe@augno.com",
-                "avatar_url": null,
+                "avatar_url": "https://cdn.augno.com/avatars/us_0151164dcaea4cbded27b50aae.jpg",
                 "role": {
                     "id": "rl_01c16d2eb637c0d1f3a372937c",
                     "object": "role",
@@ -207594,10 +218546,10 @@ export const apiObjects: ObjectData[] = [
             "id": "scst_0129335dd6286056a97024fcc1",
             "object": "scanning_station",
             "name": "Packaging Line 1",
-            "notes": null,
+            "notes": "Initializes batches at the start of the packaging line.",
             "type": "init_batch",
-            "label_size": null,
-            "label_type": null,
+            "label_size": "2x4",
+            "label_type": "traveler",
             "operator_requirement": "none",
             "department": null,
             "production_steps": null,
@@ -207865,7 +218817,7 @@ export const apiObjects: ObjectData[] = [
             "name": "FedEx Ground",
             "service_level_token": "fedex_ground",
             "customer_portal_visibility": "visible",
-            "is_default": false,
+            "is_default": true,
             "owner": {
                 "object": "owner",
                 "type": "account",
@@ -209394,7 +220346,7 @@ export const apiObjects: ObjectData[] = [
             "id": "ug_01aad07abb8e41fd392d2d7013",
             "object": "unit_group",
             "name": "Weight",
-            "notes": null,
+            "notes": "Mass units used for ordering raw materials by weight.",
             "type": "mass",
             "base_unit": {
                 "id": "un_01966263f74a5a0cae356000a1",
@@ -209415,7 +220367,45 @@ export const apiObjects: ObjectData[] = [
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             },
-            "associated_units": null,
+            "associated_units": {
+                "object": "list",
+                "page_info": {
+                    "next_page_url": null,
+                    "previous_page_url": null,
+                    "has_next_page": false,
+                    "has_prev_page": false
+                },
+                "data": [
+                    {
+                        "id": "ugu_01d75e0598ed09be56fd39fab5",
+                        "object": "unit_group_unit",
+                        "unit": {
+                            "id": "un_01966263f74a5a0cae356000a1",
+                            "object": "unit",
+                            "name": "Kilogram",
+                            "abbreviation": "kg",
+                            "type": "mass",
+                            "ratio_numerator": "1000",
+                            "ratio_denominator": "1",
+                            "offset_numerator": "0",
+                            "offset_denominator": "1",
+                            "is_base_unit": false,
+                            "owner": {
+                                "object": "owner",
+                                "type": "system",
+                                "account": null
+                            },
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        },
+                        "discount_percentage": 1,
+                        "discount_fixed": 0,
+                        "customer_portal_visibility": "visible",
+                        "created_at": "2026-05-10T00:00:00Z",
+                        "updated_at": "2026-05-10T00:23:00Z"
+                    }
+                ]
+            },
             "owner": {
                 "object": "owner",
                 "type": "system",
