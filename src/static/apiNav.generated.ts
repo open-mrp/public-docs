@@ -468,16 +468,6 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "domain": "messaging",
             "segments": [
                 "conversations",
-                "redact"
-            ],
-            "tagSlug": "conversations",
-            "endpointSlug": "redact-conversation",
-            "label": "Create"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
-                "conversations",
                 "links"
             ],
             "tagSlug": "conversations",
@@ -554,6 +544,15 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "conversations"
             ],
             "tagSlug": "conversations",
+            "endpointSlug": "redact-conversation",
+            "label": "Redact Conversation"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
             "endpointSlug": "report-conversation",
             "label": "Report Conversation"
         },
@@ -623,32 +622,11 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
         {
             "domain": "messaging",
             "segments": [
-                "messages",
-                "scheduled"
-            ],
-            "tagSlug": "messages",
-            "endpointSlug": "list-scheduled-messages",
-            "label": "List"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
                 "conversations",
                 "messages"
             ],
             "tagSlug": "messages",
             "endpointSlug": "send-message",
-            "label": "Create"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
-                "conversations",
-                "messages",
-                "drafts"
-            ],
-            "tagSlug": "messages",
-            "endpointSlug": "create-reply-draft",
             "label": "Create"
         },
         {
@@ -818,51 +796,6 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             ],
             "tagSlug": "message-blocks",
             "endpointSlug": "unblock-user",
-            "label": "Delete"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
-                "sender-identities"
-            ],
-            "tagSlug": "sender-identities",
-            "endpointSlug": "create-sender-identity",
-            "label": "Create"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
-                "sender-identities"
-            ],
-            "tagSlug": "sender-identities",
-            "endpointSlug": "update-sender-identity",
-            "label": "Update"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
-                "sender-identities"
-            ],
-            "tagSlug": "sender-identities",
-            "endpointSlug": "list-sender-identities",
-            "label": "List"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
-                "sender-identities"
-            ],
-            "tagSlug": "sender-identities",
-            "endpointSlug": "get-sender-identity",
-            "label": "Retrieve"
-        },
-        {
-            "domain": "messaging",
-            "segments": [
-                "sender-identities"
-            ],
-            "tagSlug": "sender-identities",
-            "endpointSlug": "delete-sender-identity",
             "label": "Delete"
         },
         {
@@ -3635,12 +3568,6 @@ export const apiObjectNavEntriesByVersion: Record<string, ApiObjectNavEntry[]> =
             "domainLabel": "Operations",
             "slug": "scanning-station",
             "label": "Scanning Stations"
-        },
-        {
-            "domain": "messaging",
-            "domainLabel": "Messaging",
-            "slug": "sender-identity",
-            "label": "Sender Identities"
         },
         {
             "domain": "operations",

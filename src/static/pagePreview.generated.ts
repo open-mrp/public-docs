@@ -607,10 +607,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Link Record",
         "subtitle": "POST /v1/messaging/conversations/{id}/links"
     },
-    "/api-reference/conversations/redact-conversation": {
-        "title": "Redact Conversation",
-        "subtitle": "POST /v1/messaging/conversations/{id}/redact"
-    },
     "/api-reference/conversations/list-links": {
         "title": "List Links",
         "subtitle": "GET /v1/messaging/conversations/{id}/links"
@@ -642,6 +638,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/conversations/mark-conversation-read": {
         "title": "Mark Conversation Read",
         "subtitle": "POST /v1/messaging/conversations/{id}/actions/read"
+    },
+    "/api-reference/conversations/redact-conversation": {
+        "title": "Redact Conversation",
+        "subtitle": "POST /v1/messaging/conversations/{id}/actions/redact"
     },
     "/api-reference/conversations/report-conversation": {
         "title": "Report Conversation",
@@ -675,17 +675,9 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Update Reply Draft",
         "subtitle": "PATCH /v1/messaging/messages/{id}"
     },
-    "/api-reference/messages/list-scheduled-messages": {
-        "title": "List Scheduled Messages",
-        "subtitle": "GET /v1/messaging/messages/scheduled"
-    },
     "/api-reference/messages/send-message": {
         "title": "Send Message",
         "subtitle": "POST /v1/messaging/conversations/{id}/messages"
-    },
-    "/api-reference/messages/create-reply-draft": {
-        "title": "Create Reply Draft",
-        "subtitle": "POST /v1/messaging/conversations/{id}/messages/drafts"
     },
     "/api-reference/messages/list-messages": {
         "title": "List Messages",
@@ -758,26 +750,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/message-blocks/unblock-user": {
         "title": "Unblock User",
         "subtitle": "DELETE /v1/messaging/blocks/{id}"
-    },
-    "/api-reference/sender-identities/create-sender-identity": {
-        "title": "Create Sender Identity",
-        "subtitle": "POST /v1/messaging/sender-identities"
-    },
-    "/api-reference/sender-identities/update-sender-identity": {
-        "title": "Update Sender Identity",
-        "subtitle": "PATCH /v1/messaging/sender-identities/{id}"
-    },
-    "/api-reference/sender-identities/list-sender-identities": {
-        "title": "List Sender Identities",
-        "subtitle": "GET /v1/messaging/sender-identities"
-    },
-    "/api-reference/sender-identities/get-sender-identity": {
-        "title": "Get Sender Identity",
-        "subtitle": "GET /v1/messaging/sender-identities/{id}"
-    },
-    "/api-reference/sender-identities/delete-sender-identity": {
-        "title": "Delete Sender Identity",
-        "subtitle": "DELETE /v1/messaging/sender-identities/{id}"
     },
     "/api-reference/notification-preferences/list-notification-preferences": {
         "title": "List Notification Preferences",

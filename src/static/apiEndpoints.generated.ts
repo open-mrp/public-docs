@@ -4457,7 +4457,6 @@ export const apiTags: TagData[] = [
                         "chat_message",
                         "notification_unread_summary_account",
                         "messaging_block",
-                        "sender_identity",
                         "notification_preference",
                         "message_attachment",
                         "attachment_upload_target",
@@ -5448,7 +5447,6 @@ export const apiTags: TagData[] = [
                             "chat_message",
                             "notification_unread_summary_account",
                             "messaging_block",
-                            "sender_identity",
                             "notification_preference",
                             "message_attachment",
                             "attachment_upload_target",
@@ -5871,7 +5869,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -6897,7 +6894,6 @@ export const apiTags: TagData[] = [
                                     "chat_message",
                                     "notification_unread_summary_account",
                                     "messaging_block",
-                                    "sender_identity",
                                     "notification_preference",
                                     "message_attachment",
                                     "attachment_upload_target",
@@ -7235,7 +7231,6 @@ export const apiTags: TagData[] = [
                                     "chat_message",
                                     "notification_unread_summary_account",
                                     "messaging_block",
-                                    "sender_identity",
                                     "notification_preference",
                                     "message_attachment",
                                     "attachment_upload_target",
@@ -14567,7 +14562,6 @@ export const apiTags: TagData[] = [
                                 "chat_message",
                                 "notification_unread_summary_account",
                                 "messaging_block",
-                                "sender_identity",
                                 "notification_preference",
                                 "message_attachment",
                                 "attachment_upload_target",
@@ -14998,7 +14992,6 @@ export const apiTags: TagData[] = [
                                 "chat_message",
                                 "notification_unread_summary_account",
                                 "messaging_block",
-                                "sender_identity",
                                 "notification_preference",
                                 "message_attachment",
                                 "attachment_upload_target",
@@ -15645,7 +15638,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -16207,7 +16199,6 @@ export const apiTags: TagData[] = [
                                                             "chat_message",
                                                             "notification_unread_summary_account",
                                                             "messaging_block",
-                                                            "sender_identity",
                                                             "notification_preference",
                                                             "message_attachment",
                                                             "attachment_upload_target",
@@ -16737,7 +16728,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -17025,7 +17015,7 @@ export const apiTags: TagData[] = [
             {
                 "operationId": "mark-all-notifications-seen",
                 "summary": "Mark All Notifications Seen",
-                "description": "Marks every one of the caller's unseen notifications as seen and returns their updated unread counts.\n\nThis endpoint requires the permission: `messaging:update`.",
+                "description": "Marks every one of the caller's unseen notifications as seen.\n\nThis endpoint requires the permission: `messaging:update`.",
                 "method": "POST",
                 "path": "/v1/messaging/notifications/actions/mark-all-seen",
                 "domain": "messaging",
@@ -17039,49 +17029,8 @@ export const apiTags: TagData[] = [
                     {
                         "statusCode": "200",
                         "description": "Successful response for Mark All Notifications Seen",
-                        "fields": [
-                            {
-                                "name": "object",
-                                "type": "string",
-                                "description": "Resource type identifier.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "notification_unread_count"
-                                ]
-                            },
-                            {
-                                "name": "notifications",
-                                "type": "integer",
-                                "description": "Number of unseen bell notifications.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false
-                            },
-                            {
-                                "name": "conversations",
-                                "type": "integer",
-                                "description": "Number of conversations with unread messages (0 until chat ships).",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false
-                            },
-                            {
-                                "name": "total",
-                                "type": "integer",
-                                "description": "Combined unread total.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false
-                            }
-                        ],
-                        "example": {
-                            "object": "notification_unread_count",
-                            "notifications": 3,
-                            "conversations": 0,
-                            "total": 3
-                        }
+                        "fields": [],
+                        "example": {}
                     }
                 ]
             },
@@ -17361,7 +17310,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -17922,7 +17870,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -18483,7 +18430,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -18953,7 +18899,6 @@ export const apiTags: TagData[] = [
                                 "chat_message",
                                 "notification_unread_summary_account",
                                 "messaging_block",
-                                "sender_identity",
                                 "notification_preference",
                                 "message_attachment",
                                 "attachment_upload_target",
@@ -19536,7 +19481,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -20055,7 +19999,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -20561,7 +20504,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -21067,7 +21009,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -21573,7 +21514,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -22381,7 +22321,6 @@ export const apiTags: TagData[] = [
                                 "chat_message",
                                 "notification_unread_summary_account",
                                 "messaging_block",
-                                "sender_identity",
                                 "notification_preference",
                                 "message_attachment",
                                 "attachment_upload_target",
@@ -23125,7 +23064,6 @@ export const apiTags: TagData[] = [
                                         "chat_message",
                                         "notification_unread_summary_account",
                                         "messaging_block",
-                                        "sender_identity",
                                         "notification_preference",
                                         "message_attachment",
                                         "attachment_upload_target",
@@ -23619,7 +23557,6 @@ export const apiTags: TagData[] = [
                                 "chat_message",
                                 "notification_unread_summary_account",
                                 "messaging_block",
-                                "sender_identity",
                                 "notification_preference",
                                 "message_attachment",
                                 "attachment_upload_target",
@@ -24333,7 +24270,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -25077,7 +25013,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -26004,7 +25939,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -26748,7 +26682,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -27235,7 +27168,6 @@ export const apiTags: TagData[] = [
                             "chat_message",
                             "notification_unread_summary_account",
                             "messaging_block",
-                            "sender_identity",
                             "notification_preference",
                             "message_attachment",
                             "attachment_upload_target",
@@ -28059,7 +27991,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -28803,7 +28734,6 @@ export const apiTags: TagData[] = [
                                                             "chat_message",
                                                             "notification_unread_summary_account",
                                                             "messaging_block",
-                                                            "sender_identity",
                                                             "notification_preference",
                                                             "message_attachment",
                                                             "attachment_upload_target",
@@ -29727,7 +29657,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -30471,7 +30400,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -30935,7 +30863,6 @@ export const apiTags: TagData[] = [
                                 "chat_message",
                                 "notification_unread_summary_account",
                                 "messaging_block",
-                                "sender_identity",
                                 "notification_preference",
                                 "message_attachment",
                                 "attachment_upload_target",
@@ -31675,7 +31602,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -32419,7 +32345,6 @@ export const apiTags: TagData[] = [
                                                             "chat_message",
                                                             "notification_unread_summary_account",
                                                             "messaging_block",
-                                                            "sender_identity",
                                                             "notification_preference",
                                                             "message_attachment",
                                                             "attachment_upload_target",
@@ -32817,7 +32742,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -33098,1661 +33022,6 @@ export const apiTags: TagData[] = [
                                 "handle": null
                             },
                             "created_at": "2026-05-10T00:00:00Z"
-                        }
-                    }
-                ]
-            },
-            {
-                "operationId": "redact-conversation",
-                "summary": "Redact Conversation",
-                "description": "Permanently redacts the content of every message in a conversation (GDPR right-to-erasure).\n\nThis endpoint requires the permission: `messaging:delete`.",
-                "method": "POST",
-                "path": "/v1/messaging/conversations/{id}/redact",
-                "domain": "messaging",
-                "tag": "Conversations",
-                "tagSlug": "conversations",
-                "endpointSlug": "redact-conversation",
-                "actionType": "create",
-                "isPreview": true,
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "type": "string",
-                        "required": true,
-                        "description": "Conversation ID."
-                    },
-                    {
-                        "name": "include[]",
-                        "in": "query",
-                        "type": "array",
-                        "required": false,
-                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
-                        "enum": [
-                            "assignee",
-                            "group",
-                            "participants",
-                            "topic",
-                            "last_message",
-                            "last_message.sender",
-                            "last_message.author",
-                            "last_message.resource",
-                            "last_message.attachments",
-                            "last_message.attachments.resource"
-                        ]
-                    }
-                ],
-                "responses": [
-                    {
-                        "statusCode": "200",
-                        "description": "Successful response for Redact Conversation",
-                        "fields": [
-                            {
-                                "name": "id",
-                                "type": "string",
-                                "description": "Conversation ID.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false
-                            },
-                            {
-                                "name": "object",
-                                "type": "string",
-                                "description": "Resource type identifier.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "conversation"
-                                ]
-                            },
-                            {
-                                "name": "type",
-                                "type": "string",
-                                "description": "What kind of conversation this is.\n\n- `direct_message`: a 1:1 thread between two users.\n- `group`: a named thread with multiple user or agent members (including customer-facing support cases).\n- `system`: a system channel that delivers automated account alerts.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "direct_message",
-                                    "group",
-                                    "system"
-                                ]
-                            },
-                            {
-                                "name": "audience",
-                                "type": "string",
-                                "description": "Whether this is a team-only conversation (`internal`) or a customer-facing case (`customer`).",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "internal",
-                                    "customer"
-                                ]
-                            },
-                            {
-                                "name": "title",
-                                "type": "string",
-                                "description": "The display title of a group conversation.\n\n`null` for direct messages, where the client derives a title from the participants.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false
-                            },
-                            {
-                                "name": "workflow_status",
-                                "type": "string",
-                                "description": "The triage lane of a customer-facing case.\n\nOnly set for customer-audience conversations.\n\n- `new`: opened but not yet triaged.\n- `open`: actively being worked.\n- `waiting_internal`: blocked on the internal team.\n- `waiting_external`: blocked on an external reply.\n- `needs_approval`: a drafted reply is awaiting human approval.\n- `resolved`: closed out.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false,
-                                "enum": [
-                                    "new",
-                                    "open",
-                                    "waiting_internal",
-                                    "waiting_external",
-                                    "needs_approval",
-                                    "resolved"
-                                ]
-                            },
-                            {
-                                "name": "group",
-                                "type": "object",
-                                "description": "The reusable roster this conversation was started from, when one was used.\n\n`null` for ad-hoc conversations. Provenance only: members were copied in at creation and are not driven by the roster thereafter.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": true,
-                                "objectType": "messaging_group",
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "Messaging group ID.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "Resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "messaging_group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The roster's display name.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "members",
-                                        "type": "object",
-                                        "description": "The roster's members (users and agents).",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": false,
-                                        "objectType": "list"
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "Creation timestamp.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "Last updated timestamp.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "status",
-                                "type": "string",
-                                "description": "The caller's effective status.\n\n- `hidden` when the caller has hidden the conversation\n- otherwise the account-level lifecycle state",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "active",
-                                    "archived",
-                                    "hidden"
-                                ]
-                            },
-                            {
-                                "name": "legal_hold",
-                                "type": "string",
-                                "description": "Whether the conversation is under legal hold.\n\nExempts the conversation from retention purging and redaction.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "released",
-                                    "held"
-                                ]
-                            },
-                            {
-                                "name": "assignee",
-                                "type": "object",
-                                "description": "The case owner, when one is set: a `user` actor (a team member) or a `group` actor (a team).",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": true,
-                                "objectType": "actor",
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "Unique identifier of the actor.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "Resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "actor"
-                                        ]
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "user",
-                                            "api_key",
-                                            "agent",
-                                            "group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The actor's display name.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "handle",
-                                        "type": "string",
-                                        "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "avatar_url",
-                                        "type": "string",
-                                        "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "role",
-                                        "type": "object",
-                                        "description": "Assigned role.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "role"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "participants",
-                                "type": "object",
-                                "description": "The active participants of the conversation.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": true,
-                                "objectType": "list",
-                                "properties": [
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "Resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "list"
-                                        ]
-                                    },
-                                    {
-                                        "name": "page_info",
-                                        "type": "object",
-                                        "description": "Pagination metadata.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "properties": [
-                                            {
-                                                "name": "next_page_url",
-                                                "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "previous_page_url",
-                                                "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "has_next_page",
-                                                "type": "boolean",
-                                                "description": "Whether more results exist after this page.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "has_prev_page",
-                                                "type": "boolean",
-                                                "description": "Whether results exist before this page.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "data",
-                                        "type": "array",
-                                        "description": "Resources in this page.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "objectType": "conversation_participant",
-                                        "itemType": "object",
-                                        "properties": [
-                                            {
-                                                "name": "id",
-                                                "type": "string",
-                                                "description": "Participant ID.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "conversation_participant"
-                                                ]
-                                            },
-                                            {
-                                                "name": "type",
-                                                "type": "string",
-                                                "description": "The kind of participant.\n\n- `user`: an account user (a teammate).\n- `agent`: an AI agent.\n- `system`: the system itself, which posts automated messages.\n- `customer`: an external customer in a support case.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "user",
-                                                    "agent",
-                                                    "system",
-                                                    "customer"
-                                                ]
-                                            },
-                                            {
-                                                "name": "role",
-                                                "type": "string",
-                                                "description": "The participant's permission level in the conversation.\n\n- `owner`: can rename or delete the conversation and manage its members and their roles.\n- `admin`: can add or remove members and rename the conversation.\n- `member`: can post, react, mute, and leave.\n- `viewer`: read-only access.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "owner",
-                                                    "admin",
-                                                    "member",
-                                                    "viewer"
-                                                ]
-                                            },
-                                            {
-                                                "name": "membership",
-                                                "type": "string",
-                                                "description": "The participant's membership in the conversation.\n\n- `active`: currently a member.\n- `left`: voluntarily left the conversation.\n- `removed`: removed by an admin.\n- `hidden`: still a member but has hidden the conversation from their own list.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "active",
-                                                    "left",
-                                                    "removed",
-                                                    "hidden"
-                                                ]
-                                            },
-                                            {
-                                                "name": "notifications",
-                                                "type": "string",
-                                                "description": "The participant's notification preference for the conversation.\n\n- `unmuted`: receives normal notifications.\n- `muted`: notifications are suppressed (mentions may still pierce the mute).",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "unmuted",
-                                                    "muted"
-                                                ]
-                                            },
-                                            {
-                                                "name": "actor",
-                                                "type": "object",
-                                                "description": "The actor this participant represents: a `user` (account user) or an `agent`.\n\n`null` for system participants.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": false,
-                                                "objectType": "actor"
-                                            },
-                                            {
-                                                "name": "agent_trigger_policy",
-                                                "type": "string",
-                                                "description": "For agent participants, when the agent is invoked in response to messages.\n\n`null` for non-agent participants.\n\n- `mention`: only when the agent is @mentioned.\n- `keyword`: when a message contains one of the agent's trigger keywords.\n- `always`: on every human message in the conversation.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "mention",
-                                                    "keyword",
-                                                    "always"
-                                                ]
-                                            },
-                                            {
-                                                "name": "agent_trigger_keywords",
-                                                "type": "array",
-                                                "description": "For agent participants with a keyword/mention policy, the keywords that trigger it.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "itemType": "string"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "topic",
-                                "type": "object",
-                                "description": "The app resource this conversation is anchored to (e.g. an order).\n\n`null` when the conversation has no topic anchor.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": true,
-                                "objectType": "entity",
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "Unique identifier for the entity.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "Resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "entity"
-                                        ]
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "The resource kind that this entity references, as an object-type value (e.g. `user`, `account`).\n\nUnlike `object` — which is always `entity` — this names the underlying resource the `id` points to.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "account",
-                                            "actor",
-                                            "entity",
-                                            "record",
-                                            "freight",
-                                            "sales_order_totals",
-                                            "sales_order_related",
-                                            "order_contact",
-                                            "user",
-                                            "address",
-                                            "api_key",
-                                            "created_api_key",
-                                            "refresh_token",
-                                            "list",
-                                            "sandbox",
-                                            "registration_session",
-                                            "pricing_plan",
-                                            "account_plan",
-                                            "plan_change",
-                                            "enterprise_inquiry",
-                                            "request_log",
-                                            "audit_event",
-                                            "audit_field_change",
-                                            "role",
-                                            "unit",
-                                            "account_affiliation",
-                                            "agent_definition",
-                                            "available_tool",
-                                            "agent_definition_tool",
-                                            "agent_account_status",
-                                            "agent_run",
-                                            "agent_action",
-                                            "agent_run_step",
-                                            "agent_token_usage",
-                                            "agent_memory",
-                                            "notification",
-                                            "notification_unread_count",
-                                            "notification_send_result",
-                                            "notification_unread_summary",
-                                            "announcement",
-                                            "conversation",
-                                            "conversation_participant",
-                                            "chat_message",
-                                            "notification_unread_summary_account",
-                                            "messaging_block",
-                                            "sender_identity",
-                                            "notification_preference",
-                                            "message_attachment",
-                                            "attachment_upload_target",
-                                            "scheduled_message",
-                                            "messaging_contact",
-                                            "message_report",
-                                            "tool_group",
-                                            "model",
-                                            "payment_term",
-                                            "shipping_term",
-                                            "quantity",
-                                            "account_group",
-                                            "support_route",
-                                            "support_availability",
-                                            "account_status",
-                                            "geolocation",
-                                            "account_user",
-                                            "department",
-                                            "account_integration",
-                                            "account_price",
-                                            "product_line",
-                                            "item_category",
-                                            "attribute",
-                                            "rate",
-                                            "account_group_product_line_access",
-                                            "sales_target",
-                                            "adjustment_type",
-                                            "account_branding",
-                                            "account_portal",
-                                            "account_logo_url",
-                                            "public_account",
-                                            "property",
-                                            "carrier",
-                                            "service_level",
-                                            "item",
-                                            "item_inventory",
-                                            "product",
-                                            "batch",
-                                            "batch_flow_node",
-                                            "scanning_consumption",
-                                            "open_batch_summary",
-                                            "scanning_production_step_info",
-                                            "scanning_station",
-                                            "production_step",
-                                            "production_run",
-                                            "machine",
-                                            "child_account",
-                                            "unit_group",
-                                            "unit_group_unit",
-                                            "consumption",
-                                            "customer_product_line_access",
-                                            "customer",
-                                            "frequently_ordered_product",
-                                            "priority",
-                                            "delivery",
-                                            "delivery_line",
-                                            "sales_order",
-                                            "location",
-                                            "location_type",
-                                            "lot",
-                                            "email_log",
-                                            "email_domain",
-                                            "email_inbox",
-                                            "inventory_change_log",
-                                            "invoice",
-                                            "invoice_summary",
-                                            "invoice_line",
-                                            "invoice_allocation",
-                                            "invoice_for_payment",
-                                            "shipment",
-                                            "shipment_summary",
-                                            "shipment_line",
-                                            "shipping_case",
-                                            "shipping_case_label_url",
-                                            "settlement",
-                                            "settlement_summary",
-                                            "role_permission",
-                                            "registration_flow",
-                                            "registration_flow_option",
-                                            "transaction",
-                                            "transaction_summary",
-                                            "transaction_method",
-                                            "transaction_type",
-                                            "transaction_allocation",
-                                            "usage_item",
-                                            "account_usage_response",
-                                            "subscription_info",
-                                            "billing_portal_session_response",
-                                            "switch_plan_response",
-                                            "ensure_billing_customer_response",
-                                            "spending_cap_response",
-                                            "agent_spend_info",
-                                            "webhook_response",
-                                            "address_suggestion",
-                                            "address_components",
-                                            "address_details_result",
-                                            "validated_address",
-                                            "plan_limit",
-                                            "plan_change_proration",
-                                            "plan_change_line_item",
-                                            "setup_billing_response",
-                                            "confirm_payment_response",
-                                            "oauth_response",
-                                            "oauth_status_response",
-                                            "stripe_publishable_key",
-                                            "stripe_status",
-                                            "healthcheck",
-                                            "agent_definition_config",
-                                            "trigger_config",
-                                            "customer_contact_info",
-                                            "customer_freight_preferences",
-                                            "customer_defaults",
-                                            "customer_notification_preferences",
-                                            "order_discount",
-                                            "sales_order_line",
-                                            "sales_order_type",
-                                            "sales_order_status",
-                                            "material",
-                                            "supplier_material",
-                                            "part",
-                                            "permission_group",
-                                            "permission",
-                                            "pick",
-                                            "pick_line",
-                                            "product_type",
-                                            "production",
-                                            "production_flow",
-                                            "map",
-                                            "purchase_order",
-                                            "purchase_order_line",
-                                            "supplier",
-                                            "supplier_summary",
-                                            "receivable_entry",
-                                            "receiving_order",
-                                            "receiving_order_line",
-                                            "email_contact",
-                                            "allocation_entry",
-                                            "open_credit_entry",
-                                            "volume_discount",
-                                            "volume_discount_tier",
-                                            "analyze_deliveries_response",
-                                            "analyze_manufacturing_response",
-                                            "analyze_manufacturing_batch_response",
-                                            "analyze_quarterly_orders_response",
-                                            "analyze_new_customers_response",
-                                            "analyze_oee_response",
-                                            "catalog_product_line",
-                                            "catalog_category",
-                                            "catalog_product",
-                                            "catalog_property",
-                                            "catalog_attribute",
-                                            "dc_location",
-                                            "edi_run",
-                                            "inventory_item",
-                                            "analyze_weeks_of_sales_response",
-                                            "bulk_reconcile_items_response",
-                                            "sys_property",
-                                            "sys_property_type",
-                                            "sys_property_value",
-                                            "territory",
-                                            "tenancy",
-                                            "checkout_session",
-                                            "estimate_rate_result",
-                                            "rate_shop_option",
-                                            "rate_shop_result",
-                                            "owner",
-                                            "created_by",
-                                            "message",
-                                            "account_photo_upload_result",
-                                            "user_photo_upload_result",
-                                            "user_photo_url",
-                                            "batch_lot",
-                                            "check_duplicate_result",
-                                            "item_trend_point",
-                                            "pack_pick_response",
-                                            "pick_shipments_response",
-                                            "tenancy_pending_registration",
-                                            "invoice_allocation_entry",
-                                            "allocation_customer",
-                                            "checkout_sales_order_response",
-                                            "create_production_run_response",
-                                            "sales_order_price_quote",
-                                            "hubspot_sync_job",
-                                            "hubspot_sync_report",
-                                            "hubspot_company_review",
-                                            "hubspot_company_candidate",
-                                            "contact_match",
-                                            "reply_draft",
-                                            "conversation_link",
-                                            "messaging_group",
-                                            "messaging_group_member"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "Human-readable display name for the entity (e.g. a user's full name, a sales order number).",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "handle",
-                                        "type": "string",
-                                        "description": "Secondary human-readable identifier (e.g. email address, username, redacted API key value).",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "unread",
-                                "type": "integer",
-                                "description": "Number of messages the caller has not yet read.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false
-                            },
-                            {
-                                "name": "last_message_at",
-                                "type": "string",
-                                "description": "When the most recent message was sent.\n\n`null` when the conversation has no messages yet.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false,
-                                "format": "date-time"
-                            },
-                            {
-                                "name": "last_message",
-                                "type": "object",
-                                "description": "The most recent message in the conversation.\n\n`null` when the conversation has no messages yet.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": true,
-                                "objectType": "chat_message",
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "Message ID.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "Resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "chat_message"
-                                        ]
-                                    },
-                                    {
-                                        "name": "kind",
-                                        "type": "string",
-                                        "description": "The kind of message.\n\n- `chat`: a user-authored chat message.\n- `system_event`: a system-generated event message.\n- `agent`: a message authored by an AI agent participant.\n- `scheduled`: a message materialized from a scheduled send.\n- `alert`: a system or producer alert rendered as a message.\n- `email`: an inbound email materialized into the conversation by the email bridge.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "chat",
-                                            "system_event",
-                                            "agent",
-                                            "scheduled",
-                                            "alert",
-                                            "email"
-                                        ]
-                                    },
-                                    {
-                                        "name": "status",
-                                        "type": "string",
-                                        "description": "The lifecycle state of the message.\n\n- `draft`: an editable customer-reply draft awaiting approval; not in the timeline.\n- `scheduled`: queued for delivery at a future time; not yet in the timeline.\n- `sent`: a delivered timeline message; only `sent` messages carry a `sequence`.\n- `canceled`: a scheduled message canceled before delivery.\n- `rejected`: a draft discarded without sending.\n- `failed`: a scheduled message that exhausted delivery attempts.\n- `superseded`: a draft replaced by a newer one for the same source thread.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "draft",
-                                            "scheduled",
-                                            "sent",
-                                            "canceled",
-                                            "rejected",
-                                            "failed",
-                                            "superseded"
-                                        ]
-                                    },
-                                    {
-                                        "name": "visibility",
-                                        "type": "string",
-                                        "description": "Who can see this message.\n\n- `internal`: a team-only note.\n- `external`: sent to or received from an external party (e.g. the customer on a support case).\n- `system`: an event shown to both the team and the customer.\n\nOn a customer-facing conversation, customer payloads only ever carry `external` and `system` messages.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "internal",
-                                            "external",
-                                            "system"
-                                        ]
-                                    },
-                                    {
-                                        "name": "conversation",
-                                        "type": "object",
-                                        "description": "The conversation this message belongs to.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "conversation"
-                                    },
-                                    {
-                                        "name": "sequence",
-                                        "type": "integer",
-                                        "description": "Monotonic per-conversation ordering sequence.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "body",
-                                        "type": "string",
-                                        "description": "Message body.\n\n`null` for templated or deleted messages.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "subject",
-                                        "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "sender",
-                                        "type": "object",
-                                        "description": "The actor that sent the message, as displayed. When the message was posted under a sender identity (a persona / group), this is that persona; otherwise it is the authoring user.\n\n`null` for pure system messages.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true,
-                                        "objectType": "actor",
-                                        "properties": [
-                                            {
-                                                "name": "id",
-                                                "type": "string",
-                                                "description": "Unique identifier of the actor.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "actor"
-                                                ]
-                                            },
-                                            {
-                                                "name": "type",
-                                                "type": "string",
-                                                "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "user",
-                                                    "api_key",
-                                                    "agent",
-                                                    "group"
-                                                ]
-                                            },
-                                            {
-                                                "name": "name",
-                                                "type": "string",
-                                                "description": "The actor's display name.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "handle",
-                                                "type": "string",
-                                                "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "avatar_url",
-                                                "type": "string",
-                                                "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "role",
-                                                "type": "object",
-                                                "description": "Assigned role.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "role"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "author",
-                                        "type": "object",
-                                        "description": "The underlying account user who authored the message.\n\n`null` for system messages, or when the message was posted under an anonymizing sender identity and the caller is not entitled to see the real author.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true,
-                                        "objectType": "actor",
-                                        "properties": [
-                                            {
-                                                "name": "id",
-                                                "type": "string",
-                                                "description": "Unique identifier of the actor.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "actor"
-                                                ]
-                                            },
-                                            {
-                                                "name": "type",
-                                                "type": "string",
-                                                "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "user",
-                                                    "api_key",
-                                                    "agent",
-                                                    "group"
-                                                ]
-                                            },
-                                            {
-                                                "name": "name",
-                                                "type": "string",
-                                                "description": "The actor's display name.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "handle",
-                                                "type": "string",
-                                                "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "avatar_url",
-                                                "type": "string",
-                                                "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "role",
-                                                "type": "object",
-                                                "description": "Assigned role.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "role"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "attachments",
-                                        "type": "object",
-                                        "description": "Files, images, links, or resources attached to the message.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true,
-                                        "objectType": "list",
-                                        "properties": [
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "list"
-                                                ]
-                                            },
-                                            {
-                                                "name": "page_info",
-                                                "type": "object",
-                                                "description": "Pagination metadata.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "properties": [
-                                                    {
-                                                        "name": "next_page_url",
-                                                        "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "previous_page_url",
-                                                        "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "has_next_page",
-                                                        "type": "boolean",
-                                                        "description": "Whether more results exist after this page.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "has_prev_page",
-                                                        "type": "boolean",
-                                                        "description": "Whether results exist before this page.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "name": "data",
-                                                "type": "array",
-                                                "description": "Resources in this page.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "objectType": "message_attachment",
-                                                "itemType": "object",
-                                                "properties": [
-                                                    {
-                                                        "name": "id",
-                                                        "type": "string",
-                                                        "description": "Attachment ID.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "object",
-                                                        "type": "string",
-                                                        "description": "Resource type identifier.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "message_attachment"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "kind",
-                                                        "type": "string",
-                                                        "description": "The kind of attachment, which determines how it is stored and which of the fields below are populated.\n\n- `file`: an uploaded non-image file.\n- `image`: an uploaded image.\n- `link`: an external URL reference, with no stored file.\n- `resource`: a reference to an in-app resource, such as an order.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "file",
-                                                            "image",
-                                                            "link",
-                                                            "resource"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "filename",
-                                                        "type": "string",
-                                                        "description": "The original filename for uploaded attachments.\n\n`null` for link/resource attachments.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "content_type",
-                                                        "type": "string",
-                                                        "description": "The MIME content type for uploaded attachments.\n\n`null` for link/resource attachments.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "size_bytes",
-                                                        "type": "integer",
-                                                        "description": "The size in bytes for uploaded attachments.\n\n`null` when unknown or for link/resource attachments.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "url",
-                                                        "type": "string",
-                                                        "description": "A time-limited download URL for uploaded (file/image) attachments, or the link URL.\n\n`null` for resource attachments.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "resource",
-                                                        "type": "object",
-                                                        "description": "The linked in-app resource for `resource` attachments.\n\n`null` for file/image/link attachments.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": true,
-                                                        "objectType": "entity"
-                                                    },
-                                                    {
-                                                        "name": "created_at",
-                                                        "type": "string",
-                                                        "description": "Creation timestamp.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "format": "date-time"
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "reply_to",
-                                        "type": "object",
-                                        "description": "The message this one replies to.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "chat_message"
-                                    },
-                                    {
-                                        "name": "resource",
-                                        "type": "object",
-                                        "description": "The app resource this message links to.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true,
-                                        "objectType": "entity",
-                                        "properties": [
-                                            {
-                                                "name": "id",
-                                                "type": "string",
-                                                "description": "Unique identifier for the entity.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "entity"
-                                                ]
-                                            },
-                                            {
-                                                "name": "type",
-                                                "type": "string",
-                                                "description": "The resource kind that this entity references, as an object-type value (e.g. `user`, `account`).\n\nUnlike `object` — which is always `entity` — this names the underlying resource the `id` points to.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "account",
-                                                    "actor",
-                                                    "entity",
-                                                    "record",
-                                                    "freight",
-                                                    "sales_order_totals",
-                                                    "sales_order_related",
-                                                    "order_contact",
-                                                    "user",
-                                                    "address",
-                                                    "api_key",
-                                                    "created_api_key",
-                                                    "refresh_token",
-                                                    "list",
-                                                    "sandbox",
-                                                    "registration_session",
-                                                    "pricing_plan",
-                                                    "account_plan",
-                                                    "plan_change",
-                                                    "enterprise_inquiry",
-                                                    "request_log",
-                                                    "audit_event",
-                                                    "audit_field_change",
-                                                    "role",
-                                                    "unit",
-                                                    "account_affiliation",
-                                                    "agent_definition",
-                                                    "available_tool",
-                                                    "agent_definition_tool",
-                                                    "agent_account_status",
-                                                    "agent_run",
-                                                    "agent_action",
-                                                    "agent_run_step",
-                                                    "agent_token_usage",
-                                                    "agent_memory",
-                                                    "notification",
-                                                    "notification_unread_count",
-                                                    "notification_send_result",
-                                                    "notification_unread_summary",
-                                                    "announcement",
-                                                    "conversation",
-                                                    "conversation_participant",
-                                                    "chat_message",
-                                                    "notification_unread_summary_account",
-                                                    "messaging_block",
-                                                    "sender_identity",
-                                                    "notification_preference",
-                                                    "message_attachment",
-                                                    "attachment_upload_target",
-                                                    "scheduled_message",
-                                                    "messaging_contact",
-                                                    "message_report",
-                                                    "tool_group",
-                                                    "model",
-                                                    "payment_term",
-                                                    "shipping_term",
-                                                    "quantity",
-                                                    "account_group",
-                                                    "support_route",
-                                                    "support_availability",
-                                                    "account_status",
-                                                    "geolocation",
-                                                    "account_user",
-                                                    "department",
-                                                    "account_integration",
-                                                    "account_price",
-                                                    "product_line",
-                                                    "item_category",
-                                                    "attribute",
-                                                    "rate",
-                                                    "account_group_product_line_access",
-                                                    "sales_target",
-                                                    "adjustment_type",
-                                                    "account_branding",
-                                                    "account_portal",
-                                                    "account_logo_url",
-                                                    "public_account",
-                                                    "property",
-                                                    "carrier",
-                                                    "service_level",
-                                                    "item",
-                                                    "item_inventory",
-                                                    "product",
-                                                    "batch",
-                                                    "batch_flow_node",
-                                                    "scanning_consumption",
-                                                    "open_batch_summary",
-                                                    "scanning_production_step_info",
-                                                    "scanning_station",
-                                                    "production_step",
-                                                    "production_run",
-                                                    "machine",
-                                                    "child_account",
-                                                    "unit_group",
-                                                    "unit_group_unit",
-                                                    "consumption",
-                                                    "customer_product_line_access",
-                                                    "customer",
-                                                    "frequently_ordered_product",
-                                                    "priority",
-                                                    "delivery",
-                                                    "delivery_line",
-                                                    "sales_order",
-                                                    "location",
-                                                    "location_type",
-                                                    "lot",
-                                                    "email_log",
-                                                    "email_domain",
-                                                    "email_inbox",
-                                                    "inventory_change_log",
-                                                    "invoice",
-                                                    "invoice_summary",
-                                                    "invoice_line",
-                                                    "invoice_allocation",
-                                                    "invoice_for_payment",
-                                                    "shipment",
-                                                    "shipment_summary",
-                                                    "shipment_line",
-                                                    "shipping_case",
-                                                    "shipping_case_label_url",
-                                                    "settlement",
-                                                    "settlement_summary",
-                                                    "role_permission",
-                                                    "registration_flow",
-                                                    "registration_flow_option",
-                                                    "transaction",
-                                                    "transaction_summary",
-                                                    "transaction_method",
-                                                    "transaction_type",
-                                                    "transaction_allocation",
-                                                    "usage_item",
-                                                    "account_usage_response",
-                                                    "subscription_info",
-                                                    "billing_portal_session_response",
-                                                    "switch_plan_response",
-                                                    "ensure_billing_customer_response",
-                                                    "spending_cap_response",
-                                                    "agent_spend_info",
-                                                    "webhook_response",
-                                                    "address_suggestion",
-                                                    "address_components",
-                                                    "address_details_result",
-                                                    "validated_address",
-                                                    "plan_limit",
-                                                    "plan_change_proration",
-                                                    "plan_change_line_item",
-                                                    "setup_billing_response",
-                                                    "confirm_payment_response",
-                                                    "oauth_response",
-                                                    "oauth_status_response",
-                                                    "stripe_publishable_key",
-                                                    "stripe_status",
-                                                    "healthcheck",
-                                                    "agent_definition_config",
-                                                    "trigger_config",
-                                                    "customer_contact_info",
-                                                    "customer_freight_preferences",
-                                                    "customer_defaults",
-                                                    "customer_notification_preferences",
-                                                    "order_discount",
-                                                    "sales_order_line",
-                                                    "sales_order_type",
-                                                    "sales_order_status",
-                                                    "material",
-                                                    "supplier_material",
-                                                    "part",
-                                                    "permission_group",
-                                                    "permission",
-                                                    "pick",
-                                                    "pick_line",
-                                                    "product_type",
-                                                    "production",
-                                                    "production_flow",
-                                                    "map",
-                                                    "purchase_order",
-                                                    "purchase_order_line",
-                                                    "supplier",
-                                                    "supplier_summary",
-                                                    "receivable_entry",
-                                                    "receiving_order",
-                                                    "receiving_order_line",
-                                                    "email_contact",
-                                                    "allocation_entry",
-                                                    "open_credit_entry",
-                                                    "volume_discount",
-                                                    "volume_discount_tier",
-                                                    "analyze_deliveries_response",
-                                                    "analyze_manufacturing_response",
-                                                    "analyze_manufacturing_batch_response",
-                                                    "analyze_quarterly_orders_response",
-                                                    "analyze_new_customers_response",
-                                                    "analyze_oee_response",
-                                                    "catalog_product_line",
-                                                    "catalog_category",
-                                                    "catalog_product",
-                                                    "catalog_property",
-                                                    "catalog_attribute",
-                                                    "dc_location",
-                                                    "edi_run",
-                                                    "inventory_item",
-                                                    "analyze_weeks_of_sales_response",
-                                                    "bulk_reconcile_items_response",
-                                                    "sys_property",
-                                                    "sys_property_type",
-                                                    "sys_property_value",
-                                                    "territory",
-                                                    "tenancy",
-                                                    "checkout_session",
-                                                    "estimate_rate_result",
-                                                    "rate_shop_option",
-                                                    "rate_shop_result",
-                                                    "owner",
-                                                    "created_by",
-                                                    "message",
-                                                    "account_photo_upload_result",
-                                                    "user_photo_upload_result",
-                                                    "user_photo_url",
-                                                    "batch_lot",
-                                                    "check_duplicate_result",
-                                                    "item_trend_point",
-                                                    "pack_pick_response",
-                                                    "pick_shipments_response",
-                                                    "tenancy_pending_registration",
-                                                    "invoice_allocation_entry",
-                                                    "allocation_customer",
-                                                    "checkout_sales_order_response",
-                                                    "create_production_run_response",
-                                                    "sales_order_price_quote",
-                                                    "hubspot_sync_job",
-                                                    "hubspot_sync_report",
-                                                    "hubspot_company_review",
-                                                    "hubspot_company_candidate",
-                                                    "contact_match",
-                                                    "reply_draft",
-                                                    "conversation_link",
-                                                    "messaging_group",
-                                                    "messaging_group_member"
-                                                ]
-                                            },
-                                            {
-                                                "name": "name",
-                                                "type": "string",
-                                                "description": "Human-readable display name for the entity (e.g. a user's full name, a sales order number).",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "handle",
-                                                "type": "string",
-                                                "description": "Secondary human-readable identifier (e.g. email address, username, redacted API key value).",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "channel",
-                                        "type": "string",
-                                        "description": "How the message was delivered (or, for a draft, how it will be on approve).\n\n- `message`: delivered as an in-conversation chat message.\n- `email`: delivered as email through the conversation's bridged inbox.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "message",
-                                            "email"
-                                        ]
-                                    },
-                                    {
-                                        "name": "scheduled_at",
-                                        "type": "string",
-                                        "description": "When a `scheduled` message is due to be delivered.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "agent_run",
-                                        "type": "object",
-                                        "description": "The agent run that produced this message, for deep-linking from an agent reply to its run.\n\n`null` for messages not produced by an agent.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "agent_run"
-                                    },
-                                    {
-                                        "name": "streaming_state",
-                                        "type": "string",
-                                        "description": "The streaming state of a reply.\n\n`streaming` while the body is still being generated (it fills in via realtime updates); `complete` once finalized.\n\n`null` for ordinary messages.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "client_message_id",
-                                        "type": "string",
-                                        "description": "The client-supplied dedupe key echoed back for optimistic-UI reconciliation.\n\n`null` for server-generated messages.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "edited_at",
-                                        "type": "string",
-                                        "description": "When the message was last edited.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "deleted_at",
-                                        "type": "string",
-                                        "description": "When the message was deleted (tombstone).",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "Creation timestamp.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "Last update timestamp.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "created_at",
-                                "type": "string",
-                                "description": "Creation timestamp.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "format": "date-time"
-                            },
-                            {
-                                "name": "updated_at",
-                                "type": "string",
-                                "description": "Last update timestamp.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "format": "date-time"
-                            }
-                        ],
-                        "example": {
-                            "id": "cv_01h9z8q1w2e3r4t5y6u7i8cv",
-                            "object": "conversation",
-                            "type": "direct_message",
-                            "audience": "internal",
-                            "title": null,
-                            "workflow_status": null,
-                            "group": null,
-                            "status": "active",
-                            "legal_hold": "released",
-                            "assignee": null,
-                            "participants": {
-                                "object": "list",
-                                "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
-                                    "has_next_page": false,
-                                    "has_prev_page": false
-                                },
-                                "data": [
-                                    {
-                                        "id": "cvpt_01h9z8q1w2e3r4t5y6u7cvpt",
-                                        "object": "conversation_participant",
-                                        "type": "user",
-                                        "role": "member",
-                                        "membership": "active",
-                                        "notifications": "unmuted",
-                                        "actor": {
-                                            "id": "acus_01ea9983ddb41dacc44ecf997c",
-                                            "object": "actor",
-                                            "type": "user",
-                                            "name": "Jie Yan",
-                                            "handle": null,
-                                            "avatar_url": null,
-                                            "role": null
-                                        },
-                                        "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
-                                    }
-                                ]
-                            },
-                            "topic": null,
-                            "unread": 2,
-                            "last_message_at": "2026-05-10T00:23:00Z",
-                            "last_message": null,
-                            "created_at": "2026-05-10T00:00:00Z",
-                            "updated_at": "2026-05-10T00:23:00Z"
                         }
                     }
                 ]
@@ -35393,7 +33662,6 @@ export const apiTags: TagData[] = [
                                                             "chat_message",
                                                             "notification_unread_summary_account",
                                                             "messaging_block",
-                                                            "sender_identity",
                                                             "notification_preference",
                                                             "message_attachment",
                                                             "attachment_upload_target",
@@ -36137,7 +34405,6 @@ export const apiTags: TagData[] = [
                                                                     "chat_message",
                                                                     "notification_unread_summary_account",
                                                                     "messaging_block",
-                                                                    "sender_identity",
                                                                     "notification_preference",
                                                                     "message_attachment",
                                                                     "attachment_upload_target",
@@ -36535,7 +34802,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -37414,7 +35680,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -38158,7 +36423,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -39094,7 +37358,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -39838,7 +38101,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -40749,7 +39011,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -41493,7 +39754,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -42404,7 +40664,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -43148,7 +41407,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -44076,7 +42334,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -44820,7 +43077,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -45747,7 +44003,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -46491,7 +44746,1659 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
+                                                    "notification_preference",
+                                                    "message_attachment",
+                                                    "attachment_upload_target",
+                                                    "scheduled_message",
+                                                    "messaging_contact",
+                                                    "message_report",
+                                                    "tool_group",
+                                                    "model",
+                                                    "payment_term",
+                                                    "shipping_term",
+                                                    "quantity",
+                                                    "account_group",
+                                                    "support_route",
+                                                    "support_availability",
+                                                    "account_status",
+                                                    "geolocation",
+                                                    "account_user",
+                                                    "department",
+                                                    "account_integration",
+                                                    "account_price",
+                                                    "product_line",
+                                                    "item_category",
+                                                    "attribute",
+                                                    "rate",
+                                                    "account_group_product_line_access",
+                                                    "sales_target",
+                                                    "adjustment_type",
+                                                    "account_branding",
+                                                    "account_portal",
+                                                    "account_logo_url",
+                                                    "public_account",
+                                                    "property",
+                                                    "carrier",
+                                                    "service_level",
+                                                    "item",
+                                                    "item_inventory",
+                                                    "product",
+                                                    "batch",
+                                                    "batch_flow_node",
+                                                    "scanning_consumption",
+                                                    "open_batch_summary",
+                                                    "scanning_production_step_info",
+                                                    "scanning_station",
+                                                    "production_step",
+                                                    "production_run",
+                                                    "machine",
+                                                    "child_account",
+                                                    "unit_group",
+                                                    "unit_group_unit",
+                                                    "consumption",
+                                                    "customer_product_line_access",
+                                                    "customer",
+                                                    "frequently_ordered_product",
+                                                    "priority",
+                                                    "delivery",
+                                                    "delivery_line",
+                                                    "sales_order",
+                                                    "location",
+                                                    "location_type",
+                                                    "lot",
+                                                    "email_log",
+                                                    "email_domain",
+                                                    "email_inbox",
+                                                    "inventory_change_log",
+                                                    "invoice",
+                                                    "invoice_summary",
+                                                    "invoice_line",
+                                                    "invoice_allocation",
+                                                    "invoice_for_payment",
+                                                    "shipment",
+                                                    "shipment_summary",
+                                                    "shipment_line",
+                                                    "shipping_case",
+                                                    "shipping_case_label_url",
+                                                    "settlement",
+                                                    "settlement_summary",
+                                                    "role_permission",
+                                                    "registration_flow",
+                                                    "registration_flow_option",
+                                                    "transaction",
+                                                    "transaction_summary",
+                                                    "transaction_method",
+                                                    "transaction_type",
+                                                    "transaction_allocation",
+                                                    "usage_item",
+                                                    "account_usage_response",
+                                                    "subscription_info",
+                                                    "billing_portal_session_response",
+                                                    "switch_plan_response",
+                                                    "ensure_billing_customer_response",
+                                                    "spending_cap_response",
+                                                    "agent_spend_info",
+                                                    "webhook_response",
+                                                    "address_suggestion",
+                                                    "address_components",
+                                                    "address_details_result",
+                                                    "validated_address",
+                                                    "plan_limit",
+                                                    "plan_change_proration",
+                                                    "plan_change_line_item",
+                                                    "setup_billing_response",
+                                                    "confirm_payment_response",
+                                                    "oauth_response",
+                                                    "oauth_status_response",
+                                                    "stripe_publishable_key",
+                                                    "stripe_status",
+                                                    "healthcheck",
+                                                    "agent_definition_config",
+                                                    "trigger_config",
+                                                    "customer_contact_info",
+                                                    "customer_freight_preferences",
+                                                    "customer_defaults",
+                                                    "customer_notification_preferences",
+                                                    "order_discount",
+                                                    "sales_order_line",
+                                                    "sales_order_type",
+                                                    "sales_order_status",
+                                                    "material",
+                                                    "supplier_material",
+                                                    "part",
+                                                    "permission_group",
+                                                    "permission",
+                                                    "pick",
+                                                    "pick_line",
+                                                    "product_type",
+                                                    "production",
+                                                    "production_flow",
+                                                    "map",
+                                                    "purchase_order",
+                                                    "purchase_order_line",
+                                                    "supplier",
+                                                    "supplier_summary",
+                                                    "receivable_entry",
+                                                    "receiving_order",
+                                                    "receiving_order_line",
+                                                    "email_contact",
+                                                    "allocation_entry",
+                                                    "open_credit_entry",
+                                                    "volume_discount",
+                                                    "volume_discount_tier",
+                                                    "analyze_deliveries_response",
+                                                    "analyze_manufacturing_response",
+                                                    "analyze_manufacturing_batch_response",
+                                                    "analyze_quarterly_orders_response",
+                                                    "analyze_new_customers_response",
+                                                    "analyze_oee_response",
+                                                    "catalog_product_line",
+                                                    "catalog_category",
+                                                    "catalog_product",
+                                                    "catalog_property",
+                                                    "catalog_attribute",
+                                                    "dc_location",
+                                                    "edi_run",
+                                                    "inventory_item",
+                                                    "analyze_weeks_of_sales_response",
+                                                    "bulk_reconcile_items_response",
+                                                    "sys_property",
+                                                    "sys_property_type",
+                                                    "sys_property_value",
+                                                    "territory",
+                                                    "tenancy",
+                                                    "checkout_session",
+                                                    "estimate_rate_result",
+                                                    "rate_shop_option",
+                                                    "rate_shop_result",
+                                                    "owner",
+                                                    "created_by",
+                                                    "message",
+                                                    "account_photo_upload_result",
+                                                    "user_photo_upload_result",
+                                                    "user_photo_url",
+                                                    "batch_lot",
+                                                    "check_duplicate_result",
+                                                    "item_trend_point",
+                                                    "pack_pick_response",
+                                                    "pick_shipments_response",
+                                                    "tenancy_pending_registration",
+                                                    "invoice_allocation_entry",
+                                                    "allocation_customer",
+                                                    "checkout_sales_order_response",
+                                                    "create_production_run_response",
+                                                    "sales_order_price_quote",
+                                                    "hubspot_sync_job",
+                                                    "hubspot_sync_report",
+                                                    "hubspot_company_review",
+                                                    "hubspot_company_candidate",
+                                                    "contact_match",
+                                                    "reply_draft",
+                                                    "conversation_link",
+                                                    "messaging_group",
+                                                    "messaging_group_member"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Human-readable display name for the entity (e.g. a user's full name, a sales order number).",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "handle",
+                                                "type": "string",
+                                                "description": "Secondary human-readable identifier (e.g. email address, username, redacted API key value).",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "channel",
+                                        "type": "string",
+                                        "description": "How the message was delivered (or, for a draft, how it will be on approve).\n\n- `message`: delivered as an in-conversation chat message.\n- `email`: delivered as email through the conversation's bridged inbox.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "message",
+                                            "email"
+                                        ]
+                                    },
+                                    {
+                                        "name": "scheduled_at",
+                                        "type": "string",
+                                        "description": "When a `scheduled` message is due to be delivered.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "agent_run",
+                                        "type": "object",
+                                        "description": "The agent run that produced this message, for deep-linking from an agent reply to its run.\n\n`null` for messages not produced by an agent.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true,
+                                        "objectType": "agent_run"
+                                    },
+                                    {
+                                        "name": "streaming_state",
+                                        "type": "string",
+                                        "description": "The streaming state of a reply.\n\n`streaming` while the body is still being generated (it fills in via realtime updates); `complete` once finalized.\n\n`null` for ordinary messages.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "client_message_id",
+                                        "type": "string",
+                                        "description": "The client-supplied dedupe key echoed back for optimistic-UI reconciliation.\n\n`null` for server-generated messages.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "edited_at",
+                                        "type": "string",
+                                        "description": "When the message was last edited.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "deleted_at",
+                                        "type": "string",
+                                        "description": "When the message was deleted (tombstone).",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last update timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "created_at",
+                                "type": "string",
+                                "description": "Creation timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "updated_at",
+                                "type": "string",
+                                "description": "Last update timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            }
+                        ],
+                        "example": {
+                            "id": "cv_01h9z8q1w2e3r4t5y6u7i8cv",
+                            "object": "conversation",
+                            "type": "direct_message",
+                            "audience": "internal",
+                            "title": null,
+                            "workflow_status": null,
+                            "group": null,
+                            "status": "active",
+                            "legal_hold": "released",
+                            "assignee": null,
+                            "participants": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "id": "cvpt_01h9z8q1w2e3r4t5y6u7cvpt",
+                                        "object": "conversation_participant",
+                                        "type": "user",
+                                        "role": "member",
+                                        "membership": "active",
+                                        "notifications": "unmuted",
+                                        "actor": {
+                                            "id": "acus_01ea9983ddb41dacc44ecf997c",
+                                            "object": "actor",
+                                            "type": "user",
+                                            "name": "Jie Yan",
+                                            "handle": null,
+                                            "avatar_url": null,
+                                            "role": null
+                                        },
+                                        "agent_trigger_policy": null,
+                                        "agent_trigger_keywords": []
+                                    }
+                                ]
+                            },
+                            "topic": null,
+                            "unread": 2,
+                            "last_message_at": "2026-05-10T00:23:00Z",
+                            "last_message": null,
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "redact-conversation",
+                "summary": "Redact Conversation",
+                "description": "Permanently redacts the content of every message in a conversation (GDPR right-to-erasure).\n\nThis endpoint requires the permission: `messaging:delete`.",
+                "method": "POST",
+                "path": "/v1/messaging/conversations/{id}/actions/redact",
+                "domain": "messaging",
+                "tag": "Conversations",
+                "tagSlug": "conversations",
+                "endpointSlug": "redact-conversation",
+                "actionType": "action",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Conversation ID."
+                    },
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
+                        "enum": [
+                            "assignee",
+                            "group",
+                            "participants",
+                            "topic",
+                            "last_message",
+                            "last_message.sender",
+                            "last_message.author",
+                            "last_message.resource",
+                            "last_message.attachments",
+                            "last_message.attachments.resource"
+                        ]
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for Redact Conversation",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string",
+                                "description": "Conversation ID.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "conversation"
+                                ]
+                            },
+                            {
+                                "name": "type",
+                                "type": "string",
+                                "description": "What kind of conversation this is.\n\n- `direct_message`: a 1:1 thread between two users.\n- `group`: a named thread with multiple user or agent members (including customer-facing support cases).\n- `system`: a system channel that delivers automated account alerts.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "direct_message",
+                                    "group",
+                                    "system"
+                                ]
+                            },
+                            {
+                                "name": "audience",
+                                "type": "string",
+                                "description": "Whether this is a team-only conversation (`internal`) or a customer-facing case (`customer`).",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "internal",
+                                    "customer"
+                                ]
+                            },
+                            {
+                                "name": "title",
+                                "type": "string",
+                                "description": "The display title of a group conversation.\n\n`null` for direct messages, where the client derives a title from the participants.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "workflow_status",
+                                "type": "string",
+                                "description": "The triage lane of a customer-facing case.\n\nOnly set for customer-audience conversations.\n\n- `new`: opened but not yet triaged.\n- `open`: actively being worked.\n- `waiting_internal`: blocked on the internal team.\n- `waiting_external`: blocked on an external reply.\n- `needs_approval`: a drafted reply is awaiting human approval.\n- `resolved`: closed out.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "enum": [
+                                    "new",
+                                    "open",
+                                    "waiting_internal",
+                                    "waiting_external",
+                                    "needs_approval",
+                                    "resolved"
+                                ]
+                            },
+                            {
+                                "name": "group",
+                                "type": "object",
+                                "description": "The reusable roster this conversation was started from, when one was used.\n\n`null` for ad-hoc conversations. Provenance only: members were copied in at creation and are not driven by the roster thereafter.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "objectType": "messaging_group",
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Messaging group ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "messaging_group"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "The roster's display name.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "members",
+                                        "type": "object",
+                                        "description": "The roster's members (users and agents).",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": false,
+                                        "objectType": "list"
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "status",
+                                "type": "string",
+                                "description": "The caller's effective status.\n\n- `hidden` when the caller has hidden the conversation\n- otherwise the account-level lifecycle state",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "active",
+                                    "archived",
+                                    "hidden"
+                                ]
+                            },
+                            {
+                                "name": "legal_hold",
+                                "type": "string",
+                                "description": "Whether the conversation is under legal hold.\n\nExempts the conversation from retention purging and redaction.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "released",
+                                    "held"
+                                ]
+                            },
+                            {
+                                "name": "assignee",
+                                "type": "object",
+                                "description": "The case owner, when one is set: a `user` actor (a team member) or a `group` actor (a team).",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "objectType": "actor",
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Unique identifier of the actor.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "actor"
+                                        ]
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "string",
+                                        "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "user",
+                                            "api_key",
+                                            "agent",
+                                            "group"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "The actor's display name.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "handle",
+                                        "type": "string",
+                                        "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "avatar_url",
+                                        "type": "string",
+                                        "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "role",
+                                        "type": "object",
+                                        "description": "Assigned role.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true,
+                                        "objectType": "role"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "participants",
+                                "type": "object",
+                                "description": "The active participants of the conversation.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "objectType": "list",
+                                "properties": [
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "name": "page_info",
+                                        "type": "object",
+                                        "description": "Pagination metadata.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "properties": [
+                                            {
+                                                "name": "next_page_url",
+                                                "type": "string",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "previous_page_url",
+                                                "type": "string",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "has_next_page",
+                                                "type": "boolean",
+                                                "description": "Whether more results exist after this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "has_prev_page",
+                                                "type": "boolean",
+                                                "description": "Whether results exist before this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "data",
+                                        "type": "array",
+                                        "description": "Resources in this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "objectType": "conversation_participant",
+                                        "itemType": "object",
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Participant ID.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "conversation_participant"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The kind of participant.\n\n- `user`: an account user (a teammate).\n- `agent`: an AI agent.\n- `system`: the system itself, which posts automated messages.\n- `customer`: an external customer in a support case.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "user",
+                                                    "agent",
+                                                    "system",
+                                                    "customer"
+                                                ]
+                                            },
+                                            {
+                                                "name": "role",
+                                                "type": "string",
+                                                "description": "The participant's permission level in the conversation.\n\n- `owner`: can rename or delete the conversation and manage its members and their roles.\n- `admin`: can add or remove members and rename the conversation.\n- `member`: can post, react, mute, and leave.\n- `viewer`: read-only access.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "owner",
+                                                    "admin",
+                                                    "member",
+                                                    "viewer"
+                                                ]
+                                            },
+                                            {
+                                                "name": "membership",
+                                                "type": "string",
+                                                "description": "The participant's membership in the conversation.\n\n- `active`: currently a member.\n- `left`: voluntarily left the conversation.\n- `removed`: removed by an admin.\n- `hidden`: still a member but has hidden the conversation from their own list.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "active",
+                                                    "left",
+                                                    "removed",
+                                                    "hidden"
+                                                ]
+                                            },
+                                            {
+                                                "name": "notifications",
+                                                "type": "string",
+                                                "description": "The participant's notification preference for the conversation.\n\n- `unmuted`: receives normal notifications.\n- `muted`: notifications are suppressed (mentions may still pierce the mute).",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "unmuted",
+                                                    "muted"
+                                                ]
+                                            },
+                                            {
+                                                "name": "actor",
+                                                "type": "object",
+                                                "description": "The actor this participant represents: a `user` (account user) or an `agent`.\n\n`null` for system participants.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "actor"
+                                            },
+                                            {
+                                                "name": "agent_trigger_policy",
+                                                "type": "string",
+                                                "description": "For agent participants, when the agent is invoked in response to messages.\n\n`null` for non-agent participants.\n\n- `mention`: only when the agent is @mentioned.\n- `keyword`: when a message contains one of the agent's trigger keywords.\n- `always`: on every human message in the conversation.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "mention",
+                                                    "keyword",
+                                                    "always"
+                                                ]
+                                            },
+                                            {
+                                                "name": "agent_trigger_keywords",
+                                                "type": "array",
+                                                "description": "For agent participants with a keyword/mention policy, the keywords that trigger it.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "itemType": "string"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "topic",
+                                "type": "object",
+                                "description": "The app resource this conversation is anchored to (e.g. an order).\n\n`null` when the conversation has no topic anchor.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "objectType": "entity",
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Unique identifier for the entity.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "entity"
+                                        ]
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "string",
+                                        "description": "The resource kind that this entity references, as an object-type value (e.g. `user`, `account`).\n\nUnlike `object` — which is always `entity` — this names the underlying resource the `id` points to.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "account",
+                                            "actor",
+                                            "entity",
+                                            "record",
+                                            "freight",
+                                            "sales_order_totals",
+                                            "sales_order_related",
+                                            "order_contact",
+                                            "user",
+                                            "address",
+                                            "api_key",
+                                            "created_api_key",
+                                            "refresh_token",
+                                            "list",
+                                            "sandbox",
+                                            "registration_session",
+                                            "pricing_plan",
+                                            "account_plan",
+                                            "plan_change",
+                                            "enterprise_inquiry",
+                                            "request_log",
+                                            "audit_event",
+                                            "audit_field_change",
+                                            "role",
+                                            "unit",
+                                            "account_affiliation",
+                                            "agent_definition",
+                                            "available_tool",
+                                            "agent_definition_tool",
+                                            "agent_account_status",
+                                            "agent_run",
+                                            "agent_action",
+                                            "agent_run_step",
+                                            "agent_token_usage",
+                                            "agent_memory",
+                                            "notification",
+                                            "notification_unread_count",
+                                            "notification_send_result",
+                                            "notification_unread_summary",
+                                            "announcement",
+                                            "conversation",
+                                            "conversation_participant",
+                                            "chat_message",
+                                            "notification_unread_summary_account",
+                                            "messaging_block",
+                                            "notification_preference",
+                                            "message_attachment",
+                                            "attachment_upload_target",
+                                            "scheduled_message",
+                                            "messaging_contact",
+                                            "message_report",
+                                            "tool_group",
+                                            "model",
+                                            "payment_term",
+                                            "shipping_term",
+                                            "quantity",
+                                            "account_group",
+                                            "support_route",
+                                            "support_availability",
+                                            "account_status",
+                                            "geolocation",
+                                            "account_user",
+                                            "department",
+                                            "account_integration",
+                                            "account_price",
+                                            "product_line",
+                                            "item_category",
+                                            "attribute",
+                                            "rate",
+                                            "account_group_product_line_access",
+                                            "sales_target",
+                                            "adjustment_type",
+                                            "account_branding",
+                                            "account_portal",
+                                            "account_logo_url",
+                                            "public_account",
+                                            "property",
+                                            "carrier",
+                                            "service_level",
+                                            "item",
+                                            "item_inventory",
+                                            "product",
+                                            "batch",
+                                            "batch_flow_node",
+                                            "scanning_consumption",
+                                            "open_batch_summary",
+                                            "scanning_production_step_info",
+                                            "scanning_station",
+                                            "production_step",
+                                            "production_run",
+                                            "machine",
+                                            "child_account",
+                                            "unit_group",
+                                            "unit_group_unit",
+                                            "consumption",
+                                            "customer_product_line_access",
+                                            "customer",
+                                            "frequently_ordered_product",
+                                            "priority",
+                                            "delivery",
+                                            "delivery_line",
+                                            "sales_order",
+                                            "location",
+                                            "location_type",
+                                            "lot",
+                                            "email_log",
+                                            "email_domain",
+                                            "email_inbox",
+                                            "inventory_change_log",
+                                            "invoice",
+                                            "invoice_summary",
+                                            "invoice_line",
+                                            "invoice_allocation",
+                                            "invoice_for_payment",
+                                            "shipment",
+                                            "shipment_summary",
+                                            "shipment_line",
+                                            "shipping_case",
+                                            "shipping_case_label_url",
+                                            "settlement",
+                                            "settlement_summary",
+                                            "role_permission",
+                                            "registration_flow",
+                                            "registration_flow_option",
+                                            "transaction",
+                                            "transaction_summary",
+                                            "transaction_method",
+                                            "transaction_type",
+                                            "transaction_allocation",
+                                            "usage_item",
+                                            "account_usage_response",
+                                            "subscription_info",
+                                            "billing_portal_session_response",
+                                            "switch_plan_response",
+                                            "ensure_billing_customer_response",
+                                            "spending_cap_response",
+                                            "agent_spend_info",
+                                            "webhook_response",
+                                            "address_suggestion",
+                                            "address_components",
+                                            "address_details_result",
+                                            "validated_address",
+                                            "plan_limit",
+                                            "plan_change_proration",
+                                            "plan_change_line_item",
+                                            "setup_billing_response",
+                                            "confirm_payment_response",
+                                            "oauth_response",
+                                            "oauth_status_response",
+                                            "stripe_publishable_key",
+                                            "stripe_status",
+                                            "healthcheck",
+                                            "agent_definition_config",
+                                            "trigger_config",
+                                            "customer_contact_info",
+                                            "customer_freight_preferences",
+                                            "customer_defaults",
+                                            "customer_notification_preferences",
+                                            "order_discount",
+                                            "sales_order_line",
+                                            "sales_order_type",
+                                            "sales_order_status",
+                                            "material",
+                                            "supplier_material",
+                                            "part",
+                                            "permission_group",
+                                            "permission",
+                                            "pick",
+                                            "pick_line",
+                                            "product_type",
+                                            "production",
+                                            "production_flow",
+                                            "map",
+                                            "purchase_order",
+                                            "purchase_order_line",
+                                            "supplier",
+                                            "supplier_summary",
+                                            "receivable_entry",
+                                            "receiving_order",
+                                            "receiving_order_line",
+                                            "email_contact",
+                                            "allocation_entry",
+                                            "open_credit_entry",
+                                            "volume_discount",
+                                            "volume_discount_tier",
+                                            "analyze_deliveries_response",
+                                            "analyze_manufacturing_response",
+                                            "analyze_manufacturing_batch_response",
+                                            "analyze_quarterly_orders_response",
+                                            "analyze_new_customers_response",
+                                            "analyze_oee_response",
+                                            "catalog_product_line",
+                                            "catalog_category",
+                                            "catalog_product",
+                                            "catalog_property",
+                                            "catalog_attribute",
+                                            "dc_location",
+                                            "edi_run",
+                                            "inventory_item",
+                                            "analyze_weeks_of_sales_response",
+                                            "bulk_reconcile_items_response",
+                                            "sys_property",
+                                            "sys_property_type",
+                                            "sys_property_value",
+                                            "territory",
+                                            "tenancy",
+                                            "checkout_session",
+                                            "estimate_rate_result",
+                                            "rate_shop_option",
+                                            "rate_shop_result",
+                                            "owner",
+                                            "created_by",
+                                            "message",
+                                            "account_photo_upload_result",
+                                            "user_photo_upload_result",
+                                            "user_photo_url",
+                                            "batch_lot",
+                                            "check_duplicate_result",
+                                            "item_trend_point",
+                                            "pack_pick_response",
+                                            "pick_shipments_response",
+                                            "tenancy_pending_registration",
+                                            "invoice_allocation_entry",
+                                            "allocation_customer",
+                                            "checkout_sales_order_response",
+                                            "create_production_run_response",
+                                            "sales_order_price_quote",
+                                            "hubspot_sync_job",
+                                            "hubspot_sync_report",
+                                            "hubspot_company_review",
+                                            "hubspot_company_candidate",
+                                            "contact_match",
+                                            "reply_draft",
+                                            "conversation_link",
+                                            "messaging_group",
+                                            "messaging_group_member"
+                                        ]
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "string",
+                                        "description": "Human-readable display name for the entity (e.g. a user's full name, a sales order number).",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "handle",
+                                        "type": "string",
+                                        "description": "Secondary human-readable identifier (e.g. email address, username, redacted API key value).",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "unread",
+                                "type": "integer",
+                                "description": "Number of messages the caller has not yet read.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "last_message_at",
+                                "type": "string",
+                                "description": "When the most recent message was sent.\n\n`null` when the conversation has no messages yet.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "last_message",
+                                "type": "object",
+                                "description": "The most recent message in the conversation.\n\n`null` when the conversation has no messages yet.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": true,
+                                "objectType": "chat_message",
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Message ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "chat_message"
+                                        ]
+                                    },
+                                    {
+                                        "name": "kind",
+                                        "type": "string",
+                                        "description": "The kind of message.\n\n- `chat`: a user-authored chat message.\n- `system_event`: a system-generated event message.\n- `agent`: a message authored by an AI agent participant.\n- `scheduled`: a message materialized from a scheduled send.\n- `alert`: a system or producer alert rendered as a message.\n- `email`: an inbound email materialized into the conversation by the email bridge.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "chat",
+                                            "system_event",
+                                            "agent",
+                                            "scheduled",
+                                            "alert",
+                                            "email"
+                                        ]
+                                    },
+                                    {
+                                        "name": "status",
+                                        "type": "string",
+                                        "description": "The lifecycle state of the message.\n\n- `draft`: an editable customer-reply draft awaiting approval; not in the timeline.\n- `scheduled`: queued for delivery at a future time; not yet in the timeline.\n- `sent`: a delivered timeline message; only `sent` messages carry a `sequence`.\n- `canceled`: a scheduled message canceled before delivery.\n- `rejected`: a draft discarded without sending.\n- `failed`: a scheduled message that exhausted delivery attempts.\n- `superseded`: a draft replaced by a newer one for the same source thread.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "draft",
+                                            "scheduled",
+                                            "sent",
+                                            "canceled",
+                                            "rejected",
+                                            "failed",
+                                            "superseded"
+                                        ]
+                                    },
+                                    {
+                                        "name": "visibility",
+                                        "type": "string",
+                                        "description": "Who can see this message.\n\n- `internal`: a team-only note.\n- `external`: sent to or received from an external party (e.g. the customer on a support case).\n- `system`: an event shown to both the team and the customer.\n\nOn a customer-facing conversation, customer payloads only ever carry `external` and `system` messages.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "internal",
+                                            "external",
+                                            "system"
+                                        ]
+                                    },
+                                    {
+                                        "name": "conversation",
+                                        "type": "object",
+                                        "description": "The conversation this message belongs to.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true,
+                                        "objectType": "conversation"
+                                    },
+                                    {
+                                        "name": "sequence",
+                                        "type": "integer",
+                                        "description": "Monotonic per-conversation ordering sequence.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "body",
+                                        "type": "string",
+                                        "description": "Message body.\n\n`null` for templated or deleted messages.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "subject",
+                                        "type": "string",
+                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "sender",
+                                        "type": "object",
+                                        "description": "The actor that sent the message, as displayed. When the message was posted under a sender identity (a persona / group), this is that persona; otherwise it is the authoring user.\n\n`null` for pure system messages.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "objectType": "actor",
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Unique identifier of the actor.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "actor"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "user",
+                                                    "api_key",
+                                                    "agent",
+                                                    "group"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The actor's display name.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "handle",
+                                                "type": "string",
+                                                "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "avatar_url",
+                                                "type": "string",
+                                                "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "role",
+                                                "type": "object",
+                                                "description": "Assigned role.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true,
+                                                "objectType": "role"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "author",
+                                        "type": "object",
+                                        "description": "The underlying account user who authored the message.\n\n`null` for system messages, or when the message was posted under an anonymizing sender identity and the caller is not entitled to see the real author.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "objectType": "actor",
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Unique identifier of the actor.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "actor"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "user",
+                                                    "api_key",
+                                                    "agent",
+                                                    "group"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "The actor's display name.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "handle",
+                                                "type": "string",
+                                                "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "avatar_url",
+                                                "type": "string",
+                                                "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "role",
+                                                "type": "object",
+                                                "description": "Assigned role.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "alwaysNull": true,
+                                                "expandable": true,
+                                                "objectType": "role"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "attachments",
+                                        "type": "object",
+                                        "description": "Files, images, links, or resources attached to the message.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "objectType": "list",
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "list"
+                                                ]
+                                            },
+                                            {
+                                                "name": "page_info",
+                                                "type": "object",
+                                                "description": "Pagination metadata.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "properties": [
+                                                    {
+                                                        "name": "next_page_url",
+                                                        "type": "string",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "previous_page_url",
+                                                        "type": "string",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_next_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether more results exist after this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_prev_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether results exist before this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "array",
+                                                "description": "Resources in this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "objectType": "message_attachment",
+                                                "itemType": "object",
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Attachment ID.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "message_attachment"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "kind",
+                                                        "type": "string",
+                                                        "description": "The kind of attachment, which determines how it is stored and which of the fields below are populated.\n\n- `file`: an uploaded non-image file.\n- `image`: an uploaded image.\n- `link`: an external URL reference, with no stored file.\n- `resource`: a reference to an in-app resource, such as an order.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "file",
+                                                            "image",
+                                                            "link",
+                                                            "resource"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "filename",
+                                                        "type": "string",
+                                                        "description": "The original filename for uploaded attachments.\n\n`null` for link/resource attachments.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "content_type",
+                                                        "type": "string",
+                                                        "description": "The MIME content type for uploaded attachments.\n\n`null` for link/resource attachments.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "size_bytes",
+                                                        "type": "integer",
+                                                        "description": "The size in bytes for uploaded attachments.\n\n`null` when unknown or for link/resource attachments.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "url",
+                                                        "type": "string",
+                                                        "description": "A time-limited download URL for uploaded (file/image) attachments, or the link URL.\n\n`null` for resource attachments.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "resource",
+                                                        "type": "object",
+                                                        "description": "The linked in-app resource for `resource` attachments.\n\n`null` for file/image/link attachments.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "alwaysNull": true,
+                                                        "expandable": true,
+                                                        "objectType": "entity"
+                                                    },
+                                                    {
+                                                        "name": "created_at",
+                                                        "type": "string",
+                                                        "description": "Creation timestamp.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "format": "date-time"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "reply_to",
+                                        "type": "object",
+                                        "description": "The message this one replies to.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "alwaysNull": true,
+                                        "expandable": true,
+                                        "objectType": "chat_message"
+                                    },
+                                    {
+                                        "name": "resource",
+                                        "type": "object",
+                                        "description": "The app resource this message links to.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "objectType": "entity",
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Unique identifier for the entity.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "entity"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The resource kind that this entity references, as an object-type value (e.g. `user`, `account`).\n\nUnlike `object` — which is always `entity` — this names the underlying resource the `id` points to.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account",
+                                                    "actor",
+                                                    "entity",
+                                                    "record",
+                                                    "freight",
+                                                    "sales_order_totals",
+                                                    "sales_order_related",
+                                                    "order_contact",
+                                                    "user",
+                                                    "address",
+                                                    "api_key",
+                                                    "created_api_key",
+                                                    "refresh_token",
+                                                    "list",
+                                                    "sandbox",
+                                                    "registration_session",
+                                                    "pricing_plan",
+                                                    "account_plan",
+                                                    "plan_change",
+                                                    "enterprise_inquiry",
+                                                    "request_log",
+                                                    "audit_event",
+                                                    "audit_field_change",
+                                                    "role",
+                                                    "unit",
+                                                    "account_affiliation",
+                                                    "agent_definition",
+                                                    "available_tool",
+                                                    "agent_definition_tool",
+                                                    "agent_account_status",
+                                                    "agent_run",
+                                                    "agent_action",
+                                                    "agent_run_step",
+                                                    "agent_token_usage",
+                                                    "agent_memory",
+                                                    "notification",
+                                                    "notification_unread_count",
+                                                    "notification_send_result",
+                                                    "notification_unread_summary",
+                                                    "announcement",
+                                                    "conversation",
+                                                    "conversation_participant",
+                                                    "chat_message",
+                                                    "notification_unread_summary_account",
+                                                    "messaging_block",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -47427,7 +47334,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -48171,7 +48077,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -49102,7 +49007,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -49846,7 +49750,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -50781,7 +50684,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -51525,7 +51427,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -52436,7 +52337,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -53180,7 +53080,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -54091,7 +53990,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -54835,7 +54733,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -55746,7 +55643,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -56490,7 +56386,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -56952,7 +56847,6 @@ export const apiTags: TagData[] = [
                             "chat_message",
                             "notification_unread_summary_account",
                             "messaging_block",
-                            "sender_identity",
                             "notification_preference",
                             "message_attachment",
                             "attachment_upload_target",
@@ -57294,7 +57188,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -59211,7 +59104,6 @@ export const apiTags: TagData[] = [
                                         "chat_message",
                                         "notification_unread_summary_account",
                                         "messaging_block",
-                                        "sender_identity",
                                         "notification_preference",
                                         "message_attachment",
                                         "attachment_upload_target",
@@ -61471,7 +61363,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -62039,2308 +61930,9 @@ export const apiTags: TagData[] = [
                 ]
             },
             {
-                "operationId": "list-scheduled-messages",
-                "summary": "List Scheduled Messages",
-                "description": "Lists the caller's scheduled (not-yet-sent) messages across their conversations, soonest first.\n\nThis endpoint requires the permission: `messaging:read`.",
-                "method": "GET",
-                "path": "/v1/messaging/messages/scheduled",
-                "domain": "messaging",
-                "tag": "Messages",
-                "tagSlug": "messages",
-                "endpointSlug": "list-scheduled-messages",
-                "actionType": "list",
-                "isPreview": true,
-                "parameters": [
-                    {
-                        "name": "limit",
-                        "in": "query",
-                        "type": "integer",
-                        "required": false,
-                        "description": "Maximum number of scheduled messages to return."
-                    },
-                    {
-                        "name": "include[]",
-                        "in": "query",
-                        "type": "array",
-                        "required": false,
-                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
-                        "enum": [
-                            "sender",
-                            "author",
-                            "resource",
-                            "attachments",
-                            "attachments.resource",
-                            "conversation",
-                            "conversation.participants",
-                            "conversation.last_message",
-                            "reply_to",
-                            "reply_to.sender",
-                            "reply_to.author",
-                            "reply_to.attachments",
-                            "agent_run"
-                        ]
-                    }
-                ],
-                "responses": [
-                    {
-                        "statusCode": "200",
-                        "description": "Successful response for List Scheduled Messages",
-                        "fields": [
-                            {
-                                "name": "object",
-                                "type": "string",
-                                "description": "Resource type identifier.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "list"
-                                ]
-                            },
-                            {
-                                "name": "page_info",
-                                "type": "object",
-                                "description": "Pagination metadata.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "properties": [
-                                    {
-                                        "name": "next_page_url",
-                                        "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "previous_page_url",
-                                        "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "has_next_page",
-                                        "type": "boolean",
-                                        "description": "Whether more results exist after this page.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "has_prev_page",
-                                        "type": "boolean",
-                                        "description": "Whether results exist before this page.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "data",
-                                "type": "array",
-                                "description": "Resources in this page.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "objectType": "chat_message",
-                                "itemType": "object",
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "Message ID.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "Resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "chat_message"
-                                        ]
-                                    },
-                                    {
-                                        "name": "kind",
-                                        "type": "string",
-                                        "description": "The kind of message.\n\n- `chat`: a user-authored chat message.\n- `system_event`: a system-generated event message.\n- `agent`: a message authored by an AI agent participant.\n- `scheduled`: a message materialized from a scheduled send.\n- `alert`: a system or producer alert rendered as a message.\n- `email`: an inbound email materialized into the conversation by the email bridge.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "chat",
-                                            "system_event",
-                                            "agent",
-                                            "scheduled",
-                                            "alert",
-                                            "email"
-                                        ]
-                                    },
-                                    {
-                                        "name": "status",
-                                        "type": "string",
-                                        "description": "The lifecycle state of the message.\n\n- `draft`: an editable customer-reply draft awaiting approval; not in the timeline.\n- `scheduled`: queued for delivery at a future time; not yet in the timeline.\n- `sent`: a delivered timeline message; only `sent` messages carry a `sequence`.\n- `canceled`: a scheduled message canceled before delivery.\n- `rejected`: a draft discarded without sending.\n- `failed`: a scheduled message that exhausted delivery attempts.\n- `superseded`: a draft replaced by a newer one for the same source thread.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "draft",
-                                            "scheduled",
-                                            "sent",
-                                            "canceled",
-                                            "rejected",
-                                            "failed",
-                                            "superseded"
-                                        ]
-                                    },
-                                    {
-                                        "name": "visibility",
-                                        "type": "string",
-                                        "description": "Who can see this message.\n\n- `internal`: a team-only note.\n- `external`: sent to or received from an external party (e.g. the customer on a support case).\n- `system`: an event shown to both the team and the customer.\n\nOn a customer-facing conversation, customer payloads only ever carry `external` and `system` messages.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "internal",
-                                            "external",
-                                            "system"
-                                        ]
-                                    },
-                                    {
-                                        "name": "conversation",
-                                        "type": "object",
-                                        "description": "The conversation this message belongs to.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true,
-                                        "objectType": "conversation",
-                                        "properties": [
-                                            {
-                                                "name": "id",
-                                                "type": "string",
-                                                "description": "Conversation ID.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "conversation"
-                                                ]
-                                            },
-                                            {
-                                                "name": "type",
-                                                "type": "string",
-                                                "description": "What kind of conversation this is.\n\n- `direct_message`: a 1:1 thread between two users.\n- `group`: a named thread with multiple user or agent members (including customer-facing support cases).\n- `system`: a system channel that delivers automated account alerts.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "direct_message",
-                                                    "group",
-                                                    "system"
-                                                ]
-                                            },
-                                            {
-                                                "name": "audience",
-                                                "type": "string",
-                                                "description": "Whether this is a team-only conversation (`internal`) or a customer-facing case (`customer`).",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "internal",
-                                                    "customer"
-                                                ]
-                                            },
-                                            {
-                                                "name": "title",
-                                                "type": "string",
-                                                "description": "The display title of a group conversation.\n\n`null` for direct messages, where the client derives a title from the participants.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "workflow_status",
-                                                "type": "string",
-                                                "description": "The triage lane of a customer-facing case.\n\nOnly set for customer-audience conversations.\n\n- `new`: opened but not yet triaged.\n- `open`: actively being worked.\n- `waiting_internal`: blocked on the internal team.\n- `waiting_external`: blocked on an external reply.\n- `needs_approval`: a drafted reply is awaiting human approval.\n- `resolved`: closed out.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "new",
-                                                    "open",
-                                                    "waiting_internal",
-                                                    "waiting_external",
-                                                    "needs_approval",
-                                                    "resolved"
-                                                ]
-                                            },
-                                            {
-                                                "name": "group",
-                                                "type": "object",
-                                                "description": "The reusable roster this conversation was started from, when one was used.\n\n`null` for ad-hoc conversations. Provenance only: members were copied in at creation and are not driven by the roster thereafter.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "messaging_group"
-                                            },
-                                            {
-                                                "name": "status",
-                                                "type": "string",
-                                                "description": "The caller's effective status.\n\n- `hidden` when the caller has hidden the conversation\n- otherwise the account-level lifecycle state",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "active",
-                                                    "archived",
-                                                    "hidden"
-                                                ]
-                                            },
-                                            {
-                                                "name": "legal_hold",
-                                                "type": "string",
-                                                "description": "Whether the conversation is under legal hold.\n\nExempts the conversation from retention purging and redaction.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "released",
-                                                    "held"
-                                                ]
-                                            },
-                                            {
-                                                "name": "assignee",
-                                                "type": "object",
-                                                "description": "The case owner, when one is set: a `user` actor (a team member) or a `group` actor (a team).",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "actor"
-                                            },
-                                            {
-                                                "name": "participants",
-                                                "type": "object",
-                                                "description": "The active participants of the conversation.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": true,
-                                                "objectType": "list",
-                                                "properties": [
-                                                    {
-                                                        "name": "object",
-                                                        "type": "string",
-                                                        "description": "Resource type identifier.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "list"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "page_info",
-                                                        "type": "object",
-                                                        "description": "Pagination metadata.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "properties": [
-                                                            {
-                                                                "name": "next_page_url",
-                                                                "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
-                                                                "required": true,
-                                                                "nullable": true,
-                                                                "expandable": false
-                                                            },
-                                                            {
-                                                                "name": "previous_page_url",
-                                                                "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
-                                                                "required": true,
-                                                                "nullable": true,
-                                                                "expandable": false
-                                                            },
-                                                            {
-                                                                "name": "has_next_page",
-                                                                "type": "boolean",
-                                                                "description": "Whether more results exist after this page.",
-                                                                "required": true,
-                                                                "nullable": false,
-                                                                "expandable": false
-                                                            },
-                                                            {
-                                                                "name": "has_prev_page",
-                                                                "type": "boolean",
-                                                                "description": "Whether results exist before this page.",
-                                                                "required": true,
-                                                                "nullable": false,
-                                                                "expandable": false
-                                                            }
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "data",
-                                                        "type": "array",
-                                                        "description": "Resources in this page.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "objectType": "conversation_participant",
-                                                        "itemType": "object",
-                                                        "properties": [
-                                                            {
-                                                                "name": "id",
-                                                                "type": "string",
-                                                                "description": "Participant ID.",
-                                                                "required": true,
-                                                                "nullable": false,
-                                                                "expandable": false
-                                                            },
-                                                            {
-                                                                "name": "object",
-                                                                "type": "string",
-                                                                "description": "Resource type identifier.",
-                                                                "required": true,
-                                                                "nullable": false,
-                                                                "expandable": false,
-                                                                "enum": [
-                                                                    "conversation_participant"
-                                                                ]
-                                                            },
-                                                            {
-                                                                "name": "type",
-                                                                "type": "string",
-                                                                "description": "The kind of participant.\n\n- `user`: an account user (a teammate).\n- `agent`: an AI agent.\n- `system`: the system itself, which posts automated messages.\n- `customer`: an external customer in a support case.",
-                                                                "required": true,
-                                                                "nullable": false,
-                                                                "expandable": false,
-                                                                "enum": [
-                                                                    "user",
-                                                                    "agent",
-                                                                    "system",
-                                                                    "customer"
-                                                                ]
-                                                            },
-                                                            {
-                                                                "name": "role",
-                                                                "type": "string",
-                                                                "description": "The participant's permission level in the conversation.\n\n- `owner`: can rename or delete the conversation and manage its members and their roles.\n- `admin`: can add or remove members and rename the conversation.\n- `member`: can post, react, mute, and leave.\n- `viewer`: read-only access.",
-                                                                "required": true,
-                                                                "nullable": false,
-                                                                "expandable": false,
-                                                                "enum": [
-                                                                    "owner",
-                                                                    "admin",
-                                                                    "member",
-                                                                    "viewer"
-                                                                ]
-                                                            },
-                                                            {
-                                                                "name": "membership",
-                                                                "type": "string",
-                                                                "description": "The participant's membership in the conversation.\n\n- `active`: currently a member.\n- `left`: voluntarily left the conversation.\n- `removed`: removed by an admin.\n- `hidden`: still a member but has hidden the conversation from their own list.",
-                                                                "required": true,
-                                                                "nullable": false,
-                                                                "expandable": false,
-                                                                "enum": [
-                                                                    "active",
-                                                                    "left",
-                                                                    "removed",
-                                                                    "hidden"
-                                                                ]
-                                                            },
-                                                            {
-                                                                "name": "notifications",
-                                                                "type": "string",
-                                                                "description": "The participant's notification preference for the conversation.\n\n- `unmuted`: receives normal notifications.\n- `muted`: notifications are suppressed (mentions may still pierce the mute).",
-                                                                "required": true,
-                                                                "nullable": false,
-                                                                "expandable": false,
-                                                                "enum": [
-                                                                    "unmuted",
-                                                                    "muted"
-                                                                ]
-                                                            },
-                                                            {
-                                                                "name": "actor",
-                                                                "type": "object",
-                                                                "description": "The actor this participant represents: a `user` (account user) or an `agent`.\n\n`null` for system participants.",
-                                                                "required": true,
-                                                                "nullable": true,
-                                                                "alwaysNull": true,
-                                                                "expandable": false,
-                                                                "objectType": "actor"
-                                                            },
-                                                            {
-                                                                "name": "agent_trigger_policy",
-                                                                "type": "string",
-                                                                "description": "For agent participants, when the agent is invoked in response to messages.\n\n`null` for non-agent participants.\n\n- `mention`: only when the agent is @mentioned.\n- `keyword`: when a message contains one of the agent's trigger keywords.\n- `always`: on every human message in the conversation.",
-                                                                "required": true,
-                                                                "nullable": true,
-                                                                "expandable": false,
-                                                                "enum": [
-                                                                    "mention",
-                                                                    "keyword",
-                                                                    "always"
-                                                                ]
-                                                            },
-                                                            {
-                                                                "name": "agent_trigger_keywords",
-                                                                "type": "array",
-                                                                "description": "For agent participants with a keyword/mention policy, the keywords that trigger it.",
-                                                                "required": true,
-                                                                "nullable": false,
-                                                                "expandable": false,
-                                                                "itemType": "string"
-                                                            }
-                                                        ]
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "name": "topic",
-                                                "type": "object",
-                                                "description": "The app resource this conversation is anchored to (e.g. an order).\n\n`null` when the conversation has no topic anchor.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "entity"
-                                            },
-                                            {
-                                                "name": "unread",
-                                                "type": "integer",
-                                                "description": "Number of messages the caller has not yet read.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "last_message_at",
-                                                "type": "string",
-                                                "description": "When the most recent message was sent.\n\n`null` when the conversation has no messages yet.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            },
-                                            {
-                                                "name": "last_message",
-                                                "type": "object",
-                                                "description": "The most recent message in the conversation.\n\n`null` when the conversation has no messages yet.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": true,
-                                                "objectType": "chat_message",
-                                                "properties": [
-                                                    {
-                                                        "name": "id",
-                                                        "type": "string",
-                                                        "description": "Message ID.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "object",
-                                                        "type": "string",
-                                                        "description": "Resource type identifier.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "chat_message"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "kind",
-                                                        "type": "string",
-                                                        "description": "The kind of message.\n\n- `chat`: a user-authored chat message.\n- `system_event`: a system-generated event message.\n- `agent`: a message authored by an AI agent participant.\n- `scheduled`: a message materialized from a scheduled send.\n- `alert`: a system or producer alert rendered as a message.\n- `email`: an inbound email materialized into the conversation by the email bridge.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "chat",
-                                                            "system_event",
-                                                            "agent",
-                                                            "scheduled",
-                                                            "alert",
-                                                            "email"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "status",
-                                                        "type": "string",
-                                                        "description": "The lifecycle state of the message.\n\n- `draft`: an editable customer-reply draft awaiting approval; not in the timeline.\n- `scheduled`: queued for delivery at a future time; not yet in the timeline.\n- `sent`: a delivered timeline message; only `sent` messages carry a `sequence`.\n- `canceled`: a scheduled message canceled before delivery.\n- `rejected`: a draft discarded without sending.\n- `failed`: a scheduled message that exhausted delivery attempts.\n- `superseded`: a draft replaced by a newer one for the same source thread.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "draft",
-                                                            "scheduled",
-                                                            "sent",
-                                                            "canceled",
-                                                            "rejected",
-                                                            "failed",
-                                                            "superseded"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "visibility",
-                                                        "type": "string",
-                                                        "description": "Who can see this message.\n\n- `internal`: a team-only note.\n- `external`: sent to or received from an external party (e.g. the customer on a support case).\n- `system`: an event shown to both the team and the customer.\n\nOn a customer-facing conversation, customer payloads only ever carry `external` and `system` messages.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "internal",
-                                                            "external",
-                                                            "system"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "conversation",
-                                                        "type": "object",
-                                                        "description": "The conversation this message belongs to.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": true,
-                                                        "objectType": "conversation"
-                                                    },
-                                                    {
-                                                        "name": "sequence",
-                                                        "type": "integer",
-                                                        "description": "Monotonic per-conversation ordering sequence.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "body",
-                                                        "type": "string",
-                                                        "description": "Message body.\n\n`null` for templated or deleted messages.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "subject",
-                                                        "type": "string",
-                                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "sender",
-                                                        "type": "object",
-                                                        "description": "The actor that sent the message, as displayed. When the message was posted under a sender identity (a persona / group), this is that persona; otherwise it is the authoring user.\n\n`null` for pure system messages.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": true,
-                                                        "objectType": "actor"
-                                                    },
-                                                    {
-                                                        "name": "author",
-                                                        "type": "object",
-                                                        "description": "The underlying account user who authored the message.\n\n`null` for system messages, or when the message was posted under an anonymizing sender identity and the caller is not entitled to see the real author.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": true,
-                                                        "objectType": "actor"
-                                                    },
-                                                    {
-                                                        "name": "attachments",
-                                                        "type": "object",
-                                                        "description": "Files, images, links, or resources attached to the message.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": true,
-                                                        "objectType": "list"
-                                                    },
-                                                    {
-                                                        "name": "reply_to",
-                                                        "type": "object",
-                                                        "description": "The message this one replies to.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": true,
-                                                        "objectType": "chat_message"
-                                                    },
-                                                    {
-                                                        "name": "resource",
-                                                        "type": "object",
-                                                        "description": "The app resource this message links to.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": true,
-                                                        "objectType": "entity"
-                                                    },
-                                                    {
-                                                        "name": "channel",
-                                                        "type": "string",
-                                                        "description": "How the message was delivered (or, for a draft, how it will be on approve).\n\n- `message`: delivered as an in-conversation chat message.\n- `email`: delivered as email through the conversation's bridged inbox.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "message",
-                                                            "email"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "scheduled_at",
-                                                        "type": "string",
-                                                        "description": "When a `scheduled` message is due to be delivered.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false,
-                                                        "format": "date-time"
-                                                    },
-                                                    {
-                                                        "name": "agent_run",
-                                                        "type": "object",
-                                                        "description": "The agent run that produced this message, for deep-linking from an agent reply to its run.\n\n`null` for messages not produced by an agent.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": true,
-                                                        "objectType": "agent_run"
-                                                    },
-                                                    {
-                                                        "name": "streaming_state",
-                                                        "type": "string",
-                                                        "description": "The streaming state of a reply.\n\n`streaming` while the body is still being generated (it fills in via realtime updates); `complete` once finalized.\n\n`null` for ordinary messages.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "client_message_id",
-                                                        "type": "string",
-                                                        "description": "The client-supplied dedupe key echoed back for optimistic-UI reconciliation.\n\n`null` for server-generated messages.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "edited_at",
-                                                        "type": "string",
-                                                        "description": "When the message was last edited.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false,
-                                                        "format": "date-time"
-                                                    },
-                                                    {
-                                                        "name": "deleted_at",
-                                                        "type": "string",
-                                                        "description": "When the message was deleted (tombstone).",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false,
-                                                        "format": "date-time"
-                                                    },
-                                                    {
-                                                        "name": "created_at",
-                                                        "type": "string",
-                                                        "description": "Creation timestamp.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "format": "date-time"
-                                                    },
-                                                    {
-                                                        "name": "updated_at",
-                                                        "type": "string",
-                                                        "description": "Last update timestamp.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "format": "date-time"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "name": "created_at",
-                                                "type": "string",
-                                                "description": "Creation timestamp.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            },
-                                            {
-                                                "name": "updated_at",
-                                                "type": "string",
-                                                "description": "Last update timestamp.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "sequence",
-                                        "type": "integer",
-                                        "description": "Monotonic per-conversation ordering sequence.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "body",
-                                        "type": "string",
-                                        "description": "Message body.\n\n`null` for templated or deleted messages.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "subject",
-                                        "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "sender",
-                                        "type": "object",
-                                        "description": "The actor that sent the message, as displayed. When the message was posted under a sender identity (a persona / group), this is that persona; otherwise it is the authoring user.\n\n`null` for pure system messages.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true,
-                                        "objectType": "actor",
-                                        "properties": [
-                                            {
-                                                "name": "id",
-                                                "type": "string",
-                                                "description": "Unique identifier of the actor.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "actor"
-                                                ]
-                                            },
-                                            {
-                                                "name": "type",
-                                                "type": "string",
-                                                "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "user",
-                                                    "api_key",
-                                                    "agent",
-                                                    "group"
-                                                ]
-                                            },
-                                            {
-                                                "name": "name",
-                                                "type": "string",
-                                                "description": "The actor's display name.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "handle",
-                                                "type": "string",
-                                                "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "avatar_url",
-                                                "type": "string",
-                                                "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "role",
-                                                "type": "object",
-                                                "description": "Assigned role.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "role"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "author",
-                                        "type": "object",
-                                        "description": "The underlying account user who authored the message.\n\n`null` for system messages, or when the message was posted under an anonymizing sender identity and the caller is not entitled to see the real author.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true,
-                                        "objectType": "actor",
-                                        "properties": [
-                                            {
-                                                "name": "id",
-                                                "type": "string",
-                                                "description": "Unique identifier of the actor.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "actor"
-                                                ]
-                                            },
-                                            {
-                                                "name": "type",
-                                                "type": "string",
-                                                "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "user",
-                                                    "api_key",
-                                                    "agent",
-                                                    "group"
-                                                ]
-                                            },
-                                            {
-                                                "name": "name",
-                                                "type": "string",
-                                                "description": "The actor's display name.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "handle",
-                                                "type": "string",
-                                                "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "avatar_url",
-                                                "type": "string",
-                                                "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "role",
-                                                "type": "object",
-                                                "description": "Assigned role.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "role"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "attachments",
-                                        "type": "object",
-                                        "description": "Files, images, links, or resources attached to the message.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true,
-                                        "objectType": "list",
-                                        "properties": [
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "list"
-                                                ]
-                                            },
-                                            {
-                                                "name": "page_info",
-                                                "type": "object",
-                                                "description": "Pagination metadata.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "properties": [
-                                                    {
-                                                        "name": "next_page_url",
-                                                        "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "previous_page_url",
-                                                        "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "has_next_page",
-                                                        "type": "boolean",
-                                                        "description": "Whether more results exist after this page.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "has_prev_page",
-                                                        "type": "boolean",
-                                                        "description": "Whether results exist before this page.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "name": "data",
-                                                "type": "array",
-                                                "description": "Resources in this page.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "objectType": "message_attachment",
-                                                "itemType": "object",
-                                                "properties": [
-                                                    {
-                                                        "name": "id",
-                                                        "type": "string",
-                                                        "description": "Attachment ID.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "object",
-                                                        "type": "string",
-                                                        "description": "Resource type identifier.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "message_attachment"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "kind",
-                                                        "type": "string",
-                                                        "description": "The kind of attachment, which determines how it is stored and which of the fields below are populated.\n\n- `file`: an uploaded non-image file.\n- `image`: an uploaded image.\n- `link`: an external URL reference, with no stored file.\n- `resource`: a reference to an in-app resource, such as an order.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "file",
-                                                            "image",
-                                                            "link",
-                                                            "resource"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "filename",
-                                                        "type": "string",
-                                                        "description": "The original filename for uploaded attachments.\n\n`null` for link/resource attachments.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "content_type",
-                                                        "type": "string",
-                                                        "description": "The MIME content type for uploaded attachments.\n\n`null` for link/resource attachments.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "size_bytes",
-                                                        "type": "integer",
-                                                        "description": "The size in bytes for uploaded attachments.\n\n`null` when unknown or for link/resource attachments.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "url",
-                                                        "type": "string",
-                                                        "description": "A time-limited download URL for uploaded (file/image) attachments, or the link URL.\n\n`null` for resource attachments.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "resource",
-                                                        "type": "object",
-                                                        "description": "The linked in-app resource for `resource` attachments.\n\n`null` for file/image/link attachments.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": true,
-                                                        "objectType": "entity"
-                                                    },
-                                                    {
-                                                        "name": "created_at",
-                                                        "type": "string",
-                                                        "description": "Creation timestamp.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "format": "date-time"
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "reply_to",
-                                        "type": "object",
-                                        "description": "The message this one replies to.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true,
-                                        "objectType": "chat_message",
-                                        "properties": [
-                                            {
-                                                "name": "id",
-                                                "type": "string",
-                                                "description": "Message ID.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "chat_message"
-                                                ]
-                                            },
-                                            {
-                                                "name": "kind",
-                                                "type": "string",
-                                                "description": "The kind of message.\n\n- `chat`: a user-authored chat message.\n- `system_event`: a system-generated event message.\n- `agent`: a message authored by an AI agent participant.\n- `scheduled`: a message materialized from a scheduled send.\n- `alert`: a system or producer alert rendered as a message.\n- `email`: an inbound email materialized into the conversation by the email bridge.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "chat",
-                                                    "system_event",
-                                                    "agent",
-                                                    "scheduled",
-                                                    "alert",
-                                                    "email"
-                                                ]
-                                            },
-                                            {
-                                                "name": "status",
-                                                "type": "string",
-                                                "description": "The lifecycle state of the message.\n\n- `draft`: an editable customer-reply draft awaiting approval; not in the timeline.\n- `scheduled`: queued for delivery at a future time; not yet in the timeline.\n- `sent`: a delivered timeline message; only `sent` messages carry a `sequence`.\n- `canceled`: a scheduled message canceled before delivery.\n- `rejected`: a draft discarded without sending.\n- `failed`: a scheduled message that exhausted delivery attempts.\n- `superseded`: a draft replaced by a newer one for the same source thread.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "draft",
-                                                    "scheduled",
-                                                    "sent",
-                                                    "canceled",
-                                                    "rejected",
-                                                    "failed",
-                                                    "superseded"
-                                                ]
-                                            },
-                                            {
-                                                "name": "visibility",
-                                                "type": "string",
-                                                "description": "Who can see this message.\n\n- `internal`: a team-only note.\n- `external`: sent to or received from an external party (e.g. the customer on a support case).\n- `system`: an event shown to both the team and the customer.\n\nOn a customer-facing conversation, customer payloads only ever carry `external` and `system` messages.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "internal",
-                                                    "external",
-                                                    "system"
-                                                ]
-                                            },
-                                            {
-                                                "name": "conversation",
-                                                "type": "object",
-                                                "description": "The conversation this message belongs to.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "conversation"
-                                            },
-                                            {
-                                                "name": "sequence",
-                                                "type": "integer",
-                                                "description": "Monotonic per-conversation ordering sequence.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "body",
-                                                "type": "string",
-                                                "description": "Message body.\n\n`null` for templated or deleted messages.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "subject",
-                                                "type": "string",
-                                                "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "sender",
-                                                "type": "object",
-                                                "description": "The actor that sent the message, as displayed. When the message was posted under a sender identity (a persona / group), this is that persona; otherwise it is the authoring user.\n\n`null` for pure system messages.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": true,
-                                                "objectType": "actor",
-                                                "properties": [
-                                                    {
-                                                        "name": "id",
-                                                        "type": "string",
-                                                        "description": "Unique identifier of the actor.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "object",
-                                                        "type": "string",
-                                                        "description": "Resource type identifier.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "actor"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "type",
-                                                        "type": "string",
-                                                        "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "user",
-                                                            "api_key",
-                                                            "agent",
-                                                            "group"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "name",
-                                                        "type": "string",
-                                                        "description": "The actor's display name.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "handle",
-                                                        "type": "string",
-                                                        "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "avatar_url",
-                                                        "type": "string",
-                                                        "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "role",
-                                                        "type": "object",
-                                                        "description": "Assigned role.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": true,
-                                                        "objectType": "role"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "name": "author",
-                                                "type": "object",
-                                                "description": "The underlying account user who authored the message.\n\n`null` for system messages, or when the message was posted under an anonymizing sender identity and the caller is not entitled to see the real author.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": true,
-                                                "objectType": "actor",
-                                                "properties": [
-                                                    {
-                                                        "name": "id",
-                                                        "type": "string",
-                                                        "description": "Unique identifier of the actor.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "object",
-                                                        "type": "string",
-                                                        "description": "Resource type identifier.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "actor"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "type",
-                                                        "type": "string",
-                                                        "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "user",
-                                                            "api_key",
-                                                            "agent",
-                                                            "group"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "name",
-                                                        "type": "string",
-                                                        "description": "The actor's display name.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "handle",
-                                                        "type": "string",
-                                                        "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "avatar_url",
-                                                        "type": "string",
-                                                        "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "role",
-                                                        "type": "object",
-                                                        "description": "Assigned role.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": true,
-                                                        "objectType": "role"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "name": "attachments",
-                                                "type": "object",
-                                                "description": "Files, images, links, or resources attached to the message.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": true,
-                                                "objectType": "list",
-                                                "properties": [
-                                                    {
-                                                        "name": "object",
-                                                        "type": "string",
-                                                        "description": "Resource type identifier.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "list"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "page_info",
-                                                        "type": "object",
-                                                        "description": "Pagination metadata.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "properties": [
-                                                            {
-                                                                "name": "next_page_url",
-                                                                "type": "string",
-                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
-                                                                "required": true,
-                                                                "nullable": true,
-                                                                "expandable": false
-                                                            },
-                                                            {
-                                                                "name": "previous_page_url",
-                                                                "type": "string",
-                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
-                                                                "required": true,
-                                                                "nullable": true,
-                                                                "expandable": false
-                                                            },
-                                                            {
-                                                                "name": "has_next_page",
-                                                                "type": "boolean",
-                                                                "description": "Whether more results exist after this page.",
-                                                                "required": true,
-                                                                "nullable": false,
-                                                                "expandable": false
-                                                            },
-                                                            {
-                                                                "name": "has_prev_page",
-                                                                "type": "boolean",
-                                                                "description": "Whether results exist before this page.",
-                                                                "required": true,
-                                                                "nullable": false,
-                                                                "expandable": false
-                                                            }
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "data",
-                                                        "type": "array",
-                                                        "description": "Resources in this page.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "objectType": "message_attachment",
-                                                        "itemType": "object",
-                                                        "properties": [
-                                                            {
-                                                                "name": "id",
-                                                                "type": "string",
-                                                                "description": "Attachment ID.",
-                                                                "required": true,
-                                                                "nullable": false,
-                                                                "expandable": false
-                                                            },
-                                                            {
-                                                                "name": "object",
-                                                                "type": "string",
-                                                                "description": "Resource type identifier.",
-                                                                "required": true,
-                                                                "nullable": false,
-                                                                "expandable": false,
-                                                                "enum": [
-                                                                    "message_attachment"
-                                                                ]
-                                                            },
-                                                            {
-                                                                "name": "kind",
-                                                                "type": "string",
-                                                                "description": "The kind of attachment, which determines how it is stored and which of the fields below are populated.\n\n- `file`: an uploaded non-image file.\n- `image`: an uploaded image.\n- `link`: an external URL reference, with no stored file.\n- `resource`: a reference to an in-app resource, such as an order.",
-                                                                "required": true,
-                                                                "nullable": false,
-                                                                "expandable": false,
-                                                                "enum": [
-                                                                    "file",
-                                                                    "image",
-                                                                    "link",
-                                                                    "resource"
-                                                                ]
-                                                            },
-                                                            {
-                                                                "name": "filename",
-                                                                "type": "string",
-                                                                "description": "The original filename for uploaded attachments.\n\n`null` for link/resource attachments.",
-                                                                "required": true,
-                                                                "nullable": true,
-                                                                "expandable": false
-                                                            },
-                                                            {
-                                                                "name": "content_type",
-                                                                "type": "string",
-                                                                "description": "The MIME content type for uploaded attachments.\n\n`null` for link/resource attachments.",
-                                                                "required": true,
-                                                                "nullable": true,
-                                                                "expandable": false
-                                                            },
-                                                            {
-                                                                "name": "size_bytes",
-                                                                "type": "integer",
-                                                                "description": "The size in bytes for uploaded attachments.\n\n`null` when unknown or for link/resource attachments.",
-                                                                "required": true,
-                                                                "nullable": true,
-                                                                "expandable": false
-                                                            },
-                                                            {
-                                                                "name": "url",
-                                                                "type": "string",
-                                                                "description": "A time-limited download URL for uploaded (file/image) attachments, or the link URL.\n\n`null` for resource attachments.",
-                                                                "required": true,
-                                                                "nullable": true,
-                                                                "expandable": false
-                                                            },
-                                                            {
-                                                                "name": "resource",
-                                                                "type": "object",
-                                                                "description": "The linked in-app resource for `resource` attachments.\n\n`null` for file/image/link attachments.",
-                                                                "required": true,
-                                                                "nullable": true,
-                                                                "alwaysNull": true,
-                                                                "expandable": true,
-                                                                "objectType": "entity"
-                                                            },
-                                                            {
-                                                                "name": "created_at",
-                                                                "type": "string",
-                                                                "description": "Creation timestamp.",
-                                                                "required": true,
-                                                                "nullable": false,
-                                                                "expandable": false,
-                                                                "format": "date-time"
-                                                            }
-                                                        ]
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "name": "reply_to",
-                                                "type": "object",
-                                                "description": "The message this one replies to.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "chat_message"
-                                            },
-                                            {
-                                                "name": "resource",
-                                                "type": "object",
-                                                "description": "The app resource this message links to.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "entity"
-                                            },
-                                            {
-                                                "name": "channel",
-                                                "type": "string",
-                                                "description": "How the message was delivered (or, for a draft, how it will be on approve).\n\n- `message`: delivered as an in-conversation chat message.\n- `email`: delivered as email through the conversation's bridged inbox.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "message",
-                                                    "email"
-                                                ]
-                                            },
-                                            {
-                                                "name": "scheduled_at",
-                                                "type": "string",
-                                                "description": "When a `scheduled` message is due to be delivered.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            },
-                                            {
-                                                "name": "agent_run",
-                                                "type": "object",
-                                                "description": "The agent run that produced this message, for deep-linking from an agent reply to its run.\n\n`null` for messages not produced by an agent.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "agent_run"
-                                            },
-                                            {
-                                                "name": "streaming_state",
-                                                "type": "string",
-                                                "description": "The streaming state of a reply.\n\n`streaming` while the body is still being generated (it fills in via realtime updates); `complete` once finalized.\n\n`null` for ordinary messages.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "client_message_id",
-                                                "type": "string",
-                                                "description": "The client-supplied dedupe key echoed back for optimistic-UI reconciliation.\n\n`null` for server-generated messages.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "edited_at",
-                                                "type": "string",
-                                                "description": "When the message was last edited.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            },
-                                            {
-                                                "name": "deleted_at",
-                                                "type": "string",
-                                                "description": "When the message was deleted (tombstone).",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            },
-                                            {
-                                                "name": "created_at",
-                                                "type": "string",
-                                                "description": "Creation timestamp.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            },
-                                            {
-                                                "name": "updated_at",
-                                                "type": "string",
-                                                "description": "Last update timestamp.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "resource",
-                                        "type": "object",
-                                        "description": "The app resource this message links to.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true,
-                                        "objectType": "entity",
-                                        "properties": [
-                                            {
-                                                "name": "id",
-                                                "type": "string",
-                                                "description": "Unique identifier for the entity.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "entity"
-                                                ]
-                                            },
-                                            {
-                                                "name": "type",
-                                                "type": "string",
-                                                "description": "The resource kind that this entity references, as an object-type value (e.g. `user`, `account`).\n\nUnlike `object` — which is always `entity` — this names the underlying resource the `id` points to.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "account",
-                                                    "actor",
-                                                    "entity",
-                                                    "record",
-                                                    "freight",
-                                                    "sales_order_totals",
-                                                    "sales_order_related",
-                                                    "order_contact",
-                                                    "user",
-                                                    "address",
-                                                    "api_key",
-                                                    "created_api_key",
-                                                    "refresh_token",
-                                                    "list",
-                                                    "sandbox",
-                                                    "registration_session",
-                                                    "pricing_plan",
-                                                    "account_plan",
-                                                    "plan_change",
-                                                    "enterprise_inquiry",
-                                                    "request_log",
-                                                    "audit_event",
-                                                    "audit_field_change",
-                                                    "role",
-                                                    "unit",
-                                                    "account_affiliation",
-                                                    "agent_definition",
-                                                    "available_tool",
-                                                    "agent_definition_tool",
-                                                    "agent_account_status",
-                                                    "agent_run",
-                                                    "agent_action",
-                                                    "agent_run_step",
-                                                    "agent_token_usage",
-                                                    "agent_memory",
-                                                    "notification",
-                                                    "notification_unread_count",
-                                                    "notification_send_result",
-                                                    "notification_unread_summary",
-                                                    "announcement",
-                                                    "conversation",
-                                                    "conversation_participant",
-                                                    "chat_message",
-                                                    "notification_unread_summary_account",
-                                                    "messaging_block",
-                                                    "sender_identity",
-                                                    "notification_preference",
-                                                    "message_attachment",
-                                                    "attachment_upload_target",
-                                                    "scheduled_message",
-                                                    "messaging_contact",
-                                                    "message_report",
-                                                    "tool_group",
-                                                    "model",
-                                                    "payment_term",
-                                                    "shipping_term",
-                                                    "quantity",
-                                                    "account_group",
-                                                    "support_route",
-                                                    "support_availability",
-                                                    "account_status",
-                                                    "geolocation",
-                                                    "account_user",
-                                                    "department",
-                                                    "account_integration",
-                                                    "account_price",
-                                                    "product_line",
-                                                    "item_category",
-                                                    "attribute",
-                                                    "rate",
-                                                    "account_group_product_line_access",
-                                                    "sales_target",
-                                                    "adjustment_type",
-                                                    "account_branding",
-                                                    "account_portal",
-                                                    "account_logo_url",
-                                                    "public_account",
-                                                    "property",
-                                                    "carrier",
-                                                    "service_level",
-                                                    "item",
-                                                    "item_inventory",
-                                                    "product",
-                                                    "batch",
-                                                    "batch_flow_node",
-                                                    "scanning_consumption",
-                                                    "open_batch_summary",
-                                                    "scanning_production_step_info",
-                                                    "scanning_station",
-                                                    "production_step",
-                                                    "production_run",
-                                                    "machine",
-                                                    "child_account",
-                                                    "unit_group",
-                                                    "unit_group_unit",
-                                                    "consumption",
-                                                    "customer_product_line_access",
-                                                    "customer",
-                                                    "frequently_ordered_product",
-                                                    "priority",
-                                                    "delivery",
-                                                    "delivery_line",
-                                                    "sales_order",
-                                                    "location",
-                                                    "location_type",
-                                                    "lot",
-                                                    "email_log",
-                                                    "email_domain",
-                                                    "email_inbox",
-                                                    "inventory_change_log",
-                                                    "invoice",
-                                                    "invoice_summary",
-                                                    "invoice_line",
-                                                    "invoice_allocation",
-                                                    "invoice_for_payment",
-                                                    "shipment",
-                                                    "shipment_summary",
-                                                    "shipment_line",
-                                                    "shipping_case",
-                                                    "shipping_case_label_url",
-                                                    "settlement",
-                                                    "settlement_summary",
-                                                    "role_permission",
-                                                    "registration_flow",
-                                                    "registration_flow_option",
-                                                    "transaction",
-                                                    "transaction_summary",
-                                                    "transaction_method",
-                                                    "transaction_type",
-                                                    "transaction_allocation",
-                                                    "usage_item",
-                                                    "account_usage_response",
-                                                    "subscription_info",
-                                                    "billing_portal_session_response",
-                                                    "switch_plan_response",
-                                                    "ensure_billing_customer_response",
-                                                    "spending_cap_response",
-                                                    "agent_spend_info",
-                                                    "webhook_response",
-                                                    "address_suggestion",
-                                                    "address_components",
-                                                    "address_details_result",
-                                                    "validated_address",
-                                                    "plan_limit",
-                                                    "plan_change_proration",
-                                                    "plan_change_line_item",
-                                                    "setup_billing_response",
-                                                    "confirm_payment_response",
-                                                    "oauth_response",
-                                                    "oauth_status_response",
-                                                    "stripe_publishable_key",
-                                                    "stripe_status",
-                                                    "healthcheck",
-                                                    "agent_definition_config",
-                                                    "trigger_config",
-                                                    "customer_contact_info",
-                                                    "customer_freight_preferences",
-                                                    "customer_defaults",
-                                                    "customer_notification_preferences",
-                                                    "order_discount",
-                                                    "sales_order_line",
-                                                    "sales_order_type",
-                                                    "sales_order_status",
-                                                    "material",
-                                                    "supplier_material",
-                                                    "part",
-                                                    "permission_group",
-                                                    "permission",
-                                                    "pick",
-                                                    "pick_line",
-                                                    "product_type",
-                                                    "production",
-                                                    "production_flow",
-                                                    "map",
-                                                    "purchase_order",
-                                                    "purchase_order_line",
-                                                    "supplier",
-                                                    "supplier_summary",
-                                                    "receivable_entry",
-                                                    "receiving_order",
-                                                    "receiving_order_line",
-                                                    "email_contact",
-                                                    "allocation_entry",
-                                                    "open_credit_entry",
-                                                    "volume_discount",
-                                                    "volume_discount_tier",
-                                                    "analyze_deliveries_response",
-                                                    "analyze_manufacturing_response",
-                                                    "analyze_manufacturing_batch_response",
-                                                    "analyze_quarterly_orders_response",
-                                                    "analyze_new_customers_response",
-                                                    "analyze_oee_response",
-                                                    "catalog_product_line",
-                                                    "catalog_category",
-                                                    "catalog_product",
-                                                    "catalog_property",
-                                                    "catalog_attribute",
-                                                    "dc_location",
-                                                    "edi_run",
-                                                    "inventory_item",
-                                                    "analyze_weeks_of_sales_response",
-                                                    "bulk_reconcile_items_response",
-                                                    "sys_property",
-                                                    "sys_property_type",
-                                                    "sys_property_value",
-                                                    "territory",
-                                                    "tenancy",
-                                                    "checkout_session",
-                                                    "estimate_rate_result",
-                                                    "rate_shop_option",
-                                                    "rate_shop_result",
-                                                    "owner",
-                                                    "created_by",
-                                                    "message",
-                                                    "account_photo_upload_result",
-                                                    "user_photo_upload_result",
-                                                    "user_photo_url",
-                                                    "batch_lot",
-                                                    "check_duplicate_result",
-                                                    "item_trend_point",
-                                                    "pack_pick_response",
-                                                    "pick_shipments_response",
-                                                    "tenancy_pending_registration",
-                                                    "invoice_allocation_entry",
-                                                    "allocation_customer",
-                                                    "checkout_sales_order_response",
-                                                    "create_production_run_response",
-                                                    "sales_order_price_quote",
-                                                    "hubspot_sync_job",
-                                                    "hubspot_sync_report",
-                                                    "hubspot_company_review",
-                                                    "hubspot_company_candidate",
-                                                    "contact_match",
-                                                    "reply_draft",
-                                                    "conversation_link",
-                                                    "messaging_group",
-                                                    "messaging_group_member"
-                                                ]
-                                            },
-                                            {
-                                                "name": "name",
-                                                "type": "string",
-                                                "description": "Human-readable display name for the entity (e.g. a user's full name, a sales order number).",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "handle",
-                                                "type": "string",
-                                                "description": "Secondary human-readable identifier (e.g. email address, username, redacted API key value).",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "channel",
-                                        "type": "string",
-                                        "description": "How the message was delivered (or, for a draft, how it will be on approve).\n\n- `message`: delivered as an in-conversation chat message.\n- `email`: delivered as email through the conversation's bridged inbox.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "message",
-                                            "email"
-                                        ]
-                                    },
-                                    {
-                                        "name": "scheduled_at",
-                                        "type": "string",
-                                        "description": "When a `scheduled` message is due to be delivered.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "agent_run",
-                                        "type": "object",
-                                        "description": "The agent run that produced this message, for deep-linking from an agent reply to its run.\n\n`null` for messages not produced by an agent.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true,
-                                        "objectType": "agent_run",
-                                        "properties": [
-                                            {
-                                                "name": "id",
-                                                "type": "string",
-                                                "description": "Agent run ID.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "agent_run"
-                                                ]
-                                            },
-                                            {
-                                                "name": "trigger_type",
-                                                "type": "string",
-                                                "description": "How this run was initiated.\n\n- `scheduled`: started by the agent's cron schedule.\n- `event`: started in response to a platform event.\n- `manual`: started by an explicit request; see `triggered_by`.\n- `chat`: started by a message in a conversation, with the agent's reply posted back into that conversation.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "scheduled",
-                                                    "manual",
-                                                    "event",
-                                                    "chat"
-                                                ]
-                                            },
-                                            {
-                                                "name": "status",
-                                                "type": "string",
-                                                "description": "Current run status.\n\n- `pending`: queued but not yet started.\n- `running`: currently executing.\n- `awaiting_input`: paused, waiting for user input before continuing.\n- `awaiting_approval`: paused, waiting for a pending action to be approved.\n- `completed`: finished successfully.\n- `failed`: stopped after an error; see `error_message`.\n- `cancelled`: stopped before completion by a user.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "pending",
-                                                    "running",
-                                                    "completed",
-                                                    "failed",
-                                                    "cancelled",
-                                                    "awaiting_input",
-                                                    "awaiting_approval"
-                                                ]
-                                            },
-                                            {
-                                                "name": "definition",
-                                                "type": "object",
-                                                "description": "Full agent definition for this run.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "agent_definition"
-                                            },
-                                            {
-                                                "name": "input",
-                                                "type": "object",
-                                                "description": "Input provided to the agent at the start of the run, as JSON. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "output",
-                                                "type": "object",
-                                                "description": "Final output produced by the agent, as JSON.\n\nPopulated only once the run has completed successfully. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "error_message",
-                                                "type": "string",
-                                                "description": "Error message if the run failed.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "triggered_by",
-                                                "type": "object",
-                                                "description": "Actor that triggered this run.\n\nNull for scheduled or event-triggered runs.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "actor"
-                                            },
-                                            {
-                                                "name": "started_at",
-                                                "type": "string",
-                                                "description": "When the run started executing.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            },
-                                            {
-                                                "name": "completed_at",
-                                                "type": "string",
-                                                "description": "When the run completed.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            },
-                                            {
-                                                "name": "duration_ms",
-                                                "type": "integer",
-                                                "description": "Duration in milliseconds.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "actions",
-                                                "type": "object",
-                                                "description": "Actions performed during this run.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "list"
-                                            },
-                                            {
-                                                "name": "steps",
-                                                "type": "object",
-                                                "description": "Timeline steps for this run.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "list"
-                                            },
-                                            {
-                                                "name": "created_at",
-                                                "type": "string",
-                                                "description": "When this run was created.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            },
-                                            {
-                                                "name": "updated_at",
-                                                "type": "string",
-                                                "description": "When this run was last updated.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "streaming_state",
-                                        "type": "string",
-                                        "description": "The streaming state of a reply.\n\n`streaming` while the body is still being generated (it fills in via realtime updates); `complete` once finalized.\n\n`null` for ordinary messages.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "client_message_id",
-                                        "type": "string",
-                                        "description": "The client-supplied dedupe key echoed back for optimistic-UI reconciliation.\n\n`null` for server-generated messages.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "edited_at",
-                                        "type": "string",
-                                        "description": "When the message was last edited.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "deleted_at",
-                                        "type": "string",
-                                        "description": "When the message was deleted (tombstone).",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "Creation timestamp.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "Last update timestamp.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
-                            }
-                        ],
-                        "example": {
-                            "object": "list",
-                            "page_info": {
-                                "next_page_url": "/v1/messaging/messages/scheduled?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoibWdfMDFoOXo4cTF3MmUzcjR0NXk2dTdpOG1nIiwiZCI6ImYifQ.OZYHo5uKKmTPv9vspRHHvsAPLtkHuA62hyjMYT1KlXk",
-                                "previous_page_url": null,
-                                "has_next_page": true,
-                                "has_prev_page": false
-                            },
-                            "data": [
-                                {
-                                    "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
-                                    "object": "chat_message",
-                                    "kind": "chat",
-                                    "status": "sent",
-                                    "visibility": "internal",
-                                    "conversation": {
-                                        "id": "cv_01h9z8q1w2e3r4t5y6u7i8cv",
-                                        "object": "conversation",
-                                        "type": "direct_message",
-                                        "audience": "internal",
-                                        "title": null,
-                                        "workflow_status": null,
-                                        "group": null,
-                                        "status": "active",
-                                        "legal_hold": "released",
-                                        "assignee": null,
-                                        "participants": {
-                                            "object": "list",
-                                            "page_info": {
-                                                "next_page_url": null,
-                                                "previous_page_url": null,
-                                                "has_next_page": false,
-                                                "has_prev_page": false
-                                            },
-                                            "data": [
-                                                {
-                                                    "id": "cvpt_01h9z8q1w2e3r4t5y6u7cvpt",
-                                                    "object": "conversation_participant",
-                                                    "type": "user",
-                                                    "role": "member",
-                                                    "membership": "active",
-                                                    "notifications": "unmuted",
-                                                    "actor": {
-                                                        "id": "acus_01ea9983ddb41dacc44ecf997c",
-                                                        "object": "actor",
-                                                        "type": "user",
-                                                        "name": "Jie Yan",
-                                                        "handle": null,
-                                                        "avatar_url": null,
-                                                        "role": null
-                                                    },
-                                                    "agent_trigger_policy": null,
-                                                    "agent_trigger_keywords": []
-                                                }
-                                            ]
-                                        },
-                                        "topic": null,
-                                        "unread": 2,
-                                        "last_message_at": "2026-05-10T00:23:00Z",
-                                        "last_message": null,
-                                        "created_at": "2026-05-10T00:00:00Z",
-                                        "updated_at": "2026-05-10T00:23:00Z"
-                                    },
-                                    "sequence": 42,
-                                    "body": "Sounds good — shipping it today.",
-                                    "subject": null,
-                                    "sender": {
-                                        "id": "acus_01ea9983ddb41dacc44ecf997c",
-                                        "object": "actor",
-                                        "type": "user",
-                                        "name": "Jie Yan",
-                                        "handle": null,
-                                        "avatar_url": null,
-                                        "role": null
-                                    },
-                                    "author": {
-                                        "id": "acus_01ea9983ddb41dacc44ecf997c",
-                                        "object": "actor",
-                                        "type": "user",
-                                        "name": "Jie Yan",
-                                        "handle": null,
-                                        "avatar_url": null,
-                                        "role": null
-                                    },
-                                    "attachments": {
-                                        "object": "list",
-                                        "page_info": {
-                                            "next_page_url": null,
-                                            "previous_page_url": null,
-                                            "has_next_page": false,
-                                            "has_prev_page": false
-                                        },
-                                        "data": [
-                                            {
-                                                "id": "mgah_01h9z8q1w2e3r4t5y6u7mgah",
-                                                "object": "message_attachment",
-                                                "kind": "image",
-                                                "filename": "diagram.png",
-                                                "content_type": "image/png",
-                                                "size_bytes": 48213,
-                                                "url": "https://chat-bucket.s3.amazonaws.com/chat/ac/cv/mgah/diagram.png?X-Amz-Signature=...",
-                                                "resource": null,
-                                                "created_at": "2026-05-10T00:00:00Z"
-                                            }
-                                        ]
-                                    },
-                                    "reply_to": null,
-                                    "resource": null,
-                                    "channel": "message",
-                                    "scheduled_at": null,
-                                    "agent_run": null,
-                                    "streaming_state": null,
-                                    "client_message_id": null,
-                                    "edited_at": null,
-                                    "deleted_at": null,
-                                    "created_at": "2026-05-10T00:00:00Z",
-                                    "updated_at": "2026-05-10T00:23:00Z"
-                                }
-                            ]
-                        }
-                    }
-                ]
-            },
-            {
                 "operationId": "send-message",
                 "summary": "Send Message",
-                "description": "Posts a message to a conversation.\n\nIdempotent on `client_message_id`.\n\nThis endpoint requires the permission: `messaging:create`.",
+                "description": "Posts a message to a conversation.\n\nWith `mode` = `send` (the default) the message is delivered — immediately, or queued when `scheduled_at` is set — and the request is idempotent on `client_message_id`. With `mode` = `draft` a customer-reply draft is proposed on an external case: it is held at status `draft` for human approval rather than sent, and `channel` is required.\n\nThis endpoint requires the permission: `messaging:create`.",
                 "method": "POST",
                 "path": "/v1/messaging/conversations/{id}/messages",
                 "domain": "messaging",
@@ -64392,9 +61984,41 @@ export const apiTags: TagData[] = [
                             "expandable": false
                         },
                         {
+                            "name": "mode",
+                            "type": "string",
+                            "description": "Whether to deliver the message now or hold it as a customer-reply draft. Defaults to `send`.\n\n- `send`: delivers the message (immediately, or at `scheduled_at`). This is the default.\n- `draft`: proposes a customer-reply draft on an external case, held for human approval rather than sent. Requires `channel`.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "send",
+                                "draft"
+                            ]
+                        },
+                        {
+                            "name": "channel",
+                            "type": "string",
+                            "description": "The channel a draft will be sent over when approved (`mode` = `draft`).\n\n- `message`: delivered as an in-conversation chat message.\n- `email`: delivered as an outbound email from the conversation's bridged inbox.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "message",
+                                "email"
+                            ]
+                        },
+                        {
+                            "name": "source_thread_message_id",
+                            "type": "string",
+                            "description": "The internal thread message a draft is composed from, when drafting from a thread (`mode` = `draft`).",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
+                        },
+                        {
                             "name": "client_message_id",
                             "type": "string",
-                            "description": "Client-supplied dedupe key.\n\nA resend with the same value returns the original message.",
+                            "description": "Client-supplied dedupe key.\n\nA resend with the same value returns the original message. Required when sending (`mode` = `send`); ignored for drafts.",
                             "required": true,
                             "nullable": false,
                             "expandable": false
@@ -64498,7 +62122,6 @@ export const apiTags: TagData[] = [
                                 "chat_message",
                                 "notification_unread_summary_account",
                                 "messaging_block",
-                                "sender_identity",
                                 "notification_preference",
                                 "message_attachment",
                                 "attachment_upload_target",
@@ -66409,2275 +64032,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
-                                            "notification_preference",
-                                            "message_attachment",
-                                            "attachment_upload_target",
-                                            "scheduled_message",
-                                            "messaging_contact",
-                                            "message_report",
-                                            "tool_group",
-                                            "model",
-                                            "payment_term",
-                                            "shipping_term",
-                                            "quantity",
-                                            "account_group",
-                                            "support_route",
-                                            "support_availability",
-                                            "account_status",
-                                            "geolocation",
-                                            "account_user",
-                                            "department",
-                                            "account_integration",
-                                            "account_price",
-                                            "product_line",
-                                            "item_category",
-                                            "attribute",
-                                            "rate",
-                                            "account_group_product_line_access",
-                                            "sales_target",
-                                            "adjustment_type",
-                                            "account_branding",
-                                            "account_portal",
-                                            "account_logo_url",
-                                            "public_account",
-                                            "property",
-                                            "carrier",
-                                            "service_level",
-                                            "item",
-                                            "item_inventory",
-                                            "product",
-                                            "batch",
-                                            "batch_flow_node",
-                                            "scanning_consumption",
-                                            "open_batch_summary",
-                                            "scanning_production_step_info",
-                                            "scanning_station",
-                                            "production_step",
-                                            "production_run",
-                                            "machine",
-                                            "child_account",
-                                            "unit_group",
-                                            "unit_group_unit",
-                                            "consumption",
-                                            "customer_product_line_access",
-                                            "customer",
-                                            "frequently_ordered_product",
-                                            "priority",
-                                            "delivery",
-                                            "delivery_line",
-                                            "sales_order",
-                                            "location",
-                                            "location_type",
-                                            "lot",
-                                            "email_log",
-                                            "email_domain",
-                                            "email_inbox",
-                                            "inventory_change_log",
-                                            "invoice",
-                                            "invoice_summary",
-                                            "invoice_line",
-                                            "invoice_allocation",
-                                            "invoice_for_payment",
-                                            "shipment",
-                                            "shipment_summary",
-                                            "shipment_line",
-                                            "shipping_case",
-                                            "shipping_case_label_url",
-                                            "settlement",
-                                            "settlement_summary",
-                                            "role_permission",
-                                            "registration_flow",
-                                            "registration_flow_option",
-                                            "transaction",
-                                            "transaction_summary",
-                                            "transaction_method",
-                                            "transaction_type",
-                                            "transaction_allocation",
-                                            "usage_item",
-                                            "account_usage_response",
-                                            "subscription_info",
-                                            "billing_portal_session_response",
-                                            "switch_plan_response",
-                                            "ensure_billing_customer_response",
-                                            "spending_cap_response",
-                                            "agent_spend_info",
-                                            "webhook_response",
-                                            "address_suggestion",
-                                            "address_components",
-                                            "address_details_result",
-                                            "validated_address",
-                                            "plan_limit",
-                                            "plan_change_proration",
-                                            "plan_change_line_item",
-                                            "setup_billing_response",
-                                            "confirm_payment_response",
-                                            "oauth_response",
-                                            "oauth_status_response",
-                                            "stripe_publishable_key",
-                                            "stripe_status",
-                                            "healthcheck",
-                                            "agent_definition_config",
-                                            "trigger_config",
-                                            "customer_contact_info",
-                                            "customer_freight_preferences",
-                                            "customer_defaults",
-                                            "customer_notification_preferences",
-                                            "order_discount",
-                                            "sales_order_line",
-                                            "sales_order_type",
-                                            "sales_order_status",
-                                            "material",
-                                            "supplier_material",
-                                            "part",
-                                            "permission_group",
-                                            "permission",
-                                            "pick",
-                                            "pick_line",
-                                            "product_type",
-                                            "production",
-                                            "production_flow",
-                                            "map",
-                                            "purchase_order",
-                                            "purchase_order_line",
-                                            "supplier",
-                                            "supplier_summary",
-                                            "receivable_entry",
-                                            "receiving_order",
-                                            "receiving_order_line",
-                                            "email_contact",
-                                            "allocation_entry",
-                                            "open_credit_entry",
-                                            "volume_discount",
-                                            "volume_discount_tier",
-                                            "analyze_deliveries_response",
-                                            "analyze_manufacturing_response",
-                                            "analyze_manufacturing_batch_response",
-                                            "analyze_quarterly_orders_response",
-                                            "analyze_new_customers_response",
-                                            "analyze_oee_response",
-                                            "catalog_product_line",
-                                            "catalog_category",
-                                            "catalog_product",
-                                            "catalog_property",
-                                            "catalog_attribute",
-                                            "dc_location",
-                                            "edi_run",
-                                            "inventory_item",
-                                            "analyze_weeks_of_sales_response",
-                                            "bulk_reconcile_items_response",
-                                            "sys_property",
-                                            "sys_property_type",
-                                            "sys_property_value",
-                                            "territory",
-                                            "tenancy",
-                                            "checkout_session",
-                                            "estimate_rate_result",
-                                            "rate_shop_option",
-                                            "rate_shop_result",
-                                            "owner",
-                                            "created_by",
-                                            "message",
-                                            "account_photo_upload_result",
-                                            "user_photo_upload_result",
-                                            "user_photo_url",
-                                            "batch_lot",
-                                            "check_duplicate_result",
-                                            "item_trend_point",
-                                            "pack_pick_response",
-                                            "pick_shipments_response",
-                                            "tenancy_pending_registration",
-                                            "invoice_allocation_entry",
-                                            "allocation_customer",
-                                            "checkout_sales_order_response",
-                                            "create_production_run_response",
-                                            "sales_order_price_quote",
-                                            "hubspot_sync_job",
-                                            "hubspot_sync_report",
-                                            "hubspot_company_review",
-                                            "hubspot_company_candidate",
-                                            "contact_match",
-                                            "reply_draft",
-                                            "conversation_link",
-                                            "messaging_group",
-                                            "messaging_group_member"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "Human-readable display name for the entity (e.g. a user's full name, a sales order number).",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "handle",
-                                        "type": "string",
-                                        "description": "Secondary human-readable identifier (e.g. email address, username, redacted API key value).",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "channel",
-                                "type": "string",
-                                "description": "How the message was delivered (or, for a draft, how it will be on approve).\n\n- `message`: delivered as an in-conversation chat message.\n- `email`: delivered as email through the conversation's bridged inbox.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "message",
-                                    "email"
-                                ]
-                            },
-                            {
-                                "name": "scheduled_at",
-                                "type": "string",
-                                "description": "When a `scheduled` message is due to be delivered.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false,
-                                "format": "date-time"
-                            },
-                            {
-                                "name": "agent_run",
-                                "type": "object",
-                                "description": "The agent run that produced this message, for deep-linking from an agent reply to its run.\n\n`null` for messages not produced by an agent.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": true,
-                                "objectType": "agent_run",
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "Agent run ID.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "Resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "agent_run"
-                                        ]
-                                    },
-                                    {
-                                        "name": "trigger_type",
-                                        "type": "string",
-                                        "description": "How this run was initiated.\n\n- `scheduled`: started by the agent's cron schedule.\n- `event`: started in response to a platform event.\n- `manual`: started by an explicit request; see `triggered_by`.\n- `chat`: started by a message in a conversation, with the agent's reply posted back into that conversation.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "scheduled",
-                                            "manual",
-                                            "event",
-                                            "chat"
-                                        ]
-                                    },
-                                    {
-                                        "name": "status",
-                                        "type": "string",
-                                        "description": "Current run status.\n\n- `pending`: queued but not yet started.\n- `running`: currently executing.\n- `awaiting_input`: paused, waiting for user input before continuing.\n- `awaiting_approval`: paused, waiting for a pending action to be approved.\n- `completed`: finished successfully.\n- `failed`: stopped after an error; see `error_message`.\n- `cancelled`: stopped before completion by a user.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "pending",
-                                            "running",
-                                            "completed",
-                                            "failed",
-                                            "cancelled",
-                                            "awaiting_input",
-                                            "awaiting_approval"
-                                        ]
-                                    },
-                                    {
-                                        "name": "definition",
-                                        "type": "object",
-                                        "description": "Full agent definition for this run.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "agent_definition"
-                                    },
-                                    {
-                                        "name": "input",
-                                        "type": "object",
-                                        "description": "Input provided to the agent at the start of the run, as JSON. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "output",
-                                        "type": "object",
-                                        "description": "Final output produced by the agent, as JSON.\n\nPopulated only once the run has completed successfully. Encoded as a JSON value (object, array, string, number, boolean, or null), not a JSON-encoded string.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "error_message",
-                                        "type": "string",
-                                        "description": "Error message if the run failed.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "triggered_by",
-                                        "type": "object",
-                                        "description": "Actor that triggered this run.\n\nNull for scheduled or event-triggered runs.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "actor"
-                                    },
-                                    {
-                                        "name": "started_at",
-                                        "type": "string",
-                                        "description": "When the run started executing.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "completed_at",
-                                        "type": "string",
-                                        "description": "When the run completed.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "duration_ms",
-                                        "type": "integer",
-                                        "description": "Duration in milliseconds.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "actions",
-                                        "type": "object",
-                                        "description": "Actions performed during this run.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "list"
-                                    },
-                                    {
-                                        "name": "steps",
-                                        "type": "object",
-                                        "description": "Timeline steps for this run.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "list"
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "When this run was created.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "When this run was last updated.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "streaming_state",
-                                "type": "string",
-                                "description": "The streaming state of a reply.\n\n`streaming` while the body is still being generated (it fills in via realtime updates); `complete` once finalized.\n\n`null` for ordinary messages.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false
-                            },
-                            {
-                                "name": "client_message_id",
-                                "type": "string",
-                                "description": "The client-supplied dedupe key echoed back for optimistic-UI reconciliation.\n\n`null` for server-generated messages.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false
-                            },
-                            {
-                                "name": "edited_at",
-                                "type": "string",
-                                "description": "When the message was last edited.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false,
-                                "format": "date-time"
-                            },
-                            {
-                                "name": "deleted_at",
-                                "type": "string",
-                                "description": "When the message was deleted (tombstone).",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false,
-                                "format": "date-time"
-                            },
-                            {
-                                "name": "created_at",
-                                "type": "string",
-                                "description": "Creation timestamp.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "format": "date-time"
-                            },
-                            {
-                                "name": "updated_at",
-                                "type": "string",
-                                "description": "Last update timestamp.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "format": "date-time"
-                            }
-                        ],
-                        "example": {
-                            "id": "mg_01h9z8q1w2e3r4t5y6u7i8mg",
-                            "object": "chat_message",
-                            "kind": "chat",
-                            "status": "sent",
-                            "visibility": "internal",
-                            "conversation": {
-                                "id": "cv_01h9z8q1w2e3r4t5y6u7i8cv",
-                                "object": "conversation",
-                                "type": "direct_message",
-                                "audience": "internal",
-                                "title": null,
-                                "workflow_status": null,
-                                "group": null,
-                                "status": "active",
-                                "legal_hold": "released",
-                                "assignee": null,
-                                "participants": {
-                                    "object": "list",
-                                    "page_info": {
-                                        "next_page_url": null,
-                                        "previous_page_url": null,
-                                        "has_next_page": false,
-                                        "has_prev_page": false
-                                    },
-                                    "data": [
-                                        {
-                                            "id": "cvpt_01h9z8q1w2e3r4t5y6u7cvpt",
-                                            "object": "conversation_participant",
-                                            "type": "user",
-                                            "role": "member",
-                                            "membership": "active",
-                                            "notifications": "unmuted",
-                                            "actor": {
-                                                "id": "acus_01ea9983ddb41dacc44ecf997c",
-                                                "object": "actor",
-                                                "type": "user",
-                                                "name": "Jie Yan",
-                                                "handle": null,
-                                                "avatar_url": null,
-                                                "role": null
-                                            },
-                                            "agent_trigger_policy": null,
-                                            "agent_trigger_keywords": []
-                                        }
-                                    ]
-                                },
-                                "topic": null,
-                                "unread": 2,
-                                "last_message_at": "2026-05-10T00:23:00Z",
-                                "last_message": null,
-                                "created_at": "2026-05-10T00:00:00Z",
-                                "updated_at": "2026-05-10T00:23:00Z"
-                            },
-                            "sequence": 42,
-                            "body": "Sounds good — shipping it today.",
-                            "subject": null,
-                            "sender": {
-                                "id": "acus_01ea9983ddb41dacc44ecf997c",
-                                "object": "actor",
-                                "type": "user",
-                                "name": "Jie Yan",
-                                "handle": null,
-                                "avatar_url": null,
-                                "role": null
-                            },
-                            "author": {
-                                "id": "acus_01ea9983ddb41dacc44ecf997c",
-                                "object": "actor",
-                                "type": "user",
-                                "name": "Jie Yan",
-                                "handle": null,
-                                "avatar_url": null,
-                                "role": null
-                            },
-                            "attachments": {
-                                "object": "list",
-                                "page_info": {
-                                    "next_page_url": null,
-                                    "previous_page_url": null,
-                                    "has_next_page": false,
-                                    "has_prev_page": false
-                                },
-                                "data": [
-                                    {
-                                        "id": "mgah_01h9z8q1w2e3r4t5y6u7mgah",
-                                        "object": "message_attachment",
-                                        "kind": "image",
-                                        "filename": "diagram.png",
-                                        "content_type": "image/png",
-                                        "size_bytes": 48213,
-                                        "url": "https://chat-bucket.s3.amazonaws.com/chat/ac/cv/mgah/diagram.png?X-Amz-Signature=...",
-                                        "resource": null,
-                                        "created_at": "2026-05-10T00:00:00Z"
-                                    }
-                                ]
-                            },
-                            "reply_to": null,
-                            "resource": null,
-                            "channel": "message",
-                            "scheduled_at": null,
-                            "agent_run": null,
-                            "streaming_state": null,
-                            "client_message_id": null,
-                            "edited_at": null,
-                            "deleted_at": null,
-                            "created_at": "2026-05-10T00:00:00Z",
-                            "updated_at": "2026-05-10T00:23:00Z"
-                        }
-                    }
-                ]
-            },
-            {
-                "operationId": "create-reply-draft",
-                "summary": "Create Reply Draft",
-                "description": "Proposes a customer-reply draft on an external case.\n\nThis endpoint requires the permission: `messaging:create`.",
-                "method": "POST",
-                "path": "/v1/messaging/conversations/{id}/messages/drafts",
-                "domain": "messaging",
-                "tag": "Messages",
-                "tagSlug": "messages",
-                "endpointSlug": "create-reply-draft",
-                "actionType": "create",
-                "isPreview": true,
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "type": "string",
-                        "required": true,
-                        "description": "Conversation ID."
-                    },
-                    {
-                        "name": "include[]",
-                        "in": "query",
-                        "type": "array",
-                        "required": false,
-                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
-                        "enum": [
-                            "sender",
-                            "author",
-                            "resource",
-                            "attachments",
-                            "attachments.resource",
-                            "conversation",
-                            "conversation.participants",
-                            "conversation.last_message",
-                            "reply_to",
-                            "reply_to.sender",
-                            "reply_to.author",
-                            "reply_to.attachments",
-                            "agent_run"
-                        ]
-                    }
-                ],
-                "requestBody": {
-                    "description": "The request body for Create Reply Draft",
-                    "fields": [
-                        {
-                            "name": "channel",
-                            "type": "string",
-                            "description": "The channel the draft will be sent over when approved.\n\n- `message`: delivered as an in-conversation chat message.\n- `email`: delivered as an outbound email from the conversation's bridged inbox.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "enum": [
-                                "message",
-                                "email"
-                            ]
-                        },
-                        {
-                            "name": "body",
-                            "type": "string",
-                            "description": "The proposed reply body.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "subject",
-                            "type": "string",
-                            "description": "The email subject, for the email channel.",
-                            "required": false,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "source_thread_message_id",
-                            "type": "string",
-                            "description": "The internal thread message this draft is composed from, when drafting from a thread.",
-                            "required": false,
-                            "nullable": false,
-                            "expandable": false
-                        }
-                    ],
-                    "example": {
-                        "channel": "message",
-                        "body": "Hi Joe — your order is in inspection and is expected to ship Friday."
-                    }
-                },
-                "responses": [
-                    {
-                        "statusCode": "201",
-                        "description": "Successful response for Create Reply Draft",
-                        "fields": [
-                            {
-                                "name": "id",
-                                "type": "string",
-                                "description": "Message ID.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false
-                            },
-                            {
-                                "name": "object",
-                                "type": "string",
-                                "description": "Resource type identifier.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "chat_message"
-                                ]
-                            },
-                            {
-                                "name": "kind",
-                                "type": "string",
-                                "description": "The kind of message.\n\n- `chat`: a user-authored chat message.\n- `system_event`: a system-generated event message.\n- `agent`: a message authored by an AI agent participant.\n- `scheduled`: a message materialized from a scheduled send.\n- `alert`: a system or producer alert rendered as a message.\n- `email`: an inbound email materialized into the conversation by the email bridge.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "chat",
-                                    "system_event",
-                                    "agent",
-                                    "scheduled",
-                                    "alert",
-                                    "email"
-                                ]
-                            },
-                            {
-                                "name": "status",
-                                "type": "string",
-                                "description": "The lifecycle state of the message.\n\n- `draft`: an editable customer-reply draft awaiting approval; not in the timeline.\n- `scheduled`: queued for delivery at a future time; not yet in the timeline.\n- `sent`: a delivered timeline message; only `sent` messages carry a `sequence`.\n- `canceled`: a scheduled message canceled before delivery.\n- `rejected`: a draft discarded without sending.\n- `failed`: a scheduled message that exhausted delivery attempts.\n- `superseded`: a draft replaced by a newer one for the same source thread.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "draft",
-                                    "scheduled",
-                                    "sent",
-                                    "canceled",
-                                    "rejected",
-                                    "failed",
-                                    "superseded"
-                                ]
-                            },
-                            {
-                                "name": "visibility",
-                                "type": "string",
-                                "description": "Who can see this message.\n\n- `internal`: a team-only note.\n- `external`: sent to or received from an external party (e.g. the customer on a support case).\n- `system`: an event shown to both the team and the customer.\n\nOn a customer-facing conversation, customer payloads only ever carry `external` and `system` messages.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "internal",
-                                    "external",
-                                    "system"
-                                ]
-                            },
-                            {
-                                "name": "conversation",
-                                "type": "object",
-                                "description": "The conversation this message belongs to.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": true,
-                                "objectType": "conversation",
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "Conversation ID.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "Resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "conversation"
-                                        ]
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "What kind of conversation this is.\n\n- `direct_message`: a 1:1 thread between two users.\n- `group`: a named thread with multiple user or agent members (including customer-facing support cases).\n- `system`: a system channel that delivers automated account alerts.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "direct_message",
-                                            "group",
-                                            "system"
-                                        ]
-                                    },
-                                    {
-                                        "name": "audience",
-                                        "type": "string",
-                                        "description": "Whether this is a team-only conversation (`internal`) or a customer-facing case (`customer`).",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "internal",
-                                            "customer"
-                                        ]
-                                    },
-                                    {
-                                        "name": "title",
-                                        "type": "string",
-                                        "description": "The display title of a group conversation.\n\n`null` for direct messages, where the client derives a title from the participants.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "workflow_status",
-                                        "type": "string",
-                                        "description": "The triage lane of a customer-facing case.\n\nOnly set for customer-audience conversations.\n\n- `new`: opened but not yet triaged.\n- `open`: actively being worked.\n- `waiting_internal`: blocked on the internal team.\n- `waiting_external`: blocked on an external reply.\n- `needs_approval`: a drafted reply is awaiting human approval.\n- `resolved`: closed out.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false,
-                                        "enum": [
-                                            "new",
-                                            "open",
-                                            "waiting_internal",
-                                            "waiting_external",
-                                            "needs_approval",
-                                            "resolved"
-                                        ]
-                                    },
-                                    {
-                                        "name": "group",
-                                        "type": "object",
-                                        "description": "The reusable roster this conversation was started from, when one was used.\n\n`null` for ad-hoc conversations. Provenance only: members were copied in at creation and are not driven by the roster thereafter.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "messaging_group"
-                                    },
-                                    {
-                                        "name": "status",
-                                        "type": "string",
-                                        "description": "The caller's effective status.\n\n- `hidden` when the caller has hidden the conversation\n- otherwise the account-level lifecycle state",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "active",
-                                            "archived",
-                                            "hidden"
-                                        ]
-                                    },
-                                    {
-                                        "name": "legal_hold",
-                                        "type": "string",
-                                        "description": "Whether the conversation is under legal hold.\n\nExempts the conversation from retention purging and redaction.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "released",
-                                            "held"
-                                        ]
-                                    },
-                                    {
-                                        "name": "assignee",
-                                        "type": "object",
-                                        "description": "The case owner, when one is set: a `user` actor (a team member) or a `group` actor (a team).",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "actor"
-                                    },
-                                    {
-                                        "name": "participants",
-                                        "type": "object",
-                                        "description": "The active participants of the conversation.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true,
-                                        "objectType": "list",
-                                        "properties": [
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "list"
-                                                ]
-                                            },
-                                            {
-                                                "name": "page_info",
-                                                "type": "object",
-                                                "description": "Pagination metadata.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "properties": [
-                                                    {
-                                                        "name": "next_page_url",
-                                                        "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "previous_page_url",
-                                                        "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "has_next_page",
-                                                        "type": "boolean",
-                                                        "description": "Whether more results exist after this page.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "has_prev_page",
-                                                        "type": "boolean",
-                                                        "description": "Whether results exist before this page.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "name": "data",
-                                                "type": "array",
-                                                "description": "Resources in this page.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "objectType": "conversation_participant",
-                                                "itemType": "object",
-                                                "properties": [
-                                                    {
-                                                        "name": "id",
-                                                        "type": "string",
-                                                        "description": "Participant ID.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "object",
-                                                        "type": "string",
-                                                        "description": "Resource type identifier.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "conversation_participant"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "type",
-                                                        "type": "string",
-                                                        "description": "The kind of participant.\n\n- `user`: an account user (a teammate).\n- `agent`: an AI agent.\n- `system`: the system itself, which posts automated messages.\n- `customer`: an external customer in a support case.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "user",
-                                                            "agent",
-                                                            "system",
-                                                            "customer"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "role",
-                                                        "type": "string",
-                                                        "description": "The participant's permission level in the conversation.\n\n- `owner`: can rename or delete the conversation and manage its members and their roles.\n- `admin`: can add or remove members and rename the conversation.\n- `member`: can post, react, mute, and leave.\n- `viewer`: read-only access.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "owner",
-                                                            "admin",
-                                                            "member",
-                                                            "viewer"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "membership",
-                                                        "type": "string",
-                                                        "description": "The participant's membership in the conversation.\n\n- `active`: currently a member.\n- `left`: voluntarily left the conversation.\n- `removed`: removed by an admin.\n- `hidden`: still a member but has hidden the conversation from their own list.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "active",
-                                                            "left",
-                                                            "removed",
-                                                            "hidden"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "notifications",
-                                                        "type": "string",
-                                                        "description": "The participant's notification preference for the conversation.\n\n- `unmuted`: receives normal notifications.\n- `muted`: notifications are suppressed (mentions may still pierce the mute).",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "unmuted",
-                                                            "muted"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "actor",
-                                                        "type": "object",
-                                                        "description": "The actor this participant represents: a `user` (account user) or an `agent`.\n\n`null` for system participants.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": false,
-                                                        "objectType": "actor"
-                                                    },
-                                                    {
-                                                        "name": "agent_trigger_policy",
-                                                        "type": "string",
-                                                        "description": "For agent participants, when the agent is invoked in response to messages.\n\n`null` for non-agent participants.\n\n- `mention`: only when the agent is @mentioned.\n- `keyword`: when a message contains one of the agent's trigger keywords.\n- `always`: on every human message in the conversation.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "mention",
-                                                            "keyword",
-                                                            "always"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "agent_trigger_keywords",
-                                                        "type": "array",
-                                                        "description": "For agent participants with a keyword/mention policy, the keywords that trigger it.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "itemType": "string"
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "topic",
-                                        "type": "object",
-                                        "description": "The app resource this conversation is anchored to (e.g. an order).\n\n`null` when the conversation has no topic anchor.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "entity"
-                                    },
-                                    {
-                                        "name": "unread",
-                                        "type": "integer",
-                                        "description": "Number of messages the caller has not yet read.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "last_message_at",
-                                        "type": "string",
-                                        "description": "When the most recent message was sent.\n\n`null` when the conversation has no messages yet.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "last_message",
-                                        "type": "object",
-                                        "description": "The most recent message in the conversation.\n\n`null` when the conversation has no messages yet.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true,
-                                        "objectType": "chat_message",
-                                        "properties": [
-                                            {
-                                                "name": "id",
-                                                "type": "string",
-                                                "description": "Message ID.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "chat_message"
-                                                ]
-                                            },
-                                            {
-                                                "name": "kind",
-                                                "type": "string",
-                                                "description": "The kind of message.\n\n- `chat`: a user-authored chat message.\n- `system_event`: a system-generated event message.\n- `agent`: a message authored by an AI agent participant.\n- `scheduled`: a message materialized from a scheduled send.\n- `alert`: a system or producer alert rendered as a message.\n- `email`: an inbound email materialized into the conversation by the email bridge.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "chat",
-                                                    "system_event",
-                                                    "agent",
-                                                    "scheduled",
-                                                    "alert",
-                                                    "email"
-                                                ]
-                                            },
-                                            {
-                                                "name": "status",
-                                                "type": "string",
-                                                "description": "The lifecycle state of the message.\n\n- `draft`: an editable customer-reply draft awaiting approval; not in the timeline.\n- `scheduled`: queued for delivery at a future time; not yet in the timeline.\n- `sent`: a delivered timeline message; only `sent` messages carry a `sequence`.\n- `canceled`: a scheduled message canceled before delivery.\n- `rejected`: a draft discarded without sending.\n- `failed`: a scheduled message that exhausted delivery attempts.\n- `superseded`: a draft replaced by a newer one for the same source thread.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "draft",
-                                                    "scheduled",
-                                                    "sent",
-                                                    "canceled",
-                                                    "rejected",
-                                                    "failed",
-                                                    "superseded"
-                                                ]
-                                            },
-                                            {
-                                                "name": "visibility",
-                                                "type": "string",
-                                                "description": "Who can see this message.\n\n- `internal`: a team-only note.\n- `external`: sent to or received from an external party (e.g. the customer on a support case).\n- `system`: an event shown to both the team and the customer.\n\nOn a customer-facing conversation, customer payloads only ever carry `external` and `system` messages.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "internal",
-                                                    "external",
-                                                    "system"
-                                                ]
-                                            },
-                                            {
-                                                "name": "conversation",
-                                                "type": "object",
-                                                "description": "The conversation this message belongs to.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "conversation"
-                                            },
-                                            {
-                                                "name": "sequence",
-                                                "type": "integer",
-                                                "description": "Monotonic per-conversation ordering sequence.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "body",
-                                                "type": "string",
-                                                "description": "Message body.\n\n`null` for templated or deleted messages.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "subject",
-                                                "type": "string",
-                                                "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "sender",
-                                                "type": "object",
-                                                "description": "The actor that sent the message, as displayed. When the message was posted under a sender identity (a persona / group), this is that persona; otherwise it is the authoring user.\n\n`null` for pure system messages.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "actor"
-                                            },
-                                            {
-                                                "name": "author",
-                                                "type": "object",
-                                                "description": "The underlying account user who authored the message.\n\n`null` for system messages, or when the message was posted under an anonymizing sender identity and the caller is not entitled to see the real author.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "actor"
-                                            },
-                                            {
-                                                "name": "attachments",
-                                                "type": "object",
-                                                "description": "Files, images, links, or resources attached to the message.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "list"
-                                            },
-                                            {
-                                                "name": "reply_to",
-                                                "type": "object",
-                                                "description": "The message this one replies to.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "chat_message"
-                                            },
-                                            {
-                                                "name": "resource",
-                                                "type": "object",
-                                                "description": "The app resource this message links to.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "entity"
-                                            },
-                                            {
-                                                "name": "channel",
-                                                "type": "string",
-                                                "description": "How the message was delivered (or, for a draft, how it will be on approve).\n\n- `message`: delivered as an in-conversation chat message.\n- `email`: delivered as email through the conversation's bridged inbox.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "message",
-                                                    "email"
-                                                ]
-                                            },
-                                            {
-                                                "name": "scheduled_at",
-                                                "type": "string",
-                                                "description": "When a `scheduled` message is due to be delivered.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            },
-                                            {
-                                                "name": "agent_run",
-                                                "type": "object",
-                                                "description": "The agent run that produced this message, for deep-linking from an agent reply to its run.\n\n`null` for messages not produced by an agent.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "agent_run"
-                                            },
-                                            {
-                                                "name": "streaming_state",
-                                                "type": "string",
-                                                "description": "The streaming state of a reply.\n\n`streaming` while the body is still being generated (it fills in via realtime updates); `complete` once finalized.\n\n`null` for ordinary messages.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "client_message_id",
-                                                "type": "string",
-                                                "description": "The client-supplied dedupe key echoed back for optimistic-UI reconciliation.\n\n`null` for server-generated messages.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "edited_at",
-                                                "type": "string",
-                                                "description": "When the message was last edited.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            },
-                                            {
-                                                "name": "deleted_at",
-                                                "type": "string",
-                                                "description": "When the message was deleted (tombstone).",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            },
-                                            {
-                                                "name": "created_at",
-                                                "type": "string",
-                                                "description": "Creation timestamp.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            },
-                                            {
-                                                "name": "updated_at",
-                                                "type": "string",
-                                                "description": "Last update timestamp.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "Creation timestamp.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "Last update timestamp.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "sequence",
-                                "type": "integer",
-                                "description": "Monotonic per-conversation ordering sequence.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false
-                            },
-                            {
-                                "name": "body",
-                                "type": "string",
-                                "description": "Message body.\n\n`null` for templated or deleted messages.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false
-                            },
-                            {
-                                "name": "subject",
-                                "type": "string",
-                                "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": false
-                            },
-                            {
-                                "name": "sender",
-                                "type": "object",
-                                "description": "The actor that sent the message, as displayed. When the message was posted under a sender identity (a persona / group), this is that persona; otherwise it is the authoring user.\n\n`null` for pure system messages.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": true,
-                                "objectType": "actor",
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "Unique identifier of the actor.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "Resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "actor"
-                                        ]
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "user",
-                                            "api_key",
-                                            "agent",
-                                            "group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The actor's display name.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "handle",
-                                        "type": "string",
-                                        "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "avatar_url",
-                                        "type": "string",
-                                        "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "role",
-                                        "type": "object",
-                                        "description": "Assigned role.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "role"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "author",
-                                "type": "object",
-                                "description": "The underlying account user who authored the message.\n\n`null` for system messages, or when the message was posted under an anonymizing sender identity and the caller is not entitled to see the real author.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": true,
-                                "objectType": "actor",
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "Unique identifier of the actor.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "Resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "actor"
-                                        ]
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "user",
-                                            "api_key",
-                                            "agent",
-                                            "group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The actor's display name.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "handle",
-                                        "type": "string",
-                                        "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "avatar_url",
-                                        "type": "string",
-                                        "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "role",
-                                        "type": "object",
-                                        "description": "Assigned role.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "role"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "attachments",
-                                "type": "object",
-                                "description": "Files, images, links, or resources attached to the message.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": true,
-                                "objectType": "list",
-                                "properties": [
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "Resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "list"
-                                        ]
-                                    },
-                                    {
-                                        "name": "page_info",
-                                        "type": "object",
-                                        "description": "Pagination metadata.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "properties": [
-                                            {
-                                                "name": "next_page_url",
-                                                "type": "string",
-                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "previous_page_url",
-                                                "type": "string",
-                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "has_next_page",
-                                                "type": "boolean",
-                                                "description": "Whether more results exist after this page.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "has_prev_page",
-                                                "type": "boolean",
-                                                "description": "Whether results exist before this page.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "data",
-                                        "type": "array",
-                                        "description": "Resources in this page.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "objectType": "message_attachment",
-                                        "itemType": "object",
-                                        "properties": [
-                                            {
-                                                "name": "id",
-                                                "type": "string",
-                                                "description": "Attachment ID.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "message_attachment"
-                                                ]
-                                            },
-                                            {
-                                                "name": "kind",
-                                                "type": "string",
-                                                "description": "The kind of attachment, which determines how it is stored and which of the fields below are populated.\n\n- `file`: an uploaded non-image file.\n- `image`: an uploaded image.\n- `link`: an external URL reference, with no stored file.\n- `resource`: a reference to an in-app resource, such as an order.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "file",
-                                                    "image",
-                                                    "link",
-                                                    "resource"
-                                                ]
-                                            },
-                                            {
-                                                "name": "filename",
-                                                "type": "string",
-                                                "description": "The original filename for uploaded attachments.\n\n`null` for link/resource attachments.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "content_type",
-                                                "type": "string",
-                                                "description": "The MIME content type for uploaded attachments.\n\n`null` for link/resource attachments.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "size_bytes",
-                                                "type": "integer",
-                                                "description": "The size in bytes for uploaded attachments.\n\n`null` when unknown or for link/resource attachments.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "url",
-                                                "type": "string",
-                                                "description": "A time-limited download URL for uploaded (file/image) attachments, or the link URL.\n\n`null` for resource attachments.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "resource",
-                                                "type": "object",
-                                                "description": "The linked in-app resource for `resource` attachments.\n\n`null` for file/image/link attachments.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "entity"
-                                            },
-                                            {
-                                                "name": "created_at",
-                                                "type": "string",
-                                                "description": "Creation timestamp.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "format": "date-time"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "reply_to",
-                                "type": "object",
-                                "description": "The message this one replies to.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": true,
-                                "objectType": "chat_message",
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "Message ID.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "Resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "chat_message"
-                                        ]
-                                    },
-                                    {
-                                        "name": "kind",
-                                        "type": "string",
-                                        "description": "The kind of message.\n\n- `chat`: a user-authored chat message.\n- `system_event`: a system-generated event message.\n- `agent`: a message authored by an AI agent participant.\n- `scheduled`: a message materialized from a scheduled send.\n- `alert`: a system or producer alert rendered as a message.\n- `email`: an inbound email materialized into the conversation by the email bridge.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "chat",
-                                            "system_event",
-                                            "agent",
-                                            "scheduled",
-                                            "alert",
-                                            "email"
-                                        ]
-                                    },
-                                    {
-                                        "name": "status",
-                                        "type": "string",
-                                        "description": "The lifecycle state of the message.\n\n- `draft`: an editable customer-reply draft awaiting approval; not in the timeline.\n- `scheduled`: queued for delivery at a future time; not yet in the timeline.\n- `sent`: a delivered timeline message; only `sent` messages carry a `sequence`.\n- `canceled`: a scheduled message canceled before delivery.\n- `rejected`: a draft discarded without sending.\n- `failed`: a scheduled message that exhausted delivery attempts.\n- `superseded`: a draft replaced by a newer one for the same source thread.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "draft",
-                                            "scheduled",
-                                            "sent",
-                                            "canceled",
-                                            "rejected",
-                                            "failed",
-                                            "superseded"
-                                        ]
-                                    },
-                                    {
-                                        "name": "visibility",
-                                        "type": "string",
-                                        "description": "Who can see this message.\n\n- `internal`: a team-only note.\n- `external`: sent to or received from an external party (e.g. the customer on a support case).\n- `system`: an event shown to both the team and the customer.\n\nOn a customer-facing conversation, customer payloads only ever carry `external` and `system` messages.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "internal",
-                                            "external",
-                                            "system"
-                                        ]
-                                    },
-                                    {
-                                        "name": "conversation",
-                                        "type": "object",
-                                        "description": "The conversation this message belongs to.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "conversation"
-                                    },
-                                    {
-                                        "name": "sequence",
-                                        "type": "integer",
-                                        "description": "Monotonic per-conversation ordering sequence.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "body",
-                                        "type": "string",
-                                        "description": "Message body.\n\n`null` for templated or deleted messages.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "subject",
-                                        "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "sender",
-                                        "type": "object",
-                                        "description": "The actor that sent the message, as displayed. When the message was posted under a sender identity (a persona / group), this is that persona; otherwise it is the authoring user.\n\n`null` for pure system messages.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true,
-                                        "objectType": "actor",
-                                        "properties": [
-                                            {
-                                                "name": "id",
-                                                "type": "string",
-                                                "description": "Unique identifier of the actor.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "actor"
-                                                ]
-                                            },
-                                            {
-                                                "name": "type",
-                                                "type": "string",
-                                                "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "user",
-                                                    "api_key",
-                                                    "agent",
-                                                    "group"
-                                                ]
-                                            },
-                                            {
-                                                "name": "name",
-                                                "type": "string",
-                                                "description": "The actor's display name.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "handle",
-                                                "type": "string",
-                                                "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "avatar_url",
-                                                "type": "string",
-                                                "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "role",
-                                                "type": "object",
-                                                "description": "Assigned role.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "role"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "author",
-                                        "type": "object",
-                                        "description": "The underlying account user who authored the message.\n\n`null` for system messages, or when the message was posted under an anonymizing sender identity and the caller is not entitled to see the real author.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true,
-                                        "objectType": "actor",
-                                        "properties": [
-                                            {
-                                                "name": "id",
-                                                "type": "string",
-                                                "description": "Unique identifier of the actor.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "actor"
-                                                ]
-                                            },
-                                            {
-                                                "name": "type",
-                                                "type": "string",
-                                                "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "user",
-                                                    "api_key",
-                                                    "agent",
-                                                    "group"
-                                                ]
-                                            },
-                                            {
-                                                "name": "name",
-                                                "type": "string",
-                                                "description": "The actor's display name.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "handle",
-                                                "type": "string",
-                                                "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "avatar_url",
-                                                "type": "string",
-                                                "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "role",
-                                                "type": "object",
-                                                "description": "Assigned role.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "role"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "attachments",
-                                        "type": "object",
-                                        "description": "Files, images, links, or resources attached to the message.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true,
-                                        "objectType": "list",
-                                        "properties": [
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "list"
-                                                ]
-                                            },
-                                            {
-                                                "name": "page_info",
-                                                "type": "object",
-                                                "description": "Pagination metadata.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "properties": [
-                                                    {
-                                                        "name": "next_page_url",
-                                                        "type": "string",
-                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "previous_page_url",
-                                                        "type": "string",
-                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "has_next_page",
-                                                        "type": "boolean",
-                                                        "description": "Whether more results exist after this page.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "has_prev_page",
-                                                        "type": "boolean",
-                                                        "description": "Whether results exist before this page.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "name": "data",
-                                                "type": "array",
-                                                "description": "Resources in this page.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "objectType": "message_attachment",
-                                                "itemType": "object",
-                                                "properties": [
-                                                    {
-                                                        "name": "id",
-                                                        "type": "string",
-                                                        "description": "Attachment ID.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "object",
-                                                        "type": "string",
-                                                        "description": "Resource type identifier.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "message_attachment"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "kind",
-                                                        "type": "string",
-                                                        "description": "The kind of attachment, which determines how it is stored and which of the fields below are populated.\n\n- `file`: an uploaded non-image file.\n- `image`: an uploaded image.\n- `link`: an external URL reference, with no stored file.\n- `resource`: a reference to an in-app resource, such as an order.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "enum": [
-                                                            "file",
-                                                            "image",
-                                                            "link",
-                                                            "resource"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "name": "filename",
-                                                        "type": "string",
-                                                        "description": "The original filename for uploaded attachments.\n\n`null` for link/resource attachments.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "content_type",
-                                                        "type": "string",
-                                                        "description": "The MIME content type for uploaded attachments.\n\n`null` for link/resource attachments.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "size_bytes",
-                                                        "type": "integer",
-                                                        "description": "The size in bytes for uploaded attachments.\n\n`null` when unknown or for link/resource attachments.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "url",
-                                                        "type": "string",
-                                                        "description": "A time-limited download URL for uploaded (file/image) attachments, or the link URL.\n\n`null` for resource attachments.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "expandable": false
-                                                    },
-                                                    {
-                                                        "name": "resource",
-                                                        "type": "object",
-                                                        "description": "The linked in-app resource for `resource` attachments.\n\n`null` for file/image/link attachments.",
-                                                        "required": true,
-                                                        "nullable": true,
-                                                        "alwaysNull": true,
-                                                        "expandable": true,
-                                                        "objectType": "entity"
-                                                    },
-                                                    {
-                                                        "name": "created_at",
-                                                        "type": "string",
-                                                        "description": "Creation timestamp.",
-                                                        "required": true,
-                                                        "nullable": false,
-                                                        "expandable": false,
-                                                        "format": "date-time"
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "reply_to",
-                                        "type": "object",
-                                        "description": "The message this one replies to.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "chat_message"
-                                    },
-                                    {
-                                        "name": "resource",
-                                        "type": "object",
-                                        "description": "The app resource this message links to.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "entity"
-                                    },
-                                    {
-                                        "name": "channel",
-                                        "type": "string",
-                                        "description": "How the message was delivered (or, for a draft, how it will be on approve).\n\n- `message`: delivered as an in-conversation chat message.\n- `email`: delivered as email through the conversation's bridged inbox.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "message",
-                                            "email"
-                                        ]
-                                    },
-                                    {
-                                        "name": "scheduled_at",
-                                        "type": "string",
-                                        "description": "When a `scheduled` message is due to be delivered.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "agent_run",
-                                        "type": "object",
-                                        "description": "The agent run that produced this message, for deep-linking from an agent reply to its run.\n\n`null` for messages not produced by an agent.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "agent_run"
-                                    },
-                                    {
-                                        "name": "streaming_state",
-                                        "type": "string",
-                                        "description": "The streaming state of a reply.\n\n`streaming` while the body is still being generated (it fills in via realtime updates); `complete` once finalized.\n\n`null` for ordinary messages.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "client_message_id",
-                                        "type": "string",
-                                        "description": "The client-supplied dedupe key echoed back for optimistic-UI reconciliation.\n\n`null` for server-generated messages.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "edited_at",
-                                        "type": "string",
-                                        "description": "When the message was last edited.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "deleted_at",
-                                        "type": "string",
-                                        "description": "When the message was deleted (tombstone).",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "Creation timestamp.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "Last update timestamp.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "resource",
-                                "type": "object",
-                                "description": "The app resource this message links to.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": true,
-                                "objectType": "entity",
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "Unique identifier for the entity.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "Resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "entity"
-                                        ]
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "The resource kind that this entity references, as an object-type value (e.g. `user`, `account`).\n\nUnlike `object` — which is always `entity` — this names the underlying resource the `id` points to.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "account",
-                                            "actor",
-                                            "entity",
-                                            "record",
-                                            "freight",
-                                            "sales_order_totals",
-                                            "sales_order_related",
-                                            "order_contact",
-                                            "user",
-                                            "address",
-                                            "api_key",
-                                            "created_api_key",
-                                            "refresh_token",
-                                            "list",
-                                            "sandbox",
-                                            "registration_session",
-                                            "pricing_plan",
-                                            "account_plan",
-                                            "plan_change",
-                                            "enterprise_inquiry",
-                                            "request_log",
-                                            "audit_event",
-                                            "audit_field_change",
-                                            "role",
-                                            "unit",
-                                            "account_affiliation",
-                                            "agent_definition",
-                                            "available_tool",
-                                            "agent_definition_tool",
-                                            "agent_account_status",
-                                            "agent_run",
-                                            "agent_action",
-                                            "agent_run_step",
-                                            "agent_token_usage",
-                                            "agent_memory",
-                                            "notification",
-                                            "notification_unread_count",
-                                            "notification_send_result",
-                                            "notification_unread_summary",
-                                            "announcement",
-                                            "conversation",
-                                            "conversation_participant",
-                                            "chat_message",
-                                            "notification_unread_summary_account",
-                                            "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -69290,7 +64644,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "string",
                         "required": false,
-                        "description": "Filter by lifecycle state.\n\nDefaults to `sent` (the conversation timeline); pass `draft` to list the case's open customer-reply drafts.",
+                        "description": "Filter by lifecycle state.\n\nDefaults to `sent` (the conversation timeline); pass `draft` to list the case's open customer-reply drafts, or `scheduled` to list your not-yet-sent scheduled messages in this conversation.",
                         "enum": [
                             "draft",
                             "scheduled",
@@ -71007,7 +66361,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -73259,7 +68612,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -75482,7 +70834,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -77705,7 +73056,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -78727,7 +74077,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -79471,7 +74820,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -80319,7 +75667,6 @@ export const apiTags: TagData[] = [
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
-                                            "sender_identity",
                                             "notification_preference",
                                             "message_attachment",
                                             "attachment_upload_target",
@@ -81063,7 +76410,6 @@ export const apiTags: TagData[] = [
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
-                                                    "sender_identity",
                                                     "notification_preference",
                                                     "message_attachment",
                                                     "attachment_upload_target",
@@ -84348,6 +79694,17 @@ export const apiTags: TagData[] = [
                         "type": "string",
                         "required": true,
                         "description": "Conversation ID the attachment will be sent in."
+                    },
+                    {
+                        "name": "include[]",
+                        "in": "query",
+                        "type": "array",
+                        "required": false,
+                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
+                        "enum": [
+                            "attachment",
+                            "attachment.resource"
+                        ]
                     }
                 ],
                 "requestBody": {
@@ -84392,12 +79749,381 @@ export const apiTags: TagData[] = [
                                 ]
                             },
                             {
-                                "name": "attachment_id",
-                                "type": "string",
-                                "description": "The generated attachment ID to echo back when sending the message.",
+                                "name": "attachment",
+                                "type": "object",
+                                "description": "Pre-allocated attachment metadata for the staged upload.",
                                 "required": true,
-                                "nullable": false,
-                                "expandable": false
+                                "nullable": true,
+                                "expandable": true,
+                                "objectType": "message_attachment",
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Attachment ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "message_attachment"
+                                        ]
+                                    },
+                                    {
+                                        "name": "kind",
+                                        "type": "string",
+                                        "description": "The kind of attachment, which determines how it is stored and which of the fields below are populated.\n\n- `file`: an uploaded non-image file.\n- `image`: an uploaded image.\n- `link`: an external URL reference, with no stored file.\n- `resource`: a reference to an in-app resource, such as an order.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "file",
+                                            "image",
+                                            "link",
+                                            "resource"
+                                        ]
+                                    },
+                                    {
+                                        "name": "filename",
+                                        "type": "string",
+                                        "description": "The original filename for uploaded attachments.\n\n`null` for link/resource attachments.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "content_type",
+                                        "type": "string",
+                                        "description": "The MIME content type for uploaded attachments.\n\n`null` for link/resource attachments.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "size_bytes",
+                                        "type": "integer",
+                                        "description": "The size in bytes for uploaded attachments.\n\n`null` when unknown or for link/resource attachments.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "url",
+                                        "type": "string",
+                                        "description": "A time-limited download URL for uploaded (file/image) attachments, or the link URL.\n\n`null` for resource attachments.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "resource",
+                                        "type": "object",
+                                        "description": "The linked in-app resource for `resource` attachments.\n\n`null` for file/image/link attachments.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "objectType": "entity",
+                                        "properties": [
+                                            {
+                                                "name": "id",
+                                                "type": "string",
+                                                "description": "Unique identifier for the entity.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "entity"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "The resource kind that this entity references, as an object-type value (e.g. `user`, `account`).\n\nUnlike `object` — which is always `entity` — this names the underlying resource the `id` points to.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "account",
+                                                    "actor",
+                                                    "entity",
+                                                    "record",
+                                                    "freight",
+                                                    "sales_order_totals",
+                                                    "sales_order_related",
+                                                    "order_contact",
+                                                    "user",
+                                                    "address",
+                                                    "api_key",
+                                                    "created_api_key",
+                                                    "refresh_token",
+                                                    "list",
+                                                    "sandbox",
+                                                    "registration_session",
+                                                    "pricing_plan",
+                                                    "account_plan",
+                                                    "plan_change",
+                                                    "enterprise_inquiry",
+                                                    "request_log",
+                                                    "audit_event",
+                                                    "audit_field_change",
+                                                    "role",
+                                                    "unit",
+                                                    "account_affiliation",
+                                                    "agent_definition",
+                                                    "available_tool",
+                                                    "agent_definition_tool",
+                                                    "agent_account_status",
+                                                    "agent_run",
+                                                    "agent_action",
+                                                    "agent_run_step",
+                                                    "agent_token_usage",
+                                                    "agent_memory",
+                                                    "notification",
+                                                    "notification_unread_count",
+                                                    "notification_send_result",
+                                                    "notification_unread_summary",
+                                                    "announcement",
+                                                    "conversation",
+                                                    "conversation_participant",
+                                                    "chat_message",
+                                                    "notification_unread_summary_account",
+                                                    "messaging_block",
+                                                    "notification_preference",
+                                                    "message_attachment",
+                                                    "attachment_upload_target",
+                                                    "scheduled_message",
+                                                    "messaging_contact",
+                                                    "message_report",
+                                                    "tool_group",
+                                                    "model",
+                                                    "payment_term",
+                                                    "shipping_term",
+                                                    "quantity",
+                                                    "account_group",
+                                                    "support_route",
+                                                    "support_availability",
+                                                    "account_status",
+                                                    "geolocation",
+                                                    "account_user",
+                                                    "department",
+                                                    "account_integration",
+                                                    "account_price",
+                                                    "product_line",
+                                                    "item_category",
+                                                    "attribute",
+                                                    "rate",
+                                                    "account_group_product_line_access",
+                                                    "sales_target",
+                                                    "adjustment_type",
+                                                    "account_branding",
+                                                    "account_portal",
+                                                    "account_logo_url",
+                                                    "public_account",
+                                                    "property",
+                                                    "carrier",
+                                                    "service_level",
+                                                    "item",
+                                                    "item_inventory",
+                                                    "product",
+                                                    "batch",
+                                                    "batch_flow_node",
+                                                    "scanning_consumption",
+                                                    "open_batch_summary",
+                                                    "scanning_production_step_info",
+                                                    "scanning_station",
+                                                    "production_step",
+                                                    "production_run",
+                                                    "machine",
+                                                    "child_account",
+                                                    "unit_group",
+                                                    "unit_group_unit",
+                                                    "consumption",
+                                                    "customer_product_line_access",
+                                                    "customer",
+                                                    "frequently_ordered_product",
+                                                    "priority",
+                                                    "delivery",
+                                                    "delivery_line",
+                                                    "sales_order",
+                                                    "location",
+                                                    "location_type",
+                                                    "lot",
+                                                    "email_log",
+                                                    "email_domain",
+                                                    "email_inbox",
+                                                    "inventory_change_log",
+                                                    "invoice",
+                                                    "invoice_summary",
+                                                    "invoice_line",
+                                                    "invoice_allocation",
+                                                    "invoice_for_payment",
+                                                    "shipment",
+                                                    "shipment_summary",
+                                                    "shipment_line",
+                                                    "shipping_case",
+                                                    "shipping_case_label_url",
+                                                    "settlement",
+                                                    "settlement_summary",
+                                                    "role_permission",
+                                                    "registration_flow",
+                                                    "registration_flow_option",
+                                                    "transaction",
+                                                    "transaction_summary",
+                                                    "transaction_method",
+                                                    "transaction_type",
+                                                    "transaction_allocation",
+                                                    "usage_item",
+                                                    "account_usage_response",
+                                                    "subscription_info",
+                                                    "billing_portal_session_response",
+                                                    "switch_plan_response",
+                                                    "ensure_billing_customer_response",
+                                                    "spending_cap_response",
+                                                    "agent_spend_info",
+                                                    "webhook_response",
+                                                    "address_suggestion",
+                                                    "address_components",
+                                                    "address_details_result",
+                                                    "validated_address",
+                                                    "plan_limit",
+                                                    "plan_change_proration",
+                                                    "plan_change_line_item",
+                                                    "setup_billing_response",
+                                                    "confirm_payment_response",
+                                                    "oauth_response",
+                                                    "oauth_status_response",
+                                                    "stripe_publishable_key",
+                                                    "stripe_status",
+                                                    "healthcheck",
+                                                    "agent_definition_config",
+                                                    "trigger_config",
+                                                    "customer_contact_info",
+                                                    "customer_freight_preferences",
+                                                    "customer_defaults",
+                                                    "customer_notification_preferences",
+                                                    "order_discount",
+                                                    "sales_order_line",
+                                                    "sales_order_type",
+                                                    "sales_order_status",
+                                                    "material",
+                                                    "supplier_material",
+                                                    "part",
+                                                    "permission_group",
+                                                    "permission",
+                                                    "pick",
+                                                    "pick_line",
+                                                    "product_type",
+                                                    "production",
+                                                    "production_flow",
+                                                    "map",
+                                                    "purchase_order",
+                                                    "purchase_order_line",
+                                                    "supplier",
+                                                    "supplier_summary",
+                                                    "receivable_entry",
+                                                    "receiving_order",
+                                                    "receiving_order_line",
+                                                    "email_contact",
+                                                    "allocation_entry",
+                                                    "open_credit_entry",
+                                                    "volume_discount",
+                                                    "volume_discount_tier",
+                                                    "analyze_deliveries_response",
+                                                    "analyze_manufacturing_response",
+                                                    "analyze_manufacturing_batch_response",
+                                                    "analyze_quarterly_orders_response",
+                                                    "analyze_new_customers_response",
+                                                    "analyze_oee_response",
+                                                    "catalog_product_line",
+                                                    "catalog_category",
+                                                    "catalog_product",
+                                                    "catalog_property",
+                                                    "catalog_attribute",
+                                                    "dc_location",
+                                                    "edi_run",
+                                                    "inventory_item",
+                                                    "analyze_weeks_of_sales_response",
+                                                    "bulk_reconcile_items_response",
+                                                    "sys_property",
+                                                    "sys_property_type",
+                                                    "sys_property_value",
+                                                    "territory",
+                                                    "tenancy",
+                                                    "checkout_session",
+                                                    "estimate_rate_result",
+                                                    "rate_shop_option",
+                                                    "rate_shop_result",
+                                                    "owner",
+                                                    "created_by",
+                                                    "message",
+                                                    "account_photo_upload_result",
+                                                    "user_photo_upload_result",
+                                                    "user_photo_url",
+                                                    "batch_lot",
+                                                    "check_duplicate_result",
+                                                    "item_trend_point",
+                                                    "pack_pick_response",
+                                                    "pick_shipments_response",
+                                                    "tenancy_pending_registration",
+                                                    "invoice_allocation_entry",
+                                                    "allocation_customer",
+                                                    "checkout_sales_order_response",
+                                                    "create_production_run_response",
+                                                    "sales_order_price_quote",
+                                                    "hubspot_sync_job",
+                                                    "hubspot_sync_report",
+                                                    "hubspot_company_review",
+                                                    "hubspot_company_candidate",
+                                                    "contact_match",
+                                                    "reply_draft",
+                                                    "conversation_link",
+                                                    "messaging_group",
+                                                    "messaging_group_member"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Human-readable display name for the entity (e.g. a user's full name, a sales order number).",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "handle",
+                                                "type": "string",
+                                                "description": "Secondary human-readable identifier (e.g. email address, username, redacted API key value).",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
                             },
                             {
                                 "name": "upload_url",
@@ -84427,9 +80153,19 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "object": "attachment_upload_target",
-                            "attachment_id": "mgah_01h9z8q1w2e3r4t5y6u7mgah",
-                            "upload_url": "https://chat-bucket.s3.amazonaws.com/chat/ac/cv/mgah/diagram.png?X-Amz-Signature=...",
-                            "s3_key": "chat/ac_01h9z8q1w2e3r4t5y6u7i8o9/cv_01h9z8q1w2e3r4t5y6u7i8cv/mgah_01h9z8q1w2e3r4t5y6u7mgah/diagram.png",
+                            "attachment": {
+                                "id": "mgah_01h9z8q1w2e3r4t5y6u7mgah",
+                                "object": "message_attachment",
+                                "kind": "image",
+                                "filename": "diagram.png",
+                                "content_type": "image/png",
+                                "size_bytes": 48213,
+                                "url": "https://chat-bucket.s3.amazonaws.com/chat/ac/cv/mgah/diagram.png?X-Amz-Signature=...",
+                                "resource": null,
+                                "created_at": "2026-05-10T00:00:00Z"
+                            },
+                            "upload_url": "https://chat-bucket.s3.amazonaws.com/staged/ac/cv/mgah/diagram.png?X-Amz-Signature=...",
+                            "s3_key": "staged/ac_01h9z8q1w2e3r4t5y6u7i8o9/cv_01h9z8q1w2e3r4t5y6u7i8cv/mgah_01h9z8q1w2e3r4t5y6u7mgah/diagram.png",
                             "expires_at": "2026-05-10T00:23:00Z"
                         }
                     }
@@ -85387,1076 +81123,6 @@ export const apiTags: TagData[] = [
                     {
                         "statusCode": "200",
                         "description": "Successful response for Unblock User",
-                        "fields": [],
-                        "example": {}
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Sender Identities",
-        "slug": "sender-identities",
-        "description": "Create and manage sender identities (personas) a message can be posted as.",
-        "domain": "messaging",
-        "domainLabel": "Messaging",
-        "resource": {
-            "name": "Sender Identities",
-            "description": "A sender identity (persona) a message can be posted as: a user's own identity, a shared group\npersona (optionally anonymizing), an agent, or the system.\n\nEverything about who the persona presents as — its kind, display name and avatar — is carried by\nthe expandable `actor`; the base object holds only what is unique to the identity itself (its\nanonymizing behavior and lifecycle timestamps).",
-            "fields": [
-                {
-                    "name": "id",
-                    "type": "string",
-                    "description": "Sender identity ID.",
-                    "required": true,
-                    "nullable": false,
-                    "expandable": false
-                },
-                {
-                    "name": "object",
-                    "type": "string",
-                    "description": "Resource type identifier.",
-                    "required": true,
-                    "nullable": false,
-                    "expandable": false,
-                    "enum": [
-                        "sender_identity"
-                    ]
-                },
-                {
-                    "name": "visibility",
-                    "type": "string",
-                    "description": "Whether the persona reveals or hides the underlying authoring user.\n\n- `attributed`: the authoring user is shown alongside the persona.\n- `anonymized`: the authoring user is hidden from non-internal viewers.",
-                    "required": true,
-                    "nullable": false,
-                    "expandable": false,
-                    "enum": [
-                        "attributed",
-                        "anonymized"
-                    ]
-                },
-                {
-                    "name": "actor",
-                    "type": "object",
-                    "description": "The persona presented as an actor: its type (user, group, agent), display name and avatar.\n\nExpand with `?include=actor`.",
-                    "required": true,
-                    "nullable": true,
-                    "expandable": true,
-                    "objectType": "actor",
-                    "properties": [
-                        {
-                            "name": "id",
-                            "type": "string",
-                            "description": "Unique identifier of the actor.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "object",
-                            "type": "string",
-                            "description": "Resource type identifier.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "enum": [
-                                "actor"
-                            ]
-                        },
-                        {
-                            "name": "type",
-                            "type": "string",
-                            "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false,
-                            "enum": [
-                                "user",
-                                "api_key",
-                                "agent",
-                                "group"
-                            ]
-                        },
-                        {
-                            "name": "name",
-                            "type": "string",
-                            "description": "The actor's display name.",
-                            "required": true,
-                            "nullable": true,
-                            "expandable": false
-                        },
-                        {
-                            "name": "handle",
-                            "type": "string",
-                            "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
-                            "required": true,
-                            "nullable": true,
-                            "expandable": false
-                        },
-                        {
-                            "name": "avatar_url",
-                            "type": "string",
-                            "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
-                            "required": true,
-                            "nullable": true,
-                            "expandable": false
-                        },
-                        {
-                            "name": "role",
-                            "type": "object",
-                            "description": "Assigned role.",
-                            "required": true,
-                            "nullable": true,
-                            "alwaysNull": true,
-                            "expandable": true,
-                            "objectType": "role"
-                        }
-                    ]
-                },
-                {
-                    "name": "created_at",
-                    "type": "string",
-                    "description": "Creation timestamp.",
-                    "required": true,
-                    "nullable": false,
-                    "expandable": false,
-                    "format": "date-time"
-                },
-                {
-                    "name": "updated_at",
-                    "type": "string",
-                    "description": "Last update timestamp.",
-                    "required": true,
-                    "nullable": false,
-                    "expandable": false,
-                    "format": "date-time"
-                }
-            ],
-            "example": {
-                "id": "sd_01h9z8q1w2e3r4t5y6u7i8sd",
-                "object": "sender_identity",
-                "visibility": "anonymized",
-                "actor": {
-                    "id": "sd_01h9z8q1w2e3r4t5y6u7i8sd",
-                    "object": "actor",
-                    "type": "group",
-                    "name": "Customer Service",
-                    "handle": null,
-                    "avatar_url": null,
-                    "role": null
-                },
-                "created_at": "2026-05-10T00:00:00Z",
-                "updated_at": "2026-05-10T00:23:00Z"
-            },
-            "object": "sender_identity"
-        },
-        "endpoints": [
-            {
-                "operationId": "create-sender-identity",
-                "summary": "Create Sender Identity",
-                "description": "Creates a group sender identity (a shared team persona) in the caller's account.\n\nThis endpoint requires the permission: `messaging:create`.",
-                "method": "POST",
-                "path": "/v1/messaging/sender-identities",
-                "domain": "messaging",
-                "tag": "Sender Identities",
-                "tagSlug": "sender-identities",
-                "endpointSlug": "create-sender-identity",
-                "actionType": "create",
-                "isPreview": true,
-                "parameters": [
-                    {
-                        "name": "include[]",
-                        "in": "query",
-                        "type": "array",
-                        "required": false,
-                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
-                        "enum": [
-                            "actor"
-                        ]
-                    }
-                ],
-                "requestBody": {
-                    "description": "The request body for Create Sender Identity",
-                    "fields": [
-                        {
-                            "name": "display_name",
-                            "type": "string",
-                            "description": "Human-readable display name shown as the sender.",
-                            "required": true,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "avatar_url",
-                            "type": "string",
-                            "description": "URL of the avatar image shown next to the sender's display name.",
-                            "required": false,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "visibility",
-                            "type": "string",
-                            "description": "Whether the persona reveals or hides the underlying authoring user. Defaults to `attributed`.\n\n- `attributed`: the authoring user is shown alongside the persona.\n- `anonymized`: the authoring user is hidden from non-internal viewers.",
-                            "required": false,
-                            "nullable": false,
-                            "expandable": false,
-                            "enum": [
-                                "attributed",
-                                "anonymized"
-                            ]
-                        }
-                    ],
-                    "example": {
-                        "display_name": "Customer Service",
-                        "visibility": "anonymized"
-                    }
-                },
-                "responses": [
-                    {
-                        "statusCode": "201",
-                        "description": "Successful response for Create Sender Identity",
-                        "fields": [
-                            {
-                                "name": "id",
-                                "type": "string",
-                                "description": "Sender identity ID.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false
-                            },
-                            {
-                                "name": "object",
-                                "type": "string",
-                                "description": "Resource type identifier.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "sender_identity"
-                                ]
-                            },
-                            {
-                                "name": "visibility",
-                                "type": "string",
-                                "description": "Whether the persona reveals or hides the underlying authoring user.\n\n- `attributed`: the authoring user is shown alongside the persona.\n- `anonymized`: the authoring user is hidden from non-internal viewers.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "attributed",
-                                    "anonymized"
-                                ]
-                            },
-                            {
-                                "name": "actor",
-                                "type": "object",
-                                "description": "The persona presented as an actor: its type (user, group, agent), display name and avatar.\n\nExpand with `?include=actor`.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": true,
-                                "objectType": "actor",
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "Unique identifier of the actor.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "Resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "actor"
-                                        ]
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "user",
-                                            "api_key",
-                                            "agent",
-                                            "group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The actor's display name.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "handle",
-                                        "type": "string",
-                                        "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "avatar_url",
-                                        "type": "string",
-                                        "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "role",
-                                        "type": "object",
-                                        "description": "Assigned role.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "role"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "created_at",
-                                "type": "string",
-                                "description": "Creation timestamp.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "format": "date-time"
-                            },
-                            {
-                                "name": "updated_at",
-                                "type": "string",
-                                "description": "Last update timestamp.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "format": "date-time"
-                            }
-                        ],
-                        "example": {
-                            "id": "sd_01h9z8q1w2e3r4t5y6u7i8sd",
-                            "object": "sender_identity",
-                            "visibility": "anonymized",
-                            "actor": {
-                                "id": "sd_01h9z8q1w2e3r4t5y6u7i8sd",
-                                "object": "actor",
-                                "type": "group",
-                                "name": "Customer Service",
-                                "handle": null,
-                                "avatar_url": null,
-                                "role": null
-                            },
-                            "created_at": "2026-05-10T00:00:00Z",
-                            "updated_at": "2026-05-10T00:23:00Z"
-                        }
-                    }
-                ]
-            },
-            {
-                "operationId": "update-sender-identity",
-                "summary": "Update Sender Identity",
-                "description": "Updates a sender identity.\n\nThis endpoint requires the permission: `messaging:update`.",
-                "method": "PATCH",
-                "path": "/v1/messaging/sender-identities/{id}",
-                "domain": "messaging",
-                "tag": "Sender Identities",
-                "tagSlug": "sender-identities",
-                "endpointSlug": "update-sender-identity",
-                "actionType": "update",
-                "isPreview": true,
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "type": "string",
-                        "required": true,
-                        "description": "Sender identity ID."
-                    },
-                    {
-                        "name": "include[]",
-                        "in": "query",
-                        "type": "array",
-                        "required": false,
-                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
-                        "enum": [
-                            "actor"
-                        ]
-                    }
-                ],
-                "requestBody": {
-                    "description": "The request body for Update Sender Identity",
-                    "fields": [
-                        {
-                            "name": "display_name",
-                            "type": "string",
-                            "description": "New display name.",
-                            "required": false,
-                            "nullable": false,
-                            "expandable": false
-                        },
-                        {
-                            "name": "avatar_url",
-                            "type": "string",
-                            "description": "New avatar image URL.\n\nSend `null` to remove the avatar; omit to leave it unchanged. Send `null` to clear.",
-                            "required": false,
-                            "nullable": true,
-                            "expandable": false
-                        },
-                        {
-                            "name": "visibility",
-                            "type": "string",
-                            "description": "Whether the persona reveals or hides the underlying authoring user.\n\n- `attributed`: the authoring user is shown alongside the persona.\n- `anonymized`: the authoring user is hidden from non-internal viewers.",
-                            "required": false,
-                            "nullable": false,
-                            "expandable": false,
-                            "enum": [
-                                "attributed",
-                                "anonymized"
-                            ]
-                        }
-                    ],
-                    "example": {
-                        "display_name": "Support Team",
-                        "visibility": "attributed"
-                    }
-                },
-                "responses": [
-                    {
-                        "statusCode": "200",
-                        "description": "Successful response for Update Sender Identity",
-                        "fields": [
-                            {
-                                "name": "id",
-                                "type": "string",
-                                "description": "Sender identity ID.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false
-                            },
-                            {
-                                "name": "object",
-                                "type": "string",
-                                "description": "Resource type identifier.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "sender_identity"
-                                ]
-                            },
-                            {
-                                "name": "visibility",
-                                "type": "string",
-                                "description": "Whether the persona reveals or hides the underlying authoring user.\n\n- `attributed`: the authoring user is shown alongside the persona.\n- `anonymized`: the authoring user is hidden from non-internal viewers.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "attributed",
-                                    "anonymized"
-                                ]
-                            },
-                            {
-                                "name": "actor",
-                                "type": "object",
-                                "description": "The persona presented as an actor: its type (user, group, agent), display name and avatar.\n\nExpand with `?include=actor`.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": true,
-                                "objectType": "actor",
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "Unique identifier of the actor.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "Resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "actor"
-                                        ]
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "user",
-                                            "api_key",
-                                            "agent",
-                                            "group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The actor's display name.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "handle",
-                                        "type": "string",
-                                        "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "avatar_url",
-                                        "type": "string",
-                                        "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "role",
-                                        "type": "object",
-                                        "description": "Assigned role.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "role"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "created_at",
-                                "type": "string",
-                                "description": "Creation timestamp.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "format": "date-time"
-                            },
-                            {
-                                "name": "updated_at",
-                                "type": "string",
-                                "description": "Last update timestamp.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "format": "date-time"
-                            }
-                        ],
-                        "example": {
-                            "id": "sd_01h9z8q1w2e3r4t5y6u7i8sd",
-                            "object": "sender_identity",
-                            "visibility": "anonymized",
-                            "actor": {
-                                "id": "sd_01h9z8q1w2e3r4t5y6u7i8sd",
-                                "object": "actor",
-                                "type": "group",
-                                "name": "Customer Service",
-                                "handle": null,
-                                "avatar_url": null,
-                                "role": null
-                            },
-                            "created_at": "2026-05-10T00:00:00Z",
-                            "updated_at": "2026-05-10T00:23:00Z"
-                        }
-                    }
-                ]
-            },
-            {
-                "operationId": "list-sender-identities",
-                "summary": "List Sender Identities",
-                "description": "Lists the account's sender identities.\n\nThis endpoint requires the permission: `messaging:read`.",
-                "method": "GET",
-                "path": "/v1/messaging/sender-identities",
-                "domain": "messaging",
-                "tag": "Sender Identities",
-                "tagSlug": "sender-identities",
-                "endpointSlug": "list-sender-identities",
-                "actionType": "list",
-                "isPreview": true,
-                "parameters": [
-                    {
-                        "name": "kind",
-                        "in": "query",
-                        "type": "string",
-                        "required": false,
-                        "description": "Filters the results to a single persona kind.",
-                        "enum": [
-                            "user",
-                            "group",
-                            "agent",
-                            "system"
-                        ]
-                    },
-                    {
-                        "name": "include[]",
-                        "in": "query",
-                        "type": "array",
-                        "required": false,
-                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
-                        "enum": [
-                            "actor"
-                        ]
-                    }
-                ],
-                "responses": [
-                    {
-                        "statusCode": "200",
-                        "description": "Successful response for List Sender Identities",
-                        "fields": [
-                            {
-                                "name": "object",
-                                "type": "string",
-                                "description": "Resource type identifier.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "list"
-                                ]
-                            },
-                            {
-                                "name": "page_info",
-                                "type": "object",
-                                "description": "Pagination metadata.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "properties": [
-                                    {
-                                        "name": "next_page_url",
-                                        "type": "string",
-                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "previous_page_url",
-                                        "type": "string",
-                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "has_next_page",
-                                        "type": "boolean",
-                                        "description": "Whether more results exist after this page.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "has_prev_page",
-                                        "type": "boolean",
-                                        "description": "Whether results exist before this page.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "data",
-                                "type": "array",
-                                "description": "Resources in this page.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "objectType": "sender_identity",
-                                "itemType": "object",
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "Sender identity ID.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "Resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "sender_identity"
-                                        ]
-                                    },
-                                    {
-                                        "name": "visibility",
-                                        "type": "string",
-                                        "description": "Whether the persona reveals or hides the underlying authoring user.\n\n- `attributed`: the authoring user is shown alongside the persona.\n- `anonymized`: the authoring user is hidden from non-internal viewers.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "attributed",
-                                            "anonymized"
-                                        ]
-                                    },
-                                    {
-                                        "name": "actor",
-                                        "type": "object",
-                                        "description": "The persona presented as an actor: its type (user, group, agent), display name and avatar.\n\nExpand with `?include=actor`.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": true,
-                                        "objectType": "actor",
-                                        "properties": [
-                                            {
-                                                "name": "id",
-                                                "type": "string",
-                                                "description": "Unique identifier of the actor.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "object",
-                                                "type": "string",
-                                                "description": "Resource type identifier.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "actor"
-                                                ]
-                                            },
-                                            {
-                                                "name": "type",
-                                                "type": "string",
-                                                "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
-                                                "required": true,
-                                                "nullable": false,
-                                                "expandable": false,
-                                                "enum": [
-                                                    "user",
-                                                    "api_key",
-                                                    "agent",
-                                                    "group"
-                                                ]
-                                            },
-                                            {
-                                                "name": "name",
-                                                "type": "string",
-                                                "description": "The actor's display name.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "handle",
-                                                "type": "string",
-                                                "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "avatar_url",
-                                                "type": "string",
-                                                "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "expandable": false
-                                            },
-                                            {
-                                                "name": "role",
-                                                "type": "object",
-                                                "description": "Assigned role.",
-                                                "required": true,
-                                                "nullable": true,
-                                                "alwaysNull": true,
-                                                "expandable": true,
-                                                "objectType": "role"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "name": "created_at",
-                                        "type": "string",
-                                        "description": "Creation timestamp.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    },
-                                    {
-                                        "name": "updated_at",
-                                        "type": "string",
-                                        "description": "Last update timestamp.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "format": "date-time"
-                                    }
-                                ]
-                            }
-                        ],
-                        "example": {
-                            "object": "list",
-                            "page_info": {
-                                "next_page_url": "/v1/messaging/sender-identities?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoic2RfMDFoOXo4cTF3MmUzcjR0NXk2dTdpOHNkIiwiZCI6ImYifQ.lc7Z2rXNwRYahgv9lc_mOG0y6zdbD1UBj5tF7PGadKc",
-                                "previous_page_url": null,
-                                "has_next_page": true,
-                                "has_prev_page": false
-                            },
-                            "data": [
-                                {
-                                    "id": "sd_01h9z8q1w2e3r4t5y6u7i8sd",
-                                    "object": "sender_identity",
-                                    "visibility": "anonymized",
-                                    "actor": {
-                                        "id": "sd_01h9z8q1w2e3r4t5y6u7i8sd",
-                                        "object": "actor",
-                                        "type": "group",
-                                        "name": "Customer Service",
-                                        "handle": null,
-                                        "avatar_url": null,
-                                        "role": null
-                                    },
-                                    "created_at": "2026-05-10T00:00:00Z",
-                                    "updated_at": "2026-05-10T00:23:00Z"
-                                }
-                            ]
-                        }
-                    }
-                ]
-            },
-            {
-                "operationId": "get-sender-identity",
-                "summary": "Get Sender Identity",
-                "description": "Retrieves a sender identity by ID.\n\nThis endpoint requires the permission: `messaging:read`.",
-                "method": "GET",
-                "path": "/v1/messaging/sender-identities/{id}",
-                "domain": "messaging",
-                "tag": "Sender Identities",
-                "tagSlug": "sender-identities",
-                "endpointSlug": "get-sender-identity",
-                "actionType": "retrieve",
-                "isPreview": true,
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "type": "string",
-                        "required": true,
-                        "description": "Sender identity ID."
-                    },
-                    {
-                        "name": "include[]",
-                        "in": "query",
-                        "type": "array",
-                        "required": false,
-                        "description": "Sub-objects to expand in the response. When omitted, sub-objects are returned as `null`.",
-                        "enum": [
-                            "actor"
-                        ]
-                    }
-                ],
-                "responses": [
-                    {
-                        "statusCode": "200",
-                        "description": "Successful response for Get Sender Identity",
-                        "fields": [
-                            {
-                                "name": "id",
-                                "type": "string",
-                                "description": "Sender identity ID.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false
-                            },
-                            {
-                                "name": "object",
-                                "type": "string",
-                                "description": "Resource type identifier.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "sender_identity"
-                                ]
-                            },
-                            {
-                                "name": "visibility",
-                                "type": "string",
-                                "description": "Whether the persona reveals or hides the underlying authoring user.\n\n- `attributed`: the authoring user is shown alongside the persona.\n- `anonymized`: the authoring user is hidden from non-internal viewers.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "enum": [
-                                    "attributed",
-                                    "anonymized"
-                                ]
-                            },
-                            {
-                                "name": "actor",
-                                "type": "object",
-                                "description": "The persona presented as an actor: its type (user, group, agent), display name and avatar.\n\nExpand with `?include=actor`.",
-                                "required": true,
-                                "nullable": true,
-                                "expandable": true,
-                                "objectType": "actor",
-                                "properties": [
-                                    {
-                                        "name": "id",
-                                        "type": "string",
-                                        "description": "Unique identifier of the actor.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "object",
-                                        "type": "string",
-                                        "description": "Resource type identifier.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "actor"
-                                        ]
-                                    },
-                                    {
-                                        "name": "type",
-                                        "type": "string",
-                                        "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
-                                        "required": true,
-                                        "nullable": false,
-                                        "expandable": false,
-                                        "enum": [
-                                            "user",
-                                            "api_key",
-                                            "agent",
-                                            "group"
-                                        ]
-                                    },
-                                    {
-                                        "name": "name",
-                                        "type": "string",
-                                        "description": "The actor's display name.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "handle",
-                                        "type": "string",
-                                        "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "avatar_url",
-                                        "type": "string",
-                                        "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "expandable": false
-                                    },
-                                    {
-                                        "name": "role",
-                                        "type": "object",
-                                        "description": "Assigned role.",
-                                        "required": true,
-                                        "nullable": true,
-                                        "alwaysNull": true,
-                                        "expandable": true,
-                                        "objectType": "role"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "created_at",
-                                "type": "string",
-                                "description": "Creation timestamp.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "format": "date-time"
-                            },
-                            {
-                                "name": "updated_at",
-                                "type": "string",
-                                "description": "Last update timestamp.",
-                                "required": true,
-                                "nullable": false,
-                                "expandable": false,
-                                "format": "date-time"
-                            }
-                        ],
-                        "example": {
-                            "id": "sd_01h9z8q1w2e3r4t5y6u7i8sd",
-                            "object": "sender_identity",
-                            "visibility": "anonymized",
-                            "actor": {
-                                "id": "sd_01h9z8q1w2e3r4t5y6u7i8sd",
-                                "object": "actor",
-                                "type": "group",
-                                "name": "Customer Service",
-                                "handle": null,
-                                "avatar_url": null,
-                                "role": null
-                            },
-                            "created_at": "2026-05-10T00:00:00Z",
-                            "updated_at": "2026-05-10T00:23:00Z"
-                        }
-                    }
-                ]
-            },
-            {
-                "operationId": "delete-sender-identity",
-                "summary": "Delete Sender Identity",
-                "description": "Deletes a sender identity.\n\nThis endpoint requires the permission: `messaging:delete`.",
-                "method": "DELETE",
-                "path": "/v1/messaging/sender-identities/{id}",
-                "domain": "messaging",
-                "tag": "Sender Identities",
-                "tagSlug": "sender-identities",
-                "endpointSlug": "delete-sender-identity",
-                "actionType": "delete",
-                "isPreview": true,
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "type": "string",
-                        "required": true,
-                        "description": "Sender identity ID."
-                    }
-                ],
-                "responses": [
-                    {
-                        "statusCode": "200",
-                        "description": "Successful response for Delete Sender Identity",
                         "fields": [],
                         "example": {}
                     }
@@ -188101,13 +182767,6 @@ export const apiNavDomains: ApiNavDomain[] = [
                         "href": "/api-reference/conversations/link-record"
                     },
                     {
-                        "name": "Redact Conversation",
-                        "slug": "redact-conversation",
-                        "method": "POST",
-                        "actionType": "create",
-                        "href": "/api-reference/conversations/redact-conversation"
-                    },
-                    {
                         "name": "List Links",
                         "slug": "list-links",
                         "method": "GET",
@@ -188162,6 +182821,13 @@ export const apiNavDomains: ApiNavDomain[] = [
                         "method": "POST",
                         "actionType": "action",
                         "href": "/api-reference/conversations/mark-conversation-read"
+                    },
+                    {
+                        "name": "Redact Conversation",
+                        "slug": "redact-conversation",
+                        "method": "POST",
+                        "actionType": "action",
+                        "href": "/api-reference/conversations/redact-conversation"
                     },
                     {
                         "name": "Report Conversation",
@@ -188219,25 +182885,11 @@ export const apiNavDomains: ApiNavDomain[] = [
                         "href": "/api-reference/messages/update-reply-draft"
                     },
                     {
-                        "name": "List Scheduled",
-                        "slug": "list-scheduled-messages",
-                        "method": "GET",
-                        "actionType": "list",
-                        "href": "/api-reference/messages/list-scheduled-messages"
-                    },
-                    {
                         "name": "Send Message",
                         "slug": "send-message",
                         "method": "POST",
                         "actionType": "create",
                         "href": "/api-reference/messages/send-message"
-                    },
-                    {
-                        "name": "Create Reply Draft",
-                        "slug": "create-reply-draft",
-                        "method": "POST",
-                        "actionType": "create",
-                        "href": "/api-reference/messages/create-reply-draft"
                     },
                     {
                         "name": "List",
@@ -188388,47 +183040,6 @@ export const apiNavDomains: ApiNavDomain[] = [
                         "method": "DELETE",
                         "actionType": "delete",
                         "href": "/api-reference/message-blocks/unblock-user"
-                    }
-                ]
-            },
-            {
-                "name": "Sender Identities",
-                "slug": "sender-identities",
-                "endpoints": [
-                    {
-                        "name": "Create Identity",
-                        "slug": "create-sender-identity",
-                        "method": "POST",
-                        "actionType": "create",
-                        "href": "/api-reference/sender-identities/create-sender-identity"
-                    },
-                    {
-                        "name": "Update Identity",
-                        "slug": "update-sender-identity",
-                        "method": "PATCH",
-                        "actionType": "update",
-                        "href": "/api-reference/sender-identities/update-sender-identity"
-                    },
-                    {
-                        "name": "List",
-                        "slug": "list-sender-identities",
-                        "method": "GET",
-                        "actionType": "list",
-                        "href": "/api-reference/sender-identities/list-sender-identities"
-                    },
-                    {
-                        "name": "Get Identity",
-                        "slug": "get-sender-identity",
-                        "method": "GET",
-                        "actionType": "retrieve",
-                        "href": "/api-reference/sender-identities/get-sender-identity"
-                    },
-                    {
-                        "name": "Delete Identity",
-                        "slug": "delete-sender-identity",
-                        "method": "DELETE",
-                        "actionType": "delete",
-                        "href": "/api-reference/sender-identities/delete-sender-identity"
                     }
                 ]
             },
@@ -190901,7 +185512,6 @@ export const apiObjects: ObjectData[] = [
                             "chat_message",
                             "notification_unread_summary_account",
                             "messaging_block",
-                            "sender_identity",
                             "notification_preference",
                             "message_attachment",
                             "attachment_upload_target",
@@ -191597,7 +186207,6 @@ export const apiObjects: ObjectData[] = [
                     "chat_message",
                     "notification_unread_summary_account",
                     "messaging_block",
-                    "sender_identity",
                     "notification_preference",
                     "message_attachment",
                     "attachment_upload_target",
@@ -193533,7 +188142,6 @@ export const apiObjects: ObjectData[] = [
                             "chat_message",
                             "notification_unread_summary_account",
                             "messaging_block",
-                            "sender_identity",
                             "notification_preference",
                             "message_attachment",
                             "attachment_upload_target",
@@ -194277,7 +188885,6 @@ export const apiObjects: ObjectData[] = [
                                     "chat_message",
                                     "notification_unread_summary_account",
                                     "messaging_block",
-                                    "sender_identity",
                                     "notification_preference",
                                     "message_attachment",
                                     "attachment_upload_target",
@@ -194685,14 +189292,6 @@ export const apiObjects: ObjectData[] = [
             {
                 "tag": "Conversations",
                 "tagSlug": "conversations",
-                "endpointSlug": "redact-conversation",
-                "method": "POST",
-                "actionType": "create",
-                "summary": "Redact Conversation"
-            },
-            {
-                "tag": "Conversations",
-                "tagSlug": "conversations",
                 "endpointSlug": "list-links",
                 "method": "GET",
                 "actionType": "list",
@@ -194757,6 +189356,14 @@ export const apiObjects: ObjectData[] = [
             {
                 "tag": "Conversations",
                 "tagSlug": "conversations",
+                "endpointSlug": "redact-conversation",
+                "method": "POST",
+                "actionType": "action",
+                "summary": "Redact Conversation"
+            },
+            {
+                "tag": "Conversations",
+                "tagSlug": "conversations",
                 "endpointSlug": "report-conversation",
                 "method": "POST",
                 "actionType": "action",
@@ -194813,26 +189420,10 @@ export const apiObjects: ObjectData[] = [
             {
                 "tag": "Messages",
                 "tagSlug": "messages",
-                "endpointSlug": "list-scheduled-messages",
-                "method": "GET",
-                "actionType": "list",
-                "summary": "List Scheduled Messages"
-            },
-            {
-                "tag": "Messages",
-                "tagSlug": "messages",
                 "endpointSlug": "send-message",
                 "method": "POST",
                 "actionType": "create",
                 "summary": "Send Message"
-            },
-            {
-                "tag": "Messages",
-                "tagSlug": "messages",
-                "endpointSlug": "create-reply-draft",
-                "method": "POST",
-                "actionType": "create",
-                "summary": "Create Reply Draft"
             },
             {
                 "tag": "Messages",
@@ -203786,7 +198377,6 @@ export const apiObjects: ObjectData[] = [
                                     "chat_message",
                                     "notification_unread_summary_account",
                                     "messaging_block",
-                                    "sender_identity",
                                     "notification_preference",
                                     "message_attachment",
                                     "attachment_upload_target",
@@ -204463,14 +199053,6 @@ export const apiObjects: ObjectData[] = [
             {
                 "tag": "Conversations",
                 "tagSlug": "conversations",
-                "endpointSlug": "redact-conversation",
-                "method": "POST",
-                "actionType": "create",
-                "summary": "Redact Conversation"
-            },
-            {
-                "tag": "Conversations",
-                "tagSlug": "conversations",
                 "endpointSlug": "list-links",
                 "method": "GET",
                 "actionType": "list",
@@ -204523,6 +199105,14 @@ export const apiObjects: ObjectData[] = [
                 "method": "POST",
                 "actionType": "action",
                 "summary": "Mark Conversation Read"
+            },
+            {
+                "tag": "Conversations",
+                "tagSlug": "conversations",
+                "endpointSlug": "redact-conversation",
+                "method": "POST",
+                "actionType": "action",
+                "summary": "Redact Conversation"
             },
             {
                 "tag": "Conversations",
@@ -204583,26 +199173,10 @@ export const apiObjects: ObjectData[] = [
             {
                 "tag": "Messages",
                 "tagSlug": "messages",
-                "endpointSlug": "list-scheduled-messages",
-                "method": "GET",
-                "actionType": "list",
-                "summary": "List Scheduled Messages"
-            },
-            {
-                "tag": "Messages",
-                "tagSlug": "messages",
                 "endpointSlug": "send-message",
                 "method": "POST",
                 "actionType": "create",
                 "summary": "Send Message"
-            },
-            {
-                "tag": "Messages",
-                "tagSlug": "messages",
-                "endpointSlug": "create-reply-draft",
-                "method": "POST",
-                "actionType": "create",
-                "summary": "Create Reply Draft"
             },
             {
                 "tag": "Messages",
@@ -205686,14 +200260,6 @@ export const apiObjects: ObjectData[] = [
             {
                 "tag": "Conversations",
                 "tagSlug": "conversations",
-                "endpointSlug": "redact-conversation",
-                "method": "POST",
-                "actionType": "create",
-                "summary": "Redact Conversation"
-            },
-            {
-                "tag": "Conversations",
-                "tagSlug": "conversations",
                 "endpointSlug": "list-links",
                 "method": "GET",
                 "actionType": "list",
@@ -205746,6 +200312,14 @@ export const apiObjects: ObjectData[] = [
                 "method": "POST",
                 "actionType": "action",
                 "summary": "Mark Conversation Read"
+            },
+            {
+                "tag": "Conversations",
+                "tagSlug": "conversations",
+                "endpointSlug": "redact-conversation",
+                "method": "POST",
+                "actionType": "action",
+                "summary": "Redact Conversation"
             },
             {
                 "tag": "Conversations",
@@ -205806,26 +200380,10 @@ export const apiObjects: ObjectData[] = [
             {
                 "tag": "Messages",
                 "tagSlug": "messages",
-                "endpointSlug": "list-scheduled-messages",
-                "method": "GET",
-                "actionType": "list",
-                "summary": "List Scheduled Messages"
-            },
-            {
-                "tag": "Messages",
-                "tagSlug": "messages",
                 "endpointSlug": "send-message",
                 "method": "POST",
                 "actionType": "create",
                 "summary": "Send Message"
-            },
-            {
-                "tag": "Messages",
-                "tagSlug": "messages",
-                "endpointSlug": "create-reply-draft",
-                "method": "POST",
-                "actionType": "create",
-                "summary": "Create Reply Draft"
             },
             {
                 "tag": "Messages",
@@ -206180,7 +200738,6 @@ export const apiObjects: ObjectData[] = [
                             "chat_message",
                             "notification_unread_summary_account",
                             "messaging_block",
-                            "sender_identity",
                             "notification_preference",
                             "message_attachment",
                             "attachment_upload_target",
@@ -211944,14 +206501,6 @@ export const apiObjects: ObjectData[] = [
             {
                 "tag": "Conversations",
                 "tagSlug": "conversations",
-                "endpointSlug": "redact-conversation",
-                "method": "POST",
-                "actionType": "create",
-                "summary": "Redact Conversation"
-            },
-            {
-                "tag": "Conversations",
-                "tagSlug": "conversations",
                 "endpointSlug": "list-links",
                 "method": "GET",
                 "actionType": "list",
@@ -212004,6 +206553,14 @@ export const apiObjects: ObjectData[] = [
                 "method": "POST",
                 "actionType": "action",
                 "summary": "Mark Conversation Read"
+            },
+            {
+                "tag": "Conversations",
+                "tagSlug": "conversations",
+                "endpointSlug": "redact-conversation",
+                "method": "POST",
+                "actionType": "action",
+                "summary": "Redact Conversation"
             },
             {
                 "tag": "Conversations",
@@ -212064,26 +206621,10 @@ export const apiObjects: ObjectData[] = [
             {
                 "tag": "Messages",
                 "tagSlug": "messages",
-                "endpointSlug": "list-scheduled-messages",
-                "method": "GET",
-                "actionType": "list",
-                "summary": "List Scheduled Messages"
-            },
-            {
-                "tag": "Messages",
-                "tagSlug": "messages",
                 "endpointSlug": "send-message",
                 "method": "POST",
                 "actionType": "create",
                 "summary": "Send Message"
-            },
-            {
-                "tag": "Messages",
-                "tagSlug": "messages",
-                "endpointSlug": "create-reply-draft",
-                "method": "POST",
-                "actionType": "create",
-                "summary": "Create Reply Draft"
             },
             {
                 "tag": "Messages",
@@ -212196,38 +206737,6 @@ export const apiObjects: ObjectData[] = [
                 "method": "GET",
                 "actionType": "list",
                 "summary": "List Blocks"
-            },
-            {
-                "tag": "Sender Identities",
-                "tagSlug": "sender-identities",
-                "endpointSlug": "create-sender-identity",
-                "method": "POST",
-                "actionType": "create",
-                "summary": "Create Sender Identity"
-            },
-            {
-                "tag": "Sender Identities",
-                "tagSlug": "sender-identities",
-                "endpointSlug": "update-sender-identity",
-                "method": "PATCH",
-                "actionType": "update",
-                "summary": "Update Sender Identity"
-            },
-            {
-                "tag": "Sender Identities",
-                "tagSlug": "sender-identities",
-                "endpointSlug": "list-sender-identities",
-                "method": "GET",
-                "actionType": "list",
-                "summary": "List Sender Identities"
-            },
-            {
-                "tag": "Sender Identities",
-                "tagSlug": "sender-identities",
-                "endpointSlug": "get-sender-identity",
-                "method": "GET",
-                "actionType": "retrieve",
-                "summary": "Get Sender Identity"
             },
             {
                 "tag": "Messaging Contacts",
@@ -213135,201 +207644,6 @@ export const apiObjects: ObjectData[] = [
                 "method": "DELETE",
                 "actionType": "delete",
                 "summary": "Delete Scanning Station"
-            }
-        ]
-    },
-    {
-        "name": "Sender Identities",
-        "object": "sender_identity",
-        "slug": "sender-identity",
-        "domain": "messaging",
-        "domainLabel": "Messaging",
-        "description": "A sender identity (persona) a message can be posted as: a user's own identity, a shared group\npersona (optionally anonymizing), an agent, or the system.\n\nEverything about who the persona presents as — its kind, display name and avatar — is carried by\nthe expandable `actor`; the base object holds only what is unique to the identity itself (its\nanonymizing behavior and lifecycle timestamps).",
-        "fields": [
-            {
-                "name": "id",
-                "type": "string",
-                "description": "Sender identity ID.",
-                "required": true,
-                "nullable": false,
-                "expandable": false
-            },
-            {
-                "name": "object",
-                "type": "string",
-                "description": "Resource type identifier.",
-                "required": true,
-                "nullable": false,
-                "expandable": false,
-                "enum": [
-                    "sender_identity"
-                ]
-            },
-            {
-                "name": "visibility",
-                "type": "string",
-                "description": "Whether the persona reveals or hides the underlying authoring user.\n\n- `attributed`: the authoring user is shown alongside the persona.\n- `anonymized`: the authoring user is hidden from non-internal viewers.",
-                "required": true,
-                "nullable": false,
-                "expandable": false,
-                "enum": [
-                    "attributed",
-                    "anonymized"
-                ]
-            },
-            {
-                "name": "actor",
-                "type": "object",
-                "description": "The persona presented as an actor: its type (user, group, agent), display name and avatar.\n\nExpand with `?include=actor`.",
-                "required": true,
-                "nullable": true,
-                "expandable": true,
-                "objectType": "actor",
-                "properties": [
-                    {
-                        "name": "id",
-                        "type": "string",
-                        "description": "Unique identifier of the actor.",
-                        "required": true,
-                        "nullable": false,
-                        "expandable": false
-                    },
-                    {
-                        "name": "object",
-                        "type": "string",
-                        "description": "Resource type identifier.",
-                        "required": true,
-                        "nullable": false,
-                        "expandable": false,
-                        "enum": [
-                            "actor"
-                        ]
-                    },
-                    {
-                        "name": "type",
-                        "type": "string",
-                        "description": "Actor type.\n\n- `user`: a human user account.\n- `api_key`: a programmatic caller authenticating with an API key.\n- `agent`: an automated agent acting on the account's behalf.\n- `group`: a shared group identity, such as a \"Customer Service\" persona, rather than a single individual.",
-                        "required": true,
-                        "nullable": false,
-                        "expandable": false,
-                        "enum": [
-                            "user",
-                            "api_key",
-                            "agent",
-                            "group"
-                        ]
-                    },
-                    {
-                        "name": "name",
-                        "type": "string",
-                        "description": "The actor's display name.",
-                        "required": true,
-                        "nullable": true,
-                        "expandable": false
-                    },
-                    {
-                        "name": "handle",
-                        "type": "string",
-                        "description": "Human-readable handle identifying the actor.\n\n- For `user` actors: the user's email address.\n- For `api_key` actors: the redacted key value.\n\nOther actor types carry no handle.",
-                        "required": true,
-                        "nullable": true,
-                        "expandable": false
-                    },
-                    {
-                        "name": "avatar_url",
-                        "type": "string",
-                        "description": "URL of the actor's profile photo, if one is set.\n\nOnly populated for `user` actors.",
-                        "required": true,
-                        "nullable": true,
-                        "expandable": false
-                    },
-                    {
-                        "name": "role",
-                        "type": "object",
-                        "description": "Assigned role.",
-                        "required": true,
-                        "nullable": true,
-                        "alwaysNull": true,
-                        "expandable": true,
-                        "objectType": "role"
-                    }
-                ]
-            },
-            {
-                "name": "created_at",
-                "type": "string",
-                "description": "Creation timestamp.",
-                "required": true,
-                "nullable": false,
-                "expandable": false,
-                "format": "date-time"
-            },
-            {
-                "name": "updated_at",
-                "type": "string",
-                "description": "Last update timestamp.",
-                "required": true,
-                "nullable": false,
-                "expandable": false,
-                "format": "date-time"
-            }
-        ],
-        "example": {
-            "id": "sd_01h9z8q1w2e3r4t5y6u7i8sd",
-            "object": "sender_identity",
-            "visibility": "anonymized",
-            "actor": {
-                "id": "sd_01h9z8q1w2e3r4t5y6u7i8sd",
-                "object": "actor",
-                "type": "group",
-                "name": "Customer Service",
-                "handle": null,
-                "avatar_url": null,
-                "role": null
-            },
-            "created_at": "2026-05-10T00:00:00Z",
-            "updated_at": "2026-05-10T00:23:00Z"
-        },
-        "usedBy": [
-            {
-                "tag": "Sender Identities",
-                "tagSlug": "sender-identities",
-                "endpointSlug": "create-sender-identity",
-                "method": "POST",
-                "actionType": "create",
-                "summary": "Create Sender Identity"
-            },
-            {
-                "tag": "Sender Identities",
-                "tagSlug": "sender-identities",
-                "endpointSlug": "update-sender-identity",
-                "method": "PATCH",
-                "actionType": "update",
-                "summary": "Update Sender Identity"
-            },
-            {
-                "tag": "Sender Identities",
-                "tagSlug": "sender-identities",
-                "endpointSlug": "list-sender-identities",
-                "method": "GET",
-                "actionType": "list",
-                "summary": "List Sender Identities"
-            },
-            {
-                "tag": "Sender Identities",
-                "tagSlug": "sender-identities",
-                "endpointSlug": "get-sender-identity",
-                "method": "GET",
-                "actionType": "retrieve",
-                "summary": "Get Sender Identity"
-            },
-            {
-                "tag": "Sender Identities",
-                "tagSlug": "sender-identities",
-                "endpointSlug": "delete-sender-identity",
-                "method": "DELETE",
-                "actionType": "delete",
-                "summary": "Delete Sender Identity"
             }
         ]
     },

@@ -230,7 +230,6 @@
 - [GET Conversations — List](https://docs.augno.com/api-reference/conversations/list-conversations.md)
 - [GET Conversations — Retrieve Conversation](https://docs.augno.com/api-reference/conversations/retrieve-conversation.md)
 - [POST Conversations — Link Record](https://docs.augno.com/api-reference/conversations/link-record.md)
-- [POST Conversations — Redact Conversation](https://docs.augno.com/api-reference/conversations/redact-conversation.md)
 - [GET Conversations — List Links](https://docs.augno.com/api-reference/conversations/list-links.md)
 - [DELETE Conversations — Unlink Record](https://docs.augno.com/api-reference/conversations/unlink-record.md)
 - [POST Conversations — Archive Conversation](https://docs.augno.com/api-reference/conversations/archive-conversation.md)
@@ -239,6 +238,7 @@
 - [POST Conversations — Leave Conversation](https://docs.augno.com/api-reference/conversations/leave-conversation.md)
 - [POST Conversations — Mute Conversation](https://docs.augno.com/api-reference/conversations/mute-conversation.md)
 - [POST Conversations — Mark Conversation Read](https://docs.augno.com/api-reference/conversations/mark-conversation-read.md)
+- [POST Conversations — Redact Conversation](https://docs.augno.com/api-reference/conversations/redact-conversation.md)
 - [POST Conversations — Report Conversation](https://docs.augno.com/api-reference/conversations/report-conversation.md)
 - [POST Conversations — Set Legal Hold](https://docs.augno.com/api-reference/conversations/set-legal-hold.md)
 - [POST Conversations — Set Case Status](https://docs.augno.com/api-reference/conversations/set-case-status.md)
@@ -246,9 +246,7 @@
 - [POST Conversations — Unhide Conversation](https://docs.augno.com/api-reference/conversations/unhide-conversation.md)
 - [POST Conversations — Unmute Conversation](https://docs.augno.com/api-reference/conversations/unmute-conversation.md)
 - [PATCH Messages — Update Reply Draft](https://docs.augno.com/api-reference/messages/update-reply-draft.md)
-- [GET Messages — List Scheduled](https://docs.augno.com/api-reference/messages/list-scheduled-messages.md)
 - [POST Messages — Send Message](https://docs.augno.com/api-reference/messages/send-message.md)
-- [POST Messages — Create Reply Draft](https://docs.augno.com/api-reference/messages/create-reply-draft.md)
 - [GET Messages — List](https://docs.augno.com/api-reference/messages/list-messages.md)
 - [POST Messages — Approve And Send Reply Draft](https://docs.augno.com/api-reference/messages/approve-and-send-reply-draft.md)
 - [POST Messages — Cancel Scheduled Message](https://docs.augno.com/api-reference/messages/cancel-scheduled-message.md)
@@ -267,11 +265,6 @@
 - [POST Message Blocks — Block User](https://docs.augno.com/api-reference/message-blocks/block-user.md)
 - [GET Message Blocks — List](https://docs.augno.com/api-reference/message-blocks/list-blocks.md)
 - [DELETE Message Blocks — Unblock User](https://docs.augno.com/api-reference/message-blocks/unblock-user.md)
-- [POST Sender Identities — Create Identity](https://docs.augno.com/api-reference/sender-identities/create-sender-identity.md)
-- [PATCH Sender Identities — Update Identity](https://docs.augno.com/api-reference/sender-identities/update-sender-identity.md)
-- [GET Sender Identities — List](https://docs.augno.com/api-reference/sender-identities/list-sender-identities.md)
-- [GET Sender Identities — Get Identity](https://docs.augno.com/api-reference/sender-identities/get-sender-identity.md)
-- [DELETE Sender Identities — Delete Identity](https://docs.augno.com/api-reference/sender-identities/delete-sender-identity.md)
 - [GET Notification Preferences — List](https://docs.augno.com/api-reference/notification-preferences/list-notification-preferences.md)
 - [PUT Notification Preferences — Upsert Preference](https://docs.augno.com/api-reference/notification-preferences/upsert-notification-preference.md)
 - [GET Messaging Contacts — List](https://docs.augno.com/api-reference/messaging-contacts/list-messaging-contacts.md)
@@ -407,8 +400,6 @@
 - [Messages object](https://docs.augno.com/api-reference/objects/list.md): List represents a paginated list of resources.
 - [Messaging Groups object](https://docs.augno.com/api-reference/objects/messaging-group.md): A reusable roster: a named set of members (users and/or agents) that seeds new conversations.
 - [Notifications object](https://docs.augno.com/api-reference/objects/notification.md): An in-app notification in the user's bell feed.
-- [Sender Identities object](https://docs.augno.com/api-reference/objects/sender-identity.md): A sender identity (persona) a message can be posted as: a user's own identity, a shared group
-persona (optionally anonymizing), an agent, or the system.
 
 ### Operations
 - [Carriers object](https://docs.augno.com/api-reference/objects/carrier.md): A shipping carrier configured for fulfilling orders.

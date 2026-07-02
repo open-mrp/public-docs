@@ -232,7 +232,6 @@ export const docPaths = {
             "listConversations": "/api-reference/conversations/list-conversations",
             "retrieveConversation": "/api-reference/conversations/retrieve-conversation",
             "linkRecord": "/api-reference/conversations/link-record",
-            "redactConversation": "/api-reference/conversations/redact-conversation",
             "listLinks": "/api-reference/conversations/list-links",
             "unlinkRecord": "/api-reference/conversations/unlink-record",
             "archiveConversation": "/api-reference/conversations/archive-conversation",
@@ -241,6 +240,7 @@ export const docPaths = {
             "leaveConversation": "/api-reference/conversations/leave-conversation",
             "muteConversation": "/api-reference/conversations/mute-conversation",
             "markConversationRead": "/api-reference/conversations/mark-conversation-read",
+            "redactConversation": "/api-reference/conversations/redact-conversation",
             "reportConversation": "/api-reference/conversations/report-conversation",
             "setLegalHold": "/api-reference/conversations/set-legal-hold",
             "setCaseStatus": "/api-reference/conversations/set-case-status",
@@ -253,9 +253,7 @@ export const docPaths = {
         },
         "messages": {
             "updateReplyDraft": "/api-reference/messages/update-reply-draft",
-            "listScheduledMessages": "/api-reference/messages/list-scheduled-messages",
             "sendMessage": "/api-reference/messages/send-message",
-            "createReplyDraft": "/api-reference/messages/create-reply-draft",
             "listMessages": "/api-reference/messages/list-messages",
             "approveAndSendReplyDraft": "/api-reference/messages/approve-and-send-reply-draft",
             "cancelScheduledMessage": "/api-reference/messages/cancel-scheduled-message",
@@ -282,13 +280,6 @@ export const docPaths = {
             "blockUser": "/api-reference/message-blocks/block-user",
             "listBlocks": "/api-reference/message-blocks/list-blocks",
             "unblockUser": "/api-reference/message-blocks/unblock-user"
-        },
-        "senderIdentities": {
-            "createSenderIdentity": "/api-reference/sender-identities/create-sender-identity",
-            "updateSenderIdentity": "/api-reference/sender-identities/update-sender-identity",
-            "listSenderIdentities": "/api-reference/sender-identities/list-sender-identities",
-            "getSenderIdentity": "/api-reference/sender-identities/get-sender-identity",
-            "deleteSenderIdentity": "/api-reference/sender-identities/delete-sender-identity"
         },
         "notificationPreferences": {
             "listNotificationPreferences": "/api-reference/notification-preferences/list-notification-preferences",
