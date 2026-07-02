@@ -124,7 +124,53 @@ async function loadApiNavDomains(): Promise<ApiNavDomain[]> {
     return mod.apiNavDomains ?? [];
 }
 
-function generateLlmsTxt(pages: ParsedPage[], apiDomains: ApiNavDomain[]): string {
+interface ApiObjectLite {
+    name: string;
+    object: string;
+    slug: string;
+    domain: string;
+    domainLabel: string;
+    description: string;
+}
+
+async function loadApiObjects(): Promise<ApiObjectLite[]> {
+    const mod = await import(GENERATED_FILE);
+    return mod.apiObjects ?? [];
+}
+
+function firstSentence(text: string): string {
+    const trimmed = (text || '').trim();
+    if (!trimmed) return '';
+    return trimmed.split(/(?<=[.!?])\s/)[0];
+}
+
+function groupObjectsByDomain(objects: ApiObjectLite[]): [string, ApiObjectLite[]][] {
+    const byDomain = new Map<string, ApiObjectLite[]>();
+    const labels = new Map<string, string>();
+    for (const obj of objects) {
+        if (!byDomain.has(obj.domain)) byDomain.set(obj.domain, []);
+        byDomain.get(obj.domain)!.push(obj);
+        labels.set(obj.domain, obj.domainLabel);
+    }
+    const domainOrder = ['ai', 'auth', 'core'];
+    return [...byDomain.entries()]
+        .sort((a, b) => {
+            const ai = domainOrder.indexOf(a[0]);
+            const bi = domainOrder.indexOf(b[0]);
+            if (ai !== -1 || bi !== -1) return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+            return (labels.get(a[0]) ?? a[0]).localeCompare(labels.get(b[0]) ?? b[0]);
+        })
+        .map(([domain, objs]) => [
+            labels.get(domain) ?? domain,
+            objs.sort((a, b) => a.name.localeCompare(b.name)),
+        ]);
+}
+
+function generateLlmsTxt(
+    pages: ParsedPage[],
+    apiDomains: ApiNavDomain[],
+    apiObjects: ApiObjectLite[],
+): string {
     const lines: string[] = ['# Augno Documentation', ''];
 
     const sectionMap = groupBySection(pages);
@@ -160,6 +206,23 @@ function generateLlmsTxt(pages: ParsedPage[], apiDomains: ApiNavDomain[]): strin
         }
     }
 
+    if (apiObjects.length > 0) {
+        lines.push('## API Objects', '');
+        for (const [domainLabel, objects] of groupObjectsByDomain(apiObjects)) {
+            lines.push(`### ${domainLabel}`);
+            for (const obj of objects) {
+                const url = `${BASE_URL}/api-reference/objects/${obj.slug}.md`;
+                const subtitle = firstSentence(obj.description);
+                if (subtitle) {
+                    lines.push(`- [${obj.name} object](${url}): ${subtitle}`);
+                } else {
+                    lines.push(`- [${obj.name} object](${url})`);
+                }
+            }
+            lines.push('');
+        }
+    }
+
     return lines.join('\n').trim() + '\n';
 }
 
@@ -176,8 +239,12 @@ async function main() {
     );
     console.log(`Found ${endpointCount} API endpoints`);
 
+    console.log('Loading API reference objects...');
+    const apiObjects = await loadApiObjects();
+    console.log(`Found ${apiObjects.length} API objects`);
+
     console.log('Generating llms.txt...');
-    const content = generateLlmsTxt(pages, apiDomains);
+    const content = generateLlmsTxt(pages, apiDomains, apiObjects);
 
     // Ensure public directory exists
     const publicDir = path.dirname(OUTPUT_FILE);

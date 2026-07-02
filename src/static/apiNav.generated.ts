@@ -14,6 +14,13 @@ export interface ApiNavEntry {
     label: string;
 }
 
+export interface ApiObjectNavEntry {
+    domain: string;
+    domainLabel: string;
+    slug: string;
+    label: string;
+}
+
 export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
     "1.0.forge-preview.2": [
         {
@@ -21,7 +28,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "api-keys"
             ],
-            "tagSlug": "api-key-management",
+            "tagSlug": "api-key",
             "endpointSlug": "create-api-key",
             "label": "Create"
         },
@@ -30,7 +37,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "api-keys"
             ],
-            "tagSlug": "api-key-management",
+            "tagSlug": "api-key",
             "endpointSlug": "list-api-keys",
             "label": "List"
         },
@@ -39,7 +46,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "api-keys"
             ],
-            "tagSlug": "api-key-management",
+            "tagSlug": "api-key",
             "endpointSlug": "retrieve-api-key",
             "label": "Retrieve"
         },
@@ -48,7 +55,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "api-keys"
             ],
-            "tagSlug": "api-key-management",
+            "tagSlug": "api-key",
             "endpointSlug": "revoke-api-key",
             "label": "Delete"
         },
@@ -57,7 +64,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "api-keys"
             ],
-            "tagSlug": "api-key-management",
+            "tagSlug": "api-key",
             "endpointSlug": "rotate-api-key",
             "label": "Rotate API Key"
         },
@@ -66,7 +73,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "sandboxes"
             ],
-            "tagSlug": "sandbox-management",
+            "tagSlug": "sandbox",
             "endpointSlug": "create-sandbox",
             "label": "Create"
         },
@@ -75,7 +82,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "sandboxes"
             ],
-            "tagSlug": "sandbox-management",
+            "tagSlug": "sandbox",
             "endpointSlug": "list-sandboxes",
             "label": "List"
         },
@@ -84,7 +91,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "sandboxes"
             ],
-            "tagSlug": "sandbox-management",
+            "tagSlug": "sandbox",
             "endpointSlug": "retrieve-sandbox",
             "label": "Retrieve"
         },
@@ -93,7 +100,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "sandboxes"
             ],
-            "tagSlug": "sandbox-management",
+            "tagSlug": "sandbox",
             "endpointSlug": "delete-sandbox",
             "label": "Delete"
         },
@@ -102,7 +109,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "request-logs"
             ],
-            "tagSlug": "request-log-management",
+            "tagSlug": "request-log",
             "endpointSlug": "list-request-logs",
             "label": "List"
         },
@@ -111,7 +118,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "request-logs"
             ],
-            "tagSlug": "request-log-management",
+            "tagSlug": "request-log",
             "endpointSlug": "retrieve-request-log",
             "label": "Retrieve"
         },
@@ -120,7 +127,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "audit-events"
             ],
-            "tagSlug": "audit-event-management",
+            "tagSlug": "audit-event",
             "endpointSlug": "list-audit-events",
             "label": "List"
         },
@@ -130,7 +137,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "audit-events",
                 "resource-types"
             ],
-            "tagSlug": "audit-event-management",
+            "tagSlug": "audit-event",
             "endpointSlug": "list-audit-event-resource-types",
             "label": "List"
         },
@@ -139,7 +146,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "audit-events"
             ],
-            "tagSlug": "audit-event-management",
+            "tagSlug": "audit-event",
             "endpointSlug": "retrieve-audit-event",
             "label": "Retrieve"
         },
@@ -148,7 +155,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "units"
             ],
-            "tagSlug": "units-management",
+            "tagSlug": "units",
             "endpointSlug": "create-unit",
             "label": "Create"
         },
@@ -157,7 +164,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "units"
             ],
-            "tagSlug": "units-management",
+            "tagSlug": "units",
             "endpointSlug": "update-unit",
             "label": "Update"
         },
@@ -166,7 +173,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "units"
             ],
-            "tagSlug": "units-management",
+            "tagSlug": "units",
             "endpointSlug": "list-units",
             "label": "List"
         },
@@ -175,7 +182,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "units"
             ],
-            "tagSlug": "units-management",
+            "tagSlug": "units",
             "endpointSlug": "retrieve-unit",
             "label": "Retrieve"
         },
@@ -184,7 +191,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "units"
             ],
-            "tagSlug": "units-management",
+            "tagSlug": "units",
             "endpointSlug": "delete-unit",
             "label": "Delete"
         },
@@ -193,7 +200,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "unit-groups"
             ],
-            "tagSlug": "unit-groups-management",
+            "tagSlug": "unit-groups",
             "endpointSlug": "create-unit-group",
             "label": "Create"
         },
@@ -202,7 +209,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "unit-groups"
             ],
-            "tagSlug": "unit-groups-management",
+            "tagSlug": "unit-groups",
             "endpointSlug": "update-unit-group",
             "label": "Update"
         },
@@ -211,7 +218,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "unit-groups"
             ],
-            "tagSlug": "unit-groups-management",
+            "tagSlug": "unit-groups",
             "endpointSlug": "list-unit-groups",
             "label": "List"
         },
@@ -220,7 +227,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "unit-groups"
             ],
-            "tagSlug": "unit-groups-management",
+            "tagSlug": "unit-groups",
             "endpointSlug": "retrieve-unit-group",
             "label": "Retrieve"
         },
@@ -229,7 +236,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "unit-groups"
             ],
-            "tagSlug": "unit-groups-management",
+            "tagSlug": "unit-groups",
             "endpointSlug": "delete-unit-group",
             "label": "Delete"
         },
@@ -239,7 +246,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "unit-groups",
                 "units"
             ],
-            "tagSlug": "unit-groups-management",
+            "tagSlug": "unit-groups",
             "endpointSlug": "create-unit-group-associated-unit",
             "label": "Create"
         },
@@ -249,7 +256,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "unit-groups",
                 "units"
             ],
-            "tagSlug": "unit-groups-management",
+            "tagSlug": "unit-groups",
             "endpointSlug": "update-unit-group-associated-unit",
             "label": "Update"
         },
@@ -259,7 +266,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "unit-groups",
                 "units"
             ],
-            "tagSlug": "unit-groups-management",
+            "tagSlug": "unit-groups",
             "endpointSlug": "list-unit-group-units",
             "label": "List"
         },
@@ -269,7 +276,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "unit-groups",
                 "units"
             ],
-            "tagSlug": "unit-groups-management",
+            "tagSlug": "unit-groups",
             "endpointSlug": "retrieve-unit-group-unit",
             "label": "Retrieve"
         },
@@ -279,8 +286,691 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "unit-groups",
                 "units"
             ],
-            "tagSlug": "unit-groups-management",
+            "tagSlug": "unit-groups",
             "endpointSlug": "delete-unit-group-associated-unit",
+            "label": "Delete"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "notifications"
+            ],
+            "tagSlug": "notifications",
+            "endpointSlug": "send-notification",
+            "label": "Create"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "notifications"
+            ],
+            "tagSlug": "notifications",
+            "endpointSlug": "list-notifications",
+            "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "notifications",
+                "unread-count"
+            ],
+            "tagSlug": "notifications",
+            "endpointSlug": "get-notification-unread-count",
+            "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "notifications",
+                "unread-summary"
+            ],
+            "tagSlug": "notifications",
+            "endpointSlug": "get-cross-account-unread-summary",
+            "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "notifications"
+            ],
+            "tagSlug": "notifications",
+            "endpointSlug": "retrieve-notification",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "notifications"
+            ],
+            "tagSlug": "notifications",
+            "endpointSlug": "mark-all-notifications-seen",
+            "label": "Mark All Notifications Seen"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "notifications"
+            ],
+            "tagSlug": "notifications",
+            "endpointSlug": "dismiss-notification",
+            "label": "Dismiss Notification"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "notifications"
+            ],
+            "tagSlug": "notifications",
+            "endpointSlug": "mark-notification-read",
+            "label": "Mark Notification Read"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "notifications"
+            ],
+            "tagSlug": "notifications",
+            "endpointSlug": "mark-notification-seen",
+            "label": "Mark Notification Seen"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "announcements"
+            ],
+            "tagSlug": "announcements",
+            "endpointSlug": "list-announcements",
+            "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "announcements"
+            ],
+            "tagSlug": "announcements",
+            "endpointSlug": "retrieve-announcement",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "announcements"
+            ],
+            "tagSlug": "announcements",
+            "endpointSlug": "mark-announcement-dismissed",
+            "label": "Mark Announcement Dismissed"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "announcements"
+            ],
+            "tagSlug": "announcements",
+            "endpointSlug": "mark-announcement-read",
+            "label": "Mark Announcement Read"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "announcements"
+            ],
+            "tagSlug": "announcements",
+            "endpointSlug": "mark-announcement-seen",
+            "label": "Mark Announcement Seen"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "create-conversation",
+            "label": "Create"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "update-conversation",
+            "label": "Update"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "list-conversations",
+            "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "retrieve-conversation",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations",
+                "links"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "link-record",
+            "label": "Create"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations",
+                "redact"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "redact-conversation",
+            "label": "Create"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations",
+                "links"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "list-links",
+            "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations",
+                "links"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "unlink-record",
+            "label": "Delete"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "archive-conversation",
+            "label": "Archive Conversation"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "assign-case",
+            "label": "Assign Case"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "hide-conversation",
+            "label": "Hide Conversation"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "leave-conversation",
+            "label": "Leave Conversation"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "mute-conversation",
+            "label": "Mute Conversation"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "mark-conversation-read",
+            "label": "Mark Conversation Read"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "report-conversation",
+            "label": "Report Conversation"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "set-legal-hold",
+            "label": "Set Legal Hold"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "set-case-status",
+            "label": "Set Case Status"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "unarchive-conversation",
+            "label": "Unarchive Conversation"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "unhide-conversation",
+            "label": "Unhide Conversation"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations"
+            ],
+            "tagSlug": "conversations",
+            "endpointSlug": "unmute-conversation",
+            "label": "Unmute Conversation"
+        },
+        {
+            "domain": "core",
+            "segments": [
+                "search"
+            ],
+            "tagSlug": "search",
+            "endpointSlug": "search",
+            "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "messages"
+            ],
+            "tagSlug": "messages",
+            "endpointSlug": "update-reply-draft",
+            "label": "Update"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "messages",
+                "scheduled"
+            ],
+            "tagSlug": "messages",
+            "endpointSlug": "list-scheduled-messages",
+            "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations",
+                "messages"
+            ],
+            "tagSlug": "messages",
+            "endpointSlug": "send-message",
+            "label": "Create"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations",
+                "messages",
+                "drafts"
+            ],
+            "tagSlug": "messages",
+            "endpointSlug": "create-reply-draft",
+            "label": "Create"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations",
+                "messages"
+            ],
+            "tagSlug": "messages",
+            "endpointSlug": "list-messages",
+            "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "messages"
+            ],
+            "tagSlug": "messages",
+            "endpointSlug": "approve-and-send-reply-draft",
+            "label": "Approve And Send Reply Draft"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "messages"
+            ],
+            "tagSlug": "messages",
+            "endpointSlug": "cancel-scheduled-message",
+            "label": "Cancel Scheduled Message"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "messages"
+            ],
+            "tagSlug": "messages",
+            "endpointSlug": "reject-reply-draft",
+            "label": "Reject Reply Draft"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations",
+                "participants"
+            ],
+            "tagSlug": "conversation-participants",
+            "endpointSlug": "add-participant",
+            "label": "Create"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations",
+                "participants"
+            ],
+            "tagSlug": "conversation-participants",
+            "endpointSlug": "remove-participant",
+            "label": "Delete"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations",
+                "participants"
+            ],
+            "tagSlug": "conversation-participants",
+            "endpointSlug": "update-participant-role",
+            "label": "Update"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "groups"
+            ],
+            "tagSlug": "messaging-groups",
+            "endpointSlug": "create-messaging-group",
+            "label": "Create"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "groups"
+            ],
+            "tagSlug": "messaging-groups",
+            "endpointSlug": "update-messaging-group",
+            "label": "Update"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "groups"
+            ],
+            "tagSlug": "messaging-groups",
+            "endpointSlug": "list-messaging-groups",
+            "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "groups"
+            ],
+            "tagSlug": "messaging-groups",
+            "endpointSlug": "retrieve-messaging-group",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "groups"
+            ],
+            "tagSlug": "messaging-groups",
+            "endpointSlug": "delete-messaging-group",
+            "label": "Delete"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "groups",
+                "members"
+            ],
+            "tagSlug": "messaging-groups",
+            "endpointSlug": "add-messaging-group-member",
+            "label": "Create"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "groups",
+                "members"
+            ],
+            "tagSlug": "messaging-groups",
+            "endpointSlug": "remove-messaging-group-member",
+            "label": "Delete"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "conversations",
+                "attachments"
+            ],
+            "tagSlug": "message-attachments",
+            "endpointSlug": "create-attachment-upload-url",
+            "label": "Create"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "blocks"
+            ],
+            "tagSlug": "message-blocks",
+            "endpointSlug": "block-user",
+            "label": "Create"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "blocks"
+            ],
+            "tagSlug": "message-blocks",
+            "endpointSlug": "list-blocks",
+            "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "blocks"
+            ],
+            "tagSlug": "message-blocks",
+            "endpointSlug": "unblock-user",
+            "label": "Delete"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "sender-identities"
+            ],
+            "tagSlug": "sender-identities",
+            "endpointSlug": "create-sender-identity",
+            "label": "Create"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "sender-identities"
+            ],
+            "tagSlug": "sender-identities",
+            "endpointSlug": "update-sender-identity",
+            "label": "Update"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "sender-identities"
+            ],
+            "tagSlug": "sender-identities",
+            "endpointSlug": "list-sender-identities",
+            "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "sender-identities"
+            ],
+            "tagSlug": "sender-identities",
+            "endpointSlug": "get-sender-identity",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "sender-identities"
+            ],
+            "tagSlug": "sender-identities",
+            "endpointSlug": "delete-sender-identity",
+            "label": "Delete"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "preferences"
+            ],
+            "tagSlug": "notification-preferences",
+            "endpointSlug": "list-notification-preferences",
+            "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "preferences"
+            ],
+            "tagSlug": "notification-preferences",
+            "endpointSlug": "upsert-notification-preference",
+            "label": "Update"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "contacts"
+            ],
+            "tagSlug": "messaging-contacts",
+            "endpointSlug": "list-messaging-contacts",
+            "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "email-domains"
+            ],
+            "tagSlug": "email-domains",
+            "endpointSlug": "create-email-domain",
+            "label": "Create"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "email-domains"
+            ],
+            "tagSlug": "email-domains",
+            "endpointSlug": "list-email-domains",
+            "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "email-domains"
+            ],
+            "tagSlug": "email-domains",
+            "endpointSlug": "get-email-domain",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "email-domains"
+            ],
+            "tagSlug": "email-domains",
+            "endpointSlug": "verify-email-domain",
+            "label": "Verify Email Domain"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "email-inboxes"
+            ],
+            "tagSlug": "email-inboxes",
+            "endpointSlug": "create-email-inbox",
+            "label": "Create"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "email-inboxes"
+            ],
+            "tagSlug": "email-inboxes",
+            "endpointSlug": "update-email-inbox",
+            "label": "Update"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "email-inboxes"
+            ],
+            "tagSlug": "email-inboxes",
+            "endpointSlug": "list-email-inboxes",
+            "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "email-inboxes"
+            ],
+            "tagSlug": "email-inboxes",
+            "endpointSlug": "get-email-inbox",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "email-inboxes"
+            ],
+            "tagSlug": "email-inboxes",
+            "endpointSlug": "delete-email-inbox",
             "label": "Delete"
         },
         {
@@ -333,7 +1023,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "payment-terms"
             ],
-            "tagSlug": "payment-terms-management",
+            "tagSlug": "payment-terms",
             "endpointSlug": "create-payment-term",
             "label": "Create"
         },
@@ -342,7 +1032,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "payment-terms"
             ],
-            "tagSlug": "payment-terms-management",
+            "tagSlug": "payment-terms",
             "endpointSlug": "update-payment-term",
             "label": "Update"
         },
@@ -351,7 +1041,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "payment-terms"
             ],
-            "tagSlug": "payment-terms-management",
+            "tagSlug": "payment-terms",
             "endpointSlug": "list-payment-terms",
             "label": "List"
         },
@@ -360,7 +1050,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "payment-terms"
             ],
-            "tagSlug": "payment-terms-management",
+            "tagSlug": "payment-terms",
             "endpointSlug": "retrieve-payment-term",
             "label": "Retrieve"
         },
@@ -369,7 +1059,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "payment-terms"
             ],
-            "tagSlug": "payment-terms-management",
+            "tagSlug": "payment-terms",
             "endpointSlug": "delete-payment-term",
             "label": "Delete"
         },
@@ -378,7 +1068,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "shipping-terms"
             ],
-            "tagSlug": "shipping-terms-management",
+            "tagSlug": "shipping-terms",
             "endpointSlug": "create-shipping-term",
             "label": "Create"
         },
@@ -387,7 +1077,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "shipping-terms"
             ],
-            "tagSlug": "shipping-terms-management",
+            "tagSlug": "shipping-terms",
             "endpointSlug": "update-shipping-term",
             "label": "Update"
         },
@@ -396,7 +1086,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "shipping-terms"
             ],
-            "tagSlug": "shipping-terms-management",
+            "tagSlug": "shipping-terms",
             "endpointSlug": "list-shipping-terms",
             "label": "List"
         },
@@ -405,7 +1095,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "shipping-terms"
             ],
-            "tagSlug": "shipping-terms-management",
+            "tagSlug": "shipping-terms",
             "endpointSlug": "retrieve-shipping-term",
             "label": "Retrieve"
         },
@@ -414,7 +1104,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "shipping-terms"
             ],
-            "tagSlug": "shipping-terms-management",
+            "tagSlug": "shipping-terms",
             "endpointSlug": "delete-shipping-term",
             "label": "Delete"
         },
@@ -423,7 +1113,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "addresses"
             ],
-            "tagSlug": "address-management",
+            "tagSlug": "address",
             "endpointSlug": "create-address",
             "label": "Create"
         },
@@ -432,7 +1122,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "addresses"
             ],
-            "tagSlug": "address-management",
+            "tagSlug": "address",
             "endpointSlug": "update-address",
             "label": "Update"
         },
@@ -441,7 +1131,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "addresses"
             ],
-            "tagSlug": "address-management",
+            "tagSlug": "address",
             "endpointSlug": "list-addresses",
             "label": "List"
         },
@@ -450,7 +1140,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "addresses"
             ],
-            "tagSlug": "address-management",
+            "tagSlug": "address",
             "endpointSlug": "retrieve-address",
             "label": "Retrieve"
         },
@@ -459,7 +1149,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "addresses"
             ],
-            "tagSlug": "address-management",
+            "tagSlug": "address",
             "endpointSlug": "delete-address",
             "label": "Delete"
         },
@@ -505,7 +1195,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "account-users"
             ],
-            "tagSlug": "account-users-management",
+            "tagSlug": "account-users",
             "endpointSlug": "create-account-user",
             "label": "Create"
         },
@@ -514,7 +1204,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "account-users"
             ],
-            "tagSlug": "account-users-management",
+            "tagSlug": "account-users",
             "endpointSlug": "update-account-user",
             "label": "Update"
         },
@@ -523,7 +1213,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "account-users"
             ],
-            "tagSlug": "account-users-management",
+            "tagSlug": "account-users",
             "endpointSlug": "list-account-users",
             "label": "List"
         },
@@ -532,7 +1222,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "account-users"
             ],
-            "tagSlug": "account-users-management",
+            "tagSlug": "account-users",
             "endpointSlug": "retrieve-account-user",
             "label": "Retrieve"
         },
@@ -541,7 +1231,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "account-users"
             ],
-            "tagSlug": "account-users-management",
+            "tagSlug": "account-users",
             "endpointSlug": "activate-account-user",
             "label": "Activate Account User"
         },
@@ -550,7 +1240,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "account-users"
             ],
-            "tagSlug": "account-users-management",
+            "tagSlug": "account-users",
             "endpointSlug": "disable-account-user",
             "label": "Disable Account User"
         },
@@ -559,7 +1249,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "account-users"
             ],
-            "tagSlug": "account-users-management",
+            "tagSlug": "account-users",
             "endpointSlug": "remove-account-user",
             "label": "Remove Account User"
         },
@@ -568,7 +1258,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "properties"
             ],
-            "tagSlug": "properties-management",
+            "tagSlug": "properties",
             "endpointSlug": "create-property",
             "label": "Create"
         },
@@ -577,7 +1267,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "properties"
             ],
-            "tagSlug": "properties-management",
+            "tagSlug": "properties",
             "endpointSlug": "update-property",
             "label": "Update"
         },
@@ -586,7 +1276,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "properties"
             ],
-            "tagSlug": "properties-management",
+            "tagSlug": "properties",
             "endpointSlug": "list-properties",
             "label": "List"
         },
@@ -595,7 +1285,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "properties"
             ],
-            "tagSlug": "properties-management",
+            "tagSlug": "properties",
             "endpointSlug": "retrieve-property",
             "label": "Retrieve"
         },
@@ -604,7 +1294,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "properties"
             ],
-            "tagSlug": "properties-management",
+            "tagSlug": "properties",
             "endpointSlug": "delete-property",
             "label": "Delete"
         },
@@ -614,7 +1304,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "properties",
                 "attributes"
             ],
-            "tagSlug": "properties-management",
+            "tagSlug": "properties",
             "endpointSlug": "create-attribute",
             "label": "Create"
         },
@@ -624,7 +1314,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "properties",
                 "attributes"
             ],
-            "tagSlug": "properties-management",
+            "tagSlug": "properties",
             "endpointSlug": "update-attribute",
             "label": "Update"
         },
@@ -634,7 +1324,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "properties",
                 "attributes"
             ],
-            "tagSlug": "properties-management",
+            "tagSlug": "properties",
             "endpointSlug": "list-attributes",
             "label": "List"
         },
@@ -644,7 +1334,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "properties",
                 "attributes"
             ],
-            "tagSlug": "properties-management",
+            "tagSlug": "properties",
             "endpointSlug": "retrieve-attribute",
             "label": "Retrieve"
         },
@@ -654,7 +1344,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "properties",
                 "attributes"
             ],
-            "tagSlug": "properties-management",
+            "tagSlug": "properties",
             "endpointSlug": "delete-attribute",
             "label": "Delete"
         },
@@ -717,7 +1407,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "carriers"
             ],
-            "tagSlug": "carriers-management",
+            "tagSlug": "carriers",
             "endpointSlug": "create-carrier",
             "label": "Create"
         },
@@ -726,7 +1416,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "carriers"
             ],
-            "tagSlug": "carriers-management",
+            "tagSlug": "carriers",
             "endpointSlug": "update-carrier",
             "label": "Update"
         },
@@ -735,7 +1425,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "carriers"
             ],
-            "tagSlug": "carriers-management",
+            "tagSlug": "carriers",
             "endpointSlug": "list-carriers",
             "label": "List"
         },
@@ -744,7 +1434,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "carriers"
             ],
-            "tagSlug": "carriers-management",
+            "tagSlug": "carriers",
             "endpointSlug": "retrieve-carrier",
             "label": "Retrieve"
         },
@@ -753,7 +1443,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "carriers"
             ],
-            "tagSlug": "carriers-management",
+            "tagSlug": "carriers",
             "endpointSlug": "delete-carrier",
             "label": "Delete"
         },
@@ -763,7 +1453,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "carriers",
                 "service-levels"
             ],
-            "tagSlug": "service-levels-management",
+            "tagSlug": "service-levels",
             "endpointSlug": "create-service-level",
             "label": "Create"
         },
@@ -773,7 +1463,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "carriers",
                 "service-levels"
             ],
-            "tagSlug": "service-levels-management",
+            "tagSlug": "service-levels",
             "endpointSlug": "update-service-level",
             "label": "Update"
         },
@@ -783,7 +1473,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "carriers",
                 "service-levels"
             ],
-            "tagSlug": "service-levels-management",
+            "tagSlug": "service-levels",
             "endpointSlug": "list-service-levels",
             "label": "List"
         },
@@ -793,7 +1483,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "carriers",
                 "service-levels"
             ],
-            "tagSlug": "service-levels-management",
+            "tagSlug": "service-levels",
             "endpointSlug": "retrieve-service-level",
             "label": "Retrieve"
         },
@@ -803,7 +1493,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "carriers",
                 "service-levels"
             ],
-            "tagSlug": "service-levels-management",
+            "tagSlug": "service-levels",
             "endpointSlug": "delete-service-level",
             "label": "Delete"
         },
@@ -812,7 +1502,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "items"
             ],
-            "tagSlug": "items-management",
+            "tagSlug": "items",
             "endpointSlug": "list-items",
             "label": "List"
         },
@@ -821,7 +1511,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "items"
             ],
-            "tagSlug": "items-management",
+            "tagSlug": "items",
             "endpointSlug": "retrieve-item",
             "label": "Retrieve"
         },
@@ -831,7 +1521,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "items",
                 "attributes"
             ],
-            "tagSlug": "items-management",
+            "tagSlug": "items",
             "endpointSlug": "add-item-attribute",
             "label": "Update"
         },
@@ -841,7 +1531,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "items",
                 "category"
             ],
-            "tagSlug": "items-management",
+            "tagSlug": "items",
             "endpointSlug": "change-item-category",
             "label": "Update"
         },
@@ -851,7 +1541,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "items",
                 "inventory"
             ],
-            "tagSlug": "items-management",
+            "tagSlug": "items",
             "endpointSlug": "retrieve-item-inventory",
             "label": "List"
         },
@@ -861,7 +1551,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "items",
                 "attributes"
             ],
-            "tagSlug": "items-management",
+            "tagSlug": "items",
             "endpointSlug": "remove-item-attribute",
             "label": "Delete"
         },
@@ -870,7 +1560,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "item-categories"
             ],
-            "tagSlug": "item-categories-management",
+            "tagSlug": "item-categories",
             "endpointSlug": "create-item-category",
             "label": "Create"
         },
@@ -879,7 +1569,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "item-categories"
             ],
-            "tagSlug": "item-categories-management",
+            "tagSlug": "item-categories",
             "endpointSlug": "update-item-category",
             "label": "Update"
         },
@@ -888,7 +1578,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "item-categories"
             ],
-            "tagSlug": "item-categories-management",
+            "tagSlug": "item-categories",
             "endpointSlug": "list-item-categories",
             "label": "List"
         },
@@ -897,7 +1587,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "item-categories"
             ],
-            "tagSlug": "item-categories-management",
+            "tagSlug": "item-categories",
             "endpointSlug": "retrieve-item-category",
             "label": "Retrieve"
         },
@@ -906,7 +1596,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "item-categories"
             ],
-            "tagSlug": "item-categories-management",
+            "tagSlug": "item-categories",
             "endpointSlug": "delete-item-category",
             "label": "Delete"
         },
@@ -916,7 +1606,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "item-categories",
                 "properties"
             ],
-            "tagSlug": "item-categories-management",
+            "tagSlug": "item-categories",
             "endpointSlug": "add-item-category-property",
             "label": "Update"
         },
@@ -926,7 +1616,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "item-categories",
                 "unit-groups"
             ],
-            "tagSlug": "item-categories-management",
+            "tagSlug": "item-categories",
             "endpointSlug": "change-item-category-unit-group",
             "label": "Update"
         },
@@ -936,7 +1626,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "item-categories",
                 "properties"
             ],
-            "tagSlug": "item-categories-management",
+            "tagSlug": "item-categories",
             "endpointSlug": "remove-item-category-property",
             "label": "Delete"
         },
@@ -945,7 +1635,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "materials"
             ],
-            "tagSlug": "materials-management",
+            "tagSlug": "materials",
             "endpointSlug": "create-material",
             "label": "Create"
         },
@@ -954,7 +1644,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "materials"
             ],
-            "tagSlug": "materials-management",
+            "tagSlug": "materials",
             "endpointSlug": "update-material",
             "label": "Update"
         },
@@ -963,7 +1653,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "materials"
             ],
-            "tagSlug": "materials-management",
+            "tagSlug": "materials",
             "endpointSlug": "list-materials",
             "label": "List"
         },
@@ -972,7 +1662,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "materials"
             ],
-            "tagSlug": "materials-management",
+            "tagSlug": "materials",
             "endpointSlug": "retrieve-material",
             "label": "Retrieve"
         },
@@ -981,7 +1671,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "materials"
             ],
-            "tagSlug": "materials-management",
+            "tagSlug": "materials",
             "endpointSlug": "delete-material",
             "label": "Delete"
         },
@@ -990,7 +1680,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "parts"
             ],
-            "tagSlug": "parts-management",
+            "tagSlug": "parts",
             "endpointSlug": "create-part",
             "label": "Create"
         },
@@ -999,7 +1689,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "parts"
             ],
-            "tagSlug": "parts-management",
+            "tagSlug": "parts",
             "endpointSlug": "update-part",
             "label": "Update"
         },
@@ -1008,7 +1698,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "parts"
             ],
-            "tagSlug": "parts-management",
+            "tagSlug": "parts",
             "endpointSlug": "list-parts",
             "label": "List"
         },
@@ -1017,7 +1707,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "parts"
             ],
-            "tagSlug": "parts-management",
+            "tagSlug": "parts",
             "endpointSlug": "retrieve-part",
             "label": "Retrieve"
         },
@@ -1026,7 +1716,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "parts"
             ],
-            "tagSlug": "parts-management",
+            "tagSlug": "parts",
             "endpointSlug": "delete-part",
             "label": "Delete"
         },
@@ -1103,11 +1793,20 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "label": "Merge Customers"
         },
         {
+            "domain": "sales",
+            "segments": [
+                "contacts"
+            ],
+            "tagSlug": "contacts",
+            "endpointSlug": "find-contact-by-email",
+            "label": "Find Contact by Email"
+        },
+        {
             "domain": "catalog",
             "segments": [
                 "product-lines"
             ],
-            "tagSlug": "product-lines-management",
+            "tagSlug": "product-lines",
             "endpointSlug": "create-product-line",
             "label": "Create"
         },
@@ -1116,7 +1815,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "product-lines"
             ],
-            "tagSlug": "product-lines-management",
+            "tagSlug": "product-lines",
             "endpointSlug": "update-product-line",
             "label": "Update"
         },
@@ -1125,7 +1824,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "product-lines"
             ],
-            "tagSlug": "product-lines-management",
+            "tagSlug": "product-lines",
             "endpointSlug": "list-product-lines",
             "label": "List"
         },
@@ -1134,7 +1833,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "product-lines"
             ],
-            "tagSlug": "product-lines-management",
+            "tagSlug": "product-lines",
             "endpointSlug": "retrieve-product-line",
             "label": "Retrieve"
         },
@@ -1143,7 +1842,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "product-lines"
             ],
-            "tagSlug": "product-lines-management",
+            "tagSlug": "product-lines",
             "endpointSlug": "delete-product-line",
             "label": "Delete"
         },
@@ -1152,7 +1851,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "products"
             ],
-            "tagSlug": "products-management",
+            "tagSlug": "products",
             "endpointSlug": "create-product",
             "label": "Create"
         },
@@ -1161,7 +1860,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "products"
             ],
-            "tagSlug": "products-management",
+            "tagSlug": "products",
             "endpointSlug": "update-product",
             "label": "Update"
         },
@@ -1170,7 +1869,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "products"
             ],
-            "tagSlug": "products-management",
+            "tagSlug": "products",
             "endpointSlug": "list-products",
             "label": "List"
         },
@@ -1179,7 +1878,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "products"
             ],
-            "tagSlug": "products-management",
+            "tagSlug": "products",
             "endpointSlug": "retrieve-product",
             "label": "Retrieve"
         },
@@ -1188,7 +1887,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "products"
             ],
-            "tagSlug": "products-management",
+            "tagSlug": "products",
             "endpointSlug": "delete-product",
             "label": "Delete"
         },
@@ -1198,7 +1897,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "products",
                 "product-line"
             ],
-            "tagSlug": "products-management",
+            "tagSlug": "products",
             "endpointSlug": "change-product-product-line",
             "label": "Update"
         },
@@ -1262,7 +1961,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "locations"
             ],
-            "tagSlug": "location-management",
+            "tagSlug": "location",
             "endpointSlug": "create-location",
             "label": "Create"
         },
@@ -1271,7 +1970,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "locations"
             ],
-            "tagSlug": "location-management",
+            "tagSlug": "location",
             "endpointSlug": "update-location",
             "label": "Update"
         },
@@ -1280,7 +1979,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "location-types"
             ],
-            "tagSlug": "location-management",
+            "tagSlug": "location",
             "endpointSlug": "list-location-types",
             "label": "List"
         },
@@ -1289,7 +1988,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "locations"
             ],
-            "tagSlug": "location-management",
+            "tagSlug": "location",
             "endpointSlug": "list-locations",
             "label": "List"
         },
@@ -1298,7 +1997,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "location-types"
             ],
-            "tagSlug": "location-management",
+            "tagSlug": "location",
             "endpointSlug": "retrieve-location-type",
             "label": "Retrieve"
         },
@@ -1307,7 +2006,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "locations"
             ],
-            "tagSlug": "location-management",
+            "tagSlug": "location",
             "endpointSlug": "retrieve-location",
             "label": "Retrieve"
         },
@@ -1316,7 +2015,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "locations"
             ],
-            "tagSlug": "location-management",
+            "tagSlug": "location",
             "endpointSlug": "delete-location",
             "label": "Delete"
         },
@@ -1325,7 +2024,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "scanning-stations"
             ],
-            "tagSlug": "scanning-stations-management",
+            "tagSlug": "scanning-stations",
             "endpointSlug": "create-scanning-station",
             "label": "Create"
         },
@@ -1334,7 +2033,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "scanning-stations"
             ],
-            "tagSlug": "scanning-stations-management",
+            "tagSlug": "scanning-stations",
             "endpointSlug": "update-scanning-station",
             "label": "Update"
         },
@@ -1343,7 +2042,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "scanning-stations"
             ],
-            "tagSlug": "scanning-stations-management",
+            "tagSlug": "scanning-stations",
             "endpointSlug": "list-scanning-stations",
             "label": "List"
         },
@@ -1352,7 +2051,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "scanning-stations"
             ],
-            "tagSlug": "scanning-stations-management",
+            "tagSlug": "scanning-stations",
             "endpointSlug": "retrieve-scanning-station",
             "label": "Retrieve"
         },
@@ -1361,7 +2060,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "segments": [
                 "scanning-stations"
             ],
-            "tagSlug": "scanning-stations-management",
+            "tagSlug": "scanning-stations",
             "endpointSlug": "delete-scanning-station",
             "label": "Delete"
         },
@@ -2755,6 +3454,389 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
     ]
 };
 
+export const apiObjectNavEntriesByVersion: Record<string, ApiObjectNavEntry[]> = {
+    "1.0.forge-preview.2": [
+        {
+            "domain": "sales",
+            "domainLabel": "Sales",
+            "slug": "account-group",
+            "label": "Account Groups"
+        },
+        {
+            "domain": "sales",
+            "domainLabel": "Sales",
+            "slug": "account-status",
+            "label": "Account Statuses"
+        },
+        {
+            "domain": "identity",
+            "domainLabel": "Identity",
+            "slug": "account-user",
+            "label": "Account Users"
+        },
+        {
+            "domain": "sales",
+            "domainLabel": "Sales",
+            "slug": "address",
+            "label": "Address"
+        },
+        {
+            "domain": "messaging",
+            "domainLabel": "Messaging",
+            "slug": "announcement",
+            "label": "Announcements"
+        },
+        {
+            "domain": "auth",
+            "domainLabel": "Auth",
+            "slug": "api-key",
+            "label": "API Key"
+        },
+        {
+            "domain": "core",
+            "domainLabel": "Core",
+            "slug": "audit-event",
+            "label": "Audit Event"
+        },
+        {
+            "domain": "operations",
+            "domainLabel": "Operations",
+            "slug": "carrier",
+            "label": "Carriers"
+        },
+        {
+            "domain": "messaging",
+            "domainLabel": "Messaging",
+            "slug": "conversation",
+            "label": "Conversations"
+        },
+        {
+            "domain": "sales",
+            "domainLabel": "Sales",
+            "slug": "customer",
+            "label": "Customers"
+        },
+        {
+            "domain": "messaging",
+            "domainLabel": "Messaging",
+            "slug": "email-domain",
+            "label": "Email Domains"
+        },
+        {
+            "domain": "messaging",
+            "domainLabel": "Messaging",
+            "slug": "email-inbox",
+            "label": "Email Inboxes"
+        },
+        {
+            "domain": "core",
+            "domainLabel": "Core",
+            "slug": "email-log",
+            "label": "Email Logs"
+        },
+        {
+            "domain": "catalog",
+            "domainLabel": "Catalog",
+            "slug": "item-category",
+            "label": "Item Categories"
+        },
+        {
+            "domain": "catalog",
+            "domainLabel": "Catalog",
+            "slug": "item",
+            "label": "Items"
+        },
+        {
+            "domain": "operations",
+            "domainLabel": "Operations",
+            "slug": "location-type",
+            "label": "Location"
+        },
+        {
+            "domain": "catalog",
+            "domainLabel": "Catalog",
+            "slug": "material",
+            "label": "Materials"
+        },
+        {
+            "domain": "messaging",
+            "domainLabel": "Messaging",
+            "slug": "list",
+            "label": "Messages"
+        },
+        {
+            "domain": "messaging",
+            "domainLabel": "Messaging",
+            "slug": "messaging-group",
+            "label": "Messaging Groups"
+        },
+        {
+            "domain": "messaging",
+            "domainLabel": "Messaging",
+            "slug": "notification",
+            "label": "Notifications"
+        },
+        {
+            "domain": "catalog",
+            "domainLabel": "Catalog",
+            "slug": "part",
+            "label": "Parts"
+        },
+        {
+            "domain": "finance",
+            "domainLabel": "Finance",
+            "slug": "payment-term",
+            "label": "Payment Terms"
+        },
+        {
+            "domain": "sales",
+            "domainLabel": "Sales",
+            "slug": "priority",
+            "label": "Priorities"
+        },
+        {
+            "domain": "catalog",
+            "domainLabel": "Catalog",
+            "slug": "product-line",
+            "label": "Product Lines"
+        },
+        {
+            "domain": "catalog",
+            "domainLabel": "Catalog",
+            "slug": "product",
+            "label": "Products"
+        },
+        {
+            "domain": "catalog",
+            "domainLabel": "Catalog",
+            "slug": "property",
+            "label": "Properties"
+        },
+        {
+            "domain": "core",
+            "domainLabel": "Core",
+            "slug": "request-log",
+            "label": "Request Log"
+        },
+        {
+            "domain": "identity",
+            "domainLabel": "Identity",
+            "slug": "role",
+            "label": "Roles"
+        },
+        {
+            "domain": "core",
+            "domainLabel": "Core",
+            "slug": "sandbox",
+            "label": "Sandbox"
+        },
+        {
+            "domain": "operations",
+            "domainLabel": "Operations",
+            "slug": "scanning-station",
+            "label": "Scanning Stations"
+        },
+        {
+            "domain": "messaging",
+            "domainLabel": "Messaging",
+            "slug": "sender-identity",
+            "label": "Sender Identities"
+        },
+        {
+            "domain": "operations",
+            "domainLabel": "Operations",
+            "slug": "service-level",
+            "label": "Service Levels"
+        },
+        {
+            "domain": "operations",
+            "domainLabel": "Operations",
+            "slug": "shipping-term",
+            "label": "Shipping Terms"
+        },
+        {
+            "domain": "catalog",
+            "domainLabel": "Catalog",
+            "slug": "unit-group",
+            "label": "Unit Groups"
+        },
+        {
+            "domain": "catalog",
+            "domainLabel": "Catalog",
+            "slug": "unit",
+            "label": "Units"
+        }
+    ],
+    "1.0.forge-preview.1": [
+        {
+            "domain": "sales",
+            "domainLabel": "Sales",
+            "slug": "account-group",
+            "label": "Account Groups"
+        },
+        {
+            "domain": "sales",
+            "domainLabel": "Sales",
+            "slug": "account-status",
+            "label": "Account Statuses"
+        },
+        {
+            "domain": "identity",
+            "domainLabel": "Identity",
+            "slug": "account-user",
+            "label": "Account Users Management"
+        },
+        {
+            "domain": "sales",
+            "domainLabel": "Sales",
+            "slug": "address",
+            "label": "Address Management"
+        },
+        {
+            "domain": "auth",
+            "domainLabel": "Auth",
+            "slug": "api-key",
+            "label": "API Key Management"
+        },
+        {
+            "domain": "core",
+            "domainLabel": "Core",
+            "slug": "audit-event",
+            "label": "Audit Event Management"
+        },
+        {
+            "domain": "operations",
+            "domainLabel": "Operations",
+            "slug": "carrier",
+            "label": "Carriers Management"
+        },
+        {
+            "domain": "sales",
+            "domainLabel": "Sales",
+            "slug": "customer",
+            "label": "Customers"
+        },
+        {
+            "domain": "core",
+            "domainLabel": "Core",
+            "slug": "email-log",
+            "label": "Email Logs"
+        },
+        {
+            "domain": "catalog",
+            "domainLabel": "Catalog",
+            "slug": "item-category",
+            "label": "Item Categories Management"
+        },
+        {
+            "domain": "catalog",
+            "domainLabel": "Catalog",
+            "slug": "item",
+            "label": "Items Management"
+        },
+        {
+            "domain": "operations",
+            "domainLabel": "Operations",
+            "slug": "location-type",
+            "label": "Location Management"
+        },
+        {
+            "domain": "catalog",
+            "domainLabel": "Catalog",
+            "slug": "material",
+            "label": "Materials Management"
+        },
+        {
+            "domain": "catalog",
+            "domainLabel": "Catalog",
+            "slug": "part",
+            "label": "Parts Management"
+        },
+        {
+            "domain": "finance",
+            "domainLabel": "Finance",
+            "slug": "payment-term",
+            "label": "Payment Terms Management"
+        },
+        {
+            "domain": "sales",
+            "domainLabel": "Sales",
+            "slug": "priority",
+            "label": "Priorities"
+        },
+        {
+            "domain": "catalog",
+            "domainLabel": "Catalog",
+            "slug": "product-line",
+            "label": "Product Lines Management"
+        },
+        {
+            "domain": "catalog",
+            "domainLabel": "Catalog",
+            "slug": "product",
+            "label": "Products Management"
+        },
+        {
+            "domain": "catalog",
+            "domainLabel": "Catalog",
+            "slug": "property",
+            "label": "Properties Management"
+        },
+        {
+            "domain": "core",
+            "domainLabel": "Core",
+            "slug": "request-log",
+            "label": "Request Log Management"
+        },
+        {
+            "domain": "identity",
+            "domainLabel": "Identity",
+            "slug": "role",
+            "label": "Roles"
+        },
+        {
+            "domain": "core",
+            "domainLabel": "Core",
+            "slug": "sandbox",
+            "label": "Sandbox Management"
+        },
+        {
+            "domain": "operations",
+            "domainLabel": "Operations",
+            "slug": "scanning-station",
+            "label": "Scanning Stations Management"
+        },
+        {
+            "domain": "operations",
+            "domainLabel": "Operations",
+            "slug": "service-level",
+            "label": "Service Levels Management"
+        },
+        {
+            "domain": "operations",
+            "domainLabel": "Operations",
+            "slug": "shipping-term",
+            "label": "Shipping Terms Management"
+        },
+        {
+            "domain": "catalog",
+            "domainLabel": "Catalog",
+            "slug": "unit-group",
+            "label": "Unit Groups Management"
+        },
+        {
+            "domain": "catalog",
+            "domainLabel": "Catalog",
+            "slug": "unit",
+            "label": "Units Management"
+        }
+    ]
+};
+
 export function getApiNavEntries(version: string): ApiNavEntry[] {
     return apiNavEntriesByVersion[version] ?? [];
+}
+
+export function getApiObjectNavEntries(version: string): ApiObjectNavEntry[] {
+    return apiObjectNavEntriesByVersion[version] ?? [];
 }

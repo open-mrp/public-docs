@@ -41,6 +41,7 @@ interface OpenAPISchema {
     // Some specs encode `nullable: true` by including `null` inside the enum array.
     // We sanitize these at generation time so the output stays strictly `string[]`.
     enum?: Array<string | null>;
+    const?: string;
     format?: string;
     items?: OpenAPISchema;
     properties?: Record<string, OpenAPISchema>;
@@ -110,6 +111,7 @@ interface SchemaField {
     format?: string;
     properties?: SchemaField[];
     itemType?: string;
+    objectType?: string;
 }
 
 interface Parameter {
@@ -157,6 +159,32 @@ interface ResourceData {
     description: string;
     fields: SchemaField[];
     example?: unknown;
+    /** Discriminator (`object` value) of the resource, e.g. `customer`. */
+    object?: string;
+}
+
+interface ObjectUsage {
+    tag: string;
+    tagSlug: string;
+    endpointSlug: string;
+    method: string;
+    actionType: string;
+    summary: string;
+}
+
+interface ObjectData {
+    name: string;
+    /** Discriminator (`object` value), e.g. `sales_order`. */
+    object: string;
+    /** URL slug, the discriminator with `_` replaced by `-`, e.g. `sales-order`. */
+    slug: string;
+    domain: string;
+    domainLabel: string;
+    description: string;
+    fields: SchemaField[];
+    example?: unknown;
+    /** Endpoints whose request/response include this object. */
+    usedBy: ObjectUsage[];
 }
 
 interface TagData {
@@ -365,6 +393,27 @@ function resolveSchema(schema: OpenAPISchema, spec: OpenAPISpec, depth = 0): Ope
     return schema;
 }
 
+/**
+ * Returns the Stripe-style `object` discriminator value of a schema (e.g.
+ * `customer`), if it has a single-valued `object` property. Used to identify
+ * which named API object a field's value represents so it can be linked.
+ */
+function objectDiscriminator(
+    schema: OpenAPISchema | undefined,
+    spec: OpenAPISpec,
+): string | undefined {
+    if (!schema) return undefined;
+    const resolved = resolveSchema(schema, spec);
+    const objProp = resolved.properties?.object;
+    if (!objProp) return undefined;
+    const resolvedObjProp = resolveSchema(objProp, spec);
+    if (typeof resolvedObjProp.const === 'string') return resolvedObjProp.const;
+    const values = (resolvedObjProp.enum ?? []).filter(
+        (v): v is string => typeof v === 'string',
+    );
+    return values.length === 1 ? values[0] : undefined;
+}
+
 function schemaToFields(
     schema: OpenAPISchema,
     spec: OpenAPISpec,
@@ -484,6 +533,17 @@ function schemaToFields(
                 if (sanitizedEnum.length > 0) field.enum = sanitizedEnum;
             }
             if (resolvedProp.format) field.format = resolvedProp.format;
+
+            // Link object-valued fields (and arrays of objects) to their object
+            // page. Resolved schemas keep the `object` discriminator even when the
+            // field is expandable but not expanded, so ID-only references link too.
+            const objectType = objectDiscriminator(
+                resolvedProp.type === 'array' ? resolvedItems : resolvedProp,
+                spec,
+            );
+            // The `object` field on a resource is its own discriminator string, not
+            // a reference to another object; never self-link it.
+            if (objectType && name !== 'object') field.objectType = objectType;
 
             let shouldExpandNestedFields = false;
             if (includePaths) {
@@ -623,11 +683,26 @@ function findResourceSchema(
     const includePaths = getIncludePaths(getEndpointParameters(getEndpoint.path, getEndpoint.operation, spec), spec);
     const fields = schemaToFields(schema, spec, undefined, 0, { includePaths });
 
+    // A GET single-resource response is the object itself, so its discriminator
+    // is on the response root. If it's wrapped (e.g. inside `data`), fall back to
+    // the first direct property that carries a discriminator.
+    let object = objectDiscriminator(schema, spec);
+    if (!object && schema.properties) {
+        for (const prop of Object.values(schema.properties)) {
+            const found = objectDiscriminator(prop, spec);
+            if (found) {
+                object = found;
+                break;
+            }
+        }
+    }
+
     return {
         name: tagName,
         description: schema.description || '',
         fields,
         example: successResponse.content['application/json'].example || schema.example,
+        ...(object ? { object } : {}),
     };
 }
 
@@ -664,7 +739,7 @@ function deriveActionName(summary: string, tagName: string): string {
 function generateEndpointData(
     spec: OpenAPISpec,
     basePath: string,
-): { tags: TagData[]; nav: ApiNavDomain[] } {
+): { tags: TagData[]; nav: ApiNavDomain[]; objects: ObjectData[] } {
     const { tags: specTags = [], paths } = spec;
 
     // Group operations by tag
@@ -819,10 +894,82 @@ function generateEndpointData(
         }
     }
 
-    return { tags: tagDataList, nav };
+    // Build object catalog: one page per top-level resource that has a
+    // discriminator. The first tag declaring a given discriminator wins.
+    const objects: ObjectData[] = [];
+    const objectByDiscriminator = new Map<string, { obj: ObjectData; tag: TagData }>();
+    for (const tag of tagDataList) {
+        const resource = tag.resource;
+        if (!resource?.object || objectByDiscriminator.has(resource.object)) continue;
+        const obj: ObjectData = {
+            name: tag.name,
+            object: resource.object,
+            slug: resource.object.replace(/_/g, '-'),
+            domain: tag.domain,
+            domainLabel: tag.domainLabel,
+            description: resource.description,
+            fields: resource.fields,
+            example: resource.example,
+            usedBy: [],
+        };
+        objects.push(obj);
+        objectByDiscriminator.set(resource.object, { obj, tag });
+    }
+
+    // Build the "used by" reverse index: every endpoint whose request/response
+    // schemas reference an object, plus the owning tag's own endpoints.
+    const seenUsage = new Map<ObjectData, Set<string>>();
+    const addUsage = (obj: ObjectData, usingTag: TagData, ep: EndpointData) => {
+        let seen = seenUsage.get(obj);
+        if (!seen) {
+            seen = new Set();
+            seenUsage.set(obj, seen);
+        }
+        const key = `${ep.tagSlug}/${ep.endpointSlug}`;
+        if (seen.has(key)) return;
+        seen.add(key);
+        obj.usedBy.push({
+            tag: usingTag.name,
+            tagSlug: ep.tagSlug,
+            endpointSlug: ep.endpointSlug,
+            method: ep.method,
+            actionType: ep.actionType,
+            summary: ep.summary,
+        });
+    };
+    const collectObjectTypes = (fields: SchemaField[] | undefined, into: Set<string>) => {
+        if (!fields) return;
+        for (const f of fields) {
+            if (f.objectType) into.add(f.objectType);
+            collectObjectTypes(f.properties, into);
+        }
+    };
+    for (const tag of tagDataList) {
+        const owned = tag.resource?.object
+            ? objectByDiscriminator.get(tag.resource.object)
+            : undefined;
+        for (const ep of tag.endpoints) {
+            if (owned && owned.tag === tag) addUsage(owned.obj, tag, ep);
+            const refs = new Set<string>();
+            if (ep.requestBody) collectObjectTypes(ep.requestBody.fields, refs);
+            for (const r of ep.responses) collectObjectTypes(r.fields, refs);
+            for (const d of refs) {
+                const entry = objectByDiscriminator.get(d);
+                if (entry) addUsage(entry.obj, tag, ep);
+            }
+        }
+    }
+
+    objects.sort((a, b) => a.name.localeCompare(b.name));
+
+    return { tags: tagDataList, nav, objects };
 }
 
-function generateEndpointsFile(tags: TagData[], nav: ApiNavDomain[]): string {
+function generateEndpointsFile(
+    tags: TagData[],
+    nav: ApiNavDomain[],
+    objects: ObjectData[],
+): string {
     return `// THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY.
 // Run 'bun run build:docs' to regenerate.
 
@@ -838,6 +985,8 @@ export interface SchemaField {
     format?: string;
     properties?: SchemaField[];
     itemType?: string;
+    /** Discriminator of the API object this field holds, e.g. \`customer\`. */
+    objectType?: string;
 }
 
 export interface Parameter {
@@ -885,6 +1034,28 @@ export interface ResourceData {
     description: string;
     fields: SchemaField[];
     example?: unknown;
+    object?: string;
+}
+
+export interface ObjectUsage {
+    tag: string;
+    tagSlug: string;
+    endpointSlug: string;
+    method: string;
+    actionType: string;
+    summary: string;
+}
+
+export interface ObjectData {
+    name: string;
+    object: string;
+    slug: string;
+    domain: string;
+    domainLabel: string;
+    description: string;
+    fields: SchemaField[];
+    example?: unknown;
+    usedBy: ObjectUsage[];
 }
 
 export interface TagData {
@@ -921,6 +1092,8 @@ export const apiTags: TagData[] = ${JSON.stringify(tags, null, 4)};
 
 export const apiNavDomains: ApiNavDomain[] = ${JSON.stringify(nav, null, 4)};
 
+export const apiObjects: ObjectData[] = ${JSON.stringify(objects, null, 4)};
+
 /** Look up a tag by its slug */
 export function getTagBySlug(slug: string): TagData | undefined {
     return apiTags.find(t => t.slug === slug);
@@ -935,6 +1108,16 @@ export function getEndpoint(tagSlug: string, endpointSlug: string): EndpointData
 /** Look up an endpoint's resource by tag slug */
 export function getResource(tagSlug: string): ResourceData | undefined {
     return getTagBySlug(tagSlug)?.resource;
+}
+
+/** Look up an object by its slug */
+export function getObject(slug: string): ObjectData | undefined {
+    return apiObjects.find(o => o.slug === slug);
+}
+
+/** Get all object routes for static generation */
+export function getAllObjectSlugs(): string[] {
+    return apiObjects.map(o => o.slug);
 }
 
 /** Get all endpoint routes for static generation */
@@ -955,13 +1138,18 @@ export function getAllEndpointSlugs(): { tagSlug: string; endpointSlug: string }
  * Identical value exports to apiEndpoints.generated.ts; types are imported from
  * the latest module so the version registry can treat all versions uniformly.
  */
-function generateVersionedEndpointsFile(tags: TagData[], nav: ApiNavDomain[]): string {
+function generateVersionedEndpointsFile(
+    tags: TagData[],
+    nav: ApiNavDomain[],
+    objects: ObjectData[],
+): string {
     return `// THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY.
 // Run 'bun run build:docs' to regenerate.
 
 import type {
     ApiNavDomain,
     EndpointData,
+    ObjectData,
     ResourceData,
     TagData,
 } from '@/static/apiEndpoints.generated';
@@ -969,6 +1157,8 @@ import type {
 export const apiTags: TagData[] = ${JSON.stringify(tags, null, 4)};
 
 export const apiNavDomains: ApiNavDomain[] = ${JSON.stringify(nav, null, 4)};
+
+export const apiObjects: ObjectData[] = ${JSON.stringify(objects, null, 4)};
 
 /** Look up a tag by its slug */
 export function getTagBySlug(slug: string): TagData | undefined {
@@ -984,6 +1174,16 @@ export function getEndpoint(tagSlug: string, endpointSlug: string): EndpointData
 /** Look up an endpoint's resource by tag slug */
 export function getResource(tagSlug: string): ResourceData | undefined {
     return getTagBySlug(tagSlug)?.resource;
+}
+
+/** Look up an object by its slug */
+export function getObject(slug: string): ObjectData | undefined {
+    return apiObjects.find(o => o.slug === slug);
+}
+
+/** Get all object routes for static generation */
+export function getAllObjectSlugs(): string[] {
+    return apiObjects.map(o => o.slug);
 }
 
 /** Get all endpoint routes for static generation */
@@ -1087,12 +1287,29 @@ function buildCompactNavEntries(tags: TagData[]): ApiNavEntry[] {
     return entries;
 }
 
+interface ApiObjectNavEntry {
+    domain: string;
+    domainLabel: string;
+    slug: string;
+    label: string;
+}
+
+function buildCompactObjectNavEntries(objects: ObjectData[]): ApiObjectNavEntry[] {
+    return objects.map((o) => ({
+        domain: o.domain,
+        domainLabel: o.domainLabel,
+        slug: o.slug,
+        label: o.name,
+    }));
+}
+
 // ─── Version index, nav and registry emitters ────────────────────
 
 interface VersionedData {
     version: string;
     tags: TagData[];
     nav: ApiNavDomain[];
+    objects: ObjectData[];
     /** True when loaded from a previously generated module instead of a spec. */
     reused?: boolean;
 }
@@ -1138,8 +1355,10 @@ export function apiReferenceBasePath(version: string): string {
 
 function generateApiNavFile(latest: VersionedData, archived: VersionedData[]): string {
     const byVersion: Record<string, ApiNavEntry[]> = {};
+    const objectsByVersion: Record<string, ApiObjectNavEntry[]> = {};
     for (const v of [latest, ...archived]) {
         byVersion[v.version] = buildCompactNavEntries(v.tags);
+        objectsByVersion[v.version] = buildCompactObjectNavEntries(v.objects);
     }
     return `// THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY.
 // Run 'bun run build:docs' to regenerate.
@@ -1157,10 +1376,23 @@ export interface ApiNavEntry {
     label: string;
 }
 
+export interface ApiObjectNavEntry {
+    domain: string;
+    domainLabel: string;
+    slug: string;
+    label: string;
+}
+
 export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = ${JSON.stringify(byVersion, null, 4)};
+
+export const apiObjectNavEntriesByVersion: Record<string, ApiObjectNavEntry[]> = ${JSON.stringify(objectsByVersion, null, 4)};
 
 export function getApiNavEntries(version: string): ApiNavEntry[] {
     return apiNavEntriesByVersion[version] ?? [];
+}
+
+export function getApiObjectNavEntries(version: string): ApiObjectNavEntry[] {
+    return apiObjectNavEntriesByVersion[version] ?? [];
 }
 `;
 }
@@ -1203,7 +1435,15 @@ ${imports ? `${imports}\n` : ''}
 type VersionModules = {
     endpoints: Pick<
         typeof latestEndpoints,
-        'apiTags' | 'apiNavDomains' | 'getTagBySlug' | 'getEndpoint' | 'getResource' | 'getAllEndpointSlugs'
+        | 'apiTags'
+        | 'apiNavDomains'
+        | 'apiObjects'
+        | 'getTagBySlug'
+        | 'getEndpoint'
+        | 'getResource'
+        | 'getObject'
+        | 'getAllObjectSlugs'
+        | 'getAllEndpointSlugs'
     >;
     snippets: Pick<typeof latestSnippets, 'getEndpointSnippet' | 'getEndpointSnippets' | 'hasAnySnippet'>;
 };
@@ -1220,12 +1460,25 @@ export function getTagsForVersion(version: string): typeof latestEndpoints.apiTa
     return REGISTRY[version]?.endpoints.apiTags;
 }
 
+export function getObjectsForVersion(
+    version: string,
+): typeof latestEndpoints.apiObjects | undefined {
+    return REGISTRY[version]?.endpoints.apiObjects;
+}
+
 export function getEndpointForVersion(
     version: string,
     tagSlug: string,
     endpointSlug: string,
 ): ReturnType<typeof latestEndpoints.getEndpoint> {
     return REGISTRY[version]?.endpoints.getEndpoint(tagSlug, endpointSlug);
+}
+
+export function getObjectForVersion(
+    version: string,
+    slug: string,
+): ReturnType<typeof latestEndpoints.getObject> {
+    return REGISTRY[version]?.endpoints.getObject(slug);
 }
 
 export function getSnippetsForVersion(
@@ -1235,12 +1488,18 @@ export function getSnippetsForVersion(
     return REGISTRY[version]?.snippets.getEndpointSnippets(operationId);
 }
 
-/** Static route params for every archived version: the overview plus each endpoint. */
+/**
+ * Static route params for every archived version: the overview, each object
+ * page, plus each endpoint.
+ */
 export function getArchivedRouteParams(): { segments: string[] }[] {
     const params: { segments: string[] }[] = [];
     for (const [version, modules] of Object.entries(REGISTRY)) {
         if (version === LATEST_API_VERSION) continue;
         params.push({ segments: [version] });
+        for (const slug of modules.endpoints.getAllObjectSlugs()) {
+            params.push({ segments: [version, 'objects', slug] });
+        }
         for (const { tagSlug, endpointSlug } of modules.endpoints.getAllEndpointSlugs()) {
             params.push({ segments: [version, tagSlug, endpointSlug] });
         }
@@ -1306,8 +1565,8 @@ async function main() {
 
     // Generate structured endpoint data
     console.log('Generating structured endpoint data...');
-    const { tags, nav } = generateEndpointData(spec, '/api-reference');
-    const endpointsContent = generateEndpointsFile(tags, nav);
+    const { tags, nav, objects } = generateEndpointData(spec, '/api-reference');
+    const endpointsContent = generateEndpointsFile(tags, nav, objects);
     fs.writeFileSync(ENDPOINTS_OUTPUT_PATH, endpointsContent);
     console.log(`Written: ${ENDPOINTS_OUTPUT_PATH}`);
 
@@ -1340,8 +1599,15 @@ async function main() {
             const mod = (await import(generatedModulePath)) as {
                 apiTags: TagData[];
                 apiNavDomains: ApiNavDomain[];
+                apiObjects?: ObjectData[];
             };
-            archived.push({ version, tags: mod.apiTags, nav: mod.apiNavDomains, reused: true });
+            archived.push({
+                version,
+                tags: mod.apiTags,
+                nav: mod.apiNavDomains,
+                objects: mod.apiObjects ?? [],
+                reused: true,
+            });
             console.log(
                 `Reusing previously generated data for archived version ${version} ` +
                     `(no spec in specs/versions/; run scripts/fetch-public-release-artifacts.sh to regenerate)`,
@@ -1374,7 +1640,7 @@ async function main() {
         fs.mkdirSync(dir, { recursive: true });
         fs.writeFileSync(
             path.join(dir, 'apiEndpoints.generated.ts'),
-            generateVersionedEndpointsFile(v.tags, v.nav),
+            generateVersionedEndpointsFile(v.tags, v.nav, v.objects),
         );
         fs.writeFileSync(
             path.join(dir, 'apiSnippets.generated.ts'),
@@ -1391,7 +1657,7 @@ async function main() {
     console.log(`Written: ${API_VERSIONS_OUTPUT_PATH}`);
     fs.writeFileSync(
         API_NAV_OUTPUT_PATH,
-        generateApiNavFile({ version: latestVersion, tags, nav }, archived),
+        generateApiNavFile({ version: latestVersion, tags, nav, objects }, archived),
     );
     console.log(`Written: ${API_NAV_OUTPUT_PATH}`);
     fs.writeFileSync(

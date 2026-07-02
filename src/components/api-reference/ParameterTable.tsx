@@ -1,12 +1,16 @@
 'use client';
 
 import type { SchemaField } from '@/static/apiEndpoints.generated';
+import Link from 'next/link';
 import { useState } from 'react';
 import { Chip } from './Chip';
 import { EnumChips } from './EnumChips';
 import ExpandableTag from './ExpandableTag';
 import { MarkdownBlock } from './MarkdownText';
 import { ToggleLink } from './ToggleLink';
+
+/** Resolves an object discriminator (e.g. `customer`) to its object-page href, or undefined when no page exists. */
+export type ObjectHrefResolver = (objectType: string) => string | undefined;
 
 export interface ParameterRow {
     name: string;
@@ -30,18 +34,27 @@ function FieldRow({
     pathPrefix,
     expandableIncludes,
     expansionRoot,
+    objectHref,
 }: {
     field: SchemaField;
     depth?: number;
     pathPrefix?: string;
     expandableIncludes?: ExpandableIncludes;
     expansionRoot?: string;
+    objectHref?: ObjectHrefResolver;
 }) {
     const hasChildren = field.properties && field.properties.length > 0;
     const [childrenOpen, setChildrenOpen] = useState(true);
     const childrenCount = field.properties?.length ?? 0;
-    const baseTypeLabel =
-        field.type === 'array' && field.itemType
+
+    // When the field's value is a known API object, show the object name (and
+    // link it) instead of the generic "object" type.
+    const linkedObjectHref = field.objectType ? objectHref?.(field.objectType) : undefined;
+    const baseTypeLabel = field.objectType
+        ? field.type === 'array'
+            ? `array of ${field.objectType}`
+            : field.objectType
+        : field.type === 'array' && field.itemType
             ? `array of ${field.itemType}`
             : field.type + (field.format ? ` (${field.format})` : '');
 
@@ -66,7 +79,20 @@ function FieldRow({
                     <code className="text-sm font-mono font-medium text-[var(--foreground)]">
                         {field.name}
                     </code>
-                    <span className="text-xs text-[var(--text-secondary)]">{typeLabel}</span>
+                    {linkedObjectHref ? (
+                        <span className="text-xs text-[var(--text-secondary)]">
+                            {field.required ? '' : 'optional '}
+                            {field.type === 'array' ? 'array of ' : ''}
+                            <Link
+                                href={linkedObjectHref}
+                                className="text-[var(--primary)] hover:underline"
+                            >
+                                {field.objectType}
+                            </Link>
+                        </span>
+                    ) : (
+                        <span className="text-xs text-[var(--text-secondary)]">{typeLabel}</span>
+                    )}
                     {expandableMatch.length > 0 && (
                         <ExpandableTag
                             paramName={expandableIncludes!.paramName}
@@ -117,6 +143,7 @@ function FieldRow({
                                     pathPrefix={fullPath}
                                     expandableIncludes={expandableIncludes}
                                     expansionRoot={expansionRoot}
+                                    objectHref={objectHref}
                                 />
                             ))}
                         </div>
@@ -133,6 +160,7 @@ interface SchemaFieldTableProps {
     defaultExpanded?: boolean;
     expandableIncludes?: ExpandableIncludes;
     expansionRoot?: string;
+    objectHref?: ObjectHrefResolver;
 }
 
 export function SchemaFieldTable({
@@ -141,6 +169,7 @@ export function SchemaFieldTable({
     defaultExpanded = true,
     expandableIncludes,
     expansionRoot,
+    objectHref,
 }: SchemaFieldTableProps) {
     const [expanded, setExpanded] = useState(defaultExpanded);
 
@@ -185,6 +214,7 @@ export function SchemaFieldTable({
                                 field={field}
                                 expandableIncludes={expandableIncludes}
                                 expansionRoot={expansionRoot}
+                                objectHref={objectHref}
                             />
                         ))}
                     </div>

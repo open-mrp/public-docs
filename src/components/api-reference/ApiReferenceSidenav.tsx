@@ -1,7 +1,7 @@
 'use client';
 
 import { apiVersionFromPathname } from '@/lib/api-reference-version';
-import { getApiNavEntries } from '@/static/apiNav.generated';
+import { getApiNavEntries, getApiObjectNavEntries } from '@/static/apiNav.generated';
 import { apiReferenceBasePath } from '@/static/apiVersions.generated';
 import { NavItem, NavLink, NavSubSection, NavSubSectionData, Sidenav } from '@augno/ui';
 import Link from 'next/link';
@@ -196,6 +196,37 @@ export default function ApiReferenceSidenav() {
         }));
     }, [version, basePath]);
 
+    // A single collapsible "Objects" dropdown that breaks down by domain → object.
+    const objectsNavItem = useMemo<NavSubSectionData | null>(() => {
+        const byDomain = new Map<string, { label: string; links: NavLink[] }>();
+        for (const o of getApiObjectNavEntries(version)) {
+            let group = byDomain.get(o.domain);
+            if (!group) {
+                group = { label: o.domainLabel, links: [] };
+                byDomain.set(o.domain, group);
+            }
+            group.links.push({ href: `${basePath}/objects/${o.slug}`, children: o.label });
+        }
+        if (byDomain.size === 0) return null;
+
+        const domainOrder = ['ai', 'auth', 'core'];
+        const domainSubSections: NavSubSectionData[] = [...byDomain.entries()]
+            .sort((a, b) => {
+                const ai = domainOrder.indexOf(a[0]);
+                const bi = domainOrder.indexOf(b[0]);
+                if (ai !== -1 || bi !== -1) return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+                return a[1].label.localeCompare(b[1].label);
+            })
+            .map(([, group]) => ({
+                title: group.label,
+                items: group.links.sort((a, b) =>
+                    String(a.children).localeCompare(String(b.children)),
+                ),
+            }));
+
+        return { title: 'Objects', items: domainSubSections };
+    }, [version, basePath]);
+
     const renderNavItem = (item: NavLink | NavSubSectionData) => {
         if (!('items' in item) && item.href === VERSION_SELECTOR_HREF) {
             return <ApiVersionSelector key={item.href} />;
@@ -214,6 +245,8 @@ export default function ApiReferenceSidenav() {
 
         const active = isPathActive(item.href);
         const label = String(item.children);
+        // The action icons are for endpoints only — not Overview or object links.
+        const isEndpointLink = item.href !== basePath && !item.href.includes('/objects/');
 
         return (
             <NavItem
@@ -230,7 +263,7 @@ export default function ApiReferenceSidenav() {
                         }}
                     >
                         <span className="flex items-center gap-2 min-w-0">
-                            <ActionIcon label={label} active={active} />
+                            {isEndpointLink && <ActionIcon label={label} active={active} />}
                             <span className={`truncate${active ? ' !text-[var(--foreground)]' : ''}`}>
                                 {children}
                             </span>
@@ -251,6 +284,7 @@ export default function ApiReferenceSidenav() {
                     links: [
                         { href: VERSION_SELECTOR_HREF, children: 'API version' },
                         { href: basePath, children: 'Overview' },
+                        ...(objectsNavItem ? [objectsNavItem] : []),
                     ],
                 },
                 ...sections,

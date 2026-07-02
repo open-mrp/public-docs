@@ -1,15 +1,19 @@
 import { ApiEndpoint } from '@/components/api-reference/ApiEndpoint';
+import { ApiObject } from '@/components/api-reference/ApiObject';
 import { ApiReferenceOverviewContent } from '@/components/api-reference/ApiReferenceOverview';
 import { ApiVersionBanner } from '@/components/api-reference/ApiVersionBanner';
 import { buildOverviewDomains } from '@/lib/api-reference-overview';
+import { buildOverviewObjectDomains } from '@/lib/api-reference-objects-overview';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { techArticleJsonLd } from '@/lib/jsonLd';
 import { socialMeta } from '@/lib/metadata';
 import { ogImage } from '@/lib/site';
-import { getEndpoint, getAllEndpointSlugs } from '@/static/apiEndpoints.generated';
+import { getEndpoint, getAllEndpointSlugs, getAllObjectSlugs } from '@/static/apiEndpoints.generated';
 import {
     getArchivedRouteParams,
     getEndpointForVersion,
+    getObjectForVersion,
+    getObjectsForVersion,
     getTagsForVersion,
 } from '@/static/apiVersionData.generated';
 import {
@@ -39,24 +43,46 @@ interface ResolvedApiRoute {
     basePath: string;
     tagSlug?: string;
     endpointSlug?: string;
+    /** Set for a single object page (/api-reference/objects/<slug>). */
+    objectSlug?: string;
 }
 
 /**
  * Routes handled here:
- *   []                              → overview, latest version (canonical)
- *   [tagSlug, endpointSlug]         → endpoint, latest version (canonical)
- *   [version]                       → overview, archived version
- *   [version, tagSlug, endpointSlug] → endpoint, archived version
+ *   []                                 → overview, latest version (canonical)
+ *   [objects, slug]                    → object page, latest version
+ *   [tagSlug, endpointSlug]            → endpoint, latest version (canonical)
+ *   [version]                          → overview, archived version
+ *   [version, objects, slug]           → object page, archived version
+ *   [version, tagSlug, endpointSlug]   → endpoint, archived version
  */
 function resolveApiRoute(seg: string[]): ResolvedApiRoute | undefined {
     if (seg.length === 0) {
         return { version: LATEST_API_VERSION, isArchived: false, basePath: '/api-reference' };
     }
 
+    // Objects (latest). Branch before the tag/endpoint case so `objects` is never
+    // treated as a tag slug.
+    if (seg[0] === 'objects') {
+        if (seg.length === 2) {
+            return {
+                version: LATEST_API_VERSION,
+                isArchived: false,
+                basePath: '/api-reference',
+                objectSlug: seg[1],
+            };
+        }
+        return undefined;
+    }
+
     if (isArchivedApiVersion(seg[0])) {
         const version = seg[0];
         const basePath = apiReferenceBasePath(version);
         if (seg.length === 1) return { version, isArchived: true, basePath };
+        if (seg[1] === 'objects') {
+            if (seg.length === 3) return { version, isArchived: true, basePath, objectSlug: seg[2] };
+            return undefined;
+        }
         if (seg.length === 3) {
             return { version, isArchived: true, basePath, tagSlug: seg[1], endpointSlug: seg[2] };
         }
@@ -81,6 +107,9 @@ function latestCounterpartRoute(route: ResolvedApiRoute): string {
     if (route.tagSlug && route.endpointSlug && getEndpoint(route.tagSlug, route.endpointSlug)) {
         return `/api-reference/${route.tagSlug}/${route.endpointSlug}`;
     }
+    if (route.objectSlug && getObjectForVersion(LATEST_API_VERSION, route.objectSlug)) {
+        return `/api-reference/objects/${route.objectSlug}`;
+    }
     return '/api-reference';
 }
 
@@ -88,10 +117,16 @@ export function generateStaticParams(): { segments?: string[] }[] {
     const endpointParams = getAllEndpointSlugs().map(({ tagSlug, endpointSlug }) => ({
         segments: [tagSlug, endpointSlug],
     }));
-    // Root `/api-reference` for optional catch-all `[[...segments]]`,
-    // latest endpoints at canonical unversioned routes, then every archived
-    // version's overview and endpoints under /api-reference/<version>/.
-    return [{ segments: [] }, ...endpointParams, ...getArchivedRouteParams()];
+    const objectParams = getAllObjectSlugs().map((slug) => ({ segments: ['objects', slug] }));
+    // Root `/api-reference` for optional catch-all `[[...segments]]`, each object
+    // page, latest endpoints at canonical unversioned routes, then every archived
+    // version's overview, objects and endpoints.
+    return [
+        { segments: [] },
+        ...objectParams,
+        ...endpointParams,
+        ...getArchivedRouteParams(),
+    ];
 }
 
 export const dynamicParams = false;
@@ -104,6 +139,40 @@ export async function generateMetadata({
     const { segments } = await params;
     const route = resolveApiRoute(segments ?? []);
     if (!route) return { title: 'Not found' };
+
+    if (route.objectSlug) {
+        const object = getObjectForVersion(route.version, route.objectSlug);
+        if (!object) return { title: 'Not found' };
+        const title = `${object.name} object — ${API_REFERENCE_PAGE_TITLE}`;
+        const description = toMetaDescription(
+            object.description,
+            `The ${object.object} object in the Augno API.`,
+        );
+        const canonical = `/api-reference/objects/${object.slug}`;
+        if (route.isArchived) {
+            return {
+                title: `${object.name} object (${route.version})`,
+                description,
+                alternates: { canonical },
+                robots: { index: false },
+            };
+        }
+        return {
+            title,
+            description,
+            alternates: { canonical },
+            ...socialMeta({
+                title,
+                description,
+                url: canonical,
+                card: ogImage({
+                    title: `${object.name} object`,
+                    eyebrow: 'API Reference',
+                    subtitle: object.object,
+                }),
+            }),
+        };
+    }
 
     if (!route.tagSlug || !route.endpointSlug) {
         if (route.isArchived) {
@@ -186,15 +255,32 @@ export default async function ApiReferencePage({
         />
     ) : null;
 
-    if (!route.tagSlug || !route.endpointSlug) {
-        const tags = getTagsForVersion(route.version);
-        if (!tags) {
+    if (route.objectSlug) {
+        const object = getObjectForVersion(route.version, route.objectSlug);
+        if (!object) {
             notFound();
         }
         return (
             <>
                 {banner}
-                <ApiReferenceOverviewContent domains={buildOverviewDomains(tags, route.basePath)} />
+                <ApiObject version={route.version} slug={route.objectSlug} />
+            </>
+        );
+    }
+
+    if (!route.tagSlug || !route.endpointSlug) {
+        const tags = getTagsForVersion(route.version);
+        if (!tags) {
+            notFound();
+        }
+        const objects = getObjectsForVersion(route.version) ?? [];
+        return (
+            <>
+                {banner}
+                <ApiReferenceOverviewContent
+                    domains={buildOverviewDomains(tags, route.basePath)}
+                    objectDomains={buildOverviewObjectDomains(objects, route.basePath)}
+                />
             </>
         );
     }

@@ -11,7 +11,15 @@ import * as v_1_0_forge_preview_1_snippets from '@/static/api-versions/1.0.forge
 type VersionModules = {
     endpoints: Pick<
         typeof latestEndpoints,
-        'apiTags' | 'apiNavDomains' | 'getTagBySlug' | 'getEndpoint' | 'getResource' | 'getAllEndpointSlugs'
+        | 'apiTags'
+        | 'apiNavDomains'
+        | 'apiObjects'
+        | 'getTagBySlug'
+        | 'getEndpoint'
+        | 'getResource'
+        | 'getObject'
+        | 'getAllObjectSlugs'
+        | 'getAllEndpointSlugs'
     >;
     snippets: Pick<typeof latestSnippets, 'getEndpointSnippet' | 'getEndpointSnippets' | 'hasAnySnippet'>;
 };
@@ -29,12 +37,25 @@ export function getTagsForVersion(version: string): typeof latestEndpoints.apiTa
     return REGISTRY[version]?.endpoints.apiTags;
 }
 
+export function getObjectsForVersion(
+    version: string,
+): typeof latestEndpoints.apiObjects | undefined {
+    return REGISTRY[version]?.endpoints.apiObjects;
+}
+
 export function getEndpointForVersion(
     version: string,
     tagSlug: string,
     endpointSlug: string,
 ): ReturnType<typeof latestEndpoints.getEndpoint> {
     return REGISTRY[version]?.endpoints.getEndpoint(tagSlug, endpointSlug);
+}
+
+export function getObjectForVersion(
+    version: string,
+    slug: string,
+): ReturnType<typeof latestEndpoints.getObject> {
+    return REGISTRY[version]?.endpoints.getObject(slug);
 }
 
 export function getSnippetsForVersion(
@@ -44,12 +65,18 @@ export function getSnippetsForVersion(
     return REGISTRY[version]?.snippets.getEndpointSnippets(operationId);
 }
 
-/** Static route params for every archived version: the overview plus each endpoint. */
+/**
+ * Static route params for every archived version: the overview, each object
+ * page, plus each endpoint.
+ */
 export function getArchivedRouteParams(): { segments: string[] }[] {
     const params: { segments: string[] }[] = [];
     for (const [version, modules] of Object.entries(REGISTRY)) {
         if (version === LATEST_API_VERSION) continue;
         params.push({ segments: [version] });
+        for (const slug of modules.endpoints.getAllObjectSlugs()) {
+            params.push({ segments: [version, 'objects', slug] });
+        }
         for (const { tagSlug, endpointSlug } of modules.endpoints.getAllEndpointSlugs()) {
             params.push({ segments: [version, tagSlug, endpointSlug] });
         }

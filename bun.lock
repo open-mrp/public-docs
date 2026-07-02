@@ -1,11 +1,12 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "@augno/docs",
       "dependencies": {
         "@augno/internal-sdk": "^4.5.1",
-        "@augno/ui": "^1.9.11",
+        "@augno/ui": "^1.9.12",
         "@mdx-js/loader": "^3.1.1",
         "@mdx-js/react": "^3.1.1",
         "@next/mdx": "16.1.6",

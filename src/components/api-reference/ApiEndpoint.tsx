@@ -1,6 +1,7 @@
 import { EndpointPage } from '@/components/api-reference/EndpointPage';
 import {
     getEndpointForVersion,
+    getObjectsForVersion,
     getSnippetsForVersion,
 } from '@/static/apiVersionData.generated';
 import { LATEST_API_VERSION, apiReferenceBasePath } from '@/static/apiVersions.generated';
@@ -32,6 +33,7 @@ export function ApiEndpoint({
             endpoint={endpoint}
             snippets={getSnippetsForVersion(version, endpoint.operationId)}
             basePath={apiReferenceBasePath(version)}
+            objectSlugs={(getObjectsForVersion(version) ?? []).map((o) => o.slug)}
         />
     );
 }
