@@ -84649,6 +84649,14 @@ export const apiTags: TagData[] = [
                     "expandable": false
                 },
                 {
+                    "name": "forwarding_address",
+                    "type": "string",
+                    "description": "A forwarding address on an Augno-owned domain that also routes to this inbox.\n\nUse this when your domain's mail is hosted elsewhere (e.g. Google Workspace, Microsoft 365) and you cannot point its MX records at Augno: forward mail from `address` to this address instead, and it will still be threaded into a conversation. `null` when domain forwarding is not configured.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": false
+                },
+                {
                     "name": "from_name",
                     "type": "string",
                     "description": "The display name used in the `From` header of outbound mail.",
@@ -84867,6 +84875,7 @@ export const apiTags: TagData[] = [
                     "updated_at": "0001-01-01T00:00:00Z"
                 },
                 "address": "support@acme.com",
+                "forwarding_address": null,
                 "from_name": "Acme Support",
                 "agent_config": {
                     "id": "agdf_01b9ef28feb99e6954201aca63",
@@ -85106,6 +85115,14 @@ export const apiTags: TagData[] = [
                                 "expandable": false
                             },
                             {
+                                "name": "forwarding_address",
+                                "type": "string",
+                                "description": "A forwarding address on an Augno-owned domain that also routes to this inbox.\n\nUse this when your domain's mail is hosted elsewhere (e.g. Google Workspace, Microsoft 365) and you cannot point its MX records at Augno: forward mail from `address` to this address instead, and it will still be threaded into a conversation. `null` when domain forwarding is not configured.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
                                 "name": "from_name",
                                 "type": "string",
                                 "description": "The display name used in the `From` header of outbound mail.",
@@ -85324,6 +85341,7 @@ export const apiTags: TagData[] = [
                                 "updated_at": "0001-01-01T00:00:00Z"
                             },
                             "address": "support@acme.com",
+                            "forwarding_address": null,
                             "from_name": "Acme Support",
                             "agent_config": {
                                 "id": "agdf_01b9ef28feb99e6954201aca63",
@@ -85561,6 +85579,14 @@ export const apiTags: TagData[] = [
                                 "expandable": false
                             },
                             {
+                                "name": "forwarding_address",
+                                "type": "string",
+                                "description": "A forwarding address on an Augno-owned domain that also routes to this inbox.\n\nUse this when your domain's mail is hosted elsewhere (e.g. Google Workspace, Microsoft 365) and you cannot point its MX records at Augno: forward mail from `address` to this address instead, and it will still be threaded into a conversation. `null` when domain forwarding is not configured.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
                                 "name": "from_name",
                                 "type": "string",
                                 "description": "The display name used in the `From` header of outbound mail.",
@@ -85779,6 +85805,7 @@ export const apiTags: TagData[] = [
                                 "updated_at": "0001-01-01T00:00:00Z"
                             },
                             "address": "support@acme.com",
+                            "forwarding_address": null,
                             "from_name": "Acme Support",
                             "agent_config": {
                                 "id": "agdf_01b9ef28feb99e6954201aca63",
@@ -86016,6 +86043,14 @@ export const apiTags: TagData[] = [
                                         "expandable": false
                                     },
                                     {
+                                        "name": "forwarding_address",
+                                        "type": "string",
+                                        "description": "A forwarding address on an Augno-owned domain that also routes to this inbox.\n\nUse this when your domain's mail is hosted elsewhere (e.g. Google Workspace, Microsoft 365) and you cannot point its MX records at Augno: forward mail from `address` to this address instead, and it will still be threaded into a conversation. `null` when domain forwarding is not configured.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
                                         "name": "from_name",
                                         "type": "string",
                                         "description": "The display name used in the `From` header of outbound mail.",
@@ -86245,6 +86280,7 @@ export const apiTags: TagData[] = [
                                         "updated_at": "0001-01-01T00:00:00Z"
                                     },
                                     "address": "support@acme.com",
+                                    "forwarding_address": null,
                                     "from_name": "Acme Support",
                                     "agent_config": {
                                         "id": "agdf_01b9ef28feb99e6954201aca63",
@@ -86425,6 +86461,14 @@ export const apiTags: TagData[] = [
                                 "description": "The full inbox address (e.g. `support@acme.com`).",
                                 "required": true,
                                 "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "forwarding_address",
+                                "type": "string",
+                                "description": "A forwarding address on an Augno-owned domain that also routes to this inbox.\n\nUse this when your domain's mail is hosted elsewhere (e.g. Google Workspace, Microsoft 365) and you cannot point its MX records at Augno: forward mail from `address` to this address instead, and it will still be threaded into a conversation. `null` when domain forwarding is not configured.",
+                                "required": true,
+                                "nullable": true,
                                 "expandable": false
                             },
                             {
@@ -86646,6 +86690,7 @@ export const apiTags: TagData[] = [
                                 "updated_at": "0001-01-01T00:00:00Z"
                             },
                             "address": "support@acme.com",
+                            "forwarding_address": null,
                             "from_name": "Acme Support",
                             "agent_config": {
                                 "id": "agdf_01b9ef28feb99e6954201aca63",
@@ -203193,6 +203238,14 @@ export const apiObjects: ObjectData[] = [
                 "expandable": false
             },
             {
+                "name": "forwarding_address",
+                "type": "string",
+                "description": "A forwarding address on an Augno-owned domain that also routes to this inbox.\n\nUse this when your domain's mail is hosted elsewhere (e.g. Google Workspace, Microsoft 365) and you cannot point its MX records at Augno: forward mail from `address` to this address instead, and it will still be threaded into a conversation. `null` when domain forwarding is not configured.",
+                "required": true,
+                "nullable": true,
+                "expandable": false
+            },
+            {
                 "name": "from_name",
                 "type": "string",
                 "description": "The display name used in the `From` header of outbound mail.",
@@ -203411,6 +203464,7 @@ export const apiObjects: ObjectData[] = [
                 "updated_at": "0001-01-01T00:00:00Z"
             },
             "address": "support@acme.com",
+            "forwarding_address": null,
             "from_name": "Acme Support",
             "agent_config": {
                 "id": "agdf_01b9ef28feb99e6954201aca63",
