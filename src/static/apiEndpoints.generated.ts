@@ -4626,6 +4626,7 @@ export const apiTags: TagData[] = [
                         "announcement",
                         "conversation",
                         "conversation_participant",
+                        "read_cursor",
                         "chat_message",
                         "notification_unread_summary_account",
                         "messaging_block",
@@ -5730,6 +5731,7 @@ export const apiTags: TagData[] = [
                             "announcement",
                             "conversation",
                             "conversation_participant",
+                            "read_cursor",
                             "chat_message",
                             "notification_unread_summary_account",
                             "messaging_block",
@@ -6152,6 +6154,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -7291,6 +7294,7 @@ export const apiTags: TagData[] = [
                                     "announcement",
                                     "conversation",
                                     "conversation_participant",
+                                    "read_cursor",
                                     "chat_message",
                                     "notification_unread_summary_account",
                                     "messaging_block",
@@ -7628,6 +7632,7 @@ export const apiTags: TagData[] = [
                                     "announcement",
                                     "conversation",
                                     "conversation_participant",
+                                    "read_cursor",
                                     "chat_message",
                                     "notification_unread_summary_account",
                                     "messaging_block",
@@ -15279,6 +15284,7 @@ export const apiTags: TagData[] = [
                                 "announcement",
                                 "conversation",
                                 "conversation_participant",
+                                "read_cursor",
                                 "chat_message",
                                 "notification_unread_summary_account",
                                 "messaging_block",
@@ -15715,6 +15721,7 @@ export const apiTags: TagData[] = [
                                 "announcement",
                                 "conversation",
                                 "conversation_participant",
+                                "read_cursor",
                                 "chat_message",
                                 "notification_unread_summary_account",
                                 "messaging_block",
@@ -16365,6 +16372,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -16932,6 +16940,7 @@ export const apiTags: TagData[] = [
                                                             "announcement",
                                                             "conversation",
                                                             "conversation_participant",
+                                                            "read_cursor",
                                                             "chat_message",
                                                             "notification_unread_summary_account",
                                                             "messaging_block",
@@ -17461,6 +17470,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -18049,6 +18059,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -18615,6 +18626,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -19181,6 +19193,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -19656,6 +19669,7 @@ export const apiTags: TagData[] = [
                                 "announcement",
                                 "conversation",
                                 "conversation_participant",
+                                "read_cursor",
                                 "chat_message",
                                 "notification_unread_summary_account",
                                 "messaging_block",
@@ -20244,6 +20258,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -20768,6 +20783,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -21279,6 +21295,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -21790,6 +21807,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -22301,6 +22319,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -23031,6 +23050,16 @@ export const apiTags: TagData[] = [
                                     "nullable": false,
                                     "expandable": false,
                                     "itemType": "string"
+                                },
+                                {
+                                    "name": "read_cursor",
+                                    "type": "object",
+                                    "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "alwaysNull": true,
+                                    "expandable": false,
+                                    "objectType": "read_cursor"
                                 }
                             ]
                         }
@@ -23114,6 +23143,7 @@ export const apiTags: TagData[] = [
                                 "announcement",
                                 "conversation",
                                 "conversation_participant",
+                                "read_cursor",
                                 "chat_message",
                                 "notification_unread_summary_account",
                                 "messaging_block",
@@ -23857,6 +23887,7 @@ export const apiTags: TagData[] = [
                                         "announcement",
                                         "conversation",
                                         "conversation_participant",
+                                        "read_cursor",
                                         "chat_message",
                                         "notification_unread_summary_account",
                                         "messaging_block",
@@ -24212,7 +24243,13 @@ export const apiTags: TagData[] = [
                                 "role": null
                             },
                             "agent_trigger_policy": null,
-                            "agent_trigger_keywords": []
+                            "agent_trigger_keywords": [],
+                            "read_cursor": {
+                                "object": "",
+                                "sequence": 0,
+                                "message_id": null,
+                                "read_at": null
+                            }
                         }
                     ]
                 },
@@ -24382,6 +24419,7 @@ export const apiTags: TagData[] = [
                                 "announcement",
                                 "conversation",
                                 "conversation_participant",
+                                "read_cursor",
                                 "chat_message",
                                 "notification_unread_summary_account",
                                 "messaging_block",
@@ -25016,6 +25054,16 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "itemType": "string"
+                                            },
+                                            {
+                                                "name": "read_cursor",
+                                                "type": "object",
+                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "read_cursor"
                                             }
                                         ]
                                     }
@@ -25099,6 +25147,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -25842,6 +25891,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -26197,7 +26247,13 @@ export const apiTags: TagData[] = [
                                             "role": null
                                         },
                                         "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
+                                        "agent_trigger_keywords": [],
+                                        "read_cursor": {
+                                            "object": "",
+                                            "sequence": 0,
+                                            "message_id": null,
+                                            "read_at": null
+                                        }
                                     }
                                 ]
                             },
@@ -26717,6 +26773,16 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "itemType": "string"
+                                            },
+                                            {
+                                                "name": "read_cursor",
+                                                "type": "object",
+                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "read_cursor"
                                             }
                                         ]
                                     }
@@ -26800,6 +26866,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -27543,6 +27610,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -27898,7 +27966,13 @@ export const apiTags: TagData[] = [
                                             "role": null
                                         },
                                         "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
+                                        "agent_trigger_keywords": [],
+                                        "read_cursor": {
+                                            "object": "",
+                                            "sequence": 0,
+                                            "message_id": null,
+                                            "read_at": null
+                                        }
                                     }
                                 ]
                             },
@@ -28061,6 +28135,7 @@ export const apiTags: TagData[] = [
                             "announcement",
                             "conversation",
                             "conversation_participant",
+                            "read_cursor",
                             "chat_message",
                             "notification_unread_summary_account",
                             "messaging_block",
@@ -28801,6 +28876,16 @@ export const apiTags: TagData[] = [
                                                         "nullable": false,
                                                         "expandable": false,
                                                         "itemType": "string"
+                                                    },
+                                                    {
+                                                        "name": "read_cursor",
+                                                        "type": "object",
+                                                        "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "alwaysNull": true,
+                                                        "expandable": false,
+                                                        "objectType": "read_cursor"
                                                     }
                                                 ]
                                             }
@@ -28884,6 +28969,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -29627,6 +29713,7 @@ export const apiTags: TagData[] = [
                                                             "announcement",
                                                             "conversation",
                                                             "conversation_participant",
+                                                            "read_cursor",
                                                             "chat_message",
                                                             "notification_unread_summary_account",
                                                             "messaging_block",
@@ -29993,7 +30080,13 @@ export const apiTags: TagData[] = [
                                                     "role": null
                                                 },
                                                 "agent_trigger_policy": null,
-                                                "agent_trigger_keywords": []
+                                                "agent_trigger_keywords": [],
+                                                "read_cursor": {
+                                                    "object": "",
+                                                    "sequence": 0,
+                                                    "message_id": null,
+                                                    "read_at": null
+                                                }
                                             }
                                         ]
                                     },
@@ -30499,6 +30592,16 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "itemType": "string"
+                                            },
+                                            {
+                                                "name": "read_cursor",
+                                                "type": "object",
+                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "read_cursor"
                                             }
                                         ]
                                     }
@@ -30582,6 +30685,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -31325,6 +31429,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -31680,7 +31785,13 @@ export const apiTags: TagData[] = [
                                             "role": null
                                         },
                                         "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
+                                        "agent_trigger_keywords": [],
+                                        "read_cursor": {
+                                            "object": "",
+                                            "sequence": 0,
+                                            "message_id": null,
+                                            "read_at": null
+                                        }
                                     }
                                 ]
                             },
@@ -31820,6 +31931,7 @@ export const apiTags: TagData[] = [
                                 "announcement",
                                 "conversation",
                                 "conversation_participant",
+                                "read_cursor",
                                 "chat_message",
                                 "notification_unread_summary_account",
                                 "messaging_block",
@@ -32476,6 +32588,16 @@ export const apiTags: TagData[] = [
                                                         "nullable": false,
                                                         "expandable": false,
                                                         "itemType": "string"
+                                                    },
+                                                    {
+                                                        "name": "read_cursor",
+                                                        "type": "object",
+                                                        "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "alwaysNull": true,
+                                                        "expandable": false,
+                                                        "objectType": "read_cursor"
                                                     }
                                                 ]
                                             }
@@ -32559,6 +32681,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -33302,6 +33425,7 @@ export const apiTags: TagData[] = [
                                                             "announcement",
                                                             "conversation",
                                                             "conversation_participant",
+                                                            "read_cursor",
                                                             "chat_message",
                                                             "notification_unread_summary_account",
                                                             "messaging_block",
@@ -33699,6 +33823,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -33963,7 +34088,13 @@ export const apiTags: TagData[] = [
                                                 "role": null
                                             },
                                             "agent_trigger_policy": null,
-                                            "agent_trigger_keywords": []
+                                            "agent_trigger_keywords": [],
+                                            "read_cursor": {
+                                                "object": "",
+                                                "sequence": 0,
+                                                "message_id": null,
+                                                "read_at": null
+                                            }
                                         }
                                     ]
                                 },
@@ -34568,6 +34699,16 @@ export const apiTags: TagData[] = [
                                                                 "nullable": false,
                                                                 "expandable": false,
                                                                 "itemType": "string"
+                                                            },
+                                                            {
+                                                                "name": "read_cursor",
+                                                                "type": "object",
+                                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "alwaysNull": true,
+                                                                "expandable": false,
+                                                                "objectType": "read_cursor"
                                                             }
                                                         ]
                                                     }
@@ -34651,6 +34792,7 @@ export const apiTags: TagData[] = [
                                                             "announcement",
                                                             "conversation",
                                                             "conversation_participant",
+                                                            "read_cursor",
                                                             "chat_message",
                                                             "notification_unread_summary_account",
                                                             "messaging_block",
@@ -35394,6 +35536,7 @@ export const apiTags: TagData[] = [
                                                                     "announcement",
                                                                     "conversation",
                                                                     "conversation_participant",
+                                                                    "read_cursor",
                                                                     "chat_message",
                                                                     "notification_unread_summary_account",
                                                                     "messaging_block",
@@ -35791,6 +35934,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -36066,7 +36210,13 @@ export const apiTags: TagData[] = [
                                                         "role": null
                                                     },
                                                     "agent_trigger_policy": null,
-                                                    "agent_trigger_keywords": []
+                                                    "agent_trigger_keywords": [],
+                                                    "read_cursor": {
+                                                        "object": "",
+                                                        "sequence": 0,
+                                                        "message_id": null,
+                                                        "read_at": null
+                                                    }
                                                 }
                                             ]
                                         },
@@ -36618,6 +36768,16 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "itemType": "string"
+                                            },
+                                            {
+                                                "name": "read_cursor",
+                                                "type": "object",
+                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "read_cursor"
                                             }
                                         ]
                                     }
@@ -36701,6 +36861,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -37444,6 +37605,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -37799,7 +37961,13 @@ export const apiTags: TagData[] = [
                                             "role": null
                                         },
                                         "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
+                                        "agent_trigger_keywords": [],
+                                        "read_cursor": {
+                                            "object": "",
+                                            "sequence": 0,
+                                            "message_id": null,
+                                            "read_at": null
+                                        }
                                     }
                                 ]
                             },
@@ -38328,6 +38496,16 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "itemType": "string"
+                                            },
+                                            {
+                                                "name": "read_cursor",
+                                                "type": "object",
+                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "read_cursor"
                                             }
                                         ]
                                     }
@@ -38411,6 +38589,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -39154,6 +39333,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -39509,7 +39689,13 @@ export const apiTags: TagData[] = [
                                             "role": null
                                         },
                                         "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
+                                        "agent_trigger_keywords": [],
+                                        "read_cursor": {
+                                            "object": "",
+                                            "sequence": 0,
+                                            "message_id": null,
+                                            "read_at": null
+                                        }
                                     }
                                 ]
                             },
@@ -40013,6 +40199,16 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "itemType": "string"
+                                            },
+                                            {
+                                                "name": "read_cursor",
+                                                "type": "object",
+                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "read_cursor"
                                             }
                                         ]
                                     }
@@ -40096,6 +40292,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -40839,6 +41036,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -41194,7 +41392,13 @@ export const apiTags: TagData[] = [
                                             "role": null
                                         },
                                         "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
+                                        "agent_trigger_keywords": [],
+                                        "read_cursor": {
+                                            "object": "",
+                                            "sequence": 0,
+                                            "message_id": null,
+                                            "read_at": null
+                                        }
                                     }
                                 ]
                             },
@@ -41698,6 +41902,16 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "itemType": "string"
+                                            },
+                                            {
+                                                "name": "read_cursor",
+                                                "type": "object",
+                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "read_cursor"
                                             }
                                         ]
                                     }
@@ -41781,6 +41995,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -42524,6 +42739,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -42879,7 +43095,13 @@ export const apiTags: TagData[] = [
                                             "role": null
                                         },
                                         "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
+                                        "agent_trigger_keywords": [],
+                                        "read_cursor": {
+                                            "object": "",
+                                            "sequence": 0,
+                                            "message_id": null,
+                                            "read_at": null
+                                        }
                                     }
                                 ]
                             },
@@ -43400,6 +43622,16 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "itemType": "string"
+                                            },
+                                            {
+                                                "name": "read_cursor",
+                                                "type": "object",
+                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "read_cursor"
                                             }
                                         ]
                                     }
@@ -43483,6 +43715,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -44226,6 +44459,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -44581,7 +44815,13 @@ export const apiTags: TagData[] = [
                                             "role": null
                                         },
                                         "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
+                                        "agent_trigger_keywords": [],
+                                        "read_cursor": {
+                                            "object": "",
+                                            "sequence": 0,
+                                            "message_id": null,
+                                            "read_at": null
+                                        }
                                     }
                                 ]
                             },
@@ -45101,6 +45341,16 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "itemType": "string"
+                                            },
+                                            {
+                                                "name": "read_cursor",
+                                                "type": "object",
+                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "read_cursor"
                                             }
                                         ]
                                     }
@@ -45184,6 +45434,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -45927,6 +46178,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -46282,7 +46534,13 @@ export const apiTags: TagData[] = [
                                             "role": null
                                         },
                                         "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
+                                        "agent_trigger_keywords": [],
+                                        "read_cursor": {
+                                            "object": "",
+                                            "sequence": 0,
+                                            "message_id": null,
+                                            "read_at": null
+                                        }
                                     }
                                 ]
                             },
@@ -46786,6 +47044,16 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "itemType": "string"
+                                            },
+                                            {
+                                                "name": "read_cursor",
+                                                "type": "object",
+                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "read_cursor"
                                             }
                                         ]
                                     }
@@ -46869,6 +47137,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -47612,6 +47881,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -47967,7 +48237,13 @@ export const apiTags: TagData[] = [
                                             "role": null
                                         },
                                         "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
+                                        "agent_trigger_keywords": [],
+                                        "read_cursor": {
+                                            "object": "",
+                                            "sequence": 0,
+                                            "message_id": null,
+                                            "read_at": null
+                                        }
                                     }
                                 ]
                             },
@@ -48496,6 +48772,16 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "itemType": "string"
+                                            },
+                                            {
+                                                "name": "read_cursor",
+                                                "type": "object",
+                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "read_cursor"
                                             }
                                         ]
                                     }
@@ -48579,6 +48865,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -49322,6 +49609,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -49677,7 +49965,13 @@ export const apiTags: TagData[] = [
                                             "role": null
                                         },
                                         "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
+                                        "agent_trigger_keywords": [],
+                                        "read_cursor": {
+                                            "object": "",
+                                            "sequence": 0,
+                                            "message_id": null,
+                                            "read_at": null
+                                        }
                                     }
                                 ]
                             },
@@ -50201,6 +50495,16 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "itemType": "string"
+                                            },
+                                            {
+                                                "name": "read_cursor",
+                                                "type": "object",
+                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "read_cursor"
                                             }
                                         ]
                                     }
@@ -50284,6 +50588,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -51027,6 +51332,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -51382,7 +51688,13 @@ export const apiTags: TagData[] = [
                                             "role": null
                                         },
                                         "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
+                                        "agent_trigger_keywords": [],
+                                        "read_cursor": {
+                                            "object": "",
+                                            "sequence": 0,
+                                            "message_id": null,
+                                            "read_at": null
+                                        }
                                     }
                                 ]
                             },
@@ -51910,6 +52222,16 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "itemType": "string"
+                                            },
+                                            {
+                                                "name": "read_cursor",
+                                                "type": "object",
+                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "read_cursor"
                                             }
                                         ]
                                     }
@@ -51993,6 +52315,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -52736,6 +53059,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -53091,7 +53415,13 @@ export const apiTags: TagData[] = [
                                             "role": null
                                         },
                                         "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
+                                        "agent_trigger_keywords": [],
+                                        "read_cursor": {
+                                            "object": "",
+                                            "sequence": 0,
+                                            "message_id": null,
+                                            "read_at": null
+                                        }
                                     }
                                 ]
                             },
@@ -53595,6 +53925,16 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "itemType": "string"
+                                            },
+                                            {
+                                                "name": "read_cursor",
+                                                "type": "object",
+                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "read_cursor"
                                             }
                                         ]
                                     }
@@ -53678,6 +54018,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -54421,6 +54762,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -54776,7 +55118,13 @@ export const apiTags: TagData[] = [
                                             "role": null
                                         },
                                         "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
+                                        "agent_trigger_keywords": [],
+                                        "read_cursor": {
+                                            "object": "",
+                                            "sequence": 0,
+                                            "message_id": null,
+                                            "read_at": null
+                                        }
                                     }
                                 ]
                             },
@@ -55280,6 +55628,16 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "itemType": "string"
+                                            },
+                                            {
+                                                "name": "read_cursor",
+                                                "type": "object",
+                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "read_cursor"
                                             }
                                         ]
                                     }
@@ -55363,6 +55721,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -56106,6 +56465,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -56461,7 +56821,13 @@ export const apiTags: TagData[] = [
                                             "role": null
                                         },
                                         "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
+                                        "agent_trigger_keywords": [],
+                                        "read_cursor": {
+                                            "object": "",
+                                            "sequence": 0,
+                                            "message_id": null,
+                                            "read_at": null
+                                        }
                                     }
                                 ]
                             },
@@ -56965,6 +57331,16 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "itemType": "string"
+                                            },
+                                            {
+                                                "name": "read_cursor",
+                                                "type": "object",
+                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "read_cursor"
                                             }
                                         ]
                                     }
@@ -57048,6 +57424,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -57791,6 +58168,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -58146,7 +58524,13 @@ export const apiTags: TagData[] = [
                                             "role": null
                                         },
                                         "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
+                                        "agent_trigger_keywords": [],
+                                        "read_cursor": {
+                                            "object": "",
+                                            "sequence": 0,
+                                            "message_id": null,
+                                            "read_at": null
+                                        }
                                     }
                                 ]
                             },
@@ -58284,6 +58668,7 @@ export const apiTags: TagData[] = [
                             "announcement",
                             "conversation",
                             "conversation_participant",
+                            "read_cursor",
                             "chat_message",
                             "notification_unread_summary_account",
                             "messaging_block",
@@ -58625,6 +59010,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -59299,6 +59685,16 @@ export const apiTags: TagData[] = [
                                                     "nullable": false,
                                                     "expandable": false,
                                                     "itemType": "string"
+                                                },
+                                                {
+                                                    "name": "read_cursor",
+                                                    "type": "object",
+                                                    "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                    "required": true,
+                                                    "nullable": false,
+                                                    "alwaysNull": true,
+                                                    "expandable": false,
+                                                    "objectType": "read_cursor"
                                                 }
                                             ]
                                         }
@@ -60541,6 +60937,7 @@ export const apiTags: TagData[] = [
                                         "announcement",
                                         "conversation",
                                         "conversation_participant",
+                                        "read_cursor",
                                         "chat_message",
                                         "notification_unread_summary_account",
                                         "messaging_block",
@@ -61052,7 +61449,13 @@ export const apiTags: TagData[] = [
                                             "role": null
                                         },
                                         "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
+                                        "agent_trigger_keywords": [],
+                                        "read_cursor": {
+                                            "object": "",
+                                            "sequence": 0,
+                                            "message_id": null,
+                                            "read_at": null
+                                        }
                                     }
                                 ]
                             },
@@ -61597,6 +62000,16 @@ export const apiTags: TagData[] = [
                                                         "nullable": false,
                                                         "expandable": false,
                                                         "itemType": "string"
+                                                    },
+                                                    {
+                                                        "name": "read_cursor",
+                                                        "type": "object",
+                                                        "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "alwaysNull": true,
+                                                        "expandable": false,
+                                                        "objectType": "read_cursor"
                                                     }
                                                 ]
                                             }
@@ -62839,6 +63252,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -63339,7 +63753,13 @@ export const apiTags: TagData[] = [
                                                 "role": null
                                             },
                                             "agent_trigger_policy": null,
-                                            "agent_trigger_keywords": []
+                                            "agent_trigger_keywords": [],
+                                            "read_cursor": {
+                                                "object": "",
+                                                "sequence": 0,
+                                                "message_id": null,
+                                                "read_at": null
+                                            }
                                         }
                                     ]
                                 },
@@ -63636,6 +64056,7 @@ export const apiTags: TagData[] = [
                                 "announcement",
                                 "conversation",
                                 "conversation_participant",
+                                "read_cursor",
                                 "chat_message",
                                 "notification_unread_summary_account",
                                 "messaging_block",
@@ -64328,6 +64749,16 @@ export const apiTags: TagData[] = [
                                                         "nullable": false,
                                                         "expandable": false,
                                                         "itemType": "string"
+                                                    },
+                                                    {
+                                                        "name": "read_cursor",
+                                                        "type": "object",
+                                                        "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "alwaysNull": true,
+                                                        "expandable": false,
+                                                        "objectType": "read_cursor"
                                                     }
                                                 ]
                                             }
@@ -65570,6 +66001,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -66070,7 +66502,13 @@ export const apiTags: TagData[] = [
                                                 "role": null
                                             },
                                             "agent_trigger_policy": null,
-                                            "agent_trigger_keywords": []
+                                            "agent_trigger_keywords": [],
+                                            "read_cursor": {
+                                                "object": "",
+                                                "sequence": 0,
+                                                "message_id": null,
+                                                "read_at": null
+                                            }
                                         }
                                     ]
                                 },
@@ -66695,6 +67133,16 @@ export const apiTags: TagData[] = [
                                                                 "nullable": false,
                                                                 "expandable": false,
                                                                 "itemType": "string"
+                                                            },
+                                                            {
+                                                                "name": "read_cursor",
+                                                                "type": "object",
+                                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "alwaysNull": true,
+                                                                "expandable": false,
+                                                                "objectType": "read_cursor"
                                                             }
                                                         ]
                                                     }
@@ -67937,6 +68385,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -68448,7 +68897,13 @@ export const apiTags: TagData[] = [
                                                         "role": null
                                                     },
                                                     "agent_trigger_policy": null,
-                                                    "agent_trigger_keywords": []
+                                                    "agent_trigger_keywords": [],
+                                                    "read_cursor": {
+                                                        "object": "",
+                                                        "sequence": 0,
+                                                        "message_id": null,
+                                                        "read_at": null
+                                                    }
                                                 }
                                             ]
                                         },
@@ -68984,6 +69439,16 @@ export const apiTags: TagData[] = [
                                                         "nullable": false,
                                                         "expandable": false,
                                                         "itemType": "string"
+                                                    },
+                                                    {
+                                                        "name": "read_cursor",
+                                                        "type": "object",
+                                                        "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "alwaysNull": true,
+                                                        "expandable": false,
+                                                        "objectType": "read_cursor"
                                                     }
                                                 ]
                                             }
@@ -70226,6 +70691,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -70726,7 +71192,13 @@ export const apiTags: TagData[] = [
                                                 "role": null
                                             },
                                             "agent_trigger_policy": null,
-                                            "agent_trigger_keywords": []
+                                            "agent_trigger_keywords": [],
+                                            "read_cursor": {
+                                                "object": "",
+                                                "sequence": 0,
+                                                "message_id": null,
+                                                "read_at": null
+                                            }
                                         }
                                     ]
                                 },
@@ -71244,6 +71716,16 @@ export const apiTags: TagData[] = [
                                                         "nullable": false,
                                                         "expandable": false,
                                                         "itemType": "string"
+                                                    },
+                                                    {
+                                                        "name": "read_cursor",
+                                                        "type": "object",
+                                                        "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "alwaysNull": true,
+                                                        "expandable": false,
+                                                        "objectType": "read_cursor"
                                                     }
                                                 ]
                                             }
@@ -72486,6 +72968,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -72986,7 +73469,13 @@ export const apiTags: TagData[] = [
                                                 "role": null
                                             },
                                             "agent_trigger_policy": null,
-                                            "agent_trigger_keywords": []
+                                            "agent_trigger_keywords": [],
+                                            "read_cursor": {
+                                                "object": "",
+                                                "sequence": 0,
+                                                "message_id": null,
+                                                "read_at": null
+                                            }
                                         }
                                     ]
                                 },
@@ -73504,6 +73993,16 @@ export const apiTags: TagData[] = [
                                                         "nullable": false,
                                                         "expandable": false,
                                                         "itemType": "string"
+                                                    },
+                                                    {
+                                                        "name": "read_cursor",
+                                                        "type": "object",
+                                                        "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "alwaysNull": true,
+                                                        "expandable": false,
+                                                        "objectType": "read_cursor"
                                                     }
                                                 ]
                                             }
@@ -74746,6 +75245,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -75246,7 +75746,13 @@ export const apiTags: TagData[] = [
                                                 "role": null
                                             },
                                             "agent_trigger_policy": null,
-                                            "agent_trigger_keywords": []
+                                            "agent_trigger_keywords": [],
+                                            "read_cursor": {
+                                                "object": "",
+                                                "sequence": 0,
+                                                "message_id": null,
+                                                "read_at": null
+                                            }
                                         }
                                     ]
                                 },
@@ -75722,6 +76228,16 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "itemType": "string"
+                                            },
+                                            {
+                                                "name": "read_cursor",
+                                                "type": "object",
+                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "read_cursor"
                                             }
                                         ]
                                     }
@@ -75805,6 +76321,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -76548,6 +77065,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -76903,7 +77421,13 @@ export const apiTags: TagData[] = [
                                             "role": null
                                         },
                                         "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
+                                        "agent_trigger_keywords": [],
+                                        "read_cursor": {
+                                            "object": "",
+                                            "sequence": 0,
+                                            "message_id": null,
+                                            "read_at": null
+                                        }
                                     }
                                 ]
                             },
@@ -77344,6 +77868,16 @@ export const apiTags: TagData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "itemType": "string"
+                                            },
+                                            {
+                                                "name": "read_cursor",
+                                                "type": "object",
+                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "read_cursor"
                                             }
                                         ]
                                     }
@@ -77427,6 +77961,7 @@ export const apiTags: TagData[] = [
                                             "announcement",
                                             "conversation",
                                             "conversation_participant",
+                                            "read_cursor",
                                             "chat_message",
                                             "notification_unread_summary_account",
                                             "messaging_block",
@@ -78170,6 +78705,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -78525,7 +79061,13 @@ export const apiTags: TagData[] = [
                                             "role": null
                                         },
                                         "agent_trigger_policy": null,
-                                        "agent_trigger_keywords": []
+                                        "agent_trigger_keywords": [],
+                                        "read_cursor": {
+                                            "object": "",
+                                            "sequence": 0,
+                                            "message_id": null,
+                                            "read_at": null
+                                        }
                                     }
                                 ]
                             },
@@ -81699,6 +82241,7 @@ export const apiTags: TagData[] = [
                                                     "announcement",
                                                     "conversation",
                                                     "conversation_participant",
+                                                    "read_cursor",
                                                     "chat_message",
                                                     "notification_unread_summary_account",
                                                     "messaging_block",
@@ -84842,6 +85385,14 @@ export const apiTags: TagData[] = [
                     "itemType": "string"
                 },
                 {
+                    "name": "group_id",
+                    "type": "string",
+                    "description": "The messaging group (roster) whose members are added to every conversation this inbox opens.\n\nEveryone in the group — the human team plus any agents — is seated on each new email thread so they can read, edit, and approve replies alongside the bound agent. `null` when no group is set.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": false
+                },
+                {
                     "name": "created_at",
                     "type": "string",
                     "description": "Creation timestamp.",
@@ -84896,6 +85447,7 @@ export const apiTags: TagData[] = [
                 },
                 "agent_trigger_policy": "always",
                 "agent_trigger_keywords": [],
+                "group_id": null,
                 "created_at": "2026-05-10T00:00:00Z",
                 "updated_at": "2026-05-10T00:23:00Z"
             },
@@ -84978,6 +85530,14 @@ export const apiTags: TagData[] = [
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
+                        },
+                        {
+                            "name": "group_id",
+                            "type": "string",
+                            "description": "The messaging group (roster) whose members are seated on every conversation this inbox opens.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
                         }
                     ],
                     "example": {
@@ -85308,6 +85868,14 @@ export const apiTags: TagData[] = [
                                 "itemType": "string"
                             },
                             {
+                                "name": "group_id",
+                                "type": "string",
+                                "description": "The messaging group (roster) whose members are added to every conversation this inbox opens.\n\nEveryone in the group — the human team plus any agents — is seated on each new email thread so they can read, edit, and approve replies alongside the bound agent. `null` when no group is set.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
                                 "name": "created_at",
                                 "type": "string",
                                 "description": "Creation timestamp.",
@@ -85362,6 +85930,7 @@ export const apiTags: TagData[] = [
                             },
                             "agent_trigger_policy": "always",
                             "agent_trigger_keywords": [],
+                            "group_id": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -85443,6 +86012,14 @@ export const apiTags: TagData[] = [
                             "nullable": false,
                             "expandable": false,
                             "itemType": "string"
+                        },
+                        {
+                            "name": "group_id",
+                            "type": "string",
+                            "description": "The messaging group (roster) whose members are seated on every conversation this inbox opens.",
+                            "required": false,
+                            "nullable": false,
+                            "expandable": false
                         }
                     ],
                     "example": {
@@ -85772,6 +86349,14 @@ export const apiTags: TagData[] = [
                                 "itemType": "string"
                             },
                             {
+                                "name": "group_id",
+                                "type": "string",
+                                "description": "The messaging group (roster) whose members are added to every conversation this inbox opens.\n\nEveryone in the group — the human team plus any agents — is seated on each new email thread so they can read, edit, and approve replies alongside the bound agent. `null` when no group is set.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
                                 "name": "created_at",
                                 "type": "string",
                                 "description": "Creation timestamp.",
@@ -85826,6 +86411,7 @@ export const apiTags: TagData[] = [
                             },
                             "agent_trigger_policy": "always",
                             "agent_trigger_keywords": [],
+                            "group_id": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -86236,6 +86822,14 @@ export const apiTags: TagData[] = [
                                         "itemType": "string"
                                     },
                                     {
+                                        "name": "group_id",
+                                        "type": "string",
+                                        "description": "The messaging group (roster) whose members are added to every conversation this inbox opens.\n\nEveryone in the group — the human team plus any agents — is seated on each new email thread so they can read, edit, and approve replies alongside the bound agent. `null` when no group is set.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
                                         "name": "created_at",
                                         "type": "string",
                                         "description": "Creation timestamp.",
@@ -86301,6 +86895,7 @@ export const apiTags: TagData[] = [
                                     },
                                     "agent_trigger_policy": "always",
                                     "agent_trigger_keywords": [],
+                                    "group_id": null,
                                     "created_at": "2026-05-10T00:00:00Z",
                                     "updated_at": "2026-05-10T00:23:00Z"
                                 }
@@ -86657,6 +87252,14 @@ export const apiTags: TagData[] = [
                                 "itemType": "string"
                             },
                             {
+                                "name": "group_id",
+                                "type": "string",
+                                "description": "The messaging group (roster) whose members are added to every conversation this inbox opens.\n\nEveryone in the group — the human team plus any agents — is seated on each new email thread so they can read, edit, and approve replies alongside the bound agent. `null` when no group is set.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
                                 "name": "created_at",
                                 "type": "string",
                                 "description": "Creation timestamp.",
@@ -86711,6 +87314,7 @@ export const apiTags: TagData[] = [
                             },
                             "agent_trigger_policy": "always",
                             "agent_trigger_keywords": [],
+                            "group_id": null,
                             "created_at": "2026-05-10T00:00:00Z",
                             "updated_at": "2026-05-10T00:23:00Z"
                         }
@@ -196079,6 +196683,7 @@ export const apiObjects: ObjectData[] = [
                             "announcement",
                             "conversation",
                             "conversation_participant",
+                            "read_cursor",
                             "chat_message",
                             "notification_unread_summary_account",
                             "messaging_block",
@@ -196780,6 +197385,7 @@ export const apiObjects: ObjectData[] = [
                     "announcement",
                     "conversation",
                     "conversation_participant",
+                    "read_cursor",
                     "chat_message",
                     "notification_unread_summary_account",
                     "messaging_block",
@@ -198781,6 +199387,16 @@ export const apiObjects: ObjectData[] = [
                                 "nullable": false,
                                 "expandable": false,
                                 "itemType": "string"
+                            },
+                            {
+                                "name": "read_cursor",
+                                "type": "object",
+                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                "required": true,
+                                "nullable": false,
+                                "alwaysNull": true,
+                                "expandable": false,
+                                "objectType": "read_cursor"
                             }
                         ]
                     }
@@ -198864,6 +199480,7 @@ export const apiObjects: ObjectData[] = [
                             "announcement",
                             "conversation",
                             "conversation_participant",
+                            "read_cursor",
                             "chat_message",
                             "notification_unread_summary_account",
                             "messaging_block",
@@ -199607,6 +200224,7 @@ export const apiObjects: ObjectData[] = [
                                     "announcement",
                                     "conversation",
                                     "conversation_participant",
+                                    "read_cursor",
                                     "chat_message",
                                     "notification_unread_summary_account",
                                     "messaging_block",
@@ -199962,7 +200580,13 @@ export const apiObjects: ObjectData[] = [
                             "role": null
                         },
                         "agent_trigger_policy": null,
-                        "agent_trigger_keywords": []
+                        "agent_trigger_keywords": [],
+                        "read_cursor": {
+                            "object": "",
+                            "sequence": 0,
+                            "message_id": null,
+                            "read_at": null
+                        }
                     }
                 ]
             },
@@ -203431,6 +204055,14 @@ export const apiObjects: ObjectData[] = [
                 "itemType": "string"
             },
             {
+                "name": "group_id",
+                "type": "string",
+                "description": "The messaging group (roster) whose members are added to every conversation this inbox opens.\n\nEveryone in the group — the human team plus any agents — is seated on each new email thread so they can read, edit, and approve replies alongside the bound agent. `null` when no group is set.",
+                "required": true,
+                "nullable": true,
+                "expandable": false
+            },
+            {
                 "name": "created_at",
                 "type": "string",
                 "description": "Creation timestamp.",
@@ -203485,6 +204117,7 @@ export const apiObjects: ObjectData[] = [
             },
             "agent_trigger_policy": "always",
             "agent_trigger_keywords": [],
+            "group_id": null,
             "created_at": "2026-05-10T00:00:00Z",
             "updated_at": "2026-05-10T00:23:00Z"
         },
@@ -208378,6 +209011,16 @@ export const apiObjects: ObjectData[] = [
                                                 "nullable": false,
                                                 "expandable": false,
                                                 "itemType": "string"
+                                            },
+                                            {
+                                                "name": "read_cursor",
+                                                "type": "object",
+                                                "description": "The participant's read position in the conversation (read receipts): how far they have read.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "alwaysNull": true,
+                                                "expandable": false,
+                                                "objectType": "read_cursor"
                                             }
                                         ]
                                     }
@@ -209620,6 +210263,7 @@ export const apiObjects: ObjectData[] = [
                                     "announcement",
                                     "conversation",
                                     "conversation_participant",
+                                    "read_cursor",
                                     "chat_message",
                                     "notification_unread_summary_account",
                                     "messaging_block",
@@ -210131,7 +210775,13 @@ export const apiObjects: ObjectData[] = [
                                         "role": null
                                     },
                                     "agent_trigger_policy": null,
-                                    "agent_trigger_keywords": []
+                                    "agent_trigger_keywords": [],
+                                    "read_cursor": {
+                                        "object": "",
+                                        "sequence": 0,
+                                        "message_id": null,
+                                        "read_at": null
+                                    }
                                 }
                             ]
                         },
@@ -212019,6 +212669,7 @@ export const apiObjects: ObjectData[] = [
                             "announcement",
                             "conversation",
                             "conversation_participant",
+                            "read_cursor",
                             "chat_message",
                             "notification_unread_summary_account",
                             "messaging_block",
