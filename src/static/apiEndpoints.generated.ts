@@ -23478,7 +23478,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "subject",
                             "type": "string",
-                            "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                            "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                             "required": true,
                             "nullable": true,
                             "expandable": false
@@ -25482,7 +25482,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -27201,7 +27201,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -29304,7 +29304,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "subject",
                                                 "type": "string",
-                                                "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                                "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -31020,7 +31020,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -33016,7 +33016,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "subject",
                                                 "type": "string",
-                                                "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                                "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -35127,7 +35127,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "subject",
                                                         "type": "string",
-                                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -37196,7 +37196,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -38924,7 +38924,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -40627,7 +40627,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -42330,7 +42330,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -44050,7 +44050,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -45769,7 +45769,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -47472,7 +47472,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -49200,7 +49200,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -50923,7 +50923,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -52650,7 +52650,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -54353,7 +54353,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -56056,7 +56056,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -57759,7 +57759,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -59830,7 +59830,7 @@ export const apiTags: TagData[] = [
                                         {
                                             "name": "subject",
                                             "type": "string",
-                                            "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                            "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                             "required": true,
                                             "nullable": true,
                                             "expandable": false
@@ -60009,7 +60009,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "subject",
                             "type": "string",
-                            "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                            "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                             "required": true,
                             "nullable": true,
                             "expandable": false
@@ -60433,7 +60433,7 @@ export const apiTags: TagData[] = [
                                 {
                                     "name": "subject",
                                     "type": "string",
-                                    "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                    "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                     "required": true,
                                     "nullable": true,
                                     "expandable": false
@@ -62145,7 +62145,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "subject",
                                                 "type": "string",
-                                                "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                                "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -62324,7 +62324,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "subject",
                                 "type": "string",
-                                "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                 "required": true,
                                 "nullable": true,
                                 "expandable": false
@@ -62748,7 +62748,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -64894,7 +64894,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "subject",
                                                 "type": "string",
-                                                "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                                "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -65073,7 +65073,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "subject",
                                 "type": "string",
-                                "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                 "required": true,
                                 "nullable": true,
                                 "expandable": false
@@ -65497,7 +65497,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -67278,7 +67278,7 @@ export const apiTags: TagData[] = [
                                                     {
                                                         "name": "subject",
                                                         "type": "string",
-                                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                                         "required": true,
                                                         "nullable": true,
                                                         "expandable": false
@@ -67457,7 +67457,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -67881,7 +67881,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "subject",
                                                 "type": "string",
-                                                "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                                "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -69584,7 +69584,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "subject",
                                                 "type": "string",
-                                                "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                                "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -69763,7 +69763,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "subject",
                                 "type": "string",
-                                "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                 "required": true,
                                 "nullable": true,
                                 "expandable": false
@@ -70187,7 +70187,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -71861,7 +71861,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "subject",
                                                 "type": "string",
-                                                "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                                "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -72040,7 +72040,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "subject",
                                 "type": "string",
-                                "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                 "required": true,
                                 "nullable": true,
                                 "expandable": false
@@ -72464,7 +72464,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -74138,7 +74138,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "subject",
                                                 "type": "string",
-                                                "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                                "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                                 "required": true,
                                                 "nullable": true,
                                                 "expandable": false
@@ -74317,7 +74317,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "subject",
                                 "type": "string",
-                                "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                 "required": true,
                                 "nullable": true,
                                 "expandable": false
@@ -74741,7 +74741,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -76656,7 +76656,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -78296,7 +78296,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -199815,7 +199815,7 @@ export const apiObjects: ObjectData[] = [
                     {
                         "name": "subject",
                         "type": "string",
-                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                         "required": true,
                         "nullable": true,
                         "expandable": false
@@ -209156,7 +209156,7 @@ export const apiObjects: ObjectData[] = [
                                     {
                                         "name": "subject",
                                         "type": "string",
-                                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                         "required": true,
                                         "nullable": true,
                                         "expandable": false
@@ -209335,7 +209335,7 @@ export const apiObjects: ObjectData[] = [
                     {
                         "name": "subject",
                         "type": "string",
-                        "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                        "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                         "required": true,
                         "nullable": true,
                         "expandable": false
@@ -209759,7 +209759,7 @@ export const apiObjects: ObjectData[] = [
                             {
                                 "name": "subject",
                                 "type": "string",
-                                "description": "The email subject of a customer-reply `draft` on an email-bridged case.",
+                                "description": "The email subject line\n\nOn an email-bridged case, the original subject of an inbound email, or the subject a customer-reply `draft`/outbound message is sent with.",
                                 "required": true,
                                 "nullable": true,
                                 "expandable": false
