@@ -84949,6 +84949,36 @@ export const apiTags: TagData[] = [
                 ]
             },
             {
+                "operationId": "delete-email-domain",
+                "summary": "Delete Email Domain",
+                "description": "Deregisters a customer-owned domain from the email bridge.\n\nThe domain's SES identity is removed. The domain must have no inboxes bound to it.\n\nThis endpoint requires the permission: `messaging:delete`.",
+                "method": "DELETE",
+                "path": "/v1/messaging/email-domains/{id}",
+                "domain": "messaging",
+                "tag": "Email Domains",
+                "tagSlug": "email-domains",
+                "endpointSlug": "delete-email-domain",
+                "actionType": "delete",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Email domain ID."
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for Delete Email Domain",
+                        "fields": [],
+                        "example": {}
+                    }
+                ]
+            },
+            {
                 "operationId": "verify-email-domain",
                 "summary": "Verify Email Domain",
                 "description": "Re-polls the provider and flips the domain to `verified` once its DKIM records are confirmed.\n\nReturns the updated domain (still `pending` if not yet confirmed).\n\nThis endpoint requires the permission: `messaging:update`.",
@@ -194193,6 +194223,13 @@ export const apiNavDomains: ApiNavDomain[] = [
                         "href": "/api-reference/email-domains/get-email-domain"
                     },
                     {
+                        "name": "Delete Domain",
+                        "slug": "delete-email-domain",
+                        "method": "DELETE",
+                        "actionType": "delete",
+                        "href": "/api-reference/email-domains/delete-email-domain"
+                    },
+                    {
                         "name": "Verify Domain",
                         "slug": "verify-email-domain",
                         "method": "POST",
@@ -203693,6 +203730,14 @@ export const apiObjects: ObjectData[] = [
                 "method": "GET",
                 "actionType": "retrieve",
                 "summary": "Get Email Domain"
+            },
+            {
+                "tag": "Email Domains",
+                "tagSlug": "email-domains",
+                "endpointSlug": "delete-email-domain",
+                "method": "DELETE",
+                "actionType": "delete",
+                "summary": "Delete Email Domain"
             },
             {
                 "tag": "Email Domains",

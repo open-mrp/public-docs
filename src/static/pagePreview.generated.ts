@@ -775,6 +775,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Get Email Domain",
         "subtitle": "GET /v1/messaging/email-domains/{id}"
     },
+    "/api-reference/email-domains/delete-email-domain": {
+        "title": "Delete Email Domain",
+        "subtitle": "DELETE /v1/messaging/email-domains/{id}"
+    },
     "/api-reference/email-domains/verify-email-domain": {
         "title": "Verify Email Domain",
         "subtitle": "POST /v1/messaging/email-domains/{id}/actions/verify"

@@ -292,6 +292,7 @@ export const docPaths = {
             "createEmailDomain": "/api-reference/email-domains/create-email-domain",
             "listEmailDomains": "/api-reference/email-domains/list-email-domains",
             "getEmailDomain": "/api-reference/email-domains/get-email-domain",
+            "deleteEmailDomain": "/api-reference/email-domains/delete-email-domain",
             "verifyEmailDomain": "/api-reference/email-domains/verify-email-domain"
         },
         "emailInboxes": {

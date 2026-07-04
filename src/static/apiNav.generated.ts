@@ -858,6 +858,15 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "email-domains"
             ],
             "tagSlug": "email-domains",
+            "endpointSlug": "delete-email-domain",
+            "label": "Delete"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "email-domains"
+            ],
+            "tagSlug": "email-domains",
             "endpointSlug": "verify-email-domain",
             "label": "Verify Email Domain"
         },

@@ -845,6 +845,12 @@ const RAW_SNIPPETS: Record<string, EndpointSnippets> = {
         "python": "import os\nfrom augno_sdk import Augno\n\nclient = Augno(\n    bearer_token=os.environ.get(\"AUGNO_API_KEY\"),  # Your API key goes here\n)\nemail_domain = client.messaging.email_domains.retrieve(\n    \"emdom_018e88072d1320808dc9aaa01\",\n)\nprint(email_domain.id)",
         "go": "package main\n\nimport (\n  \"context\"\n  \"fmt\"\n\n  \"github.com/augno/augno-go\"\n  \"github.com/augno/augno-go/option\"\n)\n\nfunc main() {\n  client := augno.NewClient(\n    option.WithBearerToken(\"My Bearer Token\"),\n  )\n  emailDomain, err := client.Messaging.EmailDomains.Get(context.TODO(), \"emdom_018e88072d1320808dc9aaa01\")\n  if err != nil {\n    panic(err.Error())\n  }\n  fmt.Printf(\"%+v\\n\", emailDomain.ID)\n}\n"
     },
+    "delete-email-domain": {
+        "typescript": "import Augno from '@augno/sdk';\n\nconst client = new Augno({\n  bearerToken: 'YOUR_API_KEY', // Your API key goes here\n});\n\nconst emailDomain = await client.messaging.emailDomains.delete('emdom_018e88072d1320808dc9aaa01');\n\nconsole.log(emailDomain);",
+        "curl": "curl API_HOST/v1/messaging/email-domains/$ID \\\n    -X DELETE \\\n    -H 'Augno-Version: 1.0.forge-preview.2' \\\n    -H \"Authorization: Bearer YOUR_API_KEY\"",
+        "python": "import os\nfrom augno_sdk import Augno\n\nclient = Augno(\n    bearer_token=os.environ.get(\"AUGNO_API_KEY\"),  # Your API key goes here\n)\nemail_domain = client.messaging.email_domains.delete(\n    \"emdom_018e88072d1320808dc9aaa01\",\n)\nprint(email_domain)",
+        "go": "package main\n\nimport (\n  \"context\"\n  \"fmt\"\n\n  \"github.com/augno/augno-go\"\n  \"github.com/augno/augno-go/option\"\n)\n\nfunc main() {\n  client := augno.NewClient(\n    option.WithBearerToken(\"My Bearer Token\"),\n  )\n  emailDomain, err := client.Messaging.EmailDomains.Delete(context.TODO(), \"emdom_018e88072d1320808dc9aaa01\")\n  if err != nil {\n    panic(err.Error())\n  }\n  fmt.Printf(\"%+v\\n\", emailDomain)\n}\n"
+    },
     "verify-email-domain": {
         "typescript": "import Augno from '@augno/sdk';\n\nconst client = new Augno({\n  bearerToken: 'YOUR_API_KEY', // Your API key goes here\n});\n\nconst emailDomain = await client.messaging.emailDomains.actions.verify(\n  'emdom_018e88072d1320808dc9aaa01',\n);\n\nconsole.log(emailDomain.id);",
         "curl": "curl API_HOST/v1/messaging/email-domains/$ID/actions/verify \\\n    -X POST \\\n    -H 'Augno-Version: 1.0.forge-preview.2' \\\n    -H \"Authorization: Bearer YOUR_API_KEY\"",

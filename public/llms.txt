@@ -271,6 +271,7 @@
 - [POST Email Domains — Create Domain](https://docs.augno.com/api-reference/email-domains/create-email-domain.md)
 - [GET Email Domains — List](https://docs.augno.com/api-reference/email-domains/list-email-domains.md)
 - [GET Email Domains — Get Domain](https://docs.augno.com/api-reference/email-domains/get-email-domain.md)
+- [DELETE Email Domains — Delete Domain](https://docs.augno.com/api-reference/email-domains/delete-email-domain.md)
 - [POST Email Domains — Verify Domain](https://docs.augno.com/api-reference/email-domains/verify-email-domain.md)
 - [POST Email Inboxes — Create Inbox](https://docs.augno.com/api-reference/email-inboxes/create-email-inbox.md)
 - [PATCH Email Inboxes — Update Inbox](https://docs.augno.com/api-reference/email-inboxes/update-email-inbox.md)
