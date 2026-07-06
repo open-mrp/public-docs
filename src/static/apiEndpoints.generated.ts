@@ -4693,6 +4693,8 @@ export const apiTags: TagData[] = [
                         "email_log",
                         "email_domain",
                         "email_inbox",
+                        "portal_domain",
+                        "dns_record",
                         "inventory_change_log",
                         "invoice",
                         "invoice_summary",
@@ -5798,6 +5800,8 @@ export const apiTags: TagData[] = [
                             "email_log",
                             "email_domain",
                             "email_inbox",
+                            "portal_domain",
+                            "dns_record",
                             "inventory_change_log",
                             "invoice",
                             "invoice_summary",
@@ -6221,6 +6225,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -7361,6 +7367,8 @@ export const apiTags: TagData[] = [
                                     "email_log",
                                     "email_domain",
                                     "email_inbox",
+                                    "portal_domain",
+                                    "dns_record",
                                     "inventory_change_log",
                                     "invoice",
                                     "invoice_summary",
@@ -7699,6 +7707,8 @@ export const apiTags: TagData[] = [
                                     "email_log",
                                     "email_domain",
                                     "email_inbox",
+                                    "portal_domain",
+                                    "dns_record",
                                     "inventory_change_log",
                                     "invoice",
                                     "invoice_summary",
@@ -15351,6 +15361,8 @@ export const apiTags: TagData[] = [
                                 "email_log",
                                 "email_domain",
                                 "email_inbox",
+                                "portal_domain",
+                                "dns_record",
                                 "inventory_change_log",
                                 "invoice",
                                 "invoice_summary",
@@ -15788,6 +15800,8 @@ export const apiTags: TagData[] = [
                                 "email_log",
                                 "email_domain",
                                 "email_inbox",
+                                "portal_domain",
+                                "dns_record",
                                 "inventory_change_log",
                                 "invoice",
                                 "invoice_summary",
@@ -16439,6 +16453,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -17007,6 +17023,8 @@ export const apiTags: TagData[] = [
                                                             "email_log",
                                                             "email_domain",
                                                             "email_inbox",
+                                                            "portal_domain",
+                                                            "dns_record",
                                                             "inventory_change_log",
                                                             "invoice",
                                                             "invoice_summary",
@@ -17537,6 +17555,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -18126,6 +18146,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -18693,6 +18715,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -19260,6 +19284,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -19736,6 +19762,8 @@ export const apiTags: TagData[] = [
                                 "email_log",
                                 "email_domain",
                                 "email_inbox",
+                                "portal_domain",
+                                "dns_record",
                                 "inventory_change_log",
                                 "invoice",
                                 "invoice_summary",
@@ -20325,6 +20353,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -20850,6 +20880,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -21362,6 +21394,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -21874,6 +21908,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -22386,6 +22422,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -23210,6 +23248,8 @@ export const apiTags: TagData[] = [
                                 "email_log",
                                 "email_domain",
                                 "email_inbox",
+                                "portal_domain",
+                                "dns_record",
                                 "inventory_change_log",
                                 "invoice",
                                 "invoice_summary",
@@ -23954,6 +23994,8 @@ export const apiTags: TagData[] = [
                                         "email_log",
                                         "email_domain",
                                         "email_inbox",
+                                        "portal_domain",
+                                        "dns_record",
                                         "inventory_change_log",
                                         "invoice",
                                         "invoice_summary",
@@ -24486,6 +24528,8 @@ export const apiTags: TagData[] = [
                                 "email_log",
                                 "email_domain",
                                 "email_inbox",
+                                "portal_domain",
+                                "dns_record",
                                 "inventory_change_log",
                                 "invoice",
                                 "invoice_summary",
@@ -25214,6 +25258,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -25958,6 +26004,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -26933,6 +26981,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -27677,6 +27727,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -28202,6 +28254,8 @@ export const apiTags: TagData[] = [
                             "email_log",
                             "email_domain",
                             "email_inbox",
+                            "portal_domain",
+                            "dns_record",
                             "inventory_change_log",
                             "invoice",
                             "invoice_summary",
@@ -29036,6 +29090,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -29780,6 +29836,8 @@ export const apiTags: TagData[] = [
                                                             "email_log",
                                                             "email_domain",
                                                             "email_inbox",
+                                                            "portal_domain",
+                                                            "dns_record",
                                                             "inventory_change_log",
                                                             "invoice",
                                                             "invoice_summary",
@@ -30752,6 +30810,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -31496,6 +31556,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -31998,6 +32060,8 @@ export const apiTags: TagData[] = [
                                 "email_log",
                                 "email_domain",
                                 "email_inbox",
+                                "portal_domain",
+                                "dns_record",
                                 "inventory_change_log",
                                 "invoice",
                                 "invoice_summary",
@@ -32748,6 +32812,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -33492,6 +33558,8 @@ export const apiTags: TagData[] = [
                                                             "email_log",
                                                             "email_domain",
                                                             "email_inbox",
+                                                            "portal_domain",
+                                                            "dns_record",
                                                             "inventory_change_log",
                                                             "invoice",
                                                             "invoice_summary",
@@ -33890,6 +33958,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -34859,6 +34929,8 @@ export const apiTags: TagData[] = [
                                                             "email_log",
                                                             "email_domain",
                                                             "email_inbox",
+                                                            "portal_domain",
+                                                            "dns_record",
                                                             "inventory_change_log",
                                                             "invoice",
                                                             "invoice_summary",
@@ -35603,6 +35675,8 @@ export const apiTags: TagData[] = [
                                                                     "email_log",
                                                                     "email_domain",
                                                                     "email_inbox",
+                                                                    "portal_domain",
+                                                                    "dns_record",
                                                                     "inventory_change_log",
                                                                     "invoice",
                                                                     "invoice_summary",
@@ -36001,6 +36075,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -36928,6 +37004,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -37672,6 +37750,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -38656,6 +38736,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -39400,6 +39482,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -40359,6 +40443,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -41103,6 +41189,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -42062,6 +42150,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -42806,6 +42896,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -43782,6 +43874,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -44526,6 +44620,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -45501,6 +45597,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -46245,6 +46343,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -47204,6 +47304,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -47948,6 +48050,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -48932,6 +49036,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -49676,6 +49782,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -50655,6 +50763,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -51399,6 +51509,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -52382,6 +52494,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -53126,6 +53240,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -54085,6 +54201,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -54829,6 +54947,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -55788,6 +55908,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -56532,6 +56654,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -57491,6 +57615,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -58235,6 +58361,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -58735,6 +58863,8 @@ export const apiTags: TagData[] = [
                             "email_log",
                             "email_domain",
                             "email_inbox",
+                            "portal_domain",
+                            "dns_record",
                             "inventory_change_log",
                             "invoice",
                             "invoice_summary",
@@ -59077,6 +59207,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -61004,6 +61136,8 @@ export const apiTags: TagData[] = [
                                         "email_log",
                                         "email_domain",
                                         "email_inbox",
+                                        "portal_domain",
+                                        "dns_record",
                                         "inventory_change_log",
                                         "invoice",
                                         "invoice_summary",
@@ -63319,6 +63453,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -64123,6 +64259,8 @@ export const apiTags: TagData[] = [
                                 "email_log",
                                 "email_domain",
                                 "email_inbox",
+                                "portal_domain",
+                                "dns_record",
                                 "inventory_change_log",
                                 "invoice",
                                 "invoice_summary",
@@ -66068,6 +66206,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -68452,6 +68592,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -70758,6 +70900,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -73035,6 +73179,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -75312,6 +75458,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -76388,6 +76536,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -77132,6 +77282,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -78028,6 +78180,8 @@ export const apiTags: TagData[] = [
                                             "email_log",
                                             "email_domain",
                                             "email_inbox",
+                                            "portal_domain",
+                                            "dns_record",
                                             "inventory_change_log",
                                             "invoice",
                                             "invoice_summary",
@@ -78772,6 +78926,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -82308,6 +82464,8 @@ export const apiTags: TagData[] = [
                                                     "email_log",
                                                     "email_domain",
                                                     "email_inbox",
+                                                    "portal_domain",
+                                                    "dns_record",
                                                     "inventory_change_log",
                                                     "invoice",
                                                     "invoice_summary",
@@ -102326,6 +102484,1358 @@ export const apiTags: TagData[] = [
                         "description": "Successful response for Delete Attribute",
                         "fields": [],
                         "example": {}
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Portal Domains",
+        "slug": "portal-domains",
+        "description": "Connect a custom domain to the account's customer portal, verify its DNS, and resolve custom hosts to portal accounts.",
+        "domain": "settings",
+        "domainLabel": "Settings",
+        "resource": {
+            "name": "Portal Domains",
+            "description": "A custom domain that serves the account's customer portal (e.g. `shop.acme.com`).\n\nAfter creation the domain starts in `pending`; publish the returned DNS records, then poll the verify action until it flips to `verified`. Once verified, the customer portal is served on the domain with TLS provisioned automatically.",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "Portal domain ID.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false
+                },
+                {
+                    "name": "object",
+                    "type": "string",
+                    "description": "Resource type identifier.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false,
+                    "enum": [
+                        "portal_domain"
+                    ]
+                },
+                {
+                    "name": "domain",
+                    "type": "string",
+                    "description": "The fully-qualified domain name (e.g. `shop.acme.com`).",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false
+                },
+                {
+                    "name": "status",
+                    "type": "string",
+                    "description": "Verification status.\n\n- pending domains await DNS configuration\n- verified domains serve the portal\n- failed domains were rejected and cannot be used",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false,
+                    "enum": [
+                        "pending",
+                        "verified",
+                        "failed"
+                    ]
+                },
+                {
+                    "name": "dns_records",
+                    "type": "object",
+                    "description": "The DNS records the customer must publish for the domain to route and verify.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": false,
+                    "objectType": "list",
+                    "properties": [
+                        {
+                            "name": "object",
+                            "type": "string",
+                            "description": "Resource type identifier.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "enum": [
+                                "list"
+                            ]
+                        },
+                        {
+                            "name": "page_info",
+                            "type": "object",
+                            "description": "Pagination metadata.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "properties": [
+                                {
+                                    "name": "next_page_url",
+                                    "type": "string",
+                                    "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "previous_page_url",
+                                    "type": "string",
+                                    "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
+                                    "required": true,
+                                    "nullable": true,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "has_next_page",
+                                    "type": "boolean",
+                                    "description": "Whether more results exist after this page.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "has_prev_page",
+                                    "type": "boolean",
+                                    "description": "Whether results exist before this page.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "data",
+                            "type": "array",
+                            "description": "Resources in this page.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false,
+                            "objectType": "dns_record",
+                            "itemType": "object",
+                            "properties": [
+                                {
+                                    "name": "object",
+                                    "type": "string",
+                                    "description": "Resource type identifier.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "enum": [
+                                        "dns_record"
+                                    ]
+                                },
+                                {
+                                    "name": "type",
+                                    "type": "string",
+                                    "description": "Record type.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "enum": [
+                                        "CNAME",
+                                        "A",
+                                        "TXT"
+                                    ]
+                                },
+                                {
+                                    "name": "name",
+                                    "type": "string",
+                                    "description": "Record name (host) to publish.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "value",
+                                    "type": "string",
+                                    "description": "Record value to publish.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false
+                                },
+                                {
+                                    "name": "reason",
+                                    "type": "string",
+                                    "description": "Why the record is needed.\n\nRouting records point traffic at the portal's serving infrastructure; ownership records prove control of a domain that is claimed elsewhere.",
+                                    "required": true,
+                                    "nullable": false,
+                                    "expandable": false,
+                                    "enum": [
+                                        "routing",
+                                        "ownership"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "verified_at",
+                    "type": "string",
+                    "description": "When the domain's DNS configuration was confirmed.",
+                    "required": true,
+                    "nullable": true,
+                    "expandable": false,
+                    "format": "date-time"
+                },
+                {
+                    "name": "created_at",
+                    "type": "string",
+                    "description": "Creation timestamp.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false,
+                    "format": "date-time"
+                },
+                {
+                    "name": "updated_at",
+                    "type": "string",
+                    "description": "Last updated timestamp.",
+                    "required": true,
+                    "nullable": false,
+                    "expandable": false,
+                    "format": "date-time"
+                }
+            ],
+            "example": {
+                "id": "podn_018e88072d1320808dc9aab42",
+                "object": "portal_domain",
+                "domain": "shop.acme.com",
+                "status": "pending",
+                "dns_records": {
+                    "object": "list",
+                    "page_info": {
+                        "next_page_url": null,
+                        "previous_page_url": null,
+                        "has_next_page": false,
+                        "has_prev_page": false
+                    },
+                    "data": [
+                        {
+                            "object": "dns_record",
+                            "type": "CNAME",
+                            "name": "shop.acme.com",
+                            "value": "cname.vercel-dns.com",
+                            "reason": "routing"
+                        }
+                    ]
+                },
+                "verified_at": null,
+                "created_at": "2026-05-10T00:00:00Z",
+                "updated_at": "2026-05-10T00:23:00Z"
+            },
+            "object": "portal_domain"
+        },
+        "endpoints": [
+            {
+                "operationId": "create-portal-domain",
+                "summary": "Create Portal Domain",
+                "description": "Connects a custom domain to the account's customer portal and returns the DNS records to publish.\n\nEach account can have one custom domain. The domain starts in `pending` until its DNS is verified.\n\nThis endpoint requires the permission: `self:update`.",
+                "method": "POST",
+                "path": "/v1/settings/portal-domains",
+                "domain": "settings",
+                "tag": "Portal Domains",
+                "tagSlug": "portal-domains",
+                "endpointSlug": "create-portal-domain",
+                "actionType": "create",
+                "isPreview": true,
+                "parameters": [],
+                "requestBody": {
+                    "description": "The request body for Create Portal Domain",
+                    "fields": [
+                        {
+                            "name": "domain",
+                            "type": "string",
+                            "description": "The fully-qualified domain name to connect (e.g. `shop.acme.com`). Subdomains are recommended; apex domains are supported via an A record.",
+                            "required": true,
+                            "nullable": false,
+                            "expandable": false
+                        }
+                    ],
+                    "example": {
+                        "domain": "shop.acme.com"
+                    }
+                },
+                "responses": [
+                    {
+                        "statusCode": "201",
+                        "description": "Successful response for Create Portal Domain",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string",
+                                "description": "Portal domain ID.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "portal_domain"
+                                ]
+                            },
+                            {
+                                "name": "domain",
+                                "type": "string",
+                                "description": "The fully-qualified domain name (e.g. `shop.acme.com`).",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "status",
+                                "type": "string",
+                                "description": "Verification status.\n\n- pending domains await DNS configuration\n- verified domains serve the portal\n- failed domains were rejected and cannot be used",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "pending",
+                                    "verified",
+                                    "failed"
+                                ]
+                            },
+                            {
+                                "name": "dns_records",
+                                "type": "object",
+                                "description": "The DNS records the customer must publish for the domain to route and verify.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "objectType": "list",
+                                "properties": [
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "name": "page_info",
+                                        "type": "object",
+                                        "description": "Pagination metadata.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "properties": [
+                                            {
+                                                "name": "next_page_url",
+                                                "type": "string",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "previous_page_url",
+                                                "type": "string",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "has_next_page",
+                                                "type": "boolean",
+                                                "description": "Whether more results exist after this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "has_prev_page",
+                                                "type": "boolean",
+                                                "description": "Whether results exist before this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "data",
+                                        "type": "array",
+                                        "description": "Resources in this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "objectType": "dns_record",
+                                        "itemType": "object",
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "dns_record"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "Record type.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "CNAME",
+                                                    "A",
+                                                    "TXT"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Record name (host) to publish.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "value",
+                                                "type": "string",
+                                                "description": "Record value to publish.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "reason",
+                                                "type": "string",
+                                                "description": "Why the record is needed.\n\nRouting records point traffic at the portal's serving infrastructure; ownership records prove control of a domain that is claimed elsewhere.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "routing",
+                                                    "ownership"
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "verified_at",
+                                "type": "string",
+                                "description": "When the domain's DNS configuration was confirmed.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "created_at",
+                                "type": "string",
+                                "description": "Creation timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "updated_at",
+                                "type": "string",
+                                "description": "Last updated timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            }
+                        ],
+                        "example": {
+                            "id": "podn_018e88072d1320808dc9aab42",
+                            "object": "portal_domain",
+                            "domain": "shop.acme.com",
+                            "status": "pending",
+                            "dns_records": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "object": "dns_record",
+                                        "type": "CNAME",
+                                        "name": "shop.acme.com",
+                                        "value": "cname.vercel-dns.com",
+                                        "reason": "routing"
+                                    }
+                                ]
+                            },
+                            "verified_at": null,
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "list-portal-domains",
+                "summary": "List Portal Domains",
+                "description": "Lists the account's portal domains.\n\nAccounts currently have at most one custom portal domain.\n\nThis endpoint requires the permission: `self:read`.",
+                "method": "GET",
+                "path": "/v1/settings/portal-domains",
+                "domain": "settings",
+                "tag": "Portal Domains",
+                "tagSlug": "portal-domains",
+                "endpointSlug": "list-portal-domains",
+                "actionType": "list",
+                "isPreview": true,
+                "parameters": [],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for List Portal Domains",
+                        "fields": [
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "list"
+                                ]
+                            },
+                            {
+                                "name": "page_info",
+                                "type": "object",
+                                "description": "Pagination metadata.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "properties": [
+                                    {
+                                        "name": "next_page_url",
+                                        "type": "string",
+                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "previous_page_url",
+                                        "type": "string",
+                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_next_page",
+                                        "type": "boolean",
+                                        "description": "Whether more results exist after this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "has_prev_page",
+                                        "type": "boolean",
+                                        "description": "Whether results exist before this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "data",
+                                "type": "array",
+                                "description": "Resources in this page.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "objectType": "portal_domain",
+                                "itemType": "object",
+                                "properties": [
+                                    {
+                                        "name": "id",
+                                        "type": "string",
+                                        "description": "Portal domain ID.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "portal_domain"
+                                        ]
+                                    },
+                                    {
+                                        "name": "domain",
+                                        "type": "string",
+                                        "description": "The fully-qualified domain name (e.g. `shop.acme.com`).",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false
+                                    },
+                                    {
+                                        "name": "status",
+                                        "type": "string",
+                                        "description": "Verification status.\n\n- pending domains await DNS configuration\n- verified domains serve the portal\n- failed domains were rejected and cannot be used",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "pending",
+                                            "verified",
+                                            "failed"
+                                        ]
+                                    },
+                                    {
+                                        "name": "dns_records",
+                                        "type": "object",
+                                        "description": "The DNS records the customer must publish for the domain to route and verify.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false,
+                                        "objectType": "list",
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "list"
+                                                ]
+                                            },
+                                            {
+                                                "name": "page_info",
+                                                "type": "object",
+                                                "description": "Pagination metadata.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "properties": [
+                                                    {
+                                                        "name": "next_page_url",
+                                                        "type": "string",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "previous_page_url",
+                                                        "type": "string",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_next_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether more results exist after this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_prev_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether results exist before this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "array",
+                                                "description": "Resources in this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "objectType": "dns_record",
+                                                "itemType": "object",
+                                                "properties": [
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "dns_record"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "type",
+                                                        "type": "string",
+                                                        "description": "Record type.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "CNAME",
+                                                            "A",
+                                                            "TXT"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "type": "string",
+                                                        "description": "Record name (host) to publish.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "value",
+                                                        "type": "string",
+                                                        "description": "Record value to publish.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "reason",
+                                                        "type": "string",
+                                                        "description": "Why the record is needed.\n\nRouting records point traffic at the portal's serving infrastructure; ownership records prove control of a domain that is claimed elsewhere.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "routing",
+                                                            "ownership"
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "verified_at",
+                                        "type": "string",
+                                        "description": "When the domain's DNS configuration was confirmed.",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "created_at",
+                                        "type": "string",
+                                        "description": "Creation timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    },
+                                    {
+                                        "name": "updated_at",
+                                        "type": "string",
+                                        "description": "Last updated timestamp.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "format": "date-time"
+                                    }
+                                ]
+                            }
+                        ],
+                        "example": {
+                            "object": "list",
+                            "page_info": {
+                                "next_page_url": "/v1/settings/portal-domains?cursor=eyJjIjoiMjAyNi0wNS0xMFQwMDowMDowMFoiLCJzIjoicG9kbl8wMThlODgwNzJkMTMyMDgwOGRjOWFhYjQyIiwiZCI6ImYifQ.PCe6y5ET_w360qNKfsbVFqIm7IY5a4vJzlbWyZl5cO4",
+                                "previous_page_url": null,
+                                "has_next_page": true,
+                                "has_prev_page": false
+                            },
+                            "data": [
+                                {
+                                    "id": "podn_018e88072d1320808dc9aab42",
+                                    "object": "portal_domain",
+                                    "domain": "shop.acme.com",
+                                    "status": "pending",
+                                    "dns_records": {
+                                        "object": "list",
+                                        "page_info": {
+                                            "next_page_url": null,
+                                            "previous_page_url": null,
+                                            "has_next_page": false,
+                                            "has_prev_page": false
+                                        },
+                                        "data": [
+                                            {
+                                                "object": "dns_record",
+                                                "type": "CNAME",
+                                                "name": "shop.acme.com",
+                                                "value": "cname.vercel-dns.com",
+                                                "reason": "routing"
+                                            }
+                                        ]
+                                    },
+                                    "verified_at": null,
+                                    "created_at": "2026-05-10T00:00:00Z",
+                                    "updated_at": "2026-05-10T00:23:00Z"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "get-portal-domain",
+                "summary": "Get Portal Domain",
+                "description": "Returns a single portal domain, including the DNS records the customer must publish.\n\nThis endpoint requires the permission: `self:read`.",
+                "method": "GET",
+                "path": "/v1/settings/portal-domains/{id}",
+                "domain": "settings",
+                "tag": "Portal Domains",
+                "tagSlug": "portal-domains",
+                "endpointSlug": "get-portal-domain",
+                "actionType": "retrieve",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Portal domain ID."
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for Get Portal Domain",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string",
+                                "description": "Portal domain ID.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "portal_domain"
+                                ]
+                            },
+                            {
+                                "name": "domain",
+                                "type": "string",
+                                "description": "The fully-qualified domain name (e.g. `shop.acme.com`).",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "status",
+                                "type": "string",
+                                "description": "Verification status.\n\n- pending domains await DNS configuration\n- verified domains serve the portal\n- failed domains were rejected and cannot be used",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "pending",
+                                    "verified",
+                                    "failed"
+                                ]
+                            },
+                            {
+                                "name": "dns_records",
+                                "type": "object",
+                                "description": "The DNS records the customer must publish for the domain to route and verify.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "objectType": "list",
+                                "properties": [
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "name": "page_info",
+                                        "type": "object",
+                                        "description": "Pagination metadata.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "properties": [
+                                            {
+                                                "name": "next_page_url",
+                                                "type": "string",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "previous_page_url",
+                                                "type": "string",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "has_next_page",
+                                                "type": "boolean",
+                                                "description": "Whether more results exist after this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "has_prev_page",
+                                                "type": "boolean",
+                                                "description": "Whether results exist before this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "data",
+                                        "type": "array",
+                                        "description": "Resources in this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "objectType": "dns_record",
+                                        "itemType": "object",
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "dns_record"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "Record type.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "CNAME",
+                                                    "A",
+                                                    "TXT"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Record name (host) to publish.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "value",
+                                                "type": "string",
+                                                "description": "Record value to publish.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "reason",
+                                                "type": "string",
+                                                "description": "Why the record is needed.\n\nRouting records point traffic at the portal's serving infrastructure; ownership records prove control of a domain that is claimed elsewhere.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "routing",
+                                                    "ownership"
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "verified_at",
+                                "type": "string",
+                                "description": "When the domain's DNS configuration was confirmed.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "created_at",
+                                "type": "string",
+                                "description": "Creation timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "updated_at",
+                                "type": "string",
+                                "description": "Last updated timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            }
+                        ],
+                        "example": {
+                            "id": "podn_018e88072d1320808dc9aab42",
+                            "object": "portal_domain",
+                            "domain": "shop.acme.com",
+                            "status": "pending",
+                            "dns_records": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "object": "dns_record",
+                                        "type": "CNAME",
+                                        "name": "shop.acme.com",
+                                        "value": "cname.vercel-dns.com",
+                                        "reason": "routing"
+                                    }
+                                ]
+                            },
+                            "verified_at": null,
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
+                    }
+                ]
+            },
+            {
+                "operationId": "delete-portal-domain",
+                "summary": "Delete Portal Domain",
+                "description": "Disconnects the custom domain from the account's customer portal.\n\nThe domain is detached from the serving infrastructure and immediately stops serving the portal.\n\nThis endpoint requires the permission: `self:update`.",
+                "method": "DELETE",
+                "path": "/v1/settings/portal-domains/{id}",
+                "domain": "settings",
+                "tag": "Portal Domains",
+                "tagSlug": "portal-domains",
+                "endpointSlug": "delete-portal-domain",
+                "actionType": "delete",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Portal domain ID."
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for Delete Portal Domain",
+                        "fields": [],
+                        "example": {}
+                    }
+                ]
+            },
+            {
+                "operationId": "verify-portal-domain",
+                "summary": "Verify Portal Domain",
+                "description": "Re-checks the domain's DNS configuration and flips it to `verified` once the published records are confirmed.\n\nReturns the updated domain (still `pending` if DNS has not propagated yet) along with the currently required DNS records.\n\nThis endpoint requires the permission: `self:update`.",
+                "method": "POST",
+                "path": "/v1/settings/portal-domains/{id}/actions/verify",
+                "domain": "settings",
+                "tag": "Portal Domains",
+                "tagSlug": "portal-domains",
+                "endpointSlug": "verify-portal-domain",
+                "actionType": "action",
+                "isPreview": true,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "Portal domain ID."
+                    }
+                ],
+                "responses": [
+                    {
+                        "statusCode": "200",
+                        "description": "Successful response for Verify Portal Domain",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string",
+                                "description": "Portal domain ID.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "portal_domain"
+                                ]
+                            },
+                            {
+                                "name": "domain",
+                                "type": "string",
+                                "description": "The fully-qualified domain name (e.g. `shop.acme.com`).",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "status",
+                                "type": "string",
+                                "description": "Verification status.\n\n- pending domains await DNS configuration\n- verified domains serve the portal\n- failed domains were rejected and cannot be used",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "pending",
+                                    "verified",
+                                    "failed"
+                                ]
+                            },
+                            {
+                                "name": "dns_records",
+                                "type": "object",
+                                "description": "The DNS records the customer must publish for the domain to route and verify.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "objectType": "list",
+                                "properties": [
+                                    {
+                                        "name": "object",
+                                        "type": "string",
+                                        "description": "Resource type identifier.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "enum": [
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "name": "page_info",
+                                        "type": "object",
+                                        "description": "Pagination metadata.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "properties": [
+                                            {
+                                                "name": "next_page_url",
+                                                "type": "string",
+                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "previous_page_url",
+                                                "type": "string",
+                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "has_next_page",
+                                                "type": "boolean",
+                                                "description": "Whether more results exist after this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "has_prev_page",
+                                                "type": "boolean",
+                                                "description": "Whether results exist before this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "data",
+                                        "type": "array",
+                                        "description": "Resources in this page.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "objectType": "dns_record",
+                                        "itemType": "object",
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "dns_record"
+                                                ]
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "string",
+                                                "description": "Record type.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "CNAME",
+                                                    "A",
+                                                    "TXT"
+                                                ]
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string",
+                                                "description": "Record name (host) to publish.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "value",
+                                                "type": "string",
+                                                "description": "Record value to publish.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false
+                                            },
+                                            {
+                                                "name": "reason",
+                                                "type": "string",
+                                                "description": "Why the record is needed.\n\nRouting records point traffic at the portal's serving infrastructure; ownership records prove control of a domain that is claimed elsewhere.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "routing",
+                                                    "ownership"
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "verified_at",
+                                "type": "string",
+                                "description": "When the domain's DNS configuration was confirmed.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "created_at",
+                                "type": "string",
+                                "description": "Creation timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            },
+                            {
+                                "name": "updated_at",
+                                "type": "string",
+                                "description": "Last updated timestamp.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "format": "date-time"
+                            }
+                        ],
+                        "example": {
+                            "id": "podn_018e88072d1320808dc9aab42",
+                            "object": "portal_domain",
+                            "domain": "shop.acme.com",
+                            "status": "pending",
+                            "dns_records": {
+                                "object": "list",
+                                "page_info": {
+                                    "next_page_url": null,
+                                    "previous_page_url": null,
+                                    "has_next_page": false,
+                                    "has_prev_page": false
+                                },
+                                "data": [
+                                    {
+                                        "object": "dns_record",
+                                        "type": "CNAME",
+                                        "name": "shop.acme.com",
+                                        "value": "cname.vercel-dns.com",
+                                        "reason": "routing"
+                                    }
+                                ]
+                            },
+                            "verified_at": null,
+                            "created_at": "2026-05-10T00:00:00Z",
+                            "updated_at": "2026-05-10T00:23:00Z"
+                        }
                     }
                 ]
             }
@@ -194909,6 +196419,47 @@ export const apiNavDomains: ApiNavDomain[] = [
         "slug": "settings",
         "resources": [
             {
+                "name": "Portal Domains",
+                "slug": "portal-domains",
+                "endpoints": [
+                    {
+                        "name": "Create Domain",
+                        "slug": "create-portal-domain",
+                        "method": "POST",
+                        "actionType": "create",
+                        "href": "/api-reference/portal-domains/create-portal-domain"
+                    },
+                    {
+                        "name": "List",
+                        "slug": "list-portal-domains",
+                        "method": "GET",
+                        "actionType": "list",
+                        "href": "/api-reference/portal-domains/list-portal-domains"
+                    },
+                    {
+                        "name": "Get Domain",
+                        "slug": "get-portal-domain",
+                        "method": "GET",
+                        "actionType": "retrieve",
+                        "href": "/api-reference/portal-domains/get-portal-domain"
+                    },
+                    {
+                        "name": "Delete Domain",
+                        "slug": "delete-portal-domain",
+                        "method": "DELETE",
+                        "actionType": "delete",
+                        "href": "/api-reference/portal-domains/delete-portal-domain"
+                    },
+                    {
+                        "name": "Verify Domain",
+                        "slug": "verify-portal-domain",
+                        "method": "POST",
+                        "actionType": "action",
+                        "href": "/api-reference/portal-domains/verify-portal-domain"
+                    }
+                ]
+            },
+            {
                 "name": "Account Integrations",
                 "slug": "account-integrations",
                 "endpoints": [
@@ -196787,6 +198338,8 @@ export const apiObjects: ObjectData[] = [
                             "email_log",
                             "email_domain",
                             "email_inbox",
+                            "portal_domain",
+                            "dns_record",
                             "inventory_change_log",
                             "invoice",
                             "invoice_summary",
@@ -197489,6 +199042,8 @@ export const apiObjects: ObjectData[] = [
                     "email_log",
                     "email_domain",
                     "email_inbox",
+                    "portal_domain",
+                    "dns_record",
                     "inventory_change_log",
                     "invoice",
                     "invoice_summary",
@@ -199584,6 +201139,8 @@ export const apiObjects: ObjectData[] = [
                             "email_log",
                             "email_domain",
                             "email_inbox",
+                            "portal_domain",
+                            "dns_record",
                             "inventory_change_log",
                             "invoice",
                             "invoice_summary",
@@ -200328,6 +201885,8 @@ export const apiObjects: ObjectData[] = [
                                     "email_log",
                                     "email_domain",
                                     "email_inbox",
+                                    "portal_domain",
+                                    "dns_record",
                                     "inventory_change_log",
                                     "invoice",
                                     "invoice_summary",
@@ -210375,6 +211934,8 @@ export const apiObjects: ObjectData[] = [
                                     "email_log",
                                     "email_domain",
                                     "email_inbox",
+                                    "portal_domain",
+                                    "dns_record",
                                     "inventory_change_log",
                                     "invoice",
                                     "invoice_summary",
@@ -211428,6 +212989,38 @@ export const apiObjects: ObjectData[] = [
                 "method": "GET",
                 "actionType": "retrieve",
                 "summary": "Retrieve Attribute"
+            },
+            {
+                "tag": "Portal Domains",
+                "tagSlug": "portal-domains",
+                "endpointSlug": "create-portal-domain",
+                "method": "POST",
+                "actionType": "create",
+                "summary": "Create Portal Domain"
+            },
+            {
+                "tag": "Portal Domains",
+                "tagSlug": "portal-domains",
+                "endpointSlug": "list-portal-domains",
+                "method": "GET",
+                "actionType": "list",
+                "summary": "List Portal Domains"
+            },
+            {
+                "tag": "Portal Domains",
+                "tagSlug": "portal-domains",
+                "endpointSlug": "get-portal-domain",
+                "method": "GET",
+                "actionType": "retrieve",
+                "summary": "Get Portal Domain"
+            },
+            {
+                "tag": "Portal Domains",
+                "tagSlug": "portal-domains",
+                "endpointSlug": "verify-portal-domain",
+                "method": "POST",
+                "actionType": "action",
+                "summary": "Verify Portal Domain"
             },
             {
                 "tag": "Carriers",
@@ -212781,6 +214374,8 @@ export const apiObjects: ObjectData[] = [
                             "email_log",
                             "email_domain",
                             "email_inbox",
+                            "portal_domain",
+                            "dns_record",
                             "inventory_change_log",
                             "invoice",
                             "invoice_summary",
@@ -214616,6 +216211,280 @@ export const apiObjects: ObjectData[] = [
                 "method": "GET",
                 "actionType": "list",
                 "summary": "List Sales Orders"
+            }
+        ]
+    },
+    {
+        "name": "Portal Domains",
+        "object": "portal_domain",
+        "slug": "portal-domain",
+        "domain": "settings",
+        "domainLabel": "Settings",
+        "description": "A custom domain that serves the account's customer portal (e.g. `shop.acme.com`).\n\nAfter creation the domain starts in `pending`; publish the returned DNS records, then poll the verify action until it flips to `verified`. Once verified, the customer portal is served on the domain with TLS provisioned automatically.",
+        "fields": [
+            {
+                "name": "id",
+                "type": "string",
+                "description": "Portal domain ID.",
+                "required": true,
+                "nullable": false,
+                "expandable": false
+            },
+            {
+                "name": "object",
+                "type": "string",
+                "description": "Resource type identifier.",
+                "required": true,
+                "nullable": false,
+                "expandable": false,
+                "enum": [
+                    "portal_domain"
+                ]
+            },
+            {
+                "name": "domain",
+                "type": "string",
+                "description": "The fully-qualified domain name (e.g. `shop.acme.com`).",
+                "required": true,
+                "nullable": false,
+                "expandable": false
+            },
+            {
+                "name": "status",
+                "type": "string",
+                "description": "Verification status.\n\n- pending domains await DNS configuration\n- verified domains serve the portal\n- failed domains were rejected and cannot be used",
+                "required": true,
+                "nullable": false,
+                "expandable": false,
+                "enum": [
+                    "pending",
+                    "verified",
+                    "failed"
+                ]
+            },
+            {
+                "name": "dns_records",
+                "type": "object",
+                "description": "The DNS records the customer must publish for the domain to route and verify.",
+                "required": true,
+                "nullable": true,
+                "expandable": false,
+                "objectType": "list",
+                "properties": [
+                    {
+                        "name": "object",
+                        "type": "string",
+                        "description": "Resource type identifier.",
+                        "required": true,
+                        "nullable": false,
+                        "expandable": false,
+                        "enum": [
+                            "list"
+                        ]
+                    },
+                    {
+                        "name": "page_info",
+                        "type": "object",
+                        "description": "Pagination metadata.",
+                        "required": true,
+                        "nullable": false,
+                        "expandable": false,
+                        "properties": [
+                            {
+                                "name": "next_page_url",
+                                "type": "string",
+                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "previous_page_url",
+                                "type": "string",
+                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
+                                "required": true,
+                                "nullable": true,
+                                "expandable": false
+                            },
+                            {
+                                "name": "has_next_page",
+                                "type": "boolean",
+                                "description": "Whether more results exist after this page.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "has_prev_page",
+                                "type": "boolean",
+                                "description": "Whether results exist before this page.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            }
+                        ]
+                    },
+                    {
+                        "name": "data",
+                        "type": "array",
+                        "description": "Resources in this page.",
+                        "required": true,
+                        "nullable": false,
+                        "expandable": false,
+                        "objectType": "dns_record",
+                        "itemType": "object",
+                        "properties": [
+                            {
+                                "name": "object",
+                                "type": "string",
+                                "description": "Resource type identifier.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "dns_record"
+                                ]
+                            },
+                            {
+                                "name": "type",
+                                "type": "string",
+                                "description": "Record type.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "CNAME",
+                                    "A",
+                                    "TXT"
+                                ]
+                            },
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "description": "Record name (host) to publish.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "description": "Record value to publish.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false
+                            },
+                            {
+                                "name": "reason",
+                                "type": "string",
+                                "description": "Why the record is needed.\n\nRouting records point traffic at the portal's serving infrastructure; ownership records prove control of a domain that is claimed elsewhere.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "enum": [
+                                    "routing",
+                                    "ownership"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "verified_at",
+                "type": "string",
+                "description": "When the domain's DNS configuration was confirmed.",
+                "required": true,
+                "nullable": true,
+                "expandable": false,
+                "format": "date-time"
+            },
+            {
+                "name": "created_at",
+                "type": "string",
+                "description": "Creation timestamp.",
+                "required": true,
+                "nullable": false,
+                "expandable": false,
+                "format": "date-time"
+            },
+            {
+                "name": "updated_at",
+                "type": "string",
+                "description": "Last updated timestamp.",
+                "required": true,
+                "nullable": false,
+                "expandable": false,
+                "format": "date-time"
+            }
+        ],
+        "example": {
+            "id": "podn_018e88072d1320808dc9aab42",
+            "object": "portal_domain",
+            "domain": "shop.acme.com",
+            "status": "pending",
+            "dns_records": {
+                "object": "list",
+                "page_info": {
+                    "next_page_url": null,
+                    "previous_page_url": null,
+                    "has_next_page": false,
+                    "has_prev_page": false
+                },
+                "data": [
+                    {
+                        "object": "dns_record",
+                        "type": "CNAME",
+                        "name": "shop.acme.com",
+                        "value": "cname.vercel-dns.com",
+                        "reason": "routing"
+                    }
+                ]
+            },
+            "verified_at": null,
+            "created_at": "2026-05-10T00:00:00Z",
+            "updated_at": "2026-05-10T00:23:00Z"
+        },
+        "usedBy": [
+            {
+                "tag": "Portal Domains",
+                "tagSlug": "portal-domains",
+                "endpointSlug": "create-portal-domain",
+                "method": "POST",
+                "actionType": "create",
+                "summary": "Create Portal Domain"
+            },
+            {
+                "tag": "Portal Domains",
+                "tagSlug": "portal-domains",
+                "endpointSlug": "list-portal-domains",
+                "method": "GET",
+                "actionType": "list",
+                "summary": "List Portal Domains"
+            },
+            {
+                "tag": "Portal Domains",
+                "tagSlug": "portal-domains",
+                "endpointSlug": "get-portal-domain",
+                "method": "GET",
+                "actionType": "retrieve",
+                "summary": "Get Portal Domain"
+            },
+            {
+                "tag": "Portal Domains",
+                "tagSlug": "portal-domains",
+                "endpointSlug": "delete-portal-domain",
+                "method": "DELETE",
+                "actionType": "delete",
+                "summary": "Delete Portal Domain"
+            },
+            {
+                "tag": "Portal Domains",
+                "tagSlug": "portal-domains",
+                "endpointSlug": "verify-portal-domain",
+                "method": "POST",
+                "actionType": "action",
+                "summary": "Verify Portal Domain"
             }
         ]
     },

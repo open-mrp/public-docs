@@ -1293,6 +1293,51 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
         {
             "domain": "settings",
             "segments": [
+                "portal-domains"
+            ],
+            "tagSlug": "portal-domains",
+            "endpointSlug": "create-portal-domain",
+            "label": "Create"
+        },
+        {
+            "domain": "settings",
+            "segments": [
+                "portal-domains"
+            ],
+            "tagSlug": "portal-domains",
+            "endpointSlug": "list-portal-domains",
+            "label": "List"
+        },
+        {
+            "domain": "settings",
+            "segments": [
+                "portal-domains"
+            ],
+            "tagSlug": "portal-domains",
+            "endpointSlug": "get-portal-domain",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "settings",
+            "segments": [
+                "portal-domains"
+            ],
+            "tagSlug": "portal-domains",
+            "endpointSlug": "delete-portal-domain",
+            "label": "Delete"
+        },
+        {
+            "domain": "settings",
+            "segments": [
+                "portal-domains"
+            ],
+            "tagSlug": "portal-domains",
+            "endpointSlug": "verify-portal-domain",
+            "label": "Verify Portal Domain"
+        },
+        {
+            "domain": "settings",
+            "segments": [
                 "integrations"
             ],
             "tagSlug": "account-integrations",
@@ -3529,6 +3574,12 @@ export const apiObjectNavEntriesByVersion: Record<string, ApiObjectNavEntry[]> =
             "domainLabel": "Finance",
             "slug": "payment-term",
             "label": "Payment Terms"
+        },
+        {
+            "domain": "settings",
+            "domainLabel": "Settings",
+            "slug": "portal-domain",
+            "label": "Portal Domains"
         },
         {
             "domain": "sales",

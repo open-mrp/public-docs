@@ -359,6 +359,13 @@ export const docPaths = {
             "retrieveAttribute": "/api-reference/properties/retrieve-attribute",
             "deleteAttribute": "/api-reference/properties/delete-attribute"
         },
+        "portalDomains": {
+            "createPortalDomain": "/api-reference/portal-domains/create-portal-domain",
+            "listPortalDomains": "/api-reference/portal-domains/list-portal-domains",
+            "getPortalDomain": "/api-reference/portal-domains/get-portal-domain",
+            "deletePortalDomain": "/api-reference/portal-domains/delete-portal-domain",
+            "verifyPortalDomain": "/api-reference/portal-domains/verify-portal-domain"
+        },
         "accountIntegrations": {
             "createAccountIntegration": "/api-reference/account-integrations/create-account-integration",
             "updateAccountIntegration": "/api-reference/account-integrations/update-account-integration",

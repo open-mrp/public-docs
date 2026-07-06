@@ -967,6 +967,26 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Delete Attribute",
         "subtitle": "DELETE /v1/catalog/properties/{property_id}/attributes/{id}"
     },
+    "/api-reference/portal-domains/create-portal-domain": {
+        "title": "Create Portal Domain",
+        "subtitle": "POST /v1/settings/portal-domains"
+    },
+    "/api-reference/portal-domains/list-portal-domains": {
+        "title": "List Portal Domains",
+        "subtitle": "GET /v1/settings/portal-domains"
+    },
+    "/api-reference/portal-domains/get-portal-domain": {
+        "title": "Get Portal Domain",
+        "subtitle": "GET /v1/settings/portal-domains/{id}"
+    },
+    "/api-reference/portal-domains/delete-portal-domain": {
+        "title": "Delete Portal Domain",
+        "subtitle": "DELETE /v1/settings/portal-domains/{id}"
+    },
+    "/api-reference/portal-domains/verify-portal-domain": {
+        "title": "Verify Portal Domain",
+        "subtitle": "POST /v1/settings/portal-domains/{id}/actions/verify"
+    },
     "/api-reference/account-integrations/create-account-integration": {
         "title": "Create Account Integration",
         "subtitle": "POST /v1/settings/integrations"

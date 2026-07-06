@@ -359,6 +359,11 @@
 - [DELETE Roles — Delete Role](https://docs.augno.com/api-reference/roles/delete-role.md)
 
 ### Settings
+- [POST Portal Domains — Create Domain](https://docs.augno.com/api-reference/portal-domains/create-portal-domain.md)
+- [GET Portal Domains — List](https://docs.augno.com/api-reference/portal-domains/list-portal-domains.md)
+- [GET Portal Domains — Get Domain](https://docs.augno.com/api-reference/portal-domains/get-portal-domain.md)
+- [DELETE Portal Domains — Delete Domain](https://docs.augno.com/api-reference/portal-domains/delete-portal-domain.md)
+- [POST Portal Domains — Verify Domain](https://docs.augno.com/api-reference/portal-domains/verify-portal-domain.md)
 - [POST Account Integrations — Create Integration](https://docs.augno.com/api-reference/account-integrations/create-account-integration.md)
 - [PUT Account Integrations — Update Integration](https://docs.augno.com/api-reference/account-integrations/update-account-integration.md)
 - [GET Account Integrations — List](https://docs.augno.com/api-reference/account-integrations/list-account-integrations.md)
@@ -415,3 +420,6 @@
 - [Address object](https://docs.augno.com/api-reference/objects/address.md): A saved address that can be used for billing and shipping on sales orders, invoices, and shipments.
 - [Customers object](https://docs.augno.com/api-reference/objects/customer.md): A business you sell to, with its contact details, default fulfillment settings, and order policies.
 - [Priorities object](https://docs.augno.com/api-reference/objects/priority.md): Priority level used to order work on sales orders, purchase orders, and picks.
+
+### Settings
+- [Portal Domains object](https://docs.augno.com/api-reference/objects/portal-domain.md): A custom domain that serves the account's customer portal (e.g.
