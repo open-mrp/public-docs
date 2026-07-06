@@ -102497,7 +102497,7 @@ export const apiTags: TagData[] = [
         "domainLabel": "Settings",
         "resource": {
             "name": "Portal Domains",
-            "description": "A custom domain that serves the account's customer portal (e.g. `shop.acme.com`).\n\nAfter creation the domain starts in `pending`; publish the returned DNS records, then poll the verify action until it flips to `verified`. Once verified, the customer portal is served on the domain with TLS provisioned automatically.",
+            "description": "A custom domain that serves the account's customer portal (e.g. `shop.acme.com`).\n\nAfter creation the domain starts in `pending`; publish the returned DNS records, then poll the verify action. Once DNS is correct the domain moves to `securing` while its TLS certificate is issued — it is not yet reachable over HTTPS during this window — and finally to `verified` once the certificate is live and the portal is served on the domain.",
             "fields": [
                 {
                     "name": "id",
@@ -102529,12 +102529,13 @@ export const apiTags: TagData[] = [
                 {
                     "name": "status",
                     "type": "string",
-                    "description": "Verification status.\n\n- pending domains await DNS configuration\n- verified domains serve the portal\n- failed domains were rejected and cannot be used",
+                    "description": "Verification status.\n\n- pending domains await DNS configuration\n- securing domains have correct DNS and are waiting on TLS certificate issuance; the portal is not yet reachable over HTTPS\n- verified domains serve the portal over HTTPS\n- failed domains were rejected and cannot be used",
                     "required": true,
                     "nullable": false,
                     "expandable": false,
                     "enum": [
                         "pending",
+                        "securing",
                         "verified",
                         "failed"
                     ]
@@ -102789,12 +102790,13 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "status",
                                 "type": "string",
-                                "description": "Verification status.\n\n- pending domains await DNS configuration\n- verified domains serve the portal\n- failed domains were rejected and cannot be used",
+                                "description": "Verification status.\n\n- pending domains await DNS configuration\n- securing domains have correct DNS and are waiting on TLS certificate issuance; the portal is not yet reachable over HTTPS\n- verified domains serve the portal over HTTPS\n- failed domains were rejected and cannot be used",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
                                 "enum": [
                                     "pending",
+                                    "securing",
                                     "verified",
                                     "failed"
                                 ]
@@ -103096,12 +103098,13 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "status",
                                         "type": "string",
-                                        "description": "Verification status.\n\n- pending domains await DNS configuration\n- verified domains serve the portal\n- failed domains were rejected and cannot be used",
+                                        "description": "Verification status.\n\n- pending domains await DNS configuration\n- securing domains have correct DNS and are waiting on TLS certificate issuance; the portal is not yet reachable over HTTPS\n- verified domains serve the portal over HTTPS\n- failed domains were rejected and cannot be used",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
                                         "enum": [
                                             "pending",
+                                            "securing",
                                             "verified",
                                             "failed"
                                         ]
@@ -103361,12 +103364,13 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "status",
                                 "type": "string",
-                                "description": "Verification status.\n\n- pending domains await DNS configuration\n- verified domains serve the portal\n- failed domains were rejected and cannot be used",
+                                "description": "Verification status.\n\n- pending domains await DNS configuration\n- securing domains have correct DNS and are waiting on TLS certificate issuance; the portal is not yet reachable over HTTPS\n- verified domains serve the portal over HTTPS\n- failed domains were rejected and cannot be used",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
                                 "enum": [
                                     "pending",
+                                    "securing",
                                     "verified",
                                     "failed"
                                 ]
@@ -103643,12 +103647,13 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "status",
                                 "type": "string",
-                                "description": "Verification status.\n\n- pending domains await DNS configuration\n- verified domains serve the portal\n- failed domains were rejected and cannot be used",
+                                "description": "Verification status.\n\n- pending domains await DNS configuration\n- securing domains have correct DNS and are waiting on TLS certificate issuance; the portal is not yet reachable over HTTPS\n- verified domains serve the portal over HTTPS\n- failed domains were rejected and cannot be used",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
                                 "enum": [
                                     "pending",
+                                    "securing",
                                     "verified",
                                     "failed"
                                 ]
@@ -216220,7 +216225,7 @@ export const apiObjects: ObjectData[] = [
         "slug": "portal-domain",
         "domain": "settings",
         "domainLabel": "Settings",
-        "description": "A custom domain that serves the account's customer portal (e.g. `shop.acme.com`).\n\nAfter creation the domain starts in `pending`; publish the returned DNS records, then poll the verify action until it flips to `verified`. Once verified, the customer portal is served on the domain with TLS provisioned automatically.",
+        "description": "A custom domain that serves the account's customer portal (e.g. `shop.acme.com`).\n\nAfter creation the domain starts in `pending`; publish the returned DNS records, then poll the verify action. Once DNS is correct the domain moves to `securing` while its TLS certificate is issued — it is not yet reachable over HTTPS during this window — and finally to `verified` once the certificate is live and the portal is served on the domain.",
         "fields": [
             {
                 "name": "id",
@@ -216252,12 +216257,13 @@ export const apiObjects: ObjectData[] = [
             {
                 "name": "status",
                 "type": "string",
-                "description": "Verification status.\n\n- pending domains await DNS configuration\n- verified domains serve the portal\n- failed domains were rejected and cannot be used",
+                "description": "Verification status.\n\n- pending domains await DNS configuration\n- securing domains have correct DNS and are waiting on TLS certificate issuance; the portal is not yet reachable over HTTPS\n- verified domains serve the portal over HTTPS\n- failed domains were rejected and cannot be used",
                 "required": true,
                 "nullable": false,
                 "expandable": false,
                 "enum": [
                     "pending",
+                    "securing",
                     "verified",
                     "failed"
                 ]
