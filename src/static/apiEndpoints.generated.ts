@@ -4822,7 +4822,10 @@ export const apiTags: TagData[] = [
                         "reply_draft",
                         "conversation_link",
                         "messaging_group",
-                        "messaging_group_member"
+                        "messaging_group_member",
+                        "portal_profile",
+                        "portal_registration_session",
+                        "portal_registration_session_data"
                     ]
                 },
                 {
@@ -5929,7 +5932,10 @@ export const apiTags: TagData[] = [
                             "reply_draft",
                             "conversation_link",
                             "messaging_group",
-                            "messaging_group_member"
+                            "messaging_group_member",
+                            "portal_profile",
+                            "portal_registration_session",
+                            "portal_registration_session_data"
                         ]
                     },
                     {
@@ -6354,7 +6360,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -7496,7 +7505,10 @@ export const apiTags: TagData[] = [
                                     "reply_draft",
                                     "conversation_link",
                                     "messaging_group",
-                                    "messaging_group_member"
+                                    "messaging_group_member",
+                                    "portal_profile",
+                                    "portal_registration_session",
+                                    "portal_registration_session_data"
                                 ],
                                 "itemType": "string"
                             }
@@ -7836,7 +7848,10 @@ export const apiTags: TagData[] = [
                                     "reply_draft",
                                     "conversation_link",
                                     "messaging_group",
-                                    "messaging_group_member"
+                                    "messaging_group_member",
+                                    "portal_profile",
+                                    "portal_registration_session",
+                                    "portal_registration_session_data"
                                 ]
                             },
                             {
@@ -15490,7 +15505,10 @@ export const apiTags: TagData[] = [
                                 "reply_draft",
                                 "conversation_link",
                                 "messaging_group",
-                                "messaging_group_member"
+                                "messaging_group_member",
+                                "portal_profile",
+                                "portal_registration_session",
+                                "portal_registration_session_data"
                             ]
                         },
                         {
@@ -15929,7 +15947,10 @@ export const apiTags: TagData[] = [
                                 "reply_draft",
                                 "conversation_link",
                                 "messaging_group",
-                                "messaging_group_member"
+                                "messaging_group_member",
+                                "portal_profile",
+                                "portal_registration_session",
+                                "portal_registration_session_data"
                             ]
                         },
                         {
@@ -16582,7 +16603,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -17152,7 +17176,10 @@ export const apiTags: TagData[] = [
                                                             "reply_draft",
                                                             "conversation_link",
                                                             "messaging_group",
-                                                            "messaging_group_member"
+                                                            "messaging_group_member",
+                                                            "portal_profile",
+                                                            "portal_registration_session",
+                                                            "portal_registration_session_data"
                                                         ]
                                                     },
                                                     {
@@ -17684,7 +17711,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -18275,7 +18305,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -18844,7 +18877,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -19413,7 +19449,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -19891,7 +19930,10 @@ export const apiTags: TagData[] = [
                                 "reply_draft",
                                 "conversation_link",
                                 "messaging_group",
-                                "messaging_group_member"
+                                "messaging_group_member",
+                                "portal_profile",
+                                "portal_registration_session",
+                                "portal_registration_session_data"
                             ]
                         },
                         {
@@ -20482,7 +20524,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -21009,7 +21054,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -21523,7 +21571,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -22037,7 +22088,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -22551,7 +22605,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -23377,7 +23434,10 @@ export const apiTags: TagData[] = [
                                 "reply_draft",
                                 "conversation_link",
                                 "messaging_group",
-                                "messaging_group_member"
+                                "messaging_group_member",
+                                "portal_profile",
+                                "portal_registration_session",
+                                "portal_registration_session_data"
                             ]
                         },
                         {
@@ -24123,7 +24183,10 @@ export const apiTags: TagData[] = [
                                         "reply_draft",
                                         "conversation_link",
                                         "messaging_group",
-                                        "messaging_group_member"
+                                        "messaging_group_member",
+                                        "portal_profile",
+                                        "portal_registration_session",
+                                        "portal_registration_session_data"
                                     ]
                                 },
                                 {
@@ -24657,7 +24720,10 @@ export const apiTags: TagData[] = [
                                 "reply_draft",
                                 "conversation_link",
                                 "messaging_group",
-                                "messaging_group_member"
+                                "messaging_group_member",
+                                "portal_profile",
+                                "portal_registration_session",
+                                "portal_registration_session_data"
                             ]
                         },
                         {
@@ -25387,7 +25453,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -26133,7 +26202,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -27110,7 +27182,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -27856,7 +27931,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -28383,7 +28461,10 @@ export const apiTags: TagData[] = [
                             "reply_draft",
                             "conversation_link",
                             "messaging_group",
-                            "messaging_group_member"
+                            "messaging_group_member",
+                            "portal_profile",
+                            "portal_registration_session",
+                            "portal_registration_session_data"
                         ]
                     },
                     {
@@ -29219,7 +29300,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -29965,7 +30049,10 @@ export const apiTags: TagData[] = [
                                                             "reply_draft",
                                                             "conversation_link",
                                                             "messaging_group",
-                                                            "messaging_group_member"
+                                                            "messaging_group_member",
+                                                            "portal_profile",
+                                                            "portal_registration_session",
+                                                            "portal_registration_session_data"
                                                         ]
                                                     },
                                                     {
@@ -30939,7 +31026,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -31685,7 +31775,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -32189,7 +32282,10 @@ export const apiTags: TagData[] = [
                                 "reply_draft",
                                 "conversation_link",
                                 "messaging_group",
-                                "messaging_group_member"
+                                "messaging_group_member",
+                                "portal_profile",
+                                "portal_registration_session",
+                                "portal_registration_session_data"
                             ]
                         },
                         {
@@ -32941,7 +33037,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -33687,7 +33786,10 @@ export const apiTags: TagData[] = [
                                                             "reply_draft",
                                                             "conversation_link",
                                                             "messaging_group",
-                                                            "messaging_group_member"
+                                                            "messaging_group_member",
+                                                            "portal_profile",
+                                                            "portal_registration_session",
+                                                            "portal_registration_session_data"
                                                         ]
                                                     },
                                                     {
@@ -34087,7 +34189,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -35058,7 +35163,10 @@ export const apiTags: TagData[] = [
                                                             "reply_draft",
                                                             "conversation_link",
                                                             "messaging_group",
-                                                            "messaging_group_member"
+                                                            "messaging_group_member",
+                                                            "portal_profile",
+                                                            "portal_registration_session",
+                                                            "portal_registration_session_data"
                                                         ]
                                                     },
                                                     {
@@ -35804,7 +35912,10 @@ export const apiTags: TagData[] = [
                                                                     "reply_draft",
                                                                     "conversation_link",
                                                                     "messaging_group",
-                                                                    "messaging_group_member"
+                                                                    "messaging_group_member",
+                                                                    "portal_profile",
+                                                                    "portal_registration_session",
+                                                                    "portal_registration_session_data"
                                                                 ]
                                                             },
                                                             {
@@ -36204,7 +36315,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -37133,7 +37247,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -37879,7 +37996,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -38865,7 +38985,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -39611,7 +39734,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -40572,7 +40698,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -41318,7 +41447,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -42279,7 +42411,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -43025,7 +43160,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -44003,7 +44141,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -44749,7 +44890,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -45726,7 +45870,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -46472,7 +46619,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -47433,7 +47583,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -48179,7 +48332,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -49165,7 +49321,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -49911,7 +50070,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -50892,7 +51054,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -51638,7 +51803,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -52623,7 +52791,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -53369,7 +53540,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -54330,7 +54504,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -55076,7 +55253,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -56037,7 +56217,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -56783,7 +56966,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -57744,7 +57930,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -58490,7 +58679,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -58992,7 +59184,10 @@ export const apiTags: TagData[] = [
                             "reply_draft",
                             "conversation_link",
                             "messaging_group",
-                            "messaging_group_member"
+                            "messaging_group_member",
+                            "portal_profile",
+                            "portal_registration_session",
+                            "portal_registration_session_data"
                         ]
                     },
                     {
@@ -59336,7 +59531,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -61265,7 +61463,10 @@ export const apiTags: TagData[] = [
                                         "reply_draft",
                                         "conversation_link",
                                         "messaging_group",
-                                        "messaging_group_member"
+                                        "messaging_group_member",
+                                        "portal_profile",
+                                        "portal_registration_session",
+                                        "portal_registration_session_data"
                                     ]
                                 },
                                 {
@@ -63582,7 +63783,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -64388,7 +64592,10 @@ export const apiTags: TagData[] = [
                                 "reply_draft",
                                 "conversation_link",
                                 "messaging_group",
-                                "messaging_group_member"
+                                "messaging_group_member",
+                                "portal_profile",
+                                "portal_registration_session",
+                                "portal_registration_session_data"
                             ]
                         },
                         {
@@ -66335,7 +66542,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -68721,7 +68931,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -71029,7 +71242,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -73308,7 +73524,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -75587,7 +75806,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -76665,7 +76887,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -77411,7 +77636,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -78309,7 +78537,10 @@ export const apiTags: TagData[] = [
                                             "reply_draft",
                                             "conversation_link",
                                             "messaging_group",
-                                            "messaging_group_member"
+                                            "messaging_group_member",
+                                            "portal_profile",
+                                            "portal_registration_session",
+                                            "portal_registration_session_data"
                                         ]
                                     },
                                     {
@@ -79055,7 +79286,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -82593,7 +82827,10 @@ export const apiTags: TagData[] = [
                                                     "reply_draft",
                                                     "conversation_link",
                                                     "messaging_group",
-                                                    "messaging_group_member"
+                                                    "messaging_group_member",
+                                                    "portal_profile",
+                                                    "portal_registration_session",
+                                                    "portal_registration_session_data"
                                                 ]
                                             },
                                             {
@@ -181425,8 +181662,13 @@ export const apiTags: TagData[] = [
                             "lines",
                             "lines.product",
                             "lines.quantity_ordered",
+                            "lines.quantity_ordered.unit",
                             "lines.unit_price",
+                            "lines.unit_price.numerator_unit",
+                            "lines.unit_price.denominator_unit",
                             "lines.unit_cost",
+                            "lines.unit_cost.numerator_unit",
+                            "lines.unit_cost.denominator_unit",
                             "lines.totals"
                         ]
                     }
@@ -181809,7 +182051,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "payment_status",
                                 "type": "string",
-                                "description": "Payment state of the order.\n\nPayment tracking is not yet wired up, so this currently always reports `unpaid`.",
+                                "description": "Payment state of the order, derived from settlement allocations, invoices, and Stripe payments.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false,
@@ -181818,6 +182060,15 @@ export const apiTags: TagData[] = [
                                     "partially_paid",
                                     "paid"
                                 ]
+                            },
+                            {
+                                "name": "payment_intent_ids",
+                                "type": "array",
+                                "description": "Stripe payment intent IDs recorded against this order.",
+                                "required": true,
+                                "nullable": false,
+                                "expandable": false,
+                                "itemType": "string"
                             },
                             {
                                 "name": "acknowledgment_status",
@@ -183368,6 +183619,7 @@ export const apiTags: TagData[] = [
                             "status": "estimate",
                             "priority": "normal",
                             "payment_status": "unpaid",
+                            "payment_intent_ids": [],
                             "acknowledgment_status": "not_sent",
                             "customer": {
                                 "id": "ac_0170df1ac58e4d24c66fc89f5f",
@@ -184728,8 +184980,13 @@ export const apiTags: TagData[] = [
                             "lines.product.item",
                             "lines.product.product_line",
                             "lines.quantity_ordered",
+                            "lines.quantity_ordered.unit",
                             "lines.unit_price",
+                            "lines.unit_price.numerator_unit",
+                            "lines.unit_price.denominator_unit",
                             "lines.unit_cost",
+                            "lines.unit_cost.numerator_unit",
+                            "lines.unit_cost.denominator_unit",
                             "lines.totals"
                         ]
                     }
@@ -184874,7 +185131,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "payment_status",
                                         "type": "string",
-                                        "description": "Payment state of the order.\n\nPayment tracking is not yet wired up, so this currently always reports `unpaid`.",
+                                        "description": "Payment state of the order, derived from settlement allocations, invoices, and Stripe payments.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false,
@@ -184883,6 +185140,15 @@ export const apiTags: TagData[] = [
                                             "partially_paid",
                                             "paid"
                                         ]
+                                    },
+                                    {
+                                        "name": "payment_intent_ids",
+                                        "type": "array",
+                                        "description": "Stripe payment intent IDs recorded against this order.",
+                                        "required": true,
+                                        "nullable": false,
+                                        "expandable": false,
+                                        "itemType": "string"
                                     },
                                     {
                                         "name": "acknowledgment_status",
@@ -186480,6 +186746,7 @@ export const apiTags: TagData[] = [
                                     "status": "estimate",
                                     "priority": "normal",
                                     "payment_status": "unpaid",
+                                    "payment_intent_ids": [],
                                     "acknowledgment_status": "not_sent",
                                     "customer": {
                                         "id": "ac_0170df1ac58e4d24c66fc89f5f",
@@ -198472,7 +198739,10 @@ export const apiObjects: ObjectData[] = [
                             "reply_draft",
                             "conversation_link",
                             "messaging_group",
-                            "messaging_group_member"
+                            "messaging_group_member",
+                            "portal_profile",
+                            "portal_registration_session",
+                            "portal_registration_session_data"
                         ]
                     },
                     {
@@ -199176,7 +199446,10 @@ export const apiObjects: ObjectData[] = [
                     "reply_draft",
                     "conversation_link",
                     "messaging_group",
-                    "messaging_group_member"
+                    "messaging_group_member",
+                    "portal_profile",
+                    "portal_registration_session",
+                    "portal_registration_session_data"
                 ]
             },
             {
@@ -201273,7 +201546,10 @@ export const apiObjects: ObjectData[] = [
                             "reply_draft",
                             "conversation_link",
                             "messaging_group",
-                            "messaging_group_member"
+                            "messaging_group_member",
+                            "portal_profile",
+                            "portal_registration_session",
+                            "portal_registration_session_data"
                         ]
                     },
                     {
@@ -202019,7 +202295,10 @@ export const apiObjects: ObjectData[] = [
                                     "reply_draft",
                                     "conversation_link",
                                     "messaging_group",
-                                    "messaging_group_member"
+                                    "messaging_group_member",
+                                    "portal_profile",
+                                    "portal_registration_session",
+                                    "portal_registration_session_data"
                                 ]
                             },
                             {
@@ -212068,7 +212347,10 @@ export const apiObjects: ObjectData[] = [
                                     "reply_draft",
                                     "conversation_link",
                                     "messaging_group",
-                                    "messaging_group_member"
+                                    "messaging_group_member",
+                                    "portal_profile",
+                                    "portal_registration_session",
+                                    "portal_registration_session_data"
                                 ]
                             },
                             {
@@ -214508,7 +214790,10 @@ export const apiObjects: ObjectData[] = [
                             "reply_draft",
                             "conversation_link",
                             "messaging_group",
-                            "messaging_group_member"
+                            "messaging_group_member",
+                            "portal_profile",
+                            "portal_registration_session",
+                            "portal_registration_session_data"
                         ]
                     },
                     {
