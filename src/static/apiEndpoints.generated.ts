@@ -181659,6 +181659,7 @@ export const apiTags: TagData[] = [
                             "related.pick",
                             "related.production_run",
                             "related.shipments",
+                            "related.invoices",
                             "lines",
                             "lines.product",
                             "lines.quantity_ordered",
@@ -183503,6 +183504,145 @@ export const apiTags: TagData[] = [
                                                 ]
                                             }
                                         ]
+                                    },
+                                    {
+                                        "name": "invoices",
+                                        "type": "object",
+                                        "description": "",
+                                        "required": true,
+                                        "nullable": true,
+                                        "expandable": true,
+                                        "objectType": "list",
+                                        "properties": [
+                                            {
+                                                "name": "object",
+                                                "type": "string",
+                                                "description": "Resource type identifier.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "enum": [
+                                                    "list"
+                                                ]
+                                            },
+                                            {
+                                                "name": "page_info",
+                                                "type": "object",
+                                                "description": "Pagination metadata.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "properties": [
+                                                    {
+                                                        "name": "next_page_url",
+                                                        "type": "string",
+                                                        "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "previous_page_url",
+                                                        "type": "string",
+                                                        "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_next_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether more results exist after this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "has_prev_page",
+                                                        "type": "boolean",
+                                                        "description": "Whether results exist before this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "array",
+                                                "description": "Resources in this page.",
+                                                "required": true,
+                                                "nullable": false,
+                                                "expandable": false,
+                                                "objectType": "record",
+                                                "itemType": "object",
+                                                "properties": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "string",
+                                                        "description": "Unique identifier for the record.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "record"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "type",
+                                                        "type": "string",
+                                                        "description": "The kind of business record referenced.\n\nDetermines how to resolve the record and which `status` and `metadata` keys may appear.\n\n- `sales_order`: a customer order.\n- `purchase_order`: an order placed with a supplier.\n- `receiving_order`: an inbound order being received into inventory.\n- `pick`: a warehouse pick task.\n- `shipment`: an outbound shipment.\n- `delivery`: a delivery of one or more shipments to a destination.\n- `production_run`: a manufacturing production run.\n- `invoice`: a customer invoice.\n- `transaction`: a payment or financial transaction.\n- `settlement`: a settlement reconciling transactions against invoices.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "sales_order",
+                                                            "purchase_order",
+                                                            "receiving_order",
+                                                            "pick",
+                                                            "shipment",
+                                                            "delivery",
+                                                            "production_run",
+                                                            "invoice",
+                                                            "transaction",
+                                                            "settlement"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "number",
+                                                        "type": "string",
+                                                        "description": "Human-readable record number, when the record has one.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "status",
+                                                        "type": "string",
+                                                        "description": "Type-specific status code, when applicable.",
+                                                        "required": true,
+                                                        "nullable": true,
+                                                        "expandable": false
+                                                    },
+                                                    {
+                                                        "name": "metadata",
+                                                        "type": "object",
+                                                        "description": "Type-specific metadata.\n\nThe set of keys varies by record type.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false
+                                                    }
+                                                ]
+                                            }
+                                        ]
                                     }
                                 ]
                             },
@@ -184842,7 +184982,8 @@ export const apiTags: TagData[] = [
                                 "object": "sales_order_related",
                                 "pick": null,
                                 "production_run": null,
-                                "shipments": null
+                                "shipments": null,
+                                "invoices": null
                             },
                             "contacts": {
                                 "object": "order_contact",
@@ -184975,6 +185116,7 @@ export const apiTags: TagData[] = [
                             "related.pick",
                             "related.production_run",
                             "related.shipments",
+                            "related.invoices",
                             "lines",
                             "lines.product",
                             "lines.product.item",
@@ -186619,6 +186761,145 @@ export const apiTags: TagData[] = [
                                                         ]
                                                     }
                                                 ]
+                                            },
+                                            {
+                                                "name": "invoices",
+                                                "type": "object",
+                                                "description": "",
+                                                "required": true,
+                                                "nullable": true,
+                                                "expandable": true,
+                                                "objectType": "list",
+                                                "properties": [
+                                                    {
+                                                        "name": "object",
+                                                        "type": "string",
+                                                        "description": "Resource type identifier.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "enum": [
+                                                            "list"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "page_info",
+                                                        "type": "object",
+                                                        "description": "Pagination metadata.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "properties": [
+                                                            {
+                                                                "name": "next_page_url",
+                                                                "type": "string",
+                                                                "description": "Relative URL that fetches the next page of results.\n\n`null` when the last page has been reached.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "previous_page_url",
+                                                                "type": "string",
+                                                                "description": "Relative URL that fetches the previous page of results.\n\n`null` while on the first page.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "has_next_page",
+                                                                "type": "boolean",
+                                                                "description": "Whether more results exist after this page.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "has_prev_page",
+                                                                "type": "boolean",
+                                                                "description": "Whether results exist before this page.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "data",
+                                                        "type": "array",
+                                                        "description": "Resources in this page.",
+                                                        "required": true,
+                                                        "nullable": false,
+                                                        "expandable": false,
+                                                        "objectType": "record",
+                                                        "itemType": "object",
+                                                        "properties": [
+                                                            {
+                                                                "name": "id",
+                                                                "type": "string",
+                                                                "description": "Unique identifier for the record.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "object",
+                                                                "type": "string",
+                                                                "description": "Resource type identifier.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "record"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "type",
+                                                                "type": "string",
+                                                                "description": "The kind of business record referenced.\n\nDetermines how to resolve the record and which `status` and `metadata` keys may appear.\n\n- `sales_order`: a customer order.\n- `purchase_order`: an order placed with a supplier.\n- `receiving_order`: an inbound order being received into inventory.\n- `pick`: a warehouse pick task.\n- `shipment`: an outbound shipment.\n- `delivery`: a delivery of one or more shipments to a destination.\n- `production_run`: a manufacturing production run.\n- `invoice`: a customer invoice.\n- `transaction`: a payment or financial transaction.\n- `settlement`: a settlement reconciling transactions against invoices.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false,
+                                                                "enum": [
+                                                                    "sales_order",
+                                                                    "purchase_order",
+                                                                    "receiving_order",
+                                                                    "pick",
+                                                                    "shipment",
+                                                                    "delivery",
+                                                                    "production_run",
+                                                                    "invoice",
+                                                                    "transaction",
+                                                                    "settlement"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "number",
+                                                                "type": "string",
+                                                                "description": "Human-readable record number, when the record has one.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "status",
+                                                                "type": "string",
+                                                                "description": "Type-specific status code, when applicable.",
+                                                                "required": true,
+                                                                "nullable": true,
+                                                                "expandable": false
+                                                            },
+                                                            {
+                                                                "name": "metadata",
+                                                                "type": "object",
+                                                                "description": "Type-specific metadata.\n\nThe set of keys varies by record type.",
+                                                                "required": true,
+                                                                "nullable": false,
+                                                                "expandable": false
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
                                             }
                                         ]
                                     },
@@ -187969,7 +188250,8 @@ export const apiTags: TagData[] = [
                                         "object": "sales_order_related",
                                         "pick": null,
                                         "production_run": null,
-                                        "shipments": null
+                                        "shipments": null,
+                                        "invoices": null
                                     },
                                     "contacts": {
                                         "object": "order_contact",
