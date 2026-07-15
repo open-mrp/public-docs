@@ -694,7 +694,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             ],
             "tagSlug": "conversation-participants",
             "endpointSlug": "update-participant-role",
-            "label": "Update"
+            "label": "Update Participant Role"
         },
         {
             "domain": "messaging",
@@ -769,7 +769,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             ],
             "tagSlug": "message-attachments",
             "endpointSlug": "create-attachment-upload-url",
-            "label": "Create"
+            "label": "Create Attachment Upload URL"
         },
         {
             "domain": "messaging",
@@ -814,7 +814,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             ],
             "tagSlug": "notification-preferences",
             "endpointSlug": "upsert-notification-preference",
-            "label": "Update"
+            "label": "Upsert Notification Preference"
         },
         {
             "domain": "messaging",
@@ -2028,7 +2028,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             ],
             "tagSlug": "sales-orders",
             "endpointSlug": "create-production-run-from-sales-order",
-            "label": "Create"
+            "label": "Create Production Run"
         },
         {
             "domain": "sales",
