@@ -303,7 +303,23 @@
 - [POST Contacts — Find Contact by Email](https://docs.augno.com/api-reference/contacts/find-contact-by-email.md)
 - [GET Sales Order Statuses — List](https://docs.augno.com/api-reference/sales-order-statuses/list-sales-order-statuses.md)
 - [POST Sales Orders — Create Order](https://docs.augno.com/api-reference/sales-orders/create-sales-order.md)
+- [POST Sales Orders — Quote Order Prices](https://docs.augno.com/api-reference/sales-orders/quote-sales-order-prices.md)
+- [PATCH Sales Orders — Update Order](https://docs.augno.com/api-reference/sales-orders/update-sales-order.md)
 - [GET Sales Orders — List](https://docs.augno.com/api-reference/sales-orders/list-sales-orders.md)
+- [GET Sales Orders — Retrieve Order](https://docs.augno.com/api-reference/sales-orders/retrieve-sales-order.md)
+- [DELETE Sales Orders — Delete Order](https://docs.augno.com/api-reference/sales-orders/delete-sales-order.md)
+- [POST Sales Orders — Bulk Delete](https://docs.augno.com/api-reference/sales-orders/bulk-delete-sales-orders.md)
+- [POST Sales Orders — Checkout Order](https://docs.augno.com/api-reference/sales-orders/checkout-sales-order.md)
+- [POST Sales Orders — Create Order Line](https://docs.augno.com/api-reference/sales-orders/create-sales-order-line.md)
+- [PATCH Sales Orders — Update Order Line](https://docs.augno.com/api-reference/sales-orders/update-sales-order-line.md)
+- [DELETE Sales Orders — Delete Order Line](https://docs.augno.com/api-reference/sales-orders/delete-sales-order-line.md)
+- [PUT Sales Orders — Close Order](https://docs.augno.com/api-reference/sales-orders/close-sales-order.md)
+- [POST Sales Orders — Create Production Run from Order](https://docs.augno.com/api-reference/sales-orders/create-production-run-from-sales-order.md)
+- [PUT Sales Orders — Issue Order](https://docs.augno.com/api-reference/sales-orders/issue-sales-order.md)
+- [PUT Sales Orders — Reopen Order](https://docs.augno.com/api-reference/sales-orders/reopen-sales-order.md)
+- [POST Sales Orders — Quote Order Freight](https://docs.augno.com/api-reference/sales-orders/quote-sales-order-freight.md)
+- [PUT Sales Orders — Unissue Order](https://docs.augno.com/api-reference/sales-orders/unissue-sales-order.md)
+- [POST Sales Orders — Reorder Order Lines](https://docs.augno.com/api-reference/sales-orders/reorder-sales-order-lines.md)
 
 ### Finance
 - [POST Payment Terms — Create Term](https://docs.augno.com/api-reference/payment-terms/create-payment-term.md)
@@ -352,6 +368,7 @@
 - [PUT Account Users — Activate User](https://docs.augno.com/api-reference/account-users/activate-account-user.md)
 - [PUT Account Users — Disable User](https://docs.augno.com/api-reference/account-users/disable-account-user.md)
 - [PUT Account Users — Remove User](https://docs.augno.com/api-reference/account-users/remove-account-user.md)
+- [PUT Account — Upload Favicon](https://docs.augno.com/api-reference/account/upload-account-favicon.md)
 - [POST Roles — Create Role](https://docs.augno.com/api-reference/roles/create-role.md)
 - [PATCH Roles — Update Role](https://docs.augno.com/api-reference/roles/update-role.md)
 - [GET Roles — List](https://docs.augno.com/api-reference/roles/list-roles.md)
@@ -420,6 +437,7 @@
 - [Address object](https://docs.augno.com/api-reference/objects/address.md): A saved address that can be used for billing and shipping on sales orders, invoices, and shipments.
 - [Customers object](https://docs.augno.com/api-reference/objects/customer.md): A business you sell to, with its contact details, default fulfillment settings, and order policies.
 - [Priorities object](https://docs.augno.com/api-reference/objects/priority.md): Priority level used to order work on sales orders, purchase orders, and picks.
+- [Sales Orders object](https://docs.augno.com/api-reference/objects/sales-order.md): Full sales order resource.
 
 ### Settings
 - [Portal Domains object](https://docs.augno.com/api-reference/objects/portal-domain.md): A custom domain that serves the account's customer portal (e.g.

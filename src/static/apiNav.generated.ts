@@ -1291,6 +1291,16 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "label": "Delete"
         },
         {
+            "domain": "identity",
+            "segments": [
+                "accounts",
+                "favicon"
+            ],
+            "tagSlug": "account",
+            "endpointSlug": "upload-account-favicon",
+            "label": "Upload Account Favicon"
+        },
+        {
             "domain": "settings",
             "segments": [
                 "portal-domains"
@@ -1910,11 +1920,161 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
         {
             "domain": "sales",
             "segments": [
+                "sales-orders",
+                "price-quote"
+            ],
+            "tagSlug": "sales-orders",
+            "endpointSlug": "quote-sales-order-prices",
+            "label": "Create"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "sales-orders"
+            ],
+            "tagSlug": "sales-orders",
+            "endpointSlug": "update-sales-order",
+            "label": "Update"
+        },
+        {
+            "domain": "sales",
+            "segments": [
                 "sales-orders"
             ],
             "tagSlug": "sales-orders",
             "endpointSlug": "list-sales-orders",
             "label": "List"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "sales-orders"
+            ],
+            "tagSlug": "sales-orders",
+            "endpointSlug": "retrieve-sales-order",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "sales-orders"
+            ],
+            "tagSlug": "sales-orders",
+            "endpointSlug": "delete-sales-order",
+            "label": "Delete"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "sales-orders"
+            ],
+            "tagSlug": "sales-orders",
+            "endpointSlug": "bulk-delete-sales-orders",
+            "label": "Bulk Delete Sales Orders"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "sales-orders",
+                "checkout"
+            ],
+            "tagSlug": "sales-orders",
+            "endpointSlug": "checkout-sales-order",
+            "label": "Create"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "sales-orders",
+                "lines"
+            ],
+            "tagSlug": "sales-orders",
+            "endpointSlug": "create-sales-order-line",
+            "label": "Create"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "sales-orders",
+                "lines"
+            ],
+            "tagSlug": "sales-orders",
+            "endpointSlug": "update-sales-order-line",
+            "label": "Update"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "sales-orders",
+                "lines"
+            ],
+            "tagSlug": "sales-orders",
+            "endpointSlug": "delete-sales-order-line",
+            "label": "Delete"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "sales-orders"
+            ],
+            "tagSlug": "sales-orders",
+            "endpointSlug": "close-sales-order",
+            "label": "Close Sales Order"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "sales-orders"
+            ],
+            "tagSlug": "sales-orders",
+            "endpointSlug": "create-production-run-from-sales-order",
+            "label": "Create"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "sales-orders"
+            ],
+            "tagSlug": "sales-orders",
+            "endpointSlug": "issue-sales-order",
+            "label": "Issue Sales Order"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "sales-orders"
+            ],
+            "tagSlug": "sales-orders",
+            "endpointSlug": "reopen-sales-order",
+            "label": "Reopen Sales Order"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "sales-orders"
+            ],
+            "tagSlug": "sales-orders",
+            "endpointSlug": "quote-sales-order-freight",
+            "label": "Quote Sales Order Freight"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "sales-orders"
+            ],
+            "tagSlug": "sales-orders",
+            "endpointSlug": "unissue-sales-order",
+            "label": "Unissue Sales Order"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "sales-orders",
+                "lines"
+            ],
+            "tagSlug": "sales-orders",
+            "endpointSlug": "reorder-sales-order-lines",
+            "label": "Reorder Sales Order Lines"
         },
         {
             "domain": "finance",
@@ -3616,6 +3776,12 @@ export const apiObjectNavEntriesByVersion: Record<string, ApiObjectNavEntry[]> =
             "domainLabel": "Identity",
             "slug": "role",
             "label": "Roles"
+        },
+        {
+            "domain": "sales",
+            "domainLabel": "Sales",
+            "slug": "sales-order",
+            "label": "Sales Orders"
         },
         {
             "domain": "core",

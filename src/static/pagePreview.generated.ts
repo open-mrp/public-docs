@@ -967,6 +967,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Delete Attribute",
         "subtitle": "DELETE /v1/catalog/properties/{property_id}/attributes/{id}"
     },
+    "/api-reference/account/upload-account-favicon": {
+        "title": "Upload Account Favicon",
+        "subtitle": "PUT /v1/identity/accounts/{id}/favicon"
+    },
     "/api-reference/portal-domains/create-portal-domain": {
         "title": "Create Portal Domain",
         "subtitle": "POST /v1/settings/portal-domains"
@@ -1235,9 +1239,73 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Create Sales Order",
         "subtitle": "POST /v1/sales/sales-orders"
     },
+    "/api-reference/sales-orders/quote-sales-order-prices": {
+        "title": "Quote Sales Order Prices",
+        "subtitle": "POST /v1/sales/sales-orders/price-quote"
+    },
+    "/api-reference/sales-orders/update-sales-order": {
+        "title": "Update Sales Order",
+        "subtitle": "PATCH /v1/sales/sales-orders/{id}"
+    },
     "/api-reference/sales-orders/list-sales-orders": {
         "title": "List Sales Orders",
         "subtitle": "GET /v1/sales/sales-orders"
+    },
+    "/api-reference/sales-orders/retrieve-sales-order": {
+        "title": "Retrieve Sales Order",
+        "subtitle": "GET /v1/sales/sales-orders/{id}"
+    },
+    "/api-reference/sales-orders/delete-sales-order": {
+        "title": "Delete Sales Order",
+        "subtitle": "DELETE /v1/sales/sales-orders/{id}"
+    },
+    "/api-reference/sales-orders/bulk-delete-sales-orders": {
+        "title": "Bulk Delete Sales Orders",
+        "subtitle": "POST /v1/sales/sales-orders/actions/bulk-delete"
+    },
+    "/api-reference/sales-orders/checkout-sales-order": {
+        "title": "Checkout Sales Order",
+        "subtitle": "POST /v1/sales/sales-orders/{id}/checkout"
+    },
+    "/api-reference/sales-orders/create-sales-order-line": {
+        "title": "Create Sales Order Line",
+        "subtitle": "POST /v1/sales/sales-orders/{id}/lines"
+    },
+    "/api-reference/sales-orders/update-sales-order-line": {
+        "title": "Update Sales Order Line",
+        "subtitle": "PATCH /v1/sales/sales-orders/{id}/lines/{line_id}"
+    },
+    "/api-reference/sales-orders/delete-sales-order-line": {
+        "title": "Delete Sales Order Line",
+        "subtitle": "DELETE /v1/sales/sales-orders/{id}/lines/{line_id}"
+    },
+    "/api-reference/sales-orders/close-sales-order": {
+        "title": "Close Sales Order",
+        "subtitle": "PUT /v1/sales/sales-orders/{id}/actions/close"
+    },
+    "/api-reference/sales-orders/create-production-run-from-sales-order": {
+        "title": "Create Production Run from Sales Order",
+        "subtitle": "POST /v1/sales/sales-orders/{id}/actions/create-production-run"
+    },
+    "/api-reference/sales-orders/issue-sales-order": {
+        "title": "Issue Sales Order",
+        "subtitle": "PUT /v1/sales/sales-orders/{id}/actions/issue"
+    },
+    "/api-reference/sales-orders/reopen-sales-order": {
+        "title": "Reopen Sales Order",
+        "subtitle": "PUT /v1/sales/sales-orders/{id}/actions/open"
+    },
+    "/api-reference/sales-orders/quote-sales-order-freight": {
+        "title": "Quote Sales Order Freight",
+        "subtitle": "POST /v1/sales/sales-orders/{id}/actions/quote-freight"
+    },
+    "/api-reference/sales-orders/unissue-sales-order": {
+        "title": "Unissue Sales Order",
+        "subtitle": "PUT /v1/sales/sales-orders/{id}/actions/unissue"
+    },
+    "/api-reference/sales-orders/reorder-sales-order-lines": {
+        "title": "Reorder Sales Order Lines",
+        "subtitle": "POST /v1/sales/sales-orders/{id}/lines/actions/reorder"
     },
     "/api-reference/transactions/list-adjustment-types": {
         "title": "List Adjustment Types",

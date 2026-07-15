@@ -359,6 +359,9 @@ export const docPaths = {
             "retrieveAttribute": "/api-reference/properties/retrieve-attribute",
             "deleteAttribute": "/api-reference/properties/delete-attribute"
         },
+        "account": {
+            "uploadAccountFavicon": "/api-reference/account/upload-account-favicon"
+        },
         "portalDomains": {
             "createPortalDomain": "/api-reference/portal-domains/create-portal-domain",
             "listPortalDomains": "/api-reference/portal-domains/list-portal-domains",
@@ -457,7 +460,23 @@ export const docPaths = {
         },
         "salesOrders": {
             "createSalesOrder": "/api-reference/sales-orders/create-sales-order",
-            "listSalesOrders": "/api-reference/sales-orders/list-sales-orders"
+            "quoteSalesOrderPrices": "/api-reference/sales-orders/quote-sales-order-prices",
+            "updateSalesOrder": "/api-reference/sales-orders/update-sales-order",
+            "listSalesOrders": "/api-reference/sales-orders/list-sales-orders",
+            "retrieveSalesOrder": "/api-reference/sales-orders/retrieve-sales-order",
+            "deleteSalesOrder": "/api-reference/sales-orders/delete-sales-order",
+            "bulkDeleteSalesOrders": "/api-reference/sales-orders/bulk-delete-sales-orders",
+            "checkoutSalesOrder": "/api-reference/sales-orders/checkout-sales-order",
+            "createSalesOrderLine": "/api-reference/sales-orders/create-sales-order-line",
+            "updateSalesOrderLine": "/api-reference/sales-orders/update-sales-order-line",
+            "deleteSalesOrderLine": "/api-reference/sales-orders/delete-sales-order-line",
+            "closeSalesOrder": "/api-reference/sales-orders/close-sales-order",
+            "createProductionRunFromSalesOrder": "/api-reference/sales-orders/create-production-run-from-sales-order",
+            "issueSalesOrder": "/api-reference/sales-orders/issue-sales-order",
+            "reopenSalesOrder": "/api-reference/sales-orders/reopen-sales-order",
+            "quoteSalesOrderFreight": "/api-reference/sales-orders/quote-sales-order-freight",
+            "unissueSalesOrder": "/api-reference/sales-orders/unissue-sales-order",
+            "reorderSalesOrderLines": "/api-reference/sales-orders/reorder-sales-order-lines"
         },
         "transactions": {
             "listAdjustmentTypes": "/api-reference/transactions/list-adjustment-types",
