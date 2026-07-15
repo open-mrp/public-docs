@@ -166,7 +166,10 @@ describe('sanitizeResponseExample', () => {
         expect(row.role).toBeNull();
     });
 
-    test('does not null expandable fields when endpoint has no include enum', () => {
+    test('nulls expandable fields when endpoint has no include enum', () => {
+        // With no include[] param there is no way to request expansion, so an
+        // expandable field is always null in practice and must not be shown
+        // expanded.
         const fields: SchemaField[] = [
             {
                 name: 'role',
@@ -184,6 +187,50 @@ describe('sanitizeResponseExample', () => {
             unknown
         >;
 
-        expect(out.role).toEqual({ id: 'r' });
+        expect(out.role).toBeNull();
+    });
+
+    test('nulls a deeply nested expandable field on an include-less action response', () => {
+        // Mirrors the sales-order quote-freight action: no include[] param, and
+        // each nested unit carries an expandable `owner` that can never expand.
+        const unitFields: SchemaField[] = [
+            { name: 'id', type: 'string', description: '', required: true, nullable: false },
+            {
+                name: 'owner',
+                type: 'object',
+                description: '',
+                required: true,
+                nullable: true,
+                expandable: true,
+                properties: [
+                    { name: 'object', type: 'string', description: '', required: true, nullable: false },
+                ],
+            },
+        ];
+        const fields: SchemaField[] = [
+            {
+                name: 'unit_price',
+                type: 'object',
+                description: '',
+                required: true,
+                nullable: true,
+                properties: [
+                    { name: 'numerator_unit', type: 'object', description: '', required: true, nullable: true, properties: unitFields },
+                    { name: 'denominator_unit', type: 'object', description: '', required: true, nullable: true, properties: unitFields },
+                ],
+            },
+        ];
+        const example = {
+            unit_price: {
+                numerator_unit: { id: 'un_1', owner: { object: 'owner', type: 'system', account: null } },
+                denominator_unit: { id: 'un_1', owner: { object: 'owner', type: 'system', account: null } },
+            },
+        };
+
+        const out = sanitizeResponseExample(example, fields, undefined, []) as Record<string, unknown>;
+        const price = out.unit_price as Record<string, Record<string, unknown>>;
+        expect(price.numerator_unit.owner).toBeNull();
+        expect(price.denominator_unit.owner).toBeNull();
+        expect(price.numerator_unit.id).toBe('un_1');
     });
 });

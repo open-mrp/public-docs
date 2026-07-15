@@ -33,7 +33,7 @@ Stripe handles payment processing for invoices and subscriptions. To connect Str
 Augno uses a Stripe webhook to receive real-time payment updates. In your [Stripe Dashboard webhook settings](https://dashboard.stripe.com/webhooks), create a webhook endpoint pointing to:
 
 ```http
-https://api-legacy.augno.com/webhooks/stripe/YOUR_ACCOUNT_ID
+https://api.augno.com/v1/webhooks/stripe/accounts/YOUR_ACCOUNT_ID
 ```
 
 Subscribe the webhook to the following events:
@@ -41,6 +41,7 @@ Subscribe the webhook to the following events:
 - `payment_intent.succeeded`
 - `payment_intent.payment_failed`
 - `payment_intent.canceled`
+- `payout.paid`
 
 After creating the webhook in Stripe, copy the **webhook signing secret** (starts with `whsec_`) and enter it in the Augno integration settings. Augno uses this secret to verify that incoming events are genuinely from Stripe.
 

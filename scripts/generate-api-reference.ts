@@ -1244,23 +1244,31 @@ interface ApiNavEntry {
     label: string;
 }
 
+/**
+ * Trim a redundant trailing "from <Tag>" clause from a custom-action summary, e.g.
+ * "Create Production Run from Sales Order" (tag "Sales Orders") -> "Create Production Run".
+ * The tag's trailing plural "s" is optional so "Sales Orders" also matches "Sales Order".
+ */
+function stripRedundantFromTag(summary: string, tag: string): string {
+    const escaped = tag.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/s$/i, '(?:s)?');
+    return summary.replace(new RegExp(`\\s+from\\s+${escaped}$`, 'i'), '').trim();
+}
+
 /** Mirror of the sidenav's action label heuristic, computed at build time. */
 function sidenavActionLabel(endpoint: EndpointData): string {
+    // Standard CRUD endpoints collapse to a single-word action label so the sidenav
+    // icon renders in the matching colored badge (list/retrieve/create/update/delete).
     if (endpoint.actionType === 'list') return 'List';
     if (endpoint.actionType === 'retrieve') return 'Retrieve';
     if (endpoint.actionType === 'create') return 'Create';
     if (endpoint.actionType === 'update') return 'Update';
     if (endpoint.actionType === 'delete') return 'Delete';
 
-    const s = endpoint.summary.trim();
-    const lower = s.toLowerCase();
-    if (lower.startsWith('list ')) return 'List';
-    if (lower.startsWith('search ')) return 'List';
-    if (lower.startsWith('get ') || lower.startsWith('retrieve ')) return 'Retrieve';
-    if (lower.startsWith('create ') || lower.startsWith('trigger ')) return 'Create';
-    if (lower.startsWith('update ') || lower.startsWith('upsert ')) return 'Update';
-    if (lower.startsWith('delete ') || lower.startsWith('revoke ')) return 'Delete';
-    return s;
+    // Custom action endpoints (…/actions/*) keep a descriptive label so the sidenav
+    // says *what* the action does — e.g. "Create Production Run", not just "Create" —
+    // and the icon renders in the neutral action color instead of being mistaken for a
+    // resource Create/Update. Only the redundant trailing "from <Tag>" clause is trimmed.
+    return stripRedundantFromTag(endpoint.summary.trim(), endpoint.tag);
 }
 
 /** Static (non-parameter) path segments after /v1/<domain>, cut at "actions". */

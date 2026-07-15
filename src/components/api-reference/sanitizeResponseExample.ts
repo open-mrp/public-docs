@@ -87,11 +87,12 @@ export function sanitizeResponseExample(
             continue;
         }
 
-        if (
-            field.expandable === true &&
-            includeValues.length > 0 &&
-            !isIncludableForEndpoint(relativePath, includeValues)
-        ) {
+        // An expandable field is only populated when the caller opts into it via
+        // include[]. If this endpoint cannot expand it — either it exposes no
+        // include[] param at all (e.g. the sales-order quote-freight action) or
+        // the field is not reachable from the enum — the field is always null in
+        // practice, so the example must not show it expanded.
+        if (field.expandable === true && !isIncludableForEndpoint(relativePath, includeValues)) {
             out[key] = null;
             continue;
         }
