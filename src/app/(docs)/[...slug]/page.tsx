@@ -72,7 +72,19 @@ export function generateStaticParams() {
   {
     "slug": [
       "api",
+      "realtime"
+    ]
+  },
+  {
+    "slug": [
+      "api",
       "request-ids"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "search"
     ]
   },
   {
@@ -85,6 +97,18 @@ export function generateStaticParams() {
     "slug": [
       "api",
       "mcp-server"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "audit-events"
+    ]
+  },
+  {
+    "slug": [
+      "api",
+      "email-logs"
     ]
   },
   {
@@ -156,6 +180,42 @@ export function generateStaticParams() {
   {
     "slug": [
       "release-phases"
+    ]
+  },
+  {
+    "slug": [
+      "automate-with-agents",
+      "agents-in-chat"
+    ]
+  },
+  {
+    "slug": [
+      "automate-with-agents",
+      "agents"
+    ]
+  },
+  {
+    "slug": [
+      "automate-with-agents",
+      "memories"
+    ]
+  },
+  {
+    "slug": [
+      "automate-with-agents",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "automate-with-agents",
+      "runs"
+    ]
+  },
+  {
+    "slug": [
+      "automate-with-agents",
+      "tools-and-approvals"
     ]
   },
   {
@@ -251,6 +311,41 @@ export function generateStaticParams() {
   {
     "slug": [
       "build-products",
+      "plant",
+      "machine-status-and-downtime"
+    ]
+  },
+  {
+    "slug": [
+      "build-products",
+      "plant",
+      "machines-and-departments"
+    ]
+  },
+  {
+    "slug": [
+      "build-products",
+      "production-planning",
+      "demand-overrides"
+    ]
+  },
+  {
+    "slug": [
+      "build-products",
+      "production-planning",
+      "production-schedules"
+    ]
+  },
+  {
+    "slug": [
+      "build-products",
+      "production-planning",
+      "publishing-and-releasing"
+    ]
+  },
+  {
+    "slug": [
+      "build-products",
       "production",
       "batch-operations"
     ]
@@ -336,6 +431,42 @@ export function generateStaticParams() {
     "slug": [
       "collect-payments",
       "overview"
+    ]
+  },
+  {
+    "slug": [
+      "communicate",
+      "email"
+    ]
+  },
+  {
+    "slug": [
+      "communicate",
+      "inbox"
+    ]
+  },
+  {
+    "slug": [
+      "communicate",
+      "messages"
+    ]
+  },
+  {
+    "slug": [
+      "communicate",
+      "notifications"
+    ]
+  },
+  {
+    "slug": [
+      "communicate",
+      "overview"
+    ]
+  },
+  {
+    "slug": [
+      "communicate",
+      "retention-and-compliance"
     ]
   },
   {
@@ -615,6 +746,12 @@ export function generateStaticParams() {
   {
     "slug": [
       "manage-account",
+      "customer-portal-settings"
+    ]
+  },
+  {
+    "slug": [
+      "manage-account",
       "integrations"
     ]
   },
@@ -640,6 +777,12 @@ export function generateStaticParams() {
     "slug": [
       "manage-account",
       "security"
+    ]
+  },
+  {
+    "slug": [
+      "manage-account",
+      "support-routing"
     ]
   },
   {

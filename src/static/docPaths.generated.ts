@@ -11,9 +11,13 @@ export const docPaths = {
         "include": "/api/include",
         "pagination": "/api/pagination",
         "rateLimiting": "/api/rate-limiting",
+        "realtime": "/api/realtime",
         "requestIds": "/api/request-ids",
+        "search": "/api/search",
         "versioning": "/api/versioning",
         "mcpServer": "/api/mcp-server",
+        "auditEvents": "/api/audit-events",
+        "emailLogs": "/api/email-logs",
         "requestLogs": "/api/request-logs",
         "overview": "/api/overview",
         "goSdk": "/api/go-sdk",
@@ -30,6 +34,14 @@ export const docPaths = {
     "apiRequest": "/api-request",
     "goLive": "/go-live",
     "releasePhases": "/release-phases",
+    "automateWithAgents": {
+        "agentsInChat": "/automate-with-agents/agents-in-chat",
+        "agents": "/automate-with-agents/agents",
+        "memories": "/automate-with-agents/memories",
+        "overview": "/automate-with-agents/overview",
+        "runs": "/automate-with-agents/runs",
+        "toolsAndApprovals": "/automate-with-agents/tools-and-approvals"
+    },
     "buildProducts": {
         "bom": {
             "consumptionsAndProductions": "/build-products/bom/consumptions-and-productions",
@@ -50,6 +62,15 @@ export const docPaths = {
             "products": "/build-products/items/products"
         },
         "overview": "/build-products/overview",
+        "plant": {
+            "machineStatusAndDowntime": "/build-products/plant/machine-status-and-downtime",
+            "machinesAndDepartments": "/build-products/plant/machines-and-departments"
+        },
+        "productionPlanning": {
+            "demandOverrides": "/build-products/production-planning/demand-overrides",
+            "productionSchedules": "/build-products/production-planning/production-schedules",
+            "publishingAndReleasing": "/build-products/production-planning/publishing-and-releasing"
+        },
         "production": {
             "batchOperations": "/build-products/production/batch-operations",
             "batches": "/build-products/production/batches",
@@ -77,6 +98,14 @@ export const docPaths = {
             "overview": "/collect-payments/invoicing/overview"
         },
         "overview": "/collect-payments/overview"
+    },
+    "communicate": {
+        "email": "/communicate/email",
+        "inbox": "/communicate/inbox",
+        "messages": "/communicate/messages",
+        "notifications": "/communicate/notifications",
+        "overview": "/communicate/overview",
+        "retentionAndCompliance": "/communicate/retention-and-compliance"
     },
     "dashboards": {
         "financial": {
@@ -143,11 +172,13 @@ export const docPaths = {
             "profile": "/manage-account/account-settings/profile"
         },
         "apiKeys": "/manage-account/api-keys",
+        "customerPortalSettings": "/manage-account/customer-portal-settings",
         "integrations": "/manage-account/integrations",
         "overview": "/manage-account/overview",
         "plansAndBilling": "/manage-account/plans-and-billing",
         "sandboxes": "/manage-account/sandboxes",
         "security": "/manage-account/security",
+        "supportRouting": "/manage-account/support-routing",
         "team": {
             "rolesAndPermissions": "/manage-account/team/roles-and-permissions",
             "teamMembers": "/manage-account/team/team-members"

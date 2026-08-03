@@ -1,0 +1,350 @@
+---
+title: Agents
+subtitle: Define what an agent does, when it runs, how hard it thinks, and what it is allowed to touch.
+route: /automate-with-agents/agents
+nav:
+    title: Agents
+    section: Automate with agents
+    order: 2
+---
+
+An **agent definition** is the reusable description of an AI teammate: its name, its standing instructions, how its runs start, and the role that bounds its authority. <BetaTag /> Every run is an execution of a definition, so changing the definition changes how every future run behaves.
+
+> **Agents are in preview.** The `/v1/ai/agents` endpoints are documented in full at the bottom of this page, with their real paths and request and response shapes. They are not part of Augno's public OpenAPI spec and are not generated into the published SDKs, and they may change without notice.
+
+Manage definitions from **AI Agents → Agents** in the dashboard.
+
+### System and custom agents
+
+Every agent is one of two kinds:
+
+| Type       | Where it comes from                       | Can you edit it?                                                      |
+| ---------- | ----------------------------------------- | --------------------------------------------------------------------- |
+| **System** | Provided by Augno, shared across accounts | No — a system definition is read-only and cannot be edited or deleted |
+| **Custom** | Created by someone in your account        | Yes                                                                   |
+
+The system/custom split does **not** control whether an agent runs for you. That is a separate, per-account status.
+
+### Marking an agent active or inactive
+
+Each agent carries an `active` or `inactive` status **for your account**, set from the agent's detail page. Because the status is per-account, marking a system agent inactive affects only your account — the shared definition is untouched and other accounts keep whatever setting they chose.
+
+Today that status is a **label, not a switch**. It drives the active/inactive filter on the agent list and nothing else: the runtime does not consult it, so an `inactive` agent can still be started by hand and still answers when it is messaged in a conversation. Use it to organize the list, not as a safety control. To actually stop a custom agent, delete it; to stop a system agent from acting, remove it from the conversations it participates in.
+
+### The building blocks
+
+| Field             | What it does                                                                                 |
+| ----------------- | -------------------------------------------------------------------------------------------- |
+| **Name**          | The human-readable label shown everywhere in the UI                                          |
+| **Slug**          | A URL-friendly identifier, unique within your account                                        |
+| **Description**   | What the agent is for; helps teammates decide when to use it                                 |
+| **Category code** | A grouping key (for example `inventory`, `order_processing`) used to organize the agent list |
+| **Trigger type**  | How runs of this agent start — see below                                                     |
+| **Role**          | The permissions the agent operates with                                                      |
+| **Config**        | Instructions, intelligence tier, temperature, trigger settings, and tool grants              |
+
+### The role is the trust boundary
+
+An agent acts as its own actor, and **every** call it makes is authorized against the role you attach to it. It can never read or change anything the role does not allow, no matter what its instructions say or what a user asks it to do in chat. Pick the narrowest role that lets the agent finish its job — the same discipline you would apply to an <InternalLink pathKey="manageAccount.apiKeys" text="API key" />.
+
+The role is not optional in practice: **an agent with no role cannot execute.** Its runs fail immediately with an error saying it has no permissions. Attach a role before you trigger it.
+
+### Triggers
+
+The trigger type decides what starts a run.
+
+| Trigger type | What it means                                        | Required configuration    | Does it start runs on its own? |
+| ------------ | ---------------------------------------------------- | ------------------------- | ------------------------------ |
+| `manual`     | The agent runs when someone explicitly starts it     | Nothing                   | n/a — you start it             |
+| `chat`       | The agent runs when it is messaged in a conversation | Nothing                   | Yes                            |
+| `scheduled`  | The agent is meant to run on a cron schedule         | A cron schedule           | **Not yet** — see below        |
+| `event`      | The agent is meant to react to platform events       | At least one event filter | **Not yet** — see below        |
+
+Creating a `scheduled` agent without a cron schedule, or an `event` agent without at least one event filter, is rejected as a validation error.
+
+Whatever the trigger type, any agent can be started by hand. A run started that way is recorded as a `manual` run regardless of how the agent is configured. Likewise, any agent added to a conversation answers there, and that run is recorded as a `chat` run — the trigger type on the definition does not have to be `chat`, and the dashboard's create-agent form does not offer `chat` as a choice.
+
+#### Scheduled agents
+
+A scheduled agent takes a standard five-field cron expression — `0 9 * * *` for 9am daily. The create form also accepts an IANA timezone such as `America/New_York`.
+
+Be aware of two current limitations before you rely on a schedule:
+
+- **The saved schedule is not handed to the scheduler yet.** The scheduler runs off a per-account schedule value that nothing populates when you create or edit an agent, so a scheduled agent does not fire on its own today. Start it by hand until that is connected.
+- **The timezone is stored but not applied.** Cron expressions are evaluated in the platform's own timezone, not the one you pick.
+
+What the scheduler does once an agent reaches it: it polls **once a minute**, so a schedule is "at or shortly after" rather than to-the-second; it computes the next due time from the agent's last run and starts one run when that time has passed. It also re-checks your plan on every tick, so a downgrade to the free plan stops scheduled runs without deleting anything, and they resume when the account is back on a paid plan. Deleting a custom agent removes it from the scheduler; marking an agent inactive does not.
+
+#### Event agents
+
+An event agent is configured with a list of event types it subscribes to, written as `domain.event` strings — for example `email.received` or `order.created`. At least one entry is required.
+
+**Event triggering is not implemented yet.** The filters are validated and stored, but nothing in Augno matches platform events against them, so an event agent never starts a run of its own accord. It behaves exactly like a `manual` agent until event dispatch ships. Event filters are also free-form strings that are not validated against a fixed list of event names.
+
+#### Agents in conversations
+
+An agent can be added as a participant in a conversation. It replies into that same thread, and you can answer it to continue the same run rather than starting a new one — see <InternalLink pathKey="automateWithAgents.agentsInChat" text="Agents in chat" />.
+
+### Instructions
+
+The **system prompt** is the agent's standing brief: its role, its constraints, what "done" looks like. It is sent to the model on every turn of every run, alongside the platform guidance Augno adds automatically (how to discover API tools, how to expand related records, and so on).
+
+Write it as a job description, not as a single task. The per-run instruction — the chat message, or the input on a manual trigger — supplies the task.
+
+Agents also read <InternalLink pathKey="automateWithAgents.memories" text="memories" />: notes saved in your account that are appended to the system prompt so the agent recalls them on later runs.
+
+### Intelligence tiers
+
+You never pick a model. You pick a **tier**, and Augno resolves it to a model for you.
+
+| Tier       | Use it for                                                                      |
+| ---------- | ------------------------------------------------------------------------------- |
+| `frontier` | The hardest work: multi-step planning, ambiguous problems, tool-heavy workflows |
+| `high`     | The default. Normal planning, synthesis, and customer-facing reasoning          |
+| `balanced` | Research, summarization, classification, structured extraction, light tool use  |
+| `cheap`    | Simple transforms, validation, formatting, keyword lookup, routing              |
+
+Those four are the ones the dashboard offers. A fifth tier, `legacy`, exists in the platform for regression comparison against older-generation models; it is deliberately left out of the create-agent form.
+
+Higher tiers reason better and cost more. Pick the lowest tier that reliably handles the agent's work.
+
+Each tier is an **ordered chain of equivalent models that deliberately spans several providers**. A run starts on the tier's first model; if that provider returns an overloaded or unavailable error that survives retries, the run fails over to the next model in the chain and keeps going. That is why the tier is the setting and the model is not: the chain is what makes a provider outage a hiccup instead of an outage for you.
+
+If you leave the tier unset, the run picks a sensible default from how it was triggered — customer-facing chat and manual runs get the `high` tier, background scheduled and event runs get the cheaper `balanced` tier.
+
+### Temperature
+
+**Temperature** is a 0–1 setting for how much randomness the model uses. Lower is more literal and more repeatable; higher is more varied. Values outside 0–1 are rejected. For agents that produce records, quote figures, or follow a fixed procedure, keep it low.
+
+### Tools
+
+Tools are what turn an agent from a writer into a worker. Built-in tools are attached to the definition; Augno's API operations are granted separately through an explicit allowlist on the config, and can be individually gated behind human approval. That is its own page — see <InternalLink pathKey="automateWithAgents.toolsAndApprovals" text="Tools & approvals" />.
+
+## The agents API
+
+Six endpoints under `/v1/ai/agents` back everything above.
+
+> #### Preview
+>
+> These paths and payloads are real and current, but the endpoints are **not** in Augno's public OpenAPI spec and are not generated into the published SDKs — there is no typed client for them and they do not appear in the API reference. Call them directly, pin the API version you build against, and read the <InternalLink pathKey="releasePhases" text="release phases" /> page before you depend on them in production.
+
+| Operation        | Endpoint                        | Permission      |
+| ---------------- | ------------------------------- | --------------- |
+| List             | `GET /v1/ai/agents`             | `agents:read`   |
+| Create           | `POST /v1/ai/agents`            | `agents:create` |
+| Retrieve         | `GET /v1/ai/agents/{id}`        | `agents:read`   |
+| Update           | `PATCH /v1/ai/agents/{id}`      | `agents:update` |
+| Enable / disable | `PUT /v1/ai/agents/{id}/status` | `agents:update` |
+| Delete           | `DELETE /v1/ai/agents/{id}`     | `agents:delete` |
+
+All six are internal-user only, require the `Augno-Account` header, and are refused on the free plan — see <InternalLink pathKey="automateWithAgents.overview" text="the API orientation" /> on the overview page.
+
+### The agent resource
+
+Every endpoint except delete returns an `agent_definition`.
+
+| Field             | Type                | Notes                                                                          |
+| ----------------- | ------------------- | ------------------------------------------------------------------------------ |
+| `id`              | string              | Prefixed `agdf_`.                                                              |
+| `object`          | string              | Always `agent_definition`.                                                     |
+| `name`            | string              | —                                                                              |
+| `slug`            | string              | Unique within the account.                                                     |
+| `description`     | string or null      | —                                                                              |
+| `category_code`   | string              | —                                                                              |
+| `definition_type` | enum                | `system` or `custom`.                                                          |
+| `trigger_type`    | enum                | `scheduled`, `manual`, `event`, or `chat`.                                     |
+| `editability`     | enum                | `editable` or `read_only`. Always `read_only` on a `system` definition.        |
+| `status`          | enum                | `active` or `inactive` — the per-account activation described above.           |
+| `role`            | object or null      | Expandable. The role the agent acts with.                                      |
+| `config`          | object or null      | Expandable. See below.                                                         |
+| `tools`           | list object or null | Expandable. The built-in tools attached to the agent, carried in `tools.data`. |
+| `created_at`      | timestamp           | —                                                                              |
+| `updated_at`      | timestamp           | —                                                                              |
+
+Two names differ from the labels used in the dashboard: the per-account activation is `status`, not `account_status`, and whether you may edit the definition is the `editability` enum rather than a boolean.
+
+`role`, `config`, and `tools` are expandable, so they come back `null` until you ask for them:
+
+```bash
+curl "API_HOST/v1/ai/agents/agdf_ah7tkyfxk8jl?include[]=config&include[]=tools&include[]=role" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
+```
+
+The accepted values are `config`, `tools`, `role`, and `role.permissions`; anything else is rejected with a `400` `parameter_invalid` naming `include[]`. They are accepted on list, create, retrieve, update, and status — every agent endpoint except delete, which takes no `include[]` at all.
+
+Unlike `role` and `config`, which are plain objects, `tools` is a **list object** — `{ "object": "list", "page_info": { … }, "data": [ … ] }`. The tools themselves are in `tools.data`, so read `agent.tools.data[0]`, not `agent.tools[0]`. Each entry is an `agent_definition_tool` with its own `id` (prefixed `agdftl_`), the attached `tool`, a `review_requirement` of `required` or `not_required`, a `config` object, and a `sort_order`. The catalog metadata carried on the nested `tool` is partial — `mutating` and `required_role_type` are not populated there. Read those from the catalog instead; see <InternalLink pathKey="automateWithAgents.toolsAndApprovals" text="Tools & approvals" />.
+
+### The config object
+
+Expanding `config` returns an `agent_definition_config`:
+
+| Field                  | Type                    | Notes                                                                 |
+| ---------------------- | ----------------------- | --------------------------------------------------------------------- |
+| `object`               | string                  | Always `agent_definition_config`.                                     |
+| `system_prompt`        | string or null          | The standing instructions.                                            |
+| `tier`                 | enum or null            | `frontier`, `high`, `balanced`, `cheap`, or `legacy`.                 |
+| `temperature`          | number or null          | Between 0 and 1.                                                      |
+| `trigger_config`       | object or null          | Nested; see below.                                                    |
+| `endpoint_tool_slugs`  | array of string         | The API operations this agent may call, by slug.                      |
+| `endpoint_tool_review` | object of string → bool | Slugs mapped to `true` when a call must be approved by a human first. |
+
+`trigger_config` is a `trigger_config` object with `cron_schedule`, `timezone`, and `event_filters`. All three are always present in the shape; which of them carry a value depends on the trigger type.
+
+Note the nesting: the trigger settings live at `config.trigger_config.cron_schedule` and `config.trigger_config.event_filters`, not at the top level of the agent.
+
+### Listing agents
+
+`GET /v1/ai/agents` returns the `system` agents Augno provides plus the `custom` agents in your account, newest first. Deleted agents are never returned.
+
+| Query parameter      | Notes                                                                       |
+| -------------------- | --------------------------------------------------------------------------- |
+| `cursor`             | Standard keyset cursor.                                                     |
+| `limit`              | 1–1000, defaults to 100.                                                    |
+| `q`                  | Substring match against the agent's `id`, `name`, `description`, or `slug`. |
+| `statuses[]`         | `active`, `inactive`.                                                       |
+| `definition_types[]` | `system`, `custom`.                                                         |
+| `trigger_types[]`    | `scheduled`, `manual`, `event`, `chat`.                                     |
+| `include[]`          | `config`, `tools`, `role`, `role.permissions`.                              |
+
+The three filters take multiple values, which OR together within a filter and AND across filters. Each accepts repeated keys, the bracketed spelling, or one comma-separated value — `statuses[]=active&statuses[]=inactive`, `statuses=active,inactive`, and `statuses=active&statuses=inactive` are the same request. A value outside the enum is a `400` `parameter_invalid`.
+
+**`statuses[]=inactive` also matches agents that have never been enabled.** Activation is stored per account, and an agent with no stored status for your account reads back as `inactive` — so the `inactive` filter returns "explicitly disabled" and "never touched" alike.
+
+### Creating an agent
+
+`POST /v1/ai/agents` creates a `custom` agent, immediately `active` for your account. It responds `201` with the new agent and a `Location` header pointing at it.
+
+| Field           | Type            | Required | Notes                                                                 |
+| --------------- | --------------- | -------- | --------------------------------------------------------------------- |
+| `name`          | string          | Yes      | Max 255 characters.                                                   |
+| `slug`          | string          | Yes      | Max 255. Unique within your account.                                  |
+| `category_code` | string          | Yes      | Max 255.                                                              |
+| `trigger_type`  | enum            | Yes      | `scheduled`, `manual`, `event`, or `chat`.                            |
+| `config`        | object          | Yes      | Send `{}` if you have nothing to set.                                 |
+| `description`   | string          | No       | —                                                                     |
+| `tools`         | array of object | No       | Built-in tools to attach; see below.                                  |
+| `role_id`       | string          | No       | Max 191. The role the agent acts with — attach one before you run it. |
+
+Body enums are checked **before** the required-field pass, so `trigger_type` behaves differently from the other required fields: sending a value outside the four — or leaving it out entirely — is a `400` `parameter_invalid` with `param` set to `trigger_type`, never a `missing_field`. On a completely empty body that is the first error you see, ahead of the missing `name`. The same pass covers `config.tier`.
+
+The `config` you send is a **request shape**, not the resource shape: every field is optional, and the nesting matches what comes back.
+
+| Field                  | Type                    | Notes                                                                                                             |
+| ---------------------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `system_prompt`        | string                  | The standing instructions.                                                                                        |
+| `tier`                 | enum                    | `frontier`, `high`, `balanced`, `cheap`, `legacy`. Omit it and the run resolves a tier from how it was triggered. |
+| `temperature`          | number                  | 0 to 1 inclusive. Anything outside that range is rejected.                                                        |
+| `trigger_config`       | object                  | `cron_schedule` (max 255), `timezone` (max 255), `event_filters` (array of string).                               |
+| `endpoint_tool_slugs`  | array of string         | API operations to grant, by slug. The single entry `*` grants the whole endpoint-tool catalog.                    |
+| `endpoint_tool_review` | object of string → bool | Slugs to gate behind human approval. A slug left out of the map does not require review.                          |
+
+**What `config` must contain depends on `trigger_type`:**
+
+| `trigger_type`   | Required in `config`                                   |
+| ---------------- | ------------------------------------------------------ |
+| `scheduled`      | `trigger_config.cron_schedule`, non-empty              |
+| `event`          | `trigger_config.event_filters` with at least one entry |
+| `manual`, `chat` | Nothing                                                |
+
+Missing either one is a `400` `validation_failed` — _"trigger_config with cron_schedule is required for scheduled triggers"_ or _"trigger_config with at least one event_filter is required for event triggers"_.
+
+Every slug in `endpoint_tool_slugs`, and every key in `endpoint_tool_review`, must be a real endpoint tool. An unknown one is a `400` `validation_failed` reading _"Tool not found: `<slug>`"_ with `param` set to `tools`. The wildcard `*` is always accepted in the slug list; it is not accepted as a review key.
+
+Entries in `tools` attach Augno's **built-in** tools — endpoint tools are granted through `config.endpoint_tool_slugs` instead, never here:
+
+| Field            | Type    | Required | Notes                                                                             |
+| ---------------- | ------- | -------- | --------------------------------------------------------------------------------- |
+| `tool`           | enum    | Yes      | `create_artifact`, `read_doc`, `fetch_url`, `send_email`, or `draft_reply`.       |
+| `config_json`    | string  | No       | The tool's own configuration, as a **JSON-encoded string** rather than an object. |
+| `sort_order`     | integer | No       | Display order, lowest first.                                                      |
+| `require_review` | boolean | No       | Pause the run for human approval every time this tool is called.                  |
+
+An unrecognized `tool` is a `400` `validation_failed` with `param` set to `tools`.
+
+```bash
+curl -X POST API_HOST/v1/ai/agents \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Inventory Monitor",
+    "slug": "inventory_monitor",
+    "category_code": "inventory",
+    "trigger_type": "scheduled",
+    "role_id": "rl_3xknmfqflhvb",
+    "config": {
+      "system_prompt": "You watch inventory levels and open restock alerts.",
+      "tier": "balanced",
+      "temperature": 0.2,
+      "trigger_config": { "cron_schedule": "0 9 * * *", "timezone": "America/New_York" },
+      "endpoint_tool_slugs": ["list_products", "create_account_group"],
+      "endpoint_tool_review": { "create_account_group": true }
+    },
+    "tools": [{ "tool": "read_doc", "sort_order": 1 }]
+  }'
+```
+
+Reusing a `slug` already taken in your account is a `409` `resource_exists`.
+
+### Updating an agent
+
+`PATCH /v1/ai/agents/{id}`. Every body field is optional, and only what you send is changed — but two of them replace rather than merge:
+
+- **`config` is replaced wholesale.** Anything you leave out of the object is cleared, so read the current config and send it back with your edit applied rather than sending the one key you want to change.
+- **`tools` is replaced wholesale** when you send it. Omit it and the attached tools are left alone; send `[]` and they are all detached.
+
+`description` and `role_id` are the only two fields that accept `null`, which clears them — detaching the role leaves the agent unable to execute. Sending `null` for any other field is a `400` `invalid_format`. An entirely empty body is a `400` `validation_failed` reading _"Request body must contain at least one field to update."_
+
+**Trigger validation on update is conditional.** The cron/event-filter requirement is only checked when you send `trigger_type` and `config` in the same request. Sending `config` on its own — even a `config` that empties `trigger_config` — skips the check, so an agent can be left `scheduled` with no cron schedule stored. When you change a trigger type, send the matching `trigger_config` in the same call.
+
+### System agents are read-only
+
+The only thing you can change about a `system` definition is whether it is enabled for your account.
+
+- `PATCH /v1/ai/agents/{id}` on one returns a `403` `insufficient_permissions`: _"Cannot edit system agent definitions."_
+- `DELETE /v1/ai/agents/{id}` on one returns a `403` `insufficient_permissions`: _"Cannot delete system agent definitions."_
+
+Both checks run after the agent is resolved, so a bad ID is still a `404`. `editability` on the resource tells you which case you are in before you try.
+
+### Enabling and disabling
+
+`PUT /v1/ai/agents/{id}/status` sets the per-account activation. It works on `system` and `custom` agents alike, because the row it writes belongs to your account rather than to the shared definition.
+
+```bash
+curl -X PUT API_HOST/v1/ai/agents/agdf_ah7tkyfxk8jl/status \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "Content-Type: application/json" \
+  -d '{"status": "active"}'
+```
+
+`status` is a required string; send `active` or `inactive`. It is not enum-checked at the gateway, and the value is stored as given — the list filter treats anything that is not `active` as inactive — so do not invent other values. The call re-reads the agent and returns it, which means `include[]` works here too.
+
+### Deleting an agent
+
+`DELETE /v1/ai/agents/{id}` responds `200` with an empty object. Only `custom` agents in your own account can be deleted; someone else's custom agent is a `404`, and a `system` agent is the `403` above.
+
+The delete is a withdrawal rather than an erasure: the agent stops appearing in listings and no longer resolves by ID, its per-account status row is removed, and the runs it already produced are kept. Deleting the same agent twice returns a `410` `resource_gone` — _"This custom agent has already been deleted and can no longer be modified."_
+
+### Errors
+
+| Status | Code                       | When                                                                                                                                                                                                                                                         |
+| ------ | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 400    | `missing_field`            | A required body field — `name`, `slug`, `category_code`, or `status` — was not sent.                                                                                                                                                                         |
+| 400    | `invalid_format`           | A field is too long, `temperature` is outside 0–1, or `null` was sent for a field that cannot be cleared.                                                                                                                                                    |
+| 400    | `validation_failed`        | Trigger configuration missing for the trigger type, an unknown tool slug, or an empty PATCH body.                                                                                                                                                            |
+| 400    | `parameter_invalid`        | An unrecognized — or, for `trigger_type` on create, an omitted — value in a body enum (`trigger_type`, `config.tier`), or an unrecognized value in `statuses[]`, `definition_types[]`, `trigger_types[]`, or `include[]`. `param` names the offending field. |
+| 400    | `parameter_unknown`        | A query parameter the endpoint does not define.                                                                                                                                                                                                              |
+| 401    | `invalid_credentials`      | Not authenticated, or the `Augno-Account` header is missing.                                                                                                                                                                                                 |
+| 403    | `insufficient_permissions` | Missing the `agents` permission, calling from a portal token, on the free plan, editing or deleting a `system` definition, or updating a custom agent owned by another account.                                                                              |
+| 404    | `resource_not_found`       | No such agent. On retrieve and delete, another account's custom agent is a `404` rather than a `403`.                                                                                                                                                        |
+| 409    | `resource_exists`          | The `slug` is already used by another agent in the account.                                                                                                                                                                                                  |
+| 410    | `resource_gone`            | Deleting a custom agent that was already deleted.                                                                                                                                                                                                            |
+
+Create, update, and status changes are recorded against an <InternalLink pathKey="api.idempotency" text="Idempotency-Key" />, so a retried write returns the first call's result — including its error — instead of running twice. Delete is not idempotency-keyed; a repeat is the `410` above.
+
+Next: <InternalLink pathKey="automateWithAgents.runs" text="Runs" includeArrow />

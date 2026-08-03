@@ -1,0 +1,118 @@
+---
+title: Automate with agents
+subtitle: Put an AI teammate on the work — in a conversation or on demand, bounded by a role you control.
+route: /automate-with-agents/overview
+toc: false
+nav:
+    title: Overview
+    section: Automate with agents
+    order: 1
+---
+
+**Agents** are AI teammates that work inside your Augno account. <BetaTag /> An agent has a name, a set of standing instructions, a role that bounds what it is allowed to see and change, and a set of tools it can call. When something starts an agent — a person in a chat, or an explicit trigger — Augno creates a **run**, and the agent works the problem step by step until it answers, finishes, or stops to ask you something.
+
+> **Agents are in preview.** Everything on these pages is available in the dashboard and through the `/v1/ai/*` endpoints, and each page documents those endpoints with their real paths and request and response shapes. They are not part of Augno's public OpenAPI spec and are not generated into the published SDKs, so they do not appear in the API reference and there is no typed client for them. Both the endpoints and the behavior described here may change without notice.
+
+Agents are not a separate product bolted onto Augno. They act through the same API your team and your integrations use, authorized against the same <InternalLink pathKey="manageAccount.team.rolesAndPermissions" text="roles and permissions" />, and everything they do is recorded on the run.
+
+### What you need to use agents
+
+Agents are a paid-plan feature. Accounts on the **free** plan cannot use them: the API rejects every agent operation with an authorization error, and the dashboard redirects free-plan users away from the AI Agents area. See <InternalLink pathKey="manageAccount.plansAndBilling" text="Plans & billing" /> to upgrade.
+
+Within a paid account, the AI Agents area is visible to admins and to anyone whose role grants read access to agents or to agent runs. Creating and editing agents requires create/update permission on agents. Starting a run requires **create** permission on agent runs; resuming, retrying, and cancelling a run require **update** permission on agent runs.
+
+### The agent API
+
+Everything the AI Agents area does is an ordinary REST call you can make yourself. The whole surface lives under `/v1/ai` and is authenticated exactly like the rest of the API — a key or session token, the account you are acting on, and a pinned <InternalLink pathKey="api.versioning" text="API version" />:
+
+```bash
+curl API_HOST/v1/ai/agents \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
+```
+
+Nineteen endpoints in four groups, each documented on the page that explains the concept:
+
+| Base path                            | What it covers                                          | Documented on                                                                            |
+| ------------------------------------ | ------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `/v1/ai/agents`                      | Agent definitions, plus per-account enable/disable      | <InternalLink pathKey="automateWithAgents.agents" text="Agents" />                       |
+| `/v1/ai/runs`                        | Triggering runs and cancelling, continuing, or retrying | <InternalLink pathKey="automateWithAgents.runs" text="Runs" />                           |
+| `/v1/ai/tools`, `/v1/ai/tool-groups` | The read-only catalog of tools that can be granted      | <InternalLink pathKey="automateWithAgents.toolsAndApprovals" text="Tools & approvals" /> |
+| `/v1/ai/memories`                    | Account-wide notes agents recall on later runs          | <InternalLink pathKey="automateWithAgents.memories" text="Memories" />                   |
+
+Authorization uses three permission domains. The tool catalog is gated by `agents` rather than a domain of its own.
+
+| Domain           | Actions used                 | Endpoints                                             |
+| ---------------- | ---------------------------- | ----------------------------------------------------- |
+| `agents`         | read, create, update, delete | `/v1/ai/agents`, `/v1/ai/tools`, `/v1/ai/tool-groups` |
+| `agent_runs`     | read, create, update         | `/v1/ai/runs`                                         |
+| `agent_memories` | read, create, update, delete | `/v1/ai/memories`                                     |
+
+Three rules apply to every endpoint in the group, before any per-endpoint check:
+
+- **Paid plans only.** On the free plan every call is refused with a `403` `insufficient_permissions` and the message _"Agent features are not available on the free plan. Please upgrade to use agents."_
+- **Internal users only.** A customer or supplier portal token is refused with a `403` `insufficient_permissions`, whatever permissions it carries in its own account.
+- **An account is required.** Without the `Augno-Account` header the call fails with a `401`.
+
+Otherwise these behave like the rest of the API: list endpoints take <InternalLink pathKey="api.pagination" text="cursor pagination" /> and `q`, sub-objects are expanded with <InternalLink pathKey="api.include" text="include[]" />, creates and updates honor the <InternalLink pathKey="api.idempotency" text="Idempotency-Key" /> header, and failures use the standard <InternalLink pathKey="api.errors" text="error codes" />.
+
+### Where agents live
+
+Everything is under **AI Agents** in the dashboard:
+
+| Area           | What it is                                                              |
+| -------------- | ----------------------------------------------------------------------- |
+| **Overview**   | Summary counts and the most recent runs                                 |
+| **Agents**     | The agent list — filter by status, trigger type, and system vs. custom  |
+| **Agent Runs** | Every run for the account, with the full step-by-step timeline for each |
+| **Memories**   | Notes saved for agents to recall on later runs                          |
+
+Memories belong to the account rather than to one agent, so a note you save is recalled by every agent in the account — see <InternalLink pathKey="automateWithAgents.memories" text="Memories" />.
+
+### The ways you meet an agent
+
+**In a conversation.** An agent can be a participant in a chat thread. Someone mentions it, it reads the thread, does the work, and posts its reply back into the same conversation. Its reasoning streams live while it works, and you can reply to keep the same run going rather than starting a fresh one. See <InternalLink pathKey="automateWithAgents.agentsInChat" text="Agents in chat" />.
+
+**By hand.** Any agent, whatever its trigger type, can be started explicitly at any time. A run started that way is always recorded as a `manual` run.
+
+Two more trigger types — `scheduled` and `event` — can be configured and saved on an agent today, but neither starts a run on its own yet: the cron schedule you save is not handed to Augno's scheduler, and nothing matches platform events against an agent's event filters. Until those are connected, a scheduled or event agent runs only when someone starts it. See <InternalLink pathKey="automateWithAgents.agents" text="Agents" /> for the details and the current limits.
+
+### What an agent can actually do
+
+Two kinds of tools:
+
+- **Built-in tools** — create an artifact, read Augno's documentation, fetch a public URL, send an email reply, or draft a reply for a human to approve.
+- **Endpoint tools** — Augno's own API operations, exposed to the agent as tools. There are over 200 of them, and an agent gets exactly the ones you grant it, and no more.
+
+Every tool call is still authorized against the agent's role, so a grant can only ever narrow what the role already allows — never widen it. And anything you want a human to sign off on can be gated so the run pauses and waits for approval. See <InternalLink pathKey="automateWithAgents.toolsAndApprovals" text="Tools & approvals" />.
+
+<DocCardGroup>
+    <LinkCard
+        pathKey="automateWithAgents.agents"
+        title="Agents"
+        description="Define an agent: instructions, trigger, intelligence tier, and role."
+    />
+    <LinkCard
+        pathKey="automateWithAgents.runs"
+        title="Runs"
+        description="Follow a run, read its timeline, and understand the safety rails."
+    />
+    <LinkCard
+        pathKey="automateWithAgents.toolsAndApprovals"
+        title="Tools & approvals"
+        description="Grant tools, gate the risky ones, and approve or deny a paused run."
+    />
+    <LinkCard
+        pathKey="automateWithAgents.memories"
+        title="Memories"
+        description="Durable notes every agent in the account recalls on later runs."
+    />
+    <LinkCard
+        pathKey="automateWithAgents.agentsInChat"
+        title="Agents in chat"
+        description="Put an agent in a conversation and work with it in the thread."
+    />
+</DocCardGroup>
+
+Next: <InternalLink pathKey="automateWithAgents.agents" text="Agents" includeArrow />

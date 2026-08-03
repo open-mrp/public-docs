@@ -17,7 +17,7 @@ Without `include`, sub-objects are `null`:
 
 ```json
 {
-    "id": "apke_xxx",
+    "id": "apke_eiylmwr6q7oz",
     "object": "api_key",
     "name": "Production API Key",
     "role": null
@@ -26,76 +26,90 @@ Without `include`, sub-objects are `null`:
 
 ## Expanding sub-objects
 
-Pass `include` as a query parameter to expand specific sub-objects. Two formats are supported:
+Pass `include` as a query parameter to expand specific sub-objects. Two spellings are supported, and they are equivalent:
 
 **Array-style (recommended):**
 
 ```bash
-curl "https://api.augno.com/v1/auth/api-keys/apke_xxx?include[]=role" \
-  -H "Authorization: Bearer YOUR_API_KEY"
+curl "API_HOST/v1/auth/api-keys/apke_eiylmwr6q7oz?include[]=role" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION"
 ```
 
 **Comma-separated:**
 
 ```bash
-curl "https://api.augno.com/v1/auth/api-keys/apke_xxx?include=role" \
-  -H "Authorization: Bearer YOUR_API_KEY"
+curl "API_HOST/v1/auth/api-keys/apke_eiylmwr6q7oz?include=role" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION"
 ```
 
-Multiple values can be combined:
+Both forms accept repetition **and** comma-separated lists, and the two can be mixed in a single request. All of these request the same two expansions:
 
-```bash
-curl "https://api.augno.com/v1/core/request-logs/rl_xxx?include[]=account&include[]=actor.role" \
-  -H "Authorization: Bearer YOUR_API_KEY"
+```
+?include[]=account&include[]=actor.role
+?include[]=account,actor.role
+?include=account,actor.role
+?include=account&include[]=actor.role
 ```
 
 With `include[]=role`, the sub-object is fully populated:
 
 ```json
 {
-    "id": "apke_xxx",
+    "id": "apke_eiylmwr6q7oz",
     "object": "api_key",
     "name": "Production API Key",
     "role": {
-        "id": "rl_xxx",
+        "id": "rl_3xknmfqflhvb",
         "object": "role",
         "name": "Admin",
-        "role_type_code": "admin"
+        "type": "admin"
     }
 }
 ```
+
+Each endpoint declares its own allow-list of include values. The accepted values for a given endpoint are enumerated on its page in the <InternalLink text="API reference" pathKey="apiReference.root" />.
 
 ## Dot-notation for nested sub-objects
 
 Some include values use dot-notation to target a sub-object nested inside another object. For example, `actor.role` expands the `role` field within the `actor` object on a request log:
 
+```bash
+curl "API_HOST/v1/core/request-logs/rq_0lhl3kkhme40?include[]=account&include[]=actor.role" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION"
+```
+
 ```json
 {
-    "id": "rl_xxx",
+    "id": "rq_0lhl3kkhme40",
     "object": "request_log",
     "actor": {
-        "id": "usr_xxx",
-        "object": "user",
-        "name": "Jane Doe",
+        "id": "us_43irtlt2ajz6",
+        "object": "actor",
+        "type": "user",
+        "name": "John Doe",
         "role": {
-            "id": "rl_yyy",
+            "id": "rl_3xknmfqflhvb",
             "object": "role",
             "name": "Admin",
-            "role_type_code": "admin"
+            "type": "admin"
         }
     }
 }
 ```
 
-Without `include[]=actor.role`, the `role` inside `actor` would be `null`.
+Nesting is resolved level by level, and a deeper path implies the shallower ones — asking for `actor.role` also expands `actor`. Dot paths can go more than two levels deep where an endpoint allows it; for example, a sales order accepts `lines.product.item.category`.
 
 ## List responses
 
 The `include` parameter applies to every item in a list response:
 
 ```bash
-curl "https://api.augno.com/v1/auth/api-keys?include[]=role" \
-  -H "Authorization: Bearer YOUR_API_KEY"
+curl "API_HOST/v1/auth/api-keys?include[]=role" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION"
 ```
 
 ```json
@@ -103,75 +117,98 @@ curl "https://api.augno.com/v1/auth/api-keys?include[]=role" \
     "object": "list",
     "data": [
         {
-            "id": "apke_1",
+            "id": "apke_eiylmwr6q7oz",
             "object": "api_key",
             "name": "Key One",
             "role": {
-                "id": "rl_1",
+                "id": "rl_3xknmfqflhvb",
                 "object": "role",
                 "name": "Admin",
-                "role_type_code": "admin"
+                "type": "admin"
             }
         },
         {
-            "id": "apke_2",
+            "id": "apke_6p4z57e9alaf",
             "object": "api_key",
             "name": "Key Two",
             "role": {
-                "id": "rl_2",
+                "id": "rl_c5gxy05whw6r",
                 "object": "role",
-                "name": "Viewer",
-                "role_type_code": "viewer"
+                "name": "Warehouse",
+                "type": "user"
             }
         }
     ],
-    "page_info": { "..." : "..." }
+    "page_info": { "...": "..." }
 }
 ```
 
 Without `include[]=role`, each `role` in the list would be `null`.
+
+Expansions are resolved once per page, not once per row: the IDs needed across every item are gathered and de-duplicated before anything is fetched, so a sub-object shared by many rows is looked up a single time. The `include` values you send are also carried into the pagination URLs in `page_info`, so <InternalLink text="following those URLs" pathKey="api.pagination" /> keeps the same expansions on every page.
 
 ## Create and rotate responses
 
 For create and rotate endpoints, the response wraps the resource in `api_key_info` alongside the secret. The `include` parameter expands sub-objects within `api_key_info`:
 
 ```bash
-curl -X POST "https://api.augno.com/v1/auth/api-keys?include[]=role" \
+curl -X POST "API_HOST/v1/auth/api-keys?include[]=role" \
   -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
   -H "Content-Type: application/json" \
-  -d '{"name": "Production Key", "role_id": "rl_xxx"}'
+  -d '{"name": "Production Key", "role_id": "rl_3xknmfqflhvb"}'
 ```
 
 ```json
 {
+    "object": "created_api_key",
     "api_key_secret": "aug_sk_prod_...",
     "api_key_info": {
-        "id": "apke_xxx",
+        "id": "apke_eiylmwr6q7oz",
         "object": "api_key",
         "name": "Production Key",
         "role": {
-            "id": "rl_xxx",
+            "id": "rl_3xknmfqflhvb",
             "object": "role",
             "name": "Admin",
-            "role_type_code": "admin"
+            "type": "admin"
         }
     }
 }
 ```
 
+## Permission-gated includes on sales orders
+
+Three expansions behave differently from every other include: a sales order's internal fulfillment records, `related.pick`, `related.production_run`, and `related.shipments`. Their backing resources require an internal actor, so a caller that can read the order itself may have no permission to read the pick, the production run, or the shipments behind it.
+
+For **these three expansions only**, an authorization failure is absorbed: the sub-object is left `null` and the parent request still succeeds. There is no error, no warning, and no field in the response that distinguishes "you asked and were not allowed" from "you did not ask". A `null` `related.pick` therefore does not mean the order has not been picked — it may only mean this credential cannot read picks. If one of the three is unexpectedly `null` in production but populated in development, check the permissions of the credential in use before looking for a data problem.
+
+Every other expandable sub-object behaves the opposite way. If resolving it fails for any reason — including an authorization failure — the error propagates and the whole request fails. You do not need to defend against a silently-`null` expansion outside the three fields named above.
+
+Only authorization failures are absorbed, and only on those three. Any other failure while resolving them — the target resource genuinely missing, or a transport error — still fails the whole request.
+
 ## Error handling
 
 ### Invalid include value
+
+An include value that is not on the endpoint's allow-list is rejected with a `400` before the endpoint runs. The message lists every value that endpoint accepts:
 
 ```json
 {
     "error": {
         "code": "parameter_invalid",
-        "message": "Invalid include value 'invalid'. Allowed values: role",
-        "param": "include[]"
+        "type": "invalid_request_error",
+        "message": "Invalid include value 'invalid'. Allowed values: role, role.permissions",
+        "param": "include[]",
+        "doc_url": "https://docs.augno.com/api/errors#parameter_invalid",
+        "is_transient": false,
+        "quota": null,
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
+
+Note that the `param` is reported as `include[]` regardless of which spelling you sent.
 
 ### Include on an unsupported endpoint
 
@@ -181,8 +218,19 @@ Endpoints that have no expandable sub-objects reject the parameter entirely:
 {
     "error": {
         "code": "parameter_invalid",
+        "type": "invalid_request_error",
         "message": "This endpoint does not support the include parameter.",
-        "param": "include[]"
+        "param": "include[]",
+        "doc_url": "https://docs.augno.com/api/errors#parameter_invalid",
+        "is_transient": false,
+        "quota": null,
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
+
+## Related documentation
+
+- <InternalLink text="Pagination" pathKey="api.pagination" /> — how includes carry across pages
+- <InternalLink text="Idempotency" pathKey="api.idempotency" /> — `include` is part of the
+  idempotency request fingerprint, but only its first value is

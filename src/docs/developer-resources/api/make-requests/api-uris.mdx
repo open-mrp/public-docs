@@ -11,7 +11,7 @@ nav:
 
 Augno API URIs follow a consistent format:
 
-[https](#protocol)://[api.augno.com](#host)/[v1](#version)/[core](#application-domain)/[customers](#resource)/[ac_0z28u55ruj0q](#resource-identifier)
+[https](#protocol)://[api.augno.com](#host)/[v1](#version)/[sales](#application-domain)/[customers](#resource)/[ac_0z28u55ruj0q](#resource-identifier)
 
 ### Protocol
 
@@ -27,11 +27,27 @@ The version specified in the URI is separate from the semantic versioning of the
 
 ### Application Domain
 
-The application domain is the domain that the endpoint is targeting, e.g. `core`, `auth`, or `billing`. These application domains may be handled distinctly by the API. For example, you can expect the `auth` domain to have more strict rate limits than the `core` domain. The application domain appears after the version in the URI path and helps organize endpoints by functional area.
+The application domain is the functional area that the endpoint belongs to. It appears immediately after the version in the URI path and groups endpoints by the part of the business they serve. The public API uses these domains:
+
+| Domain       | What lives there                                                                       |
+| ------------ | -------------------------------------------------------------------------------------- |
+| `auth`       | API keys and key rotation                                                              |
+| `catalog`    | Items, products, parts, materials, categories, properties, units and unit groups       |
+| `core`       | Addresses, search, analytics, sandboxes, request logs, audit events, email logs        |
+| `finance`    | Payment terms, transaction and adjustment types                                        |
+| `identity`   | Accounts, account users and roles                                                      |
+| `messaging`  | Conversations, messages, notifications, announcements, email domains and inboxes       |
+| `operations` | Locations, carriers, scanning stations, machines, production schedules, shipping terms |
+| `sales`      | Customers, contacts, sales orders, account groups, statuses and priorities             |
+| `settings`   | Integrations and portal domains                                                        |
+
+The domain tells you which product area an endpoint belongs to; it is not a policy boundary. In particular, request rate limiting is applied uniformly across the API rather than per domain — see <InternalLink text="rate limiting" pathKey="api.rateLimiting" /> for the limits that actually apply.
+
+Some endpoints you may see in the Dashboard's network traffic use domains that are not listed above. Those are private-preview surfaces that are not part of the public API and may change without notice.
 
 ### Resource
 
-The resource is the main entity that the API is interacting with. Resources are typically plural nouns that represent collections of similar items, such as `customers`, `users`, `invoices`, or `sales-orders`.
+The resource is the main entity that the API is interacting with. Resources are typically plural nouns that represent collections of similar items, such as `customers`, `sales-orders`, `products`, or `account-users`. Multi-word resources are hyphenated, never underscored.
 
 ### Resource identifier
 
@@ -39,4 +55,6 @@ The resource identifier uniquely identifies a specific resource within a collect
 
 ### Actions
 
-Generally, we utilize the standard HTTP methods to interact with resources. However, on occasion there are actions that cannot be represented easily with a standard HTTP method. In these cases, we provide a sub-resource to represent actions. For example (this isn't a real endpoint), `.../customers/ac_0z28u55ruj0q/actions/send-welcome-email` represents the action of sending a welcome email to customer ac*0z28u55ruj0q. In this case, the `actions` is the \_resource* and `send-welcome-email` is the _sub-resource_.
+Generally, we utilize the standard HTTP methods to interact with resources. However, on occasion there are actions that cannot be represented easily with a standard HTTP method. In these cases, we provide a sub-resource to represent actions.
+
+For example, `POST /v1/sales/customers/ac_0z28u55ruj0q/actions/merge` merges another customer into customer ac_0z28u55ruj0q. Here `actions` is the resource segment and `merge` is the sub-resource naming the verb. Each action gets its own path — actions are never multiplexed behind a `type` field in the body.

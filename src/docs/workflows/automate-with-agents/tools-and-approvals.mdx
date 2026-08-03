@@ -1,0 +1,183 @@
+---
+title: Tools & approvals
+subtitle: What an agent is allowed to do, and where a human has to say yes first.
+route: /automate-with-agents/tools-and-approvals
+nav:
+    title: Tools & approvals
+    section: Automate with agents
+    order: 4
+---
+
+**Tools** are what an agent can actually do. <BetaTag /> Without them it can only write text; with them it can look up an order, draft a reply, or create a record. This page is the trust boundary: which tools an agent gets, and which of those pause for a human before they take effect.
+
+> #### Preview
+>
+> The endpoints on this page are in **internal preview**. Their paths and payloads are real and current and are documented in [The tool catalog on the API](#the-tool-catalog-on-the-api) below, but they are not part of Augno's public OpenAPI spec and are not exposed in the SDKs, so they may change without notice. Read the <InternalLink pathKey="releasePhases" text="release phases" /> page before you depend on them in production.
+
+Everything here sits _inside_ the agent's role. A tool grant can only ever narrow what the role already permits — it can never widen it. If the role does not allow updating customers, granting a customer-update tool changes nothing: the call is rejected when it reaches the API.
+
+### Two kinds of tools
+
+**Built-in tools** are Augno's own capabilities, attached directly to the agent definition. There are five:
+
+| Tool              | Group     | What it does                                                                                                  |
+| ----------------- | --------- | ------------------------------------------------------------------------------------------------------------- |
+| `create_artifact` | General   | Produces an artifact — a report, document, or data export — with a name, MIME type, and content               |
+| `read_doc`        | Knowledge | Reads a page of Augno's documentation, discovering what is available from the docs site's `llms.txt` index    |
+| `fetch_url`       | Knowledge | Fetches a public HTTPS URL and returns its body as text                                                       |
+| `send_email`      | General   | Sends an email reply through the conversation's bound inbox, threaded to whoever last wrote in                |
+| `draft_reply`     | General   | Proposes a reply to the external party on a case, held as a draft for a teammate to review — it does not send |
+
+`send_email` and `draft_reply` look similar and are not. `draft_reply` stages a message and stops; a person edits and approves it, and Augno then delivers it over whichever channel the case uses — email if the case is bridged to an inbox, an in-app portal message otherwise. `send_email` actually sends.
+
+**Endpoint tools** are Augno's own API operations exposed to the agent as tools — 216 of them, generated from the endpoints marked as agent-callable, covering the same list/create/update operations your integrations use. They are granted separately from built-ins, through an explicit allowlist on the agent.
+
+### Granting endpoint tools
+
+The grant is an allowlist of tool slugs on the agent's config, and it is deliberately strict:
+
+- **Empty grants nothing.** An agent with no entries gets no endpoint tools at all. That is the default for a new agent.
+- **Named slugs grant exactly those tools**, and nothing else. Unknown slugs are ignored. This is what the dashboard's tool picker writes: one entry per tool you tick.
+- **The single entry `*` grants the entire catalog.** This is an API-only shortcut — the tool picker never produces it, so you can only set it by writing the allowlist through the preview agent API. Use it only for an agent whose role is already tightly scoped, because with `*` the role is the only thing standing between the agent and every operation.
+
+Because the grant lives on the agent's configuration rather than in a database schema, adding or removing tools is an ordinary edit and takes effect on the next run.
+
+### Progressive discovery
+
+Injecting 216 tool definitions into every model turn would drown the agent in context and make it worse at its job, so Augno does not do that. Instead, an agent that has been granted at least one endpoint tool gets a single meta-tool, `search_api_tools`.
+
+The agent describes what it needs in plain language — "list open sales orders", "create a customer" — and the search returns up to **10** matching tools from its grant. Those matches become directly callable on the agent's next step. Anything outside the grant is not searchable and never appears.
+
+Two consequences worth knowing:
+
+- An agent with **no** endpoint-tool grant never even sees the search tool, so it cannot discover what it is missing.
+- The agent is told, up front, which broad areas it can act on — Customers, Sales Orders, and so on — so it knows to search rather than telling a user it cannot help.
+
+### Human review
+
+Review is a per-tool setting with two values: **not required** (the tool just runs) and **required** (the run pauses first). It is an enum rather than a yes/no flag so that further review modes can be added later without breaking anything already configured.
+
+How the default is decided:
+
+| Tool                                         | Default review      | Can you change it?                               |
+| -------------------------------------------- | ------------------- | ------------------------------------------------ |
+| Built-in, read-only                          | Not required        | Yes — switch it on per agent                     |
+| Built-in that acts externally (`send_email`) | **Always required** | **No.** The gate cannot be cleared for any agent |
+| Endpoint tool                                | Not required        | Yes — set review per tool slug on the agent      |
+
+The floor on externally-visible built-ins is intentional: `send_email` puts mail in front of a customer, and that is not something an agent should be able to do unsupervised no matter how it is configured. Every call to it pauses for approval.
+
+Endpoint tools take the opposite starting point — the runtime does not gate them unless you say so — but the dashboard nudges you the right way. When you grant a tool that changes data (anything that is not a read), the tool picker switches review on for it automatically. You can turn it off, but you have to choose to.
+
+### What a paused run looks like
+
+When an agent calls a gated tool, the call is **not** executed. Instead:
+
+1. The blocked call is recorded on the run's timeline, and an action is recorded in `pending_review`.
+2. The run moves to `awaiting_approval` and stops.
+3. Augno writes a **plain-language summary of what the agent is asking to do**, generated from the run's own context so raw IDs appear as the names the agent already looked up. If a summary cannot be produced, the run falls back to naming the tools it is blocked on.
+
+That summary is the whole point of the gate. A reviewer should be able to decide from one sentence, without reading a JSON payload.
+
+### Approving and denying
+
+You resume a paused run with a message plus your decisions. You can approve some calls and deny others in the same response.
+
+Decisions can be made two ways:
+
+- **By tool slug** — approves or denies _every_ pending call of that tool. Simple, and right when there is one call.
+- **By individual call** — approves or denies one specific call. Use this when several pending calls share the same tool and you only want to allow some of them; deciding by slug would decide all of them at once.
+
+The outcomes:
+
+- **Approved** — the call executes and the run continues.
+- **Denied** — the call is answered with a "denied by user" result and **the run keeps going without it**. Denying a tool is not the same as killing the run; the agent is told no and works around it. If you want the run stopped, cancel it.
+- **Neither** — a pending call you do not decide on stays pending. The run resumes without it, and the agent is asked to review again the next time it calls that tool.
+
+Cancelling a run while it is `awaiting_approval` counts as denying everything still pending; each of those actions is recorded as rejected and attributed to you.
+
+### There is no "always allow"
+
+Every approval is **one-time**. Approving a tool now does not approve it later — the next call to the same tool pauses again, even within the same run.
+
+This is a deliberate design choice, not a missing feature. A tool that should run unsupervised belongs in the agent's definition with review switched off, where the decision is visible, reviewable, and applies to every run. A per-run "always allow" button would move that same decision somewhere nobody can audit it.
+
+### Every attempt is recorded
+
+The run records the tools an agent _attempted_, not only the ones that took effect — including calls that were held for review and never executed. Each carries its own status: awaiting review, auto-approved, approved by a person, rejected, executed, or failed. So a run that was stopped at the gate still tells you exactly what the agent wanted to do.
+
+---
+
+### The tool catalog on the API
+
+Two read-only endpoints return the catalog. It is platform-defined and identical for every account — there is nothing account-specific in either response, and neither endpoint tells you what a particular agent has been granted.
+
+| Operation        | Endpoint                 |
+| ---------------- | ------------------------ |
+| List tools       | `GET /v1/ai/tools`       |
+| List tool groups | `GET /v1/ai/tool-groups` |
+
+Both require the `agents:read` permission and an internal caller in the target account: a customer-relation caller is refused with `insufficient_permissions`, as is a teammate whose role lacks the permission. Both take the `Augno-Account` header like every other account-scoped request.
+
+Granting is a separate operation on the agent itself: built-in tools go in the agent's `tools` (each with its own `require_review`), endpoint tools in `config.endpoint_tool_slugs`, and their review overrides in `config.endpoint_tool_review`. See <InternalLink pathKey="automateWithAgents.agents" text="Agents" />.
+
+#### Query parameters
+
+Both endpoints accept the standard <InternalLink pathKey="api.pagination" text="pagination" /> parameters, and `/v1/ai/tool-groups` additionally accepts <InternalLink pathKey="api.include" text="include" />.
+
+| Parameter   | Type    | Notes                                                                                                                                                             |
+| ----------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cursor`    | string  | Start the page after this item. On `/v1/ai/tools` it is a tool `slug`; on `/v1/ai/tool-groups` it is a group `id`. A cursor that matches nothing is rejected.     |
+| `limit`     | integer | 1 to 1000, defaulting to 100.                                                                                                                                     |
+| `q`         | string  | Up to 500 characters. On `/v1/ai/tools` it matches a tool's name and the name of the group it belongs to; on `/v1/ai/tool-groups` it matches the group name only. |
+| `include[]` | string  | `/v1/ai/tool-groups` only. `tools` is the only supported value, and without it each group's `tools` is `null`.                                                    |
+
+Two things about paging here differ from an ordinary list, and both will bite you if you assume otherwise.
+
+**`page_info` is always empty.** Both endpoints return `next_page_url` and `previous_page_url` as `null` and `has_next_page` as `false`, even when more results exist. To walk the catalog you have to build the next `cursor` yourself from the last item you received — its `slug` on `/v1/ai/tools`, its `id` on `/v1/ai/tool-groups` — and stop when a page comes back short. With five built-in tools and 216 endpoint tools in the catalog, the default `limit` of 100 means three pages.
+
+**`limit` applies only to the resource you asked for.** On `/v1/ai/tool-groups` it slices the groups, and a group requested with `include[]=tools` still carries its complete tool list regardless of the page size. That is deliberate: a groups page must never truncate the tools inside a group.
+
+#### The `available_tool` resource
+
+| Field                  | Type             | Notes                                                                                                                                                                            |
+| ---------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `object`               | string           | Always `available_tool`.                                                                                                                                                         |
+| `slug`                 | string           | The stable identifier — `read_doc`, `create_customer`. This is the value that goes in an agent's grant. **There is no `id`:** a tool is identified by its slug and nothing else. |
+| `category`             | string           | `built_in` for a capability of the agent runtime, `api_endpoint` for an operation of this API exposed as a tool.                                                                 |
+| `name`                 | string           | Display name, such as `Read Doc`.                                                                                                                                                |
+| `description`          | string, nullable | What the tool does. This is also the text the agent's model reads when it decides whether to call it.                                                                            |
+| `config_schema`        | object, nullable | JSON schema for the tool's per-agent `config`. Every tool in the catalog currently returns `{}`.                                                                                 |
+| `required_permissions` | array of string  | The `<domain>:<action>` scopes the agent's role must hold, such as `["customers:read"]`. Empty for every built-in tool.                                                          |
+| `required_role_type`   | string, nullable | Set when the underlying operation is gated by role type rather than by a permission.                                                                                             |
+| `mutating`             | boolean          | Whether calling the tool does something rather than only reading.                                                                                                                |
+
+`mutating` is derived, not configured. An `api_endpoint` tool is mutating when its underlying operation is anything other than a read; a `built_in` tool is mutating when it does something externally visible, which today means `send_email` and nothing else. Read it in light of the review rules above: a mutating built-in always pauses and that gate cannot be cleared, while on an endpoint tool the flag is advisory and review stays configurable per agent.
+
+#### The `tool_group` resource
+
+| Field         | Type             | Notes                                                                                                |
+| ------------- | ---------------- | ---------------------------------------------------------------------------------------------------- |
+| `id`          | string           | `tgrp_builtin_…` for a built-in group, `tgrp_api_…` for an endpoint-tool group.                      |
+| `object`      | string           | Always `tool_group`.                                                                                 |
+| `name`        | string           | Display name, such as `Knowledge` or `Sales Orders`.                                                 |
+| `description` | string, nullable | What the tools in the group do. No group in the catalog sets one today, so expect `null`.            |
+| `slug`        | string           | Machine-readable name. Endpoint-tool groups are namespaced, so `Sales Orders` is `api_sales_orders`. |
+| `icon`        | string           | Icon identifier. Every endpoint-tool group uses `api`.                                               |
+| `sort_order`  | integer          | Display order, lowest first. Built-in groups sort ahead of endpoint-tool groups.                     |
+| `tools`       | list             | The group's `available_tool` records. `null` unless you request `include[]=tools`.                   |
+
+The two catalogs are stitched together in one response: the built-in groups (`General`, `Knowledge`) come from the runtime, and every other group is one display area of the API surface — `Customers`, `Sales Orders`, `Memories`, and so on. Those group names are exactly what an agent is told it can act on before it reaches for `search_api_tools`.
+
+#### Errors
+
+| Status | Code                       | When                                                                                                                           |
+| ------ | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `400`  | `validation_failed`        | `cursor` does not match any tool slug (or, on tool groups, any group id).                                                      |
+| `400`  | `parameter_invalid`        | `limit` is outside 1–1000, or `q` is longer than 500 characters.                                                               |
+| `401`  | `invalid_credentials`      | Missing or invalid credentials.                                                                                                |
+| `403`  | `insufficient_permissions` | The caller lacks `agents:read`, is a customer-relation caller rather than an internal one, or the account is on the free plan. |
+
+The free-plan gate runs before the permission check on both endpoints, so an account without a paid plan gets `insufficient_permissions` no matter how its roles are configured — see <InternalLink pathKey="automateWithAgents.overview" text="the API orientation" /> on the overview page.
+
+See <InternalLink pathKey="api.errors" text="handling errors" /> for the response envelope.

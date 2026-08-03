@@ -1,6 +1,6 @@
 ---
 title: Manufacturing analytics
-subtitle: Monitor production output, cost efficiency, margin, quality, and labor efficiency with month-over-month comparison.
+subtitle: OEE and schedule performance for one production week, measured against the plan that was live at the time.
 route: /dashboards/operations/manufacturing-analytics
 nav:
     title: Manufacturing analytics
@@ -9,41 +9,75 @@ nav:
     order: 2
 ---
 
-The **manufacturing analytics** dashboard surfaces five key production KPIs. Each metric compares the current period against the prior period so you can quickly see whether performance is improving or declining.
+The **manufacturing analytics** dashboard reports two things: how effectively the plant ran (**OEE**), and how closely it ran to the plan (**schedule performance**). Every figure on the page is measured from what the floor scanned and logged — none of it is typed in.
 
-### Why manufacturing analytics matters
+### The period control
 
-- **Production tracking**: monitor how many units are being produced and whether output is growing
-- **Cost control**: track cost per unit to catch rising material or labor costs early
-- **Margin visibility**: see gross margin trends to ensure pricing keeps pace with costs
-- **Quality monitoring**: measure quality rates to identify problems before they escalate
-- **Labor efficiency**: evaluate how effectively labor hours translate into finished goods
+One production week at a time, compared with the week before. Weeks start on Monday, matching how schedule weeks are bucketed on the server, and arrows step backwards and forwards through them.
 
-### What you'll see
+The current week is measured up to now, and its comparison week to the same point in the week. Wednesday-so-far against a whole previous week would read as a collapse every Monday.
 
-Five metric cards arranged in a responsive grid. Each card displays:
+Alongside the title, a chip shows which published <InternalLink pathKey="buildProducts.productionPlanning.productionSchedules" text="schedule version" /> is currently active, or warns that none is. With no published schedule, OEE still measures — schedule performance simply has nothing to compare against.
 
-- The current-period value
-- The comparison-period value
-- A percent-change indicator (green for improvement, red for decline)
+### OEE
 
-| Metric               | Format     | What it shows                           |
-| -------------------- | ---------- | --------------------------------------- |
-| **Production**       | Units      | Total units produced in the period      |
-| **Costs per unit**   | Currency   | Average cost per unit produced          |
-| **Margin**           | Percentage | Gross margin as a percentage of revenue |
-| **Quality**          | Percentage | Quality rate across production runs     |
-| **Labor efficiency** | Percentage | Output relative to labor hours invested |
+OEE is **Availability × Performance × Quality**. Four cards give the plant-wide figure and its three terms, each rolled up across departments from the underlying seconds rather than by averaging percentages — otherwise a department that ran for an hour would weigh as heavily as one that ran all week.
 
-### Filters
+| Card             | How it is calculated                                                                                                                                                                                                                                                                                                                                                                |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **OEE**          | Availability × Performance × Quality                                                                                                                                                                                                                                                                                                                                                |
+| **Availability** | Run time / Scheduled time. Scheduled time is machine-hours derived from the shift pattern in the production schedule settings — the same assumption the solver sizes capacity with — less any time logged as not scheduled; run time is that figure less the availability losses in the <InternalLink pathKey="buildProducts.plant.machineStatusAndDowntime" text="downtime log" /> |
+| **Performance**  | Ideal time / Actual time, measured from the gaps between consecutive batch-ticket scans on each machine                                                                                                                                                                                                                                                                             |
+| **Quality**      | Good units / Total units, where total is good plus waste plus seconds                                                                                                                                                                                                                                                                                                               |
 
-| Field                     | What it does                                                     |
-| ------------------------- | ---------------------------------------------------------------- |
-| **Date range**            | Sets the current analysis period                                 |
-| **Comparison date range** | Sets the period to compare against (defaults to the prior month) |
-| **Customers**             | Limits data to selected customers                                |
-| **Customer groups**       | Limits data to selected customer groups                          |
-| **Product lines**         | Limits data to selected product lines                            |
-| **Sales reps**            | Limits data to selected sales reps                               |
+Hovering any figure shows the arithmetic behind it, built from the same inputs the number came from.
+
+#### Measured versus estimated
+
+Anything that could not be measured says so rather than being passed off as a measurement:
+
+- A department with **no downtime logged** in the period has its availability inferred from runtime instead. It carries an `estimated` chip, and the Availability card reads **Availability (estimated)** while any department is in that state. This matters because an unmeasured department computes availability as 100%, so OEE would drop — apparently — the day someone starts logging downtime.
+- When **no batch-ticket scan gap qualifies** in the period, performance falls back to standard time earned over run time, and the card reads **Performance (estimated)**.
+- A performance figure **above 100%** is reported raw rather than clamped, with a warning: it means a stale ideal cycle time or a missed scan that collapsed two tickets into one interval, not a machine that beat physics.
+
+#### By department
+
+A table breaks the same figures out per department: **Total units**, **Good units**, **Run time (h)**, **Availability**, **Performance**, **Quality** and **OEE**. A period with nothing scanned says so rather than showing zeros.
+
+#### Downtime by reason
+
+A Pareto chart of lost minutes by downtime reason, largest first, with a cumulative percentage line — the point being which one or two reasons are worth attacking. It also reports how many downtime events were logged and how much of the lost time was changeover.
+
+With no downtime logged in the period, this card explains that availability above is estimated rather than measured.
+
+### Schedule performance
+
+Measured against the schedule version that was published **before each week began**, so republishing cannot rewrite a week the floor has already worked.
+
+| Metric                    | What it shows                                                                                                                                      |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Schedule attainment**   | Planned units actually produced, capped per campaign at what was asked — over-building one item cannot mask a miss on another                      |
+| **Output vs target**      | Total output as a share of the plan, uncapped. Above 100% means the plant built more than was asked for, which is not the same as hitting the plan |
+| **Frozen-week adherence** | The share of campaigns frozen at publish that survived the week untouched, with counts of how many were changed and added                          |
+| **Unplanned output**      | Units produced that no published campaign called for                                                                                               |
+| **Waste**                 | Units scanned as scrap in the period                                                                                                               |
+
+Every ratio can be empty, and an empty one renders as **—** rather than 0%. A week with no published plan has no attainment; showing it as a total miss would make the first weeks after publishing look like a catastrophe.
+
+If nothing was published covering the period, the section says so directly: the numbers start accumulating from the first published week onward.
+
+#### Planned versus actual
+
+A grouped bar chart of planned against actual, with one control — **Week**, **Machine**, **Department** or **Item** — that drives the whole section and lives in the URL, so a drilldown is a link you can send rather than a thing you describe over the phone.
+
+#### Frozen-week adherence by version
+
+When commitments have been made in the period, a table shows what happened to each one: the schedule version, the date it was frozen through, how many campaigns were frozen, how many were changed and added afterwards, and adherence expressed both by campaign and by units.
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.plant.machineStatusAndDowntime" text="Machine status and downtime" />**: the downtime log behind availability
+- **<InternalLink pathKey="buildProducts.productionPlanning.publishingAndReleasing" text="Publishing and releasing" />**: what freezing a week commits to
+- **<InternalLink pathKey="buildProducts.productionPlanning.productionSchedules" text="Production schedules" />**: the plans performance is measured against
 
 Next: <InternalLink pathKey="dashboards.operations.materialAnalytics" text="Material analytics" includeArrow />

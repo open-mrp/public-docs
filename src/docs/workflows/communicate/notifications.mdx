@@ -1,0 +1,388 @@
+---
+title: Notifications
+subtitle: The in-app bell feed, account announcements, and per-user notification preferences.
+route: /communicate/notifications
+nav:
+    title: Notifications
+    section: Communicate
+    order: 4
+---
+
+Notifications are the bell feed in Augno: the short, personal list of things that happened and might need
+your attention — a message you were mentioned in, an order that changed, an agent run that finished, a
+customer that registered on your portal. <BetaTag />
+
+> #### Preview
+>
+> Every endpoint on this page is in **public preview**. The paths and payloads are real and current,
+> but they may change while the messaging surface stabilizes. Pin the API version you build against
+> and read the <InternalLink pathKey="releasePhases" text="release phases" /> page before you depend
+> on them in production.
+
+There are two resources behind the bell:
+
+- **Notifications** are addressed to **one user in one account**. Each recipient gets their own row, with
+  their own read state.
+- **Announcements** are broadcast to **everyone in an account** (or, for platform announcements, everyone
+  on Augno). One announcement is stored once, and each user gets their own lightweight receipt recording
+  whether they have seen, read, or dismissed it.
+
+The two are read through separate endpoints and merged into one list by the client — that is exactly what
+the Augno dashboard does to render the bell, sorting notifications by `created_at` and announcements by
+`publish_at`, newest first.
+
+## The status model
+
+This is the part integrators ask about most, so it is worth being precise. A notification does not carry
+`seen`/`read` booleans. It carries three nullable timestamps — `seen_at`, `read_at`, `dismissed_at` — and
+the API derives a single `status` from them:
+
+| Status      | Meaning                                                          | Derived when                                       |
+| :---------- | :--------------------------------------------------------------- | :------------------------------------------------- |
+| `unseen`    | Delivered, but the user has not laid eyes on it yet.             | No timestamps set.                                 |
+| `seen`      | Surfaced to the user — it appeared in the bell — but not opened. | `seen_at` set, `read_at` not set.                  |
+| `read`      | The user explicitly opened it.                                   | `read_at` set.                                     |
+| `dismissed` | The user cleared it out of the active feed.                      | `dismissed_at` set (this wins over the other two). |
+
+The three states mean genuinely different things and are used for different UI:
+
+- **Seen clears the badge, not the item.** Marking a notification seen removes it from the unread count
+  but leaves it sitting in the feed. This is what you call when the bell dropdown opens: the user has now
+  laid eyes on everything in it.
+- **Read means opened.** Reading also marks the notification seen if it was not already, so you never have
+  to make both calls. It still stays in the feed.
+- **Dismissed means cleared.** The notification drops out of the default feed and out of every unread
+  tally, but it is not deleted — you can still fetch it by ID, or list it back with `status=dismissed`.
+
+The status only ever moves forward. There is no un-see, un-read, or un-dismiss endpoint, and repeating a
+call is safe: marking something read twice keeps the first `read_at`, not the second.
+
+One status change does not come from these endpoints at all: reading a conversation in-thread withdraws
+your outstanding bell notifications for it. Marking a conversation read
+(<InternalLink pathKey="communicate.messages" text="see Messages" />) sets `seen_at`, `read_at`, and
+`dismissed_at` on every one of your undismissed notifications for that thread in a single pass. So a chat
+notification can reach `dismissed` without anyone ever calling `/actions/dismiss` — that is the feed
+keeping itself tidy, not a bug.
+
+Announcements use the same four states and the same three timestamps, recorded on your personal receipt
+rather than on the announcement itself. The one difference: a dismissed announcement disappears from the
+announcements list entirely, while remaining retrievable by ID.
+
+## What a notification carries
+
+Beyond the status, a notification has:
+
+- **`category`** — what kind of event this is. The set is open-ended and grows over time, so treat an
+  unrecognized value as a plain notification rather than an error. The first-party categories today are
+  `chat.message`, `chat.mention`, `chat.added`, `order.updated`, `agent.run_completed`, `agent.alert`,
+  `system.broadcast`, and `customer.registered`.
+- **`priority`** — `low`, `normal` (the default), `high`, or `urgent`. It is a display hint; the API does
+  not treat an urgent notification differently on the wire.
+- **`title`** and **`body`** — the headline and the supporting line. For a chat notification the body is a
+  preview of the message.
+- **`sender`** — the actor that caused the notification, expandable with `?include=sender`. It is an actor
+  object whose `type` is `user`, `agent`, or `api_key`. (`group` is defined in the actor enum, but nothing
+  produces a group-sent notification today.) Notifications the platform raises on its own come back with a
+  **null** `sender` rather than a synthetic "system" actor, so treat a null sender as normal.
+- **`resource`** — what the notification is about, expandable with `?include=resource`. It is a polymorphic
+  reference carrying a `type` and an `id`, which is what lets a client turn a notification into a link. A
+  chat notification points at the conversation the message was posted in — or at the support case, for
+  customer-facing threads.
+
+Both `sender` and `resource` are null unless you ask for them. See
+
+<InternalLink pathKey="api.include" text="expanding sub-objects" /> for how includes work.
+
+One nuance on sender IDs: a notification sent by a person is attributed to their **account user** ID
+(`acus_…`), not their user ID. The `sender_ids` filter expects the same form.
+
+## Reading the feed
+
+<InternalLink pathKey="apiReference.notifications.listNotifications" text="List notifications" />
+returns the current user's feed for the account they are acting in, newest first. It is always
+personal — there is no way to read another user's feed, and an actor with no membership in the
+account (an API key, for example) gets an empty list rather than an error.
+
+```bash
+curl "API_HOST/v1/messaging/notifications?status=unseen&include=sender,resource" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
+```
+
+Filters:
+
+- `status` — one of the four states. **Omit it and you get the active feed**: everything not dismissed,
+  seen and unseen alike. Pass `dismissed` to review what was cleared.
+- `category` — a single category, such as `chat.mention`.
+- `sender_ids` / `sender_types` — narrow by who sent it. `sender_types` takes the sender-side spellings
+  `user`, `group`, `agent`, `apikey`, and `system` — note that these are **not** identical to the actor
+  types on the response: the wire value is `apikey` here but `api_key` on the `sender` object, and
+  `system` is the only way to filter for platform-raised notifications, which carry no `sender` object at
+  all. Nothing writes `group` today, so filtering on it returns nothing.
+- `q` — free-text, matched against the title and body.
+
+Pages are cursor-based and hold at most 100 notifications whatever `limit` you ask for. See
+
+<InternalLink pathKey="api.pagination" text="pagination" />.
+
+<InternalLink
+    pathKey="apiReference.notifications.retrieveNotification"
+    text="Retrieve a notification"
+/>
+fetches one by ID. Only your own notifications are visible — someone else's is reported as not
+found, not as forbidden — and dismissed notifications remain retrievable.
+
+### Unread tallies
+
+<InternalLink
+    pathKey="apiReference.notifications.getNotificationUnreadCount"
+    text="Get the unread count"
+/>
+is the badge endpoint for the account you are acting in. It returns three numbers:
+
+- `notifications` — unseen, non-dismissed notifications addressed to you.
+- `conversations` — always `0` today. Conversation unread counts are not folded into the bell.
+- `total` — `notifications` plus the active announcements you have not seen. Announcements are folded into
+  `total` but never into `notifications`, so `total` can exceed `notifications`.
+
+<InternalLink
+    pathKey="apiReference.notifications.getCrossAccountUnreadSummary"
+    text="Get the cross-account unread summary"
+/>
+answers a different question: *is there anything waiting for me in my other accounts?* It returns a
+per-account tally covering every account you belong to — including accounts with nothing unread,
+which report `0` — plus a grand total. Each per-account tally counts unseen notifications and unseen
+account announcements together, the same way `total` does, so it is a single combined number rather
+than a breakdown. Use it to put a dot on the account switcher.
+
+Both tally endpoints, and the two list endpoints, are high-frequency polling endpoints. Their calls are still
+recorded, but they are hidden from the default <InternalLink pathKey="api.requestLogs" text="request log" />
+listing so they do not drown out everything else.
+
+## Acting on a notification
+
+Four endpoints move a notification through its lifecycle. The three per-notification actions return the
+updated notification; mark-all-seen returns an empty object, so do not read a status off its response.
+
+| Action                                                                                              | Endpoint                                                 | Effect                                                                          |
+| :-------------------------------------------------------------------------------------------------- | :------------------------------------------------------- | :------------------------------------------------------------------------------ |
+| <InternalLink pathKey="apiReference.notifications.markNotificationSeen" text="Mark seen" />         | `POST /v1/messaging/notifications/{id}/actions/seen`     | Drops out of the unread count, stays in the feed.                               |
+| <InternalLink pathKey="apiReference.notifications.markNotificationRead" text="Mark read" />         | `POST /v1/messaging/notifications/{id}/actions/read`     | Marks seen as well, stays in the feed.                                          |
+| <InternalLink pathKey="apiReference.notifications.dismissNotification" text="Dismiss" />            | `POST /v1/messaging/notifications/{id}/actions/dismiss`  | Leaves the active feed; still retrievable and listable with `status=dismissed`. |
+| <InternalLink pathKey="apiReference.notifications.markAllNotificationsSeen" text="Mark all seen" /> | `POST /v1/messaging/notifications/actions/mark-all-seen` | Clears the badge in one call. Returns `{}`.                                     |
+
+Mark-all-seen is the "user opened the bell" call. It touches only your unseen notifications, does not mark
+anything read, and — importantly — does **not** clear announcements, which carry their own receipts and are
+cleared one at a time. So the unread total can stay above zero right after a mark-all-seen. That is expected,
+not a bug.
+
+All four require the `messaging:update` permission; reading requires `messaging:read`.
+
+## Sending a notification
+
+<InternalLink pathKey="apiReference.notifications.sendNotification" text="Send a notification" /> is
+how you put something in someone's bell from your own systems — a fulfilment exception, a credit
+hold, an approval waiting.
+
+```bash
+curl -X POST API_HOST/v1/messaging/notifications \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "category": "order.updated",
+    "target": { "type": "account_user", "id": "acus_e5zu8bde0z3h" },
+    "title": "Order updated",
+    "body": "Order #1042 moved to on hold.",
+    "priority": "high",
+    "link_resource_type": "sales_order",
+    "link_resource_id": "or_9lqo07quiwyb"
+  }'
+```
+
+Three things about this endpoint routinely surprise people.
+
+**It needs `alerts:create`, not `messaging:create`.** Every other notification endpoint is gated on the
+`messaging` permission domain — but sending is gated on `alerts:create`. A key or role that can read and
+manage the feed perfectly well will still get a permissions error on send until `alerts:create` is granted.
+See <InternalLink pathKey="manageAccount.team.rolesAndPermissions" text="roles and permissions" />.
+
+**It returns `202 Accepted`, not `201`.** Delivery is asynchronous: the request is accepted, then the
+notification is written to each recipient's feed and pushed to their connected clients. The response body is
+an acknowledgement carrying `enqueued`, the number of deliveries accepted. Acceptance is not delivery —
+recipients that cannot be resolved (a target that is not a member of the account, say) are skipped during
+fan-out, and there is no per-recipient delivery receipt to fetch afterwards.
+
+**The target decides everything else.** `target.type` is either:
+
+- `account_user` — a personal notification for one member of the account. `target.id` is an account user ID.
+- `account` — a broadcast to everyone in the account. `target.id` is an account ID, and it **must be the
+  account you are currently acting in**. Broadcasting into another account is rejected as an invalid
+  `target.id`, which also means an account broadcast can never be sent on behalf of a customer or a parent
+  tenant.
+
+Set `link_resource_type` and `link_resource_id` **together** to make the notification clickable. Supplying only
+one of the two is not an error — you just get a notification with no link.
+
+The notification is attributed to the authenticated caller, derived from the token rather than from anything in
+the request body, so recipients always see who really sent it. You cannot spoof the sender.
+
+## Announcements
+
+An announcement is the account-wide half of the bell. It has a `scope` — `account` (everyone in one account) or
+`platform` (everyone on Augno) — a `publish_at` and an optional `expires_at` that bracket the window in which it
+is visible, and the same category, priority, title, body, and optional linked resource as a notification.
+
+**There is no create-announcement endpoint.** This trips people up: they find five announcement endpoints, all
+of them read-only or receipt-only, and conclude the feature is read-only. It is not. An account announcement is
+created by **sending a notification with `target.type: "account"`**:
+
+```bash
+curl -X POST API_HOST/v1/messaging/notifications \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "category": "system.broadcast",
+    "target": { "type": "account", "id": "YOUR_ACCOUNT_ID" },
+    "title": "Cutover this Friday",
+    "body": "Scanning stations will be offline from 6pm."
+  }'
+```
+
+That stores a single account-scoped announcement rather than a row per user, so it costs the same whether the
+account has five people or five hundred, and it pushes live to everyone connected. It reports `enqueued: 1` for
+the same reason — one announcement, not one per person.
+
+Announcements created this way publish immediately and carry **no expiry**, so they stay in the feed until each
+user dismisses them. Platform-scope announcements are visible to every account but are not created through the
+API at all.
+
+Reading and clearing them mirrors notifications:
+
+- <InternalLink pathKey="apiReference.announcements.listAnnouncements" text="List announcements" />
+  returns the ones currently active for you — published, not yet expired, and not dismissed by you —
+  most recent first.
+- <InternalLink
+      pathKey="apiReference.announcements.retrieveAnnouncement"
+      text="Retrieve an announcement"
+  />
+  fetches one by ID. Unlike the list, this still works after you have dismissed it.
+- <InternalLink pathKey="apiReference.announcements.markAnnouncementSeen" text="Mark seen" />,
+  <InternalLink pathKey="apiReference.announcements.markAnnouncementRead" text="Mark read" />, and
+  <InternalLink pathKey="apiReference.announcements.markAnnouncementDismissed" text="Dismiss" />
+  write your personal receipt. As with notifications, read implies seen and repeat calls keep the
+  original timestamp.
+
+Because receipts are per-user, an actor without an account membership has no receipt to write: those calls
+report the announcement as not found rather than silently succeeding.
+
+## Notification preferences
+
+Each user chooses, per account, which channels a category of notification is delivered on. Preferences belong to
+your membership in one account, so the same person can be notified differently in each account they belong to.
+
+<InternalLink
+    pathKey="apiReference.notificationPreferences.listNotificationPreferences"
+    text="List preferences"
+/>
+returns only the rows the user has explicitly set. An empty list is normal and means everything
+falls back to the defaults.
+
+<InternalLink
+    pathKey="apiReference.notificationPreferences.upsertNotificationPreference"
+    text="Upsert a preference"
+/>
+creates or replaces one:
+
+```bash
+curl -X PUT API_HOST/v1/messaging/preferences \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "category": "chat.mention",
+    "in_app_enabled": true,
+    "email_enabled": true
+  }'
+```
+
+The rules:
+
+- **A preference is keyed by (user, category).** Sending the same category again replaces the previous settings
+  outright — every channel is written from the request, not merged with what was there before. Send the
+  complete request body every time, using the field list on
+    <InternalLink
+        pathKey="apiReference.notificationPreferences.upsertNotificationPreference"
+        text="the endpoint reference"
+    />
+    rather than the abbreviated example above: anything you leave out is written at its default
+    rather than preserved, so a partial request silently switches off whatever it omitted.
+- **Omit `category` to set the global default.** That row is the fallback for every category the user has not set
+  a specific preference for, and it comes back with `category: null`.
+- **The most specific row wins.** A category-specific preference beats the global default; where neither exists,
+  the built-in defaults apply.
+- **Category must be one Augno recognizes.** Unlike the open-ended category field on a notification, preferences
+  reject a category the platform does not know.
+
+Defaults when no preference row exists at all: **in-app on, email off.** That is deliberate — a new user gets a
+working bell and a quiet inbox, and email is strictly opt-in.
+
+One scope limit worth knowing before you build on this: preferences are consulted when a **chat message** fans
+out to its participants. A notification you push yourself through the send endpoint is written to the target's
+feed regardless of their preferences, and never emails anyone. If you are sending high-volume notifications from
+your own systems, do the filtering on your side rather than assuming the recipient's preferences will do it.
+
+In the dashboard, users manage this at **Notifications → Preferences**, which shows a row for the common
+categories plus an "All notifications" row for the global default. Categories without a row of their own —
+`agent.alert` and `customer.registered` among them — fall back to that default; set them through the API.
+
+## How chat messages become notifications
+
+Most notification volume comes from conversations, and the fan-out rules there are worth stating plainly. When a
+message is posted, every other active participant is evaluated:
+
+- **A muted conversation skips the recipient entirely.** No bell row, no email. The conversation still shows as
+  unread in the message list; it just stops shouting.
+- **A direct @mention pierces the mute.** A mention always writes a bell notification, even for a participant who
+  muted the conversation, and even if they turned the in-app channel off for that category. It arrives under the
+  `chat.mention` category rather than `chat.message`, at `high` priority, titled after the person who mentioned
+  them, and it is pushed live on its own so it alerts even in a muted thread.
+- **Email needs an explicit opt-in and never survives a mute.** An email goes out only when the recipient has
+  enabled the email channel for that category — one email per message, as it happens. A muted recipient is never
+  emailed, mention or not.
+
+## In the dashboard
+
+The bell in the top bar shows the unread total and opens the feed. The full **Notifications** page in the
+
+<DocLink pathKey="frontend.dashboard">dashboard</DocLink> lists notifications and announcements
+together, with two bulk controls: **Mark all read**, which reads every unread entry on the page and
+then zeroes the badge, and **Clear all**, which dismisses the whole list. Clicking an entry marks it
+read and navigates to whatever it links to. There is no bulk *read* endpoint — mark-all-seen is the
+only bulk action the API offers — so a client building the same control marks each entry read
+itself.
+
+Live updates arrive over the realtime WebSocket rather than by polling, so a notification appears in the bell as
+it happens, and marking things read in one tab updates the badge in the others.
+
+The bell is a staff surface. It is scoped to an account membership, so the customer portal has no bell — a portal
+user is not an account user and has no personal feed.
+
+## How long notifications are kept
+
+A background retention worker sweeps hourly and prunes the messaging tables:
+
+- Notifications you have **read or dismissed** are deleted 90 days after they were created.
+- **Any** notification is deleted 180 days after it was created, regardless of state. This is a hard cap — an
+  unseen notification is not kept forever.
+- **Expired** announcements are deleted 90 days after their expiry, and receipts left behind by a deleted
+  announcement are cleaned up alongside them. An announcement with no expiry is never swept, which is why the
+  ones sent through the API persist until dismissed.
+
+Deletion is permanent; there is no archive to restore from. If you need a durable record of something, keep it in
+the resource the notification points at rather than in the notification.

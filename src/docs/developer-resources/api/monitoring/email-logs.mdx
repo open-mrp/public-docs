@@ -1,0 +1,152 @@
+---
+title: Email Logs
+subtitle: Confirm whether an email Augno sent on your behalf actually went out.
+route: /api/email-logs
+nav:
+    title: Email logs
+    section: API
+    subsection: Monitoring
+    order: 3
+---
+
+Augno sends email on your account's behalf all over the product — order acknowledgements, invoices, statements of account, purchase-order submissions, hosted checkout links, new-user welcomes, password resets, registration verifications, chat-message notifications. **Email logs** are the record of those sends, and they are where you go when someone asks "did that acknowledgement actually go out?".
+
+A `200` on the endpoint that triggered the email is not that answer. Those endpoints queue the message and return; the send happens afterwards, in a separate service, off the back of that queue. The email log is written by the service that actually performs the send, so it is the first place a failed or suppressed send becomes visible.
+
+<BetaTag /> Both email-log endpoints are in **public preview**. They are live and documented here,
+but their shape may change without notice before general availability — see
+<InternalLink pathKey="releasePhases" text="release phases" />.
+
+Rows are written for sends that failed and for sends that were deliberately suppressed, not only for successful ones. How those rows map onto a single queued message is worth understanding before you treat one as proof — see [One message can produce two rows](#one-message-can-produce-two-rows).
+
+## Where to find them
+
+Email logs live under the `/v1/core` prefix, not under the messaging endpoints. They cover _all_ platform email — transactional documents, account mail, and chat notifications alike — rather than only the conversation surface, which is why they sit in `core` rather than `messaging`. If you went looking for them next to messages and came up empty, this is why.
+
+```bash
+curl "API_HOST/v1/core/email-logs?limit=25" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
+```
+
+Results come back newest-first with standard cursor <InternalLink pathKey="api.pagination" text="pagination" />. See <InternalLink pathKey="apiReference.emailLogs.listEmailLogs" text="List Email Logs" />.
+
+## What a log records
+
+| Field                       | Description                                                                                     |
+| :-------------------------- | :---------------------------------------------------------------------------------------------- |
+| `send_status`               | `sent` or `pending` — see below                                                                 |
+| `recipients`                | Every address the message was addressed to                                                      |
+| `subject`                   | The subject line                                                                                |
+| `filename`                  | The filename of the attached document, when the email carried one (an invoice PDF, for example) |
+| `sent_by`                   | The user or API key that triggered the send, as an expandable sub-object                        |
+| `created_at` / `updated_at` | When the log row was written and last touched                                                   |
+
+```json
+{
+    "id": "emlg_xxx",
+    "object": "email_log",
+    "send_status": "sent",
+    "recipients": ["customer@example.com"],
+    "subject": "Order Confirmation #1001",
+    "filename": "invoice_1001.pdf",
+    "sent_by": null,
+    "created_at": "2026-05-14T17:04:11.812Z",
+    "updated_at": "2026-05-14T17:04:11.812Z"
+}
+```
+
+## Reading `send_status`
+
+`send_status` describes handoff, not receipt:
+
+- **`sent`** — the delivery provider accepted the message. This does **not** confirm that the recipient's mail server accepted it, nor that a human opened it. It confirms Augno got the message out the door.
+- **`pending`** — the message was never handed off. Either the send attempt failed outright, or it was suppressed because the account is in <InternalLink pathKey="manageAccount.sandboxes" text="sandbox" /> mode.
+
+That second case matters when you are testing: **sandbox accounts do not send real email.** Every send from a sandbox is recorded with `send_status: "pending"` and no message ever leaves the platform. An integration test that asserts "an email was sent" should assert on the presence of the log row, not on `send_status`.
+
+## One message can produce two rows
+
+Rows are deduplicated, but the failed path and the successful path dedupe on **different keys**, and the two never collide.
+
+- A send that **fails** is logged inline, keyed on the ID of the queued message. Every retry of that same message resolves to the row that already exists, so repeated failures collapse into a single `pending` row rather than appending one per attempt.
+- A send that **succeeds** is logged on a separate hop, keyed on the delivery provider's message ID. It writes its own `sent` row — it neither looks for nor updates an earlier `pending` row for the same message.
+
+So a message that failed once and then succeeded on retry leaves **two** rows behind: a `pending` row from the failed attempt and a `sent` row from the successful one. Search by recipient or subject rather than stopping at the first match, and read the newest `sent` row as the authoritative outcome. A `pending` row with no matching `sent` row is the real failure signal.
+
+One further caveat: the `sent` row is written off a second queued event rather than inline with the send itself. If that event cannot be published, the email has still gone out but no row is written for it. Treat a missing row as inconclusive, not as proof that nothing was sent.
+
+## Expanding the sender
+
+`sent_by` is `null` by default. Expand it with <InternalLink pathKey="api.include" text="include" />:
+
+```bash
+curl "API_HOST/v1/core/email-logs?include[]=sent_by" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
+```
+
+```json
+{
+    "id": "emlg_xxx",
+    "object": "email_log",
+    "send_status": "sent",
+    "recipients": ["customer@example.com"],
+    "subject": "Order Confirmation #1001",
+    "sent_by": {
+        "id": "us_xxx",
+        "object": "actor",
+        "type": "user",
+        "name": "Jane Doe",
+        "handle": "jane@example.com"
+    }
+}
+```
+
+`sent_by` stays `null` for mail the platform sends on its own — system notifications and other automated messages are not attributed to an actor. An expanded `null` is a real answer here, not a missing include.
+
+`sent_by` is the only expandable field on this resource.
+
+## Searching
+
+Pass `q` to match the subject line or any recipient address:
+
+```bash
+curl "API_HOST/v1/core/email-logs?q=customer@example.com" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
+```
+
+That is the fastest way to answer "what have we sent this contact?". There are no other filter parameters on this endpoint — narrow by date by paging, and by content with `q`.
+
+The resource carries no field naming which template produced the message, so `subject` (and `filename`, when a document was attached) is what you have to match on if you need to isolate one kind of mail.
+
+## Retrieving one log
+
+```bash
+curl "API_HOST/v1/core/email-logs/emlg_xxx" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
+```
+
+`include[]=sent_by` applies here too. See <InternalLink pathKey="apiReference.emailLogs.retrieveEmailLog" text="Retrieve Email Log" />.
+
+## Permissions
+
+Both endpoints require the `email_logs` read permission — a distinct domain, so a role can be granted email visibility without being granted anything else. See <InternalLink pathKey="manageAccount.team.rolesAndPermissions" text="Roles and permissions" />.
+
+They also require an **internal** identity for the account. A customer or supplier signed in against your account through the portal cannot read your email logs, whatever their role says. Both conditions surface as `insufficient_permissions`.
+
+Results are always scoped to the account named in the `Augno-Account` header. There is no cross-account view.
+
+## When to reach for which log
+
+- **Email logs** — "did the message go out, to which address, with which attachment?"
+- <InternalLink pathKey="api.requestLogs" text="Request logs" /> — "what did the HTTP call that
+  triggered it look like, and what did it return?"
+- <InternalLink pathKey="api.auditEvents" text="Audit events" /> — "what changed on the record as a
+  result?"

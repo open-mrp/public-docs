@@ -1,0 +1,458 @@
+---
+title: Inbox
+subtitle: Customer-service cases, triage lanes, assignment, and the reply-approval loop.
+route: /communicate/inbox
+nav:
+    title: Inbox
+    section: Communicate
+    order: 3
+---
+
+The **Inbox** is where your team works customer conversations. <BetaTag /> Everything in it is an
+external case: a conversation whose `audience` is `customer`, opened by a customer from the portal or
+bridged in from an email inbox. The Inbox gives each case a triage lane, an owner, a timeline the
+customer can read, and a private lane of team notes the customer cannot.
+
+> #### Preview
+>
+> Every endpoint on this page is in **public preview**. The paths and payloads are real and current,
+> but they may change while the messaging surface stabilizes. Pin the API version you build against
+> and read the <InternalLink pathKey="releasePhases" text="release phases" /> page before you depend
+> on them in production.
+
+## A case is an external conversation
+
+There is no separate "case" resource. A case is a `conversation` with `audience` set to `customer`,
+and it carries two fields that internal conversations leave null:
+
+- **`workflow_status`** — the triage lane the case sits in.
+- **`assignee`** — the single owner responsible for it, a teammate or a team.
+
+Cases are not created by hand. Two things open one:
+
+- **The customer portal.** A customer contacting support opens their case with your account, anchored
+  to their customer record. Each customer has exactly one portal case, so contacting support again
+  reopens the same thread rather than starting a second one. See
+    <InternalLink pathKey="generateSales.customerPortal" text="the customer portal" />.
+- **Inbound email.** Mail arriving at one of your bridged inboxes that does not thread onto an
+  existing case opens a new one, titled with the subject line. See
+    <InternalLink pathKey="communicate.email" text="Email" />.
+
+Either way the case starts in the `new` lane.
+
+## The six triage lanes
+
+`workflow_status` has exactly six values. They describe **progress**, and they are independent of the
+conversation's `status` (`active` / `archived` / `hidden`), which is about **visibility**.
+
+| `workflow_status`  | Meaning                                                |
+| ------------------ | ------------------------------------------------------ |
+| `new`              | Opened, nobody has triaged it yet.                     |
+| `open`             | Actively being worked.                                 |
+| `waiting_internal` | Blocked on your team — the customer is waiting on you. |
+| `waiting_external` | Blocked on the customer — you are waiting on them.     |
+| `needs_approval`   | A drafted reply is waiting for a human to approve it.  |
+| `resolved`         | Closed out.                                            |
+
+Move a case by hand with
+
+<InternalLink pathKey="apiReference.conversations.setCaseStatus" text="Set Case Status" />:
+
+```http
+POST /v1/messaging/conversations/{id}/actions/set-status
+
+{
+    "workflow_status": "open"
+}
+```
+
+The endpoint returns the updated conversation. It only applies to customer-facing cases — calling it
+on an internal conversation is rejected with `parameter_invalid`.
+
+### The lane also moves on its own
+
+Most transitions happen without anyone setting them, driven by what actually happened on the case:
+
+| What happened                                      | Lane it moves to   |
+| -------------------------------------------------- | ------------------ |
+| The case is opened (portal contact, inbound email) | `new`              |
+| The customer sends a message                       | `waiting_internal` |
+| A reply draft is proposed                          | `needs_approval`   |
+| A draft is rejected                                | `waiting_internal` |
+| A draft is approved and sent                       | `waiting_external` |
+| You reply to the customer directly                 | `waiting_external` |
+
+Two consequences worth planning for. A resolved case **reopens** into `waiting_internal` the moment
+the customer writes again — closing a case does not stop it coming back. And because these moves are
+automatic, a lane you set by hand can be overtaken by the next thing that happens on the case; the
+lane reflects the latest activity, not the last human decision.
+
+## The Inbox is the conversation list with filters
+
+There is no dedicated inbox endpoint. The Inbox is
+
+<InternalLink pathKey="apiReference.conversations.listConversations" text="List Conversations" />
+dispatched into its case branch by the filters you pass. Any one of these selects it:
+
+| Query parameter         | Effect                                                        |
+| ----------------------- | ------------------------------------------------------------- |
+| `audience=customer`     | Return cases rather than the caller's own conversation list.  |
+| `workflow_status`       | Restrict to one triage lane.                                  |
+| `assignee_resource_id`  | Restrict to cases owned by one account user or account group. |
+| `unassigned=true`       | Restrict to cases nobody owns yet.                            |
+| `include_archived=true` | Return the **archived** case view instead of the working one. |
+
+Cases come back most recently active first and page with the standard cursor. Two behaviors surprise
+people:
+
+- **Resolved cases are hidden by default.** With no `workflow_status` and no `include_archived`, the
+  list excludes `resolved`. Ask for `workflow_status=resolved` to see them.
+- **`include_archived` swaps the view rather than widening it.** It returns archived cases and leaves
+  the unarchived ones out.
+
+Passing `topic_resource_type` + `topic_resource_id` takes precedence over the case filters and returns
+the conversations attached to that record instead — that is a different query, described under
+[linking records](#linking-business-records-to-a-case).
+
+### The dashboard's lanes are not all `workflow_status` values
+
+This is the single most common point of confusion. The Inbox in the dashboard shows eight lanes, but
+only four of them are triage statuses. The rest are compositions of the query parameters above:
+
+| Dashboard lane      | What it actually queries           | A `workflow_status`? |
+| ------------------- | ---------------------------------- | -------------------- |
+| Open                | no status filter                   | No                   |
+| New                 | `workflow_status=new`              | Yes                  |
+| Assigned to me      | `assignee_resource_id` = your id   | No                   |
+| Unassigned          | `unassigned=true`                  | No                   |
+| Needs approval      | `workflow_status=needs_approval`   | Yes                  |
+| Waiting on customer | `workflow_status=waiting_external` | Yes                  |
+| Resolved            | `workflow_status=resolved`         | Yes                  |
+| Hidden              | `include_archived=true`            | No                   |
+
+So there is no `mine`, `unassigned` or `hidden` triage status to set — asking for one is an invalid
+`workflow_status`. Note also that the lane labelled **Hidden** shows _archived_ cases, not
+conversations someone has hidden from their own list (that is the per-caller `status=hidden`, which
+the Inbox does not use). And `open` and `waiting_internal` have no lane of their own: both live inside
+the default **Open** lane, which is "everything that is not resolved."
+
+## Assigning an owner
+
+A case has one owner slot, and it is polymorphic — an individual or a team.
+
+<InternalLink pathKey="apiReference.conversations.assignCase" text="Assign Case" /> sets it:
+
+```http
+POST /v1/messaging/conversations/{id}/actions/assign
+
+{
+    "assignee_resource_type": "account_user",
+    "assignee_resource_id": "acus_e5zu8bde0z3h"
+}
+```
+
+`assignee_resource_type` is `account_user` (one teammate takes the case) or `account_group` (a team
+takes it, so anyone on it can pick it up). Assigning replaces whatever was there — there is no list of
+assignees.
+
+**Omit both fields to clear the assignment.** An empty body is how you unassign; there is no separate
+unassign endpoint.
+
+Like status, assignment applies only to customer-facing cases. The assignee comes back on the
+conversation as an expandable actor: without `?include=assignee` the field is `null`, and the
+conversation carries no separate assignee id, so request the include to get the owner at all —
+including their name.
+
+## Who can work the Inbox
+
+Working the Inbox needs the messaging permission on your account, and which action you need depends on
+what you are doing:
+
+- **`read`** — list and read cases, read their messages, list their links.
+- **`create`** — post a message, whether that is a reply to the customer, an internal note, or a
+  proposed draft.
+- **`update`** — set the triage status, assign or unassign, edit a draft, approve or reject a draft,
+  and link or unlink records.
+
+None of it requires you to be a participant in the case — the Inbox is an account-level view, so any
+teammate with the permission can open any case.
+
+Replying needs one thing on top of `create`: a participant record. Staff with the messaging permission
+are joined to a case automatically the first time they interact with it, so their replies carry an
+author. You do not need to add yourself first.
+
+Customer accounts cannot use any of this. Every Inbox operation — listing cases, setting status,
+assigning, approving drafts — is refused for a customer-relation caller.
+
+## What the customer sees
+
+This is the highest-consequence behavior in the product, so it is worth reading twice.
+
+Every message carries a `visibility`:
+
+| `visibility` | Who reads it                                                          |
+| ------------ | --------------------------------------------------------------------- |
+| `internal`   | Your team only. A private note. The customer is never served it.      |
+| `external`   | Sent to, or received from, the customer. Part of the official record. |
+| `system`     | An event both your team and the customer see.                         |
+
+`system` is part of the model, but nothing currently writes it — in practice every message you handle
+is `internal` or `external`. System events on a case (someone joining or leaving, a role change) are
+written as `internal`, so the customer does not see them.
+
+### Sending: the default is a private note
+
+<InternalLink pathKey="apiReference.messages.sendMessage" text="Send Message" /> takes an `audience`
+field, and **it defaults to `internal`**:
+
+```http
+POST /v1/messaging/conversations/{id}/messages
+
+{
+    "body": "Checked the warehouse — this ships Friday.",
+    "client_message_id": "cmid_8c7d2f",
+    "audience": "internal"
+}
+```
+
+That request posts a team-only note on the case. The customer never sees it. To actually answer the
+customer you must ask for it:
+
+```json
+{
+    "body": "Good news — your order ships Friday.",
+    "client_message_id": "cmid_9a1b44",
+    "audience": "customer"
+}
+```
+
+> #### An endpoint called "Send Message" does not, by default, send anything to the customer
+>
+> On a customer case, omitting `audience` posts a note nobody outside your team will ever read. This
+> is deliberate: an internal note can never leak by forgetting a field. But it is the opposite of the
+> naive assumption, and it produces the two failure modes to watch for — believing you answered a
+> customer who never received anything, or (in the other direction, on an integration that hard-codes
+> `audience: "customer"`) putting an internal remark in front of them.
+>
+> The dashboard's case composer starts on **Reply**, not **Internal note**, so the UI default and the
+> API default are not the same. Do not infer one from the other.
+
+Two more rules the server enforces:
+
+- **A customer's own messages are always `external`.** When the customer writes on their case, the
+  message is part of the official history no matter what was requested.
+- **You cannot address a customer who isn't there.** Asking for `audience: "customer"` on an internal
+  conversation is rejected with `parameter_invalid` — there is no external party to address.
+
+### Reading: the server filters internal notes out
+
+<InternalLink pathKey="apiReference.messages.listMessages" text="List Messages" /> serves a
+different result set depending on who is asking. A customer reading their own case gets a query that
+excludes `internal` messages entirely; the notes are never serialized into their response. The same
+filter applies to their unread count and to the last-message preview on the case, so an internal
+note never bumps a customer's badge or shows up as their preview text.
+
+Your team's identity is also collapsed on the way out. A customer sees every reply from your side as
+a single branded **"Customer Service"** party — never the individual person or agent behind it — and
+the real author is stripped from the payload rather than merely hidden.
+
+Realtime is the exception, and it is the one place the obligation is yours. Each message frame carries
+its `visibility`, but the server does **not** filter the socket: every frame for a conversation is
+published to that conversation's topic regardless of visibility. The filtered read path is the only
+enforcement. If you build a customer-facing client on the realtime feed, drop frames whose
+`visibility` is `internal` yourself — that is exactly what the Augno portal does, which is why a
+live-updating portal never renders a note it would not be served on a refresh.
+
+### On the operator side
+
+Staff get the full history — external messages and internal notes interleaved in one timeline, with
+consecutive notes collapsed behind a divider so the thread still reads as the customer conversation.
+That is a presentation choice. What separates the two audiences is `visibility` on each message, and
+nothing else.
+
+## Draft and approve replies
+
+Rather than sending straight to the customer, you can propose a reply and hold it for a human. This is
+how agent-written replies reach customers — an agent may draft, but only a person may send. See
+
+<InternalLink pathKey="automateWithAgents.agentsInChat" text="agents in chat" /> for the agent side
+of the loop.
+
+### Propose
+
+`mode` is `send` or `draft`, and it defaults to `send` — leave it out and the message is delivered.
+Set it to `draft` to propose a reply instead. **`channel` is required** in draft mode, and the case
+moves to `needs_approval`:
+
+```http
+POST /v1/messaging/conversations/{id}/messages
+
+{
+    "mode": "draft",
+    "channel": "email",
+    "body": "Hi Joe — your order ships Friday.",
+    "subject": "Re: Order #1042",
+    "source_thread_message_id": "mg_fdny8633ebgw"
+}
+```
+
+- **`channel`** is how the draft will go out once approved: `message` (it appears in the customer's
+  conversation) or `email` (it goes out on the case's bridged email thread, falling back to the
+  conversation if the case has no bridged inbox).
+- **`source_thread_message_id`** records the internal thread message the draft was composed from,
+  which is what lets a client show "drafted from this discussion."
+- A draft is built from `body`, `subject`, `channel` and `source_thread_message_id` only.
+  Attachments, mentions, copied recipients, resource links, replies and scheduling are not carried
+  onto it.
+- `client_message_id` is ignored in draft mode. Retry safety comes from the standard
+    <InternalLink pathKey="api.idempotency" text="Idempotency-Key" /> header instead.
+
+**A draft is not on the timeline.** It has `status: "draft"` and a `sequence` of `0`, and it is not
+returned by the normal message list. To find open drafts, list the conversation's messages with
+`?status=draft` — that variant returns every open draft in one page and ignores paging. Nothing
+reaches the customer until someone approves it.
+
+### Edit
+
+<InternalLink pathKey="apiReference.messages.updateReplyDraft" text="Update Reply Draft" /> revises
+a draft in place:
+
+```http
+PATCH /v1/messaging/messages/{id}
+
+{
+    "body": "Hi Joe — good news, your order ships tomorrow.",
+    "subject": "Re: Order #1042"
+}
+```
+
+`body` is required; omitting `subject` keeps the current one. Only a draft that is still open can be
+edited — once it has been approved, rejected or superseded the request fails with `resource_conflict`.
+
+### Discard
+
+<InternalLink pathKey="apiReference.messages.rejectReplyDraft" text="Reject Reply Draft" /> throws
+the draft away without sending it:
+
+```http
+POST /v1/messaging/messages/{id}/actions/reject
+```
+
+The message is kept at `status: "rejected"` as a record and can no longer be edited or approved.
+Because the customer is still owed an answer, the case moves back to `waiting_internal`.
+
+### Approve and send
+
+<InternalLink
+    pathKey="apiReference.messages.approveAndSendReplyDraft"
+    text="Approve And Send Reply Draft"
+/>
+is the only thing that puts the text in front of the customer:
+
+```http
+POST /v1/messaging/messages/{id}/actions/approve-send
+
+{
+    "client_message_id": "cmid_approve_7b1c"
+}
+```
+
+`client_message_id` is required — generate a fresh unique value (a UUID) per approval.
+
+**The draft is promoted in place.** It is not copied into a new message: the same row takes a
+sequence, flips to `external` visibility, becomes `status: "sent"`, records who approved it, and takes
+its place in the case timeline. The id you approved is the id the customer receives, which is what
+makes "who approved this exact text" answerable after the fact.
+
+An `email`-channel draft on a case with a bridged inbox goes out as a reply on the existing mail
+thread, addressed to the last inbound sender and carrying the right threading headers — so a case that
+has no inbound mail to reply to rejects the approval with `parameter_invalid`. Otherwise the draft
+appears in the customer's conversation. Either way the customer sees it as coming from "Customer
+Service", and the case moves to `waiting_external`.
+
+A draft is promoted at most once. The promotion is a compare-and-set on the draft still being open, so
+the same draft can never take two sequences, and an approval of a draft that is no longer open fails
+with `resource_conflict` rather than promoting it again. Treat a conflict on retry as "already sent"
+and re-read the message, not as an error to retry again.
+
+On the `email` channel that guarantee covers the promotion, not the delivery. The mail is handed to
+the mail sender _before_ the compare-and-set runs, so two genuinely concurrent approvals of the same
+draft can both put a copy in the customer's mailbox even though only one of them promotes the row (the
+loser returns success and sends no second promotion). Serialize approvals of a draft rather than
+firing them in parallel.
+
+Customer accounts cannot approve drafts.
+
+### Draft end states
+
+A draft message never returns to `draft` once it leaves. `status` is a single field shared by every
+message, so the full enum has seven values and the draft loop only produces four of them:
+
+| `status`     | What it means                                                            |
+| ------------ | ------------------------------------------------------------------------ |
+| `draft`      | Open, editable, awaiting approval. Not on the timeline.                  |
+| `scheduled`  | Queued to go out at a future time. Not on the timeline.                  |
+| `sent`       | Approved and delivered. It is now the timeline message.                  |
+| `rejected`   | Discarded by a human without sending. Terminal.                          |
+| `superseded` | Replaced by a newer draft for the same source thread. Terminal.          |
+| `canceled`   | A scheduled message stopped before it went out. Terminal.                |
+| `failed`     | A scheduled message that could not be delivered after repeated attempts. |
+
+`scheduled`, `canceled` and `failed` belong to
+
+<InternalLink pathKey="apiReference.messages.cancelScheduledMessage" text="scheduled messages" />
+rather than to the draft loop, but they share the `status` field — and the same List Messages
+endpoint serves them, via `?status=scheduled` — so a client that switches on message status has to
+handle all seven. `superseded` is defined for the case where a newer draft replaces an older one on
+the same source thread; no current write path sets it, so treat it as a state to tolerate rather
+than one you will routinely see.
+
+## Linking business records to a case
+
+A conversation is anchored to one record through its `topic` — for a portal case, the customer. Beyond
+that anchor you can link any number of additional records to it, so a case about a late shipment can
+carry the order, the shipment and the invoice it concerns.
+
+<InternalLink pathKey="apiReference.conversations.linkRecord" text="Link Record" /> adds one:
+
+```http
+POST /v1/messaging/conversations/{id}/links
+
+{
+    "resource_type": "sales_order",
+    "resource_id": "or_9lqo07quiwyb"
+}
+```
+
+<InternalLink pathKey="apiReference.conversations.listLinks" text="List Links" /> returns every link
+in a single page (the `topic` anchor is not a link and is not listed), and
+<InternalLink pathKey="apiReference.conversations.unlinkRecord" text="Unlink Record" /> removes one
+by link id.
+
+What links buy you is discovery from the other direction: listing conversations by
+`topic_resource_type` + `topic_resource_id` matches both the anchor **and** the links, so a linked case
+surfaces on the record's own page alongside the team discussions attached to it. That is the same
+query behind the Discussions panel on an order, invoice or customer.
+
+A link stores a type and an id. Linking is an account-level action gated on the messaging update
+permission, and it works on internal conversations too — it is not limited to cases.
+
+<DocCardGroup>
+    <LinkCard
+        pathKey="communicate.messages"
+        title="Messages"
+        description="Direct messages, groups, record discussions, attachments, and participants."
+    />
+    <LinkCard
+        pathKey="communicate.email"
+        title="Email"
+        description="Verify a domain, provision an inbox, and bridge inbound mail into cases."
+    />
+    <LinkCard
+        pathKey="communicate.retentionAndCompliance"
+        title="Retention & compliance"
+        description="Legal hold, redaction, and how long messaging data is kept."
+    />
+</DocCardGroup>
+
+Next: <InternalLink pathKey="communicate.notifications" text="Notifications" includeArrow />

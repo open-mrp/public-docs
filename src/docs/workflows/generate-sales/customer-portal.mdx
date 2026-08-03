@@ -8,24 +8,50 @@ nav:
     order: 7
 ---
 
-The **customer portal** is a branded, self-service storefront that gives your customers direct access to your business. Each portal lives at a unique URL based on your **account slug**, carries your company logo and branding, and lets customers register, place orders, pay, and monitor their account without involving your internal team.
+The **customer portal** is a branded, self-service storefront that gives your customers direct access to your business. Each portal lives at a URL based on your **account slug** (or on a custom domain you connect), carries your company logo and branding, and lets customers register, place orders, pay, message your team, and monitor their account without involving your internal team.
 
 ### Why the customer portal matters
 
 - **Self-service ordering**: customers browse products, build orders with the correct pricing already applied, and submit them on their own schedule
-- **Branded experience**: the portal carries your logo and account identity, so customers interact with your brand rather than a generic interface
+- **Branded experience**: the portal carries your logo, favicon, and account identity — and optionally your own domain — so customers interact with your brand rather than a generic interface
 - **Payment collection**: customers pay directly through the portal via Stripe, reducing manual invoicing and accelerating cash flow
 - **Operational visibility**: customers can review order history, download pro-forma documents, and see inventory you are holding for them
+- **A direct line to your team**: customers can message you from the portal, and their messages land in a support case routed to the people you nominate
 
 ### Account slug and branding
 
-Every portal URL is built from your **account slug**, a short, unique identifier for your Augno account. The slug determines the base URL for all customer-facing pages:
+By default every portal URL is built from your **account slug**, a short, unique identifier for your Augno account. The slug determines the base URL for all customer-facing pages:
 
 - **Login**: `/<account-slug>/auth/login`
 - **Register**: `/<account-slug>/auth/register`
 - **Dashboard**: `/<account-slug>/dashboard`
 
-The portal displays your company logo throughout the experience. If no logo is configured, the default Augno branding is used. This means every customer touchpoint (login, registration, ordering, account management) feels like an extension of your own website.
+You can also serve the portal from a domain you own, in which case the slug disappears from the URL entirely. See [Custom domain](#custom-domain) below.
+
+Branding is configured on the **Customer Portal** tab of <InternalLink pathKey="manageAccount.customerPortalSettings" text="account settings" /> and applies across the whole portal:
+
+- **Logo**: shown throughout the experience. If no logo is configured, the default Augno branding is used.
+- **Favicon**: a small square image shown in the browser tab while a customer is on your portal. If no favicon is uploaded, the default Augno icon is used.
+
+Together this means every customer touchpoint (login, registration, ordering, account management) feels like an extension of your own website.
+
+### Custom domain
+
+An account can connect **one** custom portal domain, so customers reach you at an address such as `shop.acme.com` instead of an Augno URL. Connect it from the **Customer Portal** tab of account settings:
+
+1. **Enter the domain**. A subdomain such as `shop.yourdomain.com` is recommended; it can be pointed at the portal with a single CNAME record. Apex domains such as `yourdomain.com` are supported but need an A record and, depending on your DNS provider, extra support.
+2. **Publish the DNS records**. Connecting the domain returns the exact records to create at your DNS provider. Each record is either a **routing** record (points traffic at the portal) or an **ownership** record (proves you control a domain that is claimed elsewhere).
+3. **Verify**. The domain starts as **pending**. Run the verification check after publishing the records; DNS changes can take a few minutes to propagate, so you may need to check more than once. The API also reports **securing** while the TLS certificate is being issued, though the dashboard panel keeps showing "Pending verification" until the domain reaches **verified** — the certificate is live and the portal answers on the domain.
+
+Once a domain is verified:
+
+- Requests to that host are mapped back to your account and served as your portal, with the `/<account-slug>` prefix stripped from the visible URL.
+- Requests to the slug-based address redirect to the custom domain, so there is one canonical portal address.
+- Portal links Augno generates in customer emails — the password-reset link, and the one-click login link sent when someone tries to register with an email that already has an account — point at the custom domain rather than the slug URL.
+
+Removing the domain detaches it immediately: customers fall back to the slug-based portal address, and you can safely delete the DNS records you published. Because an account holds only one custom domain, removing it is also how you free the slot up for a different one.
+
+**Preview**: the portal-domain and portal-host endpoints behind this feature are in preview. Some of them are not published in the public OpenAPI spec or the SDKs, and all of them may change without notice.
 
 ### Registration
 
@@ -65,11 +91,26 @@ Once registered, customers create <InternalLink pathKey="generateSales.salesOrde
 
 #### Order creation steps
 
-1. **Customer details**: enter a PO number, confirm the carrier and service level. Payment terms and shipping terms are pre-filled from the customer's defaults and displayed as read-only.
-2. **Billing address**: confirm or update the billing address.
-3. **Shipping address**: select a previously used address, enter a new one, or match it to the billing address.
-4. **Products**: search for products by SKU, quick-add from a **frequently ordered products** list grouped by product line, or bulk upload via Excel or CSV.
-5. **Review order**: verify line items, quantities, addresses, shipping cost, and order total. Apply or remove a <InternalLink pathKey="generateSales.customerPricing.discountCodes" text="discount code" /> before submitting.
+The portal checkout has three steps, with a running order summary alongside them. An in-progress cart is saved locally, so a customer who leaves and comes back is offered the option to pick up where they left off or start over.
+
+1. **Products**: search the catalog by SKU or product name, browse it by category, quick-add from a **frequently ordered products** list, or bulk upload an Excel (`.xlsx`) or CSV file. A downloadable template shows the expected columns.
+2. **Shipping**: choose the ship-to address from the customer's saved addresses or add a new one.
+3. **Review**: check line items and quantities, enter a PO number and an optional note, set the acknowledgement and invoice email contacts for the order, apply or remove a <InternalLink pathKey="generateSales.customerPricing.discountCodes" text="discount code" />, pick a shipping service, and confirm the total before submitting.
+
+#### Shipping options and rates
+
+The shipping choices on the review step come from **rate shopping**: Augno quotes every carrier and service level configured on your account, filtered to the ones you have enabled for the portal, and returns them sorted cheapest first. Rates for carriers linked to a Shippo carrier account come from Shippo. Carriers with **no** Shippo carrier account are still listed, at a rate of `0` — they are options the customer can pick, not priced quotes. Carriers that are mapped to Shippo are dropped from the list entirely when your account has no Shippo integration connected, or when their rates cannot be fetched, rather than being shown at a fabricated zero.
+
+Your freight rules are applied on top of those quotes, and they can legitimately change what a customer sees:
+
+- **Freight exempt**: if any product line on the order is freight exempt, or if the customer (or one of its groups) is freight exempt, or if the customer's shipping term is free freight, **no options are returned at all** and the result is marked `exemption_type: freight_exempt`. The portal shows "Free shipping" and charges nothing for freight. An empty option list here is the expected outcome, not a misconfiguration.
+- **Flat rate**: a flat-rate shipping term replaces every option's carrier rate with the term's flat amount (`exemption_type: flat_rate`). The customer is charged that amount whatever the carrier would have quoted.
+- **Minimum order met**: when the customer's shipping term sets a free-shipping minimum order value and the order total is strictly above it, eligible options are rated at zero (`exemption_type: minimum_order_met`). If the term restricts free shipping to specific service levels, only those are zeroed and the rest keep their carrier or flat rate. A met minimum takes precedence over a flat rate.
+- **None**: standard carrier rates apply with no exemption.
+
+The same rules drive the rate estimates on internally created orders — see <InternalLink pathKey="shipProducts.shipping.overview" text="shipping" /> for the full picture.
+
+**Preview**: the rate-shopping endpoint behind these options, and the `exemption_type` values it returns, are in preview. The endpoint is not published in the public OpenAPI spec or the SDKs, and it may change without notice.
 
 #### Pricing
 
@@ -129,24 +170,55 @@ The **Inventory** page shows any inventory you are holding on behalf of the cust
 
 Customers can search, filter, and export this data for their own planning.
 
+### Messages and support
+
+The **Messages** page gives customers the same chat surface your team uses internally, with a deliberately reduced set of capabilities. Customers can read and reply in threads they are part of, but they cannot start ad-hoc conversations, create groups, add or remove participants, or attach linked records to a message. In place of all that, they get a single **Contact support** action.
+
+#### Contact support
+
+Contact support opens the customer's support case with you — or reopens the one they already have. A customer has exactly one support case per account relationship, so repeat clicks return the same thread rather than piling up new ones. When the case is created, the people you have designated to handle support are seated on it as participants, so the customer's first message has a definite recipient rather than landing in an unattended queue.
+
+**The button only appears once support routing is configured.** The portal checks support availability before offering the action, and opening a first case is refused unless your account resolves to a support route whose group has at least one active member. An account that never sets one up therefore ships a portal where support simply appears to be missing — nothing is broken, the feature is gated. Configure it on the **Support** tab of <InternalLink pathKey="manageAccount.supportRouting" text="account settings" />.
+
+Re-pointing or clearing the route later only affects cases opened from then on. People already seated on an open case stay on it.
+
+#### What customers can and cannot see
+
+Messages carry a visibility, and the portal is filtered on it server-side:
+
+| Visibility   | Visible to the customer                                 |
+| ------------ | ------------------------------------------------------- |
+| **External** | Yes — messages sent to or received from the customer    |
+| **System**   | Yes — system events both sides should see               |
+| **Internal** | No — team-only notes, never returned to a portal caller |
+
+Internal notes are excluded from the customer's message list, from the conversation preview, and from their unread count, so your team can discuss a case in the same thread the customer is reading without exposing anything.
+
+Your team works the other side of these threads from the internal inbox — see <InternalLink pathKey="communicate.inbox" text="Inbox" />.
+
+**Preview**: the messaging endpoints behind the portal's support flow are in preview. Several of them, including contact support and support availability, are not published in the public OpenAPI spec or the SDKs, and all of them may change without notice.
+
 ### Account management
 
-The **Account** page lets customers manage their profile:
+The **Account** page has three tabs:
 
 - **General**: update name and email address
+- **Addresses**: review the customer's saved addresses, split into active and drop-ship, with search
 - **Security**: change password with validation requirements (minimum 8 characters, mixed case, digit, and special character)
 
 ### Portal navigation
 
 The customer dashboard is organized into three sections:
 
-| Section       | Pages        |
-| ------------- | ------------ |
-| **Sales**     | Sales Orders |
-| **Inventory** | Inventory    |
-| **General**   | Account      |
+| Section       | Pages             |
+| ------------- | ----------------- |
+| **Sales**     | Sales Orders      |
+| **Inventory** | Inventory         |
+| **General**   | Messages, Account |
 
-The dashboard home page provides quick-access cards for viewing order history, creating a new order, and managing account settings.
+**Messages** carries a live unread badge in the sidebar, so a reply from your team is visible without opening the page.
+
+The dashboard home page provides quick-access cards for viewing order history, creating a new order, managing account settings, and jumping straight to saved addresses.
 
 ### Where the customer portal connects
 
@@ -155,5 +227,7 @@ The dashboard home page provides quick-access cards for viewing order history, c
 - **<InternalLink pathKey="generateSales.customerPricing.discountCodes" text="Discount codes" />**: redeemable during order review
 - **<InternalLink pathKey="generateSales.salesOrder.overview" text="Sales orders" />**: portal orders follow the same lifecycle as internally created orders
 - **<InternalLink pathKey="generateSales.customerSetup.paymentTerms" text="Payment terms" />** and **<InternalLink pathKey="generateSales.customerSetup.shippingTerms" text="shipping terms" />**: defaults from the customer record are applied to portal orders
+- **<InternalLink pathKey="manageAccount.customerPortalSettings" text="Customer portal settings" />**: logo, favicon, portal slug, and custom domain
+- **<InternalLink pathKey="manageAccount.supportRouting" text="Support routing" />**: decides who receives the messages customers send from the portal
 
 Next: <InternalLink pathKey="shipProducts.overview" text="Ship Products" includeArrow />

@@ -12,7 +12,7 @@ A **pick** is the warehouse instruction sheet created when a <InternalLink pathK
 
 ### How a pick is created
 
-When you issue a sales order, Augno automatically creates a pick. The pick contains one line for every sale-type product on the order, carrying over the ordered quantities. The pick number matches the sales order number, so warehouse staff can easily cross-reference the two.
+When you issue a sales order, Augno automatically creates a pick. The pick contains one line for every sale-type product on the order — freight, discount, and other system lines are never picked. Each pick line points back at its order line for the quantity ordered and starts at **zero picked**; the worker fills that in as stock comes off the shelf. The pick number matches the sales order number, so warehouse staff can easily cross-reference the two.
 
 ### On the factory floor
 
@@ -43,7 +43,39 @@ This flexibility keeps the warehouse moving without forcing workers to stop and 
 
 ### Pick completion
 
-Pick progress is tracked as the ratio of Quantity Picked to Quantity Ordered across all lines. Once every line has a recorded pick quantity, the pick is ready to move to <InternalLink pathKey="shipProducts.packing.overview" text="packing" />.
+A pick carries no progress percentage of its own. Each pick line records the `quantity` picked against the `ordered_quantity` it was created for, and the pick's `finished_at` timestamp is stamped automatically once every line on the pick has been **packed** — which happens at <InternalLink pathKey="shipProducts.packing.overview" text="packing" />, not at picking. Recording a pick quantity on every line does not by itself finish the pick; it just means the picked items are ready to move to the packing station.
+
+For a rollup across the whole order, read the sales order's `totals.picked` instead: it carries the picked amount and a `completion` fraction between `0` and `1`, measured as picked quantity over ordered quantity.
+
+### When the order changes after issue
+
+Editing an issued order's lines does not leave the pick alone. Augno silently rewrites it so the warehouse instruction always matches what is still owed, and the rules are worth knowing before you edit a live order.
+
+Reconciliation runs off a single number, computed per order line:
+
+**outstanding = quantity ordered − quantity already packed**
+
+- **While `outstanding` is greater than zero** there is still work to do. Augno makes sure exactly one open (unpacked) pick line exists to hold it, seeded at **zero picked** — not at the remaining amount, so a line added to an order that was already picked does not read as though someone has picked it — and it **clears the pick's finished timestamp**, reopening the pick.
+- **Once packed covers the order** — `outstanding` is zero or negative, which happens when you reduce a quantity back down — any leftover open pick line is **deleted**, and the pick is marked finished if every line that remains is packed.
+
+This applies to adding a line, and to **any** update of an existing line on an order that already has a pick — not just a quantity change. A price-only or description-only edit runs the same reconciliation, so editing the price of a line that still has quantity outstanding clears the pick's finished timestamp and reopens the pick. It applies only to sale-type product lines: the automatically generated freight and discount lines are never picked, so touching one never seeds or removes a pick line.
+
+<InternalLink pathKey="generateSales.salesOrder.overview" text="Closing the order" /> also closes
+the pick — every still-open pick line is packed and the pick is stamped finished. Reopening the
+order reverses it: the pick's finished timestamp is cleared and every line that is not yet fully
+picked is reopened, while fully picked lines stay packed.
+
+#### Deleting the last line reverts the order to an estimate
+
+This one is destructive and easy to trip over. Deleting a line removes that line's pick lines along with it. If the pick has **no lines left afterwards**, Augno concludes the order has nothing to fulfill and tears the whole thing down in one transaction:
+
+1. The pick is **deleted** — along with any picking progress recorded on it.
+2. The order's reserved inventory issues and their allocations are deleted, **releasing the reserved inventory** back to stock.
+3. The order's status reverts from `issued` to `estimate`.
+
+In other words, removing the last line of an issued order performs the same teardown as unissuing it, as a side effect of what looks like an ordinary line edit. If you meant to swap the last product on an order, **add the replacement line first, then delete the old one** — that keeps the pick alive and preserves the inventory reservation.
+
+Deleting a line is blocked outright once that line has a shipment against it, or once the order is `fulfilled`. On an order that has been completed or that has any shipped shipment, deleting a line requires an admin.
 
 ### Voiding a pick
 

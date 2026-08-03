@@ -44,6 +44,8 @@ export const navOrder: TabNavOrder[] = [
                     'Purchasing',
                     'BOMs',
                     'Production',
+                    'Production planning',
+                    'Plant & equipment',
                     'Scanning',
                     'Inventory',
                 ],
@@ -69,6 +71,17 @@ export const navOrder: TabNavOrder[] = [
                 subsections: ['Overview', 'Invoicing', 'Accounts receivable', 'Collecting'],
             },
             {
+                section: 'Communicate',
+                subsections: [
+                    'Overview',
+                    'Messages',
+                    'Inbox',
+                    'Notifications',
+                    'Email',
+                    'Retention & compliance',
+                ],
+            },
+            {
                 section: 'Dashboards',
                 subsections: [
                     'Overview',
@@ -83,12 +96,25 @@ export const navOrder: TabNavOrder[] = [
                 subsections: [
                     'Overview',
                     'Account settings',
+                    'Customer portal',
+                    'Support',
                     'Team',
                     'Integrations',
                     'API keys',
                     'Sandboxes',
                     'Security',
                     'Plans & billing',
+                ],
+            },
+            {
+                section: 'Automate with agents',
+                subsections: [
+                    'Overview',
+                    'Agents',
+                    'Runs',
+                    'Tools & approvals',
+                    'Memories',
+                    'Agents in chat',
                 ],
             },
         ],

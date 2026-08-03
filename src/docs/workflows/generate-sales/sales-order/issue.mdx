@@ -19,18 +19,21 @@ This avoids blocking operations when real-world inventory and Augno inventory ar
 
 ### What happens when you click **Issue**?
 
-- changes order status to **Issued** and sets the **Issued At** timestamp for traceability.
-- creates a **Pick** for warehouse work
-- creates and reserves **inventory issues** for the order quantities
-- optionally sends an **order acknowledgement email** (if you set acknowledgement email in the <InternalLink pathKey="generateSales.salesOrder.create" text="sales order" /> or the <InternalLink pathKey="generateSales.customer.overview" text="customer" />)
+- changes the order's status from `estimate` to `issued` and sets the **Issued At** timestamp for traceability
+- creates a **Pick** for warehouse work, with one pick line for every sale-type product line — freight and discount lines are never picked
+- creates and reserves **inventory issues** for each line that is tied to an inventory item
+- optionally sends an **order acknowledgement email**
+
+Only an order still in `estimate` can be issued; issuing anything else is rejected. Over the API this is `PUT /v1/sales/sales-orders/{id}/actions/issue` — see <InternalLink pathKey="apiReference.salesOrders.issueSalesOrder" text="Issue Sales Order" />.
+
+The acknowledgement email is opt-in per issue: the UI asks whether to email the customer, and the API takes a `notify_customer` flag. When it is on, an acknowledgement with a PDF of the order goes to the order's acknowledgement contacts and the order's `acknowledgment_status` becomes `sent`. An order with **no** acknowledgement contacts sends nothing and keeps its current acknowledgment status, so set those contacts when you <InternalLink pathKey="generateSales.salesOrder.create" text="create the order" /> if you want the email.
 
 So practically, **”Issue”** means to _commit this order to operations_ (start picking & inventory allocation).
 
 ### What issuing does _not_ do
 
 Issuing a sales order does **not** automatically create a <InternalLink pathKey="generateSales.salesOrder.generateProductionRun" text="Production Run" />.
-Production run generation must be done while the order is still in Estimate.
-Production Run generation is a separate action in Augno.
+Production Run generation is a separate action, and the dashboard flow puts it before issuing — while the order is still an estimate. The action itself is not gated on status; what it does reject is an order that already has a production run, since an order can have at most one.
 
 ### Before you issue (recommended checks)
 
@@ -42,16 +45,24 @@ Production Run generation is a separate action in Augno.
 
 ### Related behavior
 
-- If customer payment terms are **Prepaid**, the UI warns you to collect payment before issuing.
-- If a customer is on credit hold, issuing is blocked until hold is removed.
+- If customer payment terms are **Prepaid**, the dashboard warns you to collect payment before issuing. It is a confirmation prompt, not a block — you can proceed.
+- If a <InternalLink pathKey="generateSales.customer.overview" text="customer" /> is on **hold all** or **hold shipment**, the dashboard disables the Issue button and shows a credit-hold banner until the hold is removed.
 
 ### Unissuing a sales order
 
 **Unissue** reverses issue behavior:
 
-- the order status returns to **Estimate** and the **Issued At** timestamp is cleared
-- the associated pick is removed
+- the order status returns to `estimate` and the **Issued At** timestamp is cleared
+- the associated pick is deleted, **discarding any picking progress recorded against it**
 - the reserved inventory is released
+
+Only an order in `issued` can be unissued. Over the API this is `PUT /v1/sales/sales-orders/{id}/actions/unissue` — see <InternalLink pathKey="apiReference.salesOrders.unissueSalesOrder" text="Unissue Sales Order" />.
+
+Be aware that unissue is not the only way an order falls back to `estimate`: deleting the last remaining line of an issued order performs the same teardown as a side effect. See <InternalLink pathKey="shipProducts.picking.overview" text="Picking" />.
+
+### Closing and reopening
+
+Issuing is the first of four status actions. Once fulfillment is done, **close** moves the order from `issued` to `fulfilled`, stamping its completion timestamp and closing its pick. **Reopen** moves a `fulfilled` order back to `issued` to make corrections, clearing the completion timestamp and reopening any pick line that is not yet fully picked. The full status model is described in <InternalLink pathKey="generateSales.salesOrder.overview" text="Sales orders" />.
 
 ### Next steps
 

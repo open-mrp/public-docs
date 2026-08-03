@@ -1,0 +1,162 @@
+---
+title: Realtime WebSocket
+subtitle: Stream notifications, chat messages, and agent run progress over one long-lived connection.
+route: /api/realtime
+nav:
+    title: Realtime
+    section: API
+    subsection: Make Requests
+    order: 12
+---
+
+Augno exposes a single WebSocket endpoint that multiplexes every live stream the platform pushes: the notification bell, account announcements, chat messages, unread counts, typing indicators, and agent-run progress. One connection per user and account carries all of it.
+
+The realtime endpoints are **not part of the OpenAPI specification**, so they have no generated entry in the <InternalLink pathKey="apiReference.root" text="API Reference" /> and no SDK method. This page is the reference for them. Everything below is the wire protocol as the gateway implements it.
+
+Realtime delivery is **best effort**. The persisted records reached through the regular REST endpoints are always the source of truth; frames are a latency optimization on top of them, not a replacement. Design for a socket that can miss frames, and reconcile against the API after every reconnect.
+
+## Connecting
+
+```
+GET wss://api.augno.com/v1/ws?accountId=<account_id>
+```
+
+`accountId` is required. Without it the upgrade is rejected with `400`.
+
+Authentication is **cookie-based**. The connection is authenticated from the session access-token cookie, validated against the account named in `accountId` — the same validation the REST middleware performs. This is a browser-oriented endpoint: there is no `Authorization: Bearer` path, so an <InternalLink pathKey="api.apiKeys" text="API key" /> cannot open a socket.
+
+Both realtime routes are mounted ahead of the standard REST middleware stack, so they behave differently from every other endpoint on this host: they take no `Augno-Version` and no `Augno-Account` header (the account comes from `accountId`), they are not rate limited alongside REST traffic, and they produce no entry in your <InternalLink pathKey="api.requestLogs" text="request log" />. Do not expect to debug a connection failure by looking there.
+
+More precisely: **an actor with no personal user identity is rejected with `401`.** The socket keys its per-user topics on a user ID, and an API-key actor has none — it has no notification feed and no membership from which to authorize a conversation subscription. Rather than accept a connection that could only ever subscribe to empty topics, the gateway closes it. If you need machine-readable change data, poll the REST endpoints or read <InternalLink pathKey="api.auditEvents" text="audit events" /> instead.
+
+## Connecting from a custom portal domain
+
+A <InternalLink pathKey="generateSales.customerPortal" text="customer portal" /> served on your own domain cannot use the cookie path. Sessions on a custom portal domain are issued a **host-only** cookie — scoped to that domain, which is what isolates each tenant domain's sessions — so a WebSocket upgrade from `portal.example.com` to the Augno API origin carries no credentials at all. And a browser `WebSocket` handshake cannot carry a custom header, so there is nowhere to put a token instead.
+
+The fix is a short-lived ticket, minted in three steps.
+
+**Step 1 — request a ticket over ordinary HTTP**, through your own same-origin proxy. Use a _relative_ URL so the request stays on the portal origin and the browser does send the session cookie:
+
+```
+GET /v1/ws/ticket?accountId=<account_id>
+```
+
+**Step 2 — the gateway validates that cookie** exactly as it would on the socket, then returns a signed ticket:
+
+```json
+{
+    "ticket": "eyJ1aWQiOi...Xc9.k3n1...",
+    "expires_at": "2026-05-14T17:05:11Z"
+}
+```
+
+**Step 3 — open the socket against the API origin**, with the ticket in the query string instead of relying on the cookie:
+
+```
+GET wss://api.augno.com/v1/ws?accountId=<account_id>&ticket=<ticket>
+```
+
+Rules that matter when you implement this:
+
+- **Tickets live for 60 seconds.** They exist only to carry an already-validated identity across one cross-origin handshake. Fetch a fresh ticket immediately before every connect _and every reconnect_ — never cache one, and never reuse the URL from a previous attempt.
+- **The ticket's account must match `accountId`** on the socket URL. A mismatch is rejected with `401`.
+- **A ticket is a bearer credential** for the identity it encodes. Keep it out of logs and out of anything long-lived.
+- **`/v1/ws/ticket` returns `501`** when ticket authentication is not configured on the server. Treat that like any other failed connection attempt and back off.
+
+Treat a failed ticket fetch as a failed connection attempt and feed it into the same backoff you use for a failed upgrade.
+
+## Frame format
+
+Every frame in both directions is JSON with the same envelope:
+
+```json
+{ "type": "message", "data": { "...": "..." } }
+```
+
+`type` selects the handler; `data` is the payload for that type.
+
+## Messages you send
+
+Three frame types are handled. Anything else is ignored, and malformed JSON is dropped without an error frame.
+
+| `type`        | `data`                                                  | Effect                                            |
+| :------------ | :------------------------------------------------------ | :------------------------------------------------ |
+| `subscribe`   | `{ "conversation_id": "..." }`                          | Subscribe to a conversation's live message stream |
+| `subscribe`   | `{ "run_id": "..." }`                                   | Subscribe to an agent run's step stream           |
+| `unsubscribe` | `{ "conversation_id": "..." }` or `{ "run_id": "..." }` | Stop receiving that topic                         |
+| `ping`        | `{}`                                                    | Server replies with a `pong` frame                |
+
+Conversation subscriptions are **authorized server-side**: the gateway checks that your user is a participant in that conversation before attaching you to its topic. A denied subscription is silently ignored — no error frame is sent — so do not treat the absence of an error as confirmation that you are subscribed.
+
+You do not need to subscribe to your own notification feed. On connect the gateway automatically attaches every socket to three topics:
+
+- your **per-user notification topic** — the bell feed for this user;
+- the **account broadcast topic** — announcements sent to everyone in the account;
+- an **account-independent user topic** — cross-account unread hints, so a user viewing one account can be told that another of their accounts has unread activity.
+
+Only conversation and run topics are opt-in, and both must be re-subscribed after a reconnect: subscriptions live on the connection, not on the server-side session.
+
+## Messages you receive
+
+| `type`                 | Meaning                                                                                                                              |
+| :--------------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
+| `notification`         | A bell notification was created                                                                                                      |
+| `message`              | A chat message was created, updated, or deleted                                                                                      |
+| `conversation_updated` | A conversation's metadata changed                                                                                                    |
+| `unread`               | Unread totals changed for this account                                                                                               |
+| `typing`               | An ephemeral typing indicator                                                                                                        |
+| `account_unread_hint`  | Another account this user belongs to has new unread activity                                                                         |
+| `agent_run_started`    | An agent participant in a conversation started a run; its `payload` carries `run_id`, so you can subscribe to that run's step stream |
+| `run_event`            | One step of an agent run                                                                                                             |
+| `run_complete`         | An agent run reached a terminal state                                                                                                |
+| `pong`                 | Reply to your `ping`                                                                                                                 |
+
+The messaging frames (`notification` through `agent_run_started`) share one payload shape carrying `account_id`, the fine-grained `event` name, and identifiers such as `conversation_id`, `message_id`, `notification_id`, `sequence`, and `unread_count`. The coarse `type` buckets the event; `event` names it precisely — for example a `type` of `message` may carry `message.created`, `message.updated`, or `message.deleted`.
+
+`run_complete` deliberately carries only `agent_run_id` and `account_id`. Token usage and model metadata stay server-side and are never pushed to a client. Re-fetch the run over REST for its authoritative final state.
+
+## Message visibility
+
+Chat frames carry a `visibility` field with the audience of the message: `internal`, `external`, or `system`.
+
+This exists so a customer-facing client can enforce the same rule the read path enforces. **A socket rendering a customer's view of a conversation must drop any frame whose `visibility` is `internal`** — those are your team's private notes on the thread, and they must never be rendered to the customer.
+
+The authoritative guarantee is the visibility-filtered REST read path, which never returns internal messages to a customer identity. The `visibility` field lets the realtime layer match that behavior instead of briefly flashing a note that the subsequent refetch then removes.
+
+## Isolation and delivery guarantees
+
+Frames are only delivered to sockets whose account matches the event's account. The one deliberate exception is the cross-account unread hint, which is keyed by user ID and carries nothing beyond an account ID — that is what lets the bell show a dot for a different account.
+
+If a socket's send buffer fills up, frames for that socket are dropped rather than blocking the fan-out. Combined with ordinary network loss, this means: **never treat the frame stream as a complete log.** Use frames to trigger a refetch, not to mutate local state as though they were a replicated write-ahead log.
+
+## Keeping the connection alive
+
+The server sends a WebSocket-protocol ping every 30 seconds; browsers answer these automatically. For a dead-but-open connection — the common outcome after a laptop sleeps or a proxy times out idle — an application-level heartbeat is more reliable: send a `ping` frame on an interval and force a reconnect if no frame of any kind arrives within your timeout.
+
+A reasonable client implements:
+
+- exponential backoff with jitter on reconnect, capped at around 30 seconds;
+- a fresh ticket per attempt on custom portal domains;
+- re-subscription to every conversation and run topic after the socket reopens;
+- a reconciliation pass after a _reconnect_ (not the initial connect) that refetches the notification and conversation state it may have missed while disconnected;
+- pausing reconnect attempts while the tab is hidden or the device is offline.
+
+## Sending a typing indicator
+
+You **receive** `typing` frames on any conversation you are subscribed to. Publishing one is not a socket frame — it is an ordinary HTTP call:
+
+```
+POST /v1/messaging/conversations/{id}/actions/typing
+```
+
+It takes no request body, requires the `messaging:update` permission, and returns `202 Accepted` with a plain confirmation object:
+
+```json
+{ "object": "message", "message": "Typing." }
+```
+
+<BetaTag /> This endpoint is **internal-only and in preview**. It is not published in the public
+OpenAPI specification and has no SDK method, and it may change or be withdrawn without notice. Do
+not build a production integration on it.
+
+The signal is deliberately ephemeral: nothing is persisted, and clients reconcile from message history rather than from typing events. A dropped `typing` frame is therefore not worth compensating for.

@@ -1,0 +1,242 @@
+---
+title: Memories
+subtitle: Durable notes your agents recall on later runs — and the first place to look when one starts behaving oddly.
+route: /automate-with-agents/memories
+nav:
+    title: Memories
+    section: Automate with agents
+    order: 5
+---
+
+A **memory** is a short note stored on your account for agents to recall later. <BetaTag /> A run is otherwise stateless: an agent starts each one with its instructions, its tools, and whatever it is handed. Memories are the exception — they are the one thing that carries from one run to the next.
+
+Memories belong to the **account**, not to a single agent. Every agent in the account draws from the same pool, so a memory you save while working with one agent changes how all of them behave.
+
+In the dashboard the account's memories are listed under **Agents → Memories**, and records such as customers carry a **Memories** card where you can add one without leaving the record.
+
+### What a memory holds
+
+| Field          | What it is                                                                                      |
+| -------------- | ----------------------------------------------------------------------------------------------- |
+| **Category**   | How the note should be read — one of three values, below                                        |
+| **Content**    | The note itself, in plain text, written for an agent to read                                    |
+| **Importance** | A weight from `0` to `1` that decides which memories survive when there are too many to recall  |
+| **Expires at** | When the note stops being used. Empty means it is kept indefinitely                             |
+| **Entity**     | The record the note is about — a customer, a product — or nothing, for a note about the account |
+| **Metadata**   | Free-form JSON stored alongside the note. Useful for recording where a memory came from         |
+
+### The three categories
+
+| Category      | Use it for                                                                                                   |
+| ------------- | ------------------------------------------------------------------------------------------------------------ |
+| `preference`  | How someone likes things done — a customer who always wants express shipping                                 |
+| `fact`        | A durable detail worth remembering about the account or one of its records — a customer's typical order size |
+| `instruction` | Standing guidance for agents to follow — always confirm freight before issuing an order                      |
+
+Only these three are accepted. A memory saved with any other category is rejected.
+
+The **Memories** card on a record offers exactly these three. The standalone create form under **Agents → Memories** still lists an older set of options, and only _Preference_ on that screen maps to a category the API accepts — so save a `fact` or an `instruction` from the record card or the API instead.
+
+The distinction matters because the category is passed to the agent verbatim, in front of the note. An agent reading `[instruction] Always confirm freight before issuing an order` treats it as a rule; the same sentence filed as a `fact` reads as background. If you want behavior changed, file it as an `instruction`.
+
+### Importance decides what survives
+
+Importance runs from `0` to `1` in steps of `0.1` — the dashboard exposes it as a slider, and a value off that grid is rejected. A memory saved without an importance is stored at `0`.
+
+The weight is not a confidence score. It is a queue position: an agent takes in only a limited number of memories per run and takes the highest-importance ones first, so a `0` memory is the first to be left out once the account accumulates more notes than a run can carry. Reserve the top of the range for the handful of rules you always want honored.
+
+### Expiry
+
+Set **Expires at** on anything that is only true for a while — a plant shutdown, a temporary substitution, a stand-in contact. Once that time passes:
+
+- the memory stops being recalled by agents,
+- it disappears from the memories list,
+- but it is **not** deleted, and it is still reachable by its ID.
+
+That last point is deliberate: an expired memory remains auditable, so you can still answer "what was the agent told last quarter?" To make a memory permanent again, clear its expiry.
+
+### What an agent actually recalls
+
+This is the part worth being precise about, because it is not "everything you saved."
+
+At the start of every run — every trigger type, every agent — the agent loads up to **50** of the account's memories, ordered by importance, skipping any that have expired, and appends them to its instructions under the heading _Relevant memories from previous interactions_. Each one arrives as its category and its content, nothing else.
+
+The memories loaded this way are the ones scoped to the **account itself** — entity type `account`, with your own account ID (<AccountId />) as the entity ID. In the dashboard that means setting **Entity Type** to _Account_ and pasting your account ID into **Entity ID**.
+
+Memories scoped to a specific record — a customer, a product — are stored, listed, filterable, and readable by an agent that holds the memory tools, but they are not part of the block loaded into every run.
+
+So there are two distinct things you can do with a memory:
+
+- **Account-scoped** — changes how agents behave on every run, silently, forever. Treat these as configuration.
+- **Record-scoped** — context filed against a record, retrievable when an agent goes looking, and visible to your team on that record.
+
+### Memories change behavior invisibly
+
+Nothing on a run says "this happened because of a memory." The note is folded into the agent's instructions before the model ever sees the task, so its effect shows up as the agent simply behaving differently — quoting a different lead time, refusing to issue an order, addressing a customer by a nickname nobody configured.
+
+**When an agent starts doing something you did not ask for, read the memories first.** It is faster than rereading the agent's instructions, and it is the more common cause: instructions change when someone edits an agent, and memories change whenever anyone — or any agent — writes one.
+
+Editing or deleting a memory takes effect on the next run. There is nothing to redeploy.
+
+### Agents can write their own memories
+
+Memory operations are also available to agents as tools: `create_agent_memory`, `list_agent_memories`, `retrieve_agent_memory`, `update_agent_memory`, and `delete_agent_memory`, grouped under **Memories** when you grant tools to an agent. An agent holding those tools can write down what it learns and read it back on a later run — and can equally write down something wrong. The same scoping rule applies to what it writes: an account-scoped memory joins the block every run loads, while a record-scoped one is only found when an agent goes looking for it.
+
+Two controls apply, and they are the same ones that govern every other tool:
+
+- The agent's role still gates the call. Without read/create/update/delete permission on agent memories, the tool fails when it reaches the API.
+- Human review can be required on any of those tools, so the run pauses and waits for you before a memory is written. The runtime does not require it unless you say so, but the dashboard tool picker switches review **on** automatically for the three memory-writing tools the moment you grant them — you can turn it off, but you have to choose to. See <InternalLink pathKey="automateWithAgents.toolsAndApprovals" text="Tools & approvals" />.
+
+If you would rather agents never edit the shared pool, grant them no memory tools at all. They will still recall the account's memories — recall does not need a tool.
+
+### Memories on the API
+
+> #### Preview
+>
+> The memory endpoints are an **internal preview** surface. Their paths and payloads are real and
+> current and are documented below, but they are not in the public OpenAPI spec and not in the public
+> SDKs, so they may change without notice. Read the
+>
+> <InternalLink pathKey="releasePhases" text="release phases" /> page before you depend on them in
+> production, and treat anything you build on them as provisional.
+
+| Action   | Endpoint                      | Returns                    |
+| -------- | ----------------------------- | -------------------------- |
+| Create   | `POST /v1/ai/memories`        | `201` with `agent_memory`  |
+| List     | `GET /v1/ai/memories`         | `200` with a list          |
+| Retrieve | `GET /v1/ai/memories/{id}`    | `200` with `agent_memory`  |
+| Update   | `PATCH /v1/ai/memories/{id}`  | `200` with `agent_memory`  |
+| Delete   | `DELETE /v1/ai/memories/{id}` | `200` with an empty object |
+
+Every verb is gated by the matching permission on agent memories — `agent_memories:create`, `:read`, `:update`, `:delete` — which is the same gate the agent tools hit. All five require an internal caller in the target account and the `Augno-Account` header; a customer-relation caller is refused. `{id}` is the memory's own id, which is prefixed `agmm_`.
+
+#### Create
+
+```http
+POST /v1/ai/memories
+
+{
+    "category": "preference",
+    "content": "Customer prefers express shipping on all orders.",
+    "importance": 0.8,
+    "entity_type": "customer",
+    "entity_id": "ac_opnlh43ymyee",
+    "metadata": { "source": "support_ticket" }
+}
+```
+
+| Field         | Type   | Required | Notes                                                                                        |
+| ------------- | ------ | -------- | -------------------------------------------------------------------------------------------- |
+| `category`    | string | Yes      | One of `preference`, `fact`, `instruction`. Anything else is rejected.                       |
+| `content`     | string | Yes      | The note itself, as plain text for an agent to read.                                         |
+| `metadata`    | object | No       | Arbitrary JSON stored alongside the note. Stored as `{}` when omitted.                       |
+| `entity_type` | string | No       | The kind of record the note is about, such as `customer` or `product`. Up to 255 characters. |
+| `entity_id`   | string | No       | The id of that record. Send it together with `entity_type`.                                  |
+| `importance`  | number | No       | `0` to `1` in steps of `0.1`. Stored as `0` when omitted.                                    |
+| `expires_at`  | string | No       | When the note stops being used. Omit for a memory kept indefinitely.                         |
+
+A successful create returns `201` with the new memory and a `Location` header pointing at `/v1/ai/memories/{id}`.
+
+Three validation rules are worth stating exactly, because each one has a way of surprising you:
+
+- **`importance` must land on the grid.** It is validated as `min=0`, `max=1`, and a multiple of `0.1`, so `0.85` is rejected outright rather than rounded. This is the same grid the dashboard's slider produces.
+- **`expires_at` accepts four formats:** `2026-01-02T15:04:05.000Z`, `2026-01-02T15:04:05Z`, `2026-01-02T15:04:05-07:00`, and a bare `2026-01-02`. Anything else fails with `validation_failed` on the `expires_at` parameter. There is no check that the time is in the future — a memory created already expired is stored, and is simply never recalled and never listed.
+- **`entity_type` and `entity_id` are two independent strings.** Nothing enforces that you send both, and neither is checked against a real record. Send only one and the memory is stored, filterable by `entity_type`, and reads back with `entity: null` — the response only builds an entity when both halves are present. Send a type of `account` with your own account id and the memory joins the block loaded into every run, as described above.
+
+`Idempotency-Key` is honored on create, so a retried request returns the original memory rather than saving a second copy. See <InternalLink pathKey="api.idempotency" text="idempotency" />.
+
+#### List and retrieve
+
+`GET /v1/ai/memories` returns the account's memories newest first, keyset-paginated.
+
+| Query parameter | Type    | Notes                                                                                                             |
+| --------------- | ------- | ----------------------------------------------------------------------------------------------------------------- |
+| `cursor`        | string  | Standard <InternalLink pathKey="api.pagination" text="pagination" /> cursor.                                      |
+| `limit`         | integer | 1 to 1000, defaulting to 100.                                                                                     |
+| `q`             | string  | Up to 500 characters. Matches a memory's id, its category, its content, and the id of the record it is scoped to. |
+| `category`      | string  | Exact match on one category.                                                                                      |
+| `entity_type`   | string  | Exact match on one entity type.                                                                                   |
+
+Note what `q` does **not** search: `entity_type` and `metadata` are not matched, so filter on the former and store nothing in the latter that you expect to find again by search.
+
+**The list hides expired memories; retrieve does not.** `GET /v1/ai/memories` excludes anything whose `expires_at` has passed, but `GET /v1/ai/memories/{id}` still returns it. That is the mechanism behind the auditability promise above — an expired note leaves every listing and every recall, and stays reachable by id forever.
+
+#### Update
+
+```http
+PATCH /v1/ai/memories/{id}
+
+{
+    "content": "Customer prefers next-day shipping on all orders.",
+    "importance": 0.9
+}
+```
+
+Only the fields you send change; everything else keeps its current value. The body takes the same fields as create, all optional, with three of them additionally accepting `null`:
+
+| Field         | Accepts `null`? | Effect of `null`                                                                                                                                                                     |
+| ------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `entity_type` | Yes             | Unscopes the memory.                                                                                                                                                                 |
+| `entity_id`   | Yes             | Unscopes the memory.                                                                                                                                                                 |
+| `expires_at`  | Yes             | Clears the expiry, making the memory permanent.                                                                                                                                      |
+| `metadata`    | Yes             | Stores JSON `null`, so the memory reads back with `metadata: null`. This is the only way to blank it — sending `{}` also reads back as `null`, but leaves the stored object as `{}`. |
+| `category`    | No              | —                                                                                                                                                                                    |
+| `content`     | No              | —                                                                                                                                                                                    |
+| `importance`  | No              | —                                                                                                                                                                                    |
+
+Two behaviors to design around. **The two entity fields clear together:** sending `null` on _either_ one clears both columns, so there is no way to keep an `entity_id` while dropping its type. And **`metadata` replaces the stored object outright** rather than merging into it — read it, change it, and send the whole thing back.
+
+`importance` cannot be cleared, only set to another value on the grid. Updating a memory that does not exist, or one belonging to another account, returns `resource_not_found`. `Idempotency-Key` is honored here too.
+
+#### Delete
+
+`DELETE /v1/ai/memories/{id}` removes the memory permanently and returns `200` with an empty object. Deleting one that is already gone succeeds rather than erroring, and so does deleting one that belongs to another account — neither case tells you which of the two happened.
+
+#### The `agent_memory` resource
+
+| Field        | Type              | Notes                                                                   |
+| ------------ | ----------------- | ----------------------------------------------------------------------- |
+| `id`         | string            | Prefixed `agmm_`.                                                       |
+| `object`     | string            | Always `agent_memory`.                                                  |
+| `category`   | string            | `preference`, `fact`, or `instruction`.                                 |
+| `content`    | string            | The note.                                                               |
+| `metadata`   | object, nullable  | Whatever you stored. An empty object reads back as `null`, not as `{}`. |
+| `entity`     | object, nullable  | The record the note is about, or `null`.                                |
+| `importance` | number            | `0` to `1`.                                                             |
+| `expires_at` | timestamp, `null` | `null` for a memory kept indefinitely.                                  |
+| `created_at` | timestamp         |                                                                         |
+| `updated_at` | timestamp         |                                                                         |
+
+**The response does not echo `entity_type` and `entity_id`.** You write two flat strings and you read back a single `entity` object carrying `id`, `type`, `name`, and `handle`. Its own `object` is always the literal `entity`; the underlying record kind is in `type`. A memory scoped to nothing — or scoped with only one of the two halves — has `entity: null`.
+
+`name` and `handle` are filled in only for entities Augno resolves on this path, which today means `customer` (its name and its customer number). For every other entity type both come back `null`, so render `type` and `id` as your fallback rather than assuming a display name.
+
+#### Errors
+
+| Status | Code                       | When                                                                                                                                                      |
+| ------ | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `400`  | `missing_field`            | `category` or `content` was omitted on create.                                                                                                            |
+| `400`  | `invalid_format`           | `category` is outside the three allowed values, or `importance` is off the `0.1` grid or outside `0`–`1`.                                                 |
+| `400`  | `validation_failed`        | `expires_at` is not one of the accepted timestamp formats. Also returned when more than one field fails at once.                                          |
+| `400`  | `parameter_invalid`        | A query parameter is out of range — `limit` outside 1–1000, or `q` longer than 500 characters.                                                            |
+| `401`  | `invalid_credentials`      | Missing or invalid credentials.                                                                                                                           |
+| `403`  | `insufficient_permissions` | The caller lacks the matching `agent_memories` permission, is a customer-relation caller rather than an internal one, or the account is on the free plan. |
+| `404`  | `resource_not_found`       | Update or retrieve against an id that does not exist in your account.                                                                                     |
+
+The free-plan gate runs before the permission check on every one of these endpoints, so an account without a paid plan gets `insufficient_permissions` whatever its roles allow — see <InternalLink pathKey="automateWithAgents.overview" text="the API orientation" /> on the overview page.
+
+See <InternalLink pathKey="api.errors" text="handling errors" /> for the response envelope.
+
+### Who can manage memories
+
+Memories are governed by their own permission domain, so a role can be given read access to memories without the ability to change them, and access to memories independently of access to <InternalLink pathKey="automateWithAgents.agents" text="agents" /> or <InternalLink pathKey="automateWithAgents.runs" text="runs" />. See <InternalLink pathKey="manageAccount.team.rolesAndPermissions" text="roles and permissions" />.
+
+### Working well with memories
+
+- **One fact per memory.** They are recalled and dropped individually; a paragraph holding four rules is all-or-nothing.
+- **Write instructions as instructions.** "Confirm freight before issuing an order" beats "freight is important."
+- **Put an expiry on anything temporary.** An expired memory cleans itself out of the recall block; a stale permanent one quietly misleads every agent for months.
+- **Keep the high end of the importance range scarce.** If everything is `1.0`, importance has stopped ranking anything.
+- **Review the list periodically.** It is the account's accumulated instructions to every agent, and nobody is reviewing it on your behalf.
+
+Next: <InternalLink pathKey="automateWithAgents.agentsInChat" text="Agents in chat" includeArrow />

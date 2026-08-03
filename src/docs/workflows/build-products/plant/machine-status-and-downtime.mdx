@@ -1,0 +1,114 @@
+---
+title: Machine status and downtime
+subtitle: A live board of what every machine is running, and the stoppage log that turns OEE availability into a measurement.
+route: /build-products/plant/machine-status-and-downtime
+nav:
+    title: Machine status and downtime
+    section: Build products
+    subsection: Plant & equipment
+    order: 2
+---
+
+The **machine status** board answers the three questions someone walking the floor actually asks — what is this machine on, how much is left, what is next — for every <InternalLink pathKey="buildProducts.plant.machinesAndDepartments" text="machine" /> at once. <BetaTag /> The **downtime log** records what stopped them, and is the measured input behind OEE availability.
+
+## Machine status
+
+### Where the board gets its picture
+
+The board is assembled from three things:
+
+1. The **published** <InternalLink pathKey="buildProducts.productionPlanning.productionSchedules" text="schedule version" />, for what each machine is meant to run.
+2. The <InternalLink pathKey="buildProducts.production.batches" text="batches" /> the floor has scanned against each campaign, for progress.
+3. Any **open downtime**, for what has stopped.
+
+It reads the published version, never the newest draft. The floor works to what was committed, and a draft regenerating underneath a wall display would make machines appear to change job on their own. With nothing published at all, every machine simply reads idle — the board does not fail.
+
+The whole floor comes back in one request so a wall display can render it in a single call, and the page refreshes every 30 seconds so a scan on the shop floor shows up without anyone reloading.
+
+### The three states
+
+| Status      | When a machine reads it                     |
+| ----------- | ------------------------------------------- |
+| **Running** | A released campaign with work still to scan |
+| **Idle**    | Nothing released to it                      |
+| **Down**    | An open downtime event                      |
+
+**Down outranks running.** A machine with an open stoppage reads down even when it has a released campaign, because a broken machine is not producing whatever the plan says. A machine with nothing released reads idle rather than dropping off the board — an idle machine is a state worth seeing, not an absence.
+
+### Current and next
+
+The **current** campaign is the earliest released campaign that still has batches left to scan. When its last batch is scanned it stops being current and the queue moves on, which is what makes the board advance by itself as a shift runs — nobody marks anything complete.
+
+The **next** campaign is what the machine takes on after that, so an operator can set up for it. When nothing is released to the machine there is no current campaign, and next shows the earliest campaign still ahead of it instead.
+
+### What a card shows
+
+- Machine name and department, with the status as a colour before anything has to be read.
+- For a machine that is down: the reason, how many minutes it has been down, and the note whoever logged it left.
+- For a running machine: the SKU, quantity scanned against quantity planned, how much is left, a progress bar, and how many of the released batches have been scanned.
+- **Up next**: the SKU and planned quantity of the following campaign.
+- **Log downtime**, on any machine that is not already down.
+
+Above the board, a summary counts machines running, down and idle, and totals what has been scanned against what is planned on the floor this week. Departments appear as tabs, each carrying a badge when one of its machines is down, so a supervisor filtered to one department still sees trouble elsewhere. The board also has a **Floor** density sized to be read across a room and a denser **Management** view.
+
+Each machine additionally carries its own week totals: quantity planned on it this week, quantity scanned so far, and the machine hours the plan allocates — summed across every campaign scheduled on it that week, not just the current one.
+
+## Downtime
+
+### Logging a stoppage
+
+Downtime is logged against a machine from a managed list of reasons. The list is the same for every account and is ordered for display, and each reason carries the OEE term its stoppages charge — which is what makes the choice of reason matter beyond labelling it.
+
+| Reason                     | Charges                                                              |
+| -------------------------- | -------------------------------------------------------------------- |
+| **Breakdown**              | Availability — an unplanned mechanical or electrical failure         |
+| **Changeover**             | Availability — a yarn or style change                                |
+| **Material shortage**      | Availability — the machine had nothing to run                        |
+| **No operator**            | Availability — the machine was staffed by nobody                     |
+| **Preventive maintenance** | Availability — planned work scheduled in advance                     |
+| **Minor stop**             | Performance — a short stoppage that costs speed rather than run time |
+| **Quality hold**           | Quality — the machine was stopped over a quality problem             |
+| **Not scheduled**          | Nothing — time the machine was never planned to run                  |
+
+`Not scheduled` is the odd one out: that time is removed from the availability calculation entirely rather than counted against it. A machine nobody planned to run has no OEE, which is a different statement from 0% OEE. Reasons also record whether the stoppage was planned in advance, so preventive maintenance stays distinguishable from a breakdown.
+
+The logging dialog is built for a shop-floor tablet: reason tiles with large tap targets, quick chips for when the stoppage started and how long it lasted, and exact timestamps behind them for a stoppage being written up after the fact.
+
+### Open events
+
+**Omit the end time while the machine is still down.** That leaves the event open, which is what makes the machine read `down` on the status board.
+
+A machine can have only **one open event at a time**. Logging a second open stoppage against a machine that is already down is rejected until the first is closed. Reopening a closed event — by clearing its end time, for a stoppage ended by mistake — is rejected on the same grounds if the machine has since had another open stoppage logged.
+
+Setting the end time closes the event and calculates its duration. Correcting either timestamp afterwards recalculates it.
+
+### What is filled in for you
+
+- **Department** and **production step** are resolved from the machine, so they are not typed twice and cannot disagree with it.
+- The **business day** the stoppage counts against is taken from the start time, which means correcting a start time can move a stoppage onto another day's totals.
+- The event is attributed to whoever logged it, from the credentials that made the request.
+- **Duration** is computed on close, not entered.
+
+A start time cannot be in the future beyond a few minutes of clock skew — allowed so a tablet running fast can still log "just now".
+
+Optionally, an event can name the item that was running, the <InternalLink pathKey="buildProducts.production.productionRuns" text="production run" /> or batch in progress, and a free-text note that is searchable from the downtime list.
+
+### Reading the log
+
+The downtime list opens on **This week**, with presets for currently **Open** events and **All**. A row of chips above it totals the top reasons by minutes lost, and an open event can be ended straight from the list.
+
+Reclassifying a stoppage moves it to the OEE term the new reason charges, so past availability figures move with it. That is intentional — availability should reflect the best account of what happened — but it is worth knowing before bulk-editing history.
+
+### Why it is worth logging
+
+Downtime is what turns OEE availability from an estimate into a measurement. A department with nothing logged computes availability as 100%, so its OEE would appear to drop the day someone started logging — the figure is not getting worse, it is finally being measured. That is why <InternalLink pathKey="dashboards.operations.manufacturingAnalytics" text="manufacturing analytics" /> labels an unmeasured figure **estimated** rather than passing a suspiciously perfect number off as a result.
+
+The same log drives the downtime Pareto: lost minutes by reason, largest first, with a cumulative line that says whether fixing the top reason is worth anything.
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.plant.machinesAndDepartments" text="Machines and departments" />**: the records status and downtime are keyed on
+- **<InternalLink pathKey="buildProducts.productionPlanning.publishingAndReleasing" text="Publishing and releasing" />**: how campaigns reach a machine in the first place
+- **<InternalLink pathKey="dashboards.operations.manufacturingAnalytics" text="Manufacturing analytics" />**: OEE, downtime Pareto and schedule performance
+
+Next: <InternalLink pathKey="buildProducts.scanning.scanningStations" text="Scanning stations" includeArrow />

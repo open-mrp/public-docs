@@ -20,9 +20,17 @@ Each production run has:
 - **Timing**: Started At and Completed At timestamps
 - **Batches**: the collection of batches being manufactured in this run
 
-### Creating batches
+### How a production run is created
 
-When creating a production run, you define the batches that will be manufactured. For each batch you specify:
+There are three ways a run comes into existence:
+
+1. **Releasing a week of a published production schedule.** This is the primary path once planning is in use: one week of the plan becomes one run, with one batch per planned lot. See <InternalLink pathKey="buildProducts.productionPlanning.publishingAndReleasing" text="Publishing and releasing" />.
+2. **By hand.** You create the run and define its batches yourself.
+3. **From an Estimate sales order.** The run is generated from the order and stays linked to it.
+
+### Creating batches by hand
+
+When creating a production run by hand, you define the batches that will be manufactured. For each batch you specify:
 
 - **Item**: the part or product being produced
 - **Quantity**: how many units, with the appropriate unit of measure
@@ -38,6 +46,12 @@ A production run moves through three statuses:
 1. **Pending**: the run has been created but manufacturing hasn't started
 2. **In progress**: batches are actively being processed through <InternalLink pathKey="buildProducts.scanning.scanningStations" text="scanning stations" />
 3. **Completed**: all batches in the run have been scanned into process
+
+### Production schedule connection
+
+Releasing one week of a published <InternalLink pathKey="buildProducts.productionPlanning.productionSchedules" text="production schedule" /> creates a single run holding that week's work. Each planned campaign becomes one batch per planned lot, so a 360-unit campaign planned at a 60-unit lot arrives as six batches. The release is all-or-nothing, and releasing the same week again fails rather than creating a second run.
+
+Every campaign released this way records the run now carrying it, and progress flows back the other way: as batches are scanned, the campaign's scanned quantity and the <InternalLink pathKey="buildProducts.plant.machineStatusAndDowntime" text="machine status board" /> advance on their own. Deleting the run puts its campaigns back to planned.
 
 ### Sales order connection
 
@@ -56,6 +70,7 @@ From a production run, you can:
 ### Related
 
 - **<InternalLink pathKey="buildProducts.production.batches" text="Batches" />**: the individual units of work within a run
+- **<InternalLink pathKey="buildProducts.productionPlanning.publishingAndReleasing" text="Publishing and releasing" />**: turning a planned week into a run
 - **<InternalLink pathKey="generateSales.salesOrder.overview" text="Sales orders" />**: runs can be generated from orders
 - **<InternalLink pathKey="buildProducts.scanning.scanningStations" text="Scanning stations" />**: where batches in the run are physically processed
 

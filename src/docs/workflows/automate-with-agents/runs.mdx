@@ -1,0 +1,372 @@
+---
+title: Runs
+subtitle: One execution of an agent, from trigger to answer — and every safety rail around it.
+route: /automate-with-agents/runs
+nav:
+    title: Runs
+    section: Automate with agents
+    order: 3
+---
+
+A **run** is a single execution of an agent. <BetaTag /> It records what started it, everything the agent thought and did, every tool it called, what it produced, and how long it took. Runs are the audit trail for agent work — nothing an agent does happens off the record.
+
+> #### Preview
+>
+> The `/v1/ai/*` endpoints on this page are in **preview**. The paths and payloads documented below are
+> real and current, but they are not part of Augno's public OpenAPI spec and are not exposed in the
+> SDKs, so you call them directly rather than through a generated client. They may change without
+> notice — read the <InternalLink pathKey="releasePhases" text="release phases" /> page before you
+> depend on them in production.
+
+Browse runs under **AI Agents → Agent Runs**, or open one to read its full timeline.
+
+### Triggering is asynchronous
+
+Starting a run does not wait for it to finish. The run is created in `pending` and handed to a worker, and control returns immediately. Watch the run to follow its progress — the dashboard streams a live view while it works.
+
+That is true however the run started: a chat message, an explicit trigger by hand, or a scheduler tick.
+
+### Run statuses
+
+| Status              | Meaning                                                     |
+| ------------------- | ----------------------------------------------------------- |
+| `pending`           | Queued, not yet picked up                                   |
+| `running`           | Currently executing                                         |
+| `awaiting_input`    | Paused, waiting for a person to reply                       |
+| `awaiting_approval` | Paused, waiting for a person to approve or deny a tool call |
+| `completed`         | Finished successfully                                       |
+| `failed`            | Stopped on an error — the run records the error message     |
+| `cancelled`         | Stopped by a person before it finished                      |
+
+`completed`, `failed`, and `cancelled` are terminal. The other four are all "still alive" in one way or another.
+
+### Stopping a run
+
+You can cancel a run while it is doing work or waiting on you — that is, from `pending`, `running`, `awaiting_input`, or `awaiting_approval`. Cancelling a run that has already reached a terminal status is rejected.
+
+Two things to expect when you cancel:
+
+- If the run was `awaiting_approval`, cancelling counts as **denying the review**. Every action still pending review is recorded as rejected and attributed to you.
+- Work the agent already completed is **not** undone. Cancelling stops the agent; it does not roll back records it already created or changed.
+
+### Retrying a failed run
+
+Only a `failed` run can be retried. Retrying anything else is rejected.
+
+A retry does not start over. It **replays the existing transcript** — the agent's prior reasoning and tool results are restored and it resumes from where it stopped, with full knowledge of what it already did. That is deliberate: a from-scratch re-run of an agent that had already created an order would create a second one.
+
+A run can be retried at most **5 times in total**.
+
+### Automatic retries
+
+Separately from anything you do by hand, Augno will transparently re-attempt a run at most **3 times** — but only under two conditions at once:
+
+1. The failure was transient: _every_ model in the tier's chain was momentarily unavailable, not a bad request the model would reject again.
+2. The run had produced **no side effects** on the failed turn — no tool had executed.
+
+Because a blind re-run of a turn that already acted could duplicate its effects, a failure after any tool executed is never auto-retried; it surfaces as a normal failure for you to decide about.
+
+Automatic retries are spaced out deliberately — starting around fifteen seconds and growing toward two minutes — because the trigger is "the providers are down", and hammering them immediately would just burn the budget. Automatic retries share the same 5-retry budget as manual ones, and their smaller cap of 3 exists so an automatic retry storm can never exhaust your ability to retry by hand.
+
+### The run timeline
+
+A run's timeline is an ordered list of **steps**. The ones you will see most:
+
+| Step type           | What it records                                                         |
+| ------------------- | ----------------------------------------------------------------------- |
+| `trigger_received`  | The run started, and with what input                                    |
+| `user_message`      | A person's message to the agent                                         |
+| `thinking`          | The agent's reasoning for a turn                                        |
+| `assistant_message` | The agent's written response                                            |
+| `tool_call`         | The agent invoked a tool, with its arguments                            |
+| `tool_result`       | What the tool returned                                                  |
+| `tool_blocked`      | A gated tool call was held for review                                   |
+| `awaiting_approval` | The run paused, with a plain-language summary of what it wants to do    |
+| `tool_denied`       | A person denied a call, or the agent asked for a tool it wasn't granted |
+| `compaction`        | The conversation was compacted to stay inside the context window        |
+| `completion`        | The run finished, with duration and token counts                        |
+| `error`             | Something failed                                                        |
+
+The step set is deliberately **open** — new step types are added as the runtime evolves, and a few more you may encounter cover model failover, a scheduled automatic retry, cancellation, a detected repeat loop, and a spending cap being hit. Treat an unrecognized step type as informational rather than something to act on.
+
+### Safety rails
+
+Agents run unattended, so the runtime bounds them in several ways. All of these are automatic and none of them are configurable.
+
+**A 20-iteration tool loop cap.** An agent gets at most 20 think-and-call-tools cycles in a run. Hitting the cap ends the run _successfully_ — it is recorded as a completion, flagged as having hit the maximum, rather than as a failure. If an agent routinely hits it, its task is too big for one run or its instructions are too vague.
+
+**A 5-minute ceiling on any single model turn.** A backstop against a connection that stalls without closing cleanly, which would otherwise pin a run in `running` forever.
+
+**A repeat-loop breaker.** The runtime fingerprints each tool call by tool name plus a hash of its exact input, over a rolling window of the last 20 calls. Once the same tool has been called with byte-identical input **3 times in a row**, that third call is not executed: only the first two run, and the third is answered with an error telling the agent to try a different approach or different parameters. The run continues. This is what stops an agent from grinding on a query that will never return what it wants.
+
+**Context compaction.** Long runs accumulate a large transcript. As the conversation approaches the model's context limit, Augno compacts it — first by pruning the content of older tool results (the most recent turns are always preserved in full), then, if needed, by summarizing the conversation so far into a structured brief of goal, progress, findings, and the specific IDs and values needed to continue. Each compaction is recorded as a `compaction` step, so you can always see where it happened. Summarization always runs on the `balanced` tier regardless of the agent's own tier, since it is background work.
+
+**A stalled-run reaper.** If a worker is killed mid-run — a deploy, a restart, an out-of-memory kill — the run would otherwise sit in `running` forever, because the process that would have finished it is gone. A reaper fails any run that has been `running` for more than **30 minutes**, with a message explaining the worker was interrupted. The threshold is set well above any legitimate run, so a healthy in-flight run is never reaped.
+
+**A spending cap.** If your account has a monthly agent spending cap and a run would cross it, the run stops cleanly at that point with the limit as its output — it is recorded as finished, not failed, so you can tell a budget stop from a breakage. A billing rejection from the underlying model provider is handled the same way, and is never retried across the model chain, since every model bills the same account.
+
+### Reading a failed run
+
+Start at the bottom of the timeline. The `error` step carries the underlying message, and the run itself records an error message you can read at a glance. From there:
+
+- **"no role"** — the agent has no role attached and cannot execute anything. Attach one on the definition.
+- **A permission error from a tool** — the agent's role does not grant that operation. Either widen the role deliberately, or narrow the agent's job.
+- **A provider error after failover** — every model in the tier chain was unavailable. This is the case automatic retry handles; if it exhausted its attempts, retry by hand once providers recover.
+- **Interrupted by the reaper** — the worker was restarted. Retry it.
+
+## The run API
+
+Six endpoints cover the whole lifecycle. All of them live under `/v1/ai/runs` and take the standard
+`Authorization`, `Augno-Version`, and `Augno-Account` headers.
+
+| Operation | Endpoint                                 | Success |
+| --------- | ---------------------------------------- | ------- |
+| Trigger   | `POST /v1/ai/runs`                       | `201`   |
+| List      | `GET /v1/ai/runs`                        | `200`   |
+| Retrieve  | `GET /v1/ai/runs/{id}`                   | `200`   |
+| Cancel    | `POST /v1/ai/runs/{id}/actions/cancel`   | `200`   |
+| Continue  | `POST /v1/ai/runs/{id}/actions/continue` | `200`   |
+| Retry     | `POST /v1/ai/runs/{id}/actions/retry`    | `200`   |
+
+Everything but the list returns a single **Agent Run**; the list returns a page of them.
+
+Three gates apply before any of these run:
+
+- **Internal callers only.** A customer-portal identity is refused with `insufficient_permissions`.
+- **Plan.** Agents are unavailable on the free plan, and every one of these endpoints refuses with
+  `insufficient_permissions` on such an account.
+- **Permissions.** Reads need `agent_runs:read`; cancel, continue, and retry need `agent_runs:update`.
+  Trigger needs `agent_runs:create` **and** `agents:read`, because it loads the agent definition before
+  it starts anything — a role with run-create but no agent-read cannot trigger.
+
+Runs are scoped to the account in `Augno-Account`. A run id belonging to another account is reported as
+`resource_not_found`, not as a permission error, so you cannot probe for foreign run ids.
+
+The four writing endpoints honor the platform <InternalLink pathKey="api.idempotency" text="Idempotency-Key" /> header.
+When the header is absent the platform falls back to the per-request request id — which is minted fresh
+for every call — so a retry sent **without** an `Idempotency-Key` is treated as a brand-new request and
+will trigger, cancel, continue, or retry again. Send the header whenever you intend to retry safely.
+
+### Trigger a run
+
+`POST /v1/ai/runs` returns `201` with a `Location` header pointing at `/v1/ai/runs/{id}`.
+
+| Field                 | Type   | Required | Notes                                                                                          |
+| --------------------- | ------ | -------- | ---------------------------------------------------------------------------------------------- |
+| `agent_definition_id` | string | Yes      | The `agdf_…` id of the agent to run.                                                           |
+| `input`               | string | No       | Instruction text for the agent. Stored on the run as `{"message": "…"}` in its `input` object. |
+
+The response is the newly created run, in `pending`. **However you trigger a run here it is recorded
+with `trigger_type` of `manual`** — including for an agent that is otherwise scheduled, event-driven, or
+chat-driven. The agent's own trigger configuration is not consulted.
+
+Two rejections are specific to this call:
+
+- An `agent_definition_id` that does not exist, or belongs to another account, returns `404`
+  `resource_not_found`.
+- An agent that is not `active` **for your account** returns `400` `validation_failed` —
+  _"agent definition is inactive and cannot be triggered."_ This includes a system agent your account
+  has never enabled, which carries no status of its own and is treated the same as inactive, so the very
+  first trigger of a stock agent fails until you set it active from the agent's detail page. Note this
+  gate lives on the trigger endpoint: the chat and schedule paths do not consult the status.
+
+Accepted includes: `actions`, `definition`, `definition.config`, `definition.tools`, `definition.role`.
+A brand-new run has no actions yet, so in practice only `definition` is worth asking for here.
+
+### List runs
+
+`GET /v1/ai/runs` returns runs for the account, newest first — ordered by creation time descending, with
+the run id breaking ties — and keyset-paginated. See <InternalLink pathKey="api.pagination" text="pagination" /> for
+the cursor mechanics.
+
+| Parameter             | Type    | Notes                                                                                                  |
+| --------------------- | ------- | ------------------------------------------------------------------------------------------------------ |
+| `status`              | string  | One run status. Not validated — an unrecognized value simply returns an empty page.                    |
+| `agent_definition_id` | string  | Restricts to runs of a single agent.                                                                   |
+| `q`                   | string  | Case-insensitive substring match against the run id, its status, and its agent id. Max 500 characters. |
+| `limit`               | integer | Defaults to `100`; accepted range is `1`–`1000`.                                                       |
+| `cursor`              | string  | Opaque keyset cursor from a previous page.                                                             |
+| `include[]`           | array   | Sub-objects to expand.                                                                                 |
+
+`status` and `agent_definition_id` compose: sending both narrows to that agent's runs in that status.
+
+Accepted includes: `triggered_by`, `definition`, `actions`, `definition.config`, `definition.tools`,
+`definition.role`. **`steps` is not among them** — the timeline is only available on the retrieve
+endpoint. Asking for an include an endpoint does not accept is a `400` `parameter_invalid` — with
+`param` set to `include[]` and the allowed values listed in the message — not a silently-ignored
+parameter.
+
+Expanding `definition` or `actions` on a list is resolved per run rather than in one batch, so keep the
+page small when you ask for either.
+
+### Retrieve a run
+
+`GET /v1/ai/runs/{id}` takes the run id in the path and returns the run.
+
+Accepted includes: `triggered_by`, `actions`, `definition`, `steps`, `definition.config`,
+`definition.tools`, `definition.role`.
+
+`steps` and `actions` both come back as whole lists — every step in the run, ordered by `sequence`
+ascending, and every action, with no cursor and no limit. On a long run that is a large response; ask
+for `steps` only when you actually intend to render the timeline.
+
+This is the endpoint you poll after triggering, and after continuing or retrying, since all three hand
+the run to a worker and return immediately.
+
+### Cancel a run
+
+`POST /v1/ai/runs/{id}/actions/cancel` takes **no request body** and returns the refreshed run, already
+in `cancelled` — the transition is applied synchronously rather than queued.
+
+The run must be in `pending`, `running`, `awaiting_input`, or `awaiting_approval`. Cancelling a run in a
+terminal status returns `400` `validation_failed` with
+`Run cannot be cancelled (status: <status>).`
+
+Cancelling clears the run's `completed_at` and `duration_ms`. If the run was `awaiting_approval`, every
+action still in `pending_review` is moved to `rejected` and attributed to you, exactly as described
+above.
+
+### Continue a paused run
+
+`POST /v1/ai/runs/{id}/actions/continue` resumes a run that is waiting on a person.
+
+| Field                    | Type            | Required | Notes                                                                    |
+| ------------------------ | --------------- | -------- | ------------------------------------------------------------------------ |
+| `message`                | string          | Yes      | The next user turn. Sent alongside any review decision in the same call. |
+| `approved_tool_slugs`    | array of string | No       | Approve every pending call of each named tool.                           |
+| `rejected_tool_slugs`    | array of string | No       | Deny every pending call of each named tool.                              |
+| `approved_tool_call_ids` | array of string | No       | Approve individual pending calls by `tool_use_id`.                       |
+| `rejected_tool_call_ids` | array of string | No       | Deny individual pending calls by `tool_use_id`.                          |
+
+The run must be `awaiting_input` or `awaiting_approval`; from any other status the call returns `400`
+`validation_failed` with `Run is not awaiting input or approval (status: <status>).` On success the run
+moves back to `running` and continues asynchronously, so poll the retrieve endpoint to follow it. Each
+approval and denial is written onto the matching action with your identity and a review timestamp.
+
+Four things about the approval fields deserve to be spelled out.
+
+**`message` is required even for a pure approval.** There is no body-less approve call; send the text you
+want the agent to see alongside your decision.
+
+**Slug lists and call-id lists answer different questions.** A slug approves or denies _every_ call
+currently pending for that tool. When two pending calls share a slug but have different arguments — the
+same tool aimed at two different customers — approve or deny them apart with the id lists.
+
+**The ids are `tool_use_id`s, read off the timeline.** Retrieve the run with `?include[]=steps` and take
+`metadata.tool_use_id` from its `tool_blocked` steps. An id the run does not recognize is ignored rather
+than rejected, so verify the decision landed by re-reading the run's actions.
+
+**Silence is not approval.** A pending call you do not name in any of the four lists stays pending: the
+run resumes without it and pauses for review again the next time the agent calls that tool. Approvals
+are always one-time — there is no "always allow" on the API. The one exception is a resume of an
+`awaiting_approval` run that names no tools in any list _and_ whose `message` is only whitespace: that is
+read as "approve everything pending". Never send a blank-looking message to a paused run.
+
+A single call may both approve and deny different tools. A denied call is answered with a
+"denied by user" result and the agent carries on without it — denial does not end the run.
+
+### Retry a failed run
+
+`POST /v1/ai/runs/{id}/actions/retry` takes **no request body** and returns the run, moved back to
+`running` with its `error_message` cleared.
+
+Three rejections, all `400` `validation_failed`:
+
+| Condition                                             | Message                                                         |
+| ----------------------------------------------------- | --------------------------------------------------------------- |
+| The run is not in `failed`                            | `Only failed runs can be retried (status: <status>).`           |
+| The run's retry budget is exhausted                   | `This run has already been retried the maximum of 5 times.`     |
+| The run left `failed` between the check and the write | `This run is no longer in a failed state and can't be retried.` |
+
+The third is the concurrency guard: the status transition is conditional on the run still being
+`failed`, so two simultaneous retries cannot both take effect.
+
+The budget is a single counter shared with the automatic retries described above, and it is **not
+exposed on the run resource** — there is no field telling you how many attempts remain. If retrying
+matters to your flow, treat the exhaustion message as the signal.
+
+A retry carries no message and approves nothing, so a run that failed while tool calls were pending
+review resumes with those calls still blocked.
+
+## The agent run resource
+
+| Field           | Type            | Notes                                                                            |
+| --------------- | --------------- | -------------------------------------------------------------------------------- |
+| `id`            | string          | `agrn_…`                                                                         |
+| `object`        | string          | Always `agent_run`.                                                              |
+| `trigger_type`  | string          | `scheduled`, `event`, `manual`, or `chat`.                                       |
+| `status`        | string          | The seven values tabulated earlier on this page.                                 |
+| `definition`    | object          | The agent that ran. Expandable.                                                  |
+| `input`         | object          | What the run started from. A manual trigger records `{"message": "…"}`.          |
+| `output`        | object          | The agent's result, as `{"response": "…"}`. `{}` until the agent produces one.   |
+| `error_message` | string or null  | Set when the run failed; cleared by a retry.                                     |
+| `triggered_by`  | object or null  | The actor that started it. Null for schedule- and event-driven runs. Expandable. |
+| `started_at`    | timestamp       | When execution began.                                                            |
+| `completed_at`  | timestamp       | When it finished. Cleared by a cancel.                                           |
+| `duration_ms`   | integer or null | Wall-clock duration. Cleared by a cancel.                                        |
+| `actions`       | list            | Tool invocations, including ones held for review and never executed. Expandable. |
+| `steps`         | list            | The timeline, oldest first. Expandable, and only on retrieve.                    |
+| `created_at`    | timestamp       | —                                                                                |
+| `updated_at`    | timestamp       | —                                                                                |
+
+Note what is **not** here: there is no scalar agent id on the run, so filtering by agent uses the
+`agent_definition_id` query parameter while reading the agent back requires `?include[]=definition`.
+There is likewise no token count and no retry counter — token totals appear only in the `metadata` of
+the timeline's `completion` step, as `totalInputTokens` and `totalOutputTokens` alongside
+`actionsExecuted` and `totalDurationMs`.
+
+### Steps on the wire
+
+Each entry in `steps[]` is an `agent_run_step`:
+
+| Field         | Type            | Notes                                                                 |
+| ------------- | --------------- | --------------------------------------------------------------------- |
+| `id`          | string          | `agrnev_…`                                                            |
+| `object`      | string          | Always `agent_run_step`.                                              |
+| `step_type`   | string          | See below. Open set.                                                  |
+| `title`       | string          | Short label, such as the tool's name on a `tool_call`.                |
+| `content`     | string or null  | The text payload — a message body, a truncated tool result, an error. |
+| `sequence`    | integer         | Zero-based position in the timeline.                                  |
+| `actor`       | object or null  | Who produced the step. Always inline; not an include.                 |
+| `duration_ms` | integer or null | How long the step took.                                               |
+| `metadata`    | object or null  | Structured detail whose shape depends on `step_type`.                 |
+| `created_at`  | timestamp       | —                                                                     |
+
+Beyond the common step types tabulated earlier, the runtime also writes `model_failover`,
+`retry_scheduled`, `retry`, `cancelled`, `doom_loop_detected`, and `cap_exceeded`. That is the current
+set, not a closed one — keep tolerating values you do not recognize.
+
+Two metadata shapes are worth knowing because you act on them: a `tool_call` step carries
+`tool_use_id`, `tool_name`, and `input`, and a `tool_blocked` step carries the same three plus
+`blocked: true`. The `tool_use_id` on a `tool_blocked` step is what the continue endpoint's
+`approved_tool_call_ids` and `rejected_tool_call_ids` expect.
+
+Live streaming adds three further step types — `content_delta`, `reasoning_delta`, and
+`tool_call_delta` — that let the dashboard render a turn as it is written. **These are never
+persisted**, so they never appear in `steps[]`; the consolidated `thinking`, `assistant_message`, and
+`tool_call` steps are what the API returns.
+
+### Actions on the wire
+
+Each entry in `actions[]` is an `agent_action` recording one tool invocation: `tool`, a `status` of
+`pending_review`, `auto_approved`, `approved`, `rejected`, `executed`, or `failed`, the `input` and
+`output` JSON, an optional `entity` naming the record it touched, a `review_requirement`, and
+`reviewed_by` / `reviewed_at` once someone decides. An action that never executed — still pending, or
+rejected — carries `{}` as its `output`.
+See <InternalLink pathKey="automateWithAgents.toolsAndApprovals" text="Tools & approvals" /> for what governs
+those decisions.
+
+## Errors
+
+| Status | Code                       | When                                                                                                                                                          |
+| ------ | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `400`  | `validation_failed`        | A status precondition failed, the retry budget is exhausted, or the agent is not active for your account.                                                     |
+| `400`  | `parameter_invalid`        | An `include[]` value this endpoint does not accept, a `limit` outside `1`–`1000`, or a `q` longer than 500 characters. `param` names the offending parameter. |
+| `400`  | `missing_field`            | A required body field was omitted — `agent_definition_id` on trigger, `message` on continue. `param` names the field.                                         |
+| `401`  | `invalid_credentials`      | Missing or invalid credentials, or no `Augno-Account` header.                                                                                                 |
+| `403`  | `insufficient_permissions` | The role lacks the `agent_runs` permission, the caller is not an internal user, or the account is on the free plan.                                           |
+| `404`  | `resource_not_found`       | Unknown run or agent id — including one that exists but belongs to another account.                                                                           |
+
+See <InternalLink pathKey="api.errors" text="handling errors" /> for the response envelope.
+
+Next: <InternalLink pathKey="automateWithAgents.toolsAndApprovals" text="Tools & approvals" includeArrow />

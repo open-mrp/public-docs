@@ -39,9 +39,17 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Rate Limiting",
         "subtitle": "Understand rate limits and implement retry strategies."
     },
+    "/api/realtime": {
+        "title": "Realtime WebSocket",
+        "subtitle": "Stream notifications, chat messages, and agent run progress over one long-lived connection."
+    },
     "/api/request-ids": {
         "title": "Request IDs",
         "subtitle": "Use request IDs to debug issues and get support."
+    },
+    "/api/search": {
+        "title": "Search",
+        "subtitle": "One free-text query across every resource type the caller is allowed to read."
     },
     "/api/versioning": {
         "title": "API Versioning",
@@ -50,6 +58,14 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api/mcp-server": {
         "title": "MCP server",
         "subtitle": "Connect AI agents and assistants to the Augno API over the Model Context Protocol."
+    },
+    "/api/audit-events": {
+        "title": "Audit Events",
+        "subtitle": "An immutable record of every change made in your account — who changed what, when, and from which request."
+    },
+    "/api/email-logs": {
+        "title": "Email Logs",
+        "subtitle": "Confirm whether an email Augno sent on your behalf actually went out."
     },
     "/api/request-logs": {
         "title": "Request Logs",
@@ -103,6 +119,30 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Product Release Phases",
         "subtitle": "Learn how Augno describes product release phases and what to expect from each."
     },
+    "/automate-with-agents/agents-in-chat": {
+        "title": "Agents in chat",
+        "subtitle": "Put an agent in a conversation, watch it work, approve what it wants to do, and let it draft the reply to your customer."
+    },
+    "/automate-with-agents/agents": {
+        "title": "Agents",
+        "subtitle": "Define what an agent does, when it runs, how hard it thinks, and what it is allowed to touch."
+    },
+    "/automate-with-agents/memories": {
+        "title": "Memories",
+        "subtitle": "Durable notes your agents recall on later runs — and the first place to look when one starts behaving oddly."
+    },
+    "/automate-with-agents/overview": {
+        "title": "Automate with agents",
+        "subtitle": "Put an AI teammate on the work — in a conversation or on demand, bounded by a role you control."
+    },
+    "/automate-with-agents/runs": {
+        "title": "Runs",
+        "subtitle": "One execution of an agent, from trigger to answer — and every safety rail around it."
+    },
+    "/automate-with-agents/tools-and-approvals": {
+        "title": "Tools & approvals",
+        "subtitle": "What an agent is allowed to do, and where a human has to say yes first."
+    },
     "/build-products/bom/consumptions-and-productions": {
         "title": "Consumptions & Productions",
         "subtitle": "The inputs and outputs of each production step - what materials are used up and what parts or products are created."
@@ -154,6 +194,26 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/build-products/overview": {
         "title": "Build Products",
         "subtitle": "Purchasing, manufacturing, production tracking, and inventory management."
+    },
+    "/build-products/plant/machine-status-and-downtime": {
+        "title": "Machine status and downtime",
+        "subtitle": "A live board of what every machine is running, and the stoppage log that turns OEE availability into a measurement."
+    },
+    "/build-products/plant/machines-and-departments": {
+        "title": "Machines and departments",
+        "subtitle": "The equipment and functional areas that scheduling, the status board, downtime and OEE all key on."
+    },
+    "/build-products/production-planning/demand-overrides": {
+        "title": "Demand overrides",
+        "subtitle": "Tell the planner about demand your order history cannot see."
+    },
+    "/build-products/production-planning/production-schedules": {
+        "title": "Production schedules",
+        "subtitle": "Versioned, constraint-based plans that decide what each machine makes, and in which week."
+    },
+    "/build-products/production-planning/publishing-and-releasing": {
+        "title": "Publishing and releasing",
+        "subtitle": "How a draft plan becomes a commitment, and how one week of it becomes work on the floor."
     },
     "/build-products/production/batch-operations": {
         "title": "Batch Operations",
@@ -207,6 +267,30 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Collect Payments",
         "subtitle": "Learn about collecting payments in Augno."
     },
+    "/communicate/email": {
+        "title": "Email",
+        "subtitle": "Bridge a domain you own into Augno so customer mail opens a case and your team replies from your own address."
+    },
+    "/communicate/inbox": {
+        "title": "Inbox",
+        "subtitle": "Customer-service cases, triage lanes, assignment, and the reply-approval loop."
+    },
+    "/communicate/messages": {
+        "title": "Messages",
+        "subtitle": "Direct messages, group threads, and the discussions attached to your business records."
+    },
+    "/communicate/notifications": {
+        "title": "Notifications",
+        "subtitle": "The in-app bell feed, account announcements, and per-user notification preferences."
+    },
+    "/communicate/overview": {
+        "title": "Communicate",
+        "subtitle": "Conversations, customer cases, notifications, and email inside Augno."
+    },
+    "/communicate/retention-and-compliance": {
+        "title": "Retention & compliance",
+        "subtitle": "Hold a conversation for litigation, erase its contents on request, and know exactly what the retention worker deletes."
+    },
     "/dashboards/financial/accounts-receivable": {
         "title": "Accounts receivable dashboard",
         "subtitle": "An aging report showing what customers owe across current, 30, 60, 90, and 120-day buckets."
@@ -229,7 +313,7 @@ export const pagePreviewData: Record<string, PagePreview> = {
     },
     "/dashboards/operations/manufacturing-analytics": {
         "title": "Manufacturing analytics",
-        "subtitle": "Monitor production output, cost efficiency, margin, quality, and labor efficiency with month-over-month comparison."
+        "subtitle": "OEE and schedule performance for one production week, measured against the plan that was live at the time."
     },
     "/dashboards/operations/material-analytics": {
         "title": "Material analytics",
@@ -367,9 +451,13 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "API keys",
         "subtitle": "Create, rotate, and revoke API keys for programmatic access to Augno."
     },
+    "/manage-account/customer-portal-settings": {
+        "title": "Customer portal settings",
+        "subtitle": "Control how your customer portal looks and the address customers reach it on."
+    },
     "/manage-account/integrations": {
         "title": "Integrations",
-        "subtitle": "Connect third-party services like Stripe and Shippo to your Augno account."
+        "subtitle": "Connect third-party services like Stripe, Shippo, and HubSpot to your Augno account."
     },
     "/manage-account/overview": {
         "title": "Manage Your Account",
@@ -386,6 +474,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/manage-account/security": {
         "title": "Security",
         "subtitle": "Manage your password and keep your account secure."
+    },
+    "/manage-account/support-routing": {
+        "title": "Support routing",
+        "subtitle": "Choose the group whose members receive the messages customers send from your portal."
     },
     "/manage-account/team/roles-and-permissions": {
         "title": "Roles and permissions",

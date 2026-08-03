@@ -1,0 +1,474 @@
+---
+title: Messages
+subtitle: Direct messages, group threads, and the discussions attached to your business records.
+route: /communicate/messages
+nav:
+    title: Messages
+    section: Communicate
+    order: 2
+---
+
+<BetaTag />
+
+Internal messaging is where your team talks: one-to-one direct messages, named group threads, and
+discussions anchored to a sales order, an invoice, or a shipment. This page covers the internal side
+of the conversation model. Customer-facing cases — the support inbox, triage lanes, and reply drafts —
+are covered under <InternalLink pathKey="communicate.inbox" text="Inbox" />.
+
+> #### Preview
+>
+> Every endpoint on this page is in **public preview**. The shapes here are accurate today but may
+> change while the surface stabilizes.
+
+In the dashboard, this is the **Messages** page. The conversation list has **All** and **Hidden**
+presets, and **New conversation** offers three tabs: **Direct**, **New group**, and **Rosters**.
+
+## Starting a conversation
+
+`POST /v1/messaging/conversations` creates a direct message or a group.
+
+| Field                          | Notes                                                                                               |
+| ------------------------------ | --------------------------------------------------------------------------------------------------- |
+| `type`                         | `direct_message` or `group`. `system` channels are created by the platform and cannot be requested. |
+| `participant_account_user_ids` | For a direct message, exactly one account user. For a group, the members to seed.                   |
+| `group_id`                     | Seed a group from a reusable roster. Ignored for direct messages.                                   |
+| `title`                        | Display title for a group. Ignored for direct messages.                                             |
+| `topic_resource_type`          | The kind of business record to anchor the conversation to.                                          |
+| `topic_resource_id`            | The id of that record.                                                                              |
+
+The caller is always a participant and does not need to be listed. On a group they become its
+**owner**; everyone else joins as a **member** and is notified that they were added. In a direct
+message both people are members — a direct message has no owner.
+
+A few behaviors worth knowing before you build against it:
+
+- **Direct messages de-duplicate.** Requesting one that already exists returns the existing thread.
+- **Addressing yourself is allowed** and produces a private notes thread with a single participant.
+- **Blocks are enforced.** A direct message is refused when either user has blocked the other.
+- **A group normally needs at least one other participant** — a person or an agent. The exception is a
+  record-anchored discussion, which may start solo so the creator can post first and pull people in
+  later.
+- **Creating conversations is rate limited per user** as an anti-abuse backstop.
+
+<InternalLink pathKey="apiReference.conversations.createConversation" text="Create Conversation" />
+
+### Listing and reading conversations
+
+`GET /v1/messaging/conversations` is three lists behind one path, and the parameters you send decide
+which one you get. They do not compose: a record filter beats an inbox filter, and an inbox filter
+beats the plain list. Anything the winning branch does not understand is ignored rather than rejected.
+
+- **Left alone**, you get your own internal threads, most recently active first, narrowed by `type`
+  and `status` and keyset-paginated. This branch is hard-scoped to internal conversations, so sending
+  `audience=internal` changes nothing.
+- **`topic_resource_type` + `topic_resource_id`** switches to the record-discussion view: every
+  conversation that anchors _or_ links that record. This is what builds the "discussions on this
+  record" panel. `type` and `status` no longer apply on this branch, and the whole set comes back in
+  a single page with no cursor. It is scoped to the account rather than to your memberships, so it
+  also returns threads you are not a participant of and customer-facing cases on the same record.
+- **`audience=customer`** — or any inbox filter (`workflow_status`, `assignee_resource_id`,
+  `unassigned`, `include_archived`) — switches to the customer-service inbox, covered under
+    <InternalLink pathKey="communicate.inbox" text="Inbox" />. `type` and `status` do not apply
+    there either.
+
+`GET /v1/messaging/conversations/{id}` returns a single conversation. Someone who has left can still
+read it back; it comes back marked hidden for them.
+
+### The `status` trap
+
+The `status` **query filter** on the list endpoint accepts only two values:
+
+| Value    | Returns                                     |
+| -------- | ------------------------------------------- |
+| `active` | Visible conversations. This is the default. |
+| `hidden` | Conversations the caller has hidden.        |
+
+The `status` **field on the Conversation resource** is a three-value enum — `active`, `archived`, and
+`hidden`. There is no `status=archived` list filter; archived support cases are reached with
+`include_archived` instead. Do not assume the filter and the field share a value set.
+
+## Sending a message
+
+`POST /v1/messaging/conversations/{id}/messages` posts to a conversation. You must be an active
+participant who is allowed to post — view-only participants and either side of a block cannot send.
+Sending is rate limited per actor as an anti-abuse backstop, with a stricter bucket for customers than
+for internal staff.
+
+| Field                                         | Notes                                                                                                                     |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `body`                                        | Required unless the message carries at least one attachment or a resource link.                                           |
+| `client_message_id`                           | Client-supplied dedupe key. Required when sending.                                                                        |
+| `mentions`                                    | Account user ids explicitly @mentioned.                                                                                   |
+| `reply_to_message_id`                         | The message this one replies to.                                                                                          |
+| `link_resource_type` / `link_resource_id`     | A record to reference inline. A link counts in place of text, so a message may be nothing but the link.                   |
+| `attachments`                                 | Files, images, links, or resource references. See below.                                                                  |
+| `scheduled_at`                                | Hold the message and deliver it at this future time instead of now.                                                       |
+| `audience`                                    | `internal` (the default — a team-only note) or `customer`.                                                                |
+| `subject`, `cc`                               | Only meaningful for a customer reply going out by email.                                                                  |
+| `mode`, `channel`, `source_thread_message_id` | Used to propose a customer reply draft instead of sending. See <InternalLink pathKey="communicate.inbox" text="Inbox" />. |
+
+Two rules deserve to be called out.
+
+**An immediate send is idempotent on `client_message_id`.** A resend with the same value returns the
+message created by the first request instead of posting a second one, so retrying after a network
+failure is safe. The value is echoed back on the message so an optimistic local copy can be reconciled
+with the stored one. This is separate from the platform-wide
+
+<InternalLink pathKey="api.idempotency" text="Idempotency-Key" /> header.
+
+The qualifier matters: **a scheduled send does not dedupe on `client_message_id`.** The field is still
+required, but it is not carried into the scheduler, so a blind retry of a timed-out schedule queues a
+second message. Protect that call with the `Idempotency-Key` header instead, or list
+`?status=scheduled` before retrying to see whether the first attempt landed.
+
+**A mention pierces mute.** A participant who has muted the conversation gets no notification for
+ordinary messages, but naming them in `mentions` still raises an in-app alert. It does not, however,
+send them an email — a muted recipient is never emailed, mentioned or not.
+
+<InternalLink pathKey="apiReference.messages.sendMessage" text="Send Message" />
+
+### Scheduling and canceling
+
+Set `scheduled_at` to a future time and the message is queued rather than posted: it comes back with
+`status: scheduled` and no `sequence`, and it does not appear in the conversation until it is
+delivered.
+
+Scheduling is deliberately narrow. **Only the body is carried into a scheduled send** — attachments,
+mentions, copied recipients, resource links, replies, audience, and `client_message_id` are all
+dropped, and it goes out as an ordinary team-visible message. Because `client_message_id` does not
+reach the scheduler, use the platform
+
+<InternalLink pathKey="api.idempotency" text="Idempotency-Key" /> header if you need a safe retry.
+If you are no longer an active participant when it comes due, it is canceled instead of sent.
+
+`POST /v1/messaging/messages/{id}/actions/cancel` stops a scheduled message. You can only cancel one
+you scheduled yourself, and only while it is still waiting to go out; the canceled row is kept as a
+record and never appears in the conversation.
+
+<InternalLink
+    pathKey="apiReference.messages.cancelScheduledMessage"
+    text="Cancel Scheduled Message"
+/>
+
+## The message field model
+
+One resource covers every stage of a message's life. Four fields tell you what you are looking at.
+
+**`kind`** — what the row represents:
+
+| Value          | Meaning                                                                                                                    |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `chat`         | Written by a person.                                                                                                       |
+| `system_event` | A record of something that happened, such as someone joining or a link.                                                    |
+| `agent`        | Written by an AI agent taking part in the conversation.                                                                    |
+| `email`        | Carried over the case's bridged email thread — either one that arrived from the customer or a reply sent back out to them. |
+| `scheduled`    | Reserved. Nothing writes it today.                                                                                         |
+| `alert`        | Reserved. Nothing writes it today.                                                                                         |
+
+`scheduled` and `alert` are defined in the enum but no message is written with either kind, so do not
+filter on them. **A queued send is `kind: chat` with `status: scheduled`** — the kind never changes
+when it is delivered, so a message that went out on a schedule is indistinguishable from an ordinary
+one by `kind` alone.
+
+**`status`** — where it stands:
+
+| Value        | Meaning                                                          |
+| ------------ | ---------------------------------------------------------------- |
+| `draft`      | A proposed customer reply, still editable and awaiting approval. |
+| `scheduled`  | Queued to go out at a future time.                               |
+| `sent`       | Delivered, and part of the conversation everyone reads.          |
+| `canceled`   | A scheduled message stopped before it went out.                  |
+| `rejected`   | A draft discarded instead of being sent.                         |
+| `failed`     | A scheduled message that could not be delivered after retries.   |
+| `superseded` | A draft replaced by a newer one for the same thread.             |
+
+**`visibility`** — who can see it: `internal` (team only), `external` (to or from an outside party), or
+`system` (both). A customer reading their own case is never served `internal` messages.
+
+**`channel`** — how it reached its audience: `message` (in the conversation itself) or `email`
+(through the inbox the case is bridged to).
+
+### Only `sent` messages occupy the timeline
+
+A `sequence` is assigned when — and only when — a message is delivered. Drafts and not-yet-sent
+scheduled messages report `sequence: 0`. Everything that orders, pages, and marks-as-read works off
+`sequence`, so unsent rows simply are not on the timeline.
+
+A deleted message is the exception that proves the rule: it keeps its place in the timeline with its
+body cleared, so surrounding ordering and replies stay intact.
+
+### Listing messages
+
+`GET /v1/messaging/conversations/{id}/messages` returns the conversation's messages, newest first.
+
+- **Left unset, `status` gives you the delivered timeline** — sent messages only, keyset-paginated by
+  sequence.
+- **`status=draft`** returns the case's reply drafts awaiting approval, and **`status=scheduled`**
+  returns the messages you yourself have queued. Both return the whole set at once and ignore paging.
+- No other value changes the result set; anything else falls through to the delivered timeline.
+
+**`after_sequence` is the reconnect mechanism.** After a dropped realtime connection, pass the
+sequence of the last message you already hold and you get everything since, without refetching the
+thread.
+
+<InternalLink pathKey="apiReference.messages.listMessages" text="List Messages" />
+
+## Attachments
+
+Attaching a file is a two-step flow: mint an upload target, upload to it, then reference the returned
+key when you send.
+
+<DocNumberedSection number={1} title="Mint an upload target">
+
+`POST /v1/messaging/conversations/{id}/attachments/actions/upload-url` with a `filename` and,
+optionally, a `content_type`. You must be an active participant of that conversation.
+
+The response carries `upload_url`, `s3_key`, `expires_at`, and a preview `attachment` showing how the
+file will appear once sent. Targets are short-lived — about fifteen minutes — so request a new one if
+the upload has not finished by then.
+
+</DocNumberedSection>
+
+<DocNumberedSection number={2} title="PUT the file">
+
+Upload the bytes directly to `upload_url`. **Send it with the same content type you used to mint the
+target**, or object storage rejects the upload. The content type also classifies the attachment:
+anything starting with `image/` becomes an inline `image`, everything else a `file`.
+
+</DocNumberedSection>
+
+<DocNumberedSection number={3} title="Send the message with the key">
+
+Pass the `s3_key` back in the send request's `attachments[]`. The file only becomes part of the
+conversation at that point; an upload that is never sent is discarded automatically, so abandoning a
+target costs nothing.
+
+</DocNumberedSection>
+
+The key is bound to the conversation it was minted for — it cannot be attached in another one — and
+the file must already be uploaded, or the send is rejected.
+
+### Attachment kinds
+
+`attachments[]` takes a `kind` and the fields that kind expects:
+
+| `kind`     | Supply                                                       |
+| ---------- | ------------------------------------------------------------ |
+| `file`     | `s3_key`, `filename`, `content_type`, `size_bytes`           |
+| `image`    | Same as `file`; rendered inline in the conversation          |
+| `link`     | `url` — an external address, with nothing stored on our side |
+| `resource` | `resource_type` and `resource_id` — a pointer to a record    |
+
+On read, `file` and `image` attachments carry a signed download `url`. Those URLs are signed for one
+hour and regenerated every time the message is read, so follow them promptly rather than persisting
+them. `resource` attachments have no URL — resolve them through the expandable `resource` object.
+
+<InternalLink
+    pathKey="apiReference.messageAttachments.createAttachmentUploadUrl"
+    text="Create Attachment Upload URL"
+/>
+
+## Participants
+
+Participants are membership records with an id of their own. The participant `id` — not the account
+user's id — is what the participant endpoints take in the path.
+
+### Roles
+
+| Role     | Can                                                             |
+| -------- | --------------------------------------------------------------- |
+| `owner`  | Rename the conversation and manage its members and their roles. |
+| `admin`  | Add and remove members, and rename the conversation.            |
+| `member` | Post, mute, and leave.                                          |
+| `viewer` | Read only.                                                      |
+
+### Adding someone
+
+`POST /v1/messaging/conversations/{id}/participants` with an `account_user_id` and an optional `role`.
+Only an owner or admin can add someone, and nobody can be added to a direct message.
+
+**`role` defaults to `member`, and `owner` is rejected here.** Ownership can only be granted through
+the set-role endpoint. Adding a user who previously left or was removed reactivates their original
+membership with the role you give; adding someone who is already active changes nothing. The added
+user is notified, and a system event marking the addition is posted to the thread. The call returns
+the updated conversation.
+
+### Changing a role
+
+`POST /v1/messaging/conversations/{id}/participants/{pid}/actions/set-role`. Only the conversation's
+**owner** can change roles, and only user participants have roles that can be changed — agent and
+system participants are rejected.
+
+This is the only way to grant `owner`, and the promotion is additive: the promoted member gains full
+control while the caller keeps their own owner role, so a conversation can have more than one owner. A
+role change posts a system event; setting a participant to the role they already hold is a no-op.
+
+### Removing someone
+
+`DELETE /v1/messaging/conversations/{id}/participants/{pid}`. Owner or admin only, never on a direct
+message, and you cannot remove yourself — leave instead. The removed member loses access immediately,
+but their earlier messages stay in the thread and a system event records the removal. Adding them back
+later reactivates the same membership.
+
+### Membership states
+
+| State     | Meaning                                                                                                       |
+| --------- | ------------------------------------------------------------------------------------------------------------- |
+| `active`  | Currently a member.                                                                                           |
+| `left`    | Voluntarily left.                                                                                             |
+| `removed` | Removed by an admin.                                                                                          |
+| `hidden`  | Defined in the enum, but no write path sets it. Treat it as a state to tolerate rather than one you will see. |
+
+Hiding is not a membership state. A participant who hides a conversation stays `active` and stays in
+`participants`; what changes is the `status` **they** read back on the conversation. A conversation's
+`participants` list contains only current members, so anyone who left or was removed is omitted even
+though their past messages remain.
+
+## Per-caller state
+
+These actions change how the conversation looks to **you** and nobody else. Every one of them returns
+the refreshed Conversation, so you can drop the response straight back into your cache.
+
+| Action    | Endpoint                                               | Behavior                                                                                                                                                 |
+| --------- | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Mark read | `POST /v1/messaging/conversations/{id}/actions/read`   | Takes `up_to_sequence`. Clamped to the latest message, never moves backwards, and dismisses your outstanding notifications for the thread.               |
+| Hide      | `POST /v1/messaging/conversations/{id}/actions/hide`   | Drops it from your list. You stay a member and keep receiving notifications; new messages do not bring it back. Owners cannot hide.                      |
+| Unhide    | `POST /v1/messaging/conversations/{id}/actions/unhide` | Restores it to your list.                                                                                                                                |
+| Mute      | `POST /v1/messaging/conversations/{id}/actions/mute`   | Optional `muted_until`; omit to mute indefinitely. Suppresses notifications and email, but the unread count still climbs and a mention still alerts you. |
+| Unmute    | `POST /v1/messaging/conversations/{id}/actions/unmute` | Restores notifications.                                                                                                                                  |
+| Leave     | `POST /v1/messaging/conversations/{id}/actions/leave`  | Removes you. An owner cannot leave — hand ownership over first. Posts a "left the conversation" note; you can still read it back but no longer post.     |
+
+Marking read also updates the read receipt other participants see. Each participant exposes a
+`read_cursor` with the `sequence` of the last message they read, so a message is "seen" by that person
+when its sequence is less than or equal to their cursor. A cursor of `0` means they have not read
+anything yet.
+
+## Account-level state
+
+Archiving is not per caller — it changes the conversation for everyone.
+
+- `POST /v1/messaging/conversations/{id}/actions/archive` marks it archived for the whole account, so
+  every participant reads it back with `status: archived`.
+- `POST /v1/messaging/conversations/{id}/actions/unarchive` brings it back to `active`.
+
+**Archiving a group thread does not remove it from anyone's list.** Only the customer-service inbox
+filters on the archived flag: an archived customer-facing case leaves the working inbox and is
+returned only by the `include_archived` view. An internal thread — every conversation on this page —
+keeps appearing in its participants' lists, just flagged `archived`. Do not build a list on the
+assumption that archiving hides something.
+
+Only an owner or admin can archive or unarchive, and direct messages cannot be archived. Participants
+who had separately hidden the conversation still see it hidden until they unhide it themselves —
+per-caller hidden always wins over account-level archived.
+
+## Renaming
+
+`PATCH /v1/messaging/conversations/{id}` sets `title` on a group. Send `null` to clear it and leave the
+conversation unnamed. Owner or admin only, and direct messages cannot be renamed.
+
+## Linking business records
+
+Beyond the `topic` anchor set at creation, a conversation can reference any number of records:
+
+- `POST /v1/messaging/conversations/{id}/links` with `resource_type` and `resource_id` adds a link.
+- `GET /v1/messaging/conversations/{id}/links` returns them all in one page. The primary `topic`
+  anchor is not a link and is not listed here.
+- `DELETE /v1/messaging/conversations/{id}/links/{link_id}` removes one.
+
+Each linked record surfaces the conversation when conversations are listed for that record, which is
+what puts a thread on an order's page even when the thread was not started from it.
+
+## Rosters
+
+A **messaging group** is a reusable roster: a named set of users and agents that seeds new
+conversations. It is not itself a conversation.
+
+| Operation     | Endpoint                                               |
+| ------------- | ------------------------------------------------------ |
+| Create        | `POST /v1/messaging/groups`                            |
+| List          | `GET /v1/messaging/groups`                             |
+| Retrieve      | `GET /v1/messaging/groups/{id}`                        |
+| Rename        | `PATCH /v1/messaging/groups/{id}`                      |
+| Delete        | `DELETE /v1/messaging/groups/{id}`                     |
+| Add member    | `POST /v1/messaging/groups/{id}/members`               |
+| Remove member | `DELETE /v1/messaging/groups/{id}/members/{member_id}` |
+
+Create takes a `name` plus `member_account_user_ids` and `member_agent_config_ids`. The caller is
+recorded as the creator but is **not** added automatically — include their own account user id to be a
+member. Add-member takes a `member_type` of `user` or `agent` and the matching id. Remove-member takes
+the membership id from the roster's `members`, not the underlying user or agent id.
+
+### Rosters snapshot, they do not subscribe
+
+This is the single most important thing about rosters. Passing `group_id` when creating a conversation
+**copies the roster's current members into that conversation**. From that moment the conversation is
+independent:
+
+- Adding a member to the roster later does not add them to conversations already created from it.
+- Removing a member from the roster does not remove them from those conversations.
+- Deleting the roster leaves those conversations untouched; they just lose the `group` reference.
+
+The `group` on a conversation is therefore **provenance only** — a record of where the membership came
+from, not a live link. Agents seeded from a roster are seated with the safe default trigger policy
+(`mention`); changing an agent's policy on a conversation that already exists is an internal
+operation, not part of the public surface — see
+
+<InternalLink pathKey="automateWithAgents.agentsInChat" text="agents in chat" />.
+
+Rosters come back most-recently-updated first, and adding or removing a member counts as an update, so
+rosters in active use sort to the top. The whole account's rosters are returned in one page.
+
+## Blocks and reports
+
+`POST /v1/messaging/blocks` with a `blocked_account_user_id` blocks another user in your account.
+While the block stands, neither of you can start a direct message with the other or post in one you
+already share. Group conversations and customer cases are unaffected. Blocking someone twice returns
+the original block.
+
+`GET /v1/messaging/blocks` lists the blocks **you** created, most recent first. You are never told who
+has blocked you.
+
+`DELETE /v1/messaging/blocks/{id}` lifts a block. Note the path parameter: it is the **blocked account
+user's id**, not the block record's own id. Only your block is removed — if the other person has also
+blocked you, direct messages stay blocked. Unblocking someone you never blocked succeeds and changes
+nothing.
+
+`POST /v1/messaging/conversations/{id}/actions/report` files an abuse report with a free-form `reason`
+and, optionally, a `message_id` to report one specific message rather than the whole thread. Only an
+active participant can report. The report is recorded for review and changes nothing about the
+conversation — it is not hidden, muted, or removed. The call returns the conversation.
+
+## The contacts directory
+
+`GET /v1/messaging/contacts` lists the active users in the account, including yourself, returned as
+actors and filterable by name with `q`. A customer portal caller gets a single entry,
+`Customer Service`, rather than your staff directory.
+
+Two things to know before you wire a picker to it:
+
+- **It is a directory, not a permission check.** Blocking is not applied, so someone you have blocked
+  — or who has blocked you — is still listed even though opening a direct message with them is
+  refused.
+- **It is one unpaginated page capped at 100 names,** with no cursor and no "has more" signal. In an
+  account with more people than that, narrow it with `q` rather than fetching the whole list.
+
+<InternalLink
+    pathKey="apiReference.messagingContacts.listMessagingContacts"
+    text="List Messaging Contacts"
+/>
+
+## Expanding related objects
+
+Conversation and message sub-objects are not returned unless you ask for them with
+
+<InternalLink pathKey="api.include" text="include" />.
+
+On conversation responses: `assignee`, `group`, `participants`, `topic`, `last_message`, and
+`last_message.sender`, `last_message.author`, `last_message.resource`, `last_message.attachments`,
+`last_message.attachments.resource`.
+
+On message responses: `sender`, `author`, `resource`, `attachments`, `attachments.resource`,
+`conversation`, `conversation.participants`, `conversation.last_message`, `reply_to`,
+`reply_to.sender`, `reply_to.author`, `reply_to.attachments`, and `agent_run`.
+
+Next: <InternalLink pathKey="communicate.inbox" text="Inbox" includeArrow />

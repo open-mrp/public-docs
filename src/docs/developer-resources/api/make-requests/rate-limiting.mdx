@@ -23,24 +23,32 @@ The API enforces the following limits:
 
 Rate limits are applied per IP address using a sliding window algorithm. This means the limit is evaluated continuously rather than resetting at fixed intervals.
 
+One budget covers the whole API. Every <InternalLink text="application domain" pathKey="api.uris" /> — including `auth` — draws on the same 20 requests/second per IP; no domain is more or less strictly limited than another.
+
+### The limiter is per gateway process
+
+Rate-limit state is held in memory by the API gateway process that handles the request. It is not shared across gateway instances, so the effective ceiling for a single client IP scales with the number of gateway processes currently serving traffic, and a burst that is throttled on one connection may be admitted on the next. Build against the documented 20/second figure; do not calibrate to the throughput you happen to observe.
+
 ## Rate limit headers
 
 Every API response includes headers that report your current rate limit status:
 
-| Header                | Description                                             |
-| --------------------- | ------------------------------------------------------- |
-| `RateLimit-Limit`     | Maximum requests allowed per second                     |
-| `RateLimit-Remaining` | Requests remaining in the current window                |
-| `RateLimit-Reset`     | Seconds until the window resets                         |
-| `Retry-After`         | Seconds to wait before retrying (only on 429 responses) |
+| Header                | Description                                                                                                          |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `RateLimit-Limit`     | Maximum requests allowed per second                                                                                  |
+| `RateLimit-Remaining` | Requests remaining in the current window                                                                             |
+| `RateLimit-Reset`     | Seconds until the oldest request in the window ages out. The window is one second, so this is effectively always `0` |
+| `Retry-After`         | Seconds to wait before retrying. Sent only on a request-rate `429`, not on the failed-login `429` below              |
 
 Example response headers:
 
 ```http
 RateLimit-Limit: 20
 RateLimit-Remaining: 15
-RateLimit-Reset: 67
+RateLimit-Reset: 0
 ```
+
+Of the three `RateLimit-*` headers, `RateLimit-Remaining` is the one worth acting on — slow down as it approaches zero. `RateLimit-Reset` carries no useful signal at a one-second window, and `RateLimit-Limit` is a constant.
 
 ## Handling rate limit errors
 
@@ -52,14 +60,51 @@ When you exceed the rate limit, the API returns a `429 Too Many Requests` respon
         "code": "rate_limit_exceeded",
         "type": "invalid_request_error",
         "message": "Too many requests. Please try again later.",
-        "is_transient": true
+        "param": null,
+        "doc_url": "https://docs.augno.com/api/errors#rate_limit_exceeded",
+        "is_transient": true,
+        "quota": null,
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
 
-The `Retry-After` header indicates how many seconds to wait before making another request. We reserve the right to rate limit requests on specific IP addresses or accounts at our discretion.
+## Retry-After escalates — do not retry on a fixed schedule
+
+`Retry-After` is **not** derived from the rate-limit window, and it is unrelated to `RateLimit-Reset`. It is an exponential backoff computed from a per-client counter of _consecutive_ rejected requests:
+
+- Initial wait: 1 second
+- Multiplier: 1.5x per consecutive violation
+- Maximum: 15 minutes
+- Jitter: ±10%
+
+The counter increments on **every** rejected request and resets to zero only when a request is allowed through. So a client that keeps hammering while throttled — retrying on a fixed one-second timer, for instance — drives its own `Retry-After` up the curve, from a second or two toward the 15-minute ceiling. Each additional rejection makes the situation worse, not better.
+
+The correct behavior on a request-rate `429` is:
+
+1. Read `Retry-After` and sleep at least that long.
+2. Do not send anything to the API in the meantime — in-flight retries from other threads count against the same counter.
+3. Retry once. If you are allowed through, the counter resets and the penalty disappears.
+
+That recipe is specific to the request-rate limiter. The failed-login throttle below also returns `429 rate_limit_exceeded` but sets no `Retry-After`, so a client that reads the header unconditionally will find it missing there.
+
+## Failed logins are throttled separately
+
+Sign-in attempts carry an additional throttle keyed on the identifier being authenticated rather than on the client IP: **10 failed attempts per 5 minutes**. It exists so that rotating source addresses cannot be used to brute-force a single account.
+
+Only failed attempts advance the counter, but the check runs **before** the credentials are verified. Once an identifier is over the limit, every sign-in for it is refused for the remainder of the five-minute window — including one presenting the correct password. Build the "this account is temporarily locked out, wait and try again" path into your sign-in flow; do not treat the rejection as a bad-password error.
+
+Exceeding the throttle returns the same `429 rate_limit_exceeded` code with a message identifying it as a failed-login throttle. This response carries **no `Retry-After` header**. The `RateLimit-*` headers on it describe the per-IP request-rate budget and say nothing about the login throttle, so ignore them here and wait out the five-minute window instead. Like the request-rate limiter, the throttle's state is per gateway process.
+
+This throttle does not apply to API-key authentication, which does not go through the sign-in path.
+
+## Discretionary limits
+
+We reserve the right to rate limit requests on specific IP addresses or accounts at our discretion.
 
 ## Related documentation
 
 - <InternalLink text="Error handling" pathKey="api.errors" /> — Learn about error response formats
   and handling strategies
+- <InternalLink text="Idempotency" pathKey="api.idempotency" /> — Safely retrying a throttled write
+  without duplicating it

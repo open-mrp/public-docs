@@ -9,7 +9,7 @@ nav:
     order: 1
 ---
 
-The Augno API uses <InternalLink pathKey="apiReference.apiKeyManagement.listApiKeys" text="API keys" /> to authenticate requests. You can view and manage your API keys in the <InternalLink pathKey="frontend.apiKeys" text="Dashboard" />. If a request to the API does not include a valid API key, we will return an invalid request error. If the provided API key is expired, revoked, or deleted we will return an authentication error.
+The Augno API uses <InternalLink pathKey="apiReference.apiKey.listApiKeys" text="API keys" /> to authenticate requests. You can view and manage your API keys in the <InternalLink pathKey="frontend.apiKeys" text="Dashboard" />. If a request to the API does not include a valid API key, we return a `401` carrying the `invalid_credentials` error code (its `type` is `invalid_request_error`). Expired and revoked keys return the distinct `api_key_expired` and `api_key_revoked` codes, so you can tell a lapsed key apart from one that was cut off deliberately — see <InternalLink pathKey="api.errors" text="handling errors" />.
 
 ## Key Types
 
@@ -20,7 +20,9 @@ There are two types of API keys:
 | Sandbox secret key    | `aug_sk_test_` | Authenticate requests on your server when you're testing in a sandbox. By default, this key is provided admin privileges so you can use this key to perform any API request without restriction. Reserve this key for testing and development to make sure you don't accidentally modify your production data. |
 | Production secret key | `aug_sk_prod_` | Authenticate requests on your server when in production mode. You can create and configure these API keys with custom levels of permissions up to admin privileges.                                                                                                                                            |
 
-Your API keys can be found in the <InternalLink pathKey="frontend.apiKeys" text="Dashboard" />. Only a user with admin privileges can create new API keys.
+The mode is baked into the key itself. A secret key reads `aug_sk_{mode}_{id}_{secret}{checksum}`, where `{mode}` is `prod` or `test`, `{id}` identifies the key, and the trailing six characters of the last segment are a checksum over the rest. A key whose checksum doesn't verify is rejected before any lookup happens, so a truncated or mistyped key fails fast rather than looking like a permissions problem.
+
+Your API keys can be found in the <InternalLink pathKey="frontend.apiKeys" text="Dashboard" />. Listing, creating, retrieving, rotating and revoking API keys all require an admin role — a scoped custom role cannot manage keys, no matter which permissions it holds.
 
 ## Documentation API Keys
 
@@ -64,6 +66,8 @@ Authorization: Basic <base64(YOUR_API_KEY:)>
 
 > **Note:** When using Basic authentication, the API key is the username and the password must be empty (include the trailing colon before base64 encoding).
 
+In production, the `Authorization` header carries API keys only. A user access token sent in that header is rejected — browser sessions authenticate with cookies instead — and, symmetrically, an API key presented in a cookie is rejected. Sending both an `Authorization` header and a session cookie on the same request is also an error, because the credential to use would be ambiguous.
+
 ## Account Context
 
 By default, API requests operate on the account that owns the API key. To target a different account (such as a connected customer or supplier account), include the target account ID header:
@@ -76,14 +80,32 @@ The API key must have permission to access the target account through an establi
 
 ## Permissions
 
-Each API key is associated with a role that defines its permissions. Permissions are organized by resource domain (e.g., `products`, `orders`, `production-runs`) with standard CRUD actions (`create`, `read`, `update`, `delete`).
+Each API key is associated with a role that defines its permissions. Permissions are organized by resource domain (e.g., `products`, `sales_orders`, `production_runs`) with standard CRUD actions (`create`, `read`, `update`, `delete`).
 
-When creating an API key, assign a role with the minimum permissions required for your integration.
+When creating an API key, assign a role with the minimum permissions required for your integration. A key keeps that role for its entire life — rotation carries it over — so issuing a key with a different role means creating a new key. Editing the role's own permissions, on the other hand, applies to existing keys immediately.
+
+## Rotating Keys
+
+<InternalLink pathKey="apiReference.apiKey.rotateApiKey" text="Rotate API Key" /> replaces a key in
+a single call. It revokes the key you name and issues a replacement that carries over the same name
+and role and inherits the original expiration unless you override it. The replacement is a distinct
+key with its own ID, so the key you rotated remains retrievable with a `revoked` status.
+
+The response body is the only place the new secret ever appears — it cannot be fetched again afterward. Treat a rotate call the same way you treat a create call and write the secret straight into your secret store.
+
+Two optional fields shape the changeover:
+
+| Field        | Effect                                                                                                                                                                                                                                     |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `revoke_at`  | When the old key stops authenticating. Omit it and the old key is revoked immediately. Set a future timestamp — no more than **30 days** ahead — and the old key keeps working until then. A timestamp in the past collapses to immediate. |
+| `expires_at` | When the replacement key expires. Omit it and the replacement inherits the expiration of the key being rotated.                                                                                                                            |
+
+`revoke_at` is what makes a zero-downtime rotation possible: rotate, roll the new secret out to every deployment that uses it, and let the old key lapse on its own. Until `revoke_at` arrives, the old key still lists as `active` and its `revoked_at` field carries the scheduled time. A `revoke_at` more than 30 days out is rejected as a validation error, and a key that is already revoked cannot be rotated at all.
 
 ## Security
 
-- **Storage:** The full API key is shown once at creation and cannot be retrieved afterward. Store it securely.
+- **Storage:** The full API key is shown once at creation or rotation and cannot be retrieved afterward. Store it securely.
 - **Display:** In API responses and logs, keys are masked to show only the last 4 characters of the secret (e.g., `aug_sk_prod_****UCZu`).
 - **Expiration:** API keys can be created with an optional expiration date. Expired keys are automatically rejected.
-- **Revocation:** API keys can be revoked at any time. Revoked keys are immediately rejected.
-- **Usage tracking:** All requests attempted with an API key are logged.
+- **Revocation:** API keys can be revoked at any time. Revocation is immediate and cannot be undone; the key record is retained so it stays auditable. There is no operation that deletes a key record.
+- **Usage tracking:** All requests attempted with an API key are logged, and each key records the last time it authenticated a request. That timestamp is written at most once a day, so it can lag actual use by up to 24 hours.

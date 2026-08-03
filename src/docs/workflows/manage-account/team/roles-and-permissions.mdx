@@ -9,7 +9,7 @@ nav:
     order: 2
 ---
 
-**Roles** define what a user or API key can see and do in Augno. Each role is a named set of permissions that controls create, read, update, and delete access across every area of the system. Only admins can manage roles from the **Roles** tab in <InternalLink pathKey="frontend.roles" text="account settings" />.
+**Roles** define what a user or API key can see and do in Augno. Each role is a named set of permissions that controls create, read, update, and delete access across every area of the system. Roles are managed from the <InternalLink pathKey="frontend.roles" text="Roles page" />. Listing, creating, editing, and deleting roles is gated on the `roles` permission, which admins hold implicitly — so you can delegate role management to a custom role.
 
 ### Why roles matter
 
@@ -17,39 +17,59 @@ nav:
 - **Simplicity**: assign one role per user instead of configuring individual permissions
 - **Consistency**: the same role system applies to both <InternalLink pathKey="manageAccount.team.teamMembers" text="team members" /> and <InternalLink pathKey="manageAccount.apiKeys" text="API keys" />
 
-### Default roles
+### Built-in roles
 
-Augno includes built-in roles that cannot be edited or deleted:
+Augno ships a small number of global roles. They are shared across Augno rather than owned by your account, so they show up in your roles list but cannot be renamed, edited, or deleted:
 
-- **Admin**: full access to all features, settings, and management capabilities
-- **Viewer**: read-only access across the system
+- **Admin**: full access to every feature, setting, and management capability
+- **Customer**: the role assigned to <InternalLink pathKey="generateSales.customerPortal" text="customer portal" /> users, granting the narrow set of permissions the portal needs
 
-These defaults cover common use cases. For more specific needs, create custom roles.
+Admin is more than a role with every box ticked. The admin role type bypasses permission checks outright, and a few areas require it and cannot be delegated to a custom role no matter how it is configured: API keys, plan and billing changes, and connecting integrations.
+
+Everything else is a custom role you create.
 
 ### Custom roles
 
-Create a custom role when the default roles don't match your needs:
+Create a custom role when the built-in roles don't match your needs:
 
-1. Navigate to the **Roles** tab in account settings
+1. Navigate to the **Roles** page
 2. Click **Create**
 3. Enter a **role name** (e.g., "Sales Manager", "Warehouse Staff")
 4. Configure **CRUD permissions** for each domain
 
+A role cannot be deleted while it is still assigned to a team member. Reassign everyone who holds it first.
+
 ### Permission domains
 
-Permissions are organized by domain. Each domain supports up to four operations: **create**, **read**, **update**, and **delete**. Some domains may only support a subset of these operations.
+Permissions are organized by domain. Each domain supports up to four operations: **create**, **read**, **update**, and **delete**, and a permission is written as `domain:action` — `sales_orders:read`, `messaging:create`, and so on. The role editor lists the domains under group headings with a checkbox per action, a **Select All** toggle for the whole set, and a filter box that matches on either a domain's display name or its code.
 
-| Domain category  | Example domains                                                  |
-| ---------------- | ---------------------------------------------------------------- |
-| **Core records** | Accounts, users, teams, customers, contacts                      |
-| **Products**     | Items, categories, units, unit groups, BOMs, production steps    |
-| **Sales**        | Sales orders, customer pricing, discount codes, volume discounts |
-| **Production**   | Production runs, batches, batch operations, scanning stations    |
-| **Inventory**    | Inventory, storage locations, lots, change logs                  |
-| **Purchasing**   | Suppliers, purchase orders, deliveries                           |
-| **Shipping**     | Shipments, packages, picking, packing                            |
-| **Financial**    | Invoices, payments, settlements, accounts receivable             |
-| **Settings**     | Roles, integrations, API keys, account settings                  |
+The table below is the complete set of domains a role can grant. The **Area** column groups them by the part of the product they cover, which is a reading aid here rather than the exact section headings you'll see in the role editor.
+
+| Area                         | Domains                                                                                                                                                                                                       |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Account & administration** | `self`, `accounts`, `roles`, `permissions`, `api_keys`, `sandboxes`, `integrations`, `system_properties`, `priorities`                                                                                        |
+| **Team & agents**            | `team`, `departments`, `agents`, `agent_runs`, `agent_memories`                                                                                                                                               |
+| **Communication**            | `messaging`, `alerts`, `email_logs`                                                                                                                                                                           |
+| **Customers**                | `customers`, `customer_groups`, `contacts`, `addresses`                                                                                                                                                       |
+| **Items & products**         | `items`, `item_categories`, `products`, `product_groups`, `product_lines`, `product_types`, `product_variations`, `relevant_products`, `materials`, `parts`, `supplies`, `properties`, `units`, `unit_groups` |
+| **Sales**                    | `sales_orders`, `discounts`, `payment_terms`, `sales_rep_territories`, `sales_targets`                                                                                                                        |
+| **Purchasing**               | `purchase_orders`, `suppliers`, `receiving`, `receiving_orders`                                                                                                                                               |
+| **Production**               | `production_runs`, `production_steps`, `production_step_transformations`, `batches`, `shifts`, `scanners`                                                                                                     |
+| **Plant & scheduling**       | `machines`, `machine_downtime`, `production_schedules`, `demand_overrides`                                                                                                                                    |
+| **Inventory**                | `inventory`, `locations`, `adjustment_types`                                                                                                                                                                  |
+| **Picking & shipping**       | `picks`, `department_picks`, `shipments`, `shipping_cases`, `shipping_terms`, `carriers`, `deliveries`                                                                                                        |
+| **Financial**                | `invoices`, `transactions`, `settlements`                                                                                                                                                                     |
+| **Logs & auditing**          | `audit_events`, `request_logs`, `error_logs`, `inventory_logs`, `inventory_change_logs`, `scanning_error_logs`                                                                                                |
+| **EDI**                      | `edi_locations`, `edi_runs`                                                                                                                                                                                   |
+
+Two of these are easy to overlook when you build a custom role:
+
+- **`messaging`** gates almost the whole communication surface — conversations, messages and drafts, message attachments, messaging groups, blocked contacts, announcements, and the email inbox and domain settings. A role that can read sales orders but has no `messaging:read` will find those screens and endpoints returning permission errors.
+- **`alerts`** gates sending notifications. `alerts:create` is what lets a user or integration push a notification to someone.
+
+A number of domains are declared but are not currently checked by any endpoint — `shifts`, `supplies`, `receiving`, `department_picks`, `error_logs`, `scanning_error_logs`, `inventory_change_logs`, `product_groups`, `product_variations`, `production_step_transformations`, and `shipping_cases` among them. Granting or withholding them has no effect today.
+
+`api_keys` is a special case: the domain exists, but API key management is gated on the admin role type rather than on the permission, so ticking `api_keys` on a custom role does not let that role create or revoke keys.
 
 ### Route access preview
 

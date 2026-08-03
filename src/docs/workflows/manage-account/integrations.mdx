@@ -1,6 +1,6 @@
 ---
 title: Integrations
-subtitle: Connect third-party services like Stripe and Shippo to your Augno account.
+subtitle: Connect third-party services like Stripe, Shippo, and HubSpot to your Augno account.
 route: /manage-account/integrations
 nav:
     title: Integrations
@@ -14,7 +14,24 @@ nav:
 
 - **Payments**: connect Stripe to accept payments, sync invoices, and manage subscriptions
 - **Shipping**: connect Shippo to generate shipping labels and get live carrier rates
+- **CRM**: connect HubSpot to push your customers, contacts, and won orders into your sales pipeline
 - **Automation**: once connected, integrations work automatically within your existing workflows
+
+### Supported providers
+
+Augno supports three providers, identified by a `provider` code:
+
+| Provider    | Code      | What it powers                                        |
+| ----------- | --------- | ----------------------------------------------------- |
+| **Stripe**  | `stripe`  | Payment processing for invoices and portal checkout   |
+| **Shippo**  | `shippo`  | Shipping labels and live carrier rates                |
+| **HubSpot** | `hubspot` | CRM sync of companies, contacts, and Closed-Won deals |
+
+An account can hold **at most one integration per provider**. Connecting a provider that is already connected rotates its credentials in place rather than creating a second entry.
+
+Credentials are validated against the provider's expected key format, encrypted at rest, and never returned in API responses. For Stripe and Shippo, the key's environment must match the account's: a <InternalLink pathKey="manageAccount.sandboxes" text="sandbox" /> account must supply test keys and a production account must supply live keys, and a mismatch is rejected. HubSpot tokens make no such distinction.
+
+**Preview**: the account-integration endpoints — including the `provider` codes and the credential field names documented below — are published in the public OpenAPI spec but are still in preview, and may change without notice.
 
 ### Stripe integration
 
@@ -23,9 +40,9 @@ Stripe handles payment processing for invoices and subscriptions. To connect Str
 1. Navigate to the **Integrations** tab
 2. Select **Stripe**
 3. Enter your credentials:
-    - **Publishable key**: your Stripe publishable API key
-    - **Secret key**: your Stripe secret API key
-    - **Webhook secret**: your Stripe webhook signing secret for verifying incoming events
+    - **Publishable key** (`publishable_key`): your Stripe publishable API key, starting `pk_`
+    - **Secret key** (`private_key`): your Stripe secret API key, starting `sk_`
+    - **Webhook secret** (`webhook_secret`): your Stripe webhook signing secret, starting `whsec_`, used to verify incoming events
 4. Save and enable the integration
 
 #### Stripe webhook setup
@@ -51,10 +68,41 @@ Shippo provides shipping label generation and carrier rate comparison. To connec
 
 1. Navigate to the **Integrations** tab
 2. Select **Shippo**
-3. Enter your **Shippo API key**
+3. Enter your **Shippo API key** (`api_key`), starting `shippo_live_` on a production account or `shippo_test_` on a sandbox
 4. Save and enable the integration
 
 Once connected, you can generate shipping labels and retrieve live rates during the <InternalLink pathKey="shipProducts.overview" text="shipping workflow" />.
+
+### HubSpot integration
+
+HubSpot receives your customers as companies, their contacts as contacts, and your won orders as Closed-Won deals.
+
+#### Connecting HubSpot
+
+1. In HubSpot, create a **Private App** and grant it these scopes: `crm.objects.companies.read`, `crm.objects.companies.write`, `crm.objects.contacts.read`, `crm.objects.contacts.write`, `crm.objects.deals.read`, `crm.objects.deals.write`, `crm.schemas.deals.read`, `crm.schemas.deals.write`. A token missing any of them saves successfully but fails once a sync runs.
+2. Navigate to the **Integrations** tab in Augno and select **HubSpot**
+3. Enter the private app's **Access token** (`access_token`), which starts `pat-`
+4. Save and enable the integration
+
+#### The guided sync
+
+Once HubSpot is connected, the **HubSpot Sync** panel backfills your existing data. The sync is deliberately two-phase so nothing is written to HubSpot before you have approved the matches.
+
+1. **Start the sync.** Optionally set a **deal cutoff** date — orders placed on or after that date are backfilled as Closed-Won deals. Omit it to sync companies and contacts only, with no historical deals. Only the date is used, so the whole of that day is included.
+2. **Preview.** The job runs a read-only pass that matches your customers to existing HubSpot companies and produces a dry-run report: customers analyzed, companies auto-matched, companies needing review, new companies to create, and contacts to sync. Nothing is written to HubSpot during this pass.
+3. **Resolve the review queue.** Customers that could not be confidently matched land in a review list. For each one you can:
+    - **Link** it to one of the suggested HubSpot companies, or to any HubSpot company ID you paste in
+    - **Create new**, which creates a fresh HubSpot company for that customer during the sync
+    - **Skip**, which excludes that customer and its orders from the sync entirely
+4. **Run the sync.** Every review must be resolved or skipped first. Execution happens in the background, writing companies, contacts, and Closed-Won deals; the job moves to a syncing state and you can poll it for progress.
+
+Only one sync can be underway at a time: starting another while one is previewing, awaiting review, or executing is rejected. A run that failed part-way can be executed again to resume where it stopped — anything already written to HubSpot stays there. A sync that failed during the **preview** pass has incomplete matches and cannot be executed; start a new one instead.
+
+**Cancel sync** is the escape hatch for a job that is stuck — for example when the worker running it stopped without recording an outcome. Cancelling marks the job failed and releases the account to start a new one; it does not undo anything already written to HubSpot.
+
+Once a run has written to HubSpot, a **Synced customers** table shows each Augno customer, the HubSpot company it maps to, when it was last pushed, and whether it failed.
+
+**Preview**: the HubSpot sync endpoints are internal-only and in preview. They are not published in the public OpenAPI spec or the SDKs, and they may change without notice — run the sync from the dashboard.
 
 ### Managing integrations
 
@@ -67,10 +115,13 @@ Each integration supports these management actions:
 
 ### Integration status
 
-| Status             | Meaning                                            |
-| ------------------ | -------------------------------------------------- |
-| **Active**         | Integration is connected and processing            |
-| **Inactive**       | Integration is configured but temporarily disabled |
-| **Not configured** | No credentials have been entered                   |
+An integration has exactly two states:
+
+| Status       | Meaning                                                                               |
+| ------------ | ------------------------------------------------------------------------------------- |
+| **Active**   | Integration is connected and available for use                                        |
+| **Inactive** | Integration is deactivated; its stored credentials are retained but it cannot be used |
+
+There is no third "not configured" state — a provider you have never connected simply has no integration, so it does not appear in the list at all.
 
 Next: <InternalLink pathKey="manageAccount.apiKeys" text="API keys" includeArrow />
