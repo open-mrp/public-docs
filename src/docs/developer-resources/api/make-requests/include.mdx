@@ -145,8 +145,6 @@ curl "API_HOST/v1/auth/api-keys?include[]=role" \
 
 Without `include[]=role`, each `role` in the list would be `null`.
 
-Expansions are resolved once per page, not once per row: the IDs needed across every item are gathered and de-duplicated before anything is fetched, so a sub-object shared by many rows is looked up a single time. The `include` values you send are also carried into the pagination URLs in `page_info`, so <InternalLink text="following those URLs" pathKey="api.pagination" /> keeps the same expansions on every page.
-
 ## Create and rotate responses
 
 For create and rotate endpoints, the response wraps the resource in `api_key_info` alongside the secret. The `include` parameter expands sub-objects within `api_key_info`:
@@ -176,16 +174,6 @@ curl -X POST "API_HOST/v1/auth/api-keys?include[]=role" \
     }
 }
 ```
-
-## Permission-gated includes on sales orders
-
-Three expansions behave differently from every other include: a sales order's internal fulfillment records, `related.pick`, `related.production_run`, and `related.shipments`. Their backing resources require an internal actor, so a caller that can read the order itself may have no permission to read the pick, the production run, or the shipments behind it.
-
-For **these three expansions only**, an authorization failure is absorbed: the sub-object is left `null` and the parent request still succeeds. There is no error, no warning, and no field in the response that distinguishes "you asked and were not allowed" from "you did not ask". A `null` `related.pick` therefore does not mean the order has not been picked — it may only mean this credential cannot read picks. If one of the three is unexpectedly `null` in production but populated in development, check the permissions of the credential in use before looking for a data problem.
-
-Every other expandable sub-object behaves the opposite way. If resolving it fails for any reason — including an authorization failure — the error propagates and the whole request fails. You do not need to defend against a silently-`null` expansion outside the three fields named above.
-
-Only authorization failures are absorbed, and only on those three. Any other failure while resolving them — the target resource genuinely missing, or a transport error — still fails the whole request.
 
 ## Error handling
 

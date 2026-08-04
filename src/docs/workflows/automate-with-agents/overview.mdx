@@ -9,9 +9,7 @@ nav:
     order: 1
 ---
 
-**Agents** are AI teammates that work inside your Augno account. <BetaTag /> An agent has a name, a set of standing instructions, a role that bounds what it is allowed to see and change, and a set of tools it can call. When something starts an agent — a person in a chat, or an explicit trigger — Augno creates a **run**, and the agent works the problem step by step until it answers, finishes, or stops to ask you something.
-
-> **Agents are in preview.** Everything on these pages is available in the dashboard and through the `/v1/ai/*` endpoints, and each page documents those endpoints with their real paths and request and response shapes. They are not part of Augno's public OpenAPI spec and are not generated into the published SDKs, so they do not appear in the API reference and there is no typed client for them. Both the endpoints and the behavior described here may change without notice.
+**Agents** are AI teammates that work inside your Augno account. An agent has a name, a set of standing instructions, a role that bounds what it is allowed to see and change, and a set of tools it can call. When something starts an agent — a person in a chat, or an explicit trigger — Augno creates a **run**, and the agent works the problem step by step until it answers, finishes, or stops to ask you something.
 
 Agents are not a separate product bolted onto Augno. They act through the same API your team and your integrations use, authorized against the same <InternalLink pathKey="manageAccount.team.rolesAndPermissions" text="roles and permissions" />, and everything they do is recorded on the run.
 

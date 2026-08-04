@@ -9,11 +9,7 @@ nav:
     order: 8
 ---
 
-This API uses cursor-based pagination for list endpoints. Cursors are **opaque strings**, HMAC-signed to
-prevent tampering, and must never be constructed or edited by the client.
-
-You do not normally need to touch a cursor at all. Every list response tells you the exact relative URL
-of the next and previous pages in `page_info`; following that URL is the supported way to page.
+This API uses cursor-based pagination for list endpoints. Cursors are **opaque strings** and are signed to prevent tampering. Use the cursor values returned in `page_info` exactly as-is.
 
 ## Query parameters
 
@@ -23,7 +19,7 @@ of the next and previous pages in `page_info`; following that URL is the support
 | `cursor`  | string  | null    | Opaque cursor identifying where the page starts. Comes from a `page_info` URL  |
 | `q`       | string  | null    | Free-text search term. Maximum 500 characters. Matched fields vary by endpoint |
 
-A `limit` outside 1–1000, or a `q` longer than 500 characters, is rejected with a `400` and error code
+A `limit` outside 1-1000, or a `q` longer than 500 characters, is rejected with a `400` and error code
 `parameter_invalid` before the endpoint runs:
 
 ```json

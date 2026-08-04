@@ -72,19 +72,7 @@ export function generateStaticParams() {
   {
     "slug": [
       "api",
-      "realtime"
-    ]
-  },
-  {
-    "slug": [
-      "api",
       "request-ids"
-    ]
-  },
-  {
-    "slug": [
-      "api",
-      "search"
     ]
   },
   {

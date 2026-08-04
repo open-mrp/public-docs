@@ -18,8 +18,6 @@
 - [Request IDs](https://docs.augno.com/developer-resources/api/make-requests/request-ids.md): Use request IDs to debug issues and get support.
 - [API errors](https://docs.augno.com/developer-resources/api/handling-errors/errors.md): Standard error envelope format for consistent error handling.
 - [Include Parameter](https://docs.augno.com/developer-resources/api/make-requests/include.md): Expand sub-objects in API responses to get the data you need.
-- [Search](https://docs.augno.com/developer-resources/api/make-requests/search.md): One free-text query across every resource type the caller is allowed to read.
-- [Realtime](https://docs.augno.com/developer-resources/api/make-requests/realtime.md): Stream notifications, chat messages, and agent run progress over one long-lived connection.
 
 ## Developer resources
 - [Overview](https://docs.augno.com/developer-resources/index.md): Technical documentation, API references, and guides for developers.
@@ -174,8 +172,6 @@
 - [PUT Address Validation — Validate](https://docs.augno.com/api-reference/address-validation/validate-address.md)
 - [GET Email Logs — List](https://docs.augno.com/api-reference/email-logs/list-email-logs.md)
 - [GET Email Logs — Retrieve Log](https://docs.augno.com/api-reference/email-logs/retrieve-email-log.md)
-- [PUT Analytics — Analyze OEE](https://docs.augno.com/api-reference/analytics/analyze-oee.md)
-- [PUT Analytics — Analyze Schedule Attainment](https://docs.augno.com/api-reference/analytics/analyze-schedule-attainment.md)
 
 ### Catalog
 - [POST Units — Create Unit](https://docs.augno.com/api-reference/units/create-unit.md)
@@ -208,7 +204,6 @@
 - [PUT Items — Add Item Attribute](https://docs.augno.com/api-reference/items/add-item-attribute.md)
 - [PUT Items — Change Item Category](https://docs.augno.com/api-reference/items/change-item-category.md)
 - [GET Items — Retrieve Item Inventory](https://docs.augno.com/api-reference/items/retrieve-item-inventory.md)
-- [GET Items — Retrieve Item Lot Default](https://docs.augno.com/api-reference/items/retrieve-item-lot-default.md)
 - [DELETE Items — Remove Item Attribute](https://docs.augno.com/api-reference/items/remove-item-attribute.md)
 - [POST Item Categories — Create Category](https://docs.augno.com/api-reference/item-categories/create-item-category.md)
 - [PATCH Item Categories — Update Category](https://docs.augno.com/api-reference/item-categories/update-item-category.md)
@@ -377,45 +372,6 @@
 - [GET Service Levels — List](https://docs.augno.com/api-reference/service-levels/list-service-levels.md)
 - [GET Service Levels — Retrieve Level](https://docs.augno.com/api-reference/service-levels/retrieve-service-level.md)
 - [DELETE Service Levels — Delete Level](https://docs.augno.com/api-reference/service-levels/delete-service-level.md)
-- [POST Machine Downtime — Create Event](https://docs.augno.com/api-reference/machine-downtime/create-machine-downtime-event.md)
-- [PATCH Machine Downtime — Update Event](https://docs.augno.com/api-reference/machine-downtime/update-machine-downtime-event.md)
-- [GET Machine Downtime — List Events](https://docs.augno.com/api-reference/machine-downtime/list-machine-downtime-events.md)
-- [GET Machine Downtime — List Reasons](https://docs.augno.com/api-reference/machine-downtime/list-machine-downtime-reasons.md)
-- [GET Machine Downtime — Retrieve Event](https://docs.augno.com/api-reference/machine-downtime/retrieve-machine-downtime-event.md)
-- [DELETE Machine Downtime — Delete Event](https://docs.augno.com/api-reference/machine-downtime/delete-machine-downtime-event.md)
-- [GET Machine Status — List](https://docs.augno.com/api-reference/machine-status/list-machine-status.md)
-- [POST Demand Overrides — Create Override](https://docs.augno.com/api-reference/demand-overrides/create-demand-override.md)
-- [PATCH Demand Overrides — Update Override](https://docs.augno.com/api-reference/demand-overrides/update-demand-override.md)
-- [GET Demand Overrides — List Override Types](https://docs.augno.com/api-reference/demand-overrides/list-demand-override-types.md)
-- [GET Demand Overrides — List](https://docs.augno.com/api-reference/demand-overrides/list-demand-overrides.md)
-- [GET Demand Overrides — Retrieve Override](https://docs.augno.com/api-reference/demand-overrides/retrieve-demand-override.md)
-- [DELETE Demand Overrides — Delete Override](https://docs.augno.com/api-reference/demand-overrides/delete-demand-override.md)
-- [POST Production Schedules — Generate Schedule](https://docs.augno.com/api-reference/production-schedules/generate-production-schedule.md)
-- [GET Production Schedules — List](https://docs.augno.com/api-reference/production-schedules/list-production-schedules.md)
-- [GET Production Schedules — Retrieve Current Schedule](https://docs.augno.com/api-reference/production-schedules/retrieve-current-production-schedule.md)
-- [GET Production Schedules — List Schedule Deviation Types](https://docs.augno.com/api-reference/production-schedules/list-schedule-deviation-types.md)
-- [GET Production Schedules — Retrieve Schedule](https://docs.augno.com/api-reference/production-schedules/retrieve-production-schedule.md)
-- [DELETE Production Schedules — Delete Schedule](https://docs.augno.com/api-reference/production-schedules/delete-production-schedule.md)
-- [PUT Production Schedules — Preview Schedule](https://docs.augno.com/api-reference/production-schedules/preview-production-schedule.md)
-- [POST Production Schedules — Create Schedule Line](https://docs.augno.com/api-reference/production-schedules/create-production-schedule-line.md)
-- [PATCH Production Schedules — Update Schedule Line](https://docs.augno.com/api-reference/production-schedules/update-production-schedule-line.md)
-- [GET Production Schedules — List Schedule Derived Lines](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-derived-lines.md)
-- [GET Production Schedules — List Schedule Deviations](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-deviations.md)
-- [GET Production Schedules — List Schedule Finished Policies](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-finished-policies.md)
-- [GET Production Schedules — List Schedule Item Policies](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-item-policies.md)
-- [GET Production Schedules — List Schedule Lines](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-lines.md)
-- [GET Production Schedules — Preview Schedule Week Release](https://docs.augno.com/api-reference/production-schedules/preview-production-schedule-week-release.md)
-- [DELETE Production Schedules — Delete Schedule Line](https://docs.augno.com/api-reference/production-schedules/delete-production-schedule-line.md)
-- [PUT Production Schedules — Archive Schedule](https://docs.augno.com/api-reference/production-schedules/archive-production-schedule.md)
-- [PUT Production Schedules — Preview Schedule Regenerate](https://docs.augno.com/api-reference/production-schedules/preview-production-schedule-regenerate.md)
-- [PUT Production Schedules — Publish Schedule](https://docs.augno.com/api-reference/production-schedules/publish-production-schedule.md)
-- [PUT Production Schedules — Regenerate Schedule](https://docs.augno.com/api-reference/production-schedules/regenerate-production-schedule.md)
-- [POST Production Schedules — Release Schedule Week](https://docs.augno.com/api-reference/production-schedules/release-production-schedule-week.md)
-- [GET Production Schedule Settings — Retrieve](https://docs.augno.com/api-reference/production-schedule-settings/retrieve-production-schedule-settings.md)
-- [GET Production Schedule Settings — List Resource](https://docs.augno.com/api-reference/production-schedule-settings/list-production-schedule-resource-settings.md)
-- [DELETE Production Schedule Settings — Delete Resource Setting](https://docs.augno.com/api-reference/production-schedule-settings/delete-production-schedule-resource-setting.md)
-- [PUT Production Schedule Settings — Update](https://docs.augno.com/api-reference/production-schedule-settings/update-production-schedule-settings.md)
-- [PUT Production Schedule Settings — Upsert Resource Setting](https://docs.augno.com/api-reference/production-schedule-settings/upsert-production-schedule-resource-setting.md)
 - [POST Location — Create](https://docs.augno.com/api-reference/location/create-location.md)
 - [PATCH Location — Update](https://docs.augno.com/api-reference/location/update-location.md)
 - [GET Location — List Types](https://docs.augno.com/api-reference/location/list-location-types.md)
@@ -495,10 +451,7 @@
 
 ### Operations
 - [Carriers object](https://docs.augno.com/api-reference/objects/carrier.md): A shipping carrier configured for fulfilling orders.
-- [Demand Overrides object](https://docs.augno.com/api-reference/objects/demand-override.md): An adjustment to the demand a production schedule plans against.
 - [Location object](https://docs.augno.com/api-reference/objects/location-type.md): A level in the storage location hierarchy, such as a building or a bin.
-- [Machine Downtime object](https://docs.augno.com/api-reference/objects/machine-downtime-event.md): A period during which a machine was not running.
-- [Production Schedules object](https://docs.augno.com/api-reference/objects/production-schedule.md): A saved production schedule.
 - [Scanning Stations object](https://docs.augno.com/api-reference/objects/scanning-station.md): A station on the production floor where operators scan batches to perform a batch operation, such as initializing or moving a batch.
 - [Service Levels object](https://docs.augno.com/api-reference/objects/service-level.md): Shipping service level for a carrier.
 - [Shipping Terms object](https://docs.augno.com/api-reference/objects/shipping-term.md): A shipping term defining how freight charges are calculated for an order.

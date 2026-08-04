@@ -34,41 +34,15 @@ The code runs in a sandboxed runtime **inside the server** — there is no third
 
 > **What the agent can do is exactly what your API key can do.** The MCP server forwards your key on every call; it grants no extra access. Scope keys narrowly and prefer a dedicated key per integration. See <InternalLink pathKey="api.apiKeys" text="API keys" /> for how to create and limit them.
 
-### What the server can reach
-
-`@augno/sdk` is generated from the public API specification, so the MCP server's typed methods cover the **public API surface only** — endpoints under `/v1/auth`, `/v1/catalog`, `/v1/core`, `/v1/finance`, `/v1/identity`, `/v1/messaging`, `/v1/operations`, `/v1/sales`, and `/v1/settings`.
-
-It covers most of that surface, but not all of it. An endpoint can appear in the <InternalLink pathKey="apiReference.root" text="API reference" /> and still have no generated SDK method. Sales orders are the clearest example: `client.sales.salesOrders` has `list`, `create`, and `retrieveStatuses` and nothing else, so an agent can create an order but cannot retrieve one by ID, add or edit its lines, or issue, close, and reopen it — even though every one of those endpoints is documented. The same is true of portal domains, which have no SDK methods at all.
-
-Endpoints outside the public specification have no generated method either. That includes Augno's own agent runs and agent definitions under `/v1/ai/*` and plan, usage, and billing data under `/v1/billing/*`.
-
-Either way the failure mode is the same, and it is confusing if you are not expecting it. The snippet never reaches the API: it is type-checked first and rejected with a TypeScript diagnostic such as `Property 'ai' does not exist on type 'Augno'`. The `client.ai.runs.list is not a function. Did you mean: …` message, followed by unrelated suggestions, appears only when a snippet casts around the type checker.
-
-The client also carries generic `get`, `post`, `patch`, `put`, and `delete` helpers that take a raw path, and those are not limited to what was generated — `await client.get('/v1/ai/runs')` type-checks and does reach the API, subject to your key's permissions. Prefer the generated methods: they are typed, and they are what the method filters described below can see.
-
-> **`/v1/ai/*` and `/v1/billing/*` are preview endpoints.** They are not in the public OpenAPI specification, not in the API reference, and not in any Augno SDK. Their paths, parameters, and responses may change without notice. Do not build an integration on them.
-
 ## Authenticate
 
-The server authenticates to the Augno API with your API key, passed as a bearer token.
-
-- **Hosted (HTTP):** send `Authorization: Bearer <key>` with every request. If your MCP client cannot set an `Authorization` header, the server also accepts the key in an `x-augno-api-key` header instead. `Authorization` wins when both are present.
-- **Local (stdio):** set the `AUGNO_API_KEY` environment variable.
-
-By default the agent operates on the account that owns the key, so a single-account integration needs no further configuration. To point it at a different account the key is allowed to reach, set the account explicitly — the SDK sends it as the `Augno-Account` header:
-
-- **Local (stdio):** set `AUGNO_AUGNO_ACCOUNT_ID` alongside `AUGNO_API_KEY`.
-- **In a snippet, on any transport:** derive a scoped client with `client.withOptions({ augnoAccountID })`.
-
-The instructions the server hands to a connected agent tell it to set `Augno-Account` when operating across multiple accounts, so an agent may ask you which account it should use.
+The server authenticates to the Augno API with your API key, passed as a bearer token. Provide it as the `AUGNO_API_KEY` environment variable (local servers) or as an `Authorization: Bearer <key>` header (remote servers). The key determines which account the agent operates on, so no separate account selection is required.
 
 You do not need to set the `Augno-Version` header yourself — the server pins the API version it was built against and sends it automatically. See <InternalLink pathKey="api.versioning" text="API versioning" />.
 
 ## Connect a client
 
 The MCP server is hosted at `https://mcp.augno.com`. Connect to it over HTTP — there's nothing to install — or run a **local** server over stdio if you prefer. Either way, authenticate with your API key. Setup for Cursor and Claude Code is below.
-
-> **Running locally requires Deno.** The `execute` tool runs your snippet in a [Deno](https://deno.land) subprocess, and Deno is not bundled with `@augno/sdk-mcp`. Without it the server still starts and still advertises the `execute` tool, then fails on the first tool call with `Deno is required for code execution but was not found.` Install Deno and make sure it is on your `PATH`; the server also falls back to a `deno` npm package installed next to `@augno/sdk-mcp`. The hosted server at `mcp.augno.com` already ships with Deno, so this applies only to the local/stdio setup.
 
 <DocTabs className="my-4">
 <DocTab label="Cursor">
@@ -149,12 +123,12 @@ Verify the connection with `claude mcp list` (or `/mcp` inside a session), and r
 
 ## The `execute` tool
 
-The agent calls `execute` with a `code` snippet. The snippet must define a top-level `run` — either a `function` declaration or a `const run = …` function expression — whose single parameter is the Augno SDK client:
+The agent calls `execute` with a `code` snippet. The snippet must define a top-level `run` function whose single parameter is the Augno SDK client:
 
 ```ts
 async function run(client) {
-    const items = await client.catalog.items.list({ limit: 10 });
-    return items.data.map((item) => ({ id: item.id, sku: item.sku, type: item.type }));
+    const items = await client.catalog.items.list();
+    return items.data.map((item) => ({ id: item.id, name: item.name }));
 }
 ```
 
@@ -162,122 +136,21 @@ The server runs `run`, awaits the result, and returns it to the agent as JSON. T
 
 ```ts
 async function run(client) {
-    const [carriers, paymentTerms, shippingTerms, typeGroups] = await Promise.all([
-        client.operations.carriers.list({ limit: 1 }),
-        client.finance.paymentTerms.list({ limit: 1 }),
-        client.operations.shippingTerms.list({ limit: 1 }),
-        client.sales.accountGroups.list({ type: 'type_group', limit: 1 }),
-    ]);
-
-    const carrier = carriers.data[0];
-    const paymentTerm = paymentTerms.data[0];
-    const shippingTerm = shippingTerms.data[0];
-    const typeGroup = typeGroups.data[0];
-    if (!carrier || !paymentTerm || !shippingTerm || !typeGroup) {
-        throw new Error('Missing a carrier, payment term, shipping term, or type group.');
-    }
-
-    const address = {
-        name: 'Acme Co. HQ',
-        street_line_1: '123 Main St',
-        locality: 'Springfield',
-        state: 'IL',
-        postal_code: '62701',
-        country: 'US',
-    };
-
     const customer = await client.sales.customers.create({
         name: 'Acme Co.',
-        default_carrier_id: carrier.id,
-        default_payment_term_id: paymentTerm.id,
-        default_shipping_term_id: shippingTerm.id,
-        customer_type_group_id: typeGroup.id,
-        bill_to_address: address,
-        ship_to_address: address,
     });
-
-    const orders = await client.sales.salesOrders.list({ customer_ids: [customer.id] });
+    const orders = await client.sales.salesOrders.list({ customer_id: customer.id });
     return { customerId: customer.id, orderCount: orders.data.length };
 }
 ```
 
-Three details of that snippet are easy to get wrong.
-
-Creating a customer requires `name`, `default_carrier_id`, `default_payment_term_id`, `default_shipping_term_id`, `customer_type_group_id`, `bill_to_address`, and `ship_to_address` — omitting any of them is a `400`, which is why the snippet looks the IDs up first.
-
-Those lookups are not guaranteed to return anything. A freshly created <InternalLink pathKey="manageAccount.sandboxes" text="sandbox" /> is seeded with payment terms, shipping terms, and account groups but **no carriers**, so `carriers.data` is empty until you create one. Guard every `data[0]` an agent depends on, or the snippet fails on an undefined property rather than on a clear API error.
-
-And list filters that accept multiple values are plural arrays: `customer_ids: [id]`, not `customer_id: id`. A singular `customer_id` is not a parameter this endpoint declares, so it never silently widens the result set — over MCP the snippet is rejected by the type check before any request is sent, and a request that reaches the API directly comes back as a `400` <InternalLink pathKey="api.errors" text="parameter_unknown" /> error naming the offending parameter.
-
 Errors thrown by the SDK (a `4xx`/`5xx` response, a connection failure) are returned to the agent as the tool result so it can react or retry.
-
-### Limits
-
-- **The snippet is type-checked before it runs.** If it does not type-check against `@augno/sdk` — a misspelled method, a field that does not exist on a response — the tool returns the TypeScript diagnostics and makes no API calls at all.
-- **Nothing persists between calls.** Each `execute` call gets a fresh worker that is torn down when `run` returns. Anything needed in a later step has to be returned or logged.
-- **`console.log` and `console.error` are captured** and returned alongside whatever `run` returns, so an agent can trace intermediate state without restructuring the snippet.
-- **Individual API requests time out after 60 seconds** and are retried up to twice. Narrow a slow call with filters, or raise the ceiling for one snippet with `client.withOptions({ timeout: 120000 })`. The instructions the server hands a connected agent still quote a 30-second per-request timeout, so an agent may report the lower number; 60 seconds is what the client actually applies.
-- **Keep a single call short.** The server's instructions also tell agents to treat roughly five minutes as the ceiling for one `execute` call. Nothing in the server enforces that, but MCP clients apply their own tool-call timeouts, so it is still the right shape to write to. Split long jobs across calls, or narrow them with list filters and pagination.
 
 ## Good practices
 
 - **Use a dedicated, least-privilege key.** The agent inherits the key's permissions exactly. A read-only key keeps an assistant from making changes.
 - **Rotate keys** used by long-lived assistants, and revoke any key that may have been exposed.
-- **Review what the agent ran.** Each underlying API call appears in your <InternalLink pathKey="api.requestLogs" text="request logs" /> with a request ID, so you can audit agent activity.
-
-### Restricting what the agent can call
-
-A local server accepts flags that narrow which SDK methods `execute` will run. Pass them in the `args` array of your client config, after the package name.
-
-| Flag                                | Effect                                                                                                           |
-| :---------------------------------- | :--------------------------------------------------------------------------------------------------------------- |
-| `--code-allow-http-gets`            | Allow every SDK method that maps to an HTTP `GET`, and nothing else.                                             |
-| `--code-allowed-methods <pattern>…` | Allow only methods whose fully-qualified name matches one of these regular expressions. Accepts multiple values. |
-| `--code-blocked-methods <pattern>…` | Block methods whose fully-qualified name matches one of these regular expressions. Accepts multiple values.      |
-
-A fully-qualified name is the SDK call path without the `client.` prefix: `catalog.items.list`, `sales.customers.create`, `identity.roles.delete`. If neither allow flag is set, everything is allowed; setting either one starts from an empty allowlist and adds to it. Blocks are applied last and always win.
-
-A mostly read-only server — every generated method that maps to an HTTP `GET`, and nothing else. It does not stop a snippet that reaches for the client's generic verb helpers; see the caveat below.
-
-```json
-{
-    "mcpServers": {
-        "augno": {
-            "command": "npx",
-            "args": ["-y", "@augno/sdk-mcp", "--code-allow-http-gets"],
-            "env": {
-                "AUGNO_API_KEY": "YOUR_API_KEY"
-            }
-        }
-    }
-}
-```
-
-Everything except deletes and changes to roles. The patterns are matched against the fully-qualified name only — nothing about them is aware of the HTTP method — so `^identity\.roles\.(create|update|delete)$` blocks the three writes while leaving `identity.roles.list` and `identity.roles.retrieve` callable. A looser `^identity\.roles\.` would block reading roles too.
-
-```json
-{
-    "mcpServers": {
-        "augno": {
-            "command": "npx",
-            "args": [
-                "-y",
-                "@augno/sdk-mcp",
-                "--code-blocked-methods",
-                "\\.delete$",
-                "^identity\\.roles\\.(create|update|delete)$"
-            ],
-            "env": {
-                "AUGNO_API_KEY": "YOUR_API_KEY"
-            }
-        }
-    }
-}
-```
-
-Over HTTP, a client can request the same restrictions per request by sending an `x-stainless-mcp-client-permissions` header containing a JSON object with any of `allow_http_gets` (boolean), `allowed_methods` (array), and `blocked_methods` (array). Those values replace the server's defaults for that request.
-
-> **Method filtering is not a security boundary.** A blocked method is enforced by checking whether the submitted code contains that method's name as a substring, which code that builds the call path dynamically can evade. The filter also only knows the SDK's generated resource methods, so it cannot see the client's generic verb helpers: `client.post('/v1/sales/customers', { body })` matches no method name and passes every filter, including `--code-allow-http-gets`. And because the permissions header comes from the caller, a remote client can widen its own restrictions as easily as it can narrow them. Treat these controls as a guard against an agent doing something unexpected, not as containment for one working around you. The real limit is the API key — scope it with <InternalLink pathKey="api.apiKeys" text="a role that grants only what the integration needs" />.
+- **Review what the agent ran.** Each underlying API call appears in your <InternalLink pathKey="api.overview" text="request logs" /> with a request ID, so you can audit agent activity.
 
 ## See also
 

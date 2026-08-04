@@ -23,12 +23,6 @@ The API enforces the following limits:
 
 Rate limits are applied per IP address using a sliding window algorithm. This means the limit is evaluated continuously rather than resetting at fixed intervals.
 
-One budget covers the whole API. Every <InternalLink text="application domain" pathKey="api.uris" /> — including `auth` — draws on the same 20 requests/second per IP; no domain is more or less strictly limited than another.
-
-### The limiter is per gateway process
-
-Rate-limit state is held in memory by the API gateway process that handles the request. It is not shared across gateway instances, so the effective ceiling for a single client IP scales with the number of gateway processes currently serving traffic, and a burst that is throttled on one connection may be admitted on the next. Build against the documented 20/second figure; do not calibrate to the throughput you happen to observe.
-
 ## Rate limit headers
 
 Every API response includes headers that report your current rate limit status:
@@ -69,34 +63,6 @@ When you exceed the rate limit, the API returns a `429 Too Many Requests` respon
 }
 ```
 
-## Retry-After escalates — do not retry on a fixed schedule
-
-`Retry-After` is **not** derived from the rate-limit window, and it is unrelated to `RateLimit-Reset`. It is an exponential backoff computed from a per-client counter of _consecutive_ rejected requests:
-
-- Initial wait: 1 second
-- Multiplier: 1.5x per consecutive violation
-- Maximum: 15 minutes
-- Jitter: ±10%
-
-The counter increments on **every** rejected request and resets to zero only when a request is allowed through. So a client that keeps hammering while throttled — retrying on a fixed one-second timer, for instance — drives its own `Retry-After` up the curve, from a second or two toward the 15-minute ceiling. Each additional rejection makes the situation worse, not better.
-
-The correct behavior on a request-rate `429` is:
-
-1. Read `Retry-After` and sleep at least that long.
-2. Do not send anything to the API in the meantime — in-flight retries from other threads count against the same counter.
-3. Retry once. If you are allowed through, the counter resets and the penalty disappears.
-
-That recipe is specific to the request-rate limiter. The failed-login throttle below also returns `429 rate_limit_exceeded` but sets no `Retry-After`, so a client that reads the header unconditionally will find it missing there.
-
-## Failed logins are throttled separately
-
-Sign-in attempts carry an additional throttle keyed on the identifier being authenticated rather than on the client IP: **10 failed attempts per 5 minutes**. It exists so that rotating source addresses cannot be used to brute-force a single account.
-
-Only failed attempts advance the counter, but the check runs **before** the credentials are verified. Once an identifier is over the limit, every sign-in for it is refused for the remainder of the five-minute window — including one presenting the correct password. Build the "this account is temporarily locked out, wait and try again" path into your sign-in flow; do not treat the rejection as a bad-password error.
-
-Exceeding the throttle returns the same `429 rate_limit_exceeded` code with a message identifying it as a failed-login throttle. This response carries **no `Retry-After` header**. The `RateLimit-*` headers on it describe the per-IP request-rate budget and say nothing about the login throttle, so ignore them here and wait out the five-minute window instead. Like the request-rate limiter, the throttle's state is per gateway process.
-
-This throttle does not apply to API-key authentication, which does not go through the sign-in path.
 
 ## Discretionary limits
 

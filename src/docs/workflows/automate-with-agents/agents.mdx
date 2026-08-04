@@ -8,7 +8,7 @@ nav:
     order: 2
 ---
 
-An **agent definition** is the reusable description of an AI teammate: its name, its standing instructions, how its runs start, and the role that bounds its authority. <BetaTag /> Every run is an execution of a definition, so changing the definition changes how every future run behaves.
+An **agent definition** is the reusable description of an AI teammate: its name, its standing instructions, how its runs start, and the role that bounds its authority. Every run is an execution of a definition, so changing the definition changes how every future run behaves.
 
 > **Agents are in preview.** The `/v1/ai/agents` endpoints are documented in full at the bottom of this page, with their real paths and request and response shapes. They are not part of Augno's public OpenAPI spec and are not generated into the published SDKs, and they may change without notice.
 
@@ -28,8 +28,6 @@ The system/custom split does **not** control whether an agent runs for you. That
 ### Marking an agent active or inactive
 
 Each agent carries an `active` or `inactive` status **for your account**, set from the agent's detail page. Because the status is per-account, marking a system agent inactive affects only your account — the shared definition is untouched and other accounts keep whatever setting they chose.
-
-Today that status is a **label, not a switch**. It drives the active/inactive filter on the agent list and nothing else: the runtime does not consult it, so an `inactive` agent can still be started by hand and still answers when it is messaged in a conversation. Use it to organize the list, not as a safety control. To actually stop a custom agent, delete it; to stop a system agent from acting, remove it from the conversations it participates in.
 
 ### The building blocks
 
@@ -68,18 +66,9 @@ Whatever the trigger type, any agent can be started by hand. A run started that 
 
 A scheduled agent takes a standard five-field cron expression — `0 9 * * *` for 9am daily. The create form also accepts an IANA timezone such as `America/New_York`.
 
-Be aware of two current limitations before you rely on a schedule:
-
-- **The saved schedule is not handed to the scheduler yet.** The scheduler runs off a per-account schedule value that nothing populates when you create or edit an agent, so a scheduled agent does not fire on its own today. Start it by hand until that is connected.
-- **The timezone is stored but not applied.** Cron expressions are evaluated in the platform's own timezone, not the one you pick.
-
-What the scheduler does once an agent reaches it: it polls **once a minute**, so a schedule is "at or shortly after" rather than to-the-second; it computes the next due time from the agent's last run and starts one run when that time has passed. It also re-checks your plan on every tick, so a downgrade to the free plan stops scheduled runs without deleting anything, and they resume when the account is back on a paid plan. Deleting a custom agent removes it from the scheduler; marking an agent inactive does not.
-
 #### Event agents
 
 An event agent is configured with a list of event types it subscribes to, written as `domain.event` strings — for example `email.received` or `order.created`. At least one entry is required.
-
-**Event triggering is not implemented yet.** The filters are validated and stored, but nothing in Augno matches platform events against them, so an event agent never starts a run of its own accord. It behaves exactly like a `manual` agent until event dispatch ships. Event filters are also free-form strings that are not validated against a fixed list of event names.
 
 #### Agents in conversations
 

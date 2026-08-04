@@ -680,14 +680,6 @@ export const navData: TabbedNavData = {
                         {
                             "href": "/api/include",
                             "children": "Include Parameter"
-                        },
-                        {
-                            "href": "/api/search",
-                            "children": "Search"
-                        },
-                        {
-                            "href": "/api/realtime",
-                            "children": "Realtime"
                         }
                     ]
                 },

@@ -41,7 +41,7 @@ The application domain is the functional area that the endpoint belongs to. It a
 | `sales`      | Customers, contacts, sales orders, account groups, statuses and priorities             |
 | `settings`   | Integrations and portal domains                                                        |
 
-The domain tells you which product area an endpoint belongs to; it is not a policy boundary. In particular, request rate limiting is applied uniformly across the API rather than per domain — see <InternalLink text="rate limiting" pathKey="api.rateLimiting" /> for the limits that actually apply.
+The domain tells you which product area an endpoint belongs to; it is not necessarily a policy boundary.
 
 Some endpoints you may see in the Dashboard's network traffic use domains that are not listed above. Those are private-preview surfaces that are not part of the public API and may change without notice.
 
