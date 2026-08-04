@@ -1,0 +1,119 @@
+---
+title: Communicate
+subtitle: Conversations, customer cases, notifications, and email inside Augno.
+route: /communicate/overview
+toc: false
+nav:
+    title: Overview
+    section: Communicate
+    order: 1
+---
+
+<BetaTag />
+
+Augno has a messaging layer built into the platform, so the conversation about an order lives next to
+the order itself. Your team messages each other, customers reach you through the portal or by email,
+and agents take part in the same threads — all on one set of resources under `/v1/messaging`.
+
+> #### Preview
+>
+> Every messaging endpoint is in **public preview**. The paths and payloads described in this section
+> are real and current, but they may change while the surface stabilizes, so pin the API version you
+> build against and read the <InternalLink pathKey="releasePhases" text="release phases" /> page before
+> you depend on them in production.
+
+## Conversations are the container
+
+Everything in messaging hangs off a **conversation**. A conversation has a `type` that says what kind
+of container it is:
+
+| `type`           | What it is                                                                                  |
+| ---------------- | ------------------------------------------------------------------------------------------- |
+| `direct_message` | A 1:1 thread with exactly one other user. Addressing yourself gives a private notes thread. |
+| `group`          | A named thread with any number of user and agent members.                                   |
+| `system`         | A channel the platform creates to deliver automated account alerts. You cannot request one. |
+
+Direct messages are de-duplicated: asking for a direct message that already exists returns the
+existing thread rather than a second one. They also have no stored title — clients derive a name from
+the participants.
+
+## Audience is orthogonal to type
+
+Separately from `type`, every conversation carries an `audience`:
+
+- **`internal`** — a team-only thread. The customer is never a participant and never sees it, even
+  when the thread is entirely about them.
+- **`customer`** — an external case the customer takes part in and can read, opened from the customer
+  portal or bridged from an email inbox.
+
+`audience` is what separates "the team discussing an order" from "the customer asking about an order."
+A `customer` conversation additionally carries a `workflow_status` triage lane (`new`, `open`,
+`waiting_internal`, `waiting_external`, `needs_approval`, `resolved`) that drives the support inbox;
+on an `internal` conversation that field is null.
+
+Inside a `customer` case, safety is enforced one message at a time. Each message has a `visibility` of
+`internal` (a team-only note), `external` (sent to or received from the customer), or `system` (an
+event both sides see), and a customer reading their own case is never served `internal` messages.
+
+## Conversations can be anchored to a record
+
+A conversation may be anchored to a business record at creation time with `topic_resource_type` and
+`topic_resource_id` — a sales order, an invoice, a shipment, a customer. That anchor is what makes a
+thread show up as the discussion on that record: listing conversations by `topic_resource_type` +
+`topic_resource_id` returns it.
+
+Beyond the single anchor, a conversation can **link** any number of additional records. Listing by
+business record matches the anchor and the links alike, so one thread can surface on several records
+at once.
+
+## Who is in a conversation
+
+Participants are membership records, not raw user references. Each one has a `type` (`user`, `agent`,
+`system`, or `customer`), a `role` (`owner`, `admin`, `member`, `viewer`), a `membership` state
+(`active`, `left`, `removed`, `hidden`), a per-conversation notification preference, and a read
+cursor. Membership records are kept rather than deleted, so someone who left and came back keeps their
+history and their earlier messages stay attributed to them.
+
+## Two kinds of state
+
+The `status` on a conversation reflects the caller's own view of it and has three values:
+
+- **`active`** — normal and visible.
+- **`archived`** — archived for the whole account, so every participant reads it back as archived. On
+  a customer-facing case this also moves it out of the working support inbox; an internal thread stays
+  in its participants' lists, just flagged archived.
+- **`hidden`** — the caller dismissed it from their own list while everyone else still sees it. Hidden
+  takes precedence over an account-level archive.
+
+Read/hide/mute/leave are **per caller**; archive is **per account**. Keeping the two apart is the
+thing most integrations get wrong first.
+
+<DocCardGroup>
+    <LinkCard
+        pathKey="communicate.messages"
+        title="Messages"
+        description="Direct messages, groups, record discussions, attachments, participants, and rosters."
+    />
+    <LinkCard
+        pathKey="communicate.inbox"
+        title="Inbox"
+        description="Customer cases, triage lanes, assignment, and what the customer actually sees."
+    />
+    <LinkCard
+        pathKey="communicate.notifications"
+        title="Notifications"
+        description="The bell feed, announcements, and per-category delivery preferences."
+    />
+    <LinkCard
+        pathKey="communicate.email"
+        title="Email"
+        description="Verify a sending domain, provision an inbox, and bridge inbound mail into cases."
+    />
+    <LinkCard
+        pathKey="communicate.retentionAndCompliance"
+        title="Retention & compliance"
+        description="Legal hold, redaction, and how long messaging data is kept."
+    />
+</DocCardGroup>
+
+Next: <InternalLink pathKey="communicate.messages" text="Messages" includeArrow />

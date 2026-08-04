@@ -13,11 +13,29 @@ This API uses cursor-based pagination for list endpoints. Cursors are **opaque s
 
 ## Query parameters
 
-| Parameter | Type    | Default | Description                                                                         |
-| --------- | ------- | ------- | ----------------------------------------------------------------------------------- |
-| `limit`   | integer | 100     | Number of items to return per page. Must be a positive integer                      |
-| `cursor`  | string  | null    | Opaque cursor for fetching the next or previous page (from `page_info` in response) |
-| `q`       | string  | null    | Search query for filtering results                                                  |
+| Parameter | Type    | Default | Description                                                                    |
+| --------- | ------- | ------- | ------------------------------------------------------------------------------ |
+| `limit`   | integer | 100     | Number of items to return per page. Minimum 1, maximum 1000                    |
+| `cursor`  | string  | null    | Opaque cursor identifying where the page starts. Comes from a `page_info` URL  |
+| `q`       | string  | null    | Free-text search term. Maximum 500 characters. Matched fields vary by endpoint |
+
+A `limit` outside 1-1000, or a `q` longer than 500 characters, is rejected with a `400` and error code
+`parameter_invalid` before the endpoint runs:
+
+```json
+{
+    "error": {
+        "code": "parameter_invalid",
+        "type": "invalid_request_error",
+        "message": "Query parameter 'limit' must be at most 1000.",
+        "param": "limit",
+        "doc_url": "https://docs.augno.com/api/errors#parameter_invalid",
+        "is_transient": false,
+        "quota": null,
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+    }
+}
+```
 
 ## Response structure
 
@@ -27,35 +45,72 @@ List endpoints return a response with the following structure:
 {
     "object": "list",
     "data": [
-        { "id": "res_abc123", ... },
-        { "id": "res_def456", ... }
+        { "id": "pytm_skssmsy21lem", "object": "payment_term" },
+        { "id": "pytm_c5gxy05whw6r", "object": "payment_term" }
     ],
     "page_info": {
+        "next_page_url": "/v1/finance/payment-terms?cursor=eyJjIjoiMjAyNi0wNi0xNVQxMDozMDowMFoiLCJpIjo0ODMyLCJkIjoiZiJ9.fxWjUceb9ojKxUdhu8xUyGiQghir3ka4FXmZVmbojTc&limit=2",
+        "previous_page_url": null,
         "has_next_page": true,
-        "has_prev_page": false,
-        "next_cursor": "eyJjIjoiMjAyNS0wNi0xNVQxMDozMDowMFoiLCJpIjo0ODMyLCJkIjoiZiJ9.fxWjUceb9ojKxUdhu8xUyGiQghir3ka4FXmZVmbojTc",
-        "prev_cursor": null
+        "has_prev_page": false
     }
 }
 ```
 
-| Field                     | Type           | Description                                                        |
-| ------------------------- | -------------- | ------------------------------------------------------------------ |
-| `object`                  | string         | Always `"list"` for paginated responses                            |
-| `data`                    | array          | Array of resources for the current page                            |
-| `page_info`               | object         | Pagination metadata                                                |
-| `page_info.has_next_page` | boolean        | Whether there are more results after this page                     |
-| `page_info.has_prev_page` | boolean        | Whether there are results before this page                         |
-| `page_info.next_cursor`   | string \| null | Opaque cursor for fetching the next page, `null` on the last page  |
-| `page_info.prev_cursor`   | string \| null | Opaque cursor for fetching the previous page, `null` on first page |
+| Field                         | Type           | Description                                            |
+| ----------------------------- | -------------- | ------------------------------------------------------ |
+| `object`                      | string         | Always `"list"` for paginated responses                |
+| `data`                        | array          | Array of resources for the current page                |
+| `page_info`                   | object         | Pagination metadata                                    |
+| `page_info.next_page_url`     | string \| null | Relative URL of the next page, `null` on the last page |
+| `page_info.previous_page_url` | string \| null | Relative URL of the previous page, `null` on the first |
+| `page_info.has_next_page`     | boolean        | Whether more results exist after this page             |
+| `page_info.has_prev_page`     | boolean        | Whether results exist before this page                 |
+
+`page_info` has exactly these four fields. It carries no standalone cursor field — the cursor lives inside the two URLs.
 
 ## Iterating through pages
 
 To page forward through all results:
 
-1. Make an initial request without `cursor`
-2. Check if `page_info.has_next_page` is `true`
-3. If true, make another request with `cursor` set to `page_info.next_cursor`
-4. Repeat until `has_next_page` is `false`
+1. Make an initial request without `cursor`.
+2. Read `page_info.next_page_url`.
+3. If it is not `null`, request that URL (join it to the API host — it is relative, and already includes
+   the query string).
+4. Repeat until `next_page_url` is `null`.
 
-To page backward, use `page_info.prev_cursor` in the same way.
+To page backward, follow `page_info.previous_page_url` in the same way.
+
+```bash
+curl "API_HOST/v1/finance/payment-terms?limit=2" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION"
+
+# then follow the URL the response handed back, verbatim
+curl "API_HOST/v1/finance/payment-terms?cursor=eyJjIjoiMjAyNi0wNi0xNVQxMDozMDowMFoiLCJpIjo0ODMyLCJkIjoiZiJ9.fxWjUceb9ojKxUdhu8xUyGiQghir3ka4FXmZVmbojTc&limit=2" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION"
+```
+
+### Filters are preserved for you
+
+For a top-level list endpoint, the pagination URL is your original request URL with only the `cursor`
+parameter replaced. Your `limit`, `q`, `include[]`, and any endpoint-specific filters carry over
+automatically, so following the URL keeps the result set stable. Query parameters are re-encoded and
+re-ordered in the process — compare the parsed query, not the raw string.
+
+If you would rather drive pagination yourself, lift the `cursor` query parameter out of the returned URL
+and send it on your own request. Treat its value as opaque: it is a signed token, and any modification
+invalidates it.
+
+Taking that route means you re-send every other parameter yourself — `limit`, `q`, `include[]`, and any
+endpoint-specific filters. The cursor encodes only a position and a direction; it does not remember the
+query it came from. Pairing it with a different parameter set produces a page that belongs to neither
+query: the position was computed under the original filters and the rows are selected under the new ones.
+This is the main reason to follow `next_page_url` instead.
+
+## Related documentation
+
+- <InternalLink text="Include parameter" pathKey="api.include" /> — expanding sub-objects on every
+  item in a page
+- <InternalLink text="Error handling" pathKey="api.errors" /> — the error envelope shown above

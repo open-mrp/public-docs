@@ -9,7 +9,7 @@ nav:
     order: 1
 ---
 
-**Team members** are the users who have access to your Augno account. From the **Team** tab in <InternalLink pathKey="frontend.team" text="account settings" />, admins can invite new users, assign roles and departments, and remove members who no longer need access.
+**Team members** are the users who have access to your Augno account. From the <InternalLink pathKey="frontend.team" text="Team page" />, anyone whose role grants the `team` permissions — admins always qualify — can invite new users, assign roles and departments, and lock or remove members who no longer need access.
 
 ### Why team management matters
 
@@ -24,42 +24,70 @@ The team members list shows each user's:
 - **Name and email**
 - **Role**: the <InternalLink pathKey="manageAccount.team.rolesAndPermissions" text="role" /> assigned to them, which controls what they can see and do
 - **Department**: an organizational grouping for reporting and filtering
-- **Status**: active or removed
+- **Status**: active, locked, or removed
 
-Toggle the **Show removed** filter to view team members who have been removed from the account.
+Toggle the **Show Removed** filter to view team members who have been removed from the account.
+
+### Member statuses
+
+Every team member sits in exactly one of three states:
+
+| Status      | What it means                                                                                                                                         |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Active**  | The member can sign in and use the account. Active members are the only ones that count against your seat limit.                                      |
+| **Locked**  | Access is suspended but the membership and its role assignment are intact. Shown as **Locked** in the dashboard; the API calls this state `disabled`. |
+| **Removed** | The member has been removed from the account. This is a soft delete — the record is kept and hidden from the default list.                            |
+
+Locked and removed are separate states, not two names for the same thing. Locking is the reversible pause; removing takes the person off the team. Both free the seat they were occupying, and both can be reversed by activating the member again.
 
 ### Inviting new team members
 
 To invite a new team member:
 
 1. Click **Create** from the team members list
-2. Enter their **username** (email address)
-3. Select a **role** to control their permissions
-4. Optionally assign a **department**
+2. Choose the **user type** — **User**, **Scanning Station**, or **Sales Rep**
+3. Enter their **first name**, **last name**, and **email address**
+4. For the **User** type, select a **role** to control their permissions
 5. Submit the invitation
 
-The new user will receive an email to activate their account and set a password. See <InternalLink pathKey="account.activate" text="account activation" /> for what the new user experiences.
+The new user receives a welcome email containing a generated password they can sign in with. A **Scanning Station** is the exception: it is created with a station name, a username, and a password you set yourself, and it gets no email — see <InternalLink pathKey="buildProducts.scanning.scanningStations" text="scanning stations" />.
+
+Departments are not part of the create dialog. Assign one afterwards from the member's detail page.
 
 ### Editing team members
 
-Admins can update a team member's:
+From a member's detail page you can update their:
 
-- **Role**: change their permission level (e.g., promote to Admin or restrict to Viewer)
+- **Role**: change their permission level (e.g., promote to Admin or move them onto a narrower custom role)
 - **Department**: reassign to a different organizational group
 
 Changes take effect immediately — the user's available navigation and actions update on their next page load.
 
-### Removing team members
+### Locking, removing, and restoring access
 
-Remove a team member to revoke their access. Removed users:
+Three distinct actions move a member between statuses. In the API they are three endpoints — <InternalLink pathKey="apiReference.accountUsers.disableAccountUser" text="Disable Account User" />, <InternalLink pathKey="apiReference.accountUsers.removeAccountUser" text="Remove Account User" /> and <InternalLink pathKey="apiReference.accountUsers.activateAccountUser" text="Activate Account User" /> — and in the dashboard they are the **Lock Account**, **Remove**, **Unlock Account** and **Restore User** buttons on a team member's detail page.
+
+**Lock account** suspends a member without giving up their role. Their active sessions are revoked on the spot, so they are signed out wherever they were working, and they cannot sign in again until the account is unlocked. Three rules constrain it:
+
+- Admins cannot be locked. Change the member's role first if you need to suspend them.
+- You cannot lock your own account.
+- A removed member cannot be locked directly — restore them first, then lock.
+
+Locking an already-locked member does nothing rather than failing.
+
+**Remove** takes the member off the team. Removed users:
 
 - Can no longer log in
 - Are hidden from the active team list by default
-- Can be viewed by toggling the **Show removed** filter
+- Can be viewed by toggling the **Show Removed** filter
 - Retain their historical activity in audit logs
+
+Removal is a soft delete, so the record survives and the member can be restored later. It only affects this account: the person's Augno profile is untouched, and their access to any other account they belong to is unaffected.
+
+**Unlock account** and **Restore user** are the same underlying action — activating the member — applied to a locked member and a removed member respectively. Because activating puts someone back into an active seat, it fails if the account is already at its seat limit. Free a seat or upgrade your plan, then try again.
 
 ### Seat limits
 
-Your plan determines the maximum number of active team members. If you reach your seat limit, you'll need to <InternalLink pathKey="manageAccount.plansAndBilling" text="upgrade your plan" /> or remove an existing member before inviting someone new.
+Your plan determines the maximum number of active team members. Locked and removed members do not count, so only active members consume seats. If you reach your seat limit, you'll need to <InternalLink pathKey="manageAccount.plansAndBilling" text="upgrade your plan" />, or lock or remove an existing member, before inviting or reactivating someone.
 
 Next: <InternalLink pathKey="manageAccount.team.rolesAndPermissions" text="Roles and permissions" includeArrow />

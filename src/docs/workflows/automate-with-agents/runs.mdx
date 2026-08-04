@@ -1,0 +1,109 @@
+---
+title: Runs
+subtitle: One execution of an agent, from trigger to answer — and every safety rail around it.
+route: /automate-with-agents/runs
+nav:
+    title: Runs
+    section: Automate with agents
+    order: 3
+---
+
+A **run** is a single execution of an agent. <BetaTag /> It records what started it, everything the agent thought and did, every tool it called, what it produced, and how long it took. Runs are the audit trail for agent work — nothing an agent does happens off the record.
+
+Browse runs under **AI Agents → Agent Runs**, or open one to read its full timeline.
+
+### Triggering is asynchronous
+
+Starting a run does not wait for it to finish. The run is created in `pending` and handed to a worker, and control returns immediately. Watch the run to follow its progress — the dashboard streams a live view while it works.
+
+That is true however the run started: a chat message, an explicit trigger by hand, or a scheduler tick.
+
+### Run statuses
+
+| Status              | Meaning                                                     |
+| ------------------- | ----------------------------------------------------------- |
+| `pending`           | Queued, not yet picked up                                   |
+| `running`           | Currently executing                                         |
+| `awaiting_input`    | Paused, waiting for a person to reply                       |
+| `awaiting_approval` | Paused, waiting for a person to approve or deny a tool call |
+| `completed`         | Finished successfully                                       |
+| `failed`            | Stopped on an error — the run records the error message     |
+| `cancelled`         | Stopped by a person before it finished                      |
+
+`completed`, `failed`, and `cancelled` are terminal. The other four are all "still alive" in one way or another.
+
+### Stopping a run
+
+You can cancel a run while it is doing work or waiting on you — that is, from `pending`, `running`, `awaiting_input`, or `awaiting_approval`. Cancelling a run that has already reached a terminal status is rejected.
+
+Two things to expect when you cancel:
+
+- If the run was `awaiting_approval`, cancelling counts as **denying the review**. Every action still pending review is recorded as rejected and attributed to you.
+- Work the agent already completed is **not** undone. Cancelling stops the agent; it does not roll back records it already created or changed.
+
+### Retrying a failed run
+
+Only a `failed` run can be retried. Retrying anything else is rejected.
+
+A retry does not start over. It **replays the existing transcript** — the agent's prior reasoning and tool results are restored and it resumes from where it stopped, with full knowledge of what it already did. That is deliberate: a from-scratch re-run of an agent that had already created an order would create a second one.
+
+A run can be retried at most **5 times in total**.
+
+### Automatic retries
+
+Separately from anything you do by hand, Augno will transparently re-attempt a run at most **3 times** — but only under two conditions at once:
+
+1. The failure was transient: _every_ model in the tier's chain was momentarily unavailable, not a bad request the model would reject again.
+2. The run had produced **no side effects** on the failed turn — no tool had executed.
+
+Because a blind re-run of a turn that already acted could duplicate its effects, a failure after any tool executed is never auto-retried; it surfaces as a normal failure for you to decide about.
+
+Automatic retries are spaced out deliberately — starting around fifteen seconds and growing toward two minutes — because the trigger is "the providers are down", and hammering them immediately would just burn the budget. Automatic retries share the same 5-retry budget as manual ones, and their smaller cap of 3 exists so an automatic retry storm can never exhaust your ability to retry by hand.
+
+### The run timeline
+
+A run's timeline is an ordered list of **steps**. The ones you will see most:
+
+| Step type           | What it records                                                         |
+| ------------------- | ----------------------------------------------------------------------- |
+| `trigger_received`  | The run started, and with what input                                    |
+| `user_message`      | A person's message to the agent                                         |
+| `thinking`          | The agent's reasoning for a turn                                        |
+| `assistant_message` | The agent's written response                                            |
+| `tool_call`         | The agent invoked a tool, with its arguments                            |
+| `tool_result`       | What the tool returned                                                  |
+| `tool_blocked`      | A gated tool call was held for review                                   |
+| `awaiting_approval` | The run paused, with a plain-language summary of what it wants to do    |
+| `tool_denied`       | A person denied a call, or the agent asked for a tool it wasn't granted |
+| `compaction`        | The conversation was compacted to stay inside the context window        |
+| `completion`        | The run finished, with duration and token counts                        |
+| `error`             | Something failed                                                        |
+
+The step set is deliberately **open** — new step types are added as the runtime evolves, and a few more you may encounter cover model failover, a scheduled automatic retry, cancellation, a detected repeat loop, and a spending cap being hit. Treat an unrecognized step type as informational rather than something to act on.
+
+### Safety rails
+
+Agents run unattended, so the runtime bounds them in several ways. All of these are automatic and none of them are configurable.
+
+**A 20-iteration tool loop cap.** An agent gets at most 20 think-and-call-tools cycles in a run. Hitting the cap ends the run _successfully_ — it is recorded as a completion, flagged as having hit the maximum, rather than as a failure. If an agent routinely hits it, its task is too big for one run or its instructions are too vague.
+
+**A 5-minute ceiling on any single model turn.** A backstop against a connection that stalls without closing cleanly, which would otherwise pin a run in `running` forever.
+
+**A repeat-loop breaker.** The runtime fingerprints each tool call by tool name plus a hash of its exact input, over a rolling window of the last 20 calls. Once the same tool has been called with byte-identical input **3 times in a row**, that third call is not executed: only the first two run, and the third is answered with an error telling the agent to try a different approach or different parameters. The run continues. This is what stops an agent from grinding on a query that will never return what it wants.
+
+**Context compaction.** Long runs accumulate a large transcript. As the conversation approaches the model's context limit, Augno compacts it — first by pruning the content of older tool results (the most recent turns are always preserved in full), then, if needed, by summarizing the conversation so far into a structured brief of goal, progress, findings, and the specific IDs and values needed to continue. Each compaction is recorded as a `compaction` step, so you can always see where it happened. Summarization always runs on the `balanced` tier regardless of the agent's own tier, since it is background work.
+
+**A stalled-run reaper.** If a worker is killed mid-run — a deploy, a restart, an out-of-memory kill — the run would otherwise sit in `running` forever, because the process that would have finished it is gone. A reaper fails any run that has been `running` for more than **30 minutes**, with a message explaining the worker was interrupted. The threshold is set well above any legitimate run, so a healthy in-flight run is never reaped.
+
+**A spending cap.** If your account has a monthly agent spending cap and a run would cross it, the run stops cleanly at that point with the limit as its output — it is recorded as finished, not failed, so you can tell a budget stop from a breakage. A billing rejection from the underlying model provider is handled the same way, and is never retried across the model chain, since every model bills the same account.
+
+### Reading a failed run
+
+Start at the bottom of the timeline. The `error` step carries the underlying message, and the run itself records an error message you can read at a glance. From there:
+
+- **"no role"** — the agent has no role attached and cannot execute anything. Attach one on the definition.
+- **A permission error from a tool** — the agent's role does not grant that operation. Either widen the role deliberately, or narrow the agent's job.
+- **A provider error after failover** — every model in the tier chain was unavailable. This is the case automatic retry handles; if it exhausted its attempts, retry by hand once providers recover.
+- **Interrupted by the reaper** — the worker was restarted. Retry it.
+
+Next: <InternalLink pathKey="automateWithAgents.toolsAndApprovals" text="Tools & approvals" includeArrow />

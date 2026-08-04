@@ -1,0 +1,96 @@
+---
+title: Agents
+subtitle: Define what an agent does, when it runs, how hard it thinks, and what it is allowed to touch.
+route: /automate-with-agents/agents
+nav:
+    title: Agents
+    section: Automate with agents
+    order: 2
+---
+
+An **agent definition** is the reusable description of an AI teammate: its name, its standing instructions, how its runs start, and the role that bounds its authority. Every run is an execution of a definition, so changing the definition changes how every future run behaves. <BetaTag />
+
+Manage definitions from **AI Agents → Agents** in the dashboard.
+
+### System and custom agents
+
+Every agent is one of two kinds:
+
+| Type       | Where it comes from                       | Can you edit it?                                                      |
+| ---------- | ----------------------------------------- | --------------------------------------------------------------------- |
+| **System** | Provided by Augno, shared across accounts | No — a system definition is read-only and cannot be edited or deleted |
+| **Custom** | Created by someone in your account        | Yes                                                                   |
+
+The system/custom split does **not** control whether an agent runs for you. That is a separate, per-account status.
+
+### Marking an agent active or inactive
+
+Each agent carries an `active` or `inactive` status **for your account**, set from the agent's detail page. Because the status is per-account, marking a system agent inactive affects only your account — the shared definition is untouched and other accounts keep whatever setting they chose.
+
+### The building blocks
+
+| Field             | What it does                                                                                 |
+| ----------------- | -------------------------------------------------------------------------------------------- |
+| **Name**          | The human-readable label shown everywhere in the UI                                          |
+| **Slug**          | A URL-friendly identifier, unique within your account                                        |
+| **Description**   | What the agent is for; helps teammates decide when to use it                                 |
+| **Category code** | A grouping key (for example `inventory`, `order_processing`) used to organize the agent list |
+| **Trigger type**  | How runs of this agent start — see below                                                     |
+| **Role**          | The permissions the agent operates with                                                      |
+| **Config**        | Instructions, intelligence tier, temperature, trigger settings, and tool grants              |
+
+### The role is the trust boundary
+
+An agent acts as its own actor, and **every** call it makes is authorized against the role you attach to it. It can never read or change anything the role does not allow, no matter what its instructions say or what a user asks it to do in chat. Pick the narrowest role that lets the agent finish its job — the same discipline you would apply to an <InternalLink pathKey="manageAccount.apiKeys" text="API key" />.
+
+The role is not optional in practice: **an agent with no role cannot execute.** Its runs fail immediately with an error saying it has no permissions. Attach a role before you trigger it.
+
+### Triggers
+
+The trigger type decides what starts a run.
+
+| Trigger type | What it means                                        | Required configuration |
+| ------------ | ---------------------------------------------------- | ---------------------- |
+| `manual`     | The agent runs when someone explicitly starts it     | Nothing                |
+| `chat`       | The agent runs when it is messaged in a conversation | Nothing                |
+
+Whatever the trigger type, any agent can be started by hand. A run started that way is recorded as a `manual` run regardless of how the agent is configured. Likewise, any agent added to a conversation answers there, and that run is recorded as a `chat` run — the trigger type on the definition does not have to be `chat`, and the dashboard's create-agent form does not offer `chat` as a choice.
+
+#### Agents in conversations
+
+An agent can be added as a participant in a conversation. It replies into that same thread, and you can answer it to continue the same run rather than starting a new one — see <InternalLink pathKey="automateWithAgents.agentsInChat" text="Agents in chat" />.
+
+### Instructions
+
+The **system prompt** is the agent's standing brief: its role, its constraints, what "done" looks like. It is sent to the model on every turn of every run, alongside the platform guidance Augno adds automatically (how to discover API tools, how to expand related records, and so on).
+
+Write it as a job description, not as a single task. The per-run instruction — the chat message, or the input on a manual trigger — supplies the task.
+
+Agents also read <InternalLink pathKey="automateWithAgents.memories" text="memories" />: notes saved in your account that are appended to the system prompt so the agent recalls them on later runs.
+
+### Intelligence tiers
+
+You never pick a model. You pick a **tier**, and Augno resolves it to a model for you.
+
+| Tier       | Use it for                                                                      |
+| ---------- | ------------------------------------------------------------------------------- |
+| `frontier` | The hardest work: multi-step planning, ambiguous problems, tool-heavy workflows |
+| `high`     | The default. Normal planning, synthesis, and customer-facing reasoning          |
+| `balanced` | Research, summarization, classification, structured extraction, light tool use  |
+| `cheap`    | Simple transforms, validation, formatting, keyword lookup, routing              |
+
+Higher tiers reason better and cost more. Pick the lowest tier that reliably handles the agent's work.
+
+Each tier is an **ordered chain of equivalent models that deliberately spans several providers**. A run starts on the tier's first model; if that provider returns an overloaded or unavailable error that survives retries, the run fails over to the next model in the chain and keeps going. That is why the tier is the setting and the model is not: the chain is what makes a provider outage a hiccup instead of an outage for you.
+
+If you leave the tier unset, the run picks a sensible default from how it was triggered — customer-facing chat and manual runs get the `high` tier.
+
+### Temperature
+
+**Temperature** is a 0–1 setting for how much randomness the model uses. Lower is more literal and more repeatable; higher is more varied. Values outside 0–1 are rejected. For agents that produce records, quote figures, or follow a fixed procedure, keep it low.
+
+### Tools
+
+Tools are what turn an agent from a writer into a worker. Built-in tools are attached to the definition; Augno's API operations are granted separately through an explicit allowlist on the config, and can be individually gated behind human approval. That is its own page — see <InternalLink pathKey="automateWithAgents.toolsAndApprovals" text="Tools & approvals" />.
+
+Next: <InternalLink pathKey="automateWithAgents.runs" text="Runs" includeArrow />

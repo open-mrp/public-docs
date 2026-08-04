@@ -12,28 +12,44 @@ nav:
 
 ### Why billing matters
 
-- **Plan limits**: your plan determines seat count, sandbox limits, invoice limits, and batch limits
-- **Subscription health**: billing alerts surface issues like past-due payments or expiring trials before they disrupt access
+- **Plan limits**: your plan sets your seat count, invoice limit, batch limit, and sandbox limit
+- **Plan gating**: some capabilities are switched off entirely below a paid plan — most notably <InternalLink pathKey="automateWithAgents.overview" text="agents" />
+- **Variable usage**: agent LLM usage is metered and billed on top of your plan fee, so your bill is not just the subscription price
+- **Subscription health**: billing alerts surface payment and servicing problems before they disrupt access
 - **Self-service**: upgrade, downgrade, or manage payment methods without contacting support
 
 ### Your current plan
 
-The billing page shows your active plan and its limits:
+The billing page shows your active plan and how much of each plan limit you've used. These are the four limits the billing page reports today:
 
-| Limit         | What it controls                              |
-| ------------- | --------------------------------------------- |
-| **Seats**     | Maximum number of active team members         |
-| **Invoices**  | Maximum invoices per billing period           |
-| **Sandboxes** | Maximum active sandbox environments           |
-| **Batches**   | Maximum production batches per billing period |
+| Limit         | What it covers                                                                                                                                                                                                                                    |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Seats**     | <InternalLink pathKey="manageAccount.team.teamMembers" text="Team members" /> on the account. The bar counts every member, including disabled ones; the limit itself is enforced against active members, so adding a member beyond it is rejected |
+| **Invoices**  | Invoices created within the current billing period. At the ceiling, **creating a new sales order** is rejected — the guard runs at order creation, because an order normally produces an invoice. Sandbox accounts are exempt                     |
+| **Sandboxes** | <InternalLink pathKey="manageAccount.sandboxes" text="Sandbox" /> environments on the account. Creating one beyond the limit is rejected                                                                                                          |
+| **Batches**   | Production batches created within the current billing period. This figure is tracked and displayed but is **not currently enforced** — batch creation is not blocked at the ceiling                                                               |
+
+Seats and sandboxes are counted as current totals; invoices and batches are counted from the start of your current billing period. If you have no active subscription, the period is treated as the calendar month. A limit shown as **Unlimited** means the plan sets no ceiling for that resource.
+
+Paid plans also show an **AI Spending** panel below the limits — see [Agent usage and spending cap](#agent-usage-and-spending-cap).
 
 ### Available plans
 
 Augno offers several plan tiers:
 
-- **Free**: limited seats and features for getting started
-- **Paid tiers**: increased limits and access to advanced features like integrations and custom roles
+- **Free**: limited seats and features for getting started. Agents are unavailable on the free plan
+- **Paid tiers**: increased limits, plus agents and their usage-based billing
 - **Enterprise**: custom limits, dedicated support, and tailored onboarding — contact sales to learn more
+
+Agents are the capability the platform switches off entirely below a paid plan today. Plans also carry feature flags — `customer_portal`, `sales_rep_dashboards`, and `commission_tracking` — that are set per tier and published on the plan object, and everything else scales by limit rather than switching off:
+
+| Capability                          | Free                                            | Paid plans                  |
+| ----------------------------------- | ----------------------------------------------- | --------------------------- |
+| Seats, invoices, batches, sandboxes | Available, at the free plan's limits            | Available, at higher limits |
+| Agents and agent runs               | Unavailable — every agent operation is rejected | Available                   |
+| Monthly AI spending limit           | Not applicable                                  | Available                   |
+
+On the free plan the dashboard's agents area is not reachable: navigating to it redirects you back to the dashboard home with no message explaining why, and the API rejects agent calls with an error telling you to upgrade. Scheduled agent runs on an account that is on the free plan are skipped rather than run, without notifying anyone.
 
 ### Switching plans
 
@@ -42,14 +58,49 @@ To upgrade or downgrade your plan:
 1. Navigate to the **Plan & Billing** tab
 2. Browse the available plans
 3. Select a new plan
-4. Review the **proration preview** showing any credit or charge adjustment
+4. Review the change. Switching to another paid plan shows a **Billing Adjustment** panel with the prorated net amount and your new monthly bill. Switching to Free shows a warning instead — that your subscription will be canceled and that team members beyond the free plan limit will be disabled — and no adjustment figure, because no proration is calculated on that path
 5. Confirm the switch
 
-Plan changes take effect immediately. If you're upgrading, new limits apply right away. If you're downgrading, the change takes effect at the end of your current billing period.
+Plan changes take effect immediately, in both directions. Augno commits the change with Stripe and then moves your account onto the new plan in the same request — there is no deferral to the end of the billing period, even when you downgrade. On a switch between paid plans, the Billing Adjustment panel shows the credit or charge Stripe will apply for the remainder of the period.
+
+Three consequences worth planning around when you downgrade:
+
+- **Seats are reconciled the moment the plan changes.** If you have more active team members than the new plan allows, the least recently active ones are disabled automatically — you are not asked which. The member who performed the downgrade is protected. Upgrading later re-enables disabled members up to the new seat limit, or all of them if the new plan has no seat limit. See <InternalLink pathKey="manageAccount.team.teamMembers" text="team members" /> for what a disabled member loses.
+- **Other resources already over the new ceiling are left in place**, but the next action that would exceed an enforced limit is rejected. Seats, invoices, and sandboxes are enforced; the batch figure is reported but not enforced.
+- **Downgrading to the free plan turns agents off immediately.** New runs are refused from that moment, not at period close.
+
+### Agent usage and spending cap
+
+Your plan fee is not the whole bill. <InternalLink pathKey="automateWithAgents.overview" text="Agents" /> consume LLM tokens, and those tokens are a variable usage charge billed on top of the plan.
+
+**How it is metered.** Every model call an agent makes reports token usage against your account as the call happens — segmented by model and by token type (input versus output). Sandbox agent usage is billed to the production account that owns the sandbox, not to the sandbox.
+
+**What the dashboard number means.** The **Estimated Spend This Month** figure on the billing page is computed the way your invoice will be: for each model and token type, metered quantity multiplied by your plan's rate-card unit price, summed. Those rate-card prices already include your plan's markup. It is called "estimated" because usage reporting has a short freshness lag — expect it to trail live usage by a few minutes, not to differ in method.
+
+Spend is counted from the start of your current billing period, or from the start of the calendar month if the account has no active subscription. The **AI Spending** panel is shown on paid plans only.
+
+#### Setting a monthly limit
+
+Under **Monthly Spending Limit**, set a dollar ceiling on agent spending per billing month:
+
+1. Click the edit icon next to the current limit
+2. Enter a dollar amount, or leave the field empty to remove the limit entirely
+3. Save
+
+**There is no limit by default** — a new paid account's agent spending is uncapped until you set one. Once a limit exists, the panel adds a progress bar against it that turns amber at 80% of the limit and red at 100%. With no limit set, the panel shows the running spend and the word "No limit".
+
+#### What happens when the limit is reached
+
+Enforcement happens in two places, because a single check at the start of a run would let one long run overshoot badly.
+
+- **A new run is refused before it does any work.** Triggering a run is asynchronous, so the trigger itself succeeds and you get a run back. When the worker picks that run up it reads your current-period spend as Stripe will bill it; if that already meets or exceeds your limit, the run is marked **failed** without ever calling a model. Its timeline ends with a failure entry carrying the machine-readable code `agent_spending_cap_reached`, and a chat-triggered run posts the same message and code on the agent's reply, so the interface can offer to raise the limit rather than showing a generic failure. That code maps to `402 Payment Required` in the error catalogue — see <InternalLink pathKey="api.errors" text="handling errors" /> — though for runs you observe it on the failed run rather than on the response to the trigger call.
+- **A run already in flight is stopped, not failed.** During a run, each turn's tokens are priced at the same rate-card rates and added to the month's total. The moment the running total reaches the limit, the run halts at the end of that turn and finishes normally, carrying a message that the limit was reached mid-run. A `cap_exceeded` entry is recorded on the run's timeline. Work the run already completed is kept — it is a clean stop, not an error.
+
+Raising the limit, clearing it, or the start of a new billing period restores agent runs immediately; there is nothing else to reset.
 
 ### Billing portal
 
-Click **Manage billing** to open the Stripe billing portal where you can:
+Click **Manage Billing** to open the Stripe billing portal where you can:
 
 - **Update payment methods**: add, remove, or change credit cards
 - **View invoices**: download past invoices and receipts
@@ -57,13 +108,16 @@ Click **Manage billing** to open the Stripe billing portal where you can:
 
 ### Subscription status alerts
 
-Augno displays alerts when your subscription needs attention:
+Augno displays a banner at the top of the billing page when your subscription needs attention. There are four:
 
-| Status       | What it means                                                                   |
-| ------------ | ------------------------------------------------------------------------------- |
-| **Past due** | A payment has failed — update your payment method to avoid service interruption |
-| **Canceled** | Your subscription has been canceled and access will end at period close         |
-| **Ending**   | Your subscription is set to end and will not auto-renew                         |
+| Alert                         | What it means                                                                                       |
+| ----------------------------- | --------------------------------------------------------------------------------------------------- |
+| **Payment Action Required**   | A payment needs something from you — typically a card that must be re-authorized or replaced        |
+| **Payment Collection Paused** | Stripe has stopped collecting on the subscription; update your payment method to avoid interruption |
+| **Subscription Canceled**     | Servicing has been canceled. Pick a plan to restore full access                                     |
+| **Subscription Paused**       | Servicing is temporarily suspended                                                                  |
+
+The first two reflect the subscription's payment collection state; the last two reflect its servicing state. When a subscription is canceled through Stripe rather than by switching plans in Augno, the account is marked as canceled but keeps its current plan — the cancellation itself does not change the plan, and the account is not automatically moved to free. Switching plans in Augno is the only thing that changes the plan.
 
 ### Enterprise upgrades
 

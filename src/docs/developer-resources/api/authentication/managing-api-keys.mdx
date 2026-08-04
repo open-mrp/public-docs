@@ -23,7 +23,7 @@ You should consider all secret API keys as account credentials. Consequently, th
 
 - **Reserve secret keys for the server.** Secret keys should only live in backend or server-side code. Do not ship them in client apps, mobile binaries, or frontend bundles. Use the API from your own servers instead.
 
-- **Rotate keys on a schedule.** Have a process for rotating Augno API keys and practice it. You'll know where keys are used and be ready to replace one quickly if it's compromised.
+- **Rotate keys on a schedule.** Have a process for rotating Augno API keys and practice it. You'll know where keys are used and be ready to replace one quickly if it's compromised. See [rotating without downtime](#rotating-without-downtime) below for how to do it without an interruption in access.
 
 - **Use logs to spot misuse.** Check <InternalLink pathKey="frontend.requestLogs" text="request logs" /> regularly. Confirm sandbox keys are used for testing and production keys only in production.
 
@@ -35,8 +35,26 @@ In the <InternalLink pathKey="frontend.apiKeys" text="Dashboard" /> you can crea
 
 Scoped permissions contain the blast radius of a leak. For example, a key that can only read certain resources limits what an attacker can do if that key is stolen. Create separate keys per use case and give each one the least privilege it needs. Details are in <InternalLink pathKey="api.apiKeys" text="API Keys" />.
 
+## Rotating without downtime
+
+Rotating a key issues a replacement and revokes the original. By default this is a hard cutover, meaning the moment you rotate, every process still holding the old secret will start to fail.
+
+Use the `revoke_at` field on <InternalLink pathKey="apiReference.apiKey.rotateApiKey" text="Rotate API Key" /> to give yourself an overlap window instead. Set it to a future timestamp — up to 30 days out — and both secrets authenticate until that moment. In the <InternalLink pathKey="frontend.apiKeys" text="Dashboard" />, the same control appears as **Schedule revocation** in the rotate dialog.
+
+A rotation that leaves no gap looks like this:
+
+1. Rotate the key with a `revoke_at` far enough out to cover your slowest deployment path — a day or two is plenty for most stacks.
+2. Store the new secret. It is returned exactly once, in the rotate response, and can never be fetched again.
+3. Roll the new secret out to every consumer: application config, CI, scheduled jobs, partner systems, anything else on your inventory of where the key is used.
+4. Confirm the changeover in <InternalLink pathKey="frontend.requestLogs" text="request logs" />. Traffic should be arriving on the new key, and the old key should show no recent use.
+5. Let the old key lapse at the scheduled time, or revoke it early once you're satisfied nothing is still using it.
+
+Pass `expires_at` in the same call if the replacement should expire on a different schedule than the key it replaces; leave it off and the replacement inherits the original's expiration. The replacement always keeps the original's role, so a rotation never silently changes what the key can do.
+
+Note that a key which is already revoked cannot be rotated. If you revoked first and then wanted a replacement, create a new key instead.
+
 ## When a key may be compromised
 
-If you know or suspect a secret key has been exposed (e.g. committed to a repo or sent by mistake), revoke it in the <InternalLink pathKey="frontend.apiKeys" text="Dashboard" /> right away, issue a new key, and update every place that used the old one. If you see odd activity but aren't sure, revoke and rotate anyway while you investigate. It's safer to assume compromise.
+If you know or suspect a secret key has been exposed (e.g. committed to a repo or sent by mistake), revoke it in the <InternalLink pathKey="frontend.apiKeys" text="Dashboard" /> right away, issue a new key, and update every place that used the old one. If you see odd activity but aren't sure, revoke and rotate anyway while you investigate. It's safer to assume compromise. We suggest immediately revoking the key.
 
 When Augno finds an exposed secret key we take immediate action (such as revoking it) and notify you. We cannot guarantee that we will catch every exposure, so following these practices and securing your integration remains your responsibility.

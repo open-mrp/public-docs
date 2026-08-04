@@ -1,0 +1,282 @@
+---
+title: Email
+subtitle: Bridge a domain you own into Augno so customer mail opens a case and your team replies from your own address.
+route: /communicate/email
+nav:
+    title: Email
+    section: Communicate
+    order: 5
+---
+
+The **email bridge** connects a domain you own to Augno. Mail sent to an address on that domain opens a customer case, replies go back out from the same address, and a bound agent can draft or send those replies for you. <BetaTag />
+
+> #### Public preview
+>
+> Email domains and inboxes are a public-preview surface. The endpoints below are part of the published API, but their shapes may change before general availability — pin an <InternalLink pathKey="api.versioning" text="API version" /> and expect to revisit this integration.
+
+Setup is DNS-dependent and has a strict order: **register a domain → publish its DNS records → verify the domain → provision inboxes on it**. You cannot skip ahead; an inbox can only be created on a domain that has already reached `verified`. Once mail is flowing, the threads it opens are worked like any other case in the <InternalLink pathKey="communicate.inbox" text="Inbox" />.
+
+Two different DNS records are involved and they do different jobs. The DKIM `CNAME` records authenticate mail Augno sends **as** your domain, and they are the only thing verification checks. An `MX` record is what makes mail addressed **to** your domain arrive at Augno in the first place, and nothing in the setup flow checks it. Publish only DKIM and you end up with a `verified` domain, a provisioned inbox, and no inbound mail at all.
+
+You can drive the whole flow from the **Email** tab in <DocLink pathKey="frontend.account">account settings</DocLink>, or from the API. Both use the same endpoints.
+
+## 1. Register the domain
+
+Send the bare fully-qualified domain you want to send and receive on — not an email address. The value is trimmed and lowercased before it is stored, and it must contain a dot and no `@` or spaces.
+
+```bash
+curl -X POST API_HOST/v1/messaging/email-domains \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "Content-Type: application/json" \
+  -d '{"domain": "support.acme.com"}'
+```
+
+Augno registers the sending identity with its mail provider (Amazon SES) **before** it writes the domain row, so the tokens you get back are the provider's real DKIM tokens rather than placeholders. The response is the new domain in `pending`:
+
+```json
+{
+    "id": "emdom_2rk3omr8vshb",
+    "object": "email_domain",
+    "domain": "support.acme.com",
+    "status": "pending",
+    "dkim_tokens": ["abc123", "def456", "ghi789"],
+    "verified_at": null
+}
+```
+
+A domain can only be registered once across the platform, so registering one that is already in use returns a conflict error. The tokens stay readable on the domain afterwards — re-fetch it any time with <InternalLink pathKey="apiReference.emailDomains.getEmailDomain" text="Get Email Domain" /> if you lose them, and list everything the account has registered with <InternalLink pathKey="apiReference.emailDomains.listEmailDomains" text="List Email Domains" />.
+
+Registering requires the `messaging:create` permission.
+
+## 2. Publish the DNS records
+
+This is the step that cannot be discovered by trial and error, and it has two halves that are easy to conflate. DKIM makes your outbound replies trustworthy; MX makes inbound mail reach Augno. You need both.
+
+### DKIM — authenticate outbound mail
+
+For **each** token in `dkim_tokens`, publish one CNAME record at your DNS provider:
+
+| Type    | Host / Name                           | Value                        |
+| ------- | ------------------------------------- | ---------------------------- |
+| `CNAME` | `<token>._domainkey.support.acme.com` | `<token>.dkim.amazonses.com` |
+
+The values in `dkim_tokens` are **bare tokens** — `abc123`, not `abc123._domainkey.support.acme.com`. You append `._domainkey.<your domain>` yourself. So a token of `abc123` on `support.acme.com` becomes a CNAME at `abc123._domainkey.support.acme.com` pointing to `abc123.dkim.amazonses.com`. Publish a record for every token — a partial set leaves the domain unverifiable.
+
+Two things worth knowing before you touch DNS:
+
+- **Leave the records in place permanently.** They are not a one-time proof of ownership: removing them later breaks DKIM signing and mail stops going out.
+- **You do not need to widen SPF.** DKIM is what authenticates the domain here, and DMARC passes on DKIM alignment, so there is no reason to add Amazon SES to your primary SPF record.
+
+### MX — route inbound mail to Augno
+
+DKIM says nothing about where mail for your domain is _delivered_. That is decided by the domain's `MX` record, and until it points at Augno's receiving endpoint no inbound message ever reaches the platform — the inbox you provision in step 4 simply stays empty, and none of the ingestion behaviour described further down ever runs.
+
+| Type | Host / Name        | Priority | Value                                  |
+| ---- | ------------------ | -------- | -------------------------------------- |
+| `MX` | `support.acme.com` | `10`     | `inbound-smtp.us-east-1.amazonaws.com` |
+
+The receiving endpoint is a property of the Augno deployment rather than of your account: mail is received in `us-east-1`, so that is the hostname to publish. Confirm the value with your Augno contact before cutting over a domain that already carries live mail.
+
+Two practical consequences:
+
+- **Register a subdomain, not your apex.** An MX record replaces mail routing for the exact host it is published on. Pointing the MX of `support.acme.com` at Augno leaves `acme.com`'s own mail — Google Workspace, Microsoft 365, whatever you run — completely untouched. Pointing your apex MX at Augno would take over all of your company mail.
+- **If you cannot repoint MX at all**, skip this record and use the inbox's `forwarding_address` instead (see [When you cannot repoint MX](#when-you-cannot-repoint-mx)). That address sits on an Augno-owned domain whose MX already points at the receiving endpoint, so forwarding to it works without you changing any routing of your own.
+
+### Deliverability and anti-spoofing
+
+Keep a DMARC policy published at `_dmarc.<your-domain>`. With the DKIM records above in place, DMARC passes on DKIM alignment.
+
+If you or your recipients filter inbound mail through a security gateway (Barracuda, Mimecast, Proofpoint and similar), its sender-spoof or impersonation protection may still quarantine these replies: they carry your domain but arrive from an external sending source. Ask the mail administrator to exempt Augno's sending source. On Barracuda that setting lives under **Inbound Settings → Sender Authentication → Sender Spoof Protection**.
+
+## 3. Verify the domain
+
+Once the records are published, ask Augno to re-check them:
+
+```bash
+curl -X POST API_HOST/v1/messaging/email-domains/emdom_2rk3omr8vshb/actions/verify \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
+```
+
+The action re-polls the mail provider and is safe to call repeatedly:
+
+- If the provider confirms the records, the domain flips to `verified` and `verified_at` is stamped.
+- **If the records are not visible yet, the call still succeeds and returns the domain unchanged in `pending`.** It is not an error, and there is no separate "failed verification" response to look for — you check `status` on the response body.
+- If the domain is already `verified`, it is returned as-is without re-checking.
+
+DNS propagation takes time, so expect to poll. Verifying requires the `messaging:update` permission.
+
+### Domain statuses
+
+| Status     | Meaning                                                                                                                                                    |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pending`  | Registered, awaiting DKIM confirmation. Inboxes cannot be created yet.                                                                                     |
+| `verified` | DKIM confirmed. Inboxes can be added and the domain can send. Inbound mail arrives only once its MX also points at Augno — `verified` does not imply that. |
+| `failed`   | Verification could not be completed.                                                                                                                       |
+
+In practice the verify action only ever moves a domain from `pending` to `verified`; a domain whose records are wrong or missing simply stays `pending` indefinitely rather than moving to `failed`.
+
+### A domain stuck on `pending`
+
+Work through these in order — all of them are DNS problems, not Augno problems:
+
+1. **Every token has a record.** Three tokens means three CNAMEs. One missing record keeps the whole domain unverified.
+2. **The host is not double-suffixed.** Many DNS providers append the zone name automatically, turning `abc123._domainkey.support.acme.com` into `abc123._domainkey.support.acme.com.support.acme.com`. If your provider auto-appends, enter only `abc123._domainkey`.
+3. **The record is a CNAME, not a TXT.** DKIM here is delegated by CNAME to the provider; a TXT record with the token in it does nothing.
+4. **You registered the exact host you published for.** `support.acme.com` and `acme.com` are different identities with different tokens.
+5. **Propagation has had time.** Query the record yourself (`dig CNAME abc123._domainkey.support.acme.com`) before assuming Augno is wrong; if your resolver cannot see it, neither can the mail provider.
+
+Note what is _not_ on that list: the `MX` record. Verification looks only at DKIM, so a missing or wrong MX will never hold a domain at `pending` — it fails silently later, as inbound mail that never arrives. Check it separately once the domain is `verified`.
+
+## 4. Provision an inbox
+
+An inbox is a routable address on a verified domain:
+
+```bash
+curl -X POST API_HOST/v1/messaging/email-inboxes \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "email_domain_id": "emdom_2rk3omr8vshb",
+        "address": "support@support.acme.com",
+        "from_name": "Acme Support",
+        "agent_config_id": "agdf_ah7tkyfxk8jl",
+        "agent_trigger_policy": "keyword",
+        "agent_trigger_keywords": ["invoice", "refund"]
+      }'
+```
+
+Two rules are enforced on the address, and both reject the request with a parameter error rather than creating anything:
+
+- **The domain part must match the domain you named.** `support@other.com` on `emdom_…` for `support.acme.com` is refused.
+- **That domain must already be `verified`.** Creating an inbox on a `pending` domain is refused.
+
+The address is lowercased before it is stored, and it must not already be in use by another inbox anywhere on the platform.
+
+### Inbox fields
+
+| Field                    | What it does                                                                                                                                     |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `address`                | The routable address. Fixed at creation — it cannot be changed later.                                                                            |
+| `status`                 | `active` routes inbound mail into a conversation; `disabled` keeps the inbox and its history but drops inbound mail.                             |
+| `from_name`              | Display name used in the `From` header of outbound replies.                                                                                      |
+| `agent_config_id`        | The agent bound to the inbox. With no agent bound, mail still threads into a conversation for your team — nothing just runs on it automatically. |
+| `agent_trigger_policy`   | When the bound agent runs: `mention`, `keyword`, or `always`.                                                                                    |
+| `agent_trigger_keywords` | The keywords that fire the agent when the policy is `keyword`. Matching is case-insensitive and substring-based against the message body.        |
+| `group_id`               | A messaging group (roster) whose members are seated on every conversation this inbox opens. Must be a group in your own account.                 |
+| `forwarding_address`     | Read-only. An Augno-hosted address that also routes to this inbox.                                                                               |
+
+### Choosing a trigger policy
+
+`keyword` fires whenever the body contains one of the trigger keywords anywhere; `mention` fires only when a keyword appears immediately after an `@`. Both are case-insensitive substring matches, so the two are not mutually exclusive — `@invoice` satisfies `keyword` as well, and `mention` is simply the narrower of the pair. Because email has no reliable @mention convention, an inbox that binds an agent without setting a policy seats that agent to run on **every** incoming message.
+
+If you also set `group_id`, the roster's human members are seated on each new thread as ordinary members so they can read, edit, and approve replies. Agent members of the roster are seated on `mention` specifically so they do not all fire alongside the inbox's own agent. Membership is snapshotted when the thread opens: later edits to the roster only affect conversations opened after the change.
+
+### When you cannot repoint MX
+
+This is the alternative to the MX record in step 2. If the domain's mail is hosted elsewhere — Google Workspace, Microsoft 365 — and you cannot point its MX records at Augno, use the `forwarding_address` on the inbox instead. Forward mail from your real address to that address at your mail host, and it still threads into a conversation: ingestion recognises the forwarding address and resolves it back to the inbox. Because the forwarding address sits on an Augno-owned domain whose MX already points at the receiving endpoint, nothing changes in your own DNS. The forwarding address is only present when the receiving domain is configured for your deployment.
+
+### Editing and removing inboxes
+
+<InternalLink pathKey="apiReference.emailInboxes.updateEmailInbox" text="Update Email Inbox" />
+changes `status`, `from_name`, the bound agent, its trigger policy and keywords, and the roster.
+`status` is required on every call; every other field is **merged**, so a field you omit — or send
+as an empty list — keeps its current value. That means the endpoint can change a setting but cannot
+clear one back to unset. The address and domain are fixed at creation.
+
+<InternalLink pathKey="apiReference.emailInboxes.deleteEmailInbox" text="Delete Email Inbox" />
+stops mail being routed to the address. Conversations the inbox already opened are kept, but replies
+can no longer be sent on them — so if you still need to answer open threads, set the inbox to
+`disabled` instead of deleting it.
+
+A domain cannot be deleted while any inbox still exists on it; <InternalLink pathKey="apiReference.emailDomains.deleteEmailDomain" text="Delete Email Domain" /> returns a conflict until you remove the inboxes. Deleting the domain also removes its sending identity from the mail provider, after which you can safely drop its DKIM records — and, if you published one, its MX record — from DNS.
+
+## How inbound mail becomes a case
+
+Understanding this pipeline is what lets you debug "the customer emailed us and nothing happened".
+
+**Nothing below runs until MX points at Augno.** The whole pipeline starts when the mail provider _receives_ a message, and that only happens for domains whose `MX` record resolves to the receiving endpoint. Before anything else, check `dig MX support.acme.com` — or, if you are forwarding instead, confirm the forwarding rule at your own mail host is still active. Everything that follows assumes the mail actually arrived.
+
+**Recipient resolution.** Augno collects every candidate address from the mail — `Delivered-To`, `X-Original-To`, `To`, and `Cc` — lowercases and de-duplicates them, then tries each one: against inbox addresses, and against per-inbox forwarding addresses. The first candidate that resolves to a known inbox wins. Collecting all of them is what makes forwarding work, because a forwarding hop rewrites the delivery headers to its own target while the original address survives only in `To`/`Cc`.
+
+**Mail for an unknown or disabled inbox is dropped and acknowledged.** No conversation is created, no error is raised, and nothing is queued for retry. If a message never shows up, confirm the inbox exists, that its address matches exactly, and that its status is `active`.
+
+**Redelivery is deduplicated on the RFC `Message-ID`.** Every threaded email is recorded in an email ledger keyed uniquely on that header, so an at-least-once redelivery of the same message is a no-op rather than a duplicate in the timeline.
+
+**Threading walks `In-Reply-To`, then `References`.** Those message-ids are matched against the ledger; the first one that resolves identifies the conversation the mail belongs to, and the message joins it. If none match — or the mail carries neither header — a new case is opened:
+
+- a customer-facing case titled with the subject line (or `(no subject)`, truncated to 255 characters),
+- bound to the inbox,
+- with the inbox's agent and its roster's members seated on it.
+
+**Every inbound message puts the case in `waiting_internal` (Waiting on team) — including the one that opened it.** A new case is seeded in the `new` lane when its conversation row is created, but ingestion advances it the moment the message lands, so in practice you will not find a bridged email case sitting in `new`. Later mail on an existing case does the same thing, which is also how a `resolved` case reopens.
+
+**The external sender is not a participant.** The customer who emailed you has no account and is never seated on the conversation, so their name and address are carried on the message's metadata instead of resolved from a participant. Agents receive the body prefixed with who wrote it, so a bound agent knows who it is answering.
+
+Messages created this way carry `kind` of `email` and `channel` of `email`, are externally visible on the case, and keep the original subject line on the message alongside the body.
+
+**Only the text body is threaded.** Augno extracts a best-effort plain-text body — the first `text/plain` part, falling back to the HTML part stripped down to text — and decodes base64 or quoted-printable transfer encodings first. File attachments on inbound mail are not surfaced as message attachments in the conversation.
+
+## Replying
+
+A teammate replies by posting to the case with an audience of `customer` (see <InternalLink pathKey="apiReference.messages.sendMessage" text="Send Message" />). On an inbox-bound case that reply is delivered as outbound mail rather than a portal message:
+
+- the recipient and the threading headers are derived from the latest inbound email on the case, so a reply cannot be redirected to an arbitrary address;
+- `subject` is optional and defaults to `Re: <case title>`, and `cc` adds copied recipients;
+- the `From` header is built from the inbox — `"<from_name>" <address>`, e.g. `Acme Support <support@support.acme.com>` — never the individual author's name or address;
+- the reply is recorded on the conversation timeline as a message with `kind` of `email` and `channel` of `email`, exactly like the inbound mail it answers;
+- the case moves to `waiting_external` (Waiting on customer).
+
+The "Customer Service" branding you may have seen on portal cases does **not** apply here. That collapse is applied at read time, only when a customer-relation actor opens the case through the customer portal, and it never touches the delivered mail. On a purely email-bridged thread the emailing customer is not a participant and has no portal account at all, so what they receive is simply the inbox's `from_name` and address.
+
+An agent can instead propose a reply as a draft (`mode` of `draft` with `channel` of `email`), which holds it on the case for a human to approve with <InternalLink pathKey="apiReference.messages.approveAndSendReplyDraft" text="Approve and Send Reply Draft" /> and moves the case to `needs_approval` (Needs approval).
+
+## Delivery log
+
+Queue state is not proof of delivery. When someone reports "the customer never got it", the authoritative record of what the platform actually sent is the <InternalLink pathKey="api.emailLogs" text="email log" />:
+
+```bash
+curl API_HOST/v1/core/email-logs \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
+```
+
+A row is written for **every** attempt, so failed and suppressed sends are visible rather than disappearing:
+
+- `send_status` of `sent` means the delivery provider accepted the message. It does not confirm that the recipient's mail server accepted it, and it is not a read receipt.
+- `send_status` of `pending` means the message was never handed off — the attempt failed, or it was suppressed because the account is in sandbox mode.
+
+The `q` search term matches the subject line or any recipient address, and reading email logs requires the `email_logs:read` permission. <InternalLink pathKey="api.emailLogs" text="Email logs" /> walks through the statuses, sandbox suppression, and retry behaviour in full; <InternalLink pathKey="apiReference.emailLogs.listEmailLogs" text="List Email Logs" /> has the query shape.
+
+One scoping caveat: the email log covers transactional mail the platform sends on the account's behalf — order acknowledgements, invitations, notification emails. Replies sent out of a bridged inbox travel a different path and are recorded on the conversation timeline as messages instead, so look there for the outbound half of an email case.
+
+## Related reading
+
+<DocCardGroup>
+    <LinkCard
+        pathKey="communicate.inbox"
+        title="Inbox"
+        description="Triage, assign, and resolve the cases your inboxes open."
+    />
+    <LinkCard
+        pathKey="communicate.retentionAndCompliance"
+        title="Retention & compliance"
+        description="Legal hold, redaction, and what the retention worker deletes."
+    />
+    <LinkCard
+        pathKey="api.emailLogs"
+        title="Email logs"
+        description="Check whether an email Augno sent on your behalf actually went out."
+    />
+    <LinkCard
+        pathKey="apiReference.emailInboxes.createEmailInbox"
+        title="Create Email Inbox"
+        description="The full request and response shape for provisioning an inbox."
+    />
+</DocCardGroup>

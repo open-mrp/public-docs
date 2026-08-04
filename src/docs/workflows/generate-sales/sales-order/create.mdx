@@ -55,14 +55,15 @@ These are effectively required to create an order.
 
 You can leave these blank or set them later.
 
-| Field                              | What it defines                      | What it does                                                     | Why you’d use it                        |
-| ---------------------------------- | ------------------------------------ | ---------------------------------------------------------------- | --------------------------------------- |
-| **Customer PO Number**             | Customer’s internal PO ref           | Helps customer-side reconciliation; duplicate warning check runs | Useful for matching your SO to their PO |
-| **Promised Date**                  | Committed ship/delivery target       | Used for scheduling and expectation setting                      | SLA / commitment tracking               |
-| **Acknowledgement email contacts** | Who should get order confirmations   | Stores notification recipients for this order                    | Keep customer contacts informed         |
-| **Invoice email contacts**         | Who should get invoice notifications | Stores invoice notification recipients                           | Route invoices to the right people      |
-| **Note**                           | Internal/custom instruction text     | Saved on order for ops visibility                                | Handling instructions, context          |
-| **Manual line price override**     | Per-line price edit (unlock line)    | Lets user override auto-applied price                            | Exception handling on pricing           |
+| Field                              | What it defines                                                                                            | What it does                                                     | Why you’d use it                           |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------ |
+| **Customer PO Number**             | Customer’s internal PO ref                                                                                 | Helps customer-side reconciliation; duplicate warning check runs | Useful for matching your SO to their PO    |
+| **Promised Date**                  | Committed ship/delivery target                                                                             | Used for scheduling and expectation setting                      | SLA / commitment tracking                  |
+| **Acknowledgement email contacts** | Who should get order confirmations                                                                         | Stores notification recipients for this order                    | Keep customer contacts informed            |
+| **Invoice email contacts**         | Who should get invoice notifications                                                                       | Stores invoice notification recipients                           | Route invoices to the right people         |
+| **Note**                           | Internal/custom instruction text                                                                           | Saved on order for ops visibility                                | Handling instructions, context             |
+| **Order discount**                 | An order-level <InternalLink pathKey="generateSales.customerPricing.discountCodes" text="discount code" /> | Adds a negative-priced discount line to the order automatically  | Promotions, negotiated one-off concessions |
+| **Manual line price override**     | Per-line price edit (unlock line)                                                                          | Replaces the calculated price on that line                       | Exception handling on pricing              |
 
 ## What each section is doing in the create flow
 
@@ -96,29 +97,74 @@ These addresses are saved/linked and used directly for billing and shipment exec
 ### 4) Line items
 
 - Add product & quantity
-- Unit price starts from product/customer pricing logic
-- Volume discounts/customer prices can auto-apply
+- The unit price is calculated for you — see [How line prices are set](#how-line-prices-are-set) below
+- Volume discounts and customer prices apply automatically
 - Lock/unlock price per line for manual override
 - Order total updates from line values
+
+### 5) Order discount
+
+Set `order_discount_id` to an order discount's ID or to its unique <InternalLink pathKey="generateSales.customerPricing.discountCodes" text="discount code" /> — either is accepted — and Augno adds an extra negative-priced **discount line** to the order for you. The reduction is not a separate total field — it sits on the order as a line, so it is already reflected in the order totals and in anything computed from them, including checkout.
+
+Changing the order discount on an existing order records the new discount but does **not** add, re-price, or remove the discount line. If you need the charge to change, edit that line directly.
+
+## How line prices are set
+
+Prices are resolved **server-side** from the product, on both create-order and add-a-line. You do not have to compute them, and in the ordinary case you should not send them.
+
+For each line, Augno starts from the product's list price and then applies, in order:
+
+1. the fixed and percentage **unit-conversion discount** configured for the ordered unit inside the product's unit group,
+2. a **conversion** from the product's base unit into the unit the line was ordered in,
+3. every **<InternalLink pathKey="generateSales.customerPricing.volumeDiscounts" text="volume discount" />** tier whose quantity threshold the order meets, and
+4. any contracted **<InternalLink pathKey="generateSales.customerPricing.customerPrices" text="customer price" />** for that customer and product, which replaces the calculated result outright.
+
+When a line is created — with the order or added afterwards — the unit **cost** is always taken from the product and never from the request. Updating an existing line is the only place a `unit_cost` can be supplied, and the value you send is stored as-is, rounded to the nearest cent.
+
+An explicit unit price sent on a create-order or add-a-line request is honored **only for internal users**. A request made on behalf of a customer account ignores it and stores the calculated price. Editing an existing line's price afterwards is a normal update and is open to anyone with permission to edit the order — that is what the UI's unlock-the-line control does.
+
+### Showing prices before an order exists
+
+To display prices while a user is still assembling an order, call the price-quote endpoint with the customer account and the product/quantity pairs. It runs the same pricing engine and creates nothing:
+
+```bash
+curl API_HOST/v1/sales/sales-orders/price-quote \
+  -X POST \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "buyer_account_id": "ac_opnlh43ymyee",
+    "lines": [{ "product_id": "pd_07oe0r7adh2w", "quantity": { "value": "10", "unit_id": "un_82bd37dae5po" } }]
+  }'
+```
+
+It responds with one priced line per requested line, in the order you sent them. Internal price overrides are not accepted here — the calculated price is always what comes back. See <InternalLink pathKey="apiReference.salesOrders.quoteSalesOrderPrices" text="Quote Sales Order Prices" />.
 
 ## Auto-generated / system-managed values
 
 You don’t need to enter these manually:
 
 - **Sales Order Number**: generated by system counter at create time
-- **Status**: starts at initial order status (estimate)
+- **Status**: the order is created as an `estimate`; it changes only through the issue, unissue, close, and reopen actions
 - **Created by / ownership links**: set from signed-in account/user
-- **Sales rep assignment**: resolved by internal assignment logic
-- **Shipping line**: shipping charge line is generated during create logic
+- **Sales rep assignment**: resolved by internal assignment logic — the customer's default rep first, then the sales territory matching the ship-to postal code, then the ship-to state. No rep is assigned when the customer is commission-exempt, or when every ordered product belongs to a commission-exempt product line.
+- **Line prices and costs**: calculated from the product, as described above
+- **Shipping line**: a freight line carrying the estimated shipping charge is always added to the order
+- **Discount line**: added automatically when an order discount is supplied
 - **Change log entry**: creation is logged for audit trail
 
 ## Validation & guardrails you should know
 
 - You cannot create a sales order with zero line items.
 - A customer is required before customer-specific terms and contacts can be selected.
-- Credit card numbers are blocked in note fields.
-- A duplicate customer PO check warns you if the customer PO number is already used for another order.
-- If customer is on hold, Augno warns you that issuing the order is blocked until hold is removed.
+- The customer PO number must be unique among that customer's orders. Over the API a duplicate is rejected outright with a conflict; the UI warns you before you get there.
+- Carrier, shipping terms, and payment terms fall back to the customer's defaults when omitted, and the order is rejected if neither the request nor the customer supplies one.
+- Service level falls back to the customer's default **only when `carrier_id` is also omitted**. Supplying a carrier without a service level leaves the service level unset, and a missing service level never rejects the order.
+- Creating an order counts against your plan's invoice allowance. Once the account has reached its `invoices_maximum` for the current billing period, the create is rejected. Sandbox accounts, and plans with no configured limit, are exempt.
+- In the dashboard, credit card numbers are blocked in note fields. That is a UI check — the API does not validate note contents.
+- In the dashboard, a customer on **hold all** or **hold shipment** disables the Issue button and shows a credit-hold banner until the hold is cleared. Holds are not enforced by the API, so an order for a held customer can still be issued over the API.
 
 ### Next steps
 

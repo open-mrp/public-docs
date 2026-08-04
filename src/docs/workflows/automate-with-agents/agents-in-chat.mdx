@@ -1,0 +1,179 @@
+---
+title: Agents in chat
+subtitle: Put an agent in a conversation, watch it work, approve what it wants to do, and let it draft the reply to your customer.
+route: /automate-with-agents/agents-in-chat
+nav:
+    title: Agents in chat
+    section: Automate with agents
+    order: 6
+---
+
+The fastest way to use an agent is to talk to it. An agent can be a participant in any conversation — a thread with your team, your own notes, or a customer case — and it answers in the thread like anyone else. Nothing to schedule, nothing to configure: mention it and it goes to work.
+
+Every screen described on this page is in the operator dashboard. The customer portal exposes no agent controls at all — no run activity, no approvals, no stopping a run — and an agent's own messages never reach the customer.
+
+### Adding an agent to a thread
+
+An agent joins a conversation as a **participant**, exactly like a person, with one extra setting: a **trigger policy** that decides when it answers.
+
+| Policy    | The agent responds when…                                                            |
+| --------- | ----------------------------------------------------------------------------------- |
+| `mention` | A message contains `@` followed by one of its trigger keywords. This is the default |
+| `keyword` | A message contains one of its trigger keywords, with or without the `@`             |
+| `always`  | Any person posts in the conversation                                                |
+
+Keyword matching is case-insensitive and looks anywhere in the message body. An agent on `mention` or `keyword` with no keywords configured never fires on a new message — though a direct reply to one of its own messages always reaches it, so it still answers replies but nothing else. That is why the dashboard seeds a mention agent with a handle derived from its name, so **Demand Planner** answers to `@DemandPlanner`.
+
+The quickest way in is to type `@` in the composer and pick the agent. If it is not already in the conversation, choosing it adds it on the spot with the `mention` policy and its handle as the trigger keyword. To change how an existing agent behaves, add it again with different settings — re-adding replaces its policy and keywords rather than failing, and it also restores an agent that had been removed.
+
+Who can do this depends on the thread: in a direct message or a customer-facing case, any active participant can add or remove an agent; in an internal group, only the owner or an admin can.
+
+Removing an agent stops it responding but leaves its earlier messages in the thread, and it can be added back later. If a run is still starting when the agent is removed, its reply is quietly dropped rather than posted; a reply that has already begun streaming into the thread is finished and left in place.
+
+| Action | Endpoint                                               | Returns                                 |
+| ------ | ------------------------------------------------------ | --------------------------------------- |
+| Add    | `POST /v1/messaging/conversations/{id}/agents`         | `201` with a `conversation_participant` |
+| Remove | `DELETE /v1/messaging/conversations/{id}/agents/{pid}` | `200` with an empty object              |
+
+Both take the conversation id as `{id}`. Add requires the messaging `create` permission, remove requires messaging `delete`, and both additionally require that **you are an active participant of the conversation yourself** — a teammate who has left it, or who was never in it, gets `resource_not_found` rather than a permission error, so the endpoints never confirm that a conversation they cannot reach exists.
+
+#### Add
+
+```http
+POST /v1/messaging/conversations/{id}/agents
+
+{
+    "agent_config_id": "agdf_ah7tkyfxk8jl",
+    "trigger_policy": "mention",
+    "trigger_keywords": ["DemandPlanner"]
+}
+```
+
+| Field              | Type            | Required | Notes                                                                                |
+| ------------------ | --------------- | -------- | ------------------------------------------------------------------------------------ |
+| `agent_config_id`  | string          | Yes      | The agent to add — the `id` of an agent, prefixed `agdf_`.                           |
+| `trigger_policy`   | string          | No       | `mention`, `keyword`, or `always`. Defaults to `mention`.                            |
+| `trigger_keywords` | array of string | No       | The keywords, or mention handles, that fire the agent. Matching is case-insensitive. |
+
+Posting it again for an agent that is already a participant is the re-add described above rather than an error: the trigger policy and keywords are replaced with the ones you send and a previously removed agent is reactivated. That makes this endpoint, and not a separate update, the way to change when an existing agent responds.
+
+**`trigger_keywords` is replaced wholesale, not merged** — send the complete list every time, because omitting it on a re-add clears the keywords the agent had.
+
+#### Remove
+
+```http
+DELETE /v1/messaging/conversations/{id}/agents/{pid}
+```
+
+`{pid}` is the **participant record's** id — the `id` from the conversation's participant list, prefixed `cvpt_`, not the agent's own `agdf_` id. There is no body and the response is an empty object. The membership is marked `removed` rather than deleted, which is why adding the agent back later restores the same record.
+
+#### Reading the agents in a conversation
+
+There is no list endpoint under `/agents`. To see which agents are seated in a conversation, retrieve it with the participants expanded and keep the ones whose `type` is `agent`:
+
+```http
+GET /v1/messaging/conversations/{id}?include[]=participants
+```
+
+An agent participant is an ordinary `conversation_participant`. It always comes back with `type: "agent"`, `role: "member"`, and `membership: "active"`, its `actor` resolved to the agent (with the agent's name and its slug as the handle), and two fields that only agent participants carry:
+
+| Field                    | Type                      | Notes                                                                                                                                                                         |
+| ------------------------ | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `agent_trigger_policy`   | string, nullable          | `mention`, `keyword`, or `always`. `null` on user and system participants.                                                                                                    |
+| `agent_trigger_keywords` | array of string, nullable | The keywords that fire it. `null` — not `[]` — when the agent has no keywords, including after a re-add that omitted `trigger_keywords`, and on user and system participants. |
+
+Note that `participants` lists only current members, so an agent you removed is absent from it even though its earlier messages remain in the thread. The rest of the participant model — roles, membership states, read cursors — is covered under <InternalLink pathKey="communicate.messages" text="Messages" />.
+
+#### Errors
+
+| Status | Code                       | When                                                                                                                     |
+| ------ | -------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `400`  | `missing_field`            | `agent_config_id` was omitted or empty.                                                                                  |
+| `400`  | `parameter_invalid`        | `trigger_policy` was not one of the three values.                                                                        |
+| `400`  | `validation_failed`        | On remove, `{pid}` names a participant that is not an agent.                                                             |
+| `401`  | `invalid_credentials`      | Missing or invalid credentials.                                                                                          |
+| `403`  | `insufficient_permissions` | You lack the messaging permission, or — in an internal group — you are a member or viewer rather than an owner or admin. |
+| `404`  | `resource_not_found`       | The conversation does not exist, or you are not an active participant of it. On remove, also an unknown `{pid}`.         |
+
+See <InternalLink pathKey="api.errors" text="handling errors" /> for the response envelope.
+
+### What happens when an agent fires
+
+A qualifying message starts a **run** that is bound to the conversation. The work is asynchronous: the thread shows the agent typing while the run is queued and executing, and the reply is posted back into the same thread, attributed to the agent, when it finishes.
+
+Two behaviors are worth knowing up front:
+
+- **An agent never responds to another agent.** The trigger only evaluates messages written by people, so two `always` agents in one thread cannot talk each other into an infinite loop.
+- **The agent reads the recent thread, not just your message.** The run is seeded with the conversation's recent turns, so you can mention an agent halfway down a long thread and it picks up the context instead of answering the last sentence in isolation.
+
+**An agent's reply is an internal message.** On a customer case, the agent's answer lands as a team-only note that the customer never receives — the agent posts to your team, not to your customer. Reaching the customer is a separate, deliberate step: the agent proposes a draft and a person sends it. See [Drafting a reply to your customer](#drafting-a-reply-to-your-customer) below.
+
+### Watching a run in the thread
+
+You do not have to open the run console to see what is happening. While the run executes, the thread shows a live indicator that moves through the run's phases:
+
+- typing dots while the run starts,
+- **Thinking**, with the agent's reasoning readable behind the chevron,
+- a plain-language line for each tool it calls, alongside the raw tool name, so you can see _what_ it is doing,
+- the answer itself, streaming in as it is written, in the shape of the message it will become.
+
+A **Stop** control sits next to the indicator while the agent is starting up, thinking, or calling tools, so you can end a run that is heading in the wrong direction without leaving the conversation. Once the answer itself starts streaming, the run is past the point of interruption and the control drops away.
+
+Once the run finishes, the live indicator resolves into a normal message. Above it sits a collapsed **Thought · N tools used** recap you can expand to reread the reasoning and the tool calls for that turn, and a **View run** link that opens the full run timeline. On a chat run that has gone several turns, the recap is scoped to the turn it sits above rather than the whole run.
+
+### Approving tools without leaving the thread
+
+When an agent calls a tool that requires human review, the run pauses and an approval card appears under its message. It lists every pending call by tool name with its arguments spelled out field by field, so you can see the actual values the agent is about to write rather than an opaque tool name. Where an argument is a customer ID, the card resolves it to the customer's name — which is what makes two pending calls of the same tool tellable apart.
+
+Select the calls you want and choose **Approve** or **Reject**. Approving grants a one-time pass for those calls; rejecting denies them and the run **continues without them** — each denied call is answered with a "denied by user" result so the agent can adapt or explain, rather than the whole run being thrown away. To stop a run outright, use **Stop** instead.
+
+The card manages itself. It appears only while the run is genuinely waiting, and disappears once the pause is resolved — including when a teammate resolves it from the run console instead. Approvals are always one-time: the next call to the same tool pauses again. See <InternalLink pathKey="automateWithAgents.toolsAndApprovals" text="Tools & approvals" /> for how a tool comes to be gated in the first place.
+
+### When a run fails
+
+A failed run does not vanish. Its bubble resolves to the failure text, flagged as a failure, with a **Retry** link in the message footer. Retrying **resumes the run's transcript** — the agent picks up where it stopped, knowing what it already did and what its tools returned, rather than starting the task over. The link disappears on its own once the run is no longer failed.
+
+### Replying continues the run; mentioning starts a new one
+
+This is the single most useful thing to know about chat agents.
+
+- **Reply directly to an agent's message** and you continue _that run_. You do not need to mention the agent again, and it keeps everything it had already worked out.
+- **Mention the agent in a fresh message** and you start a new run, with a clean slate seeded from the thread.
+
+If the run you replied to can no longer be continued — it failed, was cancelled, already completed in a way that cannot be resumed, or diverged from what the conversation shows — Augno falls back to a fresh run seeded with the thread's history, so a reply never simply goes unanswered.
+
+Threading follows the same logic: a mention, a keyword trigger, and a continuation all reply _under_ the message that triggered them, keeping the sub-thread together. An `always` agent replies inline instead, since threading every answer in a thread it answers completely would be noise.
+
+### Links back to your records
+
+Chat agents are told to link the records they look up. When an agent mentions a sales order, purchase order, invoice, customer, or product it actually retrieved, it writes it as a link, and the dashboard renders it as a clickable in-app link straight to that record — so "SO-1042 ships Thursday" gets you to SO-1042 in one click.
+
+The instruction is explicit that it may link only records it actually retrieved through a tool, using the ID from the tool result verbatim, and never guess or invent one.
+
+### Drafting a reply to your customer
+
+On a customer case, the agent's own reply stays internal. To answer the customer, an agent with the `draft_reply` tool proposes a **draft**: a real message on the case at status `draft`, holding the exact text it wants sent. It is never delivered. The channel is resolved from the case itself — email if the case is bridged to an email inbox, an in-app portal message otherwise — so the agent supplies only the content.
+
+A case with an open draft moves into the **needs approval** lane, and the draft appears above the composer in a bar labelled _Reply awaiting your approval_, marked as agent-proposed, with the delivery it would produce spelled out. A person then does one of three things: edit it, send it, or discard it. Until someone sends it, nothing has reached the customer, and the draft is not part of the case timeline.
+
+Those three actions are available on the API:
+
+| Action  | Endpoint                                                |
+| ------- | ------------------------------------------------------- |
+| Edit    | `PATCH /v1/messaging/messages/{id}`                     |
+| Send    | `POST /v1/messaging/messages/{id}/actions/approve-send` |
+| Discard | `POST /v1/messaging/messages/{id}/actions/reject`       |
+
+**Edit** — <InternalLink pathKey="apiReference.messages.updateReplyDraft" text="Update Reply Draft" /> takes a `body` (required — it replaces the draft's text outright) and an optional `subject` used when the draft will go out by email; omitting the subject keeps the current one. Only a draft still awaiting approval can be edited. Once it has been sent or discarded, editing fails.
+
+**Send** — <InternalLink pathKey="apiReference.messages.approveAndSendReplyDraft" text="Approve And Send Reply Draft" /> requires a `client_message_id`: a unique key you generate for this approval, such as a UUID. The draft is **promoted in place** rather than copied: the same message becomes the sent one, takes its place in the case timeline, and the customer sees it as coming from Customer Service. On an email-bridged case it goes out as a reply on the case's email thread; otherwise it appears in the customer's portal conversation. Sending also moves the case to waiting on the customer.
+
+Only the first approval of a draft can send it. A concurrent second attempt is rejected as a conflict rather than sending again.
+
+**Discard** — <InternalLink pathKey="apiReference.messages.rejectReplyDraft" text="Reject Reply Draft" /> takes no body beyond the message in the path. The draft moves to status `rejected` and is kept as a record: it can no longer be edited or approved, but it stays visible as something that was proposed and turned down. Because the customer is still owed an answer, the case moves back to waiting on your team.
+
+All three require update permission on messaging, and none of them is available to customer accounts — a customer can never edit, send, or discard a draft about their own case.
+
+The draft lifecycle in full — how drafts are created, the other statuses a message can end in, and what the customer sees at each step — is covered under <InternalLink pathKey="communicate.inbox" text="Inbox" />.
+
+Next: <InternalLink pathKey="communicate.inbox" text="Inbox" includeArrow />

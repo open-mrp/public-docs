@@ -1,0 +1,83 @@
+---
+title: Demand overrides
+subtitle: Tell the planner about demand your order history cannot see.
+route: /build-products/production-planning/demand-overrides
+nav:
+    title: Demand overrides
+    section: Build products
+    subsection: Production planning
+    order: 3
+---
+
+A **demand override** adjusts the demand a <InternalLink pathKey="buildProducts.productionPlanning.productionSchedules" text="production schedule" /> is solved against. <BetaTag /> The forecast is fitted to order history, and history cannot know about a customer you signed last week, a program you are winding down, or a promotion that has not run yet. An override is how you tell it.
+
+Overrides are applied on top of whichever demand basis the account uses, and they change the plan only when the plan is next generated. A schedule that already exists is never rewritten.
+
+### Scope
+
+Every override targets one of three things:
+
+| Scope            | What it adjusts                                                         |
+| ---------------- | ----------------------------------------------------------------------- |
+| **Item**         | A single item                                                           |
+| **Product line** | Every item sold under one product line                                  |
+| **Account**      | Every item in the plan — a blanket assumption such as "plan for growth" |
+
+An item or product-line override names the thing it targets, and that reference is checked against your account, so an override can never silently match nothing. An account-wide override names nothing, because it applies to everything.
+
+**A wider scope repeats the adjustment; it does not share it out.** A product-line or account-scoped override is applied to every item it reaches, in full and independently. "Add 5,000 units" across a five-item product line adds 5,000 units to each of the five, for 25,000 in total — not 5,000 split between them. Percentages behave the way you would expect at any scope, which is why they are the safe way to state a broad assumption.
+
+### The three value modes
+
+This is the setting that most rewards care. The same number means three very different things.
+
+| Mode              | Shown as            | Effect on each month in the period                    |
+| ----------------- | ------------------- | ----------------------------------------------------- |
+| **Absolute**      | "Set to"            | **Replaces** the forecast with the value              |
+| **Delta units**   | "Add units"         | **Adds** the value to the forecast                    |
+| **Delta percent** | "Change by percent" | **Scales** the forecast by the value, as a percentage |
+
+- An **absolute** value cannot be negative. It overwrites the forecast for every month the period touches, so a figure entered for one month and left applying to a quarter will flatten that whole quarter to the same number.
+- A **delta units** value may be negative, so a cancelled program can remove demand.
+- A **delta percent** value of `-25` plans a quarter less than the forecast. It cannot go below `-100`: demand can be cut to nothing, but not past it.
+
+The dialog states the consequence in plain language next to the value as you type it — "Demand for this period becomes 5,000 units, replacing whatever the forecast produced" — because reading it off a dropdown label is exactly how a quarter of demand gets doubled or erased.
+
+**An account-scoped override must be a delta.** An absolute value is rejected at account scope: one number fanned out across every item would flatten the entire plan. If you switch an override to account scope while it is set to "Set to", the mode changes to a percentage with it.
+
+### Periods
+
+An override covers a date range, and is applied **month by month**: every calendar month the range touches is adjusted, and the time of day is ignored. Overrides are matched by overlap, so a quarter-long override applies to every month inside it.
+
+Only the months inside the plan's **forward demand window** move. That window opens at the current month and runs a year — or, on the `seasonal_ema` basis, as many months as the forecast length is set to. A period that sits in the past, or that runs past the end of the forecast, is silently ignored for those months: the demand being solved for is the planning year, and a month beyond it belongs to a future plan. If an override you expected to bite changed nothing, check its period against that window first.
+
+When several overrides land on the same month they are applied in mode order — absolute first, then unit deltas, then percentages — so a percentage always acts on the already-adjusted number rather than on the raw forecast.
+
+### Reasons and notes
+
+Each override can record why it exists: **new customer**, **lost account**, **promotion**, **seasonal shift**, **new product**, **discontinued**, **market intelligence**, or **other**. The reason is carried into every schedule the override changes, so a plan can explain why one month departs from history without anyone having to remember. A free-text note is searchable from the overrides list.
+
+### Timing and staging
+
+- **Effective from** and **expires at** bound the window in which an override is applied to newly generated schedules. Left empty, an override starts applying straight away and keeps applying until it is deactivated or deleted.
+- An override can be created **inactive**, which stages an adjustment that should not affect schedules yet.
+
+### Scaling all demand at once
+
+Growth planning — "what does next year look like at 15% more?" — is common enough to have its own action. It creates a single account-scoped percentage override, defaulting to the next twelve months, rather than making you write one override per item.
+
+### Seeing what an override did
+
+Each generated schedule records every override that moved a number: the item, the month, the demand before and after, how the adjustment was expressed and why. That is what makes an unexpected campaign traceable back to the assumption that caused it.
+
+### A note on units
+
+An override can record the unit its value is expressed in, but that is context for the reader only. The value is applied to planned demand without conversion, so state a unit adjustment in the unit the item is actually planned in.
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.productionPlanning.productionSchedules" text="Production schedules" />**: where overrides are picked up
+- **<InternalLink pathKey="dashboards.forecasting.demandForecast" text="Demand forecast" />**: the baseline overrides adjust
+- **<InternalLink pathKey="buildProducts.productionPlanning.publishingAndReleasing" text="Publishing and releasing" />**: turning the resulting plan into work
+
+Next: <InternalLink pathKey="buildProducts.plant.machinesAndDepartments" text="Machines and departments" includeArrow />

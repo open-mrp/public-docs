@@ -1,0 +1,108 @@
+---
+title: Publishing and releasing
+subtitle: How a draft plan becomes a commitment, and how one week of it becomes work on the floor.
+route: /build-products/production-planning/publishing-and-releasing
+nav:
+    title: Publishing and releasing
+    section: Build products
+    subsection: Production planning
+    order: 2
+---
+
+A <InternalLink pathKey="buildProducts.productionPlanning.productionSchedules" text="production schedule" /> takes two steps to reach the floor. <BetaTag /> **Publishing** turns a draft into the live plan and freezes its leading weeks. **Releasing a week** turns one of those weeks into a <InternalLink pathKey="buildProducts.production.productionRuns" text="production run" /> with batches to scan.
+
+### Publishing
+
+Only a draft can be published. When you publish:
+
+- Every campaign that starts inside the frozen window is marked **frozen**. How many weeks freeze comes from the account's frozen-weeks setting as it stood when the version was generated — not as it stands today.
+- The **frozen campaign count** and **frozen planned quantity** are captured onto the version. They are recorded once and never recomputed, so frozen-week adherence keeps the denominator it was actually committed to.
+- Any published version whose horizon **overlaps** this one's is **superseded** — supersession is by overlap, not by an exact match, so a short ad-hoc version published over a few weeks retires the long plan it lands inside. A superseded version is not rewritten: it stays readable and keeps backing the performance already measured against it.
+- From that point, changing anything inside the frozen window requires a reason and is recorded as a deviation.
+
+A version generated with zero frozen weeks publishes without committing to anything, which is a reasonable way to run while the plan is still being trusted.
+
+Publishing cannot be undone. A version that should no longer be live is archived, not deleted.
+
+#### The publish pre-flight
+
+Publishing freezes a week and supersedes whatever it replaces, and neither is easy to walk back — so the confirmation is a pre-flight rather than an "are you sure?".
+
+- **Blocking**: unsaved edits on the draft, or a version with no planned campaigns at all.
+- **Worth checking first**: weeks planned above capacity, which the floor cannot run as planned; and SKUs that could not get the capacity their policy asks for, which means shortfalls downstream.
+- **What publishing does**: which week freezes and how many units become a commitment, and the fact that the current published version will be superseded.
+
+### Releasing a week
+
+Releasing takes one week of the published plan and creates a single production run for it.
+
+Each campaign in the week becomes **one batch per planned lot**, using the lot size the campaign was planned at. A 360-unit campaign at a 60-unit lot arrives on the floor as six batches, not one instruction to make 360. A quantity that is not a whole number of lots trails a single short lot at the end.
+
+A few rules make the result predictable:
+
+- **The release is atomic.** A run holding half a week's batches is worse than no run: the missing half looks like work nobody asked for, and attainment would count it as unplanned production.
+- **Releasing the same week twice fails.** It does not create a second run. Each released campaign records the run now carrying it, and a campaign that is already released is never re-pointed.
+- **Cancelled campaigns and campaigns planned at zero are left behind** rather than released.
+- **A week that would produce an implausible number of batches is rejected**, since that is far more likely to be a misconfigured lot size than a real week's work.
+
+You name the person accountable for the run, and can optionally name the <InternalLink pathKey="buildProducts.scanning.scanningStations" text="scanning station" /> the batches will be scanned at, which is applied to every batch the release creates across all machines in the week.
+
+#### Preview before you release
+
+The release dialog is driven by a server-side preview that resolves lots with the same code the release itself uses, so what a planner is shown and what the floor receives cannot drift apart. It reports how many campaigns and batches the week would create, the total quantity, and the lot breakdown per campaign — `6 × 60`, machine by machine.
+
+A week that cannot be released says why: it is empty, or it has already been released, in which case the preview names the run it is already tied to. Seeing the preview needs only read access, so a planner who cannot release a week can still see what releasing it would do.
+
+### Campaign progress
+
+Once a week is released, each campaign moves through its own lifecycle:
+
+| Status          | What it means                                                    |
+| --------------- | ---------------------------------------------------------------- |
+| **Planned**     | Scheduled, but not yet released to the floor                     |
+| **Released**    | Issued as a production run, so batches can be scanned against it |
+| **In progress** | Being run                                                        |
+| **Complete**    | Finished                                                         |
+| **Cancelled**   | Will not be run                                                  |
+
+Progress comes from the batches the floor scans, not from anyone reporting it. A campaign records how many batches it issued, how many have been scanned, and how much quantity has been scanned against it — matched on the campaign's own item, so a run holding several SKUs credits each campaign with only its own work. Deleting the run puts its campaigns back to planned.
+
+### Deviations
+
+Every hand change to a plan is written to an append-only change log. The log is what frozen-week adherence is measured from, so a plan edited back into shape stays distinguishable from one that was right the first time.
+
+Each deviation records what changed, derived from the change itself rather than chosen by the person making it:
+
+| Type                 | What changed                                  |
+| -------------------- | --------------------------------------------- |
+| **Line added**       | A campaign was added by hand                  |
+| **Line removed**     | A campaign was removed                        |
+| **Quantity changed** | A campaign's quantity changed                 |
+| **Machine changed**  | A campaign moved to another machine           |
+| **Resequenced**      | A campaign's position within its week changed |
+| **Week moved**       | A campaign moved to another week              |
+
+An edit that does several of these at once is logged under the most significant one, in the order machine, week, quantity, position — that being what a planner has to react to first.
+
+A change inside a frozen week must supply a reason: **machine down**, **material shortage**, **rush order**, **quality hold**, **over run**, **under run**, **capacity change**, or **other** with an explanation. Outside the frozen window a reason is optional.
+
+Whether a change counted as frozen is recorded at the moment it was made, from the freeze window as it stood then. It is never re-derived, so a later publish cannot retroactively reclassify a past edit. Each entry also keeps full before-and-after snapshots of the campaign, so it stays readable even after the campaign it describes is deleted.
+
+### The department work list
+
+The solver only schedules the constraint. Every other department's work is derived from it by walking the <InternalLink pathKey="buildProducts.bom.productionFlows" text="production flow" />, applying each step's lead-time offset and yield — which makes the work list something supervisors read, rather than a second plan someone has to maintain.
+
+The work list follows the **published** plan, so there is nothing to show until a schedule is published. You filter it by department and by week, and it groups jobs by week with a timing chip on each group: **Past due**, **This week** or **Upcoming**.
+
+Each job shows the SKU, the <InternalLink pathKey="buildProducts.bom.productionSteps" text="production step" /> and department that will do it, the quantity implied, and how far downstream of the constraint it sits — `+1w · step 1` is work that waits only on the constraint campaign feeding it, `step 3` waits on two intermediate steps. That is a timing signal rather than a readiness signal: the chip tells you when the work is due relative to the constraint, not whether the floor has started it.
+
+Derived work whose week falls past the end of the horizon is still listed rather than dropped, because a department at the end of a long chain needs to see it coming.
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.productionPlanning.productionSchedules" text="Production schedules" />**: how a plan is generated and what a version holds
+- **<InternalLink pathKey="buildProducts.production.productionRuns" text="Production runs" />**: what a released week becomes
+- **<InternalLink pathKey="buildProducts.production.batches" text="Batches" />**: the individual lots the floor scans
+- **<InternalLink pathKey="dashboards.operations.manufacturingAnalytics" text="Manufacturing analytics" />**: schedule attainment and frozen-week adherence
+
+Next: <InternalLink pathKey="buildProducts.productionPlanning.demandOverrides" text="Demand overrides" includeArrow />

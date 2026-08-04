@@ -51,6 +51,14 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "MCP server",
         "subtitle": "Connect AI agents and assistants to the Augno API over the Model Context Protocol."
     },
+    "/api/audit-events": {
+        "title": "Audit Events",
+        "subtitle": "An immutable record of every change made in your account — who changed what, when, and from which request."
+    },
+    "/api/email-logs": {
+        "title": "Email Logs",
+        "subtitle": "Confirm whether an email Augno sent on your behalf actually went out."
+    },
     "/api/request-logs": {
         "title": "Request Logs",
         "subtitle": "Monitor and debug your API activity with request logs."
@@ -102,6 +110,30 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/release-phases": {
         "title": "Product Release Phases",
         "subtitle": "Learn how Augno describes product release phases and what to expect from each."
+    },
+    "/automate-with-agents/agents-in-chat": {
+        "title": "Agents in chat",
+        "subtitle": "Put an agent in a conversation, watch it work, approve what it wants to do, and let it draft the reply to your customer."
+    },
+    "/automate-with-agents/agents": {
+        "title": "Agents",
+        "subtitle": "Define what an agent does, when it runs, how hard it thinks, and what it is allowed to touch."
+    },
+    "/automate-with-agents/memories": {
+        "title": "Memories",
+        "subtitle": "Durable notes your agents recall on later runs — and the first place to look when one starts behaving oddly."
+    },
+    "/automate-with-agents/overview": {
+        "title": "Automate with agents",
+        "subtitle": "Put an AI teammate on the work — in a conversation or on demand, bounded by a role you control."
+    },
+    "/automate-with-agents/runs": {
+        "title": "Runs",
+        "subtitle": "One execution of an agent, from trigger to answer — and every safety rail around it."
+    },
+    "/automate-with-agents/tools-and-approvals": {
+        "title": "Tools & approvals",
+        "subtitle": "What an agent is allowed to do, and where a human has to say yes first."
     },
     "/build-products/bom/consumptions-and-productions": {
         "title": "Consumptions & Productions",
@@ -155,6 +187,26 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Build Products",
         "subtitle": "Purchasing, manufacturing, production tracking, and inventory management."
     },
+    "/build-products/plant/machine-status-and-downtime": {
+        "title": "Machine status and downtime",
+        "subtitle": "A live board of what every machine is running, and the stoppage log that turns OEE availability into a measurement."
+    },
+    "/build-products/plant/machines-and-departments": {
+        "title": "Machines and departments",
+        "subtitle": "The equipment and functional areas that scheduling, the status board, downtime and OEE all key on."
+    },
+    "/build-products/production-planning/demand-overrides": {
+        "title": "Demand overrides",
+        "subtitle": "Tell the planner about demand your order history cannot see."
+    },
+    "/build-products/production-planning/production-schedules": {
+        "title": "Production schedules",
+        "subtitle": "Versioned, constraint-based plans that decide what each machine makes, and in which week."
+    },
+    "/build-products/production-planning/publishing-and-releasing": {
+        "title": "Publishing and releasing",
+        "subtitle": "How a draft plan becomes a commitment, and how one week of it becomes work on the floor."
+    },
     "/build-products/production/batch-operations": {
         "title": "Batch Operations",
         "subtitle": "Initialize, move, split, and merge - the core actions that advance batches through the production flow."
@@ -207,6 +259,30 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Collect Payments",
         "subtitle": "Learn about collecting payments in Augno."
     },
+    "/communicate/email": {
+        "title": "Email",
+        "subtitle": "Bridge a domain you own into Augno so customer mail opens a case and your team replies from your own address."
+    },
+    "/communicate/inbox": {
+        "title": "Inbox",
+        "subtitle": "Customer-service cases, triage lanes, assignment, and the reply-approval loop."
+    },
+    "/communicate/messages": {
+        "title": "Messages",
+        "subtitle": "Direct messages, group threads, and the discussions attached to your business records."
+    },
+    "/communicate/notifications": {
+        "title": "Notifications",
+        "subtitle": "The in-app bell feed, account announcements, and per-user notification preferences."
+    },
+    "/communicate/overview": {
+        "title": "Communicate",
+        "subtitle": "Conversations, customer cases, notifications, and email inside Augno."
+    },
+    "/communicate/retention-and-compliance": {
+        "title": "Retention & compliance",
+        "subtitle": "Hold a conversation for litigation, erase its contents on request, and know exactly what the retention worker deletes."
+    },
     "/dashboards/financial/accounts-receivable": {
         "title": "Accounts receivable dashboard",
         "subtitle": "An aging report showing what customers owe across current, 30, 60, 90, and 120-day buckets."
@@ -229,7 +305,7 @@ export const pagePreviewData: Record<string, PagePreview> = {
     },
     "/dashboards/operations/manufacturing-analytics": {
         "title": "Manufacturing analytics",
-        "subtitle": "Monitor production output, cost efficiency, margin, quality, and labor efficiency with month-over-month comparison."
+        "subtitle": "OEE and schedule performance for one production week, measured against the plan that was live at the time."
     },
     "/dashboards/operations/material-analytics": {
         "title": "Material analytics",
@@ -367,9 +443,13 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "API keys",
         "subtitle": "Create, rotate, and revoke API keys for programmatic access to Augno."
     },
+    "/manage-account/customer-portal-settings": {
+        "title": "Customer portal settings",
+        "subtitle": "Control how your customer portal looks and the address customers reach it on."
+    },
     "/manage-account/integrations": {
         "title": "Integrations",
-        "subtitle": "Connect third-party services like Stripe and Shippo to your Augno account."
+        "subtitle": "Connect third-party services like Stripe, Shippo, and HubSpot to your Augno account."
     },
     "/manage-account/overview": {
         "title": "Manage Your Account",
@@ -386,6 +466,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/manage-account/security": {
         "title": "Security",
         "subtitle": "Manage your password and keep your account secure."
+    },
+    "/manage-account/support-routing": {
+        "title": "Support routing",
+        "subtitle": "Choose the group whose members receive the messages customers send from your portal."
     },
     "/manage-account/team/roles-and-permissions": {
         "title": "Roles and permissions",
@@ -1075,10 +1159,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Retrieve Item Inventory",
         "subtitle": "GET /v1/catalog/items/{id}/inventory"
     },
-    "/api-reference/items/retrieve-item-lot-default": {
-        "title": "Retrieve Item Lot Default",
-        "subtitle": "GET /v1/catalog/items/{id}/lot-default"
-    },
     "/api-reference/items/remove-item-attribute": {
         "title": "Remove Item Attribute",
         "subtitle": "DELETE /v1/catalog/items/{id}/attributes/{attribute_id}"
@@ -1239,162 +1319,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "List Sales Order Statuses",
         "subtitle": "GET /v1/sales/sales-orders/statuses"
     },
-    "/api-reference/machine-downtime/create-machine-downtime-event": {
-        "title": "Create Machine Downtime Event",
-        "subtitle": "POST /v1/operations/machine-downtime-events"
-    },
-    "/api-reference/machine-downtime/update-machine-downtime-event": {
-        "title": "Update Machine Downtime Event",
-        "subtitle": "PATCH /v1/operations/machine-downtime-events/{id}"
-    },
-    "/api-reference/machine-downtime/list-machine-downtime-events": {
-        "title": "List Machine Downtime Events",
-        "subtitle": "GET /v1/operations/machine-downtime-events"
-    },
-    "/api-reference/machine-downtime/list-machine-downtime-reasons": {
-        "title": "List Machine Downtime Reasons",
-        "subtitle": "GET /v1/operations/machine-downtime-reasons"
-    },
-    "/api-reference/machine-downtime/retrieve-machine-downtime-event": {
-        "title": "Retrieve Machine Downtime Event",
-        "subtitle": "GET /v1/operations/machine-downtime-events/{id}"
-    },
-    "/api-reference/machine-downtime/delete-machine-downtime-event": {
-        "title": "Delete Machine Downtime Event",
-        "subtitle": "DELETE /v1/operations/machine-downtime-events/{id}"
-    },
-    "/api-reference/machine-status/list-machine-status": {
-        "title": "List Machine Status",
-        "subtitle": "GET /v1/operations/machine-status"
-    },
-    "/api-reference/demand-overrides/create-demand-override": {
-        "title": "Create Demand Override",
-        "subtitle": "POST /v1/operations/demand-overrides"
-    },
-    "/api-reference/demand-overrides/update-demand-override": {
-        "title": "Update Demand Override",
-        "subtitle": "PATCH /v1/operations/demand-overrides/{id}"
-    },
-    "/api-reference/demand-overrides/list-demand-override-types": {
-        "title": "List Demand Override Types",
-        "subtitle": "GET /v1/operations/demand-override-types"
-    },
-    "/api-reference/demand-overrides/list-demand-overrides": {
-        "title": "List Demand Overrides",
-        "subtitle": "GET /v1/operations/demand-overrides"
-    },
-    "/api-reference/demand-overrides/retrieve-demand-override": {
-        "title": "Retrieve Demand Override",
-        "subtitle": "GET /v1/operations/demand-overrides/{id}"
-    },
-    "/api-reference/demand-overrides/delete-demand-override": {
-        "title": "Delete Demand Override",
-        "subtitle": "DELETE /v1/operations/demand-overrides/{id}"
-    },
-    "/api-reference/production-schedules/generate-production-schedule": {
-        "title": "Generate Production Schedule",
-        "subtitle": "POST /v1/operations/production-schedules"
-    },
-    "/api-reference/production-schedules/list-production-schedules": {
-        "title": "List Production Schedules",
-        "subtitle": "GET /v1/operations/production-schedules"
-    },
-    "/api-reference/production-schedules/retrieve-current-production-schedule": {
-        "title": "Retrieve Current Production Schedule",
-        "subtitle": "GET /v1/operations/production-schedules/current"
-    },
-    "/api-reference/production-schedules/list-schedule-deviation-types": {
-        "title": "List Schedule Deviation Types",
-        "subtitle": "GET /v1/operations/schedule-deviation-types"
-    },
-    "/api-reference/production-schedules/retrieve-production-schedule": {
-        "title": "Retrieve Production Schedule",
-        "subtitle": "GET /v1/operations/production-schedules/{id}"
-    },
-    "/api-reference/production-schedules/delete-production-schedule": {
-        "title": "Delete Production Schedule",
-        "subtitle": "DELETE /v1/operations/production-schedules/{id}"
-    },
-    "/api-reference/production-schedules/preview-production-schedule": {
-        "title": "Preview Production Schedule",
-        "subtitle": "PUT /v1/operations/production-schedules/actions/preview"
-    },
-    "/api-reference/production-schedules/create-production-schedule-line": {
-        "title": "Create Production Schedule Line",
-        "subtitle": "POST /v1/operations/production-schedules/{id}/lines"
-    },
-    "/api-reference/production-schedules/update-production-schedule-line": {
-        "title": "Update Production Schedule Line",
-        "subtitle": "PATCH /v1/operations/production-schedules/{id}/lines/{line_id}"
-    },
-    "/api-reference/production-schedules/list-production-schedule-derived-lines": {
-        "title": "List Production Schedule Derived Lines",
-        "subtitle": "GET /v1/operations/production-schedules/{id}/derived-lines"
-    },
-    "/api-reference/production-schedules/list-production-schedule-deviations": {
-        "title": "List Production Schedule Deviations",
-        "subtitle": "GET /v1/operations/production-schedules/{id}/deviations"
-    },
-    "/api-reference/production-schedules/list-production-schedule-finished-policies": {
-        "title": "List Production Schedule Finished Policies",
-        "subtitle": "GET /v1/operations/production-schedules/{id}/finished-policies"
-    },
-    "/api-reference/production-schedules/list-production-schedule-item-policies": {
-        "title": "List Production Schedule Item Policies",
-        "subtitle": "GET /v1/operations/production-schedules/{id}/item-policies"
-    },
-    "/api-reference/production-schedules/list-production-schedule-lines": {
-        "title": "List Production Schedule Lines",
-        "subtitle": "GET /v1/operations/production-schedules/{id}/lines"
-    },
-    "/api-reference/production-schedules/preview-production-schedule-week-release": {
-        "title": "Preview Production Schedule Week Release",
-        "subtitle": "GET /v1/operations/production-schedules/{id}/week-release-preview"
-    },
-    "/api-reference/production-schedules/delete-production-schedule-line": {
-        "title": "Delete Production Schedule Line",
-        "subtitle": "DELETE /v1/operations/production-schedules/{id}/lines/{line_id}"
-    },
-    "/api-reference/production-schedules/archive-production-schedule": {
-        "title": "Archive Production Schedule",
-        "subtitle": "PUT /v1/operations/production-schedules/{id}/actions/archive"
-    },
-    "/api-reference/production-schedules/preview-production-schedule-regenerate": {
-        "title": "Preview Production Schedule Regenerate",
-        "subtitle": "PUT /v1/operations/production-schedules/{id}/actions/preview-regenerate"
-    },
-    "/api-reference/production-schedules/publish-production-schedule": {
-        "title": "Publish Production Schedule",
-        "subtitle": "PUT /v1/operations/production-schedules/{id}/actions/publish"
-    },
-    "/api-reference/production-schedules/regenerate-production-schedule": {
-        "title": "Regenerate Production Schedule",
-        "subtitle": "PUT /v1/operations/production-schedules/{id}/actions/regenerate"
-    },
-    "/api-reference/production-schedules/release-production-schedule-week": {
-        "title": "Release Production Schedule Week",
-        "subtitle": "POST /v1/operations/production-schedules/{id}/actions/release-week"
-    },
-    "/api-reference/production-schedule-settings/retrieve-production-schedule-settings": {
-        "title": "Retrieve Production Schedule Settings",
-        "subtitle": "GET /v1/operations/production-schedule-settings"
-    },
-    "/api-reference/production-schedule-settings/list-production-schedule-resource-settings": {
-        "title": "List Production Schedule Resource Settings",
-        "subtitle": "GET /v1/operations/production-schedule-settings/resources"
-    },
-    "/api-reference/production-schedule-settings/delete-production-schedule-resource-setting": {
-        "title": "Delete Production Schedule Resource Setting",
-        "subtitle": "DELETE /v1/operations/production-schedule-settings/resources/{id}"
-    },
-    "/api-reference/production-schedule-settings/update-production-schedule-settings": {
-        "title": "Update Production Schedule Settings",
-        "subtitle": "PUT /v1/operations/production-schedule-settings"
-    },
-    "/api-reference/production-schedule-settings/upsert-production-schedule-resource-setting": {
-        "title": "Upsert Production Schedule Resource Setting",
-        "subtitle": "PUT /v1/operations/production-schedule-settings/resources"
-    },
     "/api-reference/sales-orders/create-sales-order": {
         "title": "Create Sales Order",
         "subtitle": "POST /v1/sales/sales-orders"
@@ -1546,14 +1470,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/roles/delete-role": {
         "title": "Delete Role",
         "subtitle": "DELETE /v1/identity/roles/{id}"
-    },
-    "/api-reference/analytics/analyze-oee": {
-        "title": "Analyze OEE",
-        "subtitle": "PUT /v1/core/analytics/oee"
-    },
-    "/api-reference/analytics/analyze-schedule-attainment": {
-        "title": "Analyze Schedule Attainment",
-        "subtitle": "PUT /v1/core/analytics/schedule-attainment"
     }
 };
 

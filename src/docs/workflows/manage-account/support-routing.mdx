@@ -1,0 +1,38 @@
+---
+title: Support routing
+subtitle: Choose the group whose members receive the messages customers send from your portal.
+route: /manage-account/support-routing
+nav:
+    title: Support
+    section: Manage your account
+    order: 8
+---
+
+The **Support** tab in account settings decides who hears from your customers. It points inbound portal support at a **group conversation**: when a customer opens a support case, the group's members are seated on that case as participants, so the message has a definite recipient instead of landing in an unattended queue.
+
+The Support tab is admin-only in the dashboard, and the underlying operations require messaging permission on your own account — admins always qualify. Customer and supplier portal accounts can never configure it.
+
+### Why it matters
+
+**Support routing is what makes the portal's Contact support button exist.** The <InternalLink pathKey="generateSales.customerPortal" text="customer portal" /> checks support availability before offering the action, and a customer's first case is refused unless a route is configured whose group has at least one active member. An account that never configures a route ships a portal where support simply appears to be missing — nothing is broken, the feature is gated on this setting.
+
+### Setting the route
+
+1. Create the group chat first, in **Messages**, and add the people who should handle support to it. Only group conversations can be a support route — a direct message cannot, and neither can a conversation belonging to another account.
+2. Open the **Support** tab and pick that group from the **Group conversation** list. The tab lists your account's group chats; if there are none yet, it tells you to create one in Messages first.
+3. Save. The tab then shows the current group and lists its active members as the recipients.
+
+Manage **who** receives support by adding and removing people from the group chat itself — there is no separate recipient list on this tab. Only active human members of the group are seated on new cases.
+
+Use **Remove** to clear the route. Clearing it leaves customers unable to open new support cases until a route is set again.
+
+### Changing a route later
+
+Re-pointing or clearing a route only affects cases opened **from then on**. People already seated on an open case stay seated, and existing threads keep working — so moving support to a new team does not silently orphan conversations that are already in flight, and it does not retroactively expose old cases to the new team either.
+
+### Where support routing connects
+
+- **<InternalLink pathKey="generateSales.customerPortal" text="Customer portal" />**: the Contact support action is gated on a resolvable route
+- **<InternalLink pathKey="communicate.inbox" text="Inbox" />**: the cases customers open are worked from your team's inbox
+
+Next: <InternalLink pathKey="manageAccount.team.teamMembers" text="Team members" includeArrow />

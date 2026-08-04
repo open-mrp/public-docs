@@ -14,6 +14,8 @@ export const docPaths = {
         "requestIds": "/api/request-ids",
         "versioning": "/api/versioning",
         "mcpServer": "/api/mcp-server",
+        "auditEvents": "/api/audit-events",
+        "emailLogs": "/api/email-logs",
         "requestLogs": "/api/request-logs",
         "overview": "/api/overview",
         "goSdk": "/api/go-sdk",
@@ -30,6 +32,14 @@ export const docPaths = {
     "apiRequest": "/api-request",
     "goLive": "/go-live",
     "releasePhases": "/release-phases",
+    "automateWithAgents": {
+        "agentsInChat": "/automate-with-agents/agents-in-chat",
+        "agents": "/automate-with-agents/agents",
+        "memories": "/automate-with-agents/memories",
+        "overview": "/automate-with-agents/overview",
+        "runs": "/automate-with-agents/runs",
+        "toolsAndApprovals": "/automate-with-agents/tools-and-approvals"
+    },
     "buildProducts": {
         "bom": {
             "consumptionsAndProductions": "/build-products/bom/consumptions-and-productions",
@@ -50,6 +60,15 @@ export const docPaths = {
             "products": "/build-products/items/products"
         },
         "overview": "/build-products/overview",
+        "plant": {
+            "machineStatusAndDowntime": "/build-products/plant/machine-status-and-downtime",
+            "machinesAndDepartments": "/build-products/plant/machines-and-departments"
+        },
+        "productionPlanning": {
+            "demandOverrides": "/build-products/production-planning/demand-overrides",
+            "productionSchedules": "/build-products/production-planning/production-schedules",
+            "publishingAndReleasing": "/build-products/production-planning/publishing-and-releasing"
+        },
         "production": {
             "batchOperations": "/build-products/production/batch-operations",
             "batches": "/build-products/production/batches",
@@ -77,6 +96,14 @@ export const docPaths = {
             "overview": "/collect-payments/invoicing/overview"
         },
         "overview": "/collect-payments/overview"
+    },
+    "communicate": {
+        "email": "/communicate/email",
+        "inbox": "/communicate/inbox",
+        "messages": "/communicate/messages",
+        "notifications": "/communicate/notifications",
+        "overview": "/communicate/overview",
+        "retentionAndCompliance": "/communicate/retention-and-compliance"
     },
     "dashboards": {
         "financial": {
@@ -143,11 +170,13 @@ export const docPaths = {
             "profile": "/manage-account/account-settings/profile"
         },
         "apiKeys": "/manage-account/api-keys",
+        "customerPortalSettings": "/manage-account/customer-portal-settings",
         "integrations": "/manage-account/integrations",
         "overview": "/manage-account/overview",
         "plansAndBilling": "/manage-account/plans-and-billing",
         "sandboxes": "/manage-account/sandboxes",
         "security": "/manage-account/security",
+        "supportRouting": "/manage-account/support-routing",
         "team": {
             "rolesAndPermissions": "/manage-account/team/roles-and-permissions",
             "teamMembers": "/manage-account/team/team-members"
@@ -399,7 +428,6 @@ export const docPaths = {
             "addItemAttribute": "/api-reference/items/add-item-attribute",
             "changeItemCategory": "/api-reference/items/change-item-category",
             "retrieveItemInventory": "/api-reference/items/retrieve-item-inventory",
-            "retrieveItemLotDefault": "/api-reference/items/retrieve-item-lot-default",
             "removeItemAttribute": "/api-reference/items/remove-item-attribute"
         },
         "itemCategories": {
@@ -459,55 +487,6 @@ export const docPaths = {
         "salesOrderStatuses": {
             "listSalesOrderStatuses": "/api-reference/sales-order-statuses/list-sales-order-statuses"
         },
-        "machineDowntime": {
-            "createMachineDowntimeEvent": "/api-reference/machine-downtime/create-machine-downtime-event",
-            "updateMachineDowntimeEvent": "/api-reference/machine-downtime/update-machine-downtime-event",
-            "listMachineDowntimeEvents": "/api-reference/machine-downtime/list-machine-downtime-events",
-            "listMachineDowntimeReasons": "/api-reference/machine-downtime/list-machine-downtime-reasons",
-            "retrieveMachineDowntimeEvent": "/api-reference/machine-downtime/retrieve-machine-downtime-event",
-            "deleteMachineDowntimeEvent": "/api-reference/machine-downtime/delete-machine-downtime-event"
-        },
-        "machineStatus": {
-            "listMachineStatus": "/api-reference/machine-status/list-machine-status"
-        },
-        "demandOverrides": {
-            "createDemandOverride": "/api-reference/demand-overrides/create-demand-override",
-            "updateDemandOverride": "/api-reference/demand-overrides/update-demand-override",
-            "listDemandOverrideTypes": "/api-reference/demand-overrides/list-demand-override-types",
-            "listDemandOverrides": "/api-reference/demand-overrides/list-demand-overrides",
-            "retrieveDemandOverride": "/api-reference/demand-overrides/retrieve-demand-override",
-            "deleteDemandOverride": "/api-reference/demand-overrides/delete-demand-override"
-        },
-        "productionSchedules": {
-            "generateProductionSchedule": "/api-reference/production-schedules/generate-production-schedule",
-            "listProductionSchedules": "/api-reference/production-schedules/list-production-schedules",
-            "retrieveCurrentProductionSchedule": "/api-reference/production-schedules/retrieve-current-production-schedule",
-            "listScheduleDeviationTypes": "/api-reference/production-schedules/list-schedule-deviation-types",
-            "retrieveProductionSchedule": "/api-reference/production-schedules/retrieve-production-schedule",
-            "deleteProductionSchedule": "/api-reference/production-schedules/delete-production-schedule",
-            "previewProductionSchedule": "/api-reference/production-schedules/preview-production-schedule",
-            "createProductionScheduleLine": "/api-reference/production-schedules/create-production-schedule-line",
-            "updateProductionScheduleLine": "/api-reference/production-schedules/update-production-schedule-line",
-            "listProductionScheduleDerivedLines": "/api-reference/production-schedules/list-production-schedule-derived-lines",
-            "listProductionScheduleDeviations": "/api-reference/production-schedules/list-production-schedule-deviations",
-            "listProductionScheduleFinishedPolicies": "/api-reference/production-schedules/list-production-schedule-finished-policies",
-            "listProductionScheduleItemPolicies": "/api-reference/production-schedules/list-production-schedule-item-policies",
-            "listProductionScheduleLines": "/api-reference/production-schedules/list-production-schedule-lines",
-            "previewProductionScheduleWeekRelease": "/api-reference/production-schedules/preview-production-schedule-week-release",
-            "deleteProductionScheduleLine": "/api-reference/production-schedules/delete-production-schedule-line",
-            "archiveProductionSchedule": "/api-reference/production-schedules/archive-production-schedule",
-            "previewProductionScheduleRegenerate": "/api-reference/production-schedules/preview-production-schedule-regenerate",
-            "publishProductionSchedule": "/api-reference/production-schedules/publish-production-schedule",
-            "regenerateProductionSchedule": "/api-reference/production-schedules/regenerate-production-schedule",
-            "releaseProductionScheduleWeek": "/api-reference/production-schedules/release-production-schedule-week"
-        },
-        "productionScheduleSettings": {
-            "retrieveProductionScheduleSettings": "/api-reference/production-schedule-settings/retrieve-production-schedule-settings",
-            "listProductionScheduleResourceSettings": "/api-reference/production-schedule-settings/list-production-schedule-resource-settings",
-            "deleteProductionScheduleResourceSetting": "/api-reference/production-schedule-settings/delete-production-schedule-resource-setting",
-            "updateProductionScheduleSettings": "/api-reference/production-schedule-settings/update-production-schedule-settings",
-            "upsertProductionScheduleResourceSetting": "/api-reference/production-schedule-settings/upsert-production-schedule-resource-setting"
-        },
         "salesOrders": {
             "createSalesOrder": "/api-reference/sales-orders/create-sales-order",
             "quoteSalesOrderPrices": "/api-reference/sales-orders/quote-sales-order-prices",
@@ -555,10 +534,6 @@ export const docPaths = {
             "listRoles": "/api-reference/roles/list-roles",
             "retrieveRole": "/api-reference/roles/retrieve-role",
             "deleteRole": "/api-reference/roles/delete-role"
-        },
-        "analytics": {
-            "analyzeOee": "/api-reference/analytics/analyze-oee",
-            "analyzeScheduleAttainment": "/api-reference/analytics/analyze-schedule-attainment"
         }
     }
 } as const;

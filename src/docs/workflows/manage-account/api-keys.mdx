@@ -24,37 +24,50 @@ To create a new API key:
 2. Click **Create**
 3. Enter a **name** for the key (e.g., "ERP Sync", "Shopify Integration")
 4. Select a **role** to control the key's permissions
-5. Submit to generate the key
+5. Optionally set an **expiration date** — leave it blank and the key works until it is revoked or rotated
+6. Submit to generate the key
 
 The secret key is displayed **once** after creation. Copy it immediately — you won't be able to view it again. Store it securely in your application's environment variables or secrets manager.
+
+A key keeps the role it was issued with for its whole life, including through rotation. To move an integration to a different role, create a new key. Editing the role itself, however, takes effect for existing keys right away.
 
 For more details on using API keys in requests, see <InternalLink pathKey="api.apiKeys" text="API authentication" />.
 
 ### Key statuses
 
-| Status      | Meaning                                                      |
-| ----------- | ------------------------------------------------------------ |
-| **Active**  | Key is valid and can make API requests                       |
-| **Revoked** | Key has been manually revoked and can no longer authenticate |
-| **Expired** | Key has passed its expiration date and is no longer valid    |
+| Status      | Meaning                                                   |
+| ----------- | --------------------------------------------------------- |
+| **Active**  | Key is valid and can make API requests                    |
+| **Revoked** | Key has been revoked and can no longer authenticate       |
+| **Expired** | Key has passed its expiration date and is no longer valid |
 
-Use the status filter on the API keys list to view keys by their current state.
+Use the status filter on the API keys list to view keys by their current state. A key whose revocation has been scheduled for a future time still counts as **Active** until that time arrives; the list shows the pending revocation time underneath the status. Revocation takes precedence over expiration, so a key that was revoked before its expiration date reads as **Revoked**.
 
 ### Rotating a key
 
-Rotating a key generates a new secret while invalidating the old one. Use rotation when:
+Rotating a key issues a new secret and revokes the key it replaces. Use rotation when:
 
 - A key may have been compromised
 - You're following a regular key rotation policy
 - A team member with access to the key has left
 
-After rotating, update the secret in all systems that use the key. The old secret stops working immediately.
+The replacement carries over the original key's name and role and inherits its expiration date unless you set a new one. It is a **new key with its own ID**, so the key it replaces stays in the list with a `revoked` status. As with creation, the new secret is displayed once — copy it before you close the dialog.
 
-### Revoking and deleting keys
+Two options in the rotate dialog control the changeover:
 
-- **Revoke**: permanently invalidates a key. The key record remains visible for audit purposes but can no longer authenticate requests.
-- **Delete**: removes the key record entirely.
+| Option                  | Effect                                                                                                                                                                                 |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Schedule revocation** | When the old secret stops working. Leave it blank to revoke the old key immediately. Set a future time — up to **30 days** out — to keep the old secret working during the changeover. |
+| **New expiration date** | When the replacement key expires. Leave it blank to inherit the expiration of the key being rotated.                                                                                   |
 
-Revoke a key when you need to cut off access but want to keep the record. Delete when the key is no longer needed at all.
+Scheduling revocation is the supported way to rotate without an interruption in access: rotate the key, deploy the new secret everywhere it is used, then let the old key lapse on schedule. A scheduled revocation more than 30 days out is rejected.
+
+You cannot rotate a key that has already been revoked.
+
+### Revoking a key
+
+Revoking permanently invalidates a key. It takes effect immediately and **cannot be undone** — every request that still presents the key is rejected from that point on. The key record itself is kept, so it stays in the list with a `revoked` status for audit purposes.
+
+There is no way to delete an API key record. Revoke a key when you need to cut off access for good; rotate it instead when the integration behind it needs to keep running on a new secret.
 
 Next: <InternalLink pathKey="manageAccount.sandboxes" text="Sandboxes" includeArrow />

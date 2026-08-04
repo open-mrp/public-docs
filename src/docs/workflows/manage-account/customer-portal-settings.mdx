@@ -1,0 +1,68 @@
+---
+title: Customer portal settings
+subtitle: Control how your customer portal looks and the address customers reach it on.
+route: /manage-account/customer-portal-settings
+nav:
+    title: Customer portal
+    section: Manage your account
+    order: 7
+---
+
+The **Customer Portal** tab in account settings controls the branding and the address of your <InternalLink pathKey="generateSales.customerPortal" text="customer portal" />. The tab is admin-only, and saving changes requires account update permission.
+
+### Branding
+
+Two images are configured here, and both are shown to customers across the whole portal:
+
+- **Logo**: your company logo, displayed throughout the portal experience. Pick an image, crop it in the editor, and save. If no logo is set, the default Augno branding is used.
+- **Portal favicon**: the small icon shown in the browser tab while a customer is on your portal. Use a small square image (32×32 or 64×64 works well); the editor crops to a square. If no favicon is set, the default Augno icon is used.
+
+Uploading either image replaces the one currently in use.
+
+### Portal address
+
+The **portal slug** is the short identifier that appears in your portal URLs:
+
+- **Login**: `/<account-slug>/auth/login`
+- **Register**: `/<account-slug>/auth/register`
+- **Dashboard**: `/<account-slug>/dashboard`
+
+The slug must be at least 3 characters and is unique across all Augno accounts, so saving one that is already taken is rejected. **Changing the slug changes the portal address**: links your customers have saved, and any links you have published, stop resolving.
+
+### Custom domain
+
+Below the branding and slug settings, the **Portal Domain** panel serves your portal from a domain you own. An account can hold **one** custom domain at a time.
+
+#### Connecting a domain
+
+1. **Enter the domain**, for example `shop.acme.com`. A subdomain is recommended — it can be pointed at the portal with a single CNAME record. Apex domains such as `acme.com` are supported and get an A record instead, but often need extra DNS support from your provider. Augno-owned hostnames are rejected, as is a domain another account already uses.
+2. **Publish the DNS records**. Connecting the domain returns a table of records with the type, name, and value to create at your provider, plus why each is needed:
+    - **routing** — points your domain at the portal
+    - **ownership** — proves you control a domain that is claimed elsewhere
+3. **Check verification**. The domain starts as **pending**. Once the records are published, run the check; DNS propagation can take a few minutes, so you may need to check more than once.
+
+#### Domain status
+
+The panel shows one of two chips: **Pending verification** until the domain is fully live, then **Verified**. Underneath, the API reports a third value while the certificate is being issued:
+
+| Status       | What it means                                                                                      | Chip                 |
+| ------------ | -------------------------------------------------------------------------------------------------- | -------------------- |
+| **Pending**  | Registered, but its DNS records are missing or misconfigured                                       | Pending verification |
+| **Securing** | DNS is correct and the TLS certificate is being issued; the portal is not reachable over HTTPS yet | Pending verification |
+| **Verified** | DNS is confirmed, the certificate is live, and the portal is served on the domain                  | Verified             |
+
+So a domain sitting on "Pending verification" after your DNS records are correct is most likely securing its certificate — keep checking rather than removing it.
+
+The API also declares a `failed` status, but no verification path currently produces it; a domain that cannot be verified stays pending. If a domain will not verify, confirm the records match exactly, then remove it and connect it again.
+
+#### After verification
+
+- Requests to the custom host are served as your portal, with the `/<account-slug>` prefix stripped from the visible URL.
+- Requests to the slug-based address redirect to the custom domain, so the portal has one canonical address.
+- Portal links Augno generates in customer emails — the password-reset link, and the one-click login link sent when someone tries to register with an email that already has an account — point at the custom domain.
+
+#### Removing a domain
+
+Removing the domain detaches it immediately: it stops serving the portal, and customers using that address must go back to the slug-based portal address. Afterwards you can safely delete the DNS records you published. Because an account holds only one custom domain, removing it is also how you free the slot for a different one.
+
+Next: <InternalLink pathKey="manageAccount.supportRouting" text="Support" includeArrow />

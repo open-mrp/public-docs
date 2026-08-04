@@ -161,6 +161,36 @@ export const navData: TabbedNavData = {
                     ]
                 },
                 {
+                    "title": "Production planning",
+                    "items": [
+                        {
+                            "href": "/build-products/production-planning/production-schedules",
+                            "children": "Production schedules"
+                        },
+                        {
+                            "href": "/build-products/production-planning/publishing-and-releasing",
+                            "children": "Publishing and releasing"
+                        },
+                        {
+                            "href": "/build-products/production-planning/demand-overrides",
+                            "children": "Demand overrides"
+                        }
+                    ]
+                },
+                {
+                    "title": "Plant & equipment",
+                    "items": [
+                        {
+                            "href": "/build-products/plant/machines-and-departments",
+                            "children": "Machines and departments"
+                        },
+                        {
+                            "href": "/build-products/plant/machine-status-and-downtime",
+                            "children": "Machine status and downtime"
+                        }
+                    ]
+                },
+                {
                     "title": "Scanning",
                     "items": [
                         {
@@ -370,6 +400,35 @@ export const navData: TabbedNavData = {
             ]
         },
         {
+            "title": "Communicate",
+            "links": [
+                {
+                    "href": "/communicate/overview",
+                    "children": "Overview"
+                },
+                {
+                    "href": "/communicate/messages",
+                    "children": "Messages"
+                },
+                {
+                    "href": "/communicate/inbox",
+                    "children": "Inbox"
+                },
+                {
+                    "href": "/communicate/notifications",
+                    "children": "Notifications"
+                },
+                {
+                    "href": "/communicate/email",
+                    "children": "Email"
+                },
+                {
+                    "href": "/communicate/retention-and-compliance",
+                    "children": "Retention & compliance"
+                }
+            ]
+        },
+        {
             "title": "Dashboards",
             "links": [
                 {
@@ -467,6 +526,14 @@ export const navData: TabbedNavData = {
                     ]
                 },
                 {
+                    "href": "/manage-account/customer-portal-settings",
+                    "children": "Customer portal"
+                },
+                {
+                    "href": "/manage-account/support-routing",
+                    "children": "Support"
+                },
+                {
                     "title": "Team",
                     "items": [
                         {
@@ -498,6 +565,35 @@ export const navData: TabbedNavData = {
                 {
                     "href": "/manage-account/plans-and-billing",
                     "children": "Plans & billing"
+                }
+            ]
+        },
+        {
+            "title": "Automate with agents",
+            "links": [
+                {
+                    "href": "/automate-with-agents/overview",
+                    "children": "Overview"
+                },
+                {
+                    "href": "/automate-with-agents/agents",
+                    "children": "Agents"
+                },
+                {
+                    "href": "/automate-with-agents/runs",
+                    "children": "Runs"
+                },
+                {
+                    "href": "/automate-with-agents/tools-and-approvals",
+                    "children": "Tools & approvals"
+                },
+                {
+                    "href": "/automate-with-agents/memories",
+                    "children": "Memories"
+                },
+                {
+                    "href": "/automate-with-agents/agents-in-chat",
+                    "children": "Agents in chat"
                 }
             ]
         }
@@ -602,6 +698,14 @@ export const navData: TabbedNavData = {
                         {
                             "href": "/api/request-logs",
                             "children": "Request logs"
+                        },
+                        {
+                            "href": "/api/audit-events",
+                            "children": "Audit events"
+                        },
+                        {
+                            "href": "/api/email-logs",
+                            "children": "Email logs"
                         }
                     ]
                 }

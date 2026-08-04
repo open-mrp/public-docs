@@ -1,0 +1,65 @@
+---
+title: Audit Events
+subtitle: An immutable record of every change made in your account — who changed what, when, and from which request.
+route: /api/audit-events
+nav:
+    title: Audit events
+    section: API
+    subsection: Monitoring
+    order: 2
+---
+
+An **audit event** is an immutable record of a single mutation: a resource was created, updated, deleted, restored, archived, approved, or denied. Each event names the actor who did it, the resource it happened to, when it happened, and — when you ask for them — the exact field-level before/after values.
+
+Audit events are the answer to "who changed this order's ship-to address, and what was it before?". They are a different layer from <InternalLink pathKey="api.requestLogs" text="request logs" />: a request log describes one HTTP call, while an audit event describes one business-object change. The two are linked — an event that originated from an API request carries that request log as an expandable sub-object.
+
+## What an audit event records
+
+| Field                           | Description                                                              |
+| :------------------------------ | :----------------------------------------------------------------------- |
+| `action`                        | `create`, `update`, `delete`, `restore`, `archive`, `approve`, or `deny` |
+| `resource_type` / `resource_id` | The record that changed                                                  |
+| `actor`                         | The user, API key, or agent identity that performed the mutation         |
+| `account`                       | The account the mutation was performed _against_                         |
+| `changes`                       | Field-level `old_value` / `new_value` pairs                              |
+| `metadata`                      | Arbitrary JSON attached to the mutation, such as a reason code           |
+| `request`                       | The request log for the API call that caused the change                  |
+| `idempotency_key`               | The idempotency key of the originating request, if one was sent          |
+| `source_ip`                     | The originating client IP                                                |
+| `occurred_at` / `created_at`    | When the mutation happened, and when the event row was written           |
+
+`approve` and `deny` record a human decision on a gated action — for example allowing or rejecting a review-gated agent tool call.
+
+## Listing events
+
+```bash
+curl "API_HOST/v1/core/audit-events?limit=25" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
+```
+
+Results are returned newest-first and use standard cursor <InternalLink pathKey="api.pagination" text="pagination" />. See the <InternalLink pathKey="apiReference.auditEvent.listAuditEvents" text="List Audit Events" /> reference for the full response shape.
+
+Every list is scoped to events where your account is either the **acting** account (it performed the mutation) or the **target** account (the mutation was performed against it). You never see events belonging to unrelated accounts.
+
+## Scoping to a record's entire history
+
+The most useful thing this endpoint does is return a whole **history tree** rather than a single row's changes. Pass `root_resource_type` and `root_resource_id` together and you get every event that was stamped with that root, including events on records that have since been deleted.
+
+```bash
+curl "API_HOST/v1/core/audit-events?root_resource_type=sales_order&root_resource_id=or_xxx&include[]=actor&include[]=changes" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
+```
+
+Sales orders are the family this was built for. An order stamps itself as its own root, and so do its lines, picks, pick lines, shipments, shipment lines, and invoices — so one call returns the order's own changes alongside everything audited beneath it, in one newest-first list. This is exactly what the order timeline in the Dashboard renders.
+
+What comes back is whatever of that tree is _audited_, which is not the same as everything that ever happened to the order. Invoices, for example, currently contribute update events only: there is no audited invoice creation or deletion, and invoice lines are not audited at all. Read the result as the recorded history, not as a guarantee of completeness.
+
+Three things to know:
+
+- **Both parameters are required for the filter to apply.** Supplying only `root_resource_type` or only `root_resource_id` does not error; the root filter is simply ignored and you get an unscoped list back.
+- **Only two record families stamp a root today, and they behave differently.** A sales order stamps the root on itself and on every descendant. A production schedule stamps it only on _schedule line_ events, and only for changes that fall inside a frozen week — the schedule record's own events carry no root at all. Root scoping a production schedule therefore returns neither the schedule's own history nor line changes made outside the frozen window.
+- **Root scoping a type that stamps no root returns an empty list.** The filter is an equality match on _both_ stored columns, so an event that carries no root can never match it. Everything outside those two trees — customers, items, purchase orders, users — falls into this category. You do not get a narrower answer back; you get nothing. Use `resource_types` and `resource_ids` for those records instead.

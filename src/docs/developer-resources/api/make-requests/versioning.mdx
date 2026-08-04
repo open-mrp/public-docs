@@ -13,13 +13,15 @@ Augno uses a versioning system designed to protect existing integrations while a
 
 ## The Augno-Version header
 
-All API requests **require** the `Augno-Version` header. Requests without a valid version header are rejected with an error.
+All API requests **require** the `Augno-Version` header. Requests without it are rejected with `400` and the error code `api_version_required`; requests naming a version the API does not support are rejected with `400` and `api_version_invalid`, and the message lists every version that is accepted.
 
 ```bash
-curl https://api.augno.com/v1/core/customers \
+curl API_HOST/v1/sales/customers \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION"
 ```
+
+Every successful response echoes an `Augno-Version` header carrying the version the request was resolved to. Assert on it in your integration tests — it is the cheapest way to catch a client that forgot to pin.
 
 ## Version format
 
@@ -35,7 +37,7 @@ For example, `1.0.forge` would be a stable release of the `forge` major version 
 
 ## Preview releases
 
-Preview releases allow you to test upcoming changes before they're promoted to stable. Preview versions use the format:
+Preview releases let you work against upcoming changes before they are promoted to stable. Preview versions use the format:
 
 `<minor>.<patch>.<codename>-preview.<n>`
 
@@ -44,10 +46,9 @@ For example, `1.3.forge-preview.1` is the first preview of what will become `1.3
 Preview releases:
 
 - Are ordered numerically (e.g., `preview.1`, `preview.2`, `preview.3`)
-- May contain breaking changes between preview versions
+- May contain breaking changes between preview numbers
 - Are promoted to stable once finalized (e.g., `1.3.forge-preview.2` becomes `1.3.forge`)
-- Should not be used in production environments
-- Will not be supported after the next version is stable
+
 
 ## Breaking vs non-breaking changes
 
@@ -73,6 +74,7 @@ When upgrading to a new version:
 
 1. **Test in sandbox first.** Use the new version header in your sandbox environment to verify compatibility.
 2. **Review the changelog.** Check for any changes that affect your integration.
+3. **Watch the echoed header.** Confirm responses come back with the version you intended before you roll out.
 
 ### Preparing for codename migrations
 

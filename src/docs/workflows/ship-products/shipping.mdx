@@ -60,6 +60,36 @@ Before you ship, Augno fetches rates from Shippo so you can see the estimated co
 
 This lets you compare costs and confirm the service level before committing.
 
+#### Cross-carrier rate shopping
+
+Rate shopping quotes **every** carrier and service level configured on your account in one pass, instead of pricing a single carrier at a time, and returns the options sorted cheapest first.
+
+- Carriers linked to a Shippo carrier account are priced from Shippo, matched to your service levels by service token, and carry the carrier's delivery-day estimate when it provides one.
+- Carriers with **no** Shippo carrier account are still listed, at a rate of `0` — they are options you can pick, not priced quotes.
+- Carriers that are mapped to a Shippo carrier account are dropped from the results entirely when your account has no Shippo integration connected, or when their rates cannot be fetched — a Shippo carrier is never shown at a fabricated zero. If every carrier you have configured is Shippo-mapped and Shippo is not connected, rate shopping returns no options at all; connect <InternalLink pathKey="manageAccount.integrations" text="Shippo" /> to price them.
+- If the ship-from address is not supplied, the account's configured origin (its default billing address) is used. This is how <InternalLink pathKey="generateSales.customerPortal" text="customer portal" /> callers rate shop without knowing your address; portal callers also only see the carriers and service levels you have enabled for the portal.
+
+#### How freight rules shape the options
+
+Your freight rules are applied on top of the quoted rates, and each outcome is reported back as an exemption type:
+
+| Outcome               | What you see                                                               |
+| --------------------- | -------------------------------------------------------------------------- |
+| **Freight exempt**    | **No options at all.** Freight is not charged                              |
+| **Flat rate**         | Every option's carrier rate is replaced by the shipping term's flat amount |
+| **Minimum order met** | Eligible options are rated at zero; the rest keep their quoted rate        |
+| **None**              | Standard carrier rates, unchanged                                          |
+
+The rules resolve in this order:
+
+1. **Freight-exempt product line**: if any product line on the order is freight exempt, rate shopping returns an empty option list and reports `freight_exempt`.
+2. **Freight-exempt customer**: the same happens when the <InternalLink pathKey="generateSales.customer.overview" text="customer" />, its type group, or any of its price groups is freight exempt.
+3. **Free-freight shipping term**: a customer whose <InternalLink pathKey="generateSales.customerSetup.shippingTerms" text="shipping term" /> is free freight also returns no options and reports `freight_exempt`.
+4. **Free-shipping minimum order value**: when the term sets a minimum order value and the order total is **strictly above** it, eligible options are rated at zero and the result reports `minimum_order_met`. If the term restricts free shipping to specific service levels, only those are zeroed; anything else keeps its carrier or flat rate. A met minimum takes precedence over a flat rate in the reported outcome.
+5. **Flat-rate shipping term**: otherwise a flat-rate term substitutes its flat amount for every option's carrier rate and reports `flat_rate`. A flat-rate term with no amount stored falls through to the carrier's quoted rate, and a carrier-rate term keeps live carrier rates even if a flat amount happens to be stored on it.
+
+An empty option list is therefore a legitimate, expected answer — it means freight is not being charged, not that rate shopping failed. Omitting the customer skips the customer, shipping-term, minimum-order and flat-rate rules and returns plain carrier rates; the freight-exempt product-line check in step 1 still applies, because it is evaluated from the product lines on the request rather than from the customer.
+
 ### Voiding a shipment
 
 If you need to cancel after labels have been generated, you can void the shipment. Voiding:

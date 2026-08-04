@@ -1,0 +1,73 @@
+---
+title: Machines and departments
+subtitle: The equipment and functional areas that scheduling, the status board, downtime and OEE all key on.
+route: /build-products/plant/machines-and-departments
+nav:
+    title: Machines and departments
+    section: Build products
+    subsection: Plant & equipment
+    order: 1
+---
+
+**Machines** and **departments** are managed records with their own pages, not labels typed onto a <InternalLink pathKey="buildProducts.bom.productionSteps" text="production step" />. <BetaTag /> That matters because they are the units almost everything in operations is keyed on: campaigns are planned onto machines, the <InternalLink pathKey="buildProducts.plant.machineStatusAndDowntime" text="status board" /> is a wall of machines, downtime is logged against a machine, and OEE rolls up by department.
+
+### Departments
+
+A department is a functional area of your operation — fabrication, knitting, packaging — that groups <InternalLink pathKey="buildProducts.scanning.scanningStations" text="scanning stations" /> and machines.
+
+| Field                 | What it does                                                                                                        |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| **Name**              | Unique within your account                                                                                          |
+| **Notes**             | Free-form                                                                                                           |
+| **Location**          | The <InternalLink pathKey="buildProducts.inventory.storageAndLots" text="location" /> where the department operates |
+| **Scanning stations** | The stations that belong to it                                                                                      |
+| **Machines**          | The machines that belong to it                                                                                      |
+| **Labor rate**        | An hourly rate for work done in the department, such as a changeover technician                                     |
+
+The labor rate is not decoration. When production scheduling prices a changeover, it uses the constraint department's own rate if it has one, and falls back to the account-wide changeover labor rate only when it does not.
+
+A scanning station or a machine belongs to one department at a time, so assigning it to a department moves it out of whichever one held it before.
+
+**Reassign a department's stations and machines before you delete it.** Deleting a department does not delete them, and it does not detach them either — they go on referencing a department that no longer exists. Since a machine's department cannot be changed by editing the machine, the way back is to assign it from the department that should hold it.
+
+### Machines
+
+A machine is a piece of production equipment: a knitter, a CNC router, a press.
+
+| Field             | What it does                         |
+| ----------------- | ------------------------------------ |
+| **Name**          | Unique within your account           |
+| **Serial number** | Required                             |
+| **Notes**         | Free-form                            |
+| **Department**    | Assigned when the machine is created |
+
+A machine's department is set at creation and is not changed by editing the machine; a department takes machines by assigning them.
+
+Deleting a machine is permanent, but it does not rewrite history: downtime events and schedule records already logged against it are kept, so past OEE and attainment figures do not move.
+
+### Why they are first-class records
+
+- **Scheduling plans onto machines.** You choose one department as the constraint, and every machine in it is planned by default. Each planned campaign names the machine that will run it, and the plan is fitted to the constraint hours those machines actually have.
+- **The status board is a board of machines**, grouped by department, showing what each one is running now and what is queued behind it.
+- **Downtime is logged against a machine**, and the department and production step are resolved from the machine rather than being typed again.
+- **OEE rolls up by department**, weighted by the underlying seconds, and the downtime breakdown is grouped the same way.
+- **Batches record the machines that processed them**, which is what supplies the run-rate and changeover measurements the solver calibrates against.
+
+### Planning overrides
+
+Machines, departments and production steps can each carry a planning override, held with the production schedule settings rather than on the record itself:
+
+- **Participation**: whether the resource takes part in planning. Because machines are brought in by naming the constraint department, this exists to take one _out_ — a machine down for a rebuild should not have campaigns planned onto it.
+- **Lead time**: weeks of lead time at that resource.
+- **Lead-time offset**: for a production step, how many weeks after the constraint campaign its work starts. Without an offset, every derived step lands in the same week as the campaign feeding it. Plans are made in whole weeks, so a fractional offset is truncated.
+
+Overrides are read when a plan is generated, so a change takes effect on the next generated version and leaves existing ones untouched.
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.plant.machineStatusAndDowntime" text="Machine status and downtime" />**: what the floor is doing, and what stopped it
+- **<InternalLink pathKey="buildProducts.productionPlanning.productionSchedules" text="Production schedules" />**: the constraint department and the machines planned in it
+- **<InternalLink pathKey="buildProducts.scanning.scanningStations" text="Scanning stations" />**: where batches are physically processed
+- **<InternalLink pathKey="dashboards.operations.manufacturingAnalytics" text="Manufacturing analytics" />**: OEE by department
+
+Next: <InternalLink pathKey="buildProducts.plant.machineStatusAndDowntime" text="Machine status and downtime" includeArrow />

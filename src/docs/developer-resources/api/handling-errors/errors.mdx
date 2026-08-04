@@ -55,21 +55,22 @@ For mutating requests, include an idempotency key. If a retry is needed, reuse t
 
 ## Quick Reference
 
-| Category                       | Codes                                                                                                                                                                                                                                                                                             |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Authentication & authorization | [`expired_token`](#expired_token), [`api_key_expired`](#api_key_expired), [`api_key_revoked`](#api_key_revoked), [`invalid_credentials`](#invalid_credentials), [`insufficient_permissions`](#insufficient_permissions), [`payment_required`](#payment_required)                                  |
-| Limits                         | [`limit_exceeded`](#limit_exceeded), [`registration_closed`](#registration_closed)                                                                                                                                                                                                                |
-| Validation                     | [`validation_failed`](#validation_failed), [`missing_field`](#missing_field), [`invalid_format`](#invalid_format), [`method_not_allowed`](#method_not_allowed)                                                                                                                                    |
-| Parameters                     | [`parameter_missing`](#parameter_missing), [`parameter_invalid`](#parameter_invalid), [`parameter_unknown`](#parameter_unknown), [`parameters_exclusive`](#parameters_exclusive)                                                                                                                  |
-| Resources                      | [`resource_not_found`](#resource_not_found), [`resource_exists`](#resource_exists), [`resource_conflict`](#resource_conflict), [`resource_gone`](#resource_gone)                                                                                                                                  |
-| Idempotency                    | [`idempotency_in_progress`](#idempotency_in_progress)                                                                                                                                                                                                                                             |
-| Rate limiting                  | [`rate_limit_exceeded`](#rate_limit_exceeded)                                                                                                                                                                                                                                                     |
-| API version                    | [`api_version_required`](#api_version_required), [`api_version_invalid`](#api_version_invalid), [`api_version_too_old`](#api_version_too_old)                                                                                                                                                     |
-| Server errors                  | [`internal_error`](#internal_error), [`service_unavailable`](#service_unavailable), [`external_service_error`](#external_service_error), [`timeout`](#timeout), [`connection_error`](#connection_error), [`request_timeout`](#request_timeout), [`client_closed_request`](#client_closed_request) |
+| Category                       | Codes                                                                                                                                                                                                                                                                                                                         |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Authentication & authorization | [`expired_token`](#expired_token), [`api_key_expired`](#api_key_expired), [`api_key_revoked`](#api_key_revoked), [`invalid_credentials`](#invalid_credentials), [`insufficient_permissions`](#insufficient_permissions), [`payment_required`](#payment_required), [`agent_spending_cap_reached`](#agent_spending_cap_reached) |
+| Limits                         | [`limit_exceeded`](#limit_exceeded), [`registration_closed`](#registration_closed)                                                                                                                                                                                                                                            |
+| Validation                     | [`validation_failed`](#validation_failed), [`missing_field`](#missing_field), [`invalid_format`](#invalid_format), [`method_not_allowed`](#method_not_allowed)                                                                                                                                                                |
+| Parameters                     | [`parameter_missing`](#parameter_missing), [`parameter_invalid`](#parameter_invalid), [`parameter_unknown`](#parameter_unknown), [`parameters_exclusive`](#parameters_exclusive)                                                                                                                                              |
+| Resources                      | [`resource_not_found`](#resource_not_found), [`resource_exists`](#resource_exists), [`resource_conflict`](#resource_conflict), [`resource_gone`](#resource_gone)                                                                                                                                                              |
+| Idempotency                    | [`idempotency_in_progress`](#idempotency_in_progress)                                                                                                                                                                                                                                                                         |
+| Rate limiting                  | [`rate_limit_exceeded`](#rate_limit_exceeded)                                                                                                                                                                                                                                                                                 |
+| API version                    | [`api_version_required`](#api_version_required), [`api_version_invalid`](#api_version_invalid), [`api_version_too_old`](#api_version_too_old)                                                                                                                                                                                 |
+| Server errors                  | [`internal_error`](#internal_error), [`service_unavailable`](#service_unavailable), [`external_service_error`](#external_service_error), [`timeout`](#timeout), [`connection_error`](#connection_error), [`request_timeout`](#request_timeout), [`client_closed_request`](#client_closed_request)                             |
+
 
 ## Troubleshooting Guide
 
-The cards below include a representative request, expected error response, and the recommended fix. Example IDs, API keys, account IDs, and request log URLs are placeholders.
+The cards below include a representative request, expected error response, and the recommended fix. Example IDs, account IDs, and request log URLs are placeholders; the routes and the `message` strings are the real ones the API uses.
 
 ### Authentication & Authorization
 
@@ -77,13 +78,15 @@ These errors mean Augno could not authenticate the caller, or the authenticated 
 
 <ErrorDetails code="expired_token" meta="401 Unauthorized, not transient">
 
-The access or refresh token used for the request has expired. Retrying with the same token will keep failing.
+A JWT access token or refresh token has passed its expiry. Retrying with the same token will keep failing.
+
+This is a session-token error, not an API key error. Access tokens travel in the `__Secure-augno.access-token` cookie, so this code comes from browser-style session traffic — never from a `Authorization: Bearer aug_sk_…` call. In production, sending an access token in the `Authorization` header is rejected.
 
 ```bash
 curl API_HOST/v1/catalog/items \
-  -H "Authorization: Bearer EXPIRED_ACCESS_TOKEN" \
+  -H "Cookie: __Secure-augno.access-token=EXPIRED_ACCESS_TOKEN" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw"
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -91,7 +94,7 @@ curl API_HOST/v1/catalog/items \
     "error": {
         "code": "expired_token",
         "type": "invalid_request_error",
-        "message": "Your session has expired. Please sign in again.",
+        "message": "Token has expired.",
         "param": null,
         "doc_url": "https://docs.augno.com/api/errors#expired_token",
         "is_transient": false,
@@ -101,7 +104,11 @@ curl API_HOST/v1/catalog/items \
 }
 ```
 
-Refresh the token if your client has a refresh flow, or ask the user to sign in again. Server-to-server integrations should rotate to a valid API key.
+An expired refresh token reports `Refresh token has expired.` under the same code.
+
+Refresh the session if your client has a refresh flow, or ask the user to sign in again. Server-to-server integrations should use an API key instead of a session token — API keys never produce this code.
+
+Because access tokens are short-lived, this code is routine background noise rather than a real failure. The dashboard's request-log view hides it by default; the API equivalent is `exclude_error_codes=expired_token`.
 
 </ErrorDetails>
 
@@ -111,9 +118,9 @@ The API key has passed its configured expiration date.
 
 ```bash
 curl API_HOST/v1/catalog/items \
-  -H "Authorization: Bearer augno_expired_key" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw"
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -121,7 +128,7 @@ curl API_HOST/v1/catalog/items \
     "error": {
         "code": "api_key_expired",
         "type": "invalid_request_error",
-        "message": "The API key has expired.",
+        "message": "API key has expired.",
         "param": null,
         "doc_url": "https://docs.augno.com/api/errors#api_key_expired",
         "is_transient": false,
@@ -141,9 +148,9 @@ The API key was explicitly revoked by an administrator or by Augno. Revocation i
 
 ```bash
 curl API_HOST/v1/catalog/items \
-  -H "Authorization: Bearer augno_revoked_key" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw"
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -151,7 +158,7 @@ curl API_HOST/v1/catalog/items \
     "error": {
         "code": "api_key_revoked",
         "type": "invalid_request_error",
-        "message": "The API key has been revoked.",
+        "message": "API key has been revoked.",
         "param": null,
         "doc_url": "https://docs.augno.com/api/errors#api_key_revoked",
         "is_transient": false,
@@ -167,13 +174,13 @@ Generate a replacement key with the required permissions and audit any services 
 
 <ErrorDetails code="invalid_credentials" meta="401 Unauthorized, not transient">
 
-The credentials are missing, malformed, unknown, or not valid for the requested flow.
+The credentials are missing, unknown, or not valid for the way they were presented. The message names the specific problem; the code is the same for all of them.
 
 ```bash
 curl API_HOST/v1/catalog/items \
-  -H "Authorization: Bearer not_a_real_key" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw"
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -181,7 +188,7 @@ curl API_HOST/v1/catalog/items \
     "error": {
         "code": "invalid_credentials",
         "type": "invalid_request_error",
-        "message": "The provided credentials are incorrect.",
+        "message": "Invalid API Key provided: aug_sk_prod_UN****c123.",
         "param": null,
         "doc_url": "https://docs.augno.com/api/errors#invalid_credentials",
         "is_transient": false,
@@ -191,8 +198,6 @@ curl API_HOST/v1/catalog/items \
 }
 ```
 
-Check that `Authorization` uses `Bearer`, contains the exact API key or token, and matches the account and environment you are targeting.
-
 </ErrorDetails>
 
 <ErrorDetails code="insufficient_permissions" meta="403 Forbidden, not transient">
@@ -200,10 +205,10 @@ Check that `Authorization` uses `Bearer`, contains the exact API key or token, a
 The caller is authenticated but lacks the permission required for the operation.
 
 ```bash
-curl -X PATCH API_HOST/v1/identity/account-users/acu_01jmk8h9s4e5m8q7n2v6r3t1pa \
+curl -X PATCH API_HOST/v1/identity/account-users/acus_e5zu8bde0z3h \
   -H "Authorization: Bearer READ_ONLY_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
   -d '{"name":"Dana Smith"}'
 ```
@@ -213,7 +218,7 @@ curl -X PATCH API_HOST/v1/identity/account-users/acu_01jmk8h9s4e5m8q7n2v6r3t1pa 
     "error": {
         "code": "insufficient_permissions",
         "type": "invalid_request_error",
-        "message": "You do not have permission to perform this action.",
+        "message": "This API Key does not have permission to team:update",
         "param": null,
         "doc_url": "https://docs.augno.com/api/errors#insufficient_permissions",
         "is_transient": false,
@@ -223,19 +228,19 @@ curl -X PATCH API_HOST/v1/identity/account-users/acu_01jmk8h9s4e5m8q7n2v6r3t1pa 
 }
 ```
 
-Use an actor or API key with the required role, grant the missing permission, or verify that `Augno-Account` points at an account the caller can access.
+The message names the `domain:action` permission the caller is missing, so it tells you exactly what to grant. Use an actor or API key with the required role, grant the missing permission, or verify that `Augno-Account` points at an account the caller can access.
 
 </ErrorDetails>
 
 <ErrorDetails code="payment_required" meta="402 Payment Required, not transient">
 
-The target account's subscription is not active enough to continue using the requested operation.
+The account's subscription is `past_due`, `canceled`, or `unpaid`.
 
 ```bash
 curl API_HOST/v1/catalog/items \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_past_due_01jmk7x2q9n9h8a4v0r3p6t2yw"
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -243,7 +248,7 @@ curl API_HOST/v1/catalog/items \
     "error": {
         "code": "payment_required",
         "type": "invalid_request_error",
-        "message": "Your subscription is past due. Please update your payment method to continue.",
+        "message": "Your subscription is past_due. Please update your billing information to continue.",
         "param": null,
         "doc_url": "https://docs.augno.com/api/errors#payment_required",
         "is_transient": false,
@@ -253,7 +258,15 @@ curl API_HOST/v1/catalog/items \
 }
 ```
 
-Resolve the billing issue in the dashboard, confirm the subscription is active, and retry.
+Resolve the billing issue in <DocLink pathKey="manageAccount.plansAndBilling">Plans & billing</DocLink>, confirm the subscription is active, and retry.
+
+</ErrorDetails>
+
+<ErrorDetails code="agent_spending_cap_reached" meta="402 Payment Required, not transient">
+
+The account has a monthly agent spending cap configured and the current period's spend has reached it, so an agent run was refused.
+
+Raise or clear the **Monthly Spending Limit** under **AI Spending** in <DocLink pathKey="manageAccount.plansAndBilling">Plans & billing</DocLink>, or wait for the next billing period. Re-triggering without changing the cap produces the same outcome.
 
 </ErrorDetails>
 
@@ -269,7 +282,7 @@ The account reached a plan-imposed resource limit. The `quota` object provides t
 curl -X POST API_HOST/v1/core/sandboxes \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
   -d '{"name":"West Coast Sandbox","mode":"seeded"}'
 ```
@@ -279,7 +292,7 @@ curl -X POST API_HOST/v1/core/sandboxes \
     "error": {
         "code": "limit_exceeded",
         "type": "invalid_request_error",
-        "message": "You have reached the maximum number of sandbox accounts for your plan.",
+        "message": "Maximum of 5 sandbox accounts per account reached.",
         "param": null,
         "doc_url": "https://docs.augno.com/api/errors#limit_exceeded",
         "is_transient": false,
@@ -299,21 +312,13 @@ Delete unused resources, wait until `reset_at` when present, or upgrade the acco
 
 <ErrorDetails code="registration_closed" meta="403 Forbidden, not transient">
 
-Public registration has reached capacity for the requested plan or registration flow.
-
-```bash
-curl -X POST API_HOST/v1/auth/users \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Content-Type: application/json" \
-  -d '{"email":"alex@example.com","password":"correct horse battery staple","name":"Alex Chen"}'
-```
-
+We have limited capacity for some plans, so you may encounter an error when attempting to join a particular plan.
 ```json
 {
     "error": {
         "code": "registration_closed",
         "type": "invalid_request_error",
-        "message": "Registration for this plan is currently closed.",
+        "message": "Registration for the starter plan is currently at capacity.",
         "param": null,
         "doc_url": "https://docs.augno.com/api/errors#registration_closed",
         "is_transient": false,
@@ -323,7 +328,7 @@ curl -X POST API_HOST/v1/auth/users \
 }
 ```
 
-Use another available registration flow, wait for capacity to reopen, or contact Augno support if this plan should accept new registrations.
+Choose a plan that still has capacity, wait for capacity to reopen, or contact Augno support if this plan should accept new registrations.
 
 </ErrorDetails>
 
@@ -333,13 +338,13 @@ Validation errors mean the request body or method is not acceptable for the endp
 
 <ErrorDetails code="validation_failed" meta="400 Bad Request, not transient">
 
-The request was parsed, but one or more values failed validation or business rules.
+The request was parsed and structurally valid, but a business rule rejected it. This is the catch-all validation code: field-shape problems get the more specific codes below, and anything an endpoint refuses for domain reasons lands here.
 
 ```bash
-curl -X POST API_HOST/v1/auth/users \
+curl -X DELETE API_HOST/v1/operations/shipping-terms/shtm_c5gxy05whw6r \
+  -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Content-Type: application/json" \
-  -d '{"email":"not-an-email","password":"correct horse battery staple","name":"Alex Chen"}'
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -347,8 +352,8 @@ curl -X POST API_HOST/v1/auth/users \
     "error": {
         "code": "validation_failed",
         "type": "invalid_request_error",
-        "message": "The email address is not valid.",
-        "param": "email",
+        "message": "Default shipping terms cannot be deleted.",
+        "param": null,
         "doc_url": "https://docs.augno.com/api/errors#validation_failed",
         "is_transient": false,
         "quota": null,
@@ -357,7 +362,9 @@ curl -X POST API_HOST/v1/auth/users \
 }
 ```
 
-Fix the value named by `param`, validate request bodies before sending, and retry with corrected input.
+The same code is returned when more than one body field fails validation at once. In that case `message` concatenates the individual field messages (`Validation failed for the following fields: …`) and `param` names the first offending field.
+
+Fix the value named by `param` when there is one, validate request bodies before sending, and retry with corrected input.
 
 </ErrorDetails>
 
@@ -366,10 +373,12 @@ Fix the value named by `param`, validate request bodies before sending, and retr
 A required JSON body field was omitted.
 
 ```bash
-curl -X POST API_HOST/v1/auth/users \
+curl -X POST API_HOST/v1/catalog/units \
+  -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
-  -d '{"email":"alex@example.com","password":"correct horse battery staple"}'
+  -d '{"name":"Gram","type":"mass","ratio_numerator":"1","ratio_denominator":"1","offset_numerator":"0","offset_denominator":"1"}'
 ```
 
 ```json
@@ -377,8 +386,8 @@ curl -X POST API_HOST/v1/auth/users \
     "error": {
         "code": "missing_field",
         "type": "invalid_request_error",
-        "message": "Name is required.",
-        "param": "name",
+        "message": "Field 'abbreviation' is required.",
+        "param": "abbreviation",
         "doc_url": "https://docs.augno.com/api/errors#missing_field",
         "is_transient": false,
         "quota": null,
@@ -393,13 +402,15 @@ Add the required field shown in `param`. Required fields cannot be cleared with 
 
 <ErrorDetails code="invalid_format" meta="400 Bad Request, not transient">
 
-A field is present, but its format does not match what the endpoint accepts.
+A body field is present, but its value does not match the format or constraint the endpoint accepts.
 
 ```bash
-curl -X POST API_HOST/v1/auth/users \
+curl -X POST API_HOST/v1/catalog/units \
+  -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
-  -d '{"email":"alex at example dot com","password":"correct horse battery staple","name":"Alex Chen"}'
+  -d '{"name":"Gram","abbreviation":"g","type":"mass","ratio_numerator":"1","ratio_denominator":"0","offset_numerator":"0","offset_denominator":"1"}'
 ```
 
 ```json
@@ -407,8 +418,8 @@ curl -X POST API_HOST/v1/auth/users \
     "error": {
         "code": "invalid_format",
         "type": "invalid_request_error",
-        "message": "Email must be a valid email address.",
-        "param": "email",
+        "message": "Field 'ratio_denominator' must not be zero.",
+        "param": "ratio_denominator",
         "doc_url": "https://docs.augno.com/api/errors#invalid_format",
         "is_transient": false,
         "quota": null,
@@ -416,6 +427,8 @@ curl -X POST API_HOST/v1/auth/users \
     }
 }
 ```
+
+A JSON type mismatch in the **body** reports the same code with a decoder-level message — sending `"ratio_numerator": 1` instead of the string `"1"` on the request above yields `Invalid type for field 'ratio_numerator': expected string, got number`. Explicit `null` on a field that cannot be cleared reports `Field 'name' cannot be null.` A bad query parameter is a [`parameter_invalid`](#parameter_invalid) instead.
 
 Normalize the field into the format shown in the endpoint reference. Use public type IDs exactly as returned by the API.
 
@@ -426,10 +439,10 @@ Normalize the field into the format shown in the endpoint reference. Use public 
 The route exists, but does not support the HTTP method you used.
 
 ```bash
-curl -X POST API_HOST/v1/catalog/items/item_01jmk9zr7f6s3n5g8b2q1h4vca \
+curl -X POST API_HOST/v1/catalog/items/it_pej07ckhvu62 \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw"
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -437,7 +450,7 @@ curl -X POST API_HOST/v1/catalog/items/item_01jmk9zr7f6s3n5g8b2q1h4vca \
     "error": {
         "code": "method_not_allowed",
         "type": "invalid_request_error",
-        "message": "Method not allowed.",
+        "message": "Method POST not allowed for path /v1/catalog/items/it_pej07ckhvu62.",
         "param": null,
         "doc_url": "https://docs.augno.com/api/errors#method_not_allowed",
         "is_transient": false,
@@ -447,7 +460,7 @@ curl -X POST API_HOST/v1/catalog/items/item_01jmk9zr7f6s3n5g8b2q1h4vca \
 }
 ```
 
-Check the endpoint reference and use an allowed method for that route.
+Check the endpoint reference and use an allowed method for that route. In this example, items are read-only: you list, retrieve, and inspect their inventory, and you assign a category or attribute values, but you create and update the underlying record through the product, part, or material endpoints.
 
 </ErrorDetails>
 
@@ -460,10 +473,10 @@ Parameter errors are about query string or path parameters. Body field errors us
 A required query string or path parameter was not provided.
 
 ```bash
-curl API_HOST/v1/core/addresses/details/ \
+curl API_HOST/v1/core/addresses/suggestions \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw"
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -471,8 +484,8 @@ curl API_HOST/v1/core/addresses/details/ \
     "error": {
         "code": "parameter_missing",
         "type": "invalid_request_error",
-        "message": "Address detail ID is required.",
-        "param": "id",
+        "message": "Query parameter 'input' is required.",
+        "param": "input",
         "doc_url": "https://docs.augno.com/api/errors#parameter_missing",
         "is_transient": false,
         "quota": null,
@@ -481,7 +494,7 @@ curl API_HOST/v1/core/addresses/details/ \
 }
 ```
 
-Include the required path or query parameter and make sure URL construction does not create empty path segments.
+Include the required parameter and make sure URL construction does not create empty path segments. The equivalent failure on a JSON body field is [`missing_field`](#missing_field) instead.
 
 </ErrorDetails>
 
@@ -493,7 +506,7 @@ A query or path parameter was supplied, but its value is outside the allowed ran
 curl "API_HOST/v1/catalog/items?limit=-25" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw"
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -501,7 +514,7 @@ curl "API_HOST/v1/catalog/items?limit=-25" \
     "error": {
         "code": "parameter_invalid",
         "type": "invalid_request_error",
-        "message": "Limit must be greater than zero.",
+        "message": "Query parameter 'limit' must be at least 1.",
         "param": "limit",
         "doc_url": "https://docs.augno.com/api/errors#parameter_invalid",
         "is_transient": false,
@@ -511,19 +524,21 @@ curl "API_HOST/v1/catalog/items?limit=-25" \
 }
 ```
 
+`limit` accepts `1`-`1000` and defaults to `100`. An unrecognized enum value in a query parameter reports the same code with `Field '<name>' must be one of: …`.
+
 Use the ranges and enum values from the API reference. For pagination, pass back cursors exactly as Augno returned them.
 
 </ErrorDetails>
 
 <ErrorDetails code="parameter_unknown" meta="400 Bad Request, not transient">
 
-The request included a query parameter the endpoint does not recognize.
+The request included a query parameter the endpoint does not declare. Unknown parameters are rejected rather than ignored, so a typo fails loudly instead of silently returning unfiltered results.
 
 ```bash
 curl "API_HOST/v1/catalog/items?skip=50" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw"
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -531,7 +546,7 @@ curl "API_HOST/v1/catalog/items?skip=50" \
     "error": {
         "code": "parameter_unknown",
         "type": "invalid_request_error",
-        "message": "Unknown parameter: skip.",
+        "message": "Unknown query parameter 'skip'.",
         "param": "skip",
         "doc_url": "https://docs.augno.com/api/errors#parameter_unknown",
         "is_transient": false,
@@ -541,37 +556,17 @@ curl "API_HOST/v1/catalog/items?skip=50" \
 }
 ```
 
-Remove the unknown parameter or rename it to the supported parameter. Cursor-based list endpoints should use `cursor`, `limit`, `search`, and documented filters.
+An unrecognized **JSON body** field returns the same code, with a suggestion when the name is close to a real one: `Invalid JSON in request body: unknown field 'expire_at'. Did you mean 'expires_at'?`
+
+Remove the unknown parameter or rename it to the supported one. Cursor-based list endpoints accept `cursor`, `limit`, `q` (free-text search), `include`, and each endpoint's documented filters. **The free-text parameter is `q`, not `search`** — `?search=…` is rejected with exactly this error. Array filters accept either `key=a,b` or `key[]=a&key[]=b`.
 
 </ErrorDetails>
 
 <ErrorDetails code="parameters_exclusive" meta="400 Bad Request, not transient">
 
-Two incompatible parameters were both supplied, making the request ambiguous.
+Reserved for a request that supplies two mutually exclusive parameters.
 
-```bash
-curl "API_HOST/v1/catalog/items?cursor=item_01jmk9zr7f6s3n5g8b2q1h4vca&page=2" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw"
-```
-
-```json
-{
-    "error": {
-        "code": "parameters_exclusive",
-        "type": "invalid_request_error",
-        "message": "The cursor and page parameters cannot be used together.",
-        "param": "page",
-        "doc_url": "https://docs.augno.com/api/errors#parameters_exclusive",
-        "is_transient": false,
-        "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
-    }
-}
-```
-
-Choose one supported mode for the operation and remove the conflicting parameter.
+If it ever appears, treat it like the other parameter errors: choose one supported mode for the operation and remove the conflicting parameter. It maps to 400 and is not transient.
 
 </ErrorDetails>
 
@@ -584,10 +579,10 @@ Resource errors mean the target object is missing, duplicated, in the wrong stat
 The requested resource does not exist in the target account, or the caller cannot access it.
 
 ```bash
-curl API_HOST/v1/operations/shipping-terms/st_fbv1ygmybo3eauykr74 \
+curl API_HOST/v1/operations/shipping-terms/shtm_c5gxy05whw6r \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw"
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -611,13 +606,15 @@ Verify the public ID, the `Augno-Account` header, and whether the resource was d
 
 <ErrorDetails code="resource_exists" meta="409 Conflict, not transient">
 
-The request tried to create a resource that would duplicate an existing unique value.
+The write violated a uniqueness constraint in storage. The public message is deliberately generic, because it is produced by the database layer rather than by the endpoint.
 
 ```bash
-curl -X POST API_HOST/v1/auth/users \
+curl -X POST API_HOST/v1/catalog/item-categories \
+  -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
-  -d '{"email":"existing.user@example.com","password":"correct horse battery staple","name":"Existing User"}'
+  -d '{"name":"Electronics","type":"material_category","unit_group_id":"ug_andst6m79n41"}'
 ```
 
 ```json
@@ -625,7 +622,7 @@ curl -X POST API_HOST/v1/auth/users \
     "error": {
         "code": "resource_exists",
         "type": "invalid_request_error",
-        "message": "A user with this email already exists.",
+        "message": "Resource already exists.",
         "param": null,
         "doc_url": "https://docs.augno.com/api/errors#resource_conflict",
         "is_transient": false,
@@ -635,21 +632,23 @@ curl -X POST API_HOST/v1/auth/users \
 }
 ```
 
-Find and reuse the existing resource, choose a different unique value, or show a sign-in or recovery path. The current backend links this response to `#resource_conflict`.
+Endpoints that check uniqueness before writing return [`resource_conflict`](#resource_conflict) instead, with a field-specific message and a populated `param` — so the same logical mistake can surface under either code depending on the endpoint. Handle both.
+
+Find and reuse the existing resource or choose a different unique value. Note that `doc_url` on this code points at `#resource_conflict`, not `#resource_exists`.
 
 </ErrorDetails>
 
 <ErrorDetails code="resource_conflict" meta="409 Conflict, not transient">
 
-The request conflicts with the current state of the resource or account.
+The request conflicts with the current state of the resource or account — most often a uniqueness rule the endpoint checks before writing.
 
 ```bash
-curl -X PATCH API_HOST/v1/operations/shipping-terms/st_default_prepaid \
+curl -X POST API_HOST/v1/catalog/units \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
-  -d '{"name":"Custom Prepaid"}'
+  -d '{"name":"Gram","abbreviation":"g","type":"mass","ratio_numerator":"1","ratio_denominator":"1","offset_numerator":"0","offset_denominator":"1"}'
 ```
 
 ```json
@@ -657,8 +656,8 @@ curl -X PATCH API_HOST/v1/operations/shipping-terms/st_default_prepaid \
     "error": {
         "code": "resource_conflict",
         "type": "invalid_request_error",
-        "message": "Default shipping terms cannot be updated.",
-        "param": null,
+        "message": "A unit with this name already exists.",
+        "param": "name",
         "doc_url": "https://docs.augno.com/api/errors#resource_conflict",
         "is_transient": false,
         "quota": null,
@@ -667,21 +666,19 @@ curl -X PATCH API_HOST/v1/operations/shipping-terms/st_default_prepaid \
 }
 ```
 
-Refresh the resource, inspect its current state, and submit a valid next action.
+Refresh the resource, inspect its current state, and submit a valid next action. When `param` is present it names the field that collides.
 
 </ErrorDetails>
 
 <ErrorDetails code="resource_gone" meta="410 Gone, not transient">
 
-The resource existed previously, but has been permanently deleted or can no longer be modified.
+The resource existed previously, but has been permanently deleted or can no longer be modified. In practice you hit this by repeating a delete: the endpoint looks the resource up, does not find it, checks the deleted-record trail, and reports that it is already gone.
 
 ```bash
-curl -X PATCH API_HOST/v1/catalog/products/prod_fbv1ygmybo3eauykr74 \
+curl -X DELETE API_HOST/v1/catalog/products/pd_07oe0r7adh2w \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw" \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Updated Product"}'
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -712,10 +709,10 @@ Idempotency errors only apply to mutating requests that use an idempotency key. 
 A request with the same idempotency key is already being processed.
 
 ```bash
-curl -X PATCH API_HOST/v1/operations/shipping-terms/st_01jmk8q7n2v6r3t1pah9s4e5m8 \
+curl -X PATCH API_HOST/v1/operations/shipping-terms/shtm_c5gxy05whw6r \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID" \
   -H "Idempotency-Key: req_abc123" \
   -H "Content-Type: application/json" \
   -d '{"name":"Collect"}'
@@ -766,13 +763,13 @@ Rate limiting is temporary throttling. See <DocLink pathKey="api.rateLimiting">R
 
 <ErrorDetails code="rate_limit_exceeded" meta="429 Too Many Requests, transient">
 
-The caller sent requests faster than Augno allows for the current key, actor, account, or endpoint.
+The caller sent requests faster than Augno allows.
 
 ```bash
 curl API_HOST/v1/catalog/items \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw"
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -780,7 +777,7 @@ curl API_HOST/v1/catalog/items \
     "error": {
         "code": "rate_limit_exceeded",
         "type": "invalid_request_error",
-        "message": "Too many requests. Please wait before trying again.",
+        "message": "Too many requests. Please try again later.",
         "param": null,
         "doc_url": "https://docs.augno.com/api/errors#rate_limit_exceeded",
         "is_transient": true,
@@ -790,7 +787,9 @@ curl API_HOST/v1/catalog/items \
 }
 ```
 
-Back off before retrying, honor `Retry-After` when present, and add client-side queueing or rate limiting if your integration bursts above the limit.
+The response carries `Retry-After` (seconds), plus `RateLimit-Limit`, `RateLimit-Remaining`, and `RateLimit-Reset`. `Retry-After` grows with each successive violation, so hammering the endpoint makes the wait longer.
+
+Back off before retrying, honor `Retry-After`, and add client-side queueing or rate limiting if your integration bursts above the limit.
 
 </ErrorDetails>
 
@@ -805,7 +804,7 @@ The request did not include the required `Augno-Version` header.
 ```bash
 curl API_HOST/v1/catalog/items \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw"
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -829,13 +828,13 @@ Add `Augno-Version` to every request or configure it once in your SDK client.
 
 <ErrorDetails code="api_version_invalid" meta="400 Bad Request, not transient">
 
-The `Augno-Version` header is present, but the value is not recognized.
+The `Augno-Version` header is present, but the value is not one Augno serves. This covers both a malformed string and a well-formed version that is no longer (or not yet) supported — Augno versions are named, not dated, so a date is always rejected here.
 
 ```bash
 curl API_HOST/v1/catalog/items \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: 1900-01-01" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw"
+  -H "Augno-Version: 2024-01-01" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -843,7 +842,7 @@ curl API_HOST/v1/catalog/items \
     "error": {
         "code": "api_version_invalid",
         "type": "invalid_request_error",
-        "message": "Invalid API version '1900-01-01'. Supported versions: [CURRENT_API_VERSION]",
+        "message": "Invalid API version '2024-01-01'. Supported versions: [CURRENT_API_VERSION 1.0.forge-preview.1]",
         "param": null,
         "doc_url": "https://docs.augno.com/api/errors#api_version_invalid",
         "is_transient": false,
@@ -853,37 +852,14 @@ curl API_HOST/v1/catalog/items \
 }
 ```
 
-Use one of the supported versions from the error message or versioning guide.
+The `message` always lists every currently supported version, so it is the authoritative answer even when this page is stale. Use one of those values, or see the versioning guide.
 
 </ErrorDetails>
 
 <ErrorDetails code="api_version_too_old" meta="400 Bad Request, not transient">
 
-The endpoint requires a newer API version than the one sent in `Augno-Version`.
-
-```bash
-curl API_HOST/v1/operations/shipping-terms \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: 2024-01-01" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw"
-```
-
-```json
-{
-    "error": {
-        "code": "api_version_too_old",
-        "type": "invalid_request_error",
-        "message": "This endpoint requires API version CURRENT_API_VERSION or newer. You requested 2024-01-01.",
-        "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#api_version_too_old",
-        "is_transient": false,
-        "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
-    }
-}
-```
-
-Upgrade the version for this integration after testing compatibility.
+Reserved for an endpoint that requires a newer API version than the request asked for.
+If it appears, the message names both the minimum the endpoint needs and the version you sent — `This endpoint requires API version CURRENT_API_VERSION or newer. You requested 1.0.forge-preview.1.` Upgrade the version for that integration after testing compatibility.
 
 </ErrorDetails>
 
@@ -899,7 +875,7 @@ Augno encountered an unexpected server-side failure. The public message is inten
 curl API_HOST/v1/catalog/items \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw"
+  -H "Augno-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -923,137 +899,39 @@ Retry with exponential backoff if the operation is safe to retry. If it persists
 
 <ErrorDetails code="service_unavailable" meta="503 Service Unavailable, transient">
 
-An Augno service or internal dependency needed for the request is temporarily unavailable.
-
-```bash
-curl API_HOST/v1/catalog/items \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw"
-```
-
-```json
-{
-    "error": {
-        "code": "service_unavailable",
-        "type": "api_error",
-        "message": "Service temporarily unavailable.",
-        "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#service_unavailable",
-        "is_transient": true,
-        "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
-    }
-}
-```
-
-Retry after a short delay. If the condition persists, check Augno status information or contact support with request log details.
+Reserved for an Augno service or internal dependency being temporarily unavailable.
 
 </ErrorDetails>
 
 <ErrorDetails code="external_service_error" meta="502 Bad Gateway, transient">
 
-A third-party service used by Augno returned an error.
-
-```bash
-curl "API_HOST/v1/core/addresses/suggestions?search=500%20Market%20Street" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw"
-```
-
-```json
-{
-    "error": {
-        "code": "external_service_error",
-        "type": "api_error",
-        "message": "A downstream provider returned an error.",
-        "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#external_service_error",
-        "is_transient": true,
-        "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
-    }
-}
-```
-
-Retry with backoff. If one provider-specific workflow keeps failing, include the request log URL when reporting it.
+Reserved for a third-party service used by Augno returning an error.
 
 </ErrorDetails>
 
 <ErrorDetails code="timeout" meta="504 Gateway Timeout, transient">
 
-The operation exceeded a deadline while Augno was waiting for work to finish.
-
-```bash
-curl -X POST API_HOST/v1/sales/sales-orders/so_01jmk9zr7f6s3n5g8b2q1h4vca/actions/create-production-run \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw" \
-  -H "Idempotency-Key: req_create_run_01"
-```
-
-```json
-{
-    "error": {
-        "code": "timeout",
-        "type": "api_error",
-        "message": "The operation timed out.",
-        "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#timeout",
-        "is_transient": true,
-        "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
-    }
-}
-```
-
-Retry with exponential backoff. For mutations, reuse the same idempotency key.
+Reserved for an operation exceeding a deadline while Augno waits for work to finish.
 
 </ErrorDetails>
 
 <ErrorDetails code="connection_error" meta="502 Bad Gateway, transient">
 
-Augno could not establish or maintain a network connection to a service needed for the request.
-
-```bash
-curl API_HOST/v1/operations/shipping-terms \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw"
-```
-
-```json
-{
-    "error": {
-        "code": "connection_error",
-        "type": "api_error",
-        "message": "Could not connect to a downstream service.",
-        "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#connection_error",
-        "is_transient": true,
-        "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
-    }
-}
-```
-
-Retry after a short delay. If it persists, treat the affected workflow as unavailable.
+Reserved for a network-level failure reaching a service Augno depends on.
 
 </ErrorDetails>
 
 <ErrorDetails code="request_timeout" meta="408 Request Timeout, transient">
 
-The overall request exceeded its deadline before Augno could finish processing.
+An internal call exceeded its deadline before Augno could finish processing the request. Long-running analytical or planning work is the usual cause.
 
 ```bash
-curl -X POST API_HOST/v1/catalog/items/actions/bulk-create \
+curl -X PUT API_HOST/v1/operations/production-schedules/actions/preview \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw" \
-  -H "Idempotency-Key: req_bulk_items_01" \
+  -H "Augno-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
-  -d '{"items":[{"name":"Example Item","type":"product"}]}'
+  -d '{"horizon_weeks":104}'
 ```
 
 ```json
@@ -1071,22 +949,20 @@ curl -X POST API_HOST/v1/catalog/items/actions/bulk-create \
 }
 ```
 
-Retry with backoff. For long-running or bulk operations, keep payloads reasonable and use idempotency keys.
+Retry with backoff. For long-running operations, narrow the request (a shorter planning horizon, a tighter date range, a smaller `limit`) and use idempotency keys on mutations.
 
 </ErrorDetails>
 
 <ErrorDetails code="client_closed_request" meta="499, not transient">
 
-The client disconnected before Augno finished processing the request. Status `499` is a non-standard HTTP status commonly used by proxies for client-closed requests.
+The client disconnected before Augno finished processing the request. Status `499` is a non-standard HTTP status commonly used by proxies for client-closed requests. Augno still writes the status and the request log, so the call is visible even though nothing reached your client.
 
 ```bash
-curl -X POST API_HOST/v1/catalog/items/actions/bulk-reconcile \
+curl --max-time 2 -X POST API_HOST/v1/sales/sales-orders/or_9lqo07quiwyb/actions/create-production-run \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: acct_01jmk7x2q9n9h8a4v0r3p6t2yw" \
-  -H "Idempotency-Key: req_reconcile_01" \
-  -H "Content-Type: application/json" \
-  -d '{"items":[]}'
+  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "Idempotency-Key: req_create_run_01"
 ```
 
 ```json
@@ -1094,7 +970,7 @@ curl -X POST API_HOST/v1/catalog/items/actions/bulk-reconcile \
     "error": {
         "code": "client_closed_request",
         "type": "api_error",
-        "message": "Client closed request.",
+        "message": "Client closed the connection.",
         "param": null,
         "doc_url": "https://docs.augno.com/api/errors#client_closed_request",
         "is_transient": false,
@@ -1104,7 +980,9 @@ curl -X POST API_HOST/v1/catalog/items/actions/bulk-reconcile \
 }
 ```
 
-Investigate client-side cancellation, browser navigation, network interruption, proxy timeout settings, or request timeout settings. For mutations, use idempotency keys before retrying from the client.
+A cancellation that surfaces from the database layer instead reports `Request was canceled.` under the same code.
+
+**The work may still have completed.** A 499 says your client went away, not that Augno stopped. Investigate client-side cancellation, browser navigation, network interruption, or a proxy or client timeout that is shorter than the operation. For mutations, always send an idempotency key so the retry cannot duplicate work that already landed.
 
 </ErrorDetails>
 
@@ -1117,9 +995,3 @@ Errors with `"is_transient": true` may resolve on retry:
 | `api_error`             | `internal_error`, `service_unavailable`, `external_service_error`, `timeout`, `connection_error`, `request_timeout` |
 | `idempotency_error`     | `idempotency_in_progress`                                                                                           |
 | `invalid_request_error` | `rate_limit_exceeded`                                                                                               |
-
-Notable non-transient errors:
-
-- `client_closed_request`: the server cannot retry for a disconnected client.
-- `resource_conflict`: the client must resolve the conflicting state.
-- `validation_failed` with `type: "idempotency_error"`: the key was reused with different parameters.

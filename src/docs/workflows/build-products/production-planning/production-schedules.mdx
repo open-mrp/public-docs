@@ -1,0 +1,117 @@
+---
+title: Production schedules
+subtitle: Versioned, constraint-based plans that decide what each machine makes, and in which week.
+route: /build-products/production-planning/production-schedules
+nav:
+    title: Production schedules
+    section: Build products
+    subsection: Production planning
+    order: 1
+---
+
+A **production schedule** is a machine-level plan for the weeks ahead, generated from demand, capacity and inventory policy. <BetaTag /> Each schedule is a numbered **version**: generating again creates a new one rather than editing the last, because performance is always measured against whichever version was live at the time.
+
+### The constraint department
+
+Augno does not schedule the whole factory. It schedules the one department that sets the pace — the constraint — and derives every other department's work from it by walking the <InternalLink pathKey="buildProducts.bom.productionFlows" text="production flow" />.
+
+You name that department in the planning settings. Every <InternalLink pathKey="buildProducts.plant.machinesAndDepartments" text="machine" /> in it is planned by default, so adding a machine to the department is enough to bring it into the plan. A machine that should not be planned — one down for a rebuild, say — is excluded individually rather than moved out of the department.
+
+Generation is refused outright when no constraint department is chosen, or when the department has no machines included in planning. There is nothing to schedule, and an empty plan would be harder to diagnose than a refusal.
+
+### Version statuses
+
+| Status         | What it means                                                    |
+| -------------- | ---------------------------------------------------------------- |
+| **Draft**      | Still editable, and commits to nothing                           |
+| **Generating** | A scheduled solve is still building this version                 |
+| **Published**  | Live, with its leading weeks frozen as a commitment to the floor |
+| **Superseded** | A later version was published over an overlapping horizon        |
+| **Archived**   | Retired without being replaced                                   |
+| **Failed**     | The solver could not produce a plan; the version records why     |
+
+Only a draft can be published, and only a draft can be regenerated in place. A published version is a commitment the floor is already working to, and a superseded or archived one is history — re-solving either would change what a week was measured against after the fact.
+
+Archiving retires a version without replacing it. It stays readable, keeps its campaigns and change log, and still backs any performance already measured against it. Publishing a newer version is what supersedes an older one.
+
+### Planning settings
+
+The solver's assumptions live in one account-level settings page, grouped the way a planner reasons about them. They are saved as a complete set rather than field by field, because a horizon that no longer matches the frozen window, or a capacity headroom that no longer matches the shift pattern, would produce a plan nobody intended.
+
+**The constraint**
+
+- The constraint department, and which of its machines take part in planning.
+
+**Horizon and freeze**
+
+- **Planning horizon**: how many weeks a generated plan covers.
+- **Frozen weeks**: how many leading weeks become a commitment when a version is published. It cannot be longer than the horizon.
+- **Week starts on**: the day a planning week begins. It decides which week a scan falls into when attainment is measured.
+
+**Demand and forecast**
+
+- **Demand basis**: `trailing_12` spreads the last twelve complete months of orders evenly across the coming year; `seasonal_ema` fits a seasonally adjusted, exponentially smoothed projection that weights recent months more heavily, and falls back to the trailing baseline for an item with no history.
+- **Demand window**, **forecast history** and **forecast length**: how much history the baseline and the forecast are drawn from, and how far forward the forecast projects.
+- **Forecast confidence**: how much of the forecast's own variability is carried into safety stock.
+
+**Changeover and holding cost**
+
+- **Typical, fastest and slowest changeover**: changeover time is modelled as rising with the number of new inputs a product transition introduces, bounded by the fastest and slowest figures. The slope is calibrated against measured production, so the typical figure should be what the floor actually reports rather than a worst case.
+- **Changeover labor rate**: the hourly rate charged to changeover time. A constraint department with its own labor rate uses that instead; this is the fallback.
+- **Holding rate**: the annual cost of holding stock as a share of item value. It is the counterweight to setup cost when campaign sizes are worked out — a higher rate favours shorter, more frequent runs.
+- **Service level**: how often stock should be there when an order arrives. It is chosen as a service level and stored as the z-score the safety-stock formula uses.
+
+**Lead times and lots**
+
+- **Finishing lead time**: weeks between coming off the constraint and being sellable. It is what makes the plan build ahead of the demand it covers.
+- **Default constraint lead time**: what to assume for an item with no measured history. An item's own observed lead time is used whenever there is one.
+- **Maximum weeks of supply**: the ceiling on how far ahead any one item is built, so a cheap-to-run SKU cannot absorb a quarter of capacity.
+- **Maximum flow depth**: how many steps downstream of the constraint department work is derived for. It also bounds the walk through the production flow, so a routing that loops back on itself cannot expand forever.
+- **Default lot size**: the last resort in the lot-size chain. A lot set on the item, on its product line, or on the finished goods an intermediate item becomes all take precedence.
+
+**Capacity**
+
+- **Shifts per day**, **hours per shift**, **work days per week** and **work weeks per year** give a machine's raw weekly hours.
+- **Capacity headroom** trims those hours to the share a plan may actually fill. The remainder absorbs changeovers and ordinary small stops, which are not scheduled as blocks — planning to 100% produces a schedule that cannot be met.
+
+**Generation cadence**
+
+- A schedule can be generated automatically on a recurring cadence, interpreted in a timezone you choose, so a fresh draft is waiting on Monday rather than being remembered on Wednesday.
+- **Auto-publish** decides whether a cadence run publishes as soon as it solves, committing its frozen weeks without review, or leaves a draft for a planner. A version generated on request is never published automatically.
+
+Beyond the account-level settings, individual machines, departments and <InternalLink pathKey="buildProducts.bom.productionSteps" text="production steps" /> can carry their own planning overrides: whether the resource takes part in planning, its lead time, and — for a production step — how many weeks after the constraint campaign its work starts. Without that offset, every derived step lands in the same week as the campaign feeding it.
+
+### Settings are snapshotted onto each version
+
+Changing the settings never changes a plan that already exists. Every generated version stores the assumptions it was solved under, alongside the per-item policies behind each campaign and the solver's own diagnostics.
+
+That is what keeps a published plan explainable months later. A planner reading last quarter's schedule sees the horizon, the frozen window, the shift pattern and the capacity headroom that were in force when it was solved — not today's numbers, which would make the plan look wrong rather than dated.
+
+### What a version contains
+
+- **Campaigns**: one planned block per item, machine and week, with the quantity, the whole lots it rounds to, the constraint hours it consumes, its modelled changeover time and its position in the week's run order.
+- **SKU policy**: the per-item inventory policy behind those campaigns — demand, seconds per unit, unit and setup cost, economic order quantity, lead times, safety stock, reorder point, order-up-to level, current stock and weeks of cover. Each item also carries an **ABC class** (`a`, `b` or `c`) ranking it by the share of constraint run hours its annual demand consumes.
+- **Projected stock**: each item's position at the end of every horizon week, after that week's campaigns land and its demand is drawn down. A run of weeks with no campaign is stock draining toward the reorder point, which is what makes an apparently idle stretch readable.
+- **Derived department work**: the downstream work each constraint campaign implies, with the step, the department, the week it falls in and how many steps downstream it sits.
+- **Diagnostics**: what the solver could not do — items whose economic lot size had to be cut back to fit a machine-week, items that cannot fit even one lot, items below their reorder point that never won a slot, and items with no measured run rate. It also reports how many constraint machines contributed to the solve and how many batches were found on them, which is why a plan can come back empty even with machines configured.
+
+The schedule detail page presents these as tabs: **Plan**, **Capacity**, **Projected stock**, **Inventory**, **Release**, **Departments**, **SKU policy** and **Changes**.
+
+### Editing a plan
+
+Campaigns can be added, edited and removed by hand on a draft or a published version. Every change is written to the change log with a full before-and-after snapshot, and the line is marked as manual so a later re-solve can tell it apart from solver output. A change that touches a frozen week — including moving a campaign out of one — has to supply a reason.
+
+### Regenerating a draft
+
+Regenerating re-solves a draft in place and keeps its version number, so the version number stays a count of the plans actually considered rather than of every re-solve. It always plans from now, so demand overrides added since the draft was generated are taken into account.
+
+Two modes are available. **Preserve manual** keeps every hand-edited campaign and replaces the rest with the fresh solve. **Replace all** discards hand edits and takes the fresh solve whole — and states its cost up front: the preview reports exactly how many hand-edited campaigns would be destroyed, and every one of them is written to the change log before it goes.
+
+### Related
+
+- **<InternalLink pathKey="buildProducts.productionPlanning.publishingAndReleasing" text="Publishing and releasing" />**: how a plan becomes a commitment and then a production run
+- **<InternalLink pathKey="buildProducts.productionPlanning.demandOverrides" text="Demand overrides" />**: telling the planner about demand the order history cannot see
+- **<InternalLink pathKey="buildProducts.plant.machinesAndDepartments" text="Machines and departments" />**: the resources a schedule is planned against
+- **<InternalLink pathKey="dashboards.operations.manufacturingAnalytics" text="Manufacturing analytics" />**: how production is measured against the published plan
+
+Next: <InternalLink pathKey="buildProducts.productionPlanning.publishingAndReleasing" text="Publishing and releasing" includeArrow />

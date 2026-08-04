@@ -27,20 +27,22 @@ Rate limits are applied per IP address using a sliding window algorithm. This me
 
 Every API response includes headers that report your current rate limit status:
 
-| Header                | Description                                             |
-| --------------------- | ------------------------------------------------------- |
-| `RateLimit-Limit`     | Maximum requests allowed per second                     |
-| `RateLimit-Remaining` | Requests remaining in the current window                |
-| `RateLimit-Reset`     | Seconds until the window resets                         |
-| `Retry-After`         | Seconds to wait before retrying (only on 429 responses) |
+| Header                | Description                                                                                                          |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `RateLimit-Limit`     | Maximum requests allowed per second                                                                                  |
+| `RateLimit-Remaining` | Requests remaining in the current window                                                                             |
+| `RateLimit-Reset`     | Seconds until the oldest request in the window ages out. The window is one second, so this is effectively always `0` |
+| `Retry-After`         | Seconds to wait before retrying. Sent only on a request-rate `429`, not on the failed-login `429` below              |
 
 Example response headers:
 
 ```http
 RateLimit-Limit: 20
 RateLimit-Remaining: 15
-RateLimit-Reset: 67
+RateLimit-Reset: 0
 ```
+
+Of the three `RateLimit-*` headers, `RateLimit-Remaining` is the one worth acting on — slow down as it approaches zero. `RateLimit-Reset` carries no useful signal at a one-second window, and `RateLimit-Limit` is a constant.
 
 ## Handling rate limit errors
 
@@ -52,14 +54,23 @@ When you exceed the rate limit, the API returns a `429 Too Many Requests` respon
         "code": "rate_limit_exceeded",
         "type": "invalid_request_error",
         "message": "Too many requests. Please try again later.",
-        "is_transient": true
+        "param": null,
+        "doc_url": "https://docs.augno.com/api/errors#rate_limit_exceeded",
+        "is_transient": true,
+        "quota": null,
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
 
-The `Retry-After` header indicates how many seconds to wait before making another request. We reserve the right to rate limit requests on specific IP addresses or accounts at our discretion.
+
+## Discretionary limits
+
+We reserve the right to rate limit requests on specific IP addresses or accounts at our discretion.
 
 ## Related documentation
 
 - <InternalLink text="Error handling" pathKey="api.errors" /> — Learn about error response formats
   and handling strategies
+- <InternalLink text="Idempotency" pathKey="api.idempotency" /> — Safely retrying a throttled write
+  without duplicating it

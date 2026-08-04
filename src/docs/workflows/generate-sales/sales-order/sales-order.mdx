@@ -19,7 +19,7 @@ Every sales order combines five areas:
 - **Commercial terms**: <InternalLink pathKey="generateSales.customerSetup.paymentTerms" text="payment terms" />, <InternalLink pathKey="generateSales.customerSetup.shippingTerms" text="shipping terms" />, pricing, and <InternalLink pathKey="generateSales.customerPricing.discountCodes" text="discount codes" />
 - **Fulfillment setup**: <InternalLink pathKey="generateSales.customerSetup.addresses" text="ship-to and bill-to addresses" />, <InternalLink pathKey="generateSales.customerSetup.defaultCarriers" text="carrier and service option" />, <InternalLink pathKey="generateSales.customerSetup.priorities" text="priority" />
 - **Line items**: products, quantities, unit prices, and extended totals
-- **Operational status**: where the order sits in the lifecycle
+- **Operational status**: where the order sits in the lifecycle, tracked separately from its payment and acknowledgement state
 
 ### Why sales orders matter
 
@@ -45,43 +45,127 @@ When you select a customer, the order is automatically populated with their defa
 | Bill-to address            | <InternalLink pathKey="generateSales.customerSetup.addresses" text="Customer billing address" />          |
 | Ship-to address            | <InternalLink pathKey="generateSales.customerSetup.addresses" text="Customer shipping address" />         |
 
-All defaults can be overridden per order.
+All defaults can be overridden per order. Over the API, the carrier, shipping terms, and payment terms fall back to the customer's defaults when you omit them — and the order is rejected if neither the request nor the customer supplies one. The service level also falls back to the customer's default, but **only when you omit `carrier_id` as well**: send a carrier without a service level and the service level is simply left unset. A missing service level never rejects the order. The bill-to address, ship-to address, and priority must always be sent explicitly.
 
 ### Pricing on lines
 
-Each order line's unit price is resolved through a pricing stack:
+Line unit prices are calculated **server-side** every time an order or a line is created; the caller does not set them. The calculation runs in this order:
 
-1. **Base product price**: the product's default sell price
-2. **<InternalLink pathKey="generateSales.customerPricing.customerPrices" text="Customer price" />**: overrides the base price if a matching customer price exists
-3. **<InternalLink pathKey="generateSales.customerPricing.volumeDiscounts" text="Volume discount" />**: percentage reduction based on order quantity and tier thresholds
-4. **<InternalLink pathKey="generateSales.customerPricing.discountCodes" text="Discount code" />**: order-level percentage or fixed-amount reduction
+1. **Base product price**: the product's list price.
+2. **Unit-conversion discount**: the fixed and percentage discount configured for the ordered unit inside the product's unit group.
+3. **Unit conversion**: the price is converted from the product's base unit into the unit the line was actually ordered in.
+4. **<InternalLink pathKey="generateSales.customerPricing.volumeDiscounts" text="Volume discount" />**: every tier whose quantity threshold is met applies its percentage reduction.
+5. **<InternalLink pathKey="generateSales.customerPricing.customerPrices" text="Customer price" />**: a contracted price for this customer and product replaces the calculated result outright. It is an absolute override and beats every step above it.
 
-Line prices can also be manually overridden by unlocking the price on individual lines.
+<InternalLink pathKey="generateSales.customerPricing.discountCodes" text="Discount codes" /> are not
+part of that stack. An order-level discount is realized as an extra negative-priced line on the
+order, so it appears in the order totals rather than inside any product line's unit price.
+
+An explicit unit price supplied when creating an order or adding a line is honored only for internal users; requests made on behalf of a customer account ignore it and get the calculated price. Editing an existing line's price afterwards is a normal update and is available to anyone with permission to edit the order. To show prices before an order exists, use the price-quote endpoint described under [Order actions](#order-actions).
 
 ### Lifecycle
 
-A sales order moves through a defined lifecycle:
+A sales order's `status` is one of exactly three codes:
 
-1. **<InternalLink pathKey="generateSales.salesOrder.create" text="Create" />**: select customer, confirm terms and addresses, add line items. Order starts as an **Estimate**.
-2. **Review**: confirm pricing, discounts, promised date, notes, and contacts
-3. **<InternalLink pathKey="generateSales.salesOrder.generateProductionRun" text="Generate production run" />** (optional): create production work for manufactured items while the order is still in Estimate
-4. **<InternalLink pathKey="generateSales.salesOrder.issue" text="Issue" />**: commit the order to operations; creates a pick, allocates inventory, and optionally sends an acknowledgement email
-5. **Pick, pack, ship**: warehouse fulfills the order
-6. **Invoice**: invoices are generated from shipped/processed order value
-7. **Pay and close**: payments are applied; order reaches completed state
+| Status      | Meaning                                                      |
+| ----------- | ------------------------------------------------------------ |
+| `estimate`  | A draft quote that has not been committed. Not a real order. |
+| `issued`    | Committed to operations and being fulfilled.                 |
+| `fulfilled` | Completed and closed out.                                    |
 
-A fulfilled order can be re-opened (returned to issued status) to make corrections before closing.
+**The status field is not directly updatable.** It changes only through four action endpoints, each of which rejects an order that is not already in the status it expects:
+
+| Action                                                                               | Endpoint                                          | Transition             |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------- | ---------------------- |
+| <InternalLink pathKey="apiReference.salesOrders.issueSalesOrder" text="Issue" />     | `PUT /v1/sales/sales-orders/{id}/actions/issue`   | `estimate` → `issued`  |
+| <InternalLink pathKey="apiReference.salesOrders.unissueSalesOrder" text="Unissue" /> | `PUT /v1/sales/sales-orders/{id}/actions/unissue` | `issued` → `estimate`  |
+| <InternalLink pathKey="apiReference.salesOrders.closeSalesOrder" text="Close" />     | `PUT /v1/sales/sales-orders/{id}/actions/close`   | `issued` → `fulfilled` |
+| <InternalLink pathKey="apiReference.salesOrders.reopenSalesOrder" text="Reopen" />   | `PUT /v1/sales/sales-orders/{id}/actions/open`    | `fulfilled` → `issued` |
+
+**Close** stamps the order's completion timestamp and closes its <InternalLink pathKey="shipProducts.picking.overview" text="pick" /> at the same time: every pick line still open is packed and the pick is stamped finished, so the pick reads as complete alongside the order.
+
+**Reopen** reverses that. It clears the completion timestamp, clears the pick's finished timestamp, and reopens every pick line that is not yet fully picked so the outstanding work can be resumed. Lines already picked in full stay packed.
+
+A typical order therefore moves: <InternalLink pathKey="generateSales.salesOrder.create" text="create" /> as an estimate → review pricing, discounts, promised date, notes, and contacts → optionally <InternalLink pathKey="generateSales.salesOrder.generateProductionRun" text="generate a production run" /> while still an estimate → <InternalLink pathKey="generateSales.salesOrder.issue" text="issue" /> → pick, pack, ship → invoice → close.
+
+### Fulfillment, payment, and acknowledgement are separate
+
+`status` says nothing about whether the order has been paid for or acknowledged. Those live on their own fields:
+
+| Field                   | Values                             | What it tracks                                                                                                |
+| ----------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `payment_status`        | `unpaid`, `partially_paid`, `paid` | Derived from settlement allocations, invoices, and Stripe payments.                                           |
+| `acknowledgment_status` | `not_sent`, `sent`                 | Whether an order acknowledgement has gone to the customer. Can also be set directly if you sent one yourself. |
+| `payment_intent_ids`    | list of Stripe payment intent IDs  | Stripe payment intents recorded against this order.                                                           |
+
+An order can be `fulfilled` and still `unpaid`, so never read payment out of `status`. The reverse direction does have one coupling worth knowing: `payment_status` becomes `paid` either when a Stripe payment intent is recorded against the order, or when the order is `fulfilled` **and** every one of its invoices is paid in full. An `issued` order whose invoices are all paid therefore still reads `partially_paid` — closing it is what flips it to `paid`, with no new payment involved.
+
+Fulfillment progress itself is reported by the order's `totals` object, which you request with `?include=totals`. It carries the `ordered` amount as a baseline, then a `picked`, `packed`, and `invoiced` entry. Each of those carries the money that has reached that stage plus a `completion` fraction between `0` and `1` — the quantity that has cleared the stage divided by the quantity ordered, so `1` means the whole order is through it.
+
+### Order actions
+
+Beyond create, retrieve, update, delete, and the four status actions, a sales order exposes these operations:
+
+| Action                                                                                                             | Endpoint                                                         | What it does                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| <InternalLink pathKey="apiReference.salesOrders.quoteSalesOrderPrices" text="Quote prices" />                      | `POST /v1/sales/sales-orders/price-quote`                        | Prices a set of product/quantity lines for a customer without creating anything.                                       |
+| <InternalLink pathKey="apiReference.salesOrders.quoteSalesOrderFreight" text="Quote freight" />                    | `POST /v1/sales/sales-orders/{id}/actions/quote-freight`         | Re-estimates the freight charge for an existing order. Returns a quote; does not change the order.                     |
+| <InternalLink pathKey="apiReference.salesOrders.checkoutSalesOrder" text="Checkout" />                             | `POST /v1/sales/sales-orders/{id}/checkout`                      | Emails the customer a hosted Stripe payment link for the order.                                                        |
+| <InternalLink pathKey="apiReference.salesOrders.bulkDeleteSalesOrders" text="Bulk delete" />                       | `POST /v1/sales/sales-orders/actions/bulk-delete`                | Deletes several orders in one atomic operation.                                                                        |
+| <InternalLink pathKey="apiReference.salesOrders.reorderSalesOrderLines" text="Reorder lines" />                    | `POST /v1/sales/sales-orders/{id}/lines/actions/reorder`         | Renumbers the order's product lines to the sequence you supply.                                                        |
+| <InternalLink pathKey="apiReference.salesOrderStatuses.listSalesOrderStatuses" text="List statuses" />             | `GET /v1/sales/sales-orders/statuses`                            | Lists the sales-order statuses, for populating filters and pickers.                                                    |
+| <InternalLink pathKey="apiReference.salesOrders.createProductionRunFromSalesOrder" text="Create production run" /> | `POST /v1/sales/sales-orders/{id}/actions/create-production-run` | Starts <InternalLink pathKey="generateSales.salesOrder.generateProductionRun" text="production work" /> for the order. |
+
+Updating, deleting, bulk-deleting, quoting freight, checking out, creating a production run, and all four status actions are **internal-only** — each rejects a request made by a customer actor. The rest are not restricted that way: creating an order, quoting prices, and the line operations (add, edit, remove, reorder) all accept a <InternalLink pathKey="generateSales.customerPortal" text="customer portal" /> caller acting for their own account, and listing statuses is open to any authenticated caller. A caller writing lines on another account's order must still clear the order's edit-access check.
+
+#### Quoting prices before an order exists
+
+`price-quote` takes a customer account and a list of product and quantity pairs, and returns the unit price each line would get. It runs exactly the pricing described in [Pricing on lines](#pricing-on-lines) and creates nothing. Internal price overrides are not accepted here — the calculated price is always what comes back. Use it to show live prices in an order-building UI, including in the customer portal.
+
+#### Freight is never re-quoted for you
+
+Freight is the one number on an order that does **not** keep itself current. Changing the ship-to address, the carrier, or the service level updates the order and propagates to its existing shipments, but it never re-prices the freight line. Editing line items does not re-price it either.
+
+To refresh it you have to do two things:
+
+1. Call `POST /v1/sales/sales-orders/{id}/actions/quote-freight`. It re-runs the same freight-exemption, flat-rate, and live carrier-rate logic used when the order was created, against the order's current ship-to address, carrier, service level, and lines, and returns the estimated unit price.
+2. **Apply the quote yourself** by updating the order's shipping line. The quote endpoint does not modify the order.
+
+If you skip step 2, the order keeps whatever freight was calculated when it was created — and it will ship, invoice, and check out at that stale amount.
+
+#### Checkout
+
+`POST /v1/sales/sales-orders/{id}/checkout` creates a hosted Stripe checkout session for the order and emails the link to an address you supply in the request. It requires:
+
+- an **active Stripe <InternalLink pathKey="manageAccount.integrations" text="integration" />** on your account,
+- a customer that already exists as a Stripe customer, and
+- a **<InternalLink pathKey="generateSales.customerPortal" text="customer portal" /> slug** on your account — the success and cancel redirect URLs are built from it, so the request fails with a not-found error when it is unset.
+
+The session charges a single aggregate amount covering every line on the order, including the freight line and any negative discount line. The success and cancel URLs are built server-side from your <InternalLink pathKey="generateSales.customerPortal" text="customer portal" /> slug and cannot be supplied by the caller.
+
+If the order already has a payment recorded against it, the request fails with a conflict rather than creating a second session.
+
+#### Bulk delete and line reordering
+
+`bulk-delete` tears each order down exactly as deleting it individually would, and it is **atomic**: if any order in the batch is `fulfilled`, the request is rejected and **no** orders are deleted. A single delete behaves the same way — a fulfilled order cannot be deleted at all.
+
+`reorder` takes the order's product line IDs in the sequence you want and renumbers them from `1`. The automatically generated discount and freight lines are pinned to the bottom regardless of what you send, and they must not appear in the list. Every product line on the order must be listed exactly once.
 
 ### Editing rules
 
-A sales order can be edited as long as:
+Order status changes only through the four action endpoints above; you cannot edit `status` on the order itself.
 
-- It has not been fully fulfilled
-- No shipments have been sent
-- It is not in a completed state
+Removing a line is where the guardrails bite:
+
+- A line that already has a shipment against it (packed or shipped) cannot be deleted at all.
+- No line can be deleted from a `fulfilled` order.
+- On an order that has a completion timestamp or any shipped shipment, deleting a line requires an admin.
+- Deleting the last remaining line of an issued order tears the order back down to `estimate` — see <InternalLink pathKey="shipProducts.picking.overview" text="Picking" /> for exactly what that destroys.
 
 <InternalLink pathKey="generateSales.customerSetup.accountStatuses" text="Customer hold states" />
-also affect the order: **hold all** blocks issuance, and **hold shipment** blocks shipping activity.
+are **not** enforced by the API. In the dashboard, a customer on **hold all** or **hold shipment**
+disables the Issue button and shows a credit-hold banner until the hold is cleared; over the API an
+order for a held customer can still be issued.
 
 ### Getting started
 

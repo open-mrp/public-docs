@@ -7,7 +7,9 @@
 - [Overview](https://docs.augno.com/developer-resources/api/overview.md): Learn more about Augno's APIs.
 - [TypeScript](https://docs.augno.com/developer-resources/api/sdks/typescript.md): Call the Augno API from server-side TypeScript or JavaScript.
 - [Managing API Keys](https://docs.augno.com/developer-resources/api/authentication/managing-api-keys.md): Learn the best practices for managing secret API keys.
+- [Audit events](https://docs.augno.com/developer-resources/api/monitoring/audit-events.md): An immutable record of every change made in your account — who changed what, when, and from which request.
 - [Go](https://docs.augno.com/developer-resources/api/sdks/go.md): Call the Augno API from Go applications.
+- [Email logs](https://docs.augno.com/developer-resources/api/monitoring/email-logs.md): Confirm whether an email Augno sent on your behalf actually went out.
 - [API URIs](https://docs.augno.com/developer-resources/api/make-requests/api-uris.md): Learn the general format of Augno API URIs.
 - [Idempotency](https://docs.augno.com/developer-resources/api/make-requests/idempotency.md): Safely retry requests without duplicating work.
 - [Rate limiting](https://docs.augno.com/developer-resources/api/make-requests/rate-limiting.md): Understand rate limits and implement retry strategies.
@@ -32,23 +34,36 @@
 - [Go live checklist](https://docs.augno.com/get-started/start-building/start-developing/go-live.md): Use this checklist to ensure a smooth transition putting your integration into production.
 - [Release phases](https://docs.augno.com/get-started/start-building/start-developing/release-phases.md): Learn how Augno describes product release phases and what to expect from each.
 
+## Automate with agents
+- [Overview](https://docs.augno.com/workflows/automate-with-agents/overview.md): Put an AI teammate on the work — in a conversation or on demand, bounded by a role you control.
+- [Agents](https://docs.augno.com/workflows/automate-with-agents/agents.md): Define what an agent does, when it runs, how hard it thinks, and what it is allowed to touch.
+- [Runs](https://docs.augno.com/workflows/automate-with-agents/runs.md): One execution of an agent, from trigger to answer — and every safety rail around it.
+- [Tools & approvals](https://docs.augno.com/workflows/automate-with-agents/tools-and-approvals.md): What an agent is allowed to do, and where a human has to say yes first.
+- [Memories](https://docs.augno.com/workflows/automate-with-agents/memories.md): Durable notes your agents recall on later runs — and the first place to look when one starts behaving oddly.
+- [Agents in chat](https://docs.augno.com/workflows/automate-with-agents/agents-in-chat.md): Put an agent in a conversation, watch it work, approve what it wants to do, and let it draft the reply to your customer.
+
 ## Build products
 - [Production Steps](https://docs.augno.com/workflows/build-products/bom/production-steps.md): The core building block of manufacturing in Augno - defining inputs, outputs, and costs for each stage of production.
 - [Inventory Overview](https://docs.augno.com/workflows/build-products/inventory/inventory.md): Real-time visibility into every unit of material, part, and product - what you have, where it is, and what it costs.
 - [Overview](https://docs.augno.com/workflows/build-products/items/overview.md): Materials, parts, and products - the core objects you buy, make, and sell in Augno.
 - [Overview](https://docs.augno.com/workflows/build-products/overview.md): Purchasing, manufacturing, production tracking, and inventory management.
+- [Machines and departments](https://docs.augno.com/workflows/build-products/plant/machines-and-departments.md): The equipment and functional areas that scheduling, the status board, downtime and OEE all key on.
+- [Production schedules](https://docs.augno.com/workflows/build-products/production-planning/production-schedules.md): Versioned, constraint-based plans that decide what each machine makes, and in which week.
 - [Production Runs](https://docs.augno.com/workflows/build-products/production/production-runs.md): Coordinated manufacturing executions that group related batches and track progress from start to completion.
 - [Suppliers](https://docs.augno.com/workflows/build-products/purchasing/suppliers.md): Vendors you purchase materials from, defining the source for your raw material procurement.
 - [Scanning Stations](https://docs.augno.com/workflows/build-products/scanning/scanning-stations.md): Configured points in your production workflow where batch operations happen - each linked to a specific operation type and production step.
 - [Consumptions & Productions](https://docs.augno.com/workflows/build-products/bom/consumptions-and-productions.md): The inputs and outputs of each production step - what materials are used up and what parts or products are created.
 - [Storage Locations & Lots](https://docs.augno.com/workflows/build-products/inventory/storage-and-lots.md): Where inventory is physically stored and how batch-level traceability is maintained.
 - [Materials](https://docs.augno.com/workflows/build-products/items/materials.md): Raw materials and supplies you purchase from vendors for use in production.
+- [Machine status and downtime](https://docs.augno.com/workflows/build-products/plant/machine-status-and-downtime.md): A live board of what every machine is running, and the stoppage log that turns OEE availability into a measurement.
+- [Publishing and releasing](https://docs.augno.com/workflows/build-products/production-planning/publishing-and-releasing.md): How a draft plan becomes a commitment, and how one week of it becomes work on the floor.
 - [Batches](https://docs.augno.com/workflows/build-products/production/batches.md): Physical units of product tracked through production - recording quantities, quality grades, and location as they move through manufacturing.
 - [Purchase Orders](https://docs.augno.com/workflows/build-products/purchasing/purchase-orders.md): Transaction records for buying materials from suppliers, tracking orders through delivery and fulfillment.
 - [Labels](https://docs.augno.com/workflows/build-products/scanning/labels.md): Batch identification labels printed at scanning stations - two formats and four sizes for production floor tracking.
 - [Production Flows](https://docs.augno.com/workflows/build-products/bom/production-flows.md): The connected sequence of production steps that transforms raw materials into finished products.
 - [Inventory Change Logs](https://docs.augno.com/workflows/build-products/inventory/change-logs.md): A complete audit trail of every inventory movement - who changed what, when, by how much, and why.
 - [Parts](https://docs.augno.com/workflows/build-products/items/parts.md): Intermediate items you manufacture or assemble from materials during production.
+- [Demand overrides](https://docs.augno.com/workflows/build-products/production-planning/demand-overrides.md): Tell the planner about demand your order history cannot see.
 - [Batch Operations](https://docs.augno.com/workflows/build-products/production/batch-operations.md): Initialize, move, split, and merge - the core actions that advance batches through the production flow.
 - [Deliveries & Receiving](https://docs.augno.com/workflows/build-products/purchasing/deliveries-and-receiving.md): Track the physical arrival of materials from suppliers and convert purchase order quantities into usable inventory.
 - [Costing (COGS)](https://docs.augno.com/workflows/build-products/bom/costing.md): Real-time cost of goods sold calculation from production step definitions - material, labor, and overhead costs.
@@ -62,6 +77,14 @@
 - [Invoicing](https://docs.augno.com/workflows/collect-payments/invoicing/invoicing.md): Invoices are the billing records Augno generates for each shipment, capturing what was shipped, to whom, and for how much.
 - [Accounts receivable](https://docs.augno.com/workflows/collect-payments/accounts-receivable/accounts-receivable.md): Track what customers owe, how long balances have been outstanding, and take action to collect.
 
+## Communicate
+- [Overview](https://docs.augno.com/workflows/communicate/overview.md): Conversations, customer cases, notifications, and email inside Augno.
+- [Messages](https://docs.augno.com/workflows/communicate/messages.md): Direct messages, group threads, and the discussions attached to your business records.
+- [Inbox](https://docs.augno.com/workflows/communicate/inbox.md): Customer-service cases, triage lanes, assignment, and the reply-approval loop.
+- [Notifications](https://docs.augno.com/workflows/communicate/notifications.md): The in-app bell feed, account announcements, and per-user notification preferences.
+- [Email](https://docs.augno.com/workflows/communicate/email.md): Bridge a domain you own into Augno so customer mail opens a case and your team replies from your own address.
+- [Retention & compliance](https://docs.augno.com/workflows/communicate/retention-and-compliance.md): Hold a conversation for litigation, erase its contents on request, and know exactly what the retention worker deletes.
+
 ## Dashboards
 - [Accounts receivable](https://docs.augno.com/workflows/dashboards/financial/accounts-receivable.md): An aging report showing what customers owe across current, 30, 60, 90, and 120-day buckets.
 - [Demand forecast](https://docs.augno.com/workflows/dashboards/forecasting/demand-forecast.md): Forecast demand, order revenue, and sales revenue with confidence intervals based on historical data.
@@ -70,7 +93,7 @@
 - [Order analytics](https://docs.augno.com/workflows/dashboards/sales/order-analytics.md): A comprehensive view of sales performance with profit metrics, cumulative revenue, best sellers, and distribution breakdowns.
 - [Payments data](https://docs.augno.com/workflows/dashboards/financial/payments-data.md): View payment allocations across invoices with support for invoice and balance view modes.
 - [Sales targets](https://docs.augno.com/workflows/dashboards/forecasting/sales-targets.md): View and create revenue targets for sales reps by month.
-- [Manufacturing analytics](https://docs.augno.com/workflows/dashboards/operations/manufacturing-analytics.md): Monitor production output, cost efficiency, margin, quality, and labor efficiency with month-over-month comparison.
+- [Manufacturing analytics](https://docs.augno.com/workflows/dashboards/operations/manufacturing-analytics.md): OEE and schedule performance for one production week, measured against the plan that was live at the time.
 - [Order data](https://docs.augno.com/workflows/dashboards/sales/order-data.md): A raw, line-level data grid of all sales transactions with Excel export.
 - [Material analytics](https://docs.augno.com/workflows/dashboards/operations/material-analytics.md): View material inventory levels, demand, and reorder needs by supplier.
 - [Quarterly orders](https://docs.augno.com/workflows/dashboards/sales/quarterly-orders.md): Visualize order quantity trends by quarter across multiple years.
@@ -115,7 +138,9 @@
 - [Plans & billing](https://docs.augno.com/workflows/manage-account/plans-and-billing.md): View your subscription, switch plans, and manage billing through Stripe.
 - [Sandboxes](https://docs.augno.com/workflows/manage-account/sandboxes.md): Create isolated testing environments to develop and experiment without affecting production data.
 - [API keys](https://docs.augno.com/workflows/manage-account/api-keys.md): Create, rotate, and revoke API keys for programmatic access to Augno.
-- [Integrations](https://docs.augno.com/workflows/manage-account/integrations.md): Connect third-party services like Stripe and Shippo to your Augno account.
+- [Integrations](https://docs.augno.com/workflows/manage-account/integrations.md): Connect third-party services like Stripe, Shippo, and HubSpot to your Augno account.
+- [Customer portal](https://docs.augno.com/workflows/manage-account/customer-portal-settings.md): Control how your customer portal looks and the address customers reach it on.
+- [Support](https://docs.augno.com/workflows/manage-account/support-routing.md): Choose the group whose members receive the messages customers send from your portal.
 
 ## Ship products
 - [Overview](https://docs.augno.com/workflows/ship-products/overview.md): Learn about shipping products in Augno.
@@ -147,8 +172,6 @@
 - [PUT Address Validation — Validate](https://docs.augno.com/api-reference/address-validation/validate-address.md)
 - [GET Email Logs — List](https://docs.augno.com/api-reference/email-logs/list-email-logs.md)
 - [GET Email Logs — Retrieve Log](https://docs.augno.com/api-reference/email-logs/retrieve-email-log.md)
-- [PUT Analytics — Analyze OEE](https://docs.augno.com/api-reference/analytics/analyze-oee.md)
-- [PUT Analytics — Analyze Schedule Attainment](https://docs.augno.com/api-reference/analytics/analyze-schedule-attainment.md)
 
 ### Catalog
 - [POST Units — Create Unit](https://docs.augno.com/api-reference/units/create-unit.md)
@@ -181,7 +204,6 @@
 - [PUT Items — Add Item Attribute](https://docs.augno.com/api-reference/items/add-item-attribute.md)
 - [PUT Items — Change Item Category](https://docs.augno.com/api-reference/items/change-item-category.md)
 - [GET Items — Retrieve Item Inventory](https://docs.augno.com/api-reference/items/retrieve-item-inventory.md)
-- [GET Items — Retrieve Item Lot Default](https://docs.augno.com/api-reference/items/retrieve-item-lot-default.md)
 - [DELETE Items — Remove Item Attribute](https://docs.augno.com/api-reference/items/remove-item-attribute.md)
 - [POST Item Categories — Create Category](https://docs.augno.com/api-reference/item-categories/create-item-category.md)
 - [PATCH Item Categories — Update Category](https://docs.augno.com/api-reference/item-categories/update-item-category.md)
@@ -350,45 +372,6 @@
 - [GET Service Levels — List](https://docs.augno.com/api-reference/service-levels/list-service-levels.md)
 - [GET Service Levels — Retrieve Level](https://docs.augno.com/api-reference/service-levels/retrieve-service-level.md)
 - [DELETE Service Levels — Delete Level](https://docs.augno.com/api-reference/service-levels/delete-service-level.md)
-- [POST Machine Downtime — Create Event](https://docs.augno.com/api-reference/machine-downtime/create-machine-downtime-event.md)
-- [PATCH Machine Downtime — Update Event](https://docs.augno.com/api-reference/machine-downtime/update-machine-downtime-event.md)
-- [GET Machine Downtime — List Events](https://docs.augno.com/api-reference/machine-downtime/list-machine-downtime-events.md)
-- [GET Machine Downtime — List Reasons](https://docs.augno.com/api-reference/machine-downtime/list-machine-downtime-reasons.md)
-- [GET Machine Downtime — Retrieve Event](https://docs.augno.com/api-reference/machine-downtime/retrieve-machine-downtime-event.md)
-- [DELETE Machine Downtime — Delete Event](https://docs.augno.com/api-reference/machine-downtime/delete-machine-downtime-event.md)
-- [GET Machine Status — List](https://docs.augno.com/api-reference/machine-status/list-machine-status.md)
-- [POST Demand Overrides — Create Override](https://docs.augno.com/api-reference/demand-overrides/create-demand-override.md)
-- [PATCH Demand Overrides — Update Override](https://docs.augno.com/api-reference/demand-overrides/update-demand-override.md)
-- [GET Demand Overrides — List Override Types](https://docs.augno.com/api-reference/demand-overrides/list-demand-override-types.md)
-- [GET Demand Overrides — List](https://docs.augno.com/api-reference/demand-overrides/list-demand-overrides.md)
-- [GET Demand Overrides — Retrieve Override](https://docs.augno.com/api-reference/demand-overrides/retrieve-demand-override.md)
-- [DELETE Demand Overrides — Delete Override](https://docs.augno.com/api-reference/demand-overrides/delete-demand-override.md)
-- [POST Production Schedules — Generate Schedule](https://docs.augno.com/api-reference/production-schedules/generate-production-schedule.md)
-- [GET Production Schedules — List](https://docs.augno.com/api-reference/production-schedules/list-production-schedules.md)
-- [GET Production Schedules — Retrieve Current Schedule](https://docs.augno.com/api-reference/production-schedules/retrieve-current-production-schedule.md)
-- [GET Production Schedules — List Schedule Deviation Types](https://docs.augno.com/api-reference/production-schedules/list-schedule-deviation-types.md)
-- [GET Production Schedules — Retrieve Schedule](https://docs.augno.com/api-reference/production-schedules/retrieve-production-schedule.md)
-- [DELETE Production Schedules — Delete Schedule](https://docs.augno.com/api-reference/production-schedules/delete-production-schedule.md)
-- [PUT Production Schedules — Preview Schedule](https://docs.augno.com/api-reference/production-schedules/preview-production-schedule.md)
-- [POST Production Schedules — Create Schedule Line](https://docs.augno.com/api-reference/production-schedules/create-production-schedule-line.md)
-- [PATCH Production Schedules — Update Schedule Line](https://docs.augno.com/api-reference/production-schedules/update-production-schedule-line.md)
-- [GET Production Schedules — List Schedule Derived Lines](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-derived-lines.md)
-- [GET Production Schedules — List Schedule Deviations](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-deviations.md)
-- [GET Production Schedules — List Schedule Finished Policies](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-finished-policies.md)
-- [GET Production Schedules — List Schedule Item Policies](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-item-policies.md)
-- [GET Production Schedules — List Schedule Lines](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-lines.md)
-- [GET Production Schedules — Preview Schedule Week Release](https://docs.augno.com/api-reference/production-schedules/preview-production-schedule-week-release.md)
-- [DELETE Production Schedules — Delete Schedule Line](https://docs.augno.com/api-reference/production-schedules/delete-production-schedule-line.md)
-- [PUT Production Schedules — Archive Schedule](https://docs.augno.com/api-reference/production-schedules/archive-production-schedule.md)
-- [PUT Production Schedules — Preview Schedule Regenerate](https://docs.augno.com/api-reference/production-schedules/preview-production-schedule-regenerate.md)
-- [PUT Production Schedules — Publish Schedule](https://docs.augno.com/api-reference/production-schedules/publish-production-schedule.md)
-- [PUT Production Schedules — Regenerate Schedule](https://docs.augno.com/api-reference/production-schedules/regenerate-production-schedule.md)
-- [POST Production Schedules — Release Schedule Week](https://docs.augno.com/api-reference/production-schedules/release-production-schedule-week.md)
-- [GET Production Schedule Settings — Retrieve](https://docs.augno.com/api-reference/production-schedule-settings/retrieve-production-schedule-settings.md)
-- [GET Production Schedule Settings — List Resource](https://docs.augno.com/api-reference/production-schedule-settings/list-production-schedule-resource-settings.md)
-- [DELETE Production Schedule Settings — Delete Resource Setting](https://docs.augno.com/api-reference/production-schedule-settings/delete-production-schedule-resource-setting.md)
-- [PUT Production Schedule Settings — Update](https://docs.augno.com/api-reference/production-schedule-settings/update-production-schedule-settings.md)
-- [PUT Production Schedule Settings — Upsert Resource Setting](https://docs.augno.com/api-reference/production-schedule-settings/upsert-production-schedule-resource-setting.md)
 - [POST Location — Create](https://docs.augno.com/api-reference/location/create-location.md)
 - [PATCH Location — Update](https://docs.augno.com/api-reference/location/update-location.md)
 - [GET Location — List Types](https://docs.augno.com/api-reference/location/list-location-types.md)
@@ -468,10 +451,7 @@
 
 ### Operations
 - [Carriers object](https://docs.augno.com/api-reference/objects/carrier.md): A shipping carrier configured for fulfilling orders.
-- [Demand Overrides object](https://docs.augno.com/api-reference/objects/demand-override.md): An adjustment to the demand a production schedule plans against.
 - [Location object](https://docs.augno.com/api-reference/objects/location-type.md): A level in the storage location hierarchy, such as a building or a bin.
-- [Machine Downtime object](https://docs.augno.com/api-reference/objects/machine-downtime-event.md): A period during which a machine was not running.
-- [Production Schedules object](https://docs.augno.com/api-reference/objects/production-schedule.md): A saved production schedule.
 - [Scanning Stations object](https://docs.augno.com/api-reference/objects/scanning-station.md): A station on the production floor where operators scan batches to perform a batch operation, such as initializing or moving a batch.
 - [Service Levels object](https://docs.augno.com/api-reference/objects/service-level.md): Shipping service level for a carrier.
 - [Shipping Terms object](https://docs.augno.com/api-reference/objects/shipping-term.md): A shipping term defining how freight charges are calculated for an order.
