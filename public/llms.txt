@@ -150,6 +150,27 @@
 
 ## API Reference
 
+### AI
+- [POST Agent — Create](https://docs.augno.com/api-reference/agent/create-agent.md)
+- [PATCH Agent — Update](https://docs.augno.com/api-reference/agent/update-agent.md)
+- [GET Agent — List Agents](https://docs.augno.com/api-reference/agent/list-agents.md)
+- [GET Agent — Retrieve](https://docs.augno.com/api-reference/agent/retrieve-agent.md)
+- [DELETE Agent — Delete](https://docs.augno.com/api-reference/agent/delete-agent.md)
+- [PUT Agent — Update Status](https://docs.augno.com/api-reference/agent/update-agent-status.md)
+- [POST Agent Runs — Trigger Run](https://docs.augno.com/api-reference/agent-runs/trigger-agent-run.md)
+- [GET Agent Runs — List](https://docs.augno.com/api-reference/agent-runs/list-agent-runs.md)
+- [GET Agent Runs — Retrieve Run](https://docs.augno.com/api-reference/agent-runs/retrieve-agent-run.md)
+- [POST Agent Runs — Cancel Run](https://docs.augno.com/api-reference/agent-runs/cancel-agent-run.md)
+- [POST Agent Runs — Continue Run](https://docs.augno.com/api-reference/agent-runs/continue-agent-run.md)
+- [POST Agent Runs — Retry Run](https://docs.augno.com/api-reference/agent-runs/retry-agent-run.md)
+- [GET Agent Tools — List Tool Groups](https://docs.augno.com/api-reference/agent-tools/list-tool-groups.md)
+- [GET Agent Tools — List](https://docs.augno.com/api-reference/agent-tools/list-tools.md)
+- [POST Agent Memories — Create Memory](https://docs.augno.com/api-reference/agent-memories/create-agent-memory.md)
+- [PATCH Agent Memories — Update Memory](https://docs.augno.com/api-reference/agent-memories/update-agent-memory.md)
+- [GET Agent Memories — List](https://docs.augno.com/api-reference/agent-memories/list-agent-memories.md)
+- [GET Agent Memories — Retrieve Memory](https://docs.augno.com/api-reference/agent-memories/retrieve-agent-memory.md)
+- [DELETE Agent Memories — Delete Memory](https://docs.augno.com/api-reference/agent-memories/delete-agent-memory.md)
+
 ### Auth
 - [POST API Key — Create](https://docs.augno.com/api-reference/api-key/create-api-key.md)
 - [GET API Key — List Keys](https://docs.augno.com/api-reference/api-key/list-api-keys.md)
@@ -172,6 +193,8 @@
 - [PUT Address Validation — Validate](https://docs.augno.com/api-reference/address-validation/validate-address.md)
 - [GET Email Logs — List](https://docs.augno.com/api-reference/email-logs/list-email-logs.md)
 - [GET Email Logs — Retrieve Log](https://docs.augno.com/api-reference/email-logs/retrieve-email-log.md)
+- [PUT Analytics — Analyze OEE](https://docs.augno.com/api-reference/analytics/analyze-oee.md)
+- [PUT Analytics — Analyze Schedule Attainment](https://docs.augno.com/api-reference/analytics/analyze-schedule-attainment.md)
 
 ### Catalog
 - [POST Units — Create Unit](https://docs.augno.com/api-reference/units/create-unit.md)
@@ -204,6 +227,7 @@
 - [PUT Items — Add Item Attribute](https://docs.augno.com/api-reference/items/add-item-attribute.md)
 - [PUT Items — Change Item Category](https://docs.augno.com/api-reference/items/change-item-category.md)
 - [GET Items — Retrieve Item Inventory](https://docs.augno.com/api-reference/items/retrieve-item-inventory.md)
+- [GET Items — Retrieve Item Lot Default](https://docs.augno.com/api-reference/items/retrieve-item-lot-default.md)
 - [DELETE Items — Remove Item Attribute](https://docs.augno.com/api-reference/items/remove-item-attribute.md)
 - [POST Item Categories — Create Category](https://docs.augno.com/api-reference/item-categories/create-item-category.md)
 - [PATCH Item Categories — Update Category](https://docs.augno.com/api-reference/item-categories/update-item-category.md)
@@ -317,6 +341,9 @@
 - [DELETE Address — Delete](https://docs.augno.com/api-reference/address/delete-address.md)
 - [GET Account Statuses — List](https://docs.augno.com/api-reference/account-statuses/list-account-statuses.md)
 - [GET Account Statuses — Retrieve Status](https://docs.augno.com/api-reference/account-statuses/retrieve-account-status.md)
+- [POST Sales Targets — Create Target](https://docs.augno.com/api-reference/sales-targets/create-sales-target.md)
+- [PUT Sales Targets — Upsert Target](https://docs.augno.com/api-reference/sales-targets/upsert-sales-target.md)
+- [GET Sales Targets — List](https://docs.augno.com/api-reference/sales-targets/list-sales-targets.md)
 - [GET Priorities — List](https://docs.augno.com/api-reference/priorities/list-priorities.md)
 - [GET Priorities — Retrieve Priority](https://docs.augno.com/api-reference/priorities/retrieve-priority.md)
 - [POST Customers — Create Customer](https://docs.augno.com/api-reference/customers/create-customer.md)
@@ -372,6 +399,55 @@
 - [GET Service Levels — List](https://docs.augno.com/api-reference/service-levels/list-service-levels.md)
 - [GET Service Levels — Retrieve Level](https://docs.augno.com/api-reference/service-levels/retrieve-service-level.md)
 - [DELETE Service Levels — Delete Level](https://docs.augno.com/api-reference/service-levels/delete-service-level.md)
+- [POST Departments — Create Department](https://docs.augno.com/api-reference/departments/create-department.md)
+- [PATCH Departments — Update Department](https://docs.augno.com/api-reference/departments/update-department.md)
+- [GET Departments — List](https://docs.augno.com/api-reference/departments/list-departments.md)
+- [GET Departments — Retrieve Department](https://docs.augno.com/api-reference/departments/retrieve-department.md)
+- [DELETE Departments — Delete Department](https://docs.augno.com/api-reference/departments/delete-department.md)
+- [POST Machines — Create Machine](https://docs.augno.com/api-reference/machines/create-machine.md)
+- [PATCH Machines — Update Machine](https://docs.augno.com/api-reference/machines/update-machine.md)
+- [GET Machines — List](https://docs.augno.com/api-reference/machines/list-machines.md)
+- [GET Machines — Retrieve Machine](https://docs.augno.com/api-reference/machines/retrieve-machine.md)
+- [DELETE Machines — Delete Machine](https://docs.augno.com/api-reference/machines/delete-machine.md)
+- [POST Machine Downtime — Create Event](https://docs.augno.com/api-reference/machine-downtime/create-machine-downtime-event.md)
+- [PATCH Machine Downtime — Update Event](https://docs.augno.com/api-reference/machine-downtime/update-machine-downtime-event.md)
+- [GET Machine Downtime — List Events](https://docs.augno.com/api-reference/machine-downtime/list-machine-downtime-events.md)
+- [GET Machine Downtime — List Reasons](https://docs.augno.com/api-reference/machine-downtime/list-machine-downtime-reasons.md)
+- [GET Machine Downtime — Retrieve Event](https://docs.augno.com/api-reference/machine-downtime/retrieve-machine-downtime-event.md)
+- [DELETE Machine Downtime — Delete Event](https://docs.augno.com/api-reference/machine-downtime/delete-machine-downtime-event.md)
+- [GET Machine Status — List](https://docs.augno.com/api-reference/machine-status/list-machine-status.md)
+- [POST Demand Overrides — Create Override](https://docs.augno.com/api-reference/demand-overrides/create-demand-override.md)
+- [PATCH Demand Overrides — Update Override](https://docs.augno.com/api-reference/demand-overrides/update-demand-override.md)
+- [GET Demand Overrides — List Override Types](https://docs.augno.com/api-reference/demand-overrides/list-demand-override-types.md)
+- [GET Demand Overrides — List](https://docs.augno.com/api-reference/demand-overrides/list-demand-overrides.md)
+- [GET Demand Overrides — Retrieve Override](https://docs.augno.com/api-reference/demand-overrides/retrieve-demand-override.md)
+- [DELETE Demand Overrides — Delete Override](https://docs.augno.com/api-reference/demand-overrides/delete-demand-override.md)
+- [POST Production Schedules — Generate Schedule](https://docs.augno.com/api-reference/production-schedules/generate-production-schedule.md)
+- [GET Production Schedules — List](https://docs.augno.com/api-reference/production-schedules/list-production-schedules.md)
+- [GET Production Schedules — Retrieve Current Schedule](https://docs.augno.com/api-reference/production-schedules/retrieve-current-production-schedule.md)
+- [GET Production Schedules — List Schedule Deviation Types](https://docs.augno.com/api-reference/production-schedules/list-schedule-deviation-types.md)
+- [GET Production Schedules — Retrieve Schedule](https://docs.augno.com/api-reference/production-schedules/retrieve-production-schedule.md)
+- [DELETE Production Schedules — Delete Schedule](https://docs.augno.com/api-reference/production-schedules/delete-production-schedule.md)
+- [PUT Production Schedules — Preview Schedule](https://docs.augno.com/api-reference/production-schedules/preview-production-schedule.md)
+- [POST Production Schedules — Create Schedule Line](https://docs.augno.com/api-reference/production-schedules/create-production-schedule-line.md)
+- [PATCH Production Schedules — Update Schedule Line](https://docs.augno.com/api-reference/production-schedules/update-production-schedule-line.md)
+- [GET Production Schedules — List Schedule Derived Lines](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-derived-lines.md)
+- [GET Production Schedules — List Schedule Deviations](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-deviations.md)
+- [GET Production Schedules — List Schedule Finished Policies](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-finished-policies.md)
+- [GET Production Schedules — List Schedule Item Policies](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-item-policies.md)
+- [GET Production Schedules — List Schedule Lines](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-lines.md)
+- [GET Production Schedules — Preview Schedule Week Release](https://docs.augno.com/api-reference/production-schedules/preview-production-schedule-week-release.md)
+- [DELETE Production Schedules — Delete Schedule Line](https://docs.augno.com/api-reference/production-schedules/delete-production-schedule-line.md)
+- [PUT Production Schedules — Archive Schedule](https://docs.augno.com/api-reference/production-schedules/archive-production-schedule.md)
+- [PUT Production Schedules — Preview Schedule Regenerate](https://docs.augno.com/api-reference/production-schedules/preview-production-schedule-regenerate.md)
+- [PUT Production Schedules — Publish Schedule](https://docs.augno.com/api-reference/production-schedules/publish-production-schedule.md)
+- [PUT Production Schedules — Regenerate Schedule](https://docs.augno.com/api-reference/production-schedules/regenerate-production-schedule.md)
+- [POST Production Schedules — Release Schedule Week](https://docs.augno.com/api-reference/production-schedules/release-production-schedule-week.md)
+- [GET Production Schedule Settings — Retrieve](https://docs.augno.com/api-reference/production-schedule-settings/retrieve-production-schedule-settings.md)
+- [GET Production Schedule Settings — List Resource](https://docs.augno.com/api-reference/production-schedule-settings/list-production-schedule-resource-settings.md)
+- [DELETE Production Schedule Settings — Delete Resource Setting](https://docs.augno.com/api-reference/production-schedule-settings/delete-production-schedule-resource-setting.md)
+- [PUT Production Schedule Settings — Update](https://docs.augno.com/api-reference/production-schedule-settings/update-production-schedule-settings.md)
+- [PUT Production Schedule Settings — Upsert Resource Setting](https://docs.augno.com/api-reference/production-schedule-settings/upsert-production-schedule-resource-setting.md)
 - [POST Location — Create](https://docs.augno.com/api-reference/location/create-location.md)
 - [PATCH Location — Update](https://docs.augno.com/api-reference/location/update-location.md)
 - [GET Location — List Types](https://docs.augno.com/api-reference/location/list-location-types.md)
@@ -379,6 +455,7 @@
 - [GET Location — Retrieve Type](https://docs.augno.com/api-reference/location/retrieve-location-type.md)
 - [GET Location — Retrieve](https://docs.augno.com/api-reference/location/retrieve-location.md)
 - [DELETE Location — Delete](https://docs.augno.com/api-reference/location/delete-location.md)
+- [POST Shipment — Rate Shop](https://docs.augno.com/api-reference/shipment/rate-shop.md)
 - [POST Scanning Stations — Create Station](https://docs.augno.com/api-reference/scanning-stations/create-scanning-station.md)
 - [PATCH Scanning Stations — Update Station](https://docs.augno.com/api-reference/scanning-stations/update-scanning-station.md)
 - [GET Scanning Stations — List](https://docs.augno.com/api-reference/scanning-stations/list-scanning-stations.md)
@@ -399,11 +476,12 @@
 - [GET Roles — List](https://docs.augno.com/api-reference/roles/list-roles.md)
 - [GET Roles — Retrieve Role](https://docs.augno.com/api-reference/roles/retrieve-role.md)
 - [DELETE Roles — Delete Role](https://docs.augno.com/api-reference/roles/delete-role.md)
+- [GET Permission Groups — List](https://docs.augno.com/api-reference/permission-groups/list-permission-groups.md)
 
 ### Settings
 - [POST Portal Domains — Create Domain](https://docs.augno.com/api-reference/portal-domains/create-portal-domain.md)
 - [GET Portal Domains — List](https://docs.augno.com/api-reference/portal-domains/list-portal-domains.md)
-- [GET Portal Domains — Get Domain](https://docs.augno.com/api-reference/portal-domains/get-portal-domain.md)
+- [GET Portal Domains — Retrieve Domain](https://docs.augno.com/api-reference/portal-domains/retrieve-portal-domain.md)
 - [DELETE Portal Domains — Delete Domain](https://docs.augno.com/api-reference/portal-domains/delete-portal-domain.md)
 - [POST Portal Domains — Verify Domain](https://docs.augno.com/api-reference/portal-domains/verify-portal-domain.md)
 - [POST Account Integrations — Create Integration](https://docs.augno.com/api-reference/account-integrations/create-account-integration.md)
@@ -413,24 +491,29 @@
 
 ## API Objects
 
+### AI
+- [Agent object](https://docs.augno.com/api-reference/objects/agent-definition.md): An AI agent available to the account.
+- [Agent Memories object](https://docs.augno.com/api-reference/objects/agent-memory.md): A piece of information an agent has saved for recall in future runs.
+- [Agent Runs object](https://docs.augno.com/api-reference/objects/agent-run.md): A single execution of an agent, from trigger through completion.
+
 ### Auth
 - [API Key object](https://docs.augno.com/api-reference/objects/api-key.md): An API key used to authenticate requests to the Augno API.
 
 ### Core
-- [Audit Event object](https://docs.augno.com/api-reference/objects/audit-event.md): Immutable audit event record.
-- [Email Logs object](https://docs.augno.com/api-reference/objects/email-log.md): A record of an email sent on the account's behalf, such as an invoice or a user invitation.
+- [Audit Event object](https://docs.augno.com/api-reference/objects/audit-event.md): An immutable record of a single change to a resource, capturing who made the change, what changed, and when.
+- [Email Logs object](https://docs.augno.com/api-reference/objects/email-log.md): A record of an email the platform sent on the account's behalf, such as an order acknowledgement or a user invitation.
 - [Request Log object](https://docs.augno.com/api-reference/objects/request-log.md): A log of a single API request, capturing its route, outcome, latency, and actor.
-- [Sandbox object](https://docs.augno.com/api-reference/objects/sandbox.md): Sandbox account for isolated testing.
+- [Sandbox object](https://docs.augno.com/api-reference/objects/sandbox.md): An isolated test account owned by a production account.
 
 ### Catalog
 - [Item Categories object](https://docs.augno.com/api-reference/objects/item-category.md): A grouping of related catalog items that defines the unit group and properties available to the items within it.
-- [Items object](https://docs.augno.com/api-reference/objects/item.md): Item is an inventory item (product, material, or part).
+- [Items object](https://docs.augno.com/api-reference/objects/item.md): An entry in your catalog: something you sell, consume, or build with.
 - [Materials object](https://docs.augno.com/api-reference/objects/material.md): A material in the account's catalog: a raw material or component consumed in production.
 - [Parts object](https://docs.augno.com/api-reference/objects/part.md): A part in the account's catalog: a component used in production.
-- [Product Lines object](https://docs.augno.com/api-reference/objects/product-line.md): Product line resource.
-- [Products object](https://docs.augno.com/api-reference/objects/product.md): Product pairs an inventory item with how it is sold: its product type, optional product line, and customer portal visibility.
+- [Product Lines object](https://docs.augno.com/api-reference/objects/product-line.md): A named grouping of related products in your catalog.
+- [Products object](https://docs.augno.com/api-reference/objects/product.md): A catalog entry as it is sold: an inventory item together with its product type, product line, and customer portal visibility.
 - [Properties object](https://docs.augno.com/api-reference/objects/property.md): A named characteristic used to classify items, such as `Color` or `Size`.
-- [Unit Groups object](https://docs.augno.com/api-reference/objects/unit-group.md): Named collection of units sharing one dimension, defining which units products can be ordered in along with per-unit discounts and customer portal visibility.
+- [Unit Groups object](https://docs.augno.com/api-reference/objects/unit-group.md): A named collection of units that share one dimension, defining which units a product can be ordered in.
 - [Units object](https://docs.augno.com/api-reference/objects/unit.md): Unit of measurement used for conversions and product quantities.
 
 ### Finance
@@ -441,28 +524,33 @@
 - [Roles object](https://docs.augno.com/api-reference/objects/role.md): A named set of permissions that can be assigned to users to control what they can access.
 
 ### Messaging
-- [Announcements object](https://docs.augno.com/api-reference/objects/announcement.md): A broadcast announcement shown in the bell feed, with the caller's per-user read state.
+- [Announcements object](https://docs.augno.com/api-reference/objects/announcement.md): A broadcast announcement shown in the notification (bell) feed, carrying the calling user's own read state.
 - [Conversations object](https://docs.augno.com/api-reference/objects/conversation.md): A conversation thread the caller participates in.
 - [Email Domains object](https://docs.augno.com/api-reference/objects/email-domain.md): A domain registered with the email bridge for sending and receiving mail.
 - [Email Inboxes object](https://docs.augno.com/api-reference/objects/email-inbox.md): A routable email inbox on a verified domain.
-- [Messages object](https://docs.augno.com/api-reference/objects/list.md): List represents a paginated list of resources.
+- [Messages object](https://docs.augno.com/api-reference/objects/list.md): A single page of resources, together with the metadata needed to page through the rest of the result set.
 - [Messaging Groups object](https://docs.augno.com/api-reference/objects/messaging-group.md): A reusable roster: a named set of members (users and/or agents) that seeds new conversations.
-- [Notifications object](https://docs.augno.com/api-reference/objects/notification.md): An in-app notification in the user's bell feed.
+- [Notifications object](https://docs.augno.com/api-reference/objects/notification.md): An in-app notification addressed to a single user, shown in their notification (bell) feed.
 
 ### Operations
 - [Carriers object](https://docs.augno.com/api-reference/objects/carrier.md): A shipping carrier configured for fulfilling orders.
+- [Demand Overrides object](https://docs.augno.com/api-reference/objects/demand-override.md): An adjustment to the demand a production schedule is planned against.
+- [Departments object](https://docs.augno.com/api-reference/objects/department.md): A functional area of a production operation, such as fabrication or packaging, that groups scanning stations and machines.
 - [Location object](https://docs.augno.com/api-reference/objects/location-type.md): A level in the storage location hierarchy, such as a building or a bin.
+- [Machine Downtime object](https://docs.augno.com/api-reference/objects/machine-downtime-event.md): A period during which a machine was not running.
+- [Machines object](https://docs.augno.com/api-reference/objects/machine.md): A piece of production equipment, such as a CNC router or press, assigned to a department.
+- [Production Schedules object](https://docs.augno.com/api-reference/objects/production-schedule.md): A saved production schedule.
 - [Scanning Stations object](https://docs.augno.com/api-reference/objects/scanning-station.md): A station on the production floor where operators scan batches to perform a batch operation, such as initializing or moving a batch.
-- [Service Levels object](https://docs.augno.com/api-reference/objects/service-level.md): Shipping service level for a carrier.
-- [Shipping Terms object](https://docs.augno.com/api-reference/objects/shipping-term.md): A shipping term defining how freight charges are calculated for an order.
+- [Service Levels object](https://docs.augno.com/api-reference/objects/service-level.md): A shipping speed or method offered by a carrier, such as ground or overnight.
+- [Shipping Terms object](https://docs.augno.com/api-reference/objects/shipping-term.md): A named freight pricing rule that decides what a buyer pays for shipping.
 
 ### Sales
 - [Account Groups object](https://docs.augno.com/api-reference/objects/account-group.md): A named grouping of customer accounts, used for pricing rules or to categorize accounts.
-- [Account Statuses object](https://docs.augno.com/api-reference/objects/account-status.md): AccountStatus is a lookup value describing the standing of a customer account, such as whether shipments or all activity should be held.
+- [Account Statuses object](https://docs.augno.com/api-reference/objects/account-status.md): A lookup value describing the standing of a customer account, such as whether shipments or all activity should be held.
 - [Address object](https://docs.augno.com/api-reference/objects/address.md): A saved address that can be used for billing and shipping on sales orders, invoices, and shipments.
 - [Customers object](https://docs.augno.com/api-reference/objects/customer.md): A business you sell to, with its contact details, default fulfillment settings, and order policies.
 - [Priorities object](https://docs.augno.com/api-reference/objects/priority.md): Priority level used to order work on sales orders, purchase orders, and picks.
-- [Sales Orders object](https://docs.augno.com/api-reference/objects/sales-order.md): Full sales order resource.
+- [Sales Orders object](https://docs.augno.com/api-reference/objects/sales-order.md): An order placed by a customer, tracked from estimate through fulfillment.
 
 ### Settings
 - [Portal Domains object](https://docs.augno.com/api-reference/objects/portal-domain.md): A custom domain that serves the account's customer portal (e.g.

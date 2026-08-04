@@ -237,6 +237,14 @@ export const docPaths = {
             "retrieveUnitGroupUnit": "/api-reference/unit-groups/retrieve-unit-group-unit",
             "deleteUnitGroupAssociatedUnit": "/api-reference/unit-groups/delete-unit-group-associated-unit"
         },
+        "agent": {
+            "createAgent": "/api-reference/agent/create-agent",
+            "updateAgent": "/api-reference/agent/update-agent",
+            "listAgents": "/api-reference/agent/list-agents",
+            "retrieveAgent": "/api-reference/agent/retrieve-agent",
+            "deleteAgent": "/api-reference/agent/delete-agent",
+            "updateAgentStatus": "/api-reference/agent/update-agent-status"
+        },
         "notifications": {
             "sendNotification": "/api-reference/notifications/send-notification",
             "listNotifications": "/api-reference/notifications/list-notifications",
@@ -331,6 +339,25 @@ export const docPaths = {
             "getEmailInbox": "/api-reference/email-inboxes/get-email-inbox",
             "deleteEmailInbox": "/api-reference/email-inboxes/delete-email-inbox"
         },
+        "agentRuns": {
+            "triggerAgentRun": "/api-reference/agent-runs/trigger-agent-run",
+            "listAgentRuns": "/api-reference/agent-runs/list-agent-runs",
+            "retrieveAgentRun": "/api-reference/agent-runs/retrieve-agent-run",
+            "cancelAgentRun": "/api-reference/agent-runs/cancel-agent-run",
+            "continueAgentRun": "/api-reference/agent-runs/continue-agent-run",
+            "retryAgentRun": "/api-reference/agent-runs/retry-agent-run"
+        },
+        "agentTools": {
+            "listToolGroups": "/api-reference/agent-tools/list-tool-groups",
+            "listTools": "/api-reference/agent-tools/list-tools"
+        },
+        "agentMemories": {
+            "createAgentMemory": "/api-reference/agent-memories/create-agent-memory",
+            "updateAgentMemory": "/api-reference/agent-memories/update-agent-memory",
+            "listAgentMemories": "/api-reference/agent-memories/list-agent-memories",
+            "retrieveAgentMemory": "/api-reference/agent-memories/retrieve-agent-memory",
+            "deleteAgentMemory": "/api-reference/agent-memories/delete-agent-memory"
+        },
         "accountGroups": {
             "createAccountGroup": "/api-reference/account-groups/create-account-group",
             "updateAccountGroup": "/api-reference/account-groups/update-account-group",
@@ -376,6 +403,11 @@ export const docPaths = {
             "disableAccountUser": "/api-reference/account-users/disable-account-user",
             "removeAccountUser": "/api-reference/account-users/remove-account-user"
         },
+        "salesTargets": {
+            "createSalesTarget": "/api-reference/sales-targets/create-sales-target",
+            "upsertSalesTarget": "/api-reference/sales-targets/upsert-sales-target",
+            "listSalesTargets": "/api-reference/sales-targets/list-sales-targets"
+        },
         "properties": {
             "createProperty": "/api-reference/properties/create-property",
             "updateProperty": "/api-reference/properties/update-property",
@@ -394,7 +426,7 @@ export const docPaths = {
         "portalDomains": {
             "createPortalDomain": "/api-reference/portal-domains/create-portal-domain",
             "listPortalDomains": "/api-reference/portal-domains/list-portal-domains",
-            "getPortalDomain": "/api-reference/portal-domains/get-portal-domain",
+            "retrievePortalDomain": "/api-reference/portal-domains/retrieve-portal-domain",
             "deletePortalDomain": "/api-reference/portal-domains/delete-portal-domain",
             "verifyPortalDomain": "/api-reference/portal-domains/verify-portal-domain"
         },
@@ -428,6 +460,7 @@ export const docPaths = {
             "addItemAttribute": "/api-reference/items/add-item-attribute",
             "changeItemCategory": "/api-reference/items/change-item-category",
             "retrieveItemInventory": "/api-reference/items/retrieve-item-inventory",
+            "retrieveItemLotDefault": "/api-reference/items/retrieve-item-lot-default",
             "removeItemAttribute": "/api-reference/items/remove-item-attribute"
         },
         "itemCategories": {
@@ -454,6 +487,13 @@ export const docPaths = {
             "retrievePart": "/api-reference/parts/retrieve-part",
             "deletePart": "/api-reference/parts/delete-part"
         },
+        "departments": {
+            "createDepartment": "/api-reference/departments/create-department",
+            "updateDepartment": "/api-reference/departments/update-department",
+            "listDepartments": "/api-reference/departments/list-departments",
+            "retrieveDepartment": "/api-reference/departments/retrieve-department",
+            "deleteDepartment": "/api-reference/departments/delete-department"
+        },
         "emailLogs": {
             "listEmailLogs": "/api-reference/email-logs/list-email-logs",
             "retrieveEmailLog": "/api-reference/email-logs/retrieve-email-log"
@@ -468,6 +508,13 @@ export const docPaths = {
         },
         "contacts": {
             "findContactByEmail": "/api-reference/contacts/find-contact-by-email"
+        },
+        "machines": {
+            "createMachine": "/api-reference/machines/create-machine",
+            "updateMachine": "/api-reference/machines/update-machine",
+            "listMachines": "/api-reference/machines/list-machines",
+            "retrieveMachine": "/api-reference/machines/retrieve-machine",
+            "deleteMachine": "/api-reference/machines/delete-machine"
         },
         "productLines": {
             "createProductLine": "/api-reference/product-lines/create-product-line",
@@ -486,6 +533,55 @@ export const docPaths = {
         },
         "salesOrderStatuses": {
             "listSalesOrderStatuses": "/api-reference/sales-order-statuses/list-sales-order-statuses"
+        },
+        "machineDowntime": {
+            "createMachineDowntimeEvent": "/api-reference/machine-downtime/create-machine-downtime-event",
+            "updateMachineDowntimeEvent": "/api-reference/machine-downtime/update-machine-downtime-event",
+            "listMachineDowntimeEvents": "/api-reference/machine-downtime/list-machine-downtime-events",
+            "listMachineDowntimeReasons": "/api-reference/machine-downtime/list-machine-downtime-reasons",
+            "retrieveMachineDowntimeEvent": "/api-reference/machine-downtime/retrieve-machine-downtime-event",
+            "deleteMachineDowntimeEvent": "/api-reference/machine-downtime/delete-machine-downtime-event"
+        },
+        "machineStatus": {
+            "listMachineStatus": "/api-reference/machine-status/list-machine-status"
+        },
+        "demandOverrides": {
+            "createDemandOverride": "/api-reference/demand-overrides/create-demand-override",
+            "updateDemandOverride": "/api-reference/demand-overrides/update-demand-override",
+            "listDemandOverrideTypes": "/api-reference/demand-overrides/list-demand-override-types",
+            "listDemandOverrides": "/api-reference/demand-overrides/list-demand-overrides",
+            "retrieveDemandOverride": "/api-reference/demand-overrides/retrieve-demand-override",
+            "deleteDemandOverride": "/api-reference/demand-overrides/delete-demand-override"
+        },
+        "productionSchedules": {
+            "generateProductionSchedule": "/api-reference/production-schedules/generate-production-schedule",
+            "listProductionSchedules": "/api-reference/production-schedules/list-production-schedules",
+            "retrieveCurrentProductionSchedule": "/api-reference/production-schedules/retrieve-current-production-schedule",
+            "listScheduleDeviationTypes": "/api-reference/production-schedules/list-schedule-deviation-types",
+            "retrieveProductionSchedule": "/api-reference/production-schedules/retrieve-production-schedule",
+            "deleteProductionSchedule": "/api-reference/production-schedules/delete-production-schedule",
+            "previewProductionSchedule": "/api-reference/production-schedules/preview-production-schedule",
+            "createProductionScheduleLine": "/api-reference/production-schedules/create-production-schedule-line",
+            "updateProductionScheduleLine": "/api-reference/production-schedules/update-production-schedule-line",
+            "listProductionScheduleDerivedLines": "/api-reference/production-schedules/list-production-schedule-derived-lines",
+            "listProductionScheduleDeviations": "/api-reference/production-schedules/list-production-schedule-deviations",
+            "listProductionScheduleFinishedPolicies": "/api-reference/production-schedules/list-production-schedule-finished-policies",
+            "listProductionScheduleItemPolicies": "/api-reference/production-schedules/list-production-schedule-item-policies",
+            "listProductionScheduleLines": "/api-reference/production-schedules/list-production-schedule-lines",
+            "previewProductionScheduleWeekRelease": "/api-reference/production-schedules/preview-production-schedule-week-release",
+            "deleteProductionScheduleLine": "/api-reference/production-schedules/delete-production-schedule-line",
+            "archiveProductionSchedule": "/api-reference/production-schedules/archive-production-schedule",
+            "previewProductionScheduleRegenerate": "/api-reference/production-schedules/preview-production-schedule-regenerate",
+            "publishProductionSchedule": "/api-reference/production-schedules/publish-production-schedule",
+            "regenerateProductionSchedule": "/api-reference/production-schedules/regenerate-production-schedule",
+            "releaseProductionScheduleWeek": "/api-reference/production-schedules/release-production-schedule-week"
+        },
+        "productionScheduleSettings": {
+            "retrieveProductionScheduleSettings": "/api-reference/production-schedule-settings/retrieve-production-schedule-settings",
+            "listProductionScheduleResourceSettings": "/api-reference/production-schedule-settings/list-production-schedule-resource-settings",
+            "deleteProductionScheduleResourceSetting": "/api-reference/production-schedule-settings/delete-production-schedule-resource-setting",
+            "updateProductionScheduleSettings": "/api-reference/production-schedule-settings/update-production-schedule-settings",
+            "upsertProductionScheduleResourceSetting": "/api-reference/production-schedule-settings/upsert-production-schedule-resource-setting"
         },
         "salesOrders": {
             "createSalesOrder": "/api-reference/sales-orders/create-sales-order",
@@ -521,6 +617,9 @@ export const docPaths = {
             "retrieveLocation": "/api-reference/location/retrieve-location",
             "deleteLocation": "/api-reference/location/delete-location"
         },
+        "shipment": {
+            "rateShop": "/api-reference/shipment/rate-shop"
+        },
         "scanningStations": {
             "createScanningStation": "/api-reference/scanning-stations/create-scanning-station",
             "updateScanningStation": "/api-reference/scanning-stations/update-scanning-station",
@@ -534,6 +633,13 @@ export const docPaths = {
             "listRoles": "/api-reference/roles/list-roles",
             "retrieveRole": "/api-reference/roles/retrieve-role",
             "deleteRole": "/api-reference/roles/delete-role"
+        },
+        "permissionGroups": {
+            "listPermissionGroups": "/api-reference/permission-groups/list-permission-groups"
+        },
+        "analytics": {
+            "analyzeOee": "/api-reference/analytics/analyze-oee",
+            "analyzeScheduleAttainment": "/api-reference/analytics/analyze-schedule-attainment"
         }
     }
 } as const;

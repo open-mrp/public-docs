@@ -291,6 +291,61 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "label": "Delete"
         },
         {
+            "domain": "ai",
+            "segments": [
+                "agents"
+            ],
+            "tagSlug": "agent",
+            "endpointSlug": "create-agent",
+            "label": "Create"
+        },
+        {
+            "domain": "ai",
+            "segments": [
+                "agents"
+            ],
+            "tagSlug": "agent",
+            "endpointSlug": "update-agent",
+            "label": "Update"
+        },
+        {
+            "domain": "ai",
+            "segments": [
+                "agents"
+            ],
+            "tagSlug": "agent",
+            "endpointSlug": "list-agents",
+            "label": "List"
+        },
+        {
+            "domain": "ai",
+            "segments": [
+                "agents"
+            ],
+            "tagSlug": "agent",
+            "endpointSlug": "retrieve-agent",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "ai",
+            "segments": [
+                "agents"
+            ],
+            "tagSlug": "agent",
+            "endpointSlug": "delete-agent",
+            "label": "Delete"
+        },
+        {
+            "domain": "ai",
+            "segments": [
+                "agents",
+                "status"
+            ],
+            "tagSlug": "agent",
+            "endpointSlug": "update-agent-status",
+            "label": "Update Agent Status"
+        },
+        {
             "domain": "messaging",
             "segments": [
                 "notifications"
@@ -916,6 +971,123 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "label": "Delete"
         },
         {
+            "domain": "ai",
+            "segments": [
+                "runs"
+            ],
+            "tagSlug": "agent-runs",
+            "endpointSlug": "trigger-agent-run",
+            "label": "Create"
+        },
+        {
+            "domain": "ai",
+            "segments": [
+                "runs"
+            ],
+            "tagSlug": "agent-runs",
+            "endpointSlug": "list-agent-runs",
+            "label": "List"
+        },
+        {
+            "domain": "ai",
+            "segments": [
+                "runs"
+            ],
+            "tagSlug": "agent-runs",
+            "endpointSlug": "retrieve-agent-run",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "ai",
+            "segments": [
+                "runs"
+            ],
+            "tagSlug": "agent-runs",
+            "endpointSlug": "cancel-agent-run",
+            "label": "Cancel Agent Run"
+        },
+        {
+            "domain": "ai",
+            "segments": [
+                "runs"
+            ],
+            "tagSlug": "agent-runs",
+            "endpointSlug": "continue-agent-run",
+            "label": "Continue Agent Run"
+        },
+        {
+            "domain": "ai",
+            "segments": [
+                "runs"
+            ],
+            "tagSlug": "agent-runs",
+            "endpointSlug": "retry-agent-run",
+            "label": "Retry Agent Run"
+        },
+        {
+            "domain": "ai",
+            "segments": [
+                "tool-groups"
+            ],
+            "tagSlug": "agent-tools",
+            "endpointSlug": "list-tool-groups",
+            "label": "List"
+        },
+        {
+            "domain": "ai",
+            "segments": [
+                "tools"
+            ],
+            "tagSlug": "agent-tools",
+            "endpointSlug": "list-tools",
+            "label": "List"
+        },
+        {
+            "domain": "ai",
+            "segments": [
+                "memories"
+            ],
+            "tagSlug": "agent-memories",
+            "endpointSlug": "create-agent-memory",
+            "label": "Create"
+        },
+        {
+            "domain": "ai",
+            "segments": [
+                "memories"
+            ],
+            "tagSlug": "agent-memories",
+            "endpointSlug": "update-agent-memory",
+            "label": "Update"
+        },
+        {
+            "domain": "ai",
+            "segments": [
+                "memories"
+            ],
+            "tagSlug": "agent-memories",
+            "endpointSlug": "list-agent-memories",
+            "label": "List"
+        },
+        {
+            "domain": "ai",
+            "segments": [
+                "memories"
+            ],
+            "tagSlug": "agent-memories",
+            "endpointSlug": "retrieve-agent-memory",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "ai",
+            "segments": [
+                "memories"
+            ],
+            "tagSlug": "agent-memories",
+            "endpointSlug": "delete-agent-memory",
+            "label": "Delete"
+        },
+        {
             "domain": "sales",
             "segments": [
                 "account-groups"
@@ -1196,6 +1368,36 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "label": "Remove Account User"
         },
         {
+            "domain": "sales",
+            "segments": [
+                "account-users",
+                "sales-targets"
+            ],
+            "tagSlug": "sales-targets",
+            "endpointSlug": "create-sales-target",
+            "label": "Create"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "account-users",
+                "sales-targets"
+            ],
+            "tagSlug": "sales-targets",
+            "endpointSlug": "upsert-sales-target",
+            "label": "Update"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "account-users",
+                "sales-targets"
+            ],
+            "tagSlug": "sales-targets",
+            "endpointSlug": "list-sales-targets",
+            "label": "List"
+        },
+        {
             "domain": "catalog",
             "segments": [
                 "properties"
@@ -1324,7 +1526,7 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
                 "portal-domains"
             ],
             "tagSlug": "portal-domains",
-            "endpointSlug": "get-portal-domain",
+            "endpointSlug": "retrieve-portal-domain",
             "label": "Retrieve"
         },
         {
@@ -1546,6 +1748,16 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "domain": "catalog",
             "segments": [
                 "items",
+                "lot-default"
+            ],
+            "tagSlug": "items",
+            "endpointSlug": "retrieve-item-lot-default",
+            "label": "List"
+        },
+        {
+            "domain": "catalog",
+            "segments": [
+                "items",
                 "attributes"
             ],
             "tagSlug": "items",
@@ -1718,6 +1930,51 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "label": "Delete"
         },
         {
+            "domain": "operations",
+            "segments": [
+                "departments"
+            ],
+            "tagSlug": "departments",
+            "endpointSlug": "create-department",
+            "label": "Create"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "departments"
+            ],
+            "tagSlug": "departments",
+            "endpointSlug": "update-department",
+            "label": "Update"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "departments"
+            ],
+            "tagSlug": "departments",
+            "endpointSlug": "list-departments",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "departments"
+            ],
+            "tagSlug": "departments",
+            "endpointSlug": "retrieve-department",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "departments"
+            ],
+            "tagSlug": "departments",
+            "endpointSlug": "delete-department",
+            "label": "Delete"
+        },
+        {
             "domain": "core",
             "segments": [
                 "email-logs"
@@ -1797,6 +2054,51 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "tagSlug": "contacts",
             "endpointSlug": "find-contact-by-email",
             "label": "Find Contact by Email"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "machines"
+            ],
+            "tagSlug": "machines",
+            "endpointSlug": "create-machine",
+            "label": "Create"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "machines"
+            ],
+            "tagSlug": "machines",
+            "endpointSlug": "update-machine",
+            "label": "Update"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "machines"
+            ],
+            "tagSlug": "machines",
+            "endpointSlug": "list-machines",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "machines"
+            ],
+            "tagSlug": "machines",
+            "endpointSlug": "retrieve-machine",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "machines"
+            ],
+            "tagSlug": "machines",
+            "endpointSlug": "delete-machine",
+            "label": "Delete"
         },
         {
             "domain": "catalog",
@@ -1907,6 +2209,370 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "tagSlug": "sales-order-statuses",
             "endpointSlug": "list-sales-order-statuses",
             "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "machine-downtime-events"
+            ],
+            "tagSlug": "machine-downtime",
+            "endpointSlug": "create-machine-downtime-event",
+            "label": "Create"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "machine-downtime-events"
+            ],
+            "tagSlug": "machine-downtime",
+            "endpointSlug": "update-machine-downtime-event",
+            "label": "Update"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "machine-downtime-events"
+            ],
+            "tagSlug": "machine-downtime",
+            "endpointSlug": "list-machine-downtime-events",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "machine-downtime-reasons"
+            ],
+            "tagSlug": "machine-downtime",
+            "endpointSlug": "list-machine-downtime-reasons",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "machine-downtime-events"
+            ],
+            "tagSlug": "machine-downtime",
+            "endpointSlug": "retrieve-machine-downtime-event",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "machine-downtime-events"
+            ],
+            "tagSlug": "machine-downtime",
+            "endpointSlug": "delete-machine-downtime-event",
+            "label": "Delete"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "machine-status"
+            ],
+            "tagSlug": "machine-status",
+            "endpointSlug": "list-machine-status",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "demand-overrides"
+            ],
+            "tagSlug": "demand-overrides",
+            "endpointSlug": "create-demand-override",
+            "label": "Create"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "demand-overrides"
+            ],
+            "tagSlug": "demand-overrides",
+            "endpointSlug": "update-demand-override",
+            "label": "Update"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "demand-override-types"
+            ],
+            "tagSlug": "demand-overrides",
+            "endpointSlug": "list-demand-override-types",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "demand-overrides"
+            ],
+            "tagSlug": "demand-overrides",
+            "endpointSlug": "list-demand-overrides",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "demand-overrides"
+            ],
+            "tagSlug": "demand-overrides",
+            "endpointSlug": "retrieve-demand-override",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "demand-overrides"
+            ],
+            "tagSlug": "demand-overrides",
+            "endpointSlug": "delete-demand-override",
+            "label": "Delete"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "generate-production-schedule",
+            "label": "Create"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "list-production-schedules",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules",
+                "current"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "retrieve-current-production-schedule",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "schedule-deviation-types"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "list-schedule-deviation-types",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "retrieve-production-schedule",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "delete-production-schedule",
+            "label": "Delete"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "preview-production-schedule",
+            "label": "Preview Production Schedule"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules",
+                "lines"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "create-production-schedule-line",
+            "label": "Create"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules",
+                "lines"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "update-production-schedule-line",
+            "label": "Update"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules",
+                "derived-lines"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "list-production-schedule-derived-lines",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules",
+                "deviations"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "list-production-schedule-deviations",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules",
+                "finished-policies"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "list-production-schedule-finished-policies",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules",
+                "item-policies"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "list-production-schedule-item-policies",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules",
+                "lines"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "list-production-schedule-lines",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules",
+                "week-release-preview"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "preview-production-schedule-week-release",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules",
+                "lines"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "delete-production-schedule-line",
+            "label": "Delete"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "archive-production-schedule",
+            "label": "Archive Production Schedule"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "preview-production-schedule-regenerate",
+            "label": "Preview Production Schedule Regenerate"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "publish-production-schedule",
+            "label": "Publish Production Schedule"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "regenerate-production-schedule",
+            "label": "Regenerate Production Schedule"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "release-production-schedule-week",
+            "label": "Release Production Schedule Week"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedule-settings"
+            ],
+            "tagSlug": "production-schedule-settings",
+            "endpointSlug": "retrieve-production-schedule-settings",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedule-settings",
+                "resources"
+            ],
+            "tagSlug": "production-schedule-settings",
+            "endpointSlug": "list-production-schedule-resource-settings",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedule-settings",
+                "resources"
+            ],
+            "tagSlug": "production-schedule-settings",
+            "endpointSlug": "delete-production-schedule-resource-setting",
+            "label": "Delete"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedule-settings"
+            ],
+            "tagSlug": "production-schedule-settings",
+            "endpointSlug": "update-production-schedule-settings",
+            "label": "Update Production Schedule Settings"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedule-settings",
+                "resources"
+            ],
+            "tagSlug": "production-schedule-settings",
+            "endpointSlug": "upsert-production-schedule-resource-setting",
+            "label": "Upsert Production Schedule Resource Setting"
         },
         {
             "domain": "sales",
@@ -2169,6 +2835,15 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
         {
             "domain": "operations",
             "segments": [
+                "shipments"
+            ],
+            "tagSlug": "shipment",
+            "endpointSlug": "rate-shop",
+            "label": "Rate Shop"
+        },
+        {
+            "domain": "operations",
+            "segments": [
                 "scanning-stations"
             ],
             "tagSlug": "scanning-stations",
@@ -2255,6 +2930,35 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "tagSlug": "roles",
             "endpointSlug": "delete-role",
             "label": "Delete"
+        },
+        {
+            "domain": "identity",
+            "segments": [
+                "permission-groups"
+            ],
+            "tagSlug": "permission-groups",
+            "endpointSlug": "list-permission-groups",
+            "label": "List"
+        },
+        {
+            "domain": "core",
+            "segments": [
+                "analytics",
+                "oee"
+            ],
+            "tagSlug": "analytics",
+            "endpointSlug": "analyze-oee",
+            "label": "Analyze OEE"
+        },
+        {
+            "domain": "core",
+            "segments": [
+                "analytics",
+                "schedule-attainment"
+            ],
+            "tagSlug": "analytics",
+            "endpointSlug": "analyze-schedule-attainment",
+            "label": "Analyze Schedule Attainment"
         }
     ],
     "1.0.forge-preview.1": [
@@ -3628,6 +4332,24 @@ export const apiObjectNavEntriesByVersion: Record<string, ApiObjectNavEntry[]> =
             "label": "Address"
         },
         {
+            "domain": "ai",
+            "domainLabel": "AI",
+            "slug": "agent-definition",
+            "label": "Agent"
+        },
+        {
+            "domain": "ai",
+            "domainLabel": "AI",
+            "slug": "agent-memory",
+            "label": "Agent Memories"
+        },
+        {
+            "domain": "ai",
+            "domainLabel": "AI",
+            "slug": "agent-run",
+            "label": "Agent Runs"
+        },
+        {
             "domain": "messaging",
             "domainLabel": "Messaging",
             "slug": "announcement",
@@ -3664,6 +4386,18 @@ export const apiObjectNavEntriesByVersion: Record<string, ApiObjectNavEntry[]> =
             "label": "Customers"
         },
         {
+            "domain": "operations",
+            "domainLabel": "Operations",
+            "slug": "demand-override",
+            "label": "Demand Overrides"
+        },
+        {
+            "domain": "operations",
+            "domainLabel": "Operations",
+            "slug": "department",
+            "label": "Departments"
+        },
+        {
             "domain": "messaging",
             "domainLabel": "Messaging",
             "slug": "email-domain",
@@ -3698,6 +4432,18 @@ export const apiObjectNavEntriesByVersion: Record<string, ApiObjectNavEntry[]> =
             "domainLabel": "Operations",
             "slug": "location-type",
             "label": "Location"
+        },
+        {
+            "domain": "operations",
+            "domainLabel": "Operations",
+            "slug": "machine-downtime-event",
+            "label": "Machine Downtime"
+        },
+        {
+            "domain": "operations",
+            "domainLabel": "Operations",
+            "slug": "machine",
+            "label": "Machines"
         },
         {
             "domain": "catalog",
@@ -3752,6 +4498,12 @@ export const apiObjectNavEntriesByVersion: Record<string, ApiObjectNavEntry[]> =
             "domainLabel": "Catalog",
             "slug": "product-line",
             "label": "Product Lines"
+        },
+        {
+            "domain": "operations",
+            "domainLabel": "Operations",
+            "slug": "production-schedule",
+            "label": "Production Schedules"
         },
         {
             "domain": "catalog",

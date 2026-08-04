@@ -615,6 +615,30 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Delete Unit Group Associated Unit",
         "subtitle": "DELETE /v1/catalog/unit-groups/{unit_group_id}/units/{id}"
     },
+    "/api-reference/agent/create-agent": {
+        "title": "Create Agent",
+        "subtitle": "POST /v1/ai/agents"
+    },
+    "/api-reference/agent/update-agent": {
+        "title": "Update Agent",
+        "subtitle": "PATCH /v1/ai/agents/{id}"
+    },
+    "/api-reference/agent/list-agents": {
+        "title": "List Agents",
+        "subtitle": "GET /v1/ai/agents"
+    },
+    "/api-reference/agent/retrieve-agent": {
+        "title": "Retrieve Agent",
+        "subtitle": "GET /v1/ai/agents/{id}"
+    },
+    "/api-reference/agent/delete-agent": {
+        "title": "Delete Agent",
+        "subtitle": "DELETE /v1/ai/agents/{id}"
+    },
+    "/api-reference/agent/update-agent-status": {
+        "title": "Update Agent Status",
+        "subtitle": "PUT /v1/ai/agents/{id}/status"
+    },
     "/api-reference/notifications/send-notification": {
         "title": "Send Notification",
         "subtitle": "POST /v1/messaging/notifications"
@@ -887,6 +911,58 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Delete Email Inbox",
         "subtitle": "DELETE /v1/messaging/email-inboxes/{id}"
     },
+    "/api-reference/agent-runs/trigger-agent-run": {
+        "title": "Trigger Agent Run",
+        "subtitle": "POST /v1/ai/runs"
+    },
+    "/api-reference/agent-runs/list-agent-runs": {
+        "title": "List Agent Runs",
+        "subtitle": "GET /v1/ai/runs"
+    },
+    "/api-reference/agent-runs/retrieve-agent-run": {
+        "title": "Retrieve Agent Run",
+        "subtitle": "GET /v1/ai/runs/{id}"
+    },
+    "/api-reference/agent-runs/cancel-agent-run": {
+        "title": "Cancel Agent Run",
+        "subtitle": "POST /v1/ai/runs/{id}/actions/cancel"
+    },
+    "/api-reference/agent-runs/continue-agent-run": {
+        "title": "Continue Agent Run",
+        "subtitle": "POST /v1/ai/runs/{id}/actions/continue"
+    },
+    "/api-reference/agent-runs/retry-agent-run": {
+        "title": "Retry Agent Run",
+        "subtitle": "POST /v1/ai/runs/{id}/actions/retry"
+    },
+    "/api-reference/agent-tools/list-tool-groups": {
+        "title": "List Tool Groups",
+        "subtitle": "GET /v1/ai/tool-groups"
+    },
+    "/api-reference/agent-tools/list-tools": {
+        "title": "List Tools",
+        "subtitle": "GET /v1/ai/tools"
+    },
+    "/api-reference/agent-memories/create-agent-memory": {
+        "title": "Create Agent Memory",
+        "subtitle": "POST /v1/ai/memories"
+    },
+    "/api-reference/agent-memories/update-agent-memory": {
+        "title": "Update Agent Memory",
+        "subtitle": "PATCH /v1/ai/memories/{id}"
+    },
+    "/api-reference/agent-memories/list-agent-memories": {
+        "title": "List Agent Memories",
+        "subtitle": "GET /v1/ai/memories"
+    },
+    "/api-reference/agent-memories/retrieve-agent-memory": {
+        "title": "Retrieve Agent Memory",
+        "subtitle": "GET /v1/ai/memories/{id}"
+    },
+    "/api-reference/agent-memories/delete-agent-memory": {
+        "title": "Delete Agent Memory",
+        "subtitle": "DELETE /v1/ai/memories/{id}"
+    },
     "/api-reference/account-groups/create-account-group": {
         "title": "Create Account Group",
         "subtitle": "POST /v1/sales/account-groups"
@@ -1011,6 +1087,18 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Remove Account User",
         "subtitle": "PUT /v1/identity/account-users/{id}/actions/remove"
     },
+    "/api-reference/sales-targets/create-sales-target": {
+        "title": "Create Sales Target",
+        "subtitle": "POST /v1/sales/account-users/{id}/sales-targets"
+    },
+    "/api-reference/sales-targets/upsert-sales-target": {
+        "title": "Upsert Sales Target",
+        "subtitle": "PUT /v1/sales/account-users/{id}/sales-targets/{target_id}"
+    },
+    "/api-reference/sales-targets/list-sales-targets": {
+        "title": "List Sales Targets",
+        "subtitle": "GET /v1/sales/account-users/{id}/sales-targets"
+    },
     "/api-reference/properties/create-property": {
         "title": "Create Property",
         "subtitle": "POST /v1/catalog/properties"
@@ -1063,8 +1151,8 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "List Portal Domains",
         "subtitle": "GET /v1/settings/portal-domains"
     },
-    "/api-reference/portal-domains/get-portal-domain": {
-        "title": "Get Portal Domain",
+    "/api-reference/portal-domains/retrieve-portal-domain": {
+        "title": "Retrieve Portal Domain",
         "subtitle": "GET /v1/settings/portal-domains/{id}"
     },
     "/api-reference/portal-domains/delete-portal-domain": {
@@ -1159,6 +1247,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Retrieve Item Inventory",
         "subtitle": "GET /v1/catalog/items/{id}/inventory"
     },
+    "/api-reference/items/retrieve-item-lot-default": {
+        "title": "Retrieve Item Lot Default",
+        "subtitle": "GET /v1/catalog/items/{id}/lot-default"
+    },
     "/api-reference/items/remove-item-attribute": {
         "title": "Remove Item Attribute",
         "subtitle": "DELETE /v1/catalog/items/{id}/attributes/{attribute_id}"
@@ -1235,6 +1327,26 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Delete Part",
         "subtitle": "DELETE /v1/catalog/parts/{id}"
     },
+    "/api-reference/departments/create-department": {
+        "title": "Create Department",
+        "subtitle": "POST /v1/operations/departments"
+    },
+    "/api-reference/departments/update-department": {
+        "title": "Update Department",
+        "subtitle": "PATCH /v1/operations/departments/{id}"
+    },
+    "/api-reference/departments/list-departments": {
+        "title": "List Departments",
+        "subtitle": "GET /v1/operations/departments"
+    },
+    "/api-reference/departments/retrieve-department": {
+        "title": "Retrieve Department",
+        "subtitle": "GET /v1/operations/departments/{id}"
+    },
+    "/api-reference/departments/delete-department": {
+        "title": "Delete Department",
+        "subtitle": "DELETE /v1/operations/departments/{id}"
+    },
     "/api-reference/email-logs/list-email-logs": {
         "title": "List Email Logs",
         "subtitle": "GET /v1/core/email-logs"
@@ -1270,6 +1382,26 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/contacts/find-contact-by-email": {
         "title": "Find Contact by Email",
         "subtitle": "POST /v1/sales/contacts/actions/find-by-email"
+    },
+    "/api-reference/machines/create-machine": {
+        "title": "Create Machine",
+        "subtitle": "POST /v1/operations/machines"
+    },
+    "/api-reference/machines/update-machine": {
+        "title": "Update Machine",
+        "subtitle": "PATCH /v1/operations/machines/{id}"
+    },
+    "/api-reference/machines/list-machines": {
+        "title": "List Machines",
+        "subtitle": "GET /v1/operations/machines"
+    },
+    "/api-reference/machines/retrieve-machine": {
+        "title": "Retrieve Machine",
+        "subtitle": "GET /v1/operations/machines/{id}"
+    },
+    "/api-reference/machines/delete-machine": {
+        "title": "Delete Machine",
+        "subtitle": "DELETE /v1/operations/machines/{id}"
     },
     "/api-reference/product-lines/create-product-line": {
         "title": "Create Product Line",
@@ -1318,6 +1450,162 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/sales-order-statuses/list-sales-order-statuses": {
         "title": "List Sales Order Statuses",
         "subtitle": "GET /v1/sales/sales-orders/statuses"
+    },
+    "/api-reference/machine-downtime/create-machine-downtime-event": {
+        "title": "Create Machine Downtime Event",
+        "subtitle": "POST /v1/operations/machine-downtime-events"
+    },
+    "/api-reference/machine-downtime/update-machine-downtime-event": {
+        "title": "Update Machine Downtime Event",
+        "subtitle": "PATCH /v1/operations/machine-downtime-events/{id}"
+    },
+    "/api-reference/machine-downtime/list-machine-downtime-events": {
+        "title": "List Machine Downtime Events",
+        "subtitle": "GET /v1/operations/machine-downtime-events"
+    },
+    "/api-reference/machine-downtime/list-machine-downtime-reasons": {
+        "title": "List Machine Downtime Reasons",
+        "subtitle": "GET /v1/operations/machine-downtime-reasons"
+    },
+    "/api-reference/machine-downtime/retrieve-machine-downtime-event": {
+        "title": "Retrieve Machine Downtime Event",
+        "subtitle": "GET /v1/operations/machine-downtime-events/{id}"
+    },
+    "/api-reference/machine-downtime/delete-machine-downtime-event": {
+        "title": "Delete Machine Downtime Event",
+        "subtitle": "DELETE /v1/operations/machine-downtime-events/{id}"
+    },
+    "/api-reference/machine-status/list-machine-status": {
+        "title": "List Machine Status",
+        "subtitle": "GET /v1/operations/machine-status"
+    },
+    "/api-reference/demand-overrides/create-demand-override": {
+        "title": "Create Demand Override",
+        "subtitle": "POST /v1/operations/demand-overrides"
+    },
+    "/api-reference/demand-overrides/update-demand-override": {
+        "title": "Update Demand Override",
+        "subtitle": "PATCH /v1/operations/demand-overrides/{id}"
+    },
+    "/api-reference/demand-overrides/list-demand-override-types": {
+        "title": "List Demand Override Types",
+        "subtitle": "GET /v1/operations/demand-override-types"
+    },
+    "/api-reference/demand-overrides/list-demand-overrides": {
+        "title": "List Demand Overrides",
+        "subtitle": "GET /v1/operations/demand-overrides"
+    },
+    "/api-reference/demand-overrides/retrieve-demand-override": {
+        "title": "Retrieve Demand Override",
+        "subtitle": "GET /v1/operations/demand-overrides/{id}"
+    },
+    "/api-reference/demand-overrides/delete-demand-override": {
+        "title": "Delete Demand Override",
+        "subtitle": "DELETE /v1/operations/demand-overrides/{id}"
+    },
+    "/api-reference/production-schedules/generate-production-schedule": {
+        "title": "Generate Production Schedule",
+        "subtitle": "POST /v1/operations/production-schedules"
+    },
+    "/api-reference/production-schedules/list-production-schedules": {
+        "title": "List Production Schedules",
+        "subtitle": "GET /v1/operations/production-schedules"
+    },
+    "/api-reference/production-schedules/retrieve-current-production-schedule": {
+        "title": "Retrieve Current Production Schedule",
+        "subtitle": "GET /v1/operations/production-schedules/current"
+    },
+    "/api-reference/production-schedules/list-schedule-deviation-types": {
+        "title": "List Schedule Deviation Types",
+        "subtitle": "GET /v1/operations/schedule-deviation-types"
+    },
+    "/api-reference/production-schedules/retrieve-production-schedule": {
+        "title": "Retrieve Production Schedule",
+        "subtitle": "GET /v1/operations/production-schedules/{id}"
+    },
+    "/api-reference/production-schedules/delete-production-schedule": {
+        "title": "Delete Production Schedule",
+        "subtitle": "DELETE /v1/operations/production-schedules/{id}"
+    },
+    "/api-reference/production-schedules/preview-production-schedule": {
+        "title": "Preview Production Schedule",
+        "subtitle": "PUT /v1/operations/production-schedules/actions/preview"
+    },
+    "/api-reference/production-schedules/create-production-schedule-line": {
+        "title": "Create Production Schedule Line",
+        "subtitle": "POST /v1/operations/production-schedules/{id}/lines"
+    },
+    "/api-reference/production-schedules/update-production-schedule-line": {
+        "title": "Update Production Schedule Line",
+        "subtitle": "PATCH /v1/operations/production-schedules/{id}/lines/{line_id}"
+    },
+    "/api-reference/production-schedules/list-production-schedule-derived-lines": {
+        "title": "List Production Schedule Derived Lines",
+        "subtitle": "GET /v1/operations/production-schedules/{id}/derived-lines"
+    },
+    "/api-reference/production-schedules/list-production-schedule-deviations": {
+        "title": "List Production Schedule Deviations",
+        "subtitle": "GET /v1/operations/production-schedules/{id}/deviations"
+    },
+    "/api-reference/production-schedules/list-production-schedule-finished-policies": {
+        "title": "List Production Schedule Finished Policies",
+        "subtitle": "GET /v1/operations/production-schedules/{id}/finished-policies"
+    },
+    "/api-reference/production-schedules/list-production-schedule-item-policies": {
+        "title": "List Production Schedule Item Policies",
+        "subtitle": "GET /v1/operations/production-schedules/{id}/item-policies"
+    },
+    "/api-reference/production-schedules/list-production-schedule-lines": {
+        "title": "List Production Schedule Lines",
+        "subtitle": "GET /v1/operations/production-schedules/{id}/lines"
+    },
+    "/api-reference/production-schedules/preview-production-schedule-week-release": {
+        "title": "Preview Production Schedule Week Release",
+        "subtitle": "GET /v1/operations/production-schedules/{id}/week-release-preview"
+    },
+    "/api-reference/production-schedules/delete-production-schedule-line": {
+        "title": "Delete Production Schedule Line",
+        "subtitle": "DELETE /v1/operations/production-schedules/{id}/lines/{line_id}"
+    },
+    "/api-reference/production-schedules/archive-production-schedule": {
+        "title": "Archive Production Schedule",
+        "subtitle": "PUT /v1/operations/production-schedules/{id}/actions/archive"
+    },
+    "/api-reference/production-schedules/preview-production-schedule-regenerate": {
+        "title": "Preview Production Schedule Regenerate",
+        "subtitle": "PUT /v1/operations/production-schedules/{id}/actions/preview-regenerate"
+    },
+    "/api-reference/production-schedules/publish-production-schedule": {
+        "title": "Publish Production Schedule",
+        "subtitle": "PUT /v1/operations/production-schedules/{id}/actions/publish"
+    },
+    "/api-reference/production-schedules/regenerate-production-schedule": {
+        "title": "Regenerate Production Schedule",
+        "subtitle": "PUT /v1/operations/production-schedules/{id}/actions/regenerate"
+    },
+    "/api-reference/production-schedules/release-production-schedule-week": {
+        "title": "Release Production Schedule Week",
+        "subtitle": "POST /v1/operations/production-schedules/{id}/actions/release-week"
+    },
+    "/api-reference/production-schedule-settings/retrieve-production-schedule-settings": {
+        "title": "Retrieve Production Schedule Settings",
+        "subtitle": "GET /v1/operations/production-schedule-settings"
+    },
+    "/api-reference/production-schedule-settings/list-production-schedule-resource-settings": {
+        "title": "List Production Schedule Resource Settings",
+        "subtitle": "GET /v1/operations/production-schedule-settings/resources"
+    },
+    "/api-reference/production-schedule-settings/delete-production-schedule-resource-setting": {
+        "title": "Delete Production Schedule Resource Setting",
+        "subtitle": "DELETE /v1/operations/production-schedule-settings/resources/{id}"
+    },
+    "/api-reference/production-schedule-settings/update-production-schedule-settings": {
+        "title": "Update Production Schedule Settings",
+        "subtitle": "PUT /v1/operations/production-schedule-settings"
+    },
+    "/api-reference/production-schedule-settings/upsert-production-schedule-resource-setting": {
+        "title": "Upsert Production Schedule Resource Setting",
+        "subtitle": "PUT /v1/operations/production-schedule-settings/resources"
     },
     "/api-reference/sales-orders/create-sales-order": {
         "title": "Create Sales Order",
@@ -1431,6 +1719,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Delete Location",
         "subtitle": "DELETE /v1/operations/locations/{id}"
     },
+    "/api-reference/shipment/rate-shop": {
+        "title": "Rate Shop",
+        "subtitle": "POST /v1/operations/shipments/actions/rate-shop"
+    },
     "/api-reference/scanning-stations/create-scanning-station": {
         "title": "Create Scanning Station",
         "subtitle": "POST /v1/operations/scanning-stations"
@@ -1470,6 +1762,18 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/roles/delete-role": {
         "title": "Delete Role",
         "subtitle": "DELETE /v1/identity/roles/{id}"
+    },
+    "/api-reference/permission-groups/list-permission-groups": {
+        "title": "List Permission Groups",
+        "subtitle": "GET /v1/identity/permission-groups"
+    },
+    "/api-reference/analytics/analyze-oee": {
+        "title": "Analyze OEE",
+        "subtitle": "PUT /v1/core/analytics/oee"
+    },
+    "/api-reference/analytics/analyze-schedule-attainment": {
+        "title": "Analyze Schedule Attainment",
+        "subtitle": "PUT /v1/core/analytics/schedule-attainment"
     }
 };
 
