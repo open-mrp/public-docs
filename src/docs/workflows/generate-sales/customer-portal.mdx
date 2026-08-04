@@ -51,8 +51,6 @@ Once a domain is verified:
 
 Removing the domain detaches it immediately: customers fall back to the slug-based portal address, and you can safely delete the DNS records you published. Because an account holds only one custom domain, removing it is also how you free the slot up for a different one.
 
-**Preview**: the portal-domain and portal-host endpoints behind this feature are in preview. Some of them are not published in the public OpenAPI spec or the SDKs, and all of them may change without notice.
-
 ### Registration
 
 Customers access the portal by registering through one of two paths, both available from the same registration page.
@@ -109,8 +107,6 @@ Your freight rules are applied on top of those quotes, and they can legitimately
 - **None**: standard carrier rates apply with no exemption.
 
 The same rules drive the rate estimates on internally created orders — see <InternalLink pathKey="shipProducts.shipping.overview" text="shipping" /> for the full picture.
-
-**Preview**: the rate-shopping endpoint behind these options, and the `exemption_type` values it returns, are in preview. The endpoint is not published in the public OpenAPI spec or the SDKs, and it may change without notice.
 
 #### Pricing
 
@@ -195,8 +191,6 @@ Messages carry a visibility, and the portal is filtered on it server-side:
 Internal notes are excluded from the customer's message list, from the conversation preview, and from their unread count, so your team can discuss a case in the same thread the customer is reading without exposing anything.
 
 Your team works the other side of these threads from the internal inbox — see <InternalLink pathKey="communicate.inbox" text="Inbox" />.
-
-**Preview**: the messaging endpoints behind the portal's support flow are in preview. Several of them, including contact support and support availability, are not published in the public OpenAPI spec or the SDKs, and all of them may change without notice.
 
 ### Account management
 

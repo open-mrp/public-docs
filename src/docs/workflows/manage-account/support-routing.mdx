@@ -14,7 +14,7 @@ The Support tab is admin-only in the dashboard, and the underlying operations re
 
 ### Why it matters
 
-**Support routing is what makes the portal's Contact support button exist.** The <InternalLink pathKey="generateSales.customerPortal" text="customer portal" /> checks support availability before offering the action, and a customer's first case is refused unless their scope resolves to a route whose group has at least one active member. An account that never configures a route ships a portal where support simply appears to be missing — nothing is broken, the feature is gated on this setting.
+**Support routing is what makes the portal's Contact support button exist.** The <InternalLink pathKey="generateSales.customerPortal" text="customer portal" /> checks support availability before offering the action, and a customer's first case is refused unless a route is configured whose group has at least one active member. An account that never configures a route ships a portal where support simply appears to be missing — nothing is broken, the feature is gated on this setting.
 
 ### Setting the route
 
@@ -24,16 +24,7 @@ The Support tab is admin-only in the dashboard, and the underlying operations re
 
 Manage **who** receives support by adding and removing people from the group chat itself — there is no separate recipient list on this tab. Only active human members of the group are seated on new cases.
 
-Use **Remove** to clear the route. Clearing it leaves any customer **without an override of its own** unable to open new support cases until a route is set again; customers covered by a per-customer override keep using that override.
-
-### Scopes: default and per-customer override
-
-A route is stored against a scope. Two scopes exist:
-
-- **Account default** — used for any customer that has no override of its own. This is what the Support tab configures.
-- **Per-customer override** — a route attached to one specific customer account, which wins over the default for that customer.
-
-When a customer contacts support, Augno resolves the override first and falls back to the account default. The Support tab manages the account default; per-customer overrides exist in the routing model but are not exposed in the tab today.
+Use **Remove** to clear the route. Clearing it leaves customers unable to open new support cases until a route is set again.
 
 ### Changing a route later
 
@@ -43,7 +34,5 @@ Re-pointing or clearing a route only affects cases opened **from then on**. Peop
 
 - **<InternalLink pathKey="generateSales.customerPortal" text="Customer portal" />**: the Contact support action is gated on a resolvable route
 - **<InternalLink pathKey="communicate.inbox" text="Inbox" />**: the cases customers open are worked from your team's inbox
-
-**Preview**: the support-routing endpoints are internal-only and in preview. They are not published in the public OpenAPI spec or the SDKs, and they may change without notice — configure support routing from the dashboard.
 
 Next: <InternalLink pathKey="manageAccount.team.teamMembers" text="Team members" includeArrow />

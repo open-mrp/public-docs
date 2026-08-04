@@ -67,15 +67,15 @@ Three consequences worth planning around when you downgrade:
 
 - **Seats are reconciled the moment the plan changes.** If you have more active team members than the new plan allows, the least recently active ones are disabled automatically — you are not asked which. The member who performed the downgrade is protected. Upgrading later re-enables disabled members up to the new seat limit, or all of them if the new plan has no seat limit. See <InternalLink pathKey="manageAccount.team.teamMembers" text="team members" /> for what a disabled member loses.
 - **Other resources already over the new ceiling are left in place**, but the next action that would exceed an enforced limit is rejected. Seats, invoices, and sandboxes are enforced; the batch figure is reported but not enforced.
-- **Downgrading to the free plan turns agents off immediately.** New runs are refused and scheduled runs are skipped from that moment, not at period close.
+- **Downgrading to the free plan turns agents off immediately.** New runs are refused from that moment, not at period close.
 
 ### Agent usage and spending cap
 
 Your plan fee is not the whole bill. <InternalLink pathKey="automateWithAgents.overview" text="Agents" /> consume LLM tokens, and those tokens are a variable usage charge billed on top of the plan.
 
-**How it is metered.** Every model call an agent makes is routed through a metered LLM gateway that reports token usage to Stripe against your account's Stripe customer as the call happens — segmented by model and by token type (input versus output). Augno keeps its own per-run token totals for analytics, but the billable quantities are the ones Stripe holds. Sandbox agent usage is billed to the production account that owns the sandbox, not to the sandbox.
+**How it is metered.** Every model call an agent makes reports token usage against your account as the call happens — segmented by model and by token type (input versus output). Sandbox agent usage is billed to the production account that owns the sandbox, not to the sandbox.
 
-**What the dashboard number means.** The **Estimated Spend This Month** figure on the billing page is not a local guess from an internal price list. Augno reconstructs it the way Stripe will bill it: for each model and token type, metered quantity multiplied by your plan's rate-card unit price, summed. Those rate-card prices already include your plan's markup, so the figure and your eventual invoice are computed from the same inputs. It is called "estimated" for two narrow reasons: Stripe's usage analytics have a short freshness lag, and Augno caches the computed value briefly. Expect it to trail live usage by a few minutes, not to differ in method.
+**What the dashboard number means.** The **Estimated Spend This Month** figure on the billing page is computed the way your invoice will be: for each model and token type, metered quantity multiplied by your plan's rate-card unit price, summed. Those rate-card prices already include your plan's markup. It is called "estimated" because usage reporting has a short freshness lag — expect it to trail live usage by a few minutes, not to differ in method.
 
 Spend is counted from the start of your current billing period, or from the start of the calendar month if the account has no active subscription. The **AI Spending** panel is shown on paid plans only.
 

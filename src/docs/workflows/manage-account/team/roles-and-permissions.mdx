@@ -67,8 +67,6 @@ Two of these are easy to overlook when you build a custom role:
 - **`messaging`** gates almost the whole communication surface — conversations, messages and drafts, message attachments, messaging groups, blocked contacts, announcements, and the email inbox and domain settings. A role that can read sales orders but has no `messaging:read` will find those screens and endpoints returning permission errors.
 - **`alerts`** gates sending notifications. `alerts:create` is what lets a user or integration push a notification to someone.
 
-A number of domains are declared but are not currently checked by any endpoint — `shifts`, `supplies`, `receiving`, `department_picks`, `error_logs`, `scanning_error_logs`, `inventory_change_logs`, `product_groups`, `product_variations`, `production_step_transformations`, and `shipping_cases` among them. Granting or withholding them has no effect today.
-
 `api_keys` is a special case: the domain exists, but API key management is gated on the admin role type rather than on the permission, so ticking `api_keys` on a custom role does not let that role create or revoke keys.
 
 ### Route access preview

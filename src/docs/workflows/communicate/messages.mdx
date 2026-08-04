@@ -162,11 +162,8 @@ One resource covers every stage of a message's life. Four fields tell you what y
 | `system_event` | A record of something that happened, such as someone joining or a link.                                                    |
 | `agent`        | Written by an AI agent taking part in the conversation.                                                                    |
 | `email`        | Carried over the case's bridged email thread — either one that arrived from the customer or a reply sent back out to them. |
-| `scheduled`    | Reserved. Nothing writes it today.                                                                                         |
-| `alert`        | Reserved. Nothing writes it today.                                                                                         |
 
-`scheduled` and `alert` are defined in the enum but no message is written with either kind, so do not
-filter on them. **A queued send is `kind: chat` with `status: scheduled`** — the kind never changes
+**A queued send is `kind: chat` with `status: scheduled`** — the kind never changes
 when it is delivered, so a message that went out on a schedule is indistinguishable from an ordinary
 one by `kind` alone.
 
@@ -410,8 +407,7 @@ independent:
 
 The `group` on a conversation is therefore **provenance only** — a record of where the membership came
 from, not a live link. Agents seeded from a roster are seated with the safe default trigger policy
-(`mention`); changing an agent's policy on a conversation that already exists is an internal
-operation, not part of the public surface — see
+(`mention`); to change an agent's policy on a conversation that already exists, see
 
 <InternalLink pathKey="automateWithAgents.agentsInChat" text="agents in chat" />.
 

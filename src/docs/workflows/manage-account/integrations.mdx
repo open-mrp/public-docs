@@ -31,8 +31,6 @@ An account can hold **at most one integration per provider**. Connecting a provi
 
 Credentials are validated against the provider's expected key format, encrypted at rest, and never returned in API responses. For Stripe and Shippo, the key's environment must match the account's: a <InternalLink pathKey="manageAccount.sandboxes" text="sandbox" /> account must supply test keys and a production account must supply live keys, and a mismatch is rejected. HubSpot tokens make no such distinction.
 
-**Preview**: the account-integration endpoints — including the `provider` codes and the credential field names documented below — are published in the public OpenAPI spec but are still in preview, and may change without notice.
-
 ### Stripe integration
 
 Stripe handles payment processing for invoices and subscriptions. To connect Stripe:
@@ -101,8 +99,6 @@ Only one sync can be underway at a time: starting another while one is previewin
 **Cancel sync** is the escape hatch for a job that is stuck — for example when the worker running it stopped without recording an outcome. Cancelling marks the job failed and releases the account to start a new one; it does not undo anything already written to HubSpot.
 
 Once a run has written to HubSpot, a **Synced customers** table shows each Augno customer, the HubSpot company it maps to, when it was last pushed, and whether it failed.
-
-**Preview**: the HubSpot sync endpoints are internal-only and in preview. They are not published in the public OpenAPI spec or the SDKs, and they may change without notice — run the sync from the dashboard.
 
 ### Managing integrations
 

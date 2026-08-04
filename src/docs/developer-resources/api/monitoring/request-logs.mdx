@@ -9,72 +9,22 @@ nav:
     order: 1
 ---
 
-Augno records a log entry for almost every API request it serves, and keeps it for seven years. Request logs are the primary tool for debugging failed requests, monitoring usage patterns, and auditing access across your organization.
-
-"Almost every" is worth reading literally — see [What is not logged](#what-is-not-logged) before you rely on a listing being exhaustive.
+Every API request made to Augno is automatically logged and available for inspection. Request logs are useful for debugging failed requests, monitoring API usage patterns, and auditing access across your organization.
 
 ## What gets logged
 
 Each request log captures:
 
-- **HTTP method, host, path, and normalized route** — The exact path including path-parameter values, plus the route template it matched (`/v1/sales/customers/{id}`). The template falls back to the raw path when the request did not match a registered route.
-- **Status code** — The HTTP response status (e.g. `200`, `400`, `404`, `500`).
-- **Latency** — Time in microseconds, measured at the API edge from when the request was received to when the response was written. It excludes network time between your client and Augno.
-- **Request and response bodies** — The JSON payloads sent and received. See [Body capture and redaction](#body-capture-and-redaction) for the size and redaction rules.
-- **Query parameters** — Any query string parameters included in the request, as a JSON object.
-- **Actor information** — Who made the request: a user, an API key, or an Augno agent acting on the account's behalf. Users carry a name and email plus their role in the target account; API keys carry a name, the redacted key value, and the role attached to the key.
-- **Account** — The account the request acted upon.
-- **Client IP, referrer, user agent, and API version** — Network and client details, plus the `Augno-Version` the request was served with. For requests Augno's own agents make on your behalf, the client IP and the host are internal infrastructure, so they are scrubbed from the API response: `client_ip` reads `null` and `host` reads `https://api.augno.com` regardless of which internal listener actually served the call. See the caveat on the `hosts` filter in [Filtering via the API](#filtering-via-the-api).
+- **HTTP method, host, and path** — The full details of the request endpoint.
+- **Status code** — The HTTP response status (e.g., `200`, `400`, `404`, `500`).
+- **Latency** — How long the request took to process, in microseconds.
+- **Request and response bodies** — The JSON payloads sent and received, up to 256 KB each. Bodies larger than 256 KB are truncated. Security-sensitive endpoints (such as API key creation) skip body capture entirely.
+- **Query parameters** — Any query string parameters included in the request.
+- **Actor information** — Who made the request: a user (with name and email) or an API key (with redacted key value), along with their assigned role.
+- **Account** — The account targeted by the request.
+- **Client IP and user agent** — Network and client details for the caller.
 - **Idempotency key** — The idempotency key value, if one was provided. See <InternalLink pathKey="api.idempotency" text="Idempotency" /> for details.
-- **Error details** — The error code and message, if the request failed. These are the same `code` and `message` the caller received.
-
-Logs are written after the response has been sent, so a brand-new entry may take a moment to become readable.
-
-## What is not logged
-
-Two categories of traffic will not show up where you expect.
-
-**Never recorded at all.** Health checks (`/healthz`) and `OPTIONS` preflight requests are skipped before any log row is created. There is nothing to find for them.
-
-**Recorded, but withheld from listings.** A set of high-frequency, low-signal endpoints is flagged to persist its log rows while being excluded from the request-log listing, so routine polling does not drown out everything else. The list query filters those rows out; retrieving one directly by ID still works, which is why a `request_log_url` returned in an error response always resolves even when the same entry never appears in a listing.
-
-On the public API surface, these endpoints are hidden from listings:
-
-| Endpoint                                                                                            | Why                                           |
-| --------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| `GET /v1/core/request-logs`, `GET /v1/core/request-logs/{id}`                                       | Reading logs would log itself                 |
-| `GET /v1/core/audit-events`, `/{id}`, `/resource-types`                                             | Same, for the audit trail                     |
-| `GET /v1/core/search`                                                                               | Type-ahead — one call per search keystroke    |
-| `GET /v1/core/addresses/suggestions`, `PUT /v1/core/addresses/actions/validate`                     | Address autocomplete — one call per keystroke |
-| `GET /v1/messaging/notifications`, `/unread-count`, `/unread-summary`                               | Polled by the dashboard                       |
-| `GET /v1/messaging/announcements`                                                                   | Polled by the dashboard                       |
-| `POST /v1/sales/sales-orders/price-quote`, `POST /v1/sales/sales-orders/{id}/actions/quote-freight` | Re-quoted while an order is being edited      |
-
-Several non-public endpoints behind the dashboard are hidden the same way — token refresh and revocation, the current-user and tenancy lookups, account logo and favicon fetches, carrier rate shopping, and checkout-session creation. If you are auditing a session and cannot find the token refreshes, this is why.
-
-## Body capture and redaction
-
-Request and response bodies are stored as JSON, subject to three rules.
-
-**Size.** Each body is captured up to 256 KB. Over that limit the payload is not trimmed — it is **replaced entirely** with a marker object, so none of the original content survives:
-
-```json
-{ "_truncated": true, "_original_size": 481203 }
-```
-
-for a request body, and
-
-```json
-{ "_truncated": true, "_original_size_exceeded": 262144 }
-```
-
-for a response body. Note the asymmetry, and note what the request number actually means: Augno reads at most **1 MiB** of a JSON request body off the wire, and `_original_size` is the count of the bytes it read. So it is the real body size up to 1 MiB, and exactly `1048576` for anything larger — it saturates rather than reporting the true size of a very large upload. The response marker's `_original_size_exceeded` is not a size at all: it is the 256 KB limit itself, telling you the response was too big without telling you how big.
-
-If you need the payload of an oversized call, capture it client-side; the log will not have it.
-
-**Redaction.** Fields declared sensitive are replaced with `"****"` before the body is stored — passwords, tokens, integration credentials, and generated API key secrets among them. The rest of the body is stored intact, so creating an API key does record the request and response; only `api_key_secret` is masked.
-
-**Failure to redact is fail-closed.** If a body that has sensitive fields cannot be parsed for redaction, the body is dropped rather than stored unredacted. A malformed payload on a sensitive endpoint therefore shows no body at all.
+- **Error details** — The error code and message, if the request resulted in an error.
 
 ## Viewing request logs in the Dashboard
 
@@ -82,118 +32,59 @@ You can browse request logs directly in the <DocLink pathKey="frontend.requestLo
 
 ### List view
 
-Request logs are displayed grouped by date — **Today**, **Yesterday**, or a specific date. Each row shows:
+Request logs are displayed in a table grouped by date — **Today**, **Yesterday**, or a specific date. Each row shows:
 
-- The **status code** with its reason phrase, color-coded by class
-- The **HTTP method**
-- The **host** and **request path**
-- The **latency**, with a bar and a color that shifts from green to amber to red as the request gets slower
-- The **actor type** chip and the actor's name
-- The **time** the request occurred
+- The **status code**, color-coded by category (green for 2xx, yellow for 3xx, red for 4xx/5xx)
+- The **HTTP method** (GET, POST, PUT, DELETE, etc.)
+- The **request path**
+- The **timestamp** of when the request occurred
 
-Pagination is cursor-based. The page size defaults to 10 and can be set to 10, 15, 20, or 25.
+Results are paginated with 50 logs per page using cursor-based pagination.
 
 ### Filtering
 
-A free-text search box sits above the filter bar. It matches a request-log ID exactly, and otherwise searches the request path, the normalized route, and the error message — so pasting a resource ID that appeared in a URL finds every request that touched it.
+Use the filter controls to narrow down the log list:
 
-The filter bar offers:
-
-- **User**, **API Key**, and **Agent** — Pick specific actors. All three feed the same underlying actor filter.
-- **Acting Account** and **Target Account** — Two separate filters, because a log has two accounts. See [the dual-scope rule](#the-dual-scope-rule).
-- **Endpoint** — Choose a normalized route template.
-- **HTTP Methods** — GET, POST, PUT, PATCH, DELETE.
-- **Status Codes** — A grouped picker that mixes whole classes (any 4xx) with individual codes (401). The two are combined with OR.
-- **Start Date** and **End Date**.
-- **Actor Types** — User, API Key, Agent, or Group. Only the first three ever appear on a request log.
-- **Error Code** — Free text, e.g. `resource_not_found`.
-- **Host**.
-- **Min Latency (ms)** — Surface slow requests.
-- **Hide token-refresh 401s** — On by default. Short-lived access tokens expire constantly and clients silently refresh, producing routine `expired_token` 401s that bury real failures. Turning it off shows them. Under the hood this sends `exclude_error_codes=expired_token`.
+- **HTTP method** — Filter by a specific method (GET, POST, PUT, DELETE, PATCH).
+- **Status code range** — Filter by response category: 2xx, 3xx, 4xx, or 5xx.
+- **Actor type** — Show requests made by a specific actor type: User or API Key.
+- **Date range** — Specify a start and end date to scope results.
+- **Actor name search** — Search for requests made by a specific user or API key name.
 
 ### Detail view
 
-Click any row to open the full request log. The property list shows **Status**, **Request ID**, **Time**, **Host**, **Latency**, **IP address**, **API version**, **Idempotency key**, **User agent**, **Actor** (with **Role**), **Account**, and, for failures, **Error code** and **Error message**.
+Click any row to open the full request log detail. This view displays:
 
-Below it, three formatted JSON panels: **Request body**, **Request query parameters**, and **Response body**. Each shows a placeholder when the request carried none.
+- **Status code**, **request ID**, and **timestamp**
+- **Host**, **path**, and **normalized route**
+- **Latency** in milliseconds
+- **Client IP**, **API version**, and **user agent**
+- **Actor** details (name, email, or redacted API key value) and **account**
+- **Idempotency key**, if provided
+- **Error code** and **error message**, if applicable
+
+Below the property list, the detail view shows formatted JSON for:
+
+- **Request body** — The JSON payload sent in the request
+- **Query parameters** — Query string parameters as JSON
+- **Response body** — The JSON payload returned in the response
 
 ## Retrieving request logs via the API
 
-Two endpoints, both requiring the `request_logs:read` permission:
-
-- <InternalLink pathKey="apiReference.requestLog.listRequestLogs" text="List Request Logs" /> — `GET
-  /v1/core/request-logs`, newest first, cursor-paginated.
-- <InternalLink pathKey="apiReference.requestLog.retrieveRequestLog" text="Retrieve Request Log" />—
-  `GET /v1/core/request-logs/{id}`.
+You can also fetch request logs programmatically using the API. Here's an example that lists recent request logs:
 
 ```bash
-curl "API_HOST/v1/core/request-logs?limit=25" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+curl https://api.augno.com/v1/core/request-logs \
+  -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
-### The dual-scope rule
-
-This is the one behavior that surprises people.
-
-A request log has two accounts: the **acting** account (the account the caller belongs to) and the **target** account (the account the request acted upon). For a normal single-account integration these are the same. They diverge as soon as another party touches your data — a customer calling your portal, or your account calling a supplier's.
-
-Results are **always** scoped to logs where your account is either the acting account or the target account. There is no way to narrow to just one side of that rule; you can only filter within it. And the `account` object returned on each log is the **target** account.
-
-The practical consequence: a log in your results may show an `account` that is not yours. That is a request your actors made against another account, and it is correctly in scope. To narrow deliberately:
-
-- `actor_account_ids` — restrict to specific **acting** accounts. Pass a customer's account ID to see only what that customer's users did against your data.
-- `target_account_ids` — restrict to specific **target** accounts. Pass a supplier's account ID to see only what you did against theirs.
-
-### Filtering via the API
-
-All filters are `AND`-combined unless noted. Array parameters accept either `methods=GET,POST` or `methods[]=GET&methods[]=POST`.
-
-| Parameter                                 | Notes                                                                                                                                                                                                                                                                              |
-| ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `q`                                       | Free text. Exact match on log ID, substring match on path, normalized route, and error message.                                                                                                                                                                                    |
-| `start_date`, `end_date`                  | RFC 3339 timestamps, inclusive, applied to `occurred_at` (not `created_at`).                                                                                                                                                                                                       |
-| `methods`                                 | The enum accepts `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `HEAD`, and `OPTIONS`, but `OPTIONS` never matches anything — preflight requests are not logged at all (see [What is not logged](#what-is-not-logged)). The dashboard picker offers only the first five for that reason. |
-| `status_codes`                            | Individual codes, e.g. `401`.                                                                                                                                                                                                                                                      |
-| `status_code_classes`                     | Leading digit, `1`–`5`. **OR-combined with `status_codes`** — `status_codes=401&status_code_classes=5` matches 401 _and_ any 5xx.                                                                                                                                                  |
-| `error_codes`                             | Any value from the API error enum. See <InternalLink pathKey="api.errors" text="API errors" />.                                                                                                                                                                                    |
-| `exclude_error_codes`                     | Negative filter, applied last. Successful requests carry no error code and are **always kept**, so this never hides 2xx traffic.                                                                                                                                                   |
-| `actor_account_ids`, `target_account_ids` | See [the dual-scope rule](#the-dual-scope-rule).                                                                                                                                                                                                                                   |
-| `actor_ids`                               | Matches `actor.id` — a user ID for `user` actors, an API key ID for `api_key` actors, an agent ID for `agent` actors.                                                                                                                                                              |
-| `actor_types`                             | The enum accepts `user`, `api_key`, `agent`, and `group`, but request logs only ever record the first three — `group` matches nothing.                                                                                                                                             |
-| `normalized_routes`                       | Route templates. Parameter **names** are ignored, so `{customer_id}` and `{id}` match the same route shape.                                                                                                                                                                        |
-| `hosts`                                   | Typically `api.augno.com`. Matches the **stored** host, not the one you see in the response — so it will not select agent-originated logs, whose displayed host is rewritten to `https://api.augno.com`. Filter those with `actor_types=agent`.                                    |
-| `min_latency_us`                          | Microseconds. `min_latency_us=500000` finds requests slower than half a second.                                                                                                                                                                                                    |
-| `idempotency_key`                         | The key you sent, not the internal record ID.                                                                                                                                                                                                                                      |
-| `cursor`, `limit`                         | Standard <InternalLink pathKey="api.pagination" text="cursor pagination" />. `limit` accepts 1–1000, default 100.                                                                                                                                                                  |
-
-Hidden logs are excluded from every listing regardless of the filters you pass; there is no parameter that reveals them.
-
-### Expanding sub-objects
-
-Nested objects come back `null` unless requested. The two endpoints accept different sets:
-
-- **List** — `include=account`, `actor`, `actor.role`.
-- **Retrieve** — the same three, plus `actor.role.permissions`, `query_params`, `request_body`, and `response_body`.
-
-Payloads are therefore only available on the retrieve endpoint — and asking a listing for one is a hard failure, not a silently empty field. An include an endpoint does not declare is rejected before the handler runs, with `parameter_invalid` (400) on param `include[]` and a message that lists what is allowed: `Invalid include value 'request_body'. Allowed values: account, actor, actor.role`. Fetch bodies with the retrieve endpoint instead.
-
-```bash
-curl "API_HOST/v1/core/request-logs/rq_fbv1ygmybo3eauykr74?include[]=actor&include[]=request_body&include[]=response_body" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
-```
-
-See <InternalLink pathKey="api.include" text="Expanding responses" /> for how includes work generally.
+For filtering options and response details, see the <InternalLink pathKey="apiReference.requestLogManagement.listRequestLogs" text="Request Log Management API reference" />.
 
 ## Debugging with request logs
 
-- **Start from the error response.** Every error envelope carries `request_log_url`, a direct dashboard link to that request's log. It resolves even for endpoints hidden from listings.
-- **Cross-reference request IDs.** Every API response includes a `Request-ID` header whose value is the log's `id`. Retrieve it directly rather than hunting through a listing. See <InternalLink pathKey="api.requestIds" text="Request IDs" />.
-- **Find errors quickly.** `status_code_classes[]=4&status_code_classes[]=5` surfaces every failed request; add `exclude_error_codes=expired_token` to drop routine token-rotation noise.
-- **Find slow endpoints.** Combine `min_latency_us` with `normalized_routes` to see which route template is dragging, rather than which individual resource.
-- **Verify API key usage.** Filter `actor_types=api_key` (or `actor_ids` for one key) to see which keys are live and what they call. See <InternalLink pathKey="api.managingApiKeys" text="Managing API keys" />.
-- **Confirm an idempotent retry collapsed.** Filter by `idempotency_key` to see every request that used the key and which one did the work.
-- **Inspect payloads.** Retrieve a single log with `include[]=request_body&include[]=response_body` to see the exact JSON, remembering that sensitive fields read `"****"` and oversized bodies were replaced with a marker.
+Request logs are a powerful debugging tool. Here are some practical tips:
+
+- **Find errors quickly** — Filter by 4xx or 5xx status codes to surface failed requests and inspect their error codes and messages.
+- **Cross-reference request IDs** — Every API response includes a `Request-ID` header. Use this ID to locate the corresponding request log. See <InternalLink pathKey="api.requestIds" text="Request IDs" /> for more.
+- **Verify API key usage** — Filter by actor type "API Key" to see which API keys are being used and what endpoints they're calling. See <InternalLink pathKey="api.managingApiKeys" text="Managing API keys" /> for best practices on key management.
+- **Inspect request and response payloads** — Open the detail view to see the exact JSON bodies sent and received, which is helpful for diagnosing malformed requests or unexpected responses.

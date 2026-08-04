@@ -90,8 +90,6 @@ The rules resolve in this order:
 
 An empty option list is therefore a legitimate, expected answer — it means freight is not being charged, not that rate shopping failed. Omitting the customer skips the customer, shipping-term, minimum-order and flat-rate rules and returns plain carrier rates; the freight-exempt product-line check in step 1 still applies, because it is evaluated from the product lines on the request rather than from the customer.
 
-**Preview**: the rate-shopping endpoint is in preview and is not published in the public OpenAPI spec or the SDKs. It may change without notice.
-
 ### Voiding a shipment
 
 If you need to cancel after labels have been generated, you can void the shipment. Voiding:

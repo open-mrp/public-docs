@@ -94,7 +94,7 @@ The solver only schedules the constraint. Every other department's work is deriv
 
 The work list follows the **published** plan, so there is nothing to show until a schedule is published. You filter it by department and by week, and it groups jobs by week with a timing chip on each group: **Past due**, **This week** or **Upcoming**.
 
-Each job shows the SKU, the <InternalLink pathKey="buildProducts.bom.productionSteps" text="production step" /> and department that will do it, the quantity implied, and how far downstream of the constraint it sits — `+1w · step 1` is work that waits only on the constraint campaign feeding it, `step 3` waits on two intermediate steps. That is deliberately a timing signal rather than a readiness signal: nothing writes shop-floor progress onto derived work, so a chip claiming "ready to start" would be inventing state.
+Each job shows the SKU, the <InternalLink pathKey="buildProducts.bom.productionSteps" text="production step" /> and department that will do it, the quantity implied, and how far downstream of the constraint it sits — `+1w · step 1` is work that waits only on the constraint campaign feeding it, `step 3` waits on two intermediate steps. That is a timing signal rather than a readiness signal: the chip tells you when the work is due relative to the constraint, not whether the floor has started it.
 
 Derived work whose week falls past the end of the horizon is still listed rather than dropped, because a department at the end of a long chain needs to see it coming.
 

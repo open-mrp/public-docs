@@ -81,8 +81,7 @@ Beyond the status, a notification has:
 - **`title`** and **`body`** — the headline and the supporting line. For a chat notification the body is a
   preview of the message.
 - **`sender`** — the actor that caused the notification, expandable with `?include=sender`. It is an actor
-  object whose `type` is `user`, `agent`, or `api_key`. (`group` is defined in the actor enum, but nothing
-  produces a group-sent notification today.) Notifications the platform raises on its own come back with a
+  object whose `type` is `user`, `agent`, or `api_key`. Notifications the platform raises on its own come back with a
   **null** `sender` rather than a synthetic "system" actor, so treat a null sender as normal.
 - **`resource`** — what the notification is about, expandable with `?include=resource`. It is a polymorphic
   reference carrying a `type` and an `id`, which is what lets a client turn a notification into a link. A
@@ -116,10 +115,10 @@ Filters:
   seen and unseen alike. Pass `dismissed` to review what was cleared.
 - `category` — a single category, such as `chat.mention`.
 - `sender_ids` / `sender_types` — narrow by who sent it. `sender_types` takes the sender-side spellings
-  `user`, `group`, `agent`, `apikey`, and `system` — note that these are **not** identical to the actor
+  `user`, `agent`, `apikey`, and `system` — note that these are **not** identical to the actor
   types on the response: the wire value is `apikey` here but `api_key` on the `sender` object, and
   `system` is the only way to filter for platform-raised notifications, which carry no `sender` object at
-  all. Nothing writes `group` today, so filtering on it returns nothing.
+  all.
 - `q` — free-text, matched against the title and body.
 
 Pages are cursor-based and hold at most 100 notifications whatever `limit` you ask for. See

@@ -11,11 +11,11 @@ nav:
 
 Augno sends email on your account's behalf all over the product — order acknowledgements, invoices, statements of account, purchase-order submissions, hosted checkout links, new-user welcomes, password resets, registration verifications, chat-message notifications. **Email logs** are the record of those sends, and they are where you go when someone asks "did that acknowledgement actually go out?".
 
-A `200` on the endpoint that triggered the email is not that answer. Those endpoints queue the message and return; the send happens afterwards, in a separate service, off the back of that queue. The email log is written by the service that actually performs the send, so it is the first place a failed or suppressed send becomes visible.
+A `200` on the endpoint that triggered the email is not that answer. Those endpoints accept the request and return; the send happens afterwards. The email log is where a failed or suppressed send becomes visible.
 
 ## Where to find them
 
-Email logs live under the `/v1/core` prefix, not under the messaging endpoints. They cover _all_ platform email — transactional documents, account mail, and chat notifications alike — rather than only the conversation surface, which is why they sit in `core` rather than `messaging`. If you went looking for them next to messages and came up empty, this is why.
+Email logs live under the `/v1/core` prefix. They cover _all_ platform email — transactional documents, account mail, and chat notifications alike — rather than only the conversation surface.
 
 ```bash
 curl "API_HOST/v1/core/email-logs?limit=25" \

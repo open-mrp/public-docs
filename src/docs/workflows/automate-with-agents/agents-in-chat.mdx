@@ -30,15 +30,6 @@ Who can do this depends on the thread: in a direct message or a customer-facing 
 
 Removing an agent stops it responding but leaves its earlier messages in the thread, and it can be added back later. If a run is still starting when the agent is removed, its reply is quietly dropped rather than posted; a reply that has already begun streaming into the thread is finished and left in place.
 
-> #### Preview
->
-> Adding and removing an agent participant is an **internal preview** operation. Both endpoints are
-> documented below with their real paths and payloads, but neither is in the public OpenAPI spec or the
-> public SDKs, and either may change without notice. Read the
->
-> <InternalLink pathKey="releasePhases" text="release phases" /> page before you depend on them in
-> production.
-
 | Action | Endpoint                                               | Returns                                 |
 | ------ | ------------------------------------------------------ | --------------------------------------- |
 | Add    | `POST /v1/messaging/conversations/{id}/agents`         | `201` with a `conversation_participant` |
@@ -66,7 +57,7 @@ POST /v1/messaging/conversations/{id}/agents
 
 Posting it again for an agent that is already a participant is the re-add described above rather than an error: the trigger policy and keywords are replaced with the ones you send and a previously removed agent is reactivated. That makes this endpoint, and not a separate update, the way to change when an existing agent responds.
 
-Two details to plan around. **`trigger_keywords` is replaced wholesale, not merged** — send the complete list every time, because omitting it on a re-add clears the keywords the agent had. And **`agent_config_id` is not checked against your agent catalog when the participant is created**, so a wrong id is accepted here and only surfaces later as an agent that never answers.
+**`trigger_keywords` is replaced wholesale, not merged** — send the complete list every time, because omitting it on a re-add clears the keywords the agent had.
 
 #### Remove
 
@@ -165,7 +156,7 @@ On a customer case, the agent's own reply stays internal. To answer the customer
 
 A case with an open draft moves into the **needs approval** lane, and the draft appears above the composer in a bar labelled _Reply awaiting your approval_, marked as agent-proposed, with the delivery it would produce spelled out. A person then does one of three things: edit it, send it, or discard it. Until someone sends it, nothing has reached the customer, and the draft is not part of the case timeline.
 
-Those three actions are available on the API, and unlike the rest of the agent surface they are **public**:
+Those three actions are available on the API:
 
 | Action  | Endpoint                                                |
 | ------- | ------------------------------------------------------- |
@@ -173,16 +164,11 @@ Those three actions are available on the API, and unlike the rest of the agent s
 | Send    | `POST /v1/messaging/messages/{id}/actions/approve-send` |
 | Discard | `POST /v1/messaging/messages/{id}/actions/reject`       |
 
-> #### Preview
->
-> These three endpoints are in **public preview**. They are in the public spec and the SDKs, but their
-> shapes may still change while the messaging surface stabilizes.
-
 **Edit** — <InternalLink pathKey="apiReference.messages.updateReplyDraft" text="Update Reply Draft" /> takes a `body` (required — it replaces the draft's text outright) and an optional `subject` used when the draft will go out by email; omitting the subject keeps the current one. Only a draft still awaiting approval can be edited. Once it has been sent or discarded, editing fails.
 
 **Send** — <InternalLink pathKey="apiReference.messages.approveAndSendReplyDraft" text="Approve And Send Reply Draft" /> requires a `client_message_id`: a unique key you generate for this approval, such as a UUID. The draft is **promoted in place** rather than copied: the same message becomes the sent one, takes its place in the case timeline, and the customer sees it as coming from Customer Service. On an email-bridged case it goes out as a reply on the case's email thread; otherwise it appears in the customer's portal conversation. Sending also moves the case to waiting on the customer.
 
-Only the first approval of a draft can send it. The promote is a compare-and-set on the draft's status, so a concurrent double-approve cannot put the message in front of the customer twice — a second attempt is rejected as a conflict rather than sending again.
+Only the first approval of a draft can send it. A concurrent second attempt is rejected as a conflict rather than sending again.
 
 **Discard** — <InternalLink pathKey="apiReference.messages.rejectReplyDraft" text="Reject Reply Draft" /> takes no body beyond the message in the path. The draft moves to status `rejected` and is kept as a record: it can no longer be edited or approved, but it stays visible as something that was proposed and turned down. Because the customer is still owed an answer, the case moves back to waiting on your team.
 
