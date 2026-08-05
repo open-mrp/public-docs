@@ -1771,6 +1771,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Analyze OEE",
         "subtitle": "PUT /v1/core/analytics/oee"
     },
+    "/api-reference/analytics/analyze-oee-trend": {
+        "title": "Analyze OEE trend",
+        "subtitle": "PUT /v1/core/analytics/oee-trend"
+    },
     "/api-reference/analytics/analyze-schedule-attainment": {
         "title": "Analyze Schedule Attainment",
         "subtitle": "PUT /v1/core/analytics/schedule-attainment"

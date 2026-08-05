@@ -639,6 +639,7 @@ export const docPaths = {
         },
         "analytics": {
             "analyzeOee": "/api-reference/analytics/analyze-oee",
+            "analyzeOeeTrend": "/api-reference/analytics/analyze-oee-trend",
             "analyzeScheduleAttainment": "/api-reference/analytics/analyze-schedule-attainment"
         }
     }

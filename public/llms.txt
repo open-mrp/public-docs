@@ -194,6 +194,7 @@
 - [GET Email Logs — List](https://docs.augno.com/api-reference/email-logs/list-email-logs.md)
 - [GET Email Logs — Retrieve Log](https://docs.augno.com/api-reference/email-logs/retrieve-email-log.md)
 - [PUT Analytics — Analyze OEE](https://docs.augno.com/api-reference/analytics/analyze-oee.md)
+- [PUT Analytics — Analyze OEE trend](https://docs.augno.com/api-reference/analytics/analyze-oee-trend.md)
 - [PUT Analytics — Analyze Schedule Attainment](https://docs.augno.com/api-reference/analytics/analyze-schedule-attainment.md)
 
 ### Catalog

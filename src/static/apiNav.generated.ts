@@ -2954,6 +2954,16 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "domain": "core",
             "segments": [
                 "analytics",
+                "oee-trend"
+            ],
+            "tagSlug": "analytics",
+            "endpointSlug": "analyze-oee-trend",
+            "label": "Analyze OEE trend"
+        },
+        {
+            "domain": "core",
+            "segments": [
+                "analytics",
                 "schedule-attainment"
             ],
             "tagSlug": "analytics",
