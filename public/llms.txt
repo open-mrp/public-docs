@@ -193,6 +193,8 @@
 - [PUT Address Validation — Validate](https://docs.augno.com/api-reference/address-validation/validate-address.md)
 - [GET Email Logs — List](https://docs.augno.com/api-reference/email-logs/list-email-logs.md)
 - [GET Email Logs — Retrieve Log](https://docs.augno.com/api-reference/email-logs/retrieve-email-log.md)
+- [GET Jobs — Retrieve Job](https://docs.augno.com/api-reference/jobs/retrieve-job.md)
+- [POST Jobs — Cancel Job](https://docs.augno.com/api-reference/jobs/cancel-job.md)
 - [PUT Analytics — Analyze OEE](https://docs.augno.com/api-reference/analytics/analyze-oee.md)
 - [PUT Analytics — Analyze OEE trend](https://docs.augno.com/api-reference/analytics/analyze-oee-trend.md)
 - [PUT Analytics — Analyze Schedule Attainment](https://docs.augno.com/api-reference/analytics/analyze-schedule-attainment.md)
@@ -203,11 +205,13 @@
 - [GET Units — List](https://docs.augno.com/api-reference/units/list-units.md)
 - [GET Units — Retrieve Unit](https://docs.augno.com/api-reference/units/retrieve-unit.md)
 - [DELETE Units — Delete Unit](https://docs.augno.com/api-reference/units/delete-unit.md)
+- [POST Units — Bulk Upsert](https://docs.augno.com/api-reference/units/bulk-upsert-units.md)
 - [POST Unit Groups — Create Group](https://docs.augno.com/api-reference/unit-groups/create-unit-group.md)
 - [PATCH Unit Groups — Update Group](https://docs.augno.com/api-reference/unit-groups/update-unit-group.md)
 - [GET Unit Groups — List](https://docs.augno.com/api-reference/unit-groups/list-unit-groups.md)
 - [GET Unit Groups — Retrieve Group](https://docs.augno.com/api-reference/unit-groups/retrieve-unit-group.md)
 - [DELETE Unit Groups — Delete Group](https://docs.augno.com/api-reference/unit-groups/delete-unit-group.md)
+- [POST Unit Groups — Bulk Upsert](https://docs.augno.com/api-reference/unit-groups/bulk-upsert-unit-groups.md)
 - [POST Unit Groups — Create Group Associated](https://docs.augno.com/api-reference/unit-groups/create-unit-group-associated-unit.md)
 - [PATCH Unit Groups — Update Group Associated](https://docs.augno.com/api-reference/unit-groups/update-unit-group-associated-unit.md)
 - [GET Unit Groups — List Group Units](https://docs.augno.com/api-reference/unit-groups/list-unit-group-units.md)
@@ -218,6 +222,7 @@
 - [GET Properties — List](https://docs.augno.com/api-reference/properties/list-properties.md)
 - [GET Properties — Retrieve Property](https://docs.augno.com/api-reference/properties/retrieve-property.md)
 - [DELETE Properties — Delete Property](https://docs.augno.com/api-reference/properties/delete-property.md)
+- [POST Properties — Bulk Upsert](https://docs.augno.com/api-reference/properties/bulk-upsert-properties.md)
 - [POST Properties — Create Attribute](https://docs.augno.com/api-reference/properties/create-attribute.md)
 - [PATCH Properties — Update Attribute](https://docs.augno.com/api-reference/properties/update-attribute.md)
 - [GET Properties — List Attributes](https://docs.augno.com/api-reference/properties/list-attributes.md)
@@ -235,6 +240,7 @@
 - [GET Item Categories — List](https://docs.augno.com/api-reference/item-categories/list-item-categories.md)
 - [GET Item Categories — Retrieve Category](https://docs.augno.com/api-reference/item-categories/retrieve-item-category.md)
 - [DELETE Item Categories — Delete Category](https://docs.augno.com/api-reference/item-categories/delete-item-category.md)
+- [POST Item Categories — Bulk Upsert](https://docs.augno.com/api-reference/item-categories/bulk-upsert-item-categories.md)
 - [PUT Item Categories — Add Category Property](https://docs.augno.com/api-reference/item-categories/add-item-category-property.md)
 - [PUT Item Categories — Change Category Unit Group](https://docs.augno.com/api-reference/item-categories/change-item-category-unit-group.md)
 - [DELETE Item Categories — Remove Category Property](https://docs.augno.com/api-reference/item-categories/remove-item-category-property.md)
@@ -243,21 +249,25 @@
 - [GET Materials — List](https://docs.augno.com/api-reference/materials/list-materials.md)
 - [GET Materials — Retrieve Material](https://docs.augno.com/api-reference/materials/retrieve-material.md)
 - [DELETE Materials — Delete Material](https://docs.augno.com/api-reference/materials/delete-material.md)
+- [POST Materials — Bulk Upsert](https://docs.augno.com/api-reference/materials/bulk-upsert-materials.md)
 - [POST Parts — Create Part](https://docs.augno.com/api-reference/parts/create-part.md)
 - [PATCH Parts — Update Part](https://docs.augno.com/api-reference/parts/update-part.md)
 - [GET Parts — List](https://docs.augno.com/api-reference/parts/list-parts.md)
 - [GET Parts — Retrieve Part](https://docs.augno.com/api-reference/parts/retrieve-part.md)
 - [DELETE Parts — Delete Part](https://docs.augno.com/api-reference/parts/delete-part.md)
+- [POST Parts — Bulk Upsert](https://docs.augno.com/api-reference/parts/bulk-upsert-parts.md)
 - [POST Product Lines — Create Line](https://docs.augno.com/api-reference/product-lines/create-product-line.md)
 - [PATCH Product Lines — Update Line](https://docs.augno.com/api-reference/product-lines/update-product-line.md)
 - [GET Product Lines — List](https://docs.augno.com/api-reference/product-lines/list-product-lines.md)
 - [GET Product Lines — Retrieve Line](https://docs.augno.com/api-reference/product-lines/retrieve-product-line.md)
 - [DELETE Product Lines — Delete Line](https://docs.augno.com/api-reference/product-lines/delete-product-line.md)
+- [POST Product Lines — Bulk Upsert](https://docs.augno.com/api-reference/product-lines/bulk-upsert-product-lines.md)
 - [POST Products — Create Product](https://docs.augno.com/api-reference/products/create-product.md)
 - [PATCH Products — Update Product](https://docs.augno.com/api-reference/products/update-product.md)
 - [GET Products — List](https://docs.augno.com/api-reference/products/list-products.md)
 - [GET Products — Retrieve Product](https://docs.augno.com/api-reference/products/retrieve-product.md)
 - [DELETE Products — Delete Product](https://docs.augno.com/api-reference/products/delete-product.md)
+- [POST Products — Bulk Upsert](https://docs.augno.com/api-reference/products/bulk-upsert-products.md)
 - [PUT Products — Change Product Product Line](https://docs.augno.com/api-reference/products/change-product-product-line.md)
 
 ### Messaging
@@ -456,6 +466,7 @@
 - [GET Location — Retrieve Type](https://docs.augno.com/api-reference/location/retrieve-location-type.md)
 - [GET Location — Retrieve](https://docs.augno.com/api-reference/location/retrieve-location.md)
 - [DELETE Location — Delete](https://docs.augno.com/api-reference/location/delete-location.md)
+- [POST Location — Bulk Upsert Locations](https://docs.augno.com/api-reference/location/bulk-upsert-locations.md)
 - [POST Shipment — Rate Shop](https://docs.augno.com/api-reference/shipment/rate-shop.md)
 - [POST Scanning Stations — Create Station](https://docs.augno.com/api-reference/scanning-stations/create-scanning-station.md)
 - [PATCH Scanning Stations — Update Station](https://docs.augno.com/api-reference/scanning-stations/update-scanning-station.md)
@@ -503,6 +514,7 @@
 ### Core
 - [Audit Event object](https://docs.augno.com/api-reference/objects/audit-event.md): An immutable record of a single change to a resource, capturing who made the change, what changed, and when.
 - [Email Logs object](https://docs.augno.com/api-reference/objects/email-log.md): A record of an email the platform sent on the account's behalf, such as an order acknowledgement or a user invitation.
+- [Jobs object](https://docs.augno.com/api-reference/objects/job.md): Records a piece of work the API accepted and carries out asynchronously.
 - [Request Log object](https://docs.augno.com/api-reference/objects/request-log.md): A log of a single API request, capturing its route, outcome, latency, and actor.
 - [Sandbox object](https://docs.augno.com/api-reference/objects/sandbox.md): An isolated test account owned by a production account.
 

@@ -223,7 +223,8 @@ export const docPaths = {
             "updateUnit": "/api-reference/units/update-unit",
             "listUnits": "/api-reference/units/list-units",
             "retrieveUnit": "/api-reference/units/retrieve-unit",
-            "deleteUnit": "/api-reference/units/delete-unit"
+            "deleteUnit": "/api-reference/units/delete-unit",
+            "bulkUpsertUnits": "/api-reference/units/bulk-upsert-units"
         },
         "unitGroups": {
             "createUnitGroup": "/api-reference/unit-groups/create-unit-group",
@@ -231,6 +232,7 @@ export const docPaths = {
             "listUnitGroups": "/api-reference/unit-groups/list-unit-groups",
             "retrieveUnitGroup": "/api-reference/unit-groups/retrieve-unit-group",
             "deleteUnitGroup": "/api-reference/unit-groups/delete-unit-group",
+            "bulkUpsertUnitGroups": "/api-reference/unit-groups/bulk-upsert-unit-groups",
             "createUnitGroupAssociatedUnit": "/api-reference/unit-groups/create-unit-group-associated-unit",
             "updateUnitGroupAssociatedUnit": "/api-reference/unit-groups/update-unit-group-associated-unit",
             "listUnitGroupUnits": "/api-reference/unit-groups/list-unit-group-units",
@@ -414,6 +416,7 @@ export const docPaths = {
             "listProperties": "/api-reference/properties/list-properties",
             "retrieveProperty": "/api-reference/properties/retrieve-property",
             "deleteProperty": "/api-reference/properties/delete-property",
+            "bulkUpsertProperties": "/api-reference/properties/bulk-upsert-properties",
             "createAttribute": "/api-reference/properties/create-attribute",
             "updateAttribute": "/api-reference/properties/update-attribute",
             "listAttributes": "/api-reference/properties/list-attributes",
@@ -469,6 +472,7 @@ export const docPaths = {
             "listItemCategories": "/api-reference/item-categories/list-item-categories",
             "retrieveItemCategory": "/api-reference/item-categories/retrieve-item-category",
             "deleteItemCategory": "/api-reference/item-categories/delete-item-category",
+            "bulkUpsertItemCategories": "/api-reference/item-categories/bulk-upsert-item-categories",
             "addItemCategoryProperty": "/api-reference/item-categories/add-item-category-property",
             "changeItemCategoryUnitGroup": "/api-reference/item-categories/change-item-category-unit-group",
             "removeItemCategoryProperty": "/api-reference/item-categories/remove-item-category-property"
@@ -478,14 +482,16 @@ export const docPaths = {
             "updateMaterial": "/api-reference/materials/update-material",
             "listMaterials": "/api-reference/materials/list-materials",
             "retrieveMaterial": "/api-reference/materials/retrieve-material",
-            "deleteMaterial": "/api-reference/materials/delete-material"
+            "deleteMaterial": "/api-reference/materials/delete-material",
+            "bulkUpsertMaterials": "/api-reference/materials/bulk-upsert-materials"
         },
         "parts": {
             "createPart": "/api-reference/parts/create-part",
             "updatePart": "/api-reference/parts/update-part",
             "listParts": "/api-reference/parts/list-parts",
             "retrievePart": "/api-reference/parts/retrieve-part",
-            "deletePart": "/api-reference/parts/delete-part"
+            "deletePart": "/api-reference/parts/delete-part",
+            "bulkUpsertParts": "/api-reference/parts/bulk-upsert-parts"
         },
         "departments": {
             "createDepartment": "/api-reference/departments/create-department",
@@ -521,7 +527,8 @@ export const docPaths = {
             "updateProductLine": "/api-reference/product-lines/update-product-line",
             "listProductLines": "/api-reference/product-lines/list-product-lines",
             "retrieveProductLine": "/api-reference/product-lines/retrieve-product-line",
-            "deleteProductLine": "/api-reference/product-lines/delete-product-line"
+            "deleteProductLine": "/api-reference/product-lines/delete-product-line",
+            "bulkUpsertProductLines": "/api-reference/product-lines/bulk-upsert-product-lines"
         },
         "products": {
             "createProduct": "/api-reference/products/create-product",
@@ -529,10 +536,15 @@ export const docPaths = {
             "listProducts": "/api-reference/products/list-products",
             "retrieveProduct": "/api-reference/products/retrieve-product",
             "deleteProduct": "/api-reference/products/delete-product",
+            "bulkUpsertProducts": "/api-reference/products/bulk-upsert-products",
             "changeProductProductLine": "/api-reference/products/change-product-product-line"
         },
         "salesOrderStatuses": {
             "listSalesOrderStatuses": "/api-reference/sales-order-statuses/list-sales-order-statuses"
+        },
+        "jobs": {
+            "retrieveJob": "/api-reference/jobs/retrieve-job",
+            "cancelJob": "/api-reference/jobs/cancel-job"
         },
         "machineDowntime": {
             "createMachineDowntimeEvent": "/api-reference/machine-downtime/create-machine-downtime-event",
@@ -615,7 +627,8 @@ export const docPaths = {
             "listLocations": "/api-reference/location/list-locations",
             "retrieveLocationType": "/api-reference/location/retrieve-location-type",
             "retrieveLocation": "/api-reference/location/retrieve-location",
-            "deleteLocation": "/api-reference/location/delete-location"
+            "deleteLocation": "/api-reference/location/delete-location",
+            "bulkUpsertLocations": "/api-reference/location/bulk-upsert-locations"
         },
         "shipment": {
             "rateShop": "/api-reference/shipment/rate-shop"

@@ -198,6 +198,15 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
         {
             "domain": "catalog",
             "segments": [
+                "units"
+            ],
+            "tagSlug": "units",
+            "endpointSlug": "bulk-upsert-units",
+            "label": "Bulk Upsert Units"
+        },
+        {
+            "domain": "catalog",
+            "segments": [
                 "unit-groups"
             ],
             "tagSlug": "unit-groups",
@@ -239,6 +248,15 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "tagSlug": "unit-groups",
             "endpointSlug": "delete-unit-group",
             "label": "Delete"
+        },
+        {
+            "domain": "catalog",
+            "segments": [
+                "unit-groups"
+            ],
+            "tagSlug": "unit-groups",
+            "endpointSlug": "bulk-upsert-unit-groups",
+            "label": "Bulk Upsert Unit Groups"
         },
         {
             "domain": "catalog",
@@ -1445,6 +1463,15 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
         {
             "domain": "catalog",
             "segments": [
+                "properties"
+            ],
+            "tagSlug": "properties",
+            "endpointSlug": "bulk-upsert-properties",
+            "label": "Bulk Upsert Properties"
+        },
+        {
+            "domain": "catalog",
+            "segments": [
                 "properties",
                 "attributes"
             ],
@@ -1812,6 +1839,15 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
         {
             "domain": "catalog",
             "segments": [
+                "item-categories"
+            ],
+            "tagSlug": "item-categories",
+            "endpointSlug": "bulk-upsert-item-categories",
+            "label": "Bulk Upsert Item Categories"
+        },
+        {
+            "domain": "catalog",
+            "segments": [
                 "item-categories",
                 "properties"
             ],
@@ -1887,6 +1923,15 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
         {
             "domain": "catalog",
             "segments": [
+                "materials"
+            ],
+            "tagSlug": "materials",
+            "endpointSlug": "bulk-upsert-materials",
+            "label": "Bulk Upsert Materials"
+        },
+        {
+            "domain": "catalog",
+            "segments": [
                 "parts"
             ],
             "tagSlug": "parts",
@@ -1928,6 +1973,15 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "tagSlug": "parts",
             "endpointSlug": "delete-part",
             "label": "Delete"
+        },
+        {
+            "domain": "catalog",
+            "segments": [
+                "parts"
+            ],
+            "tagSlug": "parts",
+            "endpointSlug": "bulk-upsert-parts",
+            "label": "Bulk Upsert Parts"
         },
         {
             "domain": "operations",
@@ -2148,6 +2202,15 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
         {
             "domain": "catalog",
             "segments": [
+                "product-lines"
+            ],
+            "tagSlug": "product-lines",
+            "endpointSlug": "bulk-upsert-product-lines",
+            "label": "Bulk Upsert Product Lines"
+        },
+        {
+            "domain": "catalog",
+            "segments": [
                 "products"
             ],
             "tagSlug": "products",
@@ -2193,6 +2256,15 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
         {
             "domain": "catalog",
             "segments": [
+                "products"
+            ],
+            "tagSlug": "products",
+            "endpointSlug": "bulk-upsert-products",
+            "label": "Bulk Upsert Products"
+        },
+        {
+            "domain": "catalog",
+            "segments": [
                 "products",
                 "product-line"
             ],
@@ -2209,6 +2281,25 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "tagSlug": "sales-order-statuses",
             "endpointSlug": "list-sales-order-statuses",
             "label": "List"
+        },
+        {
+            "domain": "core",
+            "segments": [
+                "jobs"
+            ],
+            "tagSlug": "jobs",
+            "endpointSlug": "retrieve-job",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "core",
+            "segments": [
+                "jobs",
+                "cancel"
+            ],
+            "tagSlug": "jobs",
+            "endpointSlug": "cancel-job",
+            "label": "Create"
         },
         {
             "domain": "operations",
@@ -2831,6 +2922,15 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "tagSlug": "location",
             "endpointSlug": "delete-location",
             "label": "Delete"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "locations"
+            ],
+            "tagSlug": "location",
+            "endpointSlug": "bulk-upsert-locations",
+            "label": "Bulk Upsert Locations"
         },
         {
             "domain": "operations",
@@ -4436,6 +4536,12 @@ export const apiObjectNavEntriesByVersion: Record<string, ApiObjectNavEntry[]> =
             "domainLabel": "Catalog",
             "slug": "item",
             "label": "Items"
+        },
+        {
+            "domain": "core",
+            "domainLabel": "Core",
+            "slug": "job",
+            "label": "Jobs"
         },
         {
             "domain": "operations",

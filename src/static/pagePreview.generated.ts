@@ -575,6 +575,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Delete Unit",
         "subtitle": "DELETE /v1/catalog/units/{id}"
     },
+    "/api-reference/units/bulk-upsert-units": {
+        "title": "Bulk Upsert Units",
+        "subtitle": "POST /v1/catalog/units/actions/bulk-upsert"
+    },
     "/api-reference/unit-groups/create-unit-group": {
         "title": "Create Unit Group",
         "subtitle": "POST /v1/catalog/unit-groups"
@@ -594,6 +598,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/unit-groups/delete-unit-group": {
         "title": "Delete Unit Group",
         "subtitle": "DELETE /v1/catalog/unit-groups/{id}"
+    },
+    "/api-reference/unit-groups/bulk-upsert-unit-groups": {
+        "title": "Bulk Upsert Unit Groups",
+        "subtitle": "POST /v1/catalog/unit-groups/actions/bulk-upsert"
     },
     "/api-reference/unit-groups/create-unit-group-associated-unit": {
         "title": "Create Unit Group Associated Unit",
@@ -1119,6 +1127,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Delete Property",
         "subtitle": "DELETE /v1/catalog/properties/{id}"
     },
+    "/api-reference/properties/bulk-upsert-properties": {
+        "title": "Bulk Upsert Properties",
+        "subtitle": "POST /v1/catalog/properties/actions/bulk-upsert"
+    },
     "/api-reference/properties/create-attribute": {
         "title": "Create Attribute",
         "subtitle": "POST /v1/catalog/properties/{property_id}/attributes"
@@ -1275,6 +1287,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Delete Item Category",
         "subtitle": "DELETE /v1/catalog/item-categories/{id}"
     },
+    "/api-reference/item-categories/bulk-upsert-item-categories": {
+        "title": "Bulk Upsert Item Categories",
+        "subtitle": "POST /v1/catalog/item-categories/actions/bulk-upsert"
+    },
     "/api-reference/item-categories/add-item-category-property": {
         "title": "Add Item Category Property",
         "subtitle": "PUT /v1/catalog/item-categories/{id}/properties/{property_id}"
@@ -1307,6 +1323,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Delete Material",
         "subtitle": "DELETE /v1/catalog/materials/{id}"
     },
+    "/api-reference/materials/bulk-upsert-materials": {
+        "title": "Bulk Upsert Materials",
+        "subtitle": "POST /v1/catalog/materials/actions/bulk-upsert"
+    },
     "/api-reference/parts/create-part": {
         "title": "Create Part",
         "subtitle": "POST /v1/catalog/parts"
@@ -1326,6 +1346,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/parts/delete-part": {
         "title": "Delete Part",
         "subtitle": "DELETE /v1/catalog/parts/{id}"
+    },
+    "/api-reference/parts/bulk-upsert-parts": {
+        "title": "Bulk Upsert Parts",
+        "subtitle": "POST /v1/catalog/parts/actions/bulk-upsert"
     },
     "/api-reference/departments/create-department": {
         "title": "Create Department",
@@ -1423,6 +1447,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Delete Product Line",
         "subtitle": "DELETE /v1/catalog/product-lines/{id}"
     },
+    "/api-reference/product-lines/bulk-upsert-product-lines": {
+        "title": "Bulk Upsert Product Lines",
+        "subtitle": "POST /v1/catalog/product-lines/actions/bulk-upsert"
+    },
     "/api-reference/products/create-product": {
         "title": "Create Product",
         "subtitle": "POST /v1/catalog/products"
@@ -1443,6 +1471,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Delete Product",
         "subtitle": "DELETE /v1/catalog/products/{id}"
     },
+    "/api-reference/products/bulk-upsert-products": {
+        "title": "Bulk Upsert Products",
+        "subtitle": "POST /v1/catalog/products/actions/bulk-upsert"
+    },
     "/api-reference/products/change-product-product-line": {
         "title": "Change Product Product Line",
         "subtitle": "PUT /v1/catalog/products/{id}/product-line/{product_line_id}"
@@ -1450,6 +1482,14 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/sales-order-statuses/list-sales-order-statuses": {
         "title": "List Sales Order Statuses",
         "subtitle": "GET /v1/sales/sales-orders/statuses"
+    },
+    "/api-reference/jobs/retrieve-job": {
+        "title": "Retrieve Job",
+        "subtitle": "GET /v1/core/jobs/{id}"
+    },
+    "/api-reference/jobs/cancel-job": {
+        "title": "Cancel Job",
+        "subtitle": "POST /v1/core/jobs/{id}/cancel"
     },
     "/api-reference/machine-downtime/create-machine-downtime-event": {
         "title": "Create Machine Downtime Event",
@@ -1718,6 +1758,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/location/delete-location": {
         "title": "Delete Location",
         "subtitle": "DELETE /v1/operations/locations/{id}"
+    },
+    "/api-reference/location/bulk-upsert-locations": {
+        "title": "Bulk Upsert Locations",
+        "subtitle": "POST /v1/operations/locations/actions/bulk-upsert"
     },
     "/api-reference/shipment/rate-shop": {
         "title": "Rate Shop",
