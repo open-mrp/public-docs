@@ -2094,6 +2094,16 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
         {
             "domain": "sales",
             "segments": [
+                "customers",
+                "lead-time"
+            ],
+            "tagSlug": "customers",
+            "endpointSlug": "retrieve-customer-lead-time",
+            "label": "List"
+        },
+        {
+            "domain": "sales",
+            "segments": [
                 "customers"
             ],
             "tagSlug": "customers",
@@ -2485,6 +2495,15 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
         {
             "domain": "operations",
             "segments": [
+                "production-schedules"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "quote-promise-date",
+            "label": "Quote Promise Date"
+        },
+        {
+            "domain": "operations",
+            "segments": [
                 "production-schedules",
                 "lines"
             ],
@@ -2501,6 +2520,16 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "tagSlug": "production-schedules",
             "endpointSlug": "update-production-schedule-line",
             "label": "Update"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules",
+                "at-risk-orders"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "list-schedule-at-risk-orders",
+            "label": "List"
         },
         {
             "domain": "operations",
@@ -2620,10 +2649,39 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
         {
             "domain": "operations",
             "segments": [
+                "production-schedule-settings",
+                "items"
+            ],
+            "tagSlug": "production-schedule-settings",
+            "endpointSlug": "upsert-production-schedule-item-setting",
+            "label": "Update"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "fulfillment-recommendations"
+            ],
+            "tagSlug": "production-schedule-settings",
+            "endpointSlug": "list-fulfillment-recommendations",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
                 "production-schedule-settings"
             ],
             "tagSlug": "production-schedule-settings",
             "endpointSlug": "retrieve-production-schedule-settings",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedule-settings",
+                "items"
+            ],
+            "tagSlug": "production-schedule-settings",
+            "endpointSlug": "list-production-schedule-item-settings",
             "label": "List"
         },
         {
@@ -2640,11 +2698,40 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "domain": "operations",
             "segments": [
                 "production-schedule-settings",
+                "items"
+            ],
+            "tagSlug": "production-schedule-settings",
+            "endpointSlug": "retrieve-production-schedule-item-setting",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedule-settings",
+                "items"
+            ],
+            "tagSlug": "production-schedule-settings",
+            "endpointSlug": "delete-production-schedule-item-setting",
+            "label": "Delete"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedule-settings",
                 "resources"
             ],
             "tagSlug": "production-schedule-settings",
             "endpointSlug": "delete-production-schedule-resource-setting",
             "label": "Delete"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "fulfillment-recommendations"
+            ],
+            "tagSlug": "production-schedule-settings",
+            "endpointSlug": "apply-fulfillment-recommendations",
+            "label": "Apply Fulfillment Recommendations"
         },
         {
             "domain": "operations",
@@ -3039,6 +3126,16 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "tagSlug": "permission-groups",
             "endpointSlug": "list-permission-groups",
             "label": "List"
+        },
+        {
+            "domain": "core",
+            "segments": [
+                "analytics",
+                "delivery-performance"
+            ],
+            "tagSlug": "analytics",
+            "endpointSlug": "analyze-delivery-performance",
+            "label": "Analyze Delivery Performance"
         },
         {
             "domain": "core",

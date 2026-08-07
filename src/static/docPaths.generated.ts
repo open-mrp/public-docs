@@ -510,6 +510,7 @@ export const docPaths = {
             "listCustomers": "/api-reference/customers/list-customers",
             "retrieveCustomer": "/api-reference/customers/retrieve-customer",
             "deleteCustomer": "/api-reference/customers/delete-customer",
+            "retrieveCustomerLeadTime": "/api-reference/customers/retrieve-customer-lead-time",
             "mergeCustomers": "/api-reference/customers/merge-customers"
         },
         "contacts": {
@@ -573,8 +574,10 @@ export const docPaths = {
             "retrieveProductionSchedule": "/api-reference/production-schedules/retrieve-production-schedule",
             "deleteProductionSchedule": "/api-reference/production-schedules/delete-production-schedule",
             "previewProductionSchedule": "/api-reference/production-schedules/preview-production-schedule",
+            "quotePromiseDate": "/api-reference/production-schedules/quote-promise-date",
             "createProductionScheduleLine": "/api-reference/production-schedules/create-production-schedule-line",
             "updateProductionScheduleLine": "/api-reference/production-schedules/update-production-schedule-line",
+            "listScheduleAtRiskOrders": "/api-reference/production-schedules/list-schedule-at-risk-orders",
             "listProductionScheduleDerivedLines": "/api-reference/production-schedules/list-production-schedule-derived-lines",
             "listProductionScheduleDeviations": "/api-reference/production-schedules/list-production-schedule-deviations",
             "listProductionScheduleFinishedPolicies": "/api-reference/production-schedules/list-production-schedule-finished-policies",
@@ -589,9 +592,15 @@ export const docPaths = {
             "releaseProductionScheduleWeek": "/api-reference/production-schedules/release-production-schedule-week"
         },
         "productionScheduleSettings": {
+            "upsertProductionScheduleItemSetting": "/api-reference/production-schedule-settings/upsert-production-schedule-item-setting",
+            "listFulfillmentRecommendations": "/api-reference/production-schedule-settings/list-fulfillment-recommendations",
             "retrieveProductionScheduleSettings": "/api-reference/production-schedule-settings/retrieve-production-schedule-settings",
+            "listProductionScheduleItemSettings": "/api-reference/production-schedule-settings/list-production-schedule-item-settings",
             "listProductionScheduleResourceSettings": "/api-reference/production-schedule-settings/list-production-schedule-resource-settings",
+            "retrieveProductionScheduleItemSetting": "/api-reference/production-schedule-settings/retrieve-production-schedule-item-setting",
+            "deleteProductionScheduleItemSetting": "/api-reference/production-schedule-settings/delete-production-schedule-item-setting",
             "deleteProductionScheduleResourceSetting": "/api-reference/production-schedule-settings/delete-production-schedule-resource-setting",
+            "applyFulfillmentRecommendations": "/api-reference/production-schedule-settings/apply-fulfillment-recommendations",
             "updateProductionScheduleSettings": "/api-reference/production-schedule-settings/update-production-schedule-settings",
             "upsertProductionScheduleResourceSetting": "/api-reference/production-schedule-settings/upsert-production-schedule-resource-setting"
         },
@@ -651,6 +660,7 @@ export const docPaths = {
             "listPermissionGroups": "/api-reference/permission-groups/list-permission-groups"
         },
         "analytics": {
+            "analyzeDeliveryPerformance": "/api-reference/analytics/analyze-delivery-performance",
             "analyzeOee": "/api-reference/analytics/analyze-oee",
             "analyzeOeeTrend": "/api-reference/analytics/analyze-oee-trend",
             "analyzeScheduleAttainment": "/api-reference/analytics/analyze-schedule-attainment"

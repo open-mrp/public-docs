@@ -1399,6 +1399,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Delete Customer",
         "subtitle": "DELETE /v1/sales/customers/{id}"
     },
+    "/api-reference/customers/retrieve-customer-lead-time": {
+        "title": "Retrieve Customer Lead Time",
+        "subtitle": "GET /v1/sales/customers/{id}/lead-time"
+    },
     "/api-reference/customers/merge-customers": {
         "title": "Merge Customers",
         "subtitle": "POST /v1/sales/customers/{id}/actions/merge"
@@ -1571,6 +1575,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Preview Production Schedule",
         "subtitle": "PUT /v1/operations/production-schedules/actions/preview"
     },
+    "/api-reference/production-schedules/quote-promise-date": {
+        "title": "Quote Promise Date",
+        "subtitle": "POST /v1/operations/production-schedules/actions/quote-promise-date"
+    },
     "/api-reference/production-schedules/create-production-schedule-line": {
         "title": "Create Production Schedule Line",
         "subtitle": "POST /v1/operations/production-schedules/{id}/lines"
@@ -1578,6 +1586,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/production-schedules/update-production-schedule-line": {
         "title": "Update Production Schedule Line",
         "subtitle": "PATCH /v1/operations/production-schedules/{id}/lines/{line_id}"
+    },
+    "/api-reference/production-schedules/list-schedule-at-risk-orders": {
+        "title": "List Schedule At-Risk Orders",
+        "subtitle": "GET /v1/operations/production-schedules/{id}/at-risk-orders"
     },
     "/api-reference/production-schedules/list-production-schedule-derived-lines": {
         "title": "List Production Schedule Derived Lines",
@@ -1627,17 +1639,41 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Release Production Schedule Week",
         "subtitle": "POST /v1/operations/production-schedules/{id}/actions/release-week"
     },
+    "/api-reference/production-schedule-settings/upsert-production-schedule-item-setting": {
+        "title": "Upsert Production Schedule Item Setting",
+        "subtitle": "PUT /v1/operations/production-schedule-settings/items/{item_id}"
+    },
+    "/api-reference/production-schedule-settings/list-fulfillment-recommendations": {
+        "title": "List Fulfillment Recommendations",
+        "subtitle": "GET /v1/operations/fulfillment-recommendations"
+    },
     "/api-reference/production-schedule-settings/retrieve-production-schedule-settings": {
         "title": "Retrieve Production Schedule Settings",
         "subtitle": "GET /v1/operations/production-schedule-settings"
+    },
+    "/api-reference/production-schedule-settings/list-production-schedule-item-settings": {
+        "title": "List Production Schedule Item Settings",
+        "subtitle": "GET /v1/operations/production-schedule-settings/items"
     },
     "/api-reference/production-schedule-settings/list-production-schedule-resource-settings": {
         "title": "List Production Schedule Resource Settings",
         "subtitle": "GET /v1/operations/production-schedule-settings/resources"
     },
+    "/api-reference/production-schedule-settings/retrieve-production-schedule-item-setting": {
+        "title": "Retrieve Production Schedule Item Setting",
+        "subtitle": "GET /v1/operations/production-schedule-settings/items/{item_id}"
+    },
+    "/api-reference/production-schedule-settings/delete-production-schedule-item-setting": {
+        "title": "Delete Production Schedule Item Setting",
+        "subtitle": "DELETE /v1/operations/production-schedule-settings/items/{item_id}"
+    },
     "/api-reference/production-schedule-settings/delete-production-schedule-resource-setting": {
         "title": "Delete Production Schedule Resource Setting",
         "subtitle": "DELETE /v1/operations/production-schedule-settings/resources/{id}"
+    },
+    "/api-reference/production-schedule-settings/apply-fulfillment-recommendations": {
+        "title": "Apply Fulfillment Recommendations",
+        "subtitle": "POST /v1/operations/fulfillment-recommendations/actions/apply"
     },
     "/api-reference/production-schedule-settings/update-production-schedule-settings": {
         "title": "Update Production Schedule Settings",
@@ -1810,6 +1846,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/permission-groups/list-permission-groups": {
         "title": "List Permission Groups",
         "subtitle": "GET /v1/identity/permission-groups"
+    },
+    "/api-reference/analytics/analyze-delivery-performance": {
+        "title": "Analyze Delivery Performance",
+        "subtitle": "PUT /v1/core/analytics/delivery-performance"
     },
     "/api-reference/analytics/analyze-oee": {
         "title": "Analyze OEE",
