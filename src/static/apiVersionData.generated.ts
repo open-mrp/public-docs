@@ -5,6 +5,8 @@ import type { EndpointSnippets } from '@/lib/sdk-snippet-types';
 import * as latestEndpoints from '@/static/apiEndpoints.generated';
 import * as latestSnippets from '@/static/apiSnippets.generated';
 import { LATEST_API_VERSION } from '@/static/apiVersions.generated';
+import * as v_1_0_forge_preview_2_endpoints from '@/static/api-versions/1.0.forge-preview.2/apiEndpoints.generated';
+import * as v_1_0_forge_preview_2_snippets from '@/static/api-versions/1.0.forge-preview.2/apiSnippets.generated';
 import * as v_1_0_forge_preview_1_endpoints from '@/static/api-versions/1.0.forge-preview.1/apiEndpoints.generated';
 import * as v_1_0_forge_preview_1_snippets from '@/static/api-versions/1.0.forge-preview.1/apiSnippets.generated';
 
@@ -26,6 +28,7 @@ type VersionModules = {
 
 const REGISTRY: Record<string, VersionModules> = {
     [LATEST_API_VERSION]: { endpoints: latestEndpoints, snippets: latestSnippets },
+    "1.0.forge-preview.2": { endpoints: v_1_0_forge_preview_2_endpoints, snippets: v_1_0_forge_preview_2_snippets },
     "1.0.forge-preview.1": { endpoints: v_1_0_forge_preview_1_endpoints, snippets: v_1_0_forge_preview_1_snippets },
 };
 
