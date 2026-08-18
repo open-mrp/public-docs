@@ -687,6 +687,9 @@ export const docPaths = {
             "analyzeOee": "/api-reference/analytics/analyze-oee",
             "analyzeOeeTrend": "/api-reference/analytics/analyze-oee-trend",
             "analyzeScheduleAttainment": "/api-reference/analytics/analyze-schedule-attainment"
+        },
+        "utils": {
+            "emailRecord": "/api-reference/utils/email-record"
         }
     }
 } as const;

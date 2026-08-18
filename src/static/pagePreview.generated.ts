@@ -1930,6 +1930,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/analytics/analyze-schedule-attainment": {
         "title": "Analyze Schedule Attainment",
         "subtitle": "PUT /v1/core/analytics/schedule-attainment"
+    },
+    "/api-reference/utils/email-record": {
+        "title": "Email Record",
+        "subtitle": "POST /v1/core/actions/email-record"
     }
 };
 

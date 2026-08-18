@@ -3319,6 +3319,13 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "tagSlug": "analytics",
             "endpointSlug": "analyze-schedule-attainment",
             "label": "Analyze Schedule Attainment"
+        },
+        {
+            "domain": "core",
+            "segments": [],
+            "tagSlug": "utils",
+            "endpointSlug": "email-record",
+            "label": "Email Record"
         }
     ],
     "1.0.forge-preview.2": [
