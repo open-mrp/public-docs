@@ -1151,6 +1151,60 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "label": "Delete"
         },
         {
+            "domain": "sales",
+            "segments": [
+                "account-prices"
+            ],
+            "tagSlug": "account-prices",
+            "endpointSlug": "create-account-price",
+            "label": "Create"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "account-prices"
+            ],
+            "tagSlug": "account-prices",
+            "endpointSlug": "update-account-price",
+            "label": "Update"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "account-prices"
+            ],
+            "tagSlug": "account-prices",
+            "endpointSlug": "list-account-prices",
+            "label": "List"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "account-prices"
+            ],
+            "tagSlug": "account-prices",
+            "endpointSlug": "retrieve-account-price",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "account-prices"
+            ],
+            "tagSlug": "account-prices",
+            "endpointSlug": "delete-account-price",
+            "label": "Delete"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "account-prices"
+            ],
+            "tagSlug": "account-prices",
+            "endpointSlug": "export-price-list",
+            "label": "Export Price List"
+        },
+        {
             "domain": "finance",
             "segments": [
                 "payment-terms"
@@ -2165,6 +2219,60 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "label": "Delete"
         },
         {
+            "domain": "sales",
+            "segments": [
+                "order-discounts"
+            ],
+            "tagSlug": "order-discounts",
+            "endpointSlug": "create-order-discount",
+            "label": "Create"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "order-discounts"
+            ],
+            "tagSlug": "order-discounts",
+            "endpointSlug": "update-order-discount",
+            "label": "Update"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "order-discounts"
+            ],
+            "tagSlug": "order-discounts",
+            "endpointSlug": "list-order-discounts",
+            "label": "List"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "order-discounts"
+            ],
+            "tagSlug": "order-discounts",
+            "endpointSlug": "retrieve-order-discount",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "order-discounts"
+            ],
+            "tagSlug": "order-discounts",
+            "endpointSlug": "delete-order-discount",
+            "label": "Delete"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "order-discounts"
+            ],
+            "tagSlug": "order-discounts",
+            "endpointSlug": "find-order-discount-by-code",
+            "label": "Find Order Discount by Code"
+        },
+        {
             "domain": "catalog",
             "segments": [
                 "product-lines"
@@ -2751,6 +2859,51 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "tagSlug": "production-schedule-settings",
             "endpointSlug": "upsert-production-schedule-resource-setting",
             "label": "Upsert Production Schedule Resource Setting"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "volume-discounts"
+            ],
+            "tagSlug": "volume-discounts",
+            "endpointSlug": "create-volume-discount",
+            "label": "Create"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "volume-discounts"
+            ],
+            "tagSlug": "volume-discounts",
+            "endpointSlug": "update-volume-discount",
+            "label": "Update"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "volume-discounts"
+            ],
+            "tagSlug": "volume-discounts",
+            "endpointSlug": "list-volume-discounts",
+            "label": "List"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "volume-discounts"
+            ],
+            "tagSlug": "volume-discounts",
+            "endpointSlug": "retrieve-volume-discount",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "volume-discounts"
+            ],
+            "tagSlug": "volume-discounts",
+            "endpointSlug": "delete-volume-discount",
+            "label": "Delete"
         },
         {
             "domain": "sales",
@@ -7669,6 +7822,12 @@ export const apiObjectNavEntriesByVersion: Record<string, ApiObjectNavEntry[]> =
         {
             "domain": "sales",
             "domainLabel": "Sales",
+            "slug": "account-price",
+            "label": "Account Prices"
+        },
+        {
+            "domain": "sales",
+            "domainLabel": "Sales",
             "slug": "account-status",
             "label": "Account Statuses"
         },
@@ -7829,6 +7988,12 @@ export const apiObjectNavEntriesByVersion: Record<string, ApiObjectNavEntry[]> =
             "label": "Notifications"
         },
         {
+            "domain": "sales",
+            "domainLabel": "Sales",
+            "slug": "order-discount",
+            "label": "Order Discounts"
+        },
+        {
             "domain": "catalog",
             "domainLabel": "Catalog",
             "slug": "part",
@@ -7929,6 +8094,12 @@ export const apiObjectNavEntriesByVersion: Record<string, ApiObjectNavEntry[]> =
             "domainLabel": "Catalog",
             "slug": "unit",
             "label": "Units"
+        },
+        {
+            "domain": "sales",
+            "domainLabel": "Sales",
+            "slug": "volume-discount",
+            "label": "Volume Discounts"
         }
     ],
     "1.0.forge-preview.2": [

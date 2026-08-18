@@ -346,6 +346,12 @@
 - [GET Account Groups — List](https://docs.augno.com/api-reference/account-groups/list-account-groups.md)
 - [GET Account Groups — Retrieve Group](https://docs.augno.com/api-reference/account-groups/retrieve-account-group.md)
 - [DELETE Account Groups — Delete Group](https://docs.augno.com/api-reference/account-groups/delete-account-group.md)
+- [POST Account Prices — Create Price](https://docs.augno.com/api-reference/account-prices/create-account-price.md)
+- [PATCH Account Prices — Update Price](https://docs.augno.com/api-reference/account-prices/update-account-price.md)
+- [GET Account Prices — List](https://docs.augno.com/api-reference/account-prices/list-account-prices.md)
+- [GET Account Prices — Retrieve Price](https://docs.augno.com/api-reference/account-prices/retrieve-account-price.md)
+- [DELETE Account Prices — Delete Price](https://docs.augno.com/api-reference/account-prices/delete-account-price.md)
+- [POST Account Prices — Export Price List](https://docs.augno.com/api-reference/account-prices/export-price-list.md)
 - [POST Address — Create](https://docs.augno.com/api-reference/address/create-address.md)
 - [PATCH Address — Update](https://docs.augno.com/api-reference/address/update-address.md)
 - [GET Address — List Addresses](https://docs.augno.com/api-reference/address/list-addresses.md)
@@ -366,7 +372,18 @@
 - [GET Customers — Retrieve Customer Lead Time](https://docs.augno.com/api-reference/customers/retrieve-customer-lead-time.md)
 - [POST Customers — Merge](https://docs.augno.com/api-reference/customers/merge-customers.md)
 - [POST Contacts — Find Contact by Email](https://docs.augno.com/api-reference/contacts/find-contact-by-email.md)
+- [POST Order Discounts — Create Discount](https://docs.augno.com/api-reference/order-discounts/create-order-discount.md)
+- [PATCH Order Discounts — Update Discount](https://docs.augno.com/api-reference/order-discounts/update-order-discount.md)
+- [GET Order Discounts — List](https://docs.augno.com/api-reference/order-discounts/list-order-discounts.md)
+- [GET Order Discounts — Retrieve Discount](https://docs.augno.com/api-reference/order-discounts/retrieve-order-discount.md)
+- [DELETE Order Discounts — Delete Discount](https://docs.augno.com/api-reference/order-discounts/delete-order-discount.md)
+- [POST Order Discounts — Find Discount by Code](https://docs.augno.com/api-reference/order-discounts/find-order-discount-by-code.md)
 - [GET Sales Order Statuses — List](https://docs.augno.com/api-reference/sales-order-statuses/list-sales-order-statuses.md)
+- [POST Volume Discounts — Create Discount](https://docs.augno.com/api-reference/volume-discounts/create-volume-discount.md)
+- [PATCH Volume Discounts — Update Discount](https://docs.augno.com/api-reference/volume-discounts/update-volume-discount.md)
+- [GET Volume Discounts — List](https://docs.augno.com/api-reference/volume-discounts/list-volume-discounts.md)
+- [GET Volume Discounts — Retrieve Discount](https://docs.augno.com/api-reference/volume-discounts/retrieve-volume-discount.md)
+- [DELETE Volume Discounts — Delete Discount](https://docs.augno.com/api-reference/volume-discounts/delete-volume-discount.md)
 - [POST Sales Orders — Create Order](https://docs.augno.com/api-reference/sales-orders/create-sales-order.md)
 - [POST Sales Orders — Quote Order Prices](https://docs.augno.com/api-reference/sales-orders/quote-sales-order-prices.md)
 - [PATCH Sales Orders — Update Order](https://docs.augno.com/api-reference/sales-orders/update-sales-order.md)
@@ -569,11 +586,14 @@
 
 ### Sales
 - [Account Groups object](https://docs.augno.com/api-reference/objects/account-group.md): A named grouping of customer accounts, used for pricing rules or to categorize accounts.
+- [Account Prices object](https://docs.augno.com/api-reference/objects/account-price.md): A customer-specific price for a product line.
 - [Account Statuses object](https://docs.augno.com/api-reference/objects/account-status.md): A lookup value describing the standing of a customer account, such as whether shipments or all activity should be held.
 - [Address object](https://docs.augno.com/api-reference/objects/address.md): A saved address that can be used for billing and shipping on sales orders, invoices, and shipments.
 - [Customers object](https://docs.augno.com/api-reference/objects/customer.md): A business you sell to, with its contact details, default fulfillment settings, and order policies.
+- [Order Discounts object](https://docs.augno.com/api-reference/objects/order-discount.md): A discount code that can be applied to a sales order.
 - [Priorities object](https://docs.augno.com/api-reference/objects/priority.md): Priority level used to order work on sales orders, purchase orders, and picks.
 - [Sales Orders object](https://docs.augno.com/api-reference/objects/sales-order.md): An order placed by a customer, tracked from estimate through fulfillment.
+- [Volume Discounts object](https://docs.augno.com/api-reference/objects/volume-discount.md): A quantity-based discount with tiered percentage rates.
 
 ### Settings
 - [Portal Domains object](https://docs.augno.com/api-reference/objects/portal-domain.md): A custom domain that serves the account's customer portal (e.g.

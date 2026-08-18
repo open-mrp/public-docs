@@ -991,6 +991,30 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Delete Account Group",
         "subtitle": "DELETE /v1/sales/account-groups/{id}"
     },
+    "/api-reference/account-prices/create-account-price": {
+        "title": "Create Account Price",
+        "subtitle": "POST /v1/sales/account-prices"
+    },
+    "/api-reference/account-prices/update-account-price": {
+        "title": "Update Account Price",
+        "subtitle": "PATCH /v1/sales/account-prices/{id}"
+    },
+    "/api-reference/account-prices/list-account-prices": {
+        "title": "List Account Prices",
+        "subtitle": "GET /v1/sales/account-prices"
+    },
+    "/api-reference/account-prices/retrieve-account-price": {
+        "title": "Retrieve Account Price",
+        "subtitle": "GET /v1/sales/account-prices/{id}"
+    },
+    "/api-reference/account-prices/delete-account-price": {
+        "title": "Delete Account Price",
+        "subtitle": "DELETE /v1/sales/account-prices/{id}"
+    },
+    "/api-reference/account-prices/export-price-list": {
+        "title": "Export Price List",
+        "subtitle": "POST /v1/sales/account-prices/actions/export-price-list"
+    },
     "/api-reference/payment-terms/create-payment-term": {
         "title": "Create Payment Term",
         "subtitle": "POST /v1/finance/payment-terms"
@@ -1431,6 +1455,30 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Delete Machine",
         "subtitle": "DELETE /v1/operations/machines/{id}"
     },
+    "/api-reference/order-discounts/create-order-discount": {
+        "title": "Create Order Discount",
+        "subtitle": "POST /v1/sales/order-discounts"
+    },
+    "/api-reference/order-discounts/update-order-discount": {
+        "title": "Update Order Discount",
+        "subtitle": "PATCH /v1/sales/order-discounts/{id}"
+    },
+    "/api-reference/order-discounts/list-order-discounts": {
+        "title": "List Order Discounts",
+        "subtitle": "GET /v1/sales/order-discounts"
+    },
+    "/api-reference/order-discounts/retrieve-order-discount": {
+        "title": "Retrieve Order Discount",
+        "subtitle": "GET /v1/sales/order-discounts/{id}"
+    },
+    "/api-reference/order-discounts/delete-order-discount": {
+        "title": "Delete Order Discount",
+        "subtitle": "DELETE /v1/sales/order-discounts/{id}"
+    },
+    "/api-reference/order-discounts/find-order-discount-by-code": {
+        "title": "Find Order Discount by Code",
+        "subtitle": "POST /v1/sales/order-discounts/actions/find-by-code"
+    },
     "/api-reference/product-lines/create-product-line": {
         "title": "Create Product Line",
         "subtitle": "POST /v1/catalog/product-lines"
@@ -1682,6 +1730,26 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/production-schedule-settings/upsert-production-schedule-resource-setting": {
         "title": "Upsert Production Schedule Resource Setting",
         "subtitle": "PUT /v1/operations/production-schedule-settings/resources"
+    },
+    "/api-reference/volume-discounts/create-volume-discount": {
+        "title": "Create Volume Discount",
+        "subtitle": "POST /v1/sales/volume-discounts"
+    },
+    "/api-reference/volume-discounts/update-volume-discount": {
+        "title": "Update Volume Discount",
+        "subtitle": "PATCH /v1/sales/volume-discounts/{id}"
+    },
+    "/api-reference/volume-discounts/list-volume-discounts": {
+        "title": "List Volume Discounts",
+        "subtitle": "GET /v1/sales/volume-discounts"
+    },
+    "/api-reference/volume-discounts/retrieve-volume-discount": {
+        "title": "Retrieve Volume Discount",
+        "subtitle": "GET /v1/sales/volume-discounts/{id}"
+    },
+    "/api-reference/volume-discounts/delete-volume-discount": {
+        "title": "Delete Volume Discount",
+        "subtitle": "DELETE /v1/sales/volume-discounts/{id}"
     },
     "/api-reference/sales-orders/create-sales-order": {
         "title": "Create Sales Order",

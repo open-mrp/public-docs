@@ -367,6 +367,14 @@ export const docPaths = {
             "retrieveAccountGroup": "/api-reference/account-groups/retrieve-account-group",
             "deleteAccountGroup": "/api-reference/account-groups/delete-account-group"
         },
+        "accountPrices": {
+            "createAccountPrice": "/api-reference/account-prices/create-account-price",
+            "updateAccountPrice": "/api-reference/account-prices/update-account-price",
+            "listAccountPrices": "/api-reference/account-prices/list-account-prices",
+            "retrieveAccountPrice": "/api-reference/account-prices/retrieve-account-price",
+            "deleteAccountPrice": "/api-reference/account-prices/delete-account-price",
+            "exportPriceList": "/api-reference/account-prices/export-price-list"
+        },
         "paymentTerms": {
             "createPaymentTerm": "/api-reference/payment-terms/create-payment-term",
             "updatePaymentTerm": "/api-reference/payment-terms/update-payment-term",
@@ -523,6 +531,14 @@ export const docPaths = {
             "retrieveMachine": "/api-reference/machines/retrieve-machine",
             "deleteMachine": "/api-reference/machines/delete-machine"
         },
+        "orderDiscounts": {
+            "createOrderDiscount": "/api-reference/order-discounts/create-order-discount",
+            "updateOrderDiscount": "/api-reference/order-discounts/update-order-discount",
+            "listOrderDiscounts": "/api-reference/order-discounts/list-order-discounts",
+            "retrieveOrderDiscount": "/api-reference/order-discounts/retrieve-order-discount",
+            "deleteOrderDiscount": "/api-reference/order-discounts/delete-order-discount",
+            "findOrderDiscountByCode": "/api-reference/order-discounts/find-order-discount-by-code"
+        },
         "productLines": {
             "createProductLine": "/api-reference/product-lines/create-product-line",
             "updateProductLine": "/api-reference/product-lines/update-product-line",
@@ -603,6 +619,13 @@ export const docPaths = {
             "applyFulfillmentRecommendations": "/api-reference/production-schedule-settings/apply-fulfillment-recommendations",
             "updateProductionScheduleSettings": "/api-reference/production-schedule-settings/update-production-schedule-settings",
             "upsertProductionScheduleResourceSetting": "/api-reference/production-schedule-settings/upsert-production-schedule-resource-setting"
+        },
+        "volumeDiscounts": {
+            "createVolumeDiscount": "/api-reference/volume-discounts/create-volume-discount",
+            "updateVolumeDiscount": "/api-reference/volume-discounts/update-volume-discount",
+            "listVolumeDiscounts": "/api-reference/volume-discounts/list-volume-discounts",
+            "retrieveVolumeDiscount": "/api-reference/volume-discounts/retrieve-volume-discount",
+            "deleteVolumeDiscount": "/api-reference/volume-discounts/delete-volume-discount"
         },
         "salesOrders": {
             "createSalesOrder": "/api-reference/sales-orders/create-sales-order",
