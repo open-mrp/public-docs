@@ -2673,6 +2673,16 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "domain": "operations",
             "segments": [
                 "production-schedules",
+                "finishing-lines"
+            ],
+            "tagSlug": "production-schedules",
+            "endpointSlug": "list-production-schedule-finishing-lines",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "production-schedules",
                 "item-policies"
             ],
             "tagSlug": "production-schedules",

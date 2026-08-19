@@ -1651,6 +1651,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "List Production Schedule Finished Policies",
         "subtitle": "GET /v1/operations/production-schedules/{id}/finished-policies"
     },
+    "/api-reference/production-schedules/list-production-schedule-finishing-lines": {
+        "title": "List Production Schedule Finishing Lines",
+        "subtitle": "GET /v1/operations/production-schedules/{id}/finishing-lines"
+    },
     "/api-reference/production-schedules/list-production-schedule-item-policies": {
         "title": "List Production Schedule Item Policies",
         "subtitle": "GET /v1/operations/production-schedules/{id}/item-policies"

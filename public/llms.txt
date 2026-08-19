@@ -468,6 +468,7 @@
 - [GET Production Schedules — List Schedule Derived Lines](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-derived-lines.md)
 - [GET Production Schedules — List Schedule Deviations](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-deviations.md)
 - [GET Production Schedules — List Schedule Finished Policies](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-finished-policies.md)
+- [GET Production Schedules — List Schedule Finishing Lines](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-finishing-lines.md)
 - [GET Production Schedules — List Schedule Item Policies](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-item-policies.md)
 - [GET Production Schedules — List Schedule Lines](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-lines.md)
 - [GET Production Schedules — Preview Schedule Week Release](https://docs.augno.com/api-reference/production-schedules/preview-production-schedule-week-release.md)

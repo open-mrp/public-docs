@@ -597,6 +597,7 @@ export const docPaths = {
             "listProductionScheduleDerivedLines": "/api-reference/production-schedules/list-production-schedule-derived-lines",
             "listProductionScheduleDeviations": "/api-reference/production-schedules/list-production-schedule-deviations",
             "listProductionScheduleFinishedPolicies": "/api-reference/production-schedules/list-production-schedule-finished-policies",
+            "listProductionScheduleFinishingLines": "/api-reference/production-schedules/list-production-schedule-finishing-lines",
             "listProductionScheduleItemPolicies": "/api-reference/production-schedules/list-production-schedule-item-policies",
             "listProductionScheduleLines": "/api-reference/production-schedules/list-production-schedule-lines",
             "previewProductionScheduleWeekRelease": "/api-reference/production-schedules/preview-production-schedule-week-release",
