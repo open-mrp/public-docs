@@ -2861,6 +2861,81 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "label": "Upsert Production Schedule Resource Setting"
         },
         {
+            "domain": "operations",
+            "segments": [
+                "operating-calendars"
+            ],
+            "tagSlug": "operating-calendars",
+            "endpointSlug": "create-operating-calendar",
+            "label": "Create"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "operating-calendars"
+            ],
+            "tagSlug": "operating-calendars",
+            "endpointSlug": "update-operating-calendar",
+            "label": "Update"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "operating-calendars"
+            ],
+            "tagSlug": "operating-calendars",
+            "endpointSlug": "list-operating-calendars",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "operating-calendars"
+            ],
+            "tagSlug": "operating-calendars",
+            "endpointSlug": "retrieve-operating-calendar",
+            "label": "Retrieve"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "operating-calendars"
+            ],
+            "tagSlug": "operating-calendars",
+            "endpointSlug": "delete-operating-calendar",
+            "label": "Delete"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "operating-calendars",
+                "closures"
+            ],
+            "tagSlug": "operating-calendars",
+            "endpointSlug": "create-operating-calendar-closure",
+            "label": "Create"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "operating-calendars",
+                "closures"
+            ],
+            "tagSlug": "operating-calendars",
+            "endpointSlug": "list-operating-calendar-closures",
+            "label": "List"
+        },
+        {
+            "domain": "operations",
+            "segments": [
+                "operating-calendars",
+                "closures"
+            ],
+            "tagSlug": "operating-calendars",
+            "endpointSlug": "delete-operating-calendar-closure",
+            "label": "Delete"
+        },
+        {
             "domain": "sales",
             "segments": [
                 "volume-discounts"
@@ -2968,6 +3043,15 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "tagSlug": "sales-orders",
             "endpointSlug": "bulk-delete-sales-orders",
             "label": "Bulk Delete Sales Orders"
+        },
+        {
+            "domain": "sales",
+            "segments": [
+                "sales-orders"
+            ],
+            "tagSlug": "sales-orders",
+            "endpointSlug": "quote-sales-order-commitment",
+            "label": "Quote Sales Order Commitment"
         },
         {
             "domain": "sales",
@@ -7993,6 +8077,12 @@ export const apiObjectNavEntriesByVersion: Record<string, ApiObjectNavEntry[]> =
             "domainLabel": "Messaging",
             "slug": "notification",
             "label": "Notifications"
+        },
+        {
+            "domain": "operations",
+            "domainLabel": "Operations",
+            "slug": "operating-calendar",
+            "label": "Operating Calendars"
         },
         {
             "domain": "sales",

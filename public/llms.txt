@@ -392,6 +392,7 @@
 - [GET Sales Orders — Retrieve Order](https://docs.augno.com/api-reference/sales-orders/retrieve-sales-order.md)
 - [DELETE Sales Orders — Delete Order](https://docs.augno.com/api-reference/sales-orders/delete-sales-order.md)
 - [POST Sales Orders — Bulk Delete](https://docs.augno.com/api-reference/sales-orders/bulk-delete-sales-orders.md)
+- [POST Sales Orders — Quote Order Commitment](https://docs.augno.com/api-reference/sales-orders/quote-sales-order-commitment.md)
 - [POST Sales Orders — Checkout Order](https://docs.augno.com/api-reference/sales-orders/checkout-sales-order.md)
 - [POST Sales Orders — Create Order Line](https://docs.augno.com/api-reference/sales-orders/create-sales-order-line.md)
 - [PATCH Sales Orders — Update Order Line](https://docs.augno.com/api-reference/sales-orders/update-sales-order-line.md)
@@ -487,6 +488,14 @@
 - [POST Production Schedule Settings — Apply Fulfillment Recommendations](https://docs.augno.com/api-reference/production-schedule-settings/apply-fulfillment-recommendations.md)
 - [PUT Production Schedule Settings — Update](https://docs.augno.com/api-reference/production-schedule-settings/update-production-schedule-settings.md)
 - [PUT Production Schedule Settings — Upsert Resource Setting](https://docs.augno.com/api-reference/production-schedule-settings/upsert-production-schedule-resource-setting.md)
+- [POST Operating Calendars — Create Calendar](https://docs.augno.com/api-reference/operating-calendars/create-operating-calendar.md)
+- [PATCH Operating Calendars — Update Calendar](https://docs.augno.com/api-reference/operating-calendars/update-operating-calendar.md)
+- [GET Operating Calendars — List](https://docs.augno.com/api-reference/operating-calendars/list-operating-calendars.md)
+- [GET Operating Calendars — Retrieve Calendar](https://docs.augno.com/api-reference/operating-calendars/retrieve-operating-calendar.md)
+- [DELETE Operating Calendars — Delete Calendar](https://docs.augno.com/api-reference/operating-calendars/delete-operating-calendar.md)
+- [POST Operating Calendars — Create Calendar Closure](https://docs.augno.com/api-reference/operating-calendars/create-operating-calendar-closure.md)
+- [GET Operating Calendars — List Calendar Closures](https://docs.augno.com/api-reference/operating-calendars/list-operating-calendar-closures.md)
+- [DELETE Operating Calendars — Delete Calendar Closure](https://docs.augno.com/api-reference/operating-calendars/delete-operating-calendar-closure.md)
 - [POST Location — Create](https://docs.augno.com/api-reference/location/create-location.md)
 - [PATCH Location — Update](https://docs.augno.com/api-reference/location/update-location.md)
 - [GET Location — List Types](https://docs.augno.com/api-reference/location/list-location-types.md)
@@ -580,6 +589,7 @@
 - [Location object](https://docs.augno.com/api-reference/objects/location-type.md): A level in the storage location hierarchy, such as a building or a bin.
 - [Machine Downtime object](https://docs.augno.com/api-reference/objects/machine-downtime-event.md): A period during which a machine was not running.
 - [Machines object](https://docs.augno.com/api-reference/objects/machine.md): A piece of production equipment, such as a CNC router or press, assigned to a department.
+- [Operating Calendars object](https://docs.augno.com/api-reference/objects/operating-calendar.md): OperatingCalendar is the set of days one party to a shipment operates.
 - [Production Schedules object](https://docs.augno.com/api-reference/objects/production-schedule.md): A saved production schedule.
 - [Scanning Stations object](https://docs.augno.com/api-reference/objects/scanning-station.md): A station on the production floor where operators scan batches to perform a batch operation, such as initializing or moving a batch.
 - [Service Levels object](https://docs.augno.com/api-reference/objects/service-level.md): A shipping speed or method offered by a carrier, such as ground or overnight.

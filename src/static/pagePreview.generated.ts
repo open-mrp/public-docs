@@ -1731,6 +1731,38 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Upsert Production Schedule Resource Setting",
         "subtitle": "PUT /v1/operations/production-schedule-settings/resources"
     },
+    "/api-reference/operating-calendars/create-operating-calendar": {
+        "title": "Create Operating Calendar",
+        "subtitle": "POST /v1/operations/operating-calendars"
+    },
+    "/api-reference/operating-calendars/update-operating-calendar": {
+        "title": "Update Operating Calendar",
+        "subtitle": "PATCH /v1/operations/operating-calendars/{id}"
+    },
+    "/api-reference/operating-calendars/list-operating-calendars": {
+        "title": "List Operating Calendars",
+        "subtitle": "GET /v1/operations/operating-calendars"
+    },
+    "/api-reference/operating-calendars/retrieve-operating-calendar": {
+        "title": "Retrieve Operating Calendar",
+        "subtitle": "GET /v1/operations/operating-calendars/{id}"
+    },
+    "/api-reference/operating-calendars/delete-operating-calendar": {
+        "title": "Delete Operating Calendar",
+        "subtitle": "DELETE /v1/operations/operating-calendars/{id}"
+    },
+    "/api-reference/operating-calendars/create-operating-calendar-closure": {
+        "title": "Create Operating Calendar Closure",
+        "subtitle": "POST /v1/operations/operating-calendars/{id}/closures"
+    },
+    "/api-reference/operating-calendars/list-operating-calendar-closures": {
+        "title": "List Operating Calendar Closures",
+        "subtitle": "GET /v1/operations/operating-calendars/{id}/closures"
+    },
+    "/api-reference/operating-calendars/delete-operating-calendar-closure": {
+        "title": "Delete Operating Calendar Closure",
+        "subtitle": "DELETE /v1/operations/operating-calendars/{id}/closures/{closure_id}"
+    },
     "/api-reference/volume-discounts/create-volume-discount": {
         "title": "Create Volume Discount",
         "subtitle": "POST /v1/sales/volume-discounts"
@@ -1778,6 +1810,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/sales-orders/bulk-delete-sales-orders": {
         "title": "Bulk Delete Sales Orders",
         "subtitle": "POST /v1/sales/sales-orders/actions/bulk-delete"
+    },
+    "/api-reference/sales-orders/quote-sales-order-commitment": {
+        "title": "Quote Sales Order Commitment",
+        "subtitle": "POST /v1/sales/sales-orders/actions/quote-commitment"
     },
     "/api-reference/sales-orders/checkout-sales-order": {
         "title": "Checkout Sales Order",

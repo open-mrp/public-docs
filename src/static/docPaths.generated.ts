@@ -620,6 +620,16 @@ export const docPaths = {
             "updateProductionScheduleSettings": "/api-reference/production-schedule-settings/update-production-schedule-settings",
             "upsertProductionScheduleResourceSetting": "/api-reference/production-schedule-settings/upsert-production-schedule-resource-setting"
         },
+        "operatingCalendars": {
+            "createOperatingCalendar": "/api-reference/operating-calendars/create-operating-calendar",
+            "updateOperatingCalendar": "/api-reference/operating-calendars/update-operating-calendar",
+            "listOperatingCalendars": "/api-reference/operating-calendars/list-operating-calendars",
+            "retrieveOperatingCalendar": "/api-reference/operating-calendars/retrieve-operating-calendar",
+            "deleteOperatingCalendar": "/api-reference/operating-calendars/delete-operating-calendar",
+            "createOperatingCalendarClosure": "/api-reference/operating-calendars/create-operating-calendar-closure",
+            "listOperatingCalendarClosures": "/api-reference/operating-calendars/list-operating-calendar-closures",
+            "deleteOperatingCalendarClosure": "/api-reference/operating-calendars/delete-operating-calendar-closure"
+        },
         "volumeDiscounts": {
             "createVolumeDiscount": "/api-reference/volume-discounts/create-volume-discount",
             "updateVolumeDiscount": "/api-reference/volume-discounts/update-volume-discount",
@@ -635,6 +645,7 @@ export const docPaths = {
             "retrieveSalesOrder": "/api-reference/sales-orders/retrieve-sales-order",
             "deleteSalesOrder": "/api-reference/sales-orders/delete-sales-order",
             "bulkDeleteSalesOrders": "/api-reference/sales-orders/bulk-delete-sales-orders",
+            "quoteSalesOrderCommitment": "/api-reference/sales-orders/quote-sales-order-commitment",
             "checkoutSalesOrder": "/api-reference/sales-orders/checkout-sales-order",
             "createSalesOrderLine": "/api-reference/sales-orders/create-sales-order-line",
             "updateSalesOrderLine": "/api-reference/sales-orders/update-sales-order-line",
