@@ -1798,6 +1798,15 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
         {
             "domain": "catalog",
             "segments": [
+                "items"
+            ],
+            "tagSlug": "items",
+            "endpointSlug": "bulk-reconcile-items",
+            "label": "Bulk Reconcile Items"
+        },
+        {
+            "domain": "catalog",
+            "segments": [
                 "items",
                 "attributes"
             ],
@@ -1844,6 +1853,16 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "tagSlug": "items",
             "endpointSlug": "remove-item-attribute",
             "label": "Delete"
+        },
+        {
+            "domain": "catalog",
+            "segments": [
+                "items",
+                "inventory"
+            ],
+            "tagSlug": "items",
+            "endpointSlug": "update-item-inventory",
+            "label": "Update Item Inventory"
         },
         {
             "domain": "catalog",

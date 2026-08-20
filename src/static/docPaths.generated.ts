@@ -468,11 +468,13 @@ export const docPaths = {
         "items": {
             "listItems": "/api-reference/items/list-items",
             "retrieveItem": "/api-reference/items/retrieve-item",
+            "bulkReconcileItems": "/api-reference/items/bulk-reconcile-items",
             "addItemAttribute": "/api-reference/items/add-item-attribute",
             "changeItemCategory": "/api-reference/items/change-item-category",
             "retrieveItemInventory": "/api-reference/items/retrieve-item-inventory",
             "retrieveItemLotDefault": "/api-reference/items/retrieve-item-lot-default",
-            "removeItemAttribute": "/api-reference/items/remove-item-attribute"
+            "removeItemAttribute": "/api-reference/items/remove-item-attribute",
+            "updateItemInventory": "/api-reference/items/update-item-inventory"
         },
         "itemCategories": {
             "createItemCategory": "/api-reference/item-categories/create-item-category",

@@ -1271,6 +1271,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Retrieve Item",
         "subtitle": "GET /v1/catalog/items/{id}"
     },
+    "/api-reference/items/bulk-reconcile-items": {
+        "title": "Bulk Reconcile Items",
+        "subtitle": "POST /v1/catalog/items/actions/bulk-reconcile"
+    },
     "/api-reference/items/add-item-attribute": {
         "title": "Add Item Attribute",
         "subtitle": "PUT /v1/catalog/items/{id}/attributes/{attribute_id}"
@@ -1290,6 +1294,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/items/remove-item-attribute": {
         "title": "Remove Item Attribute",
         "subtitle": "DELETE /v1/catalog/items/{id}/attributes/{attribute_id}"
+    },
+    "/api-reference/items/update-item-inventory": {
+        "title": "Update Item Inventory",
+        "subtitle": "PATCH /v1/catalog/items/{id}/inventory"
     },
     "/api-reference/item-categories/create-item-category": {
         "title": "Create Item Category",
