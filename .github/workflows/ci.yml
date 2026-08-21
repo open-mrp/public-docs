@@ -10,7 +10,10 @@ jobs:
     build:
         name: Build & Validate
         runs-on: ubuntu-latest
-        environment: production
+        # No `environment:` here. This job builds and validates; it deploys nothing, and the only
+        # secret it uses is the built-in GITHUB_TOKEN. Declaring the production environment put it
+        # behind that environment's main-only branch policy, so every pull request failed before it
+        # could read the spec from S3.
         permissions:
             contents: read
             packages: read
@@ -23,7 +26,7 @@ jobs:
             - name: Configure AWS Credentials
               uses: aws-actions/configure-aws-credentials@v3
               with:
-                  role-to-assume: arn:aws:iam::013292575751:role/github-action-role
+                  role-to-assume: arn:aws:iam::013292575751:role/github-actions-spec-reader
                   aws-region: us-east-2
 
             - name: Setup Bun
