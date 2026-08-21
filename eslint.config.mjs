@@ -13,7 +13,12 @@ const eslintConfig = [
             'next-env.d.ts',
             '.yalc/**',
             'packages/stainless-sdk-json/**',
+            // Machine-generated, and the archived API versions under api-versions/ are ~39MB
+            // across 15 files. The single-level glob missed those, so eslint parsed the lot and
+            // died with a heap OOM. Both patterns, since '**' behaviour at depth zero is
+            // matcher-dependent and this is not worth being clever about.
             'src/static/*.generated.ts',
+            'src/static/**/*.generated.ts',
         ],
     },
     {
