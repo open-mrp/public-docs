@@ -2622,15 +2622,6 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
         {
             "domain": "operations",
             "segments": [
-                "production-schedules"
-            ],
-            "tagSlug": "production-schedules",
-            "endpointSlug": "quote-promise-date",
-            "label": "Quote Promise Date"
-        },
-        {
-            "domain": "operations",
-            "segments": [
                 "production-schedules",
                 "lines"
             ],

@@ -463,7 +463,6 @@
 - [GET Production Schedules — Retrieve Schedule](https://docs.augno.com/api-reference/production-schedules/retrieve-production-schedule.md)
 - [DELETE Production Schedules — Delete Schedule](https://docs.augno.com/api-reference/production-schedules/delete-production-schedule.md)
 - [PUT Production Schedules — Preview Schedule](https://docs.augno.com/api-reference/production-schedules/preview-production-schedule.md)
-- [POST Production Schedules — Quote Promise Date](https://docs.augno.com/api-reference/production-schedules/quote-promise-date.md)
 - [POST Production Schedules — Create Schedule Line](https://docs.augno.com/api-reference/production-schedules/create-production-schedule-line.md)
 - [PATCH Production Schedules — Update Schedule Line](https://docs.augno.com/api-reference/production-schedules/update-production-schedule-line.md)
 - [GET Production Schedules — List Schedule At-Risk Orders](https://docs.augno.com/api-reference/production-schedules/list-schedule-at-risk-orders.md)

@@ -1631,10 +1631,6 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Preview Production Schedule",
         "subtitle": "PUT /v1/operations/production-schedules/actions/preview"
     },
-    "/api-reference/production-schedules/quote-promise-date": {
-        "title": "Quote Promise Date",
-        "subtitle": "POST /v1/operations/production-schedules/actions/quote-promise-date"
-    },
     "/api-reference/production-schedules/create-production-schedule-line": {
         "title": "Create Production Schedule Line",
         "subtitle": "POST /v1/operations/production-schedules/{id}/lines"

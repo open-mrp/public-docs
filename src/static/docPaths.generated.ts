@@ -592,7 +592,6 @@ export const docPaths = {
             "retrieveProductionSchedule": "/api-reference/production-schedules/retrieve-production-schedule",
             "deleteProductionSchedule": "/api-reference/production-schedules/delete-production-schedule",
             "previewProductionSchedule": "/api-reference/production-schedules/preview-production-schedule",
-            "quotePromiseDate": "/api-reference/production-schedules/quote-promise-date",
             "createProductionScheduleLine": "/api-reference/production-schedules/create-production-schedule-line",
             "updateProductionScheduleLine": "/api-reference/production-schedules/update-production-schedule-line",
             "listScheduleAtRiskOrders": "/api-reference/production-schedules/list-schedule-at-risk-orders",
