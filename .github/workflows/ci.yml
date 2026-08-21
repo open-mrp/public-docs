@@ -19,11 +19,18 @@ jobs:
             packages: read
             id-token: write
 
+        # Pull requests from forks receive no secrets and cannot assume the AWS role,
+        # so the spec-dependent steps are skipped for them. The committed
+        # src/static/*.generated.ts files still allow a full lint and build.
+        env:
+            TRUSTED: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+
         steps:
             - name: Checkout
               uses: actions/checkout@v4
 
             - name: Configure AWS Credentials
+              if: env.TRUSTED == 'true'
               uses: aws-actions/configure-aws-credentials@v3
               with:
                   role-to-assume: arn:aws:iam::013292575751:role/github-actions-spec-reader
@@ -34,20 +41,17 @@ jobs:
               with:
                   bun-version: latest
 
-            - name: Setup Go
-              uses: actions/setup-go@v5
-              with:
-                  go-version: '1.22'
-
             - name: Install dependencies
               run: bun install
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Download public release artifacts from S3
+              if: env.TRUSTED == 'true'
               run: bash scripts/fetch-public-release-artifacts.sh
 
             - name: Generate docs
+              if: env.TRUSTED == 'true'
               run: bun run build:docs
 
             - name: Validate pathKeys
