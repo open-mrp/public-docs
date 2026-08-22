@@ -21,7 +21,12 @@ export const SITE_DESCRIPTION =
 
 export const ORG_NAME = 'OpenMRP';
 
-export const ORG_URL = 'https://openmrp.ai';
+/**
+ * Feeds JSON-LD (Organization url, publisher url), so it must be the domain we
+ * actually serve from — openmrp.ai currently 307s here. Flip at the DNS cutover,
+ * alongside SITE_URL above.
+ */
+export const ORG_URL = 'https://augno.com';
 
 /** Brand accent used in generated Open Graph cards (matches --primary). */
 export const BRAND_ACCENT = '#0eb981';
