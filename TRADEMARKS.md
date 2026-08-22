@@ -12,4 +12,4 @@ You may use the OpenMRP name nominatively — to accurately refer to OpenMRP or 
 
 If you fork this repository and publish it, replace the OpenMRP branding with your own.
 
-Questions about trademark use: support@openmrp.ai
+Questions about trademark use: support@augno.com

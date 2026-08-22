@@ -7,14 +7,14 @@ import { getEndpointSnippet } from '@/static/apiSnippets.generated';
 
 describe('normalizeSnippetPlaceholders', () => {
     test('rewrites OpenMRP production API host', () => {
-        expect(normalizeSnippetPlaceholders('fetch("https://api.openmrp.ai/v1/foo")')).toContain(
+        expect(normalizeSnippetPlaceholders('fetch("https://api.augno.com/v1/foo")')).toContain(
             'API_HOST',
         );
     });
 
     test('rewrites bearer shell variables from Stainless curl snippets', () => {
         const out = normalizeSnippetPlaceholders(
-            'curl https://api.openmrp.ai/x \\\n    -H "Authorization: Bearer $OPENMRP_API_KEY"',
+            'curl https://api.augno.com/x \\\n    -H "Authorization: Bearer $OPENMRP_API_KEY"',
         );
         expect(out).toContain('Bearer YOUR_API_KEY');
         expect(out).toContain('API_HOST');

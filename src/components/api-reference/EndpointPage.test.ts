@@ -28,7 +28,7 @@ describe('buildCurlExample', () => {
 
         expect(result).toContain('curl API_HOST/v1/core/customers');
         expect(result).toContain('Authorization: Bearer YOUR_API_KEY');
-        expect(result).not.toContain('https://api.openmrp.ai');
+        expect(result).not.toContain('https://api.augno.com');
         expect(result).not.toContain('$OPENMRP_API_KEY');
     });
 

@@ -25,7 +25,7 @@ export default function DocFooter({ className }: DocFooterProps) {
                         text: 'Need help?',
                         link: {
                             text: 'Contact Support',
-                            href: 'mailto:support@openmrp.ai',
+                            href: 'mailto:support@augno.com',
                         },
                     },
                     {
@@ -33,7 +33,7 @@ export default function DocFooter({ className }: DocFooterProps) {
                         text: 'Questions?',
                         link: {
                             text: 'Contact Sales',
-                            href: 'mailto:sales@openmrp.ai',
+                            href: 'mailto:sales@augno.com',
                         },
                     },
                     {

@@ -82,7 +82,7 @@ console.log(items.data);
 | :--------------- | :------------------------------------------------ | :------------------------------------- | :--------------------------------------------------------------------------- |
 | `bearerToken`    | `string`                                          | `process.env['OPENMRP_API_KEY']`         | API key sent as a `Bearer` token.                                            |
 | `openMRPAccountID` | `string`                                          | -                                      | Account UUID, sent as the `OpenMRP-Account` header. Update to switch accounts. |
-| `environment`    | `'production'` \| `'local'`                       | `'production'`                         | Selects the base URL. `production` → `https://api.openmrp.ai`.                |
+| `environment`    | `'production'` \| `'local'`                       | `'production'`                         | Selects the base URL. `production` → `https://api.augno.com`.                |
 | `baseURL`        | `string`                                          | `process.env['OPENMRP_BASE_URL']`        | Override the base URL directly. Don't combine with `environment`.            |
 | `maxRetries`     | `number`                                          | `2`                                    | Number of automatic retries for transient failures.                          |
 | `timeout`        | `number`                                          | `60000`                                | Per-request timeout in milliseconds.                                         |

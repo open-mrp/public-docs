@@ -42,7 +42,7 @@ You do not need to set the `OpenMRP-Version` header yourself — the server pins
 
 ## Connect a client
 
-The MCP server is hosted at `https://mcp.openmrp.ai`. Connect to it over HTTP — there's nothing to install — or run a **local** server over stdio if you prefer. Either way, authenticate with your API key. Setup for Cursor and Claude Code is below.
+The MCP server is hosted at `https://mcp.augno.com`. Connect to it over HTTP — there's nothing to install — or run a **local** server over stdio if you prefer. Either way, authenticate with your API key. Setup for Cursor and Claude Code is below.
 
 <DocTabs className="my-4">
 <DocTab label="Cursor">
@@ -55,7 +55,7 @@ Cursor reads MCP servers from `~/.cursor/mcp.json` (all projects) or `.cursor/mc
 {
     "mcpServers": {
         "openmrp": {
-            "url": "https://mcp.openmrp.ai",
+            "url": "https://mcp.augno.com",
             "headers": {
                 "Authorization": "Bearer YOUR_API_KEY"
             }
@@ -88,7 +88,7 @@ Add the server with the `claude mcp` CLI.
 **Hosted (HTTP):**
 
 ```sh
-claude mcp add --transport http openmrp https://mcp.openmrp.ai \
+claude mcp add --transport http openmrp https://mcp.augno.com \
   --header "Authorization: Bearer YOUR_API_KEY"
 ```
 
@@ -105,7 +105,7 @@ By default the server is saved for the current project only. Add `--scope user` 
     "mcpServers": {
         "openmrp": {
             "type": "http",
-            "url": "https://mcp.openmrp.ai",
+            "url": "https://mcp.augno.com",
             "headers": {
                 "Authorization": "Bearer YOUR_API_KEY"
             }

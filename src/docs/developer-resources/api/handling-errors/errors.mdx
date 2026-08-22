@@ -11,7 +11,7 @@ nav:
 
 Every OpenMRP API error uses the same response envelope. The most important fields are `code`, `type`, and `is_transient`: use those fields for programmatic handling instead of parsing the human-readable `message`.
 
-This page is organized as a quick reference first, then a troubleshooting guide by category. Each error code has a stable anchor, so links like `https://docs.openmrp.ai/api/errors#validation_failed` open the matching card.
+This page is organized as a quick reference first, then a troubleshooting guide by category. Each error code has a stable anchor, so links like `https://docs.augno.com/api/errors#validation_failed` open the matching card.
 
 ## Error Envelope
 
@@ -24,10 +24,10 @@ All error responses are wrapped in an `error` object:
         "type": "invalid_request_error",
         "message": "The email address is not valid.",
         "param": "email",
-        "doc_url": "https://docs.openmrp.ai/api/errors#validation_failed",
+        "doc_url": "https://docs.augno.com/api/errors#validation_failed",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -38,7 +38,7 @@ All error responses are wrapped in an `error` object:
 | `type`            | string         | Broad category: `invalid_request_error`, `api_error`, or `idempotency_error`.                         |
 | `message`         | string         | Human-readable explanation. Safe to display, but not stable enough to parse.                          |
 | `param`           | string \| null | Offending request field or parameter when OpenMRP can identify one.                                     |
-| `doc_url`         | string         | Documentation link for this error. Usually follows `https://docs.openmrp.ai/api/errors#{code}`.        |
+| `doc_url`         | string         | Documentation link for this error. Usually follows `https://docs.augno.com/api/errors#{code}`.        |
 | `is_transient`    | boolean        | Whether retrying the same operation may succeed after a delay.                                        |
 | `quota`           | object \| null | Present only for `limit_exceeded`; contains `limit`, `used`, and `reset_at`.                          |
 | `request_log_url` | string \| null | Dashboard link for the request log when one is available. Include this when contacting OpenMRP support. |
@@ -96,10 +96,10 @@ curl API_HOST/v1/catalog/items \
         "type": "invalid_request_error",
         "message": "Token has expired.",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#expired_token",
+        "doc_url": "https://docs.augno.com/api/errors#expired_token",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -130,10 +130,10 @@ curl API_HOST/v1/catalog/items \
         "type": "invalid_request_error",
         "message": "API key has expired.",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#api_key_expired",
+        "doc_url": "https://docs.augno.com/api/errors#api_key_expired",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -160,10 +160,10 @@ curl API_HOST/v1/catalog/items \
         "type": "invalid_request_error",
         "message": "API key has been revoked.",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#api_key_revoked",
+        "doc_url": "https://docs.augno.com/api/errors#api_key_revoked",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -190,10 +190,10 @@ curl API_HOST/v1/catalog/items \
         "type": "invalid_request_error",
         "message": "Invalid API Key provided: mrp_sk_prod_UN****c123.",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#invalid_credentials",
+        "doc_url": "https://docs.augno.com/api/errors#invalid_credentials",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -220,10 +220,10 @@ curl -X PATCH API_HOST/v1/identity/account-users/acus_e5zu8bde0z3h \
         "type": "invalid_request_error",
         "message": "This API Key does not have permission to team:update",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#insufficient_permissions",
+        "doc_url": "https://docs.augno.com/api/errors#insufficient_permissions",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -250,10 +250,10 @@ curl API_HOST/v1/catalog/items \
         "type": "invalid_request_error",
         "message": "Your subscription is past_due. Please update your billing information to continue.",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#payment_required",
+        "doc_url": "https://docs.augno.com/api/errors#payment_required",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -294,14 +294,14 @@ curl -X POST API_HOST/v1/core/sandboxes \
         "type": "invalid_request_error",
         "message": "Maximum of 5 sandbox accounts per account reached.",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#limit_exceeded",
+        "doc_url": "https://docs.augno.com/api/errors#limit_exceeded",
         "is_transient": false,
         "quota": {
             "limit": 5,
             "used": 5,
             "reset_at": null
         },
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -320,10 +320,10 @@ We have limited capacity for some plans, so you may encounter an error when atte
         "type": "invalid_request_error",
         "message": "Registration for the starter plan is currently at capacity.",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#registration_closed",
+        "doc_url": "https://docs.augno.com/api/errors#registration_closed",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -354,10 +354,10 @@ curl -X DELETE API_HOST/v1/operations/shipping-terms/shtm_c5gxy05whw6r \
         "type": "invalid_request_error",
         "message": "Default shipping terms cannot be deleted.",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#validation_failed",
+        "doc_url": "https://docs.augno.com/api/errors#validation_failed",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -388,10 +388,10 @@ curl -X POST API_HOST/v1/catalog/units \
         "type": "invalid_request_error",
         "message": "Field 'abbreviation' is required.",
         "param": "abbreviation",
-        "doc_url": "https://docs.openmrp.ai/api/errors#missing_field",
+        "doc_url": "https://docs.augno.com/api/errors#missing_field",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -420,10 +420,10 @@ curl -X POST API_HOST/v1/catalog/units \
         "type": "invalid_request_error",
         "message": "Field 'ratio_denominator' must not be zero.",
         "param": "ratio_denominator",
-        "doc_url": "https://docs.openmrp.ai/api/errors#invalid_format",
+        "doc_url": "https://docs.augno.com/api/errors#invalid_format",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -452,10 +452,10 @@ curl -X POST API_HOST/v1/catalog/items/it_pej07ckhvu62 \
         "type": "invalid_request_error",
         "message": "Method POST not allowed for path /v1/catalog/items/it_pej07ckhvu62.",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#method_not_allowed",
+        "doc_url": "https://docs.augno.com/api/errors#method_not_allowed",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -486,10 +486,10 @@ curl API_HOST/v1/core/addresses/suggestions \
         "type": "invalid_request_error",
         "message": "Query parameter 'input' is required.",
         "param": "input",
-        "doc_url": "https://docs.openmrp.ai/api/errors#parameter_missing",
+        "doc_url": "https://docs.augno.com/api/errors#parameter_missing",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -516,10 +516,10 @@ curl "API_HOST/v1/catalog/items?limit=-25" \
         "type": "invalid_request_error",
         "message": "Query parameter 'limit' must be at least 1.",
         "param": "limit",
-        "doc_url": "https://docs.openmrp.ai/api/errors#parameter_invalid",
+        "doc_url": "https://docs.augno.com/api/errors#parameter_invalid",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -548,10 +548,10 @@ curl "API_HOST/v1/catalog/items?skip=50" \
         "type": "invalid_request_error",
         "message": "Unknown query parameter 'skip'.",
         "param": "skip",
-        "doc_url": "https://docs.openmrp.ai/api/errors#parameter_unknown",
+        "doc_url": "https://docs.augno.com/api/errors#parameter_unknown",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -592,10 +592,10 @@ curl API_HOST/v1/operations/shipping-terms/shtm_c5gxy05whw6r \
         "type": "invalid_request_error",
         "message": "Shipping term not found.",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#resource_not_found",
+        "doc_url": "https://docs.augno.com/api/errors#resource_not_found",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -624,10 +624,10 @@ curl -X POST API_HOST/v1/catalog/item-categories \
         "type": "invalid_request_error",
         "message": "Resource already exists.",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#resource_conflict",
+        "doc_url": "https://docs.augno.com/api/errors#resource_conflict",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -658,10 +658,10 @@ curl -X POST API_HOST/v1/catalog/units \
         "type": "invalid_request_error",
         "message": "A unit with this name already exists.",
         "param": "name",
-        "doc_url": "https://docs.openmrp.ai/api/errors#resource_conflict",
+        "doc_url": "https://docs.augno.com/api/errors#resource_conflict",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -688,10 +688,10 @@ curl -X DELETE API_HOST/v1/catalog/products/pd_07oe0r7adh2w \
         "type": "invalid_request_error",
         "message": "This product has already been deleted and can no longer be modified.",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#resource_gone",
+        "doc_url": "https://docs.augno.com/api/errors#resource_gone",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -725,10 +725,10 @@ curl -X PATCH API_HOST/v1/operations/shipping-terms/shtm_c5gxy05whw6r \
         "type": "idempotency_error",
         "message": "Request for the idempotency key 'req_abc123' is already being processed.",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#idempotency_in_progress",
+        "doc_url": "https://docs.augno.com/api/errors#idempotency_in_progress",
         "is_transient": true,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -745,10 +745,10 @@ with `type: "idempotency_error"`:
         "type": "idempotency_error",
         "message": "Idempotency key 'req_abc123' was used with different request parameters; use a new key.",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#validation_failed",
+        "doc_url": "https://docs.augno.com/api/errors#validation_failed",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -779,10 +779,10 @@ curl API_HOST/v1/catalog/items \
         "type": "invalid_request_error",
         "message": "Too many requests. Please try again later.",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#rate_limit_exceeded",
+        "doc_url": "https://docs.augno.com/api/errors#rate_limit_exceeded",
         "is_transient": true,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -814,10 +814,10 @@ curl API_HOST/v1/catalog/items \
         "type": "invalid_request_error",
         "message": "The OpenMRP-Version header is required. Please include a valid API version. The latest version is CURRENT_API_VERSION.",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#api_version_required",
+        "doc_url": "https://docs.augno.com/api/errors#api_version_required",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -844,10 +844,10 @@ curl API_HOST/v1/catalog/items \
         "type": "invalid_request_error",
         "message": "Invalid API version '2024-01-01'. Supported versions: [CURRENT_API_VERSION 1.0.forge-preview.1]",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#api_version_invalid",
+        "doc_url": "https://docs.augno.com/api/errors#api_version_invalid",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -885,10 +885,10 @@ curl API_HOST/v1/catalog/items \
         "type": "api_error",
         "message": "Something went wrong.",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#internal_error",
+        "doc_url": "https://docs.augno.com/api/errors#internal_error",
         "is_transient": true,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -941,10 +941,10 @@ curl -X PUT API_HOST/v1/operations/production-schedules/actions/preview \
         "type": "api_error",
         "message": "Request timed out.",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#request_timeout",
+        "doc_url": "https://docs.augno.com/api/errors#request_timeout",
         "is_transient": true,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -972,10 +972,10 @@ curl --max-time 2 -X POST API_HOST/v1/sales/sales-orders/or_9lqo07quiwyb/actions
         "type": "api_error",
         "message": "Client closed the connection.",
         "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#client_closed_request",
+        "doc_url": "https://docs.augno.com/api/errors#client_closed_request",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```

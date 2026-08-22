@@ -4,7 +4,7 @@
 
 Please **do not** open a public GitHub issue for security problems.
 
-Report vulnerabilities privately to **security@openmrp.ai**, or through [GitHub private vulnerability reporting](https://github.com/open-mrp/public-docs/security/advisories/new).
+Report vulnerabilities privately to **security@augno.com**, or through [GitHub private vulnerability reporting](https://github.com/open-mrp/public-docs/security/advisories/new).
 
 Include:
 
@@ -16,7 +16,7 @@ We'll acknowledge your report within 3 business days and keep you updated as we 
 
 ## Scope
 
-This repository is the source of the OpenMRP documentation site at [docs.openmrp.ai](https://docs.openmrp.ai). In scope:
+This repository is the source of the OpenMRP documentation site at [docs.augno.com](https://docs.augno.com). In scope:
 
 - Vulnerabilities in this site's code (XSS, injection, dependency issues)
 - Documentation that instructs readers to do something insecure

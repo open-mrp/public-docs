@@ -36,7 +36,7 @@ export class Env {
      * The API host used in documentation code examples.
      */
     public static get apiHost(): string {
-        return process.env['NEXT_PUBLIC_V2_API_URL'] || 'https://api.openmrp.ai';
+        return process.env['NEXT_PUBLIC_V2_API_URL'] || 'https://api.augno.com';
     }
 
     /**

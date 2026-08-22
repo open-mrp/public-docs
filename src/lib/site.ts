@@ -4,7 +4,7 @@
  * environment with DOCS_BASE_URL (matches scripts/generate-llms-txt.ts) so
  * preview deployments emit correct absolute URLs.
  */
-export const SITE_URL = (process.env.DOCS_BASE_URL || 'https://docs.openmrp.ai').replace(/\/$/, '');
+export const SITE_URL = (process.env.DOCS_BASE_URL || 'https://docs.augno.com').replace(/\/$/, '');
 
 export const SITE_NAME = 'OpenMRP Documentation';
 

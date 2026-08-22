@@ -56,8 +56,10 @@ export function normalizeSnippetPlaceholders(code: string): string {
         [/bearerToken:\s*'My Bearer Token'/g, "openMRPAPIKey: 'YOUR_API_KEY'"],
         [/bearer_token="My Bearer Token"/g, 'openmrp_api_key="YOUR_API_KEY"'],
         [/Bearer\s+'My Bearer Token'/gi, "Bearer 'YOUR_API_KEY'"],
-        [/https:\/\/api\.openmrp\.ai\b/g, 'API_HOST'],
-        [/https:\/\/sandbox\.api\.openmrp\.ai\b/g, 'API_HOST'],
+        // Both hosts: snippets are generated from the spec, which serves api.augno.com
+        // until the DNS cutover moves it to api.openmrp.ai.
+        [/https:\/\/api\.(?:augno\.com|openmrp\.ai)\b/g, 'API_HOST'],
+        [/https:\/\/sandbox\.api\.(?:augno\.com|openmrp\.ai)\b/g, 'API_HOST'],
         [/\$\{\s*process\.env\.NEXT_PUBLIC_V2_API_URL[^}]*\}/g, 'API_HOST'],
         // Match real STLC TS client naming (`opts.openmrp_api_key` → `openMRPAPIKey`)
         [

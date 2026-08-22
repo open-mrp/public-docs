@@ -237,7 +237,7 @@ export const apiTags: TagData[] = [
             {
                 "operationId": "create-api-key",
                 "summary": "Create API Key",
-                "description": "Creates an [API key](https://docs.openmrp.ai/api/api-keys) to authenticate API requests.\n\nThe secret key is returned once and cannot be retrieved later, so you should store it securely. We provide some [recommendations](https://docs.openmrp.ai/api/managing-api-keys) on how you can manage your API keys.",
+                "description": "Creates an [API key](https://docs.augno.com/api/api-keys) to authenticate API requests.\n\nThe secret key is returned once and cannot be retrieved later, so you should store it securely. We provide some [recommendations](https://docs.augno.com/api/managing-api-keys) on how you can manage your API keys.",
                 "method": "POST",
                 "path": "/v1/auth/api-keys",
                 "domain": "auth",
@@ -312,7 +312,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "api_key_secret",
                                 "type": "string",
-                                "description": "Full secret value. Returned once and cannot be retrieved later. Learn more about [managing your API keys](https://docs.openmrp.ai/api/managing-api-keys).",
+                                "description": "Full secret value. Returned once and cannot be retrieved later. Learn more about [managing your API keys](https://docs.augno.com/api/managing-api-keys).",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false
@@ -549,7 +549,7 @@ export const apiTags: TagData[] = [
             {
                 "operationId": "list-api-keys",
                 "summary": "List API Keys",
-                "description": "Returns a paginated list of [API keys](https://docs.openmrp.ai/api/api-keys).",
+                "description": "Returns a paginated list of [API keys](https://docs.augno.com/api/api-keys).",
                 "method": "GET",
                 "path": "/v1/auth/api-keys",
                 "domain": "auth",
@@ -902,7 +902,7 @@ export const apiTags: TagData[] = [
             {
                 "operationId": "retrieve-api-key",
                 "summary": "Retrieve API Key",
-                "description": "Returns [API key](https://docs.openmrp.ai/api/api-keys) metadata by ID.",
+                "description": "Returns [API key](https://docs.augno.com/api/api-keys) metadata by ID.",
                 "method": "GET",
                 "path": "/v1/auth/api-keys/{id}",
                 "domain": "auth",
@@ -1153,7 +1153,7 @@ export const apiTags: TagData[] = [
             {
                 "operationId": "revoke-api-key",
                 "summary": "Revoke API Key",
-                "description": "Revokes an [API key](https://docs.openmrp.ai/api/api-keys).\n\nRevoked API keys will be unable to be used to authenticate requests.",
+                "description": "Revokes an [API key](https://docs.augno.com/api/api-keys).\n\nRevoked API keys will be unable to be used to authenticate requests.",
                 "method": "DELETE",
                 "path": "/v1/auth/api-keys/{id}",
                 "domain": "auth",
@@ -1183,7 +1183,7 @@ export const apiTags: TagData[] = [
             {
                 "operationId": "rotate-api-key",
                 "summary": "Rotate API Key",
-                "description": "Rotates an [API key](https://docs.openmrp.ai/api/api-keys) by revoking the existing key and issuing a replacement with the same name, role, and expiration (unless overridden).\n\nThe secret key is returned once and cannot be retrieved later, so you should store it securely. We provide some [recommendations](https://docs.openmrp.ai/api/managing-api-keys) on how you can manage your API keys.",
+                "description": "Rotates an [API key](https://docs.augno.com/api/api-keys) by revoking the existing key and issuing a replacement with the same name, role, and expiration (unless overridden).\n\nThe secret key is returned once and cannot be retrieved later, so you should store it securely. We provide some [recommendations](https://docs.augno.com/api/managing-api-keys) on how you can manage your API keys.",
                 "method": "POST",
                 "path": "/v1/auth/api-keys/{id}/actions/rotate",
                 "domain": "auth",
@@ -1258,7 +1258,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "api_key_secret",
                                 "type": "string",
-                                "description": "Full secret value. Returned once and cannot be retrieved later. Learn more about [managing your API keys](https://docs.openmrp.ai/api/managing-api-keys).",
+                                "description": "Full secret value. Returned once and cannot be retrieved later. Learn more about [managing your API keys](https://docs.augno.com/api/managing-api-keys).",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false
@@ -2448,7 +2448,7 @@ export const apiTags: TagData[] = [
                 {
                     "name": "host",
                     "type": "string",
-                    "description": "Request host. Usually `api.openmrp.ai`.",
+                    "description": "Request host. Usually `api.augno.com`.",
                     "required": true,
                     "nullable": false,
                     "expandable": false
@@ -2833,7 +2833,7 @@ export const apiTags: TagData[] = [
                 "id": "rq_01304bffe90e8cce9690cbefd4",
                 "object": "request_log",
                 "method": "GET",
-                "host": "https://api.openmrp.ai",
+                "host": "https://api.augno.com",
                 "path": "/v1/core/sandboxes",
                 "normalized_route": "/v1/core/sandboxes",
                 "query_params": {
@@ -2865,7 +2865,7 @@ export const apiTags: TagData[] = [
                     "object": "actor",
                     "type": "user",
                     "name": "John Doe",
-                    "handle": "jdoe@openmrp.ai",
+                    "handle": "jdoe@augno.com",
                     "role": {
                         "id": "rl_01c16d2eb637c0d1f3a372937c",
                         "object": "role",
@@ -3071,7 +3071,7 @@ export const apiTags: TagData[] = [
                         "in": "query",
                         "type": "array",
                         "required": false,
-                        "description": "Filter by the request host. Typically, `api.openmrp.ai`."
+                        "description": "Filter by the request host. Typically, `api.augno.com`."
                     },
                     {
                         "name": "min_latency_us",
@@ -3198,7 +3198,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "host",
                                         "type": "string",
-                                        "description": "Request host. Usually `api.openmrp.ai`.",
+                                        "description": "Request host. Usually `api.augno.com`.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false
@@ -3594,7 +3594,7 @@ export const apiTags: TagData[] = [
                                     "id": "rq_01304bffe90e8cce9690cbefd4",
                                     "object": "request_log",
                                     "method": "GET",
-                                    "host": "https://api.openmrp.ai",
+                                    "host": "https://api.augno.com",
                                     "path": "/v1/core/sandboxes",
                                     "normalized_route": "/v1/core/sandboxes",
                                     "query_params": {
@@ -3626,7 +3626,7 @@ export const apiTags: TagData[] = [
                                         "object": "actor",
                                         "type": "user",
                                         "name": "John Doe",
-                                        "handle": "jdoe@openmrp.ai",
+                                        "handle": "jdoe@augno.com",
                                         "role": {
                                             "id": "rl_01c16d2eb637c0d1f3a372937c",
                                             "object": "role",
@@ -3747,7 +3747,7 @@ export const apiTags: TagData[] = [
                             {
                                 "name": "host",
                                 "type": "string",
-                                "description": "Request host. Usually `api.openmrp.ai`.",
+                                "description": "Request host. Usually `api.augno.com`.",
                                 "required": true,
                                 "nullable": false,
                                 "expandable": false
@@ -4132,7 +4132,7 @@ export const apiTags: TagData[] = [
                             "id": "rq_01304bffe90e8cce9690cbefd4",
                             "object": "request_log",
                             "method": "GET",
-                            "host": "https://api.openmrp.ai",
+                            "host": "https://api.augno.com",
                             "path": "/v1/core/sandboxes",
                             "normalized_route": "/v1/core/sandboxes",
                             "query_params": {
@@ -4164,7 +4164,7 @@ export const apiTags: TagData[] = [
                                 "object": "actor",
                                 "type": "user",
                                 "name": "John Doe",
-                                "handle": "jdoe@openmrp.ai",
+                                "handle": "jdoe@augno.com",
                                 "role": {
                                     "id": "rl_01c16d2eb637c0d1f3a372937c",
                                     "object": "role",
@@ -4707,7 +4707,7 @@ export const apiTags: TagData[] = [
                         {
                             "name": "host",
                             "type": "string",
-                            "description": "Request host. Usually `api.openmrp.ai`.",
+                            "description": "Request host. Usually `api.augno.com`.",
                             "required": true,
                             "nullable": false,
                             "expandable": false
@@ -4910,7 +4910,7 @@ export const apiTags: TagData[] = [
                     "object": "actor",
                     "type": "user",
                     "name": "John Doe",
-                    "handle": "jdoe@openmrp.ai",
+                    "handle": "jdoe@augno.com",
                     "role": {
                         "id": "rl_01c16d2eb637c0d1f3a372937c",
                         "object": "role",
@@ -4965,7 +4965,7 @@ export const apiTags: TagData[] = [
                     "id": "rq_01304bffe90e8cce9690cbefd4",
                     "object": "request_log",
                     "method": "GET",
-                    "host": "https://api.openmrp.ai",
+                    "host": "https://api.augno.com",
                     "path": "/v1/core/sandboxes",
                     "normalized_route": "/v1/core/sandboxes",
                     "query_params": {
@@ -4997,7 +4997,7 @@ export const apiTags: TagData[] = [
                         "object": "actor",
                         "type": "user",
                         "name": "John Doe",
-                        "handle": "jdoe@openmrp.ai",
+                        "handle": "jdoe@augno.com",
                         "role": {
                             "id": "rl_01c16d2eb637c0d1f3a372937c",
                             "object": "role",
@@ -5907,7 +5907,7 @@ export const apiTags: TagData[] = [
                                             {
                                                 "name": "host",
                                                 "type": "string",
-                                                "description": "Request host. Usually `api.openmrp.ai`.",
+                                                "description": "Request host. Usually `api.augno.com`.",
                                                 "required": true,
                                                 "nullable": false,
                                                 "expandable": false
@@ -6121,7 +6121,7 @@ export const apiTags: TagData[] = [
                                         "object": "actor",
                                         "type": "user",
                                         "name": "John Doe",
-                                        "handle": "jdoe@openmrp.ai",
+                                        "handle": "jdoe@augno.com",
                                         "role": {
                                             "id": "rl_01c16d2eb637c0d1f3a372937c",
                                             "object": "role",
@@ -6176,7 +6176,7 @@ export const apiTags: TagData[] = [
                                         "id": "rq_01304bffe90e8cce9690cbefd4",
                                         "object": "request_log",
                                         "method": "GET",
-                                        "host": "https://api.openmrp.ai",
+                                        "host": "https://api.augno.com",
                                         "path": "/v1/core/sandboxes",
                                         "normalized_route": "/v1/core/sandboxes",
                                         "query_params": {
@@ -6208,7 +6208,7 @@ export const apiTags: TagData[] = [
                                             "object": "actor",
                                             "type": "user",
                                             "name": "John Doe",
-                                            "handle": "jdoe@openmrp.ai",
+                                            "handle": "jdoe@augno.com",
                                             "role": {
                                                 "id": "rl_01c16d2eb637c0d1f3a372937c",
                                                 "object": "role",
@@ -7086,7 +7086,7 @@ export const apiTags: TagData[] = [
                                     {
                                         "name": "host",
                                         "type": "string",
-                                        "description": "Request host. Usually `api.openmrp.ai`.",
+                                        "description": "Request host. Usually `api.augno.com`.",
                                         "required": true,
                                         "nullable": false,
                                         "expandable": false
@@ -7289,7 +7289,7 @@ export const apiTags: TagData[] = [
                                 "object": "actor",
                                 "type": "user",
                                 "name": "John Doe",
-                                "handle": "jdoe@openmrp.ai",
+                                "handle": "jdoe@augno.com",
                                 "role": {
                                     "id": "rl_01c16d2eb637c0d1f3a372937c",
                                     "object": "role",
@@ -7344,7 +7344,7 @@ export const apiTags: TagData[] = [
                                 "id": "rq_01304bffe90e8cce9690cbefd4",
                                 "object": "request_log",
                                 "method": "GET",
-                                "host": "https://api.openmrp.ai",
+                                "host": "https://api.augno.com",
                                 "path": "/v1/core/sandboxes",
                                 "normalized_route": "/v1/core/sandboxes",
                                 "query_params": {
@@ -7376,7 +7376,7 @@ export const apiTags: TagData[] = [
                                     "object": "actor",
                                     "type": "user",
                                     "name": "John Doe",
-                                    "handle": "jdoe@openmrp.ai",
+                                    "handle": "jdoe@augno.com",
                                     "role": {
                                         "id": "rl_01c16d2eb637c0d1f3a372937c",
                                         "object": "role",
@@ -22774,11 +22774,11 @@ export const apiTags: TagData[] = [
                     "object": "entity",
                     "type": "user",
                     "name": "John Doe",
-                    "handle": "jdoe@openmrp.ai"
+                    "handle": "jdoe@augno.com"
                 },
                 "object": "account_user",
                 "name": "John Doe",
-                "email": "john@openmrp.ai",
+                "email": "john@augno.com",
                 "username": null,
                 "image_url": null,
                 "status": "active",
@@ -22930,7 +22930,7 @@ export const apiTags: TagData[] = [
                     ],
                     "example": {
                         "name": "John Doe",
-                        "email": "jdoe@openmrp.ai",
+                        "email": "jdoe@augno.com",
                         "username": "jdoe",
                         "password": "QgS7Z8Hhj3&1",
                         "role_id": "rl_01c16d2eb637c0d1f3a372937c",
@@ -23491,11 +23491,11 @@ export const apiTags: TagData[] = [
                                 "object": "entity",
                                 "type": "user",
                                 "name": "John Doe",
-                                "handle": "jdoe@openmrp.ai"
+                                "handle": "jdoe@augno.com"
                             },
                             "object": "account_user",
                             "name": "John Doe",
-                            "email": "john@openmrp.ai",
+                            "email": "john@augno.com",
                             "username": null,
                             "image_url": null,
                             "status": "active",
@@ -24199,11 +24199,11 @@ export const apiTags: TagData[] = [
                                 "object": "entity",
                                 "type": "user",
                                 "name": "John Doe",
-                                "handle": "jdoe@openmrp.ai"
+                                "handle": "jdoe@augno.com"
                             },
                             "object": "account_user",
                             "name": "John Doe",
-                            "email": "john@openmrp.ai",
+                            "email": "john@augno.com",
                             "username": null,
                             "image_url": null,
                             "status": "active",
@@ -24938,11 +24938,11 @@ export const apiTags: TagData[] = [
                                         "object": "entity",
                                         "type": "user",
                                         "name": "John Doe",
-                                        "handle": "jdoe@openmrp.ai"
+                                        "handle": "jdoe@augno.com"
                                     },
                                     "object": "account_user",
                                     "name": "John Doe",
-                                    "email": "john@openmrp.ai",
+                                    "email": "john@augno.com",
                                     "username": null,
                                     "image_url": null,
                                     "status": "active",
@@ -25566,11 +25566,11 @@ export const apiTags: TagData[] = [
                                 "object": "entity",
                                 "type": "user",
                                 "name": "John Doe",
-                                "handle": "jdoe@openmrp.ai"
+                                "handle": "jdoe@augno.com"
                             },
                             "object": "account_user",
                             "name": "John Doe",
-                            "email": "john@openmrp.ai",
+                            "email": "john@augno.com",
                             "username": null,
                             "image_url": null,
                             "status": "active",
@@ -66541,7 +66541,7 @@ export const apiTags: TagData[] = [
                     "object": "actor",
                     "type": "user",
                     "name": "John Doe",
-                    "handle": "jdoe@openmrp.ai",
+                    "handle": "jdoe@augno.com",
                     "role": {
                         "id": "rl_01c16d2eb637c0d1f3a372937c",
                         "object": "role",
@@ -66860,7 +66860,7 @@ export const apiTags: TagData[] = [
                                         "object": "actor",
                                         "type": "user",
                                         "name": "John Doe",
-                                        "handle": "jdoe@openmrp.ai",
+                                        "handle": "jdoe@augno.com",
                                         "role": {
                                             "id": "rl_01c16d2eb637c0d1f3a372937c",
                                             "object": "role",
@@ -67093,7 +67093,7 @@ export const apiTags: TagData[] = [
                                 "object": "actor",
                                 "type": "user",
                                 "name": "John Doe",
-                                "handle": "jdoe@openmrp.ai",
+                                "handle": "jdoe@augno.com",
                                 "role": {
                                     "id": "rl_01c16d2eb637c0d1f3a372937c",
                                     "object": "role",
@@ -69222,11 +69222,11 @@ export const apiTags: TagData[] = [
                             "object": "entity",
                             "type": "user",
                             "name": "John Doe",
-                            "handle": "jdoe@openmrp.ai"
+                            "handle": "jdoe@augno.com"
                         },
                         "object": "account_user",
                         "name": "John Doe",
-                        "email": "john@openmrp.ai",
+                        "email": "john@augno.com",
                         "username": null,
                         "image_url": null,
                         "status": "active",
@@ -71907,11 +71907,11 @@ export const apiTags: TagData[] = [
                                         "object": "entity",
                                         "type": "user",
                                         "name": "John Doe",
-                                        "handle": "jdoe@openmrp.ai"
+                                        "handle": "jdoe@augno.com"
                                     },
                                     "object": "account_user",
                                     "name": "John Doe",
-                                    "email": "john@openmrp.ai",
+                                    "email": "john@augno.com",
                                     "username": null,
                                     "image_url": null,
                                     "status": "active",
@@ -74409,11 +74409,11 @@ export const apiTags: TagData[] = [
                                         "object": "entity",
                                         "type": "user",
                                         "name": "John Doe",
-                                        "handle": "jdoe@openmrp.ai"
+                                        "handle": "jdoe@augno.com"
                                     },
                                     "object": "account_user",
                                     "name": "John Doe",
-                                    "email": "john@openmrp.ai",
+                                    "email": "john@augno.com",
                                     "username": null,
                                     "image_url": null,
                                     "status": "active",
@@ -76889,11 +76889,11 @@ export const apiTags: TagData[] = [
                                                 "object": "entity",
                                                 "type": "user",
                                                 "name": "John Doe",
-                                                "handle": "jdoe@openmrp.ai"
+                                                "handle": "jdoe@augno.com"
                                             },
                                             "object": "account_user",
                                             "name": "John Doe",
-                                            "email": "john@openmrp.ai",
+                                            "email": "john@augno.com",
                                             "username": null,
                                             "image_url": null,
                                             "status": "active",
@@ -79151,11 +79151,11 @@ export const apiTags: TagData[] = [
                                         "object": "entity",
                                         "type": "user",
                                         "name": "John Doe",
-                                        "handle": "jdoe@openmrp.ai"
+                                        "handle": "jdoe@augno.com"
                                     },
                                     "object": "account_user",
                                     "name": "John Doe",
-                                    "email": "john@openmrp.ai",
+                                    "email": "john@augno.com",
                                     "username": null,
                                     "image_url": null,
                                     "status": "active",
@@ -81460,11 +81460,11 @@ export const apiTags: TagData[] = [
                                         "object": "entity",
                                         "type": "user",
                                         "name": "John Doe",
-                                        "handle": "jdoe@openmrp.ai"
+                                        "handle": "jdoe@augno.com"
                                     },
                                     "object": "account_user",
                                     "name": "John Doe",
-                                    "email": "john@openmrp.ai",
+                                    "email": "john@augno.com",
                                     "username": null,
                                     "image_url": null,
                                     "status": "active",
@@ -106657,11 +106657,11 @@ export const apiObjects: ObjectData[] = [
                 "object": "entity",
                 "type": "user",
                 "name": "John Doe",
-                "handle": "jdoe@openmrp.ai"
+                "handle": "jdoe@augno.com"
             },
             "object": "account_user",
             "name": "John Doe",
-            "email": "john@openmrp.ai",
+            "email": "john@augno.com",
             "username": null,
             "image_url": null,
             "status": "active",
@@ -108159,7 +108159,7 @@ export const apiObjects: ObjectData[] = [
                     {
                         "name": "host",
                         "type": "string",
-                        "description": "Request host. Usually `api.openmrp.ai`.",
+                        "description": "Request host. Usually `api.augno.com`.",
                         "required": true,
                         "nullable": false,
                         "expandable": false
@@ -108362,7 +108362,7 @@ export const apiObjects: ObjectData[] = [
                 "object": "actor",
                 "type": "user",
                 "name": "John Doe",
-                "handle": "jdoe@openmrp.ai",
+                "handle": "jdoe@augno.com",
                 "role": {
                     "id": "rl_01c16d2eb637c0d1f3a372937c",
                     "object": "role",
@@ -108417,7 +108417,7 @@ export const apiObjects: ObjectData[] = [
                 "id": "rq_01304bffe90e8cce9690cbefd4",
                 "object": "request_log",
                 "method": "GET",
-                "host": "https://api.openmrp.ai",
+                "host": "https://api.augno.com",
                 "path": "/v1/core/sandboxes",
                 "normalized_route": "/v1/core/sandboxes",
                 "query_params": {
@@ -108449,7 +108449,7 @@ export const apiObjects: ObjectData[] = [
                     "object": "actor",
                     "type": "user",
                     "name": "John Doe",
-                    "handle": "jdoe@openmrp.ai",
+                    "handle": "jdoe@augno.com",
                     "role": {
                         "id": "rl_01c16d2eb637c0d1f3a372937c",
                         "object": "role",
@@ -111113,11 +111113,11 @@ export const apiObjects: ObjectData[] = [
                         "object": "entity",
                         "type": "user",
                         "name": "John Doe",
-                        "handle": "jdoe@openmrp.ai"
+                        "handle": "jdoe@augno.com"
                     },
                     "object": "account_user",
                     "name": "John Doe",
-                    "email": "john@openmrp.ai",
+                    "email": "john@augno.com",
                     "username": null,
                     "image_url": null,
                     "status": "active",
@@ -111455,7 +111455,7 @@ export const apiObjects: ObjectData[] = [
                 "object": "actor",
                 "type": "user",
                 "name": "John Doe",
-                "handle": "jdoe@openmrp.ai",
+                "handle": "jdoe@augno.com",
                 "role": {
                     "id": "rl_01c16d2eb637c0d1f3a372937c",
                     "object": "role",
@@ -119821,7 +119821,7 @@ export const apiObjects: ObjectData[] = [
             {
                 "name": "host",
                 "type": "string",
-                "description": "Request host. Usually `api.openmrp.ai`.",
+                "description": "Request host. Usually `api.augno.com`.",
                 "required": true,
                 "nullable": false,
                 "expandable": false
@@ -120206,7 +120206,7 @@ export const apiObjects: ObjectData[] = [
             "id": "rq_01304bffe90e8cce9690cbefd4",
             "object": "request_log",
             "method": "GET",
-            "host": "https://api.openmrp.ai",
+            "host": "https://api.augno.com",
             "path": "/v1/core/sandboxes",
             "normalized_route": "/v1/core/sandboxes",
             "query_params": {
@@ -120238,7 +120238,7 @@ export const apiObjects: ObjectData[] = [
                 "object": "actor",
                 "type": "user",
                 "name": "John Doe",
-                "handle": "jdoe@openmrp.ai",
+                "handle": "jdoe@augno.com",
                 "role": {
                     "id": "rl_01c16d2eb637c0d1f3a372937c",
                     "object": "role",
