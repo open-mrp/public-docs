@@ -51,7 +51,7 @@ A run can be retried at most **5 times in total**.
 
 ### Automatic retries
 
-Separately from anything you do by hand, Augno will transparently re-attempt a run at most **3 times** — but only under two conditions at once:
+Separately from anything you do by hand, OpenMRP will transparently re-attempt a run at most **3 times** — but only under two conditions at once:
 
 1. The failure was transient: _every_ model in the tier's chain was momentarily unavailable, not a bad request the model would reject again.
 2. The run had produced **no side effects** on the failed turn — no tool had executed.
@@ -91,7 +91,7 @@ Agents run unattended, so the runtime bounds them in several ways. All of these 
 
 **A repeat-loop breaker.** The runtime fingerprints each tool call by tool name plus a hash of its exact input, over a rolling window of the last 20 calls. Once the same tool has been called with byte-identical input **3 times in a row**, that third call is not executed: only the first two run, and the third is answered with an error telling the agent to try a different approach or different parameters. The run continues. This is what stops an agent from grinding on a query that will never return what it wants.
 
-**Context compaction.** Long runs accumulate a large transcript. As the conversation approaches the model's context limit, Augno compacts it — first by pruning the content of older tool results (the most recent turns are always preserved in full), then, if needed, by summarizing the conversation so far into a structured brief of goal, progress, findings, and the specific IDs and values needed to continue. Each compaction is recorded as a `compaction` step, so you can always see where it happened. Summarization always runs on the `balanced` tier regardless of the agent's own tier, since it is background work.
+**Context compaction.** Long runs accumulate a large transcript. As the conversation approaches the model's context limit, OpenMRP compacts it — first by pruning the content of older tool results (the most recent turns are always preserved in full), then, if needed, by summarizing the conversation so far into a structured brief of goal, progress, findings, and the specific IDs and values needed to continue. Each compaction is recorded as a `compaction` step, so you can always see where it happened. Summarization always runs on the `balanced` tier regardless of the agent's own tier, since it is background work.
 
 **A stalled-run reaper.** If a worker is killed mid-run — a deploy, a restart, an out-of-memory kill — the run would otherwise sit in `running` forever, because the process that would have finished it is gone. A reaper fails any run that has been `running` for more than **30 minutes**, with a message explaining the worker was interrupted. The threshold is set well above any legitimate run, so a healthy in-flight run is never reaped.
 

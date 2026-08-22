@@ -17,11 +17,11 @@ The typical packing workflow looks like this:
 1. A worker brings picked items to the packing station
 2. They select which pick lines to pack (all of them, or just the ones that are ready)
 3. They specify the number of shipping cases (boxes) needed
-4. Items are packed into the cases, and Augno creates a shipment for the packed items
+4. Items are packed into the cases, and OpenMRP creates a shipment for the packed items
 
 ### How packing works
 
-To pack items, select the picked lines that haven't been packed yet and specify the number of shipping cases. Augno then:
+To pack items, select the picked lines that haven't been packed yet and specify the number of shipping cases. OpenMRP then:
 
 - Marks the selected lines as packed
 - Creates a shipment containing the associated shipping cases
@@ -42,14 +42,14 @@ Each partial pack creates a separate shipment. Shipment naming follows a predict
 
 ### When is a pick finished?
 
-After each packing operation, Augno checks whether all pick lines have been packed:
+After each packing operation, OpenMRP checks whether all pick lines have been packed:
 
 - **All lines packed**: the pick is closed and a Finished At timestamp is recorded
 - **Lines remaining**: the pick stays open for additional packing cycles
 
 ### Remaining quantities
 
-After a partial pack, Augno automatically creates new pick lines for the unpacked quantities. This ensures the next pick cycle has accurate remaining amounts and warehouse workers always see exactly what still needs to be fulfilled.
+After a partial pack, OpenMRP automatically creates new pick lines for the unpacked quantities. This ensures the next pick cycle has accurate remaining amounts and warehouse workers always see exactly what still needs to be fulfilled.
 
 ### Next steps
 

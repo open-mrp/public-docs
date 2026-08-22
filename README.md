@@ -1,12 +1,12 @@
-# Augno Documentation
+# OpenMRP Documentation
 
-The source of [docs.augno.com](https://docs.augno.com) — Augno's product guides and API reference. It's a Next.js 16 site that combines hand-written MDX guides with an API reference generated from Augno's public OpenAPI specification.
+The source of [docs.openmrp.ai](https://docs.openmrp.ai) — OpenMRP's product guides and API reference. It's a Next.js 16 site that combines hand-written MDX guides with an API reference generated from OpenMRP's public OpenAPI specification.
 
 ## Found something wrong?
 
 Every page on the site has an **Edit this page** link at the bottom that opens its source in the GitHub editor. Fix the typo, open a pull request — no clone required.
 
-Prefer to just tell us? [Open a documentation issue](https://github.com/Augno/public-docs/issues/new?template=documentation-error.yml).
+Prefer to just tell us? [Open a documentation issue](https://github.com/open-mrp/public-docs/issues/new?template=documentation-error.yml).
 
 ## Running locally
 
@@ -39,7 +39,7 @@ bun run build        # production build
 | `src/components/markdown/` | Custom MDX components (`<ApiEndpoint />`, `<ApiKeySnippet />`, …) |
 | `scripts/` | The `build:docs` generation pipeline |
 
-Anything named `*.generated.ts` is overwritten by the build — don't hand-edit it. The API reference comes from Augno's public OpenAPI specification, so if an endpoint's description is wrong, the fix belongs at the source rather than in this repo.
+Anything named `*.generated.ts` is overwritten by the build — don't hand-edit it. The API reference comes from OpenMRP's public OpenAPI specification, so if an endpoint's description is wrong, the fix belongs at the source rather than in this repo.
 
 ### Regenerating the API reference
 
@@ -47,7 +47,7 @@ Anything named `*.generated.ts` is overwritten by the build — don't hand-edit 
 bun run build:docs
 ```
 
-This reads `specs/public_openapi_spec.json` and `specs/stainless.yml`, then regenerates the endpoint data, SDK snippets, navigation, slugs, and `llms.txt`. The specs are published artifacts of an API release and are fetched by `scripts/fetch-public-release-artifacts.sh`, which needs AWS credentials — so in practice only Augno maintainers run this step. Everything else in the repo works without it.
+This reads `specs/public_openapi_spec.json` and `specs/stainless.yml`, then regenerates the endpoint data, SDK snippets, navigation, slugs, and `llms.txt`. The specs are published artifacts of an API release and are fetched by `scripts/fetch-public-release-artifacts.sh`, which needs AWS credentials — so in practice only OpenMRP maintainers run this step. Everything else in the repo works without it.
 
 ## Search
 
@@ -71,9 +71,9 @@ Beyond GitHub-flavored Markdown, pages can use the components registered in `src
 
 Code examples get reader-specific values substituted automatically: `YOUR_API_KEY` becomes the signed-in reader's sandbox key, and `<AccountName />` / `<ApiKeySnippet />` render their account inline. Always write examples with those placeholders rather than real credentials.
 
-## For Augno maintainers
+## For OpenMRP maintainers
 
-Local linking of `@augno/ui` and `@augno/internal-sdk` via yalc, the monorepo layout, and the release/sync workflows are documented in [AGENTS.md](AGENTS.md).
+Local linking of `@openmrp/ui` and `@openmrp/internal-sdk` via yalc, the monorepo layout, and the release/sync workflows are documented in [AGENTS.md](AGENTS.md).
 
 ## License
 
@@ -81,7 +81,7 @@ Local linking of `@augno/ui` and `@augno/internal-sdk` via yalc, the monorepo la
 |---|---|
 | Source code | [MIT](LICENSE) |
 | Documentation content (`src/docs/`) | [CC BY 4.0](LICENSE-DOCS) |
-| Augno name, logo, and brand assets | Not licensed — see [TRADEMARKS.md](TRADEMARKS.md) |
+| OpenMRP name, logo, and brand assets | Not licensed — see [TRADEMARKS.md](TRADEMARKS.md) |
 
 Third-party dependency notices are in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
 

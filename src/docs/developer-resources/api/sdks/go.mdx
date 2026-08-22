@@ -1,6 +1,6 @@
 ---
 title: Go SDK
-subtitle: Call the Augno API from Go applications.
+subtitle: Call the OpenMRP API from Go applications.
 route: /api/go-sdk
 nav:
     title: Go
@@ -9,36 +9,36 @@ nav:
     order: 2
 ---
 
-The Augno Go SDK, `github.com/augno/augno-go`, is a typed client for the Augno REST API. It ships request and response types for every endpoint, handles authentication, retries, and timeouts, and exposes the full API through a single `augno.Client`.
+The OpenMRP Go SDK, `github.com/open-mrp/openmrp-go`, is a typed client for the OpenMRP REST API. It ships request and response types for every endpoint, handles authentication, retries, and timeouts, and exposes the full API through a single `openmrp.Client`.
 
 <DocCardGroup>
     <LinkCard
         pathKey="pkgGoDev.goSdk"
         title="Go package"
-        description="github.com/augno/augno-go on pkg.go.dev."
+        description="github.com/open-mrp/openmrp-go on pkg.go.dev."
     />
     <LinkCard
         pathKey="github.goSdk"
         title="Source on GitHub"
-        description="Augno/augno-go - source, changelog, and issues."
+        description="open-mrp/openmrp-go - source, changelog, and issues."
     />
 </DocCardGroup>
 
 ## Installation
 
 ```sh
-go get github.com/augno/augno-go
+go get github.com/open-mrp/openmrp-go
 ```
 
 Or pin a specific version:
 
 ```sh
-go get github.com/augno/augno-go@v0.1.1
+go get github.com/open-mrp/openmrp-go@v0.1.1
 ```
 
 ## Initialize the client
 
-Create a single client with `augno.NewClient` and reuse it across requests. Authenticate with an <InternalLink pathKey="api.apiKeys" text="API key" /> passed via `option.WithBearerToken`, and set `option.WithAugnoAccountID` to the account you want to operate on - it is sent as the `Augno-Account` header on every request.
+Create a single client with `openmrp.NewClient` and reuse it across requests. Authenticate with an <InternalLink pathKey="api.apiKeys" text="API key" /> passed via `option.WithBearerToken`, and set `option.WithOpenMRPAccountID` to the account you want to operate on - it is sent as the `OpenMRP-Account` header on every request.
 
 ```go
 package main
@@ -47,17 +47,17 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/augno/augno-go"
-	"github.com/augno/augno-go/option"
+	"github.com/open-mrp/openmrp-go"
+	"github.com/open-mrp/openmrp-go/option"
 )
 
 func main() {
-	client := augno.NewClient(
-		option.WithBearerToken("YOUR_API_KEY"),             // or omit - defaults to os.LookupEnv("AUGNO_API_KEY")
-		option.WithAugnoAccountID("YOUR_SANDBOX_ACCOUNT_ID"), // ID for the account YOUR_SANDBOX_ACCOUNT_NAME
+	client := openmrp.NewClient(
+		option.WithBearerToken("YOUR_API_KEY"),             // or omit - defaults to os.LookupEnv("OPENMRP_API_KEY")
+		option.WithOpenMRPAccountID("YOUR_SANDBOX_ACCOUNT_ID"), // ID for the account YOUR_SANDBOX_ACCOUNT_NAME
 	)
 
-	items, err := client.Catalog.Items.List(context.Background(), augno.CatalogItemListParams{})
+	items, err := client.Catalog.Items.List(context.Background(), openmrp.CatalogItemListParams{})
 	if err != nil {
 		panic(err)
 	}
@@ -66,33 +66,33 @@ func main() {
 }
 ```
 
-> In production, load your key from an environment variable or secret manager rather than hardcoding it (the bearer token defaults to `os.LookupEnv("AUGNO_API_KEY")`, so you can omit the option entirely). Treat the key like a password and never commit it.
+> In production, load your key from an environment variable or secret manager rather than hardcoding it (the bearer token defaults to `os.LookupEnv("OPENMRP_API_KEY")`, so you can omit the option entirely). Treat the key like a password and never commit it.
 
 ### Client options
 
-The SDK uses the functional options pattern: every option below can be passed to `augno.NewClient` to apply to all requests, or to an individual method call to apply to just that request.
+The SDK uses the functional options pattern: every option below can be passed to `openmrp.NewClient` to apply to all requests, or to an individual method call to apply to just that request.
 
 | Option                                     | Default                          | Description                                                                    |
 | :----------------------------------------- | :------------------------------- | :----------------------------------------------------------------------------- |
-| `option.WithBearerToken(string)`           | `os.LookupEnv("AUGNO_API_KEY")`  | API key sent as a `Bearer` token.                                              |
-| `option.WithAugnoAccountID(string)`        | -                                | Account UUID, sent as the `Augno-Account` header. Override to switch accounts. |
-| `option.WithEnvironmentProduction()`       | (default)                        | Targets `https://api.augno.com`.                                               |
+| `option.WithBearerToken(string)`           | `os.LookupEnv("OPENMRP_API_KEY")`  | API key sent as a `Bearer` token.                                              |
+| `option.WithOpenMRPAccountID(string)`        | -                                | Account UUID, sent as the `OpenMRP-Account` header. Override to switch accounts. |
+| `option.WithEnvironmentProduction()`       | (default)                        | Targets `https://api.openmrp.ai`.                                               |
 | `option.WithEnvironmentLocal()`            | -                                | Targets `http://localhost:8081`.                                               |
-| `option.WithBaseURL(string)`               | `os.LookupEnv("AUGNO_BASE_URL")` | Override the base URL directly. Don't combine with an environment option.      |
+| `option.WithBaseURL(string)`               | `os.LookupEnv("OPENMRP_BASE_URL")` | Override the base URL directly. Don't combine with an environment option.      |
 | `option.WithMaxRetries(int)`               | `2`                              | Number of automatic retries for transient failures.                            |
 | `option.WithRequestTimeout(time.Duration)` | none                             | Per-retry request timeout. Use a `context` deadline for an overall timeout.    |
 
-See the [full list of request options](https://pkg.go.dev/github.com/augno/augno-go/option) on pkg.go.dev.
+See the [full list of request options](https://pkg.go.dev/github.com/open-mrp/openmrp-go/option) on pkg.go.dev.
 
 ## Switching accounts
 
-If your integration spans multiple accounts, pass `option.WithAugnoAccountID` on individual requests to override the client-level account without constructing a new client.
+If your integration spans multiple accounts, pass `option.WithOpenMRPAccountID` on individual requests to override the client-level account without constructing a new client.
 
 ```go
 items, err := client.Catalog.Items.List(
 	context.Background(),
-	augno.CatalogItemListParams{},
-	option.WithAugnoAccountID("YOUR_ACCOUNT_ID"), // ID for the account YOUR_ACCOUNT_NAME
+	openmrp.CatalogItemListParams{},
+	option.WithOpenMRPAccountID("YOUR_ACCOUNT_ID"), // ID for the account YOUR_ACCOUNT_NAME
 )
 ```
 
@@ -100,11 +100,11 @@ items, err := client.Catalog.Items.List(
 
 Every request param and response field is typed, and each carries a docstring that appears on hover in your editor.
 
-Required request fields are plain Go values; optional fields are wrapped in `param.Opt[T]` and set with helpers like `augno.String(...)` and `augno.Int(...)`. Zero-valued optional fields are omitted from the request.
+Required request fields are plain Go values; optional fields are wrapped in `param.Opt[T]` and set with helpers like `openmrp.String(...)` and `openmrp.Int(...)`. Zero-valued optional fields are omitted from the request.
 
 ```go
-page, err := client.Catalog.Items.List(context.Background(), augno.CatalogItemListParams{
-	Limit: augno.Int(50), // optional field
+page, err := client.Catalog.Items.List(context.Background(), openmrp.CatalogItemListParams{
+	Limit: openmrp.Int(50), // optional field
 })
 ```
 
@@ -120,12 +120,12 @@ if item.JSON.Name.Valid() {
 
 ## Handling errors
 
-When the API returns a 4xx or 5xx response, the SDK returns an error of type `*augno.Error`. It carries the `StatusCode` plus the underlying `*http.Request` and `*http.Response`. Use the `errors.As` pattern to branch on it:
+When the API returns a 4xx or 5xx response, the SDK returns an error of type `*openmrp.Error`. It carries the `StatusCode` plus the underlying `*http.Request` and `*http.Response`. Use the `errors.As` pattern to branch on it:
 
 ```go
-_, err := client.Catalog.Items.List(context.Background(), augno.CatalogItemListParams{})
+_, err := client.Catalog.Items.List(context.Background(), openmrp.CatalogItemListParams{})
 if err != nil {
-	var apierr *augno.Error
+	var apierr *openmrp.Error
 	if errors.As(err, &apierr) {
 		fmt.Println(apierr.StatusCode)                // 400
 		fmt.Println(string(apierr.DumpRequest(true))) // serialized HTTP request
@@ -145,14 +145,14 @@ The SDK automatically retries certain failures up to 2 times with a short expone
 
 ```go
 // For all requests:
-client := augno.NewClient(
+client := openmrp.NewClient(
 	option.WithMaxRetries(0), // default is 2
 )
 
 // Or per request:
 client.Catalog.Items.List(
 	context.Background(),
-	augno.CatalogItemListParams{},
+	openmrp.CatalogItemListParams{},
 	option.WithMaxRetries(5),
 )
 ```
@@ -168,7 +168,7 @@ defer cancel()
 
 client.Catalog.Items.List(
 	ctx,
-	augno.CatalogItemListParams{},
+	openmrp.CatalogItemListParams{},
 	// Per-retry timeout:
 	option.WithRequestTimeout(20*time.Second),
 )
@@ -195,8 +195,8 @@ func extractCursor(pageURL string) string {
 Then iterate until there are no more pages:
 
 ```go
-page, err := client.Catalog.Items.List(context.Background(), augno.CatalogItemListParams{
-	Limit: augno.Int(100),
+page, err := client.Catalog.Items.List(context.Background(), openmrp.CatalogItemListParams{
+	Limit: openmrp.Int(100),
 })
 if err != nil {
 	panic(err)
@@ -212,8 +212,8 @@ for {
 		break
 	}
 
-	page, err = client.Catalog.Items.List(context.Background(), augno.CatalogItemListParams{
-		Cursor: augno.String(cursor),
+	page, err = client.Catalog.Items.List(context.Background(), openmrp.CatalogItemListParams{
+		Cursor: openmrp.String(cursor),
 	})
 	if err != nil {
 		panic(err)
@@ -232,7 +232,7 @@ var response *http.Response
 
 items, err := client.Catalog.Items.List(
 	context.Background(),
-	augno.CatalogItemListParams{},
+	openmrp.CatalogItemListParams{},
 	option.WithResponseInto(&response),
 )
 if err != nil {
@@ -260,14 +260,14 @@ func logger(req *http.Request, next option.MiddlewareNext) (*http.Response, erro
 	return res, err
 }
 
-client := augno.NewClient(
+client := openmrp.NewClient(
 	option.WithMiddleware(logger),
 )
 ```
 
 ## Versioning
 
-The SDK is pinned to the API version it was generated against, so upgrading the module upgrades the API version your integration targets. Review the [changelog](https://github.com/Augno/augno-go/blob/main/CHANGELOG.md) before bumping, and see <InternalLink pathKey="api.versioning" text="Versioning" /> for how Augno versions the API.
+The SDK is pinned to the API version it was generated against, so upgrading the module upgrades the API version your integration targets. Review the [changelog](https://github.com/open-mrp/openmrp-go/blob/main/CHANGELOG.md) before bumping, and see <InternalLink pathKey="api.versioning" text="Versioning" /> for how OpenMRP versions the API.
 
 ## Requirements
 

@@ -29,7 +29,7 @@ await client.catalog.units.update('un_01jm4r6700f8nwq3v5hx2d9ktp', {
     });
 
     test('ignores API key secrets', () => {
-        const code = "bearerToken: 'aug_sk_test_AM4Bjfakeapikey_fakeapikeyUWNXD'";
+        const code = "bearerToken: 'mrp_sk_test_AM4Bjfakeapikey_fakeapikeyUWNXD'";
         expect(findTypeIdsInText(code)).toEqual([]);
     });
 });
@@ -49,12 +49,12 @@ describe('buildTypeIdReplacements', () => {
 describe('mergeSnippetReplacements', () => {
     test('keeps base replacements when keys overlap', () => {
         const merged = mergeSnippetReplacements(
-            { YOUR_API_KEY: { display: 'aug_sk_...WND', copy: 'full-key' } },
+            { YOUR_API_KEY: { display: 'mrp_sk_...WND', copy: 'full-key' } },
             "client.retrieve('apke_01jm4r6700e3kxb9w2nqh7g5fp')",
         );
 
         expect(merged.YOUR_API_KEY).toEqual({
-            display: 'aug_sk_...WND',
+            display: 'mrp_sk_...WND',
             copy: 'full-key',
         });
         expect(merged['apke_01jm4r6700e3kxb9w2nqh7g5fp']).toEqual({

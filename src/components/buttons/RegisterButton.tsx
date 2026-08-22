@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from '@augno/ui';
+import { Button, ButtonProps } from '@openmrp/ui';
 
 export default function RegisterButton({ ...props }: ButtonProps) {
     return (

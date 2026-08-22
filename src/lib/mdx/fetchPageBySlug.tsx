@@ -26,7 +26,7 @@ import {
     DocNumberedSection,
     DocTab,
     DocTabs,
-} from '@augno/ui';
+} from '@openmrp/ui';
 import type { MDXComponents } from 'mdx/types';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import Link from 'next/link';

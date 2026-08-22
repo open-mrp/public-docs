@@ -15,7 +15,7 @@ export function buildCurlExample(endpoint: EndpointData) {
         lines.push(`  -X ${method} \\`);
     }
     lines.push(`  -H "Authorization: Bearer YOUR_API_KEY" \\`);
-    lines.push(`  -H "Augno-Version: ${API_VERSION.current}"`);
+    lines.push(`  -H "OpenMRP-Version: ${API_VERSION.current}"`);
 
     if (endpoint.requestBody?.example != null) {
         const body = sanitizeRequestExample(

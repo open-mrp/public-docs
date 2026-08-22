@@ -1,16 +1,16 @@
 'use client';
 
-import type { User } from '@augno/internal-sdk/resources/auth/auth';
+import type { User } from '@openmrp/internal-sdk/resources/auth/auth';
 import type {
     Tenancy,
     TenancyCurrentAccount,
     TenancyOtherAccount,
     TenancyOwnerAccount,
     TenancySandboxAccount,
-} from '@augno/internal-sdk/resources/identity/me/tenancy';
+} from '@openmrp/internal-sdk/resources/identity/me/tenancy';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import { augnoClient } from './augno-client';
+import { openMRPClient } from './openmrp-client';
 
 // In-memory flag to track if we've checked auth this page load
 // This resets on page refresh but persists during SPA navigations
@@ -19,14 +19,14 @@ let hasCheckedAuthThisPageLoad = false;
 export type { User, Tenancy, TenancyCurrentAccount, TenancyOwnerAccount, TenancyOtherAccount, TenancySandboxAccount };
 
 // `/v1/identity/me` requires a fully-resolved user identity, which the API derives from
-// the `Augno-Actor-Account` header. Callers must pass the current account ID so the server
+// the `OpenMRP-Actor-Account` header. Callers must pass the current account ID so the server
 // can validate the caller as an account member. `/v1/identity/me/tenancy` doesn't require
 // this — it resolves the user from the session cookie alone — so we call it first to
 // discover the account ID used for the current-user lookup.
 async function fetchCurrentUser(actorAccountID: string): Promise<User | null> {
     try {
-        return await augnoClient.identity.me.list({
-            headers: { 'Augno-Actor-Account': actorAccountID },
+        return await openMRPClient.identity.me.list({
+            headers: { 'OpenMRP-Actor-Account': actorAccountID },
         });
     } catch {
         return null;
@@ -35,7 +35,7 @@ async function fetchCurrentUser(actorAccountID: string): Promise<User | null> {
 
 async function fetchTenancy(): Promise<Tenancy | null> {
     try {
-        return await augnoClient.identity.me.tenancy.list();
+        return await openMRPClient.identity.me.tenancy.list();
     } catch {
         return null;
     }
@@ -43,9 +43,9 @@ async function fetchTenancy(): Promise<Tenancy | null> {
 
 async function fetchDocApiKey(productionAccountId: string): Promise<string | null> {
     try {
-        const data = await augnoClient.auth.apiKeys.actions.fetchDocAPIKey(
+        const data = await openMRPClient.auth.apiKeys.actions.fetchDocAPIKey(
             {},
-            { headers: { 'Augno-Account': productionAccountId } },
+            { headers: { 'OpenMRP-Account': productionAccountId } },
         );
         return data.api_key_secret;
     } catch {
@@ -162,7 +162,7 @@ export const useAuthStore = create<AuthState>()(
             // Logout using V2 client
             logout: async () => {
                 try {
-                    await augnoClient.auth.deleteRefreshTokens();
+                    await openMRPClient.auth.deleteRefreshTokens();
                 } catch {
                     // ignore
                 }
@@ -239,7 +239,7 @@ export const useAuthStore = create<AuthState>()(
                 try {
                     // Fetch tenancy first: it works with just the session cookie and
                     // returns the current_account that /v1/identity/me needs as its
-                    // Augno-Actor-Account header. Tenancy's 401 also triggers the SDK's
+                    // OpenMRP-Actor-Account header. Tenancy's 401 also triggers the SDK's
                     // refresh-and-retry, so by the time we call /v1/identity/me the
                     // access token is fresh.
                     const tenancy = await fetchTenancy();

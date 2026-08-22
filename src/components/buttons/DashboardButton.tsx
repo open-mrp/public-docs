@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, ButtonProps } from '@augno/ui';
+import { Button, ButtonProps } from '@openmrp/ui';
 
 export default function DashboardButton({ children, ...props }: ButtonProps) {
     return (

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Tear down @augno/internal-sdk yalc link and restore public-docs to the
+# Tear down @openmrp/internal-sdk yalc link and restore public-docs to the
 # latest published GitHub Packages version.
 #
 # Teardown invariant: see header in ui-unlink.sh.
@@ -8,7 +8,7 @@ set -e
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 source "$ROOT/scripts/yalc-lib.sh"
 
-PKG="@augno/internal-sdk"
+PKG="@openmrp/internal-sdk"
 
 echo "Resolving latest published version of $PKG..."
 NPM_REF=$(resolve_latest_version "$PKG")

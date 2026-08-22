@@ -40,12 +40,12 @@ settings:
 
 targets:
   python:
-    package_name: augno_sdk
+    package_name: openmrp_sdk
     production_repo: null
     publish:
       pypi: false
   go:
-    package_name: augno
+    package_name: openmrp
     production_repo: null
 `;
 
@@ -309,7 +309,7 @@ async function generateForTarget(target: SnippetTarget): Promise<void> {
         const result = await generateSpecFromStrings({
             oasStr: openapiJson,
             configStr,
-            stainlessProject: 'augno-public-docs',
+            stainlessProject: 'openmrp-public-docs',
             languageOverrides: {
                 mode: 'only',
                 list: ['typescript', 'http', 'python', 'go'],

@@ -12,4 +12,4 @@ Prose under `src/docs/` and `src/unpublished/` is licensed under [CC BY 4.0](LIC
 
 ## Trademarks and brand assets
 
-The Augno name, logo, wordmark, and product imagery are not licensed by either file. See [TRADEMARKS.md](TRADEMARKS.md).
+The OpenMRP name, logo, wordmark, and product imagery are not licensed by either file. See [TRADEMARKS.md](TRADEMARKS.md).

@@ -1,7 +1,7 @@
 // Public source repository for these docs. Used by the "edit this page" and
 // "report an error" links so readers can propose fixes where they read them.
 export const repo = {
-    url: 'https://github.com/Augno/public-docs',
+    url: 'https://github.com/open-mrp/public-docs',
     branch: 'main',
     // Prefix that turns a routeMap file path into a repo-relative path.
     docsDir: 'src/docs',

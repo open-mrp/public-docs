@@ -6,7 +6,7 @@ import path from 'path';
 const DOCS_DIR = path.join(process.cwd(), 'src/docs');
 const GENERATED_FILE = path.join(process.cwd(), 'src/static/apiEndpoints.generated.ts');
 const OUTPUT_FILE = path.join(process.cwd(), 'public/llms.txt');
-const BASE_URL = process.env.DOCS_BASE_URL || 'https://docs.augno.com';
+const BASE_URL = process.env.DOCS_BASE_URL || 'https://docs.openmrp.ai';
 
 interface PageFrontmatter {
     title: string;
@@ -171,7 +171,7 @@ function generateLlmsTxt(
     apiDomains: ApiNavDomain[],
     apiObjects: ApiObjectLite[],
 ): string {
-    const lines: string[] = ['# Augno Documentation', ''];
+    const lines: string[] = ['# OpenMRP Documentation', ''];
 
     const sectionMap = groupBySection(pages);
 

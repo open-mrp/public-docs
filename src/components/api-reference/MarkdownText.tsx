@@ -1,6 +1,6 @@
 'use client';
 
-import { CodeEditor } from '@augno/ui';
+import { CodeEditor } from '@openmrp/ui';
 import { marked } from 'marked';
 import { Fragment, type ReactNode, useMemo } from 'react';
 

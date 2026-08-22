@@ -1,5 +1,5 @@
 import { FrostedSurface } from '@/components/FrostedSurface';
-import { ChevronRightIcon } from '@augno/ui';
+import { ChevronRightIcon } from '@openmrp/ui';
 import Link from 'next/link';
 
 /**

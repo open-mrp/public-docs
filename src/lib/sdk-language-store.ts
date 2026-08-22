@@ -60,7 +60,7 @@ export const useSdkLanguageStore = create<SdkLanguageState>()(
             setHasHydrated: (hasHydrated) => set({ hasHydrated }),
         }),
         {
-            name: 'augno-docs-sdk-language-store',
+            name: 'openmrp-docs-sdk-language-store',
             storage: createJSONStorage(() =>
                 typeof window !== 'undefined' ? localStorage : noopStorage,
             ),

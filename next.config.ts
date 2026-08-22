@@ -2,7 +2,7 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
     pageExtensions: ['md', 'mdx', 'ts', 'tsx'],
-    transpilePackages: ['@augno/ui'],
+    transpilePackages: ['@openmrp/ui'],
     // Canonical URLs and the page's actual served path must match exactly so
     // link aggregators (e.g. Hacker News) don't keep rewriting a submitted URL
     // to a differing canonical. With trailingSlash:false, `/foo/` 308-redirects

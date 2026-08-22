@@ -2,7 +2,7 @@ Creative Commons Attribution 4.0 International (CC BY 4.0)
 
 Copyright (c) 2026 Augno, Inc.
 
-The documentation content in this repository — the MDX and Markdown source under `src/docs/`, `src/unpublished/`, and the generated API reference derived from Augno's public OpenAPI specification — is licensed under the Creative Commons Attribution 4.0 International License.
+The documentation content in this repository — the MDX and Markdown source under `src/docs/`, `src/unpublished/`, and the generated API reference derived from OpenMRP's public OpenAPI specification — is licensed under the Creative Commons Attribution 4.0 International License.
 
 You are free to:
 
@@ -11,7 +11,7 @@ You are free to:
 
 Under the following terms:
 
-  Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests Augno endorses you or your use.
+  Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests OpenMRP endorses you or your use.
 
   No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
 

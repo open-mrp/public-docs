@@ -14,8 +14,8 @@ The **Customer Portal** tab in account settings controls the branding and the ad
 
 Two images are configured here, and both are shown to customers across the whole portal:
 
-- **Logo**: your company logo, displayed throughout the portal experience. Pick an image, crop it in the editor, and save. If no logo is set, the default Augno branding is used.
-- **Portal favicon**: the small icon shown in the browser tab while a customer is on your portal. Use a small square image (32×32 or 64×64 works well); the editor crops to a square. If no favicon is set, the default Augno icon is used.
+- **Logo**: your company logo, displayed throughout the portal experience. Pick an image, crop it in the editor, and save. If no logo is set, the default OpenMRP branding is used.
+- **Portal favicon**: the small icon shown in the browser tab while a customer is on your portal. Use a small square image (32×32 or 64×64 works well); the editor crops to a square. If no favicon is set, the default OpenMRP icon is used.
 
 Uploading either image replaces the one currently in use.
 
@@ -27,7 +27,7 @@ The **portal slug** is the short identifier that appears in your portal URLs:
 - **Register**: `/<account-slug>/auth/register`
 - **Dashboard**: `/<account-slug>/dashboard`
 
-The slug must be at least 3 characters and is unique across all Augno accounts, so saving one that is already taken is rejected. **Changing the slug changes the portal address**: links your customers have saved, and any links you have published, stop resolving.
+The slug must be at least 3 characters and is unique across all OpenMRP accounts, so saving one that is already taken is rejected. **Changing the slug changes the portal address**: links your customers have saved, and any links you have published, stop resolving.
 
 ### Custom domain
 
@@ -35,7 +35,7 @@ Below the branding and slug settings, the **Portal Domain** panel serves your po
 
 #### Connecting a domain
 
-1. **Enter the domain**, for example `shop.acme.com`. A subdomain is recommended — it can be pointed at the portal with a single CNAME record. Apex domains such as `acme.com` are supported and get an A record instead, but often need extra DNS support from your provider. Augno-owned hostnames are rejected, as is a domain another account already uses.
+1. **Enter the domain**, for example `shop.acme.com`. A subdomain is recommended — it can be pointed at the portal with a single CNAME record. Apex domains such as `acme.com` are supported and get an A record instead, but often need extra DNS support from your provider. OpenMRP-owned hostnames are rejected, as is a domain another account already uses.
 2. **Publish the DNS records**. Connecting the domain returns a table of records with the type, name, and value to create at your provider, plus why each is needed:
     - **routing** — points your domain at the portal
     - **ownership** — proves you control a domain that is claimed elsewhere
@@ -59,7 +59,7 @@ The API also declares a `failed` status, but no verification path currently prod
 
 - Requests to the custom host are served as your portal, with the `/<account-slug>` prefix stripped from the visible URL.
 - Requests to the slug-based address redirect to the custom domain, so the portal has one canonical address.
-- Portal links Augno generates in customer emails — the password-reset link, and the one-click login link sent when someone tries to register with an email that already has an account — point at the custom domain.
+- Portal links OpenMRP generates in customer emails — the password-reset link, and the one-click login link sent when someone tries to register with an email that already has an account — point at the custom domain.
 
 #### Removing a domain
 

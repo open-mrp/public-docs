@@ -6,7 +6,7 @@ This file provides guidance when working with code in this repository.
 
 ## Project Overview
 
-This is a Next.js 16 documentation site for the Augno API platform. It combines manually authored guides (MDX files) with auto-generated API reference pages from OpenAPI specs.
+This is a Next.js 16 documentation site for the OpenMRP API platform. It combines manually authored guides (MDX files) with auto-generated API reference pages from OpenAPI specs.
 
 **Tech stack:** Next.js 16, React 19, TypeScript, MDX, TailwindCSS 4, Algolia (search), Zustand, `@stainless/sdk-json` (SDK snippets at docs build time)
 
@@ -70,8 +70,8 @@ Custom components available in MDX files:
 
 ### Dependencies
 
-- `@augno/ui` - Internal UI library (linked via yalc)
-- `@augno/internal-sdk` - Internal SDK (linked via yalc)
+- `@openmrp/ui` - Internal UI library (linked via yalc)
+- `@openmrp/internal-sdk` - Internal SDK (linked via yalc)
 - Uses GitHub packages registry (`.npmrc`)
 
 ## Adding Documentation

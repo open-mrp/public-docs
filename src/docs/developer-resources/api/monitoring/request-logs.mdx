@@ -9,7 +9,7 @@ nav:
     order: 1
 ---
 
-Every API request made to Augno is automatically logged and available for inspection. Request logs are useful for debugging failed requests, monitoring API usage patterns, and auditing access across your organization.
+Every API request made to OpenMRP is automatically logged and available for inspection. Request logs are useful for debugging failed requests, monitoring API usage patterns, and auditing access across your organization.
 
 ## What gets logged
 
@@ -28,7 +28,7 @@ Each request log captures:
 
 ## Viewing request logs in the Dashboard
 
-You can browse request logs directly in the <DocLink pathKey="frontend.requestLogs">Augno Dashboard</DocLink>.
+You can browse request logs directly in the <DocLink pathKey="frontend.requestLogs">OpenMRP Dashboard</DocLink>.
 
 ### List view
 
@@ -74,7 +74,7 @@ Below the property list, the detail view shows formatted JSON for:
 You can also fetch request logs programmatically using the API. Here's an example that lists recent request logs:
 
 ```bash
-curl https://api.augno.com/v1/core/request-logs \
+curl https://api.openmrp.ai/v1/core/request-logs \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
 

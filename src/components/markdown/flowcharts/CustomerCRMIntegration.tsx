@@ -1,6 +1,6 @@
 'use client';
 
-import { Flowchart, SequenceAction, SequenceActor, createSequenceDiagram } from '@augno/ui';
+import { Flowchart, SequenceAction, SequenceActor, createSequenceDiagram } from '@openmrp/ui';
 
 /**
  * Simple example of a flowchart showing API request flow
@@ -19,8 +19,8 @@ export function CustomerCRMIntegration() {
             color: 'green',
         },
         {
-            id: 'augno',
-            label: 'Augno API',
+            id: 'openmrp',
+            label: 'OpenMRP API',
             color: 'var(--primary)',
         },
     ];
@@ -35,20 +35,20 @@ export function CustomerCRMIntegration() {
         },
         {
             source: 'crm',
-            target: 'augno',
+            target: 'openmrp',
             label: 'Send customer information',
             row: 2,
         },
         {
-            source: 'augno',
-            target: 'augno',
+            source: 'openmrp',
+            target: 'openmrp',
             label: 'Customer created',
             row: 3,
         },
         {
-            source: 'augno',
+            source: 'openmrp',
             target: 'crm',
-            label: 'Add Augno ID to customer',
+            label: 'Add OpenMRP ID to customer',
             row: 4,
             event: 'customer.created',
         },

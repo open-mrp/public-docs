@@ -13,7 +13,7 @@ A **production schedule** is a machine-level plan for the weeks ahead, generated
 
 ### The constraint department
 
-Augno does not schedule the whole factory. It schedules the one department that sets the pace — the constraint — and derives every other department's work from it by walking the <InternalLink pathKey="buildProducts.bom.productionFlows" text="production flow" />.
+OpenMRP does not schedule the whole factory. It schedules the one department that sets the pace — the constraint — and derives every other department's work from it by walking the <InternalLink pathKey="buildProducts.bom.productionFlows" text="production flow" />.
 
 You name that department in the planning settings. Every <InternalLink pathKey="buildProducts.plant.machinesAndDepartments" text="machine" /> in it is planned by default, so adding a machine to the department is enough to bring it into the plan. A machine that should not be planned — one down for a rebuild, say — is excluded individually rather than moved out of the department.
 

@@ -1,5 +1,5 @@
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from '@/lib/site';
-import { PreventFlicker } from '@augno/ui';
+import { PreventFlicker } from '@openmrp/ui';
 import { Analytics } from '@vercel/analytics/next';
 import type { Metadata, Viewport } from 'next';
 import { IBM_Plex_Mono, IBM_Plex_Sans } from 'next/font/google';
@@ -27,23 +27,23 @@ export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),
     title: {
         default: SITE_TITLE,
-        template: '%s | Augno Documentation',
+        template: '%s | OpenMRP Documentation',
     },
     description: SITE_DESCRIPTION,
     applicationName: SITE_NAME,
     referrer: 'origin-when-cross-origin',
     keywords: [
-        'Augno',
-        'Augno API',
+        'OpenMRP',
+        'OpenMRP API',
         'API documentation',
         'inventory management API',
         'order fulfillment API',
         'manufacturing software',
         'developer docs',
     ],
-    authors: [{ name: 'Augno' }],
-    creator: 'Augno',
-    publisher: 'Augno',
+    authors: [{ name: 'OpenMRP' }],
+    creator: 'OpenMRP',
+    publisher: 'OpenMRP',
     // NOTE: deliberately no `alternates.canonical` here. A canonical set on the
     // root layout is inherited by every page that doesn't override it, which
     // would make those pages declare the homepage as their canonical URL. Each

@@ -9,9 +9,9 @@ nav:
     order: 10
 ---
 
-Every Augno API error uses the same response envelope. The most important fields are `code`, `type`, and `is_transient`: use those fields for programmatic handling instead of parsing the human-readable `message`.
+Every OpenMRP API error uses the same response envelope. The most important fields are `code`, `type`, and `is_transient`: use those fields for programmatic handling instead of parsing the human-readable `message`.
 
-This page is organized as a quick reference first, then a troubleshooting guide by category. Each error code has a stable anchor, so links like `https://docs.augno.com/api/errors#validation_failed` open the matching card.
+This page is organized as a quick reference first, then a troubleshooting guide by category. Each error code has a stable anchor, so links like `https://docs.openmrp.ai/api/errors#validation_failed` open the matching card.
 
 ## Error Envelope
 
@@ -24,10 +24,10 @@ All error responses are wrapped in an `error` object:
         "type": "invalid_request_error",
         "message": "The email address is not valid.",
         "param": "email",
-        "doc_url": "https://docs.augno.com/api/errors#validation_failed",
+        "doc_url": "https://docs.openmrp.ai/api/errors#validation_failed",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -37,21 +37,21 @@ All error responses are wrapped in an `error` object:
 | `code`            | string         | Exact machine-readable error condition. Branch on this for client behavior.                           |
 | `type`            | string         | Broad category: `invalid_request_error`, `api_error`, or `idempotency_error`.                         |
 | `message`         | string         | Human-readable explanation. Safe to display, but not stable enough to parse.                          |
-| `param`           | string \| null | Offending request field or parameter when Augno can identify one.                                     |
-| `doc_url`         | string         | Documentation link for this error. Usually follows `https://docs.augno.com/api/errors#{code}`.        |
+| `param`           | string \| null | Offending request field or parameter when OpenMRP can identify one.                                     |
+| `doc_url`         | string         | Documentation link for this error. Usually follows `https://docs.openmrp.ai/api/errors#{code}`.        |
 | `is_transient`    | boolean        | Whether retrying the same operation may succeed after a delay.                                        |
 | `quota`           | object \| null | Present only for `limit_exceeded`; contains `limit`, `used`, and `reset_at`.                          |
-| `request_log_url` | string \| null | Dashboard link for the request log when one is available. Include this when contacting Augno support. |
+| `request_log_url` | string \| null | Dashboard link for the request log when one is available. Include this when contacting OpenMRP support. |
 
 ## Handling Strategy
 
 | Type                    | Meaning                                                                                         | Default action                                                                |
 | ----------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | `invalid_request_error` | The request cannot be completed as sent. Examples: bad input, auth, permissions, or not found.  | Fix the request, credentials, account, or resource state before retrying.     |
-| `api_error`             | Augno or a dependency failed while handling a valid request.                                    | Retry only when `is_transient` is `true`; use exponential backoff and jitter. |
+| `api_error`             | OpenMRP or a dependency failed while handling a valid request.                                    | Retry only when `is_transient` is `true`; use exponential backoff and jitter. |
 | `idempotency_error`     | A mutation key is already in use, or the same key was reused with different request parameters. | Retry the same operation only for `idempotency_in_progress`.                  |
 
-For mutating requests, include an idempotency key. If a retry is needed, reuse the same key for the same operation so Augno can avoid duplicate side effects.
+For mutating requests, include an idempotency key. If a retry is needed, reuse the same key for the same operation so OpenMRP can avoid duplicate side effects.
 
 ## Quick Reference
 
@@ -74,19 +74,19 @@ The cards below include a representative request, expected error response, and t
 
 ### Authentication & Authorization
 
-These errors mean Augno could not authenticate the caller, or the authenticated caller is not allowed to perform the operation. See <DocLink pathKey="api.apiKeys">API Keys</DocLink> for more about API key setup and rotation.
+These errors mean OpenMRP could not authenticate the caller, or the authenticated caller is not allowed to perform the operation. See <DocLink pathKey="api.apiKeys">API Keys</DocLink> for more about API key setup and rotation.
 
 <ErrorDetails code="expired_token" meta="401 Unauthorized, not transient">
 
 A JWT access token or refresh token has passed its expiry. Retrying with the same token will keep failing.
 
-This is a session-token error, not an API key error. Access tokens travel in the `__Secure-augno.access-token` cookie, so this code comes from browser-style session traffic — never from a `Authorization: Bearer aug_sk_…` call. In production, sending an access token in the `Authorization` header is rejected.
+This is a session-token error, not an API key error. Access tokens travel in the `__Secure-openmrp.access-token` cookie, so this code comes from browser-style session traffic — never from a `Authorization: Bearer mrp_sk_…` call. In production, sending an access token in the `Authorization` header is rejected.
 
 ```bash
 curl API_HOST/v1/catalog/items \
-  -H "Cookie: __Secure-augno.access-token=EXPIRED_ACCESS_TOKEN" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "Cookie: __Secure-openmrp.access-token=EXPIRED_ACCESS_TOKEN" \
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -96,10 +96,10 @@ curl API_HOST/v1/catalog/items \
         "type": "invalid_request_error",
         "message": "Token has expired.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#expired_token",
+        "doc_url": "https://docs.openmrp.ai/api/errors#expired_token",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -119,8 +119,8 @@ The API key has passed its configured expiration date.
 ```bash
 curl API_HOST/v1/catalog/items \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -130,10 +130,10 @@ curl API_HOST/v1/catalog/items \
         "type": "invalid_request_error",
         "message": "API key has expired.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#api_key_expired",
+        "doc_url": "https://docs.openmrp.ai/api/errors#api_key_expired",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -144,13 +144,13 @@ Create a new API key, deploy it to the integration, and remove the expired key f
 
 <ErrorDetails code="api_key_revoked" meta="401 Unauthorized, not transient">
 
-The API key was explicitly revoked by an administrator or by Augno. Revocation is immediate and permanent.
+The API key was explicitly revoked by an administrator or by OpenMRP. Revocation is immediate and permanent.
 
 ```bash
 curl API_HOST/v1/catalog/items \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -160,10 +160,10 @@ curl API_HOST/v1/catalog/items \
         "type": "invalid_request_error",
         "message": "API key has been revoked.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#api_key_revoked",
+        "doc_url": "https://docs.openmrp.ai/api/errors#api_key_revoked",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -179,8 +179,8 @@ The credentials are missing, unknown, or not valid for the way they were present
 ```bash
 curl API_HOST/v1/catalog/items \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -188,12 +188,12 @@ curl API_HOST/v1/catalog/items \
     "error": {
         "code": "invalid_credentials",
         "type": "invalid_request_error",
-        "message": "Invalid API Key provided: aug_sk_prod_UN****c123.",
+        "message": "Invalid API Key provided: mrp_sk_prod_UN****c123.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#invalid_credentials",
+        "doc_url": "https://docs.openmrp.ai/api/errors#invalid_credentials",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -207,8 +207,8 @@ The caller is authenticated but lacks the permission required for the operation.
 ```bash
 curl -X PATCH API_HOST/v1/identity/account-users/acus_e5zu8bde0z3h \
   -H "Authorization: Bearer READ_ONLY_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
   -d '{"name":"Dana Smith"}'
 ```
@@ -220,15 +220,15 @@ curl -X PATCH API_HOST/v1/identity/account-users/acus_e5zu8bde0z3h \
         "type": "invalid_request_error",
         "message": "This API Key does not have permission to team:update",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#insufficient_permissions",
+        "doc_url": "https://docs.openmrp.ai/api/errors#insufficient_permissions",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
 
-The message names the `domain:action` permission the caller is missing, so it tells you exactly what to grant. Use an actor or API key with the required role, grant the missing permission, or verify that `Augno-Account` points at an account the caller can access.
+The message names the `domain:action` permission the caller is missing, so it tells you exactly what to grant. Use an actor or API key with the required role, grant the missing permission, or verify that `OpenMRP-Account` points at an account the caller can access.
 
 </ErrorDetails>
 
@@ -239,8 +239,8 @@ The account's subscription is `past_due`, `canceled`, or `unpaid`.
 ```bash
 curl API_HOST/v1/catalog/items \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -250,10 +250,10 @@ curl API_HOST/v1/catalog/items \
         "type": "invalid_request_error",
         "message": "Your subscription is past_due. Please update your billing information to continue.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#payment_required",
+        "doc_url": "https://docs.openmrp.ai/api/errors#payment_required",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -281,8 +281,8 @@ The account reached a plan-imposed resource limit. The `quota` object provides t
 ```bash
 curl -X POST API_HOST/v1/core/sandboxes \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
   -d '{"name":"West Coast Sandbox","mode":"seeded"}'
 ```
@@ -294,14 +294,14 @@ curl -X POST API_HOST/v1/core/sandboxes \
         "type": "invalid_request_error",
         "message": "Maximum of 5 sandbox accounts per account reached.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#limit_exceeded",
+        "doc_url": "https://docs.openmrp.ai/api/errors#limit_exceeded",
         "is_transient": false,
         "quota": {
             "limit": 5,
             "used": 5,
             "reset_at": null
         },
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -320,15 +320,15 @@ We have limited capacity for some plans, so you may encounter an error when atte
         "type": "invalid_request_error",
         "message": "Registration for the starter plan is currently at capacity.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#registration_closed",
+        "doc_url": "https://docs.openmrp.ai/api/errors#registration_closed",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
 
-Choose a plan that still has capacity, wait for capacity to reopen, or contact Augno support if this plan should accept new registrations.
+Choose a plan that still has capacity, wait for capacity to reopen, or contact OpenMRP support if this plan should accept new registrations.
 
 </ErrorDetails>
 
@@ -343,8 +343,8 @@ The request was parsed and structurally valid, but a business rule rejected it. 
 ```bash
 curl -X DELETE API_HOST/v1/operations/shipping-terms/shtm_c5gxy05whw6r \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -354,10 +354,10 @@ curl -X DELETE API_HOST/v1/operations/shipping-terms/shtm_c5gxy05whw6r \
         "type": "invalid_request_error",
         "message": "Default shipping terms cannot be deleted.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#validation_failed",
+        "doc_url": "https://docs.openmrp.ai/api/errors#validation_failed",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -375,8 +375,8 @@ A required JSON body field was omitted.
 ```bash
 curl -X POST API_HOST/v1/catalog/units \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
   -d '{"name":"Gram","type":"mass","ratio_numerator":"1","ratio_denominator":"1","offset_numerator":"0","offset_denominator":"1"}'
 ```
@@ -388,10 +388,10 @@ curl -X POST API_HOST/v1/catalog/units \
         "type": "invalid_request_error",
         "message": "Field 'abbreviation' is required.",
         "param": "abbreviation",
-        "doc_url": "https://docs.augno.com/api/errors#missing_field",
+        "doc_url": "https://docs.openmrp.ai/api/errors#missing_field",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -407,8 +407,8 @@ A body field is present, but its value does not match the format or constraint t
 ```bash
 curl -X POST API_HOST/v1/catalog/units \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
   -d '{"name":"Gram","abbreviation":"g","type":"mass","ratio_numerator":"1","ratio_denominator":"0","offset_numerator":"0","offset_denominator":"1"}'
 ```
@@ -420,10 +420,10 @@ curl -X POST API_HOST/v1/catalog/units \
         "type": "invalid_request_error",
         "message": "Field 'ratio_denominator' must not be zero.",
         "param": "ratio_denominator",
-        "doc_url": "https://docs.augno.com/api/errors#invalid_format",
+        "doc_url": "https://docs.openmrp.ai/api/errors#invalid_format",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -441,8 +441,8 @@ The route exists, but does not support the HTTP method you used.
 ```bash
 curl -X POST API_HOST/v1/catalog/items/it_pej07ckhvu62 \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -452,10 +452,10 @@ curl -X POST API_HOST/v1/catalog/items/it_pej07ckhvu62 \
         "type": "invalid_request_error",
         "message": "Method POST not allowed for path /v1/catalog/items/it_pej07ckhvu62.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#method_not_allowed",
+        "doc_url": "https://docs.openmrp.ai/api/errors#method_not_allowed",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -475,8 +475,8 @@ A required query string or path parameter was not provided.
 ```bash
 curl API_HOST/v1/core/addresses/suggestions \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -486,10 +486,10 @@ curl API_HOST/v1/core/addresses/suggestions \
         "type": "invalid_request_error",
         "message": "Query parameter 'input' is required.",
         "param": "input",
-        "doc_url": "https://docs.augno.com/api/errors#parameter_missing",
+        "doc_url": "https://docs.openmrp.ai/api/errors#parameter_missing",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -505,8 +505,8 @@ A query or path parameter was supplied, but its value is outside the allowed ran
 ```bash
 curl "API_HOST/v1/catalog/items?limit=-25" \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -516,17 +516,17 @@ curl "API_HOST/v1/catalog/items?limit=-25" \
         "type": "invalid_request_error",
         "message": "Query parameter 'limit' must be at least 1.",
         "param": "limit",
-        "doc_url": "https://docs.augno.com/api/errors#parameter_invalid",
+        "doc_url": "https://docs.openmrp.ai/api/errors#parameter_invalid",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
 
 `limit` accepts `1`-`1000` and defaults to `100`. An unrecognized enum value in a query parameter reports the same code with `Field '<name>' must be one of: …`.
 
-Use the ranges and enum values from the API reference. For pagination, pass back cursors exactly as Augno returned them.
+Use the ranges and enum values from the API reference. For pagination, pass back cursors exactly as OpenMRP returned them.
 
 </ErrorDetails>
 
@@ -537,8 +537,8 @@ The request included a query parameter the endpoint does not declare. Unknown pa
 ```bash
 curl "API_HOST/v1/catalog/items?skip=50" \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -548,10 +548,10 @@ curl "API_HOST/v1/catalog/items?skip=50" \
         "type": "invalid_request_error",
         "message": "Unknown query parameter 'skip'.",
         "param": "skip",
-        "doc_url": "https://docs.augno.com/api/errors#parameter_unknown",
+        "doc_url": "https://docs.openmrp.ai/api/errors#parameter_unknown",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -581,8 +581,8 @@ The requested resource does not exist in the target account, or the caller canno
 ```bash
 curl API_HOST/v1/operations/shipping-terms/shtm_c5gxy05whw6r \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -592,15 +592,15 @@ curl API_HOST/v1/operations/shipping-terms/shtm_c5gxy05whw6r \
         "type": "invalid_request_error",
         "message": "Shipping term not found.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#resource_not_found",
+        "doc_url": "https://docs.openmrp.ai/api/errors#resource_not_found",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
 
-Verify the public ID, the `Augno-Account` header, and whether the resource was deleted. Never send internal database IDs to the API.
+Verify the public ID, the `OpenMRP-Account` header, and whether the resource was deleted. Never send internal database IDs to the API.
 
 </ErrorDetails>
 
@@ -611,8 +611,8 @@ The write violated a uniqueness constraint in storage. The public message is del
 ```bash
 curl -X POST API_HOST/v1/catalog/item-categories \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
   -d '{"name":"Electronics","type":"material_category","unit_group_id":"ug_andst6m79n41"}'
 ```
@@ -624,10 +624,10 @@ curl -X POST API_HOST/v1/catalog/item-categories \
         "type": "invalid_request_error",
         "message": "Resource already exists.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#resource_conflict",
+        "doc_url": "https://docs.openmrp.ai/api/errors#resource_conflict",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -645,8 +645,8 @@ The request conflicts with the current state of the resource or account — most
 ```bash
 curl -X POST API_HOST/v1/catalog/units \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
   -d '{"name":"Gram","abbreviation":"g","type":"mass","ratio_numerator":"1","ratio_denominator":"1","offset_numerator":"0","offset_denominator":"1"}'
 ```
@@ -658,10 +658,10 @@ curl -X POST API_HOST/v1/catalog/units \
         "type": "invalid_request_error",
         "message": "A unit with this name already exists.",
         "param": "name",
-        "doc_url": "https://docs.augno.com/api/errors#resource_conflict",
+        "doc_url": "https://docs.openmrp.ai/api/errors#resource_conflict",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -677,8 +677,8 @@ The resource existed previously, but has been permanently deleted or can no long
 ```bash
 curl -X DELETE API_HOST/v1/catalog/products/pd_07oe0r7adh2w \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -688,10 +688,10 @@ curl -X DELETE API_HOST/v1/catalog/products/pd_07oe0r7adh2w \
         "type": "invalid_request_error",
         "message": "This product has already been deleted and can no longer be modified.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#resource_gone",
+        "doc_url": "https://docs.openmrp.ai/api/errors#resource_gone",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -711,8 +711,8 @@ A request with the same idempotency key is already being processed.
 ```bash
 curl -X PATCH API_HOST/v1/operations/shipping-terms/shtm_c5gxy05whw6r \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID" \
   -H "Idempotency-Key: req_abc123" \
   -H "Content-Type: application/json" \
   -d '{"name":"Collect"}'
@@ -725,17 +725,17 @@ curl -X PATCH API_HOST/v1/operations/shipping-terms/shtm_c5gxy05whw6r \
         "type": "idempotency_error",
         "message": "Request for the idempotency key 'req_abc123' is already being processed.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#idempotency_in_progress",
+        "doc_url": "https://docs.openmrp.ai/api/errors#idempotency_in_progress",
         "is_transient": true,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
 
 Retry the same request with the same key after a short delay. Do not generate a new key unless you intend to start a separate operation.
 
-If the same key is reused with different parameters, Augno returns `validation_failed`
+If the same key is reused with different parameters, OpenMRP returns `validation_failed`
 with `type: "idempotency_error"`:
 
 ```json
@@ -745,10 +745,10 @@ with `type: "idempotency_error"`:
         "type": "idempotency_error",
         "message": "Idempotency key 'req_abc123' was used with different request parameters; use a new key.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#validation_failed",
+        "doc_url": "https://docs.openmrp.ai/api/errors#validation_failed",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -763,13 +763,13 @@ Rate limiting is temporary throttling. See <DocLink pathKey="api.rateLimiting">R
 
 <ErrorDetails code="rate_limit_exceeded" meta="429 Too Many Requests, transient">
 
-The caller sent requests faster than Augno allows.
+The caller sent requests faster than OpenMRP allows.
 
 ```bash
 curl API_HOST/v1/catalog/items \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -779,10 +779,10 @@ curl API_HOST/v1/catalog/items \
         "type": "invalid_request_error",
         "message": "Too many requests. Please try again later.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#rate_limit_exceeded",
+        "doc_url": "https://docs.openmrp.ai/api/errors#rate_limit_exceeded",
         "is_transient": true,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -795,16 +795,16 @@ Back off before retrying, honor `Retry-After`, and add client-side queueing or r
 
 ### API Version
 
-API version errors are fixed by sending a supported `Augno-Version` header. See <DocLink pathKey="api.versioning">API Versioning</DocLink> for supported versions and upgrade guidance.
+API version errors are fixed by sending a supported `OpenMRP-Version` header. See <DocLink pathKey="api.versioning">API Versioning</DocLink> for supported versions and upgrade guidance.
 
 <ErrorDetails code="api_version_required" meta="400 Bad Request, not transient">
 
-The request did not include the required `Augno-Version` header.
+The request did not include the required `OpenMRP-Version` header.
 
 ```bash
 curl API_HOST/v1/catalog/items \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -812,29 +812,29 @@ curl API_HOST/v1/catalog/items \
     "error": {
         "code": "api_version_required",
         "type": "invalid_request_error",
-        "message": "The Augno-Version header is required. Please include a valid API version. The latest version is CURRENT_API_VERSION.",
+        "message": "The OpenMRP-Version header is required. Please include a valid API version. The latest version is CURRENT_API_VERSION.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#api_version_required",
+        "doc_url": "https://docs.openmrp.ai/api/errors#api_version_required",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
 
-Add `Augno-Version` to every request or configure it once in your SDK client.
+Add `OpenMRP-Version` to every request or configure it once in your SDK client.
 
 </ErrorDetails>
 
 <ErrorDetails code="api_version_invalid" meta="400 Bad Request, not transient">
 
-The `Augno-Version` header is present, but the value is not one Augno serves. This covers both a malformed string and a well-formed version that is no longer (or not yet) supported — Augno versions are named, not dated, so a date is always rejected here.
+The `OpenMRP-Version` header is present, but the value is not one OpenMRP serves. This covers both a malformed string and a well-formed version that is no longer (or not yet) supported — OpenMRP versions are named, not dated, so a date is always rejected here.
 
 ```bash
 curl API_HOST/v1/catalog/items \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: 2024-01-01" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: 2024-01-01" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -844,10 +844,10 @@ curl API_HOST/v1/catalog/items \
         "type": "invalid_request_error",
         "message": "Invalid API version '2024-01-01'. Supported versions: [CURRENT_API_VERSION 1.0.forge-preview.1]",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#api_version_invalid",
+        "doc_url": "https://docs.openmrp.ai/api/errors#api_version_invalid",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -865,17 +865,17 @@ If it appears, the message names both the minimum the endpoint needs and the ver
 
 ### Server Errors
 
-Server errors mean Augno or a dependency failed while handling the request. Most are transient. For mutating requests, retry with the same idempotency key.
+Server errors mean OpenMRP or a dependency failed while handling the request. Most are transient. For mutating requests, retry with the same idempotency key.
 
 <ErrorDetails code="internal_error" meta="500 Internal Server Error, transient">
 
-Augno encountered an unexpected server-side failure. The public message is intentionally generic; internal diagnostics are captured in Augno logs.
+OpenMRP encountered an unexpected server-side failure. The public message is intentionally generic; internal diagnostics are captured in OpenMRP logs.
 
 ```bash
 curl API_HOST/v1/catalog/items \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 ```json
@@ -885,51 +885,51 @@ curl API_HOST/v1/catalog/items \
         "type": "api_error",
         "message": "Something went wrong.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#internal_error",
+        "doc_url": "https://docs.openmrp.ai/api/errors#internal_error",
         "is_transient": true,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
 
-Retry with exponential backoff if the operation is safe to retry. If it persists, include `request_log_url` when contacting Augno support.
+Retry with exponential backoff if the operation is safe to retry. If it persists, include `request_log_url` when contacting OpenMRP support.
 
 </ErrorDetails>
 
 <ErrorDetails code="service_unavailable" meta="503 Service Unavailable, transient">
 
-Reserved for an Augno service or internal dependency being temporarily unavailable.
+Reserved for an OpenMRP service or internal dependency being temporarily unavailable.
 
 </ErrorDetails>
 
 <ErrorDetails code="external_service_error" meta="502 Bad Gateway, transient">
 
-Reserved for a third-party service used by Augno returning an error.
+Reserved for a third-party service used by OpenMRP returning an error.
 
 </ErrorDetails>
 
 <ErrorDetails code="timeout" meta="504 Gateway Timeout, transient">
 
-Reserved for an operation exceeding a deadline while Augno waits for work to finish.
+Reserved for an operation exceeding a deadline while OpenMRP waits for work to finish.
 
 </ErrorDetails>
 
 <ErrorDetails code="connection_error" meta="502 Bad Gateway, transient">
 
-Reserved for a network-level failure reaching a service Augno depends on.
+Reserved for a network-level failure reaching a service OpenMRP depends on.
 
 </ErrorDetails>
 
 <ErrorDetails code="request_timeout" meta="408 Request Timeout, transient">
 
-An internal call exceeded its deadline before Augno could finish processing the request. Long-running analytical or planning work is the usual cause.
+An internal call exceeded its deadline before OpenMRP could finish processing the request. Long-running analytical or planning work is the usual cause.
 
 ```bash
 curl -X PUT API_HOST/v1/operations/production-schedules/actions/preview \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
   -d '{"horizon_weeks":104}'
 ```
@@ -941,10 +941,10 @@ curl -X PUT API_HOST/v1/operations/production-schedules/actions/preview \
         "type": "api_error",
         "message": "Request timed out.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#request_timeout",
+        "doc_url": "https://docs.openmrp.ai/api/errors#request_timeout",
         "is_transient": true,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
@@ -955,13 +955,13 @@ Retry with backoff. For long-running operations, narrow the request (a shorter p
 
 <ErrorDetails code="client_closed_request" meta="499, not transient">
 
-The client disconnected before Augno finished processing the request. Status `499` is a non-standard HTTP status commonly used by proxies for client-closed requests. Augno still writes the status and the request log, so the call is visible even though nothing reached your client.
+The client disconnected before OpenMRP finished processing the request. Status `499` is a non-standard HTTP status commonly used by proxies for client-closed requests. OpenMRP still writes the status and the request log, so the call is visible even though nothing reached your client.
 
 ```bash
 curl --max-time 2 -X POST API_HOST/v1/sales/sales-orders/or_9lqo07quiwyb/actions/create-production-run \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID" \
   -H "Idempotency-Key: req_create_run_01"
 ```
 
@@ -972,17 +972,17 @@ curl --max-time 2 -X POST API_HOST/v1/sales/sales-orders/or_9lqo07quiwyb/actions
         "type": "api_error",
         "message": "Client closed the connection.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#client_closed_request",
+        "doc_url": "https://docs.openmrp.ai/api/errors#client_closed_request",
         "is_transient": false,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
 
 A cancellation that surfaces from the database layer instead reports `Request was canceled.` under the same code.
 
-**The work may still have completed.** A 499 says your client went away, not that Augno stopped. Investigate client-side cancellation, browser navigation, network interruption, or a proxy or client timeout that is shorter than the operation. For mutations, always send an idempotency key so the retry cannot duplicate work that already landed.
+**The work may still have completed.** A 499 says your client went away, not that OpenMRP stopped. Investigate client-side cancellation, browser navigation, network interruption, or a proxy or client timeout that is shorter than the operation. For mutations, always send an idempotency key so the retry cannot duplicate work that already landed.
 
 </ErrorDetails>
 

@@ -4,13 +4,13 @@ import { useAuth } from '@/lib/auth-store';
 import { paths } from '@/static/paths';
 import {
     ArrowRightIcon,
-    AugnoLogo,
+    OpenMRPLogo,
     Button,
     CloseIcon,
     DarkModeButton,
     MenuIcon,
     useDarkMode,
-} from '@augno/ui';
+} from '@openmrp/ui';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState, useSyncExternalStore } from 'react';
@@ -95,7 +95,7 @@ export default function NavbarContents({ hideThemeToggle = false }) {
                     <div className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-[var(--background)] text-[var(--foreground)] p-4 sm:max-w-sm sm:ring-1 sm:ring-[var(--foreground)]/10 shadow-xl">
                         <div className="flex items-center justify-between">
                             <Link href={paths.home} className="-m-1.5 p-1.5">
-                                <AugnoLogo color={color} />
+                                <OpenMRPLogo color={color} />
                             </Link>
                             <Button
                                 variant="icon"

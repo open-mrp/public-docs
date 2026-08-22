@@ -20,7 +20,7 @@ The **customer portal** is a branded, self-service storefront that gives your cu
 
 ### Account slug and branding
 
-By default every portal URL is built from your **account slug**, a short, unique identifier for your Augno account. The slug determines the base URL for all customer-facing pages:
+By default every portal URL is built from your **account slug**, a short, unique identifier for your OpenMRP account. The slug determines the base URL for all customer-facing pages:
 
 - **Login**: `/<account-slug>/auth/login`
 - **Register**: `/<account-slug>/auth/register`
@@ -30,14 +30,14 @@ You can also serve the portal from a domain you own, in which case the slug disa
 
 Branding is configured on the **Customer Portal** tab of <InternalLink pathKey="manageAccount.customerPortalSettings" text="account settings" /> and applies across the whole portal:
 
-- **Logo**: shown throughout the experience. If no logo is configured, the default Augno branding is used.
-- **Favicon**: a small square image shown in the browser tab while a customer is on your portal. If no favicon is uploaded, the default Augno icon is used.
+- **Logo**: shown throughout the experience. If no logo is configured, the default OpenMRP branding is used.
+- **Favicon**: a small square image shown in the browser tab while a customer is on your portal. If no favicon is uploaded, the default OpenMRP icon is used.
 
 Together this means every customer touchpoint (login, registration, ordering, account management) feels like an extension of your own website.
 
 ### Custom domain
 
-An account can connect **one** custom portal domain, so customers reach you at an address such as `shop.acme.com` instead of an Augno URL. Connect it from the **Customer Portal** tab of account settings:
+An account can connect **one** custom portal domain, so customers reach you at an address such as `shop.acme.com` instead of an OpenMRP URL. Connect it from the **Customer Portal** tab of account settings:
 
 1. **Enter the domain**. A subdomain such as `shop.yourdomain.com` is recommended; it can be pointed at the portal with a single CNAME record. Apex domains such as `yourdomain.com` are supported but need an A record and, depending on your DNS provider, extra support.
 2. **Publish the DNS records**. Connecting the domain returns the exact records to create at your DNS provider. Each record is either a **routing** record (points traffic at the portal) or an **ownership** record (proves you control a domain that is claimed elsewhere).
@@ -47,7 +47,7 @@ Once a domain is verified:
 
 - Requests to that host are mapped back to your account and served as your portal, with the `/<account-slug>` prefix stripped from the visible URL.
 - Requests to the slug-based address redirect to the custom domain, so there is one canonical portal address.
-- Portal links Augno generates in customer emails — the password-reset link, and the one-click login link sent when someone tries to register with an email that already has an account — point at the custom domain rather than the slug URL.
+- Portal links OpenMRP generates in customer emails — the password-reset link, and the one-click login link sent when someone tries to register with an email that already has an account — point at the custom domain rather than the slug URL.
 
 Removing the domain detaches it immediately: customers fall back to the slug-based portal address, and you can safely delete the DNS records you published. Because an account holds only one custom domain, removing it is also how you free the slot up for a different one.
 
@@ -97,7 +97,7 @@ The portal checkout has three steps, with a running order summary alongside them
 
 #### Shipping options and rates
 
-The shipping choices on the review step come from **rate shopping**: Augno quotes every carrier and service level configured on your account, filtered to the ones you have enabled for the portal, and returns them sorted cheapest first. Rates for carriers linked to a Shippo carrier account come from Shippo. Carriers with **no** Shippo carrier account are still listed, at a rate of `0` — they are options the customer can pick, not priced quotes. Carriers that are mapped to Shippo are dropped from the list entirely when your account has no Shippo integration connected, or when their rates cannot be fetched, rather than being shown at a fabricated zero.
+The shipping choices on the review step come from **rate shopping**: OpenMRP quotes every carrier and service level configured on your account, filtered to the ones you have enabled for the portal, and returns them sorted cheapest first. Rates for carriers linked to a Shippo carrier account come from Shippo. Carriers with **no** Shippo carrier account are still listed, at a rate of `0` — they are options the customer can pick, not priced quotes. Carriers that are mapped to Shippo are dropped from the list entirely when your account has no Shippo integration connected, or when their rates cannot be fetched, rather than being shown at a fabricated zero.
 
 Your freight rules are applied on top of those quotes, and they can legitimately change what a customer sees:
 

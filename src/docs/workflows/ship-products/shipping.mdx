@@ -8,31 +8,31 @@ nav:
     order: 4
 ---
 
-**Shipping** is the final stage of fulfillment. Once items are <InternalLink pathKey="shipProducts.packing.overview" text="packed" /> into shipments, Augno generates shipping labels through the Shippo integration, assigns tracking numbers, and marks the shipment as shipped: getting packages from your dock to the customer's door.
+**Shipping** is the final stage of fulfillment. Once items are <InternalLink pathKey="shipProducts.packing.overview" text="packed" /> into shipments, OpenMRP generates shipping labels through the Shippo integration, assigns tracking numbers, and marks the shipment as shipped: getting packages from your dock to the customer's door.
 
 ### On the factory floor
 
 The typical shipping workflow looks like this:
 
 1. Packed cases arrive at the shipping dock
-2. A worker opens the shipment in Augno and confirms the shipping details (carrier, service level, weight, addresses)
-3. They generate labels: Augno calls Shippo to create a label for each shipping case
+2. A worker opens the shipment in OpenMRP and confirms the shipping details (carrier, service level, weight, addresses)
+3. They generate labels: OpenMRP calls Shippo to create a label for each shipping case
 4. Labels are printed and affixed to the cases
 5. The carrier picks up the packages
 
 ### Carrier setup
 
-Before you can ship, connect a carrier through Augno's Shippo integration:
+Before you can ship, connect a carrier through OpenMRP's Shippo integration:
 
 - **Add a carrier account**: connect your UPS, FedEx, USPS, or other supported carrier account to Shippo
-- **Configure <InternalLink pathKey="generateSales.customerSetup.defaultCarriers" text="carriers" /> in Augno**: set up carriers and service levels that map to your Shippo accounts
+- **Configure <InternalLink pathKey="generateSales.customerSetup.defaultCarriers" text="carriers" /> in OpenMRP**: set up carriers and service levels that map to your Shippo accounts
 - **Service level discovery**: available service levels are automatically pulled from Shippo, so you always see the options your carrier account supports
 
 Carriers and service levels can be defaulted at the <InternalLink pathKey="generateSales.customer.overview" text="customer" /> level and overridden per <InternalLink pathKey="generateSales.salesOrder.overview" text="sales order" />.
 
 ### Generating shipping labels
 
-When you ship a shipment, Augno calls Shippo to generate instant labels:
+When you ship a shipment, OpenMRP calls Shippo to generate instant labels:
 
 - **One label per case**: each shipping case in the shipment gets its own label with a unique tracking number
 - **Validation**: the system validates freight weights and addresses before generating labels to catch errors early
@@ -42,7 +42,7 @@ When you ship a shipment, Augno calls Shippo to generate instant labels:
 
 Shipping a shipment triggers the following sequence:
 
-1. **Labels created**: Augno calls Shippo to generate a label for each shipping case
+1. **Labels created**: OpenMRP calls Shippo to generate a label for each shipping case
 2. **Labels uploaded**: label files are stored and linked to the shipment
 3. **Tracking numbers assigned**: each case receives its own tracking number
 4. **Master tracking number recorded**: the shipment gets a master tracking number for the overall delivery
@@ -51,7 +51,7 @@ Shipping a shipment triggers the following sequence:
 
 ### Shipping rate estimation
 
-Before you ship, Augno fetches rates from Shippo so you can see the estimated cost. Rates are calculated based on:
+Before you ship, OpenMRP fetches rates from Shippo so you can see the estimated cost. Rates are calculated based on:
 
 - **Parcel dimensions**: length, width, height of each shipping case
 - **Weight**: total freight weight
@@ -102,6 +102,6 @@ Voiding is only possible if the shipment hasn't been finalized.
 
 ### Sandbox behavior
 
-In sandbox mode, Shippo API calls are skipped entirely. Instead, Augno generates fake tracking numbers and simulates the label creation process. This lets you test the full picking, packing, and shipping workflow without incurring carrier charges or needing a live carrier account.
+In sandbox mode, Shippo API calls are skipped entirely. Instead, OpenMRP generates fake tracking numbers and simulates the label creation process. This lets you test the full picking, packing, and shipping workflow without incurring carrier charges or needing a live carrier account.
 
 Next: <InternalLink pathKey="collectPayments.overview" text="Collect Payments" includeArrow />

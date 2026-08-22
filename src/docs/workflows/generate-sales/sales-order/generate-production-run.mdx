@@ -1,6 +1,6 @@
 ---
 title: Generate a production run
-subtitle: Generate a production run from a sales order in Augno.
+subtitle: Generate a production run from a sales order in OpenMRP.
 route: /generate-sales/sales-order/generate-production-run
 nav:
     title: Generate a production run
@@ -15,7 +15,7 @@ If an order includes items that need to be manufactured, you can generate a **Pr
 
 - A Production Run turns order demand into manufacturing work (batches/tasks).
 - This action is separate from <InternalLink pathKey="generateSales.salesOrder.issue" text="Issue" />. Issuing does not automatically create a Production Run.
-- In current Augno flow, users typically generate the run while the order is still in <InternalLink pathKey="generateSales.salesOrder.create" text="Estimate" />.
+- In current OpenMRP flow, users typically generate the run while the order is still in <InternalLink pathKey="generateSales.salesOrder.create" text="Estimate" />.
 - If needed, generate the run first, then issue the order to move it into picking and shipping.
 
 Generate a production run from a sales order when current inventory is not enough to fulfill the order.

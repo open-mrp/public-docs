@@ -8,7 +8,7 @@ nav:
     order: 4
 ---
 
-Notifications are the bell feed in Augno: the short, personal list of things that happened and might need
+Notifications are the bell feed in OpenMRP: the short, personal list of things that happened and might need
 your attention — a message you were mentioned in, an order that changed, an agent run that finished, a
 customer that registered on your portal. <BetaTag />
 
@@ -24,11 +24,11 @@ There are two resources behind the bell:
 - **Notifications** are addressed to **one user in one account**. Each recipient gets their own row, with
   their own read state.
 - **Announcements** are broadcast to **everyone in an account** (or, for platform announcements, everyone
-  on Augno). One announcement is stored once, and each user gets their own lightweight receipt recording
+  on OpenMRP). One announcement is stored once, and each user gets their own lightweight receipt recording
   whether they have seen, read, or dismissed it.
 
 The two are read through separate endpoints and merged into one list by the client — that is exactly what
-the Augno dashboard does to render the bell, sorting notifications by `created_at` and announcements by
+the OpenMRP dashboard does to render the bell, sorting notifications by `created_at` and announcements by
 `publish_at`, newest first.
 
 ## The status model
@@ -105,8 +105,8 @@ account (an API key, for example) gets an empty list rather than an error.
 ```bash
 curl "API_HOST/v1/messaging/notifications?status=unseen&include=sender,resource" \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 Filters:
@@ -187,8 +187,8 @@ hold, an approval waiting.
 ```bash
 curl -X POST API_HOST/v1/messaging/notifications \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
   -d '{
     "category": "order.updated",
@@ -231,7 +231,7 @@ the request body, so recipients always see who really sent it. You cannot spoof 
 ## Announcements
 
 An announcement is the account-wide half of the bell. It has a `scope` — `account` (everyone in one account) or
-`platform` (everyone on Augno) — a `publish_at` and an optional `expires_at` that bracket the window in which it
+`platform` (everyone on OpenMRP) — a `publish_at` and an optional `expires_at` that bracket the window in which it
 is visible, and the same category, priority, title, body, and optional linked resource as a notification.
 
 **There is no create-announcement endpoint.** This trips people up: they find five announcement endpoints, all
@@ -241,8 +241,8 @@ created by **sending a notification with `target.type: "account"`**:
 ```bash
 curl -X POST API_HOST/v1/messaging/notifications \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
   -d '{
     "category": "system.broadcast",
@@ -300,8 +300,8 @@ creates or replaces one:
 ```bash
 curl -X PUT API_HOST/v1/messaging/preferences \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
   -d '{
     "category": "chat.mention",
@@ -325,7 +325,7 @@ The rules:
   a specific preference for, and it comes back with `category: null`.
 - **The most specific row wins.** A category-specific preference beats the global default; where neither exists,
   the built-in defaults apply.
-- **Category must be one Augno recognizes.** Unlike the open-ended category field on a notification, preferences
+- **Category must be one OpenMRP recognizes.** Unlike the open-ended category field on a notification, preferences
   reject a category the platform does not know.
 
 Defaults when no preference row exists at all: **in-app on, email off.** That is deliberate — a new user gets a

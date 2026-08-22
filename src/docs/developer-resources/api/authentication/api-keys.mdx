@@ -9,7 +9,7 @@ nav:
     order: 1
 ---
 
-The Augno API uses <InternalLink pathKey="apiReference.apiKey.listApiKeys" text="API keys" /> to authenticate requests. You can view and manage your API keys in the <InternalLink pathKey="frontend.apiKeys" text="Dashboard" />. If a request to the API does not include a valid API key, we return a `401` carrying the `invalid_credentials` error code (its `type` is `invalid_request_error`). Expired and revoked keys return the distinct `api_key_expired` and `api_key_revoked` codes, so you can tell a lapsed key apart from one that was cut off deliberately — see <InternalLink pathKey="api.errors" text="handling errors" />.
+The OpenMRP API uses <InternalLink pathKey="apiReference.apiKey.listApiKeys" text="API keys" /> to authenticate requests. You can view and manage your API keys in the <InternalLink pathKey="frontend.apiKeys" text="Dashboard" />. If a request to the API does not include a valid API key, we return a `401` carrying the `invalid_credentials` error code (its `type` is `invalid_request_error`). Expired and revoked keys return the distinct `api_key_expired` and `api_key_revoked` codes, so you can tell a lapsed key apart from one that was cut off deliberately — see <InternalLink pathKey="api.errors" text="handling errors" />.
 
 ## Key Types
 
@@ -17,16 +17,16 @@ There are two types of API keys:
 
 | Type                  | Prefix         | Description                                                                                                                                                                                                                                                                                                    |
 | --------------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Sandbox secret key    | `aug_sk_test_` | Authenticate requests on your server when you're testing in a sandbox. By default, this key is provided admin privileges so you can use this key to perform any API request without restriction. Reserve this key for testing and development to make sure you don't accidentally modify your production data. |
-| Production secret key | `aug_sk_prod_` | Authenticate requests on your server when in production mode. You can create and configure these API keys with custom levels of permissions up to admin privileges.                                                                                                                                            |
+| Sandbox secret key    | `mrp_sk_test_` | Authenticate requests on your server when you're testing in a sandbox. By default, this key is provided admin privileges so you can use this key to perform any API request without restriction. Reserve this key for testing and development to make sure you don't accidentally modify your production data. |
+| Production secret key | `mrp_sk_prod_` | Authenticate requests on your server when in production mode. You can create and configure these API keys with custom levels of permissions up to admin privileges.                                                                                                                                            |
 
-The mode is baked into the key itself. A secret key reads `aug_sk_{mode}_{secret}`, where `{mode}` is `prod` or `test`.
+The mode is baked into the key itself. A secret key reads `mrp_sk_{mode}_{secret}`, where `{mode}` is `prod` or `test`.
 
 Your API keys can be found in the <InternalLink pathKey="frontend.apiKeys" text="Dashboard" />. Listing, creating, retrieving, rotating, and revoking API keys all require an admin role — a scoped custom role cannot manage keys, no matter which permissions it holds.
 
 ## Documentation API Keys
 
-If you're <InternalLink pathKey="frontend.login" text="logged in" /> to Augno, our documentation populates code examples with a sandbox API key that only you can see. This sandbox API key is generated the first time you or a member of your account visits the Augno docs while logged in. These are clearly denoted in the Dashboard with the name `Doc API Key [System Generated]`. These keys are short-lived and will expire and rotate automatically every 30 days. However, should you wish to turn off this feature, simply revoke the API key in the Dashboard and it will immediately be revoked and will no longer auto-populate in the docs. This process is handled on a per-sandbox basis, meaning that you must revoke the system-generated API key on each sandbox that you wish not to auto-populate in the docs.
+If you're <InternalLink pathKey="frontend.login" text="logged in" /> to OpenMRP, our documentation populates code examples with a sandbox API key that only you can see. This sandbox API key is generated the first time you or a member of your account visits the OpenMRP docs while logged in. These are clearly denoted in the Dashboard with the name `Doc API Key [System Generated]`. These keys are short-lived and will expire and rotate automatically every 30 days. However, should you wish to turn off this feature, simply revoke the API key in the Dashboard and it will immediately be revoked and will no longer auto-populate in the docs. This process is handled on a per-sandbox basis, meaning that you must revoke the system-generated API key on each sandbox that you wish not to auto-populate in the docs.
 
 If you're not logged in, our code examples will clearly indicate where your API key should go with "YOUR_API_KEY".
 
@@ -39,11 +39,11 @@ If you're not logged in, our code examples will clearly indicate where your API 
 
 | Type   | Value             | When to Use                                                                                                                                                                                                                                                                                                                                                                                         |
 | :----- | :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Secret | <ApiKeySnippet /> | **Server-Side Security**: To call Augno APIs, store your secret key securely within your server environment (e.g., environment variables or a credential manager). Never expose this key in client-side code, websites, or mobile binaries. Additionally, you should apply the principle of least privilege by restricting the key's permissions to only the specific actions your server requires. |
+| Secret | <ApiKeySnippet /> | **Server-Side Security**: To call OpenMRP APIs, store your secret key securely within your server environment (e.g., environment variables or a credential manager). Never expose this key in client-side code, websites, or mobile binaries. Additionally, you should apply the principle of least privilege by restricting the key's permissions to only the specific actions your server requires. |
 
 ```js
 // Example client setup for YOUR_ACCOUNT_NAME
-const augno = new AugnoClient({
+const openmrp = new OpenMRPClient({
     apiKey: 'YOUR_API_KEY',
 });
 ```
@@ -73,7 +73,7 @@ The `Authorization` header may carry API keys only. A user access token sent in 
 By default, API requests operate on the account that owns the API key. To target a different account (such as a connected customer or supplier account), include the target account ID header:
 
 ```http
-Augno-Account: YOUR_ACCOUNT_ID
+OpenMRP-Account: YOUR_ACCOUNT_ID
 ```
 
 The API key must have permission to access the target account through an established relationship.
@@ -102,7 +102,7 @@ Two optional fields shape the changeover:
 ## Security
 
 - **Storage:** The full API key is shown once at creation or rotation and cannot be retrieved afterward. Store it securely.
-- **Display:** In API responses and logs, keys are masked to show only the last 4 characters of the secret (e.g., `aug_sk_prod_****UCZu`).
+- **Display:** In API responses and logs, keys are masked to show only the last 4 characters of the secret (e.g., `mrp_sk_prod_****UCZu`).
 - **Expiration:** API keys can be created with an optional expiration date. Expired keys are automatically rejected.
 - **Revocation:** API keys can be revoked at any time. Revocation is immediate and cannot be undone; the key record is retained so it stays auditable. There is no operation that deletes a key record.
 - **Usage tracking:** All requests attempted with an API key are logged, and each key records the last time it authenticated a request. That timestamp is written at most once a day, so it can lag actual use by up to 24 hours.

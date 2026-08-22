@@ -8,8 +8,8 @@ import { renderOgImage } from '@/lib/og';
  */
 export function GET(request: Request) {
     const { searchParams } = new URL(request.url);
-    const title = searchParams.get('t') || 'Augno Documentation';
-    const eyebrow = searchParams.get('e') || 'Augno Docs';
+    const title = searchParams.get('t') || 'OpenMRP Documentation';
+    const eyebrow = searchParams.get('e') || 'OpenMRP Docs';
     const subtitle = searchParams.get('s') || undefined;
     return renderOgImage({ title, eyebrow, subtitle });
 }

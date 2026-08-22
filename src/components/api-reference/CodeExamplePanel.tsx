@@ -2,7 +2,7 @@
 
 import { mergeSnippetReplacements } from '@/lib/typeId';
 import { useCodeReplacements } from '@/providers/ApiKeyProvider';
-import { CodeEditor } from '@augno/ui';
+import { CodeEditor } from '@openmrp/ui';
 import type { ReactNode } from 'react';
 import { useMemo, useState } from 'react';
 

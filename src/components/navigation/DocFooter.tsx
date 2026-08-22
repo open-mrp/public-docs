@@ -1,6 +1,6 @@
 import { paths } from '@/static/paths';
 import { cn } from '@/utils/cn';
-import { AugnoLogo, Footer, HelpIcon, QuestionMarkIcon, useDarkMode } from '@augno/ui';
+import { OpenMRPLogo, Footer, HelpIcon, QuestionMarkIcon, useDarkMode } from '@openmrp/ui';
 import Link from 'next/link';
 import AIIcon from '../icons/AIIcon';
 
@@ -16,7 +16,7 @@ export default function DocFooter({ className }: DocFooterProps) {
         <div className={cn('mt-auto w-full pt-16', className)}>
             <Footer
                 home={{
-                    icon: <AugnoLogo color={color} />,
+                    icon: <OpenMRPLogo color={color} />,
                     href: paths.home,
                 }}
                 supportLinks={[
@@ -25,7 +25,7 @@ export default function DocFooter({ className }: DocFooterProps) {
                         text: 'Need help?',
                         link: {
                             text: 'Contact Support',
-                            href: 'mailto:support@augno.com',
+                            href: 'mailto:support@openmrp.ai',
                         },
                     },
                     {
@@ -33,7 +33,7 @@ export default function DocFooter({ className }: DocFooterProps) {
                         text: 'Questions?',
                         link: {
                             text: 'Contact Sales',
-                            href: 'mailto:sales@augno.com',
+                            href: 'mailto:sales@openmrp.ai',
                         },
                     },
                     {

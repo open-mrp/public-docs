@@ -97,8 +97,8 @@ export function renderOgImage({
                         color: '#71717a',
                     }}
                 >
-                    <div style={{ display: 'flex' }}>docs.augno.com</div>
-                    <div style={{ display: 'flex', color: BRAND_ACCENT, fontWeight: 600 }}>Augno</div>
+                    <div style={{ display: 'flex' }}>docs.openmrp.ai</div>
+                    <div style={{ display: 'flex', color: BRAND_ACCENT, fontWeight: 600 }}>OpenMRP</div>
                 </div>
             </div>
         ),

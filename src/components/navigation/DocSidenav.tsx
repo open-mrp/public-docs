@@ -1,7 +1,7 @@
 import { navData } from '@/static/navData.generated';
 import { routeToTab } from '@/static/routeMap.generated';
 import { getTabFromRoute, getDefaultTab } from '@/static/tabs';
-import { NavItem, NavLink, NavSubSection, NavSubSectionData, Sidenav } from '@augno/ui';
+import { NavItem, NavLink, NavSubSection, NavSubSectionData, Sidenav } from '@openmrp/ui';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 

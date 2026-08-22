@@ -2,7 +2,7 @@
 
 import { FrostedSurface } from '@/components/FrostedSurface';
 import { useApiKey } from '@/providers/ApiKeyProvider';
-import { Button, CheckIcon, CopyIcon } from '@augno/ui';
+import { Button, CheckIcon, CopyIcon } from '@openmrp/ui';
 import copy from 'copy-to-clipboard';
 import { useState } from 'react';
 

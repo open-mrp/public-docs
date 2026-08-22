@@ -1,6 +1,6 @@
 ---
 title: Email Logs
-subtitle: Confirm whether an email Augno sent on your behalf actually went out.
+subtitle: Confirm whether an email OpenMRP sent on your behalf actually went out.
 route: /api/email-logs
 nav:
     title: Email logs
@@ -9,7 +9,7 @@ nav:
     order: 3
 ---
 
-Augno sends email on your account's behalf all over the product — order acknowledgements, invoices, statements of account, purchase-order submissions, hosted checkout links, new-user welcomes, password resets, registration verifications, chat-message notifications. **Email logs** are the record of those sends, and they are where you go when someone asks "did that acknowledgement actually go out?".
+OpenMRP sends email on your account's behalf all over the product — order acknowledgements, invoices, statements of account, purchase-order submissions, hosted checkout links, new-user welcomes, password resets, registration verifications, chat-message notifications. **Email logs** are the record of those sends, and they are where you go when someone asks "did that acknowledgement actually go out?".
 
 A `200` on the endpoint that triggered the email is not that answer. Those endpoints accept the request and return; the send happens afterwards. The email log is where a failed or suppressed send becomes visible.
 
@@ -20,8 +20,8 @@ Email logs live under the `/v1/core` prefix. They cover _all_ platform email —
 ```bash
 curl "API_HOST/v1/core/email-logs?limit=25" \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 Results come back newest-first with standard cursor <InternalLink pathKey="api.pagination" text="pagination" />. See <InternalLink pathKey="apiReference.emailLogs.listEmailLogs" text="List Email Logs" />.
@@ -55,7 +55,7 @@ Results come back newest-first with standard cursor <InternalLink pathKey="api.p
 
 `send_status` describes handoff, not receipt:
 
-- **`sent`** — the delivery provider accepted the message. This does **not** confirm that the recipient's mail server accepted it, nor that a human opened it. It confirms Augno got the message out the door.
+- **`sent`** — the delivery provider accepted the message. This does **not** confirm that the recipient's mail server accepted it, nor that a human opened it. It confirms OpenMRP got the message out the door.
 - **`pending`** — the message was never handed off. Either the send attempt failed outright, or it was suppressed because the account is in <InternalLink pathKey="manageAccount.sandboxes" text="sandbox" /> mode.
 
 That second case matters when you are testing: **sandbox accounts do not send real email.** Every send from a sandbox is recorded with `send_status: "pending"` and no message ever leaves the platform. An integration test that asserts "an email was sent" should assert on the presence of the log row, not on `send_status`.

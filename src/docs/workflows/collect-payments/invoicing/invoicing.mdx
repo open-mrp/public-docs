@@ -1,6 +1,6 @@
 ---
 title: Invoicing
-subtitle: Invoices are the billing records Augno generates for each shipment, capturing what was shipped, to whom, and for how much.
+subtitle: Invoices are the billing records OpenMRP generates for each shipment, capturing what was shipped, to whom, and for how much.
 route: /collect-payments/invoicing/overview
 nav:
     title: Invoicing
@@ -8,11 +8,11 @@ nav:
     order: 2
 ---
 
-**Invoices** are generated automatically when a shipment is shipped. They serve as the billing record sent to customers and are the starting point for collecting payment in Augno.
+**Invoices** are generated automatically when a shipment is shipped. They serve as the billing record sent to customers and are the starting point for collecting payment in OpenMRP.
 
 ### How invoices are created
 
-Invoices are created at ship time: when a shipment's status changes to shipped, Augno generates an invoice for that shipment. Each shipment produces exactly one invoice. If an order ships in multiple shipments, each shipment gets its own invoice, so a single <InternalLink pathKey="generateSales.salesOrder.overview" text="sales order" /> can have multiple invoices.
+Invoices are created at ship time: when a shipment's status changes to shipped, OpenMRP generates an invoice for that shipment. Each shipment produces exactly one invoice. If an order ships in multiple shipments, each shipment gets its own invoice, so a single <InternalLink pathKey="generateSales.salesOrder.overview" text="sales order" /> can have multiple invoices.
 
 ### What an invoice contains
 
@@ -33,7 +33,7 @@ An invoice moves through three stages:
 2. **Sent**: the invoice is delivered to the customer by email (with a PDF attachment) or by EDI for EDI-enabled customers
 3. **Paid**: payments and other transactions have been allocated to the invoice, bringing the balance to zero
 
-Augno tracks where each invoice stands with three flags: whether the invoice has been sent, whether it is paid in full, and whether it has been overpaid.
+OpenMRP tracks where each invoice stands with three flags: whether the invoice has been sent, whether it is paid in full, and whether it has been overpaid.
 
 ### Invoice statuses
 

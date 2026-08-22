@@ -1,6 +1,6 @@
 ---
 title: API Versioning
-subtitle: Understand how Augno versions its API and manage version upgrades.
+subtitle: Understand how OpenMRP versions its API and manage version upgrades.
 route: /api/versioning
 nav:
     title: API versioning
@@ -9,19 +9,19 @@ nav:
     order: 8
 ---
 
-Augno uses a versioning system designed to protect existing integrations while allowing the API to evolve. By specifying a version with each request, you control exactly which API behavior your integration targets. The current version is <ApiVersion />.
+OpenMRP uses a versioning system designed to protect existing integrations while allowing the API to evolve. By specifying a version with each request, you control exactly which API behavior your integration targets. The current version is <ApiVersion />.
 
-## The Augno-Version header
+## The OpenMRP-Version header
 
-All API requests **require** the `Augno-Version` header. Requests without it are rejected with `400` and the error code `api_version_required`; requests naming a version the API does not support are rejected with `400` and `api_version_invalid`, and the message lists every version that is accepted.
+All API requests **require** the `OpenMRP-Version` header. Requests without it are rejected with `400` and the error code `api_version_required`; requests naming a version the API does not support are rejected with `400` and `api_version_invalid`, and the message lists every version that is accepted.
 
 ```bash
 curl API_HOST/v1/sales/customers \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION"
+  -H "OpenMRP-Version: CURRENT_API_VERSION"
 ```
 
-Every successful response echoes an `Augno-Version` header carrying the version the request was resolved to. Assert on it in your integration tests — it is the cheapest way to catch a client that forgot to pin.
+Every successful response echoes an `OpenMRP-Version` header carrying the version the request was resolved to. Assert on it in your integration tests — it is the cheapest way to catch a client that forgot to pin.
 
 ## Version format
 
@@ -83,7 +83,7 @@ When a new codename is released:
 1. Review the migration guide for breaking changes
 2. Update your integration to handle the new API behavior
 3. Test thoroughly in sandbox
-4. Update the `Augno-Version` header in production
+4. Update the `OpenMRP-Version` header in production
 
 We provide advance notice before deprecating old codenames and maintain overlap periods where both versions are supported.
 

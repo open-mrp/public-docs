@@ -1,6 +1,6 @@
-import type { ReplacementValue } from '@augno/ui';
+import type { ReplacementValue } from '@openmrp/ui';
 
-/** Matches Augno type IDs (resource prefix + ULID), e.g. `prod_01jm4r6700e3kxb9w2nqh7g5fp`. */
+/** Matches OpenMRP type IDs (resource prefix + ULID), e.g. `prod_01jm4r6700e3kxb9w2nqh7g5fp`. */
 export const TYPE_ID_PATTERN = /\b[a-z]{2,5}_[0-9a-z]{26}\b/g;
 
 /**

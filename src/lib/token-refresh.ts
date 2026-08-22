@@ -13,7 +13,7 @@ async function doRefresh(): Promise<void> {
     const url = new URL('/v1/auth/access-tokens', Env.apiV2BaseUrl).toString();
     const res = await fetch(url, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json', 'Augno-Version': API_VERSION.current },
+        headers: { 'Content-Type': 'application/json', 'OpenMRP-Version': API_VERSION.current },
         credentials: 'include',
     });
 

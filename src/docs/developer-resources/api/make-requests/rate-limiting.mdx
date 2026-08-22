@@ -9,7 +9,7 @@ nav:
     order: 7
 ---
 
-Augno's API uses rate limiting with exponential backoff to ensure fair access and maintain platform stability. Understanding how rate limits work helps you design resilient integrations.
+OpenMRP's API uses rate limiting with exponential backoff to ensure fair access and maintain platform stability. Understanding how rate limits work helps you design resilient integrations.
 
 ## Rate limits
 
@@ -55,10 +55,10 @@ When you exceed the rate limit, the API returns a `429 Too Many Requests` respon
         "type": "invalid_request_error",
         "message": "Too many requests. Please try again later.",
         "param": null,
-        "doc_url": "https://docs.augno.com/api/errors#rate_limit_exceeded",
+        "doc_url": "https://docs.openmrp.ai/api/errors#rate_limit_exceeded",
         "is_transient": true,
         "quota": null,
-        "request_log_url": "https://augno.com/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
+        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```

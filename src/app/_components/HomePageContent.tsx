@@ -5,7 +5,7 @@ import { FrostedSurface } from '@/components/FrostedSurface';
 import DocFooter from '@/components/navigation/DocFooter';
 import HomeNavBar from '@/components/navigation/HomeNavBar';
 import { useIsAuthenticated } from '@/lib/auth-store';
-import { BlendText, ChevronRightIcon, RGBColor, useDarkMode, WaveShader } from '@augno/ui';
+import { BlendText, ChevronRightIcon, RGBColor, useDarkMode, WaveShader } from '@openmrp/ui';
 import { useEffect, useRef, useState } from 'react';
 import { ApiKeysCard } from './ApiKeysCard';
 import { HomeQuickLinks } from './HomeQuickLinks';
@@ -104,7 +104,7 @@ export function HomePageContent() {
                         }}
                         className="text-[2rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5rem] xl:text-[5.5rem] 2xl:text-[6rem]"
                     >
-                        Augno Documentation
+                        OpenMRP Documentation
                     </BlendText>
                     <BlendText
                         revertColor={revertColor}
@@ -114,7 +114,7 @@ export function HomePageContent() {
                         style={{ fontWeight: 500, lineHeight: 1.6, padding: '0px', margin: '0px' }}
                         className="text-[1.0rem] sm:text-[1.3rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[1.8rem]"
                     >
-                        Explore our guides and examples to integrate Augno into your business.
+                        Explore our guides and examples to integrate OpenMRP into your business.
                     </BlendText>
                     <div className="mt-8 relative z-10 flex flex-wrap items-center gap-3">
                         <LinkButton href="/get-started" variant="text" blur size="lg" color={color}>

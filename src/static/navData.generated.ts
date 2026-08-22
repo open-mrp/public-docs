@@ -1,7 +1,7 @@
 // THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY.
 // Run 'bun run build:docs' to regenerate.
 
-import { NavSection } from '@augno/ui';
+import { NavSection } from '@openmrp/ui';
 
 export interface TabbedNavData {
     [tabId: string]: NavSection[];

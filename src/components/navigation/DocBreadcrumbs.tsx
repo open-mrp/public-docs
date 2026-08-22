@@ -1,7 +1,7 @@
 'use client';
 
 import { getPath } from '@/static/paths';
-import { Breadcrumbs, type Breadcrumb as GenericBreadcrumb } from '@augno/ui';
+import { Breadcrumbs, type Breadcrumb as GenericBreadcrumb } from '@openmrp/ui';
 import Link from 'next/link';
 
 interface DocBreadcrumb {

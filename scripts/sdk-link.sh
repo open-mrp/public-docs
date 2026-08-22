@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Link the yalc-published @augno/internal-sdk into public-docs. Clears .next so
+# Link the yalc-published @openmrp/internal-sdk into public-docs. Clears .next so
 # Next.js re-resolves the module from the new location.
 
 set -e
@@ -7,7 +7,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 source "$ROOT/scripts/yalc-lib.sh"
 
 YALC_CMD=$(resolve_yalc_cmd)
-PKG="@augno/internal-sdk"
+PKG="@openmrp/internal-sdk"
 
 cd "$ROOT"
 
