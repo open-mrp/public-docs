@@ -79,9 +79,9 @@ Local linking of `@openmrp/ui` and `@openmrp/internal-sdk` via yalc, the monorep
 
 | What | License |
 |---|---|
-| Source code | [MIT](LICENSE) |
+| Source code | [Apache 2.0](LICENSE) |
 | Documentation content (`src/docs/`) | [CC BY 4.0](LICENSE-DOCS) |
-| OpenMRP name, logo, and brand assets | Not licensed — see [TRADEMARKS.md](TRADEMARKS.md) |
+| OpenMRP and Augno names, logos, and brand assets | Not licensed — see [TRADEMARKS.md](TRADEMARKS.md) |
 
 Third-party dependency notices are in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
 
