@@ -46,3 +46,7 @@ next-env.d.ts
 
 # specs — OpenAPI + Stainless YAML are synced from S3 (see scripts/fetch-public-release-artifacts.sh)
 specs/*
+
+# claude code session state
+.claude/scheduled_tasks.lock
+.claude/settings.local.json

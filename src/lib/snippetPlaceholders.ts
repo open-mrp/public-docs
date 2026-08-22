@@ -82,8 +82,14 @@ export function normalizeSnippetPlaceholders(code: string): string {
         [/api_key=os\.environ\[["']AUGNO_API_KEY["']\]/g, `api_key='YOUR_API_KEY'`],
         [/\bos\.getenv\(\s*["']AUGNO_API_KEY["']\s*\)/g, "'YOUR_API_KEY'"],
         [/\bos\.environ\[["']AUGNO_API_KEY["']\]/g, "'YOUR_API_KEY'"],
-        [/augno_api_key=os\.getenv\(\s*["']AUGNO_API_KEY["']\s*\)/gi, `augno_api_key='YOUR_API_KEY'`],
-        [/augno_api_key=os\.environ\.get\(\s*["']AUGNO_API_KEY["']\s*\)/gi, `augno_api_key='YOUR_API_KEY'`],
+        [
+            /augno_api_key=os\.getenv\(\s*["']AUGNO_API_KEY["']\s*\)/gi,
+            `augno_api_key='YOUR_API_KEY'`,
+        ],
+        [
+            /augno_api_key=os\.environ\.get\(\s*["']AUGNO_API_KEY["']\s*\)/gi,
+            `augno_api_key='YOUR_API_KEY'`,
+        ],
         [/\$AUGNO_API_KEY\b/g, 'YOUR_API_KEY'],
     ];
 
@@ -99,6 +105,13 @@ export function normalizeSnippetPlaceholders(code: string): string {
 
     // Common Stainless readme-style env reads
     s = s.replace(/\$\{\s*apiKey\s*\?\?\s*[^}]+\}/g, "'YOUR_API_KEY'");
+
+    // Stainless' stock comment explains an env-var default. Docs snippets substitute a real
+    // key into that slot, so the comment has to say what the value is instead.
+    s = s.replace(
+        /(YOUR_API_KEY|AUGNO_API_KEY)([^\n]*?)(\/\/|#)\s*This is the default and can be omitted/g,
+        '$1$2$3 Your API key goes here',
+    );
 
     return s;
 }

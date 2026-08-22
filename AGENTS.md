@@ -8,7 +8,7 @@ This file provides guidance when working with code in this repository.
 
 This is a Next.js 16 documentation site for the Augno API platform. It combines manually authored guides (MDX files) with auto-generated API reference pages from OpenAPI specs.
 
-**Tech stack:** Next.js 16, React 19, TypeScript, MDX, TailwindCSS 4, Algolia (search), Zustand, vendored Stainless sdk-json under `packages/stainless-sdk-json` (SDK snippets at docs build time)
+**Tech stack:** Next.js 16, React 19, TypeScript, MDX, TailwindCSS 4, Algolia (search), Zustand, `@stainless/sdk-json` (SDK snippets at docs build time)
 
 ## Common Commands
 
@@ -45,7 +45,7 @@ bun run index:docs       # Index docs to Algolia
 ### Build Pipeline (`bun run build:docs`)
 
 1. `scripts/generate-api-reference.ts` — Parse `specs/public_openapi_spec.json`, emit `apiEndpoints.generated.ts` (and `apiVersion.generated.ts`)
-2. `scripts/generate-sdk-snippets.ts` — Uses `specs/stainless.yml` (fetched from S3 with the OpenAPI spec) or `../api/stainless/public/stainless.yml` in monorepo dev, merges a docs overlay, runs vendored `packages/stainless-sdk-json`, emits `apiSnippets.generated.ts`
+2. `scripts/generate-sdk-snippets.ts` — Uses `specs/stainless.yml` (fetched from S3 with the OpenAPI spec) or `../api/stainless/public/stainless.yml` in monorepo dev, merges a docs overlay, runs `@stainless/sdk-json`, emits `apiSnippets.generated.ts`
 3. `scripts/generate-nav.ts` — Generate navigation from frontmatter
 4. `scripts/generate-slugs.ts` — Generate static params for dynamic routes
 5. `scripts/generate-llms-txt.ts` — LLMs metadata

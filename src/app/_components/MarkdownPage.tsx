@@ -2,6 +2,7 @@
 
 import TableOfContents from '@/components/markdown/TableOfContents';
 import { DocBreadcrumbs } from '@/components/navigation/DocBreadcrumbs';
+import PageFeedback from '@/components/navigation/PageFeedback';
 import { useRecentlyVisitedPages } from '@/hooks/useRecentlyVisitedPages';
 import { extractHeadingsFromDom } from '@/lib/mdx/extractHeadings';
 import { Frontmatter } from '@/lib/mdx/fetchPageBySlug';
@@ -12,7 +13,7 @@ import copy from 'copy-to-clipboard';
 import { JSXElementConstructor, ReactElement, useEffect, useRef, useState } from 'react';
 
 interface MarkdownPageProps {
-    meta: Frontmatter & { slug: string };
+    meta: Frontmatter & { slug: string; filePath: string };
     content: ReactElement<unknown, string | JSXElementConstructor<unknown>>;
     cleanMarkdown: string;
 }
@@ -110,6 +111,7 @@ export function MarkdownPage({ meta, content, cleanMarkdown }: MarkdownPageProps
                 >
                     {content}
                 </div>
+                <PageFeedback title={meta.title} slug={meta.slug} filePath={meta.filePath} />
             </div>
 
             {hasToc && (

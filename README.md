@@ -1,174 +1,88 @@
 # Augno Documentation
 
-This repository contains the external documentation for the Augno application, including auto-generated API reference pages and manually maintained documentation sections.
+The source of [docs.augno.com](https://docs.augno.com) — Augno's product guides and API reference. It's a Next.js 16 site that combines hand-written MDX guides with an API reference generated from Augno's public OpenAPI specification.
 
-## Overview
+## Found something wrong?
 
-The Augno documentation site is built using:
+Every page on the site has an **Edit this page** link at the bottom that opens its source in the GitHub editor. Fix the typo, open a pull request — no clone required.
 
-- **NextJS**: For the core framework and routing
-- **MDX**: For markdown with JSX support
-- **GitHub-Flavored Markdown**: For enhanced markdown features
+Prefer to just tell us? [Open a documentation issue](https://github.com/Augno/public-docs/issues/new?template=documentation-error.yml).
 
-## Getting Started
+## Running locally
 
-### Prerequisites
-
-- Bun
-- Node.js 18+
-
-### Installation
+Requires [Bun](https://bun.sh).
 
 ```bash
-# Install dependencies
 bun install
+bun run dev          # http://localhost:3000
 ```
 
-### Development
+The generated files under `src/static/` are committed, so a fresh clone runs and builds without access to the OpenAPI spec.
 
 ```bash
-# Start the development server
-bun run dev
+bun run lint
+bun run test
+bun run format
+bun run build        # production build
 ```
 
-Visit `http://localhost:3000` to see the documentation site.
+## How the site is put together
 
-### Building
+**Tech:** Next.js 16, React 19, TypeScript, MDX, Tailwind CSS 4, Algolia search.
+
+| Path | Contents |
+|---|---|
+| `src/docs/**/*.mdx` | Hand-written guides. Frontmatter drives title, subtitle, and nav placement. |
+| `src/app/(docs)/[...slug]/` | Catch-all route that renders those MDX files |
+| `src/app/(docs)/api-reference/` | API reference, rendered from generated data |
+| `src/static/*.generated.ts` | Generated: endpoints, SDK snippets, nav, slugs, route map |
+| `src/components/markdown/` | Custom MDX components (`<ApiEndpoint />`, `<ApiKeySnippet />`, …) |
+| `scripts/` | The `build:docs` generation pipeline |
+
+Anything named `*.generated.ts` is overwritten by the build — don't hand-edit it. The API reference comes from Augno's public OpenAPI specification, so if an endpoint's description is wrong, the fix belongs at the source rather than in this repo.
+
+### Regenerating the API reference
 
 ```bash
-bun run build
+bun run build:docs
 ```
 
-### Linking local packages (yalc)
+This reads `specs/public_openapi_spec.json` and `specs/stainless.yml`, then regenerates the endpoint data, SDK snippets, navigation, slugs, and `llms.txt`. The specs are published artifacts of an API release and are fetched by `scripts/fetch-public-release-artifacts.sh`, which needs AWS credentials — so in practice only Augno maintainers run this step. Everything else in the repo works without it.
 
-To prototype local changes to `@augno/ui` or `@augno/internal-sdk`, **drive linking from the library directory**, not from here:
+## Search
 
-```bash
-# From ../ui — links @augno/ui into dashboard/ AND public-docs/
-cd ../ui && bun run link:all
+`bun run index:docs` pushes the docs to Algolia. It needs `NEXT_PUBLIC_ALGOLIA_APP_ID`, `NEXT_PUBLIC_ALGOLIA_INDEX_NAME`, and `ALGOLIA_SEARCH_ADMIN_KEY`. Search degrades gracefully when unconfigured.
 
-# From ../internal-sdk — links into dashboard/ (SDK is not consumed by public-docs yet)
-cd ../internal-sdk && bun run link:all
-```
+## Writing docs
 
-Then `bun run dev` here to pick up the linked copy. For live updates as you edit the library, run `bun run yalc:watch` in the library directory alongside `dev`.
-
-The `ui:link` / `ui:unlink` / `sdk:link` / `sdk:unlink` scripts in this repo's `package.json` are the single-consumer entry points that the library orchestrators call. You can invoke them directly if you're only linking into public-docs (e.g. quick UI tweak without touching dashboard), but **do not** commit while `.yalc/`, `yalc.lock`, or `file:.yalc/...` refs are present.
-
-**Always tear down from the library before committing:**
-
-```bash
-cd ../ui && bun run unlink:all
-cd ../internal-sdk && bun run unlink:all
-```
-
-Unlinking queries GitHub Packages for the latest version, pins this repo's `package.json` to it, removes `.yalc/` and `yalc.lock` artefacts, clears `.next/`, and runs `bun install`. See the root `CLAUDE.md` for details.
-
-## Documentation Authoring
-
-### File Structure
-
-- `src/app/`: Main application code and page routes
-- Documentation pages are organized under appropriate directories in the app directory
-
-### Creating Documentation Pages
-
-#### Option 1: MDX Files
-
-Create `.mdx` files in the `src/app` directory structure:
-
-```
-src/app/docs/my-feature/page.mdx
-```
-
-#### Option 2: API Reference Pages
-
-API reference pages are auto-generated from the API source code.
-
-### Markdown Features
-
-This documentation supports GitHub-flavored Markdown via `remark-gfm`, providing these features:
-
-#### Tables
-
-```markdown
-| Feature | Description              |
-| ------- | ------------------------ |
-| Tables  | Organized data display   |
-| Lists   | Bullet or numbered items |
-```
-
-#### Task Lists
-
-```markdown
-- [x] Completed task
-- [ ] Pending task
-```
-
-#### Strikethrough
-
-```markdown
-~~Strikethrough text~~
-```
-
-#### Autolinks
-
-URLs like https://augno.com are automatically converted to links.
-
-#### Footnotes
-
-```markdown
-Here's a sentence with a footnote[^1].
-
-[^1]: This is the footnote.
-```
-
-### Syntax Highlighting
-
-Code blocks have automatic syntax highlighting:
-
-````markdown
-```javascript
-function hello() {
-    console.log('Hello, Augno!');
-}
-```
-````
-
-### Dynamic User Data in Code Examples
-
-The docs automatically inject the user's sandbox API key and account name into code examples.
-
-#### In Code Blocks
-
-Use these placeholders—they're replaced automatically:
-
-- `YOUR_API_KEY` → User's sandbox API key
-- `YOUR_ACCOUNT_NAME` → User's account name
-
-```js
-const client = new AugnoClient({
-    apiKey: 'YOUR_API_KEY', // Replaced with actual key
-});
-```
-
-#### Inline Components
-
-For inline display outside code blocks:
+Pages live in `src/docs/` and are `.mdx` with YAML frontmatter:
 
 ```mdx
-Here's your API key for <AccountName />:
-
-| Type   | Value             |
-| ------ | ----------------- |
-| Secret | <ApiKeySnippet /> |
+---
+title: Idempotency
+subtitle: Retry requests safely without duplicating work.
+nav:
+    section: Developer resources
+    order: 5
+---
 ```
 
-- `<AccountName />` — Displays account name inline
-- `<ApiKeySnippet />` — Copyable, abbreviated API key with click-to-copy
+Beyond GitHub-flavored Markdown, pages can use the components registered in `src/lib/mdx/fetchPageBySlug.tsx` — cards, tabs, checklists, flowcharts, and API reference embeds.
 
-## Contributing
+Code examples get reader-specific values substituted automatically: `YOUR_API_KEY` becomes the signed-in reader's sandbox key, and `<AccountName />` / `<ApiKeySnippet />` render their account inline. Always write examples with those placeholders rather than real credentials.
 
-1. Create a new branch for your changes
-2. Update or add documentation pages
-3. Submit a pull request
+## For Augno maintainers
+
+Local linking of `@augno/ui` and `@augno/internal-sdk` via yalc, the monorepo layout, and the release/sync workflows are documented in [AGENTS.md](AGENTS.md).
+
+## License
+
+| What | License |
+|---|---|
+| Source code | [MIT](LICENSE) |
+| Documentation content (`src/docs/`) | [CC BY 4.0](LICENSE-DOCS) |
+| Augno name, logo, and brand assets | Not licensed — see [TRADEMARKS.md](TRADEMARKS.md) |
+
+Third-party dependency notices are in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
+
+Security issues: please follow [SECURITY.md](SECURITY.md) rather than opening a public issue.

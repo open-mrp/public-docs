@@ -36,6 +36,7 @@
         "zustand": "^5.0.14",
       },
       "devDependencies": {
+        "@stainless/sdk-json": "0.1.0-beta.11",
         "@tailwindcss/postcss": "^4.3.1",
         "@types/node": "^25.9.4",
         "@types/react": "19.2.14",
@@ -338,6 +339,8 @@
     "@radix-ui/rect": ["@radix-ui/rect@1.1.2", "", {}, "sha512-xnXE7wG13PI+cxieVssYXlQJuYVRhH9NBoxt3KNwzghDIA69GMm7d4wXRouHIYjE+KvS6U/MsMO73NdS2MH9ZA=="],
 
     "@rtsao/scc": ["@rtsao/scc@1.1.0", "", {}, "sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g=="],
+
+    "@stainless/sdk-json": ["@stainless/sdk-json@0.1.0-beta.11", "", { "dependencies": { "web-worker": "^1.5.0" } }, "sha512-yT8WdaHlF9m6wdl+q+FXbkOs+YUKdcUgMoyJkR/IXIh5jIluy11ezOkI1fYmFxkxBm2cvhdme0Y5yGUACZBLpA=="],
 
     "@swc/helpers": ["@swc/helpers@0.5.15", "", { "dependencies": { "tslib": "^2.8.0" } }, "sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g=="],
 

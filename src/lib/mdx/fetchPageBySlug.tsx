@@ -143,7 +143,7 @@ const mdxComponents: MDXComponents = {
 export type Frontmatter = z.infer<typeof FrontmatterSchema>;
 
 export async function fetchPageBySlug(slug: string[]): Promise<{
-    meta: Frontmatter & { slug: string }; // Use the inferred type and add slug
+    meta: Frontmatter & { slug: string; filePath: string }; // Use the inferred type and add slug
     content: ReactElement<unknown, string | JSXElementConstructor<unknown>>;
     cleanMarkdown: string;
 }> {
@@ -191,6 +191,8 @@ export async function fetchPageBySlug(slug: string[]): Promise<{
         meta: {
             ...validatedFrontmatter, // Use the validated data
             slug: realSlug,
+            // Repo-relative source path, so the page can link readers to its MDX on GitHub.
+            filePath: relativeFilePath,
         },
         content,
         cleanMarkdown: cleanMdx(fileContent),

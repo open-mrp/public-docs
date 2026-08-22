@@ -1,11 +1,11 @@
 /**
- * Builds SDK snippets via vendored `@stainless/sdk-json` (`packages/stainless-sdk-json`).
+ * Builds SDK snippets via `@stainless/sdk-json`.
  */
 import fs from 'fs';
 import path from 'path';
 import { parse, stringify } from 'yaml';
-import type { Method, Resource, Spec } from '../packages/stainless-sdk-json';
-import { generateSpecFromStrings } from '../packages/stainless-sdk-json/dist/index.js';
+import type { Method, Resource, Spec } from '@stainless/sdk-json';
+import { generateSpecFromStrings } from '@stainless/sdk-json/spec';
 import { normalizeSnippetPlaceholders } from '../src/lib/snippetPlaceholders';
 
 const ROOT = process.cwd();

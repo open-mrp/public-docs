@@ -1,0 +1,45 @@
+name: Documentation error
+description: Something in the docs is wrong, unclear, or missing.
+title: 'Docs: '
+labels: ['documentation']
+body:
+    - type: input
+      id: page
+      attributes:
+          label: Page
+          description: The path of the page, e.g. /api/idempotency. Prefilled if you came from the docs site.
+          placeholder: /api/idempotency
+      validations:
+          required: true
+
+    - type: textarea
+      id: problem
+      attributes:
+          label: What's wrong?
+          description: Quote the incorrect text if you can, and tell us what it should say.
+      validations:
+          required: true
+
+    - type: dropdown
+      id: kind
+      attributes:
+          label: Type of problem
+          options:
+              - Factually incorrect
+              - Out of date
+              - Unclear or confusing
+              - Missing information
+              - Broken link or example
+              - Typo or formatting
+      validations:
+          required: true
+
+    - type: markdown
+      attributes:
+          value: |
+              Small fixes are faster as a pull request — every docs page has an
+              **Edit this page** link that opens its source in the GitHub editor.
+
+              **Do not include API keys, account IDs, or other secrets in this issue.**
+              To report a security vulnerability, see [SECURITY.md](../blob/main/SECURITY.md)
+              instead of opening an issue.

@@ -3,6 +3,7 @@
 import DocFooter from '@/components/navigation/DocFooter';
 import DocSidenav from '@/components/navigation/DocSidenav';
 import NavbarContents from '@/components/navigation/NavbarContents';
+import PageFeedback from '@/components/navigation/PageFeedback';
 import TabBar from '@/components/navigation/TabBar';
 import { Navbar } from '@augno/ui';
 import { usePathname } from 'next/navigation';
@@ -33,7 +34,17 @@ export default function RootLayout({ children }: RootLayoutProps) {
                         className={`px-4 mx-auto py-10 lg:px-8 flex flex-col min-h-full ${isApiReference ? 'max-w-[1400px]' : 'max-w-7xl'}`}
                     >
                         {children}
-                        {!isApiReference && <DocFooter />}
+                        {isApiReference ? (
+                            // The reference is generated from the OpenAPI spec, so there is no
+                            // MDX to edit — readers get the issue link only.
+                            <PageFeedback
+                                title="API Reference"
+                                slug={pathname.replace(/^\//, '')}
+                                className="mt-auto pt-12"
+                            />
+                        ) : (
+                            <DocFooter />
+                        )}
                     </div>
                 </main>
             </div>
