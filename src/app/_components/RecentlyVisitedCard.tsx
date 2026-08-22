@@ -2,7 +2,7 @@
 
 import { FrostedSurface } from '@/components/FrostedSurface';
 import { useRecentlyVisitedPages } from '@/hooks/useRecentlyVisitedPages';
-import { ChevronRightIcon } from '@augno/ui';
+import { ChevronRightIcon } from '@openmrp/ui';
 import Link from 'next/link';
 
 export function RecentlyVisitedCard() {

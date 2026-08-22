@@ -9,7 +9,7 @@ nav:
     order: 2
 ---
 
-You should consider all secret API keys as account credentials. Consequently, they belong **_only in your server environment_**. Exposing a secret key can put your business and other Augno users at risk. The guidance below will help you avoid leaks and limit damage if something goes wrong.
+You should consider all secret API keys as account credentials. Consequently, they belong **_only in your server environment_**. Exposing a secret key can put your business and other OpenMRP users at risk. The guidance below will help you avoid leaks and limit damage if something goes wrong.
 
 ## Reducing the risk of key compromise
 
@@ -17,13 +17,13 @@ You should consider all secret API keys as account credentials. Consequently, th
 
 - **Tighten who can manage keys.** Decide who is allowed to create, change, or view API keys, and enforce that. Review those permissions and access logs on a schedule so you catch overprivileged or unused access.
 
-- **Avoid unsafe channels.** Never send secret keys over email, chat, or support tickets. Augno will never ask you for your secret key.
+- **Avoid unsafe channels.** Never send secret keys over email, chat, or support tickets. OpenMRP will never ask you for your secret key.
 
 - **Keep keys out of version control.** Attackers routinely search public repos for API keys. Do not commit secret keys. Even in private repos, code can end up on laptops or in tools where a breach could expose them.
 
 - **Reserve secret keys for the server.** Secret keys should only live in backend or server-side code. Do not ship them in client apps, mobile binaries, or frontend bundles. Use the API from your own servers instead.
 
-- **Rotate keys on a schedule.** Have a process for rotating Augno API keys and practice it. You'll know where keys are used and be ready to replace one quickly if it's compromised. See [rotating without downtime](#rotating-without-downtime) below for how to do it without an interruption in access.
+- **Rotate keys on a schedule.** Have a process for rotating OpenMRP API keys and practice it. You'll know where keys are used and be ready to replace one quickly if it's compromised. See [rotating without downtime](#rotating-without-downtime) below for how to do it without an interruption in access.
 
 - **Use logs to spot misuse.** Check <InternalLink pathKey="frontend.requestLogs" text="request logs" /> regularly. Confirm sandbox keys are used for testing and production keys only in production.
 
@@ -57,4 +57,4 @@ Note that a key which is already revoked cannot be rotated. If you revoked first
 
 If you know or suspect a secret key has been exposed (e.g. committed to a repo or sent by mistake), revoke it in the <InternalLink pathKey="frontend.apiKeys" text="Dashboard" /> right away, issue a new key, and update every place that used the old one. If you see odd activity but aren't sure, revoke and rotate anyway while you investigate. It's safer to assume compromise. We suggest immediately revoking the key.
 
-When Augno finds an exposed secret key we take immediate action (such as revoking it) and notify you. We cannot guarantee that we will catch every exposure, so following these practices and securing your integration remains your responsibility.
+When OpenMRP finds an exposed secret key we take immediate action (such as revoking it) and notify you. We cannot guarantee that we will catch every exposure, so following these practices and securing your integration remains your responsibility.

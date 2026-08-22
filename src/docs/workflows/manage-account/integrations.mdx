@@ -1,6 +1,6 @@
 ---
 title: Integrations
-subtitle: Connect third-party services like Stripe, Shippo, and HubSpot to your Augno account.
+subtitle: Connect third-party services like Stripe, Shippo, and HubSpot to your OpenMRP account.
 route: /manage-account/integrations
 nav:
     title: Integrations
@@ -8,7 +8,7 @@ nav:
     order: 6
 ---
 
-**Integrations** connect your Augno account to third-party services that extend your workflow. Configure integrations from the **Integrations** tab in <InternalLink pathKey="frontend.integrations" text="account settings" />. Only admins can manage integrations.
+**Integrations** connect your OpenMRP account to third-party services that extend your workflow. Configure integrations from the **Integrations** tab in <InternalLink pathKey="frontend.integrations" text="account settings" />. Only admins can manage integrations.
 
 ### Why integrations matter
 
@@ -19,7 +19,7 @@ nav:
 
 ### Supported providers
 
-Augno supports three providers, identified by a `provider` code:
+OpenMRP supports three providers, identified by a `provider` code:
 
 | Provider    | Code      | What it powers                                        |
 | ----------- | --------- | ----------------------------------------------------- |
@@ -45,7 +45,7 @@ Stripe handles payment processing for invoices and subscriptions. To connect Str
 
 #### Stripe webhook setup
 
-Augno uses a Stripe webhook to receive real-time payment updates. In your [Stripe Dashboard webhook settings](https://dashboard.stripe.com/webhooks), create a webhook endpoint pointing to:
+OpenMRP uses a Stripe webhook to receive real-time payment updates. In your [Stripe Dashboard webhook settings](https://dashboard.stripe.com/webhooks), create a webhook endpoint pointing to:
 
 ```http
 https://api.augno.com/v1/webhooks/stripe/accounts/YOUR_ACCOUNT_ID
@@ -58,7 +58,7 @@ Subscribe the webhook to the following events:
 - `payment_intent.canceled`
 - `payout.paid`
 
-After creating the webhook in Stripe, copy the **webhook signing secret** (starts with `whsec_`) and enter it in the Augno integration settings. Augno uses this secret to verify that incoming events are genuinely from Stripe.
+After creating the webhook in Stripe, copy the **webhook signing secret** (starts with `whsec_`) and enter it in the OpenMRP integration settings. OpenMRP uses this secret to verify that incoming events are genuinely from Stripe.
 
 ### Shippo integration
 
@@ -78,7 +78,7 @@ HubSpot receives your customers as companies, their contacts as contacts, and yo
 #### Connecting HubSpot
 
 1. In HubSpot, create a **Private App** and grant it these scopes: `crm.objects.companies.read`, `crm.objects.companies.write`, `crm.objects.contacts.read`, `crm.objects.contacts.write`, `crm.objects.deals.read`, `crm.objects.deals.write`, `crm.schemas.deals.read`, `crm.schemas.deals.write`. A token missing any of them saves successfully but fails once a sync runs.
-2. Navigate to the **Integrations** tab in Augno and select **HubSpot**
+2. Navigate to the **Integrations** tab in OpenMRP and select **HubSpot**
 3. Enter the private app's **Access token** (`access_token`), which starts `pat-`
 4. Save and enable the integration
 
@@ -98,7 +98,7 @@ Only one sync can be underway at a time: starting another while one is previewin
 
 **Cancel sync** is the escape hatch for a job that is stuck — for example when the worker running it stopped without recording an outcome. Cancelling marks the job failed and releases the account to start a new one; it does not undo anything already written to HubSpot.
 
-Once a run has written to HubSpot, a **Synced customers** table shows each Augno customer, the HubSpot company it maps to, when it was last pushed, and whether it failed.
+Once a run has written to HubSpot, a **Synced customers** table shows each OpenMRP customer, the HubSpot company it maps to, when it was last pushed, and whether it failed.
 
 ### Managing integrations
 

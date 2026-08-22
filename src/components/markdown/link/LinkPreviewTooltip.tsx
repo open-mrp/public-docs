@@ -2,7 +2,7 @@
 
 import { getPagePreview } from '@/static/pagePreview.generated';
 import { cn } from '@/utils/cn';
-import { Chip, Tooltip, TooltipContent, TooltipTrigger } from '@augno/ui';
+import { Chip, Tooltip, TooltipContent, TooltipTrigger } from '@openmrp/ui';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 

@@ -9,7 +9,7 @@ const getPageContent = async (slug: string[]) => {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string[] }> }) {
     const { slug } = await params;
     const { meta } = await getPageContent(slug);
-    return { title: meta.title + ' | Augno Documentation' };
+    return { title: meta.title + ' | OpenMRP Documentation' };
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string[] }> }) {

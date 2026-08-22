@@ -2,7 +2,7 @@
 
 import { getPath } from '@/static/paths';
 import { cn } from '@/utils/cn';
-import { ArrowRightIcon, Chip } from '@augno/ui';
+import { ArrowRightIcon, Chip } from '@openmrp/ui';
 import Link from 'next/link';
 import { LinkPreviewTooltip } from './LinkPreviewTooltip';
 

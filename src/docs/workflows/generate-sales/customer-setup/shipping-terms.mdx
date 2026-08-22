@@ -39,7 +39,7 @@ When Is Carrier Rate is true, shipping cost is calculated from the carrier's rat
 
 ### Resolution order
 
-When calculating freight for an order, Augno evaluates shipping terms in this order:
+When calculating freight for an order, OpenMRP evaluates shipping terms in this order:
 
 1. **Check exemption**: if freight exempt, charge is zero
 2. **Check free freight threshold**: if a threshold is defined and the order total meets it, charge is zero
@@ -48,7 +48,7 @@ When calculating freight for an order, Augno evaluates shipping terms in this or
 
 ### Default shipping terms
 
-Augno includes three built-in shipping terms:
+OpenMRP includes three built-in shipping terms:
 
 - **Prepaid**: free shipping (freight exempt)
 - **Prepaid and Billed**: freight charged at the carrier's calculated rate

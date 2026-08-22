@@ -18,7 +18,7 @@ Every agent is one of two kinds:
 
 | Type       | Where it comes from                       | Can you edit it?                                                      |
 | ---------- | ----------------------------------------- | --------------------------------------------------------------------- |
-| **System** | Provided by Augno, shared across accounts | No — a system definition is read-only and cannot be edited or deleted |
+| **System** | Provided by OpenMRP, shared across accounts | No — a system definition is read-only and cannot be edited or deleted |
 | **Custom** | Created by someone in your account        | Yes                                                                   |
 
 The system/custom split does **not** control whether an agent runs for you. That is a separate, per-account status.
@@ -62,7 +62,7 @@ An agent can be added as a participant in a conversation. It replies into that s
 
 ### Instructions
 
-The **system prompt** is the agent's standing brief: its role, its constraints, what "done" looks like. It is sent to the model on every turn of every run, alongside the platform guidance Augno adds automatically (how to discover API tools, how to expand related records, and so on).
+The **system prompt** is the agent's standing brief: its role, its constraints, what "done" looks like. It is sent to the model on every turn of every run, alongside the platform guidance OpenMRP adds automatically (how to discover API tools, how to expand related records, and so on).
 
 Write it as a job description, not as a single task. The per-run instruction — the chat message, or the input on a manual trigger — supplies the task.
 
@@ -70,7 +70,7 @@ Agents also read <InternalLink pathKey="automateWithAgents.memories" text="memor
 
 ### Intelligence tiers
 
-You never pick a model. You pick a **tier**, and Augno resolves it to a model for you.
+You never pick a model. You pick a **tier**, and OpenMRP resolves it to a model for you.
 
 | Tier       | Use it for                                                                      |
 | ---------- | ------------------------------------------------------------------------------- |
@@ -91,6 +91,6 @@ If you leave the tier unset, the run picks a sensible default from how it was tr
 
 ### Tools
 
-Tools are what turn an agent from a writer into a worker. Built-in tools are attached to the definition; Augno's API operations are granted separately through an explicit allowlist on the config, and can be individually gated behind human approval. That is its own page — see <InternalLink pathKey="automateWithAgents.toolsAndApprovals" text="Tools & approvals" />.
+Tools are what turn an agent from a writer into a worker. Built-in tools are attached to the definition; OpenMRP's API operations are granted separately through an explicit allowlist on the config, and can be individually gated behind human approval. That is its own page — see <InternalLink pathKey="automateWithAgents.toolsAndApprovals" text="Tools & approvals" />.
 
 Next: <InternalLink pathKey="automateWithAgents.runs" text="Runs" includeArrow />

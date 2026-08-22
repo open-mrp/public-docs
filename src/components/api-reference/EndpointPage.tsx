@@ -4,7 +4,7 @@ import BetaTag from '@/components/markdown/BetaTag';
 import { useRecentlyVisitedPages } from '@/hooks/useRecentlyVisitedPages';
 import { SNIPPET_HIGHLIGHT_MAP, type EndpointSnippets } from '@/lib/sdk-snippet-types';
 import type { EndpointData, Parameter, SchemaField } from '@/static/apiEndpoints.generated';
-import { CheckIcon, ClipboardIcon } from '@augno/ui';
+import { CheckIcon, ClipboardIcon } from '@openmrp/ui';
 import copy from 'copy-to-clipboard';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';

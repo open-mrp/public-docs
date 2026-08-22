@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/utils/cn';
-import { Tooltip as TooltipRoot, TooltipContent, TooltipTrigger } from '@augno/ui';
+import { Tooltip as TooltipRoot, TooltipContent, TooltipTrigger } from '@openmrp/ui';
 import { ReactNode } from 'react';
 
 interface SimpleTooltipProps {

@@ -1,40 +1,40 @@
 // External paths (manually maintained for non-doc URLs)
-const augnoFrontend = process.env.NEXT_PUBLIC_FRONTEND_URL || 'https://augno.com';
-const augnoDashboard = augnoFrontend + '/dashboard';
+const openMRPFrontend = process.env.NEXT_PUBLIC_FRONTEND_URL || 'https://openmrp.ai';
+const openMRPDashboard = openMRPFrontend + '/dashboard';
 
 export const externalPaths = {
     github: {
-        openapiSpec: 'https://github.com/Augno/openapi-spec',
-        typescriptSdk: 'https://github.com/Augno/typescript-sdk',
-        goSdk: 'https://github.com/Augno/augno-go',
+        openapiSpec: 'https://github.com/open-mrp/openapi-spec',
+        typescriptSdk: 'https://github.com/open-mrp/typescript-sdk',
+        goSdk: 'https://github.com/open-mrp/openmrp-go',
     },
     npm: {
-        typescriptSdk: 'https://www.npmjs.com/package/@augno/sdk',
+        typescriptSdk: 'https://www.npmjs.com/package/@openmrp/sdk',
     },
     pkgGoDev: {
-        goSdk: 'https://pkg.go.dev/github.com/augno/augno-go',
+        goSdk: 'https://pkg.go.dev/github.com/open-mrp/openmrp-go',
     },
     frontend: {
-        root: augnoFrontend,
-        login: augnoFrontend + '/auth/login',
-        signup: augnoFrontend + '/auth/register',
+        root: openMRPFrontend,
+        login: openMRPFrontend + '/auth/login',
+        signup: openMRPFrontend + '/auth/register',
 
-        dashboard: augnoDashboard,
-        requestLogs: augnoDashboard + '/request-logs',
-        events: augnoDashboard + '/audit-events',
-        apiKeys: augnoDashboard + '/account?tab=apiKeys',
-        team: augnoDashboard + '/team',
-        account: augnoDashboard + '/account?tab=account',
-        integrations: augnoDashboard + '/account?tab=integrations',
-        roles: augnoDashboard + '/roles',
-        security: augnoDashboard + '/account?tab=security',
-        billing: augnoDashboard + '/account?tab=billing',
-        general: augnoDashboard + '/account?tab=general',
-        sandboxes: augnoDashboard + '/sandboxes',
-        units: augnoDashboard + '/units-of-measure?tab=units',
-        unitGroups: augnoDashboard + '/units-of-measure',
-        createUnit: augnoDashboard + '/units-of-measure/units/create',
-        createUnitGroup: augnoDashboard + '/units-of-measure/groups/create',
+        dashboard: openMRPDashboard,
+        requestLogs: openMRPDashboard + '/request-logs',
+        events: openMRPDashboard + '/audit-events',
+        apiKeys: openMRPDashboard + '/account?tab=apiKeys',
+        team: openMRPDashboard + '/team',
+        account: openMRPDashboard + '/account?tab=account',
+        integrations: openMRPDashboard + '/account?tab=integrations',
+        roles: openMRPDashboard + '/roles',
+        security: openMRPDashboard + '/account?tab=security',
+        billing: openMRPDashboard + '/account?tab=billing',
+        general: openMRPDashboard + '/account?tab=general',
+        sandboxes: openMRPDashboard + '/sandboxes',
+        units: openMRPDashboard + '/units-of-measure?tab=units',
+        unitGroups: openMRPDashboard + '/units-of-measure',
+        createUnit: openMRPDashboard + '/units-of-measure/units/create',
+        createUnitGroup: openMRPDashboard + '/units-of-measure/groups/create',
     },
 };
 

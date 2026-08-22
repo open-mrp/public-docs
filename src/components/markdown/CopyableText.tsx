@@ -1,6 +1,6 @@
 'use client';
 
-import { CheckIcon, CopyIcon } from '@augno/ui';
+import { CheckIcon, CopyIcon } from '@openmrp/ui';
 import copy from 'copy-to-clipboard';
 import { useState } from 'react';
 

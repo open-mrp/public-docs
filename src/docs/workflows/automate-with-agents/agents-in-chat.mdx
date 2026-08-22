@@ -140,7 +140,7 @@ This is the single most useful thing to know about chat agents.
 - **Reply directly to an agent's message** and you continue _that run_. You do not need to mention the agent again, and it keeps everything it had already worked out.
 - **Mention the agent in a fresh message** and you start a new run, with a clean slate seeded from the thread.
 
-If the run you replied to can no longer be continued — it failed, was cancelled, already completed in a way that cannot be resumed, or diverged from what the conversation shows — Augno falls back to a fresh run seeded with the thread's history, so a reply never simply goes unanswered.
+If the run you replied to can no longer be continued — it failed, was cancelled, already completed in a way that cannot be resumed, or diverged from what the conversation shows — OpenMRP falls back to a fresh run seeded with the thread's history, so a reply never simply goes unanswered.
 
 Threading follows the same logic: a mention, a keyword trigger, and a continuation all reply _under_ the message that triggered them, keeping the sub-thread together. An `always` agent replies inline instead, since threading every answer in a thread it answers completely would be noise.
 

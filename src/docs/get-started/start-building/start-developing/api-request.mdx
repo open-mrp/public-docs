@@ -1,6 +1,6 @@
 ---
-title: Send your first Augno API request
-subtitle: Get started with the Augno API.
+title: Send your first OpenMRP API request
+subtitle: Get started with the OpenMRP API.
 route: /api-request
 nav:
     title: Send your first API request
@@ -9,17 +9,17 @@ nav:
     order: 1
 ---
 
-To interact with the Augno API, you'll need a secret API key. Once you sign up for an Augno account, we provide you with keys for both testing and live environments. Before diving into production, ensure your account is <InternalLink pathKey="account.activate" text="activated" />.
+To interact with the OpenMRP API, you'll need a secret API key. Once you sign up for an OpenMRP account, we provide you with keys for both testing and live environments. Before diving into production, ensure your account is <InternalLink pathKey="account.activate" text="activated" />.
 
 <DocNumberedSection number={1} title="Preparation" className="mt-6">
 
-This guide will walk you through listing units of measurement using the <InternalLink pathKey="apiReference.units.listUnits" text="List Units" /> endpoint. For a comprehensive understanding of how Augno API components work together, consider taking an <InternalLink pathKey="apiTour" text="API tour" /> or visiting the <InternalLink pathKey="apiReference.root" text="API reference" />.
+This guide will walk you through listing units of measurement using the <InternalLink pathKey="apiReference.units.listUnits" text="List Units" /> endpoint. For a comprehensive understanding of how OpenMRP API components work together, consider taking an <InternalLink pathKey="apiTour" text="API tour" /> or visiting the <InternalLink pathKey="apiReference.root" text="API reference" />.
 
 </DocNumberedSection>
 
 <DocNumberedSection number={2} title="Making your first API request">
 
-Begin your interaction with the Augno API by sending HTTP requests to the designated endpoints.
+Begin your interaction with the OpenMRP API by sending HTTP requests to the designated endpoints.
 
 <SdkLanguageTabs className="my-4">
 <SdkLanguageTab language="curl">
@@ -27,19 +27,19 @@ Begin your interaction with the Augno API by sending HTTP requests to the design
 ```bash
 curl API_HOST/v1/catalog/units \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_SANDBOX_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_SANDBOX_ACCOUNT_ID"
 ```
 
 </SdkLanguageTab>
 <SdkLanguageTab language="typescript">
 
 ```ts
-import Augno from '@augno/sdk';
+import OpenMRP from '@openmrp/sdk';
 
-const client = new Augno({
+const client = new OpenMRP({
     bearerToken: 'YOUR_API_KEY',
-    augnoAccountID: 'YOUR_SANDBOX_ACCOUNT_ID',
+    openMRPAccountID: 'YOUR_SANDBOX_ACCOUNT_ID',
 });
 
 const units = await client.catalog.units.list();
@@ -104,7 +104,7 @@ Each account is equipped with two API keys: one for sandbox testing and another 
 
 Access your secret and publishable keys in the Dashboard under the <InternalLink pathKey="frontend.apiKeys" text="API keys" /> tab. If you can't see your keys, request the necessary permissions from your organization account owner.
 
-When logged into Augno, our documentation will automatically populate code examples with your sandbox API key. These values are visible only to you. If you're not logged in, the examples will use placeholder API keys. Replace these with your own keys or log in to see your personalized keys.
+When logged into OpenMRP, our documentation will automatically populate code examples with your sandbox API key. These values are visible only to you. If you're not logged in, the examples will use placeholder API keys. Replace these with your own keys or log in to see your personalized keys.
 
 <IfAuthenticated>
     Here's your test API key for <SandboxAccountName />:

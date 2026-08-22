@@ -10,7 +10,7 @@ const NAV_DATA_OUTPUT = path.join(process.cwd(), 'src/static/navData.generated.t
 const PATHS_OUTPUT = path.join(process.cwd(), 'src/static/docPaths.generated.ts');
 const PREVIEW_OUTPUT = path.join(process.cwd(), 'src/static/pagePreview.generated.ts');
 
-// Types matching @augno/ui navigation types
+// Types matching @openmrp/ui navigation types
 interface NavLink {
     href: string;
     children: string;
@@ -338,7 +338,7 @@ function buildSubsectionItems(pages: ParsedPage[]): (NavLink | NavSubSectionData
 }
 
 function generateNavDataFile(tabbedNav: TabbedNavData): string {
-    const imports = `import { NavSection } from '@augno/ui';`;
+    const imports = `import { NavSection } from '@openmrp/ui';`;
 
     const navJson = JSON.stringify(tabbedNav, null, 4);
 

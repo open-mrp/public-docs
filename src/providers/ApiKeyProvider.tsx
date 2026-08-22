@@ -9,7 +9,7 @@ import {
     useSelectedSandboxId,
     useSandboxes,
 } from '@/lib/auth-store';
-import type { ReplacementValue } from '@augno/ui';
+import type { ReplacementValue } from '@openmrp/ui';
 import { createContext, ReactNode, useContext } from 'react';
 
 interface ApiKeyContextValue {
@@ -32,7 +32,7 @@ interface ApiKeyContextValue {
 const ApiKeyContext = createContext<ApiKeyContextValue | null>(null);
 
 // Fake API key shown in ApiKeySnippet when user is not logged in (looks realistic)
-const FAKE_API_KEY = 'aug_sk_test_AM4Bjfakeapikey_fakeapikeyUWNXD';
+const FAKE_API_KEY = 'mrp_sk_test_AM4Bjfakeapikey_fakeapikeyUWNXD';
 
 // Placeholder values shown in code snippets when user is not logged in
 const PLACEHOLDER_API_KEY = '{{YOUR_API_KEY}}';

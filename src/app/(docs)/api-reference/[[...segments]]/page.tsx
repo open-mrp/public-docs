@@ -26,7 +26,7 @@ import { notFound } from 'next/navigation';
 
 const API_REFERENCE_PAGE_TITLE = 'API Reference';
 const API_REFERENCE_DESCRIPTION =
-    'Complete reference for the Augno API: every endpoint, parameter, request body, and response, with examples.';
+    'Complete reference for the OpenMRP API: every endpoint, parameter, request body, and response, with examples.';
 
 /** First sentence of an endpoint description, capped for use as a meta description. */
 function toMetaDescription(text: string, fallback: string): string {
@@ -146,7 +146,7 @@ export async function generateMetadata({
         const title = `${object.name} object — ${API_REFERENCE_PAGE_TITLE}`;
         const description = toMetaDescription(
             object.description,
-            `The ${object.object} object in the Augno API.`,
+            `The ${object.object} object in the OpenMRP API.`,
         );
         const canonical = `/api-reference/objects/${object.slug}`;
         if (route.isArchived) {
@@ -186,8 +186,8 @@ export async function generateMetadata({
         }
         const card = ogImage({
             title: 'API Reference',
-            eyebrow: 'Augno Docs',
-            subtitle: 'Every Augno API endpoint',
+            eyebrow: 'OpenMRP Docs',
+            subtitle: 'Every OpenMRP API endpoint',
         });
         return {
             title: API_REFERENCE_PAGE_TITLE,
@@ -209,7 +209,7 @@ export async function generateMetadata({
 
     const description = toMetaDescription(
         endpoint.description,
-        `${endpoint.method.toUpperCase()} ${endpoint.path} — Augno API reference.`,
+        `${endpoint.method.toUpperCase()} ${endpoint.path} — OpenMRP API reference.`,
     );
 
     if (route.isArchived) {

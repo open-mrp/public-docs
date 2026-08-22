@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from '@augno/ui';
+import { Button, ButtonProps } from '@openmrp/ui';
 import Link from 'next/link';
 
 interface LinkButtonProps extends ButtonProps {

@@ -8,7 +8,7 @@ import {
     DropdownMenuItem,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from '@augno/ui';
+} from '@openmrp/ui';
 import { Check, Loader2, LogOut, Server, Users } from 'lucide-react';
 import { UserAvatar } from './UserAvatar';
 

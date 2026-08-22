@@ -171,7 +171,7 @@ function generateLlmsTxt(
     apiDomains: ApiNavDomain[],
     apiObjects: ApiObjectLite[],
 ): string {
-    const lines: string[] = ['# Augno Documentation', ''];
+    const lines: string[] = ['# OpenMRP Documentation', ''];
 
     const sectionMap = groupBySection(pages);
 

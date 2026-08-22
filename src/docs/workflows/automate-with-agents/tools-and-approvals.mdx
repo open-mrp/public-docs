@@ -14,19 +14,19 @@ Everything here sits _inside_ the agent's role. A tool grant can only ever narro
 
 ### Two kinds of tools
 
-**Built-in tools** are Augno's own capabilities, attached directly to the agent definition. There are five:
+**Built-in tools** are OpenMRP's own capabilities, attached directly to the agent definition. There are five:
 
 | Tool              | Group     | What it does                                                                                                  |
 | ----------------- | --------- | ------------------------------------------------------------------------------------------------------------- |
 | `create_artifact` | General   | Produces an artifact — a report, document, or data export — with a name, MIME type, and content               |
-| `read_doc`        | Knowledge | Reads a page of Augno's documentation, discovering what is available from the docs site's `llms.txt` index    |
+| `read_doc`        | Knowledge | Reads a page of OpenMRP's documentation, discovering what is available from the docs site's `llms.txt` index    |
 | `fetch_url`       | Knowledge | Fetches a public HTTPS URL and returns its body as text                                                       |
 | `send_email`      | General   | Sends an email reply through the conversation's bound inbox, threaded to whoever last wrote in                |
 | `draft_reply`     | General   | Proposes a reply to the external party on a case, held as a draft for a teammate to review — it does not send |
 
-`send_email` and `draft_reply` look similar and are not. `draft_reply` stages a message and stops; a person edits and approves it, and Augno then delivers it over whichever channel the case uses — email if the case is bridged to an inbox, an in-app portal message otherwise. `send_email` actually sends.
+`send_email` and `draft_reply` look similar and are not. `draft_reply` stages a message and stops; a person edits and approves it, and OpenMRP then delivers it over whichever channel the case uses — email if the case is bridged to an inbox, an in-app portal message otherwise. `send_email` actually sends.
 
-**Endpoint tools** are Augno's own API operations exposed to the agent as tools — over 200 of them, covering the same list/create/update operations your integrations use. They are granted separately from built-ins, through an explicit allowlist on the agent.
+**Endpoint tools** are OpenMRP's own API operations exposed to the agent as tools — over 200 of them, covering the same list/create/update operations your integrations use. They are granted separately from built-ins, through an explicit allowlist on the agent.
 
 ### Granting endpoint tools
 
@@ -40,7 +40,7 @@ Adding or removing tools is an ordinary edit to the agent's configuration and ta
 
 ### Progressive discovery
 
-Injecting the full tool catalog into every model turn would drown the agent in context and make it worse at its job, so Augno does not do that. Instead, an agent that has been granted at least one endpoint tool gets a single meta-tool, `search_api_tools`.
+Injecting the full tool catalog into every model turn would drown the agent in context and make it worse at its job, so OpenMRP does not do that. Instead, an agent that has been granted at least one endpoint tool gets a single meta-tool, `search_api_tools`.
 
 The agent describes what it needs in plain language — "list open sales orders", "create a customer" — and the search returns up to **10** matching tools from its grant. Those matches become directly callable on the agent's next step. Anything outside the grant is not searchable and never appears.
 
@@ -71,7 +71,7 @@ When an agent calls a gated tool, the call is **not** executed. Instead:
 
 1. The blocked call is recorded on the run's timeline, and an action is recorded in `pending_review`.
 2. The run moves to `awaiting_approval` and stops.
-3. Augno writes a **plain-language summary of what the agent is asking to do**, generated from the run's own context so raw IDs appear as the names the agent already looked up. If a summary cannot be produced, the run falls back to naming the tools it is blocked on.
+3. OpenMRP writes a **plain-language summary of what the agent is asking to do**, generated from the run's own context so raw IDs appear as the names the agent already looked up. If a summary cannot be produced, the run falls back to naming the tools it is blocked on.
 
 That summary is the whole point of the gate. A reviewer should be able to decide from one sentence, without reading a JSON payload.
 

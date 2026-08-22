@@ -35,8 +35,8 @@ Audit events are the answer to "who changed this order's ship-to address, and wh
 ```bash
 curl "API_HOST/v1/core/audit-events?limit=25" \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 Results are returned newest-first and use standard cursor <InternalLink pathKey="api.pagination" text="pagination" />. See the <InternalLink pathKey="apiReference.auditEvent.listAuditEvents" text="List Audit Events" /> reference for the full response shape.
@@ -50,8 +50,8 @@ The most useful thing this endpoint does is return a whole **history tree** rath
 ```bash
 curl "API_HOST/v1/core/audit-events?root_resource_type=sales_order&root_resource_id=or_xxx&include[]=actor&include[]=changes" \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 Sales orders are the family this was built for. An order stamps itself as its own root, and so do its lines, picks, pick lines, shipments, shipment lines, and invoices — so one call returns the order's own changes alongside everything audited beneath it, in one newest-first list. This is exactly what the order timeline in the Dashboard renders.

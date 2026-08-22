@@ -143,11 +143,11 @@
     background: rgba(100, 116, 139, 0.6);
 }
 
-@import '@augno/ui/styles.css';
+@import '@openmrp/ui/styles.css';
 
 /* CodeEditor backgrounds use the docs site token directly. ui@1.9.5+ renders
    .code-editor/.code-editor-scroll; older builds used bg-code-background, which
-   Tailwind does not scan from @augno/ui, so the utility may be missing. */
+   Tailwind does not scan from @openmrp/ui, so the utility may be missing. */
 .code-editor,
 .code-editor-scroll,
 .code-editor .hljs,

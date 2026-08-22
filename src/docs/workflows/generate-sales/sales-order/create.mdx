@@ -1,6 +1,6 @@
 ---
 title: Create a sales order
-subtitle: Learn how to create a sales order in Augno.
+subtitle: Learn how to create a sales order in OpenMRP.
 route: /generate-sales/sales-order/create
 nav:
     title: Create a sales order
@@ -9,7 +9,7 @@ nav:
     order: 2
 ---
 
-To create a sales order in Augno, you need to have <InternalLink pathKey="generateSales.customer.create" text="created a customer" /> and <InternalLink pathKey="buildProducts.items.products" text="created a product" />. <InternalLink pathKey="generateSales.salesOrder.overview" text="Sales orders" /> are created as estimates and then can be: <InternalLink pathKey="generateSales.salesOrder.issue" text="issued" /> to start the fulfillment process, used to <InternalLink pathKey="generateSales.salesOrder.generateProductionRun" text="generate a production run" /> for the products in the order, and used to generate payment requests for the order. In the current Augno UI flow, the production run is typically created while the order is still in Estimate.
+To create a sales order in OpenMRP, you need to have <InternalLink pathKey="generateSales.customer.create" text="created a customer" /> and <InternalLink pathKey="buildProducts.items.products" text="created a product" />. <InternalLink pathKey="generateSales.salesOrder.overview" text="Sales orders" /> are created as estimates and then can be: <InternalLink pathKey="generateSales.salesOrder.issue" text="issued" /> to start the fulfillment process, used to <InternalLink pathKey="generateSales.salesOrder.generateProductionRun" text="generate a production run" /> for the products in the order, and used to generate payment requests for the order. In the current OpenMRP UI flow, the production run is typically created while the order is still in Estimate.
 
 ### What is a <InternalLink pathKey="generateSales.salesOrder.overview" text="sales order" />?
 
@@ -32,7 +32,7 @@ Creating a sales order can be done extremely simply:
 4. Create the sales order
 
 Congratulations! You have created a sales order estimate that can now be <InternalLink pathKey="generateSales.salesOrder.issue" text="issued" />.
-It can be as simple as that. Because Augno pulls details from the customer, shipping and billing data are pre-filled for you.
+It can be as simple as that. Because OpenMRP pulls details from the customer, shipping and billing data are pre-filled for you.
 
 Let's also look in more detail at the creation of a sales order.
 
@@ -104,7 +104,7 @@ These addresses are saved/linked and used directly for billing and shipment exec
 
 ### 5) Order discount
 
-Set `order_discount_id` to an order discount's ID or to its unique <InternalLink pathKey="generateSales.customerPricing.discountCodes" text="discount code" /> — either is accepted — and Augno adds an extra negative-priced **discount line** to the order for you. The reduction is not a separate total field — it sits on the order as a line, so it is already reflected in the order totals and in anything computed from them, including checkout.
+Set `order_discount_id` to an order discount's ID or to its unique <InternalLink pathKey="generateSales.customerPricing.discountCodes" text="discount code" /> — either is accepted — and OpenMRP adds an extra negative-priced **discount line** to the order for you. The reduction is not a separate total field — it sits on the order as a line, so it is already reflected in the order totals and in anything computed from them, including checkout.
 
 Changing the order discount on an existing order records the new discount but does **not** add, re-price, or remove the discount line. If you need the charge to change, edit that line directly.
 
@@ -112,7 +112,7 @@ Changing the order discount on an existing order records the new discount but do
 
 Prices are resolved **server-side** from the product, on both create-order and add-a-line. You do not have to compute them, and in the ordinary case you should not send them.
 
-For each line, Augno starts from the product's list price and then applies, in order:
+For each line, OpenMRP starts from the product's list price and then applies, in order:
 
 1. the fixed and percentage **unit-conversion discount** configured for the ordered unit inside the product's unit group,
 2. a **conversion** from the product's base unit into the unit the line was ordered in,
@@ -131,8 +131,8 @@ To display prices while a user is still assembling an order, call the price-quot
 curl API_HOST/v1/sales/sales-orders/price-quote \
   -X POST \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
   -d '{
     "buyer_account_id": "ac_opnlh43ymyee",

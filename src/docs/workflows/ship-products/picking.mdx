@@ -12,7 +12,7 @@ A **pick** is the warehouse instruction sheet created when a <InternalLink pathK
 
 ### How a pick is created
 
-When you issue a sales order, Augno automatically creates a pick. The pick contains one line for every sale-type product on the order — freight, discount, and other system lines are never picked. Each pick line points back at its order line for the quantity ordered and starts at **zero picked**; the worker fills that in as stock comes off the shelf. The pick number matches the sales order number, so warehouse staff can easily cross-reference the two.
+When you issue a sales order, OpenMRP automatically creates a pick. The pick contains one line for every sale-type product on the order — freight, discount, and other system lines are never picked. Each pick line points back at its order line for the quantity ordered and starts at **zero picked**; the worker fills that in as stock comes off the shelf. The pick number matches the sales order number, so warehouse staff can easily cross-reference the two.
 
 ### On the factory floor
 
@@ -34,7 +34,7 @@ The relationship between these two values drives the pick's progress and determi
 
 ### Over-picks and under-picks
 
-Augno allows both over-picks and under-picks: the system does not block either scenario:
+OpenMRP allows both over-picks and under-picks: the system does not block either scenario:
 
 - **Over-pick**: the worker pulled more than the order requested. This can happen when an extra unit is found in the bin or a partial case must be pulled whole. The surplus is reconciled during packing.
 - **Under-pick**: the worker pulled less than ordered. This typically occurs when stock is short or items are damaged. The shortfall is handled during packing, where partial packing lets you ship what's available now and fulfill the rest later.
@@ -49,13 +49,13 @@ For a rollup across the whole order, read the sales order's `totals.picked` inst
 
 ### When the order changes after issue
 
-Editing an issued order's lines does not leave the pick alone. Augno silently rewrites it so the warehouse instruction always matches what is still owed, and the rules are worth knowing before you edit a live order.
+Editing an issued order's lines does not leave the pick alone. OpenMRP silently rewrites it so the warehouse instruction always matches what is still owed, and the rules are worth knowing before you edit a live order.
 
 Reconciliation runs off a single number, computed per order line:
 
 **outstanding = quantity ordered − quantity already packed**
 
-- **While `outstanding` is greater than zero** there is still work to do. Augno makes sure exactly one open (unpacked) pick line exists to hold it, seeded at **zero picked** — not at the remaining amount, so a line added to an order that was already picked does not read as though someone has picked it — and it **clears the pick's finished timestamp**, reopening the pick.
+- **While `outstanding` is greater than zero** there is still work to do. OpenMRP makes sure exactly one open (unpacked) pick line exists to hold it, seeded at **zero picked** — not at the remaining amount, so a line added to an order that was already picked does not read as though someone has picked it — and it **clears the pick's finished timestamp**, reopening the pick.
 - **Once packed covers the order** — `outstanding` is zero or negative, which happens when you reduce a quantity back down — any leftover open pick line is **deleted**, and the pick is marked finished if every line that remains is packed.
 
 This applies to adding a line, and to **any** update of an existing line on an order that already has a pick — not just a quantity change. A price-only or description-only edit runs the same reconciliation, so editing the price of a line that still has quantity outstanding clears the pick's finished timestamp and reopens the pick. It applies only to sale-type product lines: the automatically generated freight and discount lines are never picked, so touching one never seeds or removes a pick line.
@@ -67,7 +67,7 @@ picked is reopened, while fully picked lines stay packed.
 
 #### Deleting the last line reverts the order to an estimate
 
-This one is destructive and easy to trip over. Deleting a line removes that line's pick lines along with it. If the pick has **no lines left afterwards**, Augno concludes the order has nothing to fulfill and tears the whole thing down in one transaction:
+This one is destructive and easy to trip over. Deleting a line removes that line's pick lines along with it. If the pick has **no lines left afterwards**, OpenMRP concludes the order has nothing to fulfill and tears the whole thing down in one transaction:
 
 1. The pick is **deleted** — along with any picking progress recorded on it.
 2. The order's reserved inventory issues and their allocations are deleted, **releasing the reserved inventory** back to stock.

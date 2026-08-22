@@ -2,7 +2,7 @@ blank_issues_enabled: false
 contact_links:
     - name: Product support
       url: mailto:support@augno.com
-      about: Questions about your Augno account, billing, or a problem with the product itself.
+      about: Questions about your OpenMRP account, billing, or a problem with the product itself.
     - name: Security vulnerability
       url: mailto:security@augno.com
       about: Report a vulnerability privately. Please do not open a public issue.

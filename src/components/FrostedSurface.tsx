@@ -1,6 +1,6 @@
 'use client';
 
-import { useDarkMode } from '@augno/ui';
+import { useDarkMode } from '@openmrp/ui';
 import { cn } from '@/utils/cn';
 
 interface FrostedSurfaceProps {

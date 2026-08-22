@@ -1,6 +1,6 @@
 import { editUrl, reportUrl } from '@/static/repo';
 import { cn } from '@/utils/cn';
-import { GithubIcon } from '@augno/ui';
+import { GithubIcon } from '@openmrp/ui';
 import PencilIcon from '../icons/PencilIcon';
 
 interface PageFeedbackProps {

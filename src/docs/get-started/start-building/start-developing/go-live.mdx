@@ -10,9 +10,9 @@ nav:
     order: 3
 ---
 
-This checklist helps ensure a smooth transition when taking your Augno integration live.
+This checklist helps ensure a smooth transition when taking your OpenMRP integration live.
 
-Augno has designed its live and sandbox environments to function as similarly as possible. Switching between them is mostly a matter of swapping your API keys.
+OpenMRP has designed its live and sandbox environments to function as similarly as possible. Switching between them is mostly a matter of swapping your API keys.
 
 If you are a developer, or had a developer perform an integration for you, you should also consider the following items before going live.
 
@@ -20,10 +20,10 @@ If you are a developer, or had a developer perform an integration for you, you s
 
 <DocChecklistItem id="api-versioning">
     **API Versioning**: All requests use your account API settings, unless you override the API
-    version. Check the Augno API changelog for available versions. Webhook events are structured
+    version. Check the OpenMRP API changelog for available versions. Webhook events are structured
     according to your account API version, unless you set an API version during endpoint creation.
     To ensure everything is in sync: upgrade to the latest API version in the{' '}
-    <InternalLink pathKey="frontend.dashboard" text="Augno Dashboard" />; if using a server-side
+    <InternalLink pathKey="frontend.dashboard" text="OpenMRP Dashboard" />; if using a server-side
     library for a dynamic language (e.g., Node.js, Python, Ruby), set the API version in the
     library; if using a server-side library for a strongly typed language (e.g., Go, Java,
     TypeScript, .NET), upgrade to the latest version of your chosen library, which typically pins
@@ -31,7 +31,7 @@ If you are a developer, or had a developer perform an integration for you, you s
 </DocChecklistItem>
 
 <DocChecklistItem id="thorough-testing">
-    **Thorough Testing**: Utilize Augno's test values and scenarios to replicate various states and
+    **Thorough Testing**: Utilize OpenMRP's test values and scenarios to replicate various states and
     responses. Test your integration with incomplete data, invalid data, and duplicate data (e.g.,
     retry the same request to see what happens). It's also recommended to have someone else test
     your integration, especially if that person isn't a developer.
@@ -46,16 +46,16 @@ If you are a developer, or had a developer perform an integration for you, you s
 </DocChecklistItem>
 
 <DocChecklistItem id="logging">
-    **Logging**: Augno logs requests made with your API keys, viewable in the{' '}
-    <InternalLink pathKey="frontend.dashboard" text="Augno Dashboard" /> (usually under a "Logs" or
+    **Logging**: OpenMRP logs requests made with your API keys, viewable in the{' '}
+    <InternalLink pathKey="frontend.dashboard" text="OpenMRP Dashboard" /> (usually under a "Logs" or
     "API" section). It is highly recommended to implement comprehensive logging on your end as well.
-    Your logs can be crucial if your server has issues contacting Augno or if there's a problem with
+    Your logs can be crucial if your server has issues contacting OpenMRP or if there's a problem with
     your API keys. Regularly examine your logs to ensure they're storing only necessary information
     and not sensitive data (e.g., personally identifiable information, raw API keys).
 </DocChecklistItem>
 
 <DocChecklistItem id="environment-parity">
-    **Environment Parity for Configuration Objects**: Augno objects created in a sandbox environment
+    **Environment Parity for Configuration Objects**: OpenMRP objects created in a sandbox environment
     (e.g., product definitions, specific configurations) are not directly usable in live mode. This
     prevents test data from being inadvertently used in production. When recreating necessary
     objects in live mode, ensure you use the same identifying values (e.g., the same product ID)
@@ -63,8 +63,8 @@ If you are a developer, or had a developer perform an integration for you, you s
 </DocChecklistItem>
 
 <DocChecklistItem id="webhook-endpoints">
-    **Webhook Endpoints**: Your Augno account can have both test and live webhook endpoints. If
-    you're using webhooks, make sure you've defined live endpoints in your Augno account settings.
+    **Webhook Endpoints**: Your OpenMRP account can have both test and live webhook endpoints. If
+    you're using webhooks, make sure you've defined live endpoints in your OpenMRP account settings.
     Confirm that the live endpoint functions exactly the same as your test endpoint. Verify your
     production webhook endpoint gracefully handles delayed webhook notifications, gracefully handles
     duplicate webhook notifications, and does not require event notifications to occur in a specific
@@ -72,7 +72,7 @@ If you are a developer, or had a developer perform an integration for you, you s
 </DocChecklistItem>
 
 <DocChecklistItem id="stay-updated">
-    **Stay Updated**: Subscribe to Augno's API updates mailing list or blog to keep up with new
+    **Stay Updated**: Subscribe to OpenMRP's API updates mailing list or blog to keep up with new
     features and changes.
 </DocChecklistItem>
 
@@ -93,7 +93,7 @@ If you are a developer, or had a developer perform an integration for you, you s
 
 <DocChecklistItem id="production-api-keys">
     **Production API Key Configuration**: In the{' '}
-    <InternalLink pathKey="frontend.apiKeys" text="Augno Dashboard" />, switch from your sandbox
+    <InternalLink pathKey="frontend.apiKeys" text="OpenMRP Dashboard" />, switch from your sandbox
     organization to your production organization. Create a new production API key specifically for
     this integration. Securely update your integration's configuration to use the new production API
     key. Ensure that sandbox keys are no longer in use for the production version of your
@@ -101,19 +101,19 @@ If you are a developer, or had a developer perform an integration for you, you s
 </DocChecklistItem>
 
 <DocChecklistItem id="data-migration">
-    **Data Migration (If Applicable)**: If there's any existing data in Augno that needs to be
+    **Data Migration (If Applicable)**: If there's any existing data in OpenMRP that needs to be
     linked to your system, or vice-versa, plan and execute a data migration strategy. This might
     involve backfilling records with IDs or performing an initial sync.
 </DocChecklistItem>
 
 <DocChecklistItem id="deploy-integration">
-    **Deploy the Integration**: Deploy the updated integration code, now pointing to Augno's
+    **Deploy the Integration**: Deploy the updated integration code, now pointing to OpenMRP's
     production environment, to your production servers.
 </DocChecklistItem>
 
 <DocChecklistItem id="post-launch-monitoring">
     **Post-Launch Monitoring**: Closely monitor the integration in the production environment
-    immediately after launch. Use the Augno Dashboard's **Logs** and **Events** views to track
+    immediately after launch. Use the OpenMRP Dashboard's **Logs** and **Events** views to track
     operations and identify any errors or unexpected behavior. Have a rollback plan in place in case
     of critical issues.
 </DocChecklistItem>
@@ -126,4 +126,4 @@ If you are a developer, or had a developer perform an integration for you, you s
 
 </DocChecklist>
 
-By following this checklist, you can help ensure a confident and successful launch of your Augno integration.
+By following this checklist, you can help ensure a confident and successful launch of your OpenMRP integration.

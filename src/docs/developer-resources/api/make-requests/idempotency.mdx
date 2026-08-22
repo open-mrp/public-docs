@@ -59,7 +59,7 @@ Our standard error envelope includes an `is_transient` flag:
 A request is treated as an idempotent replay of a prior request when all of the following are true:
 
 - The **same idempotency key** is used for the **same API endpoint**
-- The **same target account** is set in the `Augno-Account` header (if it was overridden)
+- The **same target account** is set in the `OpenMRP-Account` header (if it was overridden)
 - The **same API key** is used
 - The request occurs **within the replay window**, up to 30 days apart
 

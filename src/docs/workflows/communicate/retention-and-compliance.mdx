@@ -23,8 +23,8 @@ Placing a hold preserves a conversation:
 ```bash
 curl -X POST API_HOST/v1/messaging/conversations/cv_w35z4ck68yq7/actions/set-legal-hold \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
   -d '{"legal_hold": "held"}'
 ```
@@ -47,8 +47,8 @@ Redaction is the right-to-erasure action. It is irreversible.
 ```bash
 curl -X POST API_HOST/v1/messaging/conversations/cv_w35z4ck68yq7/actions/redact \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 It requires the `messaging:delete` permission and takes no body. In one pass it:
@@ -63,7 +63,7 @@ The messages are kept as an **audit shell** — the rows do not disappear, so th
 
 - the conversation itself, including its title, participants, linked records, and case status;
 - each message's id, sequence, timestamps, kind, visibility, and sender attribution;
-- for email-bridged cases, the delivery metadata Augno recorded for each mail — including the external sender's address, the subject line, and the raw message stored in object storage when it arrived.
+- for email-bridged cases, the delivery metadata OpenMRP recorded for each mail — including the external sender's address, the subject line, and the raw message stored in object storage when it arrived.
 
 If an erasure request covers that metadata too, handle it as a manual data-subject request; the redact action alone does not reach it.
 

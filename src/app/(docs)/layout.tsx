@@ -5,7 +5,7 @@ import DocSidenav from '@/components/navigation/DocSidenav';
 import NavbarContents from '@/components/navigation/NavbarContents';
 import PageFeedback from '@/components/navigation/PageFeedback';
 import TabBar from '@/components/navigation/TabBar';
-import { Navbar } from '@augno/ui';
+import { Navbar } from '@openmrp/ui';
 import { usePathname } from 'next/navigation';
 import ApiReferenceSidenav from '@/components/api-reference/ApiReferenceSidenav';
 

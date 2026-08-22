@@ -8,7 +8,7 @@ export interface RecentlyVisitedPage {
     visitedAt: number;
 }
 
-const STORAGE_KEY = 'augno-recently-visited-pages';
+const STORAGE_KEY = 'openmrp-recently-visited-pages';
 const MAX_PAGES = 3;
 
 /**

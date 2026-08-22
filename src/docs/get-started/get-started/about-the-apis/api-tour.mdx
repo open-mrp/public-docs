@@ -1,6 +1,6 @@
 ---
-title: Tour of the Augno API
-subtitle: See how Augno API objects fit together and learn best practices for combining them effectively.
+title: Tour of the OpenMRP API
+subtitle: See how OpenMRP API objects fit together and learn best practices for combining them effectively.
 route: /api-tour
 nav:
     title: API tour
@@ -9,7 +9,7 @@ nav:
     order: 1
 ---
 
-This page gives you a practical mental model for the Augno API. You will learn how to think about API objects, how multi-step operations typically progress, and which patterns make integrations reliable in production.
+This page gives you a practical mental model for the OpenMRP API. You will learn how to think about API objects, how multi-step operations typically progress, and which patterns make integrations reliable in production.
 
 If you want something hands-on first, start with _<InternalLink pathKey="apiRequest" text="Send your first API request" />_. If you're looking for exact fields and endpoints, jump to the <InternalLink pathKey="apiReference.root" text="API reference" />.
 
@@ -17,11 +17,11 @@ If you want something hands-on first, start with _<InternalLink pathKey="apiRequ
 
 ### Everything is an object
 
-In Augno, the things you interact with - `customers`, `sales_orders`, `invoices`, and `batches` - are represented as API objects that we term _resources_. Whether you create them via the API or in the Dashboard, you can generally retrieve and inspect the same underlying object.
+In OpenMRP, the things you interact with - `customers`, `sales_orders`, `invoices`, and `batches` - are represented as API objects that we term _resources_. Whether you create them via the API or in the Dashboard, you can generally retrieve and inspect the same underlying object.
 
 Practically, this means your integration should:
 
-- **Store object IDs**: persist Augno IDs in your system so you can fetch, update, and reconcile later.
+- **Store object IDs**: persist OpenMRP IDs in your system so you can fetch, update, and reconcile later.
 - **Treat the API as the source of truth**: read back the latest state after writes, especially when downstream processes modify data.
 
 ### Objects relate to other objects
@@ -69,7 +69,7 @@ Design your integration to surface clear, actionable messages for correctable er
 
 If an operation completes asynchronously, you'll typically observe progress by polling, which is fetching the object periodically until its status is terminal (success/failure).
 
-Augno records request activity and makes this available for your review in the Dashboard's <InternalLink pathKey="frontend.requestLogs" text="request logs" />.
+OpenMRP records request activity and makes this available for your review in the Dashboard's <InternalLink pathKey="frontend.requestLogs" text="request logs" />.
 
 > #### **Note**
 >

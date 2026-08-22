@@ -4,7 +4,7 @@ import { apiNavDomains } from '@/static/apiEndpoints.generated';
 import { navData } from '@/static/navData.generated';
 import { routeToTab } from '@/static/routeMap.generated';
 import { getDefaultTab, getTabFromRoute, tabs } from '@/static/tabs';
-import type { NavLink, NavSubSectionData } from '@augno/ui';
+import type { NavLink, NavSubSectionData } from '@openmrp/ui';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';

@@ -6,10 +6,10 @@
  */
 export const SITE_URL = (process.env.DOCS_BASE_URL || 'https://docs.augno.com').replace(/\/$/, '');
 
-export const SITE_NAME = 'Augno Documentation';
+export const SITE_NAME = 'OpenMRP Documentation';
 
 /** Default <title> when a page does not provide its own. */
-export const SITE_TITLE = 'Augno Documentation — Inventory & Order Fulfillment API';
+export const SITE_TITLE = 'OpenMRP Documentation — Inventory & Order Fulfillment API';
 
 /**
  * Site-wide default description and home-page meta description. Kept under ~120
@@ -17,10 +17,15 @@ export const SITE_TITLE = 'Augno Documentation — Inventory & Order Fulfillment
  * `og:description` without truncation.
  */
 export const SITE_DESCRIPTION =
-    'Guides, workflows, and a complete API reference for the Augno inventory management and order fulfillment platform.';
+    'Guides, workflows, and a complete API reference for the OpenMRP inventory management and order fulfillment platform.';
 
-export const ORG_NAME = 'Augno';
+export const ORG_NAME = 'OpenMRP';
 
+/**
+ * Feeds JSON-LD (Organization url, publisher url), so it must be the domain we
+ * actually serve from — openmrp.ai currently 307s here. Flip at the DNS cutover,
+ * alongside SITE_URL above.
+ */
 export const ORG_URL = 'https://augno.com';
 
 /** Brand accent used in generated Open Graph cards (matches --primary). */

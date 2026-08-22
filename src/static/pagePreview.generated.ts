@@ -20,8 +20,8 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "subtitle": "Standard error envelope format for consistent error handling."
     },
     "/api/uris": {
-        "title": "Augno API URIs",
-        "subtitle": "Learn the general format of Augno API URIs."
+        "title": "OpenMRP API URIs",
+        "subtitle": "Learn the general format of OpenMRP API URIs."
     },
     "/api/idempotency": {
         "title": "Idempotency",
@@ -45,11 +45,11 @@ export const pagePreviewData: Record<string, PagePreview> = {
     },
     "/api/versioning": {
         "title": "API Versioning",
-        "subtitle": "Understand how Augno versions its API and manage version upgrades."
+        "subtitle": "Understand how OpenMRP versions its API and manage version upgrades."
     },
     "/api/mcp-server": {
         "title": "MCP server",
-        "subtitle": "Connect AI agents and assistants to the Augno API over the Model Context Protocol."
+        "subtitle": "Connect AI agents and assistants to the OpenMRP API over the Model Context Protocol."
     },
     "/api/audit-events": {
         "title": "Audit Events",
@@ -57,51 +57,51 @@ export const pagePreviewData: Record<string, PagePreview> = {
     },
     "/api/email-logs": {
         "title": "Email Logs",
-        "subtitle": "Confirm whether an email Augno sent on your behalf actually went out."
+        "subtitle": "Confirm whether an email OpenMRP sent on your behalf actually went out."
     },
     "/api/request-logs": {
         "title": "Request Logs",
         "subtitle": "Monitor and debug your API activity with request logs."
     },
     "/api/overview": {
-        "title": "Augno's APIs",
-        "subtitle": "Learn more about Augno's APIs."
+        "title": "OpenMRP's APIs",
+        "subtitle": "Learn more about OpenMRP's APIs."
     },
     "/api/go-sdk": {
         "title": "Go SDK",
-        "subtitle": "Call the Augno API from Go applications."
+        "subtitle": "Call the OpenMRP API from Go applications."
     },
     "/api/typescript-sdk": {
         "title": "TypeScript SDK",
-        "subtitle": "Call the Augno API from server-side TypeScript or JavaScript."
+        "subtitle": "Call the OpenMRP API from server-side TypeScript or JavaScript."
     },
     "/development": {
         "title": "Developer resources",
         "subtitle": "Technical documentation, API references, and guides for developers."
     },
     "/api-tour": {
-        "title": "Tour of the Augno API",
-        "subtitle": "See how Augno API objects fit together and learn best practices for combining them effectively."
+        "title": "Tour of the OpenMRP API",
+        "subtitle": "See how OpenMRP API objects fit together and learn best practices for combining them effectively."
     },
     "/get-started": {
         "title": "Get started",
-        "subtitle": "Create an account and learn how to build on Augno."
+        "subtitle": "Create an account and learn how to build on OpenMRP."
     },
     "/account/activate": {
         "title": "Activate your account",
-        "subtitle": "Learn how to activate and manage your Augno account."
+        "subtitle": "Learn how to activate and manage your OpenMRP account."
     },
     "/account/checklist": {
         "title": "Account activation checklist",
-        "subtitle": "Complete this checklist before putting your Augno account into production."
+        "subtitle": "Complete this checklist before putting your OpenMRP account into production."
     },
     "/account": {
-        "title": "Create an Augno account",
-        "subtitle": "Learn how to activate and manage your Augno account, from initial setup to advanced configurations."
+        "title": "Create an OpenMRP account",
+        "subtitle": "Learn how to activate and manage your OpenMRP account, from initial setup to advanced configurations."
     },
     "/api-request": {
-        "title": "Send your first Augno API request",
-        "subtitle": "Get started with the Augno API."
+        "title": "Send your first OpenMRP API request",
+        "subtitle": "Get started with the OpenMRP API."
     },
     "/go-live": {
         "title": "Go live checklist",
@@ -109,7 +109,7 @@ export const pagePreviewData: Record<string, PagePreview> = {
     },
     "/release-phases": {
         "title": "Product Release Phases",
-        "subtitle": "Learn how Augno describes product release phases and what to expect from each."
+        "subtitle": "Learn how OpenMRP describes product release phases and what to expect from each."
     },
     "/automate-with-agents/agents-in-chat": {
         "title": "Agents in chat",
@@ -149,7 +149,7 @@ export const pagePreviewData: Record<string, PagePreview> = {
     },
     "/build-products/bom/production-steps": {
         "title": "Production Steps",
-        "subtitle": "The core building block of manufacturing in Augno - defining inputs, outputs, and costs for each stage of production."
+        "subtitle": "The core building block of manufacturing in OpenMRP - defining inputs, outputs, and costs for each stage of production."
     },
     "/build-products/inventory/change-logs": {
         "title": "Inventory Change Logs",
@@ -173,7 +173,7 @@ export const pagePreviewData: Record<string, PagePreview> = {
     },
     "/build-products/items/overview": {
         "title": "Items overview",
-        "subtitle": "Materials, parts, and products - the core objects you buy, make, and sell in Augno."
+        "subtitle": "Materials, parts, and products - the core objects you buy, make, and sell in OpenMRP."
     },
     "/build-products/items/parts": {
         "title": "Parts",
@@ -253,15 +253,15 @@ export const pagePreviewData: Record<string, PagePreview> = {
     },
     "/collect-payments/invoicing/overview": {
         "title": "Invoicing",
-        "subtitle": "Invoices are the billing records Augno generates for each shipment, capturing what was shipped, to whom, and for how much."
+        "subtitle": "Invoices are the billing records OpenMRP generates for each shipment, capturing what was shipped, to whom, and for how much."
     },
     "/collect-payments/overview": {
         "title": "Collect Payments",
-        "subtitle": "Learn about collecting payments in Augno."
+        "subtitle": "Learn about collecting payments in OpenMRP."
     },
     "/communicate/email": {
         "title": "Email",
-        "subtitle": "Bridge a domain you own into Augno so customer mail opens a case and your team replies from your own address."
+        "subtitle": "Bridge a domain you own into OpenMRP so customer mail opens a case and your team replies from your own address."
     },
     "/communicate/inbox": {
         "title": "Inbox",
@@ -277,7 +277,7 @@ export const pagePreviewData: Record<string, PagePreview> = {
     },
     "/communicate/overview": {
         "title": "Communicate",
-        "subtitle": "Conversations, customer cases, notifications, and email inside Augno."
+        "subtitle": "Conversations, customer cases, notifications, and email inside OpenMRP."
     },
     "/communicate/retention-and-compliance": {
         "title": "Retention & compliance",
@@ -393,7 +393,7 @@ export const pagePreviewData: Record<string, PagePreview> = {
     },
     "/generate-sales/customer/create": {
         "title": "Create a customer",
-        "subtitle": "Learn how to create a customer in Augno."
+        "subtitle": "Learn how to create a customer in OpenMRP."
     },
     "/generate-sales/customer/overview": {
         "title": "Customers",
@@ -401,19 +401,19 @@ export const pagePreviewData: Record<string, PagePreview> = {
     },
     "/generate-sales/overview": {
         "title": "Generate Sales",
-        "subtitle": "Customers, pricing, orders, and the sales team - everything that drives revenue in Augno."
+        "subtitle": "Customers, pricing, orders, and the sales team - everything that drives revenue in OpenMRP."
     },
     "/generate-sales/sales-order/create": {
         "title": "Create a sales order",
-        "subtitle": "Learn how to create a sales order in Augno."
+        "subtitle": "Learn how to create a sales order in OpenMRP."
     },
     "/generate-sales/sales-order/generate-production-run": {
         "title": "Generate a production run",
-        "subtitle": "Generate a production run from a sales order in Augno."
+        "subtitle": "Generate a production run from a sales order in OpenMRP."
     },
     "/generate-sales/sales-order/issue": {
         "title": "Issue a sales order",
-        "subtitle": "Learn how to issue a sales order in Augno."
+        "subtitle": "Learn how to issue a sales order in OpenMRP."
     },
     "/generate-sales/sales-order/overview": {
         "title": "Sales orders",
@@ -429,7 +429,7 @@ export const pagePreviewData: Record<string, PagePreview> = {
     },
     "/workflows": {
         "title": "Workflows",
-        "subtitle": "End-to-end guides for common business processes in Augno."
+        "subtitle": "End-to-end guides for common business processes in OpenMRP."
     },
     "/manage-account/account-settings/business-information": {
         "title": "Business information",
@@ -441,7 +441,7 @@ export const pagePreviewData: Record<string, PagePreview> = {
     },
     "/manage-account/api-keys": {
         "title": "API keys",
-        "subtitle": "Create, rotate, and revoke API keys for programmatic access to Augno."
+        "subtitle": "Create, rotate, and revoke API keys for programmatic access to OpenMRP."
     },
     "/manage-account/customer-portal-settings": {
         "title": "Customer portal settings",
@@ -449,7 +449,7 @@ export const pagePreviewData: Record<string, PagePreview> = {
     },
     "/manage-account/integrations": {
         "title": "Integrations",
-        "subtitle": "Connect third-party services like Stripe, Shippo, and HubSpot to your Augno account."
+        "subtitle": "Connect third-party services like Stripe, Shippo, and HubSpot to your OpenMRP account."
     },
     "/manage-account/overview": {
         "title": "Manage Your Account",
@@ -477,11 +477,11 @@ export const pagePreviewData: Record<string, PagePreview> = {
     },
     "/manage-account/team/team-members": {
         "title": "Team members",
-        "subtitle": "Invite, manage, and remove the people who use your Augno account."
+        "subtitle": "Invite, manage, and remove the people who use your OpenMRP account."
     },
     "/ship-products/overview": {
         "title": "Ship Products",
-        "subtitle": "Learn about shipping products in Augno."
+        "subtitle": "Learn about shipping products in OpenMRP."
     },
     "/ship-products/packing/overview": {
         "title": "Packing",

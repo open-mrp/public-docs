@@ -195,7 +195,7 @@ export const apiTags: TagData[] = [
                 "id": "apke_01fba3a7db3996e3b3b1a07e00",
                 "object": "api_key",
                 "name": "Production API Key",
-                "redacted_value": "aug_sk_prod_****hjt4",
+                "redacted_value": "mrp_sk_prod_****hjt4",
                 "role": {
                     "id": "rl_01c16d2eb637c0d1f3a372937c",
                     "object": "role",
@@ -501,12 +501,12 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "object": "created_api_key",
-                            "api_key_secret": "aug_sk_prod_RhxFDvTdDnb0bgtcoA5P79_60EmH4h9j9ZldsuU9XyngXlpu8NqdIlGTQw8OM8cGeCadyhjtr",
+                            "api_key_secret": "mrp_sk_prod_RhxFDvTdDnb0bgtcoA5P79_60EmH4h9j9ZldsuU9XyngXlpu8NqdIlGTQw8OM8cGeCadyhjtr",
                             "api_key_info": {
                                 "id": "apke_01fba3a7db3996e3b3b1a07e00",
                                 "object": "api_key",
                                 "name": "Production API Key",
-                                "redacted_value": "aug_sk_prod_****hjt4",
+                                "redacted_value": "mrp_sk_prod_****hjt4",
                                 "role": {
                                     "id": "rl_01c16d2eb637c0d1f3a372937c",
                                     "object": "role",
@@ -858,7 +858,7 @@ export const apiTags: TagData[] = [
                                     "id": "apke_01fba3a7db3996e3b3b1a07e00",
                                     "object": "api_key",
                                     "name": "Production API Key",
-                                    "redacted_value": "aug_sk_prod_****hjt4",
+                                    "redacted_value": "mrp_sk_prod_****hjt4",
                                     "role": {
                                         "id": "rl_01c16d2eb637c0d1f3a372937c",
                                         "object": "role",
@@ -1111,7 +1111,7 @@ export const apiTags: TagData[] = [
                             "id": "apke_01fba3a7db3996e3b3b1a07e00",
                             "object": "api_key",
                             "name": "Production API Key",
-                            "redacted_value": "aug_sk_prod_****hjt4",
+                            "redacted_value": "mrp_sk_prod_****hjt4",
                             "role": {
                                 "id": "rl_01c16d2eb637c0d1f3a372937c",
                                 "object": "role",
@@ -1447,12 +1447,12 @@ export const apiTags: TagData[] = [
                         ],
                         "example": {
                             "object": "created_api_key",
-                            "api_key_secret": "aug_sk_prod_RhxFDvTdDnb0bgtcoA5P79_60EmH4h9j9ZldsuU9XyngXlpu8NqdIlGTQw8OM8cGeCadyhjtr",
+                            "api_key_secret": "mrp_sk_prod_RhxFDvTdDnb0bgtcoA5P79_60EmH4h9j9ZldsuU9XyngXlpu8NqdIlGTQw8OM8cGeCadyhjtr",
                             "api_key_info": {
                                 "id": "apke_01fba3a7db3996e3b3b1a07e00",
                                 "object": "api_key",
                                 "name": "Production API Key",
-                                "redacted_value": "aug_sk_prod_****hjt4",
+                                "redacted_value": "mrp_sk_prod_****hjt4",
                                 "role": {
                                     "id": "rl_01c16d2eb637c0d1f3a372937c",
                                     "object": "role",
@@ -107588,7 +107588,7 @@ export const apiObjects: ObjectData[] = [
             "id": "apke_01fba3a7db3996e3b3b1a07e00",
             "object": "api_key",
             "name": "Production API Key",
-            "redacted_value": "aug_sk_prod_****hjt4",
+            "redacted_value": "mrp_sk_prod_****hjt4",
             "role": {
                 "id": "rl_01c16d2eb637c0d1f3a372937c",
                 "object": "role",

@@ -2,7 +2,7 @@
 
 import { useRecentlyVisitedPages } from '@/hooks/useRecentlyVisitedPages';
 import type { ObjectData, SchemaField } from '@/static/apiEndpoints.generated';
-import { CheckIcon, ClipboardIcon } from '@augno/ui';
+import { CheckIcon, ClipboardIcon } from '@openmrp/ui';
 import copy from 'copy-to-clipboard';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';

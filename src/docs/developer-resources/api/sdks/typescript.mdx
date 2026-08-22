@@ -1,6 +1,6 @@
 ---
 title: TypeScript SDK
-subtitle: Call the Augno API from server-side TypeScript or JavaScript.
+subtitle: Call the OpenMRP API from server-side TypeScript or JavaScript.
 route: /api/typescript-sdk
 nav:
     title: TypeScript
@@ -9,18 +9,18 @@ nav:
     order: 1
 ---
 
-The Augno TypeScript SDK, `@augno/sdk`, is a typed client for the Augno REST API, intended for server-side TypeScript and JavaScript. It ships request and response types for every endpoint, handles authentication, retries, and timeouts, and exposes the full API through a single `Augno` client.
+The OpenMRP TypeScript SDK, `@openmrp/sdk`, is a typed client for the OpenMRP REST API, intended for server-side TypeScript and JavaScript. It ships request and response types for every endpoint, handles authentication, retries, and timeouts, and exposes the full API through a single `OpenMRP` client.
 
 <DocCardGroup>
     <LinkCard
         pathKey="npm.typescriptSdk"
         title="npm package"
-        description="@augno/sdk on the npm registry."
+        description="@openmrp/sdk on the npm registry."
     />
     <LinkCard
         pathKey="github.typescriptSdk"
         title="Source on GitHub"
-        description="Augno/typescript-sdk - source, changelog, and issues."
+        description="open-mrp/typescript-sdk - source, changelog, and issues."
     />
 </DocCardGroup>
 
@@ -30,28 +30,28 @@ The Augno TypeScript SDK, `@augno/sdk`, is a typed client for the Augno REST API
 <DocTab label="npm">
 
 ```sh
-npm install @augno/sdk
+npm install @openmrp/sdk
 ```
 
 </DocTab>
 <DocTab label="pnpm">
 
 ```sh
-pnpm add @augno/sdk
+pnpm add @openmrp/sdk
 ```
 
 </DocTab>
 <DocTab label="yarn">
 
 ```sh
-yarn add @augno/sdk
+yarn add @openmrp/sdk
 ```
 
 </DocTab>
 <DocTab label="bun">
 
 ```sh
-bun add @augno/sdk
+bun add @openmrp/sdk
 ```
 
 </DocTab>
@@ -59,14 +59,14 @@ bun add @augno/sdk
 
 ## Initialize the client
 
-Create a single `Augno` client and reuse it across requests. Authenticate with an <InternalLink pathKey="api.apiKeys" text="API key" /> passed as `bearerToken`, and set `augnoAccountID` to the account you want to operate on - it is sent as the `Augno-Account` header on every request.
+Create a single `OpenMRP` client and reuse it across requests. Authenticate with an <InternalLink pathKey="api.apiKeys" text="API key" /> passed as `bearerToken`, and set `openMRPAccountID` to the account you want to operate on - it is sent as the `OpenMRP-Account` header on every request.
 
 ```ts
-import Augno from '@augno/sdk';
+import OpenMRP from '@openmrp/sdk';
 
-const client = new Augno({
-    bearerToken: process.env['AUGNO_API_KEY'], // or omit - defaults to process.env['AUGNO_API_KEY']
-    augnoAccountID: 'YOUR_SANDBOX_ACCOUNT_ID', // ID for the account YOUR_SANDBOX_ACCOUNT_NAME
+const client = new OpenMRP({
+    bearerToken: process.env['OPENMRP_API_KEY'], // or omit - defaults to process.env['OPENMRP_API_KEY']
+    openMRPAccountID: 'YOUR_SANDBOX_ACCOUNT_ID', // ID for the account YOUR_SANDBOX_ACCOUNT_NAME
 });
 
 const items = await client.catalog.items.list();
@@ -74,19 +74,19 @@ const items = await client.catalog.items.list();
 console.log(items.data);
 ```
 
-> In production, load your key from an environment variable or secret manager rather than hardcoding it (`bearerToken` defaults to `process.env['AUGNO_API_KEY']`, so you can omit it entirely). Treat the key like a password: never commit it or ship it to a browser. The SDK is intended for server-side use.
+> In production, load your key from an environment variable or secret manager rather than hardcoding it (`bearerToken` defaults to `process.env['OPENMRP_API_KEY']`, so you can omit it entirely). Treat the key like a password: never commit it or ship it to a browser. The SDK is intended for server-side use.
 
 ### Client options
 
 | Option           | Type                                              | Default                                | Description                                                                  |
 | :--------------- | :------------------------------------------------ | :------------------------------------- | :--------------------------------------------------------------------------- |
-| `bearerToken`    | `string`                                          | `process.env['AUGNO_API_KEY']`         | API key sent as a `Bearer` token.                                            |
-| `augnoAccountID` | `string`                                          | -                                      | Account UUID, sent as the `Augno-Account` header. Update to switch accounts. |
+| `bearerToken`    | `string`                                          | `process.env['OPENMRP_API_KEY']`         | API key sent as a `Bearer` token.                                            |
+| `openMRPAccountID` | `string`                                          | -                                      | Account UUID, sent as the `OpenMRP-Account` header. Update to switch accounts. |
 | `environment`    | `'production'` \| `'local'`                       | `'production'`                         | Selects the base URL. `production` → `https://api.augno.com`.                |
-| `baseURL`        | `string`                                          | `process.env['AUGNO_BASE_URL']`        | Override the base URL directly. Don't combine with `environment`.            |
+| `baseURL`        | `string`                                          | `process.env['OPENMRP_BASE_URL']`        | Override the base URL directly. Don't combine with `environment`.            |
 | `maxRetries`     | `number`                                          | `2`                                    | Number of automatic retries for transient failures.                          |
 | `timeout`        | `number`                                          | `60000`                                | Per-request timeout in milliseconds.                                         |
-| `logLevel`       | `'debug' \| 'info' \| 'warn' \| 'error' \| 'off'` | `process.env['AUGNO_LOG']` or `'warn'` | Controls log verbosity.                                                      |
+| `logLevel`       | `'debug' \| 'info' \| 'warn' \| 'error' \| 'off'` | `process.env['OPENMRP_LOG']` or `'warn'` | Controls log verbosity.                                                      |
 
 ## Switching accounts
 
@@ -94,7 +94,7 @@ If your integration spans multiple accounts, use `withOptions` to derive a clien
 
 ```ts
 const otherAccount = client.withOptions({
-    augnoAccountID: 'YOUR_ACCOUNT_ID', // ID for the account YOUR_ACCOUNT_NAME
+    openMRPAccountID: 'YOUR_ACCOUNT_ID', // ID for the account YOUR_ACCOUNT_NAME
 });
 
 await otherAccount.catalog.items.list();
@@ -102,23 +102,23 @@ await otherAccount.catalog.items.list();
 
 ## Request & response types
 
-Every request param and response field is typed. Import the types directly off the `Augno` namespace, and rely on editor tooltips - each method, param, and field carries a docstring that appears on hover.
+Every request param and response field is typed. Import the types directly off the `OpenMRP` namespace, and rely on editor tooltips - each method, param, and field carries a docstring that appears on hover.
 
 ```ts
-import Augno from '@augno/sdk';
+import OpenMRP from '@openmrp/sdk';
 
-const client = new Augno();
+const client = new OpenMRP();
 
-const items: Augno.Catalog.ListItem = await client.catalog.items.list();
+const items: OpenMRP.Catalog.ListItem = await client.catalog.items.list();
 ```
 
 ## Handling errors
 
-When the SDK cannot reach the API, or the API returns a 4xx or 5xx response, it throws a subclass of `Augno.APIError`. Inspect `status`, `name`, and `headers` to branch on the failure.
+When the SDK cannot reach the API, or the API returns a 4xx or 5xx response, it throws a subclass of `OpenMRP.APIError`. Inspect `status`, `name`, and `headers` to branch on the failure.
 
 ```ts
 const items = await client.catalog.items.list().catch(async (err) => {
-    if (err instanceof Augno.APIError) {
+    if (err instanceof OpenMRP.APIError) {
         console.log(err.status); // 400
         console.log(err.name); // BadRequestError
         console.log(err.headers); // { server: 'nginx', ... }
@@ -150,7 +150,7 @@ The SDK automatically retries certain failures up to 2 times with a short expone
 
 ```ts
 // For all requests:
-const client = new Augno({
+const client = new OpenMRP({
     maxRetries: 0, // default is 2
 });
 
@@ -166,7 +166,7 @@ Requests time out after 1 minute by default and throw `APIConnectionTimeoutError
 
 ```ts
 // For all requests:
-const client = new Augno({
+const client = new OpenMRP({
     timeout: 20 * 1000, // 20 seconds
 });
 
@@ -232,10 +232,10 @@ The `Request-ID` header is useful when reporting issues - see <InternalLink path
 
 ## Logging
 
-Set `logLevel` (or the `AUGNO_LOG` environment variable) to control verbosity. At `debug`, all HTTP requests and responses are logged, including headers and bodies - use it only for local debugging.
+Set `logLevel` (or the `OPENMRP_LOG` environment variable) to control verbosity. At `debug`, all HTTP requests and responses are logged, including headers and bodies - use it only for local debugging.
 
 ```ts
-const client = new Augno({
+const client = new OpenMRP({
     logLevel: 'debug', // 'debug' | 'info' | 'warn' (default) | 'error' | 'off'
 });
 ```
@@ -244,7 +244,7 @@ By default the SDK logs to `globalThis.console`. You can supply a custom logger 
 
 ## Versioning
 
-The SDK is pinned to the API version it was generated against, so upgrading the package upgrades the API version your integration targets. Review the [changelog](https://github.com/Augno/typescript-sdk/blob/main/CHANGELOG.md) before bumping, and see <InternalLink pathKey="api.versioning" text="Versioning" /> for how Augno versions the API.
+The SDK is pinned to the API version it was generated against, so upgrading the package upgrades the API version your integration targets. Review the [changelog](https://github.com/open-mrp/typescript-sdk/blob/main/CHANGELOG.md) before bumping, and see <InternalLink pathKey="api.versioning" text="Versioning" /> for how OpenMRP versions the API.
 
 ## Requirements
 

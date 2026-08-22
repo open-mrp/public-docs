@@ -1,6 +1,6 @@
 ---
 title: Team members
-subtitle: Invite, manage, and remove the people who use your Augno account.
+subtitle: Invite, manage, and remove the people who use your OpenMRP account.
 route: /manage-account/team/team-members
 nav:
     title: Team members
@@ -9,7 +9,7 @@ nav:
     order: 1
 ---
 
-**Team members** are the users who have access to your Augno account. From the <InternalLink pathKey="frontend.team" text="Team page" />, anyone whose role grants the `team` permissions — admins always qualify — can invite new users, assign roles and departments, and lock or remove members who no longer need access.
+**Team members** are the users who have access to your OpenMRP account. From the <InternalLink pathKey="frontend.team" text="Team page" />, anyone whose role grants the `team` permissions — admins always qualify — can invite new users, assign roles and departments, and lock or remove members who no longer need access.
 
 ### Why team management matters
 
@@ -82,7 +82,7 @@ Locking an already-locked member does nothing rather than failing.
 - Can be viewed by toggling the **Show Removed** filter
 - Retain their historical activity in audit logs
 
-Removal is a soft delete, so the record survives and the member can be restored later. It only affects this account: the person's Augno profile is untouched, and their access to any other account they belong to is unaffected.
+Removal is a soft delete, so the record survives and the member can be restored later. It only affects this account: the person's OpenMRP profile is untouched, and their access to any other account they belong to is unaffected.
 
 **Unlock account** and **Restore user** are the same underlying action — activating the member — applied to a locked member and a removed member respectively. Because activating puts someone back into an active seat, it fails if the account is already at its seat limit. Free a seat or upgrade your plan, then try again.
 

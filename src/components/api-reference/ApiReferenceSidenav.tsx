@@ -3,7 +3,7 @@
 import { apiVersionFromPathname } from '@/lib/api-reference-version';
 import { getApiNavEntries, getApiObjectNavEntries } from '@/static/apiNav.generated';
 import { apiReferenceBasePath } from '@/static/apiVersions.generated';
-import { NavItem, NavLink, NavSubSection, NavSubSectionData, Sidenav } from '@augno/ui';
+import { NavItem, NavLink, NavSubSection, NavSubSectionData, Sidenav } from '@openmrp/ui';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';

@@ -8,7 +8,7 @@ import { extractHeadingsFromDom } from '@/lib/mdx/extractHeadings';
 import { Frontmatter } from '@/lib/mdx/fetchPageBySlug';
 import { buildBreadcrumbsFromRoute } from '@/static/breadcrumbConfig';
 import { TocItem } from '@/types/toc';
-import { CheckIcon, ClipboardIcon, DocPageHeader } from '@augno/ui';
+import { CheckIcon, ClipboardIcon, DocPageHeader } from '@openmrp/ui';
 import copy from 'copy-to-clipboard';
 import { JSXElementConstructor, ReactElement, useEffect, useRef, useState } from 'react';
 

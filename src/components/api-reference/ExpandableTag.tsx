@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/utils/cn';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@augno/ui';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@openmrp/ui';
 import { Chip } from './Chip';
 
 export interface ExpandableTagProps {

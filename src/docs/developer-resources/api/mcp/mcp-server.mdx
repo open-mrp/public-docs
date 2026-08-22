@@ -1,6 +1,6 @@
 ---
 title: MCP server
-subtitle: Connect AI agents and assistants to the Augno API over the Model Context Protocol.
+subtitle: Connect AI agents and assistants to the OpenMRP API over the Model Context Protocol.
 route: /api/mcp-server
 nav:
     title: MCP server
@@ -9,15 +9,15 @@ nav:
     order: 1
 ---
 
-The Augno MCP server, `@augno/sdk-mcp`, exposes the Augno API to AI agents and assistants through the [Model Context Protocol](https://modelcontextprotocol.io) (MCP). Once connected, an agent in a client like Claude, Cursor, or your own MCP-aware app can read and write Augno data on your behalf — authenticated with your <InternalLink pathKey="api.apiKeys" text="API key" /> and bounded by that key's permissions.
+The OpenMRP MCP server, `@openmrp/sdk-mcp`, exposes the OpenMRP API to AI agents and assistants through the [Model Context Protocol](https://modelcontextprotocol.io) (MCP). Once connected, an agent in a client like Claude, Cursor, or your own MCP-aware app can read and write OpenMRP data on your behalf — authenticated with your <InternalLink pathKey="api.apiKeys" text="API key" /> and bounded by that key's permissions.
 
-It wraps the <InternalLink pathKey="api.typescriptSdk" text="TypeScript SDK" /> (`@augno/sdk`), so everything the SDK can do, an agent can do.
+It wraps the <InternalLink pathKey="api.typescriptSdk" text="TypeScript SDK" /> (`@openmrp/sdk`), so everything the SDK can do, an agent can do.
 
 <DocCardGroup>
     <LinkCard
         pathKey="api.typescriptSdk"
         title="TypeScript SDK"
-        description="The @augno/sdk client the MCP server runs your code against."
+        description="The @openmrp/sdk client the MCP server runs your code against."
     />
     <LinkCard
         pathKey="api.apiKeys"
@@ -28,17 +28,17 @@ It wraps the <InternalLink pathKey="api.typescriptSdk" text="TypeScript SDK" /> 
 
 ## How it works
 
-Rather than generating one tool per endpoint — which floods an agent's context with hundreds of tools — the server exposes a single **`execute`** tool that runs short TypeScript snippets against a pre-authenticated Augno SDK client. The agent writes code; the server runs it and returns the result.
+Rather than generating one tool per endpoint — which floods an agent's context with hundreds of tools — the server exposes a single **`execute`** tool that runs short TypeScript snippets against a pre-authenticated OpenMRP SDK client. The agent writes code; the server runs it and returns the result.
 
-The code runs in a sandboxed runtime **inside the server** — there is no third-party execution environment, and the sandbox can only reach the Augno API. This keeps your data and credentials within the boundary you connect to.
+The code runs in a sandboxed runtime **inside the server** — there is no third-party execution environment, and the sandbox can only reach the OpenMRP API. This keeps your data and credentials within the boundary you connect to.
 
 > **What the agent can do is exactly what your API key can do.** The MCP server forwards your key on every call; it grants no extra access. Scope keys narrowly and prefer a dedicated key per integration. See <InternalLink pathKey="api.apiKeys" text="API keys" /> for how to create and limit them.
 
 ## Authenticate
 
-The server authenticates to the Augno API with your API key, passed as a bearer token. Provide it as the `AUGNO_API_KEY` environment variable (local servers) or as an `Authorization: Bearer <key>` header (remote servers). The key determines which account the agent operates on, so no separate account selection is required.
+The server authenticates to the OpenMRP API with your API key, passed as a bearer token. Provide it as the `OPENMRP_API_KEY` environment variable (local servers) or as an `Authorization: Bearer <key>` header (remote servers). The key determines which account the agent operates on, so no separate account selection is required.
 
-You do not need to set the `Augno-Version` header yourself — the server pins the API version it was built against and sends it automatically. See <InternalLink pathKey="api.versioning" text="API versioning" />.
+You do not need to set the `OpenMRP-Version` header yourself — the server pins the API version it was built against and sends it automatically. See <InternalLink pathKey="api.versioning" text="API versioning" />.
 
 ## Connect a client
 
@@ -47,14 +47,14 @@ The MCP server is hosted at `https://mcp.augno.com`. Connect to it over HTTP —
 <DocTabs className="my-4">
 <DocTab label="Cursor">
 
-Cursor reads MCP servers from `~/.cursor/mcp.json` (all projects) or `.cursor/mcp.json` in a project. Add an `augno` entry, then enable it under **Settings → MCP** (a green dot means it connected).
+Cursor reads MCP servers from `~/.cursor/mcp.json` (all projects) or `.cursor/mcp.json` in a project. Add an `openmrp` entry, then enable it under **Settings → MCP** (a green dot means it connected).
 
 **Hosted (HTTP):**
 
 ```json
 {
     "mcpServers": {
-        "augno": {
+        "openmrp": {
             "url": "https://mcp.augno.com",
             "headers": {
                 "Authorization": "Bearer YOUR_API_KEY"
@@ -69,11 +69,11 @@ Cursor reads MCP servers from `~/.cursor/mcp.json` (all projects) or `.cursor/mc
 ```json
 {
     "mcpServers": {
-        "augno": {
+        "openmrp": {
             "command": "npx",
-            "args": ["-y", "@augno/sdk-mcp"],
+            "args": ["-y", "@openmrp/sdk-mcp"],
             "env": {
-                "AUGNO_API_KEY": "YOUR_API_KEY"
+                "OPENMRP_API_KEY": "YOUR_API_KEY"
             }
         }
     }
@@ -88,14 +88,14 @@ Add the server with the `claude mcp` CLI.
 **Hosted (HTTP):**
 
 ```sh
-claude mcp add --transport http augno https://mcp.augno.com \
+claude mcp add --transport http openmrp https://mcp.augno.com \
   --header "Authorization: Bearer YOUR_API_KEY"
 ```
 
 **Local (stdio):** everything after `--` is the command Claude Code runs.
 
 ```sh
-claude mcp add --env AUGNO_API_KEY=YOUR_API_KEY augno -- npx -y @augno/sdk-mcp
+claude mcp add --env OPENMRP_API_KEY=YOUR_API_KEY openmrp -- npx -y @openmrp/sdk-mcp
 ```
 
 By default the server is saved for the current project only. Add `--scope user` to make it available in every project, or `--scope project` to write a shared `.mcp.json` your team can commit:
@@ -103,7 +103,7 @@ By default the server is saved for the current project only. Add `--scope user` 
 ```json
 {
     "mcpServers": {
-        "augno": {
+        "openmrp": {
             "type": "http",
             "url": "https://mcp.augno.com",
             "headers": {
@@ -114,7 +114,7 @@ By default the server is saved for the current project only. Add `--scope user` 
 }
 ```
 
-Verify the connection with `claude mcp list` (or `/mcp` inside a session), and remove it with `claude mcp remove augno`.
+Verify the connection with `claude mcp list` (or `/mcp` inside a session), and remove it with `claude mcp remove openmrp`.
 
 </DocTab>
 </DocTabs>
@@ -123,7 +123,7 @@ Verify the connection with `claude mcp list` (or `/mcp` inside a session), and r
 
 ## The `execute` tool
 
-The agent calls `execute` with a `code` snippet. The snippet must define a top-level `run` function whose single parameter is the Augno SDK client:
+The agent calls `execute` with a `code` snippet. The snippet must define a top-level `run` function whose single parameter is the OpenMRP SDK client:
 
 ```ts
 async function run(client) {
@@ -132,7 +132,7 @@ async function run(client) {
 }
 ```
 
-The server runs `run`, awaits the result, and returns it to the agent as JSON. The `client` is a fully-typed `Augno` instance — the same one documented in the <InternalLink pathKey="api.typescriptSdk" text="TypeScript SDK" /> guide — so the agent can call any endpoint, paginate, and compose multiple calls in one snippet:
+The server runs `run`, awaits the result, and returns it to the agent as JSON. The `client` is a fully-typed `OpenMRP` instance — the same one documented in the <InternalLink pathKey="api.typescriptSdk" text="TypeScript SDK" /> guide — so the agent can call any endpoint, paginate, and compose multiple calls in one snippet:
 
 ```ts
 async function run(client) {

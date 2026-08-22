@@ -6,7 +6,7 @@ import {
 import { getEndpointSnippet } from '@/static/apiSnippets.generated';
 
 describe('normalizeSnippetPlaceholders', () => {
-    test('rewrites Augno production API host', () => {
+    test('rewrites OpenMRP production API host', () => {
         expect(normalizeSnippetPlaceholders('fetch("https://api.augno.com/v1/foo")')).toContain(
             'API_HOST',
         );
@@ -14,7 +14,7 @@ describe('normalizeSnippetPlaceholders', () => {
 
     test('rewrites bearer shell variables from Stainless curl snippets', () => {
         const out = normalizeSnippetPlaceholders(
-            'curl https://api.augno.com/x \\\n    -H "Authorization: Bearer $AUGNO_API_KEY"',
+            'curl https://api.augno.com/x \\\n    -H "Authorization: Bearer $OPENMRP_API_KEY"',
         );
         expect(out).toContain('Bearer YOUR_API_KEY');
         expect(out).toContain('API_HOST');
@@ -22,13 +22,13 @@ describe('normalizeSnippetPlaceholders', () => {
 
     test('uses quoted YOUR_API_KEY for TypeScript env reads', () => {
         expect(
-            normalizeSnippetPlaceholders(`new Foo({ apiKey: process.env['AUGNO_API_KEY'] })`),
+            normalizeSnippetPlaceholders(`new Foo({ apiKey: process.env['OPENMRP_API_KEY'] })`),
         ).toContain(`apiKey: 'YOUR_API_KEY'`);
     });
 
     test('normalizes Python os.environ.get patterns', () => {
         expect(
-            normalizeSnippetPlaceholders(`Augno(api_key=os.environ.get("AUGNO_API_KEY"))`),
+            normalizeSnippetPlaceholders(`OpenMRP(api_key=os.environ.get("OPENMRP_API_KEY"))`),
         ).toContain(`api_key='YOUR_API_KEY'`);
     });
 });
@@ -37,7 +37,7 @@ describe('flattenSyntheticSdkNamespace', () => {
     test('unwraps TypeScript docs bucket client property', () => {
         expect(
             flattenSyntheticSdkNamespace(
-                'const x = await client.augnoPublicAPI.createProduct({});',
+                'const x = await client.openMRPPublicAPI.createProduct({});',
                 'typescript',
             ),
         ).toBe('const x = await client.createProduct({});');
@@ -46,7 +46,7 @@ describe('flattenSyntheticSdkNamespace', () => {
     test('unwraps Python docs bucket attribute', () => {
         expect(
             flattenSyntheticSdkNamespace(
-                'response = client.augno_public_api.create_product(foo="bar")\n',
+                'response = client.openmrp_public_api.create_product(foo="bar")\n',
                 'python',
             ),
         ).toBe('response = client.create_product(foo="bar")\n');
@@ -55,7 +55,7 @@ describe('flattenSyntheticSdkNamespace', () => {
     test('unwraps Go docs bucket field', () => {
         expect(
             flattenSyntheticSdkNamespace(
-                'response, err := client.AugnoPublicAPI.ListUnits(context.TODO(), params)',
+                'response, err := client.OpenMRPPublicAPI.ListUnits(context.TODO(), params)',
                 'go',
             ),
         ).toBe('response, err := client.ListUnits(context.TODO(), params)');

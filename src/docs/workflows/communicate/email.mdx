@@ -1,6 +1,6 @@
 ---
 title: Email
-subtitle: Bridge a domain you own into Augno so customer mail opens a case and your team replies from your own address.
+subtitle: Bridge a domain you own into OpenMRP so customer mail opens a case and your team replies from your own address.
 route: /communicate/email
 nav:
     title: Email
@@ -8,7 +8,7 @@ nav:
     order: 5
 ---
 
-The **email bridge** connects a domain you own to Augno. Mail sent to an address on that domain opens a customer case, replies go back out from the same address, and a bound agent can draft or send those replies for you. <BetaTag />
+The **email bridge** connects a domain you own to OpenMRP. Mail sent to an address on that domain opens a customer case, replies go back out from the same address, and a bound agent can draft or send those replies for you. <BetaTag />
 
 > #### Public preview
 >
@@ -16,7 +16,7 @@ The **email bridge** connects a domain you own to Augno. Mail sent to an address
 
 Setup is DNS-dependent and has a strict order: **register a domain → publish its DNS records → verify the domain → provision inboxes on it**. You cannot skip ahead; an inbox can only be created on a domain that has already reached `verified`. Once mail is flowing, the threads it opens are worked like any other case in the <InternalLink pathKey="communicate.inbox" text="Inbox" />.
 
-Two different DNS records are involved and they do different jobs. The DKIM `CNAME` records authenticate mail Augno sends **as** your domain, and they are the only thing verification checks. An `MX` record is what makes mail addressed **to** your domain arrive at Augno in the first place, and nothing in the setup flow checks it. Publish only DKIM and you end up with a `verified` domain, a provisioned inbox, and no inbound mail at all.
+Two different DNS records are involved and they do different jobs. The DKIM `CNAME` records authenticate mail OpenMRP sends **as** your domain, and they are the only thing verification checks. An `MX` record is what makes mail addressed **to** your domain arrive at OpenMRP in the first place, and nothing in the setup flow checks it. Publish only DKIM and you end up with a `verified` domain, a provisioned inbox, and no inbound mail at all.
 
 You can drive the whole flow from the **Email** tab in <DocLink pathKey="frontend.account">account settings</DocLink>, or from the API. Both use the same endpoints.
 
@@ -27,13 +27,13 @@ Send the bare fully-qualified domain you want to send and receive on — not an 
 ```bash
 curl -X POST API_HOST/v1/messaging/email-domains \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
   -d '{"domain": "support.acme.com"}'
 ```
 
-Augno registers the sending identity with its mail provider (Amazon SES) **before** it writes the domain row, so the tokens you get back are the provider's real DKIM tokens rather than placeholders. The response is the new domain in `pending`:
+OpenMRP registers the sending identity with its mail provider (Amazon SES) **before** it writes the domain row, so the tokens you get back are the provider's real DKIM tokens rather than placeholders. The response is the new domain in `pending`:
 
 ```json
 {
@@ -52,7 +52,7 @@ Registering requires the `messaging:create` permission.
 
 ## 2. Publish the DNS records
 
-This is the step that cannot be discovered by trial and error, and it has two halves that are easy to conflate. DKIM makes your outbound replies trustworthy; MX makes inbound mail reach Augno. You need both.
+This is the step that cannot be discovered by trial and error, and it has two halves that are easy to conflate. DKIM makes your outbound replies trustworthy; MX makes inbound mail reach OpenMRP. You need both.
 
 ### DKIM — authenticate outbound mail
 
@@ -69,36 +69,36 @@ Two things worth knowing before you touch DNS:
 - **Leave the records in place permanently.** They are not a one-time proof of ownership: removing them later breaks DKIM signing and mail stops going out.
 - **You do not need to widen SPF.** DKIM is what authenticates the domain here, and DMARC passes on DKIM alignment, so there is no reason to add Amazon SES to your primary SPF record.
 
-### MX — route inbound mail to Augno
+### MX — route inbound mail to OpenMRP
 
-DKIM says nothing about where mail for your domain is _delivered_. That is decided by the domain's `MX` record, and until it points at Augno's receiving endpoint no inbound message ever reaches the platform — the inbox you provision in step 4 simply stays empty, and none of the ingestion behaviour described further down ever runs.
+DKIM says nothing about where mail for your domain is _delivered_. That is decided by the domain's `MX` record, and until it points at OpenMRP's receiving endpoint no inbound message ever reaches the platform — the inbox you provision in step 4 simply stays empty, and none of the ingestion behaviour described further down ever runs.
 
 | Type | Host / Name        | Priority | Value                                  |
 | ---- | ------------------ | -------- | -------------------------------------- |
 | `MX` | `support.acme.com` | `10`     | `inbound-smtp.us-east-1.amazonaws.com` |
 
-The receiving endpoint is a property of the Augno deployment rather than of your account: mail is received in `us-east-1`, so that is the hostname to publish. Confirm the value with your Augno contact before cutting over a domain that already carries live mail.
+The receiving endpoint is a property of the OpenMRP deployment rather than of your account: mail is received in `us-east-1`, so that is the hostname to publish. Confirm the value with your OpenMRP contact before cutting over a domain that already carries live mail.
 
 Two practical consequences:
 
-- **Register a subdomain, not your apex.** An MX record replaces mail routing for the exact host it is published on. Pointing the MX of `support.acme.com` at Augno leaves `acme.com`'s own mail — Google Workspace, Microsoft 365, whatever you run — completely untouched. Pointing your apex MX at Augno would take over all of your company mail.
-- **If you cannot repoint MX at all**, skip this record and use the inbox's `forwarding_address` instead (see [When you cannot repoint MX](#when-you-cannot-repoint-mx)). That address sits on an Augno-owned domain whose MX already points at the receiving endpoint, so forwarding to it works without you changing any routing of your own.
+- **Register a subdomain, not your apex.** An MX record replaces mail routing for the exact host it is published on. Pointing the MX of `support.acme.com` at OpenMRP leaves `acme.com`'s own mail — Google Workspace, Microsoft 365, whatever you run — completely untouched. Pointing your apex MX at OpenMRP would take over all of your company mail.
+- **If you cannot repoint MX at all**, skip this record and use the inbox's `forwarding_address` instead (see [When you cannot repoint MX](#when-you-cannot-repoint-mx)). That address sits on an OpenMRP-owned domain whose MX already points at the receiving endpoint, so forwarding to it works without you changing any routing of your own.
 
 ### Deliverability and anti-spoofing
 
 Keep a DMARC policy published at `_dmarc.<your-domain>`. With the DKIM records above in place, DMARC passes on DKIM alignment.
 
-If you or your recipients filter inbound mail through a security gateway (Barracuda, Mimecast, Proofpoint and similar), its sender-spoof or impersonation protection may still quarantine these replies: they carry your domain but arrive from an external sending source. Ask the mail administrator to exempt Augno's sending source. On Barracuda that setting lives under **Inbound Settings → Sender Authentication → Sender Spoof Protection**.
+If you or your recipients filter inbound mail through a security gateway (Barracuda, Mimecast, Proofpoint and similar), its sender-spoof or impersonation protection may still quarantine these replies: they carry your domain but arrive from an external sending source. Ask the mail administrator to exempt OpenMRP's sending source. On Barracuda that setting lives under **Inbound Settings → Sender Authentication → Sender Spoof Protection**.
 
 ## 3. Verify the domain
 
-Once the records are published, ask Augno to re-check them:
+Once the records are published, ask OpenMRP to re-check them:
 
 ```bash
 curl -X POST API_HOST/v1/messaging/email-domains/emdom_2rk3omr8vshb/actions/verify \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 The action re-polls the mail provider and is safe to call repeatedly:
@@ -114,20 +114,20 @@ DNS propagation takes time, so expect to poll. Verifying requires the `messaging
 | Status     | Meaning                                                                                                                                                    |
 | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `pending`  | Registered, awaiting DKIM confirmation. Inboxes cannot be created yet.                                                                                     |
-| `verified` | DKIM confirmed. Inboxes can be added and the domain can send. Inbound mail arrives only once its MX also points at Augno — `verified` does not imply that. |
+| `verified` | DKIM confirmed. Inboxes can be added and the domain can send. Inbound mail arrives only once its MX also points at OpenMRP — `verified` does not imply that. |
 | `failed`   | Verification could not be completed.                                                                                                                       |
 
 In practice the verify action only ever moves a domain from `pending` to `verified`; a domain whose records are wrong or missing simply stays `pending` indefinitely rather than moving to `failed`.
 
 ### A domain stuck on `pending`
 
-Work through these in order — all of them are DNS problems, not Augno problems:
+Work through these in order — all of them are DNS problems, not OpenMRP problems:
 
 1. **Every token has a record.** Three tokens means three CNAMEs. One missing record keeps the whole domain unverified.
 2. **The host is not double-suffixed.** Many DNS providers append the zone name automatically, turning `abc123._domainkey.support.acme.com` into `abc123._domainkey.support.acme.com.support.acme.com`. If your provider auto-appends, enter only `abc123._domainkey`.
 3. **The record is a CNAME, not a TXT.** DKIM here is delegated by CNAME to the provider; a TXT record with the token in it does nothing.
 4. **You registered the exact host you published for.** `support.acme.com` and `acme.com` are different identities with different tokens.
-5. **Propagation has had time.** Query the record yourself (`dig CNAME abc123._domainkey.support.acme.com`) before assuming Augno is wrong; if your resolver cannot see it, neither can the mail provider.
+5. **Propagation has had time.** Query the record yourself (`dig CNAME abc123._domainkey.support.acme.com`) before assuming OpenMRP is wrong; if your resolver cannot see it, neither can the mail provider.
 
 Note what is _not_ on that list: the `MX` record. Verification looks only at DKIM, so a missing or wrong MX will never hold a domain at `pending` — it fails silently later, as inbound mail that never arrives. Check it separately once the domain is `verified`.
 
@@ -138,8 +138,8 @@ An inbox is a routable address on a verified domain:
 ```bash
 curl -X POST API_HOST/v1/messaging/email-inboxes \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID" \
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID" \
   -H "Content-Type: application/json" \
   -d '{
         "email_domain_id": "emdom_2rk3omr8vshb",
@@ -169,7 +169,7 @@ The address is lowercased before it is stored, and it must not already be in use
 | `agent_trigger_policy`   | When the bound agent runs: `mention`, `keyword`, or `always`.                                                                                    |
 | `agent_trigger_keywords` | The keywords that fire the agent when the policy is `keyword`. Matching is case-insensitive and substring-based against the message body.        |
 | `group_id`               | A messaging group (roster) whose members are seated on every conversation this inbox opens. Must be a group in your own account.                 |
-| `forwarding_address`     | Read-only. An Augno-hosted address that also routes to this inbox.                                                                               |
+| `forwarding_address`     | Read-only. An OpenMRP-hosted address that also routes to this inbox.                                                                               |
 
 ### Choosing a trigger policy
 
@@ -179,7 +179,7 @@ If you also set `group_id`, the roster's human members are seated on each new th
 
 ### When you cannot repoint MX
 
-This is the alternative to the MX record in step 2. If the domain's mail is hosted elsewhere — Google Workspace, Microsoft 365 — and you cannot point its MX records at Augno, use the `forwarding_address` on the inbox instead. Forward mail from your real address to that address at your mail host, and it still threads into a conversation: ingestion recognises the forwarding address and resolves it back to the inbox. Because the forwarding address sits on an Augno-owned domain whose MX already points at the receiving endpoint, nothing changes in your own DNS. The forwarding address is only present when the receiving domain is configured for your deployment.
+This is the alternative to the MX record in step 2. If the domain's mail is hosted elsewhere — Google Workspace, Microsoft 365 — and you cannot point its MX records at OpenMRP, use the `forwarding_address` on the inbox instead. Forward mail from your real address to that address at your mail host, and it still threads into a conversation: ingestion recognises the forwarding address and resolves it back to the inbox. Because the forwarding address sits on an OpenMRP-owned domain whose MX already points at the receiving endpoint, nothing changes in your own DNS. The forwarding address is only present when the receiving domain is configured for your deployment.
 
 ### Editing and removing inboxes
 
@@ -200,9 +200,9 @@ A domain cannot be deleted while any inbox still exists on it; <InternalLink pat
 
 Understanding this pipeline is what lets you debug "the customer emailed us and nothing happened".
 
-**Nothing below runs until MX points at Augno.** The whole pipeline starts when the mail provider _receives_ a message, and that only happens for domains whose `MX` record resolves to the receiving endpoint. Before anything else, check `dig MX support.acme.com` — or, if you are forwarding instead, confirm the forwarding rule at your own mail host is still active. Everything that follows assumes the mail actually arrived.
+**Nothing below runs until MX points at OpenMRP.** The whole pipeline starts when the mail provider _receives_ a message, and that only happens for domains whose `MX` record resolves to the receiving endpoint. Before anything else, check `dig MX support.acme.com` — or, if you are forwarding instead, confirm the forwarding rule at your own mail host is still active. Everything that follows assumes the mail actually arrived.
 
-**Recipient resolution.** Augno collects every candidate address from the mail — `Delivered-To`, `X-Original-To`, `To`, and `Cc` — lowercases and de-duplicates them, then tries each one: against inbox addresses, and against per-inbox forwarding addresses. The first candidate that resolves to a known inbox wins. Collecting all of them is what makes forwarding work, because a forwarding hop rewrites the delivery headers to its own target while the original address survives only in `To`/`Cc`.
+**Recipient resolution.** OpenMRP collects every candidate address from the mail — `Delivered-To`, `X-Original-To`, `To`, and `Cc` — lowercases and de-duplicates them, then tries each one: against inbox addresses, and against per-inbox forwarding addresses. The first candidate that resolves to a known inbox wins. Collecting all of them is what makes forwarding work, because a forwarding hop rewrites the delivery headers to its own target while the original address survives only in `To`/`Cc`.
 
 **Mail for an unknown or disabled inbox is dropped and acknowledged.** No conversation is created, no error is raised, and nothing is queued for retry. If a message never shows up, confirm the inbox exists, that its address matches exactly, and that its status is `active`.
 
@@ -220,7 +220,7 @@ Understanding this pipeline is what lets you debug "the customer emailed us and 
 
 Messages created this way carry `kind` of `email` and `channel` of `email`, are externally visible on the case, and keep the original subject line on the message alongside the body.
 
-**Only the text body is threaded.** Augno extracts a best-effort plain-text body — the first `text/plain` part, falling back to the HTML part stripped down to text — and decodes base64 or quoted-printable transfer encodings first. File attachments on inbound mail are not surfaced as message attachments in the conversation.
+**Only the text body is threaded.** OpenMRP extracts a best-effort plain-text body — the first `text/plain` part, falling back to the HTML part stripped down to text — and decodes base64 or quoted-printable transfer encodings first. File attachments on inbound mail are not surfaced as message attachments in the conversation.
 
 ## Replying
 
@@ -243,8 +243,8 @@ Queue state is not proof of delivery. When someone reports "the customer never g
 ```bash
 curl API_HOST/v1/core/email-logs \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Augno-Version: CURRENT_API_VERSION" \
-  -H "Augno-Account: YOUR_ACCOUNT_ID"
+  -H "OpenMRP-Version: CURRENT_API_VERSION" \
+  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
 ```
 
 A row is written for **every** attempt, so failed and suppressed sends are visible rather than disappearing:
@@ -272,7 +272,7 @@ One scoping caveat: the email log covers transactional mail the platform sends o
     <LinkCard
         pathKey="api.emailLogs"
         title="Email logs"
-        description="Check whether an email Augno sent on your behalf actually went out."
+        description="Check whether an email OpenMRP sent on your behalf actually went out."
     />
     <LinkCard
         pathKey="apiReference.emailInboxes.createEmailInbox"

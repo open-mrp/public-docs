@@ -2,7 +2,7 @@
 
 import { Chip } from '@/components/api-reference/Chip';
 import { cn } from '@/utils/cn';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@augno/ui';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@openmrp/ui';
 
 export interface BetaTagProps {
     className?: string;
