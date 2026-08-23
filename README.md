@@ -1,6 +1,6 @@
 # OpenMRP Documentation
 
-The source of [docs.augno.com](https://docs.augno.com) — OpenMRP's product guides and API reference. It's a Next.js 16 site that combines hand-written MDX guides with an API reference generated from OpenMRP's public OpenAPI specification.
+The source of [docs.openmrp.ai](https://docs.openmrp.ai) — OpenMRP's product guides and API reference. It's a Next.js 16 site that combines hand-written MDX guides with an API reference generated from OpenMRP's public OpenAPI specification.
 
 ## Found something wrong?
 

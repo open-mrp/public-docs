@@ -2,11 +2,12 @@ import fs from 'fs';
 import { glob } from 'glob';
 import matter from 'gray-matter';
 import path from 'path';
+import { SITE_URL } from '../src/lib/site';
 
 const DOCS_DIR = path.join(process.cwd(), 'src/docs');
 const GENERATED_FILE = path.join(process.cwd(), 'src/static/apiEndpoints.generated.ts');
 const OUTPUT_FILE = path.join(process.cwd(), 'public/llms.txt');
-const BASE_URL = process.env.DOCS_BASE_URL || 'https://docs.augno.com';
+const BASE_URL = SITE_URL;
 
 interface PageFrontmatter {
     title: string;
