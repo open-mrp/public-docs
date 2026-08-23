@@ -1,4 +1,5 @@
 import { FrostedSurface } from '@/components/FrostedSurface';
+import { paths } from '@/static/paths';
 import { ChevronRightIcon } from '@openmrp/ui';
 import Link from 'next/link';
 
@@ -43,6 +44,7 @@ const QUICK_LINK_COLUMNS: QuickLinkColumn[] = [
             { label: 'Send your first API request', href: '/api-request' },
             { label: 'Explore the SDKs', href: '/api/typescript-sdk' },
             { label: 'API reference', href: '/api-reference' },
+            { label: 'Source on GitHub', href: paths.github.org },
         ],
     },
 ];
@@ -108,16 +110,30 @@ export function HomeQuickLinks() {
                     <div key={column.title} className="flex flex-col gap-3">
                         <h2 className={headingClass}>{column.title}</h2>
                         <div className="flex flex-col gap-2">
-                            {column.links.map((link) => (
-                                <Link
-                                    key={link.href}
-                                    href={link.href}
-                                    className="group inline-flex w-fit items-center gap-1.5"
-                                >
-                                    <span className={linkLabelClass}>{link.label}</span>
-                                    <ChevronRightIcon className={arrowClass} />
-                                </Link>
-                            ))}
+                            {column.links.map((link) => {
+                                const content = (
+                                    <>
+                                        <span className={linkLabelClass}>{link.label}</span>
+                                        <ChevronRightIcon className={arrowClass} />
+                                    </>
+                                );
+                                const className = 'group inline-flex w-fit items-center gap-1.5';
+                                return link.href.startsWith('http') ? (
+                                    <a
+                                        key={link.href}
+                                        href={link.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={className}
+                                    >
+                                        {content}
+                                    </a>
+                                ) : (
+                                    <Link key={link.href} href={link.href} className={className}>
+                                        {content}
+                                    </Link>
+                                );
+                            })}
                         </div>
                     </div>
                 ))}
