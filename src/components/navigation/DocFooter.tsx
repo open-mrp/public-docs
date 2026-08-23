@@ -1,6 +1,6 @@
 import { paths } from '@/static/paths';
 import { cn } from '@/utils/cn';
-import { OpenMRPLogo, Footer, HelpIcon, useDarkMode } from '@openmrp/ui';
+import { OpenMRPLogo, Footer, DiscordIcon, HelpIcon, useDarkMode } from '@openmrp/ui';
 import Link from 'next/link';
 import AIIcon from '../icons/AIIcon';
 
@@ -28,14 +28,18 @@ export default function DocFooter({ className }: DocFooterProps) {
                             href: 'mailto:support@openmrp.ai',
                         },
                     },
-                    {
-                        icon: <DiscordIcon className="w-4 h-4 mr-2" />,
-                        text: 'Community?',
-                        link: {
-                            text: 'Join our Discord',
-                            href: paths.discord,
-                        },
-                    },
+                    ...(paths.discord
+                        ? [
+                              {
+                                  icon: <DiscordIcon className="w-4 h-4 mr-2" />,
+                                  text: 'Community?',
+                                  link: {
+                                      text: 'Join our Discord',
+                                      href: paths.discord,
+                                  },
+                              },
+                          ]
+                        : []),
                     {
                         icon: <AIIcon className="mr-2" />,
                         text: 'LLM?',
