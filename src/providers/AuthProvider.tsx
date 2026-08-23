@@ -27,13 +27,23 @@ interface AuthProviderProps {
  * 6. If authenticated but API key is missing, retry fetching it
  */
 export function AuthProvider({ children }: AuthProviderProps) {
-    const { restoreAuthState, recheckAuth, refetchDocApiKey } = useAuthActions();
+    const { restoreAuthState, recheckAuth, refetchDocApiKey, setHasHydrated } = useAuthActions();
     const isInitialized = useAuthInitialized();
     const isRestoring = useAuthRestoring();
     const hasHydrated = useAuthHydrated();
     const user = useUser();
     const docApiKeySecret = useDocApiKeySecret();
     const apiKeyRetryCount = useRef(0);
+
+    // Nothing flips `hasHydrated` when zustand can't read the persisted cache: an
+    // unparseable blob reaches its rehydrate callback with no state to mark, and
+    // unavailable storage (private mode, blocked site data) skips hydration outright.
+    // The gate below would then never open, leaving every auth-dependent view stuck on
+    // its skeleton, so settle the flag here and carry on without the cache.
+    useEffect(() => {
+        if (hasHydrated) return;
+        setHasHydrated(true);
+    }, [hasHydrated, setHasHydrated]);
 
     // Initial auth restoration on mount
     useEffect(() => {
