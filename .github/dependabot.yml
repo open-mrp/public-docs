@@ -1,0 +1,23 @@
+version: 2
+updates:
+    - package-ecosystem: 'npm'
+      directory: '/'
+      schedule:
+          interval: 'weekly'
+      open-pull-requests-limit: 5
+      groups:
+          # One PR per week for the routine bumps; majors still arrive individually.
+          minor-and-patch:
+              update-types: ['minor', 'patch']
+      ignore:
+          # Pulled in via yalc during local development and pinned by the release pipeline.
+          - dependency-name: '@openmrp/ui'
+          - dependency-name: '@openmrp/internal-sdk'
+
+    - package-ecosystem: 'github-actions'
+      directory: '/'
+      schedule:
+          interval: 'weekly'
+      groups:
+          actions:
+              patterns: ['*']
