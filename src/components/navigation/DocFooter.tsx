@@ -1,6 +1,6 @@
 import { paths } from '@/static/paths';
 import { cn } from '@/utils/cn';
-import { OpenMRPLogo, Footer, HelpIcon, QuestionMarkIcon, useDarkMode } from '@openmrp/ui';
+import { OpenMRPLogo, Footer, DiscordIcon, HelpIcon, useDarkMode } from '@openmrp/ui';
 import Link from 'next/link';
 import AIIcon from '../icons/AIIcon';
 
@@ -25,17 +25,21 @@ export default function DocFooter({ className }: DocFooterProps) {
                         text: 'Need help?',
                         link: {
                             text: 'Contact Support',
-                            href: 'mailto:support@augno.com',
+                            href: 'mailto:support@openmrp.ai',
                         },
                     },
-                    {
-                        icon: <QuestionMarkIcon />,
-                        text: 'Questions?',
-                        link: {
-                            text: 'Contact Sales',
-                            href: 'mailto:sales@augno.com',
-                        },
-                    },
+                    ...(paths.discord
+                        ? [
+                              {
+                                  icon: <DiscordIcon className="w-4 h-4 mr-2" />,
+                                  text: 'Community?',
+                                  link: {
+                                      text: 'Join our Discord',
+                                      href: paths.discord,
+                                  },
+                              },
+                          ]
+                        : []),
                     {
                         icon: <AIIcon className="mr-2" />,
                         text: 'LLM?',
@@ -46,10 +50,10 @@ export default function DocFooter({ className }: DocFooterProps) {
                     },
                 ]}
                 renderLink={(props) =>
-                    props.href === '/llms.txt' ? (
-                        <a href={props.href}>{props.children}</a>
-                    ) : (
+                    props.href.startsWith('/') && props.href !== '/llms.txt' ? (
                         <Link href={props.href}>{props.children}</Link>
+                    ) : (
+                        <a href={props.href}>{props.children}</a>
                     )
                 }
             />

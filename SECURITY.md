@@ -4,7 +4,7 @@
 
 Please **do not** open a public GitHub issue for security problems.
 
-Report vulnerabilities privately to **security@augno.com**, or through [GitHub private vulnerability reporting](https://github.com/open-mrp/public-docs/security/advisories/new).
+Report vulnerabilities privately to **security@openmrp.ai**, or through [GitHub private vulnerability reporting](https://github.com/open-mrp/public-docs/security/advisories/new).
 
 Include:
 
