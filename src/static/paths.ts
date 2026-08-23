@@ -7,6 +7,7 @@ export const externalPaths = {
     discord: process.env.NEXT_PUBLIC_DISCORD_URL,
     github: {
         org: 'https://github.com/open-mrp',
+        api: 'https://github.com/open-mrp/api',
         openapiSpec: 'https://github.com/open-mrp/openapi-spec',
         typescriptSdk: 'https://github.com/open-mrp/typescript-sdk',
         goSdk: 'https://github.com/open-mrp/openmrp-go',
