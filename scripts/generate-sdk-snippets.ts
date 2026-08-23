@@ -7,6 +7,7 @@ import { parse, stringify } from 'yaml';
 import type { Method, Resource, Spec } from '@stainless/sdk-json';
 import { generateSpecFromStrings } from '@stainless/sdk-json/spec';
 import { normalizeSnippetPlaceholders } from '../src/lib/snippetPlaceholders';
+import { normalizeLegacyHosts } from './legacy-hosts';
 
 const ROOT = process.cwd();
 const OPENAPI_PATH = path.join(ROOT, 'specs/public_openapi_spec.json');
@@ -285,13 +286,15 @@ async function generateForTarget(target: SnippetTarget): Promise<void> {
         return;
     }
 
-    const openapiJson = fs.readFileSync(target.openapiPath, 'utf8');
+    const openapiJson = normalizeLegacyHosts(fs.readFileSync(target.openapiPath, 'utf8'));
     const openapiSpec = JSON.parse(openapiJson) as OpenAPISpec;
     const lookup = buildEndpointToOperationIdLookup(openapiSpec);
 
     let configStr: string;
     try {
-        configStr = buildMergedStainlessConfig(fs.readFileSync(target.stainlessPath, 'utf8'));
+        configStr = buildMergedStainlessConfig(
+            normalizeLegacyHosts(fs.readFileSync(target.stainlessPath, 'utf8')),
+        );
     } catch (e) {
         console.error(`${logPrefix} Failed to merge stainless YAML:`, e);
         emitGeneratedTs({}, target.outputPath);

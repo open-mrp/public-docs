@@ -76,7 +76,7 @@ The SDK uses the functional options pattern: every option below can be passed to
 | :----------------------------------------- | :------------------------------- | :----------------------------------------------------------------------------- |
 | `option.WithBearerToken(string)`           | `os.LookupEnv("OPENMRP_API_KEY")`  | API key sent as a `Bearer` token.                                              |
 | `option.WithOpenMRPAccountID(string)`        | -                                | Account UUID, sent as the `OpenMRP-Account` header. Override to switch accounts. |
-| `option.WithEnvironmentProduction()`       | (default)                        | Targets `https://api.augno.com`.                                               |
+| `option.WithEnvironmentProduction()`       | (default)                        | Targets `https://api.openmrp.ai`.                                               |
 | `option.WithEnvironmentLocal()`            | -                                | Targets `http://localhost:8081`.                                               |
 | `option.WithBaseURL(string)`               | `os.LookupEnv("OPENMRP_BASE_URL")` | Override the base URL directly. Don't combine with an environment option.      |
 | `option.WithMaxRetries(int)`               | `2`                              | Number of automatic retries for transient failures.                            |

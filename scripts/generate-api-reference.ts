@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { normalizeLegacyHosts } from './legacy-hosts';
 
 const SPEC_PATH = path.join(process.cwd(), 'specs/public_openapi_spec.json');
 const ARCHIVED_SPECS_DIR = path.join(process.cwd(), 'specs/versions');
@@ -1560,7 +1561,7 @@ async function main() {
     }
 
     console.log('Reading OpenAPI spec...');
-    const specContent = fs.readFileSync(SPEC_PATH, 'utf-8');
+    const specContent = normalizeLegacyHosts(fs.readFileSync(SPEC_PATH, 'utf-8'));
     const spec: OpenAPISpec = JSON.parse(specContent);
 
     console.log(
@@ -1592,7 +1593,9 @@ async function main() {
             'apiEndpoints.generated.ts',
         );
         if (fs.existsSync(specPath)) {
-            const versionSpec: OpenAPISpec = JSON.parse(fs.readFileSync(specPath, 'utf-8'));
+            const versionSpec: OpenAPISpec = JSON.parse(
+                normalizeLegacyHosts(fs.readFileSync(specPath, 'utf-8')),
+            );
             if (versionSpec.info.version !== version) {
                 console.warn(
                     `Archived spec ${specPath} reports version ${versionSpec.info.version}; ` +

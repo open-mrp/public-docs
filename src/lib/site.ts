@@ -4,7 +4,7 @@
  * environment with DOCS_BASE_URL (matches scripts/generate-llms-txt.ts) so
  * preview deployments emit correct absolute URLs.
  */
-export const SITE_URL = (process.env.DOCS_BASE_URL || 'https://docs.augno.com').replace(/\/$/, '');
+export const SITE_URL = (process.env.DOCS_BASE_URL || 'https://docs.openmrp.ai').replace(/\/$/, '');
 
 export const SITE_NAME = 'OpenMRP Documentation';
 
@@ -23,10 +23,9 @@ export const ORG_NAME = 'OpenMRP';
 
 /**
  * Feeds JSON-LD (Organization url, publisher url), so it must be the domain we
- * actually serve from — openmrp.ai currently 307s here. Flip at the DNS cutover,
- * alongside SITE_URL above.
+ * actually serve from. augno.com now 307s here.
  */
-export const ORG_URL = 'https://augno.com';
+export const ORG_URL = 'https://openmrp.ai';
 
 /** Brand accent used in generated Open Graph cards (matches --primary). */
 export const BRAND_ACCENT = '#0eb981';

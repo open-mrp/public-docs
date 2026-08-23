@@ -357,7 +357,9 @@ export const useAuthStore = create<AuthState>()(
                     otherAccounts: Array.isArray(stored.otherAccounts) ? stored.otherAccounts : [],
                 };
             },
-            // Called when hydration from localStorage completes
+            // Called when hydration from localStorage completes. Only the success
+            // path lands here with a state to mark; the failure paths are settled by
+            // AuthProvider, which owns the flag's fallback.
             onRehydrateStorage: () => (state) => {
                 if (state) {
                     state.setHasHydrated(true);
@@ -393,6 +395,7 @@ export const useAuthActions = () => {
     const setRestoring = useAuthStore((state) => state.setRestoring);
     const logout = useAuthStore((state) => state.logout);
     const logoutSilent = useAuthStore((state) => state.logoutSilent);
+    const setHasHydrated = useAuthStore((state) => state.setHasHydrated);
     const restoreAuthState = useAuthStore((state) => state.restoreAuthState);
     const recheckAuth = useAuthStore((state) => state.recheckAuth);
     const switchAccount = useAuthStore((state) => state.switchAccount);
@@ -405,6 +408,7 @@ export const useAuthActions = () => {
         setLoading,
         setInitialized,
         setRestoring,
+        setHasHydrated,
         logout,
         logoutSilent,
         restoreAuthState,

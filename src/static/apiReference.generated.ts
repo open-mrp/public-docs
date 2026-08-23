@@ -24,7 +24,7 @@ export interface ApiReferenceData {
 
 export const apiReferenceData: ApiReferenceData = {
     title: 'OpenMRP',
-    description: 'The OpenMRP REST API. Please see https://docs.augno.com/api for more details.',
+    description: 'The OpenMRP REST API. Please see https://docs.openmrp.ai/api for more details.',
     version: '2.0.0',
     sections: [
         {

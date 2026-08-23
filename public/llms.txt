@@ -1,612 +1,612 @@
 # OpenMRP Documentation
 
 ## API
-- [API Keys](https://docs.augno.com/developer-resources/api/authentication/api-keys.md): Learn how to authenticate requests with API keys.
-- [MCP server](https://docs.augno.com/developer-resources/api/mcp/mcp-server.md): Connect AI agents and assistants to the OpenMRP API over the Model Context Protocol.
-- [Request logs](https://docs.augno.com/developer-resources/api/monitoring/request-logs.md): Monitor and debug your API activity with request logs.
-- [Overview](https://docs.augno.com/developer-resources/api/overview.md): Learn more about OpenMRP's APIs.
-- [TypeScript](https://docs.augno.com/developer-resources/api/sdks/typescript.md): Call the OpenMRP API from server-side TypeScript or JavaScript.
-- [Managing API Keys](https://docs.augno.com/developer-resources/api/authentication/managing-api-keys.md): Learn the best practices for managing secret API keys.
-- [Audit events](https://docs.augno.com/developer-resources/api/monitoring/audit-events.md): An immutable record of every change made in your account — who changed what, when, and from which request.
-- [Go](https://docs.augno.com/developer-resources/api/sdks/go.md): Call the OpenMRP API from Go applications.
-- [Email logs](https://docs.augno.com/developer-resources/api/monitoring/email-logs.md): Confirm whether an email OpenMRP sent on your behalf actually went out.
-- [API URIs](https://docs.augno.com/developer-resources/api/make-requests/api-uris.md): Learn the general format of OpenMRP API URIs.
-- [Idempotency](https://docs.augno.com/developer-resources/api/make-requests/idempotency.md): Safely retry requests without duplicating work.
-- [Rate limiting](https://docs.augno.com/developer-resources/api/make-requests/rate-limiting.md): Understand rate limits and implement retry strategies.
-- [Pagination](https://docs.augno.com/developer-resources/api/make-requests/pagination.md): Iterating through paginated list results.
-- [API versioning](https://docs.augno.com/developer-resources/api/make-requests/versioning.md): Understand how OpenMRP versions its API and manage version upgrades.
-- [Request IDs](https://docs.augno.com/developer-resources/api/make-requests/request-ids.md): Use request IDs to debug issues and get support.
-- [API errors](https://docs.augno.com/developer-resources/api/handling-errors/errors.md): Standard error envelope format for consistent error handling.
-- [Include Parameter](https://docs.augno.com/developer-resources/api/make-requests/include.md): Expand sub-objects in API responses to get the data you need.
+- [API Keys](https://docs.openmrp.ai/developer-resources/api/authentication/api-keys.md): Learn how to authenticate requests with API keys.
+- [MCP server](https://docs.openmrp.ai/developer-resources/api/mcp/mcp-server.md): Connect AI agents and assistants to the OpenMRP API over the Model Context Protocol.
+- [Request logs](https://docs.openmrp.ai/developer-resources/api/monitoring/request-logs.md): Monitor and debug your API activity with request logs.
+- [Overview](https://docs.openmrp.ai/developer-resources/api/overview.md): Learn more about OpenMRP's APIs.
+- [TypeScript](https://docs.openmrp.ai/developer-resources/api/sdks/typescript.md): Call the OpenMRP API from server-side TypeScript or JavaScript.
+- [Managing API Keys](https://docs.openmrp.ai/developer-resources/api/authentication/managing-api-keys.md): Learn the best practices for managing secret API keys.
+- [Audit events](https://docs.openmrp.ai/developer-resources/api/monitoring/audit-events.md): An immutable record of every change made in your account — who changed what, when, and from which request.
+- [Go](https://docs.openmrp.ai/developer-resources/api/sdks/go.md): Call the OpenMRP API from Go applications.
+- [Email logs](https://docs.openmrp.ai/developer-resources/api/monitoring/email-logs.md): Confirm whether an email OpenMRP sent on your behalf actually went out.
+- [API URIs](https://docs.openmrp.ai/developer-resources/api/make-requests/api-uris.md): Learn the general format of OpenMRP API URIs.
+- [Idempotency](https://docs.openmrp.ai/developer-resources/api/make-requests/idempotency.md): Safely retry requests without duplicating work.
+- [Rate limiting](https://docs.openmrp.ai/developer-resources/api/make-requests/rate-limiting.md): Understand rate limits and implement retry strategies.
+- [Pagination](https://docs.openmrp.ai/developer-resources/api/make-requests/pagination.md): Iterating through paginated list results.
+- [API versioning](https://docs.openmrp.ai/developer-resources/api/make-requests/versioning.md): Understand how OpenMRP versions its API and manage version upgrades.
+- [Request IDs](https://docs.openmrp.ai/developer-resources/api/make-requests/request-ids.md): Use request IDs to debug issues and get support.
+- [API errors](https://docs.openmrp.ai/developer-resources/api/handling-errors/errors.md): Standard error envelope format for consistent error handling.
+- [Include Parameter](https://docs.openmrp.ai/developer-resources/api/make-requests/include.md): Expand sub-objects in API responses to get the data you need.
 
 ## Developer resources
-- [Overview](https://docs.augno.com/developer-resources/index.md): Technical documentation, API references, and guides for developers.
+- [Overview](https://docs.openmrp.ai/developer-resources/index.md): Technical documentation, API references, and guides for developers.
 
 ## Get Started
-- [API tour](https://docs.augno.com/get-started/get-started/about-the-apis/api-tour.md): See how OpenMRP API objects fit together and learn best practices for combining them effectively.
-- [Overview](https://docs.augno.com/get-started/get-started/overview.md): Create an account and learn how to build on OpenMRP.
+- [API tour](https://docs.openmrp.ai/get-started/get-started/about-the-apis/api-tour.md): See how OpenMRP API objects fit together and learn best practices for combining them effectively.
+- [Overview](https://docs.openmrp.ai/get-started/get-started/overview.md): Create an account and learn how to build on OpenMRP.
 
 ## Start Building
-- [Overview](https://docs.augno.com/get-started/start-building/account/overview.md): Learn how to activate and manage your OpenMRP account, from initial setup to advanced configurations.
-- [Send your first API request](https://docs.augno.com/get-started/start-building/start-developing/api-request.md): Get started with the OpenMRP API.
-- [Activate your account](https://docs.augno.com/get-started/start-building/account/activate.md): Learn how to activate and manage your OpenMRP account.
-- [Checklist](https://docs.augno.com/get-started/start-building/account/checklist.md): Complete this checklist before putting your OpenMRP account into production.
-- [Go live checklist](https://docs.augno.com/get-started/start-building/start-developing/go-live.md): Use this checklist to ensure a smooth transition putting your integration into production.
-- [Release phases](https://docs.augno.com/get-started/start-building/start-developing/release-phases.md): Learn how OpenMRP describes product release phases and what to expect from each.
+- [Overview](https://docs.openmrp.ai/get-started/start-building/account/overview.md): Learn how to activate and manage your OpenMRP account, from initial setup to advanced configurations.
+- [Send your first API request](https://docs.openmrp.ai/get-started/start-building/start-developing/api-request.md): Get started with the OpenMRP API.
+- [Activate your account](https://docs.openmrp.ai/get-started/start-building/account/activate.md): Learn how to activate and manage your OpenMRP account.
+- [Checklist](https://docs.openmrp.ai/get-started/start-building/account/checklist.md): Complete this checklist before putting your OpenMRP account into production.
+- [Go live checklist](https://docs.openmrp.ai/get-started/start-building/start-developing/go-live.md): Use this checklist to ensure a smooth transition putting your integration into production.
+- [Release phases](https://docs.openmrp.ai/get-started/start-building/start-developing/release-phases.md): Learn how OpenMRP describes product release phases and what to expect from each.
 
 ## Automate with agents
-- [Overview](https://docs.augno.com/workflows/automate-with-agents/overview.md): Put an AI teammate on the work — in a conversation or on demand, bounded by a role you control.
-- [Agents](https://docs.augno.com/workflows/automate-with-agents/agents.md): Define what an agent does, when it runs, how hard it thinks, and what it is allowed to touch.
-- [Runs](https://docs.augno.com/workflows/automate-with-agents/runs.md): One execution of an agent, from trigger to answer — and every safety rail around it.
-- [Tools & approvals](https://docs.augno.com/workflows/automate-with-agents/tools-and-approvals.md): What an agent is allowed to do, and where a human has to say yes first.
-- [Memories](https://docs.augno.com/workflows/automate-with-agents/memories.md): Durable notes your agents recall on later runs — and the first place to look when one starts behaving oddly.
-- [Agents in chat](https://docs.augno.com/workflows/automate-with-agents/agents-in-chat.md): Put an agent in a conversation, watch it work, approve what it wants to do, and let it draft the reply to your customer.
+- [Overview](https://docs.openmrp.ai/workflows/automate-with-agents/overview.md): Put an AI teammate on the work — in a conversation or on demand, bounded by a role you control.
+- [Agents](https://docs.openmrp.ai/workflows/automate-with-agents/agents.md): Define what an agent does, when it runs, how hard it thinks, and what it is allowed to touch.
+- [Runs](https://docs.openmrp.ai/workflows/automate-with-agents/runs.md): One execution of an agent, from trigger to answer — and every safety rail around it.
+- [Tools & approvals](https://docs.openmrp.ai/workflows/automate-with-agents/tools-and-approvals.md): What an agent is allowed to do, and where a human has to say yes first.
+- [Memories](https://docs.openmrp.ai/workflows/automate-with-agents/memories.md): Durable notes your agents recall on later runs — and the first place to look when one starts behaving oddly.
+- [Agents in chat](https://docs.openmrp.ai/workflows/automate-with-agents/agents-in-chat.md): Put an agent in a conversation, watch it work, approve what it wants to do, and let it draft the reply to your customer.
 
 ## Build products
-- [Production Steps](https://docs.augno.com/workflows/build-products/bom/production-steps.md): The core building block of manufacturing in OpenMRP - defining inputs, outputs, and costs for each stage of production.
-- [Inventory Overview](https://docs.augno.com/workflows/build-products/inventory/inventory.md): Real-time visibility into every unit of material, part, and product - what you have, where it is, and what it costs.
-- [Overview](https://docs.augno.com/workflows/build-products/items/overview.md): Materials, parts, and products - the core objects you buy, make, and sell in OpenMRP.
-- [Overview](https://docs.augno.com/workflows/build-products/overview.md): Purchasing, manufacturing, production tracking, and inventory management.
-- [Machines and departments](https://docs.augno.com/workflows/build-products/plant/machines-and-departments.md): The equipment and functional areas that scheduling, the status board, downtime and OEE all key on.
-- [Production schedules](https://docs.augno.com/workflows/build-products/production-planning/production-schedules.md): Versioned, constraint-based plans that decide what each machine makes, and in which week.
-- [Production Runs](https://docs.augno.com/workflows/build-products/production/production-runs.md): Coordinated manufacturing executions that group related batches and track progress from start to completion.
-- [Suppliers](https://docs.augno.com/workflows/build-products/purchasing/suppliers.md): Vendors you purchase materials from, defining the source for your raw material procurement.
-- [Scanning Stations](https://docs.augno.com/workflows/build-products/scanning/scanning-stations.md): Configured points in your production workflow where batch operations happen - each linked to a specific operation type and production step.
-- [Consumptions & Productions](https://docs.augno.com/workflows/build-products/bom/consumptions-and-productions.md): The inputs and outputs of each production step - what materials are used up and what parts or products are created.
-- [Storage Locations & Lots](https://docs.augno.com/workflows/build-products/inventory/storage-and-lots.md): Where inventory is physically stored and how batch-level traceability is maintained.
-- [Materials](https://docs.augno.com/workflows/build-products/items/materials.md): Raw materials and supplies you purchase from vendors for use in production.
-- [Machine status and downtime](https://docs.augno.com/workflows/build-products/plant/machine-status-and-downtime.md): A live board of what every machine is running, and the stoppage log that turns OEE availability into a measurement.
-- [Publishing and releasing](https://docs.augno.com/workflows/build-products/production-planning/publishing-and-releasing.md): How a draft plan becomes a commitment, and how one week of it becomes work on the floor.
-- [Batches](https://docs.augno.com/workflows/build-products/production/batches.md): Physical units of product tracked through production - recording quantities, quality grades, and location as they move through manufacturing.
-- [Purchase Orders](https://docs.augno.com/workflows/build-products/purchasing/purchase-orders.md): Transaction records for buying materials from suppliers, tracking orders through delivery and fulfillment.
-- [Labels](https://docs.augno.com/workflows/build-products/scanning/labels.md): Batch identification labels printed at scanning stations - two formats and four sizes for production floor tracking.
-- [Production Flows](https://docs.augno.com/workflows/build-products/bom/production-flows.md): The connected sequence of production steps that transforms raw materials into finished products.
-- [Inventory Change Logs](https://docs.augno.com/workflows/build-products/inventory/change-logs.md): A complete audit trail of every inventory movement - who changed what, when, by how much, and why.
-- [Parts](https://docs.augno.com/workflows/build-products/items/parts.md): Intermediate items you manufacture or assemble from materials during production.
-- [Demand overrides](https://docs.augno.com/workflows/build-products/production-planning/demand-overrides.md): Tell the planner about demand your order history cannot see.
-- [Batch Operations](https://docs.augno.com/workflows/build-products/production/batch-operations.md): Initialize, move, split, and merge - the core actions that advance batches through the production flow.
-- [Deliveries & Receiving](https://docs.augno.com/workflows/build-products/purchasing/deliveries-and-receiving.md): Track the physical arrival of materials from suppliers and convert purchase order quantities into usable inventory.
-- [Costing (COGS)](https://docs.augno.com/workflows/build-products/bom/costing.md): Real-time cost of goods sold calculation from production step definitions - material, labor, and overhead costs.
-- [Reconciliation & Bulk Updates](https://docs.augno.com/workflows/build-products/inventory/reconciliation.md): Correct inventory counts when the system and physical reality diverge, with full audit trail logging.
-- [Products](https://docs.augno.com/workflows/build-products/items/products.md): Finished goods you price, stock, and sell to customers.
+- [Production Steps](https://docs.openmrp.ai/workflows/build-products/bom/production-steps.md): The core building block of manufacturing in OpenMRP - defining inputs, outputs, and costs for each stage of production.
+- [Inventory Overview](https://docs.openmrp.ai/workflows/build-products/inventory/inventory.md): Real-time visibility into every unit of material, part, and product - what you have, where it is, and what it costs.
+- [Overview](https://docs.openmrp.ai/workflows/build-products/items/overview.md): Materials, parts, and products - the core objects you buy, make, and sell in OpenMRP.
+- [Overview](https://docs.openmrp.ai/workflows/build-products/overview.md): Purchasing, manufacturing, production tracking, and inventory management.
+- [Machines and departments](https://docs.openmrp.ai/workflows/build-products/plant/machines-and-departments.md): The equipment and functional areas that scheduling, the status board, downtime and OEE all key on.
+- [Production schedules](https://docs.openmrp.ai/workflows/build-products/production-planning/production-schedules.md): Versioned, constraint-based plans that decide what each machine makes, and in which week.
+- [Production Runs](https://docs.openmrp.ai/workflows/build-products/production/production-runs.md): Coordinated manufacturing executions that group related batches and track progress from start to completion.
+- [Suppliers](https://docs.openmrp.ai/workflows/build-products/purchasing/suppliers.md): Vendors you purchase materials from, defining the source for your raw material procurement.
+- [Scanning Stations](https://docs.openmrp.ai/workflows/build-products/scanning/scanning-stations.md): Configured points in your production workflow where batch operations happen - each linked to a specific operation type and production step.
+- [Consumptions & Productions](https://docs.openmrp.ai/workflows/build-products/bom/consumptions-and-productions.md): The inputs and outputs of each production step - what materials are used up and what parts or products are created.
+- [Storage Locations & Lots](https://docs.openmrp.ai/workflows/build-products/inventory/storage-and-lots.md): Where inventory is physically stored and how batch-level traceability is maintained.
+- [Materials](https://docs.openmrp.ai/workflows/build-products/items/materials.md): Raw materials and supplies you purchase from vendors for use in production.
+- [Machine status and downtime](https://docs.openmrp.ai/workflows/build-products/plant/machine-status-and-downtime.md): A live board of what every machine is running, and the stoppage log that turns OEE availability into a measurement.
+- [Publishing and releasing](https://docs.openmrp.ai/workflows/build-products/production-planning/publishing-and-releasing.md): How a draft plan becomes a commitment, and how one week of it becomes work on the floor.
+- [Batches](https://docs.openmrp.ai/workflows/build-products/production/batches.md): Physical units of product tracked through production - recording quantities, quality grades, and location as they move through manufacturing.
+- [Purchase Orders](https://docs.openmrp.ai/workflows/build-products/purchasing/purchase-orders.md): Transaction records for buying materials from suppliers, tracking orders through delivery and fulfillment.
+- [Labels](https://docs.openmrp.ai/workflows/build-products/scanning/labels.md): Batch identification labels printed at scanning stations - two formats and four sizes for production floor tracking.
+- [Production Flows](https://docs.openmrp.ai/workflows/build-products/bom/production-flows.md): The connected sequence of production steps that transforms raw materials into finished products.
+- [Inventory Change Logs](https://docs.openmrp.ai/workflows/build-products/inventory/change-logs.md): A complete audit trail of every inventory movement - who changed what, when, by how much, and why.
+- [Parts](https://docs.openmrp.ai/workflows/build-products/items/parts.md): Intermediate items you manufacture or assemble from materials during production.
+- [Demand overrides](https://docs.openmrp.ai/workflows/build-products/production-planning/demand-overrides.md): Tell the planner about demand your order history cannot see.
+- [Batch Operations](https://docs.openmrp.ai/workflows/build-products/production/batch-operations.md): Initialize, move, split, and merge - the core actions that advance batches through the production flow.
+- [Deliveries & Receiving](https://docs.openmrp.ai/workflows/build-products/purchasing/deliveries-and-receiving.md): Track the physical arrival of materials from suppliers and convert purchase order quantities into usable inventory.
+- [Costing (COGS)](https://docs.openmrp.ai/workflows/build-products/bom/costing.md): Real-time cost of goods sold calculation from production step definitions - material, labor, and overhead costs.
+- [Reconciliation & Bulk Updates](https://docs.openmrp.ai/workflows/build-products/inventory/reconciliation.md): Correct inventory counts when the system and physical reality diverge, with full audit trail logging.
+- [Products](https://docs.openmrp.ai/workflows/build-products/items/products.md): Finished goods you price, stock, and sell to customers.
 
 ## Collect payments
-- [Overview](https://docs.augno.com/workflows/collect-payments/collecting/collecting.md): Record the money received from customers and apply it to open invoices through transactions and settlements.
-- [Overview](https://docs.augno.com/workflows/collect-payments/overview.md): Learn about collecting payments in OpenMRP.
-- [Settlements](https://docs.augno.com/workflows/collect-payments/collecting/settlements.md): Formally record which transactions pay which invoices by creating settlements with allocations.
-- [Invoicing](https://docs.augno.com/workflows/collect-payments/invoicing/invoicing.md): Invoices are the billing records OpenMRP generates for each shipment, capturing what was shipped, to whom, and for how much.
-- [Accounts receivable](https://docs.augno.com/workflows/collect-payments/accounts-receivable/accounts-receivable.md): Track what customers owe, how long balances have been outstanding, and take action to collect.
+- [Overview](https://docs.openmrp.ai/workflows/collect-payments/collecting/collecting.md): Record the money received from customers and apply it to open invoices through transactions and settlements.
+- [Overview](https://docs.openmrp.ai/workflows/collect-payments/overview.md): Learn about collecting payments in OpenMRP.
+- [Settlements](https://docs.openmrp.ai/workflows/collect-payments/collecting/settlements.md): Formally record which transactions pay which invoices by creating settlements with allocations.
+- [Invoicing](https://docs.openmrp.ai/workflows/collect-payments/invoicing/invoicing.md): Invoices are the billing records OpenMRP generates for each shipment, capturing what was shipped, to whom, and for how much.
+- [Accounts receivable](https://docs.openmrp.ai/workflows/collect-payments/accounts-receivable/accounts-receivable.md): Track what customers owe, how long balances have been outstanding, and take action to collect.
 
 ## Communicate
-- [Overview](https://docs.augno.com/workflows/communicate/overview.md): Conversations, customer cases, notifications, and email inside OpenMRP.
-- [Messages](https://docs.augno.com/workflows/communicate/messages.md): Direct messages, group threads, and the discussions attached to your business records.
-- [Inbox](https://docs.augno.com/workflows/communicate/inbox.md): Customer-service cases, triage lanes, assignment, and the reply-approval loop.
-- [Notifications](https://docs.augno.com/workflows/communicate/notifications.md): The in-app bell feed, account announcements, and per-user notification preferences.
-- [Email](https://docs.augno.com/workflows/communicate/email.md): Bridge a domain you own into OpenMRP so customer mail opens a case and your team replies from your own address.
-- [Retention & compliance](https://docs.augno.com/workflows/communicate/retention-and-compliance.md): Hold a conversation for litigation, erase its contents on request, and know exactly what the retention worker deletes.
+- [Overview](https://docs.openmrp.ai/workflows/communicate/overview.md): Conversations, customer cases, notifications, and email inside OpenMRP.
+- [Messages](https://docs.openmrp.ai/workflows/communicate/messages.md): Direct messages, group threads, and the discussions attached to your business records.
+- [Inbox](https://docs.openmrp.ai/workflows/communicate/inbox.md): Customer-service cases, triage lanes, assignment, and the reply-approval loop.
+- [Notifications](https://docs.openmrp.ai/workflows/communicate/notifications.md): The in-app bell feed, account announcements, and per-user notification preferences.
+- [Email](https://docs.openmrp.ai/workflows/communicate/email.md): Bridge a domain you own into OpenMRP so customer mail opens a case and your team replies from your own address.
+- [Retention & compliance](https://docs.openmrp.ai/workflows/communicate/retention-and-compliance.md): Hold a conversation for litigation, erase its contents on request, and know exactly what the retention worker deletes.
 
 ## Dashboards
-- [Accounts receivable](https://docs.augno.com/workflows/dashboards/financial/accounts-receivable.md): An aging report showing what customers owe across current, 30, 60, 90, and 120-day buckets.
-- [Demand forecast](https://docs.augno.com/workflows/dashboards/forecasting/demand-forecast.md): Forecast demand, order revenue, and sales revenue with confidence intervals based on historical data.
-- [Delivery analytics](https://docs.augno.com/workflows/dashboards/operations/delivery-analytics.md): Track on-time delivery rates, average delivery time, and time to first shipment with period-over-period comparison.
-- [Overview](https://docs.augno.com/workflows/dashboards/overview.md): Analytics and reporting dashboards that give you real-time visibility into sales, operations, finances, and forecasting.
-- [Order analytics](https://docs.augno.com/workflows/dashboards/sales/order-analytics.md): A comprehensive view of sales performance with profit metrics, cumulative revenue, best sellers, and distribution breakdowns.
-- [Payments data](https://docs.augno.com/workflows/dashboards/financial/payments-data.md): View payment allocations across invoices with support for invoice and balance view modes.
-- [Sales targets](https://docs.augno.com/workflows/dashboards/forecasting/sales-targets.md): View and create revenue targets for sales reps by month.
-- [Manufacturing analytics](https://docs.augno.com/workflows/dashboards/operations/manufacturing-analytics.md): OEE and schedule performance for one production week, measured against the plan that was live at the time.
-- [Order data](https://docs.augno.com/workflows/dashboards/sales/order-data.md): A raw, line-level data grid of all sales transactions with Excel export.
-- [Material analytics](https://docs.augno.com/workflows/dashboards/operations/material-analytics.md): View material inventory levels, demand, and reorder needs by supplier.
-- [Quarterly orders](https://docs.augno.com/workflows/dashboards/sales/quarterly-orders.md): Visualize order quantity trends by quarter across multiple years.
-- [Products on order](https://docs.augno.com/workflows/dashboards/sales/products-on-order.md): View open orders, back-order quantities, and top ordered products at a glance.
-- [Weeks of sales](https://docs.augno.com/workflows/dashboards/sales/weeks-of-sales.md): See how many weeks of inventory you have on hand based on recent sales velocity.
+- [Accounts receivable](https://docs.openmrp.ai/workflows/dashboards/financial/accounts-receivable.md): An aging report showing what customers owe across current, 30, 60, 90, and 120-day buckets.
+- [Demand forecast](https://docs.openmrp.ai/workflows/dashboards/forecasting/demand-forecast.md): Forecast demand, order revenue, and sales revenue with confidence intervals based on historical data.
+- [Delivery analytics](https://docs.openmrp.ai/workflows/dashboards/operations/delivery-analytics.md): Track on-time delivery rates, average delivery time, and time to first shipment with period-over-period comparison.
+- [Overview](https://docs.openmrp.ai/workflows/dashboards/overview.md): Analytics and reporting dashboards that give you real-time visibility into sales, operations, finances, and forecasting.
+- [Order analytics](https://docs.openmrp.ai/workflows/dashboards/sales/order-analytics.md): A comprehensive view of sales performance with profit metrics, cumulative revenue, best sellers, and distribution breakdowns.
+- [Payments data](https://docs.openmrp.ai/workflows/dashboards/financial/payments-data.md): View payment allocations across invoices with support for invoice and balance view modes.
+- [Sales targets](https://docs.openmrp.ai/workflows/dashboards/forecasting/sales-targets.md): View and create revenue targets for sales reps by month.
+- [Manufacturing analytics](https://docs.openmrp.ai/workflows/dashboards/operations/manufacturing-analytics.md): OEE and schedule performance for one production week, measured against the plan that was live at the time.
+- [Order data](https://docs.openmrp.ai/workflows/dashboards/sales/order-data.md): A raw, line-level data grid of all sales transactions with Excel export.
+- [Material analytics](https://docs.openmrp.ai/workflows/dashboards/operations/material-analytics.md): View material inventory levels, demand, and reorder needs by supplier.
+- [Quarterly orders](https://docs.openmrp.ai/workflows/dashboards/sales/quarterly-orders.md): Visualize order quantity trends by quarter across multiple years.
+- [Products on order](https://docs.openmrp.ai/workflows/dashboards/sales/products-on-order.md): View open orders, back-order quantities, and top ordered products at a glance.
+- [Weeks of sales](https://docs.openmrp.ai/workflows/dashboards/sales/weeks-of-sales.md): See how many weeks of inventory you have on hand based on recent sales velocity.
 
 ## Generate sales
-- [Customer prices](https://docs.augno.com/workflows/generate-sales/customer-pricing/customer-prices.md): Define product-line-specific pricing for individual customers, overriding base product prices.
-- [Customer groups](https://docs.augno.com/workflows/generate-sales/customer-setup/customer-groups.md): Classify customers by segment and control which pricing and discounts they receive.
-- [Overview](https://docs.augno.com/workflows/generate-sales/customer/customer.md): The central record connecting sales orders, invoices, shipments, and payments.
-- [Overview](https://docs.augno.com/workflows/generate-sales/overview.md): Customers, pricing, orders, and the sales team - everything that drives revenue in OpenMRP.
-- [Overview](https://docs.augno.com/workflows/generate-sales/sales-order/sales-order.md): The central order for selling products to a customer, driving fulfillment from creation through payment.
-- [Territories](https://docs.augno.com/workflows/generate-sales/sales-team/territories.md): Map geographic regions to sales representatives, optionally scoped by product line.
-- [Volume discounts](https://docs.augno.com/workflows/generate-sales/customer-pricing/volume-discounts.md): Automatically reduce pricing based on order quantity with tiered percentage discounts.
-- [Shipping terms](https://docs.augno.com/workflows/generate-sales/customer-setup/shipping-terms.md): Define who pays for freight, how charges are calculated, and when freight is waived.
-- [Create a customer](https://docs.augno.com/workflows/generate-sales/customer/create.md): Learn how to create a customer in OpenMRP.
-- [Create a sales order](https://docs.augno.com/workflows/generate-sales/sales-order/create.md): Learn how to create a sales order in OpenMRP.
-- [Sales targets](https://docs.augno.com/workflows/generate-sales/sales-team/sales-targets.md): Define revenue goals for sales reps over a date range, optionally by product line.
-- [Discount codes](https://docs.augno.com/workflows/generate-sales/customer-pricing/discount-codes.md): Promotional codes applied at the order level to reduce the total by a percentage or fixed amount.
-- [Payment terms](https://docs.augno.com/workflows/generate-sales/customer-setup/payment-terms.md): Define when and how a customer is expected to pay for an order.
-- [Contacts](https://docs.augno.com/workflows/generate-sales/customer/contacts.md): Manage the people associated with a customer and control who receives order confirmations and invoices.
-- [Generate a production run](https://docs.augno.com/workflows/generate-sales/sales-order/generate-production-run.md): Generate a production run from a sales order in OpenMRP.
-- [Priorities](https://docs.augno.com/workflows/generate-sales/customer-setup/priorities.md): Control order-processing precedence to determine which work gets attention first.
-- [Issue a sales order](https://docs.augno.com/workflows/generate-sales/sales-order/issue.md): Learn how to issue a sales order in OpenMRP.
-- [Account statuses](https://docs.augno.com/workflows/generate-sales/customer-setup/account-statuses.md): Control whether a customer can place orders and receive shipments.
-- [Commission & freight exemption](https://docs.augno.com/workflows/generate-sales/customer-setup/exemptions.md): Exclude customers or customer groups from commission calculations and freight charges.
-- [Customer portal](https://docs.augno.com/workflows/generate-sales/customer-portal.md): A branded, self-service portal where your customers register, place orders, submit payments, and track inventory.
-- [Default sales reps](https://docs.augno.com/workflows/generate-sales/customer-setup/default-sales-reps.md): The team member automatically assigned to new orders for a customer.
-- [Default carriers & options](https://docs.augno.com/workflows/generate-sales/customer-setup/default-carriers.md): Define the shipping carrier and service level automatically applied to a customer's orders.
-- [Addresses](https://docs.augno.com/workflows/generate-sales/customer-setup/addresses.md): Billing and shipping locations for customers, used on orders, invoices, and shipments.
+- [Customer prices](https://docs.openmrp.ai/workflows/generate-sales/customer-pricing/customer-prices.md): Define product-line-specific pricing for individual customers, overriding base product prices.
+- [Customer groups](https://docs.openmrp.ai/workflows/generate-sales/customer-setup/customer-groups.md): Classify customers by segment and control which pricing and discounts they receive.
+- [Overview](https://docs.openmrp.ai/workflows/generate-sales/customer/customer.md): The central record connecting sales orders, invoices, shipments, and payments.
+- [Overview](https://docs.openmrp.ai/workflows/generate-sales/overview.md): Customers, pricing, orders, and the sales team - everything that drives revenue in OpenMRP.
+- [Overview](https://docs.openmrp.ai/workflows/generate-sales/sales-order/sales-order.md): The central order for selling products to a customer, driving fulfillment from creation through payment.
+- [Territories](https://docs.openmrp.ai/workflows/generate-sales/sales-team/territories.md): Map geographic regions to sales representatives, optionally scoped by product line.
+- [Volume discounts](https://docs.openmrp.ai/workflows/generate-sales/customer-pricing/volume-discounts.md): Automatically reduce pricing based on order quantity with tiered percentage discounts.
+- [Shipping terms](https://docs.openmrp.ai/workflows/generate-sales/customer-setup/shipping-terms.md): Define who pays for freight, how charges are calculated, and when freight is waived.
+- [Create a customer](https://docs.openmrp.ai/workflows/generate-sales/customer/create.md): Learn how to create a customer in OpenMRP.
+- [Create a sales order](https://docs.openmrp.ai/workflows/generate-sales/sales-order/create.md): Learn how to create a sales order in OpenMRP.
+- [Sales targets](https://docs.openmrp.ai/workflows/generate-sales/sales-team/sales-targets.md): Define revenue goals for sales reps over a date range, optionally by product line.
+- [Discount codes](https://docs.openmrp.ai/workflows/generate-sales/customer-pricing/discount-codes.md): Promotional codes applied at the order level to reduce the total by a percentage or fixed amount.
+- [Payment terms](https://docs.openmrp.ai/workflows/generate-sales/customer-setup/payment-terms.md): Define when and how a customer is expected to pay for an order.
+- [Contacts](https://docs.openmrp.ai/workflows/generate-sales/customer/contacts.md): Manage the people associated with a customer and control who receives order confirmations and invoices.
+- [Generate a production run](https://docs.openmrp.ai/workflows/generate-sales/sales-order/generate-production-run.md): Generate a production run from a sales order in OpenMRP.
+- [Priorities](https://docs.openmrp.ai/workflows/generate-sales/customer-setup/priorities.md): Control order-processing precedence to determine which work gets attention first.
+- [Issue a sales order](https://docs.openmrp.ai/workflows/generate-sales/sales-order/issue.md): Learn how to issue a sales order in OpenMRP.
+- [Account statuses](https://docs.openmrp.ai/workflows/generate-sales/customer-setup/account-statuses.md): Control whether a customer can place orders and receive shipments.
+- [Commission & freight exemption](https://docs.openmrp.ai/workflows/generate-sales/customer-setup/exemptions.md): Exclude customers or customer groups from commission calculations and freight charges.
+- [Customer portal](https://docs.openmrp.ai/workflows/generate-sales/customer-portal.md): A branded, self-service portal where your customers register, place orders, submit payments, and track inventory.
+- [Default sales reps](https://docs.openmrp.ai/workflows/generate-sales/customer-setup/default-sales-reps.md): The team member automatically assigned to new orders for a customer.
+- [Default carriers & options](https://docs.openmrp.ai/workflows/generate-sales/customer-setup/default-carriers.md): Define the shipping carrier and service level automatically applied to a customer's orders.
+- [Addresses](https://docs.openmrp.ai/workflows/generate-sales/customer-setup/addresses.md): Billing and shipping locations for customers, used on orders, invoices, and shipments.
 
 ## Workflows
-- [Overview](https://docs.augno.com/workflows/index.md): End-to-end guides for common business processes in OpenMRP.
+- [Overview](https://docs.openmrp.ai/workflows/index.md): End-to-end guides for common business processes in OpenMRP.
 
 ## Manage your account
-- [Your profile](https://docs.augno.com/workflows/manage-account/account-settings/profile.md): Update your display name, email address, and profile photo.
-- [Overview](https://docs.augno.com/workflows/manage-account/overview.md): Configure your account settings, team, integrations, security, and billing.
-- [Team members](https://docs.augno.com/workflows/manage-account/team/team-members.md): Invite, manage, and remove the people who use your OpenMRP account.
-- [Business information](https://docs.augno.com/workflows/manage-account/account-settings/business-information.md): Configure your account name, logo, contact details, and portal slug.
-- [Security](https://docs.augno.com/workflows/manage-account/security.md): Manage your password and keep your account secure.
-- [Roles and permissions](https://docs.augno.com/workflows/manage-account/team/roles-and-permissions.md): Control what team members and API keys can access with granular, role-based permissions.
-- [Plans & billing](https://docs.augno.com/workflows/manage-account/plans-and-billing.md): View your subscription, switch plans, and manage billing through Stripe.
-- [Sandboxes](https://docs.augno.com/workflows/manage-account/sandboxes.md): Create isolated testing environments to develop and experiment without affecting production data.
-- [API keys](https://docs.augno.com/workflows/manage-account/api-keys.md): Create, rotate, and revoke API keys for programmatic access to OpenMRP.
-- [Integrations](https://docs.augno.com/workflows/manage-account/integrations.md): Connect third-party services like Stripe, Shippo, and HubSpot to your OpenMRP account.
-- [Customer portal](https://docs.augno.com/workflows/manage-account/customer-portal-settings.md): Control how your customer portal looks and the address customers reach it on.
-- [Support](https://docs.augno.com/workflows/manage-account/support-routing.md): Choose the group whose members receive the messages customers send from your portal.
+- [Your profile](https://docs.openmrp.ai/workflows/manage-account/account-settings/profile.md): Update your display name, email address, and profile photo.
+- [Overview](https://docs.openmrp.ai/workflows/manage-account/overview.md): Configure your account settings, team, integrations, security, and billing.
+- [Team members](https://docs.openmrp.ai/workflows/manage-account/team/team-members.md): Invite, manage, and remove the people who use your OpenMRP account.
+- [Business information](https://docs.openmrp.ai/workflows/manage-account/account-settings/business-information.md): Configure your account name, logo, contact details, and portal slug.
+- [Security](https://docs.openmrp.ai/workflows/manage-account/security.md): Manage your password and keep your account secure.
+- [Roles and permissions](https://docs.openmrp.ai/workflows/manage-account/team/roles-and-permissions.md): Control what team members and API keys can access with granular, role-based permissions.
+- [Plans & billing](https://docs.openmrp.ai/workflows/manage-account/plans-and-billing.md): View your subscription, switch plans, and manage billing through Stripe.
+- [Sandboxes](https://docs.openmrp.ai/workflows/manage-account/sandboxes.md): Create isolated testing environments to develop and experiment without affecting production data.
+- [API keys](https://docs.openmrp.ai/workflows/manage-account/api-keys.md): Create, rotate, and revoke API keys for programmatic access to OpenMRP.
+- [Integrations](https://docs.openmrp.ai/workflows/manage-account/integrations.md): Connect third-party services like Stripe, Shippo, and HubSpot to your OpenMRP account.
+- [Customer portal](https://docs.openmrp.ai/workflows/manage-account/customer-portal-settings.md): Control how your customer portal looks and the address customers reach it on.
+- [Support](https://docs.openmrp.ai/workflows/manage-account/support-routing.md): Choose the group whose members receive the messages customers send from your portal.
 
 ## Ship products
-- [Overview](https://docs.augno.com/workflows/ship-products/overview.md): Learn about shipping products in OpenMRP.
-- [Picking](https://docs.augno.com/workflows/ship-products/picking.md): Select and pull the right products from inventory to fulfill a sales order.
-- [Packing](https://docs.augno.com/workflows/ship-products/packing.md): Pack picked items into shipping cases and create shipments ready for the carrier.
-- [Shipping](https://docs.augno.com/workflows/ship-products/shipping.md): Generate shipping labels, assign tracking numbers, and ship packed orders through your carrier.
+- [Overview](https://docs.openmrp.ai/workflows/ship-products/overview.md): Learn about shipping products in OpenMRP.
+- [Picking](https://docs.openmrp.ai/workflows/ship-products/picking.md): Select and pull the right products from inventory to fulfill a sales order.
+- [Packing](https://docs.openmrp.ai/workflows/ship-products/packing.md): Pack picked items into shipping cases and create shipments ready for the carrier.
+- [Shipping](https://docs.openmrp.ai/workflows/ship-products/shipping.md): Generate shipping labels, assign tracking numbers, and ship packed orders through your carrier.
 
 ## API Reference
 
 ### AI
-- [POST Agent — Create](https://docs.augno.com/api-reference/agent/create-agent.md)
-- [PATCH Agent — Update](https://docs.augno.com/api-reference/agent/update-agent.md)
-- [GET Agent — List Agents](https://docs.augno.com/api-reference/agent/list-agents.md)
-- [GET Agent — Retrieve](https://docs.augno.com/api-reference/agent/retrieve-agent.md)
-- [DELETE Agent — Delete](https://docs.augno.com/api-reference/agent/delete-agent.md)
-- [PUT Agent — Update Status](https://docs.augno.com/api-reference/agent/update-agent-status.md)
-- [POST Agent Runs — Trigger Run](https://docs.augno.com/api-reference/agent-runs/trigger-agent-run.md)
-- [GET Agent Runs — List](https://docs.augno.com/api-reference/agent-runs/list-agent-runs.md)
-- [GET Agent Runs — Retrieve Run](https://docs.augno.com/api-reference/agent-runs/retrieve-agent-run.md)
-- [POST Agent Runs — Cancel Run](https://docs.augno.com/api-reference/agent-runs/cancel-agent-run.md)
-- [POST Agent Runs — Continue Run](https://docs.augno.com/api-reference/agent-runs/continue-agent-run.md)
-- [POST Agent Runs — Retry Run](https://docs.augno.com/api-reference/agent-runs/retry-agent-run.md)
-- [GET Agent Tools — List Tool Groups](https://docs.augno.com/api-reference/agent-tools/list-tool-groups.md)
-- [GET Agent Tools — List](https://docs.augno.com/api-reference/agent-tools/list-tools.md)
-- [POST Agent Memories — Create Memory](https://docs.augno.com/api-reference/agent-memories/create-agent-memory.md)
-- [PATCH Agent Memories — Update Memory](https://docs.augno.com/api-reference/agent-memories/update-agent-memory.md)
-- [GET Agent Memories — List](https://docs.augno.com/api-reference/agent-memories/list-agent-memories.md)
-- [GET Agent Memories — Retrieve Memory](https://docs.augno.com/api-reference/agent-memories/retrieve-agent-memory.md)
-- [DELETE Agent Memories — Delete Memory](https://docs.augno.com/api-reference/agent-memories/delete-agent-memory.md)
+- [POST Agent — Create](https://docs.openmrp.ai/api-reference/agent/create-agent.md)
+- [PATCH Agent — Update](https://docs.openmrp.ai/api-reference/agent/update-agent.md)
+- [GET Agent — List Agents](https://docs.openmrp.ai/api-reference/agent/list-agents.md)
+- [GET Agent — Retrieve](https://docs.openmrp.ai/api-reference/agent/retrieve-agent.md)
+- [DELETE Agent — Delete](https://docs.openmrp.ai/api-reference/agent/delete-agent.md)
+- [PUT Agent — Update Status](https://docs.openmrp.ai/api-reference/agent/update-agent-status.md)
+- [POST Agent Runs — Trigger Run](https://docs.openmrp.ai/api-reference/agent-runs/trigger-agent-run.md)
+- [GET Agent Runs — List](https://docs.openmrp.ai/api-reference/agent-runs/list-agent-runs.md)
+- [GET Agent Runs — Retrieve Run](https://docs.openmrp.ai/api-reference/agent-runs/retrieve-agent-run.md)
+- [POST Agent Runs — Cancel Run](https://docs.openmrp.ai/api-reference/agent-runs/cancel-agent-run.md)
+- [POST Agent Runs — Continue Run](https://docs.openmrp.ai/api-reference/agent-runs/continue-agent-run.md)
+- [POST Agent Runs — Retry Run](https://docs.openmrp.ai/api-reference/agent-runs/retry-agent-run.md)
+- [GET Agent Tools — List Tool Groups](https://docs.openmrp.ai/api-reference/agent-tools/list-tool-groups.md)
+- [GET Agent Tools — List](https://docs.openmrp.ai/api-reference/agent-tools/list-tools.md)
+- [POST Agent Memories — Create Memory](https://docs.openmrp.ai/api-reference/agent-memories/create-agent-memory.md)
+- [PATCH Agent Memories — Update Memory](https://docs.openmrp.ai/api-reference/agent-memories/update-agent-memory.md)
+- [GET Agent Memories — List](https://docs.openmrp.ai/api-reference/agent-memories/list-agent-memories.md)
+- [GET Agent Memories — Retrieve Memory](https://docs.openmrp.ai/api-reference/agent-memories/retrieve-agent-memory.md)
+- [DELETE Agent Memories — Delete Memory](https://docs.openmrp.ai/api-reference/agent-memories/delete-agent-memory.md)
 
 ### Auth
-- [POST API Key — Create](https://docs.augno.com/api-reference/api-key/create-api-key.md)
-- [GET API Key — List Keys](https://docs.augno.com/api-reference/api-key/list-api-keys.md)
-- [GET API Key — Retrieve](https://docs.augno.com/api-reference/api-key/retrieve-api-key.md)
-- [DELETE API Key — Revoke](https://docs.augno.com/api-reference/api-key/revoke-api-key.md)
-- [POST API Key — Rotate](https://docs.augno.com/api-reference/api-key/rotate-api-key.md)
+- [POST API Key — Create](https://docs.openmrp.ai/api-reference/api-key/create-api-key.md)
+- [GET API Key — List Keys](https://docs.openmrp.ai/api-reference/api-key/list-api-keys.md)
+- [GET API Key — Retrieve](https://docs.openmrp.ai/api-reference/api-key/retrieve-api-key.md)
+- [DELETE API Key — Revoke](https://docs.openmrp.ai/api-reference/api-key/revoke-api-key.md)
+- [POST API Key — Rotate](https://docs.openmrp.ai/api-reference/api-key/rotate-api-key.md)
 
 ### Core
-- [POST Sandbox — Create](https://docs.augno.com/api-reference/sandbox/create-sandbox.md)
-- [GET Sandbox — List Sandboxes](https://docs.augno.com/api-reference/sandbox/list-sandboxes.md)
-- [GET Sandbox — Retrieve](https://docs.augno.com/api-reference/sandbox/retrieve-sandbox.md)
-- [DELETE Sandbox — Delete](https://docs.augno.com/api-reference/sandbox/delete-sandbox.md)
-- [GET Request Log — List Logs](https://docs.augno.com/api-reference/request-log/list-request-logs.md)
-- [GET Request Log — Retrieve](https://docs.augno.com/api-reference/request-log/retrieve-request-log.md)
-- [GET Audit Event — List Events](https://docs.augno.com/api-reference/audit-event/list-audit-events.md)
-- [GET Audit Event — List Resource Types](https://docs.augno.com/api-reference/audit-event/list-audit-event-resource-types.md)
-- [GET Audit Event — Retrieve](https://docs.augno.com/api-reference/audit-event/retrieve-audit-event.md)
-- [GET Search — Search](https://docs.augno.com/api-reference/search/search.md)
-- [GET Address Validation — List Suggestions](https://docs.augno.com/api-reference/address-validation/list-address-suggestions.md)
-- [PUT Address Validation — Validate](https://docs.augno.com/api-reference/address-validation/validate-address.md)
-- [GET Email Logs — List](https://docs.augno.com/api-reference/email-logs/list-email-logs.md)
-- [GET Email Logs — Retrieve Log](https://docs.augno.com/api-reference/email-logs/retrieve-email-log.md)
-- [GET Jobs — Retrieve Job](https://docs.augno.com/api-reference/jobs/retrieve-job.md)
-- [POST Jobs — Cancel Job](https://docs.augno.com/api-reference/jobs/cancel-job.md)
-- [PUT Analytics — Analyze Delivery Performance](https://docs.augno.com/api-reference/analytics/analyze-delivery-performance.md)
-- [PUT Analytics — Analyze OEE](https://docs.augno.com/api-reference/analytics/analyze-oee.md)
-- [PUT Analytics — Analyze OEE trend](https://docs.augno.com/api-reference/analytics/analyze-oee-trend.md)
-- [PUT Analytics — Analyze Schedule Attainment](https://docs.augno.com/api-reference/analytics/analyze-schedule-attainment.md)
-- [POST Utils — Email Record](https://docs.augno.com/api-reference/utils/email-record.md)
+- [POST Sandbox — Create](https://docs.openmrp.ai/api-reference/sandbox/create-sandbox.md)
+- [GET Sandbox — List Sandboxes](https://docs.openmrp.ai/api-reference/sandbox/list-sandboxes.md)
+- [GET Sandbox — Retrieve](https://docs.openmrp.ai/api-reference/sandbox/retrieve-sandbox.md)
+- [DELETE Sandbox — Delete](https://docs.openmrp.ai/api-reference/sandbox/delete-sandbox.md)
+- [GET Request Log — List Logs](https://docs.openmrp.ai/api-reference/request-log/list-request-logs.md)
+- [GET Request Log — Retrieve](https://docs.openmrp.ai/api-reference/request-log/retrieve-request-log.md)
+- [GET Audit Event — List Events](https://docs.openmrp.ai/api-reference/audit-event/list-audit-events.md)
+- [GET Audit Event — List Resource Types](https://docs.openmrp.ai/api-reference/audit-event/list-audit-event-resource-types.md)
+- [GET Audit Event — Retrieve](https://docs.openmrp.ai/api-reference/audit-event/retrieve-audit-event.md)
+- [GET Search — Search](https://docs.openmrp.ai/api-reference/search/search.md)
+- [GET Address Validation — List Suggestions](https://docs.openmrp.ai/api-reference/address-validation/list-address-suggestions.md)
+- [PUT Address Validation — Validate](https://docs.openmrp.ai/api-reference/address-validation/validate-address.md)
+- [GET Email Logs — List](https://docs.openmrp.ai/api-reference/email-logs/list-email-logs.md)
+- [GET Email Logs — Retrieve Log](https://docs.openmrp.ai/api-reference/email-logs/retrieve-email-log.md)
+- [GET Jobs — Retrieve Job](https://docs.openmrp.ai/api-reference/jobs/retrieve-job.md)
+- [POST Jobs — Cancel Job](https://docs.openmrp.ai/api-reference/jobs/cancel-job.md)
+- [PUT Analytics — Analyze Delivery Performance](https://docs.openmrp.ai/api-reference/analytics/analyze-delivery-performance.md)
+- [PUT Analytics — Analyze OEE](https://docs.openmrp.ai/api-reference/analytics/analyze-oee.md)
+- [PUT Analytics — Analyze OEE trend](https://docs.openmrp.ai/api-reference/analytics/analyze-oee-trend.md)
+- [PUT Analytics — Analyze Schedule Attainment](https://docs.openmrp.ai/api-reference/analytics/analyze-schedule-attainment.md)
+- [POST Utils — Email Record](https://docs.openmrp.ai/api-reference/utils/email-record.md)
 
 ### Catalog
-- [POST Units — Create Unit](https://docs.augno.com/api-reference/units/create-unit.md)
-- [PATCH Units — Update Unit](https://docs.augno.com/api-reference/units/update-unit.md)
-- [GET Units — List](https://docs.augno.com/api-reference/units/list-units.md)
-- [GET Units — Retrieve Unit](https://docs.augno.com/api-reference/units/retrieve-unit.md)
-- [DELETE Units — Delete Unit](https://docs.augno.com/api-reference/units/delete-unit.md)
-- [POST Units — Bulk Upsert](https://docs.augno.com/api-reference/units/bulk-upsert-units.md)
-- [POST Unit Groups — Create Group](https://docs.augno.com/api-reference/unit-groups/create-unit-group.md)
-- [PATCH Unit Groups — Update Group](https://docs.augno.com/api-reference/unit-groups/update-unit-group.md)
-- [GET Unit Groups — List](https://docs.augno.com/api-reference/unit-groups/list-unit-groups.md)
-- [GET Unit Groups — Retrieve Group](https://docs.augno.com/api-reference/unit-groups/retrieve-unit-group.md)
-- [DELETE Unit Groups — Delete Group](https://docs.augno.com/api-reference/unit-groups/delete-unit-group.md)
-- [POST Unit Groups — Bulk Upsert](https://docs.augno.com/api-reference/unit-groups/bulk-upsert-unit-groups.md)
-- [POST Unit Groups — Create Group Associated](https://docs.augno.com/api-reference/unit-groups/create-unit-group-associated-unit.md)
-- [PATCH Unit Groups — Update Group Associated](https://docs.augno.com/api-reference/unit-groups/update-unit-group-associated-unit.md)
-- [GET Unit Groups — List Group Units](https://docs.augno.com/api-reference/unit-groups/list-unit-group-units.md)
-- [GET Unit Groups — Retrieve Group](https://docs.augno.com/api-reference/unit-groups/retrieve-unit-group-unit.md)
-- [DELETE Unit Groups — Delete Group Associated](https://docs.augno.com/api-reference/unit-groups/delete-unit-group-associated-unit.md)
-- [POST Properties — Create Property](https://docs.augno.com/api-reference/properties/create-property.md)
-- [PATCH Properties — Update Property](https://docs.augno.com/api-reference/properties/update-property.md)
-- [GET Properties — List](https://docs.augno.com/api-reference/properties/list-properties.md)
-- [GET Properties — Retrieve Property](https://docs.augno.com/api-reference/properties/retrieve-property.md)
-- [DELETE Properties — Delete Property](https://docs.augno.com/api-reference/properties/delete-property.md)
-- [POST Properties — Bulk Upsert](https://docs.augno.com/api-reference/properties/bulk-upsert-properties.md)
-- [POST Properties — Create Attribute](https://docs.augno.com/api-reference/properties/create-attribute.md)
-- [PATCH Properties — Update Attribute](https://docs.augno.com/api-reference/properties/update-attribute.md)
-- [GET Properties — List Attributes](https://docs.augno.com/api-reference/properties/list-attributes.md)
-- [GET Properties — Retrieve Attribute](https://docs.augno.com/api-reference/properties/retrieve-attribute.md)
-- [DELETE Properties — Delete Attribute](https://docs.augno.com/api-reference/properties/delete-attribute.md)
-- [GET Items — List](https://docs.augno.com/api-reference/items/list-items.md)
-- [GET Items — Retrieve Item](https://docs.augno.com/api-reference/items/retrieve-item.md)
-- [POST Items — Bulk Reconcile](https://docs.augno.com/api-reference/items/bulk-reconcile-items.md)
-- [PUT Items — Add Item Attribute](https://docs.augno.com/api-reference/items/add-item-attribute.md)
-- [PUT Items — Change Item Category](https://docs.augno.com/api-reference/items/change-item-category.md)
-- [GET Items — Retrieve Item Inventory](https://docs.augno.com/api-reference/items/retrieve-item-inventory.md)
-- [GET Items — Retrieve Item Lot Default](https://docs.augno.com/api-reference/items/retrieve-item-lot-default.md)
-- [DELETE Items — Remove Item Attribute](https://docs.augno.com/api-reference/items/remove-item-attribute.md)
-- [PATCH Items — Update Item Inventory](https://docs.augno.com/api-reference/items/update-item-inventory.md)
-- [POST Item Categories — Create Category](https://docs.augno.com/api-reference/item-categories/create-item-category.md)
-- [PATCH Item Categories — Update Category](https://docs.augno.com/api-reference/item-categories/update-item-category.md)
-- [GET Item Categories — List](https://docs.augno.com/api-reference/item-categories/list-item-categories.md)
-- [GET Item Categories — Retrieve Category](https://docs.augno.com/api-reference/item-categories/retrieve-item-category.md)
-- [DELETE Item Categories — Delete Category](https://docs.augno.com/api-reference/item-categories/delete-item-category.md)
-- [POST Item Categories — Bulk Upsert](https://docs.augno.com/api-reference/item-categories/bulk-upsert-item-categories.md)
-- [PUT Item Categories — Add Category Property](https://docs.augno.com/api-reference/item-categories/add-item-category-property.md)
-- [PUT Item Categories — Change Category Unit Group](https://docs.augno.com/api-reference/item-categories/change-item-category-unit-group.md)
-- [DELETE Item Categories — Remove Category Property](https://docs.augno.com/api-reference/item-categories/remove-item-category-property.md)
-- [POST Materials — Create Material](https://docs.augno.com/api-reference/materials/create-material.md)
-- [PATCH Materials — Update Material](https://docs.augno.com/api-reference/materials/update-material.md)
-- [GET Materials — List](https://docs.augno.com/api-reference/materials/list-materials.md)
-- [GET Materials — Retrieve Material](https://docs.augno.com/api-reference/materials/retrieve-material.md)
-- [DELETE Materials — Delete Material](https://docs.augno.com/api-reference/materials/delete-material.md)
-- [POST Materials — Bulk Upsert](https://docs.augno.com/api-reference/materials/bulk-upsert-materials.md)
-- [POST Parts — Create Part](https://docs.augno.com/api-reference/parts/create-part.md)
-- [PATCH Parts — Update Part](https://docs.augno.com/api-reference/parts/update-part.md)
-- [GET Parts — List](https://docs.augno.com/api-reference/parts/list-parts.md)
-- [GET Parts — Retrieve Part](https://docs.augno.com/api-reference/parts/retrieve-part.md)
-- [DELETE Parts — Delete Part](https://docs.augno.com/api-reference/parts/delete-part.md)
-- [POST Parts — Bulk Upsert](https://docs.augno.com/api-reference/parts/bulk-upsert-parts.md)
-- [POST Product Lines — Create Line](https://docs.augno.com/api-reference/product-lines/create-product-line.md)
-- [PATCH Product Lines — Update Line](https://docs.augno.com/api-reference/product-lines/update-product-line.md)
-- [GET Product Lines — List](https://docs.augno.com/api-reference/product-lines/list-product-lines.md)
-- [GET Product Lines — Retrieve Line](https://docs.augno.com/api-reference/product-lines/retrieve-product-line.md)
-- [DELETE Product Lines — Delete Line](https://docs.augno.com/api-reference/product-lines/delete-product-line.md)
-- [POST Product Lines — Bulk Upsert](https://docs.augno.com/api-reference/product-lines/bulk-upsert-product-lines.md)
-- [POST Products — Create Product](https://docs.augno.com/api-reference/products/create-product.md)
-- [PATCH Products — Update Product](https://docs.augno.com/api-reference/products/update-product.md)
-- [GET Products — List](https://docs.augno.com/api-reference/products/list-products.md)
-- [GET Products — Retrieve Product](https://docs.augno.com/api-reference/products/retrieve-product.md)
-- [DELETE Products — Delete Product](https://docs.augno.com/api-reference/products/delete-product.md)
-- [POST Products — Bulk Upsert](https://docs.augno.com/api-reference/products/bulk-upsert-products.md)
-- [PUT Products — Change Product Product Line](https://docs.augno.com/api-reference/products/change-product-product-line.md)
+- [POST Units — Create Unit](https://docs.openmrp.ai/api-reference/units/create-unit.md)
+- [PATCH Units — Update Unit](https://docs.openmrp.ai/api-reference/units/update-unit.md)
+- [GET Units — List](https://docs.openmrp.ai/api-reference/units/list-units.md)
+- [GET Units — Retrieve Unit](https://docs.openmrp.ai/api-reference/units/retrieve-unit.md)
+- [DELETE Units — Delete Unit](https://docs.openmrp.ai/api-reference/units/delete-unit.md)
+- [POST Units — Bulk Upsert](https://docs.openmrp.ai/api-reference/units/bulk-upsert-units.md)
+- [POST Unit Groups — Create Group](https://docs.openmrp.ai/api-reference/unit-groups/create-unit-group.md)
+- [PATCH Unit Groups — Update Group](https://docs.openmrp.ai/api-reference/unit-groups/update-unit-group.md)
+- [GET Unit Groups — List](https://docs.openmrp.ai/api-reference/unit-groups/list-unit-groups.md)
+- [GET Unit Groups — Retrieve Group](https://docs.openmrp.ai/api-reference/unit-groups/retrieve-unit-group.md)
+- [DELETE Unit Groups — Delete Group](https://docs.openmrp.ai/api-reference/unit-groups/delete-unit-group.md)
+- [POST Unit Groups — Bulk Upsert](https://docs.openmrp.ai/api-reference/unit-groups/bulk-upsert-unit-groups.md)
+- [POST Unit Groups — Create Group Associated](https://docs.openmrp.ai/api-reference/unit-groups/create-unit-group-associated-unit.md)
+- [PATCH Unit Groups — Update Group Associated](https://docs.openmrp.ai/api-reference/unit-groups/update-unit-group-associated-unit.md)
+- [GET Unit Groups — List Group Units](https://docs.openmrp.ai/api-reference/unit-groups/list-unit-group-units.md)
+- [GET Unit Groups — Retrieve Group](https://docs.openmrp.ai/api-reference/unit-groups/retrieve-unit-group-unit.md)
+- [DELETE Unit Groups — Delete Group Associated](https://docs.openmrp.ai/api-reference/unit-groups/delete-unit-group-associated-unit.md)
+- [POST Properties — Create Property](https://docs.openmrp.ai/api-reference/properties/create-property.md)
+- [PATCH Properties — Update Property](https://docs.openmrp.ai/api-reference/properties/update-property.md)
+- [GET Properties — List](https://docs.openmrp.ai/api-reference/properties/list-properties.md)
+- [GET Properties — Retrieve Property](https://docs.openmrp.ai/api-reference/properties/retrieve-property.md)
+- [DELETE Properties — Delete Property](https://docs.openmrp.ai/api-reference/properties/delete-property.md)
+- [POST Properties — Bulk Upsert](https://docs.openmrp.ai/api-reference/properties/bulk-upsert-properties.md)
+- [POST Properties — Create Attribute](https://docs.openmrp.ai/api-reference/properties/create-attribute.md)
+- [PATCH Properties — Update Attribute](https://docs.openmrp.ai/api-reference/properties/update-attribute.md)
+- [GET Properties — List Attributes](https://docs.openmrp.ai/api-reference/properties/list-attributes.md)
+- [GET Properties — Retrieve Attribute](https://docs.openmrp.ai/api-reference/properties/retrieve-attribute.md)
+- [DELETE Properties — Delete Attribute](https://docs.openmrp.ai/api-reference/properties/delete-attribute.md)
+- [GET Items — List](https://docs.openmrp.ai/api-reference/items/list-items.md)
+- [GET Items — Retrieve Item](https://docs.openmrp.ai/api-reference/items/retrieve-item.md)
+- [POST Items — Bulk Reconcile](https://docs.openmrp.ai/api-reference/items/bulk-reconcile-items.md)
+- [PUT Items — Add Item Attribute](https://docs.openmrp.ai/api-reference/items/add-item-attribute.md)
+- [PUT Items — Change Item Category](https://docs.openmrp.ai/api-reference/items/change-item-category.md)
+- [GET Items — Retrieve Item Inventory](https://docs.openmrp.ai/api-reference/items/retrieve-item-inventory.md)
+- [GET Items — Retrieve Item Lot Default](https://docs.openmrp.ai/api-reference/items/retrieve-item-lot-default.md)
+- [DELETE Items — Remove Item Attribute](https://docs.openmrp.ai/api-reference/items/remove-item-attribute.md)
+- [PATCH Items — Update Item Inventory](https://docs.openmrp.ai/api-reference/items/update-item-inventory.md)
+- [POST Item Categories — Create Category](https://docs.openmrp.ai/api-reference/item-categories/create-item-category.md)
+- [PATCH Item Categories — Update Category](https://docs.openmrp.ai/api-reference/item-categories/update-item-category.md)
+- [GET Item Categories — List](https://docs.openmrp.ai/api-reference/item-categories/list-item-categories.md)
+- [GET Item Categories — Retrieve Category](https://docs.openmrp.ai/api-reference/item-categories/retrieve-item-category.md)
+- [DELETE Item Categories — Delete Category](https://docs.openmrp.ai/api-reference/item-categories/delete-item-category.md)
+- [POST Item Categories — Bulk Upsert](https://docs.openmrp.ai/api-reference/item-categories/bulk-upsert-item-categories.md)
+- [PUT Item Categories — Add Category Property](https://docs.openmrp.ai/api-reference/item-categories/add-item-category-property.md)
+- [PUT Item Categories — Change Category Unit Group](https://docs.openmrp.ai/api-reference/item-categories/change-item-category-unit-group.md)
+- [DELETE Item Categories — Remove Category Property](https://docs.openmrp.ai/api-reference/item-categories/remove-item-category-property.md)
+- [POST Materials — Create Material](https://docs.openmrp.ai/api-reference/materials/create-material.md)
+- [PATCH Materials — Update Material](https://docs.openmrp.ai/api-reference/materials/update-material.md)
+- [GET Materials — List](https://docs.openmrp.ai/api-reference/materials/list-materials.md)
+- [GET Materials — Retrieve Material](https://docs.openmrp.ai/api-reference/materials/retrieve-material.md)
+- [DELETE Materials — Delete Material](https://docs.openmrp.ai/api-reference/materials/delete-material.md)
+- [POST Materials — Bulk Upsert](https://docs.openmrp.ai/api-reference/materials/bulk-upsert-materials.md)
+- [POST Parts — Create Part](https://docs.openmrp.ai/api-reference/parts/create-part.md)
+- [PATCH Parts — Update Part](https://docs.openmrp.ai/api-reference/parts/update-part.md)
+- [GET Parts — List](https://docs.openmrp.ai/api-reference/parts/list-parts.md)
+- [GET Parts — Retrieve Part](https://docs.openmrp.ai/api-reference/parts/retrieve-part.md)
+- [DELETE Parts — Delete Part](https://docs.openmrp.ai/api-reference/parts/delete-part.md)
+- [POST Parts — Bulk Upsert](https://docs.openmrp.ai/api-reference/parts/bulk-upsert-parts.md)
+- [POST Product Lines — Create Line](https://docs.openmrp.ai/api-reference/product-lines/create-product-line.md)
+- [PATCH Product Lines — Update Line](https://docs.openmrp.ai/api-reference/product-lines/update-product-line.md)
+- [GET Product Lines — List](https://docs.openmrp.ai/api-reference/product-lines/list-product-lines.md)
+- [GET Product Lines — Retrieve Line](https://docs.openmrp.ai/api-reference/product-lines/retrieve-product-line.md)
+- [DELETE Product Lines — Delete Line](https://docs.openmrp.ai/api-reference/product-lines/delete-product-line.md)
+- [POST Product Lines — Bulk Upsert](https://docs.openmrp.ai/api-reference/product-lines/bulk-upsert-product-lines.md)
+- [POST Products — Create Product](https://docs.openmrp.ai/api-reference/products/create-product.md)
+- [PATCH Products — Update Product](https://docs.openmrp.ai/api-reference/products/update-product.md)
+- [GET Products — List](https://docs.openmrp.ai/api-reference/products/list-products.md)
+- [GET Products — Retrieve Product](https://docs.openmrp.ai/api-reference/products/retrieve-product.md)
+- [DELETE Products — Delete Product](https://docs.openmrp.ai/api-reference/products/delete-product.md)
+- [POST Products — Bulk Upsert](https://docs.openmrp.ai/api-reference/products/bulk-upsert-products.md)
+- [PUT Products — Change Product Product Line](https://docs.openmrp.ai/api-reference/products/change-product-product-line.md)
 
 ### Messaging
-- [POST Notifications — Send Notification](https://docs.augno.com/api-reference/notifications/send-notification.md)
-- [GET Notifications — List](https://docs.augno.com/api-reference/notifications/list-notifications.md)
-- [GET Notifications — Get Notification Unread Count](https://docs.augno.com/api-reference/notifications/get-notification-unread-count.md)
-- [GET Notifications — Get Cross-Account Unread Summary](https://docs.augno.com/api-reference/notifications/get-cross-account-unread-summary.md)
-- [GET Notifications — Retrieve Notification](https://docs.augno.com/api-reference/notifications/retrieve-notification.md)
-- [POST Notifications — Mark All Seen](https://docs.augno.com/api-reference/notifications/mark-all-notifications-seen.md)
-- [POST Notifications — Dismiss Notification](https://docs.augno.com/api-reference/notifications/dismiss-notification.md)
-- [POST Notifications — Mark Notification Read](https://docs.augno.com/api-reference/notifications/mark-notification-read.md)
-- [POST Notifications — Mark Notification Seen](https://docs.augno.com/api-reference/notifications/mark-notification-seen.md)
-- [GET Announcements — List](https://docs.augno.com/api-reference/announcements/list-announcements.md)
-- [GET Announcements — Retrieve Announcement](https://docs.augno.com/api-reference/announcements/retrieve-announcement.md)
-- [POST Announcements — Mark Announcement Dismissed](https://docs.augno.com/api-reference/announcements/mark-announcement-dismissed.md)
-- [POST Announcements — Mark Announcement Read](https://docs.augno.com/api-reference/announcements/mark-announcement-read.md)
-- [POST Announcements — Mark Announcement Seen](https://docs.augno.com/api-reference/announcements/mark-announcement-seen.md)
-- [POST Conversations — Create Conversation](https://docs.augno.com/api-reference/conversations/create-conversation.md)
-- [PATCH Conversations — Update Conversation](https://docs.augno.com/api-reference/conversations/update-conversation.md)
-- [GET Conversations — List](https://docs.augno.com/api-reference/conversations/list-conversations.md)
-- [GET Conversations — Retrieve Conversation](https://docs.augno.com/api-reference/conversations/retrieve-conversation.md)
-- [POST Conversations — Link Record](https://docs.augno.com/api-reference/conversations/link-record.md)
-- [GET Conversations — List Links](https://docs.augno.com/api-reference/conversations/list-links.md)
-- [DELETE Conversations — Unlink Record](https://docs.augno.com/api-reference/conversations/unlink-record.md)
-- [POST Conversations — Archive Conversation](https://docs.augno.com/api-reference/conversations/archive-conversation.md)
-- [POST Conversations — Assign Case](https://docs.augno.com/api-reference/conversations/assign-case.md)
-- [POST Conversations — Hide Conversation](https://docs.augno.com/api-reference/conversations/hide-conversation.md)
-- [POST Conversations — Leave Conversation](https://docs.augno.com/api-reference/conversations/leave-conversation.md)
-- [POST Conversations — Mute Conversation](https://docs.augno.com/api-reference/conversations/mute-conversation.md)
-- [POST Conversations — Mark Conversation Read](https://docs.augno.com/api-reference/conversations/mark-conversation-read.md)
-- [POST Conversations — Redact Conversation](https://docs.augno.com/api-reference/conversations/redact-conversation.md)
-- [POST Conversations — Report Conversation](https://docs.augno.com/api-reference/conversations/report-conversation.md)
-- [POST Conversations — Set Legal Hold](https://docs.augno.com/api-reference/conversations/set-legal-hold.md)
-- [POST Conversations — Set Case Status](https://docs.augno.com/api-reference/conversations/set-case-status.md)
-- [POST Conversations — Unarchive Conversation](https://docs.augno.com/api-reference/conversations/unarchive-conversation.md)
-- [POST Conversations — Unhide Conversation](https://docs.augno.com/api-reference/conversations/unhide-conversation.md)
-- [POST Conversations — Unmute Conversation](https://docs.augno.com/api-reference/conversations/unmute-conversation.md)
-- [PATCH Messages — Update Reply Draft](https://docs.augno.com/api-reference/messages/update-reply-draft.md)
-- [POST Messages — Send Message](https://docs.augno.com/api-reference/messages/send-message.md)
-- [GET Messages — List](https://docs.augno.com/api-reference/messages/list-messages.md)
-- [POST Messages — Approve And Send Reply Draft](https://docs.augno.com/api-reference/messages/approve-and-send-reply-draft.md)
-- [POST Messages — Cancel Scheduled Message](https://docs.augno.com/api-reference/messages/cancel-scheduled-message.md)
-- [POST Messages — Reject Reply Draft](https://docs.augno.com/api-reference/messages/reject-reply-draft.md)
-- [POST Conversation Participants — Add Participant](https://docs.augno.com/api-reference/conversation-participants/add-participant.md)
-- [DELETE Conversation Participants — Remove Participant](https://docs.augno.com/api-reference/conversation-participants/remove-participant.md)
-- [POST Conversation Participants — Update Participant Role](https://docs.augno.com/api-reference/conversation-participants/update-participant-role.md)
-- [POST Messaging Groups — Create Group](https://docs.augno.com/api-reference/messaging-groups/create-messaging-group.md)
-- [PATCH Messaging Groups — Update Group](https://docs.augno.com/api-reference/messaging-groups/update-messaging-group.md)
-- [GET Messaging Groups — List](https://docs.augno.com/api-reference/messaging-groups/list-messaging-groups.md)
-- [GET Messaging Groups — Retrieve Group](https://docs.augno.com/api-reference/messaging-groups/retrieve-messaging-group.md)
-- [DELETE Messaging Groups — Delete Group](https://docs.augno.com/api-reference/messaging-groups/delete-messaging-group.md)
-- [POST Messaging Groups — Add Group Member](https://docs.augno.com/api-reference/messaging-groups/add-messaging-group-member.md)
-- [DELETE Messaging Groups — Remove Group Member](https://docs.augno.com/api-reference/messaging-groups/remove-messaging-group-member.md)
-- [POST Message Attachments — Create Attachment Upload URL](https://docs.augno.com/api-reference/message-attachments/create-attachment-upload-url.md)
-- [POST Message Blocks — Block User](https://docs.augno.com/api-reference/message-blocks/block-user.md)
-- [GET Message Blocks — List](https://docs.augno.com/api-reference/message-blocks/list-blocks.md)
-- [DELETE Message Blocks — Unblock User](https://docs.augno.com/api-reference/message-blocks/unblock-user.md)
-- [GET Notification Preferences — List](https://docs.augno.com/api-reference/notification-preferences/list-notification-preferences.md)
-- [PUT Notification Preferences — Upsert Preference](https://docs.augno.com/api-reference/notification-preferences/upsert-notification-preference.md)
-- [GET Messaging Contacts — List](https://docs.augno.com/api-reference/messaging-contacts/list-messaging-contacts.md)
-- [POST Email Domains — Create Domain](https://docs.augno.com/api-reference/email-domains/create-email-domain.md)
-- [GET Email Domains — List](https://docs.augno.com/api-reference/email-domains/list-email-domains.md)
-- [GET Email Domains — Get Domain](https://docs.augno.com/api-reference/email-domains/get-email-domain.md)
-- [DELETE Email Domains — Delete Domain](https://docs.augno.com/api-reference/email-domains/delete-email-domain.md)
-- [POST Email Domains — Verify Domain](https://docs.augno.com/api-reference/email-domains/verify-email-domain.md)
-- [POST Email Inboxes — Create Inbox](https://docs.augno.com/api-reference/email-inboxes/create-email-inbox.md)
-- [PATCH Email Inboxes — Update Inbox](https://docs.augno.com/api-reference/email-inboxes/update-email-inbox.md)
-- [GET Email Inboxes — List](https://docs.augno.com/api-reference/email-inboxes/list-email-inboxes.md)
-- [GET Email Inboxes — Get Inbox](https://docs.augno.com/api-reference/email-inboxes/get-email-inbox.md)
-- [DELETE Email Inboxes — Delete Inbox](https://docs.augno.com/api-reference/email-inboxes/delete-email-inbox.md)
+- [POST Notifications — Send Notification](https://docs.openmrp.ai/api-reference/notifications/send-notification.md)
+- [GET Notifications — List](https://docs.openmrp.ai/api-reference/notifications/list-notifications.md)
+- [GET Notifications — Get Notification Unread Count](https://docs.openmrp.ai/api-reference/notifications/get-notification-unread-count.md)
+- [GET Notifications — Get Cross-Account Unread Summary](https://docs.openmrp.ai/api-reference/notifications/get-cross-account-unread-summary.md)
+- [GET Notifications — Retrieve Notification](https://docs.openmrp.ai/api-reference/notifications/retrieve-notification.md)
+- [POST Notifications — Mark All Seen](https://docs.openmrp.ai/api-reference/notifications/mark-all-notifications-seen.md)
+- [POST Notifications — Dismiss Notification](https://docs.openmrp.ai/api-reference/notifications/dismiss-notification.md)
+- [POST Notifications — Mark Notification Read](https://docs.openmrp.ai/api-reference/notifications/mark-notification-read.md)
+- [POST Notifications — Mark Notification Seen](https://docs.openmrp.ai/api-reference/notifications/mark-notification-seen.md)
+- [GET Announcements — List](https://docs.openmrp.ai/api-reference/announcements/list-announcements.md)
+- [GET Announcements — Retrieve Announcement](https://docs.openmrp.ai/api-reference/announcements/retrieve-announcement.md)
+- [POST Announcements — Mark Announcement Dismissed](https://docs.openmrp.ai/api-reference/announcements/mark-announcement-dismissed.md)
+- [POST Announcements — Mark Announcement Read](https://docs.openmrp.ai/api-reference/announcements/mark-announcement-read.md)
+- [POST Announcements — Mark Announcement Seen](https://docs.openmrp.ai/api-reference/announcements/mark-announcement-seen.md)
+- [POST Conversations — Create Conversation](https://docs.openmrp.ai/api-reference/conversations/create-conversation.md)
+- [PATCH Conversations — Update Conversation](https://docs.openmrp.ai/api-reference/conversations/update-conversation.md)
+- [GET Conversations — List](https://docs.openmrp.ai/api-reference/conversations/list-conversations.md)
+- [GET Conversations — Retrieve Conversation](https://docs.openmrp.ai/api-reference/conversations/retrieve-conversation.md)
+- [POST Conversations — Link Record](https://docs.openmrp.ai/api-reference/conversations/link-record.md)
+- [GET Conversations — List Links](https://docs.openmrp.ai/api-reference/conversations/list-links.md)
+- [DELETE Conversations — Unlink Record](https://docs.openmrp.ai/api-reference/conversations/unlink-record.md)
+- [POST Conversations — Archive Conversation](https://docs.openmrp.ai/api-reference/conversations/archive-conversation.md)
+- [POST Conversations — Assign Case](https://docs.openmrp.ai/api-reference/conversations/assign-case.md)
+- [POST Conversations — Hide Conversation](https://docs.openmrp.ai/api-reference/conversations/hide-conversation.md)
+- [POST Conversations — Leave Conversation](https://docs.openmrp.ai/api-reference/conversations/leave-conversation.md)
+- [POST Conversations — Mute Conversation](https://docs.openmrp.ai/api-reference/conversations/mute-conversation.md)
+- [POST Conversations — Mark Conversation Read](https://docs.openmrp.ai/api-reference/conversations/mark-conversation-read.md)
+- [POST Conversations — Redact Conversation](https://docs.openmrp.ai/api-reference/conversations/redact-conversation.md)
+- [POST Conversations — Report Conversation](https://docs.openmrp.ai/api-reference/conversations/report-conversation.md)
+- [POST Conversations — Set Legal Hold](https://docs.openmrp.ai/api-reference/conversations/set-legal-hold.md)
+- [POST Conversations — Set Case Status](https://docs.openmrp.ai/api-reference/conversations/set-case-status.md)
+- [POST Conversations — Unarchive Conversation](https://docs.openmrp.ai/api-reference/conversations/unarchive-conversation.md)
+- [POST Conversations — Unhide Conversation](https://docs.openmrp.ai/api-reference/conversations/unhide-conversation.md)
+- [POST Conversations — Unmute Conversation](https://docs.openmrp.ai/api-reference/conversations/unmute-conversation.md)
+- [PATCH Messages — Update Reply Draft](https://docs.openmrp.ai/api-reference/messages/update-reply-draft.md)
+- [POST Messages — Send Message](https://docs.openmrp.ai/api-reference/messages/send-message.md)
+- [GET Messages — List](https://docs.openmrp.ai/api-reference/messages/list-messages.md)
+- [POST Messages — Approve And Send Reply Draft](https://docs.openmrp.ai/api-reference/messages/approve-and-send-reply-draft.md)
+- [POST Messages — Cancel Scheduled Message](https://docs.openmrp.ai/api-reference/messages/cancel-scheduled-message.md)
+- [POST Messages — Reject Reply Draft](https://docs.openmrp.ai/api-reference/messages/reject-reply-draft.md)
+- [POST Conversation Participants — Add Participant](https://docs.openmrp.ai/api-reference/conversation-participants/add-participant.md)
+- [DELETE Conversation Participants — Remove Participant](https://docs.openmrp.ai/api-reference/conversation-participants/remove-participant.md)
+- [POST Conversation Participants — Update Participant Role](https://docs.openmrp.ai/api-reference/conversation-participants/update-participant-role.md)
+- [POST Messaging Groups — Create Group](https://docs.openmrp.ai/api-reference/messaging-groups/create-messaging-group.md)
+- [PATCH Messaging Groups — Update Group](https://docs.openmrp.ai/api-reference/messaging-groups/update-messaging-group.md)
+- [GET Messaging Groups — List](https://docs.openmrp.ai/api-reference/messaging-groups/list-messaging-groups.md)
+- [GET Messaging Groups — Retrieve Group](https://docs.openmrp.ai/api-reference/messaging-groups/retrieve-messaging-group.md)
+- [DELETE Messaging Groups — Delete Group](https://docs.openmrp.ai/api-reference/messaging-groups/delete-messaging-group.md)
+- [POST Messaging Groups — Add Group Member](https://docs.openmrp.ai/api-reference/messaging-groups/add-messaging-group-member.md)
+- [DELETE Messaging Groups — Remove Group Member](https://docs.openmrp.ai/api-reference/messaging-groups/remove-messaging-group-member.md)
+- [POST Message Attachments — Create Attachment Upload URL](https://docs.openmrp.ai/api-reference/message-attachments/create-attachment-upload-url.md)
+- [POST Message Blocks — Block User](https://docs.openmrp.ai/api-reference/message-blocks/block-user.md)
+- [GET Message Blocks — List](https://docs.openmrp.ai/api-reference/message-blocks/list-blocks.md)
+- [DELETE Message Blocks — Unblock User](https://docs.openmrp.ai/api-reference/message-blocks/unblock-user.md)
+- [GET Notification Preferences — List](https://docs.openmrp.ai/api-reference/notification-preferences/list-notification-preferences.md)
+- [PUT Notification Preferences — Upsert Preference](https://docs.openmrp.ai/api-reference/notification-preferences/upsert-notification-preference.md)
+- [GET Messaging Contacts — List](https://docs.openmrp.ai/api-reference/messaging-contacts/list-messaging-contacts.md)
+- [POST Email Domains — Create Domain](https://docs.openmrp.ai/api-reference/email-domains/create-email-domain.md)
+- [GET Email Domains — List](https://docs.openmrp.ai/api-reference/email-domains/list-email-domains.md)
+- [GET Email Domains — Get Domain](https://docs.openmrp.ai/api-reference/email-domains/get-email-domain.md)
+- [DELETE Email Domains — Delete Domain](https://docs.openmrp.ai/api-reference/email-domains/delete-email-domain.md)
+- [POST Email Domains — Verify Domain](https://docs.openmrp.ai/api-reference/email-domains/verify-email-domain.md)
+- [POST Email Inboxes — Create Inbox](https://docs.openmrp.ai/api-reference/email-inboxes/create-email-inbox.md)
+- [PATCH Email Inboxes — Update Inbox](https://docs.openmrp.ai/api-reference/email-inboxes/update-email-inbox.md)
+- [GET Email Inboxes — List](https://docs.openmrp.ai/api-reference/email-inboxes/list-email-inboxes.md)
+- [GET Email Inboxes — Get Inbox](https://docs.openmrp.ai/api-reference/email-inboxes/get-email-inbox.md)
+- [DELETE Email Inboxes — Delete Inbox](https://docs.openmrp.ai/api-reference/email-inboxes/delete-email-inbox.md)
 
 ### Sales
-- [POST Account Groups — Create Group](https://docs.augno.com/api-reference/account-groups/create-account-group.md)
-- [PATCH Account Groups — Update Group](https://docs.augno.com/api-reference/account-groups/update-account-group.md)
-- [GET Account Groups — List](https://docs.augno.com/api-reference/account-groups/list-account-groups.md)
-- [GET Account Groups — Retrieve Group](https://docs.augno.com/api-reference/account-groups/retrieve-account-group.md)
-- [DELETE Account Groups — Delete Group](https://docs.augno.com/api-reference/account-groups/delete-account-group.md)
-- [POST Account Prices — Create Price](https://docs.augno.com/api-reference/account-prices/create-account-price.md)
-- [PATCH Account Prices — Update Price](https://docs.augno.com/api-reference/account-prices/update-account-price.md)
-- [GET Account Prices — List](https://docs.augno.com/api-reference/account-prices/list-account-prices.md)
-- [GET Account Prices — Retrieve Price](https://docs.augno.com/api-reference/account-prices/retrieve-account-price.md)
-- [DELETE Account Prices — Delete Price](https://docs.augno.com/api-reference/account-prices/delete-account-price.md)
-- [POST Account Prices — Export Price List](https://docs.augno.com/api-reference/account-prices/export-price-list.md)
-- [POST Address — Create](https://docs.augno.com/api-reference/address/create-address.md)
-- [PATCH Address — Update](https://docs.augno.com/api-reference/address/update-address.md)
-- [GET Address — List Addresses](https://docs.augno.com/api-reference/address/list-addresses.md)
-- [GET Address — Retrieve](https://docs.augno.com/api-reference/address/retrieve-address.md)
-- [DELETE Address — Delete](https://docs.augno.com/api-reference/address/delete-address.md)
-- [GET Account Statuses — List](https://docs.augno.com/api-reference/account-statuses/list-account-statuses.md)
-- [GET Account Statuses — Retrieve Status](https://docs.augno.com/api-reference/account-statuses/retrieve-account-status.md)
-- [POST Sales Targets — Create Target](https://docs.augno.com/api-reference/sales-targets/create-sales-target.md)
-- [PUT Sales Targets — Upsert Target](https://docs.augno.com/api-reference/sales-targets/upsert-sales-target.md)
-- [GET Sales Targets — List](https://docs.augno.com/api-reference/sales-targets/list-sales-targets.md)
-- [GET Priorities — List](https://docs.augno.com/api-reference/priorities/list-priorities.md)
-- [GET Priorities — Retrieve Priority](https://docs.augno.com/api-reference/priorities/retrieve-priority.md)
-- [POST Customers — Create Customer](https://docs.augno.com/api-reference/customers/create-customer.md)
-- [PATCH Customers — Update Customer](https://docs.augno.com/api-reference/customers/update-customer.md)
-- [GET Customers — List](https://docs.augno.com/api-reference/customers/list-customers.md)
-- [GET Customers — Retrieve Customer](https://docs.augno.com/api-reference/customers/retrieve-customer.md)
-- [DELETE Customers — Delete Customer](https://docs.augno.com/api-reference/customers/delete-customer.md)
-- [GET Customers — Retrieve Customer Lead Time](https://docs.augno.com/api-reference/customers/retrieve-customer-lead-time.md)
-- [POST Customers — Merge](https://docs.augno.com/api-reference/customers/merge-customers.md)
-- [POST Contacts — Find Contact by Email](https://docs.augno.com/api-reference/contacts/find-contact-by-email.md)
-- [POST Order Discounts — Create Discount](https://docs.augno.com/api-reference/order-discounts/create-order-discount.md)
-- [PATCH Order Discounts — Update Discount](https://docs.augno.com/api-reference/order-discounts/update-order-discount.md)
-- [GET Order Discounts — List](https://docs.augno.com/api-reference/order-discounts/list-order-discounts.md)
-- [GET Order Discounts — Retrieve Discount](https://docs.augno.com/api-reference/order-discounts/retrieve-order-discount.md)
-- [DELETE Order Discounts — Delete Discount](https://docs.augno.com/api-reference/order-discounts/delete-order-discount.md)
-- [POST Order Discounts — Find Discount by Code](https://docs.augno.com/api-reference/order-discounts/find-order-discount-by-code.md)
-- [GET Sales Order Statuses — List](https://docs.augno.com/api-reference/sales-order-statuses/list-sales-order-statuses.md)
-- [POST Volume Discounts — Create Discount](https://docs.augno.com/api-reference/volume-discounts/create-volume-discount.md)
-- [PATCH Volume Discounts — Update Discount](https://docs.augno.com/api-reference/volume-discounts/update-volume-discount.md)
-- [GET Volume Discounts — List](https://docs.augno.com/api-reference/volume-discounts/list-volume-discounts.md)
-- [GET Volume Discounts — Retrieve Discount](https://docs.augno.com/api-reference/volume-discounts/retrieve-volume-discount.md)
-- [DELETE Volume Discounts — Delete Discount](https://docs.augno.com/api-reference/volume-discounts/delete-volume-discount.md)
-- [POST Sales Orders — Create Order](https://docs.augno.com/api-reference/sales-orders/create-sales-order.md)
-- [POST Sales Orders — Quote Order Prices](https://docs.augno.com/api-reference/sales-orders/quote-sales-order-prices.md)
-- [PATCH Sales Orders — Update Order](https://docs.augno.com/api-reference/sales-orders/update-sales-order.md)
-- [GET Sales Orders — List](https://docs.augno.com/api-reference/sales-orders/list-sales-orders.md)
-- [GET Sales Orders — Retrieve Order](https://docs.augno.com/api-reference/sales-orders/retrieve-sales-order.md)
-- [DELETE Sales Orders — Delete Order](https://docs.augno.com/api-reference/sales-orders/delete-sales-order.md)
-- [POST Sales Orders — Bulk Delete](https://docs.augno.com/api-reference/sales-orders/bulk-delete-sales-orders.md)
-- [POST Sales Orders — Quote Order Commitment](https://docs.augno.com/api-reference/sales-orders/quote-sales-order-commitment.md)
-- [POST Sales Orders — Checkout Order](https://docs.augno.com/api-reference/sales-orders/checkout-sales-order.md)
-- [POST Sales Orders — Create Order Line](https://docs.augno.com/api-reference/sales-orders/create-sales-order-line.md)
-- [PATCH Sales Orders — Update Order Line](https://docs.augno.com/api-reference/sales-orders/update-sales-order-line.md)
-- [DELETE Sales Orders — Delete Order Line](https://docs.augno.com/api-reference/sales-orders/delete-sales-order-line.md)
-- [PUT Sales Orders — Close Order](https://docs.augno.com/api-reference/sales-orders/close-sales-order.md)
-- [POST Sales Orders — Create Production Run from Order](https://docs.augno.com/api-reference/sales-orders/create-production-run-from-sales-order.md)
-- [PUT Sales Orders — Issue Order](https://docs.augno.com/api-reference/sales-orders/issue-sales-order.md)
-- [PUT Sales Orders — Reopen Order](https://docs.augno.com/api-reference/sales-orders/reopen-sales-order.md)
-- [POST Sales Orders — Quote Order Freight](https://docs.augno.com/api-reference/sales-orders/quote-sales-order-freight.md)
-- [PUT Sales Orders — Unissue Order](https://docs.augno.com/api-reference/sales-orders/unissue-sales-order.md)
-- [POST Sales Orders — Reorder Order Lines](https://docs.augno.com/api-reference/sales-orders/reorder-sales-order-lines.md)
+- [POST Account Groups — Create Group](https://docs.openmrp.ai/api-reference/account-groups/create-account-group.md)
+- [PATCH Account Groups — Update Group](https://docs.openmrp.ai/api-reference/account-groups/update-account-group.md)
+- [GET Account Groups — List](https://docs.openmrp.ai/api-reference/account-groups/list-account-groups.md)
+- [GET Account Groups — Retrieve Group](https://docs.openmrp.ai/api-reference/account-groups/retrieve-account-group.md)
+- [DELETE Account Groups — Delete Group](https://docs.openmrp.ai/api-reference/account-groups/delete-account-group.md)
+- [POST Account Prices — Create Price](https://docs.openmrp.ai/api-reference/account-prices/create-account-price.md)
+- [PATCH Account Prices — Update Price](https://docs.openmrp.ai/api-reference/account-prices/update-account-price.md)
+- [GET Account Prices — List](https://docs.openmrp.ai/api-reference/account-prices/list-account-prices.md)
+- [GET Account Prices — Retrieve Price](https://docs.openmrp.ai/api-reference/account-prices/retrieve-account-price.md)
+- [DELETE Account Prices — Delete Price](https://docs.openmrp.ai/api-reference/account-prices/delete-account-price.md)
+- [POST Account Prices — Export Price List](https://docs.openmrp.ai/api-reference/account-prices/export-price-list.md)
+- [POST Address — Create](https://docs.openmrp.ai/api-reference/address/create-address.md)
+- [PATCH Address — Update](https://docs.openmrp.ai/api-reference/address/update-address.md)
+- [GET Address — List Addresses](https://docs.openmrp.ai/api-reference/address/list-addresses.md)
+- [GET Address — Retrieve](https://docs.openmrp.ai/api-reference/address/retrieve-address.md)
+- [DELETE Address — Delete](https://docs.openmrp.ai/api-reference/address/delete-address.md)
+- [GET Account Statuses — List](https://docs.openmrp.ai/api-reference/account-statuses/list-account-statuses.md)
+- [GET Account Statuses — Retrieve Status](https://docs.openmrp.ai/api-reference/account-statuses/retrieve-account-status.md)
+- [POST Sales Targets — Create Target](https://docs.openmrp.ai/api-reference/sales-targets/create-sales-target.md)
+- [PUT Sales Targets — Upsert Target](https://docs.openmrp.ai/api-reference/sales-targets/upsert-sales-target.md)
+- [GET Sales Targets — List](https://docs.openmrp.ai/api-reference/sales-targets/list-sales-targets.md)
+- [GET Priorities — List](https://docs.openmrp.ai/api-reference/priorities/list-priorities.md)
+- [GET Priorities — Retrieve Priority](https://docs.openmrp.ai/api-reference/priorities/retrieve-priority.md)
+- [POST Customers — Create Customer](https://docs.openmrp.ai/api-reference/customers/create-customer.md)
+- [PATCH Customers — Update Customer](https://docs.openmrp.ai/api-reference/customers/update-customer.md)
+- [GET Customers — List](https://docs.openmrp.ai/api-reference/customers/list-customers.md)
+- [GET Customers — Retrieve Customer](https://docs.openmrp.ai/api-reference/customers/retrieve-customer.md)
+- [DELETE Customers — Delete Customer](https://docs.openmrp.ai/api-reference/customers/delete-customer.md)
+- [GET Customers — Retrieve Customer Lead Time](https://docs.openmrp.ai/api-reference/customers/retrieve-customer-lead-time.md)
+- [POST Customers — Merge](https://docs.openmrp.ai/api-reference/customers/merge-customers.md)
+- [POST Contacts — Find Contact by Email](https://docs.openmrp.ai/api-reference/contacts/find-contact-by-email.md)
+- [POST Order Discounts — Create Discount](https://docs.openmrp.ai/api-reference/order-discounts/create-order-discount.md)
+- [PATCH Order Discounts — Update Discount](https://docs.openmrp.ai/api-reference/order-discounts/update-order-discount.md)
+- [GET Order Discounts — List](https://docs.openmrp.ai/api-reference/order-discounts/list-order-discounts.md)
+- [GET Order Discounts — Retrieve Discount](https://docs.openmrp.ai/api-reference/order-discounts/retrieve-order-discount.md)
+- [DELETE Order Discounts — Delete Discount](https://docs.openmrp.ai/api-reference/order-discounts/delete-order-discount.md)
+- [POST Order Discounts — Find Discount by Code](https://docs.openmrp.ai/api-reference/order-discounts/find-order-discount-by-code.md)
+- [GET Sales Order Statuses — List](https://docs.openmrp.ai/api-reference/sales-order-statuses/list-sales-order-statuses.md)
+- [POST Volume Discounts — Create Discount](https://docs.openmrp.ai/api-reference/volume-discounts/create-volume-discount.md)
+- [PATCH Volume Discounts — Update Discount](https://docs.openmrp.ai/api-reference/volume-discounts/update-volume-discount.md)
+- [GET Volume Discounts — List](https://docs.openmrp.ai/api-reference/volume-discounts/list-volume-discounts.md)
+- [GET Volume Discounts — Retrieve Discount](https://docs.openmrp.ai/api-reference/volume-discounts/retrieve-volume-discount.md)
+- [DELETE Volume Discounts — Delete Discount](https://docs.openmrp.ai/api-reference/volume-discounts/delete-volume-discount.md)
+- [POST Sales Orders — Create Order](https://docs.openmrp.ai/api-reference/sales-orders/create-sales-order.md)
+- [POST Sales Orders — Quote Order Prices](https://docs.openmrp.ai/api-reference/sales-orders/quote-sales-order-prices.md)
+- [PATCH Sales Orders — Update Order](https://docs.openmrp.ai/api-reference/sales-orders/update-sales-order.md)
+- [GET Sales Orders — List](https://docs.openmrp.ai/api-reference/sales-orders/list-sales-orders.md)
+- [GET Sales Orders — Retrieve Order](https://docs.openmrp.ai/api-reference/sales-orders/retrieve-sales-order.md)
+- [DELETE Sales Orders — Delete Order](https://docs.openmrp.ai/api-reference/sales-orders/delete-sales-order.md)
+- [POST Sales Orders — Bulk Delete](https://docs.openmrp.ai/api-reference/sales-orders/bulk-delete-sales-orders.md)
+- [POST Sales Orders — Quote Order Commitment](https://docs.openmrp.ai/api-reference/sales-orders/quote-sales-order-commitment.md)
+- [POST Sales Orders — Checkout Order](https://docs.openmrp.ai/api-reference/sales-orders/checkout-sales-order.md)
+- [POST Sales Orders — Create Order Line](https://docs.openmrp.ai/api-reference/sales-orders/create-sales-order-line.md)
+- [PATCH Sales Orders — Update Order Line](https://docs.openmrp.ai/api-reference/sales-orders/update-sales-order-line.md)
+- [DELETE Sales Orders — Delete Order Line](https://docs.openmrp.ai/api-reference/sales-orders/delete-sales-order-line.md)
+- [PUT Sales Orders — Close Order](https://docs.openmrp.ai/api-reference/sales-orders/close-sales-order.md)
+- [POST Sales Orders — Create Production Run from Order](https://docs.openmrp.ai/api-reference/sales-orders/create-production-run-from-sales-order.md)
+- [PUT Sales Orders — Issue Order](https://docs.openmrp.ai/api-reference/sales-orders/issue-sales-order.md)
+- [PUT Sales Orders — Reopen Order](https://docs.openmrp.ai/api-reference/sales-orders/reopen-sales-order.md)
+- [POST Sales Orders — Quote Order Freight](https://docs.openmrp.ai/api-reference/sales-orders/quote-sales-order-freight.md)
+- [PUT Sales Orders — Unissue Order](https://docs.openmrp.ai/api-reference/sales-orders/unissue-sales-order.md)
+- [POST Sales Orders — Reorder Order Lines](https://docs.openmrp.ai/api-reference/sales-orders/reorder-sales-order-lines.md)
 
 ### Finance
-- [POST Payment Terms — Create Term](https://docs.augno.com/api-reference/payment-terms/create-payment-term.md)
-- [PATCH Payment Terms — Update Term](https://docs.augno.com/api-reference/payment-terms/update-payment-term.md)
-- [GET Payment Terms — List](https://docs.augno.com/api-reference/payment-terms/list-payment-terms.md)
-- [GET Payment Terms — Retrieve Term](https://docs.augno.com/api-reference/payment-terms/retrieve-payment-term.md)
-- [DELETE Payment Terms — Delete Term](https://docs.augno.com/api-reference/payment-terms/delete-payment-term.md)
-- [GET Transactions — List Adjustment Types](https://docs.augno.com/api-reference/transactions/list-adjustment-types.md)
-- [GET Transactions — List Transaction Methods](https://docs.augno.com/api-reference/transactions/list-transaction-methods.md)
-- [GET Transactions — List Transaction Types](https://docs.augno.com/api-reference/transactions/list-transaction-types.md)
+- [POST Payment Terms — Create Term](https://docs.openmrp.ai/api-reference/payment-terms/create-payment-term.md)
+- [PATCH Payment Terms — Update Term](https://docs.openmrp.ai/api-reference/payment-terms/update-payment-term.md)
+- [GET Payment Terms — List](https://docs.openmrp.ai/api-reference/payment-terms/list-payment-terms.md)
+- [GET Payment Terms — Retrieve Term](https://docs.openmrp.ai/api-reference/payment-terms/retrieve-payment-term.md)
+- [DELETE Payment Terms — Delete Term](https://docs.openmrp.ai/api-reference/payment-terms/delete-payment-term.md)
+- [GET Transactions — List Adjustment Types](https://docs.openmrp.ai/api-reference/transactions/list-adjustment-types.md)
+- [GET Transactions — List Transaction Methods](https://docs.openmrp.ai/api-reference/transactions/list-transaction-methods.md)
+- [GET Transactions — List Transaction Types](https://docs.openmrp.ai/api-reference/transactions/list-transaction-types.md)
 
 ### Operations
-- [POST Shipping Terms — Create Term](https://docs.augno.com/api-reference/shipping-terms/create-shipping-term.md)
-- [PATCH Shipping Terms — Update Term](https://docs.augno.com/api-reference/shipping-terms/update-shipping-term.md)
-- [GET Shipping Terms — List](https://docs.augno.com/api-reference/shipping-terms/list-shipping-terms.md)
-- [GET Shipping Terms — Retrieve Term](https://docs.augno.com/api-reference/shipping-terms/retrieve-shipping-term.md)
-- [DELETE Shipping Terms — Delete Term](https://docs.augno.com/api-reference/shipping-terms/delete-shipping-term.md)
-- [POST Carriers — Create Carrier](https://docs.augno.com/api-reference/carriers/create-carrier.md)
-- [PATCH Carriers — Update Carrier](https://docs.augno.com/api-reference/carriers/update-carrier.md)
-- [GET Carriers — List](https://docs.augno.com/api-reference/carriers/list-carriers.md)
-- [GET Carriers — Retrieve Carrier](https://docs.augno.com/api-reference/carriers/retrieve-carrier.md)
-- [DELETE Carriers — Delete Carrier](https://docs.augno.com/api-reference/carriers/delete-carrier.md)
-- [POST Service Levels — Create Level](https://docs.augno.com/api-reference/service-levels/create-service-level.md)
-- [PATCH Service Levels — Update Level](https://docs.augno.com/api-reference/service-levels/update-service-level.md)
-- [GET Service Levels — List](https://docs.augno.com/api-reference/service-levels/list-service-levels.md)
-- [GET Service Levels — Retrieve Level](https://docs.augno.com/api-reference/service-levels/retrieve-service-level.md)
-- [DELETE Service Levels — Delete Level](https://docs.augno.com/api-reference/service-levels/delete-service-level.md)
-- [POST Departments — Create Department](https://docs.augno.com/api-reference/departments/create-department.md)
-- [PATCH Departments — Update Department](https://docs.augno.com/api-reference/departments/update-department.md)
-- [GET Departments — List](https://docs.augno.com/api-reference/departments/list-departments.md)
-- [GET Departments — Retrieve Department](https://docs.augno.com/api-reference/departments/retrieve-department.md)
-- [DELETE Departments — Delete Department](https://docs.augno.com/api-reference/departments/delete-department.md)
-- [POST Machines — Create Machine](https://docs.augno.com/api-reference/machines/create-machine.md)
-- [PATCH Machines — Update Machine](https://docs.augno.com/api-reference/machines/update-machine.md)
-- [GET Machines — List](https://docs.augno.com/api-reference/machines/list-machines.md)
-- [GET Machines — Retrieve Machine](https://docs.augno.com/api-reference/machines/retrieve-machine.md)
-- [DELETE Machines — Delete Machine](https://docs.augno.com/api-reference/machines/delete-machine.md)
-- [POST Machine Downtime — Create Event](https://docs.augno.com/api-reference/machine-downtime/create-machine-downtime-event.md)
-- [PATCH Machine Downtime — Update Event](https://docs.augno.com/api-reference/machine-downtime/update-machine-downtime-event.md)
-- [GET Machine Downtime — List Events](https://docs.augno.com/api-reference/machine-downtime/list-machine-downtime-events.md)
-- [GET Machine Downtime — List Reasons](https://docs.augno.com/api-reference/machine-downtime/list-machine-downtime-reasons.md)
-- [GET Machine Downtime — Retrieve Event](https://docs.augno.com/api-reference/machine-downtime/retrieve-machine-downtime-event.md)
-- [DELETE Machine Downtime — Delete Event](https://docs.augno.com/api-reference/machine-downtime/delete-machine-downtime-event.md)
-- [GET Machine Status — List](https://docs.augno.com/api-reference/machine-status/list-machine-status.md)
-- [POST Demand Overrides — Create Override](https://docs.augno.com/api-reference/demand-overrides/create-demand-override.md)
-- [PATCH Demand Overrides — Update Override](https://docs.augno.com/api-reference/demand-overrides/update-demand-override.md)
-- [GET Demand Overrides — List Override Types](https://docs.augno.com/api-reference/demand-overrides/list-demand-override-types.md)
-- [GET Demand Overrides — List](https://docs.augno.com/api-reference/demand-overrides/list-demand-overrides.md)
-- [GET Demand Overrides — Retrieve Override](https://docs.augno.com/api-reference/demand-overrides/retrieve-demand-override.md)
-- [DELETE Demand Overrides — Delete Override](https://docs.augno.com/api-reference/demand-overrides/delete-demand-override.md)
-- [POST Production Schedules — Generate Schedule](https://docs.augno.com/api-reference/production-schedules/generate-production-schedule.md)
-- [GET Production Schedules — List](https://docs.augno.com/api-reference/production-schedules/list-production-schedules.md)
-- [GET Production Schedules — Retrieve Current Schedule](https://docs.augno.com/api-reference/production-schedules/retrieve-current-production-schedule.md)
-- [GET Production Schedules — List Schedule Deviation Types](https://docs.augno.com/api-reference/production-schedules/list-schedule-deviation-types.md)
-- [GET Production Schedules — Retrieve Schedule](https://docs.augno.com/api-reference/production-schedules/retrieve-production-schedule.md)
-- [DELETE Production Schedules — Delete Schedule](https://docs.augno.com/api-reference/production-schedules/delete-production-schedule.md)
-- [PUT Production Schedules — Preview Schedule](https://docs.augno.com/api-reference/production-schedules/preview-production-schedule.md)
-- [POST Production Schedules — Create Schedule Line](https://docs.augno.com/api-reference/production-schedules/create-production-schedule-line.md)
-- [PATCH Production Schedules — Update Schedule Line](https://docs.augno.com/api-reference/production-schedules/update-production-schedule-line.md)
-- [GET Production Schedules — List Schedule At-Risk Orders](https://docs.augno.com/api-reference/production-schedules/list-schedule-at-risk-orders.md)
-- [GET Production Schedules — List Schedule Derived Lines](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-derived-lines.md)
-- [GET Production Schedules — List Schedule Deviations](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-deviations.md)
-- [GET Production Schedules — List Schedule Finished Policies](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-finished-policies.md)
-- [GET Production Schedules — List Schedule Finishing Lines](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-finishing-lines.md)
-- [GET Production Schedules — List Schedule Item Policies](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-item-policies.md)
-- [GET Production Schedules — List Schedule Lines](https://docs.augno.com/api-reference/production-schedules/list-production-schedule-lines.md)
-- [GET Production Schedules — Preview Schedule Week Release](https://docs.augno.com/api-reference/production-schedules/preview-production-schedule-week-release.md)
-- [DELETE Production Schedules — Delete Schedule Line](https://docs.augno.com/api-reference/production-schedules/delete-production-schedule-line.md)
-- [PUT Production Schedules — Archive Schedule](https://docs.augno.com/api-reference/production-schedules/archive-production-schedule.md)
-- [PUT Production Schedules — Preview Schedule Regenerate](https://docs.augno.com/api-reference/production-schedules/preview-production-schedule-regenerate.md)
-- [PUT Production Schedules — Publish Schedule](https://docs.augno.com/api-reference/production-schedules/publish-production-schedule.md)
-- [PUT Production Schedules — Regenerate Schedule](https://docs.augno.com/api-reference/production-schedules/regenerate-production-schedule.md)
-- [POST Production Schedules — Release Schedule Week](https://docs.augno.com/api-reference/production-schedules/release-production-schedule-week.md)
-- [PUT Production Schedule Settings — Upsert Item Setting](https://docs.augno.com/api-reference/production-schedule-settings/upsert-production-schedule-item-setting.md)
-- [GET Production Schedule Settings — List Fulfillment Recommendations](https://docs.augno.com/api-reference/production-schedule-settings/list-fulfillment-recommendations.md)
-- [GET Production Schedule Settings — Retrieve](https://docs.augno.com/api-reference/production-schedule-settings/retrieve-production-schedule-settings.md)
-- [GET Production Schedule Settings — List Item](https://docs.augno.com/api-reference/production-schedule-settings/list-production-schedule-item-settings.md)
-- [GET Production Schedule Settings — List Resource](https://docs.augno.com/api-reference/production-schedule-settings/list-production-schedule-resource-settings.md)
-- [GET Production Schedule Settings — Retrieve Item Setting](https://docs.augno.com/api-reference/production-schedule-settings/retrieve-production-schedule-item-setting.md)
-- [DELETE Production Schedule Settings — Delete Item Setting](https://docs.augno.com/api-reference/production-schedule-settings/delete-production-schedule-item-setting.md)
-- [DELETE Production Schedule Settings — Delete Resource Setting](https://docs.augno.com/api-reference/production-schedule-settings/delete-production-schedule-resource-setting.md)
-- [POST Production Schedule Settings — Apply Fulfillment Recommendations](https://docs.augno.com/api-reference/production-schedule-settings/apply-fulfillment-recommendations.md)
-- [PUT Production Schedule Settings — Update](https://docs.augno.com/api-reference/production-schedule-settings/update-production-schedule-settings.md)
-- [PUT Production Schedule Settings — Upsert Resource Setting](https://docs.augno.com/api-reference/production-schedule-settings/upsert-production-schedule-resource-setting.md)
-- [POST Operating Calendars — Create Calendar](https://docs.augno.com/api-reference/operating-calendars/create-operating-calendar.md)
-- [PATCH Operating Calendars — Update Calendar](https://docs.augno.com/api-reference/operating-calendars/update-operating-calendar.md)
-- [GET Operating Calendars — List](https://docs.augno.com/api-reference/operating-calendars/list-operating-calendars.md)
-- [GET Operating Calendars — Retrieve Calendar](https://docs.augno.com/api-reference/operating-calendars/retrieve-operating-calendar.md)
-- [DELETE Operating Calendars — Delete Calendar](https://docs.augno.com/api-reference/operating-calendars/delete-operating-calendar.md)
-- [POST Operating Calendars — Create Calendar Closure](https://docs.augno.com/api-reference/operating-calendars/create-operating-calendar-closure.md)
-- [GET Operating Calendars — List Calendar Closures](https://docs.augno.com/api-reference/operating-calendars/list-operating-calendar-closures.md)
-- [DELETE Operating Calendars — Delete Calendar Closure](https://docs.augno.com/api-reference/operating-calendars/delete-operating-calendar-closure.md)
-- [POST Location — Create](https://docs.augno.com/api-reference/location/create-location.md)
-- [PATCH Location — Update](https://docs.augno.com/api-reference/location/update-location.md)
-- [GET Location — List Types](https://docs.augno.com/api-reference/location/list-location-types.md)
-- [GET Location — List Locations](https://docs.augno.com/api-reference/location/list-locations.md)
-- [GET Location — Retrieve Type](https://docs.augno.com/api-reference/location/retrieve-location-type.md)
-- [GET Location — Retrieve](https://docs.augno.com/api-reference/location/retrieve-location.md)
-- [DELETE Location — Delete](https://docs.augno.com/api-reference/location/delete-location.md)
-- [POST Location — Bulk Upsert Locations](https://docs.augno.com/api-reference/location/bulk-upsert-locations.md)
-- [POST Shipment — Rate Shop](https://docs.augno.com/api-reference/shipment/rate-shop.md)
-- [POST Scanning Stations — Create Station](https://docs.augno.com/api-reference/scanning-stations/create-scanning-station.md)
-- [PATCH Scanning Stations — Update Station](https://docs.augno.com/api-reference/scanning-stations/update-scanning-station.md)
-- [GET Scanning Stations — List](https://docs.augno.com/api-reference/scanning-stations/list-scanning-stations.md)
-- [GET Scanning Stations — Retrieve Station](https://docs.augno.com/api-reference/scanning-stations/retrieve-scanning-station.md)
-- [DELETE Scanning Stations — Delete Station](https://docs.augno.com/api-reference/scanning-stations/delete-scanning-station.md)
+- [POST Shipping Terms — Create Term](https://docs.openmrp.ai/api-reference/shipping-terms/create-shipping-term.md)
+- [PATCH Shipping Terms — Update Term](https://docs.openmrp.ai/api-reference/shipping-terms/update-shipping-term.md)
+- [GET Shipping Terms — List](https://docs.openmrp.ai/api-reference/shipping-terms/list-shipping-terms.md)
+- [GET Shipping Terms — Retrieve Term](https://docs.openmrp.ai/api-reference/shipping-terms/retrieve-shipping-term.md)
+- [DELETE Shipping Terms — Delete Term](https://docs.openmrp.ai/api-reference/shipping-terms/delete-shipping-term.md)
+- [POST Carriers — Create Carrier](https://docs.openmrp.ai/api-reference/carriers/create-carrier.md)
+- [PATCH Carriers — Update Carrier](https://docs.openmrp.ai/api-reference/carriers/update-carrier.md)
+- [GET Carriers — List](https://docs.openmrp.ai/api-reference/carriers/list-carriers.md)
+- [GET Carriers — Retrieve Carrier](https://docs.openmrp.ai/api-reference/carriers/retrieve-carrier.md)
+- [DELETE Carriers — Delete Carrier](https://docs.openmrp.ai/api-reference/carriers/delete-carrier.md)
+- [POST Service Levels — Create Level](https://docs.openmrp.ai/api-reference/service-levels/create-service-level.md)
+- [PATCH Service Levels — Update Level](https://docs.openmrp.ai/api-reference/service-levels/update-service-level.md)
+- [GET Service Levels — List](https://docs.openmrp.ai/api-reference/service-levels/list-service-levels.md)
+- [GET Service Levels — Retrieve Level](https://docs.openmrp.ai/api-reference/service-levels/retrieve-service-level.md)
+- [DELETE Service Levels — Delete Level](https://docs.openmrp.ai/api-reference/service-levels/delete-service-level.md)
+- [POST Departments — Create Department](https://docs.openmrp.ai/api-reference/departments/create-department.md)
+- [PATCH Departments — Update Department](https://docs.openmrp.ai/api-reference/departments/update-department.md)
+- [GET Departments — List](https://docs.openmrp.ai/api-reference/departments/list-departments.md)
+- [GET Departments — Retrieve Department](https://docs.openmrp.ai/api-reference/departments/retrieve-department.md)
+- [DELETE Departments — Delete Department](https://docs.openmrp.ai/api-reference/departments/delete-department.md)
+- [POST Machines — Create Machine](https://docs.openmrp.ai/api-reference/machines/create-machine.md)
+- [PATCH Machines — Update Machine](https://docs.openmrp.ai/api-reference/machines/update-machine.md)
+- [GET Machines — List](https://docs.openmrp.ai/api-reference/machines/list-machines.md)
+- [GET Machines — Retrieve Machine](https://docs.openmrp.ai/api-reference/machines/retrieve-machine.md)
+- [DELETE Machines — Delete Machine](https://docs.openmrp.ai/api-reference/machines/delete-machine.md)
+- [POST Machine Downtime — Create Event](https://docs.openmrp.ai/api-reference/machine-downtime/create-machine-downtime-event.md)
+- [PATCH Machine Downtime — Update Event](https://docs.openmrp.ai/api-reference/machine-downtime/update-machine-downtime-event.md)
+- [GET Machine Downtime — List Events](https://docs.openmrp.ai/api-reference/machine-downtime/list-machine-downtime-events.md)
+- [GET Machine Downtime — List Reasons](https://docs.openmrp.ai/api-reference/machine-downtime/list-machine-downtime-reasons.md)
+- [GET Machine Downtime — Retrieve Event](https://docs.openmrp.ai/api-reference/machine-downtime/retrieve-machine-downtime-event.md)
+- [DELETE Machine Downtime — Delete Event](https://docs.openmrp.ai/api-reference/machine-downtime/delete-machine-downtime-event.md)
+- [GET Machine Status — List](https://docs.openmrp.ai/api-reference/machine-status/list-machine-status.md)
+- [POST Demand Overrides — Create Override](https://docs.openmrp.ai/api-reference/demand-overrides/create-demand-override.md)
+- [PATCH Demand Overrides — Update Override](https://docs.openmrp.ai/api-reference/demand-overrides/update-demand-override.md)
+- [GET Demand Overrides — List Override Types](https://docs.openmrp.ai/api-reference/demand-overrides/list-demand-override-types.md)
+- [GET Demand Overrides — List](https://docs.openmrp.ai/api-reference/demand-overrides/list-demand-overrides.md)
+- [GET Demand Overrides — Retrieve Override](https://docs.openmrp.ai/api-reference/demand-overrides/retrieve-demand-override.md)
+- [DELETE Demand Overrides — Delete Override](https://docs.openmrp.ai/api-reference/demand-overrides/delete-demand-override.md)
+- [POST Production Schedules — Generate Schedule](https://docs.openmrp.ai/api-reference/production-schedules/generate-production-schedule.md)
+- [GET Production Schedules — List](https://docs.openmrp.ai/api-reference/production-schedules/list-production-schedules.md)
+- [GET Production Schedules — Retrieve Current Schedule](https://docs.openmrp.ai/api-reference/production-schedules/retrieve-current-production-schedule.md)
+- [GET Production Schedules — List Schedule Deviation Types](https://docs.openmrp.ai/api-reference/production-schedules/list-schedule-deviation-types.md)
+- [GET Production Schedules — Retrieve Schedule](https://docs.openmrp.ai/api-reference/production-schedules/retrieve-production-schedule.md)
+- [DELETE Production Schedules — Delete Schedule](https://docs.openmrp.ai/api-reference/production-schedules/delete-production-schedule.md)
+- [PUT Production Schedules — Preview Schedule](https://docs.openmrp.ai/api-reference/production-schedules/preview-production-schedule.md)
+- [POST Production Schedules — Create Schedule Line](https://docs.openmrp.ai/api-reference/production-schedules/create-production-schedule-line.md)
+- [PATCH Production Schedules — Update Schedule Line](https://docs.openmrp.ai/api-reference/production-schedules/update-production-schedule-line.md)
+- [GET Production Schedules — List Schedule At-Risk Orders](https://docs.openmrp.ai/api-reference/production-schedules/list-schedule-at-risk-orders.md)
+- [GET Production Schedules — List Schedule Derived Lines](https://docs.openmrp.ai/api-reference/production-schedules/list-production-schedule-derived-lines.md)
+- [GET Production Schedules — List Schedule Deviations](https://docs.openmrp.ai/api-reference/production-schedules/list-production-schedule-deviations.md)
+- [GET Production Schedules — List Schedule Finished Policies](https://docs.openmrp.ai/api-reference/production-schedules/list-production-schedule-finished-policies.md)
+- [GET Production Schedules — List Schedule Finishing Lines](https://docs.openmrp.ai/api-reference/production-schedules/list-production-schedule-finishing-lines.md)
+- [GET Production Schedules — List Schedule Item Policies](https://docs.openmrp.ai/api-reference/production-schedules/list-production-schedule-item-policies.md)
+- [GET Production Schedules — List Schedule Lines](https://docs.openmrp.ai/api-reference/production-schedules/list-production-schedule-lines.md)
+- [GET Production Schedules — Preview Schedule Week Release](https://docs.openmrp.ai/api-reference/production-schedules/preview-production-schedule-week-release.md)
+- [DELETE Production Schedules — Delete Schedule Line](https://docs.openmrp.ai/api-reference/production-schedules/delete-production-schedule-line.md)
+- [PUT Production Schedules — Archive Schedule](https://docs.openmrp.ai/api-reference/production-schedules/archive-production-schedule.md)
+- [PUT Production Schedules — Preview Schedule Regenerate](https://docs.openmrp.ai/api-reference/production-schedules/preview-production-schedule-regenerate.md)
+- [PUT Production Schedules — Publish Schedule](https://docs.openmrp.ai/api-reference/production-schedules/publish-production-schedule.md)
+- [PUT Production Schedules — Regenerate Schedule](https://docs.openmrp.ai/api-reference/production-schedules/regenerate-production-schedule.md)
+- [POST Production Schedules — Release Schedule Week](https://docs.openmrp.ai/api-reference/production-schedules/release-production-schedule-week.md)
+- [PUT Production Schedule Settings — Upsert Item Setting](https://docs.openmrp.ai/api-reference/production-schedule-settings/upsert-production-schedule-item-setting.md)
+- [GET Production Schedule Settings — List Fulfillment Recommendations](https://docs.openmrp.ai/api-reference/production-schedule-settings/list-fulfillment-recommendations.md)
+- [GET Production Schedule Settings — Retrieve](https://docs.openmrp.ai/api-reference/production-schedule-settings/retrieve-production-schedule-settings.md)
+- [GET Production Schedule Settings — List Item](https://docs.openmrp.ai/api-reference/production-schedule-settings/list-production-schedule-item-settings.md)
+- [GET Production Schedule Settings — List Resource](https://docs.openmrp.ai/api-reference/production-schedule-settings/list-production-schedule-resource-settings.md)
+- [GET Production Schedule Settings — Retrieve Item Setting](https://docs.openmrp.ai/api-reference/production-schedule-settings/retrieve-production-schedule-item-setting.md)
+- [DELETE Production Schedule Settings — Delete Item Setting](https://docs.openmrp.ai/api-reference/production-schedule-settings/delete-production-schedule-item-setting.md)
+- [DELETE Production Schedule Settings — Delete Resource Setting](https://docs.openmrp.ai/api-reference/production-schedule-settings/delete-production-schedule-resource-setting.md)
+- [POST Production Schedule Settings — Apply Fulfillment Recommendations](https://docs.openmrp.ai/api-reference/production-schedule-settings/apply-fulfillment-recommendations.md)
+- [PUT Production Schedule Settings — Update](https://docs.openmrp.ai/api-reference/production-schedule-settings/update-production-schedule-settings.md)
+- [PUT Production Schedule Settings — Upsert Resource Setting](https://docs.openmrp.ai/api-reference/production-schedule-settings/upsert-production-schedule-resource-setting.md)
+- [POST Operating Calendars — Create Calendar](https://docs.openmrp.ai/api-reference/operating-calendars/create-operating-calendar.md)
+- [PATCH Operating Calendars — Update Calendar](https://docs.openmrp.ai/api-reference/operating-calendars/update-operating-calendar.md)
+- [GET Operating Calendars — List](https://docs.openmrp.ai/api-reference/operating-calendars/list-operating-calendars.md)
+- [GET Operating Calendars — Retrieve Calendar](https://docs.openmrp.ai/api-reference/operating-calendars/retrieve-operating-calendar.md)
+- [DELETE Operating Calendars — Delete Calendar](https://docs.openmrp.ai/api-reference/operating-calendars/delete-operating-calendar.md)
+- [POST Operating Calendars — Create Calendar Closure](https://docs.openmrp.ai/api-reference/operating-calendars/create-operating-calendar-closure.md)
+- [GET Operating Calendars — List Calendar Closures](https://docs.openmrp.ai/api-reference/operating-calendars/list-operating-calendar-closures.md)
+- [DELETE Operating Calendars — Delete Calendar Closure](https://docs.openmrp.ai/api-reference/operating-calendars/delete-operating-calendar-closure.md)
+- [POST Location — Create](https://docs.openmrp.ai/api-reference/location/create-location.md)
+- [PATCH Location — Update](https://docs.openmrp.ai/api-reference/location/update-location.md)
+- [GET Location — List Types](https://docs.openmrp.ai/api-reference/location/list-location-types.md)
+- [GET Location — List Locations](https://docs.openmrp.ai/api-reference/location/list-locations.md)
+- [GET Location — Retrieve Type](https://docs.openmrp.ai/api-reference/location/retrieve-location-type.md)
+- [GET Location — Retrieve](https://docs.openmrp.ai/api-reference/location/retrieve-location.md)
+- [DELETE Location — Delete](https://docs.openmrp.ai/api-reference/location/delete-location.md)
+- [POST Location — Bulk Upsert Locations](https://docs.openmrp.ai/api-reference/location/bulk-upsert-locations.md)
+- [POST Shipment — Rate Shop](https://docs.openmrp.ai/api-reference/shipment/rate-shop.md)
+- [POST Scanning Stations — Create Station](https://docs.openmrp.ai/api-reference/scanning-stations/create-scanning-station.md)
+- [PATCH Scanning Stations — Update Station](https://docs.openmrp.ai/api-reference/scanning-stations/update-scanning-station.md)
+- [GET Scanning Stations — List](https://docs.openmrp.ai/api-reference/scanning-stations/list-scanning-stations.md)
+- [GET Scanning Stations — Retrieve Station](https://docs.openmrp.ai/api-reference/scanning-stations/retrieve-scanning-station.md)
+- [DELETE Scanning Stations — Delete Station](https://docs.openmrp.ai/api-reference/scanning-stations/delete-scanning-station.md)
 
 ### Identity
-- [POST Account Users — Create User](https://docs.augno.com/api-reference/account-users/create-account-user.md)
-- [PATCH Account Users — Update User](https://docs.augno.com/api-reference/account-users/update-account-user.md)
-- [GET Account Users — List](https://docs.augno.com/api-reference/account-users/list-account-users.md)
-- [GET Account Users — Retrieve User](https://docs.augno.com/api-reference/account-users/retrieve-account-user.md)
-- [PUT Account Users — Activate User](https://docs.augno.com/api-reference/account-users/activate-account-user.md)
-- [PUT Account Users — Disable User](https://docs.augno.com/api-reference/account-users/disable-account-user.md)
-- [PUT Account Users — Remove User](https://docs.augno.com/api-reference/account-users/remove-account-user.md)
-- [PUT Account — Upload Favicon](https://docs.augno.com/api-reference/account/upload-account-favicon.md)
-- [POST Roles — Create Role](https://docs.augno.com/api-reference/roles/create-role.md)
-- [PATCH Roles — Update Role](https://docs.augno.com/api-reference/roles/update-role.md)
-- [GET Roles — List](https://docs.augno.com/api-reference/roles/list-roles.md)
-- [GET Roles — Retrieve Role](https://docs.augno.com/api-reference/roles/retrieve-role.md)
-- [DELETE Roles — Delete Role](https://docs.augno.com/api-reference/roles/delete-role.md)
-- [GET Permission Groups — List](https://docs.augno.com/api-reference/permission-groups/list-permission-groups.md)
+- [POST Account Users — Create User](https://docs.openmrp.ai/api-reference/account-users/create-account-user.md)
+- [PATCH Account Users — Update User](https://docs.openmrp.ai/api-reference/account-users/update-account-user.md)
+- [GET Account Users — List](https://docs.openmrp.ai/api-reference/account-users/list-account-users.md)
+- [GET Account Users — Retrieve User](https://docs.openmrp.ai/api-reference/account-users/retrieve-account-user.md)
+- [PUT Account Users — Activate User](https://docs.openmrp.ai/api-reference/account-users/activate-account-user.md)
+- [PUT Account Users — Disable User](https://docs.openmrp.ai/api-reference/account-users/disable-account-user.md)
+- [PUT Account Users — Remove User](https://docs.openmrp.ai/api-reference/account-users/remove-account-user.md)
+- [PUT Account — Upload Favicon](https://docs.openmrp.ai/api-reference/account/upload-account-favicon.md)
+- [POST Roles — Create Role](https://docs.openmrp.ai/api-reference/roles/create-role.md)
+- [PATCH Roles — Update Role](https://docs.openmrp.ai/api-reference/roles/update-role.md)
+- [GET Roles — List](https://docs.openmrp.ai/api-reference/roles/list-roles.md)
+- [GET Roles — Retrieve Role](https://docs.openmrp.ai/api-reference/roles/retrieve-role.md)
+- [DELETE Roles — Delete Role](https://docs.openmrp.ai/api-reference/roles/delete-role.md)
+- [GET Permission Groups — List](https://docs.openmrp.ai/api-reference/permission-groups/list-permission-groups.md)
 
 ### Settings
-- [POST Portal Domains — Create Domain](https://docs.augno.com/api-reference/portal-domains/create-portal-domain.md)
-- [GET Portal Domains — List](https://docs.augno.com/api-reference/portal-domains/list-portal-domains.md)
-- [GET Portal Domains — Retrieve Domain](https://docs.augno.com/api-reference/portal-domains/retrieve-portal-domain.md)
-- [DELETE Portal Domains — Delete Domain](https://docs.augno.com/api-reference/portal-domains/delete-portal-domain.md)
-- [POST Portal Domains — Verify Domain](https://docs.augno.com/api-reference/portal-domains/verify-portal-domain.md)
-- [POST Account Integrations — Create Integration](https://docs.augno.com/api-reference/account-integrations/create-account-integration.md)
-- [PUT Account Integrations — Update Integration](https://docs.augno.com/api-reference/account-integrations/update-account-integration.md)
-- [GET Account Integrations — List](https://docs.augno.com/api-reference/account-integrations/list-account-integrations.md)
-- [DELETE Account Integrations — Delete Integration](https://docs.augno.com/api-reference/account-integrations/delete-account-integration.md)
+- [POST Portal Domains — Create Domain](https://docs.openmrp.ai/api-reference/portal-domains/create-portal-domain.md)
+- [GET Portal Domains — List](https://docs.openmrp.ai/api-reference/portal-domains/list-portal-domains.md)
+- [GET Portal Domains — Retrieve Domain](https://docs.openmrp.ai/api-reference/portal-domains/retrieve-portal-domain.md)
+- [DELETE Portal Domains — Delete Domain](https://docs.openmrp.ai/api-reference/portal-domains/delete-portal-domain.md)
+- [POST Portal Domains — Verify Domain](https://docs.openmrp.ai/api-reference/portal-domains/verify-portal-domain.md)
+- [POST Account Integrations — Create Integration](https://docs.openmrp.ai/api-reference/account-integrations/create-account-integration.md)
+- [PUT Account Integrations — Update Integration](https://docs.openmrp.ai/api-reference/account-integrations/update-account-integration.md)
+- [GET Account Integrations — List](https://docs.openmrp.ai/api-reference/account-integrations/list-account-integrations.md)
+- [DELETE Account Integrations — Delete Integration](https://docs.openmrp.ai/api-reference/account-integrations/delete-account-integration.md)
 
 ## API Objects
 
 ### AI
-- [Agent object](https://docs.augno.com/api-reference/objects/agent-definition.md): An AI agent available to the account.
-- [Agent Memories object](https://docs.augno.com/api-reference/objects/agent-memory.md): A piece of information an agent has saved for recall in future runs.
-- [Agent Runs object](https://docs.augno.com/api-reference/objects/agent-run.md): A single execution of an agent, from trigger through completion.
+- [Agent object](https://docs.openmrp.ai/api-reference/objects/agent-definition.md): An AI agent available to the account.
+- [Agent Memories object](https://docs.openmrp.ai/api-reference/objects/agent-memory.md): A piece of information an agent has saved for recall in future runs.
+- [Agent Runs object](https://docs.openmrp.ai/api-reference/objects/agent-run.md): A single execution of an agent, from trigger through completion.
 
 ### Auth
-- [API Key object](https://docs.augno.com/api-reference/objects/api-key.md): An API key used to authenticate requests to the OpenMRP API.
+- [API Key object](https://docs.openmrp.ai/api-reference/objects/api-key.md): An API key used to authenticate requests to the OpenMRP API.
 
 ### Core
-- [Audit Event object](https://docs.augno.com/api-reference/objects/audit-event.md): An immutable record of a single change to a resource, capturing who made the change, what changed, and when.
-- [Email Logs object](https://docs.augno.com/api-reference/objects/email-log.md): A record of an email the platform sent on the account's behalf, such as an order acknowledgement or a user invitation.
-- [Jobs object](https://docs.augno.com/api-reference/objects/job.md): Records a piece of work the API accepted and carries out asynchronously.
-- [Request Log object](https://docs.augno.com/api-reference/objects/request-log.md): A log of a single API request, capturing its route, outcome, latency, and actor.
-- [Sandbox object](https://docs.augno.com/api-reference/objects/sandbox.md): An isolated test account owned by a production account.
+- [Audit Event object](https://docs.openmrp.ai/api-reference/objects/audit-event.md): An immutable record of a single change to a resource, capturing who made the change, what changed, and when.
+- [Email Logs object](https://docs.openmrp.ai/api-reference/objects/email-log.md): A record of an email the platform sent on the account's behalf, such as an order acknowledgement or a user invitation.
+- [Jobs object](https://docs.openmrp.ai/api-reference/objects/job.md): Records a piece of work the API accepted and carries out asynchronously.
+- [Request Log object](https://docs.openmrp.ai/api-reference/objects/request-log.md): A log of a single API request, capturing its route, outcome, latency, and actor.
+- [Sandbox object](https://docs.openmrp.ai/api-reference/objects/sandbox.md): An isolated test account owned by a production account.
 
 ### Catalog
-- [Item Categories object](https://docs.augno.com/api-reference/objects/item-category.md): A grouping of related catalog items that defines the unit group and properties available to the items within it.
-- [Items object](https://docs.augno.com/api-reference/objects/item.md): An entry in your catalog: something you sell, consume, or build with.
-- [Materials object](https://docs.augno.com/api-reference/objects/material.md): A material in the account's catalog: a raw material or component consumed in production.
-- [Parts object](https://docs.augno.com/api-reference/objects/part.md): A part in the account's catalog: a component used in production.
-- [Product Lines object](https://docs.augno.com/api-reference/objects/product-line.md): A named grouping of related products in your catalog.
-- [Products object](https://docs.augno.com/api-reference/objects/product.md): A catalog entry as it is sold: an inventory item together with its product type, product line, and customer portal visibility.
-- [Properties object](https://docs.augno.com/api-reference/objects/property.md): A named characteristic used to classify items, such as `Color` or `Size`.
-- [Unit Groups object](https://docs.augno.com/api-reference/objects/unit-group.md): A named collection of units that share one dimension, defining which units a product can be ordered in.
-- [Units object](https://docs.augno.com/api-reference/objects/unit.md): Unit of measurement used for conversions and product quantities.
+- [Item Categories object](https://docs.openmrp.ai/api-reference/objects/item-category.md): A grouping of related catalog items that defines the unit group and properties available to the items within it.
+- [Items object](https://docs.openmrp.ai/api-reference/objects/item.md): An entry in your catalog: something you sell, consume, or build with.
+- [Materials object](https://docs.openmrp.ai/api-reference/objects/material.md): A material in the account's catalog: a raw material or component consumed in production.
+- [Parts object](https://docs.openmrp.ai/api-reference/objects/part.md): A part in the account's catalog: a component used in production.
+- [Product Lines object](https://docs.openmrp.ai/api-reference/objects/product-line.md): A named grouping of related products in your catalog.
+- [Products object](https://docs.openmrp.ai/api-reference/objects/product.md): A catalog entry as it is sold: an inventory item together with its product type, product line, and customer portal visibility.
+- [Properties object](https://docs.openmrp.ai/api-reference/objects/property.md): A named characteristic used to classify items, such as `Color` or `Size`.
+- [Unit Groups object](https://docs.openmrp.ai/api-reference/objects/unit-group.md): A named collection of units that share one dimension, defining which units a product can be ordered in.
+- [Units object](https://docs.openmrp.ai/api-reference/objects/unit.md): Unit of measurement used for conversions and product quantities.
 
 ### Finance
-- [Payment Terms object](https://docs.augno.com/api-reference/objects/payment-term.md): A payment term describing when payment is due (e.g.
+- [Payment Terms object](https://docs.openmrp.ai/api-reference/objects/payment-term.md): A payment term describing when payment is due (e.g.
 
 ### Identity
-- [Account Users object](https://docs.augno.com/api-reference/objects/account-user.md): A user's membership in an account, carrying the account-specific status, role, and department.
-- [Roles object](https://docs.augno.com/api-reference/objects/role.md): A named set of permissions that can be assigned to users to control what they can access.
+- [Account Users object](https://docs.openmrp.ai/api-reference/objects/account-user.md): A user's membership in an account, carrying the account-specific status, role, and department.
+- [Roles object](https://docs.openmrp.ai/api-reference/objects/role.md): A named set of permissions that can be assigned to users to control what they can access.
 
 ### Messaging
-- [Announcements object](https://docs.augno.com/api-reference/objects/announcement.md): A broadcast announcement shown in the notification (bell) feed, carrying the calling user's own read state.
-- [Conversations object](https://docs.augno.com/api-reference/objects/conversation.md): A conversation thread the caller participates in.
-- [Email Domains object](https://docs.augno.com/api-reference/objects/email-domain.md): A domain registered with the email bridge for sending and receiving mail.
-- [Email Inboxes object](https://docs.augno.com/api-reference/objects/email-inbox.md): A routable email inbox on a verified domain.
-- [Messages object](https://docs.augno.com/api-reference/objects/list.md): A single page of resources, together with the metadata needed to page through the rest of the result set.
-- [Messaging Groups object](https://docs.augno.com/api-reference/objects/messaging-group.md): A reusable roster: a named set of members (users and/or agents) that seeds new conversations.
-- [Notifications object](https://docs.augno.com/api-reference/objects/notification.md): An in-app notification addressed to a single user, shown in their notification (bell) feed.
+- [Announcements object](https://docs.openmrp.ai/api-reference/objects/announcement.md): A broadcast announcement shown in the notification (bell) feed, carrying the calling user's own read state.
+- [Conversations object](https://docs.openmrp.ai/api-reference/objects/conversation.md): A conversation thread the caller participates in.
+- [Email Domains object](https://docs.openmrp.ai/api-reference/objects/email-domain.md): A domain registered with the email bridge for sending and receiving mail.
+- [Email Inboxes object](https://docs.openmrp.ai/api-reference/objects/email-inbox.md): A routable email inbox on a verified domain.
+- [Messages object](https://docs.openmrp.ai/api-reference/objects/list.md): A single page of resources, together with the metadata needed to page through the rest of the result set.
+- [Messaging Groups object](https://docs.openmrp.ai/api-reference/objects/messaging-group.md): A reusable roster: a named set of members (users and/or agents) that seeds new conversations.
+- [Notifications object](https://docs.openmrp.ai/api-reference/objects/notification.md): An in-app notification addressed to a single user, shown in their notification (bell) feed.
 
 ### Operations
-- [Carriers object](https://docs.augno.com/api-reference/objects/carrier.md): A shipping carrier configured for fulfilling orders.
-- [Demand Overrides object](https://docs.augno.com/api-reference/objects/demand-override.md): An adjustment to the demand a production schedule is planned against.
-- [Departments object](https://docs.augno.com/api-reference/objects/department.md): A functional area of a production operation, such as fabrication or packaging, that groups scanning stations and machines.
-- [Location object](https://docs.augno.com/api-reference/objects/location-type.md): A level in the storage location hierarchy, such as a building or a bin.
-- [Machine Downtime object](https://docs.augno.com/api-reference/objects/machine-downtime-event.md): A period during which a machine was not running.
-- [Machines object](https://docs.augno.com/api-reference/objects/machine.md): A piece of production equipment, such as a CNC router or press, assigned to a department.
-- [Operating Calendars object](https://docs.augno.com/api-reference/objects/operating-calendar.md): OperatingCalendar is the set of days one party to a shipment operates.
-- [Production Schedules object](https://docs.augno.com/api-reference/objects/production-schedule.md): A saved production schedule.
-- [Scanning Stations object](https://docs.augno.com/api-reference/objects/scanning-station.md): A station on the production floor where operators scan batches to perform a batch operation, such as initializing or moving a batch.
-- [Service Levels object](https://docs.augno.com/api-reference/objects/service-level.md): A shipping speed or method offered by a carrier, such as ground or overnight.
-- [Shipping Terms object](https://docs.augno.com/api-reference/objects/shipping-term.md): A named freight pricing rule that decides what a buyer pays for shipping.
+- [Carriers object](https://docs.openmrp.ai/api-reference/objects/carrier.md): A shipping carrier configured for fulfilling orders.
+- [Demand Overrides object](https://docs.openmrp.ai/api-reference/objects/demand-override.md): An adjustment to the demand a production schedule is planned against.
+- [Departments object](https://docs.openmrp.ai/api-reference/objects/department.md): A functional area of a production operation, such as fabrication or packaging, that groups scanning stations and machines.
+- [Location object](https://docs.openmrp.ai/api-reference/objects/location-type.md): A level in the storage location hierarchy, such as a building or a bin.
+- [Machine Downtime object](https://docs.openmrp.ai/api-reference/objects/machine-downtime-event.md): A period during which a machine was not running.
+- [Machines object](https://docs.openmrp.ai/api-reference/objects/machine.md): A piece of production equipment, such as a CNC router or press, assigned to a department.
+- [Operating Calendars object](https://docs.openmrp.ai/api-reference/objects/operating-calendar.md): OperatingCalendar is the set of days one party to a shipment operates.
+- [Production Schedules object](https://docs.openmrp.ai/api-reference/objects/production-schedule.md): A saved production schedule.
+- [Scanning Stations object](https://docs.openmrp.ai/api-reference/objects/scanning-station.md): A station on the production floor where operators scan batches to perform a batch operation, such as initializing or moving a batch.
+- [Service Levels object](https://docs.openmrp.ai/api-reference/objects/service-level.md): A shipping speed or method offered by a carrier, such as ground or overnight.
+- [Shipping Terms object](https://docs.openmrp.ai/api-reference/objects/shipping-term.md): A named freight pricing rule that decides what a buyer pays for shipping.
 
 ### Sales
-- [Account Groups object](https://docs.augno.com/api-reference/objects/account-group.md): A named grouping of customer accounts, used for pricing rules or to categorize accounts.
-- [Account Prices object](https://docs.augno.com/api-reference/objects/account-price.md): A customer-specific price for a product line.
-- [Account Statuses object](https://docs.augno.com/api-reference/objects/account-status.md): A lookup value describing the standing of a customer account, such as whether shipments or all activity should be held.
-- [Address object](https://docs.augno.com/api-reference/objects/address.md): A saved address that can be used for billing and shipping on sales orders, invoices, and shipments.
-- [Customers object](https://docs.augno.com/api-reference/objects/customer.md): A business you sell to, with its contact details, default fulfillment settings, and order policies.
-- [Order Discounts object](https://docs.augno.com/api-reference/objects/order-discount.md): A discount code that can be applied to a sales order.
-- [Priorities object](https://docs.augno.com/api-reference/objects/priority.md): Priority level used to order work on sales orders, purchase orders, and picks.
-- [Sales Orders object](https://docs.augno.com/api-reference/objects/sales-order.md): An order placed by a customer, tracked from estimate through fulfillment.
-- [Volume Discounts object](https://docs.augno.com/api-reference/objects/volume-discount.md): A quantity-based discount with tiered percentage rates.
+- [Account Groups object](https://docs.openmrp.ai/api-reference/objects/account-group.md): A named grouping of customer accounts, used for pricing rules or to categorize accounts.
+- [Account Prices object](https://docs.openmrp.ai/api-reference/objects/account-price.md): A customer-specific price for a product line.
+- [Account Statuses object](https://docs.openmrp.ai/api-reference/objects/account-status.md): A lookup value describing the standing of a customer account, such as whether shipments or all activity should be held.
+- [Address object](https://docs.openmrp.ai/api-reference/objects/address.md): A saved address that can be used for billing and shipping on sales orders, invoices, and shipments.
+- [Customers object](https://docs.openmrp.ai/api-reference/objects/customer.md): A business you sell to, with its contact details, default fulfillment settings, and order policies.
+- [Order Discounts object](https://docs.openmrp.ai/api-reference/objects/order-discount.md): A discount code that can be applied to a sales order.
+- [Priorities object](https://docs.openmrp.ai/api-reference/objects/priority.md): Priority level used to order work on sales orders, purchase orders, and picks.
+- [Sales Orders object](https://docs.openmrp.ai/api-reference/objects/sales-order.md): An order placed by a customer, tracked from estimate through fulfillment.
+- [Volume Discounts object](https://docs.openmrp.ai/api-reference/objects/volume-discount.md): A quantity-based discount with tiered percentage rates.
 
 ### Settings
-- [Portal Domains object](https://docs.augno.com/api-reference/objects/portal-domain.md): A custom domain that serves the account's customer portal (e.g.
+- [Portal Domains object](https://docs.openmrp.ai/api-reference/objects/portal-domain.md): A custom domain that serves the account's customer portal (e.g.
