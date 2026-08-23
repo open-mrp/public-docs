@@ -4,9 +4,9 @@
  * Rewriting them as they are read keeps the version picker from handing readers a
  * dead domain, without editing artifacts that are already published.
  *
- * Only hosts move. Mail stays on augno.com — SES is verified there — so
- * `support@augno.com` and friends must survive this untouched, which is why these
- * are exact per-host rules rather than one augno.com → openmrp.ai sweep.
+ * Only hosts move. augno.com still carries mail — it is the SES sender identity and
+ * the inbound receiving domain — so addresses must survive this untouched, which is
+ * why these are exact per-host rules rather than one augno.com → openmrp.ai sweep.
  */
 const LEGACY_HOST_REPLACEMENTS: ReadonlyArray<readonly [RegExp, string]> = [
     [/\bdocs\.augno\.com\b/g, 'docs.openmrp.ai'],
