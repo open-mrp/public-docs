@@ -6,6 +6,7 @@ export const externalPaths = {
     // Unset in environments without a community server; callers hide the link.
     discord: process.env.NEXT_PUBLIC_DISCORD_URL,
     github: {
+        org: 'https://github.com/open-mrp',
         openapiSpec: 'https://github.com/open-mrp/openapi-spec',
         typescriptSdk: 'https://github.com/open-mrp/typescript-sdk',
         goSdk: 'https://github.com/open-mrp/openmrp-go',
