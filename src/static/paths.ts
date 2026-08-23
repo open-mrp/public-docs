@@ -3,6 +3,7 @@ const openMRPFrontend = process.env.NEXT_PUBLIC_FRONTEND_URL || 'https://openmrp
 const openMRPDashboard = openMRPFrontend + '/dashboard';
 
 export const externalPaths = {
+    discord: 'https://discord.gg/f2xnd8djd',
     github: {
         openapiSpec: 'https://github.com/open-mrp/openapi-spec',
         typescriptSdk: 'https://github.com/open-mrp/typescript-sdk',
