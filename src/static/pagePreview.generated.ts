@@ -1443,6 +1443,18 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Find Contact by Email",
         "subtitle": "POST /v1/sales/contacts/actions/find-by-email"
     },
+    "/api-reference/inventory-change-logs/list-inventory-change-logs": {
+        "title": "List Inventory Change Logs",
+        "subtitle": "GET /v1/operations/inventory-change-logs"
+    },
+    "/api-reference/inventory-change-logs/retrieve-inventory-change-log": {
+        "title": "Retrieve Inventory Change Log",
+        "subtitle": "GET /v1/operations/inventory-change-logs/{id}"
+    },
+    "/api-reference/inventory-change-logs/export-inventory-change-logs": {
+        "title": "Export Inventory Change Logs",
+        "subtitle": "GET /v1/operations/inventory-change-logs/actions/export"
+    },
     "/api-reference/machines/create-machine": {
         "title": "Create Machine",
         "subtitle": "POST /v1/operations/machines"
@@ -1866,6 +1878,38 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/sales-orders/reorder-sales-order-lines": {
         "title": "Reorder Sales Order Lines",
         "subtitle": "POST /v1/sales/sales-orders/{id}/lines/actions/reorder"
+    },
+    "/api-reference/picks/list-picks": {
+        "title": "List Picks",
+        "subtitle": "GET /v1/operations/picks"
+    },
+    "/api-reference/picks/retrieve-pick": {
+        "title": "Retrieve Pick",
+        "subtitle": "GET /v1/operations/picks/{id}"
+    },
+    "/api-reference/picks/update-pick-line": {
+        "title": "Update Pick Line",
+        "subtitle": "PATCH /v1/operations/picks/{pick_id}/lines/{id}"
+    },
+    "/api-reference/picks/pack-pick": {
+        "title": "Pack Pick",
+        "subtitle": "POST /v1/operations/picks/{id}/actions/pack"
+    },
+    "/api-reference/picks/pick-all-lines": {
+        "title": "Pick All Lines",
+        "subtitle": "PUT /v1/operations/picks/{id}/actions/pick"
+    },
+    "/api-reference/picks/void-pick": {
+        "title": "Void Pick",
+        "subtitle": "PUT /v1/operations/picks/{id}/actions/void"
+    },
+    "/api-reference/picks/pick-pick-line": {
+        "title": "Pick Pick Line",
+        "subtitle": "PUT /v1/operations/picks/{pick_id}/lines/{id}/actions/pick"
+    },
+    "/api-reference/picks/void-pick-line": {
+        "title": "Void Pick Line",
+        "subtitle": "PUT /v1/operations/picks/{pick_id}/lines/{id}/actions/void"
     },
     "/api-reference/transactions/list-adjustment-types": {
         "title": "List Adjustment Types",

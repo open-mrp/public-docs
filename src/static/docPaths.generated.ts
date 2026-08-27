@@ -526,6 +526,11 @@ export const docPaths = {
         "contacts": {
             "findContactByEmail": "/api-reference/contacts/find-contact-by-email"
         },
+        "inventoryChangeLogs": {
+            "listInventoryChangeLogs": "/api-reference/inventory-change-logs/list-inventory-change-logs",
+            "retrieveInventoryChangeLog": "/api-reference/inventory-change-logs/retrieve-inventory-change-log",
+            "exportInventoryChangeLogs": "/api-reference/inventory-change-logs/export-inventory-change-logs"
+        },
         "machines": {
             "createMachine": "/api-reference/machines/create-machine",
             "updateMachine": "/api-reference/machines/update-machine",
@@ -659,6 +664,16 @@ export const docPaths = {
             "quoteSalesOrderFreight": "/api-reference/sales-orders/quote-sales-order-freight",
             "unissueSalesOrder": "/api-reference/sales-orders/unissue-sales-order",
             "reorderSalesOrderLines": "/api-reference/sales-orders/reorder-sales-order-lines"
+        },
+        "picks": {
+            "listPicks": "/api-reference/picks/list-picks",
+            "retrievePick": "/api-reference/picks/retrieve-pick",
+            "updatePickLine": "/api-reference/picks/update-pick-line",
+            "packPick": "/api-reference/picks/pack-pick",
+            "pickAllLines": "/api-reference/picks/pick-all-lines",
+            "voidPick": "/api-reference/picks/void-pick",
+            "pickPickLine": "/api-reference/picks/pick-pick-line",
+            "voidPickLine": "/api-reference/picks/void-pick-line"
         },
         "transactions": {
             "listAdjustmentTypes": "/api-reference/transactions/list-adjustment-types",
