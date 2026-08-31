@@ -342,6 +342,9 @@
 - [GET Email Inboxes — List](https://docs.openmrp.ai/api-reference/email-inboxes/list-email-inboxes.md)
 - [GET Email Inboxes — Get Inbox](https://docs.openmrp.ai/api-reference/email-inboxes/get-email-inbox.md)
 - [DELETE Email Inboxes — Delete Inbox](https://docs.openmrp.ai/api-reference/email-inboxes/delete-email-inbox.md)
+- [GET Email Senders — Get Sender](https://docs.openmrp.ai/api-reference/email-senders/get-email-sender.md)
+- [DELETE Email Senders — Delete Sender](https://docs.openmrp.ai/api-reference/email-senders/delete-email-sender.md)
+- [PUT Email Senders — Set Sender](https://docs.openmrp.ai/api-reference/email-senders/set-email-sender.md)
 
 ### Sales
 - [POST Account Groups — Create Group](https://docs.openmrp.ai/api-reference/account-groups/create-account-group.md)

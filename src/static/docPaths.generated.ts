@@ -341,6 +341,11 @@ export const docPaths = {
             "getEmailInbox": "/api-reference/email-inboxes/get-email-inbox",
             "deleteEmailInbox": "/api-reference/email-inboxes/delete-email-inbox"
         },
+        "emailSenders": {
+            "getEmailSender": "/api-reference/email-senders/get-email-sender",
+            "deleteEmailSender": "/api-reference/email-senders/delete-email-sender",
+            "setEmailSender": "/api-reference/email-senders/set-email-sender"
+        },
         "agentRuns": {
             "triggerAgentRun": "/api-reference/agent-runs/trigger-agent-run",
             "listAgentRuns": "/api-reference/agent-runs/list-agent-runs",

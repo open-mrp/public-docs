@@ -989,6 +989,33 @@ export const apiNavEntriesByVersion: Record<string, ApiNavEntry[]> = {
             "label": "Delete"
         },
         {
+            "domain": "messaging",
+            "segments": [
+                "email-sender"
+            ],
+            "tagSlug": "email-senders",
+            "endpointSlug": "get-email-sender",
+            "label": "List"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "email-sender"
+            ],
+            "tagSlug": "email-senders",
+            "endpointSlug": "delete-email-sender",
+            "label": "Delete Email Sender"
+        },
+        {
+            "domain": "messaging",
+            "segments": [
+                "email-sender"
+            ],
+            "tagSlug": "email-senders",
+            "endpointSlug": "set-email-sender",
+            "label": "Set Email Sender"
+        },
+        {
             "domain": "ai",
             "segments": [
                 "runs"

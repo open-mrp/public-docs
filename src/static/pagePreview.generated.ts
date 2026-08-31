@@ -919,6 +919,18 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Delete Email Inbox",
         "subtitle": "DELETE /v1/messaging/email-inboxes/{id}"
     },
+    "/api-reference/email-senders/get-email-sender": {
+        "title": "Get Email Sender",
+        "subtitle": "GET /v1/messaging/email-sender"
+    },
+    "/api-reference/email-senders/delete-email-sender": {
+        "title": "Delete Email Sender",
+        "subtitle": "DELETE /v1/messaging/email-sender"
+    },
+    "/api-reference/email-senders/set-email-sender": {
+        "title": "Set Email Sender",
+        "subtitle": "PUT /v1/messaging/email-sender"
+    },
     "/api-reference/agent-runs/trigger-agent-run": {
         "title": "Trigger Agent Run",
         "subtitle": "POST /v1/ai/runs"
