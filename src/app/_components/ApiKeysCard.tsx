@@ -12,7 +12,7 @@ import { useState } from 'react';
 function abbreviateKey(key: string): string {
     if (key.length <= 24) return key;
 
-    const prefixMatch = key.match(/^(aug_[a-z]+_[a-z]+_)/);
+    const prefixMatch = key.match(/^([a-z]+_[a-z]+_[a-z]+_)/);
     const prefix = prefixMatch ? prefixMatch[1] : '';
     const remainder = key.slice(prefix.length);
     const visibleEnd = remainder.slice(-4);
