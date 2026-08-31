@@ -21,7 +21,7 @@
     "dependencies": {
         "@mdx-js/loader": "^3.1.1",
         "@mdx-js/react": "^3.1.1",
-        "@next/mdx": "16.1.6",
+        "@next/mdx": "16.3.3",
         "@openmrp/internal-sdk": "^5.0.2",
         "@openmrp/ui": "^2.0.1",
         "@types/mdx": "^2.0.14",
@@ -34,13 +34,13 @@
         "dotenv": "^17.4.2",
         "glob": "^13.0.6",
         "gray-matter": "^4.0.3",
+        "next": "16.3.3",
         "marked": "^18.0.10",
-        "next": "16.1.6",
         "next-mdx-remote": "^6.0.0",
         "postcss": "^8.5.15",
         "raw-loader": "^4.0.2",
-        "react": "19.2.4",
-        "react-dom": "19.2.4",
+        "react": "19.2.8",
+        "react-dom": "19.2.8",
         "react-instantsearch": "^7.36.0",
         "react-instantsearch-nextjs": "^1.2.9",
         "rehype-highlight": "^7.0.2",
@@ -53,10 +53,10 @@
         "@stainless/sdk-json": "0.1.0-beta.11",
         "@tailwindcss/postcss": "^4.3.1",
         "@types/node": "^25.9.4",
-        "@types/react": "19.2.14",
-        "@types/react-dom": "19.2.3",
+        "@types/react": "19.2.18",
+        "@types/react-dom": "19.2.5",
         "eslint": "^10.5.0",
-        "eslint-config-next": "16.1.6",
+        "eslint-config-next": "16.3.3",
         "prettier": "^3.8.4",
         "tailwindcss": "^4.3.1",
         "typescript": "^5.9.3",
@@ -64,7 +64,7 @@
         "yaml": "^2.9.0"
     },
     "overrides": {
-        "@types/react": "19.2.14",
-        "@types/react-dom": "19.2.3"
+        "@types/react": "19.2.18",
+        "@types/react-dom": "19.2.5"
     }
 }
