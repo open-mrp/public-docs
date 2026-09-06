@@ -25,7 +25,7 @@
         "@openmrp/internal-sdk": "^5.2.2",
         "@openmrp/ui": "^2.0.1",
         "@types/mdx": "^2.0.14",
-        "@vercel/analytics": "^1.6.1",
+        "@vercel/analytics": "^2.0.1",
         "@xyflow/react": "^12.11.5",
         "algoliasearch": "^5.57.0",
         "class-variance-authority": "^0.7.1",
