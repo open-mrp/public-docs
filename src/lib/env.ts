@@ -45,4 +45,12 @@ export class Env {
     public static get frontendUrl(): string {
         return process.env['NEXT_PUBLIC_FRONTEND_URL'] || '';
     }
+
+    /**
+     * Absolute URL on the frontend dashboard. Used for full-page navigations
+     * off the docs site (login, register, dashboard).
+     */
+    public static frontendHref(path: string): string {
+        return new URL(path, this.frontendUrl || 'https://openmrp.ai').toString();
+    }
 }

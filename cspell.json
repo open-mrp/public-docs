@@ -4,8 +4,6 @@
     "words": [
         "algolia",
         "algoliasearch",
-        "openmrp",
-        "OpenMRP",
         "bunx",
         "clsx",
         "codenames",
@@ -16,6 +14,8 @@
         "lucide",
         "navigations",
         "nextjs",
+        "openmrp",
+        "OpenMRP",
         "overprivileged",
         "partialize",
         "pathkeys",
@@ -26,6 +26,7 @@
         "Unissue",
         "Unissuing",
         "vercel",
+        "xyflow",
         "yalc",
         "zod",
         "zustand"
