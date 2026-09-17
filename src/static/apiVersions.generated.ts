@@ -12,9 +12,14 @@ export interface ApiVersionInfo {
 
 export const API_VERSIONS: ApiVersionInfo[] = [
     {
-        "version": "1.0.forge-preview.4",
+        "version": "1.0.forge-preview.5",
         "codename": "forge",
         "isLatest": true
+    },
+    {
+        "version": "1.0.forge-preview.4",
+        "codename": "forge",
+        "isLatest": false
     },
     {
         "version": "1.0.forge-preview.3",
@@ -33,7 +38,7 @@ export const API_VERSIONS: ApiVersionInfo[] = [
     }
 ];
 
-export const LATEST_API_VERSION = "1.0.forge-preview.4";
+export const LATEST_API_VERSION = "1.0.forge-preview.5";
 
 export function isArchivedApiVersion(version: string): boolean {
     return API_VERSIONS.some((v) => v.version === version && !v.isLatest);
