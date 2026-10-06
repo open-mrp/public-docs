@@ -2,7 +2,16 @@
 
 import { useState } from 'react';
 import { EnumChips } from './EnumChips';
-import type { EndpointAuthorization } from './extractPermissions';
+import type { EndpointAuthorization, PermissionMode } from './extractPermissions';
+
+const PERMISSION_ROWS: Record<PermissionMode, { name: string; requirement: string }> = {
+    one: { name: 'Permission required', requirement: 'must grant this permission' },
+    any: {
+        name: 'Permissions accepted',
+        requirement: 'must grant at least one of these permissions',
+    },
+    all: { name: 'Permissions required', requirement: 'must grant every one of these permissions' },
+};
 
 function AuthRow({
     name,
@@ -34,9 +43,12 @@ export function AuthorizationSection({
     defaultExpanded?: boolean;
 }) {
     const [expanded, setExpanded] = useState(defaultExpanded);
-    const { permissions, roleType } = authorization;
+    const { permissions, mode, counterparty, roleType } = authorization;
+    const hasCounterparty = Boolean(counterparty.customer || counterparty.supplier);
 
-    if (permissions.length === 0 && !roleType) return null;
+    if (permissions.length === 0 && !roleType && !hasCounterparty) return null;
+
+    const permissionRow = PERMISSION_ROWS[mode];
 
     return (
         <section>
@@ -48,14 +60,16 @@ export function AuthorizationSection({
                 <h2 className="text-base font-semibold text-[var(--foreground)]">Authorization</h2>
                 <span className="relative h-4 w-[64px] text-[10px] text-[var(--text-secondary)] group-hover:text-[var(--foreground)] transition-colors shrink-0">
                     <span
-                        className={`absolute inset-0 transition-opacity duration-200 ${expanded ? 'opacity-100' : 'opacity-0'
-                            }`}
+                        className={`absolute inset-0 transition-opacity duration-200 ${
+                            expanded ? 'opacity-100' : 'opacity-0'
+                        }`}
                     >
                         Collapse
                     </span>
                     <span
-                        className={`absolute inset-0 transition-opacity duration-200 ${expanded ? 'opacity-0' : 'opacity-100'
-                            }`}
+                        className={`absolute inset-0 transition-opacity duration-200 ${
+                            expanded ? 'opacity-0' : 'opacity-100'
+                        }`}
                     >
                         Expand
                     </span>
@@ -73,9 +87,23 @@ export function AuthorizationSection({
                     <div className="mt-2">
                         {permissions.length > 0 && (
                             <AuthRow
-                                name="Permissions required"
-                                description="The role behind your API key or agent must grant every one of these permissions."
+                                name={permissionRow.name}
+                                description={`${hasCounterparty ? 'In your own account, the' : 'The'} role behind your API key or agent ${permissionRow.requirement}.`}
                                 values={permissions}
+                            />
+                        )}
+                        {counterparty.customer && (
+                            <AuthRow
+                                name="In a customer's account"
+                                description="When the OpenMRP-Account header names one of your customers, the role must grant this permission instead."
+                                values={[counterparty.customer]}
+                            />
+                        )}
+                        {counterparty.supplier && (
+                            <AuthRow
+                                name="In a supplier's account"
+                                description="When the OpenMRP-Account header names one of your suppliers, the role must grant this permission instead."
+                                values={[counterparty.supplier]}
                             />
                         )}
                         {roleType && (
