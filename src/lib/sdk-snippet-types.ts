@@ -1,7 +1,6 @@
 /**
- * Shared SDK snippet types used by the generated snippet modules
- * (src/static/apiSnippets.generated.ts and the per-version copies under
- * src/static/api-versions/) and by components that render snippets.
+ * Shared SDK snippet types used by the generated snippet module
+ * (src/static/apiSnippets.generated.ts) and by components that render snippets.
  */
 export type SdkLanguage = 'typescript' | 'python' | 'go' | 'curl';
 

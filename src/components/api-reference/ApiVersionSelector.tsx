@@ -1,8 +1,12 @@
 'use client';
 
 import { apiVersionFromPathname, endpointSlugsFromPathname } from '@/lib/api-reference-version';
-import { getApiNavEntries } from '@/static/apiNav.generated';
-import { API_VERSIONS, apiReferenceBasePath } from '@/static/apiVersions.generated';
+import { latestApiNavEntries } from '@/static/apiNav.generated';
+import {
+    API_VERSIONS,
+    LATEST_API_VERSION,
+    apiReferenceBasePath,
+} from '@/static/apiVersions.generated';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -10,6 +14,8 @@ import { useState } from 'react';
  * Stripe-style API version picker shown at the top of the API reference
  * sidenav. Switching versions keeps you on the current endpoint when it exists
  * in the target version, and falls back to that version's overview otherwise.
+ * Only the latest version's endpoints are known client-side; for an archived
+ * target the page itself redirects to the overview when the endpoint is missing.
  */
 export function ApiVersionSelector() {
     const pathname = usePathname();
@@ -31,9 +37,10 @@ export function ApiVersionSelector() {
         const slugs = endpointSlugsFromPathname(pathname);
         const endpointExistsInTarget =
             slugs &&
-            getApiNavEntries(version).some(
-                (e) => e.tagSlug === slugs.tagSlug && e.endpointSlug === slugs.endpointSlug,
-            );
+            (version !== LATEST_API_VERSION ||
+                latestApiNavEntries.some(
+                    (e) => e.tagSlug === slugs.tagSlug && e.endpointSlug === slugs.endpointSlug,
+                ));
         router.push(
             endpointExistsInTarget && slugs
                 ? `${basePath}/${slugs.tagSlug}/${slugs.endpointSlug}`
