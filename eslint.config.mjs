@@ -18,6 +18,9 @@ const eslintConfig = [
             // matcher-dependent and this is not worth being clever about.
             'src/static/*.generated.ts',
             'src/static/**/*.generated.ts',
+            // The endpoint data itself lives in .generated.js modules (with .d.ts types).
+            'src/static/*.generated.js',
+            'src/static/**/*.generated.js',
         ],
     },
     {

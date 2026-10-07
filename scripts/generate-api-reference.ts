@@ -14,6 +14,9 @@ const VERSION_REGISTRY_OUTPUT_PATH = path.join(
 );
 const ENDPOINTS_OUTPUT_PATH = path.join(process.cwd(), 'src/static/apiEndpoints.generated.ts');
 const VERSIONED_OUTPUT_DIR = path.join(process.cwd(), 'src/static/api-versions');
+// Basename of the .js + .d.ts pair holding each version's endpoint data; see
+// writeEndpointDataModule.
+const ENDPOINT_DATA_MODULE = 'apiEndpoints.data.generated';
 const LEGACY_API_REFERENCE_DIR = path.join(process.cwd(), 'src/docs/developer-resources/api-reference');
 const LEGACY_API_REFERENCE_OVERVIEW = path.join(process.cwd(), 'src/docs/developer-resources/api-reference.mdx');
 
@@ -966,13 +969,54 @@ function generateEndpointData(
     return { tags: tagDataList, nav, objects };
 }
 
-function generateEndpointsFile(
+/**
+ * Writes the endpoint data as a plain .js module with a .d.ts beside it, imported by
+ * the apiEndpoints.generated.ts in the same directory. As typed TS object literals,
+ * ~45MB of data per API version (latest plus each archived one) exhausted the 4GB heap
+ * in the `next build` type check, since tsc contextually types every node of a literal.
+ * With a .d.ts next to the .js, tsc resolves the import to the declarations and never
+ * parses the data, while the bundler loads the same object literals as before.
+ */
+function writeEndpointDataModule(
+    dir: string,
     tags: TagData[],
     nav: ApiNavDomain[],
     objects: ObjectData[],
-): string {
+): void {
+    const header = `// THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY.
+// Run 'bun run build:docs' to regenerate.
+`;
+    fs.writeFileSync(
+        path.join(dir, `${ENDPOINT_DATA_MODULE}.js`),
+        `${header}
+export const apiTags = ${JSON.stringify(tags, null, 4)};
+
+export const apiNavDomains = ${JSON.stringify(nav, null, 4)};
+
+export const apiObjects = ${JSON.stringify(objects, null, 4)};
+`,
+    );
+    fs.writeFileSync(
+        path.join(dir, `${ENDPOINT_DATA_MODULE}.d.ts`),
+        `${header}
+import type { ApiNavDomain, ObjectData, TagData } from '@/static/apiEndpoints.generated';
+
+export declare const apiTags: TagData[];
+
+export declare const apiNavDomains: ApiNavDomain[];
+
+export declare const apiObjects: ObjectData[];
+`,
+    );
+}
+
+function generateEndpointsFile(): string {
     return `// THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY.
 // Run 'bun run build:docs' to regenerate.
+
+import { apiObjects, apiTags } from './${ENDPOINT_DATA_MODULE}';
+
+export { apiNavDomains, apiObjects, apiTags } from './${ENDPOINT_DATA_MODULE}';
 
 export interface SchemaField {
     name: string;
@@ -1089,12 +1133,6 @@ export interface ApiNavDomain {
     resources: ApiNavResource[];
 }
 
-export const apiTags: TagData[] = ${JSON.stringify(tags, null, 4)};
-
-export const apiNavDomains: ApiNavDomain[] = ${JSON.stringify(nav, null, 4)};
-
-export const apiObjects: ObjectData[] = ${JSON.stringify(objects, null, 4)};
-
 /** Look up a tag by its slug */
 export function getTagBySlug(slug: string): TagData | undefined {
     return apiTags.find(t => t.slug === slug);
@@ -1139,27 +1177,20 @@ export function getAllEndpointSlugs(): { tagSlug: string; endpointSlug: string }
  * Identical value exports to apiEndpoints.generated.ts; types are imported from
  * the latest module so the version registry can treat all versions uniformly.
  */
-function generateVersionedEndpointsFile(
-    tags: TagData[],
-    nav: ApiNavDomain[],
-    objects: ObjectData[],
-): string {
+function generateVersionedEndpointsFile(): string {
     return `// THIS FILE IS AUTO-GENERATED. DO NOT EDIT DIRECTLY.
 // Run 'bun run build:docs' to regenerate.
 
 import type {
-    ApiNavDomain,
     EndpointData,
     ObjectData,
     ResourceData,
     TagData,
 } from '@/static/apiEndpoints.generated';
 
-export const apiTags: TagData[] = ${JSON.stringify(tags, null, 4)};
+import { apiObjects, apiTags } from './${ENDPOINT_DATA_MODULE}';
 
-export const apiNavDomains: ApiNavDomain[] = ${JSON.stringify(nav, null, 4)};
-
-export const apiObjects: ObjectData[] = ${JSON.stringify(objects, null, 4)};
+export { apiNavDomains, apiObjects, apiTags } from './${ENDPOINT_DATA_MODULE}';
 
 /** Look up a tag by its slug */
 export function getTagBySlug(slug: string): TagData | undefined {
@@ -1575,8 +1606,8 @@ async function main() {
     // Generate structured endpoint data
     console.log('Generating structured endpoint data...');
     const { tags, nav, objects } = generateEndpointData(spec, '/api-reference');
-    const endpointsContent = generateEndpointsFile(tags, nav, objects);
-    fs.writeFileSync(ENDPOINTS_OUTPUT_PATH, endpointsContent);
+    fs.writeFileSync(ENDPOINTS_OUTPUT_PATH, generateEndpointsFile());
+    writeEndpointDataModule(path.dirname(ENDPOINTS_OUTPUT_PATH), tags, nav, objects);
     console.log(`Written: ${ENDPOINTS_OUTPUT_PATH}`);
 
     // Generate archived versions (api-versions.json + specs/versions/<version>.json)
@@ -1651,8 +1682,9 @@ async function main() {
         fs.mkdirSync(dir, { recursive: true });
         fs.writeFileSync(
             path.join(dir, 'apiEndpoints.generated.ts'),
-            generateVersionedEndpointsFile(v.tags, v.nav, v.objects),
+            generateVersionedEndpointsFile(),
         );
+        writeEndpointDataModule(dir, v.tags, v.nav, v.objects);
         fs.writeFileSync(
             path.join(dir, 'apiSnippets.generated.ts'),
             generatePlaceholderSnippetsFile(),
