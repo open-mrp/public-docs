@@ -1,13 +1,13 @@
 'use client';
 
 import { apiVersionFromPathname } from '@/lib/api-reference-version';
-import { getApiNavEntries, getApiObjectNavEntries } from '@/static/apiNav.generated';
 import { apiReferenceBasePath } from '@/static/apiVersions.generated';
 import { NavItem, NavLink, NavSubSection, NavSubSectionData, Sidenav } from '@openmrp/ui';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
 import { ApiVersionSelector } from './ApiVersionSelector';
+import { useApiNavEntries } from './useApiNavEntries';
 
 /** Sentinel NavLink rendered as the version selector instead of a link. */
 const VERSION_SELECTOR_HREF = '#api-version-selector';
@@ -164,11 +164,12 @@ export default function ApiReferenceSidenav() {
     const isPathActive = (path: string) => pathname === path;
     const version = apiVersionFromPathname(pathname);
     const basePath = apiReferenceBasePath(version);
+    const navEntries = useApiNavEntries(version);
 
     const sections = useMemo(() => {
         const byDomain = new Map<string, Map<string, TreeNode>>();
 
-        for (const e of getApiNavEntries(version)) {
+        for (const e of navEntries.endpoints) {
             let domainTree = byDomain.get(e.domain);
             if (!domainTree) {
                 domainTree = new Map();
@@ -194,12 +195,12 @@ export default function ApiReferenceSidenav() {
                 .sort((a, b) => a.title.localeCompare(b.title))
                 .map(treeNodeToSubSection),
         }));
-    }, [version, basePath]);
+    }, [navEntries, basePath]);
 
     // A single collapsible "Objects" dropdown that breaks down by domain → object.
     const objectsNavItem = useMemo<NavSubSectionData | null>(() => {
         const byDomain = new Map<string, { label: string; links: NavLink[] }>();
-        for (const o of getApiObjectNavEntries(version)) {
+        for (const o of navEntries.objects) {
             let group = byDomain.get(o.domain);
             if (!group) {
                 group = { label: o.domainLabel, links: [] };
@@ -225,7 +226,7 @@ export default function ApiReferenceSidenav() {
             }));
 
         return { title: 'Objects', items: domainSubSections };
-    }, [version, basePath]);
+    }, [navEntries, basePath]);
 
     const renderNavItem = (item: NavLink | NavSubSectionData) => {
         if (!('items' in item) && item.href === VERSION_SELECTOR_HREF) {

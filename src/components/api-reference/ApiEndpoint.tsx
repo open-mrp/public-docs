@@ -1,21 +1,26 @@
 import { EndpointPage } from '@/components/api-reference/EndpointPage';
 import {
-    getEndpointForVersion,
-    getObjectsForVersion,
+    findEndpoint,
+    getLatestApiVersionData,
     getSnippetsForVersion,
-} from '@/static/apiVersionData.generated';
-import { LATEST_API_VERSION, apiReferenceBasePath } from '@/static/apiVersions.generated';
+    type ApiVersionData,
+} from '@/lib/api-reference-data';
+import { apiReferenceBasePath } from '@/static/apiVersions.generated';
 
+/**
+ * Also registered as an MDX component, where it renders the latest version; the API
+ * reference route passes the (possibly archived) version's data it already loaded.
+ */
 export function ApiEndpoint({
-    version = LATEST_API_VERSION,
+    data = getLatestApiVersionData(),
     tagSlug,
     endpointSlug,
 }: {
-    version?: string;
+    data?: ApiVersionData;
     tagSlug: string;
     endpointSlug: string;
 }) {
-    const endpoint = getEndpointForVersion(version, tagSlug, endpointSlug);
+    const endpoint = findEndpoint(data, tagSlug, endpointSlug);
 
     if (!endpoint) {
         return (
@@ -31,9 +36,9 @@ export function ApiEndpoint({
     return (
         <EndpointPage
             endpoint={endpoint}
-            snippets={getSnippetsForVersion(version, endpoint.operationId)}
-            basePath={apiReferenceBasePath(version)}
-            objectSlugs={(getObjectsForVersion(version) ?? []).map((o) => o.slug)}
+            snippets={getSnippetsForVersion(data.version, endpoint.operationId)}
+            basePath={apiReferenceBasePath(data.version)}
+            objectSlugs={data.objects.map((o) => o.slug)}
         />
     );
 }

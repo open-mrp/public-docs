@@ -7,13 +7,10 @@ import { parse, stringify } from 'yaml';
 import type { Method, Resource, Spec } from '@stainless/sdk-json';
 import { generateSpecFromStrings } from '@stainless/sdk-json/spec';
 import { normalizeSnippetPlaceholders } from '../src/lib/snippetPlaceholders';
-import { normalizeLegacyHosts } from './legacy-hosts';
+import { normalizeLegacyHosts } from '../src/lib/legacy-hosts';
 
 const ROOT = process.cwd();
 const OPENAPI_PATH = path.join(ROOT, 'specs/public_openapi_spec.json');
-const VERSIONS_MANIFEST_PATH = path.join(ROOT, 'api-versions.json');
-const ARCHIVED_SPECS_DIR = path.join(ROOT, 'specs/versions');
-const VERSIONED_OUTPUT_DIR = path.join(ROOT, 'src/static/api-versions');
 const CANONICAL_STAINLESS_REL = path.join(ROOT, '..', 'api', 'stainless', 'public', 'stainless.yml');
 /** Downloaded from S3 (`augno-public-openapi-specs/stainless.yml`) in CI / sync workflows. */
 const REPO_STAINLESS_PATH = path.join(ROOT, 'specs', 'stainless.yml');
@@ -257,7 +254,7 @@ export function hasAnySnippet(operationId: string): boolean {
 }
 
 interface SnippetTarget {
-    /** Display label for logs, e.g. "latest" or an archived version string. */
+    /** Display label for logs. Only the latest version gets snippets; archived versions fall back to curl. */
     label: string;
     openapiPath: string;
     stainlessPath: string | undefined;
@@ -269,12 +266,10 @@ async function generateForTarget(target: SnippetTarget): Promise<void> {
 
     if (!target.stainlessPath) {
         const expected =
-            target.label === 'latest'
-                ? `Expected:\n` +
-                  `  - ${path.relative(ROOT, CANONICAL_STAINLESS_REL)} (monorepo dev),\n` +
-                  `  - ${path.relative(ROOT, REPO_STAINLESS_PATH)} (from S3 via scripts/fetch-public-release-artifacts.sh), or\n` +
-                  `  - PUBLIC_DOCS_STAINLESS_YML`
-                : `Expected specs/versions/${target.label}-stainless.yml (from S3 via scripts/fetch-public-release-artifacts.sh).`;
+            `Expected:\n` +
+            `  - ${path.relative(ROOT, CANONICAL_STAINLESS_REL)} (monorepo dev),\n` +
+            `  - ${path.relative(ROOT, REPO_STAINLESS_PATH)} (from S3 via scripts/fetch-public-release-artifacts.sh), or\n` +
+            `  - PUBLIC_DOCS_STAINLESS_YML`;
         console.warn(`${logPrefix} No stainless config found. ${expected}\nEmitting empty snippets.`);
         emitGeneratedTs({}, target.outputPath);
         return;
@@ -352,19 +347,6 @@ async function generateForTarget(target: SnippetTarget): Promise<void> {
     );
 }
 
-function readArchivedVersionsManifest(): string[] {
-    if (!fs.existsSync(VERSIONS_MANIFEST_PATH)) return [];
-    try {
-        const manifest = JSON.parse(fs.readFileSync(VERSIONS_MANIFEST_PATH, 'utf8')) as {
-            archived?: string[];
-        };
-        return manifest.archived ?? [];
-    } catch (e) {
-        console.warn(`[generate-sdk-snippets] Could not parse ${VERSIONS_MANIFEST_PATH}:`, e);
-        return [];
-    }
-}
-
 async function main(): Promise<void> {
     await generateForTarget({
         label: 'latest',
@@ -372,33 +354,6 @@ async function main(): Promise<void> {
         stainlessPath: resolveCanonicalStainlessPath(),
         outputPath: OUTPUT_PATH,
     });
-
-    // Archived versions only get snippets for the per-version output dirs that
-    // generate-api-reference.ts created (it skips manifest versions with no spec
-    // on disk, and the version that equals latest).
-    for (const version of readArchivedVersionsManifest()) {
-        const outputDir = path.join(VERSIONED_OUTPUT_DIR, version);
-        if (!fs.existsSync(outputDir)) continue;
-
-        const openapiPath = path.join(ARCHIVED_SPECS_DIR, `${version}.json`);
-        const outputPath = path.join(outputDir, 'apiSnippets.generated.ts');
-        if (!fs.existsSync(openapiPath) && fs.existsSync(outputPath)) {
-            // Spec not on disk (e.g. local build without S3 access) — keep the
-            // committed snippets rather than overwriting them with empties.
-            console.log(`[generate-sdk-snippets] [${version}] No spec on disk — keeping existing snippets.`);
-            continue;
-        }
-
-        const stainlessPath = path.join(ARCHIVED_SPECS_DIR, `${version}-stainless.yml`);
-        await generateForTarget({
-            label: version,
-            openapiPath,
-            // Archived versions must use their own pinned stainless config; the
-            // monorepo-HEAD fallbacks would describe the wrong API surface.
-            stainlessPath: fs.existsSync(stainlessPath) ? stainlessPath : undefined,
-            outputPath,
-        });
-    }
 }
 
 await main();

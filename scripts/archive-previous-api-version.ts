@@ -5,9 +5,12 @@
  * When the freshly fetched spec is a NEW version, the previously published
  * latest version (from the committed src/static/apiVersion.generated.ts) is
  * added to `archived` in api-versions.json so it stays available in the docs
- * version picker. No-op when the version is unchanged, so re-running a sync
- * for the same release never grows the manifest.
+ * version picker, and pinned in `specTags` to its last `{version}-rev.{N}` tag
+ * in open-mrp/openapi-spec, which the docs server fetches its spec from.
+ * No-op when the version is unchanged, so re-running a sync for the same
+ * release never grows the manifest.
  */
+import { execFileSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -18,10 +21,34 @@ const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const MANIFEST_PATH = path.join(ROOT, 'api-versions.json');
 const SPEC_PATH = path.join(ROOT, 'specs/public_openapi_spec.json');
 const PREVIOUS_VERSION_MODULE = path.join(ROOT, 'src/static/apiVersion.generated.ts');
+const SPEC_REPO_URL = 'https://github.com/open-mrp/openapi-spec';
 
 interface VersionsManifest {
     $comment?: string;
     archived?: string[];
+    specTags?: Record<string, string>;
+}
+
+/** Highest `{version}-rev.{N}` tag in the public spec repo: that version's final spec. */
+function finalSpecTag(version: string): string {
+    const prefix = `${version}-rev.`;
+    const out = execFileSync(
+        'git',
+        ['ls-remote', '--tags', '--refs', SPEC_REPO_URL, `${prefix}*`],
+        {
+            encoding: 'utf8',
+        },
+    );
+    const revs = out
+        .split('\n')
+        .map((line) => line.split('refs/tags/')[1])
+        .filter((tag): tag is string => !!tag?.startsWith(prefix))
+        .map((tag) => Number(tag.slice(prefix.length)))
+        .filter(Number.isInteger);
+    if (revs.length === 0) {
+        throw new Error(`No ${prefix}* tag in ${SPEC_REPO_URL}; cannot archive ${version}.`);
+    }
+    return `${prefix}${Math.max(...revs)}`;
 }
 
 if (!fs.existsSync(SPEC_PATH)) {
@@ -60,11 +87,13 @@ if (archived.includes(previousLatest)) {
     );
     process.exit(0);
 }
+const specTag = finalSpecTag(previousLatest);
 archived.unshift(previousLatest);
 manifest.archived = archived;
+manifest.specTags = { ...manifest.specTags, [previousLatest]: specTag };
 
 fs.writeFileSync(MANIFEST_PATH, `${JSON.stringify(manifest, null, 4)}\n`);
 console.log(
-    `[archive-previous-api-version] Archived ${previousLatest} (new latest: ${newLatest}). ` +
-        `api-versions.json now lists: ${archived.join(', ')}`,
+    `[archive-previous-api-version] Archived ${previousLatest} (new latest: ${newLatest}), ` +
+        `pinned to ${specTag}. api-versions.json now lists: ${archived.join(', ')}`,
 );
