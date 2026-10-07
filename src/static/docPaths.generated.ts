@@ -296,7 +296,8 @@ export const docPaths = {
             "listMessages": "/api-reference/messages/list-messages",
             "approveAndSendReplyDraft": "/api-reference/messages/approve-and-send-reply-draft",
             "cancelScheduledMessage": "/api-reference/messages/cancel-scheduled-message",
-            "rejectReplyDraft": "/api-reference/messages/reject-reply-draft"
+            "rejectReplyDraft": "/api-reference/messages/reject-reply-draft",
+            "rescheduleMessage": "/api-reference/messages/reschedule-message"
         },
         "conversationParticipants": {
             "addParticipant": "/api-reference/conversation-participants/add-participant",
@@ -488,6 +489,7 @@ export const docPaths = {
             "retrieveItemCategory": "/api-reference/item-categories/retrieve-item-category",
             "deleteItemCategory": "/api-reference/item-categories/delete-item-category",
             "bulkUpsertItemCategories": "/api-reference/item-categories/bulk-upsert-item-categories",
+            "createItemCategoryProperty": "/api-reference/item-categories/create-item-category-property",
             "addItemCategoryProperty": "/api-reference/item-categories/add-item-category-property",
             "changeItemCategoryUnitGroup": "/api-reference/item-categories/change-item-category-unit-group",
             "removeItemCategoryProperty": "/api-reference/item-categories/remove-item-category-property"
@@ -534,7 +536,8 @@ export const docPaths = {
         "inventoryChangeLogs": {
             "listInventoryChangeLogs": "/api-reference/inventory-change-logs/list-inventory-change-logs",
             "retrieveInventoryChangeLog": "/api-reference/inventory-change-logs/retrieve-inventory-change-log",
-            "exportInventoryChangeLogs": "/api-reference/inventory-change-logs/export-inventory-change-logs"
+            "exportInventoryChangeLogs": "/api-reference/inventory-change-logs/export-inventory-change-logs",
+            "startInventoryChangeLogsExport": "/api-reference/inventory-change-logs/start-inventory-change-logs-export"
         },
         "machines": {
             "createMachine": "/api-reference/machines/create-machine",

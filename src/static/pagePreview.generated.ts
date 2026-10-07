@@ -811,6 +811,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Reject Reply Draft",
         "subtitle": "POST /v1/messaging/messages/{id}/actions/reject"
     },
+    "/api-reference/messages/reschedule-message": {
+        "title": "Reschedule Message",
+        "subtitle": "POST /v1/messaging/messages/{id}/actions/reschedule"
+    },
     "/api-reference/conversation-participants/add-participant": {
         "title": "Add Participant",
         "subtitle": "POST /v1/messaging/conversations/{id}/participants"
@@ -1335,6 +1339,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "Bulk Upsert Item Categories",
         "subtitle": "POST /v1/catalog/item-categories/actions/bulk-upsert"
     },
+    "/api-reference/item-categories/create-item-category-property": {
+        "title": "Create Item Category Property",
+        "subtitle": "POST /v1/catalog/item-categories/{id}/properties"
+    },
     "/api-reference/item-categories/add-item-category-property": {
         "title": "Add Item Category Property",
         "subtitle": "PUT /v1/catalog/item-categories/{id}/properties/{property_id}"
@@ -1466,6 +1474,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
     "/api-reference/inventory-change-logs/export-inventory-change-logs": {
         "title": "Export Inventory Change Logs",
         "subtitle": "GET /v1/operations/inventory-change-logs/actions/export"
+    },
+    "/api-reference/inventory-change-logs/start-inventory-change-logs-export": {
+        "title": "Start Inventory Change Logs Export",
+        "subtitle": "POST /v1/operations/inventory-change-logs/actions/export"
     },
     "/api-reference/machines/create-machine": {
         "title": "Create Machine",
