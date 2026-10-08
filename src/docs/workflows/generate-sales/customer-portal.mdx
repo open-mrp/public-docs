@@ -20,11 +20,13 @@ The **customer portal** is a branded, self-service storefront that gives your cu
 
 ### Account slug and branding
 
-By default every portal URL is built from your **account slug**, a short, unique identifier for your OpenMRP account. The slug determines the base URL for all customer-facing pages:
+By default every portal URL is built from your **account slug**, a short, unique identifier for your OpenMRP account. Your portal lives at `https://portal.openmrp.ai/<account-slug>`, and the slug determines the base URL for all customer-facing pages:
 
-- **Login**: `/<account-slug>/auth/login`
-- **Register**: `/<account-slug>/auth/register`
-- **Dashboard**: `/<account-slug>/dashboard`
+- **Login**: `https://portal.openmrp.ai/<account-slug>/auth/login`
+- **Register**: `https://portal.openmrp.ai/<account-slug>/auth/register`
+- **Dashboard**: `https://portal.openmrp.ai/<account-slug>/dashboard`
+
+Older portal links on `https://openmrp.ai/<account-slug>` permanently redirect to the same page on `portal.openmrp.ai`, so links customers saved before the move keep working.
 
 You can also serve the portal from a domain you own, in which case the slug disappears from the URL entirely. See [Custom domain](#custom-domain) below.
 
@@ -47,7 +49,7 @@ Once a domain is verified:
 
 - Requests to that host are mapped back to your account and served as your portal, with the `/<account-slug>` prefix stripped from the visible URL.
 - Requests to the slug-based address redirect to the custom domain, so there is one canonical portal address.
-- Portal links OpenMRP generates in customer emails — the password-reset link, and the one-click login link sent when someone tries to register with an email that already has an account — point at the custom domain rather than the slug URL.
+- Portal links OpenMRP sends in customer emails — the password-reset link, and the one-click login link sent when someone tries to register with an email that already has an account — land the customer on the custom domain.
 
 Removing the domain detaches it immediately: customers fall back to the slug-based portal address, and you can safely delete the DNS records you published. Because an account holds only one custom domain, removing it is also how you free the slot up for a different one.
 
