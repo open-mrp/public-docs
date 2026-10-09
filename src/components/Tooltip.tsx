@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/utils/cn';
-import { Tooltip as TooltipRoot, TooltipContent, TooltipTrigger } from '@openmrp/ui';
+import { Tooltip as TooltipRoot } from '@openmrp/ui';
 import { ReactNode } from 'react';
 
 interface SimpleTooltipProps {
@@ -39,30 +39,35 @@ export function Tooltip({ children, className, delayDuration = 300, ...props }: 
     const isSimple = 'content' in props && typeof props.content === 'string';
 
     return (
-        <TooltipRoot delayDuration={delayDuration}>
-            <TooltipTrigger asChild>{children}</TooltipTrigger>
-            <TooltipContent
-                sideOffset={8}
-                showArrow={false}
-                className={cn(tooltipContentClass, className)}
-            >
-                {isSimple ? (
-                    <p className="px-3 py-2 text-xs text-gray-600 dark:text-gray-300">
-                        {props.content}
-                    </p>
-                ) : (
-                    <div className="p-3 space-y-1.5">
-                        <h4 className="text-sm font-medium text-gray-900 dark:text-white">
-                            {(props as RichTooltipProps).title}
-                        </h4>
-                        {(props as RichTooltipProps).description && (
-                            <p className="text-xs text-gray-600 dark:text-gray-300">
-                                {(props as RichTooltipProps).description}
-                            </p>
-                        )}
-                    </div>
-                )}
-            </TooltipContent>
+        <TooltipRoot
+            enterDelay={delayDuration}
+            tooltipClassName={cn(
+                'm-0 max-w-none font-sans text-inherit',
+                tooltipContentClass,
+                className,
+            )}
+            title={
+                <>
+                    {isSimple ? (
+                        <p className="px-3 py-2 text-xs text-gray-600 dark:text-gray-300">
+                            {props.content}
+                        </p>
+                    ) : (
+                        <div className="p-3 space-y-1.5">
+                            <h4 className="text-sm font-medium text-gray-900 dark:text-white">
+                                {(props as RichTooltipProps).title}
+                            </h4>
+                            {(props as RichTooltipProps).description && (
+                                <p className="text-xs text-gray-600 dark:text-gray-300">
+                                    {(props as RichTooltipProps).description}
+                                </p>
+                            )}
+                        </div>
+                    )}
+                </>
+            }
+        >
+            <span className="inline-flex">{children}</span>
         </TooltipRoot>
     );
 }

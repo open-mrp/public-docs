@@ -52,11 +52,10 @@ export default function InternalLink({
             {text}
             {isApiLink && (
                 <Chip
-                    size="sm"
-                    className="ml-1 align-middle inline text-[var(--background)] bg-primary-500"
-                >
-                    API
-                </Chip>
+                    size="small"
+                    label="API"
+                    className="h-auto px-1.5 py-0 text-xs font-semibold ml-1 align-middle inline text-[var(--background)] bg-primary-500"
+                />
             )}
             {includeArrow && <ArrowRightIcon className="ml-2 align-middle inline" />}
         </Link>

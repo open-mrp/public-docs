@@ -5,7 +5,7 @@ import { paths } from '@/static/paths';
 import {
     ArrowRightIcon,
     OpenMRPLogo,
-    Button,
+    GlassButton,
     CloseIcon,
     DarkModeButton,
     MenuIcon,
@@ -80,9 +80,9 @@ export default function NavbarContents({ hideThemeToggle = false }) {
             </div>
 
             <div className="flex lg:hidden">
-                <Button color={color} variant="icon" onClick={() => setIsMenuOpen(true)}>
+                <GlassButton color={color} variant="icon" onClick={() => setIsMenuOpen(true)}>
                     <MenuIcon />
-                </Button>
+                </GlassButton>
             </div>
 
             {/* Mobile menu */}
@@ -97,13 +97,13 @@ export default function NavbarContents({ hideThemeToggle = false }) {
                             <Link href={paths.home} className="-m-1.5 p-1.5">
                                 <OpenMRPLogo color={color} />
                             </Link>
-                            <Button
+                            <GlassButton
                                 variant="icon"
                                 color={color}
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 <CloseIcon />
-                            </Button>
+                            </GlassButton>
                         </div>
                         <div className="mt-6 flow-root">
                             <div className="-my-6 divide-y divide-[var(--foreground)]/10">
@@ -179,7 +179,7 @@ export default function NavbarContents({ hideThemeToggle = false }) {
                                                     <ArrowRightIcon className="h-4 w-4" />
                                                 </div>
                                             </DashboardButton>
-                                            <Button
+                                            <GlassButton
                                                 variant="outlined"
                                                 color={color}
                                                 className="w-full"
@@ -189,7 +189,7 @@ export default function NavbarContents({ hideThemeToggle = false }) {
                                                 }}
                                             >
                                                 Log out
-                                            </Button>
+                                            </GlassButton>
                                         </>
                                     ) : (
                                         <>

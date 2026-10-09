@@ -1,14 +1,14 @@
-import { Button, ButtonProps } from '@openmrp/ui';
+import { GlassButton, GlassButtonProps } from '@openmrp/ui';
 import Link from 'next/link';
 
-interface LinkButtonProps extends ButtonProps {
+interface LinkButtonProps extends GlassButtonProps {
     href: string;
 }
 
 export default function LinkButton({ href, children, ...props }: LinkButtonProps) {
     return (
         <Link href={href} className="w-fit">
-            <Button {...props}>{children}</Button>
+            <GlassButton {...props}>{children}</GlassButton>
         </Link>
     );
 }

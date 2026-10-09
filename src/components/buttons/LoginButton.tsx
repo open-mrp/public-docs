@@ -1,10 +1,13 @@
 import { Env } from '@/lib/env';
-import { Button, ButtonProps } from '@openmrp/ui';
+import { GlassButton, GlassButtonProps } from '@openmrp/ui';
 
-export default function LoginButton({ ...props }: ButtonProps) {
+export default function LoginButton({ ...props }: GlassButtonProps) {
     return (
-        <Button onClick={() => (window.location.href = Env.frontendHref('/auth/login'))} {...props}>
+        <GlassButton
+            onClick={() => (window.location.href = Env.frontendHref('/auth/login'))}
+            {...props}
+        >
             Log in
-        </Button>
+        </GlassButton>
     );
 }
