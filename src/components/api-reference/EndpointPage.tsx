@@ -3,7 +3,7 @@
 import BetaTag from '@/components/markdown/BetaTag';
 import { useRecentlyVisitedPages } from '@/hooks/useRecentlyVisitedPages';
 import { SNIPPET_HIGHLIGHT_MAP, type EndpointSnippets } from '@/lib/sdk-snippet-types';
-import type { EndpointData, Parameter, SchemaField } from '@/static/apiEndpoints.generated';
+import type { EndpointData } from '@/static/apiEndpoints.generated';
 import { CheckIcon, ClipboardIcon } from '@openmrp/ui';
 import copy from 'copy-to-clipboard';
 import Link from 'next/link';
@@ -14,6 +14,7 @@ import {
     SdkSelectorDropdown,
     useSdkLanguage,
 } from './SdkSelector';
+import { endpointToMarkdown } from '@/lib/api-reference-markdown';
 import { buildCurlExample } from './buildCurlExample';
 import { AuthorizationSection } from './AuthorizationSection';
 import { CodeExamplePanel } from './CodeExamplePanel';
@@ -111,89 +112,6 @@ const domainLabels: Record<string, string> = {
 
 function getDomainLabel(domain: string): string {
     return domainLabels[domain] || domain.charAt(0).toUpperCase() + domain.slice(1);
-}
-
-function fieldsToMarkdown(fields: SchemaField[], indent = 0): string {
-    const prefix = '  '.repeat(indent);
-    return fields
-        .map((f) => {
-            const typeParts = [f.required ? f.type : `optional ${f.type}`];
-            if (f.nullable) typeParts.push('nullable');
-            if (f.enum) typeParts.push(`enum: ${f.enum.join(', ')}`);
-            const desc = f.description ? ` — ${f.description}` : '';
-            let line = `${prefix}- \`${f.name}\` (${typeParts.join(', ')})${desc}`;
-            if (f.properties && f.properties.length > 0) {
-                line += '\n' + fieldsToMarkdown(f.properties, indent + 1);
-            }
-            return line;
-        })
-        .join('\n');
-}
-
-function paramsToMarkdown(params: Parameter[]): string {
-    return params
-        .map((p) => {
-            const typeParts = [p.required ? p.type : `optional ${p.type}`];
-            if (p.enum) typeParts.push(`enum: ${p.enum.join(', ')}`);
-            const desc = p.description ? ` — ${p.description}` : '';
-            return `- \`${p.name}\` (${typeParts.join(', ')})${desc}`;
-        })
-        .join('\n');
-}
-
-function endpointToMarkdown(ep: EndpointData): string {
-    const lines: string[] = [];
-    lines.push(`# ${ep.summary}`);
-    lines.push(`\`${ep.method.toUpperCase()} ${ep.path}\``);
-    if (ep.description) lines.push('', ep.description);
-
-    const pathParams = ep.parameters.filter((p) => p.in === 'path');
-    const queryParams = ep.parameters.filter((p) => p.in === 'query');
-    const headerParams = ep.parameters.filter((p) => p.in === 'header');
-
-    if (pathParams.length > 0) {
-        lines.push('', '## Path Parameters', paramsToMarkdown(pathParams));
-    }
-    if (queryParams.length > 0) {
-        lines.push('', '## Query Parameters', paramsToMarkdown(queryParams));
-    }
-    if (headerParams.length > 0) {
-        lines.push('', '## Header Parameters', paramsToMarkdown(headerParams));
-    }
-
-    if (ep.requestBody && ep.requestBody.fields.length > 0) {
-        lines.push('', '## Request Body', fieldsToMarkdown(ep.requestBody.fields));
-        if (ep.requestBody.example != null) {
-            const requestExample = sanitizeRequestExample(
-                ep.requestBody.example,
-                ep.requestBody.fields,
-            );
-            lines.push('', '### Example', '```json', stringifyJson(requestExample), '```');
-        }
-    }
-
-    const responseFields = ep.responses.find((r) => r.fields && r.fields.length > 0)?.fields;
-    if (responseFields && responseFields.length > 0) {
-        lines.push('', '## Response Fields', fieldsToMarkdown(responseFields));
-    }
-
-    const responseWithExample = ep.responses.find((r) => r.example != null);
-    if (responseWithExample) {
-        const exampleForDisplay = sanitizeResponseExampleForEndpoint(
-            responseWithExample.example,
-            ep,
-            responseFields,
-        );
-        lines.push(
-            '',
-            `### ${responseWithExample.statusCode} Example`,
-            '```json',
-            stringifyJson(exampleForDisplay),
-            '```',
-        );
-    }
-
-    return lines.join('\n');
 }
 
 export function EndpointPage({

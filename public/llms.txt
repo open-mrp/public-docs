@@ -1,5 +1,10 @@
 # OpenMRP Documentation
 
+> Guides and the complete API reference for OpenMRP, an inventory management and order fulfillment platform. Every link below serves Markdown.
+
+## API Reference index
+- [API Reference](https://docs.openmrp.ai/api-reference.md): Every API endpoint and object, one line each, with links to their Markdown pages.
+
 ## API
 - [API Keys](https://docs.openmrp.ai/developer-resources/api/authentication/api-keys.md): Learn how to authenticate requests with API keys.
 - [MCP server](https://docs.openmrp.ai/developer-resources/api/mcp/mcp-server.md): Connect AI agents and assistants to the OpenMRP API over the Model Context Protocol.
