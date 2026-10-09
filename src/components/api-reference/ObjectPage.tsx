@@ -1,7 +1,8 @@
 'use client';
 
 import { useRecentlyVisitedPages } from '@/hooks/useRecentlyVisitedPages';
-import type { ObjectData, SchemaField } from '@/static/apiEndpoints.generated';
+import { objectToMarkdown } from '@/lib/api-reference-markdown';
+import type { ObjectData } from '@/static/apiEndpoints.generated';
 import { CheckIcon, ClipboardIcon } from '@openmrp/ui';
 import copy from 'copy-to-clipboard';
 import Link from 'next/link';
@@ -15,50 +16,6 @@ import { SchemaFieldTable } from './ParameterTable';
 
 function stringifyJson(value: unknown) {
     return JSON.stringify(value ?? {}, null, 2);
-}
-
-function fieldsToMarkdown(fields: SchemaField[], indent = 0): string {
-    const prefix = '  '.repeat(indent);
-    return fields
-        .map((f) => {
-            const typeName = f.objectType
-                ? f.type === 'array'
-                    ? `array of ${f.objectType}`
-                    : f.objectType
-                : f.type === 'array' && f.itemType
-                    ? `array of ${f.itemType}`
-                    : f.type;
-            const typeParts = [f.required ? typeName : `optional ${typeName}`];
-            if (f.nullable) typeParts.push('nullable');
-            if (f.enum) typeParts.push(`enum: ${f.enum.join(', ')}`);
-            const desc = f.description ? ` — ${f.description}` : '';
-            let line = `${prefix}- \`${f.name}\` (${typeParts.join(', ')})${desc}`;
-            if (f.properties && f.properties.length > 0) {
-                line += '\n' + fieldsToMarkdown(f.properties, indent + 1);
-            }
-            return line;
-        })
-        .join('\n');
-}
-
-function objectToMarkdown(obj: ObjectData): string {
-    const lines: string[] = [];
-    lines.push(`# ${obj.name} object`);
-    lines.push(`\`${obj.object}\``);
-    if (obj.description) lines.push('', obj.description);
-    if (obj.fields.length > 0) {
-        lines.push('', '## Attributes', fieldsToMarkdown(obj.fields));
-    }
-    if (obj.example != null) {
-        lines.push('', '### Example', '```json', stringifyJson(obj.example), '```');
-    }
-    if (obj.usedBy.length > 0) {
-        lines.push('', '## Used by');
-        for (const u of obj.usedBy) {
-            lines.push(`- ${u.method.toUpperCase()} ${u.summary} (${u.tag})`);
-        }
-    }
-    return lines.join('\n');
 }
 
 export function ObjectPage({

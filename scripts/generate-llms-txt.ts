@@ -172,7 +172,22 @@ function generateLlmsTxt(
     apiDomains: ApiNavDomain[],
     apiObjects: ApiObjectLite[],
 ): string {
-    const lines: string[] = ['# OpenMRP Documentation', ''];
+    const lines: string[] = [
+        '# OpenMRP Documentation',
+        '',
+        '> Guides and the complete API reference for OpenMRP, an inventory management and order fulfillment platform. Every link below serves Markdown.',
+        '',
+    ];
+
+    // Agent tools often truncate llms.txt (~30KB) before the per-endpoint list at the
+    // end, so point at the compact API index first.
+    if (apiDomains.length > 0) {
+        lines.push(
+            '## API Reference index',
+            `- [API Reference](${BASE_URL}/api-reference.md): Every API endpoint and object, one line each, with links to their Markdown pages.`,
+            '',
+        );
+    }
 
     const sectionMap = groupBySection(pages);
 
