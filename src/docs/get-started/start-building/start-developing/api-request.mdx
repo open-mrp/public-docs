@@ -39,7 +39,7 @@ import OpenMRP from '@openmrp/sdk';
 
 const client = new OpenMRP({
     bearerToken: 'YOUR_API_KEY',
-    openMRPAccountID: 'YOUR_SANDBOX_ACCOUNT_ID',
+    openmrpAccountID: 'YOUR_SANDBOX_ACCOUNT_ID',
 });
 
 const units = await client.catalog.units.list();

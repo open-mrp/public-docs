@@ -1,15 +1,15 @@
 import { ObjectPage } from '@/components/api-reference/ObjectPage';
-import { getObjectForVersion, getObjectsForVersion } from '@/static/apiVersionData.generated';
-import { LATEST_API_VERSION, apiReferenceBasePath } from '@/static/apiVersions.generated';
+import { findObject, getLatestApiVersionData, type ApiVersionData } from '@/lib/api-reference-data';
+import { apiReferenceBasePath } from '@/static/apiVersions.generated';
 
 export function ApiObject({
-    version = LATEST_API_VERSION,
+    data = getLatestApiVersionData(),
     slug,
 }: {
-    version?: string;
+    data?: ApiVersionData;
     slug: string;
 }) {
-    const object = getObjectForVersion(version, slug);
+    const object = findObject(data, slug);
 
     if (!object) {
         return (
@@ -24,8 +24,8 @@ export function ApiObject({
     return (
         <ObjectPage
             object={object}
-            basePath={apiReferenceBasePath(version)}
-            objectSlugs={(getObjectsForVersion(version) ?? []).map((o) => o.slug)}
+            basePath={apiReferenceBasePath(data.version)}
+            objectSlugs={data.objects.map((o) => o.slug)}
         />
     );
 }

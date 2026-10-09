@@ -59,14 +59,14 @@ bun add @openmrp/sdk
 
 ## Initialize the client
 
-Create a single `OpenMRP` client and reuse it across requests. Authenticate with an <InternalLink pathKey="api.apiKeys" text="API key" /> passed as `bearerToken`, and set `openMRPAccountID` to the account you want to operate on - it is sent as the `OpenMRP-Account` header on every request.
+Create a single `OpenMRP` client and reuse it across requests. Authenticate with an <InternalLink pathKey="api.apiKeys" text="API key" /> passed as `bearerToken`, and set `openmrpAccountID` to the account you want to operate on - it is sent as the `OpenMRP-Account` header on every request.
 
 ```ts
 import OpenMRP from '@openmrp/sdk';
 
 const client = new OpenMRP({
     bearerToken: process.env['OPENMRP_API_KEY'], // or omit - defaults to process.env['OPENMRP_API_KEY']
-    openMRPAccountID: 'YOUR_SANDBOX_ACCOUNT_ID', // ID for the account YOUR_SANDBOX_ACCOUNT_NAME
+    openmrpAccountID: 'YOUR_SANDBOX_ACCOUNT_ID', // ID for the account YOUR_SANDBOX_ACCOUNT_NAME
 });
 
 const items = await client.catalog.items.list();
@@ -81,7 +81,7 @@ console.log(items.data);
 | Option           | Type                                              | Default                                | Description                                                                  |
 | :--------------- | :------------------------------------------------ | :------------------------------------- | :--------------------------------------------------------------------------- |
 | `bearerToken`    | `string`                                          | `process.env['OPENMRP_API_KEY']`         | API key sent as a `Bearer` token.                                            |
-| `openMRPAccountID` | `string`                                          | -                                      | Account UUID, sent as the `OpenMRP-Account` header. Update to switch accounts. |
+| `openmrpAccountID` | `string`                                          | -                                      | Account UUID, sent as the `OpenMRP-Account` header. Update to switch accounts. |
 | `environment`    | `'production'` \| `'local'`                       | `'production'`                         | Selects the base URL. `production` → `https://api.openmrp.ai`.                |
 | `baseURL`        | `string`                                          | `process.env['OPENMRP_BASE_URL']`        | Override the base URL directly. Don't combine with `environment`.            |
 | `maxRetries`     | `number`                                          | `2`                                    | Number of automatic retries for transient failures.                          |
@@ -94,7 +94,7 @@ If your integration spans multiple accounts, use `withOptions` to derive a clien
 
 ```ts
 const otherAccount = client.withOptions({
-    openMRPAccountID: 'YOUR_ACCOUNT_ID', // ID for the account YOUR_ACCOUNT_NAME
+    openmrpAccountID: 'YOUR_ACCOUNT_ID', // ID for the account YOUR_ACCOUNT_NAME
 });
 
 await otherAccount.catalog.items.list();

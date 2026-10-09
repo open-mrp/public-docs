@@ -245,6 +245,7 @@
 - [GET Item Categories — Retrieve Category](https://docs.openmrp.ai/api-reference/item-categories/retrieve-item-category.md)
 - [DELETE Item Categories — Delete Category](https://docs.openmrp.ai/api-reference/item-categories/delete-item-category.md)
 - [POST Item Categories — Bulk Upsert](https://docs.openmrp.ai/api-reference/item-categories/bulk-upsert-item-categories.md)
+- [POST Item Categories — Create Category Property](https://docs.openmrp.ai/api-reference/item-categories/create-item-category-property.md)
 - [PUT Item Categories — Add Category Property](https://docs.openmrp.ai/api-reference/item-categories/add-item-category-property.md)
 - [PUT Item Categories — Change Category Unit Group](https://docs.openmrp.ai/api-reference/item-categories/change-item-category-unit-group.md)
 - [DELETE Item Categories — Remove Category Property](https://docs.openmrp.ai/api-reference/item-categories/remove-item-category-property.md)
@@ -315,6 +316,7 @@
 - [POST Messages — Approve And Send Reply Draft](https://docs.openmrp.ai/api-reference/messages/approve-and-send-reply-draft.md)
 - [POST Messages — Cancel Scheduled Message](https://docs.openmrp.ai/api-reference/messages/cancel-scheduled-message.md)
 - [POST Messages — Reject Reply Draft](https://docs.openmrp.ai/api-reference/messages/reject-reply-draft.md)
+- [POST Messages — Reschedule Message](https://docs.openmrp.ai/api-reference/messages/reschedule-message.md)
 - [POST Conversation Participants — Add Participant](https://docs.openmrp.ai/api-reference/conversation-participants/add-participant.md)
 - [DELETE Conversation Participants — Remove Participant](https://docs.openmrp.ai/api-reference/conversation-participants/remove-participant.md)
 - [POST Conversation Participants — Update Participant Role](https://docs.openmrp.ai/api-reference/conversation-participants/update-participant-role.md)
@@ -342,6 +344,9 @@
 - [GET Email Inboxes — List](https://docs.openmrp.ai/api-reference/email-inboxes/list-email-inboxes.md)
 - [GET Email Inboxes — Get Inbox](https://docs.openmrp.ai/api-reference/email-inboxes/get-email-inbox.md)
 - [DELETE Email Inboxes — Delete Inbox](https://docs.openmrp.ai/api-reference/email-inboxes/delete-email-inbox.md)
+- [GET Email Senders — Get Sender](https://docs.openmrp.ai/api-reference/email-senders/get-email-sender.md)
+- [DELETE Email Senders — Delete Sender](https://docs.openmrp.ai/api-reference/email-senders/delete-email-sender.md)
+- [PUT Email Senders — Set Sender](https://docs.openmrp.ai/api-reference/email-senders/set-email-sender.md)
 
 ### Sales
 - [POST Account Groups — Create Group](https://docs.openmrp.ai/api-reference/account-groups/create-account-group.md)
@@ -438,6 +443,10 @@
 - [GET Departments — List](https://docs.openmrp.ai/api-reference/departments/list-departments.md)
 - [GET Departments — Retrieve Department](https://docs.openmrp.ai/api-reference/departments/retrieve-department.md)
 - [DELETE Departments — Delete Department](https://docs.openmrp.ai/api-reference/departments/delete-department.md)
+- [GET Inventory Change Logs — List](https://docs.openmrp.ai/api-reference/inventory-change-logs/list-inventory-change-logs.md)
+- [GET Inventory Change Logs — Retrieve Log](https://docs.openmrp.ai/api-reference/inventory-change-logs/retrieve-inventory-change-log.md)
+- [GET Inventory Change Logs — Export](https://docs.openmrp.ai/api-reference/inventory-change-logs/export-inventory-change-logs.md)
+- [POST Inventory Change Logs — Start Export](https://docs.openmrp.ai/api-reference/inventory-change-logs/start-inventory-change-logs-export.md)
 - [POST Machines — Create Machine](https://docs.openmrp.ai/api-reference/machines/create-machine.md)
 - [PATCH Machines — Update Machine](https://docs.openmrp.ai/api-reference/machines/update-machine.md)
 - [GET Machines — List](https://docs.openmrp.ai/api-reference/machines/list-machines.md)
@@ -498,6 +507,14 @@
 - [POST Operating Calendars — Create Calendar Closure](https://docs.openmrp.ai/api-reference/operating-calendars/create-operating-calendar-closure.md)
 - [GET Operating Calendars — List Calendar Closures](https://docs.openmrp.ai/api-reference/operating-calendars/list-operating-calendar-closures.md)
 - [DELETE Operating Calendars — Delete Calendar Closure](https://docs.openmrp.ai/api-reference/operating-calendars/delete-operating-calendar-closure.md)
+- [GET Picks — List](https://docs.openmrp.ai/api-reference/picks/list-picks.md)
+- [GET Picks — Retrieve Pick](https://docs.openmrp.ai/api-reference/picks/retrieve-pick.md)
+- [PATCH Picks — Update Pick Line](https://docs.openmrp.ai/api-reference/picks/update-pick-line.md)
+- [POST Picks — Pack Pick](https://docs.openmrp.ai/api-reference/picks/pack-pick.md)
+- [PUT Picks — Pick All Lines](https://docs.openmrp.ai/api-reference/picks/pick-all-lines.md)
+- [PUT Picks — Void Pick](https://docs.openmrp.ai/api-reference/picks/void-pick.md)
+- [PUT Picks — Pick Pick Line](https://docs.openmrp.ai/api-reference/picks/pick-pick-line.md)
+- [PUT Picks — Void Pick Line](https://docs.openmrp.ai/api-reference/picks/void-pick-line.md)
 - [POST Location — Create](https://docs.openmrp.ai/api-reference/location/create-location.md)
 - [PATCH Location — Update](https://docs.openmrp.ai/api-reference/location/update-location.md)
 - [GET Location — List Types](https://docs.openmrp.ai/api-reference/location/list-location-types.md)
@@ -588,10 +605,12 @@
 - [Carriers object](https://docs.openmrp.ai/api-reference/objects/carrier.md): A shipping carrier configured for fulfilling orders.
 - [Demand Overrides object](https://docs.openmrp.ai/api-reference/objects/demand-override.md): An adjustment to the demand a production schedule is planned against.
 - [Departments object](https://docs.openmrp.ai/api-reference/objects/department.md): A functional area of a production operation, such as fabrication or packaging, that groups scanning stations and machines.
+- [Inventory Change Logs object](https://docs.openmrp.ai/api-reference/objects/inventory-change-log.md): A record of a single change to an item's on-hand inventory.
 - [Location object](https://docs.openmrp.ai/api-reference/objects/location-type.md): A level in the storage location hierarchy, such as a building or a bin.
 - [Machine Downtime object](https://docs.openmrp.ai/api-reference/objects/machine-downtime-event.md): A period during which a machine was not running.
 - [Machines object](https://docs.openmrp.ai/api-reference/objects/machine.md): A piece of production equipment, such as a CNC router or press, assigned to a department.
 - [Operating Calendars object](https://docs.openmrp.ai/api-reference/objects/operating-calendar.md): OperatingCalendar is the set of days one party to a shipment operates.
+- [Picks object](https://docs.openmrp.ai/api-reference/objects/pick.md): A warehouse picking task for a sales order, tracking the quantities to pull from inventory and pack for shipment.
 - [Production Schedules object](https://docs.openmrp.ai/api-reference/objects/production-schedule.md): A saved production schedule.
 - [Scanning Stations object](https://docs.openmrp.ai/api-reference/objects/scanning-station.md): A station on the production floor where operators scan batches to perform a batch operation, such as initializing or moving a batch.
 - [Service Levels object](https://docs.openmrp.ai/api-reference/objects/service-level.md): A shipping speed or method offered by a carrier, such as ground or overnight.

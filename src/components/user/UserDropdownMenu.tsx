@@ -1,6 +1,7 @@
 'use client';
 
 import { useAuth } from '@/lib/auth-store';
+import { Env } from '@/lib/env';
 import {
     ArrowRightIcon,
     DropdownMenu,
@@ -38,7 +39,7 @@ export function UserDropdownMenu({ color }: UserDropdownMenuProps) {
     };
 
     const handleDashboardClick = () => {
-        window.location.href = `${process.env.NEXT_PUBLIC_FRONTEND_URL}/dashboard`;
+        window.location.href = Env.frontendHref('/dashboard');
     };
 
     const handleSandboxSwitch = async (sandboxId: string) => {

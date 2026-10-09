@@ -8,7 +8,7 @@ import { createOpenMRPBrowserFetch } from './openmrp-browser-fetch';
 export const openMRPClient = new OpenMRP({
     baseURL: Env.apiV2BaseUrl,
     bearerToken: null,
-    openMRPAccountID: null,
+    openmrpAccountID: null,
     defaultHeaders: { 'OpenMRP-Version': API_VERSION.current },
     fetchOptions: { credentials: 'include' },
     fetch: createOpenMRPBrowserFetch(globalThis.fetch.bind(globalThis)),

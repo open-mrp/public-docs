@@ -21,11 +21,13 @@ Uploading either image replaces the one currently in use.
 
 ### Portal address
 
-The **portal slug** is the short identifier that appears in your portal URLs:
+The **portal slug** is the short identifier that appears in your portal URLs. Without a custom domain, your portal lives at `https://portal.openmrp.ai/<account-slug>`:
 
-- **Login**: `/<account-slug>/auth/login`
-- **Register**: `/<account-slug>/auth/register`
-- **Dashboard**: `/<account-slug>/dashboard`
+- **Login**: `https://portal.openmrp.ai/<account-slug>/auth/login`
+- **Register**: `https://portal.openmrp.ai/<account-slug>/auth/register`
+- **Dashboard**: `https://portal.openmrp.ai/<account-slug>/dashboard`
+
+Older links on `https://openmrp.ai/<account-slug>` permanently redirect to the same page on `portal.openmrp.ai`.
 
 The slug must be at least 3 characters and is unique across all OpenMRP accounts, so saving one that is already taken is rejected. **Changing the slug changes the portal address**: links your customers have saved, and any links you have published, stop resolving.
 
@@ -59,7 +61,7 @@ The API also declares a `failed` status, but no verification path currently prod
 
 - Requests to the custom host are served as your portal, with the `/<account-slug>` prefix stripped from the visible URL.
 - Requests to the slug-based address redirect to the custom domain, so the portal has one canonical address.
-- Portal links OpenMRP generates in customer emails — the password-reset link, and the one-click login link sent when someone tries to register with an email that already has an account — point at the custom domain.
+- Portal links OpenMRP sends in customer emails — the password-reset link, and the one-click login link sent when someone tries to register with an email that already has an account — land the customer on the custom domain.
 
 #### Removing a domain
 
