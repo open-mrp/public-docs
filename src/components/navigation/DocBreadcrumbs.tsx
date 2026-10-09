@@ -1,7 +1,7 @@
 'use client';
 
 import { getPath } from '@/static/paths';
-import { Breadcrumbs, type Breadcrumb as GenericBreadcrumb } from '@openmrp/ui';
+import { Breadcrumbs } from '@openmrp/ui';
 import Link from 'next/link';
 
 interface DocBreadcrumb {
@@ -16,48 +16,44 @@ interface DocBreadcrumbsProps {
 }
 
 export function DocBreadcrumbs({ crumbs, className, useNextRouter = true }: DocBreadcrumbsProps) {
-    const genericCrumbs: GenericBreadcrumb[] = crumbs.map((crumb) => ({
-        label: crumb.label,
-        href: crumb.pathKey ? getPath(crumb.pathKey) : undefined,
-    }));
-
-    const renderLink = (crumb: GenericBreadcrumb) => {
-        if (useNextRouter && crumb.href) {
+    const items = crumbs.map((crumb, index) => {
+        const href = crumb.pathKey ? getPath(crumb.pathKey) : undefined;
+        if (!href) {
             return (
-                <Link className="text-sm" href={crumb.href}>
+                <span key={index} className="text-sm">
+                    {crumb.label}
+                </span>
+            );
+        }
+        if (useNextRouter) {
+            return (
+                <Link key={index} className="text-sm" href={href}>
                     {crumb.label}
                 </Link>
             );
         }
         return (
-            <a className="text-sm" href={crumb.href}>
+            <a key={index} className="text-sm" href={href}>
                 {crumb.label}
             </a>
         );
-    };
+    });
 
     if (crumbs.length < 3) {
-        return <Breadcrumbs crumbs={genericCrumbs} className={className} renderLink={renderLink} />;
+        return <Breadcrumbs className={className}>{items}</Breadcrumbs>;
     }
-
-    const collapsedCrumbs: GenericBreadcrumb[] = [
-        genericCrumbs[0],
-        { label: '...' },
-        genericCrumbs[genericCrumbs.length - 1],
-    ];
 
     return (
         <>
+            <Breadcrumbs className={`hidden md:flex ${className ?? ''}`}>{items}</Breadcrumbs>
             <Breadcrumbs
-                crumbs={genericCrumbs}
-                className={`hidden md:flex ${className ?? ''}`}
-                renderLink={renderLink}
-            />
-            <Breadcrumbs
-                crumbs={collapsedCrumbs}
                 className={`flex md:hidden ${className ?? ''}`}
-                renderLink={renderLink}
-            />
+                maxItems={2}
+                itemsBeforeCollapse={1}
+                itemsAfterCollapse={1}
+            >
+                {items}
+            </Breadcrumbs>
         </>
     );
 }

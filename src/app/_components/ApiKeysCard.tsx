@@ -2,7 +2,7 @@
 
 import { FrostedSurface } from '@/components/FrostedSurface';
 import { useApiKey } from '@/providers/ApiKeyProvider';
-import { Button, CheckIcon, CopyIcon } from '@openmrp/ui';
+import { GlassButton, CheckIcon, CopyIcon } from '@openmrp/ui';
 import copy from 'copy-to-clipboard';
 import { useState } from 'react';
 
@@ -52,7 +52,7 @@ function ApiKeyRow({ label, apiKey, variant }: ApiKeyRowProps) {
                     {abbreviateKey(apiKey)}
                 </code>
             </div>
-            <Button
+            <GlassButton
                 onClick={handleCopy}
                 title={copied ? 'Copied!' : 'Copy to clipboard'}
                 blur
@@ -78,7 +78,7 @@ function ApiKeyRow({ label, apiKey, variant }: ApiKeyRowProps) {
                     <CheckIcon />
                     <span className="w-[40px] text-[var(--foreground)]">Copied</span>
                 </span>
-            </Button>
+            </GlassButton>
         </div>
     );
 }

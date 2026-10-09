@@ -1,16 +1,16 @@
 'use client';
 
-import { Button, ButtonProps } from '@openmrp/ui';
+import { GlassButton, GlassButtonProps } from '@openmrp/ui';
 
-export default function DashboardButton({ children, ...props }: ButtonProps) {
+export default function DashboardButton({ children, ...props }: GlassButtonProps) {
     return (
-        <Button
+        <GlassButton
             onClick={() =>
                 (window.location.href = `${process.env.NEXT_PUBLIC_FRONTEND_URL}/dashboard`)
             }
             {...props}
         >
             {children || 'Dashboard'}
-        </Button>
+        </GlassButton>
     );
 }
