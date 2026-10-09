@@ -31,7 +31,7 @@ export default function DocLink({ pathKey, children, className }: DocLinkProps) 
     }
 
     const isExternal = path.startsWith('http');
-    const linkClass = cn('text-secondary-500 hover:text-secondary-700', className);
+    const linkClass = cn('text-primary-500 hover:text-primary-700', className);
 
     if (isExternal) {
         return (

@@ -32,7 +32,7 @@ export default function PageFeedback({ title, slug, filePath, className }: PageF
                         href={editUrl(filePath)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-secondary-500 hover:text-secondary-700"
+                        className="inline-flex items-center gap-2 text-primary-500 hover:text-primary-700"
                     >
                         <PencilIcon className="shrink-0" />
                         Edit this page
@@ -42,7 +42,7 @@ export default function PageFeedback({ title, slug, filePath, className }: PageF
                     href={reportUrl({ title, slug })}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-secondary-500 hover:text-secondary-700"
+                    className="inline-flex items-center gap-2 text-primary-500 hover:text-primary-700"
                 >
                     <GithubIcon className="h-4 w-4 shrink-0" />
                     Report an issue

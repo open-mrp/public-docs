@@ -132,7 +132,7 @@ const mdxComponents: MDXComponents = {
         </DocHeading>
     ),
     a: ({ children, href }) => (
-        <Link href={href} className="text-secondary-500 hover:text-secondary-700">
+        <Link href={href} className="text-primary-500 hover:text-primary-700">
             {children}
         </Link>
     ),
