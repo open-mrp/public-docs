@@ -268,179 +268,182 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Global element styles */
-body {
-    font-family: var(--font-ibm-plex-sans), sans-serif;
-    background: var(--background);
-    color: var(--foreground);
-}
+/* Global element styles. Kept in the base layer so Tailwind utilities on
+   components (e.g. @openmrp/ui Breadcrumbs, Table, Menu) override them. */
+@layer base {
+    body {
+        font-family: var(--font-ibm-plex-sans), sans-serif;
+        background: var(--background);
+        color: var(--foreground);
+    }
 
-/* Custom text selection/highlight styling */
-::selection {
-    background: var(--primary);
-    color: black;
-}
+    /* Custom text selection/highlight styling */
+    ::selection {
+        background: var(--primary);
+        color: black;
+    }
 
-::-moz-selection {
-    background: var(--primary);
-    color: black;
-}
+    ::-moz-selection {
+        background: var(--primary);
+        color: black;
+    }
 
-code,
-pre {
-    font-family: var(--font-ibm-plex-mono), monospace;
-}
+    code,
+    pre {
+        font-family: var(--font-ibm-plex-mono), monospace;
+    }
 
-li {
-    @apply my-1;
-}
+    li {
+        @apply my-1;
+    }
 
-ul {
-    @apply pl-5 mt-4;
-    list-style-type: disc;
-    color: var(--text-secondary);
-}
+    ul {
+        @apply pl-5 mt-4;
+        list-style-type: disc;
+        color: var(--text-secondary);
+    }
 
-ul li {
-    padding-left: 10px;
-}
+    ul li {
+        padding-left: 10px;
+    }
 
-ul li::marker {
-    color: rgba(156, 163, 175, 0.8);
-}
+    ul li::marker {
+        color: rgba(156, 163, 175, 0.8);
+    }
 
-ol {
-    @apply list-decimal pl-5 mb-4;
-    color: var(--text-secondary);
-}
+    ol {
+        @apply list-decimal pl-5 mb-4;
+        color: var(--text-secondary);
+    }
 
-ol li::marker {
-    color: rgba(156, 163, 175, 0.8);
-}
+    ol li::marker {
+        color: rgba(156, 163, 175, 0.8);
+    }
 
-.table-wrapper {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
-    background: var(--background);
-    border: 1px solid var(--border-color);
-    overflow: hidden;
-}
+    .table-wrapper {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-radius: 8px;
+        background: var(--background);
+        border: 1px solid var(--border-color);
+        overflow: hidden;
+    }
 
-table {
-    @apply w-full border-collapse;
-}
+    table {
+        @apply w-full border-collapse;
+    }
 
-thead {
-    background: var(--navbar-background);
-    border-bottom: 2px solid var(--border-color);
-}
+    thead {
+        background: var(--navbar-background);
+        border-bottom: 2px solid var(--border-color);
+    }
 
-thead tr:first-child th:first-child {
-    border-top-left-radius: 8px;
-}
+    thead tr:first-child th:first-child {
+        border-top-left-radius: 8px;
+    }
 
-thead tr:first-child th:last-child {
-    border-top-right-radius: 8px;
-}
+    thead tr:first-child th:last-child {
+        border-top-right-radius: 8px;
+    }
 
-tbody tr:last-child td:first-child {
-    border-bottom-left-radius: 8px;
-}
+    tbody tr:last-child td:first-child {
+        border-bottom-left-radius: 8px;
+    }
 
-tbody tr:last-child td:last-child {
-    border-bottom-right-radius: 8px;
-}
+    tbody tr:last-child td:last-child {
+        border-bottom-right-radius: 8px;
+    }
 
-tbody tr {
-    border-bottom: 1px solid var(--border-color);
-}
+    tbody tr {
+        border-bottom: 1px solid var(--border-color);
+    }
 
-tbody tr:last-child {
-    border-bottom: none;
-}
+    tbody tr:last-child {
+        border-bottom: none;
+    }
 
-tbody tr:nth-child(even) {
-    background-color: rgba(0, 0, 0, 0.02);
-}
+    tbody tr:nth-child(even) {
+        background-color: rgba(0, 0, 0, 0.02);
+    }
 
-.dark tbody tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.02);
-}
+    .dark tbody tr:nth-child(even) {
+        background-color: rgba(255, 255, 255, 0.02);
+    }
 
-th {
-    @apply text-sm font-semibold;
-    padding: 0.875rem 1rem;
-    text-align: left;
-    color: var(--foreground);
-    letter-spacing: 0.01em;
-    vertical-align: top;
-}
+    th {
+        @apply text-sm font-semibold;
+        padding: 0.875rem 1rem;
+        text-align: left;
+        color: var(--foreground);
+        letter-spacing: 0.01em;
+        vertical-align: top;
+    }
 
-td {
-    @apply text-sm;
-    padding: 1rem;
-    color: var(--text-secondary);
-    vertical-align: top;
-    line-height: 1.6;
-}
+    td {
+        @apply text-sm;
+        padding: 1rem;
+        color: var(--text-secondary);
+        vertical-align: top;
+        line-height: 1.6;
+    }
 
-th:first-child,
-td:first-child {
-    padding-left: 1.25rem;
-}
+    th:first-child,
+    td:first-child {
+        padding-left: 1.25rem;
+    }
 
-th:last-child,
-td:last-child {
-    padding-right: 1.25rem;
-}
+    th:last-child,
+    td:last-child {
+        padding-right: 1.25rem;
+    }
 
-/* Lists inside table cells */
-td ul,
-td ol {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-}
+    /* Lists inside table cells */
+    td ul,
+    td ol {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
 
-td ul:first-child,
-td ol:first-child {
-    margin-top: 0;
-}
+    td ul:first-child,
+    td ol:first-child {
+        margin-top: 0;
+    }
 
-td ul:last-child,
-td ol:last-child {
-    margin-bottom: 0;
-}
+    td ul:last-child,
+    td ol:last-child {
+        margin-bottom: 0;
+    }
 
-a:not(.code-editor-link) {
-    @apply text-primary-500 hover:text-primary-700;
-}
+    a:not(.code-editor-link) {
+        @apply text-primary-500 hover:text-primary-700;
+    }
 
-blockquote {
-    @apply border-l-4 pl-4 mt-6 mb-4;
-    padding-bottom: 8px;
-    border-color: var(--border-color);
-}
+    blockquote {
+        @apply border-l-4 pl-4 mt-6 mb-4;
+        padding-bottom: 8px;
+        border-color: var(--border-color);
+    }
 
-blockquote p {
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: var(--text-secondary);
-}
+    blockquote p {
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: var(--text-secondary);
+    }
 
-blockquote h4 {
-    padding-top: 8px;
-    font-size: 0.75rem;
-    font-weight: 500;
-}
+    blockquote h4 {
+        padding-top: 8px;
+        font-size: 0.75rem;
+        font-weight: 500;
+    }
 
-/* Inline code should match its container's font size (tables, blockquotes, lists, etc.) */
-blockquote code,
-table code,
-td code,
-th code,
-li code {
-    font-size: inherit;
+    /* Inline code should match its container's font size (tables, blockquotes, lists, etc.) */
+    blockquote code,
+    table code,
+    td code,
+    th code,
+    li code {
+        font-size: inherit;
+    }
 }
 
 /* API reference markdown descriptions */
