@@ -49,7 +49,7 @@ export function createOpenMRPBrowserFetch(innerFetch: typeof fetch): typeof fetc
             credentials,
         });
 
-        let response = await innerFetch(request);
+        let response = await innerFetch(request.clone());
         response = await handleStaleAuth(request, response, innerFetch);
 
         return response;
