@@ -488,9 +488,3 @@
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
-
-/* Algolia Search Highlighting */
-.ais-Highlight-highlighted,
-.ais-Snippet-highlighted {
-    @apply bg-primary/20 text-primary-700 dark:text-primary-300 rounded-sm px-0.5 not-italic font-semibold;
-}

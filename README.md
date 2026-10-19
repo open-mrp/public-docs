@@ -28,7 +28,7 @@ bun run build        # production build
 
 ## How the site is put together
 
-**Tech:** Next.js 16, React 19, TypeScript, MDX, Tailwind CSS 4, Algolia search.
+**Tech:** Next.js 16, React 19, TypeScript, MDX, Tailwind CSS 4.
 
 | Path | Contents |
 |---|---|
@@ -48,10 +48,6 @@ bun run build:docs
 ```
 
 This reads `specs/public_openapi_spec.json` and `specs/stainless.yml`, then regenerates the endpoint data, SDK snippets, navigation, slugs, and `llms.txt`. The specs are published artifacts of an API release and are fetched by `scripts/fetch-public-release-artifacts.sh`, which needs AWS credentials — so in practice only OpenMRP maintainers run this step. Everything else in the repo works without it.
-
-## Search
-
-`bun run index:docs` pushes the docs to Algolia. It needs `NEXT_PUBLIC_ALGOLIA_APP_ID`, `NEXT_PUBLIC_ALGOLIA_INDEX_NAME`, and `ALGOLIA_SEARCH_ADMIN_KEY`. Search degrades gracefully when unconfigured.
 
 ## Writing docs
 
