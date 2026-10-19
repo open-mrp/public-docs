@@ -19,7 +19,6 @@ import LoginButton from '../buttons/LoginButton';
 import RegisterButton from '../buttons/RegisterButton';
 import { UserAvatar } from '../user/UserAvatar';
 import { UserDropdownMenu } from '../user/UserDropdownMenu';
-import AlgoliaSearch from './AlgoliaSearch';
 import HomeLogo from './HomeLogo';
 import MobileDocNav from './MobileDocNav';
 
@@ -57,9 +56,7 @@ export default function NavbarContents({ hideThemeToggle = false }) {
                 <HomeLogo color={color} />
             </div>
 
-            <div className="hidden lg:flex lg:flex-1 lg:justify-center lg:min-w-0">
-                <AlgoliaSearch className="w-full max-w-lg" color={color} />
-            </div>
+            <div className="hidden lg:flex lg:flex-1" />
 
             <div className="hidden lg:flex lg:flex-shrink-0 lg:items-center lg:justify-end lg:gap-x-4 !bg-transparent">
                 {!hideThemeToggle && <DarkModeButton color={color} />}
@@ -107,9 +104,6 @@ export default function NavbarContents({ hideThemeToggle = false }) {
                         </div>
                         <div className="mt-6 flow-root">
                             <div className="-my-6 divide-y divide-[var(--foreground)]/10">
-                                <div className="py-6">
-                                    <AlgoliaSearch className="w-full" color={color} />
-                                </div>
                                 <div className="py-6">
                                     <MobileDocNav onNavigate={() => setIsMenuOpen(false)} />
                                 </div>

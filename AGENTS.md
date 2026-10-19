@@ -8,7 +8,7 @@ This file provides guidance when working with code in this repository.
 
 This is a Next.js 16 documentation site for the OpenMRP API platform. It combines manually authored guides (MDX files) with auto-generated API reference pages from OpenAPI specs.
 
-**Tech stack:** Next.js 16, React 19, TypeScript, MDX, TailwindCSS 4, Algolia (search), Zustand, `@stainless/sdk-json` (SDK snippets at docs build time)
+**Tech stack:** Next.js 16, React 19, TypeScript, MDX, TailwindCSS 4, Zustand, `@stainless/sdk-json` (SDK snippets at docs build time)
 
 ## Common Commands
 
@@ -29,9 +29,6 @@ bun run lint             # ESLint
 bun run format           # Prettier
 bun run format:check     # Check formatting
 bun run test             # Run tests with bun
-
-# Search
-bun run index:docs       # Index docs to Algolia
 ```
 
 ## Architecture
