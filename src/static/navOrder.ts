@@ -28,7 +28,7 @@ export const navOrder: TabNavOrder[] = [
             },
             {
                 section: 'Start Building',
-                subsections: ['Create an account', 'Start developing'],
+                subsections: ['Start developing'],
             },
         ],
     },

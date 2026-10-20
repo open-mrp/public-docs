@@ -16,7 +16,6 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState, useSyncExternalStore } from 'react';
 import DashboardButton from '../buttons/DashboardButton';
 import LoginButton from '../buttons/LoginButton';
-import RegisterButton from '../buttons/RegisterButton';
 import { UserAvatar } from '../user/UserAvatar';
 import { UserDropdownMenu } from '../user/UserDropdownMenu';
 import HomeLogo from './HomeLogo';
@@ -65,14 +64,9 @@ export default function NavbarContents({ hideThemeToggle = false }) {
                 ) : showUser ? (
                     <UserDropdownMenu color={color} />
                 ) : (
-                    <>
-                        <LoginButton variant="text" color={color} blur>
-                            Log in
-                        </LoginButton>
-                        <RegisterButton variant="outlined" color={color} blur>
-                            Sign up
-                        </RegisterButton>
-                    </>
+                    <LoginButton variant="outlined" color={color} blur>
+                        Log in
+                    </LoginButton>
                 )}
             </div>
 
@@ -186,22 +180,13 @@ export default function NavbarContents({ hideThemeToggle = false }) {
                                             </GlassButton>
                                         </>
                                     ) : (
-                                        <>
-                                            <LoginButton
-                                                variant="contained"
-                                                color={color}
-                                                className="w-full"
-                                            >
-                                                Log in
-                                            </LoginButton>
-                                            <RegisterButton
-                                                variant="contained"
-                                                color={color}
-                                                className="w-full"
-                                            >
-                                                Sign up
-                                            </RegisterButton>
-                                        </>
+                                        <LoginButton
+                                            variant="contained"
+                                            color={color}
+                                            className="w-full"
+                                        >
+                                            Log in
+                                        </LoginButton>
                                     )}
                                     <DarkModeButton variant="outlined" color={color} />
                                 </div>

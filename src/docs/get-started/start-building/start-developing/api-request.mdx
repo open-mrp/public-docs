@@ -9,7 +9,7 @@ nav:
     order: 1
 ---
 
-To interact with the OpenMRP API, you'll need a secret API key. Once you sign up for an OpenMRP account, we provide you with keys for both testing and live environments. Before diving into production, ensure your account is <InternalLink pathKey="account.activate" text="activated" />.
+To interact with the OpenMRP API, you'll need a secret API key. Once an administrator has given you access to your organization's OpenMRP account, you can create keys for both testing and live environments on the <InternalLink pathKey="manageAccount.apiKeys" text="API keys" /> page.
 
 <DocNumberedSection number={1} title="Preparation" className="mt-6">
 
@@ -89,7 +89,7 @@ Upon success, expect a response like this:
 
 <DocNumberedSection number={3} title="Monitoring your requests">
 
-Every API request you make is logged and generates an event for your <InternalLink pathKey="account.root" text="organization account" />. The API key you use determines whether the data is stored in a sandbox or production environment. For example, using a test API key creates data in the test environment.
+Every API request you make is logged and generates an event for your <InternalLink pathKey="manageAccount.overview" text="organization account" />. The API key you use determines whether the data is stored in a sandbox or production environment. For example, using a test API key creates data in the test environment.
 
 To review your API request logs, visit the <InternalLink pathKey="frontend.requestLogs" text="logs" /> page. For event details, check the <InternalLink pathKey="frontend.events" text="events" /> page.
 

@@ -21,7 +21,6 @@ export const externalPaths = {
     frontend: {
         root: openMRPFrontend,
         login: openMRPFrontend + '/auth/login',
-        signup: openMRPFrontend + '/auth/register',
 
         dashboard: openMRPDashboard,
         requestLogs: openMRPDashboard + '/request-logs',

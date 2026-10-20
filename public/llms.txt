@@ -29,13 +29,10 @@
 
 ## Get Started
 - [API tour](https://docs.openmrp.ai/get-started/get-started/about-the-apis/api-tour.md): See how OpenMRP API objects fit together and learn best practices for combining them effectively.
-- [Overview](https://docs.openmrp.ai/get-started/get-started/overview.md): Create an account and learn how to build on OpenMRP.
+- [Overview](https://docs.openmrp.ai/get-started/get-started/overview.md): Learn how to use and build on OpenMRP.
 
 ## Start Building
-- [Overview](https://docs.openmrp.ai/get-started/start-building/account/overview.md): Learn how to activate and manage your OpenMRP account, from initial setup to advanced configurations.
 - [Send your first API request](https://docs.openmrp.ai/get-started/start-building/start-developing/api-request.md): Get started with the OpenMRP API.
-- [Activate your account](https://docs.openmrp.ai/get-started/start-building/account/activate.md): Learn how to activate and manage your OpenMRP account.
-- [Checklist](https://docs.openmrp.ai/get-started/start-building/account/checklist.md): Complete this checklist before putting your OpenMRP account into production.
 - [Go live checklist](https://docs.openmrp.ai/get-started/start-building/start-developing/go-live.md): Use this checklist to ensure a smooth transition putting your integration into production.
 - [Release phases](https://docs.openmrp.ai/get-started/start-building/start-developing/release-phases.md): Learn how OpenMRP describes product release phases and what to expect from each.
 

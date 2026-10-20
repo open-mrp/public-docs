@@ -140,23 +140,6 @@ export function generateStaticParams() {
   },
   {
     "slug": [
-      "account",
-      "activate"
-    ]
-  },
-  {
-    "slug": [
-      "account",
-      "checklist"
-    ]
-  },
-  {
-    "slug": [
-      "account"
-    ]
-  },
-  {
-    "slug": [
       "api-request"
     ]
   },

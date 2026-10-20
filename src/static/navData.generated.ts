@@ -31,23 +31,6 @@ export const navData: TabbedNavData = {
             "title": "Start Building",
             "links": [
                 {
-                    "title": "Create an account",
-                    "items": [
-                        {
-                            "href": "/account",
-                            "children": "Overview"
-                        },
-                        {
-                            "href": "/account/activate",
-                            "children": "Activate your account"
-                        },
-                        {
-                            "href": "/account/checklist",
-                            "children": "Checklist"
-                        }
-                    ]
-                },
-                {
                     "title": "Start developing",
                     "items": [
                         {

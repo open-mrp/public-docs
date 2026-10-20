@@ -85,19 +85,7 @@ export const pagePreviewData: Record<string, PagePreview> = {
     },
     "/get-started": {
         "title": "Get started",
-        "subtitle": "Create an account and learn how to build on OpenMRP."
-    },
-    "/account/activate": {
-        "title": "Activate your account",
-        "subtitle": "Learn how to activate and manage your OpenMRP account."
-    },
-    "/account/checklist": {
-        "title": "Account activation checklist",
-        "subtitle": "Complete this checklist before putting your OpenMRP account into production."
-    },
-    "/account": {
-        "title": "Create an OpenMRP account",
-        "subtitle": "Learn how to activate and manage your OpenMRP account, from initial setup to advanced configurations."
+        "subtitle": "Learn how to use and build on OpenMRP."
     },
     "/api-request": {
         "title": "Send your first OpenMRP API request",

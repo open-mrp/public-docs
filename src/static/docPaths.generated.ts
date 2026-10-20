@@ -24,11 +24,6 @@ export const docPaths = {
     "development": "/development",
     "apiTour": "/api-tour",
     "getStarted": "/get-started",
-    "account": {
-        "activate": "/account/activate",
-        "checklist": "/account/checklist",
-        "root": "/account"
-    },
     "apiRequest": "/api-request",
     "goLive": "/go-live",
     "releasePhases": "/release-phases",
